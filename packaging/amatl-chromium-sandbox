@@ -71,10 +71,13 @@ systemd-run --user --wait --collect --pipe --quiet --unit "$unit" \
     --setenv HOME /tmp/home --setenv TMPDIR /tmp \
     --setenv XDG_RUNTIME_DIR /tmp/runtime \
     --setenv XDG_CONFIG_HOME /tmp/home --setenv XDG_CACHE_HOME /tmp/home \
+    --setenv DBUS_SESSION_BUS_ADDRESS unix:path=/dev/null \
+    --setenv DBUS_SYSTEM_BUS_ADDRESS unix:path=/dev/null \
     --chdir / \
     -- "$chromium" \
       --headless=new --disable-gpu --disable-background-networking \
-      --disable-component-update --disable-default-apps --disable-sync \
+      --disable-component-update --disable-default-apps --disable-extensions \
+      --disable-features=MediaRouter,OptimizationHints --disable-sync \
       --metrics-recording-only --no-first-run --no-default-browser-check \
       --user-data-dir=/tmp/profile --dump-dom file:///tmp/input.html \
       >"$sandbox/dom.html" 2>"$sandbox/chromium.stderr"
