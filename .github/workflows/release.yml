@@ -121,6 +121,7 @@ jobs:
       - uses: actions/upload-artifact@v6
         with:
           name: amatl-${{ steps.version.outputs.package_version }}-x86_64-unknown-linux-musl
+          retention-days: 30
           path: dist/*
           if-no-files-found: error
       - name: Publish prerelease from annotated tag

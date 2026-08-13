@@ -320,6 +320,7 @@ async fn security_middleware(
 ) -> Response {
     let security = &state.security;
     if header_size(request.headers()) > security.max_header_bytes {
+        audit_security_event("headers_too_large", &request);
         return secured(
             api_error(
                 StatusCode::REQUEST_HEADER_FIELDS_TOO_LARGE,
@@ -335,18 +336,21 @@ async fn security_middleware(
         .and_then(|value| value.parse::<usize>().ok())
         .is_some_and(|value| value > security.max_body_bytes)
     {
+        audit_security_event("body_too_large", &request);
         return secured(
             api_error(StatusCode::PAYLOAD_TOO_LARGE, "body_too_large"),
             security.https,
         );
     }
     if !valid_host(request.headers(), &security.allowed_hosts) {
+        audit_security_event("invalid_host", &request);
         return secured(
             api_error(StatusCode::BAD_REQUEST, "invalid_host"),
             security.https,
         );
     }
     if !valid_origin(request.headers(), &security.allowed_origins) {
+        audit_security_event("invalid_origin", &request);
         return secured(
             api_error(StatusCode::FORBIDDEN, "invalid_origin"),
             security.https,
@@ -354,6 +358,7 @@ async fn security_middleware(
     }
     let protected = is_protected(request.uri().path());
     if request.method() != Method::OPTIONS && !within_rate_limit(&request, security) {
+        audit_security_event("rate_limited", &request);
         let mut response = api_error(StatusCode::TOO_MANY_REQUESTS, "rate_limited");
         response
             .headers_mut()
@@ -364,6 +369,7 @@ async fn security_middleware(
         && request.method() != Method::OPTIONS
         && !authorized(request.headers(), security.token.as_deref())
     {
+        audit_security_event("unauthorized", &request);
         let mut response = api_error(StatusCode::UNAUTHORIZED, "unauthorized");
         response
             .headers_mut()
@@ -372,11 +378,38 @@ async fn security_middleware(
     }
     let timeout = security.timeout;
     let https = security.https;
+    let path = request.uri().path().to_owned();
+    let client_ip = request_client_ip(&request);
     let response = match tokio::time::timeout(timeout, next.run(request)).await {
         Ok(response) => response,
-        Err(_) => api_error(StatusCode::GATEWAY_TIMEOUT, "request_timeout"),
+        Err(_) => {
+            audit_security_event_context("request_timeout", &path, client_ip);
+            api_error(StatusCode::GATEWAY_TIMEOUT, "request_timeout")
+        }
     };
     secured(response, https)
+}
+
+fn audit_security_event(event: &'static str, request: &Request) {
+    audit_security_event_context(event, request.uri().path(), request_client_ip(request));
+}
+
+fn audit_security_event_context(event: &'static str, path: &str, client_ip: IpAddr) {
+    tracing::warn!(
+        target: "amatl::security",
+        security_event = event,
+        path,
+        client_ip = %client_ip,
+        "HTTP security control rejected request"
+    );
+}
+
+fn request_client_ip(request: &Request) -> IpAddr {
+    request
+        .extensions()
+        .get::<ConnectInfo<SocketAddr>>()
+        .map(|value| value.0.ip())
+        .unwrap_or(IpAddr::V4(std::net::Ipv4Addr::LOCALHOST))
 }
 
 fn secured(mut response: Response, https: bool) -> Response {
@@ -467,11 +500,7 @@ fn header_size(headers: &HeaderMap) -> usize {
 }
 
 fn within_rate_limit(request: &Request, security: &SecurityState) -> bool {
-    let ip = request
-        .extensions()
-        .get::<ConnectInfo<SocketAddr>>()
-        .map(|value| value.0.ip())
-        .unwrap_or(IpAddr::V4(std::net::Ipv4Addr::LOCALHOST));
+    let ip = request_client_ip(request);
     let now = Instant::now();
     let mut limiter = security
         .rate_limiter

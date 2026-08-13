@@ -35,7 +35,10 @@ adapter/extractor versions are independent axes as well.
 - Controlled operational Search/Deep/SQLite benchmark with latency, throughput,
   status, contention and peak-RSS evidence.
 - Real rustls handshake coverage and a reproducible static Linux musl release
-  workflow with CycloneDX SBOMs, SHA-256 checksums and artifact attestations.
+  workflow with CycloneDX SBOMs and SHA-256 checksums; attestation remains
+  conditional on repository visibility and GitHub plan support.
+- Secret-safe HTTP security events, hostile-newline log regression coverage,
+  explicit TLS 1.2 floors and invalid-certificate/message-boundary tests.
 
 ### Changed
 

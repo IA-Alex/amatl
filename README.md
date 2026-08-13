@@ -25,9 +25,12 @@ está actualmente bloqueado hasta disponer de aislamiento verificable.
 
 ## Estado e instalación
 
-El workspace declara versión `0.1.0`, pero no existe todavía una publicación
-SemVer ni un pipeline de release. La única instalación verificable hoy es desde
-el repositorio:
+El workspace declara la candidata `0.1.0-rc.1`. Todavía no existe un tag ni una
+publicación SemVer, pero el pipeline reproducible de release ya construye y
+verifica en GitHub Actions un binario Linux musl, cuatro SBOM CycloneDX, el
+archivo reproducible y su checksum SHA-256. En este repositorio privado esos
+resultados permanecen como artefactos internos; la única instalación publicada
+al usuario sigue siendo desde el checkout:
 
 ```bash
 cargo install --locked --path crates/amatl-cli
@@ -37,7 +40,7 @@ La distribución objetivo es:
 
 | Vía | Prioridad | Estado actual |
 |---|---|---|
-| Binario Linux musl precompilado | Principal | Planeado; no hay artefacto publicado |
+| Binario Linux musl precompilado | Principal | Candidata verificada en CI; no hay release etiquetado |
 | `cargo install` desde fuente | Alternativa | Disponible desde checkout con `--path`; crates.io no verificado/publicado |
 | `.deb` / `.rpm` / AUR | Integración nativa | Planeada; no hay recetas en el repositorio |
 
@@ -80,6 +83,7 @@ par certificado/clave TLS completo.
 | `amatl search "consulta" [--json]` | Search multi-provider | 0 en `success`/`partial_success`; 1 en failure/error |
 | `amatl deep "consulta" [--json]` | Search + fetch/extracción acotados | 0 si la operación se entrega, incluso con degradaciones; 1 ante error de servicio |
 | `amatl providers` | Disponibilidad/código de providers | 0 si puede construir el resumen; 1 en error |
+| `amatl provider-canary PROVIDER "consulta" [--json]` | Canario aislado y gobernado de un provider real | 0 sólo con aprobación, credencial y respuesta útil; 1 fail-closed |
 | `amatl config` | Defaults/config efectiva no secreta | 0; 1 si la configuración no carga/valida |
 | `amatl cache [--purge]` | Estadísticas o purga de ambas cachés | 0; storage deshabilitado se informa, no es error |
 | `amatl doctor` | Diagnóstico local completo | 0 si ejecuta; estados degradados se imprimen |

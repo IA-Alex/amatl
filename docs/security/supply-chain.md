@@ -33,14 +33,18 @@ verified owner identity exists in the repository, no exception is pre-approved.
 ## SBOM
 
 CI runs `cargo cyclonedx` and uploads all generated `.cdx.json` and `.cdx.xml`
-files as the `amatl-sbom` workflow artifact. The workflow fails if none exists.
+files as the `amatl-sbom` workflow artifact for 14 days. The workflow fails if
+none exists.
 Consumers should verify the workflow revision, download the artifact from the
 corresponding trusted run, and correlate package URLs/versions with
 `Cargo.lock`.
 
-Public release attachment, signature/attestation, review cadence, and artifact
-retention are **pending owner definition**. Current retention inherits the Git
-hosting platform configuration; the repository does not assert a duration.
+The release-candidate workflow builds a static Linux musl archive, verifies its
+type and version, includes four SBOMs, checks SHA-256 and retains the private CI
+artifact for 30 days. GitHub artifact attestation is skipped explicitly for this
+user-owned private repository because the current plan does not support it. An
+annotated matching tag is still required before the workflow creates a
+prerelease.
 
 ## Response procedure
 
@@ -53,10 +57,10 @@ hosting platform configuration; the repository does not assert a duration.
 
 ## SLSA posture
 
-SLSA is aspirational: CI is defined as code and emits an SBOM, but the project
-does not yet claim a SLSA build level, hermetic build, provenance attestation,
-signed release, or isolated release builder. Such claims require a release
-pipeline and independently verifiable provenance, neither of which exists.
+SLSA is aspirational: CI is defined as code and emits an SBOM and reproducible
+archive, but the project does not claim a SLSA build level, hermetic build,
+provenance attestation, signed release, or isolated release builder. The private
+repository limitation and absence of a tagged release prevent stronger claims.
 
 References: [SLSA specification](https://slsa.dev/spec/) and
 [CycloneDX](https://cyclonedx.org/).

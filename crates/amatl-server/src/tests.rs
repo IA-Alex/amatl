@@ -1,5 +1,7 @@
 use super::*;
 use axum::{body::to_bytes, http::Request};
+use std::io::Write;
+use std::sync::{Arc, Mutex, Once, OnceLock};
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tower::ServiceExt;
 
@@ -149,6 +151,105 @@ async fn host_and_origin_are_explicitly_validated() {
         valid_origin.headers()["access-control-allow-origin"],
         HeaderValue::from_static("http://localhost:8080")
     );
+
+    let public_cross_origin = app()
+        .await
+        .oneshot(
+            request("/health")
+                .header(ORIGIN, "https://attacker.example")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(public_cross_origin.status(), StatusCode::FORBIDDEN);
+
+    let public_same_origin = app()
+        .await
+        .oneshot(
+            request("/health")
+                .header(ORIGIN, "http://localhost:8080")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(public_same_origin.status(), StatusCode::OK);
+    assert_eq!(
+        public_same_origin.headers()["access-control-allow-origin"],
+        HeaderValue::from_static("http://localhost:8080")
+    );
+}
+
+#[derive(Clone)]
+struct LogWriter(Arc<Mutex<Vec<u8>>>);
+
+impl Write for LogWriter {
+    fn write(&mut self, bytes: &[u8]) -> std::io::Result<usize> {
+        self.0
+            .lock()
+            .unwrap_or_else(|error| error.into_inner())
+            .extend_from_slice(bytes);
+        Ok(bytes.len())
+    }
+
+    fn flush(&mut self) -> std::io::Result<()> {
+        Ok(())
+    }
+}
+
+fn security_logs() -> Arc<Mutex<Vec<u8>>> {
+    static CAPTURED: OnceLock<Arc<Mutex<Vec<u8>>>> = OnceLock::new();
+    static INSTALL: Once = Once::new();
+    let captured = CAPTURED
+        .get_or_init(|| Arc::new(Mutex::new(Vec::new())))
+        .clone();
+    INSTALL.call_once(|| {
+        let sink = captured.clone();
+        let subscriber = tracing_subscriber::fmt()
+            .without_time()
+            .with_ansi(false)
+            .with_target(true)
+            .with_max_level(tracing::Level::TRACE)
+            .with_writer(move || LogWriter(sink.clone()))
+            .finish();
+        tracing::subscriber::set_global_default(subscriber)
+            .expect("test security log subscriber should install once");
+    });
+    captured
+}
+
+#[tokio::test]
+async fn rejected_requests_emit_secret_safe_security_events() {
+    let captured = security_logs();
+    captured
+        .lock()
+        .unwrap_or_else(|error| error.into_inner())
+        .clear();
+    let supplied_secret = "never-log-this-invalid-token";
+    let response = app()
+        .await
+        .oneshot(
+            request("/search?q=rust%0Aforged")
+                .header(AUTHORIZATION, format!("Bearer {supplied_secret}"))
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::UNAUTHORIZED);
+    let logs = String::from_utf8(
+        captured
+            .lock()
+            .unwrap_or_else(|error| error.into_inner())
+            .clone(),
+    )
+    .unwrap();
+    assert!(logs.contains("amatl::security"), "{logs}");
+    assert!(logs.contains("security_event=\"unauthorized\""), "{logs}");
+    assert!(logs.contains("path=\"/search\""), "{logs}");
+    assert!(!logs.contains(supplied_secret), "{logs}");
+    assert!(!logs.contains("forged"), "{logs}");
 }
 
 #[tokio::test]
@@ -311,6 +412,51 @@ async fn serve_accepts_a_real_tcp_connection() {
 }
 
 #[tokio::test]
+async fn real_http_parser_rejects_conflicting_message_boundaries() {
+    let reservation = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
+    let port = reservation.local_addr().unwrap().port();
+    drop(reservation);
+
+    let mut config = amatl_core::Config::default();
+    config.server.port = port;
+    config.server.no_auth = true;
+    let server = tokio::spawn(serve(AmatlService::new(config, true).await));
+    let mut connection = None;
+    for _ in 0..50 {
+        match tokio::net::TcpStream::connect(("127.0.0.1", port)).await {
+            Ok(stream) => {
+                connection = Some(stream);
+                break;
+            }
+            Err(_) => tokio::time::sleep(Duration::from_millis(10)).await,
+        }
+    }
+    let mut stream = connection.expect("server should bind its configured TCP address");
+    stream
+        .write_all(
+            format!(
+                "POST /search HTTP/1.1\r\nHost: localhost:{port}\r\nContent-Type: application/json\r\nContent-Length: 4\r\nContent-Length: 0\r\nConnection: close\r\n\r\nnullGET /health HTTP/1.1\r\nHost: localhost:{port}\r\n\r\n"
+            )
+            .as_bytes(),
+        )
+        .await
+        .unwrap();
+    let mut response = Vec::new();
+    tokio::time::timeout(Duration::from_secs(2), stream.read_to_end(&mut response))
+        .await
+        .expect("malformed request must not hold the connection open")
+        .unwrap();
+    server.abort();
+    let response = String::from_utf8_lossy(&response);
+    assert!(
+        response.starts_with("HTTP/1.1 400 Bad Request"),
+        "{response}"
+    );
+    assert_eq!(response.matches("HTTP/1.1").count(), 1, "{response}");
+    assert!(!response.contains(r#"{"schema_version":"1","status":"ok"}"#));
+}
+
+#[tokio::test]
 async fn serve_completes_a_real_rustls_handshake() {
     let rcgen::CertifiedKey { cert, signing_key } =
         rcgen::generate_simple_self_signed(vec!["localhost".into()]).unwrap();
@@ -360,6 +506,12 @@ async fn serve_completes_a_real_rustls_handshake() {
         response.json::<serde_json::Value>().await.unwrap(),
         json!({"schema_version": "1", "status": "ok"})
     );
+    let untrusted = reqwest::Client::new()
+        .get(format!("https://localhost:{port}/health"))
+        .send()
+        .await
+        .expect_err("an untrusted self-signed certificate must be rejected");
+    assert!(untrusted.is_connect(), "{untrusted}");
     server.abort();
     let _ = server.await;
     std::fs::remove_file(cert_path).unwrap();

@@ -83,8 +83,10 @@ Invariantes no negociables:
   environment aprobado.
 - El benchmark `controlled-local-v1` mide Search/Deep, concurrencia SQLite y RSS
   sin atribuir esos valores a Internet o producción.
-- El workflow de release produce el binario estático Linux musl, SBOMs,
-  checksums y attestations; sólo un tag anotado y concordante publica prerelease.
+- El workflow de release produce el binario estático Linux musl, SBOMs y
+  checksums. La attestation queda condicionada a soporte de GitHub y se omite de
+  forma explícita en este repositorio privado; sólo un tag anotado y concordante
+  publica prerelease.
 
 ## Evidencia de validación
 
@@ -102,13 +104,16 @@ cargo cyclonedx
 
 Resultados locales registrados el 2026-08-13:
 
-- 159 pruebas aprobadas en el workspace;
+- 163 pruebas aprobadas en el workspace;
 - formato, benches y Clippy estricto aprobados;
 - Cargo Audit sin vulnerabilidades y Cargo Deny aprobado (duplicados
   transitivos permitidos por la política vigente);
 - CycloneDX generado para los cuatro crates;
 - `cargo +1.88.0 check --workspace --all-targets --locked` aprobado;
-- handshake HTTPS real contra rustls con certificado temporal confiado;
+- handshake HTTPS real contra rustls con certificado temporal confiado y
+  rechazo de certificados no confiables;
+- límites HTTP conflictivos rechazados sobre TCP real y eventos de seguridad
+  verificados sin credenciales;
 - canario fail-closed antes de red cuando falta aprobación;
 - benchmark operativo completo bajo concurrencia;
 - serialización de mutaciones SQLite compartida entre clones.
@@ -181,5 +186,6 @@ Defaults: `127.0.0.1:8080`; UI `/`, health `/health`, REST `/search`, `/deep` y
 El siguiente paso inmediato no es crear una Fase 10: es configurar los controles
 externos de GitHub, cargar gobernanza/credenciales en el environment protegido y
 ejecutar el canario. Con esa evidencia, ejecutar manualmente el build de RC,
-verificar checksum/attestation en una máquina limpia y sólo entonces crear el
-tag anotado `v0.1.0-rc.1`.
+verificar el checksum en una máquina limpia (y la attestation sólo cuando el
+hosting la soporte) y únicamente entonces crear el tag anotado
+`v0.1.0-rc.1`.

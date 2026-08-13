@@ -169,6 +169,7 @@ impl<R: DnsResolver> SafeFetcher<R> {
         }
         let client = reqwest::Client::builder()
             .redirect(reqwest::redirect::Policy::none())
+            .min_tls_version(reqwest::tls::Version::TLS_1_2)
             .no_proxy()
             .referer(false)
             .resolve_to_addrs(host, &sorted_addresses)

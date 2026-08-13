@@ -50,6 +50,7 @@ impl ReqwestTransport {
     pub fn new(max_response_bytes: usize) -> Result<Self, String> {
         let client = reqwest::Client::builder()
             .redirect(reqwest::redirect::Policy::none())
+            .min_tls_version(reqwest::tls::Version::TLS_1_2)
             .build()
             .map_err(|_| "unable to initialize HTTP client".to_string())?;
         Ok(Self {
@@ -149,5 +150,61 @@ mod tests {
             .unwrap_err();
         assert_eq!(error, "provider response exceeded byte limit");
         server.await.unwrap();
+    }
+
+    #[tokio::test]
+    async fn rejects_untrusted_provider_certificate_without_leaking_credentials() {
+        let rcgen::CertifiedKey { cert, signing_key } =
+            rcgen::generate_simple_self_signed(vec!["localhost".into()]).unwrap();
+        let nonce = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)
+            .unwrap()
+            .as_nanos();
+        let directory =
+            std::env::temp_dir().join(format!("amatl-provider-tls-{}-{nonce}", std::process::id()));
+        std::fs::create_dir_all(&directory).unwrap();
+        let cert_path = directory.join("cert.pem");
+        let key_path = directory.join("key.pem");
+        std::fs::write(&cert_path, cert.pem()).unwrap();
+        std::fs::write(&key_path, signing_key.serialize_pem()).unwrap();
+
+        let reservation = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
+        let port = reservation.local_addr().unwrap().port();
+        drop(reservation);
+        let tls = axum_server::tls_rustls::RustlsConfig::from_pem_file(&cert_path, &key_path)
+            .await
+            .unwrap();
+        let app = axum::Router::new().route("/", axum::routing::get(|| async { "ok" }));
+        let address = std::net::SocketAddr::from(([127, 0, 0, 1], port));
+        let server =
+            tokio::spawn(axum_server::bind_rustls(address, tls).serve(app.into_make_service()));
+        for _ in 0..50 {
+            if tokio::net::TcpStream::connect(("127.0.0.1", port))
+                .await
+                .is_ok()
+            {
+                break;
+            }
+            tokio::time::sleep(Duration::from_millis(10)).await;
+        }
+
+        let secret = "never-leak-provider-key";
+        let error = ReqwestTransport::new(1024)
+            .unwrap()
+            .execute(HttpRequest {
+                url: Url::parse(&format!("https://localhost:{port}/?api_key={secret}")).unwrap(),
+                headers: vec![],
+                timeout_ms: 1_000,
+            })
+            .await
+            .unwrap_err();
+        assert_eq!(error, "provider network request failed");
+        assert!(!error.contains(secret));
+
+        server.abort();
+        let _ = server.await;
+        std::fs::remove_file(cert_path).unwrap();
+        std::fs::remove_file(key_path).unwrap();
+        std::fs::remove_dir(directory).unwrap();
     }
 }

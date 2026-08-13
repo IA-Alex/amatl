@@ -52,7 +52,10 @@ at least 32 bytes, and are compared in constant time
 
 Certificate and key must both be set or both absent. Remote exposure does not
 infer proxy TLS termination; AMATL itself requires the configured pair
-(`config.rs:616-650`). rustls is used (`amatl-server/src/lib.rs:168-190`).
+(`config.rs:616-650`). rustls uses its safe protocol defaults (TLS 1.2 and 1.3),
+and every outbound reqwest client also declares TLS 1.2 as its minimum
+(`amatl-server/src/lib.rs:168-190`, `providers/http.rs:49-55`,
+`fetch.rs:168-177`).
 
 ## Resource limits
 
@@ -66,9 +69,18 @@ infer proxy TLS termination; AMATL itself requires the configured pair
 | Connections | 64 | 1–10,000; Tower concurrency limit |
 | Query | 2,048 bytes | non-empty after trimming |
 
-Rate keys combine remote IP, first path segment, and a hash of the Authorization
-header (`amatl-server/src/lib.rs:461-490`). The header value is not retained in
-the key. Limits are per process and do not trust forwarding headers.
+Rate keys use the remote IP obtained from the socket and never retain the
+Authorization header. The limit applies before authentication and also covers
+public routes; invalid credentials cannot create new buckets. Expired windows
+are purged periodically rather than scanning on every request. Limits are per
+process and do not trust forwarding headers
+(`amatl-server/src/lib.rs:500-528`).
+
+Rejected headers/bodies, Host/Origin failures, rate limiting, failed
+authentication and request timeouts emit structured `amatl::security` events.
+They include only a stable event code, normalized path and socket IP; Host,
+Origin and credential values are deliberately omitted
+(`amatl-server/src/lib.rs:316-418`).
 
 ## `doctor` versus `/health`
 
@@ -80,7 +92,11 @@ lightweight process/router availability response only:
 `{"schema_version":"1","status":"ok"}`. It does not validate providers,
 SQLite, token readiness, or outbound network (`amatl-server/src/lib.rs:291-293`).
 
-Tests cover hardened public health, bearer enforcement, Host/Origin/CORS, rate
-limit, body limits, and MCP (`amatl-server/src/tests.rs:31-314`). Missing tests:
-real TLS handshake/version negotiation, header-size rejection, request timeout,
-connection saturation, and reverse-proxy deployments.
+Tests cover hardened public health, bearer enforcement, the simple and
+protected Host/Origin/CORS matrix, rate and body limits, secret-safe security
+events, real socket-IP separation, TCP, conflicting HTTP message boundaries,
+trusted/untrusted TLS certificates and MCP (`amatl-server/src/tests.rs`). The
+provider transport also rejects an untrusted certificate without exposing its
+credential (`providers/http.rs`). Remaining environmental gaps are connection
+saturation, distributed/multi-process rate limiting and reverse-proxy
+deployments; forwarded headers remain intentionally unsupported.

@@ -67,34 +67,110 @@ struct JsonFieldVisitor {
     fields: Map<String, Value>,
 }
 
+impl JsonFieldVisitor {
+    fn record_value(&mut self, field: &Field, value: Value) {
+        let value = if sensitive_log_field(field.name()) {
+            Value::String("[redacted]".into())
+        } else {
+            value
+        };
+        self.fields.insert(field.name().into(), value);
+    }
+}
+
+fn sensitive_log_field(name: &str) -> bool {
+    matches!(
+        name.to_ascii_lowercase().as_str(),
+        "api_key" | "authorization" | "cookie" | "key" | "password" | "secret" | "token"
+    )
+}
+
 impl Visit for JsonFieldVisitor {
     fn record_debug(&mut self, field: &Field, value: &dyn fmt::Debug) {
-        self.fields
-            .insert(field.name().into(), Value::String(format!("{value:?}")));
+        self.record_value(field, Value::String(format!("{value:?}")));
     }
 
     fn record_str(&mut self, field: &Field, value: &str) {
-        self.fields
-            .insert(field.name().into(), Value::String(value.into()));
+        self.record_value(field, Value::String(value.into()));
     }
 
     fn record_i64(&mut self, field: &Field, value: i64) {
-        self.fields.insert(field.name().into(), value.into());
+        self.record_value(field, value.into());
     }
 
     fn record_u64(&mut self, field: &Field, value: u64) {
-        self.fields.insert(field.name().into(), value.into());
+        self.record_value(field, value.into());
     }
 
     fn record_bool(&mut self, field: &Field, value: bool) {
-        self.fields.insert(field.name().into(), value.into());
+        self.record_value(field, value.into());
     }
 
     fn record_f64(&mut self, field: &Field, value: f64) {
-        self.fields.insert(
-            field.name().into(),
+        self.record_value(
+            field,
             serde_json::Number::from_f64(value).map_or(Value::Null, Value::Number),
         );
+    }
+}
+
+#[cfg(test)]
+mod logging_tests {
+    use super::*;
+    use std::io::Write;
+    use std::sync::{Arc, Mutex};
+
+    #[derive(Clone)]
+    struct LogWriter(Arc<Mutex<Vec<u8>>>);
+
+    impl Write for LogWriter {
+        fn write(&mut self, bytes: &[u8]) -> std::io::Result<usize> {
+            self.0
+                .lock()
+                .unwrap_or_else(|error| error.into_inner())
+                .extend_from_slice(bytes);
+            Ok(bytes.len())
+        }
+
+        fn flush(&mut self) -> std::io::Result<()> {
+            Ok(())
+        }
+    }
+
+    #[test]
+    fn json_logs_escape_newlines_and_redact_sensitive_fields() {
+        let captured = Arc::new(Mutex::new(Vec::new()));
+        let sink = captured.clone();
+        let subscriber = tracing_subscriber::fmt()
+            .with_ansi(false)
+            .without_time()
+            .event_format(JsonEventFormatter)
+            .with_writer(move || LogWriter(sink.clone()))
+            .finish();
+        let hostile = "first line\nforged second event";
+        let secret = "never-log-this-api-key";
+        tracing::subscriber::with_default(subscriber, || {
+            tracing::warn!(
+                target: "amatl::logging_test",
+                message = hostile,
+                api_key = secret,
+                authorization = secret
+            );
+        });
+
+        let output = String::from_utf8(
+            captured
+                .lock()
+                .unwrap_or_else(|error| error.into_inner())
+                .clone(),
+        )
+        .unwrap();
+        assert_eq!(output.lines().count(), 1, "{output:?}");
+        assert!(!output.contains(secret));
+        let value: Value = serde_json::from_str(output.trim()).unwrap();
+        assert_eq!(value["msg"], hostile);
+        assert_eq!(value["context"]["api_key"], "[redacted]");
+        assert_eq!(value["context"]["authorization"], "[redacted]");
     }
 }
 

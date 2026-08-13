@@ -36,9 +36,12 @@ name = "amatl-core"
 version = "0.1.0-rc.1"
 dependencies = [
  "async-trait",
+ "axum",
+ "axum-server",
  "criterion",
  "http",
  "proptest",
+ "rcgen",
  "reqwest",
  "scraper",
  "serde",
@@ -72,6 +75,8 @@ dependencies = [
  "tokio",
  "tower",
  "tower-http 0.7.0",
+ "tracing",
+ "tracing-subscriber",
  "url",
 ]
 

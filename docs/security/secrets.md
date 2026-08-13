@@ -42,9 +42,13 @@ tienen una vista que sustituye valores de `api_key`, `key` y `token` por
 Cookie (`fetch.rs:221-230`). Los errores HTTP publican códigos fijos y no detalles
 internos (`amatl-server/src/lib.rs:517-535`).
 
-Riesgo residual: la vista sanitizada no está impuesta por un wrapper central a
-futuros adapters y no hay una prueba end-to-end de detección de secretos en
-todos los logs.
+El formateador JSON sustituye por `[redacted]` los campos con nombres sensibles
+y serializa saltos de línea dentro de una sola entrada. Los eventos HTTP de
+seguridad no registran valores de Host, Origin ni Authorization. Las pruebas
+cubren el formateador, un rechazo autenticado y el error TLS del transporte de
+providers. Riesgo residual: un adapter futuro todavía podría introducir un
+secreto dentro de un campo con nombre no sensible o de un mensaje libre; la
+revisión de código sigue siendo obligatoria.
 
 ## Respuesta a una fuga
 

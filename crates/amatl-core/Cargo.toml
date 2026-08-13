@@ -23,8 +23,11 @@ url.workspace = true
 unicode-normalization.workspace = true
 
 [dev-dependencies]
+axum.workspace = true
+axum-server.workspace = true
 criterion = "0.7"
 proptest = "1"
+rcgen = "0.14.8"
 
 [[bench]]
 name = "core_contracts"
