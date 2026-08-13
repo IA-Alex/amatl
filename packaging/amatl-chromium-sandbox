@@ -83,6 +83,7 @@ set -e
 
 if [[ $status -ne 0 ]]; then
   echo "isolated Chromium failed" >&2
+  sed -n '1,20p' "$sandbox/chromium.stderr" >&2
   exit 70
 fi
 size=$(stat --format=%s "$sandbox/dom.html")
