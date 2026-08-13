@@ -4,7 +4,7 @@
 
 Estado revisado el **2026-08-13** sobre la rama `main`:
 
-- revisión de partida: `6c5572f` (`feat: add local document ingestion`);
+- revisión funcional documentada: `2b9baa9` (`feat: expose Deep evidence in the UI`);
 - baseline de implementación: tag `baseline-fases-0-9`, commit `51c6d34`;
 - workspace: Rust 2021, MSRV 1.88, versión candidata `0.1.0-rc.1`, cuatro crates;
 - fases 0–9: cerradas y verificadas;
@@ -38,8 +38,46 @@ En caso de discrepancia, usar este orden:
 | 3–4 | Cerrada | SQLite/cachés/telemetría opcionales y routing adaptativo/progresivo |
 | 5 | Cerrada | Deep acotado, fetch seguro, extracción, documentos/evidencias y cache documental |
 | 6–7 | Cerrada | Ranking v2 calibrable, Diversity y Gap Analyzer con límites propios |
-| 8 | Cerrada | UI estática, embebida y responsiva |
+| 8 | Cerrada y ampliada | UI estática, embebida y responsiva para Search y Deep/Evidence v2 |
 | 9 | Cerrada | servidor Axum compartido, REST, MCP, bearer, TLS y hardening HTTP |
+
+## Avances del flujo Evidence v2 → ingestión → UI Deep
+
+Este bloque registra la secuencia implementada después del baseline, sin crear
+una fase nueva ni cambiar el contrato global `schema_version = "1"`:
+
+| Revisión | Entrega | Resultado verificable |
+|---|---|---|
+| `5d2e15d` | Evidence v2 | fragmentos exactos, offsets UTF-8, SHA-256, señales deterministas y procedencia enlazada a cada `Document` |
+| `6c5572f` | Ingestión local | despacho acotado por tipo documental y producción de Document/Evidence v1/v2 sólo por CLI, sin ruta HTTP/MCP |
+| `2b9baa9` | UI Deep | `POST /deep`, presentación de documentos/fragmentos/procedencia y verificación de integridad en navegador |
+
+La ampliación de UI realizada en `2b9baa9` incluye:
+
+- dos acciones sobre el mismo formulario: `Buscar` usa `POST /search` y
+  `Analizar evidencia` usa `POST /deep`; ambos conservan filtros y bearer sólo
+  en memoria;
+- correlación de `EvidenceV2.document_id` con `Document.search_result_id`, y
+  rechazo visual de evidencia cuyo `provenance.document_id` o linaje de URL no
+  coincide con el documento;
+- presentación de estado documental, fragmentos, señales observadas, método de
+  adquisición, extractor, fecha de recuperación, linaje de URL y hashes de
+  fuente/texto extraído;
+- límites defensivos en UI de 20 documentos, ocho fragmentos por documento,
+  512 bytes por fragmento y 8 MiB de contenido verificable;
+- reconstrucción de `start_byte..end_byte` con decodificación UTF-8 estricta y
+  recálculo SHA-256 mediante Web Crypto; la interfaz distingue rango/hash
+  verificados, sólo rango verificable y fallo de verificación;
+- renderizado exclusivo con `textContent` y nodos DOM, enlaces limitados a
+  HTTP(S) sin credenciales, sin `innerHTML`, `document.write`, selector de
+  archivos ni `FileReader`;
+- estados accesibles para carga, éxito, degradación, autenticación, rate limit y
+  timeout, con adaptación móvil y respeto a `prefers-reduced-motion`.
+
+La UI no calcula evidencia, ranking ni procedencia: consume el contrato del
+core. Tampoco introduce inferencia o LLM. La ingestión local continúa separada
+y sólo accesible mediante `amatl ingest`, evitando convertir el listener en un
+lector remoto del filesystem.
 
 Arquitectura vigente:
 
@@ -84,6 +122,10 @@ Invariantes no negociables:
 - DuckDuckGo HTML está bloqueado fail-closed con
   `provider_pending_explicit_approval`.
 - Trafilatura es opcional; su ausencia degrada Deep a documento superficial.
+- La UI puede mostrar Search con el mock sin red, pero una vista Deep enriquecida
+  exige candidatos obtenibles bajo `data_policy` y texto del extractor. Con
+  `isolated`, el botón Deep muestra degradación sin intentar DNS; para archivos
+  sensibles se usa la ingestión CLI, no la UI.
 - `ChromiumRenderer` permanece no disponible hasta implementar y verificar un
   backend CDP aislado; no habilitar Chromium como fallback inseguro.
 - Persistencia y ambas cachés están deshabilitadas por defecto. Un fallo de
@@ -120,6 +162,11 @@ cargo cyclonedx
 Resultados locales registrados el 2026-08-13:
 
 - 190 pruebas aprobadas en el workspace;
+- pruebas de UI verifican despacho POST Search/Deep, DOM seguro, límites,
+  correlación de procedencia, uso de Web Crypto y ausencia de superficie local;
+- prueba de servidor verifica autenticación y contrato `POST /deep` bajo perfil
+  aislado, incluida la degradación `egress_denied`, y confirma que `/ingest` no
+  existe en HTTP;
 - formato, benches y Clippy estricto aprobados;
 - Cargo Audit sin vulnerabilidades y Cargo Deny aprobado (duplicados
   transitivos permitidos por la política vigente);
@@ -136,6 +183,11 @@ Resultados locales registrados el 2026-08-13:
 - canario fail-closed antes de red cuando falta aprobación;
 - benchmark operativo completo bajo concurrencia;
 - serialización de mutaciones SQLite compartida entre clones.
+
+La ejecución de GitHub Actions `contract-gate` para `2b9baa9` terminó en verde
+el 2026-08-13: aprobó el job principal completo y el job MSRV. `HEAD` y
+`origin/main` quedaron alineados en esa revisión antes de esta actualización
+documental.
 
 El target `x86_64-unknown-linux-musl` está instalado localmente, pero el host no
 permite instalar `musl-tools` sin contraseña de administrador. El build local
@@ -198,13 +250,20 @@ cargo run -p amatl-cli -- serve --mock
 ```
 
 Defaults: `127.0.0.1:8080`; UI `/`, health `/health`, REST `/search`, `/deep` y
-`/providers`, MCP `/mcp`.
+`/providers`, MCP `/mcp`. En la página, `Buscar` conserva el flujo ligero y
+`Analizar evidencia` ejecuta Deep y despliega procedencia/verificación. El token
+introducido debe ser el mismo valor exportado en `AMATL_SERVER_TOKEN`.
 
 ## Próximo hito seguro
 
-El siguiente paso inmediato no es crear una Fase 10: es configurar los controles
-externos de GitHub, cargar gobernanza/credenciales en el environment protegido y
-ejecutar el canario. Con esa evidencia, ejecutar manualmente el build de RC,
-verificar el checksum en una máquina limpia (y la attestation sólo cuando el
-hosting la soporte) y únicamente entonces crear el tag anotado
-`v0.1.0-rc.1`.
+El siguiente paso técnico no es crear una Fase 10 ni cambiar contratos: es pasar
+a pulido verificable de la interfaz sobre la superficie ya funcional. Debe
+añadir pruebas browser E2E para Search/Deep, navegación por teclado,
+accesibilidad automatizada, estados vacío/superficial/degradado y revisión
+visual responsiva; después puede afinar jerarquía, densidad y legibilidad sin
+introducir lógica de producto en `amatl-ui`.
+
+En paralelo, los controles externos de GitHub, gobernanza/credenciales del
+environment, canario real y build de RC continúan como decisiones del
+propietario. No bloquear el pulido local por falta de APIs, pero tampoco simular
+su aprobación ni publicar `v0.1.0-rc.1` sin esa evidencia.
