@@ -21,6 +21,10 @@ are deleted on every shell exit.
 The host must permit unprivileged user namespaces; otherwise bubblewrap aborts
 and the helper returns no DOM. The GitHub runner explicitly enables this kernel
 primitive before the test because Ubuntu's AppArmor default restricts it.
+CI downloads Chrome for Testing headless shell `152.0.7977.42` from Google's
+versioned distribution URL and verifies SHA-256
+`129686a270d84ac4637c614802c554634aa827aa13214216f81e0a0b9410f8cf` before use;
+it does not depend on the runner's mutable Chromium installation.
 
 The integration workflow proves three properties with real Chromium:
 

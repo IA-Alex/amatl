@@ -25,13 +25,23 @@ jobs:
       - name: Install Chromium isolation dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install --yes bubblewrap util-linux
+          sudo apt-get install --yes bubblewrap curl unzip
           if sysctl kernel.apparmor_restrict_unprivileged_userns >/dev/null 2>&1; then
             sudo sysctl --write kernel.apparmor_restrict_unprivileged_userns=0
           fi
+          archive="$(mktemp --suffix=.zip)"
+          curl --fail --location --silent --show-error \
+            https://storage.googleapis.com/chrome-for-testing-public/152.0.7977.42/linux64/chrome-headless-shell-linux64.zip \
+            --output "$archive"
+          printf '%s  %s\n' \
+            129686a270d84ac4637c614802c554634aa827aa13214216f81e0a0b9410f8cf \
+            "$archive" | sha256sum --check --status
+          sudo install --directory --mode 0755 /opt/amatl-chromium
+          sudo unzip -q "$archive" -d /opt/amatl-chromium
+          echo 'AMATL_CHROMIUM_BIN=/opt/amatl-chromium/chrome-headless-shell-linux64/chrome-headless-shell' >> "$GITHUB_ENV"
       - name: Verify runner Chromium baseline
         run: |
-          chromium="$(command -v chromium || command -v chromium-browser || command -v google-chrome)"
+          chromium="$AMATL_CHROMIUM_BIN"
           "$chromium" --version
           fixture="$(mktemp --suffix=.html)"
           printf '%s' '<!doctype html><p id="state">baseline</p>' > "$fixture"
