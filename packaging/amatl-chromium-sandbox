@@ -42,6 +42,13 @@ chromium_mounts=()
 if [[ "$chromium" == /opt/* ]]; then
   chromium_mounts=(--ro-bind /opt /opt)
 fi
+font_mounts=()
+if [[ -d /etc/fonts ]]; then
+  font_mounts+=(--ro-bind /etc/fonts /etc/fonts)
+fi
+if [[ -d /var/cache/fontconfig ]]; then
+  font_mounts+=(--ro-bind /var/cache/fontconfig /var/cache/fontconfig)
+fi
 
 memory_mb=${AMATL_CHROMIUM_MEMORY_MB:-1024}
 tasks_max=${AMATL_CHROMIUM_TASKS_MAX:-512}
@@ -66,6 +73,7 @@ systemd-run --user --wait --collect --pipe --quiet --unit "$unit" \
     --tmpfs / --ro-bind /usr /usr --symlink usr/bin /bin \
     --symlink usr/lib /lib --symlink usr/lib64 /lib64 \
     "${chromium_mounts[@]}" \
+    "${font_mounts[@]}" \
     --proc /proc --dev /dev --tmpfs /dev/shm \
     --bind "$sandbox" /tmp \
     --setenv HOME /tmp/home --setenv TMPDIR /tmp \

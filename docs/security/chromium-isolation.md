@@ -11,8 +11,9 @@ The harness requires Linux, bubblewrap and a user systemd manager. It launches
 Chromium inside new user, mount, PID, IPC, UTS, network and cgroup namespaces,
 with an
 empty root assembled from read-only `/usr`, `/opt` when needed, minimal devices,
-private `/tmp`, private profile and no D-Bus sockets. The network namespace is
-empty and is not connected to the host or Internet. The transient
+the read-only Fontconfig configuration/cache, private `/tmp`, private profile
+and no D-Bus sockets. The network namespace is empty and is not connected to
+the host or Internet. The transient
 systemd unit enforces `MemoryMax`, `TasksMax` and `RuntimeMaxSec`; bubblewrap uses
 `--die-with-parent`. Output is copied only after a successful exit and an 8 MiB
 cap. The default memory ceiling is 1 GiB. The temporary profile and input copy
