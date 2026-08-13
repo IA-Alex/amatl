@@ -360,6 +360,7 @@ async fn main() -> anyhow::Result<()> {
         } => provider_canary(provider, query, json, &config).await,
         Command::Config => {
             println!("config_file = {}", cli.config_file.display());
+            print_data_policy(&config);
             println!("providers.enabled = {:?}", config.providers.enabled);
             println!("timeouts.provider_ms = {}", config.timeouts.provider_ms);
             println!("timeouts.global_ms = {}", config.timeouts.global_ms);
@@ -390,6 +391,7 @@ async fn main() -> anyhow::Result<()> {
         }
         Command::Doctor => {
             println!("core: ok");
+            print_data_policy(&config);
             print_providers(&config).await?;
             doctor_persistence(&config).await;
             doctor_server(&config);
@@ -412,6 +414,29 @@ async fn main() -> anyhow::Result<()> {
             Ok(())
         }
     }
+}
+
+fn print_data_policy(config: &Config) {
+    println!(
+        "data_policy.profile = {}",
+        config.data_policy.profile.as_str()
+    );
+    println!(
+        "data_policy.egress = {}",
+        config.data_policy.egress.as_str()
+    );
+    println!(
+        "data_policy.inference = {}",
+        config.data_policy.inference.as_str()
+    );
+    println!(
+        "data_policy.network_egress_allowed = {}",
+        config.data_policy.allows_network_egress()
+    );
+    println!(
+        "data_policy.remote_inference_allowed = {}",
+        config.data_policy.allows_remote_inference()
+    );
 }
 
 async fn provider_canary(

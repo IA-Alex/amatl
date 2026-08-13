@@ -7,6 +7,7 @@ use crate::{
     SafeFetcher, SearchOrchestrator, SearchPlan, SearchResponse, SearchSubQueryExecutor,
     SqliteStorage, StorageError, TrafilaturaExtractor, SCHEMA_VERSION,
 };
+use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
 use std::sync::Arc;
 use thiserror::Error;
@@ -93,6 +94,8 @@ pub enum ServiceError {
 
 #[derive(Clone, Debug, Error, PartialEq, Eq)]
 pub enum ProviderCanaryError {
+    #[error("network egress is denied by data policy")]
+    EgressDenied,
     #[error("unknown provider: {0}")]
     UnknownProvider(String),
     #[error("provider is not enabled: {0}")]
@@ -112,7 +115,7 @@ pub struct AmatlService {
     storage_degradation: Option<crate::Degradation>,
     telemetry: InMemoryTelemetry,
     transport: Option<Arc<dyn crate::HttpTransport>>,
-    fetcher: Arc<SafeFetcher>,
+    fetcher: Arc<dyn crate::Fetcher>,
     mock: bool,
 }
 
@@ -151,24 +154,34 @@ impl AmatlService {
                 .flatten(),
         )
         .await;
-        let transport = ReqwestTransport::new(2 * 1024 * 1024)
-            .map(|transport| Arc::new(transport) as Arc<dyn crate::HttpTransport>)
-            .map_err(|error| {
-                tracing::warn!(
-                    target: "amatl::providers",
-                    error = %error,
-                    "provider HTTP transport could not be initialized"
-                );
-                error
-            })
-            .ok();
+        let transport: Option<Arc<dyn crate::HttpTransport>> =
+            if config.data_policy.allows_network_egress() {
+                ReqwestTransport::new(2 * 1024 * 1024)
+                    .map(|transport| Arc::new(transport) as Arc<dyn crate::HttpTransport>)
+                    .map_err(|error| {
+                        tracing::warn!(
+                            target: "amatl::providers",
+                            error = %error,
+                            "provider HTTP transport could not be initialized"
+                        );
+                        error
+                    })
+                    .ok()
+            } else {
+                Some(Arc::new(DeniedHttpTransport))
+            };
+        let fetcher: Arc<dyn crate::Fetcher> = if config.data_policy.allows_network_egress() {
+            Arc::new(SafeFetcher::default())
+        } else {
+            Arc::new(DeniedFetcher)
+        };
         Self {
             config: Arc::new(config),
             storage,
             storage_degradation,
             telemetry,
             transport,
-            fetcher: Arc::new(SafeFetcher::default()),
+            fetcher,
             mock,
         }
     }
@@ -179,6 +192,13 @@ impl AmatlService {
 
     pub fn storage(&self) -> Option<SqliteStorage> {
         self.storage.clone()
+    }
+
+    pub async fn fetch_public(
+        &self,
+        request: crate::FetchRequest,
+    ) -> Result<crate::FetchResult, crate::FetchError> {
+        self.fetcher.fetch(request).await
     }
 
     pub async fn search(
@@ -361,10 +381,17 @@ impl AmatlService {
         Ok(providers
             .into_iter()
             .map(|provider| {
-                let (status, code) = match provider.availability() {
-                    ProviderAvailability::Available => (ProviderSurfaceStatus::Available, None),
-                    ProviderAvailability::Unavailable { code, .. } => {
-                        (ProviderSurfaceStatus::Unavailable, Some(code))
+                let (status, code) = if !self.config.data_policy.allows_network_egress() {
+                    (
+                        ProviderSurfaceStatus::Unavailable,
+                        Some("egress_denied".into()),
+                    )
+                } else {
+                    match provider.availability() {
+                        ProviderAvailability::Available => (ProviderSurfaceStatus::Available, None),
+                        ProviderAvailability::Unavailable { code, .. } => {
+                            (ProviderSurfaceStatus::Unavailable, Some(code))
+                        }
                     }
                 };
                 ProviderSummary {
@@ -381,6 +408,9 @@ impl AmatlService {
     fn providers(&self) -> Result<Vec<Arc<dyn Provider>>, ServiceError> {
         if self.mock {
             return Ok(mock_providers());
+        }
+        if !self.config.data_policy.allows_network_egress() {
+            return Ok(vec![]);
         }
         let transport = self.transport.clone().ok_or(ServiceError::Configuration)?;
         let mut providers: Vec<Arc<dyn Provider>> = Vec::new();
@@ -463,6 +493,9 @@ pub fn validate_provider_canary(
     config: &Config,
     provider: &str,
 ) -> Result<(), ProviderCanaryError> {
+    if !config.data_policy.allows_network_egress() {
+        return Err(ProviderCanaryError::EgressDenied);
+    }
     if !config.providers.enabled.iter().any(|name| name == provider) {
         return Err(ProviderCanaryError::NotEnabled(provider.into()));
     }
@@ -491,6 +524,36 @@ pub fn validate_provider_canary(
     Ok(())
 }
 
+struct DeniedFetcher;
+
+#[async_trait]
+impl crate::Fetcher for DeniedFetcher {
+    async fn fetch(&self, _: crate::FetchRequest) -> Result<crate::FetchResult, crate::FetchError> {
+        tracing::warn!(
+            target: "amatl::security",
+            security_event = "egress_denied",
+            operation = "public_fetch",
+            "Data policy denied outbound network access"
+        );
+        Err(crate::FetchError::EgressDenied)
+    }
+}
+
+struct DeniedHttpTransport;
+
+#[async_trait]
+impl crate::HttpTransport for DeniedHttpTransport {
+    async fn execute(&self, _: crate::HttpRequest) -> Result<crate::HttpResponse, String> {
+        tracing::warn!(
+            target: "amatl::security",
+            security_event = "egress_denied",
+            operation = "provider_request",
+            "Data policy denied outbound network access"
+        );
+        Err("network egress denied by data policy".into())
+    }
+}
+
 fn mock_providers() -> Vec<Arc<dyn Provider>> {
     let shared = ProviderItem {
         title: Some("Rust async programming guide".into()),
@@ -514,6 +577,14 @@ fn mock_providers() -> Vec<Arc<dyn Provider>> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    fn isolated_config() -> Config {
+        let mut config = Config::default();
+        config.data_policy.profile = crate::SecurityProfile::Isolated;
+        config.data_policy.egress = crate::EgressPolicy::Deny;
+        config.data_policy.inference = crate::InferenceMode::LocalOnly;
+        config
+    }
 
     #[test]
     fn mcp_default_limits_are_strictly_below_cli_for_expensive_work() {
@@ -552,6 +623,50 @@ mod tests {
             .await
             .unwrap();
         assert!(service.telemetry.status().in_memory_observations > first);
+    }
+
+    #[tokio::test]
+    async fn isolated_service_denies_public_fetch_without_network_access() {
+        let service = AmatlService::new(isolated_config(), false).await;
+        let result = service
+            .fetch_public(crate::FetchRequest {
+                url: url::Url::parse("https://example.com/private?token=never-send").unwrap(),
+                timeout_ms: 1_000,
+                max_bytes: 1_024,
+                max_redirects: 0,
+                headers: Default::default(),
+            })
+            .await;
+        assert!(matches!(result, Err(crate::FetchError::EgressDenied)));
+    }
+
+    #[tokio::test]
+    async fn isolated_deep_degrades_instead_of_fetching_candidates() {
+        let service = AmatlService::new(isolated_config(), true).await;
+        let response = service
+            .deep("rust".into(), ServiceSurface::Api)
+            .await
+            .unwrap();
+        assert!(response.documents.is_empty());
+        assert!(response
+            .degradations
+            .iter()
+            .any(|degradation| degradation.code == "egress_denied"));
+    }
+
+    #[tokio::test]
+    async fn isolated_provider_surface_reports_the_central_policy() {
+        let service = AmatlService::new(isolated_config(), false).await;
+        let summaries = service.provider_summaries().unwrap();
+        assert!(!summaries.is_empty());
+        assert!(summaries.iter().all(|summary| {
+            summary.status == ProviderSurfaceStatus::Unavailable
+                && summary.code.as_deref() == Some("egress_denied")
+        }));
+        assert_eq!(
+            validate_provider_canary(service.config(), "brave"),
+            Err(ProviderCanaryError::EgressDenied)
+        );
     }
 
     #[test]

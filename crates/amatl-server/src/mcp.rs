@@ -1,4 +1,4 @@
-use amatl_core::{AmatlService, FetchRequest, SafeFetcher, ServiceSurface, SCHEMA_VERSION};
+use amatl_core::{AmatlService, FetchError, FetchRequest, ServiceSurface, SCHEMA_VERSION};
 use rmcp::{
     handler::server::wrapper::Parameters,
     model::{CallToolResult, ProtocolVersion},
@@ -62,8 +62,9 @@ impl McpSurface {
         let Ok(url) = Url::parse(&input.url) else {
             return tool_error("invalid_url");
         };
-        let result = SafeFetcher::default()
-            .fetch(FetchRequest {
+        let result = self
+            .service
+            .fetch_public(FetchRequest {
                 url,
                 timeout_ms: 3_000,
                 max_bytes: 256 * 1024,
@@ -81,6 +82,7 @@ impl McpSurface {
                 "size": value.size,
                 "retrieved_at": value.retrieved_at
             })),
+            Err(FetchError::EgressDenied) => tool_error("egress_denied"),
             Err(_) => tool_error("fetch_failed"),
         }
     }

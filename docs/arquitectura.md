@@ -17,7 +17,7 @@ MCP; ninguna superficie replica reglas de negocio.
 | deep/fetch/render/extract | `deep.rs`, `fetch.rs`, `render.rs`, `extract.rs` | Enriquecimiento opcional y capacidades aisladas |
 | evidence/ranking v2/gaps | `evidence.rs`, `ranking_v2.rs`, `gaps.rs` | Señales Deep, gate de calidad y expansión acotada |
 | cache/storage/telemetry | `cache.rs`, `document_cache.rs`, `storage.rs`, `telemetry.rs` | Estado opcional y tolerante a fallos |
-| security | `security.rs` y middleware de `amatl-server` | SSRF, exposición y hardening HTTP |
+| security/data policy | `config.rs`, `service.rs`, `security.rs` y middleware de `amatl-server` | Egress/inferencia, SSRF, exposición y hardening HTTP |
 | superficies | `amatl-cli`, `amatl-ui`, `amatl-server` | Entrada/salida y transporte, sin lógica duplicada |
 
 `api.rs` y `mcp.rs` dentro de core son stubs históricos; la implementación real
@@ -51,11 +51,19 @@ luego construye explícitamente esas capacidades (`service.rs:167-275`).
 
 ## Núcleo único de superficies
 
-`AmatlService` recibe `Config`, abre SQLite sólo de forma opcional y expone tres
-operaciones: `search`, `deep` y `provider_summaries`. CLI, handlers Axum y MCP
-delegan en ellas. `ServiceSurface` selecciona límites: CLI y API usan los
-configurados; MCP reduce providers, tiempos, fetches, bytes y subqueries
-(`service.rs:14-58`). La UI usa exclusivamente el contrato HTTP público.
+`AmatlService` recibe `Config`, abre SQLite sólo de forma opcional y expone
+`search`, `deep`, `fetch_public` y `provider_summaries`. CLI, handlers Axum y MCP
+delegan en ellas; MCP no crea su propio fetcher. `ServiceSurface` selecciona
+límites: CLI y API usan los configurados; MCP reduce providers, tiempos,
+fetches, bytes y subqueries (`service.rs:14-58`). La UI usa exclusivamente el
+contrato HTTP público.
+
+Antes de construir capacidades de red, `data_policy` resuelve el perfil
+efectivo. `isolated` instala fetch/transporte denegados y la validación rechaza
+egress gobernado, inferencia remota, providers, renderer o bind no-loopback.
+Esto mantiene el control en core para todas las superficies. Las extensiones de
+inferencia siguen siendo opcionales y deberán consultar el permiso central; no
+existe un backend LLM en el workspace actual.
 
 ## Persistencia y degradación
 
@@ -74,5 +82,7 @@ extracción opcional falla. Chromium permanece fail-closed.
 - Toda estructura externa/persistida usa `schema_version` cuando lo prescribe el
   contrato; SemVer, adapter/extractor version y migraciones son independientes.
 - Caché, SQLite, Trafilatura, Chromium y LLM no son requisitos de Search.
+- Ninguna superficie crea una salida de red por fuera de `AmatlService`; un
+  backend futuro de inferencia debe respetar `data_policy`.
 - `plan_amatl.md` y `fase_a_contratos.md` son normas rectoras, no archivos de
   desarrollo ordinario.

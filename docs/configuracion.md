@@ -13,6 +13,7 @@ bytes y tiempos en milisegundos/segundos según el sufijo.
 
 | Sección | Fase | Rol |
 |---|---:|---|
+| `data_policy` | transversal | perfil de confidencialidad, egress e inferencia |
 | `providers`, `timeouts`, `budget` | 0–1 | fuentes, deadline y cuota Search |
 | `execution` | 1 | concurrencia/retry |
 | `ranking_policy`, `diversity_policy` | 2 | resultado Search |
@@ -23,11 +24,45 @@ bytes y tiempos en milisegundos/segundos según el sufijo.
 | `deep.gaps` | 7 | déficits y SubQuery |
 | `server` | 9 | UI/API/MCP y exposición |
 
+## Política de datos, egress e inferencia
+
+| Clave | Enum/default | Validez y efecto |
+|---|---|---|
+| `data_policy.profile` | `standard` | `standard` o `isolated`; `isolated` niega red de forma efectiva aunque una instancia embebida omita validación |
+| `data_policy.egress` | `governed` | `governed` permite las fronteras ya gobernadas; `deny` sustituye fetch/transporte por implementaciones que fallan antes de conectar |
+| `data_policy.inference` | `disabled` | `disabled`, `local_only` o `remote_explicit`; expresa permiso, no instala ni activa un backend |
+
+El perfil confidencial válido es:
+
+```toml
+[data_policy]
+profile = "isolated"
+egress = "deny"
+inference = "local_only" # usar "disabled" si no habrá inferencia
+```
+
+`isolated` exige bind loopback, prohíbe `remote_explicit`, providers habilitados
+y renderer, y cierra provider canaries, Deep/MCP fetch y transporte de providers
+con `egress_denied`. Search y los mocks deterministas siguen funcionando; Deep
+conserva su contrato y registra degradación cuando no puede recuperar un
+documento. La extracción/ranking/evidencia locales y una inferencia local futura
+siguen siendo opcionales: AMATL no contiene hoy un backend LLM ni depende de él.
+
+`standard` + `remote_explicit` sólo declara que una integración futura podría
+usar inferencia remota; esa integración deberá consultar
+`allows_remote_inference()` y tener gobernanza explícita. `egress = "deny"` es
+incompatible con `remote_explicit` y con cualquier provider habilitado.
+
+La política es un control de aplicación. No sustituye firewall, namespace de
+red, sandbox del extractor ni la comprobación de que el cliente MCP/LLM sea
+local: un cliente cloud podría haber recibido la consulta antes de invocar
+AMATL.
+
 ## Providers
 
 | Clave | Tipo/default | Validez y efecto |
 |---|---|---|
-| `providers.enabled` | `array<string>` / `[]` | Nombres reconocidos: `brave`, `mojeek`, `duckduckgo_html`; desconocidos se ignoran actualmente |
+| `providers.enabled` | `array<string>` / `[]` | Nombres reconocidos: `brave`, `mojeek`, `duckduckgo_html`; desconocidos se rechazan |
 | `providers.<p>.adapter_version` | string opcional | Requerido para aprobación y clave de caché |
 | `.approval_status` | enum / `draft` | `draft`, `approved`, `expired`, `rejected` |
 | `.reviewed_at` | string opcional | Fecha `YYYY-MM-DD`; aprobada sólo durante 90 días inclusive |

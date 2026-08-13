@@ -4,7 +4,7 @@
 
 Estado revisado el **2026-08-13** sobre la rama `main`:
 
-- revisión de partida: `f10f8fa` (`docs: complete repository documentation and continuity`);
+- revisión de partida: `ed93abe` (`test: cover HTTP header and handler limits`);
 - baseline de implementación: tag `baseline-fases-0-9`, commit `51c6d34`;
 - workspace: Rust 2021, MSRV 1.88, versión candidata `0.1.0-rc.1`, cuatro crates;
 - fases 0–9: cerradas y verificadas;
@@ -62,6 +62,9 @@ Invariantes no negociables:
 - Secretos sólo por variables de entorno; no en TOML, logs ni URLs.
 - No introducir LLM obligatorio, agent loops, crawler masivo ni nueva
   infraestructura sin decisión explícita.
+- Toda salida de red pasa por `data_policy`. `isolated` exige `egress = deny`,
+  bind loopback y cero providers/renderer/inferencia remota; Search y extracción
+  de evidencia siguen siendo independientes de LLM.
 
 ## Disponibilidad real y límites
 
@@ -81,6 +84,9 @@ Invariantes no negociables:
 - `provider-canary` aísla una fuente real y valida enablement, gobernanza y
   credencial antes de red; su workflow sólo puede iniciarse manualmente bajo un
   environment aprobado.
+- El perfil `isolated` bloquea provider, canary, Deep y MCP fetch antes de DNS;
+  `local_only` reserva inferencia local opcional, pero no existe backend LLM en
+  la implementación actual ni se requiere API key.
 - El benchmark `controlled-local-v1` mide Search/Deep, concurrencia SQLite y RSS
   sin atribuir esos valores a Internet o producción.
 - El workflow de release produce el binario estático Linux musl, SBOMs y
@@ -104,7 +110,7 @@ cargo cyclonedx
 
 Resultados locales registrados el 2026-08-13:
 
-- 167 pruebas aprobadas en el workspace;
+- 175 pruebas aprobadas en el workspace;
 - formato, benches y Clippy estricto aprobados;
 - Cargo Audit sin vulnerabilidades y Cargo Deny aprobado (duplicados
   transitivos permitidos por la política vigente);

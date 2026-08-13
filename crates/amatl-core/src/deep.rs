@@ -210,7 +210,8 @@ impl DeepOrchestrator {
                 Err(error) => {
                     if matches!(
                         error,
-                        FetchError::BlockedUrl(_)
+                        FetchError::EgressDenied
+                            | FetchError::BlockedUrl(_)
                             | FetchError::AddressBlocked
                             | FetchError::HeaderBlocked
                     ) {
@@ -542,6 +543,7 @@ fn degradation(code: &str, message: &str) -> Degradation {
 }
 fn fetch_code(error: &FetchError) -> &'static str {
     match error {
+        FetchError::EgressDenied => "egress_denied",
         FetchError::BlockedUrl(_) | FetchError::AddressBlocked => "fetch_blocked",
         FetchError::ByteLimit => "byte_limit",
         FetchError::RedirectLimit => "redirect_limit",

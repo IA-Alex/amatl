@@ -65,6 +65,34 @@ fn required_skeleton_commands_are_available() {
 }
 
 #[test]
+fn config_reports_the_effective_isolated_data_policy() {
+    let id = TEMP_ID.fetch_add(1, Ordering::SeqCst);
+    let base = std::env::temp_dir().join(format!("amatl-data-policy-{}-{id}", std::process::id()));
+    std::fs::create_dir_all(&base).unwrap();
+    let config = base.join("amatl.toml");
+    std::fs::write(
+        &config,
+        "[data_policy]\nprofile = \"isolated\"\negress = \"deny\"\ninference = \"local_only\"\n",
+    )
+    .unwrap();
+    let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
+        .arg("--config-file")
+        .arg(&config)
+        .arg("config")
+        .output()
+        .unwrap();
+    assert!(output.status.success());
+    let stdout = String::from_utf8(output.stdout).unwrap();
+    assert!(stdout.contains("data_policy.profile = isolated"));
+    assert!(stdout.contains("data_policy.egress = deny"));
+    assert!(stdout.contains("data_policy.inference = local_only"));
+    assert!(stdout.contains("data_policy.network_egress_allowed = false"));
+    assert!(stdout.contains("data_policy.remote_inference_allowed = false"));
+    std::fs::remove_file(config).unwrap();
+    std::fs::remove_dir(base).unwrap();
+}
+
+#[test]
 fn deep_command_is_exposed_without_running_network_on_help() {
     let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
         .args(["deep", "--help"])

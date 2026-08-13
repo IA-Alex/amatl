@@ -358,6 +358,55 @@ async fn mcp_ssrf_rejection_is_correlated_without_logging_the_url() {
 }
 
 #[tokio::test]
+async fn mcp_fetch_cannot_bypass_isolated_egress_policy() {
+    let mut config = amatl_core::Config::default();
+    config.data_policy.profile = amatl_core::SecurityProfile::Isolated;
+    config.data_policy.egress = amatl_core::EgressPolicy::Deny;
+    config.data_policy.inference = amatl_core::InferenceMode::LocalOnly;
+    config.validate().unwrap();
+    let isolated_app = build_router(AmatlService::new(config, true).await, Some(TOKEN.into()))
+        .await
+        .unwrap();
+    let call = json!({
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "tools/call",
+        "params": {
+            "name": "fetch",
+            "arguments": {
+                "url": "https://example.com/private?token=must-not-leave-host"
+            },
+            "_meta": {
+                "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+                "io.modelcontextprotocol/clientInfo": {
+                    "name": "isolated-policy-test",
+                    "version": "1"
+                },
+                "io.modelcontextprotocol/clientCapabilities": {}
+            }
+        }
+    });
+    let response = isolated_app
+        .oneshot(
+            authorized("/mcp")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .header("accept", "application/json, text/event-stream")
+                .header("mcp-protocol-version", "2026-07-28")
+                .header("mcp-method", "tools/call")
+                .header("mcp-name", "fetch")
+                .body(Body::from(call.to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    assert_eq!(body["result"]["isError"], true);
+    assert!(body.to_string().contains("egress_denied"), "{body}");
+}
+
+#[tokio::test]
 async fn rate_limit_is_keyed_and_body_limit_is_global() {
     let mut config = amatl_core::Config::default();
     config.server.rate_limit_per_minute = 1;

@@ -10,6 +10,7 @@ use thiserror::Error;
 #[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq)]
 #[serde(default)]
 pub struct Config {
+    pub data_policy: DataPolicyConfig,
     pub providers: ProviderConfig,
     pub timeouts: TimeoutConfig,
     pub budget: BudgetConfig,
@@ -22,6 +23,83 @@ pub struct Config {
     pub telemetry: TelemetryConfig,
     pub deep: DeepConfig,
     pub server: ServerConfig,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+#[serde(default)]
+pub struct DataPolicyConfig {
+    pub profile: SecurityProfile,
+    pub egress: EgressPolicy,
+    pub inference: InferenceMode,
+}
+
+#[derive(Clone, Copy, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+pub enum SecurityProfile {
+    #[default]
+    Standard,
+    Isolated,
+}
+
+#[derive(Clone, Copy, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+pub enum EgressPolicy {
+    Deny,
+    #[default]
+    Governed,
+}
+
+#[derive(Clone, Copy, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+pub enum InferenceMode {
+    #[default]
+    Disabled,
+    LocalOnly,
+    RemoteExplicit,
+}
+
+impl DataPolicyConfig {
+    pub fn allows_network_egress(&self) -> bool {
+        self.profile != SecurityProfile::Isolated && self.egress == EgressPolicy::Governed
+    }
+
+    pub fn allows_local_inference(&self) -> bool {
+        self.inference != InferenceMode::Disabled
+    }
+
+    pub fn allows_remote_inference(&self) -> bool {
+        self.profile != SecurityProfile::Isolated
+            && self.egress == EgressPolicy::Governed
+            && self.inference == InferenceMode::RemoteExplicit
+    }
+}
+
+impl SecurityProfile {
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Standard => "standard",
+            Self::Isolated => "isolated",
+        }
+    }
+}
+
+impl EgressPolicy {
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Deny => "deny",
+            Self::Governed => "governed",
+        }
+    }
+}
+
+impl InferenceMode {
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Disabled => "disabled",
+            Self::LocalOnly => "local_only",
+            Self::RemoteExplicit => "remote_explicit",
+        }
+    }
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
@@ -311,6 +389,16 @@ impl Default for ProviderRuntimeConfig {
             supported_filters: vec![],
             data_handling_notes: None,
             operational_risk: None,
+        }
+    }
+}
+
+impl Default for DataPolicyConfig {
+    fn default() -> Self {
+        Self {
+            profile: SecurityProfile::Standard,
+            egress: EgressPolicy::Governed,
+            inference: InferenceMode::Disabled,
         }
     }
 }
@@ -629,6 +717,40 @@ impl Config {
             .bind
             .parse::<std::net::IpAddr>()
             .map_err(|_| ConfigError::Policy("server bind must be an IP address".into()))?;
+        if self.data_policy.profile == SecurityProfile::Isolated {
+            if self.data_policy.egress != EgressPolicy::Deny {
+                return Err(ConfigError::Policy(
+                    "isolated profile requires denied network egress".into(),
+                ));
+            }
+            if self.data_policy.inference == InferenceMode::RemoteExplicit {
+                return Err(ConfigError::Policy(
+                    "isolated profile forbids remote inference".into(),
+                ));
+            }
+            if !bind.is_loopback() {
+                return Err(ConfigError::Policy(
+                    "isolated profile requires a loopback server bind".into(),
+                ));
+            }
+            if self.deep.renderer.enabled {
+                return Err(ConfigError::Policy(
+                    "isolated profile forbids the unsandboxed renderer".into(),
+                ));
+            }
+        }
+        if self.data_policy.egress == EgressPolicy::Deny && !self.providers.enabled.is_empty() {
+            return Err(ConfigError::Policy(
+                "providers cannot be enabled while network egress is denied".into(),
+            ));
+        }
+        if self.data_policy.egress == EgressPolicy::Deny
+            && self.data_policy.inference == InferenceMode::RemoteExplicit
+        {
+            return Err(ConfigError::Policy(
+                "remote inference requires governed network egress".into(),
+            ));
+        }
         let tls_complete =
             self.server.tls.cert_path.is_some() && self.server.tls.key_path.is_some();
         let tls_partial = self.server.tls.cert_path.is_some() != self.server.tls.key_path.is_some();
@@ -693,6 +815,12 @@ mod tests {
     #[test]
     fn defaults_are_safe_and_phase_one_shaped() {
         let config = Config::default();
+        assert_eq!(config.data_policy.profile, SecurityProfile::Standard);
+        assert_eq!(config.data_policy.egress, EgressPolicy::Governed);
+        assert_eq!(config.data_policy.inference, InferenceMode::Disabled);
+        assert!(config.data_policy.allows_network_egress());
+        assert!(!config.data_policy.allows_local_inference());
+        assert!(!config.data_policy.allows_remote_inference());
         assert!(config.providers.enabled.is_empty());
         assert!(!config.providers.brave.approved());
         assert!(config.timeouts.provider_ms <= config.timeouts.global_ms);
@@ -700,6 +828,61 @@ mod tests {
         assert!(config.deep.max_depth <= 2);
         assert_eq!(config.server.bind, "127.0.0.1");
         assert!(!config.server.no_auth);
+    }
+
+    #[test]
+    fn isolated_profile_is_fail_closed_and_allows_local_inference_only() {
+        let mut config = Config::default();
+        config.data_policy.profile = SecurityProfile::Isolated;
+        config.data_policy.egress = EgressPolicy::Deny;
+        config.data_policy.inference = InferenceMode::LocalOnly;
+        assert!(config.validate().is_ok());
+        assert!(!config.data_policy.allows_network_egress());
+        assert!(config.data_policy.allows_local_inference());
+        assert!(!config.data_policy.allows_remote_inference());
+    }
+
+    #[test]
+    fn isolated_profile_rejects_contradictory_or_unsafe_configuration() {
+        let mut governed = Config::default();
+        governed.data_policy.profile = SecurityProfile::Isolated;
+        assert!(governed.validate().is_err());
+        assert!(!governed.data_policy.allows_network_egress());
+
+        let mut remote = Config::default();
+        remote.data_policy.profile = SecurityProfile::Isolated;
+        remote.data_policy.egress = EgressPolicy::Deny;
+        remote.data_policy.inference = InferenceMode::RemoteExplicit;
+        assert!(remote.validate().is_err());
+        assert!(!remote.data_policy.allows_remote_inference());
+
+        let mut renderer = Config::default();
+        renderer.data_policy.profile = SecurityProfile::Isolated;
+        renderer.data_policy.egress = EgressPolicy::Deny;
+        renderer.deep.renderer.enabled = true;
+        assert!(renderer.validate().is_err());
+
+        let mut remote_bind = Config::default();
+        remote_bind.data_policy.profile = SecurityProfile::Isolated;
+        remote_bind.data_policy.egress = EgressPolicy::Deny;
+        remote_bind.server.bind = "0.0.0.0".into();
+        remote_bind.server.tls.cert_path = Some("cert.pem".into());
+        remote_bind.server.tls.key_path = Some("key.pem".into());
+        assert!(remote_bind.validate().is_err());
+    }
+
+    #[test]
+    fn denied_egress_rejects_network_providers_and_remote_inference() {
+        let mut provider = Config::default();
+        provider.data_policy.egress = EgressPolicy::Deny;
+        provider.providers.enabled = vec!["brave".into()];
+        assert!(provider.validate().is_err());
+
+        let mut inference = Config::default();
+        inference.data_policy.egress = EgressPolicy::Deny;
+        inference.data_policy.inference = InferenceMode::RemoteExplicit;
+        assert!(inference.validate().is_err());
+        assert!(!inference.data_policy.allows_remote_inference());
     }
 
     #[test]

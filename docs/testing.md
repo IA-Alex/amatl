@@ -27,6 +27,7 @@ workspace, not a hand-picked suite.
 | UI | Asset unit tests | Served by server tests | No | CSP, safe DOM, URL protocols | Presentation contract | No browser E2E/accessibility automation |
 | HTTP API | Handler tests | In-process Axum + TCP/rustls | No | auth, Host, Origin/CORS, body, headers, rate, timeout, framing, request correlation | Yes | Real TCP/TLS, untrusted certificate, aggregate header rejection and handler cancellation covered; no connection-saturation or proxy test |
 | MCP | Tool/limit units | initialize/list/call | No | shared HTTP gate + SafeFetcher | Yes | Exactly four tools covered; `fetch` network behavior is unit-tested below transport |
+| Data policy | Config/service units | CLI + MCP | No | isolated fail-closed before network | Yes | Contradictory profile, provider/canary, Deep degradation and MCP bypass regressions covered; OS firewall remains deployment evidence |
 
 “N/A” is used only where the test class does not represent a meaningful threat;
 it does not waive unit or contract coverage.

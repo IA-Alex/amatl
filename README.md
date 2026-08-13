@@ -18,6 +18,10 @@ está actualmente bloqueado hasta disponer de aislamiento verificable.
 - El orquestador es el único dueño del Budget y deadline globales.
 - Search no descarga páginas ni expone `final_url`; Deep es la única frontera de
   fetch/extracción.
+- La política `data_policy` gobierna toda salida de red. El perfil `isolated`
+  bloquea providers, Deep fetch, MCP fetch, canarios e inferencia remota antes
+  de conectar; no elimina los motores deterministas de extracción/evidencia ni
+  hace obligatorio un LLM.
 - Los secretos se leen de variables de entorno, nunca de `amatl.toml`.
 - Sin SQLite o caché, Search conserva su comportamiento correcto.
 - Ningún provider real está activo por defecto ni puede omitir su revisión de
@@ -58,6 +62,19 @@ cargo run -p amatl-cli -- search "rust async" --json --mock
 `--mock` es una ayuda local determinista; no consulta Internet. Para providers
 reales hay que completar primero la [gobernanza](docs/gobernanza-providers.md),
 habilitarlos en la configuración y exportar la credencial correspondiente.
+
+Para un ejercicio con datos sensibles, usa en tu `amatl.toml`:
+
+```toml
+[data_policy]
+profile = "isolated"
+egress = "deny"
+inference = "local_only" # o "disabled"
+```
+
+`amatl config` y `amatl doctor` muestran la política efectiva. Esta barrera es
+del proceso AMATL; añade firewall/sandbox del host y usa sólo clientes locales
+si necesitas aislamiento verificable de todo el entorno.
 
 Servidor UI/API/MCP en loopback:
 

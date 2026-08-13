@@ -33,6 +33,8 @@ pub struct FetchResult {
 
 #[derive(Clone, Debug, PartialEq, Eq, Error)]
 pub enum FetchError {
+    #[error("network egress denied by data policy")]
+    EgressDenied,
     #[error("invalid or blocked URL: {0}")]
     BlockedUrl(String),
     #[error("DNS resolution failed")]

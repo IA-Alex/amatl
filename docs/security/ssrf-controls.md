@@ -4,6 +4,12 @@ AMATL applies the same `SafeFetcher` to Deep and the MCP `fetch` tool. Provider
 API clients are separate adapters with fixed endpoints; this document describes
 user/result-controlled outbound URLs.
 
+Before URL validation, the central data policy selects the network
+implementation. `profile = "isolated"` (valid only with `egress = "deny"`)
+installs a denied fetcher/transport, so Deep, MCP fetch, providers and canaries
+fail before DNS or connection. `SafeFetcher` is constructed only when effective
+egress is governed.
+
 ## Validation sequence
 
 1. **Before DNS/connect:** parse as `Url`; allow only `http` or `https`; reject
@@ -75,9 +81,10 @@ a private literal, and end-to-end MCP correlation without URL/token logging
 (`security.rs`, `fetch.rs`, `amatl-server/src/tests.rs`). Property tests exercise
 URL parsing/canonicalization (`tests/properties.rs`).
 
-Residual gaps: there is no live rebinding integration fixture, no operator-level
-egress firewall, no public-domain allowlist, and no classification of a public
-IP that an operator routes to internal infrastructure. Deployment should add
-network egress policy as defense in depth.
+Residual gaps: there is no live rebinding integration fixture, no enforced
+operator-level firewall, no public-domain allowlist, and no classification of a
+public IP that an operator routes to internal infrastructure. The application
+gate does not sandbox external processes. Deployment should add network egress
+policy as defense in depth.
 
 Reference: [OWASP SSRF Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html).

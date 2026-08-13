@@ -38,8 +38,8 @@ pub use budget::{Budget, BudgetExhaustionCause, BudgetSnapshot, DeepBudget, Deep
 pub use cache::{CachedProvider, ProviderSearchCache, ProviderSearchCachePolicy};
 pub use classify::classify;
 pub use config::{
-    ApprovalStatus, Config, ConfigError, ExecutionConfig, ProviderRuntimeConfig, ServerConfig,
-    TlsConfig,
+    ApprovalStatus, Config, ConfigError, DataPolicyConfig, EgressPolicy, ExecutionConfig,
+    InferenceMode, ProviderRuntimeConfig, SecurityProfile, ServerConfig, TlsConfig,
 };
 pub use deep::{DeepCandidate, DeepOrchestrator, DeepRequest};
 pub use diversity::{DiversityDecision, DiversityMetrics, DiversityOutput, DiversityPolicyV1};

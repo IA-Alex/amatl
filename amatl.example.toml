@@ -1,5 +1,12 @@
 # Configuración local segura. Copiar como amatl.toml; no versionar secretos.
 
+# Para ejercicios confidenciales: profile = "isolated", egress = "deny" e
+# inference = "local_only" (o "disabled"). La configuración contradictoria falla.
+[data_policy]
+profile = "standard"
+egress = "governed"
+inference = "disabled"
+
 [providers]
 enabled = []
 

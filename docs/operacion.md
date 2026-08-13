@@ -18,6 +18,31 @@
 4. Verifica `/health` sin token y `/search` con bearer. No expongas el token en
    query strings.
 
+### Perfil aislado para ejercicios confidenciales
+
+No requiere API key. Configura:
+
+```toml
+[data_policy]
+profile = "isolated"
+egress = "deny"
+inference = "local_only" # o "disabled"
+
+[providers]
+enabled = []
+```
+
+Después ejecuta `amatl config` o `amatl doctor` y confirma
+`network_egress_allowed = false` y `remote_inference_allowed = false`. El
+arranque falla si se combina con bind no-loopback, renderer, provider real o
+inferencia remota. Los intentos directos por Deep/MCP fallan con
+`egress_denied`; no necesitan ni deben recibir credenciales.
+
+Para aislamiento del ejercicio completo, ejecuta también el cliente MCP y toda
+inferencia en el mismo entorno local, corta egress en firewall/container y
+revisa el ejecutable extractor. La política de AMATL no controla procesos
+terceros ni puede recuperar una consulta que ya fue enviada a un servicio cloud.
+
 Rotación: genera un token nuevo, drena/detén el listener, reemplaza la variable,
 reinicia, actualiza clientes y verifica que el anterior devuelve 401. AMATL no
 soporta dos tokens simultáneos.

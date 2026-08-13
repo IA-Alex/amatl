@@ -23,6 +23,12 @@ Tool errors are structured with `schema_version: "1"` and a stable code such as
 `fetch_failed`, or `providers_failed`. Internal details and provider credentials
 are not returned (`amatl-server/src/mcp.rs:36-126`).
 
+Con `[data_policy] profile = "isolated"` y `egress = "deny"`, `fetch` usa el
+mismo gate central que Deep y responde `egress_denied` sin resolver DNS ni
+conectar. `providers` reporta ese mismo código y `deep_search` conserva el
+resultado Search con degradaciones de fetch. MCP no construye un cliente HTTP
+independiente.
+
 ## Limits compared with local CLI/API
 
 MCP takes the configured value or the stricter cap:
@@ -42,7 +48,10 @@ If operator configuration is already lower, MCP does not increase it
 (`service.rs:33-58`). The standalone `fetch` tool has its own even smaller
 limits shown above and does not consume the Search/Deep Budget. It is therefore
 a bounded public-network proxy for authenticated clients; rate limiting and
-deployment egress policy remain necessary.
+deployment egress policy remain necessary bajo `standard`. En `isolated` deja
+de ser proxy. La política de AMATL no puede demostrar que el cliente MCP que
+envía la consulta sea local; para ejercicios confidenciales el cliente/modelo
+también debe ejecutarse localmente y el host debe aplicar defensa en profundidad.
 
 The contract test initializes MCP, lists exactly these four tools, and calls
 `search` (`amatl-server/src/tests.rs:201-314`).

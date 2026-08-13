@@ -43,6 +43,9 @@ adapter/extractor versions are independent axes as well.
   events, with third-party tracing targets excluded from operator logs.
 - Contract coverage for aggregate HTTP header rejection and handler timeout
   cancellation, including stable error codes and response correlation IDs.
+- Central `data_policy` with fail-closed `isolated` profile, denied provider,
+  Deep and MCP egress, explicit disabled/local/remote inference modes and
+  secret-safe `egress_denied` reporting. LLM inference remains optional.
 
 ### Changed
 
