@@ -8,7 +8,7 @@ Estado revisado el **2026-08-13** sobre la rama `main`:
 - baseline de implementación: tag `baseline-fases-0-9`, commit `51c6d34`;
 - workspace: Rust 2021, MSRV 1.88, versión candidata `0.1.0-rc.1`, cuatro crates;
 - fases 0–9: cerradas y verificadas;
-- publicación SemVer: todavía inexistente; pipeline reproducible de RC preparado;
+- publicación SemVer: RC actual `0.1.0-rc.1`; estado externo verificable en GitHub Releases;
 - Fase 10: no existe en el golden template y no debe inferirse.
 
 Los documentos rectores permanecen intactos:
@@ -214,8 +214,9 @@ No son defectos del core y no deben resolverse inventando datos:
    provider antes de habilitar red real.
 4. Configurar el environment `provider-canary`, sus revisores y secretos; luego
    capturar latencia/errores reales sin incorporar credenciales al repositorio.
-5. Ejecutar el workflow de RC, validar musl/.deb/.rpm/Arch y sólo después crear
-   el tag anotado; la publicación externa requiere autoridad del propietario.
+5. Para cada RC futura, ejecutar el workflow, validar musl/.deb/.rpm/Arch y sólo
+   después crear el tag anotado; la publicación externa requiere autoridad del
+   propietario.
 6. El aislamiento real de Chromium está probado sin red; implementar y revisar
    el bridge CDP antes de habilitar Renderer en core.
 
@@ -265,6 +266,6 @@ visual responsiva; después puede afinar jerarquía, densidad y legibilidad sin
 introducir lógica de producto en `amatl-ui`.
 
 En paralelo, los controles externos de GitHub, gobernanza/credenciales del
-environment, canario real y build de RC continúan como decisiones del
-propietario. No bloquear el pulido local por falta de APIs, pero tampoco simular
-su aprobación ni publicar `v0.1.0-rc.1` sin esa evidencia.
+environment y canario real continúan como decisiones del propietario. No
+bloquear el pulido local por falta de APIs ni simular su aprobación; futuras
+publicaciones deben repetir las compuertas documentadas.

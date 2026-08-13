@@ -30,12 +30,12 @@ desactivado hasta conectarlo sin transferir a Chromium el ownership de red.
 
 ## Estado e instalación
 
-El workspace declara la candidata `0.1.0-rc.1`. Todavía no existe un tag ni una
-publicación SemVer, pero el pipeline reproducible de release ya construye y
-verifica en GitHub Actions un binario Linux musl, cuatro SBOM CycloneDX, el
-archivo reproducible y su checksum SHA-256. En este repositorio privado esos
-resultados permanecen como artefactos internos; la única instalación publicada
-al usuario sigue siendo desde el checkout:
+El workspace declara la candidata `0.1.0-rc.1`. El pipeline reproducible de
+release construye y verifica en GitHub Actions un binario Linux musl, cuatro
+SBOM CycloneDX, paquetes `.deb`, `.rpm` y Arch, el archivo reproducible y sus
+checksums SHA-256. Una candidata es oficial únicamente cuando aparece bajo un
+tag anotado coincidente en [GitHub Releases](https://github.com/IA-Alex/amatl/releases).
+La instalación desde un checkout permanece disponible:
 
 ```bash
 cargo install --locked --path crates/amatl-cli
@@ -45,7 +45,7 @@ La distribución objetivo es:
 
 | Vía | Prioridad | Estado actual |
 |---|---|---|
-| Binario Linux musl precompilado | Principal | Candidata verificada en CI; no hay release etiquetado |
+| Binario Linux musl precompilado | Principal | Se publica en la RC etiquetada junto con checksum y SBOM |
 | `cargo install` desde fuente | Alternativa | Disponible desde checkout con `--path`; crates.io no verificado/publicado |
 | `.deb` / `.rpm` / Arch | Integración nativa | El workflow RC produce paquetes verificables; `packaging/PKGBUILD` permite revisión/publicación posterior en AUR |
 

@@ -4,8 +4,8 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
-for published binaries. No SemVer release has been published yet; workspace
-`0.1.0-rc.1` is the first release-candidate version.
+for published binaries. Workspace `0.1.0-rc.1` is the first release-candidate
+version.
 
 The data-contract `schema_version` is independent from binary SemVer. Compatible
 additions may remain on schema `"1"`; a breaking external data change increments
@@ -13,6 +13,8 @@ it even if the binary version follows a different cadence. SQLite migration and
 adapter/extractor versions are independent axes as well.
 
 ## [Unreleased]
+
+## [0.1.0-rc.1] - 2026-08-13
 
 ### Added
 
@@ -65,5 +67,7 @@ adapter/extractor versions are independent axes as well.
 - SQLite mutations are serialized across storage clones to avoid lock loss under
   concurrent cache access.
 
-The canonical repository is <https://github.com/IA-Alex/amatl>. Comparison
-links will be added with the first published release tag.
+The canonical repository is <https://github.com/IA-Alex/amatl>.
+
+[Unreleased]: https://github.com/IA-Alex/amatl/compare/v0.1.0-rc.1...HEAD
+[0.1.0-rc.1]: https://github.com/IA-Alex/amatl/releases/tag/v0.1.0-rc.1

@@ -2,12 +2,13 @@
 
 ## Supported versions
 
-AMATL has not published a SemVer release. Security fixes are therefore made
-only on the current `main` branch. This table is updated when the first release
-is published.
+Security fixes are made on the current `main` branch and the active release
+candidate. Release assets are authoritative only when published from the
+matching annotated tag.
 
 | Version | Supported |
 |---|---|
+| `0.1.0-rc.1` | Yes |
 | Unreleased (`main`) | Yes |
 | Any untagged historical revision | No |
 
