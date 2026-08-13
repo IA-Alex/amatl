@@ -3,6 +3,10 @@ name: release-candidate
 on:
   workflow_dispatch:
   push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/release.yml
     tags:
       - "v*-rc.*"
 
@@ -93,11 +97,18 @@ jobs:
           rm -r "dist/$archive_root"
           cd dist
           sha256sum *.tar.gz > SHA256SUMS
-      - uses: actions/attest@v4
+      - name: Attest artifacts when GitHub supports the repository visibility
+        if: github.event.repository.visibility == 'public'
+        uses: actions/attest@v4
         with:
           subject-path: |
             dist/*.tar.gz
             dist/SHA256SUMS
+      - name: Record unavailable private-repository attestation
+        if: github.event.repository.visibility != 'public'
+        run: >-
+          echo 'Artifact attestation is unavailable for this user-owned private repository;
+          SHA-256 checksums and CycloneDX SBOMs remain included.' >> "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@v6
         with:
           name: amatl-${{ steps.version.outputs.package_version }}-x86_64-unknown-linux-musl
