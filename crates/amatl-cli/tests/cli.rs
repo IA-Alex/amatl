@@ -1,0 +1,138 @@
+use std::process::Command;
+use std::sync::atomic::{AtomicUsize, Ordering};
+
+static TEMP_ID: AtomicUsize = AtomicUsize::new(0);
+
+#[test]
+fn search_json_uses_public_search_contract() {
+    let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
+        .args(["search", "rust async", "--json", "--mock"])
+        .output()
+        .expect("amatl binary should run");
+    assert!(output.status.success());
+    let stdout = String::from_utf8(output.stdout).unwrap();
+    assert!(stdout.contains("\"schema_version\": \"1\""));
+    assert!(stdout.contains("\"status\": \"success\""));
+    assert!(stdout.contains("\"canonical_url\": \"https://example.com/rust\""));
+    assert!(!stdout.contains("final_url"));
+    assert!(!stdout.contains("\"rrf\""));
+    assert!(!stdout.contains("combined_score"));
+    assert!(!stdout.contains("stable_order"));
+    assert!(!stdout.contains("ranking_v2"));
+    assert!(!stdout.contains("evidence_score"));
+}
+
+#[test]
+fn failed_search_returns_exit_code_one() {
+    let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
+        .args(["search", "ordinary query", "--json"])
+        .output()
+        .expect("amatl binary should run");
+    assert_eq!(output.status.code(), Some(1));
+    let stdout = String::from_utf8(output.stdout).unwrap();
+    assert!(stdout.contains("\"status\": \"failure\""));
+}
+
+#[test]
+fn redirected_logs_are_structured_and_keep_stable_fields() {
+    let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
+        .env("RUST_LOG", "amatl::routing=debug")
+        .args(["search", "rust async", "--json", "--mock"])
+        .output()
+        .expect("amatl binary should run");
+    assert!(output.status.success());
+    let line = String::from_utf8(output.stderr)
+        .unwrap()
+        .lines()
+        .next()
+        .unwrap()
+        .to_owned();
+    let value: serde_json::Value = serde_json::from_str(&line).unwrap();
+    for field in ["ts", "level", "target", "msg", "context"] {
+        assert!(value.get(field).is_some(), "missing {field}: {value}");
+    }
+}
+
+#[test]
+fn required_skeleton_commands_are_available() {
+    for command in ["providers", "config", "cache", "doctor"] {
+        let status = Command::new(env!("CARGO_BIN_EXE_amatl"))
+            .arg(command)
+            .status()
+            .expect("amatl command should run");
+        assert!(status.success(), "{command} should succeed");
+    }
+}
+
+#[test]
+fn deep_command_is_exposed_without_running_network_on_help() {
+    let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
+        .args(["deep", "--help"])
+        .output()
+        .expect("deep help should run");
+    assert!(output.status.success());
+    assert!(String::from_utf8(output.stdout)
+        .unwrap()
+        .contains("Usage: amatl deep"));
+}
+
+#[test]
+fn phase_nine_server_commands_are_exposed_without_binding_on_help() {
+    for arguments in [
+        ["serve", "--help"].as_slice(),
+        ["mcp", "serve", "--help"].as_slice(),
+    ] {
+        let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
+            .args(arguments)
+            .output()
+            .expect("server help should run");
+        assert!(output.status.success());
+    }
+}
+
+#[test]
+fn ranking_v2_benchmark_is_reproducible_and_passes_gate() {
+    let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
+        .args(["benchmark", "ranking-v2", "--json"])
+        .output()
+        .expect("ranking benchmark should run");
+    assert!(output.status.success());
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).unwrap();
+    assert_eq!(report["benchmark_id"], "ranking-v2-human-labeled-v2");
+    assert_eq!(report["passed"], true);
+    assert!(
+        report["candidate_ndcg_at_3"].as_f64().unwrap()
+            > report["baseline_ndcg_at_3"].as_f64().unwrap()
+    );
+}
+
+#[test]
+fn unavailable_sqlite_does_not_break_search() {
+    let id = TEMP_ID.fetch_add(1, Ordering::SeqCst);
+    let base = std::env::temp_dir().join(format!("amatl-cli-phase3-{}-{id}", std::process::id()));
+    let database_is_a_directory = base.join("database-is-a-directory");
+    std::fs::create_dir_all(&database_is_a_directory).unwrap();
+    let config = base.join("amatl.toml");
+    std::fs::write(
+        &config,
+        format!(
+            "[persistence]\nenabled = true\npath = {:?}\n\n[telemetry]\npersistence_enabled = true\nretention_days = 30\n",
+            database_is_a_directory.display().to_string()
+        ),
+    )
+    .unwrap();
+
+    let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
+        .arg("--config-file")
+        .arg(&config)
+        .args(["search", "rust", "--json", "--mock"])
+        .output()
+        .expect("amatl binary should run without SQLite");
+    assert!(output.status.success());
+    let stdout = String::from_utf8(output.stdout).unwrap();
+    assert!(stdout.contains("\"status\": \"success\""));
+
+    std::fs::remove_file(config).unwrap();
+    std::fs::remove_dir(database_is_a_directory).unwrap();
+    std::fs::remove_dir(base).unwrap();
+}

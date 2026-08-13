@@ -1,0 +1,89 @@
+# Configuración local segura. Copiar como amatl.toml; no versionar secretos.
+
+[providers]
+enabled = []
+
+[timeouts]
+provider_ms = 3000
+global_ms = 8000
+
+[budget]
+max_provider_calls = 3
+
+[execution]
+global_concurrency = 4
+per_provider_concurrency = 1
+max_retries = 1
+retry_jitter_ms = 25
+
+[persistence]
+enabled = false
+path = "amatl.sqlite3"
+
+[cache.provider_search]
+enabled = false
+ttl_seconds = 300
+max_entries = 10000
+max_bytes = 268435456
+
+[cache.document]
+enabled = false
+ttl_seconds = 86400
+max_entries = 1000
+max_bytes = 268435456
+store_content = false
+
+[telemetry]
+persistence_enabled = false
+retention_days = 30
+
+[deep]
+top_k = 5
+max_fetches = 10
+max_bytes = 20971520
+max_redirects = 5
+max_crawl_urls = 10
+max_depth = 1
+timeout_ms = 20000
+
+[deep.extractor]
+executable = "trafilatura"
+version = "trafilatura-cli-v1"
+timeout_ms = 8000
+max_output_bytes = 4194304
+
+[deep.renderer]
+enabled = false
+max_browser_calls = 2
+timeout_ms = 8000
+shutdown_grace_ms = 500
+max_memory_mb = 512
+max_redirects = 5
+
+[deep.ranking_v2]
+enabled = true
+
+[deep.gaps]
+enabled = true
+max_subqueries = 2
+max_cost = 2
+max_provider_calls_per_subquery = 2
+timeout_ms = 5000
+
+[server]
+bind = "127.0.0.1"
+port = 8080
+token_env = "AMATL_SERVER_TOKEN"
+no_auth = false
+allowed_hosts = ["127.0.0.1", "localhost", "[::1]"]
+allowed_origins = []
+max_body_bytes = 65536
+max_header_bytes = 16384
+request_timeout_ms = 30000
+idle_timeout_ms = 30000
+rate_limit_per_minute = 60
+max_connections = 64
+
+[server.tls]
+# cert_path = "/ruta/cert.pem"
+# key_path = "/ruta/key.pem"

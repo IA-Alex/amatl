@@ -1,0 +1,83 @@
+//! Core shared by every AMATL surface. Keep product logic out of CLI/UI/API/MCP.
+
+pub mod api;
+pub mod budget;
+pub mod cache;
+pub mod canonical;
+pub mod classify;
+pub mod config;
+pub mod dedupe;
+pub mod deep;
+pub mod diversity;
+pub mod document_cache;
+pub mod evidence;
+pub mod execution;
+pub mod extract;
+pub mod fetch;
+pub mod gaps;
+pub mod mcp;
+pub mod model;
+pub mod normalize;
+pub mod planning;
+pub mod progressive;
+pub mod providers;
+pub mod query;
+pub mod ranking;
+pub mod ranking_v2;
+pub mod render;
+pub mod router;
+pub mod security;
+pub mod service;
+pub mod storage;
+pub mod telemetry;
+mod text;
+pub mod ui;
+
+pub use budget::{Budget, BudgetExhaustionCause, BudgetSnapshot, DeepBudget, DeepBudgetSnapshot};
+pub use cache::{CachedProvider, ProviderSearchCache, ProviderSearchCachePolicy};
+pub use classify::classify;
+pub use config::{
+    ApprovalStatus, Config, ConfigError, ExecutionConfig, ProviderRuntimeConfig, ServerConfig,
+    TlsConfig,
+};
+pub use deep::{DeepCandidate, DeepOrchestrator, DeepRequest};
+pub use diversity::{DiversityDecision, DiversityMetrics, DiversityOutput, DiversityPolicyV1};
+pub use document_cache::{DocumentCache, DocumentCachePolicy};
+pub use evidence::analyze_evidence;
+pub use execution::{ParallelSearchOutput, SearchOrchestrator};
+pub use extract::{
+    ExtractError, ExtractionResult, Extractor, TrafilaturaExtractor, UnavailableExtractor,
+};
+pub use fetch::{
+    DnsResolver, FetchError, FetchRequest, FetchResult, Fetcher, SafeFetcher, SystemDnsResolver,
+};
+pub use gaps::{
+    GapAnalysis, GapAnalyzer, GapPolicyError, GapPolicyV1, SearchSubQueryExecutor,
+    SubQueryExecutionError, SubQueryExecutor,
+};
+pub use model::*;
+pub use progressive::{
+    CoverageMetrics, ProgressiveRoundTrace, SearchPolicyError, SearchPolicyV1, SearchStopReason,
+};
+pub use providers::{
+    BraveProvider, DuckDuckGoHtmlProvider, HttpRequest, HttpResponse, HttpTransport, MockBehavior,
+    MockProvider, MojeekProvider, Provider, ProviderAvailability, ProviderContext,
+    ReqwestTransport,
+};
+pub use query::{parse_query, QueryParseError};
+pub use ranking::{RankingPolicyError, RankingPolicyV1};
+pub use ranking_v2::{
+    run_builtin_benchmark, DeepReranker, RankingBenchmarkReport, RankingV2Engine, RankingV2Error,
+    RankingV2Policy, SemanticScorer, BENCHMARK_ID,
+};
+pub use render::{ChromiumRenderer, RenderError, RenderResult, Renderer};
+pub use router::{AdaptiveRouter, AdaptiveRoutingRecommendation, ProviderDescriptor, StaticRouter};
+pub use service::{
+    AmatlService, ExecutionLimits, ProviderSummary, ProviderSurfaceStatus, SearchExecution,
+    ServiceError, ServiceSurface,
+};
+pub use storage::{CacheStats, SqliteStorage, StorageError, StorageHealth};
+pub use telemetry::{
+    InMemoryTelemetry, ProviderHealth, ProviderValueSnapshot, ProviderValueState,
+    TelemetryObservation, TelemetryOutcome, TelemetryStatus,
+};

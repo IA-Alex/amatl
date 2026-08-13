@@ -1,0 +1,187 @@
+[
+  {
+    "query": "rust async runtime",
+    "documents": [
+      {
+        "url": "https://doc.rust-lang.org/book/ch17-00-async-await.html",
+        "title": "Asynchronous programming fundamentals",
+        "snippet": "Language guide chapter",
+        "content": "Rust async and await model cooperative tasks, futures, executors and runtime behavior.",
+        "relevance": 3,
+        "provider_rank": 4
+      },
+      {
+        "url": "https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html",
+        "title": "Understanding ownership",
+        "snippet": "Core language concepts",
+        "content": "Rust ownership borrowing references and memory safety without garbage collection.",
+        "relevance": 1,
+        "provider_rank": 1
+      },
+      {
+        "url": "https://tokio.rs/tokio/tutorial",
+        "title": "Tokio tutorial",
+        "snippet": "Build a network application",
+        "content": "Tokio provides a Rust async runtime, task scheduler, timers and asynchronous networking.",
+        "relevance": 3,
+        "provider_rank": 3
+      },
+      {
+        "url": "https://www.sqlite.org/asyncvfs.html",
+        "title": "Asynchronous VFS",
+        "snippet": "Database extension documentation",
+        "content": "SQLite virtual file system extension for asynchronous database IO.",
+        "relevance": 0,
+        "provider_rank": 2
+      }
+    ]
+  },
+  {
+    "query": "sqlite wal concurrency",
+    "documents": [
+      {
+        "url": "https://www.sqlite.org/wal.html",
+        "title": "Write-ahead logging",
+        "snippet": "SQLite technical documentation",
+        "content": "SQLite WAL permits readers and a writer to proceed concurrently and documents checkpoint behavior.",
+        "relevance": 3,
+        "provider_rank": 4
+      },
+      {
+        "url": "https://www.sqlite.org/lang_transaction.html",
+        "title": "Transactions",
+        "snippet": "SQL transaction control",
+        "content": "SQLite transactions, read transactions, write transactions and locking rules.",
+        "relevance": 2,
+        "provider_rank": 2
+      },
+      {
+        "url": "https://www.sqlite.org/cli.html",
+        "title": "Command line shell",
+        "snippet": "Interactive database utility",
+        "content": "SQLite command line shell commands, output modes and import operations.",
+        "relevance": 0,
+        "provider_rank": 1
+      },
+      {
+        "url": "https://www.postgresql.org/docs/current/mvcc.html",
+        "title": "Concurrency control",
+        "snippet": "Database concurrency chapter",
+        "content": "PostgreSQL multiversion concurrency control and transaction isolation.",
+        "relevance": 0,
+        "provider_rank": 3
+      }
+    ]
+  },
+  {
+    "query": "ssrf dns redirect security",
+    "documents": [
+      {
+        "url": "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html",
+        "title": "Server-side request forgery prevention",
+        "snippet": "Application security guidance",
+        "content": "SSRF defenses validate URLs, DNS resolution, IP ranges and every HTTP redirect before connecting.",
+        "relevance": 3,
+        "provider_rank": 4
+      },
+      {
+        "url": "https://owasp.org/www-community/attacks/Server_Side_Request_Forgery",
+        "title": "Server-side request forgery",
+        "snippet": "Attack description",
+        "content": "SSRF lets a server issue attacker-controlled network requests to internal systems.",
+        "relevance": 2,
+        "provider_rank": 3
+      },
+      {
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Redirections",
+        "title": "Redirections in HTTP",
+        "snippet": "HTTP protocol reference",
+        "content": "HTTP redirect response status codes and Location header behavior.",
+        "relevance": 1,
+        "provider_rank": 1
+      },
+      {
+        "url": "https://developer.mozilla.org/en-US/docs/Web/API/DNS",
+        "title": "Web API reference",
+        "snippet": "Browser API material",
+        "content": "General browser programming reference unrelated to server request forgery controls.",
+        "relevance": 0,
+        "provider_rank": 2
+      }
+    ]
+  },
+  {
+    "query": "rust serde json deserialize",
+    "documents": [
+      {
+        "url": "https://serde.rs/json.html",
+        "title": "Operating on JSON data",
+        "snippet": "Serialization framework guide",
+        "content": "Serde JSON serialization and deserialization in Rust using Deserialize and Serialize derives.",
+        "relevance": 3,
+        "provider_rank": 4
+      },
+      {
+        "url": "https://docs.rs/serde_json/latest/serde_json/",
+        "title": "Crate documentation",
+        "snippet": "API reference",
+        "content": "serde_json parses JSON text and deserializes values into Rust data structures.",
+        "relevance": 3,
+        "provider_rank": 3
+      },
+      {
+        "url": "https://serde.rs/derive.html",
+        "title": "Using derive",
+        "snippet": "Framework guide",
+        "content": "Rust derive macros implement Serde Serialize and Deserialize traits.",
+        "relevance": 2,
+        "provider_rank": 2
+      },
+      {
+        "url": "https://doc.rust-lang.org/book/ch05-00-structs.html",
+        "title": "Using structs",
+        "snippet": "Rust language chapter",
+        "content": "Rust struct definitions, methods and associated functions.",
+        "relevance": 0,
+        "provider_rank": 1
+      }
+    ]
+  },
+  {
+    "query": "http content security policy script src",
+    "documents": [
+      {
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP",
+        "title": "Content Security Policy guide",
+        "snippet": "HTTP security documentation",
+        "content": "Content Security Policy restricts script sources with script-src and other fetch directives.",
+        "relevance": 3,
+        "provider_rank": 4
+      },
+      {
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src",
+        "title": "Script source directive",
+        "snippet": "Header directive reference",
+        "content": "The CSP script-src directive specifies valid JavaScript sources for an HTTP response.",
+        "relevance": 3,
+        "provider_rank": 3
+      },
+      {
+        "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers",
+        "title": "HTTP headers",
+        "snippet": "Protocol reference index",
+        "content": "HTTP request and response headers carry metadata between clients and servers.",
+        "relevance": 1,
+        "provider_rank": 1
+      },
+      {
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+        "title": "JavaScript",
+        "snippet": "Language documentation",
+        "content": "JavaScript language syntax, objects, functions and modules.",
+        "relevance": 0,
+        "provider_rank": 2
+      }
+    ]
+  }
+]

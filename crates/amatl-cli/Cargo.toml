@@ -1,0 +1,22 @@
+[package]
+name = "amatl-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "amatl"
+path = "src/main.rs"
+
+[dependencies]
+anyhow.workspace = true
+amatl-core = { version = "0.1.0", path = "../amatl-core" }
+amatl-server = { version = "0.1.0", path = "../amatl-server" }
+clap.workspace = true
+serde_json.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+
+[lints]
+workspace = true
