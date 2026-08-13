@@ -12,16 +12,12 @@ timeout_seconds=$3
 [[ -f "$input_html" ]]
 [[ "$timeout_seconds" =~ ^[1-9][0-9]*$ ]]
 
-for tool in base64 bwrap sha256sum systemd-run; do
+for tool in bwrap systemd-run; do
   command -v "$tool" >/dev/null || {
     echo "required Chromium isolation tool is unavailable: $tool" >&2
     exit 69
   }
 done
-[[ "$(uname -m)" == "x86_64" ]] || {
-  echo "Chromium seccomp isolation currently requires x86-64 Linux" >&2
-  exit 69
-}
 
 chromium=${AMATL_CHROMIUM_BIN:-}
 if [[ -z "$chromium" ]]; then
@@ -58,23 +54,15 @@ sandbox=$(mktemp -d "${TMPDIR:-/tmp}/amatl-chromium-XXXXXXXX")
 trap 'rm -rf -- "$sandbox"' EXIT
 mkdir -m 700 "$sandbox/home" "$sandbox/profile" "$sandbox/runtime"
 install -m 0600 "$input_html" "$sandbox/input.html"
-printf '%s' 'IAAAAAQAAAAVAAEAPgAAwAYAAAAAAACAIAAAAAAAAAAVAAEAKQAAABUAAAQ1AAAAIAAAABAAAAAVAAEAAgAAABUAAAEKAAAABgAAAAEABQAGAAAAAAD/fw==' \
-  | base64 --decode >"$sandbox/network-deny.bpf"
-printf '%s  %s\n' \
-  '41cf3e486e2a410c66b11eb85982e117e68ef5036a8dac84215ea313a2e9de4e' \
-  "$sandbox/network-deny.bpf" | sha256sum --check --status
 unit="amatl-render-${$}-$(date +%s%N)"
 
 set +e
-# The inner shell must expand its own positional parameters after systemd-run.
-# shellcheck disable=SC2016
 systemd-run --user --wait --collect --pipe --quiet --unit "$unit" \
   -p "MemoryMax=${memory_mb}M" \
   -p "RuntimeMaxSec=${timeout_seconds}s" \
   -p "TasksMax=$tasks_max" \
-  -- /bin/bash -c 'exec 3<"$1"; shift; exec "$@"' _ \
-  "$sandbox/network-deny.bpf" bwrap \
-    --seccomp 3 --die-with-parent --new-session --unshare-all --share-net \
+  -- bwrap \
+    --die-with-parent --new-session --unshare-all \
     --tmpfs / --ro-bind /usr /usr --symlink usr/bin /bin \
     --symlink usr/lib /lib --symlink usr/lib64 /lib64 \
     "${chromium_mounts[@]}" \
