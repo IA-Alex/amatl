@@ -53,20 +53,45 @@ Current Criterion cases are `query_parse_and_classify` and `canonicalization`
 sample settings and commit when comparing results. Do not check in a single
 machine's timing as a universal SLA.
 
-## Required operational suite
+## Controlled operational harness
 
-The golden plan requires measurement of total/provider/Deep latency,
-throughput, peak memory, Tokio concurrency, SQLite contention, dedupe/RRF,
-routing and marginal gain, extraction, Renderer fallback, provider contribution,
-top-K quality, error/partial rates and cost/query. **These operational benchmarks
-are not implemented in the current repository.**
+`benchmark operational` is a bounded local harness. It exercises Search with a
+fixed successful provider plus a fixed failure, Deep with in-process fetch and
+extraction fixtures, Tokio concurrency, and concurrent SQLite cold writes/warm
+reads. It reports p50/p95/p99/max, throughput, status rates, cache hit/write
+rates and Linux peak RSS when `/proc` is available.
 
-A complete harness should provide fixed local HTTP providers, controlled delay
-and failure distributions, warm/cold cache runs, concurrency levels, SQLite
-read/write contention, byte/fetch/deadline exhaustion, and memory capture. Report
-p50/p95/p99, throughput, peak RSS, error/partial rate, unique useful results,
-unique domains, duplicate ratio, marginal gain and cost. Renderer metrics remain
-blocked until an isolated backend exists.
+```bash
+cargo run --locked --release -p amatl-cli -- \
+  benchmark operational --json --iterations 64 --concurrency 8
+```
 
-No operational performance or production capacity claim should be made from the
-current two Criterion cases or the 20-judgment ranking corpus.
+Snapshot reproduced on 2026-08-13 from the release profile, Linux
+6.12.101+deb13-amd64 x86_64, rustc 1.97.1:
+
+```text
+workload: controlled-local-v1
+iterations/concurrency: 64/8
+Search p50/p95/p99: 3.142/3.242/3.280 ms
+Search throughput: 2522.56 requests/s
+Search success/partial/failure: 0.000/1.000/0.000
+Deep p50/p95/p99: 2.077/2.104/2.109 ms (32 samples)
+SQLite cold-write p95: 0.715 ms; write success: 1.000
+SQLite warm-read p95: 0.461 ms; hit rate: 1.000
+peak RSS: 15077376 bytes
+```
+
+These numbers are evidence for one controlled machine, not a production SLA.
+The forced provider failure deliberately makes every useful Search response
+`partial_success`; that verifies degradation accounting rather than external
+availability.
+
+## Remaining environmental measurements
+
+The controlled harness does not claim real-provider latency, Internet failure
+behavior, provider cost/query, external top-K quality, Renderer fallback,
+dedupe/RRF marginal gain or target-host capacity. Provider network runs require
+an approved governance record and credentials and are isolated behind the
+manual `provider-canary` workflow. Renderer metrics remain blocked until an
+isolated backend exists. Production sizing must also repeat the harness on the
+deployment host with representative traffic and retention settings.

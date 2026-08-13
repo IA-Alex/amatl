@@ -2,11 +2,12 @@
 name = "amatl-server"
 version.workspace = true
 edition.workspace = true
+rust-version.workspace = true
 license.workspace = true
 
 [dependencies]
-amatl-core = { version = "0.1.0", path = "../amatl-core" }
-amatl-ui = { version = "0.1.0", path = "../amatl-ui" }
+amatl-core = { version = "0.1.0-rc.1", path = "../amatl-core" }
+amatl-ui = { version = "0.1.0-rc.1", path = "../amatl-ui" }
 axum.workspace = true
 axum-server.workspace = true
 hyper-util.workspace = true
@@ -21,3 +22,7 @@ url.workspace = true
 
 [lints]
 workspace = true
+
+[dev-dependencies]
+rcgen = "0.14.8"
+reqwest.workspace = true

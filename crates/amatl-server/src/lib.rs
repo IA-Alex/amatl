@@ -29,7 +29,6 @@ use serde::{Deserialize, Serialize};
 use serde_json::json;
 use std::{
     collections::BTreeMap,
-    hash::{DefaultHasher, Hash, Hasher},
     net::{IpAddr, SocketAddr},
     sync::{Arc, Mutex},
     time::{Duration, Instant},
@@ -52,13 +51,18 @@ struct SecurityState {
     max_body_bytes: usize,
     timeout: Duration,
     rate_limit_per_minute: u32,
-    rate_windows: Mutex<BTreeMap<String, RateWindow>>,
+    rate_limiter: Mutex<RateLimiter>,
     https: bool,
 }
 
 struct RateWindow {
     started: Instant,
     count: u32,
+}
+
+struct RateLimiter {
+    windows: BTreeMap<IpAddr, RateWindow>,
+    last_cleanup: Instant,
 }
 
 #[derive(Debug, Error)]
@@ -115,7 +119,10 @@ pub async fn build_router(
         max_body_bytes: server.max_body_bytes,
         timeout: Duration::from_millis(server.request_timeout_ms),
         rate_limit_per_minute: server.rate_limit_per_minute,
-        rate_windows: Mutex::new(BTreeMap::new()),
+        rate_limiter: Mutex::new(RateLimiter {
+            windows: BTreeMap::new(),
+            last_cleanup: Instant::now(),
+        }),
         https,
     });
     let mcp_config = StreamableHttpServerConfig::default()
@@ -346,21 +353,22 @@ async fn security_middleware(
         );
     }
     let protected = is_protected(request.uri().path());
-    if protected && request.method() != Method::OPTIONS {
-        if !authorized(request.headers(), security.token.as_deref()) {
-            let mut response = api_error(StatusCode::UNAUTHORIZED, "unauthorized");
-            response
-                .headers_mut()
-                .insert(WWW_AUTHENTICATE, HeaderValue::from_static("Bearer"));
-            return secured(response, security.https);
-        }
-        if !within_rate_limit(&request, security) {
-            let mut response = api_error(StatusCode::TOO_MANY_REQUESTS, "rate_limited");
-            response
-                .headers_mut()
-                .insert("retry-after", HeaderValue::from_static("60"));
-            return secured(response, security.https);
-        }
+    if request.method() != Method::OPTIONS && !within_rate_limit(&request, security) {
+        let mut response = api_error(StatusCode::TOO_MANY_REQUESTS, "rate_limited");
+        response
+            .headers_mut()
+            .insert("retry-after", HeaderValue::from_static("60"));
+        return secured(response, security.https);
+    }
+    if protected
+        && request.method() != Method::OPTIONS
+        && !authorized(request.headers(), security.token.as_deref())
+    {
+        let mut response = api_error(StatusCode::UNAUTHORIZED, "unauthorized");
+        response
+            .headers_mut()
+            .insert(WWW_AUTHENTICATE, HeaderValue::from_static("Bearer"));
+        return secured(response, security.https);
     }
     let timeout = security.timeout;
     let https = security.https;
@@ -464,22 +472,18 @@ fn within_rate_limit(request: &Request, security: &SecurityState) -> bool {
         .get::<ConnectInfo<SocketAddr>>()
         .map(|value| value.0.ip())
         .unwrap_or(IpAddr::V4(std::net::Ipv4Addr::LOCALHOST));
-    let mut hasher = DefaultHasher::new();
-    request
-        .headers()
-        .get(AUTHORIZATION)
-        .map(HeaderValue::as_bytes)
-        .unwrap_or_default()
-        .hash(&mut hasher);
-    let endpoint = request.uri().path().split('/').nth(1).unwrap_or_default();
-    let key = format!("{ip}:{endpoint}:{}", hasher.finish());
     let now = Instant::now();
-    let mut windows = security
-        .rate_windows
+    let mut limiter = security
+        .rate_limiter
         .lock()
         .unwrap_or_else(|error| error.into_inner());
-    windows.retain(|_, window| now.duration_since(window.started) < Duration::from_secs(60));
-    let window = windows.entry(key).or_insert(RateWindow {
+    if now.duration_since(limiter.last_cleanup) >= Duration::from_secs(60) {
+        limiter
+            .windows
+            .retain(|_, window| now.duration_since(window.started) < Duration::from_secs(60));
+        limiter.last_cleanup = now;
+    }
+    let window = limiter.windows.entry(ip).or_insert(RateWindow {
         started: now,
         count: 0,
     });

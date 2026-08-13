@@ -77,6 +77,26 @@ fn deep_command_is_exposed_without_running_network_on_help() {
 }
 
 #[test]
+fn provider_canary_refuses_incomplete_governance_without_network() {
+    let id = TEMP_ID.fetch_add(1, Ordering::SeqCst);
+    let base = std::env::temp_dir().join(format!("amatl-canary-{}-{id}", std::process::id()));
+    std::fs::create_dir_all(&base).unwrap();
+    let config = base.join("amatl.toml");
+    std::fs::write(&config, "[providers]\nenabled = [\"brave\"]\n").unwrap();
+    let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
+        .arg("--config-file")
+        .arg(&config)
+        .args(["provider-canary", "brave", "rust"])
+        .output()
+        .unwrap();
+    assert!(!output.status.success());
+    let stderr = String::from_utf8(output.stderr).unwrap();
+    assert!(stderr.contains("governance approval is incomplete or expired"));
+    std::fs::remove_file(config).unwrap();
+    std::fs::remove_dir(base).unwrap();
+}
+
+#[test]
 fn phase_nine_server_commands_are_exposed_without_binding_on_help() {
     for arguments in [
         ["serve", "--help"].as_slice(),
@@ -107,6 +127,31 @@ fn ranking_v2_benchmark_is_reproducible_and_passes_gate() {
 }
 
 #[test]
+fn operational_benchmark_reports_latency_memory_and_sqlite_contention() {
+    let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
+        .args([
+            "benchmark",
+            "operational",
+            "--json",
+            "--iterations",
+            "4",
+            "--concurrency",
+            "2",
+        ])
+        .output()
+        .unwrap();
+    assert!(output.status.success(), "{:?}", output);
+    let report: serde_json::Value = serde_json::from_slice(&output.stdout).unwrap();
+    assert_eq!(report["workload"], "controlled-local-v1");
+    assert_eq!(report["search"]["latency"]["samples"], 4);
+    assert_eq!(report["deep_latency"]["samples"], 4);
+    assert_eq!(report["sqlite"]["warm_hit_rate"], 1.0);
+    if cfg!(target_os = "linux") {
+        assert!(report["peak_rss_bytes"].as_u64().unwrap() > 0);
+    }
+}
+
+#[test]
 fn unavailable_sqlite_does_not_break_search() {
     let id = TEMP_ID.fetch_add(1, Ordering::SeqCst);
     let base = std::env::temp_dir().join(format!("amatl-cli-phase3-{}-{id}", std::process::id()));
@@ -130,7 +175,8 @@ fn unavailable_sqlite_does_not_break_search() {
         .expect("amatl binary should run without SQLite");
     assert!(output.status.success());
     let stdout = String::from_utf8(output.stdout).unwrap();
-    assert!(stdout.contains("\"status\": \"success\""));
+    assert!(stdout.contains("\"status\": \"partial_success\""));
+    assert!(stdout.contains("\"code\": \"storage_unavailable\""));
 
     std::fs::remove_file(config).unwrap();
     std::fs::remove_dir(database_is_a_directory).unwrap();

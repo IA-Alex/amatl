@@ -44,6 +44,23 @@ impl DocumentCache {
         serde_json::from_str(&payload).ok()
     }
 
+    pub async fn latest(&self, canonical_url: &str, extractor_version: &str) -> Option<Document> {
+        if !self.policy.enabled {
+            return None;
+        }
+        let payload = self
+            .storage
+            .document_cache_get_latest(
+                canonical_url,
+                extractor_version,
+                now(),
+                self.policy.ttl_seconds,
+            )
+            .await
+            .ok()??;
+        serde_json::from_str(&payload).ok()
+    }
+
     pub async fn put(
         &self,
         document: &Document,
@@ -67,6 +84,7 @@ impl DocumentCache {
                 extractor_version,
                 &payload,
                 now(),
+                self.policy.ttl_seconds,
                 self.policy.max_entries,
                 self.policy.max_bytes,
             )

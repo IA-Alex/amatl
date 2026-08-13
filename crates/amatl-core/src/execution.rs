@@ -36,7 +36,7 @@ pub struct ParallelSearchOutput {
     pub providers_failed: Vec<String>,
     pub providers_partial: Vec<String>,
     pub errors: Vec<ProviderError>,
-    pub elapsed_ms: u64,
+    pub sequential_rounds_elapsed_ms: u64,
     pub budget_remaining: BudgetSnapshot,
     pub telemetry_observations: Vec<TelemetryObservation>,
 }
@@ -130,6 +130,21 @@ impl SearchOrchestrator {
         classification: Classification,
         providers: &[Arc<dyn Provider>],
     ) -> SearchPlan {
+        let adaptive = self.adaptive_recommendation(&query, &classification, providers);
+        let recommendation = RoutingRecommendation {
+            selected_providers: adaptive.first_round_providers,
+            provider_budget_requests: adaptive.provider_budget_requests,
+            debug_reasons: adaptive.debug_reasons,
+        };
+        build_search_plan(query, classification, recommendation, &mut self.budget)
+    }
+
+    fn adaptive_recommendation(
+        &self,
+        query: &Query,
+        classification: &Classification,
+        providers: &[Arc<dyn Provider>],
+    ) -> AdaptiveRoutingRecommendation {
         let descriptors = providers
             .iter()
             .map(|provider| ProviderDescriptor {
@@ -138,20 +153,14 @@ impl SearchOrchestrator {
                 available: matches!(provider.availability(), ProviderAvailability::Available),
             })
             .collect::<Vec<_>>();
-        let adaptive = AdaptiveRouter.recommend(
-            &query,
-            &classification,
+        AdaptiveRouter.recommend(
+            query,
+            classification,
             &descriptors,
             &self.telemetry,
             &self.search_policy,
             now_unix(),
-        );
-        let recommendation = RoutingRecommendation {
-            selected_providers: adaptive.first_round_providers,
-            provider_budget_requests: adaptive.provider_budget_requests,
-            debug_reasons: adaptive.debug_reasons,
-        };
-        build_search_plan(query, classification, recommendation, &mut self.budget)
+        )
     }
 
     pub async fn search(
@@ -174,22 +183,7 @@ impl SearchOrchestrator {
             })
             .collect::<Vec<_>>();
         let classification = classify(&query);
-        let descriptors = providers
-            .iter()
-            .map(|provider| ProviderDescriptor {
-                name: provider.name().into(),
-                capabilities: provider.capabilities(),
-                available: matches!(provider.availability(), ProviderAvailability::Available),
-            })
-            .collect::<Vec<_>>();
-        let adaptive = AdaptiveRouter.recommend(
-            &query,
-            &classification,
-            &descriptors,
-            &self.telemetry,
-            &self.search_policy,
-            now_unix(),
-        );
+        let adaptive = self.adaptive_recommendation(&query, &classification, &providers);
         let mut next_selected = adaptive.first_round_providers.clone();
         let mut attempted = BTreeSet::new();
         let mut accumulated = empty_parallel_output(self.budget.snapshot());
@@ -274,64 +268,26 @@ impl SearchOrchestrator {
             } else {
                 vec![]
             };
-            let expected_gain_low = coverage.coverage_minimum
-                && !candidates.is_empty()
-                && pending_filters.is_empty()
-                && candidates.iter().all(|provider| {
-                    adaptive
-                        .expected_marginal_gain_by_provider
-                        .get(provider)
-                        .copied()
-                        .unwrap_or(0.0)
-                        < self.search_policy.minimum_expected_marginal_gain
-                });
-            let observed_gain_low = observed_gain.is_some_and(|gain| {
-                gain < self.search_policy.minimum_marginal_gain && pending_filters.is_empty()
+            let decision = decide_progressive_round(RoutingDecisionInput {
+                coverage: &coverage,
+                candidates: &candidates,
+                pending_filters: &pending_filters,
+                remaining_ms,
+                remaining_provider_calls: self.budget.snapshot().remaining_provider_calls,
+                observed_gain,
+                expected_gain_by_provider: &adaptive.expected_marginal_gain_by_provider,
+                policy: &self.search_policy,
+                coverage_exception_used: exception_used,
             });
-
-            let stop_or_next = if remaining_ms == 0 {
-                Err(SearchStopReason::TimeExhausted)
-            } else if remaining_ms < self.search_policy.minimum_remaining_deadline_ms {
-                Err(SearchStopReason::DeadlineNear)
-            } else if !candidates.is_empty() && self.budget.snapshot().remaining_provider_calls == 0
-            {
-                Err(SearchStopReason::ProviderLimit)
-            } else if coverage.coverage_target && pending_filters.is_empty() {
-                Err(SearchStopReason::CoverageTargetReached)
-            } else if expected_gain_low || observed_gain_low {
-                Err(SearchStopReason::MarginalGainLow)
-            } else if candidates.is_empty() {
-                Err(SearchStopReason::ProvidersExhausted)
-            } else if coverage.coverage_minimum
-                && !coverage.low_diversity
-                && pending_filters.is_empty()
-            {
-                Err(SearchStopReason::ExplicitFilterSatisfied)
-            } else if !pending_filters.is_empty() {
-                debug_reasons.push(format!(
-                    "explicit_filter_pending:{}",
-                    pending_filters
-                        .iter()
-                        .cloned()
-                        .collect::<Vec<_>>()
-                        .join(",")
-                ));
-                Ok(candidates[0].clone())
-            } else if let Some(candidate) = candidates.iter().find(|provider| {
-                adaptive
-                    .expected_marginal_gain_by_provider
-                    .get(*provider)
-                    .copied()
-                    .unwrap_or(0.0)
-                    >= self.search_policy.minimum_expected_marginal_gain
-            }) {
-                Ok(candidate.clone())
-            } else if !coverage.coverage_minimum && !exception_used {
-                exception_used = true;
-                debug_reasons.push("coverage_exception_once".into());
-                Ok(candidates[0].clone())
-            } else {
-                Err(SearchStopReason::MarginalGainLow)
+            let stop_or_next = match decision {
+                Ok(next) => {
+                    if let Some(reason) = next.debug_reason {
+                        debug_reasons.push(reason);
+                    }
+                    exception_used |= next.uses_coverage_exception;
+                    Ok(next.provider)
+                }
+                Err(reason) => Err(reason),
             };
 
             let stop_reason = stop_or_next.as_ref().err().cloned();
@@ -577,7 +533,7 @@ impl SearchOrchestrator {
             providers_failed: vec![],
             providers_partial: vec![],
             errors: vec![],
-            elapsed_ms: 0,
+            sequential_rounds_elapsed_ms: 0,
             budget_remaining: self.budget.snapshot(),
             telemetry_observations: vec![],
         };
@@ -645,7 +601,7 @@ impl SearchOrchestrator {
         output.providers_used.sort();
         output.providers_failed.sort();
         output.providers_partial.sort();
-        output.elapsed_ms = started.elapsed().as_millis() as u64;
+        output.sequential_rounds_elapsed_ms = started.elapsed().as_millis() as u64;
         output
     }
 }
@@ -713,7 +669,7 @@ fn empty_parallel_output(budget_remaining: BudgetSnapshot) -> ParallelSearchOutp
         providers_failed: vec![],
         providers_partial: vec![],
         errors: vec![],
-        elapsed_ms: 0,
+        sequential_rounds_elapsed_ms: 0,
         budget_remaining,
         telemetry_observations: vec![],
     }
@@ -730,7 +686,9 @@ fn merge_parallel_output(target: &mut ParallelSearchOutput, mut source: Parallel
     target
         .telemetry_observations
         .append(&mut source.telemetry_observations);
-    target.elapsed_ms = target.elapsed_ms.saturating_add(source.elapsed_ms);
+    target.sequential_rounds_elapsed_ms = target
+        .sequential_rounds_elapsed_ms
+        .saturating_add(source.sequential_rounds_elapsed_ms);
     target.budget_remaining = source.budget_remaining;
     target.providers_used.sort();
     target.providers_used.dedup();
@@ -773,6 +731,106 @@ fn pending_explicit_filters(query: &Query, results: &[ProviderResult]) -> BTreeS
     }
     required.retain(|filter| !covered.contains(filter));
     required
+}
+
+struct RoutingDecisionInput<'a> {
+    coverage: &'a CoverageMetrics,
+    candidates: &'a [String],
+    pending_filters: &'a BTreeSet<String>,
+    remaining_ms: u64,
+    remaining_provider_calls: u32,
+    observed_gain: Option<f64>,
+    expected_gain_by_provider: &'a BTreeMap<String, f64>,
+    policy: &'a SearchPolicyV1,
+    coverage_exception_used: bool,
+}
+
+#[derive(Debug, PartialEq, Eq)]
+struct NextProviderDecision {
+    provider: String,
+    uses_coverage_exception: bool,
+    debug_reason: Option<String>,
+}
+
+fn decide_progressive_round(
+    input: RoutingDecisionInput<'_>,
+) -> Result<NextProviderDecision, SearchStopReason> {
+    let expected_gain_low = input.coverage.coverage_minimum
+        && !input.candidates.is_empty()
+        && input.pending_filters.is_empty()
+        && input.candidates.iter().all(|provider| {
+            input
+                .expected_gain_by_provider
+                .get(provider)
+                .copied()
+                .unwrap_or(0.0)
+                < input.policy.minimum_expected_marginal_gain
+        });
+    let observed_gain_low = input.observed_gain.is_some_and(|gain| {
+        gain < input.policy.minimum_marginal_gain && input.pending_filters.is_empty()
+    });
+
+    if input.remaining_ms == 0 {
+        return Err(SearchStopReason::TimeExhausted);
+    }
+    if input.remaining_ms < input.policy.minimum_remaining_deadline_ms {
+        return Err(SearchStopReason::DeadlineNear);
+    }
+    if !input.candidates.is_empty() && input.remaining_provider_calls == 0 {
+        return Err(SearchStopReason::ProviderLimit);
+    }
+    if input.coverage.coverage_target && input.pending_filters.is_empty() {
+        return Err(SearchStopReason::CoverageTargetReached);
+    }
+    if expected_gain_low || observed_gain_low {
+        return Err(SearchStopReason::MarginalGainLow);
+    }
+    if input.candidates.is_empty() {
+        return Err(SearchStopReason::ProvidersExhausted);
+    }
+    if input.coverage.coverage_minimum
+        && !input.coverage.low_diversity
+        && input.pending_filters.is_empty()
+    {
+        return Err(SearchStopReason::ExplicitFilterSatisfied);
+    }
+    if !input.pending_filters.is_empty() {
+        return Ok(NextProviderDecision {
+            provider: input.candidates[0].clone(),
+            uses_coverage_exception: false,
+            debug_reason: Some(format!(
+                "explicit_filter_pending:{}",
+                input
+                    .pending_filters
+                    .iter()
+                    .cloned()
+                    .collect::<Vec<_>>()
+                    .join(",")
+            )),
+        });
+    }
+    if let Some(provider) = input.candidates.iter().find(|provider| {
+        input
+            .expected_gain_by_provider
+            .get(*provider)
+            .copied()
+            .unwrap_or(0.0)
+            >= input.policy.minimum_expected_marginal_gain
+    }) {
+        return Ok(NextProviderDecision {
+            provider: provider.clone(),
+            uses_coverage_exception: false,
+            debug_reason: None,
+        });
+    }
+    if !input.coverage.coverage_minimum && !input.coverage_exception_used {
+        return Ok(NextProviderDecision {
+            provider: input.candidates[0].clone(),
+            uses_coverage_exception: true,
+            debug_reason: Some("coverage_exception_once".into()),
+        });
+    }
+    Err(SearchStopReason::MarginalGainLow)
 }
 
 #[allow(clippy::too_many_arguments)]
@@ -990,5 +1048,87 @@ mod tests {
             .await;
         assert_eq!(response.providers_used.len(), 2);
         assert!(started.elapsed() >= Duration::from_millis(70));
+    }
+
+    #[test]
+    fn progressive_decision_table_covers_priority_and_expansion_paths() {
+        let policy = SearchPolicyV1::default();
+        let candidates = vec!["a".into(), "b".into()];
+        let gains = BTreeMap::from([("a".into(), 0.20), ("b".into(), 0.10)]);
+        let empty_filters = BTreeSet::new();
+        let minimum = CoverageMetrics {
+            coverage_minimum: true,
+            ..Default::default()
+        };
+        let decide = |coverage: &CoverageMetrics,
+                      candidates: &[String],
+                      filters: &BTreeSet<String>,
+                      remaining_ms,
+                      remaining_calls,
+                      observed_gain,
+                      exception_used| {
+            decide_progressive_round(RoutingDecisionInput {
+                coverage,
+                candidates,
+                pending_filters: filters,
+                remaining_ms,
+                remaining_provider_calls: remaining_calls,
+                observed_gain,
+                expected_gain_by_provider: &gains,
+                policy: &policy,
+                coverage_exception_used: exception_used,
+            })
+        };
+
+        assert_eq!(
+            decide(&minimum, &candidates, &empty_filters, 0, 1, None, false),
+            Err(SearchStopReason::TimeExhausted)
+        );
+        assert_eq!(
+            decide(
+                &minimum,
+                &candidates,
+                &empty_filters,
+                10_000,
+                0,
+                None,
+                false
+            ),
+            Err(SearchStopReason::ProviderLimit)
+        );
+        let target = CoverageMetrics {
+            coverage_minimum: true,
+            coverage_target: true,
+            ..Default::default()
+        };
+        assert_eq!(
+            decide(&target, &candidates, &empty_filters, 10_000, 1, None, false),
+            Err(SearchStopReason::CoverageTargetReached)
+        );
+        let low_diversity = CoverageMetrics {
+            low_diversity: true,
+            ..minimum.clone()
+        };
+        assert_eq!(
+            decide(
+                &low_diversity,
+                &candidates,
+                &empty_filters,
+                10_000,
+                1,
+                None,
+                false
+            )
+            .unwrap()
+            .provider,
+            "a"
+        );
+        let filters = BTreeSet::from(["site".into()]);
+        let next = decide(&minimum, &candidates, &filters, 10_000, 1, None, false).unwrap();
+        assert_eq!(next.provider, "a");
+        assert_eq!(
+            next.debug_reason.as_deref(),
+            Some("explicit_filter_pending:site")
+        );
     }
 }

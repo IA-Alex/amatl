@@ -69,7 +69,7 @@ impl HttpTransport for ReqwestTransport {
         for (name, value) in request.headers {
             builder = builder.header(&name, &value);
         }
-        let response = builder
+        let mut response = builder
             .send()
             .await
             .map_err(|_| "provider network request failed".to_string())?;
@@ -87,17 +87,21 @@ impl HttpTransport for ReqwestTransport {
                     .map(|value| (name.as_str().to_ascii_lowercase(), value.to_string()))
             })
             .collect();
-        let body = response
-            .bytes()
+        let mut body = Vec::new();
+        while let Some(chunk) = response
+            .chunk()
             .await
-            .map_err(|_| "provider response body failed".to_string())?;
-        if body.len() > self.max_response_bytes {
-            return Err("provider response exceeded byte limit".into());
+            .map_err(|_| "provider response body failed".to_string())?
+        {
+            if body.len().saturating_add(chunk.len()) > self.max_response_bytes {
+                return Err("provider response exceeded byte limit".into());
+            }
+            body.extend_from_slice(&chunk);
         }
         Ok(HttpResponse {
             status,
             headers,
-            body: body.to_vec(),
+            body,
         })
     }
 }
@@ -105,6 +109,7 @@ impl HttpTransport for ReqwestTransport {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use tokio::io::{AsyncReadExt, AsyncWriteExt};
 
     #[test]
     fn sanitizes_secret_query_parameters() {
@@ -116,5 +121,33 @@ mod tests {
         let visible = request.sanitized_url().to_string();
         assert!(!visible.contains("secret"));
         assert!(visible.contains("rust"));
+    }
+
+    #[tokio::test]
+    async fn stops_chunked_provider_response_during_download() {
+        let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+        let address = listener.local_addr().unwrap();
+        let server = tokio::spawn(async move {
+            let (mut stream, _) = listener.accept().await.unwrap();
+            let mut request = [0_u8; 1024];
+            let _ = stream.read(&mut request).await;
+            stream
+                .write_all(
+                    b"HTTP/1.1 200 OK\r\nTransfer-Encoding: chunked\r\nConnection: close\r\n\r\n6\r\nabcdef\r\n0\r\n\r\n",
+                )
+                .await
+                .unwrap();
+        });
+        let transport = ReqwestTransport::new(5).unwrap();
+        let error = transport
+            .execute(HttpRequest {
+                url: Url::parse(&format!("http://{address}/")).unwrap(),
+                headers: vec![],
+                timeout_ms: 1_000,
+            })
+            .await
+            .unwrap_err();
+        assert_eq!(error, "provider response exceeded byte limit");
+        server.await.unwrap();
     }
 }

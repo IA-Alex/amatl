@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 for published binaries. No SemVer release has been published yet; workspace
-`0.1.0` is a development version.
+`0.1.0-rc.1` is the first release-candidate version.
 
 The data-contract `schema_version` is independent from binary SemVer. Compatible
 additions may remain on schema `"1"`; a breaking external data change increments
@@ -29,6 +29,19 @@ adapter/extractor versions are independent axes as well.
   generation.
 - Repository legal, security, architecture, API, operations, testing and
   contribution documentation.
+- Shared bounded HTTP clients, streaming response limits, extraction deadlines,
+  storage degradation reporting and process-wide provider telemetry.
+- Fail-closed single-provider network canary with a manually approved CI path.
+- Controlled operational Search/Deep/SQLite benchmark with latency, throughput,
+  status, contention and peak-RSS evidence.
+- Real rustls handshake coverage and a reproducible static Linux musl release
+  workflow with CycloneDX SBOMs, SHA-256 checksums and artifact attestations.
+
+### Changed
+
+- Workspace SemVer advanced to `0.1.0-rc.1` and MSRV is enforced at Rust 1.88.
+- SQLite mutations are serialized across storage clones to avoid lock loss under
+  concurrent cache access.
 
 The canonical public repository URL is pending owner definition, so this file
 does not invent release or comparison links.

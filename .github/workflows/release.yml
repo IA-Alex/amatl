@@ -1,0 +1,112 @@
+name: release-candidate
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*-rc.*"
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - uses: Swatinem/rust-cache@v2
+      - uses: taiki-e/install-action@v2.82.0
+        with:
+          tool: cargo-audit@0.22.2,cargo-deny@0.18.7
+          fallback: none
+      - run: cargo fmt --all -- --check
+      - run: cargo test --workspace --locked
+      - run: cargo check --workspace --benches --locked
+      - run: cargo clippy --workspace --all-targets --locked -- -D warnings
+      - run: cargo audit
+      - run: cargo deny check
+      - name: Verify minimum supported Rust version
+        run: |
+          rustup toolchain install 1.88.0 --profile minimal
+          cargo +1.88.0 check --workspace --all-targets --locked
+
+  linux-musl:
+    needs: quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: x86_64-unknown-linux-musl
+      - uses: Swatinem/rust-cache@v2
+      - uses: taiki-e/install-action@v2.82.0
+        with:
+          tool: cargo-cyclonedx@0.5.9
+          fallback: none
+      - name: Install musl linker
+        run: sudo apt-get update && sudo apt-get install --yes musl-tools
+      - name: Validate release version
+        id: version
+        run: |
+          package_version="$(cargo metadata --locked --no-deps --format-version 1 | jq -r '.packages[] | select(.name == "amatl-cli") | .version')"
+          test -n "$package_version"
+          if [[ "$GITHUB_REF_TYPE" == "tag" && "$GITHUB_REF_NAME" != "v$package_version" ]]; then
+            echo "tag $GITHUB_REF_NAME does not match package version $package_version" >&2
+            exit 1
+          fi
+          if [[ "$GITHUB_REF_TYPE" == "tag" && "$(git cat-file -t "$GITHUB_REF_NAME")" != "tag" ]]; then
+            echo "release-candidate tags must be annotated" >&2
+            exit 1
+          fi
+          echo "package_version=$package_version" >> "$GITHUB_OUTPUT"
+          echo "SOURCE_DATE_EPOCH=$(git log -1 --format=%ct)" >> "$GITHUB_ENV"
+      - name: Build static Linux binary
+        run: cargo build --locked --release --target x86_64-unknown-linux-musl -p amatl-cli
+      - name: Generate CycloneDX SBOMs
+        run: cargo cyclonedx --target x86_64-unknown-linux-musl --target-in-filename
+      - name: Package reproducible archive and checksums
+        env:
+          PACKAGE_VERSION: ${{ steps.version.outputs.package_version }}
+        run: |
+          archive_root="amatl-${PACKAGE_VERSION}-x86_64-unknown-linux-musl"
+          mkdir -p "dist/$archive_root/sbom"
+          install -m 0755 "target/x86_64-unknown-linux-musl/release/amatl" "dist/$archive_root/amatl"
+          install -m 0644 README.md LICENSE-MIT LICENSE-APACHE "dist/$archive_root/"
+          while IFS= read -r sbom; do
+            crate="$(basename "$(dirname "$sbom")")"
+            install -m 0644 "$sbom" "dist/$archive_root/sbom/${crate}.cdx.xml"
+          done < <(find crates -mindepth 2 -maxdepth 2 -name '*.cdx.xml' -print | sort)
+          test "$(find "dist/$archive_root/sbom" -name '*.cdx.xml' | wc -l)" -eq 4
+          tar --sort=name --owner=0 --group=0 --numeric-owner \
+            --mtime="@$SOURCE_DATE_EPOCH" -C dist -czf "dist/$archive_root.tar.gz" "$archive_root"
+          rm -r "dist/$archive_root"
+          cd dist
+          sha256sum *.tar.gz > SHA256SUMS
+      - uses: actions/attest@v4
+        with:
+          subject-path: |
+            dist/*.tar.gz
+            dist/SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: amatl-${{ steps.version.outputs.package_version }}-x86_64-unknown-linux-musl
+          path: dist/*
+          if-no-files-found: error
+      - name: Publish prerelease from annotated tag
+        if: github.ref_type == 'tag'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh release create "$GITHUB_REF_NAME" dist/*
+          --verify-tag --prerelease --generate-notes

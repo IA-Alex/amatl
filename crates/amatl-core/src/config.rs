@@ -520,6 +520,17 @@ impl Config {
     }
 
     pub fn validate(&self) -> Result<(), ConfigError> {
+        const KNOWN_PROVIDERS: [&str; 3] = ["brave", "mojeek", "duckduckgo_html"];
+        if let Some(name) = self
+            .providers
+            .enabled
+            .iter()
+            .find(|name| !KNOWN_PROVIDERS.contains(&name.as_str()))
+        {
+            return Err(ConfigError::Policy(format!(
+                "unknown enabled provider: {name}"
+            )));
+        }
         if self.execution.global_concurrency == 0
             || self.execution.per_provider_concurrency == 0
             || self.execution.per_provider_concurrency > self.execution.global_concurrency
@@ -689,6 +700,16 @@ mod tests {
         assert!(config.deep.max_depth <= 2);
         assert_eq!(config.server.bind, "127.0.0.1");
         assert!(!config.server.no_auth);
+    }
+
+    #[test]
+    fn rejects_unknown_provider_names_including_case_and_whitespace_typos() {
+        for unknown in ["Brave", "brave ", "custom"] {
+            let mut config = Config::default();
+            config.providers.enabled = vec![unknown.into()];
+            let error = config.validate().unwrap_err().to_string();
+            assert!(error.contains("unknown enabled provider"), "{error}");
+        }
     }
 
     #[test]

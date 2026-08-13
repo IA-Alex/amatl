@@ -4,14 +4,15 @@ resolver = "2"
 
 [workspace.package]
 edition = "2021"
+rust-version = "1.88"
 license = "MIT OR Apache-2.0"
-version = "0.1.0"
+version = "0.1.0-rc.1"
 
 [workspace.dependencies]
 anyhow = "1"
 async-trait = "0.1"
 axum = "0.8.9"
-axum-server = { version = "0.8.0", features = ["tls-rustls"] }
+axum-server = { version = "0.8.0", features = ["tls-rustls-no-provider"] }
 clap = { version = "4", features = ["derive"] }
 http = "1"
 hyper-util = { version = "0.1", features = ["tokio"] }
@@ -32,6 +33,10 @@ tower = { version = "0.5", features = ["limit", "timeout", "util"] }
 tower-http = { version = "0.7.0", features = ["cors", "limit", "timeout"] }
 url = { version = "2", features = ["serde"] }
 unicode-normalization = "0.1"
+
+[workspace.metadata.release]
+primary-target = "x86_64-unknown-linux-musl"
+archive = "amatl-{version}-x86_64-unknown-linux-musl.tar.gz"
 
 [workspace.lints.rust]
 unsafe_code = "forbid"

@@ -176,6 +176,25 @@ impl DeepOrchestrator {
                 .saturating_duration_since(now)
                 .as_millis()
                 .min(u128::from(self.timeout_ms)) as u64;
+            let revalidation_document = match &self.cache {
+                Some(cache) => cache
+                    .latest(
+                        candidate.result.canonical_url.0.as_str(),
+                        self.extractor.version(),
+                    )
+                    .await
+                    .filter(|document| document.content.is_some()),
+                None => None,
+            };
+            let mut request_headers = default_headers();
+            if let Some(document) = &revalidation_document {
+                if let Some(etag) = document.metadata.get("http_etag") {
+                    request_headers.insert("if-none-match".into(), etag.clone());
+                }
+                if let Some(last_modified) = document.metadata.get("http_last_modified") {
+                    request_headers.insert("if-modified-since".into(), last_modified.clone());
+                }
+            }
             let fetch = self
                 .fetcher
                 .fetch(FetchRequest {
@@ -183,7 +202,7 @@ impl DeepOrchestrator {
                     timeout_ms: fetch_timeout,
                     max_bytes: limit,
                     max_redirects: redirect_limit,
-                    headers: default_headers(),
+                    headers: request_headers,
                 })
                 .await;
             let fetched = match fetch {
@@ -212,6 +231,19 @@ impl DeepOrchestrator {
                 response.degradations.push(degradation(
                     &cause.to_string(),
                     "Fetch result exceeded remaining Deep budget",
+                ));
+                continue;
+            }
+            if fetched.status == 304 {
+                if let Some(mut document) = revalidation_document {
+                    document.final_url = fetched.final_url;
+                    document.retrieved_at = fetched.retrieved_at;
+                    response.documents.push(document);
+                    continue;
+                }
+                response.degradations.push(degradation(
+                    "unexpected_not_modified",
+                    "Origin returned 304 without a reusable cached Document",
                 ));
                 continue;
             }
@@ -285,7 +317,7 @@ impl DeepOrchestrator {
                         .push(degradation(&cause.to_string(), "Browser budget exhausted")),
                 }
             }
-            let (status, content, title, author, published_at, metadata, extractor_used) =
+            let (status, content, title, author, published_at, mut metadata, extractor_used) =
                 match extraction {
                     Ok(value) => (
                         DocumentStatus::Enriched,
@@ -309,6 +341,12 @@ impl DeepOrchestrator {
                         )
                     }
                 };
+            if let Some(etag) = fetched.headers_safe.get("etag") {
+                metadata.insert("http_etag".into(), etag.clone());
+            }
+            if let Some(last_modified) = fetched.headers_safe.get("last-modified") {
+                metadata.insert("http_last_modified".into(), last_modified.clone());
+            }
             let document = Document {
                 schema_version: SCHEMA_VERSION.into(),
                 search_result_id: result_id,

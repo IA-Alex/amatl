@@ -20,15 +20,16 @@ jobs:
         with:
           components: rustfmt, clippy
       - uses: Swatinem/rust-cache@v2
+      - uses: taiki-e/install-action@v2.82.0
+        with:
+          tool: cargo-audit@0.22.2,cargo-deny@0.18.7,cargo-cyclonedx@0.5.9
+          fallback: none
       - run: cargo fmt --all -- --check
-      - run: cargo test --workspace
-      - run: cargo check --workspace --benches
-      - run: cargo clippy --workspace --all-targets -- -D warnings
-      - run: cargo install --locked cargo-audit
+      - run: cargo test --workspace --locked
+      - run: cargo check --workspace --benches --locked
+      - run: cargo clippy --workspace --all-targets --locked -- -D warnings
       - run: cargo audit
-      - run: cargo install --locked cargo-deny
       - run: cargo deny check
-      - run: cargo install --locked cargo-cyclonedx
       - run: cargo cyclonedx
       - uses: actions/upload-artifact@v4
         with:
@@ -37,3 +38,13 @@ jobs:
             **/*.cdx.json
             **/*.cdx.xml
           if-no-files-found: error
+
+  msrv:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.88.0
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo check --workspace --all-targets --locked

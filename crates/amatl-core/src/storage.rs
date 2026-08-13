@@ -2,6 +2,7 @@ use sqlx::sqlite::{SqliteConnectOptions, SqliteJournalMode, SqlitePoolOptions, S
 use sqlx::{Row, SqlitePool};
 use std::io::Read;
 use std::path::{Path, PathBuf};
+use std::sync::Arc;
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 use thiserror::Error;
 
@@ -12,6 +13,7 @@ const POOL_SIZE: u32 = 4;
 pub struct SqliteStorage {
     pool: SqlitePool,
     path: PathBuf,
+    write_lock: Arc<tokio::sync::Mutex<()>>,
 }
 
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -24,7 +26,7 @@ pub struct StorageHealth {
     pub pool_size: u32,
 }
 
-#[derive(Clone, Debug, Default, PartialEq, Eq)]
+#[derive(Clone, Debug, Default, serde::Serialize, serde::Deserialize, PartialEq, Eq)]
 pub struct CacheStats {
     pub entries: u64,
     pub size_bytes: u64,
@@ -92,7 +94,11 @@ impl SqliteStorage {
         }
 
         run_migrations(&pool).await?;
-        Ok(Self { pool, path })
+        Ok(Self {
+            pool,
+            path,
+            write_lock: Arc::new(tokio::sync::Mutex::new(())),
+        })
     }
 
     pub async fn health(&self) -> Result<StorageHealth, StorageError> {
@@ -127,6 +133,7 @@ impl SqliteStorage {
         now: i64,
         ttl_seconds: u64,
     ) -> Result<Option<String>, StorageError> {
+        let _write_guard = self.write_lock.lock().await;
         let mut transaction = self.pool.begin().await.map_err(operation)?;
         let payload = sqlx::query_scalar::<_, String>(
             "SELECT payload FROM provider_search_cache
@@ -173,6 +180,7 @@ impl SqliteStorage {
         max_entries: u64,
         max_bytes: u64,
     ) -> Result<(), StorageError> {
+        let _write_guard = self.write_lock.lock().await;
         let mut transaction = self.pool.begin().await.map_err(operation)?;
         sqlx::query(
             "INSERT INTO provider_search_cache
@@ -257,6 +265,7 @@ impl SqliteStorage {
     }
 
     pub(crate) async fn cache_purge(&self) -> Result<u64, StorageError> {
+        let _write_guard = self.write_lock.lock().await;
         Ok(sqlx::query("DELETE FROM provider_search_cache")
             .execute(&self.pool)
             .await
@@ -272,6 +281,7 @@ impl SqliteStorage {
         now: i64,
         ttl_seconds: u64,
     ) -> Result<Option<String>, StorageError> {
+        let _write_guard = self.write_lock.lock().await;
         let mut transaction = self.pool.begin().await.map_err(operation)?;
         let payload = sqlx::query_scalar::<_, String>(
             "SELECT payload FROM document_cache
@@ -302,6 +312,43 @@ impl SqliteStorage {
         Ok(payload)
     }
 
+    pub(crate) async fn document_cache_get_latest(
+        &self,
+        canonical_url: &str,
+        extractor_version: &str,
+        now: i64,
+        ttl_seconds: u64,
+    ) -> Result<Option<String>, StorageError> {
+        let _write_guard = self.write_lock.lock().await;
+        let payload = sqlx::query_scalar::<_, String>(
+            "SELECT payload FROM document_cache
+             WHERE canonical_url = ? AND extractor_version = ? AND created_at >= ?
+             ORDER BY created_at DESC, rowid DESC LIMIT 1",
+        )
+        .bind(canonical_url)
+        .bind(extractor_version)
+        .bind(now.saturating_sub(ttl_seconds as i64))
+        .fetch_optional(&self.pool)
+        .await
+        .map_err(operation)?;
+        if payload.is_some() {
+            sqlx::query(
+                "UPDATE document_cache SET last_accessed = ?
+                 WHERE rowid = (SELECT rowid FROM document_cache
+                   WHERE canonical_url = ? AND extractor_version = ? AND created_at >= ?
+                   ORDER BY created_at DESC, rowid DESC LIMIT 1)",
+            )
+            .bind(now)
+            .bind(canonical_url)
+            .bind(extractor_version)
+            .bind(now.saturating_sub(ttl_seconds as i64))
+            .execute(&self.pool)
+            .await
+            .map_err(operation)?;
+        }
+        Ok(payload)
+    }
+
     #[allow(clippy::too_many_arguments)]
     pub(crate) async fn document_cache_put(
         &self,
@@ -310,9 +357,11 @@ impl SqliteStorage {
         extractor_version: &str,
         payload: &str,
         now: i64,
+        ttl_seconds: u64,
         max_entries: u64,
         max_bytes: u64,
     ) -> Result<(), StorageError> {
+        let _write_guard = self.write_lock.lock().await;
         let mut transaction = self.pool.begin().await.map_err(operation)?;
         sqlx::query(
             "INSERT INTO document_cache
@@ -332,6 +381,11 @@ impl SqliteStorage {
         .execute(&mut *transaction)
         .await
         .map_err(operation)?;
+        sqlx::query("DELETE FROM document_cache WHERE created_at < ?")
+            .bind(now.saturating_sub(ttl_seconds as i64))
+            .execute(&mut *transaction)
+            .await
+            .map_err(operation)?;
         sqlx::query(
             "DELETE FROM document_cache WHERE rowid IN
              (SELECT rowid FROM document_cache ORDER BY last_accessed ASC, rowid ASC
@@ -377,6 +431,7 @@ impl SqliteStorage {
     }
 
     pub(crate) async fn document_cache_purge(&self) -> Result<u64, StorageError> {
+        let _write_guard = self.write_lock.lock().await;
         Ok(sqlx::query("DELETE FROM document_cache")
             .execute(&self.pool)
             .await
@@ -388,6 +443,7 @@ impl SqliteStorage {
         &self,
         observation: &StoredTelemetryObservation,
     ) -> Result<(), StorageError> {
+        let _write_guard = self.write_lock.lock().await;
         sqlx::query(
             "INSERT INTO telemetry_observations
              (observed_at, provider, category, outcome, latency_ms, total_results,
@@ -444,6 +500,7 @@ impl SqliteStorage {
     }
 
     pub(crate) async fn telemetry_prune(&self, before: i64) -> Result<u64, StorageError> {
+        let _write_guard = self.write_lock.lock().await;
         Ok(
             sqlx::query("DELETE FROM telemetry_observations WHERE observed_at < ?")
                 .bind(before)
@@ -452,6 +509,15 @@ impl SqliteStorage {
                 .map_err(operation)?
                 .rows_affected(),
         )
+    }
+}
+
+impl StorageError {
+    pub fn quarantine_path(&self) -> Option<&Path> {
+        match self {
+            Self::Corrupt { quarantine_path } => Some(quarantine_path),
+            Self::Open | Self::Operation => None,
+        }
     }
 }
 
@@ -649,11 +715,11 @@ mod tests {
             .await
             .unwrap();
         storage
-            .document_cache_put("https://a.test", "h1", "e1", "one", 100, 1, 1_000)
+            .document_cache_put("https://a.test", "h1", "e1", "one", 100, 100, 1, 1_000)
             .await
             .unwrap();
         storage
-            .document_cache_put("https://b.test", "h2", "e1", "two", 101, 1, 1_000)
+            .document_cache_put("https://b.test", "h2", "e1", "two", 101, 100, 1, 1_000)
             .await
             .unwrap();
         assert_eq!(storage.document_cache_stats().await.unwrap().entries, 1);
@@ -664,6 +730,27 @@ mod tests {
             .is_none());
         assert!(storage
             .document_cache_get("https://b.test", "h2", "e2", 102, 100)
+            .await
+            .unwrap()
+            .is_none());
+    }
+
+    #[tokio::test]
+    async fn document_cache_put_purges_expired_entries() {
+        let storage = SqliteStorage::open(path("document-cache-ttl"))
+            .await
+            .unwrap();
+        storage
+            .document_cache_put("https://old.test", "h1", "e1", "old", 100, 10, 10, 1_000)
+            .await
+            .unwrap();
+        storage
+            .document_cache_put("https://new.test", "h2", "e1", "new", 200, 10, 10, 1_000)
+            .await
+            .unwrap();
+        assert_eq!(storage.document_cache_stats().await.unwrap().entries, 1);
+        assert!(storage
+            .document_cache_get_latest("https://old.test", "e1", 200, 10)
             .await
             .unwrap()
             .is_none());

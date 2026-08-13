@@ -18,6 +18,7 @@ pub mod gaps;
 pub mod mcp;
 pub mod model;
 pub mod normalize;
+pub mod operational;
 pub mod planning;
 pub mod progressive;
 pub mod providers;
@@ -55,7 +56,21 @@ pub use gaps::{
     GapAnalysis, GapAnalyzer, GapPolicyError, GapPolicyV1, SearchSubQueryExecutor,
     SubQueryExecutionError, SubQueryExecutor,
 };
-pub use model::*;
+pub use model::{
+    CanonicalResult, CanonicalTransformation, CanonicalUrl, CanonicalizationStatus, Category,
+    Classification, CompositeError, DeduplicatedResult, DeepRankedDocument, DeepRankingExplanation,
+    DeepResponse, Degradation, Document, DocumentStatus, DuplicateStatus, Evidence, EvidenceStatus,
+    FetchMethod, FieldProvenance, FinalUrl, Gap, GapSeverity, GapStatus, GapType,
+    GlobalBudgetSnapshot, MergeReason, NormalizedResult, OriginalUrl, ProviderCapabilities,
+    ProviderError, ProviderErrorKind, ProviderExecutionStatus, ProviderItem, ProviderResult, Query,
+    QueryWarning, Rank, RankedResult, RankingExplanation, RankingScore, RankingV2Output,
+    RankingV2Status, ResultStatus, ResultType, SearchPlan, SearchResponse, SearchResult,
+    SearchStatus, SubQuery, SubQueryStatus, TieBreakReason, ValueInvariantError, SCHEMA_VERSION,
+};
+pub use operational::{
+    run_operational_benchmark, LatencyPercentiles, OperationalBenchmarkError,
+    OperationalBenchmarkReport, SearchOperationalReport, SqliteOperationalReport,
+};
 pub use progressive::{
     CoverageMetrics, ProgressiveRoundTrace, SearchPolicyError, SearchPolicyV1, SearchStopReason,
 };
@@ -73,8 +88,8 @@ pub use ranking_v2::{
 pub use render::{ChromiumRenderer, RenderError, RenderResult, Renderer};
 pub use router::{AdaptiveRouter, AdaptiveRoutingRecommendation, ProviderDescriptor, StaticRouter};
 pub use service::{
-    AmatlService, ExecutionLimits, ProviderSummary, ProviderSurfaceStatus, SearchExecution,
-    ServiceError, ServiceSurface,
+    validate_provider_canary, AmatlService, ExecutionLimits, ProviderCanaryError, ProviderSummary,
+    ProviderSurfaceStatus, SearchExecution, ServiceError, ServiceSurface,
 };
 pub use storage::{CacheStats, SqliteStorage, StorageError, StorageHealth};
 pub use telemetry::{

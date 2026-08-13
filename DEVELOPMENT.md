@@ -2,12 +2,10 @@
 
 ## Toolchain
 
-El workspace usa Rust 2021. El grafo fijado por `Cargo.lock` declara como mayor
-MSRV transitorio Rust 1.88 (`rmcp`, `time` y macros relacionadas), por lo que
-**Rust 1.88 es el mínimo efectivo para este lockfile**. El workspace aún no fija
-`rust-version` ni ejecuta un job MSRV; por ello no constituye una promesa de
-compatibilidad estable. La línea base local fue verificada con `rustc/cargo
-1.97.1`; CI instala `stable` con rustfmt y Clippy.
+El workspace usa Rust 2021 y fija `rust-version = "1.88"`, el mayor MSRV del
+grafo actual (`rmcp`, `time` y macros relacionadas). CI verifica tanto `stable`
+como un job explícito con Rust 1.88. La línea base local fue verificada con
+`rustc/cargo 1.97.1`.
 
 Herramientas requeridas: `cargo-audit`, `cargo-deny` y `cargo-cyclonedx`.
 Trafilatura es opcional y sólo mejora Deep. Chromium no debe instalarse para
@@ -40,6 +38,10 @@ cargo run -p amatl-cli -- config
 cargo run -p amatl-cli -- providers
 cargo run -p amatl-cli -- cache
 cargo run -p amatl-cli -- doctor
+
+# Sólo después de aprobación y credencial: canario de un único provider real
+cargo run --release -p amatl-cli -- --config-file amatl.toml \
+  provider-canary brave "rust programming language" --json
 
 # UI + API + MCP en un listener
 export AMATL_SERVER_TOKEN="$(openssl rand -hex 32)"
@@ -98,6 +100,8 @@ configuración externa está pendiente del propietario.
 
 ```bash
 cargo run -p amatl-cli -- benchmark ranking-v2 --json
+cargo run --locked --release -p amatl-cli -- \
+  benchmark operational --json --iterations 64 --concurrency 8
 cargo bench -p amatl-core --bench core_contracts
 ```
 

@@ -1,0 +1,46 @@
+name: provider-canary
+
+on:
+  workflow_dispatch:
+    inputs:
+      provider:
+        description: Governed provider to exercise
+        required: true
+        type: choice
+        options:
+          - brave
+          - mojeek
+      query:
+        description: Non-sensitive canary query
+        required: true
+        default: rust programming language
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  canary:
+    runs-on: ubuntu-latest
+    environment: provider-canary
+    timeout-minutes: 10
+    env:
+      BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
+      MOJEEK_API_KEY: ${{ secrets.MOJEEK_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Materialize approved runtime configuration
+        env:
+          AMATL_CANARY_CONFIG: ${{ secrets.AMATL_CANARY_CONFIG }}
+        run: |
+          test -n "$AMATL_CANARY_CONFIG"
+          printf '%s' "$AMATL_CANARY_CONFIG" > "$RUNNER_TEMP/amatl-canary.toml"
+      - name: Validate configuration without network access
+        run: cargo run --locked -p amatl-cli -- --config-file "$RUNNER_TEMP/amatl-canary.toml" config
+      - name: Execute isolated provider canary
+        run: >-
+          cargo run --locked --release -p amatl-cli --
+          --config-file "$RUNNER_TEMP/amatl-canary.toml"
+          provider-canary "${{ inputs.provider }}" "${{ inputs.query }}" --json

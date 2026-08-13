@@ -1,5 +1,6 @@
 use super::*;
 use axum::{body::to_bytes, http::Request};
+use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tower::ServiceExt;
 
 const TOKEN: &str = "0123456789abcdef0123456789abcdef";
@@ -196,6 +197,174 @@ async fn rate_limit_is_keyed_and_body_limit_is_global() {
         .await
         .unwrap();
     assert_eq!(chunked_json.status(), StatusCode::PAYLOAD_TOO_LARGE);
+}
+
+#[tokio::test]
+async fn invalid_credentials_and_public_routes_consume_the_rate_limit() {
+    let mut config = amatl_core::Config::default();
+    config.server.rate_limit_per_minute = 1;
+    let app = build_router(AmatlService::new(config, true).await, Some(TOKEN.into()))
+        .await
+        .unwrap();
+
+    let invalid = app
+        .clone()
+        .oneshot(
+            request("/search?q=rust")
+                .header(AUTHORIZATION, "Bearer definitely-invalid")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(invalid.status(), StatusCode::UNAUTHORIZED);
+    let rotated = app
+        .clone()
+        .oneshot(
+            request("/search?q=rust")
+                .header(AUTHORIZATION, "Bearer another-invalid-token")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(rotated.status(), StatusCode::TOO_MANY_REQUESTS);
+
+    let mut public_config = amatl_core::Config::default();
+    public_config.server.rate_limit_per_minute = 1;
+    let public_app = build_router(
+        AmatlService::new(public_config, true).await,
+        Some(TOKEN.into()),
+    )
+    .await
+    .unwrap();
+    assert_eq!(
+        public_app
+            .clone()
+            .oneshot(request("/health").body(Body::empty()).unwrap())
+            .await
+            .unwrap()
+            .status(),
+        StatusCode::OK
+    );
+    assert_eq!(
+        public_app
+            .oneshot(request("/").body(Body::empty()).unwrap())
+            .await
+            .unwrap()
+            .status(),
+        StatusCode::TOO_MANY_REQUESTS
+    );
+}
+
+#[tokio::test]
+async fn real_connect_info_separates_client_rate_windows() {
+    let mut config = amatl_core::Config::default();
+    config.server.rate_limit_per_minute = 1;
+    let app = build_router(AmatlService::new(config, true).await, Some(TOKEN.into()))
+        .await
+        .unwrap();
+    for ip in ["203.0.113.1:4000", "203.0.113.2:4000"] {
+        let mut request = authorized("/search?q=rust").body(Body::empty()).unwrap();
+        request
+            .extensions_mut()
+            .insert(ConnectInfo(ip.parse::<SocketAddr>().unwrap()));
+        let response = app.clone().oneshot(request).await.unwrap();
+        assert_eq!(response.status(), StatusCode::OK);
+    }
+}
+
+#[tokio::test]
+async fn serve_accepts_a_real_tcp_connection() {
+    let reservation = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
+    let port = reservation.local_addr().unwrap().port();
+    drop(reservation);
+
+    let mut config = amatl_core::Config::default();
+    config.server.port = port;
+    config.server.no_auth = true;
+    let server = tokio::spawn(serve(AmatlService::new(config, true).await));
+    let mut connection = None;
+    for _ in 0..50 {
+        match tokio::net::TcpStream::connect(("127.0.0.1", port)).await {
+            Ok(stream) => {
+                connection = Some(stream);
+                break;
+            }
+            Err(_) => tokio::time::sleep(Duration::from_millis(10)).await,
+        }
+    }
+    let mut stream = connection.expect("server should bind its configured TCP address");
+    stream
+        .write_all(
+            format!("GET /health HTTP/1.1\r\nHost: localhost:{port}\r\nConnection: close\r\n\r\n")
+                .as_bytes(),
+        )
+        .await
+        .unwrap();
+    let mut response = Vec::new();
+    stream.read_to_end(&mut response).await.unwrap();
+    server.abort();
+    let response = String::from_utf8(response).unwrap();
+    assert!(response.starts_with("HTTP/1.1 200 OK"), "{response}");
+    assert!(response.contains(r#"{"schema_version":"1","status":"ok"}"#));
+}
+
+#[tokio::test]
+async fn serve_completes_a_real_rustls_handshake() {
+    let rcgen::CertifiedKey { cert, signing_key } =
+        rcgen::generate_simple_self_signed(vec!["localhost".into()]).unwrap();
+    let nonce = std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .unwrap()
+        .as_nanos();
+    let directory = std::env::temp_dir().join(format!("amatl-tls-{}-{nonce}", std::process::id()));
+    std::fs::create_dir_all(&directory).unwrap();
+    let cert_path = directory.join("cert.pem");
+    let key_path = directory.join("key.pem");
+    let cert_pem = cert.pem();
+    std::fs::write(&cert_path, &cert_pem).unwrap();
+    std::fs::write(&key_path, signing_key.serialize_pem()).unwrap();
+
+    let reservation = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
+    let port = reservation.local_addr().unwrap().port();
+    drop(reservation);
+    let mut config = amatl_core::Config::default();
+    config.server.port = port;
+    config.server.no_auth = true;
+    config.server.tls.cert_path = Some(cert_path.to_string_lossy().into_owned());
+    config.server.tls.key_path = Some(key_path.to_string_lossy().into_owned());
+    let server = tokio::spawn(serve(AmatlService::new(config, true).await));
+    let root = reqwest::Certificate::from_pem(cert_pem.as_bytes()).unwrap();
+    let client = reqwest::Client::builder()
+        .add_root_certificate(root)
+        .build()
+        .unwrap();
+    let mut response = None;
+    for _ in 0..50 {
+        match client
+            .get(format!("https://localhost:{port}/health"))
+            .send()
+            .await
+        {
+            Ok(value) => {
+                response = Some(value);
+                break;
+            }
+            Err(_) => tokio::time::sleep(Duration::from_millis(10)).await,
+        }
+    }
+    let response = response.expect("TLS server should accept a trusted localhost certificate");
+    assert_eq!(response.status(), reqwest::StatusCode::OK);
+    assert_eq!(
+        response.json::<serde_json::Value>().await.unwrap(),
+        json!({"schema_version": "1", "status": "ok"})
+    );
+    server.abort();
+    let _ = server.await;
+    std::fs::remove_file(cert_path).unwrap();
+    std::fs::remove_file(key_path).unwrap();
+    std::fs::remove_dir(directory).unwrap();
 }
 
 #[tokio::test]

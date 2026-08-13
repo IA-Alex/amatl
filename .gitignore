@@ -1,8 +1,8 @@
 /target/
 /amatl.toml
 /amatl.sqlite3*
-/*.cdx.json
-/*.cdx.xml
+**/*.cdx.json
+**/*.cdx.xml
 /.env
 /.claude/
 *.pem

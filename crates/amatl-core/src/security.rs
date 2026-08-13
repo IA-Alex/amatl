@@ -35,10 +35,19 @@ pub fn validate_resolved_addresses(addresses: &[IpAddr]) -> Result<(), &'static 
 
 fn blocked_hostname(host: &str) -> bool {
     let host = host.trim_end_matches('.').to_ascii_lowercase();
-    host == "localhost"
-        || [".localhost", ".local", ".internal", ".lan", ".home"]
-            .iter()
-            .any(|suffix| host.ends_with(suffix))
+    !host.contains('.')
+        || host == "localhost"
+        || [
+            ".localhost",
+            ".local",
+            ".localdomain",
+            ".internal",
+            ".intranet",
+            ".lan",
+            ".home",
+        ]
+        .iter()
+        .any(|suffix| host.ends_with(suffix))
 }
 
 pub fn is_public_ip(address: IpAddr) -> bool {
@@ -86,6 +95,9 @@ mod tests {
         assert!(validate_search_url("https://u:p@example.com").is_err());
         assert!(validate_search_url("http://localhost/admin").is_err());
         assert!(validate_search_url("http://service.internal/admin").is_err());
+        assert!(validate_search_url("http://router/admin").is_err());
+        assert!(validate_search_url("http://service.localdomain/admin").is_err());
+        assert!(validate_search_url("http://service.intranet/admin").is_err());
     }
 
     #[test]

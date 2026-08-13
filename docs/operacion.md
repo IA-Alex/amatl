@@ -43,12 +43,32 @@ una operación/frontera fallida. `degradation` conserva operación con menor
 capacidad. Deep puede producir documentos `superficial` sin extracción o ningún
 documento para una URL bloqueada sin invalidar Search.
 
+## Canario de provider real
+
+El canario ejecuta exactamente un provider y falla antes de acceder a la red si
+el nombre no está habilitado, la ficha de gobernanza no está aprobada/vigente o
+falta la variable de credencial declarada. DuckDuckGo HTML sigue bloqueado. No
+uses consultas sensibles: el resultado JSON se conserva en el log del operador.
+
+```bash
+amatl --config-file amatl.toml \
+  provider-canary brave "rust programming language" --json
+```
+
+En GitHub, el workflow manual `provider-canary` usa el environment homónimo para
+aprobación humana. Requiere el secreto `AMATL_CANARY_CONFIG` con el TOML completo
+ya aprobado y `BRAVE_API_KEY` o `MOJEEK_API_KEY`; nunca se ejecuta en `push` ni
+en pull requests.
+
 ## SQLite y caché
 
 Con `persistence.enabled = false`, Search y Deep funcionan sin persistencia;
-telemetría vive en memoria y reinicia en Bootstrap. Habilitar caché/telemetría
-persistente exige habilitar SQLite. Si la base falla al abrir,
-`AmatlService` continúa sin storage. `doctor` revela la diferencia.
+telemetría se comparte durante toda la vida del proceso y reinicia en Bootstrap
+solo al reiniciarlo. Habilitar caché/telemetría persistente exige habilitar
+SQLite. Si la base falla al abrir, `AmatlService` continúa sin storage, emite un
+`warning` operativo y añade `storage_unavailable` a las degradaciones de Search
+y Deep; si hubo cuarentena, el mensaje incluye su ruta. `doctor` también revela
+la diferencia.
 
 ```bash
 amatl cache

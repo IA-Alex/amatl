@@ -5,6 +5,7 @@ use reqwest::header::{HeaderMap, HeaderName, HeaderValue, LOCATION};
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 use std::net::{IpAddr, SocketAddr};
+use std::sync::{Arc, Mutex};
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 use thiserror::Error;
 use url::Url;
@@ -78,19 +79,24 @@ impl DnsResolver for SystemDnsResolver {
 #[derive(Clone)]
 pub struct SafeFetcher<R = SystemDnsResolver> {
     resolver: R,
+    clients: Arc<Mutex<BTreeMap<String, reqwest::Client>>>,
 }
 
 impl Default for SafeFetcher<SystemDnsResolver> {
     fn default() -> Self {
         Self {
             resolver: SystemDnsResolver,
+            clients: Arc::new(Mutex::new(BTreeMap::new())),
         }
     }
 }
 
 impl<R: DnsResolver> SafeFetcher<R> {
     pub fn new(resolver: R) -> Self {
-        Self { resolver }
+        Self {
+            resolver,
+            clients: Arc::new(Mutex::new(BTreeMap::new())),
+        }
     }
 
     pub async fn fetch(&self, request: FetchRequest) -> Result<FetchResult, FetchError> {
@@ -111,10 +117,11 @@ impl<R: DnsResolver> SafeFetcher<R> {
                 .map_err(|_| FetchError::Timeout)??;
             let ips: Vec<IpAddr> = addresses.iter().map(|value| value.ip()).collect();
             validate_resolved_addresses(&ips).map_err(|_| FetchError::AddressBlocked)?;
+            let client = self.client_for(host, &addresses)?;
 
             let response = tokio::time::timeout_at(
                 deadline,
-                execute_pinned(&current, &addresses, &request.headers, request.max_bytes),
+                execute_pinned(&client, &current, &request.headers, request.max_bytes),
             )
             .await
             .map_err(|_| FetchError::Timeout)??;
@@ -141,6 +148,42 @@ impl<R: DnsResolver> SafeFetcher<R> {
             });
         }
     }
+
+    fn client_for(
+        &self,
+        host: &str,
+        addresses: &[SocketAddr],
+    ) -> Result<reqwest::Client, FetchError> {
+        let mut sorted_addresses = addresses.to_vec();
+        sorted_addresses.sort_unstable();
+        sorted_addresses.dedup();
+        let key = format!("{host}|{sorted_addresses:?}");
+        if let Some(client) = self
+            .clients
+            .lock()
+            .unwrap_or_else(|error| error.into_inner())
+            .get(&key)
+            .cloned()
+        {
+            return Ok(client);
+        }
+        let client = reqwest::Client::builder()
+            .redirect(reqwest::redirect::Policy::none())
+            .no_proxy()
+            .referer(false)
+            .resolve_to_addrs(host, &sorted_addresses)
+            .build()
+            .map_err(|_| FetchError::Network)?;
+        let mut clients = self
+            .clients
+            .lock()
+            .unwrap_or_else(|error| error.into_inner());
+        if clients.len() >= 64 {
+            clients.clear();
+        }
+        clients.insert(key, client.clone());
+        Ok(client)
+    }
 }
 
 #[async_trait]
@@ -159,19 +202,11 @@ struct RawResponse {
 }
 
 async fn execute_pinned(
+    client: &reqwest::Client,
     url: &Url,
-    addresses: &[SocketAddr],
     allowed_headers: &BTreeMap<String, String>,
     max_bytes: u64,
 ) -> Result<RawResponse, FetchError> {
-    let host = url.host_str().ok_or(FetchError::Network)?;
-    let client = reqwest::Client::builder()
-        .redirect(reqwest::redirect::Policy::none())
-        .no_proxy()
-        .referer(false)
-        .resolve_to_addrs(host, addresses)
-        .build()
-        .map_err(|_| FetchError::Network)?;
     let mut headers = HeaderMap::new();
     for (name, value) in allowed_headers {
         headers.insert(
@@ -219,7 +254,13 @@ async fn execute_pinned(
 }
 
 fn validate_headers(headers: &BTreeMap<String, String>) -> Result<(), FetchError> {
-    const ALLOWED: [&str; 3] = ["accept", "accept-language", "user-agent"];
+    const ALLOWED: [&str; 5] = [
+        "accept",
+        "accept-language",
+        "if-modified-since",
+        "if-none-match",
+        "user-agent",
+    ];
     if headers
         .keys()
         .all(|name| ALLOWED.contains(&name.to_ascii_lowercase().as_str()))
@@ -275,6 +316,27 @@ fn now_rfc3339() -> String {
 }
 
 #[cfg(test)]
+mod client_cache_tests {
+    use super::*;
+
+    #[test]
+    fn reuses_pinned_client_for_the_same_host_and_dns_answer() {
+        let fetcher = SafeFetcher::default();
+        let addresses = ["93.184.216.34:443".parse().unwrap()];
+        fetcher.client_for("example.com", &addresses).unwrap();
+        fetcher.client_for("example.com", &addresses).unwrap();
+        assert_eq!(
+            fetcher
+                .clients
+                .lock()
+                .unwrap_or_else(|error| error.into_inner())
+                .len(),
+            1
+        );
+    }
+}
+
+#[cfg(test)]
 mod tests {
     use super::*;
 
@@ -321,6 +383,18 @@ mod tests {
         let mut headers = BTreeMap::new();
         headers.insert("authorization".into(), "secret".into());
         assert_eq!(validate_headers(&headers), Err(FetchError::HeaderBlocked));
+    }
+
+    #[test]
+    fn permits_only_safe_conditional_revalidation_headers() {
+        let headers = BTreeMap::from([
+            ("if-none-match".into(), "\"content-v1\"".into()),
+            (
+                "if-modified-since".into(),
+                "Wed, 21 Oct 2015 07:28:00 GMT".into(),
+            ),
+        ]);
+        assert_eq!(validate_headers(&headers), Ok(()));
     }
 
     #[test]

@@ -1,7 +1,8 @@
 use amatl_core::{
-    run_builtin_benchmark, AmatlService, Config, DocumentCache, DocumentCachePolicy,
-    InMemoryTelemetry, ProviderSearchCache, ProviderSearchCachePolicy, ProviderSurfaceStatus,
-    SearchResponse, ServiceSurface, SqliteStorage,
+    run_builtin_benchmark, run_operational_benchmark, validate_provider_canary, AmatlService,
+    Config, DocumentCache, DocumentCachePolicy, InMemoryTelemetry, ProviderSearchCache,
+    ProviderSearchCachePolicy, ProviderSurfaceStatus, SearchResponse, ServiceSurface,
+    SqliteStorage,
 };
 use anyhow::Context;
 use clap::{Parser, Subcommand};
@@ -127,6 +128,12 @@ enum Command {
         mock: bool,
     },
     Providers,
+    ProviderCanary {
+        provider: String,
+        query: String,
+        #[arg(long)]
+        json: bool,
+    },
     Config,
     Cache {
         #[arg(long)]
@@ -137,6 +144,10 @@ enum Command {
         component: String,
         #[arg(long)]
         json: bool,
+        #[arg(long, default_value_t = 64)]
+        iterations: usize,
+        #[arg(long, default_value_t = 8)]
+        concurrency: usize,
     },
     Serve {
         #[arg(long, hide = true)]
@@ -168,6 +179,11 @@ async fn main() -> anyhow::Result<()> {
             print_providers(&config).await?;
             Ok(())
         }
+        Command::ProviderCanary {
+            provider,
+            query,
+            json,
+        } => provider_canary(provider, query, json, &config).await,
         Command::Config => {
             println!("config_file = {}", cli.config_file.display());
             println!("providers.enabled = {:?}", config.providers.enabled);
@@ -205,7 +221,12 @@ async fn main() -> anyhow::Result<()> {
             doctor_server(&config);
             Ok(())
         }
-        Command::Benchmark { component, json } => benchmark_command(&component, json, &config),
+        Command::Benchmark {
+            component,
+            json,
+            iterations,
+            concurrency,
+        } => benchmark_command(&component, json, iterations, concurrency, &config).await,
         Command::Serve { mock } => {
             amatl_server::serve(AmatlService::new(config, mock).await).await?;
             Ok(())
@@ -217,6 +238,27 @@ async fn main() -> anyhow::Result<()> {
             Ok(())
         }
     }
+}
+
+async fn provider_canary(
+    provider: String,
+    query: String,
+    json: bool,
+    config: &Config,
+) -> anyhow::Result<()> {
+    validate_provider_canary(config, &provider)?;
+    let mut isolated = config.clone();
+    isolated.providers.enabled = vec![provider.clone()];
+    let execution = AmatlService::new(isolated, false)
+        .await
+        .search(query, ServiceSurface::Cli)
+        .await?;
+    if execution.response.status == amatl_core::SearchStatus::Failure
+        || !execution.response.providers_used.contains(&provider)
+    {
+        anyhow::bail!("provider canary failed without a usable {provider} response");
+    }
+    print_search(execution.response, json)
 }
 
 fn init_logging() {
@@ -326,25 +368,72 @@ async fn deep(raw_query: String, json: bool, mock: bool, config: &Config) -> any
     Ok(())
 }
 
-fn benchmark_command(component: &str, json: bool, config: &Config) -> anyhow::Result<()> {
-    if component != "ranking-v2" {
-        anyhow::bail!("unsupported benchmark component: {component}");
-    }
-    let report = run_builtin_benchmark(&config.deep.ranking_v2.policy);
-    if json {
-        println!("{}", serde_json::to_string_pretty(&report)?);
-    } else {
-        println!("benchmark: {}", report.benchmark_id);
-        println!("queries: {}", report.query_count);
-        println!("baseline_ndcg@3: {:.6}", report.baseline_ndcg_at_3);
-        println!("candidate_ndcg@3: {:.6}", report.candidate_ndcg_at_3);
-        println!("ndcg_delta: {:.6}", report.ndcg_delta);
-        println!("baseline_mrr: {:.6}", report.baseline_mrr);
-        println!("candidate_mrr: {:.6}", report.candidate_mrr);
-        println!("passed: {}", report.passed);
-    }
-    if !report.passed {
-        anyhow::bail!("Ranking v2 did not pass its quality gate");
+async fn benchmark_command(
+    component: &str,
+    json: bool,
+    iterations: usize,
+    concurrency: usize,
+    config: &Config,
+) -> anyhow::Result<()> {
+    match component {
+        "ranking-v2" => {
+            let report = run_builtin_benchmark(&config.deep.ranking_v2.policy);
+            if json {
+                println!("{}", serde_json::to_string_pretty(&report)?);
+            } else {
+                println!("benchmark: {}", report.benchmark_id);
+                println!("queries: {}", report.query_count);
+                println!("baseline_ndcg@3: {:.6}", report.baseline_ndcg_at_3);
+                println!("candidate_ndcg@3: {:.6}", report.candidate_ndcg_at_3);
+                println!("ndcg_delta: {:.6}", report.ndcg_delta);
+                println!("baseline_mrr: {:.6}", report.baseline_mrr);
+                println!("candidate_mrr: {:.6}", report.candidate_mrr);
+                println!("passed: {}", report.passed);
+            }
+            if !report.passed {
+                anyhow::bail!("Ranking v2 did not pass its quality gate");
+            }
+        }
+        "operational" => {
+            let report = run_operational_benchmark(iterations, concurrency).await?;
+            if json {
+                println!("{}", serde_json::to_string_pretty(&report)?);
+            } else {
+                println!(
+                    "operational: {} iterations, concurrency {}",
+                    report.iterations, report.concurrency
+                );
+                println!(
+                    "search latency ms p50={:.3} p95={:.3} p99={:.3}",
+                    report.search.latency.p50_ms,
+                    report.search.latency.p95_ms,
+                    report.search.latency.p99_ms
+                );
+                println!(
+                    "search throughput={:.2} req/s partial_rate={:.3} failure_rate={:.3}",
+                    report.search.throughput_requests_per_second,
+                    report.search.partial_rate,
+                    report.search.failure_rate
+                );
+                println!(
+                    "deep latency ms p50={:.3} p95={:.3} p99={:.3}",
+                    report.deep_latency.p50_ms,
+                    report.deep_latency.p95_ms,
+                    report.deep_latency.p99_ms
+                );
+                println!(
+                    "sqlite cold p95={:.3} ms warm p95={:.3} ms hit_rate={:.3} write_success={:.3}",
+                    report.sqlite.cold_write_latency.p95_ms,
+                    report.sqlite.warm_read_latency.p95_ms,
+                    report.sqlite.warm_hit_rate,
+                    report.sqlite.write_success_rate
+                );
+                if let Some(bytes) = report.peak_rss_bytes {
+                    println!("peak_rss_bytes={bytes}");
+                }
+            }
+        }
+        _ => anyhow::bail!("unsupported benchmark component: {component}"),
     }
     Ok(())
 }
