@@ -59,10 +59,10 @@ representative at an online or offline event.
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported through the private enforcement channel. **Pending owner definition:**
-the repository owner must publish that channel before accepting public
-contributions. All complaints will be reviewed and investigated promptly and
-fairly.
+reported privately to the repository owner at
+[`alexishernande87@hotmail.com`](mailto:alexishernande87@hotmail.com?subject=AMATL%20Code%20of%20Conduct%20report)
+with subject `AMATL Code of Conduct report`. All complaints will be reviewed and
+investigated promptly and fairly by `@IA-Alex`.
 
 All community leaders are obligated to respect the privacy and security of the
 reporter of any incident.

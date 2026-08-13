@@ -62,6 +62,47 @@ impl TrafilaturaExtractor {
             max_output_bytes,
         }
     }
+
+    pub async fn probe_version(&self) -> Result<String, ExtractError> {
+        let operation = async {
+            let mut child = Command::new(&self.executable)
+                .arg("--version")
+                .stdin(Stdio::null())
+                .stdout(Stdio::piped())
+                .stderr(Stdio::null())
+                .kill_on_drop(true)
+                .spawn()
+                .map_err(|error| {
+                    if error.kind() == std::io::ErrorKind::NotFound {
+                        ExtractError::Unavailable
+                    } else {
+                        ExtractError::Failed
+                    }
+                })?;
+            let stdout = child.stdout.take().ok_or(ExtractError::Failed)?;
+            let mut limited = stdout.take(257);
+            let mut output = Vec::new();
+            limited
+                .read_to_end(&mut output)
+                .await
+                .map_err(|_| ExtractError::Failed)?;
+            let status = child.wait().await.map_err(|_| ExtractError::Failed)?;
+            if !status.success() || output.len() > 256 {
+                return Err(ExtractError::InvalidOutput);
+            }
+            let version = String::from_utf8(output)
+                .map_err(|_| ExtractError::InvalidOutput)?
+                .trim()
+                .to_owned();
+            if version.is_empty() || version.chars().any(char::is_control) {
+                return Err(ExtractError::InvalidOutput);
+            }
+            Ok(version)
+        };
+        tokio::time::timeout(Duration::from_millis(self.timeout_ms.min(2_000)), operation)
+            .await
+            .map_err(|_| ExtractError::Timeout)?
+    }
 }
 
 #[async_trait]
@@ -76,7 +117,7 @@ impl Extractor for TrafilaturaExtractor {
     async fn extract(&self, html: &[u8]) -> Result<ExtractionResult, ExtractError> {
         let operation = async {
             let mut child = Command::new(&self.executable)
-                .args(["--json", "--no-comments", "--no-tables"])
+                .args(["--json", "--with-metadata", "--no-comments", "--no-tables"])
                 .stdin(Stdio::piped())
                 .stdout(Stdio::piped())
                 .stderr(Stdio::null())
@@ -93,7 +134,7 @@ impl Extractor for TrafilaturaExtractor {
             let stdout = child.stdout.take().ok_or(ExtractError::Failed)?;
             let mut limited = stdout.take(self.max_output_bytes.saturating_add(1));
             let mut output = Vec::new();
-            let write = async {
+            let write = async move {
                 stdin
                     .write_all(html)
                     .await
@@ -140,13 +181,39 @@ impl Extractor for TrafilaturaExtractor {
                 .and_then(|value| value.as_str())
                 .map(str::to_owned)
         };
+        let metadata = [
+            "hostname",
+            "language",
+            "license",
+            "pagetype",
+            "source",
+            "source-hostname",
+            "excerpt",
+            "categories",
+            "tags",
+        ]
+        .into_iter()
+        .filter_map(|name| {
+            value
+                .get(name)
+                .and_then(|value| value.as_str())
+                .map(str::trim)
+                .filter(|value| !value.is_empty())
+                .map(|value| {
+                    (
+                        format!("trafilatura_{name}"),
+                        value.chars().take(512).collect(),
+                    )
+                })
+        })
+        .collect();
         Ok(ExtractionResult {
             content,
             format: "text".into(),
             title: string("title"),
             author: string("author"),
             published_at: string("date"),
-            metadata: BTreeMap::new(),
+            metadata,
             extractor_used: self.version.clone(),
             status: "success".into(),
         })
@@ -210,5 +277,48 @@ mod tests {
         let _ = std::fs::remove_file(path);
         assert_eq!(result, Err(ExtractError::Timeout));
         assert!(started.elapsed() < Duration::from_secs(1));
+    }
+
+    #[cfg(unix)]
+    #[tokio::test]
+    async fn fixed_cli_contract_requests_metadata_without_network_arguments() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-recording-extractor-{}-{}",
+            std::process::id(),
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ));
+        std::fs::write(
+            &path,
+            br###"#!/bin/sh
+test "$1" = "--json"
+test "$2" = "--with-metadata"
+test "$3" = "--no-comments"
+test "$4" = "--no-tables"
+test "$#" = "4"
+cat >/dev/null
+printf '%s' '{"text":"main text","title":"Title","hostname":"example.com"}'
+"###,
+        )
+        .unwrap();
+        std::fs::set_permissions(&path, std::fs::Permissions::from_mode(0o700)).unwrap();
+        let extractor = TrafilaturaExtractor::new(
+            path.to_string_lossy().into_owned(),
+            "test".into(),
+            500,
+            4096,
+        );
+        let result = extractor.extract(b"<main>main text</main>").await.unwrap();
+        let _ = std::fs::remove_file(path);
+        assert_eq!(result.content, "main text");
+        assert_eq!(
+            result
+                .metadata
+                .get("trafilatura_hostname")
+                .map(String::as_str),
+            Some("example.com")
+        );
     }
 }

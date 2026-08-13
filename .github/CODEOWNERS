@@ -1,2 +1,13 @@
-# Pending owner definition: add verified Git hosting handles before enabling
-# required CODEOWNERS reviews. No owner identity is asserted by this repository.
+# Repository owner and default reviewer.
+* @IA-Alex
+
+# Security-sensitive and release surfaces require the repository owner.
+/.github/ @IA-Alex
+/SECURITY.md @IA-Alex
+/docs/security/ @IA-Alex
+/crates/amatl-core/src/security.rs @IA-Alex
+/crates/amatl-core/src/fetch.rs @IA-Alex
+/crates/amatl-core/src/render.rs @IA-Alex
+/crates/amatl-core/src/extract.rs @IA-Alex
+/packaging/amatl-chromium-sandbox @IA-Alex
+/.github/workflows/chromium-isolation.yml @IA-Alex

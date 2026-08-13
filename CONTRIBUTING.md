@@ -22,7 +22,7 @@ Ordinary development must not modify `plan_amatl.md` or
 include the violated/changed invariant, alternatives, compatibility and
 migration impact, affected Rust/JSON/SQLite/CLI/log names, fixtures, and contract
 tests. It may reach the golden template only through a dedicated change with
-explicit owner approval. **The approving owner is pending definition.**
+explicit approval from the repository owner, `@IA-Alex`.
 
 ## Definition of done
 
@@ -61,7 +61,11 @@ cargo cyclonedx
 ```
 
 `contract-gate` must be configured as a required check in branch protection.
-That setting is external to this repository and remains pending owner action.
+GitHub currently rejects branch protection for this private user-owned
+repository unless its plan is upgraded or the repository becomes public. Until
+one of those owner decisions is made, contributors must treat a green
+`contract-gate` as mandatory review evidence; this is not equivalent to an
+enforced hosting control.
 
 ## Licensing
 

@@ -3,8 +3,8 @@
 ## Supported versions
 
 AMATL has not published a SemVer release. Security fixes are therefore made
-only on the current `main` branch. This table must be updated when the first
-release is published.
+only on the current `main` branch. This table is updated when the first release
+is published.
 
 | Version | Supported |
 |---|---|
@@ -14,25 +14,45 @@ release is published.
 ## Reporting a vulnerability
 
 Do not open a public issue, discussion, or pull request for a suspected
-vulnerability. **Pending owner definition:** the repository owner must publish a
-private security-reporting channel before enabling public deployment or public
-contributions. No PGP key or email address is asserted by this repository.
+vulnerability. Email
+[`alexishernande87@hotmail.com`](mailto:alexishernande87@hotmail.com?subject=AMATL%20security%20report)
+with subject `AMATL security report`. This address is the verified owner contact
+used by the repository history; no PGP key is currently published. The
+repository owner and security maintainer is
+[`@IA-Alex`](https://github.com/IA-Alex), as recorded in `.github/CODEOWNERS`.
 
-Until that channel exists, coordinated private reporting is operationally
-blocked. Do not send secrets or exploit details to an unverified address.
+GitHub's Security Advisory and Private Vulnerability Reporting endpoints are
+not available for the repository's current private-plan configuration. When
+GitHub enables them, they become an additional channel without replacing this
+verified email. Do not send secrets or exploit details through ordinary issues
+or to any other address.
 
 Include the affected revision, surface (`CLI`, HTTP API, MCP, UI, provider, or
 Deep), reproduction steps, impact, relevant logs with secrets removed, and any
 suggested mitigation.
 
-## Response and remediation
+## Response and remediation SLA
 
-Acknowledgement and remediation service levels are **pending owner definition**.
-The owner must publish severity-based targets, a responsible role, and an
-escalation path; the project does not claim an SLA it cannot currently meet.
-Once a private report is accepted, maintainers should minimize disclosure,
-confirm scope, agree on a disclosure date with the reporter, prepare tests and
-a fix, and publish a security advisory when users can act on it.
+`@IA-Alex` owns acknowledgement, triage, remediation and coordinated disclosure.
+Targets start when a complete report reaches the private reporting channel:
+
+| Severity | Acknowledge | Triage | Mitigation or remediation target |
+|---|---:|---:|---:|
+| Critical | 1 business day | 2 business days | mitigation in 7 calendar days; remediation in 14 |
+| High | 2 business days | 5 business days | remediation in 30 calendar days |
+| Medium | 5 business days | 10 business days | remediation in 60 calendar days |
+| Low | 10 business days | 20 business days | next planned release or 90 calendar days |
+
+Severity follows impact and exploitability, using CVSS as supporting evidence
+rather than an automatic decision. If a target cannot be met, the owner records
+the reason, compensating control and revised date in the same private thread.
+The reporter may escalate an overdue report by adding a new comment that
+mentions `@IA-Alex` or replying with `AMATL security escalation`; disclosure
+dates remain coordinated privately.
+
+Maintainers minimize disclosure, confirm scope, agree on a disclosure date with
+the reporter, prepare regression tests and a fix, and publish a GitHub Security
+Advisory when users can act on it.
 
 ## Scope
 
@@ -48,8 +68,8 @@ Out of scope as implementation claims, but useful as design reports:
 
 - third-party provider services, their availability, data, and infrastructure;
 - social engineering or denial of service against third-party providers;
-- Chromium rendering, because the renderer remains unavailable until verifiable
-  CDP isolation and resource controls exist (`render.rs`);
+- Chromium rendering when disabled or unavailable; reports against an enabled
+  renderer and its isolation boundary are in scope;
 - infrastructure not maintained in this repository.
 
 Test only systems and accounts you own or have explicit permission to test. Do

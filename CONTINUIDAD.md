@@ -206,17 +206,18 @@ historial.
 
 No son defectos del core y no deben resolverse inventando datos:
 
-1. Definir propietarios verificables, `CODEOWNERS`, canal privado de seguridad,
-   tiempos de respuesta y cumplimiento, y URL pública canónica.
-2. Marcar `contract-gate` como required check en la protección de `main`.
+1. La identidad `@IA-Alex`, `CODEOWNERS`, canal privado, correo de escalación,
+   SLA y URL canónica ya están definidos; mantenerlos vigentes.
+2. Marcar `contract-gate` como required check cuando GitHub habilite protección
+   para este repositorio privado (requiere plan superior o hacerlo público).
 3. Completar aprobación, ToS, cuotas, costes, región y credenciales de cada
    provider antes de habilitar red real.
 4. Configurar el environment `provider-canary`, sus revisores y secretos; luego
    capturar latencia/errores reales sin incorporar credenciales al repositorio.
-5. Configurar retención de artefactos y ejecutar el workflow de RC antes de
-   crear un tag; la publicación externa requiere autoridad del propietario.
-6. Repetir carga en el host objetivo y diseñar aislamiento CDP antes de medir o
-   habilitar Renderer.
+5. Ejecutar el workflow de RC, validar musl/.deb/.rpm/Arch y sólo después crear
+   el tag anotado; la publicación externa requiere autoridad del propietario.
+6. El aislamiento real de Chromium está probado sin red; implementar y revisar
+   el bridge CDP antes de habilitar Renderer en core.
 
 ## Protocolo de reanudación
 

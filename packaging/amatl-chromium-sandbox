@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -ne 3 ]]; then
+  echo "usage: $0 INPUT_HTML OUTPUT_DOM TIMEOUT_SECONDS" >&2
+  exit 2
+fi
+
+input_html=$(realpath "$1")
+output_dom=$2
+timeout_seconds=$3
+[[ -f "$input_html" ]]
+[[ "$timeout_seconds" =~ ^[1-9][0-9]*$ ]]
+
+for tool in bwrap systemd-run; do
+  command -v "$tool" >/dev/null || {
+    echo "required Chromium isolation tool is unavailable: $tool" >&2
+    exit 69
+  }
+done
+
+chromium=${AMATL_CHROMIUM_BIN:-}
+if [[ -z "$chromium" ]]; then
+  for candidate in chromium chromium-browser google-chrome; do
+    if command -v "$candidate" >/dev/null; then
+      chromium=$(command -v "$candidate")
+      break
+    fi
+  done
+fi
+[[ -n "$chromium" && -x "$chromium" ]] || {
+  echo "Chromium executable is unavailable" >&2
+  exit 69
+}
+chromium=$(realpath "$chromium")
+
+case "$chromium" in
+  /usr/*|/opt/*) ;;
+  *) echo "Chromium must be installed under /usr or /opt" >&2; exit 78 ;;
+esac
+chromium_mounts=()
+if [[ "$chromium" == /opt/* ]]; then
+  chromium_mounts=(--ro-bind /opt /opt)
+fi
+
+memory_mb=${AMATL_CHROMIUM_MEMORY_MB:-512}
+tasks_max=${AMATL_CHROMIUM_TASKS_MAX:-512}
+max_dom_bytes=${AMATL_CHROMIUM_MAX_DOM_BYTES:-8388608}
+[[ "$memory_mb" =~ ^[1-9][0-9]*$ && "$memory_mb" -ge 128 ]]
+[[ "$tasks_max" =~ ^[1-9][0-9]*$ && "$tasks_max" -ge 64 ]]
+[[ "$max_dom_bytes" =~ ^[1-9][0-9]*$ ]]
+
+sandbox=$(mktemp -d "${TMPDIR:-/tmp}/amatl-chromium-XXXXXXXX")
+trap 'rm -rf -- "$sandbox"' EXIT
+mkdir -m 700 "$sandbox/home" "$sandbox/profile" "$sandbox/runtime"
+install -m 0600 "$input_html" "$sandbox/input.html"
+unit="amatl-render-${$}-$(date +%s%N)"
+
+set +e
+systemd-run --user --wait --collect --pipe --quiet --unit "$unit" \
+  -p "MemoryMax=${memory_mb}M" \
+  -p "RuntimeMaxSec=${timeout_seconds}s" \
+  -p "TasksMax=$tasks_max" \
+  -- bwrap \
+    --die-with-parent --new-session --unshare-all \
+    --tmpfs / --ro-bind /usr /usr --symlink usr/bin /bin \
+    --symlink usr/lib /lib --symlink usr/lib64 /lib64 \
+    "${chromium_mounts[@]}" \
+    --proc /proc --dev /dev --tmpfs /dev/shm \
+    --bind "$sandbox" /tmp \
+    --setenv HOME /tmp/home --setenv TMPDIR /tmp \
+    --setenv XDG_RUNTIME_DIR /tmp/runtime \
+    --setenv XDG_CONFIG_HOME /tmp/home --setenv XDG_CACHE_HOME /tmp/home \
+    --chdir / \
+    -- "$chromium" \
+      --headless=new --disable-gpu --disable-background-networking \
+      --disable-component-update --disable-default-apps --disable-sync \
+      --metrics-recording-only --no-first-run --no-default-browser-check \
+      --user-data-dir=/tmp/profile --dump-dom file:///tmp/input.html \
+      >"$sandbox/dom.html" 2>"$sandbox/chromium.stderr"
+status=$?
+set -e
+
+if [[ $status -ne 0 ]]; then
+  echo "isolated Chromium failed" >&2
+  exit 70
+fi
+size=$(stat --format=%s "$sandbox/dom.html")
+if [[ "$size" -eq 0 || "$size" -gt "$max_dom_bytes" ]]; then
+  echo "isolated Chromium returned an invalid DOM size" >&2
+  exit 70
+fi
+install -m 0600 "$sandbox/dom.html" "$output_dom"

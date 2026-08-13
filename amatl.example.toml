@@ -55,7 +55,7 @@ timeout_ms = 20000
 
 [deep.extractor]
 executable = "trafilatura"
-version = "trafilatura-cli-v1"
+version = "trafilatura-2.2.0-cli-json-v1"
 timeout_ms = 8000
 max_output_bytes = 4194304
 

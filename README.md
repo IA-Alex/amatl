@@ -7,8 +7,9 @@ es `buscar → revisar → abrir`.
 
 No es un chatbot, generador de texto, crawler masivo, dashboard analítico, agente
 autónomo ni sistema dependiente de LLM o de un único provider. Search permanece
-ligero; Deep, Trafilatura, Chromium, SQLite y cachés son opcionales. Chromium
-está actualmente bloqueado hasta disponer de aislamiento verificable.
+ligero; Deep, Trafilatura, Chromium, SQLite y cachés son opcionales. El harness
+de aislamiento de Chromium está verificado por separado; el backend permanece
+desactivado hasta conectarlo sin transferir a Chromium el ownership de red.
 
 ## Invariantes visibles
 
@@ -46,7 +47,7 @@ La distribución objetivo es:
 |---|---|---|
 | Binario Linux musl precompilado | Principal | Candidata verificada en CI; no hay release etiquetado |
 | `cargo install` desde fuente | Alternativa | Disponible desde checkout con `--path`; crates.io no verificado/publicado |
-| `.deb` / `.rpm` / AUR | Integración nativa | Planeada; no hay recetas en el repositorio |
+| `.deb` / `.rpm` / Arch | Integración nativa | El workflow RC produce paquetes verificables; `packaging/PKGBUILD` permite revisión/publicación posterior en AUR |
 
 No uses un enlace o paquete de terceros como release oficial. Desarrollo y
 build actual requieren Rust 1.88 o posterior por el grafo bloqueado; CI usa
@@ -139,6 +140,7 @@ al redirigir; controla detalle con `RUST_LOG`.
 - Ingeniería: [desarrollo](DEVELOPMENT.md), [contribución](CONTRIBUTING.md),
   [contribución en español](docs/contribuir.md),
   [testing](docs/testing.md), [benchmarks](docs/benchmarks.md),
+  [release y paquetes Linux](docs/release.md),
   [ADRs](decisiones_amatl.md) y [changelog](CHANGELOG.md).
 - Seguridad: [política](SECURITY.md), [guía en español](docs/seguridad.md),
   [modelo de amenazas](docs/security/threat-model.md),
@@ -161,6 +163,6 @@ AMATL se ofrece, a elección de cada usuario, bajo
 contribución enviada intencionalmente para incluirse en AMATL se ofrece bajo los
 mismos términos duales, sin condiciones adicionales.
 
-Antes de reportar una vulnerabilidad, lee [SECURITY.md](SECURITY.md). El canal
-privado y los SLA siguen pendientes de definición por el propietario; no
-publiques detalles sensibles en issues.
+Antes de reportar una vulnerabilidad, lee [SECURITY.md](SECURITY.md). Usa GitHub
+Security Advisories o el correo verificado allí; no publiques detalles sensibles
+en issues. `@IA-Alex` mantiene el canal y el SLA por severidad.

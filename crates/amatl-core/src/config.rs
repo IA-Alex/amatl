@@ -543,7 +543,7 @@ impl Default for ExtractorConfig {
     fn default() -> Self {
         Self {
             executable: "trafilatura".into(),
-            version: "trafilatura-cli-v1".into(),
+            version: "trafilatura-2.2.0-cli-json-v1".into(),
             timeout_ms: 8_000,
             max_output_bytes: 4 * 1024 * 1024,
         }

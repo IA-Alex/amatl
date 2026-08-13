@@ -2,7 +2,7 @@ use amatl_core::{
     parse_query, run_builtin_benchmark, run_operational_benchmark, validate_provider_canary,
     AmatlService, Config, DocumentCache, DocumentCachePolicy, InMemoryTelemetry, LocalIngestor,
     ProviderSearchCache, ProviderSearchCachePolicy, ProviderSurfaceStatus, SearchResponse,
-    ServiceSurface, SqliteStorage,
+    ServiceSurface, SqliteStorage, TrafilaturaExtractor,
 };
 use anyhow::Context;
 use clap::{Parser, Subcommand};
@@ -402,6 +402,7 @@ async fn main() -> anyhow::Result<()> {
             print_data_policy(&config);
             print_providers(&config).await?;
             doctor_persistence(&config).await;
+            doctor_extractor(&config).await;
             doctor_server(&config);
             Ok(())
         }
@@ -518,6 +519,19 @@ fn doctor_server(config: &Config) {
             "disabled"
         }
     );
+}
+
+async fn doctor_extractor(config: &Config) {
+    let extractor = TrafilaturaExtractor::new(
+        config.deep.extractor.executable.clone(),
+        config.deep.extractor.version.clone(),
+        config.deep.extractor.timeout_ms,
+        config.deep.extractor.max_output_bytes,
+    );
+    match extractor.probe_version().await {
+        Ok(version) => println!("extractor: ready ({version})"),
+        Err(error) => println!("extractor: unavailable ({error})"),
+    }
 }
 
 async fn search(raw_query: String, json: bool, mock: bool, config: &Config) -> anyhow::Result<()> {

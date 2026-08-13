@@ -1,0 +1,32 @@
+# Maintainer: IA-Alex <IA-Alex@users.noreply.github.com>
+pkgname=amatl
+pkgver=0.1.0_rc.1
+pkgrel=1
+pkgdesc='Generalist multi-source search'
+arch=('x86_64')
+url='https://github.com/IA-Alex/amatl'
+license=('MIT' 'Apache-2.0')
+depends=('glibc')
+source=("amatl-${pkgver/_rc./-rc.}.tar.gz::${url}/archive/refs/tags/v${pkgver/_rc./-rc.}.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver/_rc./-rc.}"
+  cargo build --locked --release -p amatl-cli
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver/_rc./-rc.}"
+  cargo test --locked --workspace
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver/_rc./-rc.}"
+  install -Dpm0755 target/release/amatl "${pkgdir}/usr/bin/amatl"
+  install -Dpm0644 packaging/amatl.1 "${pkgdir}/usr/share/man/man1/amatl.1"
+  install -Dpm0755 packaging/amatl-chromium-sandbox \
+    "${pkgdir}/usr/libexec/amatl/amatl-chromium-sandbox"
+  install -Dpm0644 README.md "${pkgdir}/usr/share/doc/amatl/README.md"
+  install -Dpm0644 LICENSE-MIT "${pkgdir}/usr/share/licenses/amatl/LICENSE-MIT"
+  install -Dpm0644 LICENSE-APACHE "${pkgdir}/usr/share/licenses/amatl/LICENSE-APACHE"
+}

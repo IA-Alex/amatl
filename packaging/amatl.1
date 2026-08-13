@@ -1,0 +1,34 @@
+.TH AMATL 1 "August 2026" "amatl 0.1.0-rc.1" "User Commands"
+.SH NAME
+amatl \- generalist multi-source search
+.SH SYNOPSIS
+.B amatl
+[\fB--config-file\fR \fIPATH\fR] \fICOMMAND\fR [\fIOPTIONS\fR]
+.SH DESCRIPTION
+AMATL searches multiple governed sources through one Rust core. Search remains
+lightweight; Deep enrichment, persistence, Trafilatura and Chromium are optional.
+.SH COMMANDS
+.TP
+.B search
+Run the lightweight multi-provider search pipeline.
+.TP
+.B deep
+Run Search followed by bounded document enrichment and evidence extraction.
+.TP
+.B ingest
+Extract evidence from one explicit local file.
+.TP
+.B providers, config, cache, doctor
+Inspect effective configuration and local capabilities.
+.TP
+.B serve
+Start the loopback UI, REST API and MCP surface.
+.SH FILES
+.TP
+.I amatl.toml
+Optional configuration file. Secrets must be supplied through environment variables.
+.SH SECURITY
+The default server binds to loopback and requires a bearer token. A non-loopback
+bind requires authentication and TLS. See SECURITY.md and the project documentation.
+.SH SEE ALSO
+Project documentation: https://github.com/IA-Alex/amatl

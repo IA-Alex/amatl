@@ -8,8 +8,10 @@ como un job explícito con Rust 1.88. La línea base local fue verificada con
 `rustc/cargo 1.97.1`.
 
 Herramientas requeridas: `cargo-audit`, `cargo-deny` y `cargo-cyclonedx`.
-Trafilatura es opcional y sólo mejora Deep. Chromium no debe instalarse para
-AMATL: el Renderer está bloqueado hasta que exista backend CDP aislado.
+Trafilatura 2.2.0 es opcional y sólo mejora Deep; CI valida su CLI real.
+Chromium tampoco es dependencia base: `packaging/amatl-chromium-sandbox` prueba
+el aislamiento Linux sin red, pero el Renderer del core permanece desactivado
+hasta disponer de un bridge CDP que conserve el ownership de `SafeFetcher`.
 
 ## Layout
 
@@ -94,7 +96,9 @@ cargo cyclonedx
 ```
 
 `contract-gate` debe ser required check en la protección de `main`; esa
-configuración externa está pendiente del propietario.
+protección requiere hacer público el repositorio o actualizar el plan actual de
+GitHub. Hasta entonces, el gate verde es obligatorio como evidencia de revisión,
+pero GitHub no lo impone.
 
 ## Benchmarks
 

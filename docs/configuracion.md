@@ -194,7 +194,7 @@ disponibles.
 | Clave | Tipo/default | Rango validado |
 |---|---:|---|
 | `deep.extractor.executable` | string / `trafilatura` | sin validación de contenido; ausencia degrada |
-| `.version` | string / `trafilatura-cli-v1` | sin validación; participa en caché |
+| `.version` | string / `trafilatura-2.2.0-cli-json-v1` | contrato fijado; participa en caché |
 | `.timeout_ms` | u64 / 8000 | >0 |
 | `.max_output_bytes` | u64 / 4194304 | >0 |
 
@@ -202,7 +202,7 @@ disponibles.
 
 | Clave | Tipo/default | Rango validado/estado |
 |---|---:|---|
-| `deep.renderer.enabled` | bool / `false` | aun en true, backend actual queda no disponible |
+| `deep.renderer.enabled` | bool / `false` | backend de core aún no activo; el harness Linux aislado se valida por separado |
 | `.max_browser_calls` | u32 / 2 | >0 |
 | `.timeout_ms` | u64 / 8000 | >0 |
 | `.shutdown_grace_ms` | u64 / 500 | >0 |

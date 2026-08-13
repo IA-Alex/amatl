@@ -26,14 +26,15 @@ flowchart LR
   G -. isolated / deny .-> X[Denied before DNS]
   C -->|optional state| DB[(SQLite)]
   C -->|HTML over stdin| T[Trafilatura process]
-  C -. unavailable until sandboxed .-> R[Chromium/CDP]
+  C -. core bridge disabled .-> R[Isolated Chromium harness / future CDP]
   C -. optional and currently absent .-> L[Local or remote inference backend]
 ```
 
 Each arrow crosses a trust boundary. CLI input is untrusted. The browser and
 HTTP client are untrusted callers. Provider responses and all Internet content
 are hostile. SQLite is local but corruptible. Trafilatura is an external
-process. Chromium is not trusted enough to activate.
+process. Chromium has a separately verified no-network Linux harness, but the
+core bridge is not active.
 
 There is currently no inference backend or LLM dependency. The data policy
 models `disabled`, `local_only`, and `remote_explicit` so a future optional
@@ -60,7 +61,7 @@ but never remote inference.
 | Local filesystem → CLI/core | T/I/D | A hostile, oversized or mislabeled file exhausts parsers, injects active HTML or exposes a local path/content in shared output | Explicit single-file CLI surface; canonical file URI; 20 MiB input and 8 MiB output limits; signature/extension dispatch; UTF-8 validation; HTML drops executable text; JSON validates; no HTTP/MCP route or persistence | `ingest.rs`; `amatl-cli/tests/cli.rs`; `docs/ingestion-local.md` | HTML/JSON parsing has no independent CPU budget; `file:` provenance and JSON output are sensitive; TOCTOU replacement remains detectable only through the content hash |
 | Core → local PDF process | T/E/D | Malicious PDF exploits, blocks or induces disclosure through `pdftotext` | Fixed executable/arguments; PDF bytes only over stdin; bounded stdout, 8 s timeout, kill-on-drop, stderr discarded; process denied before spawn when egress is denied/isolated | `ingest.rs`; ingestion unit tests | No OS sandbox, executable hash pinning or proof that the child lacks network access; isolated deployments should retain host firewall/sandbox and cannot ingest PDF through this path |
 | Core → Trafilatura | T/E | Hostile HTML exploits or controls extractor process | Exact executable and fixed arguments; HTML only through stdin; stdout byte cap, timeout, kill-on-drop, stderr discarded; failure is typed and optional | `extract.rs:43-150`; `extract.rs:173-185`; `tests/deep_phase5.rs:271-285` | No OS sandbox, seccomp, uid separation, network denial, or pinned executable hash; external process compromise remains possible |
-| Core → Chromium | E/D | Remote JavaScript escapes browser or consumes resources | Fail-closed capability: renderer always unavailable even if configured until CDP isolation and limits are implemented | `render.rs:33-67`; `render.rs:74-88` | Rendering functionality is absent; future activation requires a new threat-model review and security tests |
+| Core → Chromium | E/D | Remote JavaScript escapes browser, accesses host network or consumes resources | Core remains fail-closed; separate harness uses bubblewrap user/mount/PID/IPC/UTS/cgroup/network namespaces, read-only runtime, private profile and systemd memory/task/runtime limits | `render.rs`; `packaging/amatl-chromium-sandbox`; `.github/workflows/chromium-isolation.yml`; `docs/security/chromium-isolation.md` | Isolation is verified but not wired into core; a CDP bridge and review are still required before activation |
 | Core → SQLite | T/I/D | Corruption, contention, or cache poisoning changes correctness | SQLite is optional; failures degrade; WAL, NORMAL sync, 5 s busy/acquire timeout, pool 4, header/quick-check quarantine, versioned keys and TTL/LRU quotas | `service.rs:101-112`; `storage.rs:58-118`; `cache.rs:39-99`; `document_cache.rs:24-85`; `storage.rs:581-670` | Database is not encrypted or authenticated; local users with file access can read or modify it |
 | MCP → Deep/Internet | E/D | MCP becomes a general network proxy | MCP route requires bearer token/rate limit; exactly four tools; MCP search/Deep budgets are stricter; fetch routes through the service policy and, when governed, uses the same SafeFetcher with 3 s/256 KiB/two redirects | `service.rs`; `amatl-server/src/mcp.rs`; `amatl-server/src/tests.rs` | Under `standard`, authorized clients can use fetch as a bounded public-network proxy; `isolated` denies it, but cannot prove the MCP client itself is local |
 | All → logs/errors | I/R | Secrets or attacker-controlled text leaks or forges logs | HTTP errors expose fixed codes; provider transport errors are generic; non-TTY logs are structured JSON | `amatl-server/src/lib.rs:517-535`; `providers/http.rs:64-101`; `amatl-cli/src/main.rs:19-98` | There is no automated end-to-end secret-redaction test or durable audit log; debug data governance is operator responsibility |
@@ -74,7 +75,8 @@ but never remote inference.
 - Under `standard`, authorized MCP `fetch` is a bounded public-web proxy by
   design; `isolated` disables it.
 - Trafilatura lacks OS-level isolation.
-- Chromium is excluded from the active capability surface.
+- Chromium is excluded from the active core capability surface; its isolation
+  harness is independently tested.
 - `isolated` is an application fail-closed control, not proof of host-wide
   containment; confidential deployments also require a local client/inference
   runtime and an OS/network sandbox.

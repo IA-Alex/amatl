@@ -7,15 +7,14 @@ inglés.
 ## Reporte privado
 
 No abras un issue, discusión o pull request público con detalles de una
-vulnerabilidad. **Pendiente de definición por el propietario:** publicar un
-canal privado verificable antes de desplegar o aceptar contribuciones públicas.
-No existe en el repositorio un correo, clave PGP ni SLA autorizado que pueda
-documentarse sin inventarlo.
+vulnerabilidad. Usa el canal privado y los tiempos de respuesta publicados en
+[`SECURITY.md`](../SECURITY.md): el correo verificado del propietario. Los
+Security Advisories de GitHub se añadirán cuando el plan del repositorio los
+habilite. No hay clave PGP publicada; no envíes detalles a otros canales.
 
 El reporte debe incluir revisión afectada, superficie, pasos de reproducción,
-impacto, logs ya depurados de secretos y mitigación sugerida. Los objetivos de
-acuse y corrección, el rol responsable y la escalación también quedan pendientes
-de definición por el propietario.
+impacto, logs ya depurados de secretos y mitigación sugerida. `@IA-Alex` es el
+responsable; el SLA por severidad cubre acuse, triage, corrección y escalación.
 
 ## Alcance
 

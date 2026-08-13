@@ -21,14 +21,15 @@ Clippy with warnings denied, `cargo audit`, `cargo deny check`, and CycloneDX SB
 generation (`.github/workflows/ci.yml`). An advisory reported by `cargo audit`
 fails the job; it is not silently allowlisted in repository configuration.
 
-Risk-based acknowledgement and remediation deadlines are **pending owner
-definition**. The owner must publish targets by critical/high/medium/low
-severity and nominate an accountable role before claiming a security SLA. Until
-then, a failing audit blocks merge, but no elapsed-time promise is made.
+The accountable security role is repository owner `@IA-Alex`. The response SLA
+in `SECURITY.md` requires acknowledgement in 1/2/5/10 business days and targets
+remediation in 14/30/60/90 calendar days for critical/high/medium/low findings,
+respectively. A failing audit blocks merge immediately; an overdue remediation
+must record its compensating control and revised date in a private advisory.
 
 An exception requires a written ADR with advisory, affected path, exploitability,
-compensating controls, owner, expiration date, and removal plan. Because no
-verified owner identity exists in the repository, no exception is pre-approved.
+compensating controls, owner, expiration date, and removal plan. `@IA-Alex` must
+approve it explicitly; no exception is pre-approved.
 
 ## SBOM
 
@@ -39,12 +40,12 @@ Consumers should verify the workflow revision, download the artifact from the
 corresponding trusted run, and correlate package URLs/versions with
 `Cargo.lock`.
 
-The release-candidate workflow builds a static Linux musl archive, verifies its
-type and version, includes four SBOMs, checks SHA-256 and retains the private CI
-artifact for 30 days. GitHub artifact attestation is skipped explicitly for this
-user-owned private repository because the current plan does not support it. An
-annotated matching tag is still required before the workflow creates a
-prerelease.
+The release-candidate workflow builds a static Linux musl archive plus Debian,
+RPM and Arch packages from the same binary, verifies its type and version,
+includes four SBOMs, checks SHA-256 and retains the private CI artifact for 30
+days. GitHub artifact attestation is skipped explicitly for this user-owned
+private repository because the current plan does not support it. An annotated
+matching tag is still required before the workflow creates a prerelease.
 
 ## Response procedure
 

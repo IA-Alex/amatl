@@ -7,6 +7,7 @@ on:
       - main
     paths:
       - .github/workflows/release.yml
+      - packaging/**
     tags:
       - "v*-rc.*"
 
@@ -58,8 +59,8 @@ jobs:
         with:
           tool: cargo-cyclonedx@0.5.9
           fallback: none
-      - name: Install musl linker
-        run: sudo apt-get update && sudo apt-get install --yes musl-tools
+      - name: Install Linux build and packaging tools
+        run: sudo apt-get update && sudo apt-get install --yes musl-tools rpm zstd
       - name: Validate release version
         id: version
         run: |
@@ -103,8 +104,11 @@ jobs:
           tar --sort=name --owner=0 --group=0 --numeric-owner \
             --mtime="@$SOURCE_DATE_EPOCH" -C dist -czf "dist/$archive_root.tar.gz" "$archive_root"
           rm -r "dist/$archive_root"
+          packaging/build-linux-packages.sh \
+            "target/x86_64-unknown-linux-musl/release/amatl" \
+            "$PACKAGE_VERSION" x86_64 dist
           cd dist
-          sha256sum *.tar.gz > SHA256SUMS
+          sha256sum *.tar.gz *.deb *.rpm *.pkg.tar.zst > SHA256SUMS
           sha256sum --check SHA256SUMS
       - name: Attest artifacts when GitHub supports the repository visibility
         if: github.event.repository.visibility == 'public'
@@ -112,6 +116,9 @@ jobs:
         with:
           subject-path: |
             dist/*.tar.gz
+            dist/*.deb
+            dist/*.rpm
+            dist/*.pkg.tar.zst
             dist/SHA256SUMS
       - name: Record unavailable private-repository attestation
         if: github.event.repository.visibility != 'public'

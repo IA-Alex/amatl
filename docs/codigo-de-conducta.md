@@ -65,10 +65,10 @@ personas designadas en eventos en línea o no.
 ## Aplicación
 
 Instancias de comportamiento abusivo, acosador o inaceptable de otro modo podrán
-ser reportadas por el canal privado responsable del cumplimiento. **Pendiente de
-definición por el propietario:** publicar dicho canal antes de aceptar
-contribuciones públicas. Todas las quejas serán evaluadas e investigadas de una
-manera puntual y justa.
+reportarse en privado al propietario mediante
+[`alexishernande87@hotmail.com`](mailto:alexishernande87@hotmail.com?subject=AMATL%20Code%20of%20Conduct%20report),
+con asunto `AMATL Code of Conduct report`. `@IA-Alex` evaluará e investigará las
+quejas de manera puntual y justa.
 
 Todos los administradores de la comunidad están obligados a respetar la
 privacidad y la seguridad de quienes reporten incidentes.

@@ -91,7 +91,8 @@ SQLite almacena cachés y telemetría opcionales; nunca decide correctness. Si n
 abre, `AmatlService` continúa sin storage. Search conserva resultados válidos de
 providers parciales, separa errores y degradaciones y emite `success`,
 `partial_success` o `failure`. Deep conserva documentos superficiales cuando la
-extracción opcional falla. Chromium permanece fail-closed.
+extracción opcional falla. Chromium permanece fail-closed en core; su harness
+Linux sin red se valida por separado antes de implementar el bridge CDP.
 
 ## Invariantes de revisión
 

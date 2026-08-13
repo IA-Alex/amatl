@@ -63,5 +63,5 @@ procesos con el valor viejo, conserva evidencia ya depurada, busca el valor y
 sus variantes en historial Git, CI, logs, artefactos, shells y respaldos, y
 elimina o restringe esos datos. Si llegó a Git, rotar es obligatorio: reescribir
 historial por sí solo no recupera confidencialidad. Reporta el incidente por el
-canal privado definido en `SECURITY.md`; dicho canal está pendiente de definición
-por el propietario.
+canal privado y el contacto verificado definidos por el propietario en
+`SECURITY.md`.

@@ -14,8 +14,8 @@ de merge no está codificada en el repositorio y no debe suponerse.
 El desarrollo ordinario **no modifica** `plan_amatl.md` ni
 `fase_a_contratos.md`. Una propuesta contractual comienza como ADR dedicado e
 incluye invariante, alternativas, compatibilidad/migración, impacto en todas las
-fronteras, fixtures y contract tests. La identidad del propietario que debe
-aprobarla sigue pendiente de definición.
+fronteras, fixtures y contract tests. El propietario `@IA-Alex` debe aprobarla
+explícitamente.
 
 ## Definición de terminado
 
@@ -37,6 +37,8 @@ cargo cyclonedx
 ```
 
 `contract-gate` debe configurarse como required check en la protección de
-`main`; es una acción externa pendiente del propietario. Contribuciones
+`main`. GitHub no habilita actualmente ese control para este repositorio privado
+sin cambiar de plan o hacerlo público; mientras tanto, un gate verde es evidencia
+obligatoria de revisión, no protección efectiva del hosting. Contribuciones
 intencionales se ofrecen bajo Apache-2.0 o MIT, a elección del usuario, salvo
 declaración explícita en contrario.

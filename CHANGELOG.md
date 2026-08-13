@@ -65,5 +65,5 @@ adapter/extractor versions are independent axes as well.
 - SQLite mutations are serialized across storage clones to avoid lock loss under
   concurrent cache access.
 
-The canonical public repository URL is pending owner definition, so this file
-does not invent release or comparison links.
+The canonical repository is <https://github.com/IA-Alex/amatl>. Comparison
+links will be added with the first published release tag.

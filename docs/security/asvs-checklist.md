@@ -39,11 +39,12 @@ absent.
 | v5.0.0-13.1.1 communication inventory | 2 | Pass | Provider, arbitrary Deep, Trafilatura and disabled Chromium boundaries documented | `docs/security/threat-model.md`; `docs/arquitectura.md` | Architecture review |
 | v5.0.0-13.2.1 centralized outbound policy | 2 | Pass at application boundary | `data_policy` closes provider, Deep, MCP and canary egress; isolated configuration fails closed and remote inference is denied | `config.rs`; `service.rs`; `amatl-server/src/mcp.rs` | Config/service/MCP isolated-policy regressions |
 | v5.0.0-13.2.4 outbound allowlist | 2 | Partial | Protocol and non-public-address denylist, not a domain/path/port allowlist | `security.rs:10-76`; `fetch.rs:96-143` | SSRF tests; residual explicitly recorded |
+| v5.0.0-13.4.1 browser process isolation | 2 | Pass for harness; core disabled | New namespaces including network, read-only runtime, private profile, cgroup memory/task/runtime limits and bounded DOM | `packaging/amatl-chromium-sandbox`; `docs/security/chromium-isolation.md` | Real Chromium JavaScript render plus loopback denial in dedicated workflow |
 | v5.0.0-13.3.1 secret management | 2 | Partial | Secrets excluded from source/config and read from environment; no vault integration | `service.rs:384-390`; `docs/security/secrets.md` | Provider tests verify no token in mapped/sanitized request output |
 | v5.0.0-14.1.2 data protection/retention docs | 2 | Pass for stored classes | Inventory, TTL, retention, access assumptions and purge limits documented | `docs/security/data-retention.md`; migrations | Cache/storage/telemetry tests |
 | v5.0.0-14.2.1 secrets absent from URLs | 1 | Pass for server token; Partial for providers | UI uses POST JSON, token has no form name and is sent in Authorization; provider adapters may use query API keys but sanitization exists | `amatl-ui/assets/index.html`; `amatl-ui/assets/app.js`; `providers/http.rs:12-29` | UI asset contract; `providers/http.rs:109-119`; `providers/mojeek.rs:390-408` |
 | v5.0.0-14.3.2 anti-caching | 2 | Pass | Default `Cache-Control: no-store`; only immutable static CSS/JS cache for one hour | `amatl-server/src/lib.rs:389-393`; `amatl-ui/src/lib.rs:18-34` | `amatl-server/src/tests.rs:31-46` |
-| v5.0.0-15.1.1 dependency remediation times | 1 | Partial | Audit gate exists; response SLA is pending owner definition | `.github/workflows/ci.yml`; `docs/security/supply-chain.md` | CI configuration; owner policy unresolved |
+| v5.0.0-15.1.1 dependency remediation times | 1 | Pass | Audit gate plus severity-based acknowledgement and remediation SLA owned by `@IA-Alex` | `.github/workflows/ci.yml`; `SECURITY.md`; `docs/security/supply-chain.md` | CI configuration and published policy |
 | v5.0.0-15.1.2 SBOM/trusted sources | 2 | Pass for private CI; release pending | Cargo.lock, deny trusted registry, CycloneDX artifacts with explicit retention | `Cargo.lock`; `deny.toml`; `.github/workflows/ci.yml`; `.github/workflows/release.yml` | `cargo deny check`; `cargo cyclonedx`; musl archive includes four SBOMs and SHA-256 |
 | v5.0.0-15.1.3 expensive functions documented | 2 | Pass | Search, Deep, MCP fetch and extraction limits catalogued | `docs/configuracion.md`; `docs/api/mcp.md` | Budget, Deep and server tests |
 | v5.0.0-15.2.2 resource-demand defenses | 2 | Pass | Budget, deadlines, byte/depth/subquery/concurrency limits | `budget.rs`; `service.rs:33-58,123-275`; `config.rs:522-650` | `budget.rs:209-245`; Deep/API tests; aggregate header and handler-timeout regressions |
@@ -57,8 +58,7 @@ absent.
 
 ## Priority gaps
 
-Before claiming ASVS L2 alignment: define dependency remediation SLAs and the
-security contact; decide whether deployment requires a domain/port egress
+Before claiming ASVS L2 alignment: decide whether deployment requires a domain/port egress
 allowlist; define any multi-process rate-limit requirement; and document trusted
 reverse-proxy handling before supporting one.
 
