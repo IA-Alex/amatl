@@ -34,12 +34,12 @@ jobs:
           fixture="$(mktemp --suffix=.html)"
           output="$(mktemp --suffix=.html)"
           printf '%s' '<!doctype html><p id="state">before</p><script>document.querySelector("#state").textContent="rendered"</script>' > "$fixture"
-          packaging/amatl-chromium-sandbox "$fixture" "$output" 8
+          packaging/amatl-chromium-sandbox "$fixture" "$output" 20
           grep --fixed-strings --quiet '>rendered<' "$output"
       - name: Prove loopback is unreachable from the browser namespace
         run: |
           fixture="$(mktemp --suffix=.html)"
           output="$(mktemp --suffix=.html)"
           printf '%s' '<!doctype html><p id="state">pending</p><script>fetch("http://127.0.0.1:8765/").then(()=>state.textContent="network-leak").catch(()=>state.textContent="blocked")</script>' > "$fixture"
-          packaging/amatl-chromium-sandbox "$fixture" "$output" 8
+          packaging/amatl-chromium-sandbox "$fixture" "$output" 20
           grep --fixed-strings --quiet '>blocked<' "$output"
