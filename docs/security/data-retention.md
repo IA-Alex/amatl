@@ -11,6 +11,7 @@ usar la base es best effort (`service.rs:101-112`).
 | Caché de provider | provider, versión de adapter, consulta normalizada, filtros estructurados, `ProviderResult`, tamaño y marcas temporales | desactivada | TTL 300 s; 10,000 entradas; 256 MiB; LRU | Expirados se excluyen al leer y se eliminan al escribir; `amatl cache --purge` vacía la tabla |
 | Caché documental | URL canónica, hash, versión de extractor, `Document` serializado, tamaño y marcas temporales | desactivada | TTL 86,400 s; 1,000 entradas; 256 MiB; LRU | Expirados se excluyen al leer; cuota se aplica al escribir; `amatl cache --purge` vacía la tabla |
 | Contenido documental | campo `Document.content` dentro de la caché documental | `store_content = false` | sólo si se habilita explícitamente, sujeto al TTL/cuota documental | misma purga de caché documental |
+| Fragmentos Evidence v2 | vistas exactas y acotadas derivadas de `Document.content`, con hashes y procedencia | sólo respuesta en memoria | no se persisten como entidad independiente | desaparecen al terminar la operación; si el documento se almacena, aplica la política de contenido documental |
 | Telemetría | timestamp, provider, categoría, outcome, latencia, conteos, ratio de duplicados, contribución top-K, diversidad y coste | sólo memoria; SQLite desactivado | ventana/retención fija v1 de 30 días; decaimiento exponencial con vida media de 30 días | memoria y SQLite eliminan observaciones anteriores a la ventana al registrar; no hay comando CLI de purga dedicado |
 
 Fuentes: `config.rs:382-483`, migraciones `0001_phase3_persistence.sql` y
@@ -36,6 +37,11 @@ Si `store_content` es falso, se persiste metadata del `Document` pero se elimina
 su cuerpo antes de serializar (`document_cache.rs:47-60`). Configurar una caché o
 telemetría persistente sin `persistence.enabled = true` es inválido
 (`config.rs:570-580`).
+
+Evidence v2 no abre una ruta de almacenamiento adicional: sus fragmentos se
+calculan durante Deep a partir de `Document.content` y sólo forman parte de la
+respuesta. Un consumidor debe tratarlos con la misma confidencialidad que el
+documento original; los hashes facilitan verificación e identidad, no cifrado.
 
 ## Datos que no deben almacenarse
 

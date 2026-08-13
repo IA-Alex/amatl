@@ -16,6 +16,7 @@ del ciclo de entidades.
 | SearchResult | `SearchResult` | elemento de `results` | no se cachea como salida final | rango, título, `canonical_url` | conteos, no cuerpo completo |
 | Document | `Document` | elemento de `documents` en Deep | `document_cache.payload` | URL final y status en `deep` | degradaciones Deep |
 | Evidence | `Evidence` | elemento de `evidence` | dentro del DeepResponse; no tabla propia | sólo `--json` | — |
+| Evidence v2 | `EvidenceV2` | elemento de `evidence_v2`, con `fragments` y `provenance` | no se persiste aparte; se deriva de Document | sólo `--json` | — |
 | Gap | `Gap` | elemento de `gaps` | — | sólo `--json` | — |
 | SubQuery | `SubQuery` | elemento de `subqueries` | — | sólo `--json` | stop/degradation de Deep |
 | URL reportada | `OriginalUrl` | `original_url` | dentro de payloads | no se imprime separada en modo humano | — |

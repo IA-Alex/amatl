@@ -1,7 +1,9 @@
 use amatl_core::{
-    canonical::canonicalize, dedupe::deduplicate, normalize::normalize, CanonicalResult,
-    CanonicalUrl, CanonicalizationStatus, FieldProvenance, NormalizedResult, OriginalUrl,
-    ProviderExecutionStatus, ProviderItem, ProviderResult, ResultType, SCHEMA_VERSION,
+    analyze_evidence_v2, canonical::canonicalize, dedupe::deduplicate, normalize::normalize,
+    CanonicalResult, CanonicalUrl, CanonicalizationStatus, Document, DocumentStatus, FetchMethod,
+    FieldProvenance, FinalUrl, NormalizedResult, OriginalUrl, ProviderExecutionStatus,
+    ProviderItem, ProviderResult, ResultType, EVIDENCE_V2_FRAGMENT_BYTES,
+    EVIDENCE_V2_MAX_FRAGMENTS, SCHEMA_VERSION,
 };
 use proptest::prelude::*;
 use std::collections::BTreeMap;
@@ -31,6 +33,29 @@ fn canonical(provider: &str, url: url::Url) -> CanonicalResult {
     let mut result = canonicalize(normalized(url));
     result.provider = provider.into();
     result
+}
+
+fn evidence_document(content: String) -> Document {
+    let url = url::Url::parse("https://example.com/property").unwrap();
+    Document {
+        schema_version: SCHEMA_VERSION.into(),
+        search_result_id: "property-document".into(),
+        original_url: OriginalUrl(url.clone()),
+        canonical_url: CanonicalUrl(url.clone()),
+        final_url: FinalUrl(url),
+        content_hash: "source-content-hash".into(),
+        fetch_method: FetchMethod::Http,
+        extractor_used: Some("property-v1".into()),
+        content_type: Some("text/plain".into()),
+        size: content.len() as u64,
+        retrieved_at: "2026-08-13T00:00:00Z".into(),
+        status: DocumentStatus::Enriched,
+        content: Some(content),
+        title: None,
+        author: None,
+        published_at: None,
+        metadata: BTreeMap::new(),
+    }
 }
 
 proptest! {
@@ -105,6 +130,30 @@ proptest! {
         prop_assert_eq!(output.len(), 1);
         prop_assert_eq!(output[0].providers.len(), copies);
         prop_assert_eq!(&output[0].canonical_url, &CanonicalUrl(url));
+    }
+
+    #[test]
+    fn evidence_v2_ranges_are_exact_and_utf8_safe(content in ".{0,2048}") {
+        let query = amatl_core::parse_query("evidence property".into()).unwrap();
+        let documents = vec![evidence_document(content.clone())];
+        let first = analyze_evidence_v2(&query, &documents);
+        prop_assert_eq!(&first, &analyze_evidence_v2(&query, &documents));
+        prop_assert_eq!(first.len(), 1);
+        prop_assert!(first[0].fragments.len() <= EVIDENCE_V2_MAX_FRAGMENTS);
+        for fragment in &first[0].fragments {
+            let start = usize::try_from(fragment.start_byte).unwrap();
+            let end = usize::try_from(fragment.end_byte).unwrap();
+            prop_assert!(start < end);
+            prop_assert!(content.is_char_boundary(start));
+            prop_assert!(content.is_char_boundary(end));
+            prop_assert_eq!(&fragment.text, &content[start..end]);
+            prop_assert!(fragment.text.len() <= EVIDENCE_V2_FRAGMENT_BYTES);
+            prop_assert_eq!(fragment.fragment_hash.len(), 64);
+            prop_assert_eq!(
+                &fragment.provenance_id,
+                &first[0].provenance.provenance_id
+            );
+        }
     }
 }
 

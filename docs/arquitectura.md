@@ -36,6 +36,11 @@ Search termina en `SearchResult`, que nunca contiene cuerpo completo ni
 existen contenido, URL final y señales de evidencia. `Gap` describe un déficit
 observable y `SubQuery` una expansión presupuestada.
 
+Evidence v2 añade fragmentos acotados y verificables sobre `Document.content`,
+con offsets, hashes y procedencia completa. Es aditivo: Evidence v1 conserva el
+score usado por Ranking v2/Gap y Evidence v2 lo proyecta sin recalibrarlo. Ver
+[contrato Evidence v2](evidence-v2.md).
+
 ## Ownership y ejecución
 
 `router` ordena y recomienda providers y solicitudes de capacidad; no asigna

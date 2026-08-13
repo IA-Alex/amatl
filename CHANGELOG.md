@@ -49,6 +49,9 @@ adapter/extractor versions are independent axes as well.
 - Embedded UI Search now uses POST JSON; the bearer token is excluded from form
   serialization, kept only in page memory, cleared on exit and reported with a
   specific authentication error without exposing its value.
+- Additive Evidence v2 output with bounded exact-text fragments, deterministic
+  identifiers and hashes, URL/fetch/extractor provenance, query-aware signals
+  and the unchanged v1 score basis; Ranking v2 and Gap retain their calibration.
 
 ### Changed
 

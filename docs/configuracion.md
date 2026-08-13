@@ -179,6 +179,10 @@ Los límites positivos se validan incluso con la capability deshabilitada.
 | `deep.max_depth` | u8 / 1 | 0–2 |
 | `deep.timeout_ms` | u64 / 20000 | >0 |
 
+Evidence v2 no introduce configuración ni una llamada de inferencia: Deep
+selecciona localmente hasta ocho fragmentos de 512 bytes por documento. Estos
+límites son invariantes del contrato actual, no valores ajustables en TOML.
+
 ### Extractor
 
 | Clave | Tipo/default | Rango validado |

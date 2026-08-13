@@ -128,6 +128,7 @@ al redirigir; controla detalle con `RUST_LOG`.
   [fase_a_contratos.md](fase_a_contratos.md).
 - Producto: [arquitectura](docs/arquitectura.md),
   [glosario](docs/glosario.md), [configuración](docs/configuracion.md),
+  [Evidence v2](docs/evidence-v2.md),
   [operación](docs/operacion.md) y
   [gobernanza de providers](docs/gobernanza-providers.md).
 - Contratos: [OpenAPI](docs/api/openapi.yaml) y [MCP](docs/api/mcp.md).

@@ -389,6 +389,75 @@ components:
         freshness: { type: number, minimum: 0, maximum: 1 }
         originality: { type: number, minimum: 0, maximum: 1 }
         evidence_score: { type: number, minimum: 0, maximum: 1 }
+    EvidenceSignal:
+      type: string
+      enum: [query_match, citation, temporal, numeric]
+    EvidenceProvenance:
+      type: object
+      additionalProperties: false
+      required: [schema_version, provenance_id, document_id, original_url, canonical_url, final_url, source_content_hash, extracted_content_hash, fetch_method, extractor_used, retrieved_at, published_at]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        provenance_id: { type: string, pattern: '^[0-9a-f]{64}$' }
+        document_id: { type: string }
+        original_url: { type: string, format: uri }
+        canonical_url: { type: string, format: uri }
+        final_url: { type: string, format: uri }
+        source_content_hash: { type: string }
+        extracted_content_hash: { type: [string, 'null'], pattern: '^[0-9a-f]{64}$' }
+        fetch_method: { $ref: '#/components/schemas/FetchMethod' }
+        extractor_used: { type: [string, 'null'] }
+        retrieved_at: { type: string }
+        published_at: { type: [string, 'null'] }
+    EvidenceFragment:
+      type: object
+      additionalProperties: false
+      required: [schema_version, fragment_id, provenance_id, ordinal, text, start_byte, end_byte, fragment_hash, matched_terms, signals]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        fragment_id: { type: string, pattern: '^[0-9a-f]{64}$' }
+        provenance_id: { type: string, pattern: '^[0-9a-f]{64}$' }
+        ordinal: { type: integer, minimum: 1, maximum: 8 }
+        text: { type: string }
+        start_byte: { type: integer, minimum: 0 }
+        end_byte: { type: integer, minimum: 1 }
+        fragment_hash: { type: string, pattern: '^[0-9a-f]{64}$' }
+        matched_terms:
+          type: array
+          items: { type: string }
+        signals:
+          type: array
+          uniqueItems: true
+          items: { $ref: '#/components/schemas/EvidenceSignal' }
+    EvidenceScoreBasis:
+      type: object
+      additionalProperties: false
+      required: [schema_version, fact_density, verified_date, metadata_quality, citation_count, citation_span, freshness, originality]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        fact_density: { type: number, minimum: 0, maximum: 1 }
+        verified_date: { type: boolean }
+        metadata_quality: { type: number, minimum: 0, maximum: 1 }
+        citation_count: { type: integer, minimum: 0 }
+        citation_span: { type: number, minimum: 0, maximum: 1 }
+        freshness: { type: number, minimum: 0, maximum: 1 }
+        originality: { type: number, minimum: 0, maximum: 1 }
+    EvidenceV2:
+      type: object
+      additionalProperties: false
+      required: [schema_version, evidence_version, document_id, status, provenance, fragments, score_basis, evidence_score]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        evidence_version: { type: string, enum: [v2] }
+        document_id: { type: string }
+        status: { $ref: '#/components/schemas/EvidenceStatus' }
+        provenance: { $ref: '#/components/schemas/EvidenceProvenance' }
+        fragments:
+          type: array
+          maxItems: 8
+          items: { $ref: '#/components/schemas/EvidenceFragment' }
+        score_basis: { $ref: '#/components/schemas/EvidenceScoreBasis' }
+        evidence_score: { type: number, minimum: 0, maximum: 1 }
     RankingV2Status:
       type: string
       enum: [applied, disabled, benchmark_rejected, insufficient_documents]
@@ -472,7 +541,7 @@ components:
     DeepResponse:
       type: object
       additionalProperties: false
-      required: [schema_version, query, documents, errors, degradations, evidence, ranking_v2, gaps, subqueries, elapsed_ms]
+      required: [schema_version, query, documents, errors, degradations, evidence, evidence_v2, ranking_v2, gaps, subqueries, elapsed_ms]
       properties:
         schema_version: { $ref: '#/components/schemas/SchemaVersion' }
         query: { type: string }
@@ -488,6 +557,9 @@ components:
         evidence:
           type: array
           items: { $ref: '#/components/schemas/Evidence' }
+        evidence_v2:
+          type: array
+          items: { $ref: '#/components/schemas/EvidenceV2' }
         ranking_v2: { $ref: '#/components/schemas/RankingV2Output' }
         gaps:
           type: array

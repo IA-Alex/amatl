@@ -44,7 +44,10 @@ pub use config::{
 pub use deep::{DeepCandidate, DeepOrchestrator, DeepRequest};
 pub use diversity::{DiversityDecision, DiversityMetrics, DiversityOutput, DiversityPolicyV1};
 pub use document_cache::{DocumentCache, DocumentCachePolicy};
-pub use evidence::analyze_evidence;
+pub use evidence::{
+    analyze_evidence, analyze_evidence_bundle, analyze_evidence_v2, EVIDENCE_V2_FRAGMENT_BYTES,
+    EVIDENCE_V2_MAX_FRAGMENTS, EVIDENCE_V2_VERSION,
+};
 pub use execution::{ParallelSearchOutput, SearchOrchestrator};
 pub use extract::{
     ExtractError, ExtractionResult, Extractor, TrafilaturaExtractor, UnavailableExtractor,
@@ -59,8 +62,9 @@ pub use gaps::{
 pub use model::{
     CanonicalResult, CanonicalTransformation, CanonicalUrl, CanonicalizationStatus, Category,
     Classification, CompositeError, DeduplicatedResult, DeepRankedDocument, DeepRankingExplanation,
-    DeepResponse, Degradation, Document, DocumentStatus, DuplicateStatus, Evidence, EvidenceStatus,
-    FetchMethod, FieldProvenance, FinalUrl, Gap, GapSeverity, GapStatus, GapType,
+    DeepResponse, Degradation, Document, DocumentStatus, DuplicateStatus, Evidence,
+    EvidenceFragment, EvidenceProvenance, EvidenceScoreBasis, EvidenceSignal, EvidenceStatus,
+    EvidenceV2, FetchMethod, FieldProvenance, FinalUrl, Gap, GapSeverity, GapStatus, GapType,
     GlobalBudgetSnapshot, MergeReason, NormalizedResult, OriginalUrl, ProviderCapabilities,
     ProviderError, ProviderErrorKind, ProviderExecutionStatus, ProviderItem, ProviderResult, Query,
     QueryWarning, Rank, RankedResult, RankingExplanation, RankingScore, RankingV2Output,

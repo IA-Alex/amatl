@@ -14,7 +14,7 @@ call.
 | Tool | Input | Output | Specific bounds |
 |---|---|---|---|
 | `search` | `{ "query": string }` | `SearchResponse` in `structuredContent` | query 1–2048 bytes; MCP surface limits below |
-| `deep_search` | `{ "query": string }` | `DeepResponse` | query 1–2048 bytes; MCP surface limits below |
+| `deep_search` | `{ "query": string }` | `DeepResponse`, including additive `evidence_v2` fragments and provenance | query 1–2048 bytes; MCP surface limits below; at most 8 fragments of 512 bytes per document |
 | `fetch` | `{ "url": string }` | schema version, final URL, HTTP status, content type, UTF-8-lossy content, size, retrieval time | public HTTP(S), 3,000 ms, 262,144 bytes, 2 redirects, SafeFetcher SSRF rules |
 | `providers` | no parameters | provider summaries and capabilities | no outbound provider call |
 
@@ -22,6 +22,11 @@ Tool errors are structured with `schema_version: "1"` and a stable code such as
 `invalid_query`, `invalid_url`, `search_failed`, `deep_search_failed`,
 `fetch_failed`, or `providers_failed`. Internal details and provider credentials
 are not returned (`amatl-server/src/mcp.rs:36-126`).
+
+`evidence_v2` preserves the v1 evidence score and exposes exact byte ranges over
+`Document.content`, source/extracted-content hashes and URL/fetch/extractor
+provenance. It improves traceability but does not authenticate hostile Internet
+content; MCP consumers must not treat fragment text as trusted instructions.
 
 Con `[data_policy] profile = "isolated"` y `egress = "deny"`, `fetch` usa el
 mismo gate central que Deep y responde `egress_denied` sin resolver DNS ni

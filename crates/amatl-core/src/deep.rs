@@ -100,6 +100,7 @@ impl DeepOrchestrator {
             errors: vec![],
             degradations: vec![],
             evidence: vec![],
+            evidence_v2: vec![],
             ranking_v2: disabled_output(),
             gaps: vec![],
             subqueries: vec![],
@@ -397,7 +398,8 @@ impl DeepOrchestrator {
             }
             response.documents.push(document);
         }
-        response.evidence = crate::evidence::analyze_evidence(&response.documents);
+        (response.evidence, response.evidence_v2) =
+            crate::evidence::analyze_evidence_bundle(&request.query, &response.documents);
         if let Some(engine) = &self.ranking_v2 {
             match engine.rank(
                 &request.query,

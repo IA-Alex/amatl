@@ -195,6 +195,13 @@ async fn enriches_search_result_without_changing_search_contract() {
         "https://example.com/article"
     );
     assert_eq!(output.evidence.len(), 1);
+    assert_eq!(output.evidence_v2.len(), 1);
+    assert_eq!(output.evidence_v2[0].evidence_version, "v2");
+    assert_eq!(
+        output.evidence_v2[0].evidence_score,
+        output.evidence[0].evidence_score
+    );
+    assert!(!output.evidence_v2[0].fragments.is_empty());
     assert_eq!(output.ranking_v2.status, RankingV2Status::Disabled);
     assert!(output.gaps.is_empty() && output.subqueries.is_empty());
 }

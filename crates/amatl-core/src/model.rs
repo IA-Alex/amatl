@@ -543,6 +543,69 @@ pub struct Evidence {
     pub evidence_score: RankingScore,
 }
 
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
+#[serde(rename_all = "snake_case")]
+pub enum EvidenceSignal {
+    QueryMatch,
+    Citation,
+    Temporal,
+    Numeric,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+pub struct EvidenceProvenance {
+    pub schema_version: String,
+    pub provenance_id: String,
+    pub document_id: String,
+    pub original_url: OriginalUrl,
+    pub canonical_url: CanonicalUrl,
+    pub final_url: FinalUrl,
+    pub source_content_hash: String,
+    pub extracted_content_hash: Option<String>,
+    pub fetch_method: FetchMethod,
+    pub extractor_used: Option<String>,
+    pub retrieved_at: String,
+    pub published_at: Option<String>,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+pub struct EvidenceFragment {
+    pub schema_version: String,
+    pub fragment_id: String,
+    pub provenance_id: String,
+    pub ordinal: u32,
+    pub text: String,
+    pub start_byte: u64,
+    pub end_byte: u64,
+    pub fragment_hash: String,
+    pub matched_terms: Vec<String>,
+    pub signals: Vec<EvidenceSignal>,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
+pub struct EvidenceScoreBasis {
+    pub schema_version: String,
+    pub fact_density: RankingScore,
+    pub verified_date: bool,
+    pub metadata_quality: RankingScore,
+    pub citation_count: u32,
+    pub citation_span: RankingScore,
+    pub freshness: RankingScore,
+    pub originality: RankingScore,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
+pub struct EvidenceV2 {
+    pub schema_version: String,
+    pub evidence_version: String,
+    pub document_id: String,
+    pub status: EvidenceStatus,
+    pub provenance: EvidenceProvenance,
+    pub fragments: Vec<EvidenceFragment>,
+    pub score_basis: EvidenceScoreBasis,
+    pub evidence_score: RankingScore,
+}
+
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 pub struct DeepRankingExplanation {
     pub ranking_policy: String,
@@ -654,6 +717,7 @@ pub struct DeepResponse {
     pub errors: Vec<CompositeError>,
     pub degradations: Vec<Degradation>,
     pub evidence: Vec<Evidence>,
+    pub evidence_v2: Vec<EvidenceV2>,
     pub ranking_v2: RankingV2Output,
     pub gaps: Vec<Gap>,
     pub subqueries: Vec<SubQuery>,
