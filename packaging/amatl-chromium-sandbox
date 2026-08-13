@@ -12,7 +12,7 @@ timeout_seconds=$3
 [[ -f "$input_html" ]]
 [[ "$timeout_seconds" =~ ^[1-9][0-9]*$ ]]
 
-for tool in base64 bwrap setpriv sha256sum systemd-run; do
+for tool in base64 bwrap sha256sum systemd-run; do
   command -v "$tool" >/dev/null || {
     echo "required Chromium isolation tool is unavailable: $tool" >&2
     exit 69
@@ -66,12 +66,15 @@ printf '%s  %s\n' \
 unit="amatl-render-${$}-$(date +%s%N)"
 
 set +e
+# The inner shell must expand its own positional parameters after systemd-run.
+# shellcheck disable=SC2016
 systemd-run --user --wait --collect --pipe --quiet --unit "$unit" \
   -p "MemoryMax=${memory_mb}M" \
   -p "RuntimeMaxSec=${timeout_seconds}s" \
   -p "TasksMax=$tasks_max" \
-  -- bwrap \
-    --die-with-parent --new-session --unshare-all --share-net \
+  -- /bin/bash -c 'exec 3<"$1"; shift; exec "$@"' _ \
+  "$sandbox/network-deny.bpf" bwrap \
+    --seccomp 3 --die-with-parent --new-session --unshare-all --share-net \
     --tmpfs / --ro-bind /usr /usr --symlink usr/bin /bin \
     --symlink usr/lib /lib --symlink usr/lib64 /lib64 \
     "${chromium_mounts[@]}" \
@@ -81,8 +84,7 @@ systemd-run --user --wait --collect --pipe --quiet --unit "$unit" \
     --setenv XDG_RUNTIME_DIR /tmp/runtime \
     --setenv XDG_CONFIG_HOME /tmp/home --setenv XDG_CACHE_HOME /tmp/home \
     --chdir / \
-    -- setpriv --no-new-privs --seccomp-filter /tmp/network-deny.bpf \
-      "$chromium" \
+    -- "$chromium" \
       --headless=new --disable-gpu --disable-background-networking \
       --disable-component-update --disable-default-apps --disable-sync \
       --metrics-recording-only --no-first-run --no-default-browser-check \
