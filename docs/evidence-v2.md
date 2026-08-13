@@ -15,6 +15,8 @@ esta capacidad concreta.
   recalibra ni altera el ranking sin benchmark.
 - Search no conoce ni produce fragmentos. El trabajo permanece dentro de Deep.
 - La extracción es determinista y local; no requiere inferencia ni red extra.
+- La ingestión local reutiliza el mismo análisis sobre documentos `file:` y
+  marca `fetch_method = local`; no fabrica un resultado Search.
 
 ## Contrato
 

@@ -12,6 +12,7 @@ usar la base es best effort (`service.rs:101-112`).
 | Caché documental | URL canónica, hash, versión de extractor, `Document` serializado, tamaño y marcas temporales | desactivada | TTL 86,400 s; 1,000 entradas; 256 MiB; LRU | Expirados se excluyen al leer; cuota se aplica al escribir; `amatl cache --purge` vacía la tabla |
 | Contenido documental | campo `Document.content` dentro de la caché documental | `store_content = false` | sólo si se habilita explícitamente, sujeto al TTL/cuota documental | misma purga de caché documental |
 | Fragmentos Evidence v2 | vistas exactas y acotadas derivadas de `Document.content`, con hashes y procedencia | sólo respuesta en memoria | no se persisten como entidad independiente | desaparecen al terminar la operación; si el documento se almacena, aplica la política de contenido documental |
+| Ingestión local | URI `file:`, nombre, texto extraído, hashes, metadata del filesystem y Evidence | sólo respuesta CLI en memoria | no usa caché documental ni SQLite | desaparece al terminar el proceso; redirección de stdout queda bajo control del operador |
 | Telemetría | timestamp, provider, categoría, outcome, latencia, conteos, ratio de duplicados, contribución top-K, diversidad y coste | sólo memoria; SQLite desactivado | ventana/retención fija v1 de 30 días; decaimiento exponencial con vida media de 30 días | memoria y SQLite eliminan observaciones anteriores a la ventana al registrar; no hay comando CLI de purga dedicado |
 
 Fuentes: `config.rs:382-483`, migraciones `0001_phase3_persistence.sql` y
@@ -42,6 +43,11 @@ Evidence v2 no abre una ruta de almacenamiento adicional: sus fragmentos se
 calculan durante Deep a partir de `Document.content` y sólo forman parte de la
 respuesta. Un consumidor debe tratarlos con la misma confidencialidad que el
 documento original; los hashes facilitan verificación e identidad, no cifrado.
+
+`amatl ingest --json` incluye una URI `file:` absoluta y puede incluir el cuerpo
+completo extraído. No adjuntes esa salida a tickets o logs sin revisar ruta y
+contenido. La ingestión no escribe el documento en SQLite y no está expuesta en
+API/MCP.
 
 ## Datos que no deben almacenarse
 

@@ -17,7 +17,7 @@ está actualmente bloqueado hasta disponer de aislamiento verificable.
   `partial_success`.
 - El orquestador es el único dueño del Budget y deadline globales.
 - Search no descarga páginas ni expone `final_url`; Deep es la única frontera de
-  fetch/extracción.
+  fetch de red. La ingestión de archivos permanece local y separada.
 - La política `data_policy` gobierna toda salida de red. El perfil `isolated`
   bloquea providers, Deep fetch, MCP fetch, canarios e inferencia remota antes
   de conectar; no elimina los motores deterministas de extracción/evidencia ni
@@ -109,6 +109,7 @@ par certificado/clave TLS completo.
 |---|---|---|
 | `amatl search "consulta" [--json]` | Search multi-provider | 0 en `success`/`partial_success`; 1 en failure/error |
 | `amatl deep "consulta" [--json]` | Search + fetch/extracción acotados | 0 si la operación se entrega, incluso con degradaciones; 1 ante error de servicio |
+| `amatl ingest RUTA [--query "consulta"] [--json]` | Ingestión local, despacho documental y Evidence v1/v2 | 0 si extrae evidencia; 1 ante tipo, límite, lectura o extractor fallido |
 | `amatl providers` | Disponibilidad/código de providers | 0 si puede construir el resumen; 1 en error |
 | `amatl provider-canary PROVIDER "consulta" [--json]` | Canario aislado y gobernado de un provider real | 0 sólo con aprobación, credencial y respuesta útil; 1 fail-closed |
 | `amatl config` | Defaults/config efectiva no secreta | 0; 1 si la configuración no carga/valida |
@@ -128,7 +129,7 @@ al redirigir; controla detalle con `RUST_LOG`.
   [fase_a_contratos.md](fase_a_contratos.md).
 - Producto: [arquitectura](docs/arquitectura.md),
   [glosario](docs/glosario.md), [configuración](docs/configuracion.md),
-  [Evidence v2](docs/evidence-v2.md),
+  [Evidence v2](docs/evidence-v2.md), [ingestión local](docs/ingestion-local.md),
   [operación](docs/operacion.md) y
   [gobernanza de providers](docs/gobernanza-providers.md).
 - Contratos: [OpenAPI](docs/api/openapi.yaml) y [MCP](docs/api/mcp.md).

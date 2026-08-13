@@ -29,11 +29,18 @@ pub fn analyze_evidence(documents: &[Document]) -> Vec<Evidence> {
 
 pub fn analyze_evidence_v2(query: &Query, documents: &[Document]) -> Vec<EvidenceV2> {
     let evidence = analyze_evidence(documents);
-    build_evidence_v2(query, documents, &evidence)
+    build_evidence_v2(Some(query), documents, &evidence)
 }
 
 pub fn analyze_evidence_bundle(
     query: &Query,
+    documents: &[Document],
+) -> (Vec<Evidence>, Vec<EvidenceV2>) {
+    analyze_evidence_bundle_optional(Some(query), documents)
+}
+
+pub(crate) fn analyze_evidence_bundle_optional(
+    query: Option<&Query>,
     documents: &[Document],
 ) -> (Vec<Evidence>, Vec<EvidenceV2>) {
     let evidence = analyze_evidence(documents);
@@ -42,11 +49,13 @@ pub fn analyze_evidence_bundle(
 }
 
 fn build_evidence_v2(
-    query: &Query,
+    query: Option<&Query>,
     documents: &[Document],
     evidence: &[Evidence],
 ) -> Vec<EvidenceV2> {
-    let query_tokens = tokens(&query.normalized_query);
+    let query_tokens = query
+        .map(|value| tokens(&value.normalized_query))
+        .unwrap_or_default();
     documents
         .iter()
         .zip(evidence)
@@ -297,6 +306,7 @@ fn fetch_method(value: &FetchMethod) -> &'static str {
     match value {
         FetchMethod::Http => "http",
         FetchMethod::Rendered => "rendered",
+        FetchMethod::Local => "local",
     }
 }
 

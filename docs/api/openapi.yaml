@@ -339,7 +339,8 @@ components:
         elapsed_ms: { type: integer, minimum: 0 }
     FetchMethod:
       type: string
-      enum: [http, rendered]
+      description: local is emitted by the CLI-only ingestion contract, not by HTTP Deep
+      enum: [http, rendered, local]
     DocumentStatus:
       type: string
       enum: [enriched, superficial, failed]

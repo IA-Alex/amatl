@@ -48,6 +48,22 @@ Rotación: genera un token nuevo, drena/detén el listener, reemplaza la variabl
 reinicia, actualiza clientes y verifica que el anterior devuelve 401. AMATL no
 soporta dos tokens simultáneos.
 
+## Ingestión local
+
+La ingestión acepta un archivo regular explícito y nunca está disponible desde
+el listener HTTP/MCP:
+
+```bash
+amatl ingest ./evidencia.md --query "hallazgos críticos" --json
+```
+
+No necesita provider ni API key. Texto, Markdown, HTML, JSON/JSONL, CSV y código
+se procesan dentro de AMATL incluso con perfil aislado. PDF requiere
+`pdftotext` en `PATH` y sólo se ejecuta cuando la política efectiva permite
+egress; con `isolated`/`deny` falla antes de crear el proceso. La salida JSON
+incluye URI local absoluta y cuerpo extraído: redirígela sólo a destinos
+autorizados. Consulta [el contrato y los límites](ingestion-local.md).
+
 ## Salud y diagnóstico
 
 `/health` sólo prueba que router/proceso responden y devuelve

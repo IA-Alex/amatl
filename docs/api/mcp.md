@@ -60,3 +60,7 @@ también debe ejecutarse localmente y el host debe aplicar defensa en profundida
 
 The contract test initializes MCP, lists exactly these four tools, and calls
 `search` (`amatl-server/src/tests.rs:201-314`).
+
+La ingestión local no es una quinta herramienta MCP ni un endpoint HTTP. Sólo
+la CLI acepta rutas del filesystem; esta separación evita que un cliente remoto
+con bearer convierta el servidor en lector de archivos locales.

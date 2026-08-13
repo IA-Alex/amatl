@@ -183,6 +183,12 @@ Evidence v2 no introduce configuración ni una llamada de inferencia: Deep
 selecciona localmente hasta ocho fragmentos de 512 bytes por documento. Estos
 límites son invariantes del contrato actual, no valores ajustables en TOML.
 
+La ingestión local tampoco añade claves TOML. Sus límites actuales son fijos:
+20 MiB de archivo, 8 MiB de texto y 8 segundos para PDF. El comando deriva el
+permiso del extractor PDF de `data_policy`: `isolated` o `egress = "deny"` lo
+bloquean antes de crear el proceso; los tipos procesados dentro de AMATL siguen
+disponibles.
+
 ### Extractor
 
 | Clave | Tipo/default | Rango validado |

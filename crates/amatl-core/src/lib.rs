@@ -15,6 +15,7 @@ pub mod execution;
 pub mod extract;
 pub mod fetch;
 pub mod gaps;
+pub mod ingest;
 pub mod mcp;
 pub mod model;
 pub mod normalize;
@@ -58,6 +59,10 @@ pub use fetch::{
 pub use gaps::{
     GapAnalysis, GapAnalyzer, GapPolicyError, GapPolicyV1, SearchSubQueryExecutor,
     SubQueryExecutionError, SubQueryExecutor,
+};
+pub use ingest::{
+    LocalDocumentType, LocalIngestError, LocalIngestResponse, LocalIngestor,
+    LOCAL_INGEST_MAX_INPUT_BYTES, LOCAL_INGEST_MAX_OUTPUT_BYTES, LOCAL_INGEST_PDF_TIMEOUT_MS,
 };
 pub use model::{
     CanonicalResult, CanonicalTransformation, CanonicalUrl, CanonicalizationStatus, Category,

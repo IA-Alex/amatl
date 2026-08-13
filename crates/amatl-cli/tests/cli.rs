@@ -105,6 +105,58 @@ fn deep_command_is_exposed_without_running_network_on_help() {
 }
 
 #[test]
+fn ingest_dispatches_local_markdown_into_traceable_evidence() {
+    let id = TEMP_ID.fetch_add(1, Ordering::SeqCst);
+    let path =
+        std::env::temp_dir().join(format!("amatl-cli-ingest-{}-{id}.md", std::process::id()));
+    std::fs::write(
+        &path,
+        "# Local report\nAMATL evidence reached 88 percent on 2026-08-13.",
+    )
+    .unwrap();
+    let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
+        .arg("ingest")
+        .arg(&path)
+        .args(["--query", "AMATL evidence", "--json"])
+        .output()
+        .expect("local ingest should run");
+    std::fs::remove_file(path).unwrap();
+
+    assert!(output.status.success(), "{:?}", output);
+    let response: serde_json::Value = serde_json::from_slice(&output.stdout).unwrap();
+    assert_eq!(response["schema_version"], "1");
+    assert_eq!(response["document_type"], "markdown");
+    assert_eq!(response["document"]["fetch_method"], "local");
+    assert_eq!(response["document"]["status"], "enriched");
+    assert_eq!(response["evidence_v2"]["evidence_version"], "v2");
+    assert!(!response["evidence_v2"]["fragments"]
+        .as_array()
+        .unwrap()
+        .is_empty());
+}
+
+#[test]
+fn ingest_rejects_unknown_binary_without_echoing_content() {
+    let id = TEMP_ID.fetch_add(1, Ordering::SeqCst);
+    let path =
+        std::env::temp_dir().join(format!("amatl-cli-ingest-{}-{id}.bin", std::process::id()));
+    let secret = "private-binary-content";
+    std::fs::write(&path, format!("{secret}\0")).unwrap();
+    let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
+        .arg("ingest")
+        .arg(&path)
+        .arg("--json")
+        .output()
+        .expect("local ingest should fail safely");
+    std::fs::remove_file(path).unwrap();
+
+    assert!(!output.status.success());
+    let stderr = String::from_utf8(output.stderr).unwrap();
+    assert!(stderr.contains("document type is unsupported"));
+    assert!(!stderr.contains(secret));
+}
+
+#[test]
 fn provider_canary_refuses_incomplete_governance_without_network() {
     let id = TEMP_ID.fetch_add(1, Ordering::SeqCst);
     let base = std::env::temp_dir().join(format!("amatl-canary-{}-{id}", std::process::id()));

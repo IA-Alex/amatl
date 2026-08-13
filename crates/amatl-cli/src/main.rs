@@ -1,8 +1,8 @@
 use amatl_core::{
-    run_builtin_benchmark, run_operational_benchmark, validate_provider_canary, AmatlService,
-    Config, DocumentCache, DocumentCachePolicy, InMemoryTelemetry, ProviderSearchCache,
-    ProviderSearchCachePolicy, ProviderSurfaceStatus, SearchResponse, ServiceSurface,
-    SqliteStorage,
+    parse_query, run_builtin_benchmark, run_operational_benchmark, validate_provider_canary,
+    AmatlService, Config, DocumentCache, DocumentCachePolicy, InMemoryTelemetry, LocalIngestor,
+    ProviderSearchCache, ProviderSearchCachePolicy, ProviderSurfaceStatus, SearchResponse,
+    ServiceSurface, SqliteStorage,
 };
 use anyhow::Context;
 use clap::{Parser, Subcommand};
@@ -301,6 +301,13 @@ enum Command {
         #[arg(long, hide = true)]
         mock: bool,
     },
+    Ingest {
+        path: PathBuf,
+        #[arg(long)]
+        query: Option<String>,
+        #[arg(long)]
+        json: bool,
+    },
     Providers,
     ProviderCanary {
         provider: String,
@@ -349,6 +356,7 @@ async fn main() -> anyhow::Result<()> {
     match cli.command {
         Command::Search { query, json, mock } => search(query, json, mock, &config).await,
         Command::Deep { query, json, mock } => deep(query, json, mock, &config).await,
+        Command::Ingest { path, query, json } => ingest(path, query, json, &config).await,
         Command::Providers => {
             print_providers(&config).await?;
             Ok(())
@@ -574,6 +582,46 @@ async fn deep(raw_query: String, json: bool, mock: bool, config: &Config) -> any
         for document in deep.documents {
             println!("{:?}\t{}", document.status, document.final_url);
         }
+    }
+    Ok(())
+}
+
+async fn ingest(
+    path: PathBuf,
+    raw_query: Option<String>,
+    json: bool,
+    config: &Config,
+) -> anyhow::Result<()> {
+    let query = raw_query
+        .map(parse_query)
+        .transpose()
+        .context("query parsing failed")?;
+    let response = LocalIngestor::new(&config.data_policy)
+        .ingest(&path, query.as_ref())
+        .await
+        .context("local ingestion failed")?;
+    if json {
+        println!("{}", serde_json::to_string_pretty(&response)?);
+    } else {
+        println!(
+            "ingested: {} ({} source bytes, {} ms)",
+            response.document_type.as_str(),
+            response.document.size,
+            response.elapsed_ms
+        );
+        println!("source: {}", response.document.final_url);
+        println!(
+            "extractor: {}",
+            response
+                .document
+                .extractor_used
+                .as_deref()
+                .unwrap_or("none")
+        );
+        println!(
+            "evidence fragments: {}",
+            response.evidence_v2.fragments.len()
+        );
     }
     Ok(())
 }

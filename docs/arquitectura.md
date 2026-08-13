@@ -15,6 +15,7 @@ MCP; ninguna superficie replica reglas de negocio.
 | normalize/canonical/dedupe | `normalize.rs`, `canonical.rs`, `dedupe.rs` | Modelo común, identidad URL y consolidación conservadora |
 | ranking/diversity | `ranking.rs`, `diversity.rs` | Ranking MVP explicable y límites visibles |
 | deep/fetch/render/extract | `deep.rs`, `fetch.rs`, `render.rs`, `extract.rs` | Enriquecimiento opcional y capacidades aisladas |
+| ingestión local | `ingest.rs` | lectura acotada, detección de tipo, despacho y conversión a `Document` |
 | evidence/ranking v2/gaps | `evidence.rs`, `ranking_v2.rs`, `gaps.rs` | Señales Deep, gate de calidad y expansión acotada |
 | cache/storage/telemetry | `cache.rs`, `document_cache.rs`, `storage.rs`, `telemetry.rs` | Estado opcional y tolerante a fallos |
 | security/data policy | `config.rs`, `service.rs`, `security.rs` y middleware de `amatl-server` | Egress/inferencia, SSRF, exposición y hardening HTTP |
@@ -41,6 +42,11 @@ con offsets, hashes y procedencia completa. Es aditivo: Evidence v1 conserva el
 score usado por Ranking v2/Gap y Evidence v2 lo proyecta sin recalibrarlo. Ver
 [contrato Evidence v2](evidence-v2.md).
 
+La ingestión local tiene un ciclo independiente y no simula un resultado de
+Search: `ruta explícita → detector → extractor por tipo → Document → Evidence
+v1/v2`. Sólo la CLI expone esta capacidad. API y MCP no aceptan rutas locales,
+por lo que un cliente de red no puede usar AMATL como lector del filesystem.
+
 ## Ownership y ejecución
 
 `router` ordena y recomienda providers y solicitudes de capacidad; no asigna
@@ -63,6 +69,10 @@ límites: CLI y API usan los configurados; MCP reduce providers, tiempos,
 fetches, bytes y subqueries (`service.rs:14-58`). La UI usa exclusivamente el
 contrato HTTP público y envía búsquedas mediante POST JSON; el token sólo se
 coloca en `Authorization` y no se serializa como control del formulario.
+
+El comando CLI `ingest` invoca `LocalIngestor` del mismo core sin pasar por el
+servidor. Esta excepción de transporte es intencional: mantiene el acceso a
+archivos fuera de HTTP/MCP y no crea lógica de evidencia en la CLI.
 
 Antes de construir capacidades de red, `data_policy` resuelve el perfil
 efectivo. `isolated` instala fetch/transporte denegados y la validación rechaza

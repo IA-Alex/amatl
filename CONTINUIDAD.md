@@ -4,7 +4,7 @@
 
 Estado revisado el **2026-08-13** sobre la rama `main`:
 
-- revisión de partida: `bf34ef5` (`security: move UI search to POST`);
+- revisión de partida: `5d2e15d` (`feat: add traceable Evidence v2`);
 - baseline de implementación: tag `baseline-fases-0-9`, commit `51c6d34`;
 - workspace: Rust 2021, MSRV 1.88, versión candidata `0.1.0-rc.1`, cuatro crates;
 - fases 0–9: cerradas y verificadas;
@@ -69,6 +69,9 @@ Invariantes no negociables:
   de evidencia siguen siendo independientes de LLM.
 - Evidence v2 es aditivo: fragmentos exactos, acotados y enlazados a procedencia
   acompañan la evidencia v1 sin recalibrar Ranking v2 ni Gap.
+- La ingestión de archivos es sólo CLI: despacha tipos en core, produce
+  `Document` y Evidence v1/v2, no ejecuta Search y nunca expone rutas por
+  HTTP/MCP. PDF respeta `data_policy` antes de crear `pdftotext`.
 
 ## Disponibilidad real y límites
 
@@ -114,7 +117,7 @@ cargo cyclonedx
 
 Resultados locales registrados el 2026-08-13:
 
-- 179 pruebas aprobadas en el workspace;
+- 188 pruebas aprobadas en el workspace;
 - formato, benches y Clippy estricto aprobados;
 - Cargo Audit sin vulnerabilidades y Cargo Deny aprobado (duplicados
   transitivos permitidos por la política vigente);

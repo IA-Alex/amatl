@@ -144,6 +144,7 @@ pub enum ResultStatus {
 pub enum FetchMethod {
     Http,
     Rendered,
+    Local,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]

@@ -52,6 +52,9 @@ adapter/extractor versions are independent axes as well.
 - Additive Evidence v2 output with bounded exact-text fragments, deterministic
   identifiers and hashes, URL/fetch/extractor provenance, query-aware signals
   and the unchanged v1 score basis; Ranking v2 and Gap retain their calibration.
+- CLI-only local ingestion with bounded file reads, deterministic dispatch for
+  text, Markdown, HTML, JSON/JSONL, CSV, source code and PDF, producing Document
+  plus Evidence v1/v2 without exposing filesystem access through HTTP or MCP.
 
 ### Changed
 
