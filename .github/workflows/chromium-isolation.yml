@@ -29,6 +29,14 @@ jobs:
           if sysctl kernel.apparmor_restrict_unprivileged_userns >/dev/null 2>&1; then
             sudo sysctl --write kernel.apparmor_restrict_unprivileged_userns=0
           fi
+      - name: Verify runner Chromium baseline
+        run: |
+          chromium="$(command -v chromium || command -v chromium-browser || command -v google-chrome)"
+          "$chromium" --version
+          fixture="$(mktemp --suffix=.html)"
+          printf '%s' '<!doctype html><p id="state">baseline</p>' > "$fixture"
+          timeout 45 "$chromium" --headless=new --no-sandbox --disable-gpu \
+            --dump-dom "file://$fixture" | grep --fixed-strings --quiet '>baseline<'
       - name: Render JavaScript without browser network access
         run: |
           fixture="$(mktemp --suffix=.html)"

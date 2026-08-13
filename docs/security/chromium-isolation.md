@@ -16,9 +16,6 @@ empty and is not connected to the host or Internet. The transient
 systemd unit enforces `MemoryMax`, `TasksMax` and `RuntimeMaxSec`; bubblewrap uses
 `--die-with-parent`. Output is copied only after a successful exit and an 8 MiB
 cap. The temporary profile and input copy are deleted on every shell exit.
-Chromium's nested setuid/user-namespace sandbox is disabled because bubblewrap
-already owns that boundary; the browser still runs without host capabilities
-inside the outer namespaces and cgroup.
 The host must permit unprivileged user namespaces; otherwise bubblewrap aborts
 and the helper returns no DOM. The GitHub runner explicitly enables this kernel
 primitive before the test because Ubuntu's AppArmor default restricts it.

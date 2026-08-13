@@ -75,11 +75,10 @@ systemd-run --user --wait --collect --pipe --quiet --unit "$unit" \
     --setenv DBUS_SYSTEM_BUS_ADDRESS unix:path=/dev/null \
     --chdir / \
     -- "$chromium" \
-      --headless=new --no-sandbox --disable-gpu --disable-background-networking \
+      --headless=new --disable-gpu --disable-background-networking \
       --disable-component-update --disable-default-apps --disable-extensions \
       --disable-features=MediaRouter,OptimizationHints --disable-sync \
       --metrics-recording-only --no-first-run --no-default-browser-check \
-      --password-store=basic --use-mock-keychain \
       --virtual-time-budget=2000 --user-data-dir=/tmp/profile \
       --dump-dom file:///tmp/input.html \
       >"$sandbox/dom.html" 2>"$sandbox/chromium.stderr"
