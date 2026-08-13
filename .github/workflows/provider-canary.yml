@@ -28,7 +28,7 @@ jobs:
       BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
       MOJEEK_API_KEY: ${{ secrets.MOJEEK_API_KEY }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: dtolnay/rust-toolchain@stable
       - uses: Swatinem/rust-cache@v2
       - name: Materialize approved runtime configuration
