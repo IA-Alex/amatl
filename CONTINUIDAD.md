@@ -91,4 +91,7 @@ criterios de aceptación; no iniciar componentes por inferencia.
 
 Pendientes externos, no defectos del core: marcar `contract-gate` como requerido
 en la protección de rama del hosting, completar aprobaciones/credenciales de
-providers y habilitar Renderer sólo cuando exista aislamiento CDP verificable.
+providers, habilitar Renderer sólo cuando exista aislamiento CDP verificable y
+capturar en el entorno objetivo las métricas operativas de §17 (red, memoria,
+SQLite bajo carga, Renderer y latencia Deep). Criterion ya cubre el baseline
+reproducible del core; no sustituye esas mediciones ambientales.
