@@ -43,7 +43,7 @@ if [[ "$chromium" == /opt/* ]]; then
   chromium_mounts=(--ro-bind /opt /opt)
 fi
 
-memory_mb=${AMATL_CHROMIUM_MEMORY_MB:-512}
+memory_mb=${AMATL_CHROMIUM_MEMORY_MB:-1024}
 tasks_max=${AMATL_CHROMIUM_TASKS_MAX:-512}
 max_dom_bytes=${AMATL_CHROMIUM_MAX_DOM_BYTES:-8388608}
 [[ "$memory_mb" =~ ^[1-9][0-9]*$ && "$memory_mb" -ge 128 ]]
