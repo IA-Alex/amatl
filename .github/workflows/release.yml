@@ -77,6 +77,14 @@ jobs:
           echo "SOURCE_DATE_EPOCH=$(git log -1 --format=%ct)" >> "$GITHUB_ENV"
       - name: Build static Linux binary
         run: cargo build --locked --release --target x86_64-unknown-linux-musl -p amatl-cli
+      - name: Verify static Linux binary
+        env:
+          PACKAGE_VERSION: ${{ steps.version.outputs.package_version }}
+        run: |
+          binary="target/x86_64-unknown-linux-musl/release/amatl"
+          file "$binary"
+          file "$binary" | grep --extended-regexp --quiet 'static(-pie|ally) linked'
+          "$binary" --version | grep --fixed-strings --quiet "amatl $PACKAGE_VERSION"
       - name: Generate CycloneDX SBOMs
         run: cargo cyclonedx --target x86_64-unknown-linux-musl --target-in-filename
       - name: Package reproducible archive and checksums
@@ -97,6 +105,7 @@ jobs:
           rm -r "dist/$archive_root"
           cd dist
           sha256sum *.tar.gz > SHA256SUMS
+          sha256sum --check SHA256SUMS
       - name: Attest artifacts when GitHub supports the repository visibility
         if: github.event.repository.visibility == 'public'
         uses: actions/attest@v4
