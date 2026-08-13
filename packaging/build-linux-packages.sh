@@ -35,6 +35,7 @@ install_payload() {
 }
 
 deb_version=${version/-rc./~rc.}
+deb_asset_version=${deb_version//\~/.}
 deb_root="$work/deb"
 install_payload "$deb_root"
 mkdir -p "$deb_root/DEBIAN"
@@ -50,7 +51,8 @@ Description: Generalist multi-source search
  Fast, modular and failure-tolerant Linux-first search with optional Deep evidence.
 EOF
 touch --date="@$source_date_epoch" "$deb_root/DEBIAN/control" "$deb_root/DEBIAN"
-dpkg-deb --root-owner-group --build "$deb_root" "$output_dir/amatl_${deb_version}_amd64.deb"
+dpkg-deb --root-owner-group --build "$deb_root" \
+  "$output_dir/amatl_${deb_asset_version}_amd64.deb"
 
 arch_root="$work/arch"
 install_payload "$arch_root"

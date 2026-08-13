@@ -14,6 +14,11 @@ adapter/extractor versions are independent axes as well.
 
 ## [Unreleased]
 
+### Fixed
+
+- Debian release asset names avoid GitHub's `~` normalization so published
+  `SHA256SUMS` manifests remain directly verifiable.
+
 ## [0.1.0-rc.1] - 2026-08-13
 
 ### Added
