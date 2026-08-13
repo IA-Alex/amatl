@@ -19,13 +19,13 @@ workspace, not a hand-picked suite.
 | Ranking/Diversity | Yes | result pipeline | score/rank invariants | N/A: deterministic product logic | Yes | MVP and v2 tested; operational relevance drift needs external evaluation |
 | SQLite/cache | Yes | `persistence_phase3`, Deep cache | No | corruption/quarantine | Boundary tests | WAL/TTL/LRU/quotas covered; real filesystem failure and contention load absent |
 | Telemetry/router | Yes | `adaptive_routing_phase4` | No | no secrets by schema review | Yes | 30-day decay/state/fallback covered; multi-process behavior absent |
-| Fetcher/SSRF | Yes | Deep with fakes | URL properties | private/mapped IP, mixed DNS, headers, redirect | Yes | No live DNS rebinding, TLS-negative, slow-stream or real oversized server fixture |
+| Fetcher/SSRF | Yes | Deep with fakes + MCP audit path | URL properties | private/mapped IP, mixed DNS, headers, redirect, secret-safe audit | Yes | No live DNS rebinding, slow-stream or real oversized SafeFetcher fixture; provider TLS-negative is covered separately |
 | Extractor | Missing executable | Deep with fakes | No | fixed args/limits by review | Partial | Missing process typed; real Trafilatura success/timeout/output integration absent |
 | Renderer | Fail-closed unit | No active backend | No | no unsafe fallback | Current contract only | Chromium/CDP is unavailable; isolation tests must precede activation |
 | Deep/Evidence/Gap | Unit engines | `deep_phase5` | No | budget/blocked fetch via fakes | Yes | Fetch/extract failures, ranking gate, max two subqueries and cache rights covered |
 | CLI | Formatting/behavior through process | `amatl-cli/tests/cli.rs` | No | JSON/log separation indirectly | Surface contract | Exit codes and commands covered; no packaged binary/install matrix |
 | UI | Asset unit tests | Served by server tests | No | CSP, safe DOM, URL protocols | Presentation contract | No browser E2E/accessibility automation |
-| HTTP API | Handler tests | In-process Axum | No | auth, Host, Origin/CORS, body, rate, headers | Yes | No real TLS, timeout, header-size, connection-saturation or proxy test |
+| HTTP API | Handler tests | In-process Axum + TCP/rustls | No | auth, Host, Origin/CORS, body, rate, framing, request correlation | Yes | Real TCP/TLS and untrusted certificate covered; no timeout, header-size, connection-saturation or proxy test |
 | MCP | Tool/limit units | initialize/list/call | No | shared HTTP gate + SafeFetcher | Yes | Exactly four tools covered; `fetch` network behavior is unit-tested below transport |
 
 “N/A” is used only where the test class does not represent a meaningful threat;

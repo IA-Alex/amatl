@@ -24,7 +24,8 @@ not claim network-layer egress filtering.
 ## Block catalog
 
 Hostnames are lowercased and stripped of a terminal dot. `localhost` and names
-ending in `.localhost`, `.local`, `.internal`, `.lan`, or `.home` are blocked
+ending in `.localhost`, `.local`, `.localdomain`, `.internal`, `.intranet`,
+`.lan`, or `.home` are blocked
 (`security.rs:36-42`).
 
 IPv4 blocks (`security.rs:51-64`):
@@ -44,8 +45,9 @@ IPv6 blocks (`security.rs:66-77`): loopback `::1`, unspecified `::`, multicast
 
 ## Request and response limits
 
-- Request headers are an allowlist of `accept`, `accept-language`, and
-  `user-agent`; authorization and cookies cannot be forwarded
+- Request headers are an allowlist of `accept`, `accept-language`,
+  `if-modified-since`, `if-none-match`, and `user-agent`; authorization and
+  cookies cannot be forwarded
   (`fetch.rs:221-230`).
 - Response headers are reduced to content type/length, last-modified, ETag, and
   cache-control (`fetch.rs:233-249`).
@@ -59,10 +61,19 @@ IPv6 blocks (`security.rs:66-77`): loopback `::1`, unspecified `::`, multicast
 
 ## Verification and gaps
 
+Every rejected initial URL, redirect URL/location, or DNS answer emits an
+`amatl::security` event containing only `security_event=ssrf_blocked`, stage and
+stable reason. It deliberately omits URL, hostname, query and resolved
+addresses. When the fetch originates in HTTP/MCP, the surrounding
+`http_request` span supplies the same `request_id` returned as `X-Request-ID`.
+Third-party tracing targets are excluded from CLI/server output to prevent an
+upstream library from copying full MCP arguments into logs.
+
 Tests prove rejection before DNS, rejection of mixed public/private DNS answers,
 private ranges including IPv4-mapped IPv6, sensitive headers, and a redirect to
-a private literal (`security.rs:83-116`, `fetch.rs:301-333`). Property tests
-exercise URL parsing/canonicalization (`tests/properties.rs`).
+a private literal, and end-to-end MCP correlation without URL/token logging
+(`security.rs`, `fetch.rs`, `amatl-server/src/tests.rs`). Property tests exercise
+URL parsing/canonicalization (`tests/properties.rs`).
 
 Residual gaps: there is no live rebinding integration fixture, no operator-level
 egress firewall, no public-domain allowlist, and no classification of a public

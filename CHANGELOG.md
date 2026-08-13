@@ -39,6 +39,8 @@ adapter/extractor versions are independent axes as well.
   conditional on repository visibility and GitHub plan support.
 - Secret-safe HTTP security events, hostile-newline log regression coverage,
   explicit TLS 1.2 floors and invalid-certificate/message-boundary tests.
+- Server-generated request correlation across responses, routing and SSRF audit
+  events, with third-party tracing targets excluded from operator logs.
 
 ### Changed
 

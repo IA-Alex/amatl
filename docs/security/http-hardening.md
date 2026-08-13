@@ -82,6 +82,13 @@ They include only a stable event code, normalized path and socket IP; Host,
 Origin and credential values are deliberately omitted
 (`amatl-server/src/lib.rs:316-418`).
 
+Every application response receives a fresh `X-Request-ID` made from a
+process-local sequence and timestamp. Incoming values are not reused. The ID is
+also recorded on early security events and on an `http_request` tracing span so
+downstream routing and SSRF events can be correlated. CORS exposes this response
+header to explicitly allowed origins. HTTP parser failures that occur before
+Axum middleware can run are outside this guarantee.
+
 ## `doctor` versus `/health`
 
 `amatl doctor` is an operator diagnostic: it loads/validates configuration,
@@ -95,7 +102,8 @@ SQLite, token readiness, or outbound network (`amatl-server/src/lib.rs:291-293`)
 Tests cover hardened public health, bearer enforcement, the simple and
 protected Host/Origin/CORS matrix, rate and body limits, secret-safe security
 events, real socket-IP separation, TCP, conflicting HTTP message boundaries,
-trusted/untrusted TLS certificates and MCP (`amatl-server/src/tests.rs`). The
+trusted/untrusted TLS certificates, unique request IDs and correlated MCP SSRF
+rejection (`amatl-server/src/tests.rs`). The
 provider transport also rejects an untrusted certificate without exposing its
 credential (`providers/http.rs`). Remaining environmental gaps are connection
 saturation, distributed/multi-process rate limiting and reverse-proxy

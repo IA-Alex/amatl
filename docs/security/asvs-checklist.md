@@ -13,7 +13,7 @@ absent.
 | Requirement | Level | Applies/status | Control | Code/document evidence | Test/evidence |
 |---|---:|---|---|---|---|
 | v5.0.0-1.2.2 safe URL protocols | 1 | Pass | Structured `Url`; only HTTP(S); embedded credentials rejected | `security.rs:4-24` | `security.rs:83-89` |
-| v5.0.0-1.3.6 SSRF | 2 | Partial | Pre-connect, post-DNS, redirect validation and address pinning; no domain/port allowlist | `security.rs:10-76`; `fetch.rs:96-143,161-218` | `security.rs:91-116`; `fetch.rs:301-333`; live rebinding fixture absent |
+| v5.0.0-1.3.6 SSRF | 2 | Partial | Pre-connect, post-DNS, redirect validation, address pinning and secret-safe rejection audit; no domain/port allowlist | `security.rs`; `fetch.rs` | Unit/redirect tests plus correlated MCP rejection; live rebinding fixture absent |
 | v5.0.0-2.1.1 validation rules documented | 1 | Pass | Query, URL and HTTP rules are explicit | `fase_a_contratos.md`; `docs/security/ssrf-controls.md`; `docs/security/http-hardening.md` | Query/security/server contract tests |
 | v5.0.0-2.1.3 business limits documented | 2 | Pass | Budget and per-surface limits documented | `docs/configuracion.md`; `docs/api/mcp.md` | `budget.rs:209-245`; `service.rs:416-437` |
 | v5.0.0-2.2.1 server-side validation | 1 | Pass | API/MCP validates query; config validates ranges; fetch validates URL/header | `amatl-server/src/lib.rs:214-278,397-399`; `config.rs:522-674`; `fetch.rs:96-143,221-230` | `amatl-server/src/tests.rs:49-107`; `config.rs:682-755`; `fetch.rs:301-333` |
@@ -49,17 +49,16 @@ absent.
 | v5.0.0-15.3.1 minimum returned fields | 1 | Pass | Search excludes `final_url` and internal ranking details | `model.rs:474-500`; `plan_amatl.md:763-798` | `amatl-server/src/tests.rs:69-76`; `tests/search_contract.rs` |
 | v5.0.0-15.3.2 backend redirects | 2 | Pass | Provider redirects disabled; SafeFetcher follows only intended, bounded, revalidated redirects | `providers/http.rs:49-54`; `fetch.rs:122-130,168-174` | `fetch.rs:326-333` |
 | v5.0.0-16.1.1 logging inventory | 2 | Partial | Format/fields and routing events documented; retention/access depend on stderr consumer | `plan_amatl.md:710-722`; `amatl-cli/src/main.rs:19-98`; `docs/operacion.md` | Formatter compiled/tested indirectly; external sink pending operator |
-| v5.0.0-16.2.1 investigation metadata | 2 | Partial | JSON events include timestamp, level, target, message and context; request correlation ID is absent | `amatl-cli/src/main.rs` | Dedicated formatter contract test; cross-event correlation remains unresolved |
-| v5.0.0-16.2.5 sensitive-log protection | 2 | Partial with regression coverage | Generic transport errors, URL redaction, sensitive JSON-field redaction and value-free HTTP audit events | `providers/http.rs`; `amatl-cli/src/main.rs`; `amatl-server/src/lib.rs` | Formatter, authenticated rejection and untrusted-provider-certificate secret canaries; free-form future fields remain a review risk |
-| v5.0.0-16.3.3 security-event logging | 2 | Partial | HTTP headers/body/Host/Origin/rate/auth/timeout rejections and routing are logged; SSRF failures are typed but not yet centralized as audit events | `execution.rs`; `amatl-server/src/lib.rs:316-418` | `rejected_requests_emit_secret_safe_security_events`; SSRF audit coverage remains absent |
+| v5.0.0-16.2.1 investigation metadata | 2 | Pass for HTTP operations | JSON events include timestamp, level, target, message, context and span chain; server-generated request ID crosses HTTP, routing and SSRF | `amatl-cli/src/main.rs`; `amatl-server/src/lib.rs` | Unique response IDs and correlated MCP SSRF event contract test |
+| v5.0.0-16.2.5 sensitive-log protection | 2 | Partial with regression coverage | Generic errors, URL/field redaction, value-free audit events and a strict own-target tracing filter | `providers/http.rs`; `amatl-cli/src/main.rs`; `amatl-server/src/lib.rs` | Formatter, authenticated rejection, TLS and MCP URL-token canaries; free-form future AMATL fields remain a review risk |
+| v5.0.0-16.3.3 security-event logging | 2 | Pass for current HTTP/SSRF controls | Headers/body/Host/Origin/rate/auth/timeout and SSRF rejections emit stable secret-safe events | `execution.rs`; `security.rs`; `fetch.rs`; `amatl-server/src/lib.rs` | HTTP rejection and end-to-end correlated MCP SSRF audit tests |
 | v5.0.0-16.4.1 log injection | 2 | Pass for machine output; TTY library-managed | Non-TTY output is one JSON object per event and newlines are escaped | `amatl-cli/src/main.rs` | `json_logs_escape_newlines_and_redact_sensitive_fields` uses a hostile newline payload |
 
 ## Priority gaps
 
 Before claiming ASVS L2 alignment: define dependency remediation SLAs and the
-security contact; add request correlation and SSRF audit events; decide whether
-deployment requires a domain/port egress allowlist; define any multi-process
-rate-limit requirement; and document trusted reverse-proxy handling before
-supporting one.
+security contact; decide whether deployment requires a domain/port egress
+allowlist; define any multi-process rate-limit requirement; and document trusted
+reverse-proxy handling before supporting one.
 
 Normative reference: [OWASP ASVS 5.0.0](https://github.com/OWASP/ASVS/tree/v5.0.0/5.0).

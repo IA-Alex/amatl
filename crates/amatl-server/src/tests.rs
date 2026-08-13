@@ -4,6 +4,8 @@ use std::io::Write;
 use std::sync::{Arc, Mutex, Once, OnceLock};
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tower::ServiceExt;
+use tracing_subscriber::layer::SubscriberExt;
+use tracing_subscriber::Layer;
 
 const TOKEN: &str = "0123456789abcdef0123456789abcdef";
 
@@ -35,10 +37,24 @@ async fn json_body(response: Response) -> serde_json::Value {
 async fn health_is_lightweight_public_and_hardened() {
     let response = app()
         .await
-        .oneshot(request("/health").body(Body::empty()).unwrap())
+        .oneshot(
+            request("/health")
+                .header(REQUEST_ID_HEADER, "client-supplied-id")
+                .body(Body::empty())
+                .unwrap(),
+        )
         .await
         .unwrap();
     assert_eq!(response.status(), StatusCode::OK);
+    let request_id = response.headers()[REQUEST_ID_HEADER]
+        .to_str()
+        .unwrap()
+        .to_owned();
+    assert_eq!(request_id.len(), 49);
+    assert_ne!(request_id, "client-supplied-id");
+    assert!(request_id
+        .bytes()
+        .all(|value| value.is_ascii_hexdigit() || value == b'-'));
     assert!(response.headers().contains_key("content-security-policy"));
     assert_eq!(
         response.headers()["x-content-type-options"],
@@ -47,6 +63,16 @@ async fn health_is_lightweight_public_and_hardened() {
     assert!(!response.headers().contains_key("server"));
     let body = json_body(response).await;
     assert_eq!(body, json!({"schema_version": "1", "status": "ok"}));
+
+    let second = app()
+        .await
+        .oneshot(request("/health").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_ne!(
+        request_id,
+        second.headers()[REQUEST_ID_HEADER].to_str().unwrap()
+    );
 }
 
 #[tokio::test]
@@ -179,6 +205,13 @@ async fn host_and_origin_are_explicitly_validated() {
         public_same_origin.headers()["access-control-allow-origin"],
         HeaderValue::from_static("http://localhost:8080")
     );
+    assert!(
+        public_same_origin.headers()["access-control-expose-headers"]
+            .to_str()
+            .unwrap()
+            .split(',')
+            .any(|value| value.trim().eq_ignore_ascii_case(REQUEST_ID_HEADER))
+    );
 }
 
 #[derive(Clone)]
@@ -206,13 +239,18 @@ fn security_logs() -> Arc<Mutex<Vec<u8>>> {
         .clone();
     INSTALL.call_once(|| {
         let sink = captured.clone();
-        let subscriber = tracing_subscriber::fmt()
-            .without_time()
-            .with_ansi(false)
-            .with_target(true)
-            .with_max_level(tracing::Level::TRACE)
-            .with_writer(move || LogWriter(sink.clone()))
-            .finish();
+        let target_filter = tracing_subscriber::filter::filter_fn(|metadata| {
+            let target = metadata.target();
+            target == "amatl" || target.starts_with("amatl::") || target.starts_with("amatl_")
+        });
+        let subscriber = tracing_subscriber::registry().with(
+            tracing_subscriber::fmt::layer()
+                .without_time()
+                .with_ansi(false)
+                .with_target(true)
+                .with_writer(move || LogWriter(sink.clone()))
+                .with_filter(target_filter),
+        );
         tracing::subscriber::set_global_default(subscriber)
             .expect("test security log subscriber should install once");
     });
@@ -238,6 +276,7 @@ async fn rejected_requests_emit_secret_safe_security_events() {
         .await
         .unwrap();
     assert_eq!(response.status(), StatusCode::UNAUTHORIZED);
+    let request_id = response.headers()[REQUEST_ID_HEADER].to_str().unwrap();
     let logs = String::from_utf8(
         captured
             .lock()
@@ -248,8 +287,74 @@ async fn rejected_requests_emit_secret_safe_security_events() {
     assert!(logs.contains("amatl::security"), "{logs}");
     assert!(logs.contains("security_event=\"unauthorized\""), "{logs}");
     assert!(logs.contains("path=\"/search\""), "{logs}");
+    assert!(logs.contains(request_id), "{logs}");
     assert!(!logs.contains(supplied_secret), "{logs}");
     assert!(!logs.contains("forged"), "{logs}");
+}
+
+#[tokio::test]
+async fn mcp_ssrf_rejection_is_correlated_without_logging_the_url() {
+    let captured = security_logs();
+    captured
+        .lock()
+        .unwrap_or_else(|error| error.into_inner())
+        .clear();
+    let secret = "never-log-this-ssrf-query-token";
+    let call = json!({
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "tools/call",
+        "params": {
+            "name": "fetch",
+            "arguments": {
+                "url": format!("http://127.0.0.1/private?token={secret}")
+            },
+            "_meta": {
+                "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+                "io.modelcontextprotocol/clientInfo": {
+                    "name": "security-contract-test",
+                    "version": "1"
+                },
+                "io.modelcontextprotocol/clientCapabilities": {}
+            }
+        }
+    });
+    let response = app()
+        .await
+        .oneshot(
+            authorized("/mcp")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .header("accept", "application/json, text/event-stream")
+                .header("mcp-protocol-version", "2026-07-28")
+                .header("mcp-method", "tools/call")
+                .header("mcp-name", "fetch")
+                .body(Body::from(call.to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let request_id = response.headers()[REQUEST_ID_HEADER]
+        .to_str()
+        .unwrap()
+        .to_owned();
+    let body = json_body(response).await;
+    assert_eq!(body["result"]["isError"], true);
+
+    let logs = String::from_utf8(
+        captured
+            .lock()
+            .unwrap_or_else(|error| error.into_inner())
+            .clone(),
+    )
+    .unwrap();
+    assert!(logs.contains("security_event=\"ssrf_blocked\""), "{logs}");
+    assert!(logs.contains("stage=\"initial_url\""), "{logs}");
+    assert!(logs.contains("reason=\"address_blocked\""), "{logs}");
+    assert!(logs.contains(&request_id), "{logs}");
+    assert!(!logs.contains(secret), "{logs}");
+    assert!(!logs.contains("/private"), "{logs}");
 }
 
 #[tokio::test]
@@ -547,6 +652,10 @@ async fn mcp_uses_streamable_http_and_exposes_exactly_four_tools() {
     let initialized = json_body(response).await;
     assert_eq!(status, StatusCode::OK, "initialize response: {initialized}");
     assert_eq!(initialized["result"]["serverInfo"]["name"], "amatl");
+    assert_eq!(
+        initialized["result"]["serverInfo"]["version"],
+        env!("CARGO_PKG_VERSION")
+    );
     assert_eq!(initialized["result"]["protocolVersion"], "2026-07-28");
 
     let list = json!({

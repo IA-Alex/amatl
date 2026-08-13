@@ -31,6 +31,11 @@ comprueba SQLite/migración si procede, reporta telemetría y muestra preparaci�
 de token/TLS. Un `doctor` degradado puede terminar con código 0 porque es un
 reporte; el operador debe leer cada línea.
 
+Toda respuesta de aplicación incluye `X-Request-ID`. AMATL genera uno nuevo en
+el borde HTTP y no confía en un header homónimo recibido. Conserva ese valor al
+reportar un incidente: los eventos HTTP, routing y SSRF ejecutados dentro de la
+solicitud comparten el mismo contexto.
+
 ## Estados y degradaciones
 
 - `success`: ejecución sana según el contrato.
@@ -118,4 +123,7 @@ Rota primero, detén procesos con el valor anterior y sigue
 `RUST_LOG=amatl=debug` activa decisiones de routing; producción debe usar el
 nivel mínimo necesario. stderr redirigido usa JSON; el operador decide destino,
 acceso, rotación y retención. AMATL no implementa un almacén durable de auditoría
-ni correlation IDs, por lo que no debe atribuirse esa capacidad.
+propio. Los targets de dependencias se excluyen aunque `RUST_LOG` sea amplio,
+porque algunas bibliotecas pueden registrar argumentos completos. Los eventos
+JSON incluyen la cadena de spans; `http_request` aporta `request_id`, ruta sin
+query y dirección obtenida del socket.

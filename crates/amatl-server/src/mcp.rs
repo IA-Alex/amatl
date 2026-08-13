@@ -99,7 +99,6 @@ impl McpSurface {
 
 #[tool_handler(
     name = "amatl",
-    version = "0.1.0",
     instructions = "AMATL search tools use bounded, deterministic multi-source retrieval. MCP budgets are stricter than local CLI budgets."
 )]
 impl ServerHandler for McpSurface {

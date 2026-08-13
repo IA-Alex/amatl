@@ -14,8 +14,11 @@ use std::time::{SystemTime, UNIX_EPOCH};
 use tracing::field::{Field, Visit};
 use tracing::{Event, Subscriber};
 use tracing_subscriber::fmt::format::{FormatEvent, FormatFields, Writer};
-use tracing_subscriber::fmt::FmtContext;
+use tracing_subscriber::fmt::{FmtContext, FormattedFields};
+use tracing_subscriber::layer::SubscriberExt;
 use tracing_subscriber::registry::LookupSpan;
+use tracing_subscriber::util::SubscriberInitExt;
+use tracing_subscriber::Layer;
 
 struct JsonEventFormatter;
 
@@ -26,7 +29,7 @@ where
 {
     fn format_event(
         &self,
-        _context: &FmtContext<'_, S, N>,
+        context: &FmtContext<'_, S, N>,
         mut writer: Writer<'_>,
         event: &Event<'_>,
     ) -> fmt::Result {
@@ -58,6 +61,28 @@ where
         );
         root.insert("msg".into(), message);
         root.insert("context".into(), Value::Object(visitor.fields));
+        if let Some(scope) = context.event_scope() {
+            let spans = scope
+                .from_root()
+                .filter(|span| trusted_log_target(span.metadata().target()))
+                .map(|span| {
+                    let fields = {
+                        let extensions = span.extensions();
+                        extensions
+                            .get::<FormattedFields<N>>()
+                            .map(|fields| fields.fields.clone())
+                            .unwrap_or_default()
+                    };
+                    serde_json::json!({
+                        "name": span.metadata().name(),
+                        "fields": fields,
+                    })
+                })
+                .collect::<Vec<_>>();
+            if !spans.is_empty() {
+                root.insert("spans".into(), Value::Array(spans));
+            }
+        }
         writeln!(writer, "{}", Value::Object(root))
     }
 }
@@ -82,6 +107,18 @@ fn sensitive_log_field(name: &str) -> bool {
     matches!(
         name.to_ascii_lowercase().as_str(),
         "api_key" | "authorization" | "cookie" | "key" | "password" | "secret" | "token"
+    )
+}
+
+fn trusted_log_target(target: &str) -> bool {
+    target == "amatl" || target.starts_with("amatl::") || target.starts_with("amatl_")
+}
+
+fn log_filter() -> tracing_subscriber::EnvFilter {
+    tracing_subscriber::EnvFilter::from_default_env().add_directive(
+        "amatl::http=info"
+            .parse()
+            .expect("static request-correlation log directive is valid"),
     )
 }
 
@@ -150,6 +187,14 @@ mod logging_tests {
         let hostile = "first line\nforged second event";
         let secret = "never-log-this-api-key";
         tracing::subscriber::with_default(subscriber, || {
+            let span = tracing::info_span!("http_request", request_id = "request-123");
+            let _entered = span.enter();
+            let dependency_span = tracing::error_span!(
+                target: "rmcp::service",
+                "serve_inner",
+                arguments = secret
+            );
+            let _dependency_entered = dependency_span.enter();
             tracing::warn!(
                 target: "amatl::logging_test",
                 message = hostile,
@@ -171,6 +216,59 @@ mod logging_tests {
         assert_eq!(value["msg"], hostile);
         assert_eq!(value["context"]["api_key"], "[redacted]");
         assert_eq!(value["context"]["authorization"], "[redacted]");
+        assert_eq!(value["spans"][0]["name"], "http_request");
+        assert_eq!(value["spans"].as_array().unwrap().len(), 1);
+        assert!(value["spans"][0]["fields"]
+            .as_str()
+            .unwrap()
+            .contains("request-123"));
+        assert!(trusted_log_target("amatl::security"));
+        assert!(trusted_log_target("amatl_core::service"));
+        assert!(!trusted_log_target("rmcp::service"));
+        assert!(!trusted_log_target("hyper::proto"));
+    }
+
+    #[test]
+    fn compact_logs_drop_dependency_events_and_spans() {
+        let captured = Arc::new(Mutex::new(Vec::new()));
+        let sink = captured.clone();
+        let target_filter =
+            tracing_subscriber::filter::filter_fn(|metadata| trusted_log_target(metadata.target()));
+        let subscriber = tracing_subscriber::registry()
+            .with(tracing_subscriber::EnvFilter::new("trace"))
+            .with(
+                tracing_subscriber::fmt::layer()
+                    .without_time()
+                    .with_ansi(false)
+                    .with_writer(move || LogWriter(sink.clone()))
+                    .compact()
+                    .with_filter(target_filter),
+            );
+        let secret = "dependency-must-not-log-this";
+        tracing::subscriber::with_default(subscriber, || {
+            let request = tracing::error_span!("http_request", request_id = "request-456");
+            let _request_entered = request.enter();
+            let dependency = tracing::error_span!(
+                target: "rmcp::service",
+                "serve_inner",
+                arguments = secret
+            );
+            let _dependency_entered = dependency.enter();
+            tracing::warn!(target: "rmcp::service", message = secret);
+            tracing::warn!(target: "amatl::security", security_event = "test_event");
+        });
+
+        let output = String::from_utf8(
+            captured
+                .lock()
+                .unwrap_or_else(|error| error.into_inner())
+                .clone(),
+        )
+        .unwrap();
+        assert!(output.contains("test_event"), "{output}");
+        assert!(output.contains("request-456"), "{output}");
+        assert!(!output.contains("rmcp"), "{output}");
+        assert!(!output.contains(secret), "{output}");
     }
 }
 
@@ -338,19 +436,30 @@ async fn provider_canary(
 }
 
 fn init_logging() {
-    let filter = tracing_subscriber::EnvFilter::from_default_env();
     if std::io::stderr().is_terminal() {
-        let _ = tracing_subscriber::fmt()
-            .with_env_filter(filter)
-            .with_writer(std::io::stderr)
-            .with_target(true)
-            .compact()
+        let target_filter =
+            tracing_subscriber::filter::filter_fn(|metadata| trusted_log_target(metadata.target()));
+        let _ = tracing_subscriber::registry()
+            .with(log_filter())
+            .with(
+                tracing_subscriber::fmt::layer()
+                    .with_writer(std::io::stderr)
+                    .with_target(true)
+                    .compact()
+                    .with_filter(target_filter),
+            )
             .try_init();
     } else {
-        let _ = tracing_subscriber::fmt()
-            .with_env_filter(filter)
-            .with_writer(std::io::stderr)
-            .event_format(JsonEventFormatter)
+        let target_filter =
+            tracing_subscriber::filter::filter_fn(|metadata| trusted_log_target(metadata.target()));
+        let _ = tracing_subscriber::registry()
+            .with(log_filter())
+            .with(
+                tracing_subscriber::fmt::layer()
+                    .event_format(JsonEventFormatter)
+                    .with_writer(std::io::stderr)
+                    .with_filter(target_filter),
+            )
             .try_init();
     }
 }

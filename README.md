@@ -73,6 +73,10 @@ curl -H "Authorization: Bearer $AMATL_SERVER_TOKEN" \
   'http://127.0.0.1:8080/search?q=rust'
 ```
 
+Todas las respuestas de la aplicación incluyen un `X-Request-ID` generado por
+AMATL para correlacionarlas con los eventos operativos y de seguridad. Los IDs
+enviados por clientes no se reutilizan.
+
 La exposición no-loopback exige en la propia configuración autenticación y un
 par certificado/clave TLS completo.
 

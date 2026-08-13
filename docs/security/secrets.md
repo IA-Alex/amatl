@@ -50,6 +50,12 @@ providers. Riesgo residual: un adapter futuro todavía podría introducir un
 secreto dentro de un campo con nombre no sensible o de un mensaje libre; la
 revisión de código sigue siendo obligatoria.
 
+El proceso sólo publica eventos cuyos targets pertenecen a AMATL. Los targets
+de `rmcp`, `hyper`, `reqwest` y otras dependencias se descartan incluso con un
+`RUST_LOG` amplio, ya que no están bajo el contrato de redacción y pueden
+contener argumentos. Los eventos SSRF omiten URL, host, query y direcciones; el
+`request_id` generado por el servidor permite correlacionarlos sin esos datos.
+
 ## Respuesta a una fuga
 
 Revoca o rota primero el secreto en su autoridad (provider o servidor), detén

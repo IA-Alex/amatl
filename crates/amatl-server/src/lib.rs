@@ -30,12 +30,19 @@ use serde_json::json;
 use std::{
     collections::BTreeMap,
     net::{IpAddr, SocketAddr},
-    sync::{Arc, Mutex},
-    time::{Duration, Instant},
+    sync::{
+        atomic::{AtomicU64, Ordering},
+        Arc, Mutex,
+    },
+    time::{Duration, Instant, SystemTime, UNIX_EPOCH},
 };
 use thiserror::Error;
 use tower::limit::ConcurrencyLimitLayer;
 use tower_http::cors::CorsLayer;
+use tracing::Instrument;
+
+const REQUEST_ID_HEADER: &str = "x-request-id";
+static REQUEST_SEQUENCE: AtomicU64 = AtomicU64::new(1);
 
 #[derive(Clone)]
 struct AppState {
@@ -319,14 +326,16 @@ async fn security_middleware(
     next: Next,
 ) -> Response {
     let security = &state.security;
+    let request_id = next_request_id();
     if header_size(request.headers()) > security.max_header_bytes {
-        audit_security_event("headers_too_large", &request);
+        audit_security_event("headers_too_large", &request_id, &request);
         return secured(
             api_error(
                 StatusCode::REQUEST_HEADER_FIELDS_TOO_LARGE,
                 "headers_too_large",
             ),
             security.https,
+            &request_id,
         );
     }
     if request
@@ -336,72 +345,103 @@ async fn security_middleware(
         .and_then(|value| value.parse::<usize>().ok())
         .is_some_and(|value| value > security.max_body_bytes)
     {
-        audit_security_event("body_too_large", &request);
+        audit_security_event("body_too_large", &request_id, &request);
         return secured(
             api_error(StatusCode::PAYLOAD_TOO_LARGE, "body_too_large"),
             security.https,
+            &request_id,
         );
     }
     if !valid_host(request.headers(), &security.allowed_hosts) {
-        audit_security_event("invalid_host", &request);
+        audit_security_event("invalid_host", &request_id, &request);
         return secured(
             api_error(StatusCode::BAD_REQUEST, "invalid_host"),
             security.https,
+            &request_id,
         );
     }
     if !valid_origin(request.headers(), &security.allowed_origins) {
-        audit_security_event("invalid_origin", &request);
+        audit_security_event("invalid_origin", &request_id, &request);
         return secured(
             api_error(StatusCode::FORBIDDEN, "invalid_origin"),
             security.https,
+            &request_id,
         );
     }
     let protected = is_protected(request.uri().path());
     if request.method() != Method::OPTIONS && !within_rate_limit(&request, security) {
-        audit_security_event("rate_limited", &request);
+        audit_security_event("rate_limited", &request_id, &request);
         let mut response = api_error(StatusCode::TOO_MANY_REQUESTS, "rate_limited");
         response
             .headers_mut()
             .insert("retry-after", HeaderValue::from_static("60"));
-        return secured(response, security.https);
+        return secured(response, security.https, &request_id);
     }
     if protected
         && request.method() != Method::OPTIONS
         && !authorized(request.headers(), security.token.as_deref())
     {
-        audit_security_event("unauthorized", &request);
+        audit_security_event("unauthorized", &request_id, &request);
         let mut response = api_error(StatusCode::UNAUTHORIZED, "unauthorized");
         response
             .headers_mut()
             .insert(WWW_AUTHENTICATE, HeaderValue::from_static("Bearer"));
-        return secured(response, security.https);
+        return secured(response, security.https, &request_id);
     }
     let timeout = security.timeout;
     let https = security.https;
     let path = request.uri().path().to_owned();
     let client_ip = request_client_ip(&request);
-    let response = match tokio::time::timeout(timeout, next.run(request)).await {
-        Ok(response) => response,
-        Err(_) => {
-            audit_security_event_context("request_timeout", &path, client_ip);
-            api_error(StatusCode::GATEWAY_TIMEOUT, "request_timeout")
-        }
-    };
-    secured(response, https)
+    let request_span = tracing::info_span!(
+        target: "amatl::http",
+        "http_request",
+        request_id = %request_id,
+        path = %path,
+        client_ip = %client_ip
+    );
+    let response =
+        match tokio::time::timeout(timeout, next.run(request).instrument(request_span)).await {
+            Ok(response) => response,
+            Err(_) => {
+                audit_security_event_context("request_timeout", &request_id, &path, client_ip);
+                api_error(StatusCode::GATEWAY_TIMEOUT, "request_timeout")
+            }
+        };
+    secured(response, https, &request_id)
 }
 
-fn audit_security_event(event: &'static str, request: &Request) {
-    audit_security_event_context(event, request.uri().path(), request_client_ip(request));
+fn audit_security_event(event: &'static str, request_id: &str, request: &Request) {
+    audit_security_event_context(
+        event,
+        request_id,
+        request.uri().path(),
+        request_client_ip(request),
+    );
 }
 
-fn audit_security_event_context(event: &'static str, path: &str, client_ip: IpAddr) {
+fn audit_security_event_context(
+    event: &'static str,
+    request_id: &str,
+    path: &str,
+    client_ip: IpAddr,
+) {
     tracing::warn!(
         target: "amatl::security",
         security_event = event,
+        request_id,
         path,
         client_ip = %client_ip,
         "HTTP security control rejected request"
     );
+}
+
+fn next_request_id() -> String {
+    let epoch_nanos = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .unwrap_or_default()
+        .as_nanos();
+    let sequence = REQUEST_SEQUENCE.fetch_add(1, Ordering::Relaxed);
+    format!("{epoch_nanos:032x}-{sequence:016x}")
 }
 
 fn request_client_ip(request: &Request) -> IpAddr {
@@ -412,7 +452,7 @@ fn request_client_ip(request: &Request) -> IpAddr {
         .unwrap_or(IpAddr::V4(std::net::Ipv4Addr::LOCALHOST))
 }
 
-fn secured(mut response: Response, https: bool) -> Response {
+fn secured(mut response: Response, https: bool, request_id: &str) -> Response {
     for (name, value) in security_headers(https) {
         response.headers_mut().insert(
             HeaderName::from_static(match name {
@@ -432,6 +472,10 @@ fn secured(mut response: Response, https: bool) -> Response {
             .headers_mut()
             .insert(CACHE_CONTROL, HeaderValue::from_static("no-store"));
     }
+    response.headers_mut().insert(
+        REQUEST_ID_HEADER,
+        HeaderValue::from_str(request_id).expect("generated request IDs are valid HTTP headers"),
+    );
     response
 }
 
@@ -544,7 +588,8 @@ fn cors_layer(origins: &[String]) -> Result<CorsLayer, ServerError> {
     Ok(CorsLayer::new()
         .allow_origin(origins)
         .allow_methods([Method::GET, Method::POST, Method::OPTIONS])
-        .allow_headers([AUTHORIZATION, CONTENT_TYPE, axum::http::header::ACCEPT]))
+        .allow_headers([AUTHORIZATION, CONTENT_TYPE, axum::http::header::ACCEPT])
+        .expose_headers([HeaderName::from_static(REQUEST_ID_HEADER)]))
 }
 
 fn service_error(error: ServiceError) -> Response {

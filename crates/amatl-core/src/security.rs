@@ -33,6 +33,16 @@ pub fn validate_resolved_addresses(addresses: &[IpAddr]) -> Result<(), &'static 
     Ok(())
 }
 
+pub(crate) fn audit_ssrf_rejection(stage: &'static str, reason: &str) {
+    tracing::warn!(
+        target: "amatl::security",
+        security_event = "ssrf_blocked",
+        stage,
+        reason,
+        "SSRF policy rejected outbound navigation"
+    );
+}
+
 fn blocked_hostname(host: &str) -> bool {
     let host = host.trim_end_matches('.').to_ascii_lowercase();
     !host.contains('.')

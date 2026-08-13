@@ -1,5 +1,5 @@
 use crate::model::FinalUrl;
-use crate::security::{validate_deep_url, validate_resolved_addresses};
+use crate::security::{audit_ssrf_rejection, validate_deep_url, validate_resolved_addresses};
 use async_trait::async_trait;
 use reqwest::header::{HeaderMap, HeaderName, HeaderValue, LOCATION};
 use serde::{Deserialize, Serialize};
@@ -105,18 +105,26 @@ impl<R: DnsResolver> SafeFetcher<R> {
         let mut current = request.url;
         let mut redirects = Vec::new();
         loop {
-            validate_deep_url(&current).map_err(|code| FetchError::BlockedUrl(code.to_string()))?;
+            let url_stage = if redirects.is_empty() {
+                "initial_url"
+            } else {
+                "redirect_url"
+            };
+            validate_deep_url(&current).map_err(|code| blocked_url(url_stage, code))?;
             let host = current
                 .host_str()
-                .ok_or_else(|| FetchError::BlockedUrl("missing_host".into()))?;
+                .ok_or_else(|| blocked_url(url_stage, "missing_host"))?;
             let port = current
                 .port_or_known_default()
-                .ok_or_else(|| FetchError::BlockedUrl("missing_port".into()))?;
+                .ok_or_else(|| blocked_url(url_stage, "missing_port"))?;
             let addresses = tokio::time::timeout_at(deadline, self.resolver.resolve(host, port))
                 .await
                 .map_err(|_| FetchError::Timeout)??;
             let ips: Vec<IpAddr> = addresses.iter().map(|value| value.ip()).collect();
-            validate_resolved_addresses(&ips).map_err(|_| FetchError::AddressBlocked)?;
+            validate_resolved_addresses(&ips).map_err(|code| {
+                audit_ssrf_rejection("dns_answer", code);
+                FetchError::AddressBlocked
+            })?;
             let client = self.client_for(host, &addresses)?;
 
             let response = tokio::time::timeout_at(
@@ -295,11 +303,17 @@ fn is_redirect(status: u16) -> bool {
 }
 
 fn validate_redirect(current: &Url, location: &str) -> Result<Url, FetchError> {
-    let next = current
-        .join(location)
-        .map_err(|_| FetchError::InvalidRedirect)?;
-    validate_deep_url(&next).map_err(|code| FetchError::BlockedUrl(code.to_string()))?;
+    let next = current.join(location).map_err(|_| {
+        audit_ssrf_rejection("redirect_location", "invalid_redirect");
+        FetchError::InvalidRedirect
+    })?;
+    validate_deep_url(&next).map_err(|code| blocked_url("redirect_url", code))?;
     Ok(next)
+}
+
+fn blocked_url(stage: &'static str, code: &'static str) -> FetchError {
+    audit_ssrf_rejection(stage, code);
+    FetchError::BlockedUrl(code.to_string())
 }
 
 fn now_rfc3339() -> String {
