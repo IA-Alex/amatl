@@ -23,7 +23,12 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - name: Install Chromium isolation dependencies
-        run: sudo apt-get update && sudo apt-get install --yes bubblewrap
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes bubblewrap util-linux
+          if sysctl kernel.apparmor_restrict_unprivileged_userns >/dev/null 2>&1; then
+            sudo sysctl --write kernel.apparmor_restrict_unprivileged_userns=0
+          fi
       - name: Render JavaScript without browser network access
         run: |
           fixture="$(mktemp --suffix=.html)"
