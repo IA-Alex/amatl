@@ -1,0 +1,50 @@
+name: Provider request
+description: Complete governance before proposing provider network code
+title: "provider: "
+labels: ["provider"]
+body:
+  - type: input
+    id: provider
+    attributes: { label: Provider, description: Official provider/product name }
+    validations: { required: true }
+  - type: input
+    id: terms
+    attributes: { label: Terms URL and version/date }
+    validations: { required: true }
+  - type: input
+    id: access
+    attributes: { label: Allowed access method, description: Official API, licensed feed, or explicitly authorized method }
+    validations: { required: true }
+  - type: textarea
+    id: commercial
+    attributes: { label: Plan, cost and rate limit, description: Cite verified terms; do not include credentials }
+    validations: { required: true }
+  - type: input
+    id: credential
+    attributes: { label: Credential environment variable, description: Variable name only, never its value }
+    validations: { required: true }
+  - type: textarea
+    id: data
+    attributes: { label: Storage rights and data handling, description: State whether search/document caching is permitted and under what verified terms }
+    validations: { required: true }
+  - type: textarea
+    id: capabilities
+    attributes: { label: Regions, filters and capabilities }
+    validations: { required: true }
+  - type: textarea
+    id: risk
+    attributes: { label: Operational and compliance risk }
+    validations: { required: true }
+  - type: input
+    id: review
+    attributes: { label: Reviewer and review date, description: A real accountable reviewer and ISO date; approval expires after 90 days }
+    validations: { required: true }
+  - type: checkboxes
+    id: gate
+    attributes:
+      label: Governance gate
+      options:
+        - label: No network adapter code should merge before this sheet is verified and approved.
+          required: true
+        - label: I have not included API keys, private contracts or other secrets.
+          required: true

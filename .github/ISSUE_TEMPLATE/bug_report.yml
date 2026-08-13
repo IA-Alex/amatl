@@ -1,0 +1,51 @@
+name: Bug report
+description: Report a reproducible AMATL defect without sensitive data
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Do not report vulnerabilities here. Follow SECURITY.md.
+  - type: input
+    id: revision
+    attributes:
+      label: Version or commit
+      description: Output of `amatl --version` and/or Git commit.
+    validations:
+      required: true
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Surface
+      options: [CLI, UI, HTTP API, MCP, Search core, Deep, Provider, SQLite/cache]
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Minimal configuration and exact steps, with all secrets removed.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior and contract status
+      description: Include success/partial_success/failure, typed errors and degradations.
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety check
+      options:
+        - label: I removed tokens, provider keys, cookies, authorization headers and private data.
+          required: true
+        - label: This is not a security vulnerability.
+          required: true

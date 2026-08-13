@@ -1,0 +1,502 @@
+openapi: 3.1.0
+info:
+  title: AMATL HTTP API
+  version: 0.1.0
+  description: |
+    HTTP contract exposed by amatl-server. Binary SemVer is independent from
+    the string schema_version carried by AMATL data contracts.
+servers:
+  - url: http://127.0.0.1:8080
+    description: Default loopback development listener
+security:
+  - bearerAuth: []
+paths:
+  /search:
+    get:
+      operationId: searchGet
+      summary: Search configured providers
+      parameters:
+        - $ref: '#/components/parameters/Query'
+      responses:
+        '200':
+          description: Search completed; inspect status for success, partial_success, or failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '500': { $ref: '#/components/responses/ServiceUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
+    post:
+      operationId: searchPost
+      summary: Search configured providers using a JSON body
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryInput'
+      responses:
+        '200':
+          description: Search completed; inspect the application status field
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '422': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '500': { $ref: '#/components/responses/ServiceUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
+  /deep:
+    get:
+      operationId: deepGet
+      summary: Run bounded Deep enrichment after Search
+      parameters:
+        - $ref: '#/components/parameters/Query'
+      responses:
+        '200':
+          description: Deep response, including partial documents and degradations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeepResponse'
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '500': { $ref: '#/components/responses/ServiceUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
+    post:
+      operationId: deepPost
+      summary: Run bounded Deep enrichment using a JSON body
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryInput'
+      responses:
+        '200':
+          description: Deep response, including partial documents and degradations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeepResponse'
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '422': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '500': { $ref: '#/components/responses/ServiceUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
+  /providers:
+    get:
+      operationId: providers
+      summary: List configured provider availability and capabilities
+      responses:
+        '200':
+          description: Provider summaries
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderResponse'
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '500': { $ref: '#/components/responses/ServiceUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
+  /health:
+    get:
+      operationId: health
+      summary: Lightweight process availability check
+      security: []
+      responses:
+        '200':
+          description: Router is available; this does not check providers or SQLite
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Local bearer token of at least 32 bytes
+  parameters:
+    Query:
+      name: q
+      in: query
+      required: true
+      description: AMATL query text, including supported operators
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 2048
+  responses:
+    BadRequest:
+      description: Invalid query, JSON, or request shape
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorResponse' }
+    Unauthorized:
+      description: Missing or invalid bearer token
+      headers:
+        WWW-Authenticate:
+          schema: { type: string, const: Bearer }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorResponse' }
+    Forbidden:
+      description: Origin is not allowed
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorResponse' }
+    BodyTooLarge:
+      description: Request body exceeds the configured maximum (default 65536 bytes)
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorResponse' }
+    HeadersTooLarge:
+      description: Aggregate request headers exceed the configured maximum (default 16384 bytes)
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorResponse' }
+    RateLimited:
+      description: Per-process IP + endpoint + token rate limit exceeded
+      headers:
+        Retry-After:
+          schema: { type: string, const: '60' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorResponse' }
+    ServiceUnavailable:
+      description: Planning or service configuration failure
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorResponse' }
+    RequestTimeout:
+      description: Configured request deadline expired (default 30000 ms)
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorResponse' }
+  schemas:
+    SchemaVersion:
+      type: string
+      const: '1'
+    QueryInput:
+      type: object
+      required: [q]
+      properties:
+        q:
+          type: string
+          minLength: 1
+          maxLength: 2048
+    HealthResponse:
+      type: object
+      additionalProperties: false
+      required: [schema_version, status]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        status: { type: string, const: ok }
+    ErrorResponse:
+      type: object
+      additionalProperties: false
+      required: [schema_version, error]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        error:
+          type: object
+          additionalProperties: false
+          required: [code, message]
+          properties:
+            code:
+              type: string
+              enum: [invalid_request, invalid_query, unauthorized, invalid_origin, invalid_host, rate_limited, body_too_large, headers_too_large, request_timeout, service_unavailable, not_found]
+            message: { type: string }
+    SearchStatus:
+      type: string
+      enum: [success, partial_success, failure]
+    ResultStatus:
+      type: string
+      enum: [visible, relegated_by_diversity]
+    Degradation:
+      type: object
+      additionalProperties: false
+      required: [code, component, message]
+      properties:
+        code: { type: string }
+        component: { type: string }
+        message: { type: string }
+    CompositeError:
+      type: object
+      additionalProperties: false
+      required: [code, message, providers, recoverable]
+      properties:
+        code: { type: string }
+        message: { type: string }
+        providers:
+          type: array
+          items: { type: string }
+        recoverable: { type: boolean }
+    SearchResult:
+      type: object
+      additionalProperties: false
+      required: [schema_version, rank, title, original_url, canonical_url, domain, snippet, providers, published_at, status]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        rank: { type: integer, minimum: 1 }
+        title: { type: [string, 'null'] }
+        original_url: { type: string, format: uri }
+        canonical_url: { type: string, format: uri }
+        domain: { type: string }
+        snippet: { type: [string, 'null'] }
+        providers:
+          type: array
+          items: { type: string }
+        published_at: { type: [string, 'null'] }
+        status: { $ref: '#/components/schemas/ResultStatus' }
+    SearchResponse:
+      type: object
+      additionalProperties: false
+      required: [schema_version, query, status, results, providers_used, providers_failed, providers_partial, errors, degradations, elapsed_ms]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        query: { type: string }
+        status: { $ref: '#/components/schemas/SearchStatus' }
+        results:
+          type: array
+          items: { $ref: '#/components/schemas/SearchResult' }
+        providers_used:
+          type: array
+          items: { type: string }
+        providers_failed:
+          type: array
+          items: { type: string }
+        providers_partial:
+          type: array
+          items: { type: string }
+        errors:
+          type: array
+          items: { $ref: '#/components/schemas/CompositeError' }
+        degradations:
+          type: array
+          items: { $ref: '#/components/schemas/Degradation' }
+        elapsed_ms: { type: integer, minimum: 0 }
+    FetchMethod:
+      type: string
+      enum: [http, rendered]
+    DocumentStatus:
+      type: string
+      enum: [enriched, superficial, failed]
+    Document:
+      type: object
+      additionalProperties: false
+      required: [schema_version, search_result_id, original_url, canonical_url, final_url, content_hash, fetch_method, extractor_used, content_type, size, retrieved_at, status, content, title, author, published_at, metadata]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        search_result_id: { type: string }
+        original_url: { type: string, format: uri }
+        canonical_url: { type: string, format: uri }
+        final_url: { type: string, format: uri }
+        content_hash: { type: string }
+        fetch_method: { $ref: '#/components/schemas/FetchMethod' }
+        extractor_used: { type: [string, 'null'] }
+        content_type: { type: [string, 'null'] }
+        size: { type: integer, minimum: 0 }
+        retrieved_at: { type: string }
+        status: { $ref: '#/components/schemas/DocumentStatus' }
+        content: { type: [string, 'null'] }
+        title: { type: [string, 'null'] }
+        author: { type: [string, 'null'] }
+        published_at: { type: [string, 'null'] }
+        metadata:
+          type: object
+          additionalProperties: { type: string }
+    EvidenceStatus:
+      type: string
+      enum: [complete, partial]
+    Evidence:
+      type: object
+      additionalProperties: false
+      required: [schema_version, document_id, status, fact_density, verified_date, metadata_quality, named_entities, citation_count, citation_span, freshness, originality, evidence_score]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        document_id: { type: string }
+        status: { $ref: '#/components/schemas/EvidenceStatus' }
+        fact_density: { type: number, minimum: 0, maximum: 1 }
+        verified_date: { type: boolean }
+        metadata_quality: { type: number, minimum: 0, maximum: 1 }
+        named_entities:
+          type: array
+          items: { type: string }
+        citation_count: { type: integer, minimum: 0 }
+        citation_span: { type: number, minimum: 0, maximum: 1 }
+        freshness: { type: number, minimum: 0, maximum: 1 }
+        originality: { type: number, minimum: 0, maximum: 1 }
+        evidence_score: { type: number, minimum: 0, maximum: 1 }
+    RankingV2Status:
+      type: string
+      enum: [applied, disabled, benchmark_rejected, insufficient_documents]
+    DeepRankingExplanation:
+      type: object
+      additionalProperties: false
+      required: [ranking_policy, bm25, semantic, reranker, relevance_score, evidence_score, final_score]
+      properties:
+        ranking_policy: { type: string }
+        bm25: { type: number, minimum: 0, maximum: 1 }
+        semantic: { type: [number, 'null'], minimum: 0, maximum: 1 }
+        reranker: { type: [number, 'null'], minimum: 0, maximum: 1 }
+        relevance_score: { type: number, minimum: 0, maximum: 1 }
+        evidence_score: { type: number, minimum: 0, maximum: 1 }
+        final_score: { type: number, minimum: 0, maximum: 1 }
+    DeepRankedDocument:
+      type: object
+      additionalProperties: false
+      required: [document_id, rank, original_rank, relevance_score, evidence_score, final_score, explanation]
+      properties:
+        document_id: { type: string }
+        rank: { type: integer, minimum: 1 }
+        original_rank: { type: integer, minimum: 1 }
+        relevance_score: { type: number, minimum: 0, maximum: 1 }
+        evidence_score: { type: number, minimum: 0, maximum: 1 }
+        final_score: { type: number, minimum: 0, maximum: 1 }
+        explanation: { $ref: '#/components/schemas/DeepRankingExplanation' }
+    RankingV2Output:
+      type: object
+      additionalProperties: false
+      required: [schema_version, policy_version, benchmark_id, status, results]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        policy_version: { type: string }
+        benchmark_id: { type: string }
+        status: { $ref: '#/components/schemas/RankingV2Status' }
+        results:
+          type: array
+          items: { $ref: '#/components/schemas/DeepRankedDocument' }
+    GapType:
+      type: string
+      enum: [primary_source, recency, geographic_diversity, documentation, pdf, code, specification, source_diversity]
+    GapSeverity:
+      type: string
+      enum: [low, medium, high]
+    Gap:
+      type: object
+      additionalProperties: false
+      required: [schema_version, gap_type, severity, reason, recommended_query, estimated_cost, expected_gain, status]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        gap_type: { $ref: '#/components/schemas/GapType' }
+        severity: { $ref: '#/components/schemas/GapSeverity' }
+        reason: { type: string }
+        recommended_query: { type: [string, 'null'] }
+        estimated_cost: { type: [integer, 'null'], minimum: 0 }
+        expected_gain: { type: [integer, 'null'], minimum: 0 }
+        status: { type: string, const: detected }
+    SubQueryStatus:
+      type: string
+      enum: [proposed, executed, failed, rejected_budget, invalid]
+    SubQuery:
+      type: object
+      additionalProperties: false
+      required: [schema_version, raw_query, reason, gap_type, estimated_cost, expected_gain, actual_gain, status, results, errors]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        raw_query: { type: string }
+        reason: { type: string }
+        gap_type: { $ref: '#/components/schemas/GapType' }
+        estimated_cost: { type: integer, minimum: 0 }
+        expected_gain: { type: integer, minimum: 0 }
+        actual_gain: { type: integer, minimum: 0 }
+        status: { $ref: '#/components/schemas/SubQueryStatus' }
+        results:
+          type: array
+          items: { $ref: '#/components/schemas/SearchResult' }
+        errors:
+          type: array
+          items: { $ref: '#/components/schemas/CompositeError' }
+    DeepResponse:
+      type: object
+      additionalProperties: false
+      required: [schema_version, query, documents, errors, degradations, evidence, ranking_v2, gaps, subqueries, elapsed_ms]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        query: { type: string }
+        documents:
+          type: array
+          items: { $ref: '#/components/schemas/Document' }
+        errors:
+          type: array
+          items: { $ref: '#/components/schemas/CompositeError' }
+        degradations:
+          type: array
+          items: { $ref: '#/components/schemas/Degradation' }
+        evidence:
+          type: array
+          items: { $ref: '#/components/schemas/Evidence' }
+        ranking_v2: { $ref: '#/components/schemas/RankingV2Output' }
+        gaps:
+          type: array
+          items: { $ref: '#/components/schemas/Gap' }
+        subqueries:
+          type: array
+          items: { $ref: '#/components/schemas/SubQuery' }
+        elapsed_ms: { type: integer, minimum: 0 }
+    ProviderSurfaceStatus:
+      type: string
+      enum: [available, unavailable]
+    ProviderCapabilities:
+      type: object
+      additionalProperties: false
+      required: [schema_version, pagination, language, region, time_range, site_filter, file_filter, news, code, docs, academic, authentication, estimated_cost]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        pagination: { type: boolean }
+        language: { type: boolean }
+        region: { type: boolean }
+        time_range: { type: boolean }
+        site_filter: { type: boolean }
+        file_filter: { type: boolean }
+        news: { type: boolean }
+        code: { type: boolean }
+        docs: { type: boolean }
+        academic: { type: boolean }
+        authentication: { type: boolean }
+        estimated_cost: { type: [integer, 'null'], minimum: 0 }
+    ProviderSummary:
+      type: object
+      additionalProperties: false
+      required: [schema_version, name, status, code, capabilities]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        name: { type: string }
+        status: { $ref: '#/components/schemas/ProviderSurfaceStatus' }
+        code: { type: [string, 'null'] }
+        capabilities: { $ref: '#/components/schemas/ProviderCapabilities' }
+    ProviderResponse:
+      type: object
+      additionalProperties: false
+      required: [schema_version, providers]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        providers:
+          type: array
+          items: { $ref: '#/components/schemas/ProviderSummary' }

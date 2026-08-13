@@ -1,97 +1,192 @@
 # Continuidad de desarrollo — AMATL
 
-## Estado
+## Snapshot verificable
 
-Las fases 0–9 están implementadas. `plan_amatl.md` y `fase_a_contratos.md`
-son los contratos rectores y no deben modificarse durante desarrollo ordinario.
+Estado revisado el **2026-08-12** sobre la rama `main`:
 
-| Fase | Estado | Entrega |
+- revisión actual: `95a2ec5` (`docs: distinguish operational benchmark evidence`);
+- baseline de implementación: tag `baseline-fases-0-9`, commit `51c6d34`;
+- workspace: Rust 2021, versión interna `0.1.0`, cuatro crates;
+- fases 0–9: cerradas y verificadas;
+- publicación/release SemVer: todavía inexistente;
+- Fase 10: no existe en el golden template y no debe inferirse.
+
+Los documentos rectores permanecen intactos:
+
+| Documento | SHA-256 verificado |
+|---|---|
+| `plan_amatl.md` | `c8545d7bacb9f17131e7b901693a035e038532c0836f93df6eb9c78858d5309c` |
+| `fase_a_contratos.md` | `03034b7abfbcfaba3da7ada7b43267ed38936ff09453326cd9db40b2cede4744` |
+
+## Jerarquía para retomar trabajo
+
+En caso de discrepancia, usar este orden:
+
+1. `plan_amatl.md` y `fase_a_contratos.md` para intención e invariantes.
+2. Código, tests, migraciones, `Cargo.lock` y `amatl.example.toml` para el
+   comportamiento realmente implementado.
+3. ADRs y documentación especializada para decisiones y operación.
+4. Este archivo sólo como snapshot de continuidad; no sustituye contratos ni
+   evidencia ejecutable.
+
+## Estado funcional
+
+| Fase | Estado | Capacidad entregada |
 |---|---|---|
-| 0–4 | Cerrada | Core Search, providers, pipeline, SQLite y routing |
-| 5–7 | Cerrada | Deep, ranking v2 y Gap Analyzer |
-| 8 | Cerrada | UI estática y responsiva |
-| 9 | Cerrada | API Axum, MCP, TLS y hardening |
+| 0–2 | Cerrada | contratos Rust, Query/Classification/Plan/Budget, providers, Search y pipeline de resultados |
+| 3–4 | Cerrada | SQLite/cachés/telemetría opcionales y routing adaptativo/progresivo |
+| 5 | Cerrada | Deep acotado, fetch seguro, extracción, documentos/evidencias y cache documental |
+| 6–7 | Cerrada | Ranking v2 calibrable, Diversity y Gap Analyzer con límites propios |
+| 8 | Cerrada | UI estática, embebida y responsiva |
+| 9 | Cerrada | servidor Axum compartido, REST, MCP, bearer, TLS y hardening HTTP |
 
-## Trazabilidad de la sesión cerrada
+Arquitectura vigente:
 
-- Se preservaron sin edición los documentos rectores: `plan_amatl.md` y
+- `amatl-core`: única ubicación de contratos y lógica de producto;
+- `amatl-cli`: adaptación CLI, códigos de salida y arranque del servicio;
+- `amatl-server`: UI/API/MCP sobre un listener y un `AmatlService`;
+- `amatl-ui`: assets embebidos y política de headers;
+- `SearchOrchestrator` y `DeepOrchestrator`: únicos dueños de sus presupuestos y
+  deadlines;
+- SQLite, cachés, Trafilatura y Renderer quedan fuera del correctness de Search.
+
+Invariantes no negociables:
+
+- Search no ejecuta fetch, render ni extracción y nunca expone `final_url`.
+- Deep es la única frontera de navegación y aplica controles SSRF antes de
+  conectar, después de DNS y en cada redirect.
+- CLI, UI, API y MCP consumen el mismo core; no duplicar orquestación.
+- MCP conserva límites más estrictos que CLI/API.
+- Un bind no-loopback exige autenticación y TLS completos.
+- Secretos sólo por variables de entorno; no en TOML, logs ni URLs.
+- No introducir LLM obligatorio, agent loops, crawler masivo ni nueva
+  infraestructura sin decisión explícita.
+
+## Disponibilidad real y límites
+
+- `MockProvider` es la vía determinista para desarrollo y pruebas sin red.
+- Brave y Mojeek tienen adapters, pero permanecen sujetos a configuración,
+  credencial y aprobación vigente de gobernanza; ningún provider real está
+  activo por defecto.
+- DuckDuckGo HTML está bloqueado fail-closed con
+  `provider_pending_explicit_approval`.
+- Trafilatura es opcional; su ausencia degrada Deep a documento superficial.
+- `ChromiumRenderer` permanece no disponible hasta implementar y verificar un
+  backend CDP aislado; no habilitar Chromium como fallback inseguro.
+- Persistencia y ambas cachés están deshabilitadas por defecto. Un fallo de
+  SQLite no invalida Search.
+- `/health` sólo comprueba proceso/router; no prueba providers, SQLite ni
+  credenciales.
+
+## Paquete documental pendiente de commit
+
+El árbol de trabajo contiene una ampliación documental coherente con el código,
+pero **aún no está versionada**. Debe revisarse y confirmarse como una sola
+unidad lógica antes de continuar con otro alcance.
+
+- Modificados: `README.md`, `DEVELOPMENT.md`, `decisiones_amatl.md` y este
+  documento.
+- Nuevos: licencias MIT/Apache-2.0, changelog, políticas de contribución,
+  conducta y seguridad, plantillas de GitHub y `CODEOWNERS` conservador.
+- Nuevos bajo `docs/`: arquitectura, glosario, configuración, operación,
+  testing, benchmarks, gobernanza de providers, OpenAPI, MCP y controles de
+  seguridad.
+- No hay cambios pendientes en `crates/`, `plan_amatl.md` ni
   `fase_a_contratos.md`.
-- Se corrigieron los contratos y el esqueleto Rust antes de incorporar red o
-  infraestructura; la implementación se completó por fases 0–9.
-- Se resolvió un error de compilación causado por derivar `Eq` sobre un tipo que
-  contenía `Classification` no-`Eq`; el workspace quedó compilable.
-- El alcance quedó deliberadamente acotado: sin LLM obligatorio, crawler
-  masivo, cache/infraestructura fuera de contrato ni lógica duplicada en bordes.
-- La validación final registrada fue: formato, pruebas de workspace, Clippy,
-  Cargo Audit y Cargo Deny. `cargo deny` puede informar duplicados transitivos;
-  no son un fallo mientras el comando finalice correctamente.
 
-## Remediación contractual posterior
+Índices principales: `README.md`, `docs/arquitectura.md`,
+`docs/api/openapi.yaml`, `docs/api/mcp.md`, `docs/operacion.md` y
+`docs/security/threat-model.md`.
 
-- Repositorio Git inicializado en `main`; CI `contract-gate` cubre formato,
-  tests, benches, Clippy, Audit, Deny y SBOM.
-- Classification cubre las 11 categorías, secundarias, confidencias y prioridad
-  de señales explícitas; `code` y `academic` ya son alcanzables por routing.
-- `FinalUrl` es un newtype exclusivo de Deep; `Rank` y `RankingScore` rechazan
-  valores fuera de sus invariantes al construir y deserializar.
-- Canonicalization emite `degraded` cuando conserva escapes porcentuales
-  malformados; la degradación queda tipada.
-- Parallel Search aplica concurrencia global/per-provider, backoff exponencial
-  y jitter no determinista configurables.
-- CLI devuelve `1` en `failure`, conserva `0` en `partial_success` y usa nombres
-  snake_case; logs redirigidos son JSON con `ts`, `level`, `target`, `msg` y
-  `context`.
-- Políticas de Ranking, Diversity, Ranking v2 y Gaps admiten calibración válida
-  sin recompilar. Ranking v2 se compara contra Ranking MVP sobre un corpus
-  humano etiquetado: nDCG@3 `0.655768 → 0.919378`.
-- Existen property tests, benchmarks Criterion y parsing HTML estructural con
-  `scraper` 0.27; Cargo Audit y Cargo Deny finalizan correctamente.
+## Evidencia de validación
 
-## Arquitectura vigente
-
-`amatl-core` contiene toda la lógica de producto. CLI, API y MCP consumen
-`AmatlService`; no duplicar orquestación, Budget ni contratos.
-
-- UI: `crates/amatl-ui/`
-- HTTP/MCP: `crates/amatl-server/`
-- CLI: `crates/amatl-cli/`
-- Servicio compartido: `crates/amatl-core/src/service.rs`
-
-## Invariantes no negociables
-
-- Search nunca ejecuta Deep/fetch/render/extract.
-- `SearchOrchestrator` y `DeepOrchestrator` son dueños exclusivos de Budget.
-- Search expone `original_url` y `canonical_url`, nunca `final_url`.
-- MCP tiene límites más estrictos que CLI.
-- API/MCP usan token; bind remoto exige token y TLS.
-- UI/API/MCP no contienen lógica de producto duplicada.
-- No introducir LLM obligatorio, agent loops, crawler masivo ni infraestructura no aprobada.
-
-## Verificación antes de continuar
+El 2026-08-12 se ejecutó con éxito la compuerta completa:
 
 ```bash
-cargo fmt --all -- --check && cargo test --workspace && cargo check --workspace --benches && cargo clippy --workspace --all-targets -- -D warnings && cargo audit --no-fetch && cargo deny check
+cargo fmt --all -- --check
+cargo test --workspace
+cargo check --workspace --benches
+cargo clippy --workspace --all-targets -- -D warnings
+cargo audit
+cargo deny check
+cargo cyclonedx
 ```
 
-## Ejecución local
+Resultados registrados:
+
+- 143 pruebas aprobadas en el workspace;
+- formato, benches y Clippy sin errores ni warnings admitidos por Clippy;
+- Cargo Audit: cero vulnerabilidades detectadas en el lockfile;
+- Cargo Deny: aprobado; los avisos de versiones transitivas duplicadas están
+  permitidos por la política actual y no equivalen a fallo;
+- CycloneDX: generación correcta para los cuatro crates;
+- 29 documentos Markdown sin enlaces locales rotos;
+- OpenAPI 3.1 parseable, con todas las referencias internas resueltas;
+- `git diff --check` limpio.
+
+Ranking v2 conserva el baseline reproducible del corpus etiquetado:
+`nDCG@3 0.655768 → 0.919378`; esto no reemplaza benchmarks ambientales.
+
+Nota operativa: `cargo cyclonedx` genera archivos `*.cdx.xml` dentro de cada
+crate. Los patrones actuales de `.gitignore` sólo cubren la raíz; esos archivos
+se retiraron después de validar y no deben entrar accidentalmente al próximo
+commit. Corregir el patrón requiere un cambio separado y autorizado.
+
+## Pendientes que requieren decisión externa
+
+No son defectos del core y no deben resolverse inventando datos:
+
+1. Revisar y crear el commit del paquete documental pendiente.
+2. Definir propietarios verificables, `CODEOWNERS`, canal privado de seguridad,
+   tiempos de respuesta y cumplimiento, y URL pública canónica.
+3. Marcar `contract-gate` como required check en la protección de `main`.
+4. Completar aprobación, ToS, cuotas, costes, región y credenciales de cada
+   provider antes de habilitar red real.
+5. Definir publicación y retención de SBOM y política de releases/artefactos.
+6. Capturar en el entorno objetivo latencia de red/Deep, memoria, SQLite bajo
+   carga y Renderer; Criterion sólo cubre el core reproducible.
+7. Diseñar el aislamiento CDP antes de habilitar Renderer.
+8. Decidir si se fija `rust-version` y se añade un job MSRV. El lockfile actual
+   exige efectivamente Rust 1.88; CI usa `stable` y la validación local usó
+   Rust 1.97.1.
+
+## Protocolo de reanudación
+
+Antes de editar:
 
 ```bash
+git status --short
+git log -3 --oneline --decorate
+sha256sum plan_amatl.md fase_a_contratos.md
+git diff --check
+```
+
+Después:
+
+1. Revisar primero cambios tracked y untracked; no descartar el paquete
+   documental pendiente.
+2. Confirmar que la tarea nueva está dentro de una fase existente o crear una
+   ADR explícita si amplía alcance.
+3. Implementar desde `amatl-core` y adaptar bordes sin duplicar lógica.
+4. Añadir pruebas contractuales en la misma frontera afectada.
+5. Ejecutar la compuerta completa mostrada arriba y retirar SBOM locales
+   generados antes de preparar el commit.
+
+## Ejecución local segura
+
+```bash
+cargo run -p amatl-cli -- search "rust async" --json --mock
+cargo run -p amatl-cli -- deep "rust async" --json --mock
 export AMATL_SERVER_TOKEN="$(openssl rand -hex 32)"
-cargo run -p amatl-cli -- serve
+cargo run -p amatl-cli -- serve --mock
 ```
 
-Servidor: `127.0.0.1:8080`; UI `/`, health `/health`, API `/search`, `/deep`,
+Defaults: `127.0.0.1:8080`; UI `/`, health `/health`, REST `/search`, `/deep` y
 `/providers`, MCP `/mcp`.
 
-## Siguiente paso
+## Próximo hito seguro
 
-No existe una Fase 10 en el golden template. Antes de ampliar alcance, crear
-una decisión explícita basada en `plan_amatl.md`, con contrato, pruebas y
-criterios de aceptación; no iniciar componentes por inferencia.
-
-Pendientes externos, no defectos del core: marcar `contract-gate` como requerido
-en la protección de rama del hosting, completar aprobaciones/credenciales de
-providers, habilitar Renderer sólo cuando exista aislamiento CDP verificable y
-capturar en el entorno objetivo las métricas operativas de §17 (red, memoria,
-SQLite bajo carga, Renderer y latencia Deep). Criterion ya cubre el baseline
-reproducible del core; no sustituye esas mediciones ambientales.
+El siguiente paso inmediato no es crear una Fase 10: es **revisar, validar y
+versionar el paquete documental actual**. Después, cualquier ampliación debe
+partir de uno de los pendientes explícitos, con ADR, contrato, pruebas y
+criterios de aceptación antes de modificar implementación.

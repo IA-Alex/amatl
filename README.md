@@ -1,7 +1,49 @@
 # AMATL
 
-Herramienta Rust de búsqueda multi-provider con Search, Deep, CLI, UI, API y
-MCP. Los contratos rectores son `plan_amatl.md` y `fase_a_contratos.md`.
+AMATL es un buscador generalista multi-fuente, Linux-first, rápido, modular y
+resistente a fallos. Recibe una consulta, elige fuentes dentro de un presupuesto
+global, normaliza, canonicaliza, deduplica y ordena resultados. Su flujo visible
+es `buscar → revisar → abrir`.
+
+No es un chatbot, generador de texto, crawler masivo, dashboard analítico, agente
+autónomo ni sistema dependiente de LLM o de un único provider. Search permanece
+ligero; Deep, Trafilatura, Chromium, SQLite y cachés son opcionales. Chromium
+está actualmente bloqueado hasta disponer de aislamiento verificable.
+
+## Invariantes visibles
+
+- Un solo core sirve a CLI, UI, API y MCP.
+- Un fallo parcial conserva resultados útiles y se identifica como
+  `partial_success`.
+- El orquestador es el único dueño del Budget y deadline globales.
+- Search no descarga páginas ni expone `final_url`; Deep es la única frontera de
+  fetch/extracción.
+- Los secretos se leen de variables de entorno, nunca de `amatl.toml`.
+- Sin SQLite o caché, Search conserva su comportamiento correcto.
+- Ningún provider real está activo por defecto ni puede omitir su revisión de
+  términos, coste y operación.
+
+## Estado e instalación
+
+El workspace declara versión `0.1.0`, pero no existe todavía una publicación
+SemVer ni un pipeline de release. La única instalación verificable hoy es desde
+el repositorio:
+
+```bash
+cargo install --locked --path crates/amatl-cli
+```
+
+La distribución objetivo es:
+
+| Vía | Prioridad | Estado actual |
+|---|---|---|
+| Binario Linux musl precompilado | Principal | Planeado; no hay artefacto publicado |
+| `cargo install` desde fuente | Alternativa | Disponible desde checkout con `--path`; crates.io no verificado/publicado |
+| `.deb` / `.rpm` / AUR | Integración nativa | Planeada; no hay recetas en el repositorio |
+
+No uses un enlace o paquete de terceros como release oficial. Desarrollo y
+build actual requieren Rust 1.88 o posterior por el grafo bloqueado; CI usa
+`stable`. Consulta [DEVELOPMENT.md](DEVELOPMENT.md).
 
 ## Inicio rápido
 
@@ -10,12 +52,79 @@ cp amatl.example.toml amatl.toml
 cargo run -p amatl-cli -- search "rust async" --json --mock
 ```
 
-Para servir UI/API/MCP:
+`--mock` es una ayuda local determinista; no consulta Internet. Para providers
+reales hay que completar primero la [gobernanza](docs/gobernanza-providers.md),
+habilitarlos en la configuración y exportar la credencial correspondiente.
+
+Servidor UI/API/MCP en loopback:
 
 ```bash
 export AMATL_SERVER_TOKEN="$(openssl rand -hex 32)"
-cargo run -p amatl-cli -- serve
+cargo run -p amatl-cli -- serve --mock
 ```
 
-Consulta `DEVELOPMENT.md` para validación y `CONTINUIDAD.md` para retomar el
-trabajo sin reconstruir decisiones previas.
+Abre `http://127.0.0.1:8080/`, introduce el mismo token en la UI o llama:
+
+```bash
+curl -H "Authorization: Bearer $AMATL_SERVER_TOKEN" \
+  'http://127.0.0.1:8080/search?q=rust'
+```
+
+La exposición no-loopback exige en la propia configuración autenticación y un
+par certificado/clave TLS completo.
+
+## CLI
+
+| Comando | Propósito | Salida/código |
+|---|---|---|
+| `amatl search "consulta" [--json]` | Search multi-provider | 0 en `success`/`partial_success`; 1 en failure/error |
+| `amatl deep "consulta" [--json]` | Search + fetch/extracción acotados | 0 si la operación se entrega, incluso con degradaciones; 1 ante error de servicio |
+| `amatl providers` | Disponibilidad/código de providers | 0 si puede construir el resumen; 1 en error |
+| `amatl config` | Defaults/config efectiva no secreta | 0; 1 si la configuración no carga/valida |
+| `amatl cache [--purge]` | Estadísticas o purga de ambas cachés | 0; storage deshabilitado se informa, no es error |
+| `amatl doctor` | Diagnóstico local completo | 0 si ejecuta; estados degradados se imprimen |
+| `amatl benchmark ranking-v2 [--json]` | Gate de calidad Ranking v2 | 0 si pasa; 1 si no pasa o componente inválido |
+| `amatl serve` | UI + API + MCP | proceso de larga vida; 1 si config/token/TLS/listener fallan |
+| `amatl mcp serve` | Alias del mismo servidor compartido | igual que `serve` |
+
+Clap devuelve 2 ante uso sintáctico incorrecto. `--config-file RUTA` es global y
+usa `amatl.toml` por defecto. Logs humanos van a stderr en TTY y JSON estructurado
+al redirigir; controla detalle con `RUST_LOG`.
+
+## Documentación
+
+- Normas rectoras: [plan_amatl.md](plan_amatl.md) y
+  [fase_a_contratos.md](fase_a_contratos.md).
+- Producto: [arquitectura](docs/arquitectura.md),
+  [glosario](docs/glosario.md), [configuración](docs/configuracion.md),
+  [operación](docs/operacion.md) y
+  [gobernanza de providers](docs/gobernanza-providers.md).
+- Contratos: [OpenAPI](docs/api/openapi.yaml) y [MCP](docs/api/mcp.md).
+- Ingeniería: [desarrollo](DEVELOPMENT.md), [contribución](CONTRIBUTING.md),
+  [contribución en español](docs/contribuir.md),
+  [testing](docs/testing.md), [benchmarks](docs/benchmarks.md),
+  [ADRs](decisiones_amatl.md) y [changelog](CHANGELOG.md).
+- Seguridad: [política](SECURITY.md), [guía en español](docs/seguridad.md),
+  [modelo de amenazas](docs/security/threat-model.md),
+  [ASVS](docs/security/asvs-checklist.md),
+  [SSRF](docs/security/ssrf-controls.md),
+  [HTTP](docs/security/http-hardening.md),
+  [secretos](docs/security/secrets.md),
+  [cadena de suministro](docs/security/supply-chain.md) y
+  [retención](docs/security/data-retention.md).
+- Comunidad: [código de conducta](CODE_OF_CONDUCT.md) y
+  [espejo en español](docs/codigo-de-conducta.md).
+- Continuidad histórica: [CONTINUIDAD.md](CONTINUIDAD.md); no sustituye código,
+  pruebas ni contratos.
+
+## Licencia y contribuciones
+
+AMATL se ofrece, a elección de cada usuario, bajo
+[Apache License 2.0](LICENSE-APACHE) o [MIT](LICENSE-MIT), de acuerdo con
+`MIT OR Apache-2.0` en Cargo. Salvo indicación explícita del contribuidor, toda
+contribución enviada intencionalmente para incluirse en AMATL se ofrece bajo los
+mismos términos duales, sin condiciones adicionales.
+
+Antes de reportar una vulnerabilidad, lee [SECURITY.md](SECURITY.md). El canal
+privado y los SLA siguen pendientes de definición por el propietario; no
+publiques detalles sensibles en issues.

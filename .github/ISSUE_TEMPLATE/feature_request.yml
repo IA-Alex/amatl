@@ -1,0 +1,45 @@
+name: Feature request
+description: Propose a compatible AMATL capability
+title: "feat: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe the user problem, not only the proposed mechanism.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed outcome
+    validations:
+      required: true
+  - type: textarea
+    id: invariants
+    attributes:
+      label: Contract and architecture impact
+      description: Address one core, Budget ownership, Search/Deep boundary, schemas and degradation.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives and non-goals
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Tests and benchmarks
+      description: State the contract, security, property and performance evidence required.
+    validations:
+      required: true
+  - type: checkboxes
+    id: protected
+    attributes:
+      label: Protected templates
+      options:
+        - label: I understand ordinary feature work does not edit plan_amatl.md or fase_a_contratos.md.
+          required: true
