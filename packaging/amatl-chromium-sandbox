@@ -79,7 +79,8 @@ systemd-run --user --wait --collect --pipe --quiet --unit "$unit" \
       --disable-component-update --disable-default-apps --disable-extensions \
       --disable-features=MediaRouter,OptimizationHints --disable-sync \
       --metrics-recording-only --no-first-run --no-default-browser-check \
-      --user-data-dir=/tmp/profile --dump-dom file:///tmp/input.html \
+      --virtual-time-budget=2000 --user-data-dir=/tmp/profile \
+      --dump-dom file:///tmp/input.html \
       >"$sandbox/dom.html" 2>"$sandbox/chromium.stderr"
 status=$?
 set -e
