@@ -18,6 +18,17 @@ async fn app() -> Router {
     .unwrap()
 }
 
+async fn isolated_app() -> Router {
+    let mut config = amatl_core::Config::default();
+    config.data_policy.profile = amatl_core::SecurityProfile::Isolated;
+    config.data_policy.egress = amatl_core::EgressPolicy::Deny;
+    config.data_policy.inference = amatl_core::InferenceMode::LocalOnly;
+    config.validate().unwrap();
+    build_router(AmatlService::new(config, true).await, Some(TOKEN.into()))
+        .await
+        .unwrap()
+}
+
 fn request(path: &str) -> axum::http::request::Builder {
     Request::builder().uri(path).header(HOST, "localhost:8080")
 }
@@ -133,6 +144,57 @@ async fn protected_api_requires_bearer_and_preserves_search_contract() {
         json_body(malformed).await["error"]["code"],
         "invalid_request"
     );
+}
+
+#[tokio::test]
+async fn deep_post_exposes_evidence_contract_without_a_local_file_route() {
+    let application = isolated_app().await;
+    let unauthorized = application
+        .clone()
+        .oneshot(
+            request("/deep")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(r#"{"q":"rust"}"#))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(unauthorized.status(), StatusCode::UNAUTHORIZED);
+
+    let response = application
+        .clone()
+        .oneshot(
+            authorized("/deep")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(r#"{"q":"rust"}"#))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    assert_eq!(body["schema_version"], "1");
+    assert_eq!(body["query"], "rust");
+    assert!(body["documents"].is_array());
+    assert!(body["evidence"].is_array());
+    assert!(body["evidence_v2"].is_array());
+    assert!(body["degradations"]
+        .as_array()
+        .is_some_and(|values| values.iter().any(|value| value["code"] == "egress_denied")));
+
+    let local_ingest = application
+        .oneshot(
+            authorized("/ingest")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(r#"{"path":"/etc/passwd"}"#))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(local_ingest.status(), StatusCode::NOT_FOUND);
 }
 
 #[tokio::test]

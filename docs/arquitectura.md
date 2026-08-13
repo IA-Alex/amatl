@@ -67,8 +67,12 @@ luego construye explícitamente esas capacidades (`service.rs:167-275`).
 delegan en ellas; MCP no crea su propio fetcher. `ServiceSurface` selecciona
 límites: CLI y API usan los configurados; MCP reduce providers, tiempos,
 fetches, bytes y subqueries (`service.rs:14-58`). La UI usa exclusivamente el
-contrato HTTP público y envía búsquedas mediante POST JSON; el token sólo se
-coloca en `Authorization` y no se serializa como control del formulario.
+contrato HTTP público y envía Search y Deep mediante POST JSON; el token sólo se
+coloca en `Authorization` y no se serializa como control del formulario. Al
+mostrar Deep, correlaciona Evidence v2 por `document_id`, limita documentos y
+fragmentos, renderiza contenido externo sólo con APIs DOM de texto y verifica
+offsets UTF-8 y SHA-256 con Web Crypto. Estas comprobaciones son presentación
+defensiva: el core sigue siendo dueño del contrato y de la evidencia.
 
 El comando CLI `ingest` invoca `LocalIngestor` del mismo core sin pasar por el
 servidor. Esta excepción de transporte es intencional: mantiene el acceso a

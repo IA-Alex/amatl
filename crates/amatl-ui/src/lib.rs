@@ -152,7 +152,7 @@ mod tests {
     }
 
     #[test]
-    fn search_flow_uses_the_public_contract_and_safe_dom_apis() {
+    fn search_and_deep_use_post_contracts_and_safe_dom_apis() {
         let html = text("/index.html");
         let javascript = text("/app.js");
         assert!(html.contains("action=\"/search\" method=\"post\""));
@@ -171,7 +171,8 @@ mod tests {
             assert!(html.contains(field), "missing UI field: {field}");
         }
         assert!(javascript.contains("payload.schema_version !== \"1\""));
-        assert!(javascript.contains("fetch(\"/search\""));
+        assert!(javascript.contains("mode === \"deep\" ? \"/deep\" : \"/search\""));
+        assert!(javascript.contains("fetch(endpoint"));
         assert!(javascript.contains("method: \"POST\""));
         assert!(javascript.contains("\"Content-Type\": \"application/json\""));
         assert!(javascript.contains("body: JSON.stringify({ q: queryText() })"));
@@ -183,6 +184,32 @@ mod tests {
         assert!(javascript.contains("parsed.protocol === \"http:\""));
         assert!(javascript.contains("parsed.protocol === \"https:\""));
         assert!(javascript.contains("textContent"));
+        assert!(!javascript.contains("innerHTML"));
+        assert!(!javascript.contains("document.write"));
+    }
+
+    #[test]
+    fn deep_evidence_is_bounded_traceable_and_has_no_local_file_surface() {
+        let html = text("/index.html");
+        let javascript = text("/app.js");
+        assert!(html.contains("id=\"deep-button\""));
+        assert!(html.contains("id=\"deep-template\""));
+        assert!(html.contains("id=\"fragment-template\""));
+        assert!(html.contains("Procedencia verificable"));
+        assert!(html.contains("<blockquote>"));
+        assert!(javascript.contains("Array.isArray(payload.evidence_v2)"));
+        assert!(javascript.contains("const MAX_DEEP_DOCUMENTS = 20"));
+        assert!(javascript.contains("const MAX_FRAGMENTS = 8"));
+        assert!(javascript.contains("const MAX_FRAGMENT_BYTES = 512"));
+        assert!(javascript.contains("fragment.provenance_id !== provenanceId"));
+        assert!(javascript.contains("provenance.document_id !== evidence.document_id"));
+        assert!(javascript.contains("provenance.final_url === documentValue.final_url"));
+        assert!(javascript.contains("new TextEncoder()"));
+        assert!(javascript.contains("new TextDecoder(\"utf-8\", { fatal: true })"));
+        assert!(javascript.contains("crypto.subtle.digest(\"SHA-256\""));
+        assert!(!html.contains("type=\"file\""));
+        assert!(!javascript.contains("FileReader"));
+        assert!(!javascript.contains("\"/ingest\""));
         assert!(!javascript.contains("innerHTML"));
         assert!(!javascript.contains("document.write"));
     }

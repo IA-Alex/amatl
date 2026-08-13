@@ -63,3 +63,11 @@ nunca como HTML ejecutable. Los límites impiden que Evidence v2 multiplique sin
 cota el tamaño de Deep. La respuesta puede contener información sensible del
 documento; aplica la misma política de acceso, logs y retención que a
 `Document.content`.
+
+La UI embebida expone este contrato mediante `POST /deep`. Muestra como máximo
+20 documentos y ocho fragmentos de hasta 512 bytes por documento, descarta un
+fragmento desligado del `provenance_id` y usa `textContent`, nunca HTML activo.
+Cuando `Document.content` está disponible, reconstruye el rango con decodificación
+UTF-8 estricta y recalcula el SHA-256 mediante Web Crypto antes de etiquetarlo
+como verificado. Una marca válida detecta integridad dentro de la respuesta; no
+certifica identidad del publicador ni verdad factual.

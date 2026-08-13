@@ -92,9 +92,12 @@ curl -X POST 'http://127.0.0.1:8080/search' \
   --data '{"q":"rust"}'
 ```
 
-La UI usa este mismo POST JSON para que la consulta no aparezca en URL,
-historial o access logs. El token viaja únicamente en `Authorization`, nunca
-como campo del formulario ni como query parameter.
+La UI ofrece `Buscar` y `Analizar evidencia`. Ambas acciones usan POST JSON para
+que la consulta no aparezca en URL, historial o access logs. Deep presenta cada
+documento con fragmentos Evidence v2, linaje de URL, extractor y hashes, y
+comprueba en el navegador el rango UTF-8 y SHA-256 del fragmento. El token viaja
+únicamente en `Authorization`, nunca como campo del formulario ni como query
+parameter. La ingestión local continúa siendo exclusiva de CLI.
 
 Todas las respuestas de la aplicación incluyen un `X-Request-ID` generado por
 AMATL para correlacionarlas con los eventos operativos y de seguridad. Los IDs

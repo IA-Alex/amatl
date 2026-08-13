@@ -19,6 +19,14 @@
    mantiene el token sólo en memoria de la página y lo envía exclusivamente en
    `Authorization`; no expongas consultas ni tokens en query strings.
 
+En la UI, `Buscar` llama a `/search` y `Analizar evidencia` llama a `/deep` con
+la misma consulta, filtros y bearer. La vista Deep despliega fragmentos,
+procedencia y resultado de verificación local de rango/hash. Requiere que los
+providers y el fetch de red estén permitidos y que el extractor pueda producir
+texto; con perfil `isolated` se mostrará una degradación sin documentos porque
+la red se niega antes de DNS. No existe selector de archivos: usa `amatl ingest`
+para evidencia local.
+
 ### Perfil aislado para ejercicios confidenciales
 
 No requiere API key. Configura:

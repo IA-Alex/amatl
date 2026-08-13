@@ -6,7 +6,7 @@
     <meta name="color-scheme" content="dark">
     <meta name="referrer" content="no-referrer">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'">
-    <title>AMATL — Búsqueda</title>
+    <title>AMATL — Búsqueda y evidencia</title>
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="/styles.css">
     <script src="/app.js" defer></script>
@@ -15,7 +15,7 @@
     <a class="skip-link" href="#results">Ir a resultados</a>
     <header class="masthead">
       <a class="brand" href="/" aria-label="AMATL, inicio">AMATL</a>
-      <span class="product-label">Búsqueda multifuente</span>
+      <span class="product-label">Búsqueda multifuente y evidencia verificable</span>
     </header>
 
     <main class="shell">
@@ -25,7 +25,10 @@
           <div class="search-row">
             <label class="sr-only" for="query">Consulta</label>
             <input id="query" name="q" type="search" required maxlength="2048" autocomplete="off" placeholder="Busca documentos, código o fuentes…">
-            <button id="search-button" type="submit">Buscar</button>
+            <div class="search-actions" aria-label="Tipo de búsqueda">
+              <button id="search-button" type="submit" data-mode="search">Buscar</button>
+              <button id="deep-button" class="secondary-action" type="submit" data-mode="deep">Analizar evidencia</button>
+            </div>
           </div>
           <details class="filters">
             <summary>Filtros y acceso</summary>
@@ -80,6 +83,51 @@
         <h3><a class="result-title" rel="noopener noreferrer"></a></h3>
         <p class="result-snippet"></p>
         <p class="result-meta"></p>
+      </li>
+    </template>
+
+    <template id="deep-template">
+      <li class="evidence-card">
+        <div class="document-header">
+          <div class="document-heading">
+            <p class="result-url"></p>
+            <h3><a class="result-title" rel="noopener noreferrer"></a></h3>
+          </div>
+          <span class="document-status"></span>
+        </div>
+        <p class="document-meta"></p>
+        <section class="evidence-panel" aria-label="Fragmentos de evidencia">
+          <div class="evidence-heading">
+            <h4>Fragmentos de evidencia</h4>
+            <span class="fragment-count"></span>
+          </div>
+          <p class="empty-evidence" hidden></p>
+          <ol class="evidence-fragments"></ol>
+        </section>
+        <details class="provenance">
+          <summary>Procedencia verificable</summary>
+          <dl>
+            <div><dt>URL original</dt><dd class="provenance-original"></dd></div>
+            <div><dt>URL canónica</dt><dd class="provenance-canonical"></dd></div>
+            <div><dt>URL final</dt><dd class="provenance-final"></dd></div>
+            <div><dt>Adquisición</dt><dd class="provenance-method"></dd></div>
+            <div><dt>Extractor</dt><dd class="provenance-extractor"></dd></div>
+            <div><dt>Recuperado</dt><dd class="provenance-retrieved"></dd></div>
+            <div><dt>SHA-256 fuente</dt><dd><code class="provenance-source-hash"></code></dd></div>
+            <div><dt>SHA-256 texto extraído</dt><dd><code class="provenance-content-hash"></code></dd></div>
+          </dl>
+        </details>
+      </li>
+    </template>
+
+    <template id="fragment-template">
+      <li class="evidence-fragment">
+        <blockquote></blockquote>
+        <div class="fragment-footer">
+          <div class="fragment-signals" aria-label="Señales observadas"></div>
+          <span class="fragment-verification" data-state="pending">Verificando…</span>
+        </div>
+        <p class="fragment-hash"><span>SHA-256</span> <code></code></p>
       </li>
     </template>
   </body>

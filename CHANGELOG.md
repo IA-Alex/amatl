@@ -55,6 +55,9 @@ adapter/extractor versions are independent axes as well.
 - CLI-only local ingestion with bounded file reads, deterministic dispatch for
   text, Markdown, HTML, JSON/JSONL, CSV, source code and PDF, producing Document
   plus Evidence v1/v2 without exposing filesystem access through HTTP or MCP.
+- Functional embedded Deep UI with POST-only dispatch, bounded Evidence v2
+  fragments, provenance inspection, text-only rendering and browser-side UTF-8
+  range/SHA-256 verification; local file ingestion remains CLI-only.
 
 ### Changed
 

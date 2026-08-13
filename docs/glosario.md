@@ -16,8 +16,8 @@ del ciclo de entidades.
 | SearchResult | `SearchResult` | elemento de `results` | no se cachea como salida final | rango, título, `canonical_url` | conteos, no cuerpo completo |
 | Document | `Document` | elemento de `documents` en Deep | `document_cache.payload` | URL final y status en `deep` | degradaciones Deep |
 | Ingestión local | `LocalIngestResponse` | `document_type`, `document`, `evidence`, `evidence_v2` | no se persiste | `ingest RUTA` | errores sin cuerpo ni ruta por defecto |
-| Evidence | `Evidence` | elemento de `evidence` | dentro del DeepResponse; no tabla propia | sólo `--json` | — |
-| Evidence v2 | `EvidenceV2` | elemento de `evidence_v2`, con `fragments` y `provenance` | no se persiste aparte; se deriva de Document | sólo `--json` | — |
+| Evidence | `Evidence` | elemento de `evidence` | dentro del DeepResponse; no tabla propia | sólo `--json`; resumen indirecto en UI Deep | — |
+| Evidence v2 | `EvidenceV2` | elemento de `evidence_v2`, con `fragments` y `provenance` | no se persiste aparte; se deriva de Document | `--json`; fragmentos/procedencia en UI Deep | — |
 | Gap | `Gap` | elemento de `gaps` | — | sólo `--json` | — |
 | SubQuery | `SubQuery` | elemento de `subqueries` | — | sólo `--json` | stop/degradation de Deep |
 | URL reportada | `OriginalUrl` | `original_url` | dentro de payloads | no se imprime separada en modo humano | — |

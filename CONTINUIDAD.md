@@ -4,7 +4,7 @@
 
 Estado revisado el **2026-08-13** sobre la rama `main`:
 
-- revisión de partida: `5d2e15d` (`feat: add traceable Evidence v2`);
+- revisión de partida: `6c5572f` (`feat: add local document ingestion`);
 - baseline de implementación: tag `baseline-fases-0-9`, commit `51c6d34`;
 - workspace: Rust 2021, MSRV 1.88, versión candidata `0.1.0-rc.1`, cuatro crates;
 - fases 0–9: cerradas y verificadas;
@@ -57,8 +57,10 @@ Invariantes no negociables:
 - Deep es la única frontera de navegación y aplica controles SSRF antes de
   conectar, después de DNS y en cada redirect.
 - CLI, UI, API y MCP consumen el mismo core; no duplicar orquestación.
-- La UI usa POST JSON para Search; consulta y bearer no aparecen en la URL y el
-  token no tiene `name` de formulario ni persistencia de aplicación.
+- La UI usa POST JSON para Search y Deep; consulta y bearer no aparecen en la
+  URL y el token no tiene `name` de formulario ni persistencia de aplicación.
+- La vista Deep limita documentos/fragmentos, conserva la procedencia Evidence
+  v2, renderiza texto no confiable sin HTML y verifica rango/hash en navegador.
 - MCP conserva límites más estrictos que CLI/API.
 - Un bind no-loopback exige autenticación y TLS completos.
 - Secretos sólo por variables de entorno; no en TOML, logs ni URLs.
@@ -117,7 +119,7 @@ cargo cyclonedx
 
 Resultados locales registrados el 2026-08-13:
 
-- 188 pruebas aprobadas en el workspace;
+- 190 pruebas aprobadas en el workspace;
 - formato, benches y Clippy estricto aprobados;
 - Cargo Audit sin vulnerabilidades y Cargo Deny aprobado (duplicados
   transitivos permitidos por la política vigente);
