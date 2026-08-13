@@ -24,7 +24,7 @@ workspace, not a hand-picked suite.
 | Renderer | Fail-closed unit | No active backend | No | no unsafe fallback | Current contract only | Chromium/CDP is unavailable; isolation tests must precede activation |
 | Deep/Evidence/Gap | Unit engines | `deep_phase5` | No | budget/blocked fetch via fakes | Yes | Fetch/extract failures, ranking gate, max two subqueries and cache rights covered |
 | CLI | Formatting/behavior through process | `amatl-cli/tests/cli.rs` | No | JSON/log separation indirectly | Surface contract | Exit codes and commands covered; no packaged binary/install matrix |
-| UI | Asset unit tests | Served by server tests | No | CSP, safe DOM, URL protocols | Presentation contract | No browser E2E/accessibility automation |
+| UI | Asset unit tests | Served by server tests | No | CSP, safe DOM, URL protocols, POST-only UI flow and non-serializable bearer field | Presentation contract | No browser E2E/accessibility automation |
 | HTTP API | Handler tests | In-process Axum + TCP/rustls | No | auth, Host, Origin/CORS, body, headers, rate, timeout, framing, request correlation | Yes | Real TCP/TLS, untrusted certificate, aggregate header rejection and handler cancellation covered; no connection-saturation or proxy test |
 | MCP | Tool/limit units | initialize/list/call | No | shared HTTP gate + SafeFetcher | Yes | Exactly four tools covered; `fetch` network behavior is unit-tested below transport |
 | Data policy | Config/service units | CLI + MCP | No | isolated fail-closed before network | Yes | Contradictory profile, provider/canary, Deep degradation and MCP bypass regressions covered; OS firewall remains deployment evidence |

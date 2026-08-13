@@ -268,9 +268,11 @@ async fn rejected_requests_emit_secret_safe_security_events() {
     let response = app()
         .await
         .oneshot(
-            request("/search?q=rust%0Aforged")
+            request("/search")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
                 .header(AUTHORIZATION, format!("Bearer {supplied_secret}"))
-                .body(Body::empty())
+                .body(Body::from(r#"{"q":"rust\nforged"}"#))
                 .unwrap(),
         )
         .await

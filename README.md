@@ -86,9 +86,15 @@ cargo run -p amatl-cli -- serve --mock
 Abre `http://127.0.0.1:8080/`, introduce el mismo token en la UI o llama:
 
 ```bash
-curl -H "Authorization: Bearer $AMATL_SERVER_TOKEN" \
-  'http://127.0.0.1:8080/search?q=rust'
+curl -X POST 'http://127.0.0.1:8080/search' \
+  -H "Authorization: Bearer $AMATL_SERVER_TOKEN" \
+  -H 'Content-Type: application/json' \
+  --data '{"q":"rust"}'
 ```
+
+La UI usa este mismo POST JSON para que la consulta no aparezca en URL,
+historial o access logs. El token viaja únicamente en `Authorization`, nunca
+como campo del formulario ni como query parameter.
 
 Todas las respuestas de la aplicación incluyen un `X-Request-ID` generado por
 AMATL para correlacionarlas con los eventos operativos y de seguridad. Los IDs

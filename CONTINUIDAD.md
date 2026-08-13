@@ -4,7 +4,7 @@
 
 Estado revisado el **2026-08-13** sobre la rama `main`:
 
-- revisión de partida: `ed93abe` (`test: cover HTTP header and handler limits`);
+- revisión de partida: `5adb788` (`security: add fail-closed data policy`);
 - baseline de implementación: tag `baseline-fases-0-9`, commit `51c6d34`;
 - workspace: Rust 2021, MSRV 1.88, versión candidata `0.1.0-rc.1`, cuatro crates;
 - fases 0–9: cerradas y verificadas;
@@ -57,6 +57,8 @@ Invariantes no negociables:
 - Deep es la única frontera de navegación y aplica controles SSRF antes de
   conectar, después de DNS y en cada redirect.
 - CLI, UI, API y MCP consumen el mismo core; no duplicar orquestación.
+- La UI usa POST JSON para Search; consulta y bearer no aparecen en la URL y el
+  token no tiene `name` de formulario ni persistencia de aplicación.
 - MCP conserva límites más estrictos que CLI/API.
 - Un bind no-loopback exige autenticación y TLS completos.
 - Secretos sólo por variables de entorno; no en TOML, logs ni URLs.

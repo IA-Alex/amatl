@@ -45,14 +45,12 @@ function addOperator(parts, name, value) {
   if (clean) parts.push(`${name}:${clean}`);
 }
 
-function apiUrl() {
+function queryText() {
   const parts = [queryInput.value.trim()];
   addOperator(parts, "lang", languageInput.value);
   addOperator(parts, "region", regionInput.value);
   addOperator(parts, "filetype", fileTypeInput.value);
-  const url = new URL("/search", window.location.origin);
-  url.searchParams.set("q", parts.join(" "));
-  return url;
+  return parts.join(" ");
 }
 
 function metadata(result) {
@@ -102,14 +100,19 @@ async function search(event) {
   setBusy(true);
   setStatus("Buscando…", "loading");
   try {
-    const headers = { Accept: "application/json" };
+    const headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    };
     if (tokenInput.value) headers.Authorization = `Bearer ${tokenInput.value}`;
-    const response = await fetch(apiUrl(), {
-      method: "GET",
+    const response = await fetch("/search", {
+      method: "POST",
       headers,
+      body: JSON.stringify({ q: queryText() }),
       credentials: "same-origin",
       signal: state.controller.signal,
     });
+    if (response.status === 401) throw new Error("unauthorized");
     if (!response.ok) throw new Error("request_failed");
     const payload = await response.json();
     if (payload.schema_version !== "1" || !Array.isArray(payload.results)) {
@@ -127,7 +130,12 @@ async function search(event) {
     resultsNode.focus({ preventScroll: true });
   } catch (error) {
     if (error.name !== "AbortError") {
-      setStatus("No fue posible completar la búsqueda. Intenta nuevamente.", "error");
+      if (error.message === "unauthorized") {
+        setStatus("El token de acceso falta o no es válido.", "error");
+        tokenInput.focus();
+      } else {
+        setStatus("No fue posible completar la búsqueda. Intenta nuevamente.", "error");
+      }
     }
   } finally {
     setBusy(false);
@@ -135,6 +143,9 @@ async function search(event) {
 }
 
 form.addEventListener("submit", search);
+window.addEventListener("pagehide", () => {
+  tokenInput.value = "";
+});
 previousButton.addEventListener("click", () => {
   if (state.page > 0) state.page -= 1;
   render();

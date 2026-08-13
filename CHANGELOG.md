@@ -46,6 +46,9 @@ adapter/extractor versions are independent axes as well.
 - Central `data_policy` with fail-closed `isolated` profile, denied provider,
   Deep and MCP egress, explicit disabled/local/remote inference modes and
   secret-safe `egress_denied` reporting. LLM inference remains optional.
+- Embedded UI Search now uses POST JSON; the bearer token is excluded from form
+  serialization, kept only in page memory, cleared on exit and reported with a
+  specific authentication error without exposing its value.
 
 ### Changed
 

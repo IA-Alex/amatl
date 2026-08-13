@@ -17,6 +17,8 @@ paths:
     get:
       operationId: searchGet
       summary: Search configured providers
+      description: Compatibility endpoint. Prefer POST so query text is not placed in the request target.
+      deprecated: true
       parameters:
         - $ref: '#/components/parameters/Query'
       responses:

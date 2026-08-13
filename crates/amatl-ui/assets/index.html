@@ -21,14 +21,14 @@
     <main class="shell">
       <section class="search-panel" aria-labelledby="search-heading">
         <h1 id="search-heading">¿Qué necesitas encontrar?</h1>
-        <form id="search-form" action="/search" method="get" role="search">
+        <form id="search-form" action="/search" method="post" role="search">
           <div class="search-row">
             <label class="sr-only" for="query">Consulta</label>
             <input id="query" name="q" type="search" required maxlength="2048" autocomplete="off" placeholder="Busca documentos, código o fuentes…">
             <button id="search-button" type="submit">Buscar</button>
           </div>
           <details class="filters">
-            <summary>Filtros</summary>
+            <summary>Filtros y acceso</summary>
             <div class="filter-grid">
               <div>
                 <label for="language">Idioma</label>
@@ -48,8 +48,9 @@
                 </select>
               </div>
               <div>
-                <label for="local-token">Token local</label>
-                <input id="local-token" name="token" type="password" autocomplete="off" maxlength="4096" placeholder="Token del servidor">
+                <label for="local-token">Token de acceso</label>
+                <input id="local-token" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" minlength="32" maxlength="4096" aria-describedby="token-help" placeholder="Token del servidor">
+                <p id="token-help" class="field-help">Mínimo 32 caracteres; sólo se conserva en memoria durante esta página.</p>
               </div>
             </div>
           </details>

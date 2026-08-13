@@ -15,8 +15,9 @@
    reales a certificado y clave TLS, conserva `no_auth = false`, restringe
    hosts/origins y ajusta firewall. La configuración rechaza bind remoto sin TLS
    y token.
-4. Verifica `/health` sin token y `/search` con bearer. No expongas el token en
-   query strings.
+4. Verifica `/health` sin token y `/search` mediante POST JSON con bearer. La UI
+   mantiene el token sólo en memoria de la página y lo envía exclusivamente en
+   `Authorization`; no expongas consultas ni tokens en query strings.
 
 ### Perfil aislado para ejercicios confidenciales
 

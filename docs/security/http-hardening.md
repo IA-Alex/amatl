@@ -4,6 +4,13 @@ The Axum server hosts UI, REST-like JSON endpoints, and MCP Streamable HTTP on
 one listener. Defaults below come from `ServerConfig::default`
 (`config.rs:487-503`) and are validated before router construction.
 
+The embedded UI submits Search as `POST /search` with an `application/json`
+body. Its password-style token control has no form `name`, is not persisted by
+application code, is cleared on page exit, and is used only to construct the
+`Authorization: Bearer` header. A script failure can therefore cause a safe
+failed form POST, but cannot serialize the token or query into the URL. GET
+Search remains only as API compatibility and should not carry sensitive text.
+
 ## Content Security Policy and headers
 
 Exact CSP (`amatl-ui/src/lib.rs:7`):

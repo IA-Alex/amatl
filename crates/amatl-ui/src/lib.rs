@@ -155,6 +155,13 @@ mod tests {
     fn search_flow_uses_the_public_contract_and_safe_dom_apis() {
         let html = text("/index.html");
         let javascript = text("/app.js");
+        assert!(html.contains("action=\"/search\" method=\"post\""));
+        assert!(!html.contains("method=\"get\""));
+        assert!(!html.contains("name=\"token\""));
+        assert!(html.contains("type=\"password\""));
+        assert!(html.contains("autocomplete=\"off\""));
+        assert!(html.contains("minlength=\"32\""));
+        assert!(html.contains("aria-describedby=\"token-help\""));
         for field in [
             "name=\"q\"",
             "name=\"lang\"",
@@ -164,6 +171,13 @@ mod tests {
             assert!(html.contains(field), "missing UI field: {field}");
         }
         assert!(javascript.contains("payload.schema_version !== \"1\""));
+        assert!(javascript.contains("fetch(\"/search\""));
+        assert!(javascript.contains("method: \"POST\""));
+        assert!(javascript.contains("\"Content-Type\": \"application/json\""));
+        assert!(javascript.contains("body: JSON.stringify({ q: queryText() })"));
+        assert!(javascript.contains("headers.Authorization"));
+        assert!(!javascript.contains("searchParams"));
+        assert!(!javascript.contains("method: \"GET\""));
         assert!(javascript.contains("payload.status === \"partial_success\""));
         assert!(javascript.contains("result.canonical_url"));
         assert!(javascript.contains("parsed.protocol === \"http:\""));

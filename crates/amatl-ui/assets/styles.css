@@ -125,6 +125,7 @@ button:disabled { cursor: not-allowed; filter: grayscale(0.6); opacity: 0.55; }
   background: var(--surface);
 }
 .filter-grid label { display: block; margin-bottom: 0.4rem; font-size: 0.75rem; }
+.field-help { margin: 0.4rem 0 0; color: var(--muted); font-size: 0.72rem; line-height: 1.4; }
 
 .result-area { min-width: 0; max-width: 58rem; margin-top: clamp(2.5rem, 7vw, 4.25rem); }
 .result-header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }

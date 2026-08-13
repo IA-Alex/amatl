@@ -56,7 +56,8 @@ luego construye explícitamente esas capacidades (`service.rs:167-275`).
 delegan en ellas; MCP no crea su propio fetcher. `ServiceSurface` selecciona
 límites: CLI y API usan los configurados; MCP reduce providers, tiempos,
 fetches, bytes y subqueries (`service.rs:14-58`). La UI usa exclusivamente el
-contrato HTTP público.
+contrato HTTP público y envía búsquedas mediante POST JSON; el token sólo se
+coloca en `Authorization` y no se serializa como control del formulario.
 
 Antes de construir capacidades de red, `data_policy` resuelve el perfil
 efectivo. `isolated` instala fetch/transporte denegados y la validación rechaza
