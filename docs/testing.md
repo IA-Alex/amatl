@@ -25,7 +25,7 @@ workspace, not a hand-picked suite.
 | Deep/Evidence/Gap | Unit engines | `deep_phase5` | No | budget/blocked fetch via fakes | Yes | Fetch/extract failures, ranking gate, max two subqueries and cache rights covered |
 | CLI | Formatting/behavior through process | `amatl-cli/tests/cli.rs` | No | JSON/log separation indirectly | Surface contract | Exit codes and commands covered; no packaged binary/install matrix |
 | UI | Asset unit tests | Served by server tests | No | CSP, safe DOM, URL protocols | Presentation contract | No browser E2E/accessibility automation |
-| HTTP API | Handler tests | In-process Axum + TCP/rustls | No | auth, Host, Origin/CORS, body, rate, framing, request correlation | Yes | Real TCP/TLS and untrusted certificate covered; no timeout, header-size, connection-saturation or proxy test |
+| HTTP API | Handler tests | In-process Axum + TCP/rustls | No | auth, Host, Origin/CORS, body, headers, rate, timeout, framing, request correlation | Yes | Real TCP/TLS, untrusted certificate, aggregate header rejection and handler cancellation covered; no connection-saturation or proxy test |
 | MCP | Tool/limit units | initialize/list/call | No | shared HTTP gate + SafeFetcher | Yes | Exactly four tools covered; `fetch` network behavior is unit-tested below transport |
 
 “N/A” is used only where the test class does not represent a meaningful threat;

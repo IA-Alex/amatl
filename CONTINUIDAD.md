@@ -104,7 +104,7 @@ cargo cyclonedx
 
 Resultados locales registrados el 2026-08-13:
 
-- 165 pruebas aprobadas en el workspace;
+- 167 pruebas aprobadas en el workspace;
 - formato, benches y Clippy estricto aprobados;
 - Cargo Audit sin vulnerabilidades y Cargo Deny aprobado (duplicados
   transitivos permitidos por la política vigente);
@@ -114,6 +114,8 @@ Resultados locales registrados el 2026-08-13:
   rechazo de certificados no confiables;
 - límites HTTP conflictivos rechazados sobre TCP real y eventos de seguridad
   verificados sin credenciales;
+- límite agregado de cabeceras y cancelación por timeout del handler verificados
+  con códigos estables y `X-Request-ID`;
 - `X-Request-ID` correlaciona respuestas y eventos SSRF sin confiar en valores
   del cliente ni registrar la URL rechazada;
 - canario fail-closed antes de red cuando falta aprobación;

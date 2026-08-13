@@ -102,8 +102,9 @@ SQLite, token readiness, or outbound network (`amatl-server/src/lib.rs:291-293`)
 Tests cover hardened public health, bearer enforcement, the simple and
 protected Host/Origin/CORS matrix, rate and body limits, secret-safe security
 events, real socket-IP separation, TCP, conflicting HTTP message boundaries,
-trusted/untrusted TLS certificates, unique request IDs and correlated MCP SSRF
-rejection (`amatl-server/src/tests.rs`). The
+trusted/untrusted TLS certificates, aggregate header rejection, handler timeout
+cancellation, unique request IDs and correlated MCP SSRF rejection
+(`amatl-server/src/tests.rs`). The
 provider transport also rejects an untrusted certificate without exposing its
 credential (`providers/http.rs`). Remaining environmental gaps are connection
 saturation, distributed/multi-process rate limiting and reverse-proxy

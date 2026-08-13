@@ -41,6 +41,8 @@ adapter/extractor versions are independent axes as well.
   explicit TLS 1.2 floors and invalid-certificate/message-boundary tests.
 - Server-generated request correlation across responses, routing and SSRF audit
   events, with third-party tracing targets excluded from operator logs.
+- Contract coverage for aggregate HTTP header rejection and handler timeout
+  cancellation, including stable error codes and response correlation IDs.
 
 ### Changed
 

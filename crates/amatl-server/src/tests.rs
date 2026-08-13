@@ -406,6 +406,79 @@ async fn rate_limit_is_keyed_and_body_limit_is_global() {
 }
 
 #[tokio::test]
+async fn aggregate_header_limit_rejects_before_routing() {
+    let mut config = amatl_core::Config::default();
+    config.server.max_header_bytes = 128;
+    let app = build_router(AmatlService::new(config, true).await, Some(TOKEN.into()))
+        .await
+        .unwrap();
+    let response = app
+        .oneshot(
+            authorized("/search?q=rust")
+                .header("x-padding", "x".repeat(128))
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+
+    assert_eq!(
+        response.status(),
+        StatusCode::REQUEST_HEADER_FIELDS_TOO_LARGE
+    );
+    assert!(response.headers().contains_key(REQUEST_ID_HEADER));
+    assert_eq!(
+        json_body(response).await["error"]["code"],
+        "headers_too_large"
+    );
+}
+
+#[tokio::test]
+async fn request_timeout_cancels_a_slow_handler() {
+    let mut config = amatl_core::Config::default();
+    config.server.request_timeout_ms = 10;
+    let service = AmatlService::new(config.clone(), true).await;
+    let allowed_origins = effective_origins(&config, false);
+    let security = Arc::new(SecurityState {
+        token: Some(TOKEN.into()),
+        allowed_hosts: config.server.allowed_hosts.clone(),
+        allowed_origins,
+        max_header_bytes: config.server.max_header_bytes,
+        max_body_bytes: config.server.max_body_bytes,
+        timeout: Duration::from_millis(config.server.request_timeout_ms),
+        rate_limit_per_minute: config.server.rate_limit_per_minute,
+        rate_limiter: Mutex::new(RateLimiter {
+            windows: BTreeMap::new(),
+            last_cleanup: Instant::now(),
+        }),
+        https: false,
+    });
+    let state = AppState { service, security };
+    let app = Router::new()
+        .route(
+            "/slow",
+            get(|| async {
+                tokio::time::sleep(Duration::from_millis(100)).await;
+                StatusCode::OK
+            }),
+        )
+        .with_state(state.clone())
+        .layer(middleware::from_fn_with_state(state, security_middleware));
+
+    let response = app
+        .oneshot(request("/slow").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+
+    assert_eq!(response.status(), StatusCode::GATEWAY_TIMEOUT);
+    assert!(response.headers().contains_key(REQUEST_ID_HEADER));
+    assert_eq!(
+        json_body(response).await["error"]["code"],
+        "request_timeout"
+    );
+}
+
+#[tokio::test]
 async fn invalid_credentials_and_public_routes_consume_the_rate_limit() {
     let mut config = amatl_core::Config::default();
     config.server.rate_limit_per_minute = 1;
