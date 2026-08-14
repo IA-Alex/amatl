@@ -384,3 +384,33 @@ fn serve_reports_the_effective_listener_before_binding() {
         .to_lowercase()
         .contains("configuration"));
 }
+
+#[test]
+fn cli_reports_the_same_error_catalog_codes_as_the_other_surfaces() {
+    // A domain failure carries a catalog code on stderr, next to the message.
+    let canary = Command::new(env!("CARGO_BIN_EXE_amatl"))
+        .args(["provider-canary", "brave", "rust"])
+        .output()
+        .expect("amatl binary should run");
+    assert!(!canary.status.success());
+    let stderr = String::from_utf8(canary.stderr).unwrap();
+    assert!(
+        stderr.contains("error_code=provider_not_enabled"),
+        "{stderr}"
+    );
+
+    // A failed Search is a contract outcome: its own composite codes are
+    // reported instead of an invented one, and stdout stays clean.
+    let search = Command::new(env!("CARGO_BIN_EXE_amatl"))
+        .args(["search", "ordinary query", "--json"])
+        .output()
+        .expect("amatl binary should run");
+    assert_eq!(search.status.code(), Some(1));
+    let stderr = String::from_utf8(search.stderr).unwrap();
+    assert!(
+        stderr.contains("error_code=no_available_provider"),
+        "{stderr}"
+    );
+    let stdout = String::from_utf8(search.stdout).unwrap();
+    assert!(!stdout.contains("error_code="), "{stdout}");
+}

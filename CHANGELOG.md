@@ -26,7 +26,9 @@ adapter/extractor versions are independent axes as well.
   `[inference]` configuration section. `remote_explicit` fails closed and Deep
   degrades with `inference_unavailable` when a required backend is missing.
 - Shared error catalog (`amatl-core/src/errors.rs`): CLI, API and MCP render the
-  same stable codes, transport statuses and messages.
+  same stable codes, transport statuses and messages. The CLI prints
+  `error_code=…` on stderr for any failure carrying a catalog code, and reports
+  a failed Search with the composite codes the response already contains.
 - `amatl doctor` reports inference readiness; `amatl config` lists declared
   providers and the inference backend.
 - Local domain HTTP surfaces backed by the existing SQLite tables: `GET /status`

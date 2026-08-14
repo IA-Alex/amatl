@@ -98,6 +98,12 @@ comprueba SQLite/migración si procede, reporta telemetría y muestra preparaci�
 de token/TLS. Un `doctor` degradado puede terminar con código 0 porque es un
 reporte; el operador debe leer cada línea.
 
+La CLI usa el mismo catálogo de códigos que API y MCP: ante un fallo con código
+imprime `error_code=<código> message=<mensaje>` en stderr, y ante una búsqueda
+con `status = failure` imprime los códigos compuestos que ya trae la respuesta
+(`no_available_provider`, `no_usable_results`). stdout conserva sólo la salida
+del comando, de modo que `--json` sigue siendo parseable.
+
 Toda respuesta de aplicación incluye `X-Request-ID`. AMATL genera uno nuevo en
 el borde HTTP y no confía en un header homónimo recibido. Conserva ese valor al
 reportar un incidente: los eventos HTTP, routing y SSRF ejecutados dentro de la

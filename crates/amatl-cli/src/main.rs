@@ -1,8 +1,8 @@
 use amatl_core::{
     parse_query, run_builtin_benchmark, run_operational_benchmark, validate_provider_canary,
-    AmatlService, Config, DocumentCache, DocumentCachePolicy, InMemoryTelemetry, LocalIngestor,
-    ProviderSearchCache, ProviderSearchCachePolicy, ProviderSurfaceStatus, SearchResponse,
-    ServiceSurface, SqliteStorage, TrafilaturaExtractor,
+    AmatlService, Config, DocumentCache, DocumentCachePolicy, ErrorCode, InMemoryTelemetry,
+    LocalIngestor, ProviderSearchCache, ProviderSearchCachePolicy, ProviderSurfaceStatus,
+    SearchResponse, ServiceSurface, SqliteStorage, TrafilaturaExtractor,
 };
 use anyhow::Context;
 use clap::{Parser, Subcommand};
@@ -454,6 +454,43 @@ enum DbCommand {
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     init_logging();
+    let outcome = run().await;
+    if let Err(error) = &outcome {
+        report_error_code(error);
+    }
+    outcome
+}
+
+/// Print the shared catalog code for a failure, when the cause carries one.
+///
+/// The CLI keeps its human message, but an operator or a script comparing
+/// behavior across surfaces gets the same stable identifier the API and MCP
+/// return, on stderr and separate from JSON output on stdout.
+fn report_error_code(error: &anyhow::Error) {
+    let code = error
+        .downcast_ref::<amatl_core::ServiceError>()
+        .map(amatl_core::ServiceError::code)
+        .or_else(|| {
+            error
+                .downcast_ref::<amatl_core::ProviderCanaryError>()
+                .map(amatl_core::ProviderCanaryError::code)
+        })
+        .or_else(|| {
+            error
+                .downcast_ref::<amatl_core::ConfigError>()
+                .map(|_| ErrorCode::ConfigurationInvalid)
+        })
+        .or_else(|| {
+            error
+                .downcast_ref::<amatl_core::StorageError>()
+                .map(|_| ErrorCode::StorageUnavailable)
+        });
+    if let Some(code) = code {
+        eprintln!("error_code={} message={}", code.as_str(), code.message());
+    }
+}
+
+async fn run() -> anyhow::Result<()> {
     let cli = Cli::parse();
     let config = Config::load_optional(&cli.config_file).context("configuration failed")?;
     match cli.command {
@@ -893,8 +930,19 @@ async fn search(raw_query: String, json: bool, mock: bool, config: &Config) -> a
         .search(raw_query, ServiceSurface::cli())
         .await?;
     let failed = execution.response.status == amatl_core::SearchStatus::Failure;
+    // A failed response is a contract outcome, not an error type: report the
+    // codes it already carries instead of inventing one.
+    let codes = execution
+        .response
+        .errors
+        .iter()
+        .map(|error| error.code.clone())
+        .collect::<Vec<_>>();
     print_search(execution.response, json)?;
     if failed {
+        if !codes.is_empty() {
+            eprintln!("error_code={}", codes.join(","));
+        }
         anyhow::bail!("search failed");
     }
     Ok(())
