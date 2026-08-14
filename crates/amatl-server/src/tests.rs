@@ -1,7 +1,7 @@
 use super::*;
 use axum::{body::to_bytes, http::Request};
 use std::io::Write;
-use std::sync::{Arc, Mutex, Once, OnceLock};
+use std::sync::{Arc, Mutex, Once, OnceLock, RwLock};
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tower::ServiceExt;
 use tracing_subscriber::layer::SubscriberExt;
@@ -588,7 +588,8 @@ async fn request_timeout_cancels_a_slow_handler() {
         https: false,
     });
     let state = AppState {
-        service,
+        service: Arc::new(RwLock::new(service)),
+        config_path: None,
         security,
         metrics: Arc::new(RequestMetrics::default()),
     };
@@ -836,7 +837,7 @@ async fn serve_completes_a_real_rustls_handshake() {
 }
 
 #[tokio::test]
-async fn mcp_uses_streamable_http_and_exposes_exactly_four_tools() {
+async fn mcp_uses_streamable_http_and_exposes_exactly_the_declared_tools() {
     let initialize = json!({
         "jsonrpc": "2.0",
         "id": 1,
@@ -909,8 +910,11 @@ async fn mcp_uses_streamable_http_and_exposes_exactly_four_tools() {
         .collect::<std::collections::BTreeSet<_>>();
     assert_eq!(
         names,
-        ["deep_search", "fetch", "providers", "search"].into()
+        ["deep_search", "fetch", "providers", "search", "status"].into()
     );
+    // Local file ingestion is deliberately CLI-only: an MCP listener must not
+    // become a remote file reader.
+    assert!(!names.contains("ingest"));
 
     let call = json!({
         "jsonrpc": "2.0",
@@ -1972,6 +1976,7 @@ async fn metrics_expose_latency_quantiles_sources_and_cache_gauges() {
         "amatl_deep_latency_ms",
         "amatl_search_latency_samples",
         "amatl_source_available",
+        "amatl_source_circuit_open",
         "amatl_cache_hits_total",
         "amatl_cache_misses_total",
         "amatl_cache_hit_rate",
@@ -1986,4 +1991,204 @@ async fn metrics_expose_latency_quantiles_sources_and_cache_gauges() {
     assert!(body.contains("amatl_search_latency_ms{quantile=\"0.95\"}"));
     assert!(body.contains("amatl_cache_hit_rate{cache=\"document\"}"));
     assert!(body.ends_with('\n'));
+}
+
+// ── Reload and MCP symmetry ─────────────────────────────────────────
+
+/// Router reading a real configuration file so `/reload` has something to
+/// re-read.
+async fn reloadable_app(body: &str) -> (Router, std::path::PathBuf) {
+    let nonce = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .unwrap()
+        .as_nanos();
+    let path = std::env::temp_dir().join(format!(
+        "amatl-server-reload-{}-{nonce}.toml",
+        std::process::id()
+    ));
+    std::fs::write(&path, body).unwrap();
+    let config = amatl_core::Config::load_optional(&path).unwrap();
+    let router = build_router_with_config_path(
+        AmatlService::new(config, true).await,
+        Some(TOKEN.into()),
+        Some(path.clone()),
+    )
+    .await
+    .unwrap();
+    (router, path)
+}
+
+#[tokio::test]
+async fn reload_requires_the_bearer_token() {
+    let response = app()
+        .await
+        .oneshot(
+            request("/reload")
+                .method(Method::POST)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::UNAUTHORIZED);
+}
+
+#[tokio::test]
+async fn reload_picks_up_a_new_source_without_restarting() {
+    let base = "schema_version = \"1\"\n\n[providers]\nenabled = []\n";
+    let (app, path) = reloadable_app(base).await;
+    let before = json_body(
+        app.clone()
+            .oneshot(authorized("/status").body(Body::empty()).unwrap())
+            .await
+            .unwrap(),
+    )
+    .await;
+    assert!(before["sources"].is_array());
+
+    // Declare and enable a source in the same file the server was started with.
+    std::fs::write(
+        &path,
+        "schema_version = \"1\"\n\n[providers]\nenabled = []\n\n\
+         [circuit_breaker]\nfailure_threshold = 7\n",
+    )
+    .unwrap();
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/reload")
+                .method(Method::POST)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let report = json_body(response).await;
+    assert_eq!(report["schema_version"], "1");
+    assert!(report["config_file"].is_string());
+    assert!(report["registered_sources"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .any(|value| value == "brave"));
+
+    // The service really was replaced: the new limit is in force.
+    let after = app
+        .oneshot(authorized("/status").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(after.status(), StatusCode::OK);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn a_rejected_reload_leaves_the_running_service_in_place() {
+    let (app, path) = reloadable_app("schema_version = \"1\"\n").await;
+    // schema_version mismatch is refused by configuration validation.
+    std::fs::write(&path, "schema_version = \"999\"\n").unwrap();
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/reload")
+                .method(Method::POST)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(
+        json_body(response).await["error"]["code"],
+        "configuration_invalid"
+    );
+
+    let still_serving = app
+        .oneshot(authorized("/status").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(still_serving.status(), StatusCode::OK);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn mcp_status_tool_reports_the_limits_actually_in_force() {
+    let app = app().await;
+    let call = mcp_request(
+        "tools/call",
+        json!({
+            "name": "status",
+            "arguments": {},
+            "_meta": {
+                "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+                "io.modelcontextprotocol/clientInfo": { "name": "contract-test", "version": "1" },
+                "io.modelcontextprotocol/clientCapabilities": {}
+            }
+        }),
+    );
+    let response = app
+        .oneshot(
+            authorized("/mcp")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .header("accept", "application/json, text/event-stream")
+                .header("mcp-protocol-version", "2026-07-28")
+                .header("mcp-method", "tools/call")
+                .header("mcp-name", "status")
+                .body(Body::from(call.to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    let limits = &body["result"]["structuredContent"]["limits"];
+    let config = amatl_core::Config::default();
+    let expected = amatl_core::ExecutionLimits::for_surface(&config, ServiceSurface::mcp());
+    assert_eq!(limits["fetch_timeout_ms"], expected.fetch_timeout_ms);
+    assert_eq!(limits["fetch_max_bytes"], expected.fetch_max_bytes);
+    assert_eq!(limits["fetch_max_redirects"], expected.fetch_max_redirects);
+    assert_eq!(limits["max_page_size"], expected.max_page_size);
+    // MCP stays strictly tighter than the local surfaces it shares a core with.
+    let cli = amatl_core::ExecutionLimits::for_surface(&config, ServiceSurface::cli());
+    assert!(expected.fetch_max_bytes <= cli.fetch_max_bytes);
+    assert!(expected.max_page_size < cli.max_page_size);
+}
+
+#[tokio::test]
+async fn mcp_search_accepts_server_side_pagination() {
+    let app = app().await;
+    let call = mcp_request(
+        "tools/call",
+        json!({
+            "name": "search",
+            "arguments": { "query": "rust", "page": 0, "page_size": 1 },
+            "_meta": {
+                "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+                "io.modelcontextprotocol/clientInfo": { "name": "contract-test", "version": "1" },
+                "io.modelcontextprotocol/clientCapabilities": {}
+            }
+        }),
+    );
+    let response = app
+        .oneshot(
+            authorized("/mcp")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .header("accept", "application/json, text/event-stream")
+                .header("mcp-protocol-version", "2026-07-28")
+                .header("mcp-method", "tools/call")
+                .header("mcp-name", "search")
+                .body(Body::from(call.to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    let content = &body["result"]["structuredContent"];
+    assert_eq!(content["schema_version"], "1");
+    assert_eq!(content["page"], 0);
+    assert_eq!(content["page_size"], 1);
+    assert!(content["results"].as_array().unwrap().len() <= 1);
 }

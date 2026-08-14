@@ -3,6 +3,7 @@
 pub mod budget;
 pub mod cache;
 pub mod canonical;
+pub mod circuit;
 pub mod classify;
 pub mod config;
 pub mod dedupe;
@@ -39,6 +40,7 @@ pub use cache::{
     CacheCounters, CacheEffectiveness, CachedProvider, ProviderSearchCache,
     ProviderSearchCachePolicy,
 };
+pub use circuit::{CircuitPolicy, CircuitSnapshot, CircuitState, ProviderCircuit};
 pub use classify::classify;
 pub use config::{
     ApprovalStatus, Config, ConfigError, DataPolicyConfig, EgressPolicy, ExecutionConfig,
@@ -65,8 +67,9 @@ pub use gaps::{
     SubQueryExecutionError, SubQueryExecutor,
 };
 pub use inference::{
-    EmbeddingBackend, EmbeddingSemanticScorer, InferenceError, InferenceRuntime,
-    LexicalCoverageReranker, LocalHashingEmbedder, LOCAL_EMBEDDING_BACKEND_ID, LOCAL_RERANKER_ID,
+    validate_remote_endpoint, EmbeddingBackend, EmbeddingSemanticScorer, InferenceError,
+    InferenceRuntime, LexicalCoverageReranker, LocalHashingEmbedder, RemoteEmbeddingBackend,
+    LOCAL_EMBEDDING_BACKEND_ID, LOCAL_RERANKER_ID, REMOTE_EMBEDDING_BACKEND_ID,
 };
 pub use ingest::{
     LocalDocumentType, LocalIngestError, LocalIngestResponse, LocalIngestor,
@@ -112,7 +115,7 @@ pub use service::{
 };
 pub use storage::{
     CacheStats, CachedDocument, SavedDocument, SearchHistoryEntry, SqliteStorage, StorageError,
-    StorageHealth, MIGRATION_VERSION,
+    StorageHealth, StoredCircuitRecord, MIGRATION_VERSION,
 };
 pub use telemetry::{
     InMemoryTelemetry, ProviderHealth, ProviderValueSnapshot, ProviderValueState,

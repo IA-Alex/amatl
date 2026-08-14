@@ -414,12 +414,15 @@ impl DeepOrchestrator {
         (response.evidence, response.evidence_v2) =
             crate::evidence::analyze_evidence_bundle(&request.query, &response.documents);
         if let Some(engine) = &self.ranking_v2 {
-            match engine.rank(
-                &request.query,
-                &response.documents,
-                &response.evidence,
-                &original_ranks,
-            ) {
+            match engine
+                .rank(
+                    &request.query,
+                    &response.documents,
+                    &response.evidence,
+                    &original_ranks,
+                )
+                .await
+            {
                 Ok(ranking) => response.ranking_v2 = ranking,
                 Err(_) => {
                     response.ranking_v2 = rejected_output();

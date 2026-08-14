@@ -25,6 +25,8 @@ pub struct Config {
     pub diversity_policy: DiversityPolicyV1,
     pub search_policy: SearchPolicyV1,
     pub persistence: PersistenceConfig,
+    /// Trip limits for the persistent provider circuit breaker.
+    pub circuit_breaker: crate::circuit::CircuitPolicy,
     pub cache: CacheConfig,
     pub telemetry: TelemetryConfig,
     pub deep: DeepConfig,
@@ -115,7 +117,7 @@ impl InferenceMode {
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 #[serde(default)]
 pub struct InferenceConfig {
-    /// Backend identifier; only the offline backend ships today.
+    /// Backend identifier used by `local_only`.
     pub backend: String,
     /// Width of the embedding vectors.
     pub embedding_dimensions: usize,
@@ -125,6 +127,19 @@ pub struct InferenceConfig {
     pub max_input_chars: usize,
     /// Weight the reranker keeps for the upstream relevance signal.
     pub reranker_prior_weight: f64,
+    /// Embeddings endpoint used by `data_policy.inference = "remote_explicit"`.
+    /// Must be absolute HTTPS, or HTTP on loopback for a self-hosted server,
+    /// and must not embed credentials.
+    pub remote_endpoint: Option<String>,
+    /// Model identifier sent in the remote request body.
+    pub remote_model: Option<String>,
+    /// Environment variable holding the bearer credential, when the endpoint
+    /// requires one. The value is never written to configuration or logs.
+    pub remote_credential_env: Option<String>,
+    /// Deadline for one remote embeddings request.
+    pub remote_timeout_ms: u64,
+    /// Largest number of inputs sent in a single remote request.
+    pub remote_max_batch: usize,
 }
 
 impl Default for InferenceConfig {
@@ -135,6 +150,11 @@ impl Default for InferenceConfig {
             max_documents: 64,
             max_input_chars: 20_000,
             reranker_prior_weight: 0.5,
+            remote_endpoint: None,
+            remote_model: None,
+            remote_credential_env: None,
+            remote_timeout_ms: 5_000,
+            remote_max_batch: 32,
         }
     }
 }
@@ -734,6 +754,7 @@ impl Default for Config {
             diversity_policy: DiversityPolicyV1::default(),
             search_policy: SearchPolicyV1::default(),
             persistence: PersistenceConfig::default(),
+            circuit_breaker: crate::circuit::CircuitPolicy::default(),
             cache: CacheConfig::default(),
             telemetry: TelemetryConfig::default(),
             deep: DeepConfig::default(),
@@ -796,6 +817,9 @@ impl Config {
                 "invalid parallel search execution limit".into(),
             ));
         }
+        self.circuit_breaker
+            .validate()
+            .map_err(|error| ConfigError::Policy(error.into()))?;
         if self.persistence.saved_document_max_bytes == 0
             || self.persistence.saved_document_max_bytes > 16 * 1024 * 1024
         {
@@ -994,6 +1018,39 @@ impl Config {
                 self.inference.backend
             )));
         }
+        if self.data_policy.inference == InferenceMode::RemoteExplicit {
+            if !self.data_policy.allows_remote_inference() {
+                return Err(ConfigError::Policy(
+                    "remote_explicit inference requires a standard profile with governed egress"
+                        .into(),
+                ));
+            }
+            let endpoint = self.inference.remote_endpoint.as_deref().ok_or_else(|| {
+                ConfigError::Policy(
+                    "remote_explicit inference requires inference.remote_endpoint".into(),
+                )
+            })?;
+            crate::inference::validate_remote_endpoint(endpoint)
+                .map_err(|error| ConfigError::Policy(error.to_string()))?;
+            if self
+                .inference
+                .remote_model
+                .as_deref()
+                .is_none_or(str::is_empty)
+            {
+                return Err(ConfigError::Policy(
+                    "remote_explicit inference requires inference.remote_model".into(),
+                ));
+            }
+            if !(1..=crate::inference::MAXIMUM_REMOTE_BATCH)
+                .contains(&self.inference.remote_max_batch)
+                || !(100..=60_000).contains(&self.inference.remote_timeout_ms)
+            {
+                return Err(ConfigError::Policy(
+                    "invalid remote inference batch or timeout limit".into(),
+                ));
+            }
+        }
         if !(crate::inference::MINIMUM_EMBEDDING_DIMENSIONS
             ..=crate::inference::MAXIMUM_EMBEDDING_DIMENSIONS)
             .contains(&self.inference.embedding_dimensions)
@@ -1015,12 +1072,9 @@ impl Config {
                             .into(),
                     ))
                 }
-                InferenceMode::RemoteExplicit => {
-                    return Err(ConfigError::Policy(
-                        "remote inference has no available backend for ranking weights".into(),
-                    ))
-                }
-                InferenceMode::LocalOnly => {}
+                // `remote_explicit` is validated above; reaching here means an
+                // endpoint, model and bounded limits are all present.
+                InferenceMode::RemoteExplicit | InferenceMode::LocalOnly => {}
             }
         }
         Ok(())
@@ -1236,9 +1290,62 @@ mod tests {
         config.data_policy.inference = InferenceMode::LocalOnly;
         assert!(config.validate().is_ok());
 
+        // remote_explicit is a real mode now, but it is fail-closed: it needs a
+        // declared endpoint and model before any weight may rely on it.
         config.data_policy.inference = InferenceMode::RemoteExplicit;
         let error = config.validate().unwrap_err().to_string();
-        assert!(error.contains("no available backend"), "{error}");
+        assert!(
+            error.contains("requires inference.remote_endpoint"),
+            "{error}"
+        );
+
+        config.inference.remote_endpoint = Some("https://embeddings.invalid/v1".into());
+        let error = config.validate().unwrap_err().to_string();
+        assert!(error.contains("requires inference.remote_model"), "{error}");
+
+        config.inference.remote_model = Some("text-embeddings".into());
+        assert!(config.validate().is_ok());
+    }
+
+    #[test]
+    fn remote_inference_endpoint_and_profile_are_governed() {
+        let mut config = Config::default();
+        config.data_policy.inference = InferenceMode::RemoteExplicit;
+        config.inference.remote_model = Some("text-embeddings".into());
+
+        // Plaintext off-host endpoints and embedded credentials are refused.
+        config.inference.remote_endpoint = Some("http://embeddings.invalid/v1".into());
+        assert!(config
+            .validate()
+            .unwrap_err()
+            .to_string()
+            .contains("must be https"));
+        config.inference.remote_endpoint = Some("https://user:key@embeddings.invalid/v1".into());
+        assert!(config
+            .validate()
+            .unwrap_err()
+            .to_string()
+            .contains("must not embed credentials"));
+
+        // A self-hosted loopback endpoint is allowed over plain HTTP.
+        config.inference.remote_endpoint = Some("http://127.0.0.1:11434/v1/embeddings".into());
+        assert!(config.validate().is_ok());
+
+        // An isolated profile can never reach a remote backend.
+        config.data_policy.profile = SecurityProfile::Isolated;
+        config.data_policy.egress = EgressPolicy::Deny;
+        assert!(config.validate().is_err());
+
+        // Batch and timeout bounds are enforced.
+        let mut bounded = Config::default();
+        bounded.data_policy.inference = InferenceMode::RemoteExplicit;
+        bounded.inference.remote_endpoint = Some("https://embeddings.invalid/v1".into());
+        bounded.inference.remote_model = Some("text-embeddings".into());
+        bounded.inference.remote_max_batch = 0;
+        assert!(bounded.validate().is_err());
+        bounded.inference.remote_max_batch = 32;
+        bounded.inference.remote_timeout_ms = 1;
+        assert!(bounded.validate().is_err());
     }
 
     #[test]

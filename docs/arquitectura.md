@@ -102,6 +102,20 @@ fragmentos, renderiza contenido externo sólo con APIs DOM de texto y verifica
 offsets UTF-8 y SHA-256 con Web Crypto. Estas comprobaciones son presentación
 defensiva: el core sigue siendo dueño del contrato y de la evidencia.
 
+El registro de providers es un punto de extensión en caliente: `POST /reload` y
+`SIGHUP` reconstruyen el servicio desde la configuración y lo intercambian sin
+reiniciar el proceso, y `ProviderRegistry` admite alta y baja de factories para
+un embebedor. Sobre esa construcción actúan dos compuertas de ejecución —
+gobernanza (`ApprovalStatus` completo y vigente) y cortacircuitos persistente—
+que sólo pueden retirar una fuente de la ronda, nunca añadirla.
+
+La inferencia mantiene dos backends bajo el mismo contrato asíncrono
+`EmbeddingBackend`: el local determinista y uno remoto gobernado que sólo existe
+con `remote_explicit`, perfil `standard` y endpoint declarado. El espacio
+vectorial resultante (`backend@dimensiones`) namespacea la caché documental, de
+modo que cambiar de backend o de ancho invalida por construcción en vez de
+reutilizar artefactos de otro espacio.
+
 La correlación de solicitud es transversal: el borde HTTP genera el
 `request_id`, `ServiceSurface` lo transporta al core y desde ahí llega a cada
 llamada saliente —`ProviderContext` para providers y `FetchRequest` para el

@@ -143,11 +143,11 @@ impl MojeekProvider {
             ignored.push("filetype".into());
         }
         Ok((
-            HttpRequest {
+            HttpRequest::get(
                 url,
-                headers: vec![("accept".into(), "application/json".into())],
+                vec![("accept".into(), "application/json".into())],
                 timeout_ms,
-            },
+            ),
             FilterUse {
                 accepted,
                 ignored,

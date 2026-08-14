@@ -25,6 +25,14 @@ embedding_dimensions = 256
 max_documents = 64
 max_input_chars = 20000
 reranker_prior_weight = 0.5
+# Governed remote backend, used only with data_policy.inference = "remote_explicit".
+# The endpoint must be https (or http on loopback for a self-hosted server) and
+# must not embed credentials; the key is read from the environment, never here.
+# remote_endpoint = "https://embeddings.example.com/v1/embeddings"
+# remote_model = "text-embedding-3-small"
+# remote_credential_env = "AMATL_INFERENCE_KEY"
+# remote_timeout_ms = 5000
+# remote_max_batch = 32
 
 [timeouts]
 provider_ms = 3000
@@ -46,6 +54,14 @@ path = "amatl.sqlite3"
 history_enabled = true
 # Upper bound for one saved document payload, in bytes (1 MiB, max 16 MiB).
 saved_document_max_bytes = 1048576
+
+# Persistent provider circuit breaker: consecutive failures stop calling a
+# source until its cooldown expires. State survives restarts when persistence
+# is enabled.
+[circuit_breaker]
+enabled = true
+failure_threshold = 3
+open_seconds = 60
 
 [cache.provider_search]
 enabled = false

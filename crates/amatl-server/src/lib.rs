@@ -32,9 +32,10 @@ use serde_json::json;
 use std::{
     collections::{BTreeMap, VecDeque},
     net::{IpAddr, SocketAddr},
+    path::PathBuf,
     sync::{
         atomic::{AtomicU64, Ordering},
-        Arc, Mutex,
+        Arc, Mutex, RwLock,
     },
     time::{Duration, Instant, SystemTime, UNIX_EPOCH},
 };
@@ -57,11 +58,93 @@ impl RequestId {
     }
 }
 
+/// Shared, swappable service handle.
+///
+/// A reload builds a brand new [`AmatlService`] and swaps the pointer, so
+/// requests already running finish against the configuration they started
+/// with and the next request picks up the new one. Handlers therefore take a
+/// snapshot (`state.service()`) instead of holding the lock across `.await`.
+/// Swappable service shared by every surface in one process.
+pub(crate) type ServiceHandle = Arc<RwLock<AmatlService>>;
+
 #[derive(Clone)]
 struct AppState {
-    service: AmatlService,
+    service: ServiceHandle,
+    /// Configuration file a reload re-reads, when the process was started with
+    /// one. Without it a reload revalidates and rebuilds from the running
+    /// configuration, which still resets provider construction and breakers.
+    config_path: Option<PathBuf>,
     security: Arc<SecurityState>,
     metrics: Arc<RequestMetrics>,
+}
+
+impl AppState {
+    /// Current service snapshot; cheap, every field behind it is an `Arc`.
+    fn service(&self) -> AmatlService {
+        self.service
+            .read()
+            .unwrap_or_else(|error| error.into_inner())
+            .clone()
+    }
+
+    /// Rebuild the service from the configuration file, or from the running
+    /// configuration when the process was started without one.
+    ///
+    /// The new service is validated and fully built before the swap, so a
+    /// rejected reload leaves the running one in place.
+    async fn reload(self) -> Result<ReloadReport, ServiceError> {
+        let current = self.service();
+        let config = match &self.config_path {
+            Some(path) => {
+                amatl_core::Config::load_optional(path).map_err(|_| ServiceError::Configuration)?
+            }
+            None => current.config().clone(),
+        };
+        let replacement = current.reloaded_detached(config).await?;
+        let report = ReloadReport {
+            schema_version: SCHEMA_VERSION.into(),
+            config_file: self
+                .config_path
+                .as_ref()
+                .map(|path| path.display().to_string()),
+            declared_sources: replacement
+                .config()
+                .providers
+                .names()
+                .into_iter()
+                .map(str::to_owned)
+                .collect(),
+            enabled_sources: replacement.config().providers.enabled.clone(),
+            registered_sources: replacement
+                .registry()
+                .names()
+                .into_iter()
+                .map(str::to_owned)
+                .collect(),
+            inference_backend: replacement.inference_backend().map(str::to_owned),
+        };
+        *self
+            .service
+            .write()
+            .unwrap_or_else(|error| error.into_inner()) = replacement;
+        tracing::info!(
+            target: "amatl::http",
+            enabled_sources = ?report.enabled_sources,
+            "configuration reloaded"
+        );
+        Ok(report)
+    }
+}
+
+/// What a successful reload put in place.
+#[derive(Debug, Serialize)]
+struct ReloadReport {
+    schema_version: String,
+    config_file: Option<String>,
+    declared_sources: Vec<String>,
+    enabled_sources: Vec<String>,
+    registered_sources: Vec<String>,
+    inference_backend: Option<String>,
 }
 
 /// Lightweight request counters exposed via `/metrics` in Prometheus
@@ -179,6 +262,47 @@ pub async fn build_router(
     service: AmatlService,
     explicit_token: Option<String>,
 ) -> Result<Router, ServerError> {
+    build_router_with_config_path(service, explicit_token, None).await
+}
+
+/// Triggers the same reload as `POST /reload` from outside the HTTP surface.
+#[derive(Clone)]
+pub struct ReloadHandle {
+    state: AppState,
+}
+
+impl ReloadHandle {
+    /// Rebuild the service; errors are reported, never fatal to the listener.
+    pub async fn reload(&self) -> Result<(), ServerError> {
+        self.state
+            .clone()
+            .reload()
+            .await
+            .map(|_| ())
+            .map_err(|_| ServerError::Configuration)
+    }
+}
+
+/// Router that can reload from a configuration file on demand.
+///
+/// `config_path` is the file `POST /reload` and `SIGHUP` re-read; pass `None`
+/// when the process was started without one.
+pub async fn build_router_with_config_path(
+    service: AmatlService,
+    explicit_token: Option<String>,
+    config_path: Option<PathBuf>,
+) -> Result<Router, ServerError> {
+    build_router_with_reload(service, explicit_token, config_path)
+        .await
+        .map(|(router, _)| router)
+}
+
+/// Router plus the handle a signal listener uses to reload it.
+pub async fn build_router_with_reload(
+    service: AmatlService,
+    explicit_token: Option<String>,
+    config_path: Option<PathBuf>,
+) -> Result<(Router, ReloadHandle), ServerError> {
     service.config().validate()?;
     let server = service.config().server.clone();
     let https = server.tls.cert_path.is_some();
@@ -214,22 +338,28 @@ pub async fn build_router(
         .with_allowed_origins(allowed_origins.clone())
         .with_max_request_body_bytes(server.max_body_bytes)
         .with_stateless_protocol_metadata_required(true);
+    // One handle, shared by HTTP and MCP, so a reload reaches both surfaces.
+    let handle: ServiceHandle = Arc::new(RwLock::new(service));
     let mcp_service: StreamableHttpService<mcp::McpSurface, LocalSessionManager> =
         StreamableHttpService::new(
             {
-                let service = service.clone();
-                move || Ok(mcp::McpSurface::new(service.clone()))
+                let handle = handle.clone();
+                move || Ok(mcp::McpSurface::new(handle.clone()))
             },
             Default::default(),
             mcp_config,
         );
     let state = AppState {
-        service,
+        service: handle,
+        config_path,
         security,
         metrics: Arc::new(RequestMetrics::default()),
     };
     let cors = cors_layer(&allowed_origins)?;
-    Ok(Router::new()
+    let reload_handle = ReloadHandle {
+        state: state.clone(),
+    };
+    let router = Router::new()
         .route("/search", get(search).post(search_post))
         .route("/deep", get(deep).post(deep_post))
         .route("/providers", get(providers))
@@ -238,6 +368,7 @@ pub async fn build_router(
         .route("/history/{id}", delete(delete_history_entry))
         .route("/saved", get(saved_documents).post(save_document))
         .route("/saved/{id}", delete(delete_saved_document))
+        .route("/reload", axum::routing::post(reload))
         .route("/health", get(health))
         .route("/metrics", get(metrics))
         .nest_service("/mcp", mcp_service)
@@ -246,10 +377,23 @@ pub async fn build_router(
         .layer(ConcurrencyLimitLayer::new(server.max_connections))
         .layer(DefaultBodyLimit::max(server.max_body_bytes))
         .layer(cors)
-        .layer(middleware::from_fn_with_state(state, security_middleware)))
+        .layer(middleware::from_fn_with_state(state, security_middleware));
+    Ok((router, reload_handle))
 }
 
 pub async fn serve(service: AmatlService) -> Result<(), ServerError> {
+    serve_with_config_path(service, None).await
+}
+
+/// Serve with a configuration file that `POST /reload` and `SIGHUP` re-read.
+///
+/// Startup reports the effective listener as one structured log line, so a
+/// supervisor can confirm bind, TLS, authentication and reload support without
+/// parsing prose.
+pub async fn serve_with_config_path(
+    service: AmatlService,
+    config_path: Option<PathBuf>,
+) -> Result<(), ServerError> {
     let address = SocketAddr::new(
         service
             .config()
@@ -261,7 +405,19 @@ pub async fn serve(service: AmatlService) -> Result<(), ServerError> {
     );
     let idle = Duration::from_millis(service.config().server.idle_timeout_ms);
     let tls = service.config().server.tls.clone();
-    let app = build_router(service, None).await?;
+    let authenticated = !service.config().server.no_auth;
+    let (app, reload_handle) = build_router_with_reload(service, None, config_path.clone()).await?;
+    install_reload_signal(reload_handle);
+    tracing::info!(
+        target: "amatl::http",
+        event = "listening",
+        bind = %address,
+        tls = tls.cert_path.is_some(),
+        authenticated,
+        config_file = config_path.as_ref().map(|path| path.display().to_string()),
+        reload = "POST /reload or SIGHUP",
+        "AMATL server is listening"
+    );
     let make_service = app.into_make_service_with_connect_info::<SocketAddr>();
     match (tls.cert_path, tls.key_path) {
         (Some(cert), Some(key)) => {
@@ -309,6 +465,42 @@ pub async fn serve(service: AmatlService) -> Result<(), ServerError> {
     }
 }
 
+/// Reload on `SIGHUP`, the conventional signal for "re-read configuration".
+///
+/// Unix only; on other platforms `POST /reload` remains the way in.
+#[cfg(unix)]
+fn install_reload_signal(handle: ReloadHandle) {
+    tokio::spawn(async move {
+        let Ok(mut hangup) = tokio::signal::unix::signal(tokio::signal::unix::SignalKind::hangup())
+        else {
+            tracing::warn!(
+                target: "amatl::http",
+                "SIGHUP handler could not be installed; use POST /reload instead"
+            );
+            return;
+        };
+        while hangup.recv().await.is_some() {
+            match handle.reload().await {
+                Ok(()) => tracing::info!(
+                    target: "amatl::http",
+                    event = "reloaded",
+                    signal = "SIGHUP",
+                    "configuration reloaded"
+                ),
+                Err(_) => tracing::warn!(
+                    target: "amatl::http",
+                    event = "reload_rejected",
+                    signal = "SIGHUP",
+                    "configuration reload was rejected; the running service is unchanged"
+                ),
+            }
+        }
+    });
+}
+
+#[cfg(not(unix))]
+fn install_reload_signal(_handle: ReloadHandle) {}
+
 async fn search(
     State(state): State<AppState>,
     Extension(request_id): Extension<RequestId>,
@@ -322,7 +514,7 @@ async fn search(
     }
     let started = Instant::now();
     let outcome = state
-        .service
+        .service()
         .search_paginated(
             params.q,
             ServiceSurface::api(Some(request_id.into_inner())),
@@ -359,7 +551,7 @@ async fn deep(
     }
     let started = Instant::now();
     let outcome = state
-        .service
+        .service()
         .deep(params.q, ServiceSurface::api(Some(request_id.into_inner())))
         .await;
     state
@@ -394,7 +586,7 @@ async fn search_post(
     }
     let started = Instant::now();
     let outcome = state
-        .service
+        .service()
         .search_paginated(
             params.q,
             ServiceSurface::api(Some(request_id.into_inner())),
@@ -434,7 +626,7 @@ async fn deep_post(
     }
     let started = Instant::now();
     let outcome = state
-        .service
+        .service()
         .deep(params.q, ServiceSurface::api(Some(request_id.into_inner())))
         .await;
     state
@@ -454,7 +646,7 @@ async fn deep_post(
 }
 
 async fn providers(State(state): State<AppState>) -> Response {
-    match state.service.provider_summaries() {
+    match state.service().provider_summaries() {
         Ok(providers) => Json(ProviderResponse {
             schema_version: SCHEMA_VERSION.into(),
             providers,
@@ -482,9 +674,21 @@ impl PageParams {
     }
 }
 
+/// Rebuild the service from configuration without restarting the process.
+///
+/// Adding, removing or re-approving a source is therefore a file edit plus one
+/// call. The reload is atomic from a client's point of view: it either swaps a
+/// fully built service or changes nothing and reports why.
+async fn reload(State(state): State<AppState>) -> Response {
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
 /// Operator status: source availability, persistence and cache state.
 async fn status(State(state): State<AppState>) -> Response {
-    match state.service.status().await {
+    match state.service().status().await {
         Ok(value) => Json(value).into_response(),
         Err(error) => service_error(error),
     }
@@ -498,7 +702,7 @@ async fn history(
         return api_error(ErrorCode::InvalidRequest);
     };
     let (limit, offset) = params.window();
-    match state.service.history(limit, offset).await {
+    match state.service().history(limit, offset).await {
         Ok(entries) => Json(json!({
             "schema_version": SCHEMA_VERSION,
             "entries": entries
@@ -509,7 +713,7 @@ async fn history(
 }
 
 async fn delete_history_entry(State(state): State<AppState>, Path(id): Path<i64>) -> Response {
-    match state.service.delete_history_entry(id).await {
+    match state.service().delete_history_entry(id).await {
         Ok(true) => Json(json!({ "schema_version": SCHEMA_VERSION, "deleted": 1 })).into_response(),
         Ok(false) => api_error(ErrorCode::NotFound),
         Err(error) => service_error(error),
@@ -517,7 +721,7 @@ async fn delete_history_entry(State(state): State<AppState>, Path(id): Path<i64>
 }
 
 async fn purge_history(State(state): State<AppState>) -> Response {
-    match state.service.purge_history().await {
+    match state.service().purge_history().await {
         Ok(deleted) => {
             Json(json!({ "schema_version": SCHEMA_VERSION, "deleted": deleted })).into_response()
         }
@@ -533,7 +737,7 @@ async fn saved_documents(
         return api_error(ErrorCode::InvalidRequest);
     };
     let (limit, offset) = params.window();
-    match state.service.saved_documents(limit, offset).await {
+    match state.service().saved_documents(limit, offset).await {
         Ok(documents) => Json(json!({
             "schema_version": SCHEMA_VERSION,
             "documents": documents
@@ -553,14 +757,14 @@ async fn save_document(
             return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
         }
     };
-    match state.service.save_document(input).await {
+    match state.service().save_document(input).await {
         Ok(id) => Json(json!({ "schema_version": SCHEMA_VERSION, "id": id })).into_response(),
         Err(error) => service_error(error),
     }
 }
 
 async fn delete_saved_document(State(state): State<AppState>, Path(id): Path<i64>) -> Response {
-    match state.service.delete_saved_document(id).await {
+    match state.service().delete_saved_document(id).await {
         Ok(true) => Json(json!({ "schema_version": SCHEMA_VERSION, "deleted": 1 })).into_response(),
         Ok(false) => api_error(ErrorCode::NotFound),
         Err(error) => service_error(error),
@@ -610,8 +814,9 @@ async fn metrics(State(state): State<AppState>) -> Response {
     );
     body.push_str(&latency_metrics("search", &m.search_latency));
     body.push_str(&latency_metrics("deep", &m.deep_latency));
-    body.push_str(&source_metrics(&state.service));
-    body.push_str(&cache_metrics(&state.service).await);
+    let service = state.service();
+    body.push_str(&source_metrics(&service));
+    body.push_str(&cache_metrics(&service).await);
     let mut response = Response::new(Body::from(body));
     response.headers_mut().insert(
         CONTENT_TYPE,
@@ -644,6 +849,7 @@ fn source_metrics(service: &AmatlService) -> String {
         return String::new();
     };
     let snapshots = service.source_snapshots();
+    let circuits = service.circuit_snapshots();
     let mut body = String::from(
         "# HELP amatl_source_available Whether a declared source is available (1) or not (0).\n\
          # TYPE amatl_source_available gauge\n",
@@ -656,11 +862,24 @@ fn source_metrics(service: &AmatlService) -> String {
         "# HELP amatl_source_latency_ms Observed average latency per source in the telemetry window.\n\
          # TYPE amatl_source_latency_ms gauge\n",
     );
+    let mut circuit_block = String::from(
+        "# HELP amatl_source_circuit_open Whether a source is currently in circuit cooldown.\n\
+         # TYPE amatl_source_circuit_open gauge\n",
+    );
     for summary in summaries {
         let label = escape_label(&summary.name);
         let available = u8::from(summary.status == amatl_core::ProviderSurfaceStatus::Available);
         body.push_str(&format!(
             "amatl_source_available{{source=\"{label}\"}} {available}\n"
+        ));
+        let open = u8::from(
+            circuits
+                .iter()
+                .find(|snapshot| snapshot.provider == summary.name)
+                .is_some_and(|snapshot| snapshot.state == amatl_core::CircuitState::Open),
+        );
+        circuit_block.push_str(&format!(
+            "amatl_source_circuit_open{{source=\"{label}\"}} {open}\n"
         ));
         if let Some(snapshot) = snapshots
             .iter()
@@ -677,6 +896,7 @@ fn source_metrics(service: &AmatlService) -> String {
             ));
         }
     }
+    body.push_str(&circuit_block);
     body.push_str(&value_block);
     body.push_str(&latency_block);
     body
@@ -920,7 +1140,7 @@ fn valid_query(query: &str) -> bool {
 fn is_protected(path: &str) -> bool {
     matches!(
         path,
-        "/search" | "/deep" | "/providers" | "/status" | "/history" | "/saved" | "/mcp"
+        "/search" | "/deep" | "/providers" | "/status" | "/history" | "/saved" | "/reload" | "/mcp"
     ) || path.starts_with("/mcp/")
         || path.starts_with("/history/")
         || path.starts_with("/saved/")

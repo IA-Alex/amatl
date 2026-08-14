@@ -17,14 +17,30 @@
 //!   configuration; exceeding them fails the optional backend instead of
 //!   inflating the Deep budget, and Deep degrades to lexical ranking.
 //!
-//! Remote inference has no implementation on purpose: `remote_explicit`
-//! resolves to [`InferenceError::RemoteBackendUnavailable`] so no surface can
-//! silently send corpus text to a third party.
+//! `remote_explicit` is the only mode that may leave the machine. It resolves
+//! to [`RemoteEmbeddingBackend`], which is governed rather than implicit:
+//!
+//! * it is built only when [`DataPolicyConfig::allows_remote_inference`] is
+//!   true, so `isolated`, `deny` and the other two inference modes can never
+//!   reach it;
+//! * the endpoint comes from configuration, must be absolute HTTPS (loopback
+//!   may use HTTP for a self-hosted server), and must carry no credentials in
+//!   the URL;
+//! * batch size, input length, response width and timeout are bounded by
+//!   configuration, and any deviation fails the optional backend so Deep
+//!   degrades to lexical ranking instead of retrying;
+//! * a missing endpoint or credential fails closed with
+//!   [`InferenceError::RemoteBackendUnavailable`].
+//!
+//! What crosses the boundary in that mode is exactly the query plus the
+//! bounded document text Deep already retrieved; nothing else is sent.
 
 use crate::config::{DataPolicyConfig, InferenceConfig, InferenceMode};
 use crate::model::{Document, Query};
+use crate::providers::{HttpRequest, HttpTransport};
 use crate::ranking_v2::{DeepReranker, RankingV2Error, SemanticScorer};
 use crate::text::normalized_text;
+use async_trait::async_trait;
 use sha2::{Digest, Sha256};
 use std::collections::BTreeMap;
 use std::sync::Arc;
@@ -51,19 +67,30 @@ pub enum InferenceError {
     InvalidLimit,
     #[error("inference input exceeds the configured bound")]
     InputTooLarge,
+    #[error("remote inference endpoint is invalid: {0}")]
+    InvalidEndpoint(String),
+    #[error("remote inference request failed")]
+    RemoteRequestFailed,
+    #[error("remote inference response did not match the embedding contract")]
+    RemoteResponseInvalid,
 }
 
 /// Contract every embedding backend must honor.
 ///
 /// Implementors are free to be remote or model-backed, but a backend handed to
 /// AMATL under `local_only` must not perform network or filesystem access.
+#[async_trait]
 pub trait EmbeddingBackend: Send + Sync {
     /// Stable backend identifier recorded in ranking explanations and logs.
     fn id(&self) -> &str;
     /// Width of every produced vector.
     fn dimensions(&self) -> usize;
+    /// Whether producing a vector leaves the machine.
+    fn is_remote(&self) -> bool {
+        false
+    }
     /// Embed inputs in order, returning one L2-normalized vector per input.
-    fn embed(&self, inputs: &[String]) -> Result<Vec<Vec<f32>>, InferenceError>;
+    async fn embed(&self, inputs: &[String]) -> Result<Vec<Vec<f32>>, InferenceError>;
 }
 
 /// Offline embedding backend based on signed feature hashing.
@@ -90,6 +117,7 @@ impl LocalHashingEmbedder {
     }
 }
 
+#[async_trait]
 impl EmbeddingBackend for LocalHashingEmbedder {
     fn id(&self) -> &str {
         LOCAL_EMBEDDING_BACKEND_ID
@@ -99,7 +127,7 @@ impl EmbeddingBackend for LocalHashingEmbedder {
         self.dimensions
     }
 
-    fn embed(&self, inputs: &[String]) -> Result<Vec<Vec<f32>>, InferenceError> {
+    async fn embed(&self, inputs: &[String]) -> Result<Vec<Vec<f32>>, InferenceError> {
         inputs
             .iter()
             .map(|input| {
@@ -127,6 +155,212 @@ impl EmbeddingBackend for LocalHashingEmbedder {
     }
 }
 
+/// Identifier prefix of the governed remote embedding backend.
+pub const REMOTE_EMBEDDING_BACKEND_ID: &str = "remote_embeddings_v1";
+/// Largest batch a remote backend may be configured to send in one request.
+pub const MAXIMUM_REMOTE_BATCH: usize = 256;
+
+/// Governed remote embedding backend.
+///
+/// Speaks the widely implemented `{"model": …, "input": [ … ]}` →
+/// `{"data": [{"embedding": [ … ]}]}` JSON shape, so a self-hosted or vendor
+/// endpoint can be pointed at without a bespoke adapter. Everything about the
+/// call is bounded by configuration and validated on the way out and back in;
+/// see the module documentation for the egress contract.
+pub struct RemoteEmbeddingBackend {
+    endpoint: url::Url,
+    model: String,
+    credential: Option<String>,
+    dimensions: usize,
+    max_batch: usize,
+    max_input_chars: usize,
+    timeout_ms: u64,
+    transport: Arc<dyn HttpTransport>,
+}
+
+impl RemoteEmbeddingBackend {
+    /// Build the backend from configuration, failing closed on any deviation.
+    pub fn new(
+        config: &InferenceConfig,
+        transport: Arc<dyn HttpTransport>,
+    ) -> Result<Self, InferenceError> {
+        if !(MINIMUM_EMBEDDING_DIMENSIONS..=MAXIMUM_EMBEDDING_DIMENSIONS)
+            .contains(&config.embedding_dimensions)
+            || config.max_input_chars == 0
+            || config.max_documents == 0
+            || !(1..=MAXIMUM_REMOTE_BATCH).contains(&config.remote_max_batch)
+            || !(100..=60_000).contains(&config.remote_timeout_ms)
+        {
+            return Err(InferenceError::InvalidLimit);
+        }
+        let credential = config
+            .remote_credential_env
+            .as_deref()
+            .map(|name| {
+                std::env::var(name)
+                    .ok()
+                    .filter(|value| !value.is_empty())
+                    .ok_or(InferenceError::RemoteBackendUnavailable)
+            })
+            .transpose()?;
+        Self::with_credential(config, transport, credential)
+    }
+
+    /// Build the backend with an already resolved credential.
+    ///
+    /// [`Self::new`] reads it from `remote_credential_env`; this entry point
+    /// exists for embedders that hold the secret themselves, and keeps the
+    /// validation identical either way.
+    pub fn with_credential(
+        config: &InferenceConfig,
+        transport: Arc<dyn HttpTransport>,
+        credential: Option<String>,
+    ) -> Result<Self, InferenceError> {
+        let endpoint = validate_remote_endpoint(
+            config
+                .remote_endpoint
+                .as_deref()
+                .ok_or(InferenceError::RemoteBackendUnavailable)?,
+        )?;
+        if credential.as_deref().is_some_and(str::is_empty) {
+            return Err(InferenceError::RemoteBackendUnavailable);
+        }
+        Ok(Self {
+            endpoint,
+            model: config
+                .remote_model
+                .clone()
+                .ok_or(InferenceError::RemoteBackendUnavailable)?,
+            credential,
+            dimensions: config.embedding_dimensions,
+            max_batch: config.remote_max_batch,
+            max_input_chars: config.max_input_chars,
+            timeout_ms: config.remote_timeout_ms,
+            transport,
+        })
+    }
+
+    fn request_body(&self, batch: &[String]) -> Result<Vec<u8>, InferenceError> {
+        let inputs = batch
+            .iter()
+            .map(|input| bounded_text(input, self.max_input_chars))
+            .collect::<Vec<_>>();
+        serde_json::to_vec(&serde_json::json!({
+            "model": self.model,
+            "input": inputs,
+        }))
+        .map_err(|_| InferenceError::RemoteRequestFailed)
+    }
+
+    async fn embed_batch(&self, batch: &[String]) -> Result<Vec<Vec<f32>>, InferenceError> {
+        let mut headers = vec![("accept".to_string(), "application/json".to_string())];
+        if let Some(credential) = &self.credential {
+            headers.push(("authorization".into(), format!("Bearer {credential}")));
+        }
+        let response = self
+            .transport
+            .execute(HttpRequest::post_json(
+                self.endpoint.clone(),
+                headers,
+                self.timeout_ms,
+                self.request_body(batch)?,
+            ))
+            .await
+            .map_err(|_| InferenceError::RemoteRequestFailed)?;
+        if response.status != 200 {
+            return Err(InferenceError::RemoteRequestFailed);
+        }
+        parse_embedding_response(&response.body, batch.len(), self.dimensions)
+    }
+}
+
+#[async_trait]
+impl EmbeddingBackend for RemoteEmbeddingBackend {
+    fn id(&self) -> &str {
+        REMOTE_EMBEDDING_BACKEND_ID
+    }
+
+    fn dimensions(&self) -> usize {
+        self.dimensions
+    }
+
+    fn is_remote(&self) -> bool {
+        true
+    }
+
+    async fn embed(&self, inputs: &[String]) -> Result<Vec<Vec<f32>>, InferenceError> {
+        if inputs.is_empty() {
+            return Ok(vec![]);
+        }
+        let mut vectors = Vec::with_capacity(inputs.len());
+        for batch in inputs.chunks(self.max_batch) {
+            vectors.extend(self.embed_batch(batch).await?);
+        }
+        if vectors.len() != inputs.len() {
+            return Err(InferenceError::RemoteResponseInvalid);
+        }
+        Ok(vectors)
+    }
+}
+
+/// Accept only an absolute endpoint that carries no credentials and either
+/// uses HTTPS or targets loopback, where a self-hosted server is legitimate.
+pub fn validate_remote_endpoint(value: &str) -> Result<url::Url, InferenceError> {
+    let url = url::Url::parse(value)
+        .map_err(|_| InferenceError::InvalidEndpoint("endpoint is not an absolute URL".into()))?;
+    if !url.username().is_empty() || url.password().is_some() {
+        return Err(InferenceError::InvalidEndpoint(
+            "endpoint must not embed credentials".into(),
+        ));
+    }
+    let loopback = matches!(url.host_str(), Some("localhost" | "127.0.0.1" | "[::1]"));
+    match url.scheme() {
+        "https" => Ok(url),
+        "http" if loopback => Ok(url),
+        _ => Err(InferenceError::InvalidEndpoint(
+            "endpoint must be https, or http on loopback".into(),
+        )),
+    }
+}
+
+fn parse_embedding_response(
+    body: &[u8],
+    expected: usize,
+    dimensions: usize,
+) -> Result<Vec<Vec<f32>>, InferenceError> {
+    let payload: serde_json::Value =
+        serde_json::from_slice(body).map_err(|_| InferenceError::RemoteResponseInvalid)?;
+    let data = payload
+        .get("data")
+        .and_then(serde_json::Value::as_array)
+        .ok_or(InferenceError::RemoteResponseInvalid)?;
+    if data.len() != expected {
+        return Err(InferenceError::RemoteResponseInvalid);
+    }
+    data.iter()
+        .map(|entry| {
+            let vector = entry
+                .get("embedding")
+                .and_then(serde_json::Value::as_array)
+                .ok_or(InferenceError::RemoteResponseInvalid)?;
+            if vector.len() != dimensions {
+                return Err(InferenceError::RemoteResponseInvalid);
+            }
+            let vector = vector
+                .iter()
+                .map(|value| {
+                    value
+                        .as_f64()
+                        .filter(|value| value.is_finite())
+                        .map(|value| value as f32)
+                        .ok_or(InferenceError::RemoteResponseInvalid)
+                })
+                .collect::<Result<Vec<_>, _>>()?;
+            Ok(l2_normalized(vector))
+        })
+        .collect()
+}
+
 /// Semantic scorer backed by an [`EmbeddingBackend`].
 ///
 /// Scores are cosine similarities between the normalized query vector and each
@@ -146,12 +380,17 @@ impl EmbeddingSemanticScorer {
     }
 }
 
+#[async_trait]
 impl SemanticScorer for EmbeddingSemanticScorer {
     fn name(&self) -> &str {
         self.backend.id()
     }
 
-    fn score(&self, query: &Query, documents: &[Document]) -> Result<Vec<f64>, RankingV2Error> {
+    async fn score(
+        &self,
+        query: &Query,
+        documents: &[Document],
+    ) -> Result<Vec<f64>, RankingV2Error> {
         if documents.len() > self.max_documents {
             return Err(RankingV2Error::Backend);
         }
@@ -161,6 +400,7 @@ impl SemanticScorer for EmbeddingSemanticScorer {
         let vectors = self
             .backend
             .embed(&inputs)
+            .await
             .map_err(|_| RankingV2Error::Backend)?;
         let Some((query_vector, document_vectors)) = vectors.split_first() else {
             return Err(RankingV2Error::Backend);
@@ -197,12 +437,13 @@ impl LexicalCoverageReranker {
     }
 }
 
+#[async_trait]
 impl DeepReranker for LexicalCoverageReranker {
     fn name(&self) -> &str {
         LOCAL_RERANKER_ID
     }
 
-    fn score(
+    async fn score(
         &self,
         query: &Query,
         documents: &[Document],
@@ -249,12 +490,33 @@ impl InferenceRuntime {
     pub fn from_policy(
         policy: &DataPolicyConfig,
         config: &InferenceConfig,
+        transport: Option<Arc<dyn HttpTransport>>,
     ) -> Result<Option<Self>, InferenceError> {
         match policy.inference {
             InferenceMode::Disabled => Ok(None),
             InferenceMode::LocalOnly => Self::local(config).map(Some),
-            InferenceMode::RemoteExplicit => Err(InferenceError::RemoteBackendUnavailable),
+            InferenceMode::RemoteExplicit => {
+                // Belt and braces: the mode alone never authorizes egress.
+                if !policy.allows_remote_inference() {
+                    return Err(InferenceError::RemoteBackendUnavailable);
+                }
+                let transport = transport.ok_or(InferenceError::RemoteBackendUnavailable)?;
+                Self::remote(config, transport).map(Some)
+            }
         }
+    }
+
+    /// Build the governed remote runtime described by `config`.
+    pub fn remote(
+        config: &InferenceConfig,
+        transport: Arc<dyn HttpTransport>,
+    ) -> Result<Self, InferenceError> {
+        let backend = RemoteEmbeddingBackend::new(config, transport)?;
+        Ok(Self {
+            backend: Arc::new(backend),
+            max_documents: config.max_documents,
+            reranker_prior_weight: config.reranker_prior_weight,
+        })
     }
 
     /// Build the offline runtime described by `config`.
@@ -276,6 +538,21 @@ impl InferenceRuntime {
 
     pub fn backend_id(&self) -> &str {
         self.backend.id()
+    }
+
+    /// Whether scoring sends corpus text to a third party.
+    pub fn is_remote(&self) -> bool {
+        self.backend.is_remote()
+    }
+
+    /// Identity of the vector space this runtime produces.
+    ///
+    /// Anything derived from embeddings must be namespaced by this key: two
+    /// runtimes with different backends or widths are not interchangeable, and
+    /// reusing cached artifacts across them would compare vectors that never
+    /// shared a space. It is stable for a given configuration.
+    pub fn version_key(&self) -> String {
+        format!("{}@{}", self.backend.id(), self.backend.dimensions())
     }
 
     pub fn embedding_backend(&self) -> Arc<dyn EmbeddingBackend> {
@@ -386,58 +663,62 @@ mod tests {
         InferenceRuntime::local(&InferenceConfig::default()).unwrap()
     }
 
-    #[test]
-    fn local_embeddings_are_deterministic_and_normalized() {
+    #[tokio::test]
+    async fn local_embeddings_are_deterministic_and_normalized() {
         let embedder = LocalHashingEmbedder::new(256, 20_000).unwrap();
         let inputs = vec!["rust async runtime".to_string()];
-        let first = embedder.embed(&inputs).unwrap();
-        assert_eq!(first, embedder.embed(&inputs).unwrap());
+        let first = embedder.embed(&inputs).await.unwrap();
+        assert_eq!(first, embedder.embed(&inputs).await.unwrap());
         assert_eq!(first[0].len(), 256);
         let norm = dot(&first[0], &first[0]);
         assert!((norm - 1.0).abs() < 1e-6, "{norm}");
     }
 
-    #[test]
-    fn empty_input_yields_a_zero_vector_instead_of_failing() {
+    #[tokio::test]
+    async fn empty_input_yields_a_zero_vector_instead_of_failing() {
         let embedder = LocalHashingEmbedder::new(64, 128).unwrap();
-        let vectors = embedder.embed(&["   ".to_string()]).unwrap();
+        let vectors = embedder.embed(&["   ".to_string()]).await.unwrap();
         assert!(vectors[0].iter().all(|value| *value == 0.0));
     }
 
-    #[test]
-    fn semantic_scorer_prefers_the_document_about_the_query() {
+    #[tokio::test]
+    async fn semantic_scorer_prefers_the_document_about_the_query() {
         let query = crate::query::parse_query("rust async runtime".into()).unwrap();
         let documents = corpus();
         let scores = runtime()
             .semantic_scorer()
             .score(&query, &documents)
+            .await
             .unwrap();
         assert_eq!(scores.len(), 2);
         assert!(scores[0] > scores[1], "{scores:?}");
         assert!(scores.iter().all(|value| (0.0..=1.0).contains(value)));
     }
 
-    #[test]
-    fn semantic_scorer_refuses_unbounded_document_batches() {
+    #[tokio::test]
+    async fn semantic_scorer_refuses_unbounded_document_batches() {
         let query = crate::query::parse_query("rust".into()).unwrap();
         let documents = corpus();
         let scorer =
             EmbeddingSemanticScorer::new(Arc::new(LocalHashingEmbedder::new(64, 512).unwrap()), 1);
         assert_eq!(
-            scorer.score(&query, &documents),
+            scorer.score(&query, &documents).await,
             Err(RankingV2Error::Backend)
         );
     }
 
-    #[test]
-    fn reranker_rewards_query_term_coverage_and_keeps_the_prior() {
+    #[tokio::test]
+    async fn reranker_rewards_query_term_coverage_and_keeps_the_prior() {
         let query = crate::query::parse_query("rust async runtime".into()).unwrap();
         let documents = corpus();
         let reranker = runtime().reranker().unwrap();
-        let scores = reranker.score(&query, &documents, &[0.5, 0.5]).unwrap();
+        let scores = reranker
+            .score(&query, &documents, &[0.5, 0.5])
+            .await
+            .unwrap();
         assert!(scores[0] > scores[1], "{scores:?}");
         assert_eq!(
-            reranker.score(&query, &documents, &[0.5]),
+            reranker.score(&query, &documents, &[0.5]).await,
             Err(RankingV2Error::Backend)
         );
     }
@@ -450,20 +731,199 @@ mod tests {
             egress: EgressPolicy::Governed,
             inference: InferenceMode::Disabled,
         };
-        assert!(InferenceRuntime::from_policy(&policy, &config)
+        assert!(InferenceRuntime::from_policy(&policy, &config, None)
             .unwrap()
             .is_none());
         policy.inference = InferenceMode::LocalOnly;
-        assert_eq!(
-            InferenceRuntime::from_policy(&policy, &config)
-                .unwrap()
-                .unwrap()
-                .backend_id(),
-            LOCAL_EMBEDDING_BACKEND_ID
-        );
+        let local = InferenceRuntime::from_policy(&policy, &config, None)
+            .unwrap()
+            .unwrap();
+        assert_eq!(local.backend_id(), LOCAL_EMBEDDING_BACKEND_ID);
+        assert!(!local.is_remote());
+        assert_eq!(local.version_key(), "local_hashing_v1@256");
+        // Remote without an endpoint stays fail-closed.
         policy.inference = InferenceMode::RemoteExplicit;
         assert!(matches!(
-            InferenceRuntime::from_policy(&policy, &config),
+            InferenceRuntime::from_policy(&policy, &config, None),
+            Err(InferenceError::RemoteBackendUnavailable)
+        ));
+        // An isolated profile cannot reach a remote backend even when one is
+        // fully configured.
+        let remote_config = InferenceConfig {
+            remote_endpoint: Some("https://embeddings.invalid/v1/embeddings".into()),
+            remote_model: Some("test-model".into()),
+            ..InferenceConfig::default()
+        };
+        policy.profile = SecurityProfile::Isolated;
+        assert!(matches!(
+            InferenceRuntime::from_policy(&policy, &remote_config, None),
+            Err(InferenceError::RemoteBackendUnavailable)
+        ));
+    }
+
+    /// One recorded outbound request: URL, headers and body.
+    type SeenRequest = (String, Vec<(String, String)>, Vec<u8>);
+
+    /// Records what the backend sent and replies with a canned payload.
+    struct FakeTransport {
+        response: std::sync::Mutex<Vec<crate::providers::HttpResponse>>,
+        seen: std::sync::Mutex<Vec<SeenRequest>>,
+    }
+
+    impl FakeTransport {
+        fn new(responses: Vec<crate::providers::HttpResponse>) -> Arc<Self> {
+            Arc::new(Self {
+                response: std::sync::Mutex::new(responses),
+                seen: std::sync::Mutex::new(vec![]),
+            })
+        }
+    }
+
+    #[async_trait]
+    impl HttpTransport for FakeTransport {
+        async fn execute(
+            &self,
+            request: HttpRequest,
+        ) -> Result<crate::providers::HttpResponse, String> {
+            self.seen.lock().unwrap().push((
+                request.url.to_string(),
+                request.headers.clone(),
+                request.body.clone().unwrap_or_default(),
+            ));
+            let mut responses = self.response.lock().unwrap();
+            if responses.is_empty() {
+                return Err("no canned response".into());
+            }
+            Ok(responses.remove(0))
+        }
+    }
+
+    fn embeddings_response(vectors: &[Vec<f32>]) -> crate::providers::HttpResponse {
+        let data = vectors
+            .iter()
+            .map(|vector| serde_json::json!({ "embedding": vector }))
+            .collect::<Vec<_>>();
+        crate::providers::HttpResponse {
+            status: 200,
+            headers: BTreeMap::new(),
+            body: serde_json::to_vec(&serde_json::json!({ "data": data })).unwrap(),
+        }
+    }
+
+    fn remote_config() -> InferenceConfig {
+        InferenceConfig {
+            embedding_dimensions: 32,
+            remote_endpoint: Some("https://embeddings.invalid/v1/embeddings".into()),
+            remote_model: Some("text-embeddings".into()),
+            remote_max_batch: 2,
+            ..InferenceConfig::default()
+        }
+    }
+
+    #[tokio::test]
+    async fn remote_backend_batches_bounded_requests_and_normalizes_vectors() {
+        let vector = vec![3.0_f32; 32];
+        let transport = FakeTransport::new(vec![
+            embeddings_response(&[vector.clone(), vector.clone()]),
+            embeddings_response(std::slice::from_ref(&vector)),
+        ]);
+        let backend = RemoteEmbeddingBackend::new(&remote_config(), transport.clone()).unwrap();
+        assert!(backend.is_remote());
+        let inputs = vec!["a".to_string(), "b".to_string(), "c".to_string()];
+        let vectors = backend.embed(&inputs).await.unwrap();
+        assert_eq!(vectors.len(), 3);
+        for vector in &vectors {
+            assert_eq!(vector.len(), 32);
+            assert!((dot(vector, vector) - 1.0).abs() < 1e-6);
+        }
+        let seen = transport.seen.lock().unwrap();
+        assert_eq!(seen.len(), 2, "max_batch must split the inputs");
+        assert!(seen[0].0.starts_with("https://embeddings.invalid/"));
+        assert!(seen[0]
+            .1
+            .iter()
+            .any(|(name, value)| name == "content-type" && value == "application/json"));
+        let body: serde_json::Value = serde_json::from_slice(&seen[0].2).unwrap();
+        assert_eq!(body["model"], "text-embeddings");
+        assert_eq!(body["input"].as_array().unwrap().len(), 2);
+    }
+
+    #[tokio::test]
+    async fn remote_backend_sends_the_credential_only_as_a_bearer_header() {
+        let transport = FakeTransport::new(vec![embeddings_response(&[vec![1.0_f32; 32]])]);
+        let backend = RemoteEmbeddingBackend::with_credential(
+            &remote_config(),
+            transport.clone(),
+            Some("secret-embedding-key".into()),
+        )
+        .unwrap();
+        backend.embed(&["a".to_string()]).await.unwrap();
+        let seen = transport.seen.lock().unwrap();
+        assert!(seen[0].1.iter().any(
+            |(name, value)| name == "authorization" && value.ends_with("secret-embedding-key")
+        ));
+        assert!(!seen[0].0.contains("secret-embedding-key"));
+        assert!(!String::from_utf8_lossy(&seen[0].2).contains("secret-embedding-key"));
+    }
+
+    #[tokio::test]
+    async fn remote_backend_rejects_responses_that_break_the_contract() {
+        let wrong_width = FakeTransport::new(vec![embeddings_response(&[vec![1.0_f32; 8]])]);
+        let backend = RemoteEmbeddingBackend::new(&remote_config(), wrong_width).unwrap();
+        assert_eq!(
+            backend.embed(&["a".into()]).await,
+            Err(InferenceError::RemoteResponseInvalid)
+        );
+
+        let wrong_count = FakeTransport::new(vec![embeddings_response(&[])]);
+        let backend = RemoteEmbeddingBackend::new(&remote_config(), wrong_count).unwrap();
+        assert_eq!(
+            backend.embed(&["a".into()]).await,
+            Err(InferenceError::RemoteResponseInvalid)
+        );
+
+        let refused = FakeTransport::new(vec![crate::providers::HttpResponse {
+            status: 401,
+            headers: BTreeMap::new(),
+            body: b"{}".to_vec(),
+        }]);
+        let backend = RemoteEmbeddingBackend::new(&remote_config(), refused).unwrap();
+        assert_eq!(
+            backend.embed(&["a".into()]).await,
+            Err(InferenceError::RemoteRequestFailed)
+        );
+    }
+
+    #[tokio::test]
+    async fn remote_runtime_reports_its_own_vector_space() {
+        let transport = FakeTransport::new(vec![]);
+        let runtime = InferenceRuntime::remote(&remote_config(), transport).unwrap();
+        assert!(runtime.is_remote());
+        assert_eq!(runtime.version_key(), "remote_embeddings_v1@32");
+        assert_ne!(runtime.version_key(), self::runtime().version_key());
+    }
+
+    #[test]
+    fn remote_backend_requires_a_declared_endpoint_and_model() {
+        let transport = FakeTransport::new(vec![]);
+        assert!(matches!(
+            RemoteEmbeddingBackend::new(&InferenceConfig::default(), transport.clone()),
+            Err(InferenceError::RemoteBackendUnavailable)
+        ));
+        let no_model = InferenceConfig {
+            remote_model: None,
+            ..remote_config()
+        };
+        assert!(matches!(
+            RemoteEmbeddingBackend::new(&no_model, transport.clone()),
+            Err(InferenceError::RemoteBackendUnavailable)
+        ));
+        let missing_credential = InferenceConfig {
+            remote_credential_env: Some("AMATL_TEST_ABSENT_EMBEDDING_KEY".into()),
+            ..remote_config()
+        };
+        assert!(matches!(
+            RemoteEmbeddingBackend::new(&missing_credential, transport),
             Err(InferenceError::RemoteBackendUnavailable)
         ));
     }

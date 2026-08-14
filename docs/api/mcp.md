@@ -13,10 +13,17 @@ call.
 
 | Tool | Input | Output | Specific bounds |
 |---|---|---|---|
-| `search` | `{ "query": string }` | `SearchResponse` in `structuredContent` | query 1–2048 bytes; MCP surface limits below |
-| `deep_search` | `{ "query": string }` | `DeepResponse`, including additive `evidence_v2` fragments and provenance | query 1–2048 bytes; MCP surface limits below; at most 8 fragments of 512 bytes per document |
-| `fetch` | `{ "url": string }` | schema version, final URL, HTTP status, content type, UTF-8-lossy content, size, retrieval time | public HTTP(S), 3,000 ms, 262,144 bytes, 2 redirects, SafeFetcher SSRF rules |
+| `search` | `{ "query": string, "page"?: integer, "page_size"?: integer }` | `SearchResponse` in `structuredContent`, with `total_results`, `page` and `page_size` when paginated | query 1–2048 bytes; pagination is server-side and `page_size` is clamped to the MCP cap |
+| `deep_search` | `{ "query": string }` | `DeepResponse`, including additive `evidence_v2` fragments and provenance | query 1–2048 bytes; MCP surface limits below; at most 8 fragments of 512 bytes per document; honors cancellation and reports progress |
+| `fetch` | `{ "url": string }` | schema version, final URL, HTTP status, content type, UTF-8-lossy content, size, retrieval time | public HTTP(S) with SafeFetcher SSRF rules; time, byte and redirect limits derived from configuration for the MCP surface |
 | `providers` | no parameters | provider summaries and capabilities | no outbound provider call |
+| `status` | no parameters | service state (sources, storage, caches, inference backend) plus the limits in force for this surface | no outbound provider call; same aggregation as `GET /status` |
+
+`deep_search` is the long operation. A client that sends
+`notifications/cancelled` stops the wait immediately and receives
+`request_cancelled`; a client that supplied `_meta.progressToken` also receives
+`notifications/progress` at the start and end of the call. No tool holds work
+after its caller has gone away.
 
 Tool errors are structured with `schema_version: "1"` and a code from the shared
 catalog in `amatl-core/src/errors.rs` — the same identifiers the HTTP surface
@@ -50,6 +57,15 @@ MCP takes the configured value or the stricter cap:
 | Deep timeout | 20,000 ms | 10,000 ms |
 | Gap subqueries | 2 | 1 |
 | Gap cost | 2 | 1 |
+| Page size | 100 | 25 |
+| `fetch` timeout | 8,000 ms | 3,000 ms |
+| `fetch` bytes | 2 MiB | 256 KiB |
+| `fetch` redirects | 5 | 2 |
+
+Every row is computed by `ExecutionLimits::for_surface`, including the `fetch`
+ones: no tool hardcodes a ceiling, so lowering a value in configuration lowers
+it for MCP too. The `status` tool returns the effective numbers, which is the
+authoritative answer for a client that needs to size its own requests.
 
 If operator configuration is already lower, MCP does not increase it
 (`service.rs:33-58`). The standalone `fetch` tool has its own even smaller
@@ -60,9 +76,10 @@ de ser proxy. La política de AMATL no puede demostrar que el cliente MCP que
 envía la consulta sea local; para ejercicios confidenciales el cliente/modelo
 también debe ejecutarse localmente y el host debe aplicar defensa en profundidad.
 
-The contract test initializes MCP, lists exactly these four tools, and calls
-`search` (`amatl-server/src/tests.rs:201-314`).
+The contract test initializes MCP, lists exactly these five tools, asserts that
+no ingestion tool exists, and calls `search` and `status`
+(`amatl-server/src/tests.rs`).
 
-La ingestión local no es una quinta herramienta MCP ni un endpoint HTTP. Sólo
+La ingestión local no es una herramienta MCP ni un endpoint HTTP. Sólo
 la CLI acepta rutas del filesystem; esta separación evita que un cliente remoto
 con bearer convierta el servidor en lector de archivos locales.

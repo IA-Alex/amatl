@@ -47,6 +47,31 @@ adapter/extractor versions are independent axes as well.
   configuration keys.
 - `contract-gate` runs the workspace test suite on macOS and Windows in addition
   to Linux, so the published Tier 2 archives cannot silently rot.
+- Governed remote inference: `data_policy.inference = "remote_explicit"` now has
+  a real backend (`remote_embeddings_v1`) behind the async `EmbeddingBackend`
+  contract, configured by `[inference] remote_endpoint`, `remote_model`,
+  `remote_credential_env`, `remote_timeout_ms` and `remote_max_batch`. It is
+  built only under a standard profile with governed egress, refuses endpoints
+  that are not HTTPS (or loopback HTTP) or that embed credentials, sends the
+  credential only as a bearer header, and bounds batch, input, response width
+  and time. Anything else fails closed.
+- Persistent provider circuit breaker (`[circuit_breaker]`, migration 0006): a
+  source that fails repeatedly is skipped for a cooldown, then probed once. The
+  state survives restarts when persistence is enabled, and is visible through
+  `GET /status`, `/metrics`, the MCP `status` tool and `amatl db circuits`.
+- Runtime configuration reload: `POST /reload` and `SIGHUP` rebuild the service
+  from the configuration file and swap it atomically, so adding, removing or
+  re-approving a source no longer needs a restart. HTTP and MCP share the same
+  handle. `ProviderRegistry::unregister` completes the registry lifecycle.
+- MCP `status` tool, server-side pagination on `search`, cancellation and
+  progress notifications for `deep_search`.
+- CLI commands for the local domain and maintenance: `amatl history
+  list|delete|purge`, `amatl saved list|show|delete`, and `amatl db
+  health|backups|restore|downgrade|circuits`. `serve` and `mcp serve` accept
+  `--bind`, `--port` and `--json`.
+- Ranking v2 is gated in CI: `contract-gate` and the release workflow run
+  `amatl benchmark ranking-v2`, and a unit test pins the recorded calibration so
+  a silent drift fails the build.
 
 ### Changed
 
@@ -68,6 +93,20 @@ adapter/extractor versions are independent axes as well.
 - `docs/release.md` states the distribution scope explicitly as Tier 1 (Linux
   x86_64 musl, native packages) and Tier 2 (Linux aarch64, macOS, Windows
   archives); everything else is out of scope.
+- The provider governance record is enforced at call time, not only at startup:
+  an enabled source whose approval is incomplete or expired is never built and
+  the response carries a `provider_not_approved` degradation naming it.
+- MCP `fetch` limits are derived from `ExecutionLimits::for_surface` instead of
+  being hardcoded, so lowering a configured limit lowers it for MCP too. The
+  effective numbers are reported by the `status` tool.
+- `SemanticScorer`, `DeepReranker`, `EmbeddingBackend` and `RankingV2Engine::rank`
+  are async, which is what makes a remote backend possible without blocking the
+  runtime.
+- The document cache is namespaced by the active vector space
+  (`backend@dimensions`), so changing the embedding backend or width stops
+  matching old entries instead of silently reusing artifacts from another space.
+- Local file ingestion remains CLI-only by design; a contract test now asserts
+  that no MCP tool exposes it.
 
 ### Removed
 
@@ -78,6 +117,9 @@ adapter/extractor versions are independent axes as well.
 
 - Debian release asset names avoid GitHub's `~` normalization so published
   `SHA256SUMS` manifests remain directly verifiable.
+- SQLite downgrade from migration 5 now applies: the script was present but
+  outside `migrations/downgrade/` and unreferenced, so a downgrade silently
+  skipped it. `amatl db downgrade` exercises the whole chain.
 
 ## [0.1.0-rc.1] - 2026-08-13
 

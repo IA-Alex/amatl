@@ -1,4 +1,5 @@
 use crate::cache::{CacheCounters, CacheEffectiveness};
+use crate::circuit::{CircuitSnapshot, ProviderCircuit};
 use crate::storage::{CacheStats, SavedDocument, SearchHistoryEntry};
 use crate::telemetry::{now_unix, ProviderValueSnapshot};
 use crate::{
@@ -69,6 +70,14 @@ pub struct ExecutionLimits {
     pub deep_timeout_ms: u64,
     pub deep_max_subqueries: u32,
     pub deep_max_subquery_cost: u64,
+    /// Deadline for one single-URL fetch exposed to a surface.
+    pub fetch_timeout_ms: u64,
+    /// Byte ceiling for one single-URL fetch exposed to a surface.
+    pub fetch_max_bytes: u64,
+    /// Redirect ceiling for one single-URL fetch exposed to a surface.
+    pub fetch_max_redirects: u32,
+    /// Largest page a surface may request in one search.
+    pub max_page_size: u32,
 }
 
 impl ExecutionLimits {
@@ -82,6 +91,13 @@ impl ExecutionLimits {
             deep_timeout_ms: config.deep.timeout_ms,
             deep_max_subqueries: config.deep.gaps.max_subqueries,
             deep_max_subquery_cost: config.deep.gaps.max_cost,
+            // One fetch never gets the whole Deep budget: it is bounded by the
+            // per-fetch share of the configured deep limits.
+            fetch_timeout_ms: config.deep.extractor.timeout_ms.min(config.deep.timeout_ms),
+            fetch_max_bytes: (config.deep.max_bytes / u64::from(config.deep.max_fetches.max(1)))
+                .max(1),
+            fetch_max_redirects: config.deep.max_redirects,
+            max_page_size: 100,
         };
         match surface.kind {
             ServiceSurfaceKind::Cli | ServiceSurfaceKind::Api => base,
@@ -94,9 +110,20 @@ impl ExecutionLimits {
                 deep_timeout_ms: base.deep_timeout_ms.min(10_000),
                 deep_max_subqueries: base.deep_max_subqueries.min(1),
                 deep_max_subquery_cost: base.deep_max_subquery_cost.min(1),
+                fetch_timeout_ms: base.fetch_timeout_ms.min(3_000),
+                fetch_max_bytes: base.fetch_max_bytes.min(256 * 1024),
+                fetch_max_redirects: base.fetch_max_redirects.min(2),
+                max_page_size: base.max_page_size.min(25),
             },
         }
     }
+}
+
+/// Providers admitted into a round plus the reasons for the refusals.
+#[derive(Default)]
+struct ProviderSelection {
+    providers: Vec<Arc<dyn Provider>>,
+    degradations: Vec<crate::Degradation>,
 }
 
 #[derive(Clone, Debug)]
@@ -204,6 +231,9 @@ pub struct SourceStatus {
     pub name: String,
     pub status: ProviderSurfaceStatus,
     pub code: Option<String>,
+    /// Breaker state: `closed` when the source may be called, `open` while it
+    /// is in cooldown, `half_open` for the single probe after a cooldown.
+    pub circuit: crate::circuit::CircuitState,
     /// Observed success ratio in the telemetry window, when there are samples.
     pub success_rate: Option<f64>,
     pub average_latency_ms: Option<f64>,
@@ -277,6 +307,8 @@ pub struct AmatlService {
     renderer_pool: RendererPool,
     /// Shared cache hit/miss counters for the operator status surface.
     cache_counters: Arc<CacheCounters>,
+    /// Persistent breaker that removes a currently failing source from a round.
+    circuit: ProviderCircuit,
 }
 
 impl AmatlService {
@@ -289,7 +321,7 @@ impl AmatlService {
     /// remove sources without changing the core.
     pub async fn with_registry(config: Config, mock: bool, registry: ProviderRegistry) -> Self {
         let (storage, storage_degradation) = if config.persistence.enabled {
-            match SqliteStorage::open(&config.persistence.path).await {
+            match SqliteStorage::open(std::path::PathBuf::from(&config.persistence.path)).await {
                 Ok(storage) => (Some(storage), None),
                 Err(error) => {
                     let message = storage_failure_message(&error);
@@ -313,6 +345,8 @@ impl AmatlService {
         } else {
             (None, None)
         };
+        let config_circuit_policy = config.circuit_breaker;
+        let storage_for_circuit = storage.clone();
         let telemetry = InMemoryTelemetry::with_storage_and_retention(
             config
                 .telemetry
@@ -343,8 +377,11 @@ impl AmatlService {
         } else {
             Arc::new(DeniedFetcher)
         };
-        let inference = match InferenceRuntime::from_policy(&config.data_policy, &config.inference)
-        {
+        let inference = match InferenceRuntime::from_policy(
+            &config.data_policy,
+            &config.inference,
+            transport.clone(),
+        ) {
             Ok(runtime) => runtime,
             Err(error) => {
                 tracing::warn!(
@@ -371,12 +408,52 @@ impl AmatlService {
             mock,
             renderer_pool,
             cache_counters: Arc::new(CacheCounters::default()),
+            circuit: ProviderCircuit::restored(config_circuit_policy, storage_for_circuit).await,
         }
     }
 
     /// Registry backing this service.
     pub fn registry(&self) -> &ProviderRegistry {
         &self.registry
+    }
+
+    /// Build a replacement service from a new configuration, reusing this
+    /// service's provider registry and mock flag.
+    ///
+    /// Nothing is mutated in place: the caller swaps the handle it hands to new
+    /// requests, so in-flight work finishes against the configuration it
+    /// started with. An invalid configuration is rejected before anything is
+    /// rebuilt, so a bad reload leaves the running service untouched.
+    pub async fn reloaded(self, config: Config) -> Result<Self, ServiceError> {
+        config.validate().map_err(|_| ServiceError::Configuration)?;
+        Ok(Self::with_registry(config, self.mock, (*self.registry).clone()).await)
+    }
+
+    /// [`Self::reloaded`], runnable from a generic async position.
+    ///
+    /// Opening SQLite runs migrations through `sqlx`, whose executor bound is
+    /// not provably `Send` when the resulting future is awaited from a generic
+    /// caller such as an HTTP handler. Driving that future on a blocking thread
+    /// of the *current* runtime sidesteps the bound without detaching the
+    /// connection pool from the runtime it belongs to. Reload is a rare,
+    /// operator-triggered action, so the extra thread hop costs nothing that
+    /// matters.
+    pub async fn reloaded_detached(self, config: Config) -> Result<Self, ServiceError> {
+        let handle = tokio::runtime::Handle::current();
+        tokio::task::spawn_blocking(move || handle.block_on(self.reloaded(config)))
+            .await
+            .map_err(|_| ServiceError::Configuration)?
+    }
+
+    /// Build a replacement service with a different provider registry, for an
+    /// embedder that adds or removes a source implementation at runtime.
+    pub async fn reloaded_with_registry(
+        self,
+        config: Config,
+        registry: ProviderRegistry,
+    ) -> Result<Self, ServiceError> {
+        config.validate().map_err(|_| ServiceError::Configuration)?;
+        Ok(Self::with_registry(config, self.mock, registry).await)
     }
 
     /// Identifier of the active inference backend, when one is available.
@@ -386,6 +463,11 @@ impl AmatlService {
 
     pub fn config(&self) -> &Config {
         &self.config
+    }
+
+    /// Limits in force for one surface, so a transport never hardcodes its own.
+    pub fn execution_limits(&self, surface: ServiceSurface) -> ExecutionLimits {
+        ExecutionLimits::for_surface(&self.config, surface)
     }
 
     pub fn storage(&self) -> Option<SqliteStorage> {
@@ -435,7 +517,9 @@ impl AmatlService {
     ) -> Result<SearchExecution, ServiceError> {
         let query = parse_query(raw_query).map_err(|_| ServiceError::InvalidQuery)?;
         let limits = ExecutionLimits::for_surface(&self.config, surface.clone());
-        let providers = self.providers()?;
+        let selection = self.select_providers()?;
+        let refusals = selection.degradations;
+        let providers = selection.providers;
         let mut orchestrator = SearchOrchestrator::new(
             Budget::new(limits.max_provider_calls, limits.search_timeout_ms),
             limits.provider_timeout_ms,
@@ -454,6 +538,13 @@ impl AmatlService {
         .with_telemetry(self.telemetry.clone())
         .with_request_id(surface.request_id.clone());
         let mut response = orchestrator.search(query.clone(), providers).await;
+        self.record_circuit_outcomes(&response).await;
+        if !refusals.is_empty() {
+            response.degradations.extend(refusals);
+            if response.status == crate::SearchStatus::Success {
+                response.status = crate::SearchStatus::PartialSuccess;
+            }
+        }
         if let Some(degradation) = &self.storage_degradation {
             response.degradations.push(degradation.clone());
             if response.status == crate::SearchStatus::Success {
@@ -462,7 +553,7 @@ impl AmatlService {
         }
         // Apply server-side pagination when requested.
         if let (Some(p), Some(ps)) = (page, page_size) {
-            let ps = ps.clamp(1, 100);
+            let ps = ps.clamp(1, limits.max_page_size);
             let total = response.results.len() as u64;
             let start = (p as usize).saturating_mul(ps as usize);
             let end = start
@@ -513,6 +604,7 @@ impl AmatlService {
                             .cache
                             .document
                             .stale_while_revalidate_seconds,
+                        model_version: self.inference.as_ref().map(InferenceRuntime::version_key),
                     },
                 )
                 .with_counters(self.cache_counters.clone())
@@ -804,16 +896,23 @@ impl AmatlService {
     pub async fn status(&self) -> Result<ServiceStatus, ServiceError> {
         let summaries = self.provider_summaries()?;
         let snapshots = self.source_snapshots();
+        let circuits = self.circuit_snapshots();
         let sources = summaries
             .into_iter()
             .map(|summary| {
                 let snapshot = snapshots
                     .iter()
                     .find(|snapshot| snapshot.provider == summary.name);
+                let circuit = circuits
+                    .iter()
+                    .find(|snapshot| snapshot.provider == summary.name)
+                    .map(|snapshot| snapshot.state)
+                    .unwrap_or(crate::circuit::CircuitState::Closed);
                 SourceStatus {
                     name: summary.name,
                     status: summary.status,
                     code: summary.code,
+                    circuit,
                     success_rate: snapshot
                         .filter(|snapshot| snapshot.sample > 0)
                         .map(|snapshot| snapshot.success_rate),
@@ -836,9 +935,10 @@ impl AmatlService {
             effectiveness: self.cache_effectiveness(),
         };
         let degraded = storage.enabled && !storage.available
-            || sources
-                .iter()
-                .any(|source| source.status != ProviderSurfaceStatus::Available);
+            || sources.iter().any(|source| {
+                source.status != ProviderSurfaceStatus::Available
+                    || source.circuit != crate::circuit::CircuitState::Closed
+            });
         Ok(ServiceStatus {
             schema_version: SCHEMA_VERSION.into(),
             status: if degraded { "degraded" } else { "ok" }.into(),
@@ -949,16 +1049,28 @@ impl AmatlService {
             .collect())
     }
 
-    /// Build every enabled provider from its governance record and factory.
-    fn providers(&self) -> Result<Vec<Arc<dyn Provider>>, ServiceError> {
+    /// Providers admitted into one search round, with the reasons for any
+    /// source that was refused.
+    ///
+    /// Two runtime gates apply on top of configuration. Governance: an enabled
+    /// provider whose approval record is incomplete or expired is never built,
+    /// so a stale record cannot start sending traffic just because the name is
+    /// listed in `providers.enabled`. Circuit: a source whose breaker is open
+    /// is skipped until its cooldown expires. Both produce a degradation
+    /// instead of a silent omission.
+    fn select_providers(&self) -> Result<ProviderSelection, ServiceError> {
         if self.mock {
-            return Ok(mock_providers());
+            return Ok(ProviderSelection {
+                providers: mock_providers(),
+                degradations: vec![],
+            });
         }
         if !self.config.data_policy.allows_network_egress() {
-            return Ok(vec![]);
+            return Ok(ProviderSelection::default());
         }
         let transport = self.transport.clone().ok_or(ServiceError::Configuration)?;
-        let mut providers: Vec<Arc<dyn Provider>> = Vec::new();
+        let now = now_unix();
+        let mut selection = ProviderSelection::default();
         for name in &self.config.providers.enabled {
             let runtime = self
                 .config
@@ -969,17 +1081,72 @@ impl AmatlService {
                 .registry
                 .get(name)
                 .ok_or_else(|| ServiceError::ProviderNotRegistered(name.clone()))?;
+            if !runtime.approved() {
+                selection.degradations.push(crate::Degradation {
+                    code: ErrorCode::ProviderNotApproved.as_str().into(),
+                    component: name.clone(),
+                    message: format!(
+                        "{name} is enabled but its governance record is incomplete or expired; \
+                         the source was not called"
+                    ),
+                });
+                tracing::warn!(
+                    target: "amatl::providers",
+                    provider = %name,
+                    "enabled provider refused by the governance gate"
+                );
+                continue;
+            }
+            let circuit = self.circuit.state(name, now);
+            if !circuit.allows_call() {
+                selection.degradations.push(crate::Degradation {
+                    code: "provider_circuit_open".into(),
+                    component: name.clone(),
+                    message: format!(
+                        "{name} is in circuit cooldown after consecutive failures; \
+                         the source was skipped"
+                    ),
+                });
+                continue;
+            }
             let provider = factory.build(&ProviderBuildContext {
                 name,
                 runtime,
                 enabled: true,
-                approved: runtime.approved(),
+                approved: true,
                 credential: credential(runtime),
                 transport: transport.clone(),
             });
-            providers.push(self.with_cache(provider, runtime));
+            selection.providers.push(self.with_cache(provider, runtime));
         }
-        Ok(providers)
+        Ok(selection)
+    }
+
+    /// Providers admitted into one search round.
+    fn providers(&self) -> Result<Vec<Arc<dyn Provider>>, ServiceError> {
+        Ok(self.select_providers()?.providers)
+    }
+
+    /// Circuit state of every provider the breaker has observed.
+    pub fn circuit_snapshots(&self) -> Vec<CircuitSnapshot> {
+        self.circuit.snapshots(now_unix())
+    }
+
+    /// Close every circuit; for an operator that fixed the underlying cause.
+    pub async fn reset_circuits(&self) {
+        self.circuit.reset().await;
+    }
+
+    /// Feed one search outcome into the breaker, one entry per attempted
+    /// source. A partial provider still counts as a success: it answered.
+    async fn record_circuit_outcomes(&self, response: &SearchResponse) {
+        let now = now_unix();
+        for provider in &response.providers_used {
+            self.circuit.record(provider, true, now).await;
+        }
+        for provider in &response.providers_failed {
+            self.circuit.record(provider, false, now).await;
+        }
     }
 
     fn with_cache(
@@ -1154,6 +1321,27 @@ mod tests {
     use super::*;
     use crate::ProviderFactory;
 
+    /// Same registered name as [`ArchiveFactory`], but the source always fails,
+    /// so the breaker has something real to trip on.
+    struct FailingFactory;
+
+    impl ProviderFactory for FailingFactory {
+        fn name(&self) -> &str {
+            "custom_archive"
+        }
+
+        fn requires_credential(&self) -> bool {
+            false
+        }
+
+        fn build(&self, context: &ProviderBuildContext<'_>) -> Arc<dyn Provider> {
+            Arc::new(MockProvider::new(
+                context.name,
+                crate::MockBehavior::Failure(crate::ProviderErrorKind::Unavailable),
+            ))
+        }
+    }
+
     struct ArchiveFactory;
 
     impl ProviderFactory for ArchiveFactory {
@@ -1185,15 +1373,30 @@ mod tests {
         }
     }
 
+    /// Governance record that satisfies the runtime approval gate today.
+    fn approved_record(adapter_version: &str) -> ProviderRuntimeConfig {
+        ProviderRuntimeConfig {
+            adapter_version: Some(adapter_version.into()),
+            approval_status: crate::ApprovalStatus::Approved,
+            reviewed_at: Some(today_iso()),
+            reviewer: Some("owner".into()),
+            terms_url: Some("https://archive.invalid/terms".into()),
+            terms_version_or_date: Some("2026-08-01".into()),
+            allowed_access_method: Some("official_api".into()),
+            plan_or_contract: Some("contract-1".into()),
+            rate_limit: Some("1 qps".into()),
+            cost_model: Some("free".into()),
+            data_handling_notes: Some("no cache".into()),
+            operational_risk: Some("none".into()),
+            ..ProviderRuntimeConfig::default()
+        }
+    }
+
     fn archive_config() -> Config {
         let mut config = Config::default();
-        config.providers.declare(
-            "custom_archive",
-            ProviderRuntimeConfig {
-                adapter_version: Some("archive-v1".into()),
-                ..ProviderRuntimeConfig::default()
-            },
-        );
+        config
+            .providers
+            .declare("custom_archive", approved_record("archive-v1"));
         config.providers.enabled = vec!["custom_archive".into()];
         config
     }
@@ -1356,6 +1559,8 @@ mod tests {
     #[test]
     fn canary_preflight_uses_the_supplied_registry() {
         let mut config = archive_config();
+        // Start from an incomplete record so the governance step is exercised.
+        config.providers.entry("custom_archive").reviewed_at = None;
         assert_eq!(
             validate_provider_canary_with(&config, &ProviderRegistry::builtin(), "custom_archive"),
             Err(ProviderCanaryError::UnknownProvider(
@@ -1384,6 +1589,69 @@ mod tests {
             validate_provider_canary_with(&config, &registry, "custom_archive"),
             Ok(())
         );
+    }
+
+    #[tokio::test]
+    async fn an_unapproved_enabled_source_is_refused_at_runtime() {
+        let mut config = archive_config();
+        // A record that expired, or was never completed, must not send traffic
+        // just because the name stayed in providers.enabled.
+        config.providers.entry("custom_archive").reviewed_at = Some("2020-01-01".into());
+        let service = AmatlService::with_registry(
+            config,
+            false,
+            ProviderRegistry::builtin().with(Arc::new(ArchiveFactory)),
+        )
+        .await;
+        let execution = service
+            .search("rust".into(), ServiceSurface::cli())
+            .await
+            .unwrap();
+        assert!(execution.response.providers_used.is_empty());
+        let degradation = execution
+            .response
+            .degradations
+            .iter()
+            .find(|degradation| degradation.component == "custom_archive")
+            .expect("refusal is reported, not silent");
+        assert_eq!(degradation.code, "provider_not_approved");
+    }
+
+    #[tokio::test]
+    async fn an_open_circuit_skips_the_source_until_the_cooldown_expires() {
+        let mut config = archive_config();
+        config.circuit_breaker.failure_threshold = 1;
+        config.circuit_breaker.open_seconds = 600;
+        let service = AmatlService::with_registry(
+            config,
+            false,
+            ProviderRegistry::builtin().with(Arc::new(FailingFactory)),
+        )
+        .await;
+        let first = service
+            .search("rust".into(), ServiceSurface::cli())
+            .await
+            .unwrap();
+        assert_eq!(first.response.providers_failed, vec!["custom_archive"]);
+
+        let second = service
+            .search("rust".into(), ServiceSurface::cli())
+            .await
+            .unwrap();
+        assert!(second.response.providers_failed.is_empty());
+        assert!(second
+            .response
+            .degradations
+            .iter()
+            .any(|degradation| degradation.code == "provider_circuit_open"));
+        assert_eq!(
+            service.circuit_snapshots()[0].state,
+            crate::CircuitState::Open
+        );
+
+        // An operator that fixed the cause can close it without a restart.
+        service.reset_circuits().await;
+        assert!(service.circuit_snapshots().is_empty());
     }
 
     fn today_iso() -> String {

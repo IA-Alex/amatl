@@ -11,7 +11,11 @@
    amatl --config-file amatl.toml serve
    ```
 
-3. El default escucha `127.0.0.1:8080`. Para bind no-loopback configura rutas
+3. El default escucha `127.0.0.1:8080`. `amatl serve --bind` y `--port` lo
+   sobrescriben sólo para ese proceso, y `--json` imprime una línea con el
+   listener efectivo (bind, puerto, TLS, autenticación, archivo de
+   configuración y superficies) antes de escuchar; `amatl mcp serve` acepta las
+   mismas opciones. Para bind no-loopback configura rutas
    reales a certificado y clave TLS, conserva `no_auth = false`, restringe
    hosts/origins y ajusta firewall. La configuración rechaza bind remoto sin TLS
    y token.
@@ -88,7 +92,8 @@ autorizados. Consulta [el contrato y los límites](ingestion-local.md).
 
 `/health` sólo prueba que router/proceso responden y devuelve
 `{"schema_version":"1","status":"ok"}`. No consulta red, providers, SQLite ni
-credenciales. `amatl doctor` carga toda la configuración, lista providers,
+credenciales. `GET /status` y la herramienta MCP `status` reportan además el estado de
+circuito por fuente. `amatl doctor` carga toda la configuración, lista providers,
 comprueba SQLite/migración si procede, reporta telemetría y muestra preparación
 de token/TLS. Un `doctor` degradado puede terminar con código 0 porque es un
 reporte; el operador debe leer cada línea.
@@ -109,6 +114,31 @@ migración, entradas de historial y documentos guardados— y efectividad de las
 cachés. Devuelve `status: degraded` cuando alguna fuente declarada no está
 disponible o cuando la persistencia está habilitada pero no es usable.
 
+### Recarga en caliente
+
+Alta, baja o reaprobación de una fuente no requiere reinicio: edita el archivo
+de configuración y ejecuta `POST /reload` con bearer, o envía `SIGHUP` al
+proceso en Unix. La recarga construye un servicio nuevo completo y lo
+intercambia; las solicitudes en curso terminan con la configuración con la que
+empezaron y la siguiente ya usa la nueva. Una configuración inválida se rechaza
+antes de reemplazar nada y el servicio en ejecución queda intacto. La respuesta
+enumera fuentes declaradas, habilitadas y registradas, y el backend de
+inferencia resultante. La superficie MCP comparte el mismo handle, así que
+también ve la recarga.
+
+Dos compuertas se aplican en cada búsqueda, no sólo al arrancar:
+
+- **Gobernanza.** Una fuente habilitada cuyo registro de aprobación esté
+  incompleto o vencido no se construye ni se llama; la respuesta incluye una
+  degradación `provider_not_approved` con el nombre de la fuente. Mantener el
+  nombre en `providers.enabled` no basta para enviar tráfico.
+- **Circuito.** Tras `circuit_breaker.failure_threshold` fallos consecutivos la
+  fuente se salta durante `circuit_breaker.open_seconds` (degradación
+  `provider_circuit_open`), luego se permite una sonda. El estado se persiste
+  cuando SQLite está activo, así que un reinicio dentro de la ventana no vuelve
+  a gastar presupuesto redescubriendo la caída. `amatl db circuits` lo muestra y
+  `--reset` lo cierra.
+
 ### Métricas
 
 `GET /metrics` es público, como `/health`, y expone formato de exposición
@@ -125,6 +155,7 @@ Prometheus 0.0.4:
 | `amatl_source_success_rate{source}`, `amatl_source_latency_ms{source}` | gauge | valor observado por fuente; sólo aparecen con muestras |
 | `amatl_cache_hits_total{cache}`, `amatl_cache_misses_total{cache}`, `amatl_cache_hit_rate{cache}` | counter/gauge | reuso de la caché de búsqueda y de documentos |
 | `amatl_storage_available` | gauge | 1 si la persistencia local es usable |
+| `amatl_source_circuit_open{source}` | gauge | 1 mientras el circuito de esa fuente está abierto |
 
 Los contadores son monótonos y se reinician con el proceso; las cuantías de
 latencia describen sólo la ventana retenida. Los nombres de fuente aparecen
@@ -177,6 +208,29 @@ amatl cache --purge
 
 La purga elimina caché de provider y documentos, no telemetría. Consulta
 `docs/security/data-retention.md` antes de borrar el archivo SQLite.
+
+### Mantenimiento e historial desde la CLI
+
+Estos comandos requieren `[persistence] enabled = true` y fallan con un mensaje
+explícito si no la hay; todo el estado es local:
+
+```bash
+amatl history list --limit 20      # búsquedas registradas, más recientes primero
+amatl history delete 12            # una entrada
+amatl history purge                # todo el historial
+amatl saved list                   # documentos guardados
+amatl saved show 3                 # payload almacenado de uno
+amatl saved delete 3
+amatl db health --json             # journal, versión de migración, pool
+amatl db backups                   # copias tomadas antes de migrar o degradar
+amatl db downgrade --to 4          # rollback de esquema, con copia previa
+amatl db restore <copia>           # reemplaza la base por una copia
+amatl db circuits [--reset]        # estado de los cortacircuitos por fuente
+```
+
+`db downgrade` es destructivo por definición: toma una copia antes de aplicar
+los scripts y vuelve a migrar hacia adelante la próxima vez que un binario
+nuevo abra la base. Detén los demás procesos AMATL antes de `db restore`.
 
 ## Runbooks
 

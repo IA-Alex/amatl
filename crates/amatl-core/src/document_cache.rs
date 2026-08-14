@@ -11,6 +11,11 @@ pub struct DocumentCachePolicy {
     /// When set, stale entries within this window are returned while
     /// a background revalidation is triggered.
     pub stale_while_revalidate_seconds: u64,
+    /// Identity of the inference vector space in effect, when Deep ranking
+    /// uses one. Entries are namespaced by it so changing the embedding
+    /// backend or its width cannot silently reuse artifacts produced under a
+    /// different vector space; the old rows simply stop matching and expire.
+    pub model_version: Option<String>,
 }
 
 impl Default for DocumentCachePolicy {
@@ -22,6 +27,7 @@ impl Default for DocumentCachePolicy {
             max_bytes: 268_435_456,
             store_content: false,
             stale_while_revalidate_seconds: 0,
+            model_version: None,
         }
     }
 }
@@ -48,6 +54,16 @@ impl DocumentCache {
         self
     }
 
+    /// Cache namespace for one extractor version under the active vector
+    /// space. Keys are opaque to SQLite, so composing them here keeps the
+    /// storage schema unchanged.
+    fn namespace(&self, extractor_version: &str) -> String {
+        match &self.policy.model_version {
+            Some(model) => format!("{extractor_version}#{model}"),
+            None => extractor_version.to_owned(),
+        }
+    }
+
     fn record(&self, hit: bool) {
         if let Some(counters) = &self.counters {
             counters.record_document(hit);
@@ -68,7 +84,7 @@ impl DocumentCache {
             .document_cache_get(
                 canonical_url,
                 content_hash,
-                extractor_version,
+                &self.namespace(extractor_version),
                 now(),
                 self.policy.ttl_seconds,
             )
@@ -88,7 +104,7 @@ impl DocumentCache {
             .storage
             .document_cache_get_latest(
                 canonical_url,
-                extractor_version,
+                &self.namespace(extractor_version),
                 now(),
                 self.policy.ttl_seconds,
             )
@@ -119,7 +135,7 @@ impl DocumentCache {
             .document_cache_put(
                 document.canonical_url.0.as_str(),
                 &document.content_hash,
-                extractor_version,
+                &self.namespace(extractor_version),
                 &payload,
                 now(),
                 self.policy.ttl_seconds,
@@ -152,7 +168,7 @@ impl DocumentCache {
             .document_cache_get_with_revalidation(
                 canonical_url,
                 content_hash,
-                extractor_version,
+                &self.namespace(extractor_version),
                 now(),
                 self.policy.ttl_seconds,
                 self.policy.stale_while_revalidate_seconds,

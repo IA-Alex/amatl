@@ -99,14 +99,25 @@ pub struct RankingBenchmarkReport {
     pub passed: bool,
 }
 
+/// Optional semantic relevance backend.
+///
+/// The contract is async because a backend may be remote under
+/// `data_policy.inference = "remote_explicit"`; the shipped local backend
+/// resolves immediately without touching the network.
+#[async_trait::async_trait]
 pub trait SemanticScorer: Send + Sync {
     fn name(&self) -> &str;
-    fn score(&self, query: &Query, documents: &[Document]) -> Result<Vec<f64>, RankingV2Error>;
+    async fn score(
+        &self,
+        query: &Query,
+        documents: &[Document],
+    ) -> Result<Vec<f64>, RankingV2Error>;
 }
 
+#[async_trait::async_trait]
 pub trait DeepReranker: Send + Sync {
     fn name(&self) -> &str;
-    fn score(
+    async fn score(
         &self,
         query: &Query,
         documents: &[Document],
@@ -147,7 +158,7 @@ impl RankingV2Engine {
         &self.benchmark
     }
 
-    pub fn rank(
+    pub async fn rank(
         &self,
         query: &Query,
         documents: &[Document],
@@ -170,23 +181,17 @@ impl RankingV2Engine {
         }
         let bm25 = bm25_scores(query, documents, &self.policy);
         let semantic = if self.policy.weight_semantic > 0.0 {
-            optional_scores(self.semantic.as_deref(), query, documents)?
+            optional_scores(self.semantic.as_deref(), query, documents).await?
         } else {
             None
         };
         let mut relevance = combine_relevance(&bm25, semantic.as_deref(), None, &self.policy);
-        let reranker = if self.policy.weight_reranker > 0.0 {
-            self.reranker
-                .as_ref()
-                .map(|backend| {
-                    validate_backend_scores(
-                        backend.score(query, documents, &relevance)?,
-                        documents.len(),
-                    )
-                })
-                .transpose()?
-        } else {
-            None
+        let reranker = match (self.policy.weight_reranker > 0.0, self.reranker.as_ref()) {
+            (true, Some(backend)) => Some(validate_backend_scores(
+                backend.score(query, documents, &relevance).await?,
+                documents.len(),
+            )?),
+            _ => None,
         };
         relevance = combine_relevance(
             &bm25,
@@ -257,14 +262,16 @@ impl RankingV2Engine {
     }
 }
 
-fn optional_scores(
+async fn optional_scores(
     backend: Option<&dyn SemanticScorer>,
     query: &Query,
     documents: &[Document],
 ) -> Result<Option<Vec<f64>>, RankingV2Error> {
-    backend
-        .map(|backend| validate_backend_scores(backend.score(query, documents)?, documents.len()))
-        .transpose()
+    let Some(backend) = backend else {
+        return Ok(None);
+    };
+    let scores = backend.score(query, documents).await?;
+    validate_backend_scores(scores, documents.len()).map(Some)
 }
 
 fn validate_backend_scores(scores: Vec<f64>, expected: usize) -> Result<Vec<f64>, RankingV2Error> {
@@ -658,8 +665,50 @@ mod tests {
         assert!((ndcg(&[1, 2, 0], &[0, 3, 1], 3) - 1.0).abs() < 1e-12);
     }
 
+    /// Recorded calibration of the shipped policy against the shipped corpus.
+    ///
+    /// These are not thresholds to pass; they are the values this policy
+    /// currently produces. Drifting away from them means the calibration
+    /// changed, which is a review decision, not an accident: update these
+    /// constants in the same change that moves the ranking.
+    const RECORDED_CANDIDATE_NDCG_AT_3: f64 = 0.9193779960897104;
+    const RECORDED_BASELINE_NDCG_AT_3: f64 = 0.6557679882437799;
+    const RECORDED_CANDIDATE_MRR: f64 = 0.9;
+    const CALIBRATION_TOLERANCE: f64 = 1e-6;
+
     #[test]
-    fn ranking_keeps_relevance_evidence_and_final_scores_separate() {
+    fn builtin_benchmark_holds_its_recorded_calibration() {
+        let report = run_builtin_benchmark(&RankingV2Policy::default());
+        assert!(report.passed, "{report:?}");
+        assert_eq!(report.benchmark_id, BENCHMARK_ID);
+        assert!(report.query_count >= 5, "{report:?}");
+        for (name, actual, recorded) in [
+            (
+                "candidate_ndcg_at_3",
+                report.candidate_ndcg_at_3,
+                RECORDED_CANDIDATE_NDCG_AT_3,
+            ),
+            (
+                "baseline_ndcg_at_3",
+                report.baseline_ndcg_at_3,
+                RECORDED_BASELINE_NDCG_AT_3,
+            ),
+            (
+                "candidate_mrr",
+                report.candidate_mrr,
+                RECORDED_CANDIDATE_MRR,
+            ),
+        ] {
+            assert!(
+                (actual - recorded).abs() <= CALIBRATION_TOLERANCE,
+                "{name} drifted: {actual} vs recorded {recorded}. If the change is \
+                 intended, update the recorded calibration in the same commit."
+            );
+        }
+    }
+
+    #[tokio::test]
+    async fn ranking_keeps_relevance_evidence_and_final_scores_separate() {
         let policy = RankingV2Policy::default();
         let engine = RankingV2Engine::new(policy.clone()).unwrap();
         let query = crate::query::parse_query("rust async runtime".into()).unwrap();
@@ -672,6 +721,7 @@ mod tests {
         ]);
         let output = engine
             .rank(&query, &documents, &evidence, &original)
+            .await
             .unwrap();
         assert_eq!(output.status, RankingV2Status::Applied);
         assert_eq!(output.results[0].document_id, "1");
@@ -684,8 +734,8 @@ mod tests {
         }
     }
 
-    #[test]
-    fn failed_benchmark_gate_returns_no_ranking() {
+    #[tokio::test]
+    async fn failed_benchmark_gate_returns_no_ranking() {
         let mut engine = RankingV2Engine::new(RankingV2Policy::default()).unwrap();
         engine.benchmark.passed = false;
         let query = crate::query::parse_query("rust async runtime".into()).unwrap();
@@ -697,6 +747,7 @@ mod tests {
                 &crate::evidence::analyze_evidence(&documents),
                 &BTreeMap::new(),
             )
+            .await
             .unwrap();
         assert_eq!(output.status, RankingV2Status::BenchmarkRejected);
         assert!(output.results.is_empty());

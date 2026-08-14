@@ -68,15 +68,15 @@ impl BraveProvider {
             }
         }
         Ok((
-            HttpRequest {
+            HttpRequest::get(
                 url,
-                headers: vec![
+                vec![
                     ("accept".into(), "application/json".into()),
                     ("cache-control".into(), "no-cache".into()),
                     ("x-subscription-token".into(), token.clone()),
                 ],
                 timeout_ms,
-            },
+            ),
             filters,
         ))
     }

@@ -28,6 +28,10 @@ jobs:
       - run: cargo test --workspace --locked
       - run: cargo check --workspace --benches --locked
       - run: cargo clippy --workspace --all-targets --locked -- -D warnings
+      # Executable quality gate: the CLI exits non-zero when Ranking v2 stops
+      # beating its baseline on the shipped labeled corpus.
+      - name: Ranking v2 quality gate
+        run: cargo run --locked --quiet -p amatl-cli -- benchmark ranking-v2 --json
       - run: cargo audit
       - run: cargo deny check
       - run: cargo cyclonedx

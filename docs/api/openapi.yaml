@@ -152,6 +152,29 @@ paths:
         '500': { $ref: '#/components/responses/ServiceUnavailable' }
         '503': { $ref: '#/components/responses/StorageUnavailable' }
         '504': { $ref: '#/components/responses/RequestTimeout' }
+  /reload:
+    post:
+      operationId: reload
+      summary: Rebuild the service from configuration without restarting
+      description: >-
+        Re-reads the configuration file the process was started with, validates
+        it and swaps a fully built service. Adding, removing or re-approving a
+        source therefore needs no restart. A rejected configuration changes
+        nothing and reports why. `SIGHUP` performs the same reload on Unix.
+      responses:
+        '200':
+          description: What the reload put in place
+          headers:
+            X-Request-ID: { $ref: '#/components/headers/RequestId' }
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReloadReport'
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '500': { $ref: '#/components/responses/ServiceUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /history:
     get:
       operationId: historyList
@@ -481,7 +504,7 @@ components:
               description: >-
                 Shared error catalog (amatl-core/src/errors.rs). Every AMATL
                 surface renders the same identifiers.
-              enum: [invalid_request, invalid_query, invalid_url, unauthorized, invalid_host, invalid_origin, rate_limited, body_too_large, headers_too_large, request_timeout, not_found, egress_denied, fetch_failed, provider_not_declared, provider_not_registered, provider_not_enabled, provider_not_approved, provider_credential_missing, provider_network_blocked, search_planning_failed, configuration_invalid, inference_unavailable, ranking_backend_unavailable, storage_unavailable, serialization_failed, internal_error]
+              enum: [invalid_request, invalid_query, invalid_url, unauthorized, invalid_host, invalid_origin, rate_limited, body_too_large, headers_too_large, request_timeout, not_found, egress_denied, fetch_failed, provider_not_declared, provider_not_registered, provider_not_enabled, provider_not_approved, provider_credential_missing, provider_network_blocked, search_planning_failed, configuration_invalid, inference_unavailable, ranking_backend_unavailable, storage_unavailable, request_cancelled, serialization_failed, internal_error]
             message: { type: string }
     SearchStatus:
       type: string
@@ -830,14 +853,19 @@ components:
         providers:
           type: array
           items: { $ref: '#/components/schemas/ProviderSummary' }
+    CircuitState:
+      type: string
+      description: Persistent breaker state for one source.
+      enum: [closed, open, half_open]
     SourceStatus:
       type: object
       additionalProperties: false
-      required: [name, status, code, success_rate, average_latency_ms, observations]
+      required: [name, status, code, circuit, success_rate, average_latency_ms, observations]
       properties:
         name: { type: string }
         status: { $ref: '#/components/schemas/ProviderSurfaceStatus' }
         code: { type: [string, 'null'] }
+        circuit: { $ref: '#/components/schemas/CircuitState' }
         success_rate: { type: [number, 'null'], minimum: 0, maximum: 1 }
         average_latency_ms: { type: [number, 'null'], minimum: 0 }
         observations: { type: integer, minimum: 0 }
@@ -967,3 +995,21 @@ components:
       properties:
         schema_version: { $ref: '#/components/schemas/SchemaVersion' }
         deleted: { type: integer, minimum: 0 }
+    ReloadReport:
+      type: object
+      additionalProperties: false
+      required: [schema_version, config_file, declared_sources, enabled_sources, registered_sources, inference_backend]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        config_file: { type: [string, 'null'] }
+        declared_sources:
+          type: array
+          items: { type: string }
+        enabled_sources:
+          type: array
+          items: { type: string }
+        registered_sources:
+          type: array
+          description: Sources with a registered factory in this process.
+          items: { type: string }
+        inference_backend: { type: [string, 'null'] }

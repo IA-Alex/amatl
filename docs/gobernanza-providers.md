@@ -10,9 +10,21 @@ Una ficha es aprobada sólo cuando `approval_status = "approved"`, `reviewed_at`
 es una fecha ISO válida con antigüedad máxima de 90 días y existen valores no
 vacíos para adapter version, reviewer, terms URL y versión/fecha, método de
 acceso, plan/contrato, rate limit, coste, notas de datos y riesgo operativo
-(`config.rs:218-247`). Además, el adapter real exige habilitación y credencial
+(`config.rs`). Además, el adapter real exige habilitación y credencial
 cuando corresponda. Una ficha expirada o incompleta produce provider no
 disponible; no existe fallback que omita la puerta.
+
+La puerta es ejecutable en tiempo de ejecución, no sólo declarativa: en cada
+búsqueda el servicio omite construir una fuente habilitada cuya ficha no esté
+aprobada y añade la degradación `provider_not_approved` con su nombre
+(`service.rs`). Una ficha que vence mientras el proceso está vivo deja de
+enviar tráfico en la siguiente búsqueda, sin reinicio y sin edición del
+archivo. `POST /reload` y `SIGHUP` aplican una ficha renovada de inmediato.
+
+Independientemente de la gobernanza, un cortacircuitos persistente retira una
+fuente que acumula fallos consecutivos durante su ventana de enfriamiento
+(`provider_circuit_open`) y permite después una sonda; ver
+`docs/operacion.md`.
 
 Ficha obligatoria:
 

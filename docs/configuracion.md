@@ -98,16 +98,26 @@ sólo si hay un `ProviderFactory` con ese mismo nombre en el `ProviderRegistry`
 
 | Clave | Tipo/default | Validez y efecto |
 |---|---|---|
-| `inference.backend` | string / `local_hashing_v1` | Único backend disponible; otro valor se rechaza |
+| `inference.backend` | string / `local_hashing_v1` | Backend local; otro valor se rechaza |
 | `inference.embedding_dimensions` | usize / `256` | Entre 32 y 4096 |
 | `inference.max_documents` | usize / `64` | >0; superarlo falla el backend opcional y Deep degrada |
 | `inference.max_input_chars` | usize / `20000` | >0; recorte por documento antes de embeber |
 | `inference.reranker_prior_weight` | f64 / `0.5` | Entre 0 y 1; peso que el reranker conserva de la relevancia previa |
+| `inference.remote_endpoint` | string / vacío | Obligatorio con `remote_explicit`; URL absoluta https, o http sólo en loopback, y sin credenciales embebidas |
+| `inference.remote_model` | string / vacío | Obligatorio con `remote_explicit`; identificador enviado en el cuerpo |
+| `inference.remote_credential_env` | string / vacío | Variable de entorno con el bearer; el valor nunca se escribe en configuración ni en logs |
+| `inference.remote_timeout_ms` | u64 / `5000` | 100..=60000 por solicitud remota |
+| `inference.remote_max_batch` | usize / `32` | 1..=256 entradas por solicitud |
 
 Los pesos `deep.ranking_v2.policy.weight_semantic` y `weight_reranker` mayores
-que cero exigen `data_policy.inference = "local_only"`: con `disabled` o
-`remote_explicit` la configuración se rechaza, porque no habría backend que
-respalde la señal declarada.
+que cero exigen un modo de inferencia con backend disponible: `disabled` se
+rechaza. `local_only` usa el backend offline; `remote_explicit` exige además
+perfil `standard`, `egress = "governed"`, endpoint y modelo declarados, y envía
+al tercero exactamente la consulta y el texto acotado que Deep ya recuperó.
+Cambiar el backend o `embedding_dimensions` cambia el espacio vectorial: la
+caché documental queda namespaced por `backend@dimensiones`, de modo que las
+entradas del espacio anterior dejan de coincidir en vez de reutilizarse en
+silencio.
 
 ## Search, ejecución y Budget
 
@@ -177,6 +187,9 @@ Los cinco pesos `weight_*` suman exactamente 1 con tolerancia `1e-12`.
 | `persistence.path` | string / `amatl.sqlite3` | no se valida vacío ni permisos hasta abrir |
 | `persistence.history_enabled` | bool / `true` | sólo aplica si `persistence.enabled`; registra cada búsqueda ejecutada en SQLite local |
 | `persistence.saved_document_max_bytes` | u64 / 1048576 | 1..=16777216; límite del payload aceptado por `POST /saved` |
+| `circuit_breaker.enabled` | bool / `true` | si false, una fuente en fallo se sigue llamando en cada búsqueda |
+| `circuit_breaker.failure_threshold` | u32 / 3 | 1..=100 fallos consecutivos abren el circuito |
+| `circuit_breaker.open_seconds` | u64 / 60 | 1..=3600; al expirar se permite una sonda (`half_open`) |
 | `cache.provider_search.enabled` | bool / `false` | requiere persistence si true |
 | `.ttl_seconds` | u64 / 300 | >0 |
 | `.max_entries` | u64 / 10000 | >0 |

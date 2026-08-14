@@ -26,3 +26,4 @@ FROM telemetry_observations;
 DROP TABLE telemetry_observations;
 ALTER TABLE telemetry_observations_new RENAME TO telemetry_observations;
 DELETE FROM amatl_schema_migrations WHERE version = 5;
+PRAGMA user_version = 4;

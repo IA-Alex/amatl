@@ -6,7 +6,7 @@ use std::sync::Arc;
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 use thiserror::Error;
 
-pub const MIGRATION_VERSION: i64 = 5;
+pub const MIGRATION_VERSION: i64 = 6;
 const POOL_SIZE: u32 = 4;
 
 #[derive(Clone)]
@@ -78,6 +78,16 @@ pub struct SavedDocument {
     pub tags: String,
 }
 
+/// Persisted circuit breaker row for one provider.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct StoredCircuitRecord {
+    pub provider: String,
+    pub consecutive_failures: u32,
+    pub opened_at: Option<i64>,
+    pub open_until: Option<i64>,
+    pub updated_at: i64,
+}
+
 /// Result of a conditional document cache lookup.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct CachedDocument {
@@ -136,7 +146,7 @@ impl SqliteStorage {
             return quarantine(&path);
         }
 
-        run_migrations(&pool, &path).await?;
+        run_migrations(pool.clone(), path.clone()).await?;
         Ok(Self {
             pool,
             path,
@@ -189,6 +199,8 @@ impl SqliteStorage {
         let _write_guard = self.write_lock.lock().await;
         for version in (target_version + 1..=current).rev() {
             let script = match version {
+                6 => include_str!("../migrations/downgrade/0006_to_0005.sql"),
+                5 => include_str!("../migrations/downgrade/0005_to_0004.sql"),
                 4 => include_str!("../migrations/downgrade/0004_to_0003.sql"),
                 3 => include_str!("../migrations/downgrade/0003_to_0002.sql"),
                 2 => include_str!("../migrations/downgrade/0002_to_0001.sql"),
@@ -196,12 +208,12 @@ impl SqliteStorage {
             };
             let mut transaction = self.pool.begin().await.map_err(operation)?;
             sqlx::raw_sql(script)
-                .execute(&mut *transaction)
+                .execute(transaction.as_mut())
                 .await
                 .map_err(operation)?;
             sqlx::query("DELETE FROM amatl_schema_migrations WHERE version = ?")
                 .bind(version)
-                .execute(&mut *transaction)
+                .execute(transaction.as_mut())
                 .await
                 .map_err(operation)?;
             transaction.commit().await.map_err(operation)?;
@@ -290,7 +302,7 @@ impl SqliteStorage {
         .bind(normalized_query)
         .bind(structured_filters)
         .bind(now.saturating_sub(ttl_seconds as i64))
-        .fetch_optional(&mut *transaction)
+        .fetch_optional(transaction.as_mut())
         .await
         .map_err(operation)?;
         if payload.is_some() {
@@ -304,7 +316,7 @@ impl SqliteStorage {
             .bind(adapter_version)
             .bind(normalized_query)
             .bind(structured_filters)
-            .execute(&mut *transaction)
+            .execute(transaction.as_mut())
             .await
             .map_err(operation)?;
         }
@@ -344,17 +356,17 @@ impl SqliteStorage {
         .bind(payload.len() as i64)
         .bind(now)
         .bind(now)
-        .execute(&mut *transaction)
+        .execute(transaction.as_mut())
         .await
         .map_err(operation)?;
         sqlx::query("DELETE FROM provider_search_cache WHERE created_at < ?")
             .bind(now.saturating_sub(ttl_seconds as i64))
-            .execute(&mut *transaction)
+            .execute(transaction.as_mut())
             .await
             .map_err(operation)?;
 
         let count: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM provider_search_cache")
-            .fetch_one(&mut *transaction)
+            .fetch_one(transaction.as_mut())
             .await
             .map_err(operation)?;
         if count > max_entries as i64 {
@@ -364,7 +376,7 @@ impl SqliteStorage {
                   ORDER BY last_accessed ASC, rowid ASC LIMIT ?)",
             )
             .bind(count - max_entries as i64)
-            .execute(&mut *transaction)
+            .execute(transaction.as_mut())
             .await
             .map_err(operation)?;
         }
@@ -372,7 +384,7 @@ impl SqliteStorage {
             let size: i64 = sqlx::query_scalar(
                 "SELECT COALESCE(SUM(size_bytes), 0) FROM provider_search_cache",
             )
-            .fetch_one(&mut *transaction)
+            .fetch_one(transaction.as_mut())
             .await
             .map_err(operation)?;
             if size <= max_bytes as i64 {
@@ -383,7 +395,7 @@ impl SqliteStorage {
                  (SELECT rowid FROM provider_search_cache
                   ORDER BY last_accessed ASC, rowid ASC LIMIT 1)",
             )
-            .execute(&mut *transaction)
+            .execute(transaction.as_mut())
             .await
             .map_err(operation)?
             .rows_affected();
@@ -437,7 +449,7 @@ impl SqliteStorage {
         .bind(content_hash)
         .bind(extractor_version)
         .bind(now.saturating_sub(ttl_seconds as i64))
-        .fetch_optional(&mut *transaction)
+        .fetch_optional(transaction.as_mut())
         .await
         .map_err(operation)?;
         if payload.is_some() {
@@ -449,7 +461,7 @@ impl SqliteStorage {
             .bind(canonical_url)
             .bind(content_hash)
             .bind(extractor_version)
-            .execute(&mut *transaction)
+            .execute(transaction.as_mut())
             .await
             .map_err(operation)?;
         }
@@ -523,7 +535,7 @@ impl SqliteStorage {
         .bind(content_hash)
         .bind(extractor_version)
         .bind(stale_cutoff)
-        .fetch_optional(&mut *transaction)
+        .fetch_optional(transaction.as_mut())
         .await
         .map_err(operation)?;
 
@@ -545,7 +557,7 @@ impl SqliteStorage {
         .bind(canonical_url)
         .bind(content_hash)
         .bind(extractor_version)
-        .execute(&mut *transaction)
+        .execute(transaction.as_mut())
         .await
         .map_err(operation)?;
 
@@ -594,12 +606,12 @@ impl SqliteStorage {
         .bind(now)
         .bind(etag)
         .bind(last_modified)
-        .execute(&mut *transaction)
+        .execute(transaction.as_mut())
         .await
         .map_err(operation)?;
         sqlx::query("DELETE FROM document_cache WHERE created_at < ?")
             .bind(now.saturating_sub(ttl_seconds as i64))
-            .execute(&mut *transaction)
+            .execute(transaction.as_mut())
             .await
             .map_err(operation)?;
         sqlx::query(
@@ -608,13 +620,13 @@ impl SqliteStorage {
               LIMIT MAX(0, (SELECT COUNT(*) FROM document_cache) - ?))",
         )
         .bind(max_entries as i64)
-        .execute(&mut *transaction)
+        .execute(transaction.as_mut())
         .await
         .map_err(operation)?;
         loop {
             let size: i64 =
                 sqlx::query_scalar("SELECT COALESCE(SUM(size_bytes), 0) FROM document_cache")
-                    .fetch_one(&mut *transaction)
+                    .fetch_one(transaction.as_mut())
                     .await
                     .map_err(operation)?;
             if size <= max_bytes as i64 {
@@ -624,7 +636,7 @@ impl SqliteStorage {
                 "DELETE FROM document_cache WHERE rowid =
                  (SELECT rowid FROM document_cache ORDER BY last_accessed ASC, rowid ASC LIMIT 1)",
             )
-            .execute(&mut *transaction)
+            .execute(transaction.as_mut())
             .await
             .map_err(operation)?
             .rows_affected();
@@ -995,6 +1007,64 @@ impl SqliteStorage {
         Ok(rows > 0)
     }
 
+    // ── Provider circuit breaker ────────────────────────────────────────
+
+    /// Persist the breaker state of one provider.
+    pub async fn circuit_put(&self, record: &StoredCircuitRecord) -> Result<(), StorageError> {
+        let _write_guard = self.write_lock.lock().await;
+        sqlx::query(
+            "INSERT INTO provider_circuit
+               (provider, consecutive_failures, opened_at, open_until, updated_at)
+             VALUES (?, ?, ?, ?, ?)
+             ON CONFLICT(provider) DO UPDATE SET
+               consecutive_failures = excluded.consecutive_failures,
+               opened_at = excluded.opened_at,
+               open_until = excluded.open_until,
+               updated_at = excluded.updated_at",
+        )
+        .bind(&record.provider)
+        .bind(record.consecutive_failures as i64)
+        .bind(record.opened_at)
+        .bind(record.open_until)
+        .bind(record.updated_at)
+        .execute(&self.pool)
+        .await
+        .map_err(operation)?;
+        Ok(())
+    }
+
+    /// Load every persisted breaker row.
+    pub async fn circuit_load(&self) -> Result<Vec<StoredCircuitRecord>, StorageError> {
+        let rows = sqlx::query(
+            "SELECT provider, consecutive_failures, opened_at, open_until, updated_at
+             FROM provider_circuit
+             ORDER BY provider ASC",
+        )
+        .fetch_all(&self.pool)
+        .await
+        .map_err(operation)?;
+        Ok(rows
+            .into_iter()
+            .map(|row| StoredCircuitRecord {
+                provider: row.get("provider"),
+                consecutive_failures: row.get::<i64, _>("consecutive_failures").max(0) as u32,
+                opened_at: row.get("opened_at"),
+                open_until: row.get("open_until"),
+                updated_at: row.get("updated_at"),
+            })
+            .collect())
+    }
+
+    /// Forget every persisted breaker row.
+    pub async fn circuit_clear(&self) -> Result<u64, StorageError> {
+        let _write_guard = self.write_lock.lock().await;
+        Ok(sqlx::query("DELETE FROM provider_circuit")
+            .execute(&self.pool)
+            .await
+            .map_err(operation)?
+            .rows_affected())
+    }
+
     /// Count saved documents.
     pub async fn saved_document_count(&self) -> Result<i64, StorageError> {
         sqlx::query_scalar("SELECT COUNT(*) FROM saved_documents")
@@ -1017,12 +1087,17 @@ fn operation(_: sqlx::Error) -> StorageError {
     StorageError::Operation
 }
 
-async fn run_migrations(pool: &SqlitePool, db_path: &Path) -> Result<(), StorageError> {
+/// Apply pending migrations.
+///
+/// `db_path` is owned rather than borrowed on purpose: a `&Path` held across
+/// the migration awaits makes the resulting future's `Send` bound unprovable
+/// for callers in a generic position, such as the HTTP reload handler.
+async fn run_migrations(pool: SqlitePool, db_path: PathBuf) -> Result<(), StorageError> {
     let mut transaction = pool.begin().await.map_err(operation)?;
 
     // Check database version compatibility before any migration.
     let db_version: i64 = sqlx::query_scalar("PRAGMA user_version")
-        .fetch_one(&mut *transaction)
+        .fetch_one(transaction.as_mut())
         .await
         .map_err(operation)?;
     if db_version > MIGRATION_VERSION {
@@ -1039,7 +1114,7 @@ async fn run_migrations(pool: &SqlitePool, db_path: &Path) -> Result<(), Storage
            applied_at INTEGER NOT NULL
          )",
     )
-    .execute(&mut *transaction)
+    .execute(transaction.as_mut())
     .await
     .map_err(operation)?;
 
@@ -1070,6 +1145,11 @@ async fn run_migrations(pool: &SqlitePool, db_path: &Path) -> Result<(), Storage
             "request_id_telemetry",
             include_str!("../migrations/0005_request_id.sql"),
         ),
+        (
+            6_i64,
+            "provider_circuit",
+            include_str!("../migrations/0006_provider_circuit.sql"),
+        ),
     ]
     .into_iter()
     .filter(|(version, _, _)| *version > db_version)
@@ -1077,7 +1157,7 @@ async fn run_migrations(pool: &SqlitePool, db_path: &Path) -> Result<(), Storage
 
     // Create a backup before applying any pending migrations.
     if !pending.is_empty() {
-        backup_database(db_path)?;
+        backup_database(&db_path)?;
     }
 
     for (version, name, migration) in pending {
@@ -1085,12 +1165,12 @@ async fn run_migrations(pool: &SqlitePool, db_path: &Path) -> Result<(), Storage
             "SELECT version FROM amatl_schema_migrations WHERE version = ?",
         )
         .bind(version)
-        .fetch_optional(&mut *transaction)
+        .fetch_optional(transaction.as_mut())
         .await
         .map_err(operation)?;
         if applied.is_none() {
             sqlx::raw_sql(migration)
-                .execute(&mut *transaction)
+                .execute(transaction.as_mut())
                 .await
                 .map_err(operation)?;
             sqlx::query(
@@ -1099,7 +1179,7 @@ async fn run_migrations(pool: &SqlitePool, db_path: &Path) -> Result<(), Storage
             .bind(version)
             .bind(name)
             .bind(now_unix())
-            .execute(&mut *transaction)
+            .execute(transaction.as_mut())
             .await
             .map_err(operation)?;
         }

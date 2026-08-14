@@ -77,6 +77,15 @@ impl ProviderRegistry {
         self.factories.insert(factory.name().to_owned(), factory)
     }
 
+    /// Remove a factory, returning it when one was registered.
+    ///
+    /// Removing a factory does not disable the source on its own: the
+    /// configuration still declares it, and the service reports
+    /// `provider_not_registered` until a factory is registered again.
+    pub fn unregister(&mut self, name: &str) -> Option<Arc<dyn ProviderFactory>> {
+        self.factories.remove(name)
+    }
+
     pub fn get(&self, name: &str) -> Option<&Arc<dyn ProviderFactory>> {
         self.factories.get(name)
     }
@@ -226,5 +235,12 @@ mod tests {
         assert!(registry.contains("custom_archive"));
         assert!(registry.contains("brave"));
         assert!(ProviderRegistry::empty().names().is_empty());
+
+        // A source can also be withdrawn without rebuilding the registry.
+        let mut registry = registry;
+        assert!(registry.unregister("custom_archive").is_some());
+        assert!(!registry.contains("custom_archive"));
+        assert!(registry.unregister("custom_archive").is_none());
+        assert!(registry.contains("brave"));
     }
 }

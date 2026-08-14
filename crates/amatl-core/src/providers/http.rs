@@ -7,9 +7,39 @@ pub struct HttpRequest {
     pub(crate) url: Url,
     pub(crate) headers: Vec<(String, String)>,
     pub(crate) timeout_ms: u64,
+    /// Request body. `None` is a GET; `Some` is a POST with the declared
+    /// content type already present in `headers`.
+    pub(crate) body: Option<Vec<u8>>,
 }
 
 impl HttpRequest {
+    /// Read-only request, the shape every search provider uses.
+    pub fn get(url: Url, headers: Vec<(String, String)>, timeout_ms: u64) -> Self {
+        Self {
+            url,
+            headers,
+            timeout_ms,
+            body: None,
+        }
+    }
+
+    /// JSON POST, used by the governed remote inference backend.
+    pub fn post_json(
+        url: Url,
+        headers: Vec<(String, String)>,
+        timeout_ms: u64,
+        body: Vec<u8>,
+    ) -> Self {
+        let mut headers = headers;
+        headers.push(("content-type".into(), "application/json".into()));
+        Self {
+            url,
+            headers,
+            timeout_ms,
+            body: Some(body),
+        }
+    }
+
     pub fn sanitized_url(&self) -> Url {
         let mut url = self.url.clone();
         let sensitive = ["api_key", "key", "token"];
@@ -63,10 +93,11 @@ impl ReqwestTransport {
 #[async_trait]
 impl HttpTransport for ReqwestTransport {
     async fn execute(&self, request: HttpRequest) -> Result<HttpResponse, String> {
-        let mut builder = self
-            .client
-            .get(request.url)
-            .timeout(Duration::from_millis(request.timeout_ms));
+        let mut builder = match request.body {
+            Some(body) => self.client.post(request.url).body(body),
+            None => self.client.get(request.url),
+        }
+        .timeout(Duration::from_millis(request.timeout_ms));
         for (name, value) in request.headers {
             builder = builder.header(&name, &value);
         }
@@ -114,11 +145,11 @@ mod tests {
 
     #[test]
     fn sanitizes_secret_query_parameters() {
-        let request = HttpRequest {
-            url: Url::parse("https://example.com/?api_key=secret&q=rust").unwrap(),
-            headers: vec![],
-            timeout_ms: 10,
-        };
+        let request = HttpRequest::get(
+            Url::parse("https://example.com/?api_key=secret&q=rust").unwrap(),
+            vec![],
+            10,
+        );
         let visible = request.sanitized_url().to_string();
         assert!(!visible.contains("secret"));
         assert!(visible.contains("rust"));
@@ -141,11 +172,11 @@ mod tests {
         });
         let transport = ReqwestTransport::new(5).unwrap();
         let error = transport
-            .execute(HttpRequest {
-                url: Url::parse(&format!("http://{address}/")).unwrap(),
-                headers: vec![],
-                timeout_ms: 1_000,
-            })
+            .execute(HttpRequest::get(
+                Url::parse(&format!("http://{address}/")).unwrap(),
+                vec![],
+                1_000,
+            ))
             .await
             .unwrap_err();
         assert_eq!(error, "provider response exceeded byte limit");
@@ -191,11 +222,11 @@ mod tests {
         let secret = "never-leak-provider-key";
         let error = ReqwestTransport::new(1024)
             .unwrap()
-            .execute(HttpRequest {
-                url: Url::parse(&format!("https://localhost:{port}/?api_key={secret}")).unwrap(),
-                headers: vec![],
-                timeout_ms: 1_000,
-            })
+            .execute(HttpRequest::get(
+                Url::parse(&format!("https://localhost:{port}/?api_key={secret}")).unwrap(),
+                vec![],
+                1_000,
+            ))
             .await
             .unwrap_err();
         assert_eq!(error, "provider network request failed");

@@ -333,6 +333,7 @@ async fn document_cache_is_rights_gated_versioned_and_drops_body_by_default() {
             max_bytes: 10_000,
             store_content: false,
             stale_while_revalidate_seconds: 0,
+            model_version: None,
         },
     );
     let mut deep = DeepOrchestrator::new(

@@ -59,6 +59,8 @@ pub enum ErrorCode {
     RankingBackendUnavailable,
     /// Persistent storage is unavailable; degraded operation continues.
     StorageUnavailable,
+    /// Caller cancelled the request before it completed.
+    RequestCancelled,
     /// Response could not be serialized for the surface.
     SerializationFailed,
     /// Unclassified internal failure.
@@ -66,7 +68,7 @@ pub enum ErrorCode {
 }
 
 /// Every code in the catalog, in declaration order.
-pub const ERROR_CATALOG: [ErrorCode; 26] = [
+pub const ERROR_CATALOG: [ErrorCode; 27] = [
     ErrorCode::InvalidRequest,
     ErrorCode::InvalidQuery,
     ErrorCode::InvalidUrl,
@@ -91,6 +93,7 @@ pub const ERROR_CATALOG: [ErrorCode; 26] = [
     ErrorCode::InferenceUnavailable,
     ErrorCode::RankingBackendUnavailable,
     ErrorCode::StorageUnavailable,
+    ErrorCode::RequestCancelled,
     ErrorCode::SerializationFailed,
     ErrorCode::InternalError,
 ];
@@ -123,6 +126,7 @@ impl ErrorCode {
             Self::InferenceUnavailable => "inference_unavailable",
             Self::RankingBackendUnavailable => "ranking_backend_unavailable",
             Self::StorageUnavailable => "storage_unavailable",
+            Self::RequestCancelled => "request_cancelled",
             Self::SerializationFailed => "serialization_failed",
             Self::InternalError => "internal_error",
         }
@@ -135,6 +139,9 @@ impl ErrorCode {
             Self::Unauthorized => 401,
             Self::InvalidOrigin | Self::EgressDenied | Self::ProviderNetworkBlocked => 403,
             Self::NotFound => 404,
+            // 499 is the conventional "client closed request"; MCP renders it
+            // as a tool error rather than a transport status.
+            Self::RequestCancelled => 499,
             Self::BodyTooLarge => 413,
             Self::HeadersTooLarge => 431,
             Self::RateLimited => 429,
@@ -182,6 +189,7 @@ impl ErrorCode {
             Self::InferenceUnavailable => "required inference backend is unavailable",
             Self::RankingBackendUnavailable => "optional ranking backend is unavailable",
             Self::StorageUnavailable => "persistent storage is unavailable",
+            Self::RequestCancelled => "request was cancelled by the caller",
             Self::SerializationFailed => "response could not be serialized",
             Self::InternalError => "internal failure",
         }
