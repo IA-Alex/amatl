@@ -2,22 +2,36 @@
 
 ## Snapshot verificable
 
-Estado revisado el **2026-08-13** sobre la rama `main`:
+Estado revisado el **2026-08-14** sobre la rama `consolidacion-ui-observabilidad`:
 
-- revisión funcional documentada: `2b9baa9` (`feat: expose Deep evidence in the UI`);
+- último commit: `71637d3` (`docs: record what each search provider actually costs and offers`);
 - baseline de implementación: tag `baseline-fases-0-9`, commit `51c6d34`;
 - workspace: Rust 2021, MSRV 1.88, versión candidata `0.1.0-rc.1`, cuatro crates;
 - fases 0–9: cerradas y verificadas;
 - publicación SemVer: RC actual `0.1.0-rc.1`; estado externo verificable en GitHub Releases;
 - Fase 10: no existe en el golden template y no debe inferirse.
 
-Los documentos rectores permanecen intactos:
+Commits de esta rama sobre `ce99222`:
 
-| Documento | SHA-256 verificado |
+| Commit | Alcance |
 |---|---|
-| `plan_amatl.md` | `c8545d7bacb9f17131e7b901693a035e038532c0836f93df6eb9c78858d5309c` |
-| `fase_a_contratos.md` | `03034b7abfbcfaba3da7ada7b43267ed38936ff09453326cd9db40b2cede4744` |
-| `decisiones_amatl.md` | `52f465d22cf64fc18f62a5ef89617e3e9456dbba8b19080f426fa4c094d50d18` |
+| `56c5ec1` | Backups durables, extracción acotada y reranker por defecto medido |
+| `1658a02` | Publicación en crates.io y AUR sólo en tags estables |
+| `bd266cc` | Renderer Chromium conectado a través del harness de aislamiento |
+| `71637d3` | Coste y viabilidad real de cada provider (sólo documentación) |
+
+Estado de los documentos rectores:
+
+| Documento | SHA-256 | Estado |
+|---|---|---|
+| `plan_amatl.md` | `0fdd6761cb8c568145d6e00dfa0d37d56d68b02239bac8a92c061d4fb4b9ae11` | **Modificado** en `56c5ec1` |
+| `fase_a_contratos.md` | `03034b7abfbcfaba3da7ada7b43267ed38936ff09453326cd9db40b2cede4744` | Intacto |
+| `decisiones_amatl.md` | `52f465d22cf64fc18f62a5ef89617e3e9456dbba8b19080f426fa4c094d50d18` | Intacto |
+
+`plan_amatl.md` declaraba `Evidence` y `Gap` como «stub post-MVP» cuando
+`evidence.rs` (527 líneas) y `gaps.rs` (513) llevaban implementados desde la
+fase 5. La corrección alinea el documento con el código; la normativa original
+se conserva como registro.
 
 ## Jerarquía para retomar trabajo
 
@@ -133,8 +147,25 @@ Invariantes no negociables:
   binario de Chromium.
 - Persistencia y ambas cachés están deshabilitadas por defecto. Un fallo de
   SQLite no invalida Search.
-- `/health` sólo comprueba proceso/router; no prueba providers, SQLite ni
-  credenciales.
+- `/health` es la sonda de *liveness*: sólo comprueba proceso/router y devuelve
+  `200` siempre. Es deliberado, porque un orquestador la usa para decidir si
+  reinicia el proceso.
+- `/ready` es la sonda de *readiness*, también pública: `200` cuando la
+  instancia puede servir tráfico útil y `503` cuando está degradada. El cuerpo
+  es agregado a propósito (`status`, `storage_ok`, `sources_available`); los
+  nombres de fuentes y códigos internos siguen sólo en `GET /status`, que exige
+  scope `read`.
+- Los backups se escriben con `VACUUM INTO`, de modo que la copia es
+  transaccionalmente consistente y ya está checkpointeada: no arrastra `-wal` y
+  se restaura tal cual. La verificación abre la copia en solo lectura. `db
+  backups` lista los tres formatos —automático, de migración y de
+  pre-restauración— y la rotación sólo borra los automáticos.
+- El reranker de Deep por defecto es **léxico**, no de embeddings. Sobre el
+  corpus etiquetado, la similitud coseno entre feature hashes de
+  `local_hashing_v1` puntúa peor que la cobertura léxica (nDCG@3 0,925 frente a
+  1,000); la medición vive como test en `ranking_v2::reranker_measurement`. El
+  reranker de embeddings sólo se elige con un backend de modelo real, y nunca
+  con uno remoto, que enviaría el texto de cada documento candidato a un tercero.
 - `provider-canary` aísla una fuente real y valida enablement, gobernanza y
   credencial antes de red; su workflow sólo puede iniciarse manualmente bajo un
   environment aprobado.
@@ -156,15 +187,39 @@ La compuerta completa requerida para la candidata es:
 cargo fmt --all -- --check
 cargo test --workspace
 cargo check --workspace --benches
-cargo clippy --workspace --all-targets -- -D warnings
+cargo clippy --workspace --all-targets --all-features -- -D warnings
+RUSTDOCFLAGS="-D warnings" cargo doc --workspace --no-deps --locked
 cargo audit
 cargo deny check
 cargo cyclonedx
 ```
 
-Resultados locales registrados el 2026-08-13:
+Fuera de la compuerta por push, con sus propios disparadores:
 
-- 190 pruebas aprobadas en el workspace;
+```bash
+# nocturno o workflow_dispatch
+cargo test -p amatl-server --test soak -- --ignored
+
+# requiere chromedriver escuchando
+AMATL_BROWSER_E2E=1 cargo test -p amatl-server --test browser_e2e -- --test-threads=1
+
+# requiere bwrap, systemd-run, Chromium y user namespaces
+AMATL_CHROMIUM_INTEGRATION=1 cargo test -p amatl-core --test deep_phase5 -- --test-threads=1
+```
+
+Resultados locales registrados el 2026-08-14:
+
+- **338 pruebas aprobadas** en el workspace, 0 fallos, 1 ignorada (soak, que
+  corre en su propio job);
+- soak ejecutado aparte: 160 655 peticiones, **0 errores**, p95 1,6 ms. Antes
+  reportaba un 33 % de error constante —todas las peticiones MCP— que pasó
+  inadvertido porque ningún workflow lo ejecutaba;
+- 4 pruebas E2E de navegador contra Chrome real vía WebDriver;
+- integración Chromium verificada contra el harness real: los scripts se
+  ejecutan y mutan el DOM, y una página renderizada **no** alcanza un listener
+  en loopback, con guarda de no vacuidad;
+- `cargo doc` sin avisos sobre los cuatro crates;
+- 190 pruebas aprobadas en el workspace (registro del 2026-08-13);
 - pruebas de UI verifican despacho POST Search/Deep, DOM seguro, límites,
   correlación de procedencia, uso de Web Crypto y ausencia de superficie local;
 - prueba de servidor verifica autenticación y contrato `POST /deep` bajo perfil
@@ -266,12 +321,40 @@ introducido debe ser el mismo valor exportado en `AMATL_SERVER_TOKEN`.
 
 ## Próximo hito seguro
 
-El siguiente paso técnico no es crear una Fase 10 ni cambiar contratos: es pasar
-a pulido verificable de la interfaz sobre la superficie ya funcional. Debe
-añadir pruebas browser E2E para Search/Deep, navegación por teclado,
-accesibilidad automatizada, estados vacío/superficial/degradado y revisión
-visual responsiva; después puede afinar jerarquía, densidad y legibilidad sin
-introducir lógica de producto en `amatl-ui`.
+El hito anterior —pruebas browser E2E— **está cumplido**: `browser_e2e.rs`
+ejercita Search, navegación por teclado, estado vacío y viewport estrecho contra
+Chrome real, con su job en `ci.yml`. Queda pendiente de ese bloque la
+accesibilidad automatizada: axe-core exige inyectar un script y eso choca con la
+CSP `script-src 'self'` que el propio crate `amatl-ui` asegura por test.
+Inyectarlo vía `execute_script` de WebDriver evita instalar Node, pero hay que
+verificar que no obliga a relajar la CSP.
+
+**El siguiente paso real es conectar una fuente de búsqueda.** Es hoy la única
+capacidad declarada que no existe: el core agrega, deduplica, rankea y tolera
+fallos parciales, pero no recibe nada que agregar. No es una Fase 10 ni un
+cambio de contrato; es escribir un `ProviderFactory` y su ficha.
+
+Decisión tomada el 2026-08-14, pendiente de ejecución:
+
+1. **SearXNG autohospedado como fuente principal.** Gratis, sin cuota, con
+   cobertura amplia porque agrega varios motores. Requiere un fichero nuevo en
+   `providers/` y resolver la URL de la instancia, para la que
+   `ProviderRuntimeConfig` no tiene campo.
+2. **Brave como segunda ronda, no como principal.** El router ya expande a más
+   fuentes sólo si la cobertura de la primera ronda es insuficiente, de modo que
+   Brave consumiría cuota en una minoría de búsquedas. Su adapter está completo
+   y verificado (366 líneas, endpoint y parseo correctos): no requiere
+   implementación, sólo ficha y credencial.
+3. **No contratar Brave hasta medir.** Su crédito mensual de 5 USD cubre unas
+   1 000 peticiones, y una búsqueda de AMATL consume entre 1 y 7 según
+   `budget.max_provider_calls` y la expansión de Deep. La decisión de pagar debe
+   tomarse con datos de uso propios, no con estimaciones.
+4. **Hueco conocido:** el router ordena por salud y latencia, no por coste. Sin
+   un criterio de prioridad por coste, un mal día de SearXNG puede poner a Brave
+   en primera ronda. Son unas 20 líneas en `router.rs`.
+
+Contexto de coste y viabilidad de cada fuente: sección «Viabilidad y coste» de
+`docs/gobernanza-providers.md`.
 
 En paralelo, los controles externos de GitHub, gobernanza/credenciales del
 environment y canario real continúan como decisiones del propietario. No
