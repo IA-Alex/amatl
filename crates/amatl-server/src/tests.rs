@@ -301,6 +301,17 @@ impl Write for LogWriter {
     }
 }
 
+/// Serializes the tests that assert on captured logs.
+///
+/// The capture buffer is process-wide: without this guard two log-asserting
+/// tests running in parallel clear each other's events and fail spuriously.
+async fn security_log_guard() -> tokio::sync::MutexGuard<'static, ()> {
+    static LOCK: OnceLock<tokio::sync::Mutex<()>> = OnceLock::new();
+    LOCK.get_or_init(|| tokio::sync::Mutex::new(()))
+        .lock()
+        .await
+}
+
 fn security_logs() -> Arc<Mutex<Vec<u8>>> {
     static CAPTURED: OnceLock<Arc<Mutex<Vec<u8>>>> = OnceLock::new();
     static INSTALL: Once = Once::new();
@@ -329,6 +340,7 @@ fn security_logs() -> Arc<Mutex<Vec<u8>>> {
 
 #[tokio::test]
 async fn rejected_requests_emit_secret_safe_security_events() {
+    let _serialized = security_log_guard().await;
     let captured = security_logs();
     captured
         .lock()
@@ -366,6 +378,7 @@ async fn rejected_requests_emit_secret_safe_security_events() {
 
 #[tokio::test]
 async fn mcp_ssrf_rejection_is_correlated_without_logging_the_url() {
+    let _serialized = security_log_guard().await;
     let captured = security_logs();
     captured
         .lock()
