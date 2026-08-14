@@ -369,7 +369,9 @@ async fn main() -> anyhow::Result<()> {
         Command::Config => {
             println!("config_file = {}", cli.config_file.display());
             print_data_policy(&config);
+            println!("providers.declared = {:?}", config.providers.names());
             println!("providers.enabled = {:?}", config.providers.enabled);
+            println!("inference.backend = {}", config.inference.backend);
             println!("timeouts.provider_ms = {}", config.timeouts.provider_ms);
             println!("timeouts.global_ms = {}", config.timeouts.global_ms);
             println!(
@@ -401,6 +403,7 @@ async fn main() -> anyhow::Result<()> {
             println!("core: ok");
             print_data_policy(&config);
             print_providers(&config).await?;
+            doctor_inference(&config).await;
             doctor_persistence(&config).await;
             doctor_extractor(&config).await;
             doctor_server(&config);
@@ -459,7 +462,7 @@ async fn provider_canary(
     isolated.providers.enabled = vec![provider.clone()];
     let execution = AmatlService::new(isolated, false)
         .await
-        .search(query, ServiceSurface::Cli)
+        .search(query, ServiceSurface::cli())
         .await?;
     if execution.response.status == amatl_core::SearchStatus::Failure
         || !execution.response.providers_used.contains(&provider)
@@ -521,6 +524,23 @@ fn doctor_server(config: &Config) {
     );
 }
 
+async fn doctor_inference(config: &Config) {
+    let ranking = &config.deep.ranking_v2.policy;
+    let required = config.deep.ranking_v2.enabled
+        && (ranking.weight_semantic > 0.0 || ranking.weight_reranker > 0.0);
+    match AmatlService::new(config.clone(), false)
+        .await
+        .inference_backend()
+    {
+        Some(backend) => println!("inference: ready ({backend}, required={required})"),
+        None if required => println!(
+            "inference: unavailable ({}); ranking would degrade to lexical signals",
+            config.data_policy.inference.as_str()
+        ),
+        None => println!("inference: {}", config.data_policy.inference.as_str()),
+    }
+}
+
 async fn doctor_extractor(config: &Config) {
     let extractor = TrafilaturaExtractor::new(
         config.deep.extractor.executable.clone(),
@@ -537,7 +557,7 @@ async fn doctor_extractor(config: &Config) {
 async fn search(raw_query: String, json: bool, mock: bool, config: &Config) -> anyhow::Result<()> {
     let execution = AmatlService::new(config.clone(), mock)
         .await
-        .search(raw_query, ServiceSurface::Cli)
+        .search(raw_query, ServiceSurface::cli())
         .await?;
     let failed = execution.response.status == amatl_core::SearchStatus::Failure;
     print_search(execution.response, json)?;
@@ -577,7 +597,7 @@ fn print_search(response: SearchResponse, json: bool) -> anyhow::Result<()> {
 async fn deep(raw_query: String, json: bool, mock: bool, config: &Config) -> anyhow::Result<()> {
     let deep = AmatlService::new(config.clone(), mock)
         .await
-        .deep(raw_query, ServiceSurface::Cli)
+        .deep(raw_query, ServiceSurface::cli())
         .await?;
     if json {
         println!("{}", serde_json::to_string_pretty(&deep)?);
@@ -739,6 +759,7 @@ async fn cache_command(config: &Config, purge: bool) {
             max_entries: config.cache.document.max_entries,
             max_bytes: config.cache.document.max_bytes,
             store_content: config.cache.document.store_content,
+            stale_while_revalidate_seconds: config.cache.document.stale_while_revalidate_seconds,
         },
     );
     if purge {
@@ -789,7 +810,9 @@ async fn doctor_persistence(config: &Config) {
         }
     );
     if config.telemetry.persistence_enabled {
-        let telemetry = InMemoryTelemetry::with_optional_storage(storage).await;
+        let telemetry =
+            InMemoryTelemetry::with_storage_and_retention(storage, config.telemetry.retention_days)
+                .await;
         let snapshots = telemetry.snapshots(amatl_core::telemetry::now_unix());
         if snapshots.is_empty() {
             println!("provider health: Bootstrap (no persisted samples)");

@@ -3,7 +3,7 @@ use amatl_core::{
     DeepRequest, DocumentCache, DocumentCachePolicy, DocumentStatus, ExtractError,
     ExtractionResult, Extractor, FetchError, FetchRequest, FetchResult, Fetcher, GapAnalyzer,
     GapPolicyV1, OriginalUrl, Rank, RankingV2Engine, RankingV2Policy, RankingV2Status, RenderError,
-    RenderResult, Renderer, ResultStatus, SearchResponse, SearchResult, SearchStatus,
+    RenderResult, Renderer, RendererPool, ResultStatus, SearchResponse, SearchResult, SearchStatus,
     SqliteStorage, SubQueryExecutionError, SubQueryExecutor, SubQueryStatus, SCHEMA_VERSION,
 };
 use async_trait::async_trait;
@@ -75,6 +75,9 @@ impl SubQueryExecutor for FixedSubQueryExecutor {
             errors: vec![],
             degradations: vec![],
             elapsed_ms: 1,
+            total_results: None,
+            page: None,
+            page_size: None,
         })
     }
 }
@@ -141,7 +144,7 @@ fn orchestrator(
             version: "fixed-v1",
             result: extraction,
         }),
-        Arc::new(NoRenderer),
+        RendererPool::new(Arc::new(NoRenderer), 1),
         None,
         1000,
         1024,
@@ -329,6 +332,7 @@ async fn document_cache_is_rights_gated_versioned_and_drops_body_by_default() {
             max_entries: 10,
             max_bytes: 10_000,
             store_content: false,
+            stale_while_revalidate_seconds: 0,
         },
     );
     let mut deep = DeepOrchestrator::new(
@@ -338,7 +342,7 @@ async fn document_cache_is_rights_gated_versioned_and_drops_body_by_default() {
             version: "fixed-v1",
             result: Ok(extraction_ok()),
         }),
-        Arc::new(NoRenderer),
+        RendererPool::new(Arc::new(NoRenderer), 1),
         Some(cache.clone()),
         1000,
         1024,

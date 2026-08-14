@@ -27,6 +27,18 @@ texto; con perfil `isolated` se mostrará una degradación sin documentos porque
 la red se niega antes de DNS. No existe selector de archivos: usa `amatl ingest`
 para evidencia local.
 
+La UI muestra además tres paneles laterales que consumen superficies locales y
+sólo aparecen cuando el servidor responde a ellas con el bearer cargado:
+**Estado del servicio** (`GET /status`), **Historial de búsquedas**
+(`GET/DELETE /history`, `DELETE /history/{id}`) y **Documentos guardados**
+(`GET/POST /saved`, `DELETE /saved/{id}`). Historial y guardados requieren
+`persistence.enabled`; sin persistencia esas rutas responden
+`storage_unavailable` (503) y los paneles quedan ocultos. El historial registra
+la consulta ejecutada, la superficie de origen y los totales; se borra por
+entrada o completo desde la propia UI, y nunca sale de la máquina. La
+paginación de resultados es exclusivamente del servidor: la UI envía `page` y
+`page_size` y no vuelve a recortar la lista recibida.
+
 ### Perfil aislado para ejercicios confidenciales
 
 No requiere API key. Configura:
@@ -84,7 +96,40 @@ reporte; el operador debe leer cada línea.
 Toda respuesta de aplicación incluye `X-Request-ID`. AMATL genera uno nuevo en
 el borde HTTP y no confía en un header homónimo recibido. Conserva ese valor al
 reportar un incidente: los eventos HTTP, routing y SSRF ejecutados dentro de la
-solicitud comparten el mismo contexto.
+solicitud comparten el mismo contexto. Ese identificador también viaja hacia
+adentro: cada llamada saliente a un provider (`amatl::providers`) y cada fetch
+del pipeline Deep (`amatl::fetch`) se ejecuta dentro de un span que lo declara,
+de modo que una sola búsqueda en logs reconstruye la solicitud completa. El
+identificador nunca se envía al provider ni al origen remoto: sólo etiqueta la
+traza local. Las superficies MCP generan el suyo por llamada a herramienta.
+
+`GET /status` (con bearer) resume el estado operativo en JSON: disponibilidad y
+valor observado por fuente, estado de la persistencia local —versión de
+migración, entradas de historial y documentos guardados— y efectividad de las
+cachés. Devuelve `status: degraded` cuando alguna fuente declarada no está
+disponible o cuando la persistencia está habilitada pero no es usable.
+
+### Métricas
+
+`GET /metrics` es público, como `/health`, y expone formato de exposición
+Prometheus 0.0.4:
+
+| Métrica | Tipo | Significado |
+|---|---|---|
+| `amatl_search_requests_total`, `amatl_deep_requests_total` | counter | solicitudes recibidas por superficie |
+| `amatl_search_errors_total`, `amatl_deep_errors_total` | counter | solicitudes que terminaron en error |
+| `amatl_rate_limited_total`, `amatl_unauthorized_total`, `amatl_request_timeout_total` | counter | rechazos del borde HTTP |
+| `amatl_search_latency_ms`, `amatl_deep_latency_ms` | gauge | p50/p95/p99 sobre las últimas 1024 solicitudes de esa superficie |
+| `amatl_search_latency_samples`, `amatl_deep_latency_samples` | gauge | muestras retenidas en la ventana |
+| `amatl_source_available{source}` | gauge | 1 si la fuente declarada está disponible |
+| `amatl_source_success_rate{source}`, `amatl_source_latency_ms{source}` | gauge | valor observado por fuente; sólo aparecen con muestras |
+| `amatl_cache_hits_total{cache}`, `amatl_cache_misses_total{cache}`, `amatl_cache_hit_rate{cache}` | counter/gauge | reuso de la caché de búsqueda y de documentos |
+| `amatl_storage_available` | gauge | 1 si la persistencia local es usable |
+
+Los contadores son monótonos y se reinician con el proceso; las cuantías de
+latencia describen sólo la ventana retenida. Los nombres de fuente aparecen
+como valores de etiqueta: si esos nombres son sensibles en tu despliegue, no
+expongas el puerto fuera del host.
 
 ## Estados y degradaciones
 

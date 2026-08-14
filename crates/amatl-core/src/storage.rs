@@ -6,7 +6,7 @@ use std::sync::Arc;
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 use thiserror::Error;
 
-pub const MIGRATION_VERSION: i64 = 2;
+pub const MIGRATION_VERSION: i64 = 5;
 const POOL_SIZE: u32 = 4;
 
 #[derive(Clone)]
@@ -45,6 +45,47 @@ pub struct StoredTelemetryObservation {
     pub top_k_contribution: f64,
     pub diversity: f64,
     pub cost_units: u64,
+    pub request_id: Option<String>,
+}
+
+/// A recorded search in the user's history.
+#[derive(Clone, Debug, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub struct SearchHistoryEntry {
+    pub id: i64,
+    pub normalized_query: String,
+    pub raw_query: String,
+    pub category: Option<String>,
+    pub provider_count: i64,
+    pub total_results: i64,
+    pub deep_fetches: i64,
+    pub created_at: i64,
+    pub surface: String,
+}
+
+/// A saved document persisted for cross-session reuse.
+#[derive(Clone, Debug, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub struct SavedDocument {
+    pub id: i64,
+    pub canonical_url: String,
+    pub title: Option<String>,
+    pub snippet: Option<String>,
+    pub content_hash: String,
+    pub extractor_version: String,
+    pub payload: String,
+    pub size_bytes: i64,
+    pub saved_at: i64,
+    pub source_query: Option<String>,
+    pub tags: String,
+}
+
+/// Result of a conditional document cache lookup.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct CachedDocument {
+    pub payload: String,
+    pub etag: Option<String>,
+    pub last_modified: Option<String>,
+    /// Whether the cached entry is still within its fresh TTL window.
+    pub fresh: bool,
 }
 
 #[derive(Debug, Error)]
@@ -55,6 +96,8 @@ pub enum StorageError {
     Operation,
     #[error("SQLite database was quarantined as corrupt")]
     Corrupt { quarantine_path: PathBuf },
+    #[error("database version {db_version} is newer than code version {code_version}; downgrade is not supported")]
+    IncompatibleVersion { db_version: i64, code_version: i64 },
 }
 
 impl SqliteStorage {
@@ -93,7 +136,7 @@ impl SqliteStorage {
             return quarantine(&path);
         }
 
-        run_migrations(&pool).await?;
+        run_migrations(&pool, &path).await?;
         Ok(Self {
             pool,
             path,
@@ -122,6 +165,108 @@ impl SqliteStorage {
                 .map_err(|_| StorageError::Operation)?,
             pool_size: POOL_SIZE,
         })
+    }
+
+    /// Run a downgrade migration to the specified target version.
+    ///
+    /// This is a destructive operation that should only be used when rolling back
+    /// to an older version of the application. A backup is created automatically
+    /// before the downgrade is applied.
+    pub async fn downgrade_to(&self, target_version: i64) -> Result<(), StorageError> {
+        let current: i64 = sqlx::query_scalar("PRAGMA user_version")
+            .fetch_one(&self.pool)
+            .await
+            .map_err(operation)?;
+        if target_version >= current {
+            return Err(StorageError::Operation);
+        }
+        if !(0..MIGRATION_VERSION).contains(&target_version) {
+            return Err(StorageError::Operation);
+        }
+
+        backup_database(&self.path)?;
+
+        let _write_guard = self.write_lock.lock().await;
+        for version in (target_version + 1..=current).rev() {
+            let script = match version {
+                4 => include_str!("../migrations/downgrade/0004_to_0003.sql"),
+                3 => include_str!("../migrations/downgrade/0003_to_0002.sql"),
+                2 => include_str!("../migrations/downgrade/0002_to_0001.sql"),
+                _ => continue,
+            };
+            let mut transaction = self.pool.begin().await.map_err(operation)?;
+            sqlx::raw_sql(script)
+                .execute(&mut *transaction)
+                .await
+                .map_err(operation)?;
+            sqlx::query("DELETE FROM amatl_schema_migrations WHERE version = ?")
+                .bind(version)
+                .execute(&mut *transaction)
+                .await
+                .map_err(operation)?;
+            transaction.commit().await.map_err(operation)?;
+        }
+        Ok(())
+    }
+
+    /// Restore the database from a backup file.
+    ///
+    /// This closes the current pool, replaces the database file with the backup,
+    /// and reopens the pool. The caller must obtain a new `SqliteStorage` handle
+    /// after this operation.
+    pub async fn restore_from_backup(
+        path: impl AsRef<Path>,
+        backup_path: impl AsRef<Path>,
+    ) -> Result<Self, StorageError> {
+        let path = path.as_ref();
+        let backup_path = backup_path.as_ref();
+
+        if !backup_path.exists() {
+            return Err(StorageError::Open);
+        }
+
+        // Verify the backup is a valid SQLite database.
+        quarantine_if_header_is_invalid(backup_path)?;
+
+        // Create a safety backup of the current file if it exists.
+        if path.exists() {
+            let safety_path = path.with_extension(format!(
+                "pre-restore-{}.sqlite3",
+                SystemTime::now()
+                    .duration_since(UNIX_EPOCH)
+                    .map_or(0, |d| d.as_secs())
+            ));
+            std::fs::copy(path, &safety_path).map_err(|_| StorageError::Operation)?;
+        }
+
+        // Replace the database file with the backup.
+        std::fs::copy(backup_path, path).map_err(|_| StorageError::Operation)?;
+
+        // Open with the restored file.
+        Self::open(path).await
+    }
+
+    /// List available backup files for a database path.
+    pub fn list_backups(db_path: &Path) -> Result<Vec<PathBuf>, StorageError> {
+        let dir = db_path.parent().unwrap_or(Path::new("."));
+        let stem = db_path
+            .file_stem()
+            .and_then(|s| s.to_str())
+            .unwrap_or("amatl");
+        let mut backups: Vec<PathBuf> = std::fs::read_dir(dir)
+            .map_err(|_| StorageError::Operation)?
+            .filter_map(|entry| entry.ok())
+            .map(|entry| entry.path())
+            .filter(|p| {
+                p.is_file()
+                    && p.file_name().and_then(|n| n.to_str()).is_some_and(|name| {
+                        name.starts_with(stem)
+                            && (name.contains("backup-") || name.contains("pre-restore-"))
+                    })
+            })
+            .collect();
+        backups.sort();
+        Ok(backups)
     }
 
     pub(crate) async fn cache_get(
@@ -349,6 +494,71 @@ impl SqliteStorage {
         Ok(payload)
     }
 
+    /// Get a cached document with its revalidation headers.
+    ///
+    /// Returns the payload along with any stored ETag and Last-Modified values
+    /// so the caller can perform conditional revalidation against the origin.
+    pub(crate) async fn document_cache_get_with_revalidation(
+        &self,
+        canonical_url: &str,
+        content_hash: &str,
+        extractor_version: &str,
+        now: i64,
+        ttl_seconds: u64,
+        stale_while_revalidate_seconds: u64,
+    ) -> Result<Option<CachedDocument>, StorageError> {
+        let _write_guard = self.write_lock.lock().await;
+        let mut transaction = self.pool.begin().await.map_err(operation)?;
+        let fresh_cutoff = now.saturating_sub(ttl_seconds as i64);
+        let stale_cutoff =
+            now.saturating_sub((ttl_seconds + stale_while_revalidate_seconds) as i64);
+
+        let row = sqlx::query(
+            "SELECT payload, etag, last_modified, created_at FROM document_cache
+             WHERE canonical_url = ? AND content_hash = ? AND extractor_version = ?
+               AND created_at >= ?
+             ORDER BY created_at DESC LIMIT 1",
+        )
+        .bind(canonical_url)
+        .bind(content_hash)
+        .bind(extractor_version)
+        .bind(stale_cutoff)
+        .fetch_optional(&mut *transaction)
+        .await
+        .map_err(operation)?;
+
+        let Some(row) = row else {
+            return Ok(None);
+        };
+
+        let payload: String = row.get("payload");
+        let etag: Option<String> = row.get("etag");
+        let last_modified: Option<String> = row.get("last_modified");
+        let created_at: i64 = row.get("created_at");
+
+        // Update last_accessed for LRU tracking.
+        sqlx::query(
+            "UPDATE document_cache SET last_accessed = ?
+             WHERE canonical_url = ? AND content_hash = ? AND extractor_version = ?",
+        )
+        .bind(now)
+        .bind(canonical_url)
+        .bind(content_hash)
+        .bind(extractor_version)
+        .execute(&mut *transaction)
+        .await
+        .map_err(operation)?;
+
+        transaction.commit().await.map_err(operation)?;
+
+        Ok(Some(CachedDocument {
+            payload,
+            etag,
+            last_modified,
+            fresh: created_at >= fresh_cutoff,
+        }))
+    }
+
     #[allow(clippy::too_many_arguments)]
     pub(crate) async fn document_cache_put(
         &self,
@@ -360,16 +570,20 @@ impl SqliteStorage {
         ttl_seconds: u64,
         max_entries: u64,
         max_bytes: u64,
+        etag: Option<&str>,
+        last_modified: Option<&str>,
     ) -> Result<(), StorageError> {
         let _write_guard = self.write_lock.lock().await;
         let mut transaction = self.pool.begin().await.map_err(operation)?;
         sqlx::query(
             "INSERT INTO document_cache
-             (canonical_url, content_hash, extractor_version, payload, size_bytes, created_at, last_accessed)
-             VALUES (?, ?, ?, ?, ?, ?, ?)
+             (canonical_url, content_hash, extractor_version, payload, size_bytes,
+              created_at, last_accessed, etag, last_modified)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
              ON CONFLICT(canonical_url, content_hash, extractor_version) DO UPDATE SET
                payload = excluded.payload, size_bytes = excluded.size_bytes,
-               created_at = excluded.created_at, last_accessed = excluded.last_accessed",
+               created_at = excluded.created_at, last_accessed = excluded.last_accessed,
+               etag = excluded.etag, last_modified = excluded.last_modified",
         )
         .bind(canonical_url)
         .bind(content_hash)
@@ -378,6 +592,8 @@ impl SqliteStorage {
         .bind(payload.len() as i64)
         .bind(now)
         .bind(now)
+        .bind(etag)
+        .bind(last_modified)
         .execute(&mut *transaction)
         .await
         .map_err(operation)?;
@@ -447,8 +663,9 @@ impl SqliteStorage {
         sqlx::query(
             "INSERT INTO telemetry_observations
              (observed_at, provider, category, outcome, latency_ms, total_results,
-              unique_results, duplicate_ratio, top_k_contribution, diversity, cost_units)
-             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+              unique_results, duplicate_ratio, top_k_contribution, diversity, cost_units,
+              request_id)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         )
         .bind(observation.observed_at)
         .bind(&observation.provider)
@@ -461,6 +678,7 @@ impl SqliteStorage {
         .bind(observation.top_k_contribution)
         .bind(observation.diversity)
         .bind(observation.cost_units as i64)
+        .bind(&observation.request_id)
         .execute(&self.pool)
         .await
         .map_err(operation)?;
@@ -473,7 +691,8 @@ impl SqliteStorage {
     ) -> Result<Vec<StoredTelemetryObservation>, StorageError> {
         let rows = sqlx::query(
             "SELECT observed_at, provider, category, outcome, latency_ms, total_results,
-                    unique_results, duplicate_ratio, top_k_contribution, diversity, cost_units
+                    unique_results, duplicate_ratio, top_k_contribution, diversity, cost_units,
+                    request_id
              FROM telemetry_observations WHERE observed_at >= ?
              ORDER BY observed_at ASC, id ASC",
         )
@@ -495,6 +714,7 @@ impl SqliteStorage {
                 top_k_contribution: row.get("top_k_contribution"),
                 diversity: row.get("diversity"),
                 cost_units: row.get::<i64, _>("cost_units").max(0) as u64,
+                request_id: row.get("request_id"),
             })
             .collect())
     }
@@ -510,13 +730,285 @@ impl SqliteStorage {
                 .rows_affected(),
         )
     }
+
+    // ── Domain persistence: search history ──────────────────────────────
+
+    /// Record a search in the history.
+    #[allow(clippy::too_many_arguments)]
+    pub async fn search_history_insert(
+        &self,
+        normalized_query: &str,
+        raw_query: &str,
+        category: Option<&str>,
+        provider_count: i64,
+        total_results: i64,
+        deep_fetches: i64,
+        surface: &str,
+    ) -> Result<i64, StorageError> {
+        let _write_guard = self.write_lock.lock().await;
+        let now = now_unix();
+        let id = sqlx::query(
+            "INSERT INTO search_history
+               (normalized_query, raw_query, category, provider_count, total_results,
+                deep_fetches, created_at, surface)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        )
+        .bind(normalized_query)
+        .bind(raw_query)
+        .bind(category)
+        .bind(provider_count)
+        .bind(total_results)
+        .bind(deep_fetches)
+        .bind(now)
+        .bind(surface)
+        .execute(&self.pool)
+        .await
+        .map_err(operation)?
+        .last_insert_rowid();
+        Ok(id)
+    }
+
+    /// List recent search history entries, newest first.
+    pub async fn search_history_list(
+        &self,
+        limit: i64,
+        offset: i64,
+    ) -> Result<Vec<SearchHistoryEntry>, StorageError> {
+        let rows = sqlx::query(
+            "SELECT id, normalized_query, raw_query, category, provider_count,
+                    total_results, deep_fetches, created_at, surface
+             FROM search_history
+             ORDER BY created_at DESC, id DESC
+             LIMIT ? OFFSET ?",
+        )
+        .bind(limit)
+        .bind(offset)
+        .fetch_all(&self.pool)
+        .await
+        .map_err(operation)?;
+        Ok(rows
+            .into_iter()
+            .map(|row| SearchHistoryEntry {
+                id: row.get("id"),
+                normalized_query: row.get("normalized_query"),
+                raw_query: row.get("raw_query"),
+                category: row.get("category"),
+                provider_count: row.get("provider_count"),
+                total_results: row.get("total_results"),
+                deep_fetches: row.get("deep_fetches"),
+                created_at: row.get("created_at"),
+                surface: row.get("surface"),
+            })
+            .collect())
+    }
+
+    /// Search history entries matching a normalized query prefix.
+    pub async fn search_history_find(
+        &self,
+        normalized_query_prefix: &str,
+        limit: i64,
+    ) -> Result<Vec<SearchHistoryEntry>, StorageError> {
+        let rows = sqlx::query(
+            "SELECT id, normalized_query, raw_query, category, provider_count,
+                    total_results, deep_fetches, created_at, surface
+             FROM search_history
+             WHERE normalized_query LIKE ? || '%'
+             ORDER BY created_at DESC, id DESC
+             LIMIT ?",
+        )
+        .bind(normalized_query_prefix)
+        .bind(limit)
+        .fetch_all(&self.pool)
+        .await
+        .map_err(operation)?;
+        Ok(rows
+            .into_iter()
+            .map(|row| SearchHistoryEntry {
+                id: row.get("id"),
+                normalized_query: row.get("normalized_query"),
+                raw_query: row.get("raw_query"),
+                category: row.get("category"),
+                provider_count: row.get("provider_count"),
+                total_results: row.get("total_results"),
+                deep_fetches: row.get("deep_fetches"),
+                created_at: row.get("created_at"),
+                surface: row.get("surface"),
+            })
+            .collect())
+    }
+
+    /// Delete a search history entry by id.
+    pub async fn search_history_delete(&self, id: i64) -> Result<bool, StorageError> {
+        let _write_guard = self.write_lock.lock().await;
+        let rows = sqlx::query("DELETE FROM search_history WHERE id = ?")
+            .bind(id)
+            .execute(&self.pool)
+            .await
+            .map_err(operation)?
+            .rows_affected();
+        Ok(rows > 0)
+    }
+
+    /// Count recorded search history entries.
+    pub async fn search_history_count(&self) -> Result<i64, StorageError> {
+        sqlx::query_scalar("SELECT COUNT(*) FROM search_history")
+            .fetch_one(&self.pool)
+            .await
+            .map_err(operation)
+    }
+
+    /// Purge all search history entries.
+    pub async fn search_history_purge(&self) -> Result<u64, StorageError> {
+        let _write_guard = self.write_lock.lock().await;
+        Ok(sqlx::query("DELETE FROM search_history")
+            .execute(&self.pool)
+            .await
+            .map_err(operation)?
+            .rows_affected())
+    }
+
+    // ── Domain persistence: saved documents ─────────────────────────────
+
+    /// Save a document for cross-session reuse.
+    #[allow(clippy::too_many_arguments)]
+    pub async fn saved_document_put(
+        &self,
+        canonical_url: &str,
+        title: Option<&str>,
+        snippet: Option<&str>,
+        content_hash: &str,
+        extractor_version: &str,
+        payload: &str,
+        source_query: Option<&str>,
+        tags: &str,
+    ) -> Result<i64, StorageError> {
+        let _write_guard = self.write_lock.lock().await;
+        let now = now_unix();
+        let size_bytes = payload.len() as i64;
+        let id = sqlx::query(
+            "INSERT INTO saved_documents
+               (canonical_url, title, snippet, content_hash, extractor_version,
+                payload, size_bytes, saved_at, source_query, tags)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+             ON CONFLICT(canonical_url, content_hash, extractor_version)
+             DO UPDATE SET title = excluded.title, snippet = excluded.snippet,
+               payload = excluded.payload, size_bytes = excluded.size_bytes,
+               saved_at = excluded.saved_at, source_query = excluded.source_query,
+               tags = excluded.tags",
+        )
+        .bind(canonical_url)
+        .bind(title)
+        .bind(snippet)
+        .bind(content_hash)
+        .bind(extractor_version)
+        .bind(payload)
+        .bind(size_bytes)
+        .bind(now)
+        .bind(source_query)
+        .bind(tags)
+        .execute(&self.pool)
+        .await
+        .map_err(operation)?
+        .last_insert_rowid();
+        Ok(id)
+    }
+
+    /// Retrieve a saved document by URL, hash and extractor version.
+    pub async fn saved_document_get(
+        &self,
+        canonical_url: &str,
+        content_hash: &str,
+        extractor_version: &str,
+    ) -> Result<Option<SavedDocument>, StorageError> {
+        let row = sqlx::query(
+            "SELECT id, canonical_url, title, snippet, content_hash, extractor_version,
+                    payload, size_bytes, saved_at, source_query, tags
+             FROM saved_documents
+             WHERE canonical_url = ? AND content_hash = ? AND extractor_version = ?",
+        )
+        .bind(canonical_url)
+        .bind(content_hash)
+        .bind(extractor_version)
+        .fetch_optional(&self.pool)
+        .await
+        .map_err(operation)?;
+        Ok(row.map(|row| SavedDocument {
+            id: row.get("id"),
+            canonical_url: row.get("canonical_url"),
+            title: row.get("title"),
+            snippet: row.get("snippet"),
+            content_hash: row.get("content_hash"),
+            extractor_version: row.get("extractor_version"),
+            payload: row.get("payload"),
+            size_bytes: row.get("size_bytes"),
+            saved_at: row.get("saved_at"),
+            source_query: row.get("source_query"),
+            tags: row.get("tags"),
+        }))
+    }
+
+    /// List saved documents, newest first.
+    pub async fn saved_document_list(
+        &self,
+        limit: i64,
+        offset: i64,
+    ) -> Result<Vec<SavedDocument>, StorageError> {
+        let rows = sqlx::query(
+            "SELECT id, canonical_url, title, snippet, content_hash, extractor_version,
+                    payload, size_bytes, saved_at, source_query, tags
+             FROM saved_documents
+             ORDER BY saved_at DESC, id DESC
+             LIMIT ? OFFSET ?",
+        )
+        .bind(limit)
+        .bind(offset)
+        .fetch_all(&self.pool)
+        .await
+        .map_err(operation)?;
+        Ok(rows
+            .into_iter()
+            .map(|row| SavedDocument {
+                id: row.get("id"),
+                canonical_url: row.get("canonical_url"),
+                title: row.get("title"),
+                snippet: row.get("snippet"),
+                content_hash: row.get("content_hash"),
+                extractor_version: row.get("extractor_version"),
+                payload: row.get("payload"),
+                size_bytes: row.get("size_bytes"),
+                saved_at: row.get("saved_at"),
+                source_query: row.get("source_query"),
+                tags: row.get("tags"),
+            })
+            .collect())
+    }
+
+    /// Delete a saved document by id.
+    pub async fn saved_document_delete(&self, id: i64) -> Result<bool, StorageError> {
+        let _write_guard = self.write_lock.lock().await;
+        let rows = sqlx::query("DELETE FROM saved_documents WHERE id = ?")
+            .bind(id)
+            .execute(&self.pool)
+            .await
+            .map_err(operation)?
+            .rows_affected();
+        Ok(rows > 0)
+    }
+
+    /// Count saved documents.
+    pub async fn saved_document_count(&self) -> Result<i64, StorageError> {
+        sqlx::query_scalar("SELECT COUNT(*) FROM saved_documents")
+            .fetch_one(&self.pool)
+            .await
+            .map_err(operation)
+    }
 }
 
 impl StorageError {
     pub fn quarantine_path(&self) -> Option<&Path> {
         match self {
             Self::Corrupt { quarantine_path } => Some(quarantine_path),
-            Self::Open | Self::Operation => None,
+            Self::Open | Self::Operation | Self::IncompatibleVersion { .. } => None,
         }
     }
 }
@@ -525,8 +1017,21 @@ fn operation(_: sqlx::Error) -> StorageError {
     StorageError::Operation
 }
 
-async fn run_migrations(pool: &SqlitePool) -> Result<(), StorageError> {
+async fn run_migrations(pool: &SqlitePool, db_path: &Path) -> Result<(), StorageError> {
     let mut transaction = pool.begin().await.map_err(operation)?;
+
+    // Check database version compatibility before any migration.
+    let db_version: i64 = sqlx::query_scalar("PRAGMA user_version")
+        .fetch_one(&mut *transaction)
+        .await
+        .map_err(operation)?;
+    if db_version > MIGRATION_VERSION {
+        return Err(StorageError::IncompatibleVersion {
+            db_version,
+            code_version: MIGRATION_VERSION,
+        });
+    }
+
     sqlx::query(
         "CREATE TABLE IF NOT EXISTS amatl_schema_migrations (
            version INTEGER PRIMARY KEY,
@@ -537,7 +1042,9 @@ async fn run_migrations(pool: &SqlitePool) -> Result<(), StorageError> {
     .execute(&mut *transaction)
     .await
     .map_err(operation)?;
-    for (version, name, migration) in [
+
+    // Determine which migrations need to be applied.
+    let pending: Vec<_> = [
         (
             1_i64,
             "phase3_persistence",
@@ -548,7 +1055,32 @@ async fn run_migrations(pool: &SqlitePool) -> Result<(), StorageError> {
             "phase5_document_cache",
             include_str!("../migrations/0002_phase5_document_cache.sql"),
         ),
-    ] {
+        (
+            3_i64,
+            "domain_persistence",
+            include_str!("../migrations/0003_domain_persistence.sql"),
+        ),
+        (
+            4_i64,
+            "document_cache_revalidation",
+            include_str!("../migrations/0004_document_cache_revalidation.sql"),
+        ),
+        (
+            5_i64,
+            "request_id_telemetry",
+            include_str!("../migrations/0005_request_id.sql"),
+        ),
+    ]
+    .into_iter()
+    .filter(|(version, _, _)| *version > db_version)
+    .collect();
+
+    // Create a backup before applying any pending migrations.
+    if !pending.is_empty() {
+        backup_database(db_path)?;
+    }
+
+    for (version, name, migration) in pending {
         let applied = sqlx::query_scalar::<_, i64>(
             "SELECT version FROM amatl_schema_migrations WHERE version = ?",
         )
@@ -573,6 +1105,22 @@ async fn run_migrations(pool: &SqlitePool) -> Result<(), StorageError> {
         }
     }
     transaction.commit().await.map_err(operation)?;
+    Ok(())
+}
+
+/// Create a timestamped backup of the database file before migration.
+fn backup_database(path: &Path) -> Result<(), StorageError> {
+    let timestamp = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .map_or(0, |d| d.as_secs());
+    let backup_path = path.with_extension(format!("backup-{}.sqlite3", timestamp));
+    std::fs::copy(path, &backup_path).map_err(|_| StorageError::Operation)?;
+    tracing::info!(
+        target: "amatl::storage",
+        path = %path.display(),
+        backup = %backup_path.display(),
+        "database backup created before migration"
+    );
     Ok(())
 }
 
@@ -715,11 +1263,33 @@ mod tests {
             .await
             .unwrap();
         storage
-            .document_cache_put("https://a.test", "h1", "e1", "one", 100, 100, 1, 1_000)
+            .document_cache_put(
+                "https://a.test",
+                "h1",
+                "e1",
+                "one",
+                100,
+                100,
+                1,
+                1_000,
+                None,
+                None,
+            )
             .await
             .unwrap();
         storage
-            .document_cache_put("https://b.test", "h2", "e1", "two", 101, 100, 1, 1_000)
+            .document_cache_put(
+                "https://b.test",
+                "h2",
+                "e1",
+                "two",
+                101,
+                100,
+                1,
+                1_000,
+                None,
+                None,
+            )
             .await
             .unwrap();
         assert_eq!(storage.document_cache_stats().await.unwrap().entries, 1);
@@ -741,11 +1311,33 @@ mod tests {
             .await
             .unwrap();
         storage
-            .document_cache_put("https://old.test", "h1", "e1", "old", 100, 10, 10, 1_000)
+            .document_cache_put(
+                "https://old.test",
+                "h1",
+                "e1",
+                "old",
+                100,
+                10,
+                10,
+                1_000,
+                None,
+                None,
+            )
             .await
             .unwrap();
         storage
-            .document_cache_put("https://new.test", "h2", "e1", "new", 200, 10, 10, 1_000)
+            .document_cache_put(
+                "https://new.test",
+                "h2",
+                "e1",
+                "new",
+                200,
+                10,
+                10,
+                1_000,
+                None,
+                None,
+            )
             .await
             .unwrap();
         assert_eq!(storage.document_cache_stats().await.unwrap().entries, 1);

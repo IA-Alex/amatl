@@ -132,6 +132,7 @@ async fn optional_telemetry_persistence_restores_window_but_memory_remains_autho
             top_k_contribution: 1.0,
             diversity: 1.0,
             cost_units: 5,
+            request_id: None,
         })
         .await;
     drop(telemetry);

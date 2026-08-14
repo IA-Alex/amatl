@@ -133,6 +133,177 @@ paths:
         '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '500': { $ref: '#/components/responses/ServiceUnavailable' }
         '504': { $ref: '#/components/responses/RequestTimeout' }
+  /status:
+    get:
+      operationId: status
+      summary: Operator state of sources, local persistence and caches
+      responses:
+        '200':
+          description: Aggregated service state; never includes ranking internals
+          headers:
+            X-Request-ID: { $ref: '#/components/headers/RequestId' }
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceStatus'
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '500': { $ref: '#/components/responses/ServiceUnavailable' }
+        '503': { $ref: '#/components/responses/StorageUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
+  /history:
+    get:
+      operationId: historyList
+      summary: List locally recorded searches, newest first
+      description: Requires persistence.enabled; the history never leaves the machine.
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Offset'
+      responses:
+        '200':
+          description: Recorded searches
+          headers:
+            X-Request-ID: { $ref: '#/components/headers/RequestId' }
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HistoryResponse'
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '503': { $ref: '#/components/responses/StorageUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
+    delete:
+      operationId: historyPurge
+      summary: Delete every recorded search
+      responses:
+        '200':
+          description: Number of deleted entries
+          headers:
+            X-Request-ID: { $ref: '#/components/headers/RequestId' }
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedResponse'
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '503': { $ref: '#/components/responses/StorageUnavailable' }
+  /history/{id}:
+    delete:
+      operationId: historyDelete
+      summary: Delete one recorded search
+      parameters:
+        - $ref: '#/components/parameters/EntryId'
+      responses:
+        '200':
+          description: Entry deleted
+          headers:
+            X-Request-ID: { $ref: '#/components/headers/RequestId' }
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedResponse'
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '503': { $ref: '#/components/responses/StorageUnavailable' }
+  /saved:
+    get:
+      operationId: savedList
+      summary: List saved documents, newest first
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Offset'
+      responses:
+        '200':
+          description: Saved documents
+          headers:
+            X-Request-ID: { $ref: '#/components/headers/RequestId' }
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavedDocumentsResponse'
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '503': { $ref: '#/components/responses/StorageUnavailable' }
+    post:
+      operationId: savedPut
+      summary: Persist one document for cross-session reuse
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaveDocumentInput'
+      responses:
+        '200':
+          description: Identifier of the stored document
+          headers:
+            X-Request-ID: { $ref: '#/components/headers/RequestId' }
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                required: [schema_version, id]
+                properties:
+                  schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+                  id: { type: integer }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '503': { $ref: '#/components/responses/StorageUnavailable' }
+  /saved/{id}:
+    delete:
+      operationId: savedDelete
+      summary: Delete one saved document
+      parameters:
+        - $ref: '#/components/parameters/EntryId'
+      responses:
+        '200':
+          description: Document deleted
+          headers:
+            X-Request-ID: { $ref: '#/components/headers/RequestId' }
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedResponse'
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '503': { $ref: '#/components/responses/StorageUnavailable' }
+  /metrics:
+    get:
+      operationId: metrics
+      summary: Prometheus exposition of request, latency, source and cache metrics
+      description: >-
+        Public like /health so a local scraper needs no credential. Exposes
+        request counters, p50/p95/p99 latency over the last 1024 requests per
+        surface, per-source availability and observed value, cache hit rates
+        and whether local persistence is usable. Source names appear as label
+        values; do not expose this port outside the host if configured source
+        names are sensitive.
+      security: []
+      responses:
+        '200':
+          description: Prometheus text exposition format (version 0.0.4)
+          headers:
+            X-Request-ID: { $ref: '#/components/headers/RequestId' }
+          content:
+            text/plain:
+              schema: { type: string }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /health:
     get:
       operationId: health
@@ -173,6 +344,22 @@ components:
         type: string
         minLength: 1
         maxLength: 2048
+    Limit:
+      name: limit
+      in: query
+      required: false
+      description: Maximum entries to return; clamped to 200
+      schema: { type: integer, minimum: 1, maximum: 200, default: 50 }
+    Offset:
+      name: offset
+      in: query
+      required: false
+      schema: { type: integer, minimum: 0, default: 0 }
+    EntryId:
+      name: id
+      in: path
+      required: true
+      schema: { type: integer }
   responses:
     BadRequest:
       description: Invalid query, JSON, or request shape
@@ -220,6 +407,20 @@ components:
       content:
         application/json:
           schema: { $ref: '#/components/schemas/ErrorResponse' }
+    NotFound:
+      description: The addressed entry does not exist
+      headers:
+        X-Request-ID: { $ref: '#/components/headers/RequestId' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorResponse' }
+    StorageUnavailable:
+      description: Local persistence is disabled or unusable
+      headers:
+        X-Request-ID: { $ref: '#/components/headers/RequestId' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorResponse' }
     ServiceUnavailable:
       description: Planning or service configuration failure
       headers:
@@ -246,6 +447,17 @@ components:
           type: string
           minLength: 1
           maxLength: 2048
+        page:
+          type: integer
+          minimum: 0
+          description: >-
+            Zero-based page over the ranked result set. Pagination is
+            server-side: page and page_size must be sent together and the
+            client must not window the returned array again. Ignored by /deep.
+        page_size:
+          type: integer
+          minimum: 1
+          maximum: 100
     HealthResponse:
       type: object
       additionalProperties: false
@@ -266,7 +478,10 @@ components:
           properties:
             code:
               type: string
-              enum: [invalid_request, invalid_query, unauthorized, invalid_origin, invalid_host, rate_limited, body_too_large, headers_too_large, request_timeout, service_unavailable, not_found]
+              description: >-
+                Shared error catalog (amatl-core/src/errors.rs). Every AMATL
+                surface renders the same identifiers.
+              enum: [invalid_request, invalid_query, invalid_url, unauthorized, invalid_host, invalid_origin, rate_limited, body_too_large, headers_too_large, request_timeout, not_found, egress_denied, fetch_failed, provider_not_declared, provider_not_registered, provider_not_enabled, provider_not_approved, provider_credential_missing, provider_network_blocked, search_planning_failed, configuration_invalid, inference_unavailable, ranking_backend_unavailable, storage_unavailable, serialization_failed, internal_error]
             message: { type: string }
     SearchStatus:
       type: string
@@ -337,6 +552,12 @@ components:
           type: array
           items: { $ref: '#/components/schemas/Degradation' }
         elapsed_ms: { type: integer, minimum: 0 }
+        total_results:
+          type: integer
+          minimum: 0
+          description: Size of the whole ranked set; present only when the request paginated.
+        page: { type: integer, minimum: 0 }
+        page_size: { type: integer, minimum: 1, maximum: 100 }
     FetchMethod:
       type: string
       description: local is emitted by the CLI-only ingestion contract, not by HTTP Deep
@@ -609,3 +830,140 @@ components:
         providers:
           type: array
           items: { $ref: '#/components/schemas/ProviderSummary' }
+    SourceStatus:
+      type: object
+      additionalProperties: false
+      required: [name, status, code, success_rate, average_latency_ms, observations]
+      properties:
+        name: { type: string }
+        status: { $ref: '#/components/schemas/ProviderSurfaceStatus' }
+        code: { type: [string, 'null'] }
+        success_rate: { type: [number, 'null'], minimum: 0, maximum: 1 }
+        average_latency_ms: { type: [number, 'null'], minimum: 0 }
+        observations: { type: integer, minimum: 0 }
+    StorageStatus:
+      type: object
+      additionalProperties: false
+      required: [enabled, available, migration_version, history_entries, saved_documents, message]
+      properties:
+        enabled: { type: boolean }
+        available: { type: boolean }
+        migration_version: { type: [integer, 'null'] }
+        history_entries: { type: [integer, 'null'] }
+        saved_documents: { type: [integer, 'null'] }
+        message: { type: [string, 'null'] }
+    CacheStatus:
+      type: object
+      additionalProperties: false
+      required:
+        - provider_search_enabled
+        - document_enabled
+        - provider_search_entries
+        - provider_search_bytes
+        - document_entries
+        - document_bytes
+        - provider_search_hits
+        - provider_search_misses
+        - provider_search_hit_rate
+        - document_hits
+        - document_misses
+        - document_hit_rate
+      properties:
+        provider_search_enabled: { type: boolean }
+        document_enabled: { type: boolean }
+        provider_search_entries: { type: integer, minimum: 0 }
+        provider_search_bytes: { type: integer, minimum: 0 }
+        document_entries: { type: integer, minimum: 0 }
+        document_bytes: { type: integer, minimum: 0 }
+        provider_search_hits: { type: integer, minimum: 0 }
+        provider_search_misses: { type: integer, minimum: 0 }
+        provider_search_hit_rate: { type: number, minimum: 0, maximum: 1 }
+        document_hits: { type: integer, minimum: 0 }
+        document_misses: { type: integer, minimum: 0 }
+        document_hit_rate: { type: number, minimum: 0, maximum: 1 }
+    ServiceStatus:
+      type: object
+      additionalProperties: false
+      required: [schema_version, status, sources, storage, cache, inference_backend]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        status: { type: string, enum: [ok, degraded] }
+        sources:
+          type: array
+          items: { $ref: '#/components/schemas/SourceStatus' }
+        storage: { $ref: '#/components/schemas/StorageStatus' }
+        cache: { $ref: '#/components/schemas/CacheStatus' }
+        inference_backend: { type: [string, 'null'] }
+    SearchHistoryEntry:
+      type: object
+      additionalProperties: false
+      required: [id, normalized_query, raw_query, category, provider_count, total_results, deep_fetches, created_at, surface]
+      properties:
+        id: { type: integer }
+        normalized_query: { type: string }
+        raw_query: { type: string }
+        category: { type: [string, 'null'] }
+        provider_count: { type: integer, minimum: 0 }
+        total_results: { type: integer, minimum: 0 }
+        deep_fetches: { type: integer, minimum: 0 }
+        created_at: { type: integer, description: Unix seconds }
+        surface: { type: string, enum: [cli, api, mcp] }
+    HistoryResponse:
+      type: object
+      additionalProperties: false
+      required: [schema_version, entries]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        entries:
+          type: array
+          items: { $ref: '#/components/schemas/SearchHistoryEntry' }
+    SavedDocument:
+      type: object
+      additionalProperties: false
+      required: [id, canonical_url, title, snippet, content_hash, extractor_version, payload, size_bytes, saved_at, source_query, tags]
+      properties:
+        id: { type: integer }
+        canonical_url: { type: string, format: uri }
+        title: { type: [string, 'null'] }
+        snippet: { type: [string, 'null'] }
+        content_hash: { type: string, pattern: '^[0-9a-fA-F]{64}$' }
+        extractor_version: { type: string }
+        payload: { type: string }
+        size_bytes: { type: integer, minimum: 0 }
+        saved_at: { type: integer, description: Unix seconds }
+        source_query: { type: [string, 'null'] }
+        tags: { type: string, description: Comma-separated tag list }
+    SavedDocumentsResponse:
+      type: object
+      additionalProperties: false
+      required: [schema_version, documents]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        documents:
+          type: array
+          items: { $ref: '#/components/schemas/SavedDocument' }
+    SaveDocumentInput:
+      type: object
+      additionalProperties: false
+      required: [canonical_url, content_hash, extractor_version, payload]
+      properties:
+        canonical_url: { type: string, format: uri, description: Public http(s) URL }
+        title: { type: [string, 'null'] }
+        snippet: { type: [string, 'null'] }
+        content_hash: { type: string, pattern: '^[0-9a-fA-F]{64}$' }
+        extractor_version: { type: string, minLength: 1, maxLength: 128 }
+        payload:
+          type: string
+          description: Bounded by persistence.saved_document_max_bytes (default 1 MiB)
+        source_query: { type: [string, 'null'] }
+        tags:
+          type: array
+          maxItems: 16
+          items: { type: string, maxLength: 64 }
+    DeletedResponse:
+      type: object
+      additionalProperties: false
+      required: [schema_version, deleted]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        deleted: { type: integer, minimum: 0 }

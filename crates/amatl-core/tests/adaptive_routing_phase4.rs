@@ -333,6 +333,7 @@ async fn new_provider_receives_minimum_exploration_priority() {
                     top_k_contribution: 1.0,
                     diversity: 1.0,
                     cost_units: 0,
+                    request_id: None,
                 })
                 .await;
         }

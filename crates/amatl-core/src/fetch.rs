@@ -8,6 +8,7 @@ use std::net::{IpAddr, SocketAddr};
 use std::sync::{Arc, Mutex};
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 use thiserror::Error;
+use tracing::Instrument;
 use url::Url;
 
 #[derive(Clone, Debug)]
@@ -17,6 +18,11 @@ pub struct FetchRequest {
     pub max_bytes: u64,
     pub max_redirects: u32,
     pub headers: BTreeMap<String, String>,
+    /// Correlates this outbound fetch with the originating HTTP request, CLI
+    /// invocation or MCP session. It never travels on the wire; it only tags
+    /// the local trace so a fetch can be tied back to the request that caused
+    /// it.
+    pub request_id: Option<String>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
@@ -101,7 +107,40 @@ impl<R: DnsResolver> SafeFetcher<R> {
         }
     }
 
+    /// Fetch one URL under the SSRF, redirect, byte and time limits carried by
+    /// the request, tracing the attempt under the caller's request id.
     pub async fn fetch(&self, request: FetchRequest) -> Result<FetchResult, FetchError> {
+        let span = tracing::info_span!(
+            target: "amatl::fetch",
+            "outbound_fetch",
+            request_id = request.request_id.as_deref().unwrap_or("-"),
+            host = request.url.host_str().unwrap_or("-"),
+            max_bytes = request.max_bytes,
+            timeout_ms = request.timeout_ms
+        );
+        let started = std::time::Instant::now();
+        let outcome = self.fetch_inner(request).instrument(span.clone()).await;
+        let _entered = span.enter();
+        match &outcome {
+            Ok(result) => tracing::debug!(
+                target: "amatl::fetch",
+                status = result.status,
+                size = result.size,
+                redirects = result.redirect_chain.len(),
+                latency_ms = started.elapsed().as_millis() as u64,
+                "outbound fetch completed"
+            ),
+            Err(error) => tracing::warn!(
+                target: "amatl::fetch",
+                error = %error,
+                latency_ms = started.elapsed().as_millis() as u64,
+                "outbound fetch failed"
+            ),
+        }
+        outcome
+    }
+
+    async fn fetch_inner(&self, request: FetchRequest) -> Result<FetchResult, FetchError> {
         validate_headers(&request.headers)?;
         let deadline = tokio::time::Instant::now() + Duration::from_millis(request.timeout_ms);
         let mut current = request.url;
@@ -374,6 +413,7 @@ mod tests {
             max_bytes: 100,
             max_redirects: 1,
             headers: BTreeMap::new(),
+            request_id: Some("test-request".into()),
         }
     }
 

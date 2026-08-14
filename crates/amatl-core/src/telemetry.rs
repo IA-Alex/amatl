@@ -5,8 +5,14 @@ use std::collections::{BTreeMap, VecDeque};
 use std::sync::{Arc, Mutex};
 use std::time::{SystemTime, UNIX_EPOCH};
 
-const WINDOW_SECONDS: i64 = 30 * 86_400;
 const DECAY_HALF_LIFE_DAYS: f64 = 30.0;
+
+/// Minimum allowed telemetry retention window (7 days).
+pub const TELEMETRY_MIN_RETENTION_DAYS: u32 = 7;
+/// Maximum allowed telemetry retention window (365 days).
+pub const TELEMETRY_MAX_RETENTION_DAYS: u32 = 365;
+/// Default retention window when no config is provided.
+pub const TELEMETRY_DEFAULT_RETENTION_DAYS: u32 = 30;
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
@@ -46,6 +52,10 @@ pub struct TelemetryObservation {
     pub top_k_contribution: f64,
     pub diversity: f64,
     pub cost_units: u64,
+    /// Correlates this observation with the originating HTTP request, CLI
+    /// invocation, or MCP session so traces can be reconstructed end-to-end.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub request_id: Option<String>,
 }
 
 pub(crate) struct ProviderTelemetryInput<'a> {
@@ -57,6 +67,8 @@ pub(crate) struct ProviderTelemetryInput<'a> {
     pub error: Option<&'a ProviderErrorKind>,
     pub partial: bool,
     pub estimated_cost: Option<u64>,
+    /// Correlates this observation with the originating request.
+    pub request_id: Option<String>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
@@ -89,6 +101,7 @@ pub struct TelemetryStatus {
 pub struct InMemoryTelemetry {
     state: Arc<Mutex<TelemetryState>>,
     storage: Option<SqliteStorage>,
+    window_seconds: i64,
 }
 
 #[derive(Default)]
@@ -99,13 +112,37 @@ struct TelemetryState {
 
 impl InMemoryTelemetry {
     pub fn new() -> Self {
-        Self::default()
+        Self {
+            window_seconds: TELEMETRY_DEFAULT_RETENTION_DAYS as i64 * 86_400,
+            ..Default::default()
+        }
+    }
+
+    pub fn with_retention_days(retention_days: u32) -> Self {
+        Self {
+            window_seconds: (retention_days as i64).saturating_mul(86_400),
+            ..Default::default()
+        }
     }
 
     pub async fn with_optional_storage(storage: Option<SqliteStorage>) -> Self {
         let telemetry = Self {
             state: Arc::new(Mutex::new(TelemetryState::default())),
             storage,
+            window_seconds: TELEMETRY_DEFAULT_RETENTION_DAYS as i64 * 86_400,
+        };
+        telemetry.restore_best_effort(now_unix()).await;
+        telemetry
+    }
+
+    pub async fn with_storage_and_retention(
+        storage: Option<SqliteStorage>,
+        retention_days: u32,
+    ) -> Self {
+        let telemetry = Self {
+            state: Arc::new(Mutex::new(TelemetryState::default())),
+            storage,
+            window_seconds: (retention_days as i64).saturating_mul(86_400),
         };
         telemetry.restore_best_effort(now_unix()).await;
         telemetry
@@ -116,9 +153,10 @@ impl InMemoryTelemetry {
         observation.top_k_contribution = observation.top_k_contribution.clamp(0.0, 1.0);
         observation.diversity = observation.diversity.clamp(0.0, 1.0);
         let now = observation.observed_at;
+        let cutoff = now - self.window_seconds;
         if let Ok(mut state) = self.state.lock() {
             state.observations.push_back(observation.clone());
-            prune_memory(&mut state.observations, now - WINDOW_SECONDS);
+            prune_memory(&mut state.observations, cutoff);
         }
         if let Some(storage) = &self.storage {
             if storage
@@ -128,7 +166,7 @@ impl InMemoryTelemetry {
             {
                 self.mark_persistence_failure();
             }
-            if storage.telemetry_prune(now - WINDOW_SECONDS).await.is_err() {
+            if storage.telemetry_prune(cutoff).await.is_err() {
                 self.mark_persistence_failure();
             }
         }
@@ -184,7 +222,7 @@ impl InMemoryTelemetry {
             category: Some(category),
             state: global.state,
             health: health_for(global.sample, success_rate, timeout_rate),
-            window_days: 30,
+            window_days: self.window_days(),
             sample: global.sample,
             weighted_sample: total_weight,
             success_rate,
@@ -250,6 +288,7 @@ impl InMemoryTelemetry {
         category: Option<Category>,
         now: i64,
     ) -> ProviderValueSnapshot {
+        let cutoff = now - self.window_seconds;
         let observations = self
             .state
             .lock()
@@ -260,7 +299,7 @@ impl InMemoryTelemetry {
                     .iter()
                     .filter(|item| {
                         item.provider == provider
-                            && item.observed_at >= now - WINDOW_SECONDS
+                            && item.observed_at >= cutoff
                             && category
                                 .as_ref()
                                 .is_none_or(|value| &item.category == value)
@@ -269,12 +308,12 @@ impl InMemoryTelemetry {
                     .collect::<Vec<_>>()
             })
             .unwrap_or_default();
-        calculate_snapshot(provider, category, &observations, now)
+        calculate_snapshot(provider, category, &observations, now, self.window_days())
     }
 
     async fn restore_best_effort(&self, now: i64) {
         let Some(storage) = &self.storage else { return };
-        match storage.telemetry_load(now - WINDOW_SECONDS).await {
+        match storage.telemetry_load(now - self.window_seconds).await {
             Ok(observations) => {
                 if let Ok(mut state) = self.state.lock() {
                     state.observations = observations
@@ -291,6 +330,10 @@ impl InMemoryTelemetry {
         if let Ok(mut state) = self.state.lock() {
             state.persistence_failures = state.persistence_failures.saturating_add(1);
         }
+    }
+
+    fn window_days(&self) -> u32 {
+        (self.window_seconds / 86_400) as u32
     }
 }
 
@@ -319,6 +362,7 @@ impl TelemetryObservation {
             top_k_contribution: 0.0,
             diversity: 0.0,
             cost_units: input.estimated_cost.unwrap_or(0),
+            request_id: input.request_id,
         }
     }
 
@@ -341,6 +385,7 @@ impl TelemetryObservation {
             top_k_contribution: value.top_k_contribution,
             diversity: value.diversity,
             cost_units: value.cost_units,
+            request_id: value.request_id,
         })
     }
 }
@@ -365,6 +410,7 @@ impl From<TelemetryObservation> for StoredTelemetryObservation {
             top_k_contribution: value.top_k_contribution,
             diversity: value.diversity,
             cost_units: value.cost_units,
+            request_id: value.request_id,
         }
     }
 }
@@ -374,6 +420,7 @@ fn calculate_snapshot(
     category: Option<Category>,
     observations: &[TelemetryObservation],
     now: i64,
+    window_days: u32,
 ) -> ProviderValueSnapshot {
     let mut weights = BTreeMap::new();
     let mut total_weight = 0.0;
@@ -423,7 +470,7 @@ fn calculate_snapshot(
             _ => ProviderValueState::Mature,
         },
         health,
-        window_days: 30,
+        window_days,
         sample,
         weighted_sample: total_weight,
         success_rate,
@@ -457,7 +504,7 @@ pub fn now_unix() -> i64 {
         .map_or(0, |duration| duration.as_secs() as i64)
 }
 
-fn category_name(category: &Category) -> &'static str {
+pub(crate) fn category_name(category: &Category) -> &'static str {
     match category {
         Category::General => "general",
         Category::Technical => "technical",
@@ -507,6 +554,7 @@ mod tests {
             top_k_contribution: 0.5,
             diversity: 0.6,
             cost_units: 1,
+            request_id: None,
         }
     }
 
@@ -521,7 +569,7 @@ mod tests {
                 .map(|_| observation(1_000, TelemetryOutcome::Success))
                 .collect::<Vec<_>>();
             assert_eq!(
-                calculate_snapshot("p", None, &observations, 1_000).state,
+                calculate_snapshot("p", None, &observations, 1_000, 30).state,
                 expected
             );
         }
@@ -533,7 +581,7 @@ mod tests {
             observation(1_000, TelemetryOutcome::Success),
             observation(1_000 - 30 * 86_400, TelemetryOutcome::Timeout),
         ];
-        let snapshot = calculate_snapshot("p", None, &observations, 1_000);
+        let snapshot = calculate_snapshot("p", None, &observations, 1_000, 30);
         assert_eq!(snapshot.sample, 2);
         assert!((snapshot.weighted_sample - 1.5).abs() < 1e-12);
         assert!(snapshot.success_rate > snapshot.timeout_rate);

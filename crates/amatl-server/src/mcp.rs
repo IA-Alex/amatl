@@ -1,4 +1,7 @@
-use amatl_core::{AmatlService, FetchError, FetchRequest, ServiceSurface, SCHEMA_VERSION};
+use crate::next_request_id;
+use amatl_core::{
+    AmatlService, ErrorCode, FetchError, FetchRequest, ServiceSurface, SCHEMA_VERSION,
+};
 use rmcp::{
     handler::server::wrapper::Parameters,
     model::{CallToolResult, ProtocolVersion},
@@ -38,29 +41,43 @@ impl McpSurface {
     #[tool(description = "Search configured providers with the public AMATL Search contract")]
     async fn search(&self, Parameters(input): Parameters<QueryInput>) -> CallToolResult {
         if !valid_query(&input.query) {
-            return tool_error("invalid_query");
+            return tool_error(ErrorCode::InvalidQuery);
         }
-        match self.service.search(input.query, ServiceSurface::Mcp).await {
+        match self
+            .service
+            .search(
+                input.query,
+                ServiceSurface::mcp_with_request_id(Some(next_request_id())),
+            )
+            .await
+        {
             Ok(value) => structured(value.response),
-            Err(_) => tool_error("search_failed"),
+            Err(error) => tool_error(error.code()),
         }
     }
 
     #[tool(description = "Run bounded AMATL Deep enrichment with stricter MCP limits")]
     async fn deep_search(&self, Parameters(input): Parameters<QueryInput>) -> CallToolResult {
         if !valid_query(&input.query) {
-            return tool_error("invalid_query");
+            return tool_error(ErrorCode::InvalidQuery);
         }
-        match self.service.deep(input.query, ServiceSurface::Mcp).await {
+        match self
+            .service
+            .deep(
+                input.query,
+                ServiceSurface::mcp_with_request_id(Some(next_request_id())),
+            )
+            .await
+        {
             Ok(value) => structured(value),
-            Err(_) => tool_error("deep_search_failed"),
+            Err(error) => tool_error(error.code()),
         }
     }
 
     #[tool(description = "Fetch one public HTTP(S) URL with SSRF, redirect, byte and time limits")]
     async fn fetch(&self, Parameters(input): Parameters<FetchInput>) -> CallToolResult {
         let Ok(url) = Url::parse(&input.url) else {
-            return tool_error("invalid_url");
+            return tool_error(ErrorCode::InvalidUrl);
         };
         let result = self
             .service
@@ -70,6 +87,7 @@ impl McpSurface {
                 max_bytes: 256 * 1024,
                 max_redirects: 2,
                 headers: BTreeMap::new(),
+                request_id: Some(next_request_id()),
             })
             .await;
         match result {
@@ -82,8 +100,8 @@ impl McpSurface {
                 "size": value.size,
                 "retrieved_at": value.retrieved_at
             })),
-            Err(FetchError::EgressDenied) => tool_error("egress_denied"),
-            Err(_) => tool_error("fetch_failed"),
+            Err(FetchError::EgressDenied) => tool_error(ErrorCode::EgressDenied),
+            Err(_) => tool_error(ErrorCode::FetchFailed),
         }
     }
 
@@ -94,7 +112,7 @@ impl McpSurface {
                 "schema_version": SCHEMA_VERSION,
                 "providers": providers
             })),
-            Err(_) => tool_error("providers_failed"),
+            Err(error) => tool_error(error.code()),
         }
     }
 }
@@ -112,14 +130,15 @@ impl ServerHandler for McpSurface {
 fn structured(value: impl serde::Serialize) -> CallToolResult {
     match serde_json::to_value(value) {
         Ok(value) => CallToolResult::structured(value),
-        Err(_) => tool_error("serialization_failed"),
+        Err(_) => tool_error(ErrorCode::SerializationFailed),
     }
 }
 
-fn tool_error(code: &'static str) -> CallToolResult {
+/// Tool failures use the same catalog codes as the HTTP surface.
+fn tool_error(code: ErrorCode) -> CallToolResult {
     CallToolResult::structured_error(json!({
         "schema_version": SCHEMA_VERSION,
-        "error": { "code": code, "message": code }
+        "error": { "code": code.as_str(), "message": code.message() }
     }))
 }
 

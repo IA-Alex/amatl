@@ -32,6 +32,12 @@ pub fn asset(path: &str) -> Option<UiAsset> {
             cache_control: "public, max-age=3600",
             body: include_bytes!("../assets/app.js"),
         }),
+        // Message catalog, kept out of app.js so translations are one file.
+        "/i18n.js" => Some(UiAsset {
+            content_type: "text/javascript; charset=utf-8",
+            cache_control: "public, max-age=3600",
+            body: include_bytes!("../assets/i18n.js"),
+        }),
         _ => None,
     }
 }
@@ -107,7 +113,13 @@ mod tests {
 
     #[test]
     fn presentation_keeps_technical_internals_hidden() {
-        let surface = format!("{}{}", text("/index.html"), text("/app.js")).to_lowercase();
+        let surface = format!(
+            "{}{}{}",
+            text("/index.html"),
+            text("/app.js"),
+            text("/i18n.js")
+        )
+        .to_lowercase();
         for internal in [
             "rrf",
             "combined_score",
@@ -175,10 +187,16 @@ mod tests {
         assert!(javascript.contains("fetch(endpoint"));
         assert!(javascript.contains("method: \"POST\""));
         assert!(javascript.contains("\"Content-Type\": \"application/json\""));
-        assert!(javascript.contains("body: JSON.stringify({ q: queryText() })"));
+        assert!(javascript.contains("body: JSON.stringify(body)"));
+        assert!(javascript.contains("body.page = state.page"));
         assert!(javascript.contains("headers.Authorization"));
         assert!(!javascript.contains("searchParams"));
         assert!(!javascript.contains("method: \"GET\""));
+        // Pagination is server-side only: no local windowing of the result set.
+        assert!(!javascript.contains("serverPagination"));
+        assert!(!javascript.contains("state.items.slice"));
+        assert!(javascript.contains("body.page_size = PAGE_SIZE"));
+        assert!(javascript.contains("payload.total_results"));
         assert!(javascript.contains("payload.status === \"partial_success\""));
         assert!(javascript.contains("result.canonical_url"));
         assert!(javascript.contains("parsed.protocol === \"http:\""));
@@ -212,5 +230,68 @@ mod tests {
         assert!(!javascript.contains("\"/ingest\""));
         assert!(!javascript.contains("innerHTML"));
         assert!(!javascript.contains("document.write"));
+    }
+
+    #[test]
+    fn local_domain_panels_use_the_bounded_service_endpoints() {
+        let html = text("/index.html");
+        let javascript = text("/app.js");
+        for id in [
+            "id=\"service-indicators\"",
+            "id=\"history-list\"",
+            "id=\"history-purge\"",
+            "id=\"saved-list\"",
+            "id=\"history-template\"",
+            "id=\"saved-template\"",
+        ] {
+            assert!(html.contains(id), "missing panel element: {id}");
+        }
+        assert!(javascript.contains("fetch(\"/status\""));
+        assert!(javascript.contains("`/history?limit=${LIST_LIMIT}`"));
+        assert!(javascript.contains("`/saved?limit=${LIST_LIMIT}`"));
+        assert!(javascript.contains("method: \"DELETE\""));
+        // Saved payloads stay bounded and never carry extracted content.
+        assert!(javascript.contains("MAX_SAVED_PAYLOAD_BYTES"));
+        assert!(!javascript.contains("documentValue.content,"));
+        // Every request to a protected surface carries the in-memory token.
+        assert!(javascript.contains("headers: authHeaders()"));
+    }
+
+    #[test]
+    fn user_visible_copy_lives_only_in_the_message_catalog() {
+        let catalog = text("/i18n.js");
+        let javascript = text("/app.js");
+        assert!(catalog.contains("globalThis.AMATL_LOCALES"));
+        assert!(catalog.contains("defaultLocale: \"en\""));
+        // app.js resolves copy through the catalog instead of embedding it.
+        assert!(javascript.contains("globalThis.AMATL_LOCALES"));
+        assert!(!javascript.contains("const MSG = {"));
+        for key in [
+            "historyHeading",
+            "savedHeading",
+            "serviceHeading",
+            "storageLabel",
+            "cacheLabel",
+        ] {
+            assert!(catalog.contains(key), "missing catalog key: {key}");
+        }
+        // Both shipped locales expose the same keys; `en` is the contract.
+        let english = catalog
+            .split("    en: {")
+            .nth(1)
+            .expect("english catalog block");
+        let spanish = catalog
+            .split("    es: {")
+            .nth(1)
+            .and_then(|value| value.split("    en: {").next())
+            .expect("spanish catalog block");
+        let keys = |block: &str| {
+            block
+                .lines()
+                .filter_map(|line| line.trim().split_once(':').map(|(key, _)| key.to_owned()))
+                .filter(|key| !key.starts_with("//") && !key.contains(' '))
+                .collect::<std::collections::BTreeSet<_>>()
+        };
+        assert_eq!(keys(english), keys(spanish));
     }
 }

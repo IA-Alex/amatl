@@ -10,7 +10,7 @@ MCP; ninguna superficie replica reglas de negocio.
 |---|---|---|
 | core/model | `amatl-core/src/model.rs`, `lib.rs` | Entidades y valores canónicos; `schema_version = "1"` |
 | query/classify/planning | `query.rs`, `classify.rs`, `planning.rs` | Intención, heurística léxica y snapshot de estrategia |
-| providers/router | `providers/`, `providers.rs`, `router.rs` | Adapters, capabilities, disponibilidad y recomendación |
+| providers/router | `providers/`, `providers.rs`, `providers/registry.rs`, `router.rs` | Adapters, registro extensible, capabilities, disponibilidad y recomendación |
 | execution/budget | `execution.rs`, `budget.rs`, `progressive.rs` | Orquestación, deadline, rondas, concurrencia y consumo |
 | normalize/canonical/dedupe | `normalize.rs`, `canonical.rs`, `dedupe.rs` | Modelo común, identidad URL y consolidación conservadora |
 | ranking/diversity | `ranking.rs`, `diversity.rs` | Ranking MVP explicable y límites visibles |
@@ -18,11 +18,34 @@ MCP; ninguna superficie replica reglas de negocio.
 | ingestión local | `ingest.rs` | lectura acotada, detección de tipo, despacho y conversión a `Document` |
 | evidence/ranking v2/gaps | `evidence.rs`, `ranking_v2.rs`, `gaps.rs` | Señales Deep, gate de calidad y expansión acotada |
 | cache/storage/telemetry | `cache.rs`, `document_cache.rs`, `storage.rs`, `telemetry.rs` | Estado opcional y tolerante a fallos |
+| inferencia | `inference.rs` | Contrato de embeddings/reranker y backend local offline para Ranking v2 |
+| errores | `errors.rs` | Catálogo único de códigos, estado HTTP y mensaje para todas las superficies |
 | security/data policy | `config.rs`, `service.rs`, `security.rs` y middleware de `amatl-server` | Egress/inferencia, SSRF, exposición y hardening HTTP |
 | superficies | `amatl-cli`, `amatl-ui`, `amatl-server` | Entrada/salida y transporte, sin lógica duplicada |
 
-`api.rs` y `mcp.rs` dentro de core son stubs históricos; la implementación real
-de transporte está en `amatl-server`, y consume `AmatlService`.
+El core no contiene marcadores de superficie: la implementación de transporte
+vive en `amatl-server` y consume `AmatlService`.
+
+## Extensión de providers
+
+Una fuente se declara en configuración (`[providers.<nombre>]`, el expediente de
+gobernanza) y se implementa con un `ProviderFactory` registrado en
+`ProviderRegistry`. `AmatlService::with_registry` acepta un registro propio, de
+modo que añadir o retirar fuentes no requiere tocar `service.rs` ni añadir
+campos a `ProviderConfig`. La configuración declara; el registro implementa; el
+servicio falla con `provider_not_declared` o `provider_not_registered` si ambos
+lados no coinciden.
+
+## Inferencia
+
+`data_policy.inference` expresa el permiso y `[inference]` dimensiona el
+backend. `local_only` resuelve al backend offline `local_hashing_v1`
+(embeddings por hashing con signo, determinista, sin red ni ficheros de modelo)
+que alimenta `SemanticScorer` y `DeepReranker` de Ranking v2. `remote_explicit`
+falla cerrado —AMATL no incluye backend remoto— y `disabled` deja el ranking
+puramente léxico. Si los pesos semánticos exigen un backend que no está
+disponible, Deep degrada con `inference_unavailable` en lugar de simular la
+señal.
 
 ## Ciclo de vida
 
@@ -63,7 +86,12 @@ luego construye explícitamente esas capacidades (`service.rs:167-275`).
 ## Núcleo único de superficies
 
 `AmatlService` recibe `Config`, abre SQLite sólo de forma opcional y expone
-`search`, `deep`, `fetch_public` y `provider_summaries`. CLI, handlers Axum y MCP
+`search`, `deep`, `fetch_public` y `provider_summaries`, más las superficies
+locales que dependen de esa persistencia opcional —`history`, `saved_documents`,
+`save_document` y sus borrados— y `status`, que agrega disponibilidad de
+fuentes, salud de la persistencia y efectividad de cachés sin recalcular nada.
+Cuando la persistencia no está disponible esas operaciones fallan cerradas con
+`storage_unavailable`; búsqueda y Deep siguen funcionando. CLI, handlers Axum y MCP
 delegan en ellas; MCP no crea su propio fetcher. `ServiceSurface` selecciona
 límites: CLI y API usan los configurados; MCP reduce providers, tiempos,
 fetches, bytes y subqueries (`service.rs:14-58`). La UI usa exclusivamente el
@@ -73,6 +101,12 @@ mostrar Deep, correlaciona Evidence v2 por `document_id`, limita documentos y
 fragmentos, renderiza contenido externo sólo con APIs DOM de texto y verifica
 offsets UTF-8 y SHA-256 con Web Crypto. Estas comprobaciones son presentación
 defensiva: el core sigue siendo dueño del contrato y de la evidencia.
+
+La correlación de solicitud es transversal: el borde HTTP genera el
+`request_id`, `ServiceSurface` lo transporta al core y desde ahí llega a cada
+llamada saliente —`ProviderContext` para providers y `FetchRequest` para el
+fetch de Deep— dentro de spans que lo declaran. Nunca se envía al tercero: sólo
+etiqueta la traza local.
 
 El comando CLI `ingest` invoca `LocalIngestor` del mismo core sin pasar por el
 servidor. Esta excepción de transporte es intencional: mantiene el acceso a

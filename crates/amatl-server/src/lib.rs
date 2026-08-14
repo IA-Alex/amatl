@@ -2,13 +2,15 @@
 
 mod mcp;
 
-use amatl_core::{AmatlService, ConfigError, ServiceError, ServiceSurface, SCHEMA_VERSION};
+use amatl_core::{
+    AmatlService, ConfigError, ErrorCode, ServiceError, ServiceSurface, SCHEMA_VERSION,
+};
 use amatl_ui::{asset, security_headers};
 use axum::{
     body::Body,
     extract::{
         rejection::{JsonRejection, QueryRejection},
-        ConnectInfo, DefaultBodyLimit, Query, Request, State,
+        ConnectInfo, DefaultBodyLimit, Extension, Path, Query, Request, State,
     },
     http::{
         header::{
@@ -19,7 +21,7 @@ use axum::{
     },
     middleware::{self, Next},
     response::{IntoResponse, Response},
-    routing::get,
+    routing::{delete, get},
     Json, Router,
 };
 use rmcp::transport::streamable_http_server::{
@@ -28,7 +30,7 @@ use rmcp::transport::streamable_http_server::{
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use std::{
-    collections::BTreeMap,
+    collections::{BTreeMap, VecDeque},
     net::{IpAddr, SocketAddr},
     sync::{
         atomic::{AtomicU64, Ordering},
@@ -44,10 +46,78 @@ use tracing::Instrument;
 const REQUEST_ID_HEADER: &str = "x-request-id";
 static REQUEST_SEQUENCE: AtomicU64 = AtomicU64::new(1);
 
+/// Wrapper so handlers can extract the request-id injected by the security
+/// middleware via [`axum::Extension`] or [`Request::extensions`].
+#[derive(Clone, Debug)]
+struct RequestId(String);
+
+impl RequestId {
+    fn into_inner(self) -> String {
+        self.0
+    }
+}
+
 #[derive(Clone)]
 struct AppState {
     service: AmatlService,
     security: Arc<SecurityState>,
+    metrics: Arc<RequestMetrics>,
+}
+
+/// Lightweight request counters exposed via `/metrics` in Prometheus
+/// exposition format. Counters are monotonic and reset on restart.
+#[derive(Default)]
+struct RequestMetrics {
+    search_total: AtomicU64,
+    deep_total: AtomicU64,
+    search_errors: AtomicU64,
+    deep_errors: AtomicU64,
+    rate_limited_total: AtomicU64,
+    unauthorized_total: AtomicU64,
+    request_timeout_total: AtomicU64,
+    search_latency: LatencyWindow,
+    deep_latency: LatencyWindow,
+}
+
+/// Bounded ring of recent latencies used to publish quantiles without a
+/// dependency on a metrics runtime. Only the last [`LATENCY_WINDOW`] samples
+/// are kept, so memory stays constant under load.
+#[derive(Default)]
+struct LatencyWindow {
+    samples: Mutex<VecDeque<u64>>,
+}
+
+const LATENCY_WINDOW: usize = 1_024;
+
+impl LatencyWindow {
+    fn record(&self, elapsed_ms: u64) {
+        let mut samples = self
+            .samples
+            .lock()
+            .unwrap_or_else(|error| error.into_inner());
+        if samples.len() == LATENCY_WINDOW {
+            samples.pop_front();
+        }
+        samples.push_back(elapsed_ms);
+    }
+
+    /// `(samples, p50, p95, p99)` over the retained window.
+    fn quantiles(&self) -> (usize, u64, u64, u64) {
+        let samples = self
+            .samples
+            .lock()
+            .unwrap_or_else(|error| error.into_inner());
+        if samples.is_empty() {
+            return (0, 0, 0, 0);
+        }
+        let mut sorted = samples.iter().copied().collect::<Vec<_>>();
+        sorted.sort_unstable();
+        let at = |quantile: f64| {
+            let index = (((sorted.len() - 1) as f64) * quantile).ceil() as usize;
+            sorted[index]
+        };
+        (sorted.len(), at(0.50), at(0.95), at(0.99))
+    }
 }
 
 struct SecurityState {
@@ -93,6 +163,10 @@ impl From<ConfigError> for ServerError {
 #[derive(Debug, Deserialize)]
 struct SearchParams {
     q: String,
+    #[serde(default)]
+    page: Option<u32>,
+    #[serde(default)]
+    page_size: Option<u32>,
 }
 
 #[derive(Debug, Serialize)]
@@ -149,13 +223,23 @@ pub async fn build_router(
             Default::default(),
             mcp_config,
         );
-    let state = AppState { service, security };
+    let state = AppState {
+        service,
+        security,
+        metrics: Arc::new(RequestMetrics::default()),
+    };
     let cors = cors_layer(&allowed_origins)?;
     Ok(Router::new()
         .route("/search", get(search).post(search_post))
         .route("/deep", get(deep).post(deep_post))
         .route("/providers", get(providers))
+        .route("/status", get(status))
+        .route("/history", get(history).delete(purge_history))
+        .route("/history/{id}", delete(delete_history_entry))
+        .route("/saved", get(saved_documents).post(save_document))
+        .route("/saved/{id}", delete(delete_saved_document))
         .route("/health", get(health))
+        .route("/metrics", get(metrics))
         .nest_service("/mcp", mcp_service)
         .fallback(static_asset)
         .with_state(state.clone())
@@ -227,67 +311,145 @@ pub async fn serve(service: AmatlService) -> Result<(), ServerError> {
 
 async fn search(
     State(state): State<AppState>,
+    Extension(request_id): Extension<RequestId>,
     params: Result<Query<SearchParams>, QueryRejection>,
 ) -> Response {
     let Ok(Query(params)) = params else {
-        return api_error(StatusCode::BAD_REQUEST, "invalid_request");
+        return api_error(ErrorCode::InvalidRequest);
     };
     if !valid_query(&params.q) {
-        return api_error(StatusCode::BAD_REQUEST, "invalid_query");
+        return api_error(ErrorCode::InvalidQuery);
     }
-    match state.service.search(params.q, ServiceSurface::Api).await {
-        Ok(value) => Json(value.response).into_response(),
-        Err(error) => service_error(error),
+    let started = Instant::now();
+    let outcome = state
+        .service
+        .search_paginated(
+            params.q,
+            ServiceSurface::api(Some(request_id.into_inner())),
+            params.page,
+            params.page_size,
+        )
+        .await;
+    state
+        .metrics
+        .search_latency
+        .record(started.elapsed().as_millis() as u64);
+    match outcome {
+        Ok(value) => {
+            state.metrics.search_total.fetch_add(1, Ordering::Relaxed);
+            Json(value.response).into_response()
+        }
+        Err(error) => {
+            state.metrics.search_errors.fetch_add(1, Ordering::Relaxed);
+            service_error(error)
+        }
     }
 }
 
 async fn deep(
     State(state): State<AppState>,
+    Extension(request_id): Extension<RequestId>,
     params: Result<Query<SearchParams>, QueryRejection>,
 ) -> Response {
     let Ok(Query(params)) = params else {
-        return api_error(StatusCode::BAD_REQUEST, "invalid_request");
+        return api_error(ErrorCode::InvalidRequest);
     };
     if !valid_query(&params.q) {
-        return api_error(StatusCode::BAD_REQUEST, "invalid_query");
+        return api_error(ErrorCode::InvalidQuery);
     }
-    match state.service.deep(params.q, ServiceSurface::Api).await {
-        Ok(value) => Json(value).into_response(),
-        Err(error) => service_error(error),
+    let started = Instant::now();
+    let outcome = state
+        .service
+        .deep(params.q, ServiceSurface::api(Some(request_id.into_inner())))
+        .await;
+    state
+        .metrics
+        .deep_latency
+        .record(started.elapsed().as_millis() as u64);
+    match outcome {
+        Ok(value) => {
+            state.metrics.deep_total.fetch_add(1, Ordering::Relaxed);
+            Json(value).into_response()
+        }
+        Err(error) => {
+            state.metrics.deep_errors.fetch_add(1, Ordering::Relaxed);
+            service_error(error)
+        }
     }
 }
 
 async fn search_post(
     State(state): State<AppState>,
+    Extension(request_id): Extension<RequestId>,
     params: Result<Json<SearchParams>, JsonRejection>,
 ) -> Response {
     let Json(params) = match params {
         Ok(params) => params,
-        Err(rejection) => return api_error(rejection.status(), "invalid_request"),
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
     };
     if !valid_query(&params.q) {
-        return api_error(StatusCode::BAD_REQUEST, "invalid_query");
+        return api_error(ErrorCode::InvalidQuery);
     }
-    match state.service.search(params.q, ServiceSurface::Api).await {
-        Ok(value) => Json(value.response).into_response(),
-        Err(error) => service_error(error),
+    let started = Instant::now();
+    let outcome = state
+        .service
+        .search_paginated(
+            params.q,
+            ServiceSurface::api(Some(request_id.into_inner())),
+            params.page,
+            params.page_size,
+        )
+        .await;
+    state
+        .metrics
+        .search_latency
+        .record(started.elapsed().as_millis() as u64);
+    match outcome {
+        Ok(value) => {
+            state.metrics.search_total.fetch_add(1, Ordering::Relaxed);
+            Json(value.response).into_response()
+        }
+        Err(error) => {
+            state.metrics.search_errors.fetch_add(1, Ordering::Relaxed);
+            service_error(error)
+        }
     }
 }
 
 async fn deep_post(
     State(state): State<AppState>,
+    Extension(request_id): Extension<RequestId>,
     params: Result<Json<SearchParams>, JsonRejection>,
 ) -> Response {
     let Json(params) = match params {
         Ok(params) => params,
-        Err(rejection) => return api_error(rejection.status(), "invalid_request"),
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
     };
     if !valid_query(&params.q) {
-        return api_error(StatusCode::BAD_REQUEST, "invalid_query");
+        return api_error(ErrorCode::InvalidQuery);
     }
-    match state.service.deep(params.q, ServiceSurface::Api).await {
-        Ok(value) => Json(value).into_response(),
-        Err(error) => service_error(error),
+    let started = Instant::now();
+    let outcome = state
+        .service
+        .deep(params.q, ServiceSurface::api(Some(request_id.into_inner())))
+        .await;
+    state
+        .metrics
+        .deep_latency
+        .record(started.elapsed().as_millis() as u64);
+    match outcome {
+        Ok(value) => {
+            state.metrics.deep_total.fetch_add(1, Ordering::Relaxed);
+            Json(value).into_response()
+        }
+        Err(error) => {
+            state.metrics.deep_errors.fetch_add(1, Ordering::Relaxed);
+            service_error(error)
+        }
     }
 }
 
@@ -302,13 +464,270 @@ async fn providers(State(state): State<AppState>) -> Response {
     }
 }
 
+/// Bounded listing window for the local domain surfaces.
+#[derive(Debug, Deserialize)]
+struct PageParams {
+    #[serde(default)]
+    limit: Option<u32>,
+    #[serde(default)]
+    offset: Option<u32>,
+}
+
+impl PageParams {
+    fn window(&self) -> (u32, u32) {
+        (
+            self.limit.unwrap_or(50).clamp(1, 200),
+            self.offset.unwrap_or(0),
+        )
+    }
+}
+
+/// Operator status: source availability, persistence and cache state.
+async fn status(State(state): State<AppState>) -> Response {
+    match state.service.status().await {
+        Ok(value) => Json(value).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+async fn history(
+    State(state): State<AppState>,
+    params: Result<Query<PageParams>, QueryRejection>,
+) -> Response {
+    let Ok(Query(params)) = params else {
+        return api_error(ErrorCode::InvalidRequest);
+    };
+    let (limit, offset) = params.window();
+    match state.service.history(limit, offset).await {
+        Ok(entries) => Json(json!({
+            "schema_version": SCHEMA_VERSION,
+            "entries": entries
+        }))
+        .into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+async fn delete_history_entry(State(state): State<AppState>, Path(id): Path<i64>) -> Response {
+    match state.service.delete_history_entry(id).await {
+        Ok(true) => Json(json!({ "schema_version": SCHEMA_VERSION, "deleted": 1 })).into_response(),
+        Ok(false) => api_error(ErrorCode::NotFound),
+        Err(error) => service_error(error),
+    }
+}
+
+async fn purge_history(State(state): State<AppState>) -> Response {
+    match state.service.purge_history().await {
+        Ok(deleted) => {
+            Json(json!({ "schema_version": SCHEMA_VERSION, "deleted": deleted })).into_response()
+        }
+        Err(error) => service_error(error),
+    }
+}
+
+async fn saved_documents(
+    State(state): State<AppState>,
+    params: Result<Query<PageParams>, QueryRejection>,
+) -> Response {
+    let Ok(Query(params)) = params else {
+        return api_error(ErrorCode::InvalidRequest);
+    };
+    let (limit, offset) = params.window();
+    match state.service.saved_documents(limit, offset).await {
+        Ok(documents) => Json(json!({
+            "schema_version": SCHEMA_VERSION,
+            "documents": documents
+        }))
+        .into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+async fn save_document(
+    State(state): State<AppState>,
+    input: Result<Json<amatl_core::SaveDocumentInput>, JsonRejection>,
+) -> Response {
+    let Json(input) = match input {
+        Ok(input) => input,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    match state.service.save_document(input).await {
+        Ok(id) => Json(json!({ "schema_version": SCHEMA_VERSION, "id": id })).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+async fn delete_saved_document(State(state): State<AppState>, Path(id): Path<i64>) -> Response {
+    match state.service.delete_saved_document(id).await {
+        Ok(true) => Json(json!({ "schema_version": SCHEMA_VERSION, "deleted": 1 })).into_response(),
+        Ok(false) => api_error(ErrorCode::NotFound),
+        Err(error) => service_error(error),
+    }
+}
+
 async fn health() -> Json<serde_json::Value> {
     Json(json!({ "schema_version": SCHEMA_VERSION, "status": "ok" }))
 }
 
+/// Exposes Prometheus-compatible metrics in text exposition format.
+///
+/// Counters are monotonic since the last server restart; latency quantiles
+/// describe the last [`LATENCY_WINDOW`] requests per surface, and the source,
+/// cache and storage gauges are read from the service at scrape time.
+async fn metrics(State(state): State<AppState>) -> Response {
+    let m = &state.metrics;
+    let mut body = format!(
+        "# HELP amatl_search_requests_total Total search requests received.\n\
+         # TYPE amatl_search_requests_total counter\n\
+         amatl_search_requests_total {}\n\
+         # HELP amatl_deep_requests_total Total deep requests received.\n\
+         # TYPE amatl_deep_requests_total counter\n\
+         amatl_deep_requests_total {}\n\
+         # HELP amatl_search_errors_total Search requests that resulted in error.\n\
+         # TYPE amatl_search_errors_total counter\n\
+         amatl_search_errors_total {}\n\
+         # HELP amatl_deep_errors_total Deep requests that resulted in error.\n\
+         # TYPE amatl_deep_errors_total counter\n\
+         amatl_deep_errors_total {}\n\
+         # HELP amatl_rate_limited_total Requests rejected by rate limiter.\n\
+         # TYPE amatl_rate_limited_total counter\n\
+         amatl_rate_limited_total {}\n\
+         # HELP amatl_unauthorized_total Requests rejected for missing/invalid auth.\n\
+         # TYPE amatl_unauthorized_total counter\n\
+         amatl_unauthorized_total {}\n\
+         # HELP amatl_request_timeout_total Requests that exceeded the timeout.\n\
+         # TYPE amatl_request_timeout_total counter\n\
+         amatl_request_timeout_total {}\n",
+        m.search_total.load(Ordering::Relaxed),
+        m.deep_total.load(Ordering::Relaxed),
+        m.search_errors.load(Ordering::Relaxed),
+        m.deep_errors.load(Ordering::Relaxed),
+        m.rate_limited_total.load(Ordering::Relaxed),
+        m.unauthorized_total.load(Ordering::Relaxed),
+        m.request_timeout_total.load(Ordering::Relaxed),
+    );
+    body.push_str(&latency_metrics("search", &m.search_latency));
+    body.push_str(&latency_metrics("deep", &m.deep_latency));
+    body.push_str(&source_metrics(&state.service));
+    body.push_str(&cache_metrics(&state.service).await);
+    let mut response = Response::new(Body::from(body));
+    response.headers_mut().insert(
+        CONTENT_TYPE,
+        HeaderValue::from_static("text/plain; version=0.0.4; charset=utf-8"),
+    );
+    response
+        .headers_mut()
+        .insert(CACHE_CONTROL, HeaderValue::from_static("no-store"));
+    response
+}
+
+/// Latency quantiles for one surface, as gauges over the retained window.
+fn latency_metrics(surface: &str, window: &LatencyWindow) -> String {
+    let (samples, p50, p95, p99) = window.quantiles();
+    format!(
+        "# HELP amatl_{surface}_latency_ms Request latency quantiles over the last {LATENCY_WINDOW} {surface} requests.\n\
+         # TYPE amatl_{surface}_latency_ms gauge\n\
+         amatl_{surface}_latency_ms{{quantile=\"0.5\"}} {p50}\n\
+         amatl_{surface}_latency_ms{{quantile=\"0.95\"}} {p95}\n\
+         amatl_{surface}_latency_ms{{quantile=\"0.99\"}} {p99}\n\
+         # HELP amatl_{surface}_latency_samples Retained latency samples for {surface}.\n\
+         # TYPE amatl_{surface}_latency_samples gauge\n\
+         amatl_{surface}_latency_samples {samples}\n"
+    )
+}
+
+/// Per-source availability and observed value, labelled by source name.
+fn source_metrics(service: &AmatlService) -> String {
+    let Ok(summaries) = service.provider_summaries() else {
+        return String::new();
+    };
+    let snapshots = service.source_snapshots();
+    let mut body = String::from(
+        "# HELP amatl_source_available Whether a declared source is available (1) or not (0).\n\
+         # TYPE amatl_source_available gauge\n",
+    );
+    let mut value_block = String::from(
+        "# HELP amatl_source_success_rate Observed success ratio per source in the telemetry window.\n\
+         # TYPE amatl_source_success_rate gauge\n",
+    );
+    let mut latency_block = String::from(
+        "# HELP amatl_source_latency_ms Observed average latency per source in the telemetry window.\n\
+         # TYPE amatl_source_latency_ms gauge\n",
+    );
+    for summary in summaries {
+        let label = escape_label(&summary.name);
+        let available = u8::from(summary.status == amatl_core::ProviderSurfaceStatus::Available);
+        body.push_str(&format!(
+            "amatl_source_available{{source=\"{label}\"}} {available}\n"
+        ));
+        if let Some(snapshot) = snapshots
+            .iter()
+            .find(|snapshot| snapshot.provider == summary.name)
+            .filter(|snapshot| snapshot.sample > 0)
+        {
+            value_block.push_str(&format!(
+                "amatl_source_success_rate{{source=\"{label}\"}} {:.4}\n",
+                snapshot.success_rate
+            ));
+            latency_block.push_str(&format!(
+                "amatl_source_latency_ms{{source=\"{label}\"}} {:.1}\n",
+                snapshot.average_latency_ms
+            ));
+        }
+    }
+    body.push_str(&value_block);
+    body.push_str(&latency_block);
+    body
+}
+
+/// Cache effectiveness and persistence gauges.
+async fn cache_metrics(service: &AmatlService) -> String {
+    let cache = service.cache_effectiveness();
+    let storage_available = u8::from(service.storage().is_some());
+    format!(
+        "# HELP amatl_cache_hits_total Cache lookups served from the local cache.\n\
+         # TYPE amatl_cache_hits_total counter\n\
+         amatl_cache_hits_total{{cache=\"provider_search\"}} {}\n\
+         amatl_cache_hits_total{{cache=\"document\"}} {}\n\
+         # HELP amatl_cache_misses_total Cache lookups that reached the origin.\n\
+         # TYPE amatl_cache_misses_total counter\n\
+         amatl_cache_misses_total{{cache=\"provider_search\"}} {}\n\
+         amatl_cache_misses_total{{cache=\"document\"}} {}\n\
+         # HELP amatl_cache_hit_rate Hit ratio per cache since start.\n\
+         # TYPE amatl_cache_hit_rate gauge\n\
+         amatl_cache_hit_rate{{cache=\"provider_search\"}} {:.4}\n\
+         amatl_cache_hit_rate{{cache=\"document\"}} {:.4}\n\
+         # HELP amatl_storage_available Whether local persistence is usable (1) or not (0).\n\
+         # TYPE amatl_storage_available gauge\n\
+         amatl_storage_available {storage_available}\n",
+        cache.provider_search_hits,
+        cache.document_hits,
+        cache.provider_search_misses,
+        cache.document_misses,
+        cache.provider_search_hit_rate,
+        cache.document_hit_rate,
+    )
+}
+
+/// Escape a Prometheus label value; source names are configuration-controlled
+/// but the exposition format must stay parseable regardless.
+fn escape_label(value: &str) -> String {
+    value
+        .chars()
+        .flat_map(|character| match character {
+            '\\' => vec!['\\', '\\'],
+            '"' => vec!['\\', '"'],
+            '\n' => vec!['\\', 'n'],
+            other => vec![other],
+        })
+        .collect()
+}
+
 async fn static_asset(uri: Uri) -> Response {
     let Some(value) = asset(uri.path()) else {
-        return api_error(StatusCode::NOT_FOUND, "not_found");
+        return api_error(ErrorCode::NotFound);
     };
     let mut response = Response::new(Body::from(value.body));
     response
@@ -330,10 +749,7 @@ async fn security_middleware(
     if header_size(request.headers()) > security.max_header_bytes {
         audit_security_event("headers_too_large", &request_id, &request);
         return secured(
-            api_error(
-                StatusCode::REQUEST_HEADER_FIELDS_TOO_LARGE,
-                "headers_too_large",
-            ),
+            api_error(ErrorCode::HeadersTooLarge),
             security.https,
             &request_id,
         );
@@ -347,7 +763,7 @@ async fn security_middleware(
     {
         audit_security_event("body_too_large", &request_id, &request);
         return secured(
-            api_error(StatusCode::PAYLOAD_TOO_LARGE, "body_too_large"),
+            api_error(ErrorCode::BodyTooLarge),
             security.https,
             &request_id,
         );
@@ -355,7 +771,7 @@ async fn security_middleware(
     if !valid_host(request.headers(), &security.allowed_hosts) {
         audit_security_event("invalid_host", &request_id, &request);
         return secured(
-            api_error(StatusCode::BAD_REQUEST, "invalid_host"),
+            api_error(ErrorCode::InvalidHost),
             security.https,
             &request_id,
         );
@@ -363,15 +779,19 @@ async fn security_middleware(
     if !valid_origin(request.headers(), &security.allowed_origins) {
         audit_security_event("invalid_origin", &request_id, &request);
         return secured(
-            api_error(StatusCode::FORBIDDEN, "invalid_origin"),
+            api_error(ErrorCode::InvalidOrigin),
             security.https,
             &request_id,
         );
     }
     let protected = is_protected(request.uri().path());
     if request.method() != Method::OPTIONS && !within_rate_limit(&request, security) {
+        state
+            .metrics
+            .rate_limited_total
+            .fetch_add(1, Ordering::Relaxed);
         audit_security_event("rate_limited", &request_id, &request);
-        let mut response = api_error(StatusCode::TOO_MANY_REQUESTS, "rate_limited");
+        let mut response = api_error(ErrorCode::RateLimited);
         response
             .headers_mut()
             .insert("retry-after", HeaderValue::from_static("60"));
@@ -381,8 +801,12 @@ async fn security_middleware(
         && request.method() != Method::OPTIONS
         && !authorized(request.headers(), security.token.as_deref())
     {
+        state
+            .metrics
+            .unauthorized_total
+            .fetch_add(1, Ordering::Relaxed);
         audit_security_event("unauthorized", &request_id, &request);
-        let mut response = api_error(StatusCode::UNAUTHORIZED, "unauthorized");
+        let mut response = api_error(ErrorCode::Unauthorized);
         response
             .headers_mut()
             .insert(WWW_AUTHENTICATE, HeaderValue::from_static("Bearer"));
@@ -392,6 +816,10 @@ async fn security_middleware(
     let https = security.https;
     let path = request.uri().path().to_owned();
     let client_ip = request_client_ip(&request);
+    let mut request = request;
+    request
+        .extensions_mut()
+        .insert(RequestId(request_id.clone()));
     let request_span = tracing::info_span!(
         target: "amatl::http",
         "http_request",
@@ -403,8 +831,12 @@ async fn security_middleware(
         match tokio::time::timeout(timeout, next.run(request).instrument(request_span)).await {
             Ok(response) => response,
             Err(_) => {
+                state
+                    .metrics
+                    .request_timeout_total
+                    .fetch_add(1, Ordering::Relaxed);
                 audit_security_event_context("request_timeout", &request_id, &path, client_ip);
-                api_error(StatusCode::GATEWAY_TIMEOUT, "request_timeout")
+                api_error(ErrorCode::RequestTimeout)
             }
         };
     secured(response, https, &request_id)
@@ -435,7 +867,7 @@ fn audit_security_event_context(
     );
 }
 
-fn next_request_id() -> String {
+pub(crate) fn next_request_id() -> String {
     let epoch_nanos = SystemTime::now()
         .duration_since(UNIX_EPOCH)
         .unwrap_or_default()
@@ -483,8 +915,15 @@ fn valid_query(query: &str) -> bool {
     !query.trim().is_empty() && query.len() <= 2048
 }
 
+/// Every domain and operator surface requires the bearer token; only the UI
+/// assets, `/health` and `/metrics` stay reachable without it.
 fn is_protected(path: &str) -> bool {
-    matches!(path, "/search" | "/deep" | "/providers" | "/mcp") || path.starts_with("/mcp/")
+    matches!(
+        path,
+        "/search" | "/deep" | "/providers" | "/status" | "/history" | "/saved" | "/mcp"
+    ) || path.starts_with("/mcp/")
+        || path.starts_with("/history/")
+        || path.starts_with("/saved/")
 }
 
 fn authorized(headers: &HeaderMap, expected: Option<&str>) -> bool {
@@ -592,21 +1031,36 @@ fn cors_layer(origins: &[String]) -> Result<CorsLayer, ServerError> {
         .expose_headers([HeaderName::from_static(REQUEST_ID_HEADER)]))
 }
 
+/// Render a domain failure with its catalog code and status.
 fn service_error(error: ServiceError) -> Response {
-    match error {
-        ServiceError::InvalidQuery => api_error(StatusCode::BAD_REQUEST, "invalid_query"),
-        ServiceError::MissingPlan | ServiceError::Configuration => {
-            api_error(StatusCode::INTERNAL_SERVER_ERROR, "service_unavailable")
-        }
+    let code = error.code();
+    if code.http_status() >= 500 {
+        tracing::warn!(
+            target: "amatl::http",
+            error_code = code.as_str(),
+            error = %error,
+            "request failed"
+        );
     }
+    api_error(code)
 }
 
-fn api_error(status: StatusCode, code: &'static str) -> Response {
+/// Error body for a catalog code, using the code's own transport status.
+fn api_error(code: ErrorCode) -> Response {
+    api_error_with_status(
+        StatusCode::from_u16(code.http_status()).unwrap_or(StatusCode::INTERNAL_SERVER_ERROR),
+        code,
+    )
+}
+
+/// Error body for a catalog code with a transport-imposed status, used when the
+/// framework already decided the status (for example a body rejection).
+fn api_error_with_status(status: StatusCode, code: ErrorCode) -> Response {
     (
         status,
         Json(json!({
             "schema_version": SCHEMA_VERSION,
-            "error": { "code": code, "message": code }
+            "error": { "code": code.as_str(), "message": code.message() }
         })),
     )
         .into_response()

@@ -18,10 +18,12 @@ call.
 | `fetch` | `{ "url": string }` | schema version, final URL, HTTP status, content type, UTF-8-lossy content, size, retrieval time | public HTTP(S), 3,000 ms, 262,144 bytes, 2 redirects, SafeFetcher SSRF rules |
 | `providers` | no parameters | provider summaries and capabilities | no outbound provider call |
 
-Tool errors are structured with `schema_version: "1"` and a stable code such as
-`invalid_query`, `invalid_url`, `search_failed`, `deep_search_failed`,
-`fetch_failed`, or `providers_failed`. Internal details and provider credentials
-are not returned (`amatl-server/src/mcp.rs:36-126`).
+Tool errors are structured with `schema_version: "1"` and a code from the shared
+catalog in `amatl-core/src/errors.rs` — the same identifiers the HTTP surface
+returns, for example `invalid_query`, `invalid_url`, `egress_denied`,
+`fetch_failed`, `search_planning_failed`, `provider_not_registered`,
+`inference_unavailable` or `configuration_invalid`. Internal details and provider
+credentials are not returned (`amatl-server/src/mcp.rs`).
 
 `evidence_v2` preserves the v1 evidence score and exposes exact byte ranges over
 `Document.content`, source/extracted-content hashes and URL/fetch/extractor

@@ -62,7 +62,7 @@ AMATL.
 
 | Clave | Tipo/default | Validez y efecto |
 |---|---|---|
-| `providers.enabled` | `array<string>` / `[]` | Nombres reconocidos: `brave`, `mojeek`, `duckduckgo_html`; desconocidos se rechazan |
+| `providers.enabled` | `array<string>` / `[]` | Cada nombre debe tener su tabla `[providers.<nombre>]` declarada; los no declarados se rechazan |
 | `providers.<p>.adapter_version` | string opcional | Requerido para aprobación y clave de caché |
 | `.approval_status` | enum / `draft` | `draft`, `approved`, `expired`, `rejected` |
 | `.reviewed_at` | string opcional | Fecha `YYYY-MM-DD`; aprobada sólo durante 90 días inclusive |
@@ -86,6 +86,28 @@ region/time_range. Mojeek usa `mojeek-v1`, `MOJEEK_API_KEY`, API oficial y URL d
 soporte. Ambos siguen `draft`; DuckDuckGo queda completamente `draft` y su
 adapter está bloqueado aunque aparezca en `enabled`. Ver
 `docs/gobernanza-providers.md`.
+
+`[providers]` es un mapa abierto: cada tabla `[providers.<nombre>]` declara una
+fuente y se fusiona sobre los expedientes incorporados, de modo que ajustar uno
+no elimina los demás. El nombre debe ser una clave estable (minúsculas ASCII,
+dígitos y `_`). Declarar una fuente no la implementa: el servicio la construye
+sólo si hay un `ProviderFactory` con ese mismo nombre en el `ProviderRegistry`
+(ver `docs/arquitectura.md`).
+
+## Inferencia
+
+| Clave | Tipo/default | Validez y efecto |
+|---|---|---|
+| `inference.backend` | string / `local_hashing_v1` | Único backend disponible; otro valor se rechaza |
+| `inference.embedding_dimensions` | usize / `256` | Entre 32 y 4096 |
+| `inference.max_documents` | usize / `64` | >0; superarlo falla el backend opcional y Deep degrada |
+| `inference.max_input_chars` | usize / `20000` | >0; recorte por documento antes de embeber |
+| `inference.reranker_prior_weight` | f64 / `0.5` | Entre 0 y 1; peso que el reranker conserva de la relevancia previa |
+
+Los pesos `deep.ranking_v2.policy.weight_semantic` y `weight_reranker` mayores
+que cero exigen `data_policy.inference = "local_only"`: con `disabled` o
+`remote_explicit` la configuración se rechaza, porque no habría backend que
+respalde la señal declarada.
 
 ## Search, ejecución y Budget
 
@@ -153,6 +175,8 @@ Los cinco pesos `weight_*` suman exactamente 1 con tolerancia `1e-12`.
 |---|---:|---|
 | `persistence.enabled` | bool / `false` | habilita intento SQLite, no correctness |
 | `persistence.path` | string / `amatl.sqlite3` | no se valida vacío ni permisos hasta abrir |
+| `persistence.history_enabled` | bool / `true` | sólo aplica si `persistence.enabled`; registra cada búsqueda ejecutada en SQLite local |
+| `persistence.saved_document_max_bytes` | u64 / 1048576 | 1..=16777216; límite del payload aceptado por `POST /saved` |
 | `cache.provider_search.enabled` | bool / `false` | requiere persistence si true |
 | `.ttl_seconds` | u64 / 300 | >0 |
 | `.max_entries` | u64 / 10000 | >0 |

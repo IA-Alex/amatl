@@ -14,6 +14,66 @@ adapter/extractor versions are independent axes as well.
 
 ## [Unreleased]
 
+### Added
+
+- Provider registry (`ProviderRegistry`, `ProviderFactory`) and an open
+  `[providers.<name>]` configuration map, so a search source is added by
+  declaring a governance record and registering a factory —
+  `AmatlService::with_registry` builds providers without a hardcoded match.
+- Local inference layer (`amatl-core/src/inference.rs`): an `EmbeddingBackend`
+  contract plus the offline, deterministic `local_hashing_v1` backend that now
+  backs Ranking v2's `SemanticScorer` and `DeepReranker`, sized by the new
+  `[inference]` configuration section. `remote_explicit` fails closed and Deep
+  degrades with `inference_unavailable` when a required backend is missing.
+- Shared error catalog (`amatl-core/src/errors.rs`): CLI, API and MCP render the
+  same stable codes, transport statuses and messages.
+- `amatl doctor` reports inference readiness; `amatl config` lists declared
+  providers and the inference backend.
+- Local domain HTTP surfaces backed by the existing SQLite tables: `GET /status`
+  (source availability, persistence and cache state), `GET/DELETE /history`,
+  `DELETE /history/{id}`, `GET/POST /saved` and `DELETE /saved/{id}`. Every
+  executed search is recorded in the local history when
+  `persistence.history_enabled` is on; all of them require the bearer token and
+  fail closed with `storage_unavailable` when persistence is disabled.
+- UI panels for service state, search history and saved documents, plus a
+  `Guardar` action on each Deep document. The panels appear only when the
+  corresponding surface answers.
+- `/metrics` now publishes p50/p95/p99 latency over the last 1024 requests per
+  surface, per-source availability and observed value
+  (`amatl_source_available`, `amatl_source_success_rate`,
+  `amatl_source_latency_ms`), cache hit/miss counters and hit rates, and
+  `amatl_storage_available`.
+- `[persistence] history_enabled` and `[persistence] saved_document_max_bytes`
+  configuration keys.
+- `contract-gate` runs the workspace test suite on macOS and Windows in addition
+  to Linux, so the published Tier 2 archives cannot silently rot.
+
+### Changed
+
+- Semantic and reranker ranking weights now require an inference mode with an
+  available backend; the configuration is rejected otherwise.
+- HTTP and MCP surfaces report precise failures (`search_planning_failed`,
+  `provider_not_registered`, `inference_unavailable`, …) instead of the generic
+  `service_unavailable`, `search_failed` and `deep_search_failed` codes.
+- The request id now reaches outbound work: `ProviderContext` and `FetchRequest`
+  carry it, and provider calls and Deep fetches run inside spans that declare
+  it. It is never sent to the provider or origin; MCP tool calls generate one
+  per invocation.
+- Result pagination is server-side only. The UI always sends `page`/`page_size`
+  and renders the returned window as-is instead of keeping a parallel
+  client-side pager; `SearchResponse.total_results` describes the whole ranked
+  set. `/deep` remains unpaginated.
+- UI copy moved out of `app.js` into the `/i18n.js` message catalog; adding a
+  language means adding one entry with the same keys as `en`.
+- `docs/release.md` states the distribution scope explicitly as Tier 1 (Linux
+  x86_64 musl, native packages) and Tier 2 (Linux aarch64, macOS, Windows
+  archives); everything else is out of scope.
+
+### Removed
+
+- Empty `api.rs`, `mcp.rs` and `ui.rs` surface markers in `amatl-core`; the real
+  transport surfaces live in `amatl-server`.
+
 ### Fixed
 
 - Debian release asset names avoid GitHub's `~` normalization so published

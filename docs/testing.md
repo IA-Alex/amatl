@@ -27,8 +27,9 @@ workspace, not a hand-picked suite.
 | CLI | Formatting/behavior through process | `amatl-cli/tests/cli.rs` | No | JSON/log separation indirectly | Surface contract | Exit codes and commands covered; no packaged binary/install matrix |
 | UI | Asset unit tests | Served by server tests; Deep POST contract | No | CSP, safe DOM, URL protocols, POST-only Search/Deep, bounded Evidence v2, provenance linkage, Web Crypto verification and non-serializable bearer field | Presentation contract | No browser E2E/accessibility automation |
 | HTTP API | Handler tests | In-process Axum + TCP/rustls | No | auth, Host, Origin/CORS, body, headers, rate, timeout, framing, request correlation | Yes | Real TCP/TLS, untrusted certificate, aggregate header rejection and handler cancellation covered; no connection-saturation or proxy test |
-| MCP | Tool/limit units | initialize/list/call | No | shared HTTP gate + SafeFetcher | Yes | Exactly four tools covered; `fetch` network behavior is unit-tested below transport |
+| MCP | Tool/limit units | initialize/list/call | No | shared HTTP gate + SafeFetcher | Yes + Protocol conformance | Exactly four tools covered; `fetch` network behavior is unit-tested below transport; JSON-RPC conformance (invalid version, missing fields, unsupported methods, malformed arguments, auth, rate-limit) covered in `tests.rs` |
 | Data policy | Config/service units | CLI + MCP | No | isolated fail-closed before network | Yes | Contradictory profile, provider/canary, Deep degradation and MCP bypass regressions covered; OS firewall remains deployment evidence |
+| Soak/load | N/A | Sustained concurrent MCP + HTTP | No | N/A | Operational harness | 15 s, 16-way concurrency, p50/p95/p99, throughput, error rate, peak RSS; `#[ignore]` by default for nightly/soak CI lanes |
 
 “N/A” is used only where the test class does not represent a meaningful threat;
 it does not waive unit or contract coverage.
@@ -45,6 +46,7 @@ cargo test -p amatl-core --test adaptive_routing_phase4
 cargo test -p amatl-core --test deep_phase5
 cargo test -p amatl-server
 cargo test -p amatl-cli --test cli
+cargo test -p amatl-server --test soak -- --ignored --nocapture  # soak/load test
 ```
 
 Tests use deterministic mocks/fakes and temporary SQLite files. Provider

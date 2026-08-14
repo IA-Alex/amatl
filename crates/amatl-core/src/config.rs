@@ -7,10 +7,16 @@ use serde::{Deserialize, Serialize};
 use std::path::Path;
 use thiserror::Error;
 
-#[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 #[serde(default)]
 pub struct Config {
+    /// Schema version this configuration file was written for. Must match the
+    /// running binary's [`crate::SCHEMA_VERSION`]; a mismatch is rejected at
+    /// startup so an operator never runs with silently-ignored fields.
+    #[serde(default = "default_schema_version")]
+    pub schema_version: String,
     pub data_policy: DataPolicyConfig,
+    pub inference: InferenceConfig,
     pub providers: ProviderConfig,
     pub timeouts: TimeoutConfig,
     pub budget: BudgetConfig,
@@ -102,6 +108,37 @@ impl InferenceMode {
     }
 }
 
+/// Backend limits for the optional inference layer.
+///
+/// The mode itself lives in `data_policy.inference`; this section only sizes
+/// the backend that mode selects. See [`crate::inference`].
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
+#[serde(default)]
+pub struct InferenceConfig {
+    /// Backend identifier; only the offline backend ships today.
+    pub backend: String,
+    /// Width of the embedding vectors.
+    pub embedding_dimensions: usize,
+    /// Maximum documents scored in one ranking call.
+    pub max_documents: usize,
+    /// Maximum characters read per document before embedding.
+    pub max_input_chars: usize,
+    /// Weight the reranker keeps for the upstream relevance signal.
+    pub reranker_prior_weight: f64,
+}
+
+impl Default for InferenceConfig {
+    fn default() -> Self {
+        Self {
+            backend: crate::inference::LOCAL_EMBEDDING_BACKEND_ID.into(),
+            embedding_dimensions: 256,
+            max_documents: 64,
+            max_input_chars: 20_000,
+            reranker_prior_weight: 0.5,
+        }
+    }
+}
+
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(default)]
 pub struct ServerConfig {
@@ -127,13 +164,82 @@ pub struct TlsConfig {
     pub key_path: Option<String>,
 }
 
+/// Declared search sources.
+///
+/// Every `[providers.<name>]` table is a governance record keyed by provider
+/// name, so a new source is declared without changing this struct. The name
+/// must also exist in the [`crate::ProviderRegistry`] for the service to build
+/// it; configuration declares, the registry implements.
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
-#[serde(default)]
+#[serde(from = "ProviderConfigWire")]
 pub struct ProviderConfig {
     pub enabled: Vec<String>,
-    pub brave: ProviderRuntimeConfig,
-    pub mojeek: ProviderRuntimeConfig,
-    pub duckduckgo_html: ProviderRuntimeConfig,
+    #[serde(flatten)]
+    declared: std::collections::BTreeMap<String, ProviderRuntimeConfig>,
+}
+
+/// Wire shape of `[providers]`: the fixed `enabled` list plus one table per
+/// declared source. Declarations merge over the built-in records so a file that
+/// tunes one provider does not drop the others.
+#[derive(Default, Deserialize)]
+#[serde(default)]
+struct ProviderConfigWire {
+    enabled: Vec<String>,
+    #[serde(flatten)]
+    declared: std::collections::BTreeMap<String, ProviderRuntimeConfig>,
+}
+
+impl From<ProviderConfigWire> for ProviderConfig {
+    fn from(wire: ProviderConfigWire) -> Self {
+        let mut declared = builtin_provider_records();
+        declared.extend(wire.declared);
+        Self {
+            enabled: wire.enabled,
+            declared,
+        }
+    }
+}
+
+impl ProviderConfig {
+    /// Governance record for a provider name, if it is declared.
+    pub fn get(&self, name: &str) -> Option<&ProviderRuntimeConfig> {
+        self.declared.get(name)
+    }
+
+    /// Mutable governance record, creating a default one when absent.
+    pub fn entry(&mut self, name: impl Into<String>) -> &mut ProviderRuntimeConfig {
+        self.declared.entry(name.into()).or_default()
+    }
+
+    /// Declare or replace a governance record.
+    pub fn declare(&mut self, name: impl Into<String>, runtime: ProviderRuntimeConfig) {
+        self.declared.insert(name.into(), runtime);
+    }
+
+    /// Remove a declaration, returning the record it held.
+    pub fn remove(&mut self, name: &str) -> Option<ProviderRuntimeConfig> {
+        self.declared.remove(name)
+    }
+
+    pub fn is_declared(&self, name: &str) -> bool {
+        self.declared.contains_key(name)
+    }
+
+    /// All declarations in stable alphabetical order.
+    pub fn declared(&self) -> impl Iterator<Item = (&String, &ProviderRuntimeConfig)> {
+        self.declared.iter()
+    }
+
+    /// Declared provider names in stable alphabetical order.
+    pub fn names(&self) -> Vec<&str> {
+        self.declared.keys().map(String::as_str).collect()
+    }
+
+    /// Whether the source may keep retrieved content, defaulting to `false`
+    /// for anything undeclared.
+    pub fn storage_rights(&self, name: &str) -> bool {
+        self.get(name).is_some_and(|runtime| runtime.storage_rights)
+    }
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
@@ -194,6 +300,11 @@ pub struct ExecutionConfig {
 pub struct PersistenceConfig {
     pub enabled: bool,
     pub path: String,
+    /// Record every executed search in the local history table. Requires
+    /// `enabled`; history never leaves the machine.
+    pub history_enabled: bool,
+    /// Upper bound on the payload a surface may persist as a saved document.
+    pub saved_document_max_bytes: u64,
 }
 
 #[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
@@ -211,6 +322,9 @@ pub struct DocumentCacheConfig {
     pub max_entries: u64,
     pub max_bytes: u64,
     pub store_content: bool,
+    /// When non-zero, stale entries within this window are served while
+    /// a background revalidation is triggered.
+    pub stale_while_revalidate_seconds: u64,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
@@ -405,38 +519,49 @@ impl Default for DataPolicyConfig {
 
 impl Default for ProviderConfig {
     fn default() -> Self {
-        let brave = ProviderRuntimeConfig {
-            adapter_version: Some("brave-v1".into()),
-            credential_env: Some("BRAVE_API_KEY".into()),
-            terms_url: Some(
-                "https://api-dashboard.search.brave.com/documentation/resources/terms-of-service"
-                    .into(),
-            ),
-            terms_version_or_date: Some("2026-02-11".into()),
-            allowed_access_method: Some("official_api".into()),
-            supported_filters: vec![
-                "site".into(),
-                "filetype".into(),
-                "language".into(),
-                "region".into(),
-                "time_range".into(),
-            ],
-            ..ProviderRuntimeConfig::default()
-        };
-        let mojeek = ProviderRuntimeConfig {
-            adapter_version: Some("mojeek-v1".into()),
-            credential_env: Some("MOJEEK_API_KEY".into()),
-            terms_url: Some("https://www.mojeek.com/support/api/".into()),
-            allowed_access_method: Some("official_api".into()),
-            ..ProviderRuntimeConfig::default()
-        };
         Self {
             enabled: vec![],
-            brave,
-            mojeek,
-            duckduckgo_html: ProviderRuntimeConfig::default(),
+            declared: builtin_provider_records(),
         }
     }
+}
+
+/// Governance records shipped with AMATL, used as the base every configuration
+/// file extends or overrides.
+fn builtin_provider_records() -> std::collections::BTreeMap<String, ProviderRuntimeConfig> {
+    let brave = ProviderRuntimeConfig {
+        adapter_version: Some("brave-v1".into()),
+        credential_env: Some("BRAVE_API_KEY".into()),
+        terms_url: Some(
+            "https://api-dashboard.search.brave.com/documentation/resources/terms-of-service"
+                .into(),
+        ),
+        terms_version_or_date: Some("2026-02-11".into()),
+        allowed_access_method: Some("official_api".into()),
+        supported_filters: vec![
+            "site".into(),
+            "filetype".into(),
+            "language".into(),
+            "region".into(),
+            "time_range".into(),
+        ],
+        ..ProviderRuntimeConfig::default()
+    };
+    let mojeek = ProviderRuntimeConfig {
+        adapter_version: Some("mojeek-v1".into()),
+        credential_env: Some("MOJEEK_API_KEY".into()),
+        terms_url: Some("https://www.mojeek.com/support/api/".into()),
+        allowed_access_method: Some("official_api".into()),
+        ..ProviderRuntimeConfig::default()
+    };
+    std::collections::BTreeMap::from([
+        ("brave".to_string(), brave),
+        ("mojeek".to_string(), mojeek),
+        (
+            "duckduckgo_html".to_string(),
+            ProviderRuntimeConfig::default(),
+        ),
+    ])
 }
 
 impl Default for TimeoutConfig {
@@ -472,6 +597,8 @@ impl Default for PersistenceConfig {
         Self {
             enabled: false,
             path: "amatl.sqlite3".into(),
+            history_enabled: true,
+            saved_document_max_bytes: 1_048_576,
         }
     }
 }
@@ -495,6 +622,7 @@ impl Default for DocumentCacheConfig {
             max_entries: 1_000,
             max_bytes: 268_435_456,
             store_content: false,
+            stale_while_revalidate_seconds: 0,
         }
     }
 }
@@ -592,6 +720,28 @@ impl Default for ServerConfig {
     }
 }
 
+impl Default for Config {
+    fn default() -> Self {
+        Self {
+            schema_version: crate::SCHEMA_VERSION.to_string(),
+            data_policy: DataPolicyConfig::default(),
+            inference: InferenceConfig::default(),
+            providers: ProviderConfig::default(),
+            timeouts: TimeoutConfig::default(),
+            budget: BudgetConfig::default(),
+            execution: ExecutionConfig::default(),
+            ranking_policy: RankingPolicyV1::default(),
+            diversity_policy: DiversityPolicyV1::default(),
+            search_policy: SearchPolicyV1::default(),
+            persistence: PersistenceConfig::default(),
+            cache: CacheConfig::default(),
+            telemetry: TelemetryConfig::default(),
+            deep: DeepConfig::default(),
+            server: ServerConfig::default(),
+        }
+    }
+}
+
 impl Config {
     pub fn from_toml(input: &str) -> Result<Self, toml::de::Error> {
         toml::from_str(input)
@@ -608,17 +758,34 @@ impl Config {
     }
 
     pub fn validate(&self) -> Result<(), ConfigError> {
-        const KNOWN_PROVIDERS: [&str; 3] = ["brave", "mojeek", "duckduckgo_html"];
+        if self.schema_version != crate::SCHEMA_VERSION {
+            return Err(ConfigError::Policy(format!(
+                "config schema_version '{}' does not match binary schema_version '{}'",
+                self.schema_version,
+                crate::SCHEMA_VERSION
+            )));
+        }
+        if let Some(name) = self
+            .providers
+            .names()
+            .into_iter()
+            .find(|name| !is_provider_key(name))
+        {
+            return Err(ConfigError::Policy(format!(
+                "invalid provider name: {name}; use lowercase ascii, digits and underscore"
+            )));
+        }
         if let Some(name) = self
             .providers
             .enabled
             .iter()
-            .find(|name| !KNOWN_PROVIDERS.contains(&name.as_str()))
+            .find(|name| !self.providers.is_declared(name))
         {
             return Err(ConfigError::Policy(format!(
                 "unknown enabled provider: {name}"
             )));
         }
+        self.validate_inference()?;
         if self.execution.global_concurrency == 0
             || self.execution.per_provider_concurrency == 0
             || self.execution.per_provider_concurrency > self.execution.global_concurrency
@@ -627,6 +794,13 @@ impl Config {
         {
             return Err(ConfigError::Policy(
                 "invalid parallel search execution limit".into(),
+            ));
+        }
+        if self.persistence.saved_document_max_bytes == 0
+            || self.persistence.saved_document_max_bytes > 16 * 1024 * 1024
+        {
+            return Err(ConfigError::Policy(
+                "persistence.saved_document_max_bytes must be between 1 and 16777216".into(),
             ));
         }
         self.ranking_policy
@@ -652,19 +826,20 @@ impl Config {
         if self.cache.provider_search.ttl_seconds == 0
             || self.cache.provider_search.max_entries == 0
             || self.cache.provider_search.max_bytes == 0
-            || self.telemetry.retention_days == 0
             || self.cache.document.ttl_seconds == 0
             || self.cache.document.max_entries == 0
             || self.cache.document.max_bytes == 0
         {
-            return Err(ConfigError::Policy(
-                "cache and telemetry limits must be positive".into(),
-            ));
+            return Err(ConfigError::Policy("cache limits must be positive".into()));
         }
-        if self.telemetry.retention_days != 30 {
-            return Err(ConfigError::Policy(
-                "telemetry v1 retention must remain 30 days".into(),
-            ));
+        if self.telemetry.retention_days < crate::telemetry::TELEMETRY_MIN_RETENTION_DAYS
+            || self.telemetry.retention_days > crate::telemetry::TELEMETRY_MAX_RETENTION_DAYS
+        {
+            return Err(ConfigError::Policy(format!(
+                "telemetry retention_days must be between {} and {}",
+                crate::telemetry::TELEMETRY_MIN_RETENTION_DAYS,
+                crate::telemetry::TELEMETRY_MAX_RETENTION_DAYS
+            )));
         }
         if (self.cache.provider_search.enabled || self.telemetry.persistence_enabled)
             && !self.persistence.enabled
@@ -806,6 +981,61 @@ impl Config {
         }
         Ok(())
     }
+
+    /// Inference limits, and the policy that must back the ranking weights.
+    ///
+    /// Semantic and reranker weights are only accepted when an inference mode
+    /// with an available backend is selected, so an operator never believes a
+    /// semantic ranking is running while it silently falls back to lexical.
+    fn validate_inference(&self) -> Result<(), ConfigError> {
+        if self.inference.backend != crate::inference::LOCAL_EMBEDDING_BACKEND_ID {
+            return Err(ConfigError::Policy(format!(
+                "unknown inference backend: {}",
+                self.inference.backend
+            )));
+        }
+        if !(crate::inference::MINIMUM_EMBEDDING_DIMENSIONS
+            ..=crate::inference::MAXIMUM_EMBEDDING_DIMENSIONS)
+            .contains(&self.inference.embedding_dimensions)
+            || self.inference.max_documents == 0
+            || self.inference.max_input_chars == 0
+            || !self.inference.reranker_prior_weight.is_finite()
+            || !(0.0..=1.0).contains(&self.inference.reranker_prior_weight)
+        {
+            return Err(ConfigError::Policy("invalid inference limit".into()));
+        }
+        let policy = &self.deep.ranking_v2.policy;
+        let needs_backend = self.deep.ranking_v2.enabled
+            && (policy.weight_semantic > 0.0 || policy.weight_reranker > 0.0);
+        if needs_backend {
+            match self.data_policy.inference {
+                InferenceMode::Disabled => {
+                    return Err(ConfigError::Policy(
+                        "semantic or reranker ranking weights require an enabled inference mode"
+                            .into(),
+                    ))
+                }
+                InferenceMode::RemoteExplicit => {
+                    return Err(ConfigError::Policy(
+                        "remote inference has no available backend for ranking weights".into(),
+                    ))
+                }
+                InferenceMode::LocalOnly => {}
+            }
+        }
+        Ok(())
+    }
+}
+
+fn is_provider_key(name: &str) -> bool {
+    !name.is_empty()
+        && name.chars().all(|character| {
+            character.is_ascii_lowercase() || character.is_ascii_digit() || character == '_'
+        })
+}
+
+fn default_schema_version() -> String {
+    crate::SCHEMA_VERSION.to_string()
 }
 
 #[cfg(test)]
@@ -822,7 +1052,7 @@ mod tests {
         assert!(!config.data_policy.allows_local_inference());
         assert!(!config.data_policy.allows_remote_inference());
         assert!(config.providers.enabled.is_empty());
-        assert!(!config.providers.brave.approved());
+        assert!(!config.providers.get("brave").unwrap().approved());
         assert!(config.timeouts.provider_ms <= config.timeouts.global_ms);
         assert!(!config.deep.renderer.enabled);
         assert!(config.deep.max_depth <= 2);
@@ -945,6 +1175,85 @@ mod tests {
     }
 
     #[test]
+    fn declared_providers_extend_the_builtin_records_without_losing_them() {
+        let config = Config::from_toml(
+            r#"
+            [providers]
+            enabled = ["custom_archive"]
+
+            [providers.custom_archive]
+            adapter_version = "custom-v1"
+            credential_env = "CUSTOM_ARCHIVE_TOKEN"
+
+            [providers.brave]
+            adapter_version = "brave-pinned"
+            "#,
+        )
+        .unwrap();
+        assert!(config.validate().is_ok());
+        assert_eq!(
+            config.providers.names(),
+            vec!["brave", "custom_archive", "duckduckgo_html", "mojeek"]
+        );
+        assert_eq!(
+            config
+                .providers
+                .get("custom_archive")
+                .unwrap()
+                .credential_env
+                .as_deref(),
+            Some("CUSTOM_ARCHIVE_TOKEN")
+        );
+        assert_eq!(
+            config.providers.get("brave").unwrap().adapter_version,
+            Some("brave-pinned".into())
+        );
+        assert!(config.providers.is_declared("mojeek"));
+        assert!(!config.providers.storage_rights("custom_archive"));
+    }
+
+    #[test]
+    fn provider_names_must_be_stable_configuration_keys() {
+        let mut config = Config::default();
+        config
+            .providers
+            .declare("Brave Search", ProviderRuntimeConfig::default());
+        let error = config.validate().unwrap_err().to_string();
+        assert!(error.contains("invalid provider name"), "{error}");
+    }
+
+    #[test]
+    fn semantic_ranking_weights_require_a_backed_inference_mode() {
+        let mut config = Config::default();
+        config.deep.ranking_v2.policy.weight_bm25 = 0.7;
+        config.deep.ranking_v2.policy.weight_semantic = 0.3;
+        let error = config.validate().unwrap_err().to_string();
+        assert!(
+            error.contains("require an enabled inference mode"),
+            "{error}"
+        );
+
+        config.data_policy.inference = InferenceMode::LocalOnly;
+        assert!(config.validate().is_ok());
+
+        config.data_policy.inference = InferenceMode::RemoteExplicit;
+        let error = config.validate().unwrap_err().to_string();
+        assert!(error.contains("no available backend"), "{error}");
+    }
+
+    #[test]
+    fn inference_limits_are_bounded() {
+        let mut config = Config::default();
+        config.inference.embedding_dimensions = 8;
+        assert!(config.validate().is_err());
+
+        let mut unknown = Config::default();
+        unknown.inference.backend = "hosted".into();
+        let error = unknown.validate().unwrap_err().to_string();
+        assert!(error.contains("unknown inference backend"), "{error}");
+    }
+
+    #[test]
     fn remote_server_requires_tls_and_authentication() {
         let mut config = Config::default();
         config.server.bind = "0.0.0.0".into();
@@ -954,5 +1263,35 @@ mod tests {
         assert!(config.validate().is_ok());
         config.server.no_auth = true;
         assert!(config.validate().is_err());
+    }
+
+    #[test]
+    fn schema_version_defaults_to_current_and_rejects_mismatch() {
+        let config = Config::default();
+        assert_eq!(config.schema_version, crate::SCHEMA_VERSION);
+        assert!(config.validate().is_ok());
+
+        let mismatched = Config {
+            schema_version: "0".into(),
+            ..Default::default()
+        };
+        let error = mismatched.validate().unwrap_err().to_string();
+        assert!(
+            error.contains("schema_version"),
+            "expected schema_version error, got: {error}"
+        );
+
+        let future = Config {
+            schema_version: "999".into(),
+            ..Default::default()
+        };
+        assert!(future.validate().is_err());
+    }
+
+    #[test]
+    fn toml_without_schema_version_defaults_to_current() {
+        let config = Config::from_toml("").unwrap();
+        assert_eq!(config.schema_version, crate::SCHEMA_VERSION);
+        assert!(config.validate().is_ok());
     }
 }

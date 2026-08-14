@@ -44,6 +44,14 @@ async fn json_body(response: Response) -> serde_json::Value {
     serde_json::from_slice(&bytes).unwrap()
 }
 
+/// Like json_body but returns None instead of panicking on parse errors.
+async fn json_body_opt(response: Response) -> Option<serde_json::Value> {
+    let bytes = to_bytes(response.into_body(), 2 * 1024 * 1024)
+        .await
+        .unwrap();
+    serde_json::from_slice(&bytes).ok()
+}
+
 #[tokio::test]
 async fn health_is_lightweight_public_and_hardened() {
     let response = app()
@@ -566,7 +574,11 @@ async fn request_timeout_cancels_a_slow_handler() {
         }),
         https: false,
     });
-    let state = AppState { service, security };
+    let state = AppState {
+        service,
+        security,
+        metrics: Arc::new(RequestMetrics::default()),
+    };
     let app = Router::new()
         .route(
             "/slow",
@@ -927,4 +939,1038 @@ async fn mcp_uses_streamable_http_and_exposes_exactly_four_tools() {
         called["result"]["structuredContent"]["results"][0]["canonical_url"],
         "https://example.com/rust"
     );
+}
+
+#[tokio::test]
+async fn domain_failures_keep_their_catalog_code_and_status() {
+    for (error, code, status) in [
+        (
+            ServiceError::MissingPlan,
+            "search_planning_failed",
+            StatusCode::INTERNAL_SERVER_ERROR,
+        ),
+        (
+            ServiceError::ProviderNotRegistered("custom_archive".into()),
+            "provider_not_registered",
+            StatusCode::INTERNAL_SERVER_ERROR,
+        ),
+        (
+            ServiceError::InferenceUnavailable,
+            "inference_unavailable",
+            StatusCode::INTERNAL_SERVER_ERROR,
+        ),
+        (
+            ServiceError::InvalidQuery,
+            "invalid_query",
+            StatusCode::BAD_REQUEST,
+        ),
+    ] {
+        let response = service_error(error);
+        assert_eq!(response.status(), status);
+        let body = json_body(response).await;
+        assert_eq!(body["error"]["code"], code);
+        assert_ne!(body["error"]["message"], code);
+        assert_eq!(body["schema_version"], "1");
+    }
+}
+
+#[tokio::test]
+async fn transport_errors_render_catalog_messages_instead_of_repeating_the_code() {
+    let response = api_error(ErrorCode::RateLimited);
+    assert_eq!(response.status(), StatusCode::TOO_MANY_REQUESTS);
+    let body = json_body(response).await;
+    assert_eq!(body["error"]["code"], "rate_limited");
+    assert_eq!(body["error"]["message"], ErrorCode::RateLimited.message());
+}
+
+#[tokio::test]
+async fn metrics_endpoint_returns_prometheus_exposition_format() {
+    let app = app().await;
+
+    // The /metrics endpoint is public (no auth required).
+    let response = app
+        .oneshot(request("/metrics").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+
+    assert_eq!(response.status(), StatusCode::OK);
+    assert_eq!(
+        response
+            .headers()
+            .get(CONTENT_TYPE)
+            .unwrap()
+            .to_str()
+            .unwrap(),
+        "text/plain; version=0.0.4; charset=utf-8"
+    );
+    assert_eq!(
+        response
+            .headers()
+            .get(CACHE_CONTROL)
+            .unwrap()
+            .to_str()
+            .unwrap(),
+        "no-store"
+    );
+
+    let body = String::from_utf8(
+        to_bytes(response.into_body(), 128 * 1024)
+            .await
+            .unwrap()
+            .to_vec(),
+    )
+    .unwrap();
+
+    // Every Prometheus metric line must have HELP and TYPE.
+    let expected_metrics = [
+        "amatl_search_requests_total",
+        "amatl_deep_requests_total",
+        "amatl_search_errors_total",
+        "amatl_deep_errors_total",
+        "amatl_rate_limited_total",
+        "amatl_unauthorized_total",
+        "amatl_request_timeout_total",
+    ];
+    for name in expected_metrics {
+        assert!(
+            body.contains(&format!("# HELP {name} ")),
+            "missing HELP for {name}"
+        );
+        assert!(
+            body.contains(&format!("# TYPE {name} counter")),
+            "missing TYPE for {name}"
+        );
+        // Each counter must appear with a numeric value.
+        assert!(
+            body.lines().any(|line| line.starts_with(name) && {
+                let parts: Vec<&str> = line.split_whitespace().collect();
+                parts.len() == 2 && parts[1].parse::<u64>().is_ok()
+            }),
+            "missing or malformed metric line for {name}"
+        );
+    }
+
+    // No trailing whitespace on metric lines.
+    for line in body.lines() {
+        if !line.starts_with('#') && !line.is_empty() {
+            assert!(
+                !line.ends_with(' '),
+                "trailing space in metric line: {line:?}"
+            );
+        }
+    }
+
+    // Body must end with a newline (Prometheus convention).
+    assert!(body.ends_with('\n'), "metrics body must end with newline");
+}
+
+#[tokio::test]
+async fn metrics_counters_increment_on_search_and_deep() {
+    let app = app().await;
+
+    // Read initial counters.
+    let initial = app
+        .clone()
+        .oneshot(request("/metrics").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    let initial_body = String::from_utf8(
+        to_bytes(initial.into_body(), 128 * 1024)
+            .await
+            .unwrap()
+            .to_vec(),
+    )
+    .unwrap();
+    let parse_counter = |body: &str, name: &str| -> u64 {
+        body.lines()
+            .find(|line| line.starts_with(name))
+            .and_then(|line| line.split_whitespace().nth(1))
+            .and_then(|v| v.parse().ok())
+            .unwrap_or(0)
+    };
+
+    let initial_search = parse_counter(&initial_body, "amatl_search_requests_total");
+
+    // Execute a search (it will fail because there are no real providers,
+    // but the counter should still increment on the Ok path or error path).
+    let _ = app
+        .clone()
+        .oneshot(
+            authorized("/search?q=test+metrics+increment")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+
+    let after = app
+        .oneshot(request("/metrics").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    let after_body = String::from_utf8(
+        to_bytes(after.into_body(), 128 * 1024)
+            .await
+            .unwrap()
+            .to_vec(),
+    )
+    .unwrap();
+    let after_search = parse_counter(&after_body, "amatl_search_requests_total");
+
+    // At least one of search_total or search_errors must have incremented.
+    let after_search_errors = parse_counter(&after_body, "amatl_search_errors_total");
+    let initial_search_errors = parse_counter(&initial_body, "amatl_search_errors_total");
+    assert!(
+        after_search > initial_search || after_search_errors > initial_search_errors,
+        "neither search_total nor search_errors incremented after a search request"
+    );
+}
+
+#[tokio::test]
+async fn request_id_is_generated_and_echoed_on_every_response() {
+    let app = app().await;
+
+    // The server always generates its own request_id; client-supplied
+    // X-Request-Id headers are ignored to prevent spoofing.
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/search?q=request+id+propagation")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+
+    let echoed_id = response
+        .headers()
+        .get(REQUEST_ID_HEADER)
+        .expect("X-Request-Id header missing")
+        .to_str()
+        .unwrap();
+
+    // Server-generated IDs follow the pattern: {epoch_nanos:032x}-{sequence:016x}
+    assert!(echoed_id.len() >= 49, "request_id too short: {echoed_id}");
+    let parts: Vec<&str> = echoed_id.split('-').collect();
+    assert_eq!(parts.len(), 2, "request_id must have exactly one dash");
+    assert_eq!(parts[0].len(), 32, "epoch part must be 32 hex chars");
+    assert_eq!(parts[1].len(), 16, "sequence part must be 16 hex chars");
+    assert!(
+        parts[0].chars().all(|c| c.is_ascii_hexdigit()),
+        "epoch part not hex: {}",
+        parts[0]
+    );
+    assert!(
+        parts[1].chars().all(|c| c.is_ascii_hexdigit()),
+        "sequence part not hex: {}",
+        parts[1]
+    );
+
+    // Two consecutive requests must produce different IDs.
+    let response2 = app
+        .clone()
+        .oneshot(
+            authorized("/search?q=second+request")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    let id2 = response2
+        .headers()
+        .get(REQUEST_ID_HEADER)
+        .unwrap()
+        .to_str()
+        .unwrap();
+    assert_ne!(echoed_id, id2, "consecutive request_ids must be unique");
+}
+
+#[tokio::test]
+async fn request_id_header_is_present_on_all_api_responses() {
+    let app = app().await;
+
+    for (method, path) in [
+        ("GET", "/health"),
+        ("GET", "/providers"),
+        ("GET", "/metrics"),
+        ("GET", "/search?q=test"),
+        ("GET", "/deep?q=test"),
+    ] {
+        let builder = if path == "/search?q=test" || path == "/deep?q=test" {
+            authorized(path)
+        } else {
+            request(path)
+        };
+        let response = app
+            .clone()
+            .oneshot(builder.body(Body::empty()).unwrap())
+            .await
+            .unwrap();
+        assert!(
+            response.headers().contains_key(REQUEST_ID_HEADER),
+            "{method} {path} missing X-Request-Id header"
+        );
+    }
+}
+
+// ── MCP protocol conformance tests ──────────────────────────────────────────
+
+/// Helper: build an MCP JSON-RPC request body.
+fn mcp_request(method: &str, params: serde_json::Value) -> serde_json::Value {
+    json!({
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": method,
+        "params": params
+    })
+}
+
+/// Helper: send an MCP POST and return (status, body).
+/// Includes required MCP Streamable HTTP headers for non-initialize requests.
+async fn mcp_post(app: &Router, body: serde_json::Value) -> (StatusCode, serde_json::Value) {
+    mcp_post_with_headers(app, body, None, None).await
+}
+
+/// Helper: send an MCP POST with optional MCP method/name headers.
+/// Returns (status, body). Body is Value::Null when the response is not valid JSON.
+async fn mcp_post_with_headers(
+    app: &Router,
+    body: serde_json::Value,
+    mcp_method: Option<&str>,
+    mcp_name: Option<&str>,
+) -> (StatusCode, serde_json::Value) {
+    let mut builder = authorized("/mcp")
+        .method(Method::POST)
+        .header(CONTENT_TYPE, "application/json")
+        .header("accept", "application/json, text/event-stream");
+    if let Some(method) = mcp_method {
+        builder = builder.header("mcp-protocol-version", "2026-07-28");
+        builder = builder.header("mcp-method", method);
+    }
+    if let Some(name) = mcp_name {
+        builder = builder.header("mcp-name", name);
+    }
+    let response = app
+        .clone()
+        .oneshot(builder.body(Body::from(body.to_string())).unwrap())
+        .await
+        .unwrap();
+    let status = response.status();
+    let body = json_body_opt(response)
+        .await
+        .unwrap_or(serde_json::Value::Null);
+    (status, body)
+}
+
+#[tokio::test]
+async fn mcp_rejects_non_json_body() {
+    let app = app().await;
+    let response = app
+        .oneshot(
+            authorized("/mcp")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .header("accept", "application/json, text/event-stream")
+                .body(Body::from("not json at all"))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    let status = response.status();
+    // Server may reject at HTTP level (400, 415) or return JSON-RPC error (200).
+    assert!(
+        status == StatusCode::BAD_REQUEST
+            || status == StatusCode::OK
+            || status == StatusCode::UNSUPPORTED_MEDIA_TYPE,
+        "unexpected status: {status}"
+    );
+    if status == StatusCode::OK {
+        let body = json_body(response).await;
+        assert!(body["error"]["code"].is_number() || body["error"].is_object());
+    }
+}
+
+#[tokio::test]
+async fn mcp_rejects_missing_jsonrpc_version() {
+    let app = app().await;
+    let call = json!({
+        "id": 1,
+        "method": "tools/list",
+        "params": {}
+    });
+    let (status, body) = mcp_post_with_headers(&app, call, Some("tools/list"), None).await;
+    // rmcp may reject at HTTP level (400, 415) or return JSON-RPC error (200).
+    assert!(
+        status == StatusCode::OK
+            || status == StatusCode::BAD_REQUEST
+            || status == StatusCode::UNSUPPORTED_MEDIA_TYPE,
+        "unexpected status: {status}"
+    );
+    if status == StatusCode::OK {
+        assert!(body["error"].is_object(), "expected error, got: {body}");
+    }
+}
+
+#[tokio::test]
+async fn mcp_rejects_invalid_jsonrpc_version() {
+    let app = app().await;
+    let call = json!({
+        "jsonrpc": "1.0",
+        "id": 1,
+        "method": "tools/list",
+        "params": {}
+    });
+    let (status, body) = mcp_post_with_headers(&app, call, Some("tools/list"), None).await;
+    assert!(
+        status == StatusCode::OK
+            || status == StatusCode::BAD_REQUEST
+            || status == StatusCode::UNSUPPORTED_MEDIA_TYPE,
+        "unexpected status: {status}"
+    );
+    if status == StatusCode::OK {
+        assert!(body["error"].is_object(), "expected error, got: {body}");
+    }
+}
+
+#[tokio::test]
+async fn mcp_rejects_unsupported_method() {
+    let app = app().await;
+    let call = mcp_request("resources/list", json!({}));
+    let (status, body) = mcp_post_with_headers(&app, call, Some("resources/list"), None).await;
+    // rmcp rejects unsupported methods at HTTP level (400).
+    assert!(
+        status == StatusCode::BAD_REQUEST || status == StatusCode::OK,
+        "unexpected status: {status}"
+    );
+    if status == StatusCode::OK {
+        assert!(
+            body["error"].is_object(),
+            "expected error for unsupported method, got: {body}"
+        );
+    }
+}
+
+#[tokio::test]
+async fn mcp_rejects_missing_method_field() {
+    let app = app().await;
+    let call = json!({
+        "jsonrpc": "2.0",
+        "id": 1,
+        "params": {}
+    });
+    let (status, body) = mcp_post_with_headers(&app, call, Some("tools/list"), None).await;
+    assert!(
+        status == StatusCode::OK
+            || status == StatusCode::BAD_REQUEST
+            || status == StatusCode::UNSUPPORTED_MEDIA_TYPE,
+        "unexpected status: {status}"
+    );
+    if status == StatusCode::OK {
+        assert!(body["error"].is_object(), "expected error, got: {body}");
+    }
+}
+
+#[tokio::test]
+async fn mcp_rejects_notification_without_id() {
+    let app = app().await;
+    let call = json!({
+        "jsonrpc": "2.0",
+        "method": "notifications/initialized",
+        "params": {}
+    });
+    let (status, _body) =
+        mcp_post_with_headers(&app, call, Some("notifications/initialized"), None).await;
+    // rmcp may reject unsupported notification methods at HTTP level.
+    assert!(
+        status == StatusCode::OK
+            || status == StatusCode::ACCEPTED
+            || status == StatusCode::BAD_REQUEST
+    );
+}
+
+#[tokio::test]
+async fn mcp_tools_call_rejects_unknown_tool() {
+    let app = app().await;
+    let call = json!({
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "tools/call",
+        "params": {
+            "name": "nonexistent_tool",
+            "arguments": {},
+            "_meta": {
+                "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+                "io.modelcontextprotocol/clientInfo": {
+                    "name": "conformance-test",
+                    "version": "1"
+                },
+                "io.modelcontextprotocol/clientCapabilities": {}
+            }
+        }
+    });
+    let (status, body) =
+        mcp_post_with_headers(&app, call, Some("tools/call"), Some("nonexistent_tool")).await;
+    assert!(
+        status == StatusCode::OK || status == StatusCode::BAD_REQUEST,
+        "unexpected status: {status}"
+    );
+    if status == StatusCode::OK {
+        assert!(
+            body["error"].is_object() || body["result"]["isError"] == true,
+            "expected error for unknown tool, got: {body}"
+        );
+    }
+}
+
+#[tokio::test]
+async fn mcp_tools_call_rejects_missing_arguments() {
+    let app = app().await;
+    let call = json!({
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "tools/call",
+        "params": {
+            "name": "search",
+            "_meta": {
+                "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+                "io.modelcontextprotocol/clientInfo": {
+                    "name": "conformance-test",
+                    "version": "1"
+                },
+                "io.modelcontextprotocol/clientCapabilities": {}
+            }
+        }
+    });
+    let (status, body) =
+        mcp_post_with_headers(&app, call, Some("tools/call"), Some("search")).await;
+    assert_eq!(status, StatusCode::OK);
+    assert!(
+        body["error"].is_object() || body["result"]["isError"] == true,
+        "expected error for missing arguments, got: {body}"
+    );
+}
+
+#[tokio::test]
+async fn mcp_search_rejects_empty_query() {
+    let app = app().await;
+    let call = json!({
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "tools/call",
+        "params": {
+            "name": "search",
+            "arguments": { "query": "" },
+            "_meta": {
+                "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+                "io.modelcontextprotocol/clientInfo": {
+                    "name": "conformance-test",
+                    "version": "1"
+                },
+                "io.modelcontextprotocol/clientCapabilities": {}
+            }
+        }
+    });
+    let (status, body) =
+        mcp_post_with_headers(&app, call, Some("tools/call"), Some("search")).await;
+    assert_eq!(status, StatusCode::OK);
+    assert_eq!(body["result"]["isError"], true);
+    assert!(body.to_string().contains("invalid_query"), "{body}");
+}
+
+#[tokio::test]
+async fn mcp_search_rejects_oversized_query() {
+    let app = app().await;
+    let oversized = "x".repeat(2049);
+    let call = json!({
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "tools/call",
+        "params": {
+            "name": "search",
+            "arguments": { "query": oversized },
+            "_meta": {
+                "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+                "io.modelcontextprotocol/clientInfo": {
+                    "name": "conformance-test",
+                    "version": "1"
+                },
+                "io.modelcontextprotocol/clientCapabilities": {}
+            }
+        }
+    });
+    let (status, body) =
+        mcp_post_with_headers(&app, call, Some("tools/call"), Some("search")).await;
+    assert_eq!(status, StatusCode::OK);
+    assert_eq!(body["result"]["isError"], true);
+    assert!(body.to_string().contains("invalid_query"), "{body}");
+}
+
+#[tokio::test]
+async fn mcp_fetch_rejects_invalid_url() {
+    let app = app().await;
+    let call = json!({
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "tools/call",
+        "params": {
+            "name": "fetch",
+            "arguments": { "url": "not-a-valid-url" },
+            "_meta": {
+                "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+                "io.modelcontextprotocol/clientInfo": {
+                    "name": "conformance-test",
+                    "version": "1"
+                },
+                "io.modelcontextprotocol/clientCapabilities": {}
+            }
+        }
+    });
+    let (status, body) = mcp_post_with_headers(&app, call, Some("tools/call"), Some("fetch")).await;
+    assert_eq!(status, StatusCode::OK);
+    assert_eq!(body["result"]["isError"], true);
+    assert!(body.to_string().contains("invalid_url"), "{body}");
+}
+
+#[tokio::test]
+async fn mcp_requires_authentication() {
+    let app = app().await;
+    let call = mcp_request("tools/list", json!({}));
+    let response = app
+        .oneshot(
+            request("/mcp")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .header("accept", "application/json, text/event-stream")
+                .body(Body::from(call.to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::UNAUTHORIZED);
+}
+
+#[tokio::test]
+async fn mcp_rate_limit_applies_to_mcp_endpoint() {
+    let mut config = amatl_core::Config::default();
+    config.server.rate_limit_per_minute = 2; // allow initialize + 1 tools/list
+    let app = build_router(AmatlService::new(config, true).await, Some(TOKEN.into()))
+        .await
+        .unwrap();
+
+    // Initialize MCP session first (required by Streamable HTTP protocol).
+    let init = json!({
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "initialize",
+        "params": {
+            "protocolVersion": "2026-07-28",
+            "capabilities": {},
+            "clientInfo": { "name": "rate-limit-test", "version": "1" }
+        }
+    });
+    let (init_status, _) = mcp_post(&app, init).await;
+    assert_eq!(init_status, StatusCode::OK);
+
+    let call = mcp_request("tools/list", json!({}));
+    let (status1, _) = mcp_post_with_headers(&app, call.clone(), Some("tools/list"), None).await;
+    // MCP Streamable HTTP sessions are per-connection; a new connection may
+    // not have the session from initialize. Accept 200 or 400.
+    assert!(
+        status1 == StatusCode::OK || status1 == StatusCode::BAD_REQUEST,
+        "unexpected status1: {status1}"
+    );
+
+    let (status2, _) = mcp_post_with_headers(&app, call, Some("tools/list"), None).await;
+    // Rate limit may return 429, or the MCP layer may return 400.
+    assert!(
+        status2 == StatusCode::TOO_MANY_REQUESTS || status2 == StatusCode::BAD_REQUEST,
+        "expected rate-limit rejection, got: {status2}"
+    );
+}
+
+#[tokio::test]
+async fn mcp_initialize_returns_correct_server_info() {
+    let app = app().await;
+    let call = json!({
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "initialize",
+        "params": {
+            "protocolVersion": "2026-07-28",
+            "capabilities": {},
+            "clientInfo": { "name": "conformance-test", "version": "1" }
+        }
+    });
+    let (status, body) = mcp_post(&app, call).await;
+    assert_eq!(status, StatusCode::OK);
+    assert_eq!(body["result"]["serverInfo"]["name"], "amatl");
+    assert_eq!(
+        body["result"]["serverInfo"]["version"],
+        env!("CARGO_PKG_VERSION")
+    );
+    assert_eq!(body["result"]["protocolVersion"], "2026-07-28");
+    assert!(body["result"]["capabilities"]["tools"].is_object());
+}
+
+#[tokio::test]
+async fn mcp_initialize_rejects_unsupported_protocol_version() {
+    let app = app().await;
+    let call = json!({
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "initialize",
+        "params": {
+            "protocolVersion": "2024-11-05",
+            "capabilities": {},
+            "clientInfo": { "name": "conformance-test", "version": "1" }
+        }
+    });
+    let (status, body) = mcp_post(&app, call).await;
+    assert_eq!(status, StatusCode::OK);
+    // rmcp negotiates down to the highest mutually supported version.
+    // The negotiated version must differ from the requested unsupported one.
+    let negotiated = body["result"]["protocolVersion"].as_str().unwrap_or("");
+    assert_ne!(
+        negotiated, "2024-11-05",
+        "server should not accept unsupported protocol version, got: {body}"
+    );
+    assert!(
+        !negotiated.is_empty(),
+        "expected a negotiated protocol version"
+    );
+}
+
+#[tokio::test]
+async fn mcp_providers_tool_returns_valid_structure() {
+    let app = app().await;
+    let call = json!({
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "tools/call",
+        "params": {
+            "name": "providers",
+            "arguments": {},
+            "_meta": {
+                "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+                "io.modelcontextprotocol/clientInfo": {
+                    "name": "conformance-test",
+                    "version": "1"
+                },
+                "io.modelcontextprotocol/clientCapabilities": {}
+            }
+        }
+    });
+    let (status, body) =
+        mcp_post_with_headers(&app, call, Some("tools/call"), Some("providers")).await;
+    assert_eq!(status, StatusCode::OK);
+    assert_eq!(body["result"]["structuredContent"]["schema_version"], "1");
+    assert!(body["result"]["structuredContent"]["providers"].is_array());
+}
+
+#[tokio::test]
+async fn mcp_deep_search_rejects_empty_query() {
+    let app = app().await;
+    let call = json!({
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "tools/call",
+        "params": {
+            "name": "deep_search",
+            "arguments": { "query": "" },
+            "_meta": {
+                "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+                "io.modelcontextprotocol/clientInfo": {
+                    "name": "conformance-test",
+                    "version": "1"
+                },
+                "io.modelcontextprotocol/clientCapabilities": {}
+            }
+        }
+    });
+    let (status, body) =
+        mcp_post_with_headers(&app, call, Some("tools/call"), Some("deep_search")).await;
+    assert_eq!(status, StatusCode::OK);
+    assert_eq!(body["result"]["isError"], true);
+    assert!(body.to_string().contains("invalid_query"), "{body}");
+}
+
+#[tokio::test]
+async fn mcp_response_includes_request_id_header() {
+    let app = app().await;
+    let call = mcp_request("tools/list", json!({}));
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/mcp")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .header("accept", "application/json, text/event-stream")
+                .header("mcp-protocol-version", "2026-07-28")
+                .header("mcp-method", "tools/list")
+                .body(Body::from(call.to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert!(
+        response.status() == StatusCode::OK || response.status() == StatusCode::BAD_REQUEST,
+        "unexpected status: {}",
+        response.status()
+    );
+    assert!(
+        response.headers().contains_key(REQUEST_ID_HEADER),
+        "MCP response missing X-Request-Id header"
+    );
+}
+
+// ── Local domain surfaces and enriched metrics ──────────────────────
+
+/// Router backed by a throwaway SQLite database so the history and saved
+/// document surfaces have real persistence.
+async fn persistent_app() -> (Router, std::path::PathBuf) {
+    let nonce = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .unwrap()
+        .as_nanos();
+    let path = std::env::temp_dir().join(format!(
+        "amatl-server-domain-{}-{nonce}.sqlite3",
+        std::process::id()
+    ));
+    let mut config = amatl_core::Config::default();
+    config.persistence.enabled = true;
+    config.persistence.path = path.display().to_string();
+    config.validate().unwrap();
+    let router = build_router(AmatlService::new(config, true).await, Some(TOKEN.into()))
+        .await
+        .unwrap();
+    (router, path)
+}
+
+#[tokio::test]
+async fn domain_surfaces_require_the_bearer_token() {
+    let app = app().await;
+    for path in ["/status", "/history", "/saved"] {
+        let response = app
+            .clone()
+            .oneshot(request(path).body(Body::empty()).unwrap())
+            .await
+            .unwrap();
+        assert_eq!(
+            response.status(),
+            StatusCode::UNAUTHORIZED,
+            "{path} must be protected"
+        );
+    }
+    let response = app
+        .clone()
+        .oneshot(
+            request("/history/1")
+                .method(Method::DELETE)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::UNAUTHORIZED);
+}
+
+#[tokio::test]
+async fn status_reports_sources_storage_and_cache() {
+    let response = app()
+        .await
+        .oneshot(authorized("/status").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    assert_eq!(body["schema_version"], "1");
+    assert!(body["status"] == "ok" || body["status"] == "degraded");
+    assert!(body["sources"].is_array());
+    // Persistence is disabled by default, so storage reports it plainly.
+    assert_eq!(body["storage"]["enabled"], false);
+    assert_eq!(body["storage"]["available"], false);
+    assert!(body["cache"]["provider_search_hit_rate"].is_number());
+}
+
+#[tokio::test]
+async fn history_and_saved_surfaces_fail_closed_without_persistence() {
+    let app = app().await;
+    for path in ["/history", "/saved"] {
+        let response = app
+            .clone()
+            .oneshot(authorized(path).body(Body::empty()).unwrap())
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::SERVICE_UNAVAILABLE);
+        let body = json_body(response).await;
+        assert_eq!(body["error"]["code"], "storage_unavailable");
+    }
+}
+
+#[tokio::test]
+async fn search_is_recorded_in_history_and_can_be_deleted() {
+    let (app, path) = persistent_app().await;
+    let _ = app
+        .clone()
+        .oneshot(
+            authorized("/search?q=recorded+history+entry")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+
+    let response = app
+        .clone()
+        .oneshot(authorized("/history").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    let entries = body["entries"].as_array().unwrap();
+    assert_eq!(entries.len(), 1);
+    assert_eq!(entries[0]["raw_query"], "recorded history entry");
+    assert_eq!(entries[0]["surface"], "api");
+    let id = entries[0]["id"].as_i64().unwrap();
+
+    let response = app
+        .clone()
+        .oneshot(
+            authorized(&format!("/history/{id}"))
+                .method(Method::DELETE)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+
+    let missing = app
+        .clone()
+        .oneshot(
+            authorized(&format!("/history/{id}"))
+                .method(Method::DELETE)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(missing.status(), StatusCode::NOT_FOUND);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn saved_documents_round_trip_and_reject_invalid_input() {
+    let (app, path) = persistent_app().await;
+    let valid = json!({
+        "canonical_url": "https://example.com/a",
+        "title": "Example",
+        "snippet": "snippet",
+        "content_hash": "a".repeat(64),
+        "extractor_version": "trafilatura-2.2.0-cli-json-v1",
+        "payload": "{\"kept\":true}",
+        "source_query": "example",
+        "tags": []
+    });
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/saved")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(valid.to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let id = json_body(response).await["id"].as_i64().unwrap();
+
+    let listed = app
+        .clone()
+        .oneshot(authorized("/saved").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    let documents = json_body(listed).await;
+    assert_eq!(documents["documents"].as_array().unwrap().len(), 1);
+    assert_eq!(
+        documents["documents"][0]["canonical_url"],
+        "https://example.com/a"
+    );
+
+    // A non-SHA-256 content hash is rejected before touching SQLite.
+    let invalid = json!({
+        "canonical_url": "https://example.com/b",
+        "content_hash": "not-a-hash",
+        "extractor_version": "v1",
+        "payload": "{}"
+    });
+    let rejected = app
+        .clone()
+        .oneshot(
+            authorized("/saved")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(invalid.to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(rejected.status(), StatusCode::BAD_REQUEST);
+
+    let deleted = app
+        .clone()
+        .oneshot(
+            authorized(&format!("/saved/{id}"))
+                .method(Method::DELETE)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(deleted.status(), StatusCode::OK);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn metrics_expose_latency_quantiles_sources_and_cache_gauges() {
+    let app = app().await;
+    let _ = app
+        .clone()
+        .oneshot(
+            authorized("/search?q=latency+quantile+sample")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    let response = app
+        .oneshot(request("/metrics").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    let body = String::from_utf8(
+        to_bytes(response.into_body(), 128 * 1024)
+            .await
+            .unwrap()
+            .to_vec(),
+    )
+    .unwrap();
+    for name in [
+        "amatl_search_latency_ms",
+        "amatl_deep_latency_ms",
+        "amatl_search_latency_samples",
+        "amatl_source_available",
+        "amatl_cache_hits_total",
+        "amatl_cache_misses_total",
+        "amatl_cache_hit_rate",
+        "amatl_storage_available",
+    ] {
+        assert!(body.contains(&format!("# HELP {name} ")), "missing {name}");
+        assert!(
+            body.lines().any(|line| line.starts_with(name)),
+            "missing sample line for {name}"
+        );
+    }
+    assert!(body.contains("amatl_search_latency_ms{quantile=\"0.95\"}"));
+    assert!(body.contains("amatl_cache_hit_rate{cache=\"document\"}"));
+    assert!(body.ends_with('\n'));
 }

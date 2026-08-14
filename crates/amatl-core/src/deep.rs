@@ -8,7 +8,7 @@ use crate::model::{
     OriginalUrl, SearchResult, SearchStatus, SubQuery, SubQueryStatus, SCHEMA_VERSION,
 };
 use crate::ranking_v2::{disabled_output, rejected_output, RankingV2Engine};
-use crate::render::Renderer;
+use crate::render::RendererPool;
 use sha2::{Digest, Sha256};
 use std::collections::{BTreeMap, BTreeSet, VecDeque};
 use std::sync::Arc;
@@ -31,7 +31,7 @@ pub struct DeepOrchestrator {
     budget: DeepBudget,
     fetcher: Arc<dyn Fetcher>,
     extractor: Arc<dyn Extractor>,
-    renderer: Arc<dyn Renderer>,
+    renderer: RendererPool,
     cache: Option<DocumentCache>,
     timeout_ms: u64,
     per_fetch_bytes: u64,
@@ -41,6 +41,8 @@ pub struct DeepOrchestrator {
     ranking_v2: Option<RankingV2Engine>,
     gap_analyzer: Option<GapAnalyzer>,
     subquery_executor: Option<Arc<dyn SubQueryExecutor>>,
+    /// Correlates every outbound document fetch with the originating request.
+    request_id: Option<String>,
 }
 
 impl DeepOrchestrator {
@@ -49,7 +51,7 @@ impl DeepOrchestrator {
         budget: DeepBudget,
         fetcher: Arc<dyn Fetcher>,
         extractor: Arc<dyn Extractor>,
-        renderer: Arc<dyn Renderer>,
+        renderer: RendererPool,
         cache: Option<DocumentCache>,
         timeout_ms: u64,
         per_fetch_bytes: u64,
@@ -71,7 +73,15 @@ impl DeepOrchestrator {
             ranking_v2: None,
             gap_analyzer: None,
             subquery_executor: None,
+            request_id: None,
         }
+    }
+
+    /// Correlate every fetch this orchestrator performs with the caller's
+    /// request id.
+    pub fn with_request_id(mut self, request_id: Option<String>) -> Self {
+        self.request_id = request_id;
+        self
     }
 
     pub fn with_ranking_v2(mut self, engine: RankingV2Engine) -> Self {
@@ -204,6 +214,7 @@ impl DeepOrchestrator {
                     max_bytes: limit,
                     max_redirects: redirect_limit,
                     headers: request_headers,
+                    request_id: self.request_id.clone(),
                 })
                 .await;
             let fetched = match fetch {
@@ -389,6 +400,8 @@ impl DeepOrchestrator {
                         &document,
                         self.extractor.version(),
                         candidate.storage_rights,
+                        None,
+                        None,
                     )
                     .await
                     && candidate.storage_rights

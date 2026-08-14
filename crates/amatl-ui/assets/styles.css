@@ -265,3 +265,210 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }
+
+/* ── Provider status ─────────────────────────────────────────── */
+.provider-status {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--surface);
+}
+
+.provider-status h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  color: var(--secondary);
+}
+
+.provider-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.provider-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+}
+
+.provider-name {
+  color: var(--text);
+}
+
+.provider-badge {
+  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+}
+
+.provider-badge--available {
+  background: color-mix(in srgb, var(--success) 20%, transparent);
+  color: var(--success);
+}
+
+.provider-badge--unavailable {
+  background: color-mix(in srgb, var(--error) 20%, transparent);
+  color: var(--error);
+}
+
+/* ── Cancel button ──────────────────────────────────────────── */
+.cancel-button {
+  display: block;
+  margin: 0.75rem auto 0;
+  padding: 0.375rem 1rem;
+  border: 1px solid var(--error);
+  border-radius: 0.375rem;
+  background: transparent;
+  color: var(--error);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.cancel-button:hover {
+  background: color-mix(in srgb, var(--error) 15%, transparent);
+}
+
+.cancel-button[hidden] {
+  display: none;
+}
+
+/* ── Side panels: service state, history and saved documents ─── */
+.side-panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+.service-state,
+.history-panel,
+.saved-panel {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--surface);
+  min-width: 0;
+}
+
+.service-state[hidden],
+.history-panel[hidden],
+.saved-panel[hidden] { display: none; }
+
+.service-state h2,
+.history-panel h2,
+.saved-panel h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  color: var(--secondary);
+}
+
+.panel-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.indicator-list,
+.history-list,
+.saved-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.indicator {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.indicator-label { color: var(--secondary); }
+.indicator-value { font-weight: 500; color: var(--text); overflow-wrap: anywhere; }
+.indicator-value[data-state="success"] { color: var(--success); }
+.indicator-value[data-state="partial"] { color: var(--warning); }
+.indicator-value[data-state="error"] { color: var(--error); }
+
+.history-item,
+.saved-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  min-width: 0;
+}
+
+.history-body,
+.saved-body { min-width: 0; }
+
+.history-query,
+.saved-item h3 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.history-meta,
+.saved-meta {
+  margin: 0.15rem 0 0;
+  font-size: 0.75rem;
+  color: var(--secondary);
+  overflow-wrap: anywhere;
+}
+
+.history-actions {
+  display: flex;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.document-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.75rem;
+}
+
+.ghost-action {
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  background: transparent;
+  color: var(--secondary);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.ghost-action:hover { color: var(--text); border-color: var(--accent); }
+.ghost-action:disabled { opacity: 0.5; cursor: default; }
+
+.empty-note {
+  margin: 0.5rem 0 0;
+  font-size: 0.8rem;
+  color: var(--secondary);
+}
+
+@media (max-width: 44rem) {
+  .side-panels { grid-template-columns: minmax(0, 1fr); }
+  .history-item, .saved-item { display: block; }
+  .history-actions { margin-top: 0.5rem; }
+}

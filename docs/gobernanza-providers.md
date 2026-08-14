@@ -66,9 +66,22 @@ real aunque existan adapters (`config.rs:318-350`, `service.rs:277-353`,
    implícita de 90 días.
 5. Implementar adapter con errores tipados, límites, sanitización y fixtures sin
    secretos; añadir contract tests de filtros, fallos, cuota y respuesta inválida.
+   El adapter se expone mediante un `ProviderFactory` registrado en
+   `ProviderRegistry` con el mismo nombre que la ficha; declarar la ficha sin
+   registrar la factory produce `provider_not_registered` y no tráfico real.
 6. Ejecutar el gate completo. Sólo entonces añadirlo a `providers.enabled`.
 7. Renovar antes de 90 días o marcar `expired`/`rejected`. Un cambio de ToS,
    método, precio o contrato exige revisión inmediata, no esperar la caducidad.
 
 `storage_rights = false` impide que la caché escriba resultados de ese provider.
 No debe activarse por conveniencia técnica: requiere un derecho verificado.
+
+## Fuentes de terceros
+
+`[providers]` es un mapa abierto y `AmatlService::with_registry` acepta un
+registro propio, de modo que un integrador puede añadir fuentes sin modificar el
+núcleo. La puerta de gobernanza no cambia: la ficha completa y vigente sigue
+siendo obligatoria, `provider-canary` la verifica antes de cualquier acceso de
+red, y una factory puede declarar `supports_network_canary = false` o
+`requires_credential = false` cuando su fuente no admite canary real o no usa
+credencial.

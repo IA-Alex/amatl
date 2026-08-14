@@ -1,5 +1,9 @@
 # Configuración local segura. Copiar como amatl.toml; no versionar secretos.
 
+# Versión del esquema de configuración. Debe coincidir con la del binario;
+# un desajuste se rechaza al arrancar para evitar campos ignorados en silencio.
+schema_version = "1"
+
 # Para ejercicios confidenciales: profile = "isolated", egress = "deny" e
 # inference = "local_only" (o "disabled"). La configuración contradictoria falla.
 [data_policy]
@@ -7,8 +11,20 @@ profile = "standard"
 egress = "governed"
 inference = "disabled"
 
+# Mapa abierto: cada [providers.<nombre>] declara una fuente y se fusiona sobre
+# los expedientes incorporados (brave, mojeek, duckduckgo_html). Un nombre en
+# "enabled" debe estar declarado aquí y registrado en el ProviderRegistry.
 [providers]
 enabled = []
+
+# Backend de inferencia. El modo vive en [data_policy]; esta sección lo dimensiona.
+# Los pesos semánticos de deep.ranking_v2 exigen inference = "local_only".
+[inference]
+backend = "local_hashing_v1"
+embedding_dimensions = 256
+max_documents = 64
+max_input_chars = 20000
+reranker_prior_weight = 0.5
 
 [timeouts]
 provider_ms = 3000
@@ -26,6 +42,10 @@ retry_jitter_ms = 25
 [persistence]
 enabled = false
 path = "amatl.sqlite3"
+# Record every executed search in the local history table (requires enabled).
+history_enabled = true
+# Upper bound for one saved document payload, in bytes (1 MiB, max 16 MiB).
+saved_document_max_bytes = 1048576
 
 [cache.provider_search]
 enabled = false

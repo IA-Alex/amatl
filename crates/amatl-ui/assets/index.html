@@ -9,6 +9,7 @@
     <title>AMATL — Búsqueda y evidencia</title>
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="/styles.css">
+    <script src="/i18n.js" defer></script>
     <script src="/app.js" defer></script>
   </head>
   <body>
@@ -31,7 +32,7 @@
             </div>
           </div>
           <details class="filters">
-            <summary>Filtros y acceso</summary>
+            <summary id="filters-summary">Filtros y acceso</summary>
             <div class="filter-grid">
               <div>
                 <label for="language">Idioma</label>
@@ -68,6 +69,7 @@
         <div id="loading" class="loading" hidden aria-hidden="true">
           <span></span><span></span><span></span>
         </div>
+        <button id="cancel-button" class="cancel-button" type="button" hidden aria-hidden="true">Cancelar</button>
         <ol id="results" class="results" tabindex="-1"></ol>
         <nav id="pagination" class="pagination" aria-label="Páginas de resultados" hidden>
           <button id="previous" type="button">Anterior</button>
@@ -75,6 +77,35 @@
           <button id="next" type="button">Siguiente</button>
         </nav>
       </section>
+
+      <aside class="side-panels">
+        <section class="provider-status" aria-labelledby="provider-heading" hidden>
+          <h2 id="provider-heading">Estado de fuentes</h2>
+          <ul id="provider-list" class="provider-list" role="list"></ul>
+          <p id="provider-status-text" class="status"></p>
+        </section>
+
+        <section class="service-state" aria-labelledby="service-heading" hidden>
+          <h2 id="service-heading">Estado del servicio</h2>
+          <p id="service-summary" class="status" role="status" aria-live="polite"></p>
+          <ul id="service-indicators" class="indicator-list" role="list"></ul>
+        </section>
+
+        <section class="history-panel" aria-labelledby="history-heading" hidden>
+          <div class="panel-header">
+            <h2 id="history-heading">Historial de búsquedas</h2>
+            <button id="history-purge" type="button" class="ghost-action">Borrar historial</button>
+          </div>
+          <ol id="history-list" class="history-list"></ol>
+          <p id="history-empty" class="empty-note" hidden></p>
+        </section>
+
+        <section class="saved-panel" aria-labelledby="saved-heading" hidden>
+          <h2 id="saved-heading">Documentos guardados</h2>
+          <ol id="saved-list" class="saved-list"></ol>
+          <p id="saved-empty" class="empty-note" hidden></p>
+        </section>
+      </aside>
     </main>
 
     <template id="result-template">
@@ -104,6 +135,9 @@
           <p class="empty-evidence" hidden></p>
           <ol class="evidence-fragments"></ol>
         </section>
+        <div class="document-actions">
+          <button type="button" class="save-document ghost-action">Guardar</button>
+        </div>
         <details class="provenance">
           <summary>Procedencia verificable</summary>
           <dl>
@@ -117,6 +151,29 @@
             <div><dt>SHA-256 texto extraído</dt><dd><code class="provenance-content-hash"></code></dd></div>
           </dl>
         </details>
+      </li>
+    </template>
+
+    <template id="history-template">
+      <li class="history-item">
+        <div class="history-body">
+          <p class="history-query"></p>
+          <p class="history-meta"></p>
+        </div>
+        <div class="history-actions">
+          <button type="button" class="history-reuse ghost-action"></button>
+          <button type="button" class="history-delete ghost-action"></button>
+        </div>
+      </li>
+    </template>
+
+    <template id="saved-template">
+      <li class="saved-item">
+        <div class="saved-body">
+          <h3><a class="saved-title" rel="noopener noreferrer"></a></h3>
+          <p class="saved-meta"></p>
+        </div>
+        <button type="button" class="saved-delete ghost-action"></button>
       </li>
     </template>
 

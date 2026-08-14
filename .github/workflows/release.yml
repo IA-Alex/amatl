@@ -39,7 +39,7 @@ jobs:
           rustup toolchain install 1.88.0 --profile minimal
           cargo +1.88.0 check --workspace --all-targets --locked
 
-  linux-musl:
+  linux-x86_64-musl:
     needs: quality
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -76,7 +76,7 @@ jobs:
           fi
           echo "package_version=$package_version" >> "$GITHUB_OUTPUT"
           echo "SOURCE_DATE_EPOCH=$(git log -1 --format=%ct)" >> "$GITHUB_ENV"
-      - name: Build static Linux binary
+      - name: Build static Linux binary (x86_64)
         run: cargo build --locked --release --target x86_64-unknown-linux-musl -p amatl-cli
       - name: Verify static Linux binary
         env:
@@ -138,3 +138,179 @@ jobs:
         run: >-
           gh release create "$GITHUB_REF_NAME" dist/*
           --verify-tag --prerelease --generate-notes
+
+  linux-aarch64-musl:
+    needs: quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-unknown-linux-musl
+      - uses: Swatinem/rust-cache@v2
+      - name: Install cross-compilation toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes musl-tools gcc-aarch64-linux-gnu
+      - name: Validate release version
+        id: version
+        run: |
+          package_version="$(cargo metadata --locked --no-deps --format-version 1 | jq -r '.packages[] | select(.name == "amatl-cli") | .version')"
+          test -n "$package_version"
+          echo "package_version=$package_version" >> "$GITHUB_OUTPUT"
+          echo "SOURCE_DATE_EPOCH=$(git log -1 --format=%ct)" >> "$GITHUB_ENV"
+      - name: Build static Linux binary (aarch64)
+        env:
+          CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER: aarch64-linux-gnu-gcc
+          CC_aarch64_unknown_linux_musl: aarch64-linux-gnu-gcc
+        run: cargo build --locked --release --target aarch64-unknown-linux-musl -p amatl-cli
+      - name: Package aarch64 archive
+        env:
+          PACKAGE_VERSION: ${{ steps.version.outputs.package_version }}
+        run: |
+          archive_root="amatl-${PACKAGE_VERSION}-aarch64-unknown-linux-musl"
+          mkdir -p "dist/$archive_root"
+          install -m 0755 "target/aarch64-unknown-linux-musl/release/amatl" "dist/$archive_root/amatl"
+          install -m 0644 README.md LICENSE-MIT LICENSE-APACHE "dist/$archive_root/"
+          tar --sort=name --owner=0 --group=0 --numeric-owner \
+            --mtime="@$SOURCE_DATE_EPOCH" -C dist -czf "dist/$archive_root.tar.gz" "$archive_root"
+          rm -r "dist/$archive_root"
+          cd dist
+          sha256sum "$archive_root.tar.gz" > "SHA256SUMS-aarch64"
+      - uses: actions/upload-artifact@v6
+        with:
+          name: amatl-${{ steps.version.outputs.package_version }}-aarch64-unknown-linux-musl
+          retention-days: 30
+          path: dist/*
+          if-no-files-found: error
+      - name: Publish prerelease from annotated tag
+        if: github.ref_type == 'tag'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh release upload "$GITHUB_REF_NAME" dist/*
+          --clobber
+
+  macos:
+    needs: quality
+    runs-on: macos-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+    strategy:
+      matrix:
+        target:
+          - x86_64-apple-darwin
+          - aarch64-apple-darwin
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+      - uses: Swatinem/rust-cache@v2
+      - name: Validate release version
+        id: version
+        run: |
+          package_version="$(cargo metadata --locked --no-deps --format-version 1 | jq -r '.packages[] | select(.name == "amatl-cli") | .version')"
+          test -n "$package_version"
+          echo "package_version=$package_version" >> "$GITHUB_OUTPUT"
+          echo "SOURCE_DATE_EPOCH=$(git log -1 --format=%ct)" >> "$GITHUB_ENV"
+      - name: Build macOS binary
+        run: cargo build --locked --release --target ${{ matrix.target }} -p amatl-cli
+      - name: Verify macOS binary
+        env:
+          PACKAGE_VERSION: ${{ steps.version.outputs.package_version }}
+        run: |
+          binary="target/${{ matrix.target }}/release/amatl"
+          file "$binary"
+          "$binary" --version | grep --fixed-strings --quiet "amatl $PACKAGE_VERSION"
+      - name: Package macOS archive
+        env:
+          PACKAGE_VERSION: ${{ steps.version.outputs.package_version }}
+        run: |
+          archive_root="amatl-${PACKAGE_VERSION}-${{ matrix.target }}"
+          mkdir -p "dist/$archive_root"
+          install -m 0755 "target/${{ matrix.target }}/release/amatl" "dist/$archive_root/amatl"
+          install -m 0644 README.md LICENSE-MIT LICENSE-APACHE "dist/$archive_root/"
+          tar --sort=name --owner=0 --group=0 --numeric-owner \
+            --mtime="@$SOURCE_DATE_EPOCH" -C dist -czf "dist/$archive_root.tar.gz" "$archive_root"
+          rm -r "dist/$archive_root"
+          cd dist
+          shasum -a 256 "$archive_root.tar.gz" > "SHA256SUMS-${{ matrix.target }}"
+      - uses: actions/upload-artifact@v6
+        with:
+          name: amatl-${{ steps.version.outputs.package_version }}-${{ matrix.target }}
+          retention-days: 30
+          path: dist/*
+          if-no-files-found: error
+      - name: Publish prerelease from annotated tag
+        if: github.ref_type == 'tag'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh release upload "$GITHUB_REF_NAME" dist/*
+          --clobber
+
+  windows:
+    needs: quality
+    runs-on: windows-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Validate release version
+        id: version
+        shell: bash
+        run: |
+          package_version="$(cargo metadata --locked --no-deps --format-version 1 | jq -r '.packages[] | select(.name == "amatl-cli") | .version')"
+          test -n "$package_version"
+          echo "package_version=$package_version" >> "$GITHUB_OUTPUT"
+      - name: Build Windows binary
+        run: cargo build --locked --release -p amatl-cli
+      - name: Verify Windows binary
+        shell: bash
+        env:
+          PACKAGE_VERSION: ${{ steps.version.outputs.package_version }}
+        run: |
+          binary="target/release/amatl.exe"
+          file "$binary" || true
+          "$binary" --version | grep --fixed-strings --quiet "amatl $PACKAGE_VERSION"
+      - name: Package Windows archive
+        shell: bash
+        env:
+          PACKAGE_VERSION: ${{ steps.version.outputs.package_version }}
+        run: |
+          archive_root="amatl-${PACKAGE_VERSION}-x86_64-pc-windows-msvc"
+          mkdir -p "dist/$archive_root"
+          cp "target/release/amatl.exe" "dist/$archive_root/amatl.exe"
+          cp README.md LICENSE-MIT LICENSE-APACHE "dist/$archive_root/"
+          cd dist
+          zip -r "$archive_root.zip" "$archive_root"
+          rm -r "$archive_root"
+          sha256sum "$archive_root.zip" > "SHA256SUMS-windows"
+      - uses: actions/upload-artifact@v6
+        with:
+          name: amatl-${{ steps.version.outputs.package_version }}-x86_64-pc-windows-msvc
+          retention-days: 30
+          path: dist/*
+          if-no-files-found: error
+      - name: Publish prerelease from annotated tag
+        if: github.ref_type == 'tag'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh release upload "$GITHUB_REF_NAME" dist/*
+          --clobber
