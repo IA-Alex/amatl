@@ -175,6 +175,32 @@ paths:
         '429': { $ref: '#/components/responses/RateLimited' }
         '500': { $ref: '#/components/responses/ServiceUnavailable' }
         '504': { $ref: '#/components/responses/RequestTimeout' }
+  /security-events:
+    get:
+      operationId: securityEvents
+      summary: Recorded security rejections, newest first
+      description: >-
+        Durable copy of the rejections logged at the HTTP edge. Requires the
+        admin scope, because the trail names client identities and addresses.
+        Requires persistence; without it the endpoint reports
+        `storage_unavailable` instead of an empty trail.
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Offset'
+      responses:
+        '200':
+          description: Recorded events and the number dropped under saturation
+          headers:
+            X-Request-ID: { $ref: '#/components/headers/RequestId' }
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SecurityEventsResponse'
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '503': { $ref: '#/components/responses/StorageUnavailable' }
   /history:
     get:
       operationId: historyList
@@ -356,7 +382,11 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
-      description: Local bearer token of at least 32 bytes
+      description: >-
+        Local bearer token of at least 32 bytes. Each configured credential has
+        its own scopes (search, deep, read, write, admin, mcp) and optional
+        expiry; a valid token without the route's scope receives 403
+        `scope_denied`.
   parameters:
     Query:
       name: q
@@ -401,7 +431,9 @@ components:
         application/json:
           schema: { $ref: '#/components/schemas/ErrorResponse' }
     Forbidden:
-      description: Origin is not allowed
+      description: >-
+        Origin is not allowed (`invalid_origin`), or the credential lacks the
+        capability the route requires (`scope_denied`)
       headers:
         X-Request-ID: { $ref: '#/components/headers/RequestId' }
       content:
@@ -504,7 +536,7 @@ components:
               description: >-
                 Shared error catalog (amatl-core/src/errors.rs). Every AMATL
                 surface renders the same identifiers.
-              enum: [invalid_request, invalid_query, invalid_url, unauthorized, invalid_host, invalid_origin, rate_limited, body_too_large, headers_too_large, request_timeout, not_found, egress_denied, fetch_failed, provider_not_declared, provider_not_registered, provider_not_enabled, provider_not_approved, provider_credential_missing, provider_network_blocked, search_planning_failed, configuration_invalid, inference_unavailable, ranking_backend_unavailable, storage_unavailable, request_cancelled, serialization_failed, internal_error]
+              enum: [invalid_request, invalid_query, invalid_url, unauthorized, invalid_host, invalid_origin, rate_limited, body_too_large, headers_too_large, request_timeout, not_found, egress_denied, fetch_failed, provider_not_declared, provider_not_registered, provider_not_enabled, provider_not_approved, provider_credential_missing, provider_network_blocked, search_planning_failed, configuration_invalid, inference_unavailable, ranking_backend_unavailable, storage_unavailable, scope_denied, request_cancelled, serialization_failed, internal_error]
             message: { type: string }
     SearchStatus:
       type: string
@@ -1013,3 +1045,30 @@ components:
           description: Sources with a registered factory in this process.
           items: { type: string }
         inference_backend: { type: [string, 'null'] }
+    SecurityEvent:
+      type: object
+      additionalProperties: false
+      required: [id, observed_at, event, request_id, client_id, path, client_ip]
+      properties:
+        id: { type: integer }
+        observed_at: { type: integer, description: Unix seconds }
+        event:
+          type: string
+          description: Stable rejection name, for example unauthorized or scope_denied.
+        request_id: { type: [string, 'null'] }
+        client_id: { type: [string, 'null'] }
+        path: { type: [string, 'null'] }
+        client_ip: { type: [string, 'null'] }
+    SecurityEventsResponse:
+      type: object
+      additionalProperties: false
+      required: [schema_version, events, dropped]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        events:
+          type: array
+          items: { $ref: '#/components/schemas/SecurityEvent' }
+        dropped:
+          type: integer
+          minimum: 0
+          description: Events discarded because too many audit writes were in flight.

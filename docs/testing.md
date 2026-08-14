@@ -19,6 +19,10 @@ workspace, not a hand-picked suite.
 | Ranking/Diversity | Yes | result pipeline | score/rank invariants | N/A: deterministic product logic | Yes | MVP and v2 tested; operational relevance drift needs external evaluation |
 | SQLite/cache | Yes | `persistence_phase3`, Deep cache | No | corruption/quarantine | Boundary tests | WAL/TTL/LRU/quotas covered; real filesystem failure and contention load absent |
 | Telemetry/router | Yes | `adaptive_routing_phase4` | No | no secrets by schema review | Yes | 30-day decay/state/fallback covered; multi-process behavior absent |
+| Credentials and scopes | Config validation units | In-process Axum | No | digest comparison, per-route scope, expiry, rotation on reload, rate window preserved | Yes | Several credentials, scope refusal (403 `scope_denied`), expired credential and hot rotation covered |
+| MCP tool policy | Yes | tools/call | No | allowlist from the authenticated identity, header spoof refused by the transport | Yes | `fetch` denied to a restricted client while `search` is allowed |
+| Security audit | Yes | HTTP rejections → SQLite → `/security-events` | No | admin-only, no secrets stored, bounded in-flight writes | Yes | Persistence, query order, admin-only access and fail-closed without SQLite covered |
+| Crawl politeness | Parser units | Deep crawl with a routing fetcher | No | discovered links only, fail-closed on unreachable robots.txt | Yes | Group precedence, longest match, wildcards, delay cap, allow/disallow/unavailable paths covered |
 | Circuit breaker | Yes | Service search rounds | No | open circuit removes a source, never adds one | Yes | Trip, cooldown, half-open probe, disabled policy and restart persistence covered |
 | Inference | Local + remote units | Ranking v2 engine | No | endpoint scheme/credential rules, bearer only in headers, response width and batch bounds | Yes | Remote batching, credential handling, malformed responses and fail-closed policy resolution covered; no live vendor endpoint in CI |
 | Governance gate | Yes | Service search rounds | No | unapproved enabled source is never built | Yes | Refusal is reported as a degradation, canary preflight unchanged |

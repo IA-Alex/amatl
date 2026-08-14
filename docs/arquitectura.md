@@ -116,6 +116,14 @@ vectorial resultante (`backend@dimensiones`) namespacea la caché documental, de
 modo que cambiar de backend o de ancho invalida por construcción en vez de
 reutilizar artefactos de otro espacio.
 
+La autorización es una propiedad del borde, no de cada handler: una tabla
+única (`required_scope`) decide qué capacidad exige cada ruta y método, y de
+ella se deriva qué está protegido, de modo que añadir una ruta sin declarar su
+scope la deja protegida por defecto. La identidad autenticada viaja en las
+extensiones de la solicitud y llega hasta las herramientas MCP, que aplican su
+propia lista por herramienta. Los rechazos se registran y, con persistencia, se
+guardan en `security_events`.
+
 La correlación de solicitud es transversal: el borde HTTP genera el
 `request_id`, `ServiceSurface` lo transporta al core y desde ahí llega a cada
 llamada saliente —`ProviderContext` para providers y `FetchRequest` para el

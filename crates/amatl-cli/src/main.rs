@@ -442,6 +442,15 @@ enum DbCommand {
         #[arg(long)]
         to: i64,
     },
+    /// Show recorded security rejections, newest first.
+    SecurityEvents {
+        #[arg(long, default_value_t = 20)]
+        limit: u32,
+        #[arg(long, default_value_t = 0)]
+        offset: u32,
+        #[arg(long)]
+        json: bool,
+    },
     /// Show provider circuit breaker state, optionally closing every circuit.
     Circuits {
         #[arg(long)]
@@ -555,6 +564,7 @@ async fn run() -> anyhow::Result<()> {
             doctor_persistence(&config).await;
             doctor_extractor(&config).await;
             doctor_server(&config);
+            doctor_credentials(&config);
             Ok(())
         }
         Command::Benchmark {
@@ -758,6 +768,34 @@ async fn db_command(command: DbCommand, config: &Config) -> anyhow::Result<()> {
                 "downgraded to migration version {to}; a backup was written next to the database"
             );
         }
+        DbCommand::SecurityEvents {
+            limit,
+            offset,
+            json,
+        } => {
+            let service = domain_service(config).await?;
+            let events = service
+                .audit()
+                .events(limit, offset)
+                .await
+                .map_err(|_| anyhow::anyhow!("security audit trail is unavailable"))?;
+            if json {
+                println!("{}", serde_json::to_string_pretty(&events)?);
+            } else if events.is_empty() {
+                println!("security events: none recorded");
+            } else {
+                for event in events {
+                    println!(
+                        "{}\t{}\t{}\t{}\t{}",
+                        event.observed_at,
+                        event.event,
+                        event.client_id.as_deref().unwrap_or("-"),
+                        event.path.as_deref().unwrap_or("-"),
+                        event.client_ip.as_deref().unwrap_or("-")
+                    );
+                }
+            }
+        }
         DbCommand::Circuits { reset, json } => {
             let service = domain_service(config).await?;
             if reset {
@@ -855,6 +893,46 @@ fn init_logging() {
                     .with_filter(target_filter),
             )
             .try_init();
+    }
+}
+
+fn doctor_credentials(config: &Config) {
+    if config.server.no_auth {
+        println!("credentials: disabled (no_auth, loopback only)");
+        return;
+    }
+    println!(
+        "credentials: default={} named={}",
+        std::env::var(&config.server.token_env)
+            .ok()
+            .is_some_and(|value| value.len() >= 32),
+        config.server.clients.len()
+    );
+    for client in &config.server.clients {
+        let ready = match (&client.token_env, &client.token_sha256) {
+            (Some(name), _) => std::env::var(name)
+                .ok()
+                .is_some_and(|value| value.len() >= 32),
+            (None, Some(_)) => true,
+            _ => false,
+        };
+        println!(
+            "  {}: ready={} expires={} scopes={} tools={}",
+            client.id,
+            ready,
+            client.expires_at.as_deref().unwrap_or("never"),
+            client
+                .scopes
+                .iter()
+                .map(|scope| scope.as_str())
+                .collect::<Vec<_>>()
+                .join(","),
+            if client.tools.is_empty() {
+                "none".to_string()
+            } else {
+                client.tools.join(",")
+            }
+        );
     }
 }
 
@@ -1184,6 +1262,15 @@ async fn doctor_persistence(config: &Config) {
         }
         None => println!("sqlite: disabled"),
     }
+    println!(
+        "security audit: {} (retention {} days)",
+        if config.persistence.enabled {
+            "persisted"
+        } else {
+            "logs only"
+        },
+        config.persistence.audit_retention_days
+    );
     println!(
         "circuit breaker: {} (threshold={}, cooldown={}s)",
         if config.circuit_breaker.enabled {

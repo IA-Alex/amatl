@@ -1,5 +1,6 @@
 //! Core shared by every AMATL surface. Keep product logic out of CLI/UI/API/MCP.
 
+pub mod audit;
 pub mod budget;
 pub mod cache;
 pub mod canonical;
@@ -28,6 +29,7 @@ pub mod query;
 pub mod ranking;
 pub mod ranking_v2;
 pub mod render;
+pub mod robots;
 pub mod router;
 pub mod security;
 pub mod service;
@@ -35,6 +37,9 @@ pub mod storage;
 pub mod telemetry;
 mod text;
 
+pub use audit::{
+    SecurityAudit, SecurityEventInput, AUDIT_DEFAULT_RETENTION_DAYS, AUDIT_MAX_RETENTION_DAYS,
+};
 pub use budget::{Budget, BudgetExhaustionCause, BudgetSnapshot, DeepBudget, DeepBudgetSnapshot};
 pub use cache::{
     CacheCounters, CacheEffectiveness, CachedProvider, ProviderSearchCache,
@@ -44,8 +49,8 @@ pub use circuit::{CircuitPolicy, CircuitSnapshot, CircuitState, ProviderCircuit}
 pub use classify::classify;
 pub use config::{
     ApprovalStatus, Config, ConfigError, DataPolicyConfig, EgressPolicy, ExecutionConfig,
-    InferenceConfig, InferenceMode, ProviderConfig, ProviderRuntimeConfig, SecurityProfile,
-    ServerConfig, TlsConfig,
+    InferenceConfig, InferenceMode, ProviderConfig, ProviderRuntimeConfig, Scope, SecurityProfile,
+    ServerClient, ServerConfig, TlsConfig, MCP_TOOLS,
 };
 pub use deep::{DeepCandidate, DeepOrchestrator, DeepRequest};
 pub use diversity::{DiversityDecision, DiversityMetrics, DiversityOutput, DiversityPolicyV1};
@@ -106,6 +111,9 @@ pub use ranking_v2::{
     RankingV2Policy, SemanticScorer, BENCHMARK_ID,
 };
 pub use render::{ChromiumRenderer, RenderError, RenderResult, Renderer, RendererPool};
+pub use robots::{
+    RobotsCache, RobotsDecision, RobotsRules, MAXIMUM_CRAWL_DELAY_MS, ROBOTS_USER_AGENT,
+};
 pub use router::{AdaptiveRouter, AdaptiveRoutingRecommendation, ProviderDescriptor, StaticRouter};
 pub use service::{
     validate_provider_canary, validate_provider_canary_with, AmatlService, CacheStatus,
@@ -114,8 +122,8 @@ pub use service::{
     ServiceSurfaceKind, SourceStatus, StorageStatus,
 };
 pub use storage::{
-    CacheStats, CachedDocument, SavedDocument, SearchHistoryEntry, SqliteStorage, StorageError,
-    StorageHealth, StoredCircuitRecord, MIGRATION_VERSION,
+    CacheStats, CachedDocument, SavedDocument, SearchHistoryEntry, SecurityEvent, SqliteStorage,
+    StorageError, StorageHealth, StoredCircuitRecord, MIGRATION_VERSION,
 };
 pub use telemetry::{
     InMemoryTelemetry, ProviderHealth, ProviderValueSnapshot, ProviderValueState,

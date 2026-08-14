@@ -164,8 +164,16 @@ impl Default for InferenceConfig {
 pub struct ServerConfig {
     pub bind: String,
     pub port: u16,
+    /// Environment variable holding the single default credential.
+    ///
+    /// Kept for deployments with one operator: the resulting client is called
+    /// `default` and carries every scope and every MCP tool. Declare
+    /// `[[server.clients]]` instead to split capability between callers.
     pub token_env: String,
     pub no_auth: bool,
+    /// Named credentials, each with its own scopes, MCP tool allowlist and
+    /// optional expiry. A request is authorized as exactly one of them.
+    pub clients: Vec<ServerClient>,
     pub allowed_hosts: Vec<String>,
     pub allowed_origins: Vec<String>,
     pub max_body_bytes: usize,
@@ -175,6 +183,85 @@ pub struct ServerConfig {
     pub rate_limit_per_minute: u32,
     pub max_connections: usize,
     pub tls: TlsConfig,
+}
+
+/// One named credential accepted by the HTTP and MCP surfaces.
+///
+/// The secret never lives in configuration: declare the environment variable
+/// that holds it, or the SHA-256 digest of the token. Both forms are compared
+/// as digests in constant time, so a configuration file leak does not leak a
+/// usable credential.
+#[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
+#[serde(default)]
+pub struct ServerClient {
+    /// Stable identity recorded in audit events. Never a secret.
+    pub id: String,
+    /// Environment variable holding this client's bearer token.
+    pub token_env: Option<String>,
+    /// Lowercase hex SHA-256 digest of this client's bearer token.
+    pub token_sha256: Option<String>,
+    /// ISO `YYYY-MM-DD` after which the credential stops being accepted.
+    pub expires_at: Option<String>,
+    /// HTTP capability granted to this client.
+    pub scopes: Vec<Scope>,
+    /// MCP tools this client may call. Empty means no MCP access at all: tool
+    /// capability is granted explicitly, never inherited.
+    pub tools: Vec<String>,
+}
+
+/// Capability a route requires from the calling client.
+#[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
+#[serde(rename_all = "snake_case")]
+pub enum Scope {
+    /// `/search`.
+    Search,
+    /// `/deep`.
+    Deep,
+    /// Read-only operator surfaces: `/providers`, `/status`, and listing
+    /// history and saved documents.
+    Read,
+    /// Mutating local state: saving documents, deleting or purging history.
+    Write,
+    /// `/reload` and any other administrative action.
+    Admin,
+    /// The MCP surface itself. The per-tool allowlist narrows it further.
+    Mcp,
+}
+
+impl Scope {
+    pub const ALL: [Scope; 6] = [
+        Scope::Search,
+        Scope::Deep,
+        Scope::Read,
+        Scope::Write,
+        Scope::Admin,
+        Scope::Mcp,
+    ];
+
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Search => "search",
+            Self::Deep => "deep",
+            Self::Read => "read",
+            Self::Write => "write",
+            Self::Admin => "admin",
+            Self::Mcp => "mcp",
+        }
+    }
+}
+
+impl ServerClient {
+    /// Whether the credential is still valid on `today` (`YYYY-MM-DD`).
+    pub fn unexpired_on(&self, today: &str) -> bool {
+        match self.expires_at.as_deref() {
+            None => true,
+            Some(expiry) => match (day_from_iso_date(expiry), day_from_iso_date(today)) {
+                (Some(expiry), Some(today)) => today <= expiry,
+                // An unparseable expiry fails closed.
+                _ => false,
+            },
+        }
+    }
 }
 
 #[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
@@ -325,6 +412,8 @@ pub struct PersistenceConfig {
     pub history_enabled: bool,
     /// Upper bound on the payload a surface may persist as a saved document.
     pub saved_document_max_bytes: u64,
+    /// Days a persisted security event is kept. Requires `enabled`.
+    pub audit_retention_days: u32,
 }
 
 #[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
@@ -356,6 +445,13 @@ pub struct DeepConfig {
     pub max_redirects: u32,
     pub max_crawl_urls: u32,
     pub max_depth: u8,
+    /// Consult `robots.txt` before fetching a link discovered by the crawl.
+    /// URLs that came from Search are requested by the user and are not gated.
+    pub respect_robots: bool,
+    /// Deadline for one `robots.txt` retrieval.
+    pub robots_timeout_ms: u64,
+    /// Byte ceiling for one `robots.txt` retrieval.
+    pub robots_max_bytes: u64,
     pub timeout_ms: u64,
     pub extractor: ExtractorConfig,
     pub renderer: RendererConfig,
@@ -619,6 +715,7 @@ impl Default for PersistenceConfig {
             path: "amatl.sqlite3".into(),
             history_enabled: true,
             saved_document_max_bytes: 1_048_576,
+            audit_retention_days: crate::audit::AUDIT_DEFAULT_RETENTION_DAYS,
         }
     }
 }
@@ -656,6 +753,9 @@ impl Default for DeepConfig {
             max_redirects: 5,
             max_crawl_urls: 10,
             max_depth: 1,
+            respect_robots: true,
+            robots_timeout_ms: 3_000,
+            robots_max_bytes: 512 * 1024,
             timeout_ms: 20_000,
             extractor: ExtractorConfig::default(),
             renderer: RendererConfig::default(),
@@ -727,6 +827,7 @@ impl Default for ServerConfig {
             port: 8080,
             token_env: "AMATL_SERVER_TOKEN".into(),
             no_auth: false,
+            clients: vec![],
             allowed_hosts: vec!["127.0.0.1".into(), "localhost".into(), "[::1]".into()],
             allowed_origins: vec![],
             max_body_bytes: 64 * 1024,
@@ -820,6 +921,21 @@ impl Config {
         self.circuit_breaker
             .validate()
             .map_err(|error| ConfigError::Policy(error.into()))?;
+        if !(1..=crate::audit::AUDIT_MAX_RETENTION_DAYS)
+            .contains(&self.persistence.audit_retention_days)
+        {
+            return Err(ConfigError::Policy(
+                "persistence.audit_retention_days must be between 1 and 365".into(),
+            ));
+        }
+        if self.deep.respect_robots
+            && (!(100..=30_000).contains(&self.deep.robots_timeout_ms)
+                || !(1_024..=1_048_576).contains(&self.deep.robots_max_bytes))
+        {
+            return Err(ConfigError::Policy(
+                "invalid robots.txt retrieval limit".into(),
+            ));
+        }
         if self.persistence.saved_document_max_bytes == 0
             || self.persistence.saved_document_max_bytes > 16 * 1024 * 1024
         {
@@ -971,6 +1087,7 @@ impl Config {
                 "invalid HTTP server safety limit".into(),
             ));
         }
+        self.validate_clients()?;
         if !bind.is_loopback() && (self.server.no_auth || !tls_complete) {
             return Err(ConfigError::Policy(
                 "remote HTTP bind requires authentication and TLS".into(),
@@ -1011,6 +1128,72 @@ impl Config {
     /// Semantic and reranker weights are only accepted when an inference mode
     /// with an available backend is selected, so an operator never believes a
     /// semantic ranking is running while it silently falls back to lexical.
+    /// Named credentials must be unambiguous, secret-free and capability-bound.
+    fn validate_clients(&self) -> Result<(), ConfigError> {
+        let mut seen = std::collections::BTreeSet::new();
+        for client in &self.server.clients {
+            if client.id.trim().is_empty() || !is_provider_key(&client.id) {
+                return Err(ConfigError::Policy(format!(
+                    "invalid server client id: {}; use lowercase ascii, digits and underscore",
+                    client.id
+                )));
+            }
+            if !seen.insert(client.id.as_str()) {
+                return Err(ConfigError::Policy(format!(
+                    "duplicate server client id: {}",
+                    client.id
+                )));
+            }
+            match (&client.token_env, &client.token_sha256) {
+                (Some(name), None) if !name.trim().is_empty() => {}
+                (None, Some(digest)) if is_sha256_hex(digest) => {}
+                (None, Some(_)) => {
+                    return Err(ConfigError::Policy(format!(
+                        "client {} token_sha256 must be a lowercase hex SHA-256 digest",
+                        client.id
+                    )))
+                }
+                _ => {
+                    return Err(ConfigError::Policy(format!(
+                        "client {} must declare exactly one of token_env or token_sha256",
+                        client.id
+                    )))
+                }
+            }
+            if client.scopes.is_empty() {
+                return Err(ConfigError::Policy(format!(
+                    "client {} declares no scope; a credential without capability is never useful",
+                    client.id
+                )));
+            }
+            if let Some(expiry) = client.expires_at.as_deref() {
+                if day_from_iso_date(expiry).is_none() {
+                    return Err(ConfigError::Policy(format!(
+                        "client {} has an invalid expires_at; use YYYY-MM-DD",
+                        client.id
+                    )));
+                }
+            }
+            if let Some(tool) = client
+                .tools
+                .iter()
+                .find(|tool| !MCP_TOOLS.contains(&tool.as_str()))
+            {
+                return Err(ConfigError::Policy(format!(
+                    "client {} allows unknown MCP tool: {tool}",
+                    client.id
+                )));
+            }
+            if !client.tools.is_empty() && !client.scopes.contains(&Scope::Mcp) {
+                return Err(ConfigError::Policy(format!(
+                    "client {} allows MCP tools without the mcp scope",
+                    client.id
+                )));
+            }
+        }
+        Ok(())
+    }
+
     fn validate_inference(&self) -> Result<(), ConfigError> {
         if self.inference.backend != crate::inference::LOCAL_EMBEDDING_BACKEND_ID {
             return Err(ConfigError::Policy(format!(
@@ -1079,6 +1262,18 @@ impl Config {
         }
         Ok(())
     }
+}
+
+/// Tool names the MCP surface exposes, and the vocabulary a client allowlist
+/// may use. Kept here so an unknown name is rejected by configuration
+/// validation instead of silently granting nothing.
+pub const MCP_TOOLS: [&str; 5] = ["search", "deep_search", "fetch", "providers", "status"];
+
+fn is_sha256_hex(value: &str) -> bool {
+    value.len() == 64
+        && value
+            .bytes()
+            .all(|byte| byte.is_ascii_digit() || (b'a'..=b'f').contains(&byte))
 }
 
 fn is_provider_key(name: &str) -> bool {

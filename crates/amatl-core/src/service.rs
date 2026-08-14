@@ -1,3 +1,4 @@
+use crate::audit::SecurityAudit;
 use crate::cache::{CacheCounters, CacheEffectiveness};
 use crate::circuit::{CircuitSnapshot, ProviderCircuit};
 use crate::storage::{CacheStats, SavedDocument, SearchHistoryEntry};
@@ -309,6 +310,8 @@ pub struct AmatlService {
     cache_counters: Arc<CacheCounters>,
     /// Persistent breaker that removes a currently failing source from a round.
     circuit: ProviderCircuit,
+    /// Durable security audit trail; inert without persistence.
+    audit: SecurityAudit,
 }
 
 impl AmatlService {
@@ -347,6 +350,8 @@ impl AmatlService {
         };
         let config_circuit_policy = config.circuit_breaker;
         let storage_for_circuit = storage.clone();
+        let storage_for_audit = storage.clone();
+        let audit_retention_days = config.persistence.audit_retention_days;
         let telemetry = InMemoryTelemetry::with_storage_and_retention(
             config
                 .telemetry
@@ -409,6 +414,7 @@ impl AmatlService {
             renderer_pool,
             cache_counters: Arc::new(CacheCounters::default()),
             circuit: ProviderCircuit::restored(config_circuit_policy, storage_for_circuit).await,
+            audit: SecurityAudit::new(storage_for_audit, audit_retention_days),
         }
     }
 
@@ -658,6 +664,15 @@ impl AmatlService {
             self.config.deep.max_depth,
         )
         .with_request_id(surface.request_id.clone());
+        // Crawl politeness applies to discovered links only, and only when the
+        // crawl can actually reach depth.
+        if self.config.deep.respect_robots && self.config.deep.max_depth > 0 {
+            orchestrator = orchestrator.with_robots(crate::robots::RobotsCache::new(
+                self.fetcher.clone(),
+                self.config.deep.robots_timeout_ms,
+                self.config.deep.robots_max_bytes,
+            ));
+        }
         let mut pending_degradations = Vec::new();
         if self.config.deep.ranking_v2.enabled {
             let policy = self.config.deep.ranking_v2.policy.clone();
@@ -1125,6 +1140,11 @@ impl AmatlService {
     /// Providers admitted into one search round.
     fn providers(&self) -> Result<Vec<Arc<dyn Provider>>, ServiceError> {
         Ok(self.select_providers()?.providers)
+    }
+
+    /// Durable security audit trail for this service.
+    pub fn audit(&self) -> &SecurityAudit {
+        &self.audit
     }
 
     /// Circuit state of every provider the breaker has observed.

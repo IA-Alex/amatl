@@ -25,6 +25,13 @@ call.
 `notifications/progress` at the start and end of the call. No tool holds work
 after its caller has gone away.
 
+Cada herramienta comprueba la lista `tools` de la credencial autenticada antes
+de trabajar. La decisión usa la identidad que estableció el middleware HTTP, no
+un encabezado del cliente: un `Mcp-Name` que no coincida con el cuerpo lo
+rechaza el propio transporte, y la autorización no lo consulta en ningún caso.
+Una herramienta fuera de la lista responde `scope_denied`. Así `fetch` —la más
+sensible— puede negarse a un cliente concreto sin apagar el egress para todos.
+
 Tool errors are structured with `schema_version: "1"` and a code from the shared
 catalog in `amatl-core/src/errors.rs` — the same identifiers the HTTP surface
 returns, for example `invalid_query`, `invalid_url`, `egress_denied`,

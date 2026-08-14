@@ -187,9 +187,18 @@ Los cinco pesos `weight_*` suman exactamente 1 con tolerancia `1e-12`.
 | `persistence.path` | string / `amatl.sqlite3` | no se valida vacío ni permisos hasta abrir |
 | `persistence.history_enabled` | bool / `true` | sólo aplica si `persistence.enabled`; registra cada búsqueda ejecutada en SQLite local |
 | `persistence.saved_document_max_bytes` | u64 / 1048576 | 1..=16777216; límite del payload aceptado por `POST /saved` |
+| `persistence.audit_retention_days` | u32 / 90 | 1..=365; ventana de la bitácora de seguridad persistida |
 | `circuit_breaker.enabled` | bool / `true` | si false, una fuente en fallo se sigue llamando en cada búsqueda |
 | `circuit_breaker.failure_threshold` | u32 / 3 | 1..=100 fallos consecutivos abren el circuito |
 | `circuit_breaker.open_seconds` | u64 / 60 | 1..=3600; al expirar se permite una sonda (`half_open`) |
+| `server.clients[].id` | string | Identidad estable, minúsculas/dígitos/guion bajo; aparece en la auditoría, nunca es secreto |
+| `server.clients[].token_env` \| `token_sha256` | string | Exactamente uno; el secreto vive en el entorno o sólo como digest hex de 64 caracteres |
+| `server.clients[].expires_at` | fecha ISO / vacío | `YYYY-MM-DD`; a partir del día siguiente la credencial se rechaza |
+| `server.clients[].scopes` | lista / vacía | `search`, `deep`, `read`, `write`, `admin`, `mcp`; una credencial sin scopes se rechaza en validación |
+| `server.clients[].tools` | lista / vacía | Herramientas MCP permitidas; vacía significa sin acceso MCP. Exige el scope `mcp` |
+| `deep.respect_robots` | bool / `true` | Consulta `robots.txt` sólo para enlaces descubiertos por el crawl |
+| `deep.robots_timeout_ms` | u64 / 3000 | 100..=30000 por recuperación de `robots.txt` |
+| `deep.robots_max_bytes` | u64 / 524288 | 1024..=1048576 por recuperación de `robots.txt` |
 | `cache.provider_search.enabled` | bool / `false` | requiere persistence si true |
 | `.ttl_seconds` | u64 / 300 | >0 |
 | `.max_entries` | u64 / 10000 | >0 |

@@ -9,6 +9,7 @@ use crate::model::{
 };
 use crate::ranking_v2::{disabled_output, rejected_output, RankingV2Engine};
 use crate::render::RendererPool;
+use crate::robots::{RobotsCache, RobotsDecision};
 use sha2::{Digest, Sha256};
 use std::collections::{BTreeMap, BTreeSet, VecDeque};
 use std::sync::Arc;
@@ -43,6 +44,9 @@ pub struct DeepOrchestrator {
     subquery_executor: Option<Arc<dyn SubQueryExecutor>>,
     /// Correlates every outbound document fetch with the originating request.
     request_id: Option<String>,
+    /// Consulted for links AMATL discovers itself. `None` disables the check,
+    /// which only an operator may choose.
+    robots: Option<RobotsCache>,
 }
 
 impl DeepOrchestrator {
@@ -74,7 +78,17 @@ impl DeepOrchestrator {
             gap_analyzer: None,
             subquery_executor: None,
             request_id: None,
+            robots: None,
         }
+    }
+
+    /// Consult `robots.txt` before fetching any link discovered by the crawl.
+    ///
+    /// URLs that came from Search are not gated: those are requested by the
+    /// user, not discovered by AMATL.
+    pub fn with_robots(mut self, robots: RobotsCache) -> Self {
+        self.robots = Some(robots);
+        self
     }
 
     /// Correlate every fetch this orchestrator performs with the caller's
@@ -166,6 +180,37 @@ impl DeepOrchestrator {
                     "Deep global deadline was exhausted",
                 ));
                 break;
+            }
+            // Depth 0 is what the user asked for; anything deeper is our own
+            // discovery and needs the origin's consent first.
+            if depth > 0 {
+                if let Some(robots) = &self.robots {
+                    match robots
+                        .decide(&candidate.result.canonical_url.0, self.request_id.clone())
+                        .await
+                    {
+                        RobotsDecision::Allowed { crawl_delay_ms } if crawl_delay_ms > 0 => {
+                            let wait = std::time::Duration::from_millis(crawl_delay_ms);
+                            // Politeness never outlives the Deep deadline.
+                            if tokio::time::Instant::now() + wait >= deadline {
+                                response.degradations.push(degradation(
+                                    "robots_crawl_delay_too_long",
+                                    "Declared crawl delay exceeded the remaining Deep deadline",
+                                ));
+                                continue;
+                            }
+                            tokio::time::sleep(wait).await;
+                        }
+                        RobotsDecision::Allowed { .. } => {}
+                        refusal => {
+                            response.degradations.push(degradation(
+                                refusal.as_str(),
+                                "Discovered link was not crawled: the origin's robots.txt refused it or could not be read",
+                            ));
+                            continue;
+                        }
+                    }
+                }
             }
             let remaining = match self.budget.reserve_fetch() {
                 Ok(value) => value,

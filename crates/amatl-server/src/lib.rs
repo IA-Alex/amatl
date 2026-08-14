@@ -3,7 +3,8 @@
 mod mcp;
 
 use amatl_core::{
-    AmatlService, ConfigError, ErrorCode, ServiceError, ServiceSurface, SCHEMA_VERSION,
+    AmatlService, ConfigError, ErrorCode, Scope, ServiceError, ServiceSurface, MCP_TOOLS,
+    SCHEMA_VERSION,
 };
 use amatl_ui::{asset, security_headers};
 use axum::{
@@ -29,6 +30,7 @@ use rmcp::transport::streamable_http_server::{
 };
 use serde::{Deserialize, Serialize};
 use serde_json::json;
+use sha2::{Digest, Sha256};
 use std::{
     collections::{BTreeMap, VecDeque},
     net::{IpAddr, SocketAddr},
@@ -45,6 +47,8 @@ use tower_http::cors::CorsLayer;
 use tracing::Instrument;
 
 const REQUEST_ID_HEADER: &str = "x-request-id";
+/// Shortest bearer token accepted from configuration or the environment.
+const MINIMUM_TOKEN_BYTES: usize = 32;
 static REQUEST_SEQUENCE: AtomicU64 = AtomicU64::new(1);
 
 /// Wrapper so handlers can extract the request-id injected by the security
@@ -70,15 +74,29 @@ pub(crate) type ServiceHandle = Arc<RwLock<AmatlService>>;
 #[derive(Clone)]
 struct AppState {
     service: ServiceHandle,
+    /// Swapped on reload so credentials rotate without a restart.
+    security: Arc<RwLock<Arc<SecurityState>>>,
+    /// Survives reloads on purpose: a reload must not reset rate windows.
+    rate_limiter: Arc<Mutex<RateLimiter>>,
+    /// Token supplied programmatically at construction, if any; re-applied on
+    /// every reload so an embedder keeps its credential.
+    explicit_token: Option<String>,
     /// Configuration file a reload re-reads, when the process was started with
     /// one. Without it a reload revalidates and rebuilds from the running
     /// configuration, which still resets provider construction and breakers.
     config_path: Option<PathBuf>,
-    security: Arc<SecurityState>,
     metrics: Arc<RequestMetrics>,
 }
 
 impl AppState {
+    /// Current security snapshot; cheap, and never held across an await.
+    fn security(&self) -> Arc<SecurityState> {
+        self.security
+            .read()
+            .unwrap_or_else(|error| error.into_inner())
+            .clone()
+    }
+
     /// Current service snapshot; cheap, every field behind it is an `Arc`.
     fn service(&self) -> AmatlService {
         self.service
@@ -100,7 +118,30 @@ impl AppState {
             }
             None => current.config().clone(),
         };
+        // Credentials are part of the reloaded configuration: rotating a token
+        // or retiring a client must not need a restart either. Rebuilt before
+        // the swap so a bad credential set changes nothing.
+        let security =
+            resolve_clients(replacement_config_ref(&config), self.explicit_token.clone())
+                .map_err(|_| ServiceError::Configuration)?;
+        let clients = security
+            .iter()
+            .map(|client| client.id.clone())
+            .collect::<Vec<_>>();
         let replacement = current.reloaded_detached(config).await?;
+        let security = Arc::new(SecurityState {
+            clients: security,
+            allowed_hosts: replacement.config().server.allowed_hosts.clone(),
+            allowed_origins: effective_origins(
+                replacement.config(),
+                replacement.config().server.tls.cert_path.is_some(),
+            ),
+            max_header_bytes: replacement.config().server.max_header_bytes,
+            max_body_bytes: replacement.config().server.max_body_bytes,
+            timeout: Duration::from_millis(replacement.config().server.request_timeout_ms),
+            rate_limit_per_minute: replacement.config().server.rate_limit_per_minute,
+            https: replacement.config().server.tls.cert_path.is_some(),
+        });
         let report = ReloadReport {
             schema_version: SCHEMA_VERSION.into(),
             config_file: self
@@ -122,11 +163,16 @@ impl AppState {
                 .map(str::to_owned)
                 .collect(),
             inference_backend: replacement.inference_backend().map(str::to_owned),
+            clients,
         };
         *self
             .service
             .write()
             .unwrap_or_else(|error| error.into_inner()) = replacement;
+        *self
+            .security
+            .write()
+            .unwrap_or_else(|error| error.into_inner()) = security;
         tracing::info!(
             target: "amatl::http",
             enabled_sources = ?report.enabled_sources,
@@ -134,6 +180,12 @@ impl AppState {
         );
         Ok(report)
     }
+}
+
+/// Borrow helper that keeps the reload readable: the configuration is moved
+/// into the rebuild, so credentials are resolved from it first.
+fn replacement_config_ref(config: &amatl_core::Config) -> &amatl_core::Config {
+    config
 }
 
 /// What a successful reload put in place.
@@ -145,6 +197,8 @@ struct ReloadReport {
     enabled_sources: Vec<String>,
     registered_sources: Vec<String>,
     inference_backend: Option<String>,
+    /// Credential identities accepted after the reload. Never their secrets.
+    clients: Vec<String>,
 }
 
 /// Lightweight request counters exposed via `/metrics` in Prometheus
@@ -203,16 +257,158 @@ impl LatencyWindow {
     }
 }
 
+/// Everything the security middleware needs for one request.
+///
+/// Rebuilt wholesale on reload, which is what makes credential rotation work
+/// without a restart. The rate limiter deliberately lives outside: keeping it
+/// across reloads means a reload cannot be used to reset someone's window.
 struct SecurityState {
-    token: Option<String>,
+    /// Accepted credentials. Empty means authentication is disabled
+    /// (`no_auth`, loopback only).
+    clients: Vec<AuthorizedClient>,
     allowed_hosts: Vec<String>,
     allowed_origins: Vec<String>,
     max_header_bytes: usize,
     max_body_bytes: usize,
     timeout: Duration,
     rate_limit_per_minute: u32,
-    rate_limiter: Mutex<RateLimiter>,
     https: bool,
+}
+
+/// One credential resolved to the digest actually compared at request time.
+struct AuthorizedClient {
+    id: String,
+    /// SHA-256 of the bearer token. The token itself is never stored.
+    digest: [u8; 32],
+    expires_at: Option<String>,
+    scopes: Vec<Scope>,
+    tools: Vec<String>,
+}
+
+/// Identity of the caller, attached to the request for handlers, the MCP
+/// surface and audit events.
+#[derive(Clone, Debug)]
+pub(crate) struct ClientIdentity {
+    pub(crate) id: String,
+    pub(crate) tools: Vec<String>,
+}
+
+impl ClientIdentity {
+    /// Identity used when authentication is disabled: loopback development
+    /// only, and still explicit rather than implied.
+    fn unauthenticated() -> Self {
+        Self {
+            id: "anonymous".into(),
+            tools: MCP_TOOLS.iter().map(|tool| (*tool).to_owned()).collect(),
+        }
+    }
+
+    pub(crate) fn allows_tool(&self, tool: &str) -> bool {
+        self.tools.iter().any(|allowed| allowed == tool)
+    }
+}
+
+/// Build the accepted credential set from configuration and the environment.
+///
+/// A declared client whose secret is missing from the environment is skipped
+/// with a warning instead of silently accepting anything: the surface stays
+/// closed for that identity and open for the others.
+fn resolve_clients(
+    config: &amatl_core::Config,
+    explicit_token: Option<String>,
+) -> Result<Vec<AuthorizedClient>, ServerError> {
+    let server = &config.server;
+    if server.no_auth {
+        return Ok(vec![]);
+    }
+    let mut clients = Vec::new();
+    if let Some(token) = explicit_token
+        .or_else(|| std::env::var(&server.token_env).ok())
+        .filter(|value| value.len() >= MINIMUM_TOKEN_BYTES)
+    {
+        clients.push(AuthorizedClient {
+            id: "default".into(),
+            digest: token_digest(&token),
+            expires_at: None,
+            scopes: Scope::ALL.to_vec(),
+            tools: MCP_TOOLS.iter().map(|tool| (*tool).to_owned()).collect(),
+        });
+    }
+    for declared in &server.clients {
+        let digest = match (&declared.token_env, &declared.token_sha256) {
+            (Some(name), _) => match std::env::var(name)
+                .ok()
+                .filter(|value| value.len() >= MINIMUM_TOKEN_BYTES)
+            {
+                Some(token) => token_digest(&token),
+                None => {
+                    tracing::warn!(
+                        target: "amatl::security",
+                        security_event = "client_credential_missing",
+                        client_id = %declared.id,
+                        "declared client has no usable credential in the environment; it cannot authenticate"
+                    );
+                    continue;
+                }
+            },
+            (None, Some(hex)) => match digest_from_hex(hex) {
+                Some(digest) => digest,
+                None => continue,
+            },
+            (None, None) => continue,
+        };
+        clients.push(AuthorizedClient {
+            id: declared.id.clone(),
+            digest,
+            expires_at: declared.expires_at.clone(),
+            scopes: declared.scopes.clone(),
+            tools: declared.tools.clone(),
+        });
+    }
+    if clients.is_empty() {
+        return Err(ServerError::MissingToken);
+    }
+    Ok(clients)
+}
+
+fn token_digest(token: &str) -> [u8; 32] {
+    let mut digest = [0_u8; 32];
+    digest.copy_from_slice(&Sha256::digest(token.as_bytes()));
+    digest
+}
+
+fn digest_from_hex(value: &str) -> Option<[u8; 32]> {
+    if value.len() != 64 {
+        return None;
+    }
+    let mut digest = [0_u8; 32];
+    for (index, byte) in digest.iter_mut().enumerate() {
+        *byte = u8::from_str_radix(value.get(index * 2..index * 2 + 2)?, 16).ok()?;
+    }
+    Some(digest)
+}
+
+/// Capability a route requires. `None` means the route is public.
+///
+/// This is the single source of truth for "is this protected": reading and
+/// mutating the same path are different capabilities, so the method is part of
+/// the decision.
+fn required_scope(method: &Method, path: &str) -> Option<Scope> {
+    let mutating = matches!(*method, Method::POST | Method::PUT | Method::DELETE);
+    match path {
+        "/search" => Some(Scope::Search),
+        "/deep" => Some(Scope::Deep),
+        "/providers" | "/status" => Some(Scope::Read),
+        "/history" | "/saved" if mutating => Some(Scope::Write),
+        "/history" | "/saved" => Some(Scope::Read),
+        // The audit trail names identities and addresses: operator only.
+        "/security-events" | "/reload" => Some(Scope::Admin),
+        "/mcp" => Some(Scope::Mcp),
+        _ if path.starts_with("/mcp/") => Some(Scope::Mcp),
+        // `/history/{id}` and `/saved/{id}` only ever delete.
+        _ if path.starts_with("/history/") || path.starts_with("/saved/") => Some(Scope::Write),
+        _ => None,
+    }
 }
 
 struct RateWindow {
@@ -306,28 +502,16 @@ pub async fn build_router_with_reload(
     service.config().validate()?;
     let server = service.config().server.clone();
     let https = server.tls.cert_path.is_some();
-    let token = if server.no_auth {
-        None
-    } else {
-        explicit_token
-            .or_else(|| std::env::var(&server.token_env).ok())
-            .filter(|value| value.len() >= 32)
-            .ok_or(ServerError::MissingToken)
-            .map(Some)?
-    };
+    let clients = resolve_clients(service.config(), explicit_token.clone())?;
     let allowed_origins = effective_origins(service.config(), https);
     let security = Arc::new(SecurityState {
-        token,
+        clients,
         allowed_hosts: server.allowed_hosts.clone(),
         allowed_origins: allowed_origins.clone(),
         max_header_bytes: server.max_header_bytes,
         max_body_bytes: server.max_body_bytes,
         timeout: Duration::from_millis(server.request_timeout_ms),
         rate_limit_per_minute: server.rate_limit_per_minute,
-        rate_limiter: Mutex::new(RateLimiter {
-            windows: BTreeMap::new(),
-            last_cleanup: Instant::now(),
-        }),
         https,
     });
     let mcp_config = StreamableHttpServerConfig::default()
@@ -352,7 +536,12 @@ pub async fn build_router_with_reload(
     let state = AppState {
         service: handle,
         config_path,
-        security,
+        security: Arc::new(RwLock::new(security)),
+        rate_limiter: Arc::new(Mutex::new(RateLimiter {
+            windows: BTreeMap::new(),
+            last_cleanup: Instant::now(),
+        })),
+        explicit_token,
         metrics: Arc::new(RequestMetrics::default()),
     };
     let cors = cors_layer(&allowed_origins)?;
@@ -369,6 +558,7 @@ pub async fn build_router_with_reload(
         .route("/saved", get(saved_documents).post(save_document))
         .route("/saved/{id}", delete(delete_saved_document))
         .route("/reload", axum::routing::post(reload))
+        .route("/security-events", get(security_events))
         .route("/health", get(health))
         .route("/metrics", get(metrics))
         .nest_service("/mcp", mcp_service)
@@ -686,6 +876,30 @@ async fn reload(State(state): State<AppState>) -> Response {
     }
 }
 
+/// Recorded security rejections, newest first.
+///
+/// Requires the admin scope: the trail names client identities and addresses.
+async fn security_events(
+    State(state): State<AppState>,
+    params: Result<Query<PageParams>, QueryRejection>,
+) -> Response {
+    let Ok(Query(params)) = params else {
+        return api_error(ErrorCode::InvalidRequest);
+    };
+    let (limit, offset) = params.window();
+    let service = state.service();
+    let audit = service.audit();
+    match audit.events(limit, offset).await {
+        Ok(events) => Json(json!({
+            "schema_version": SCHEMA_VERSION,
+            "events": events,
+            "dropped": audit.dropped()
+        }))
+        .into_response(),
+        Err(_) => api_error(ErrorCode::StorageUnavailable),
+    }
+}
+
 /// Operator status: source availability, persistence and cache state.
 async fn status(State(state): State<AppState>) -> Response {
     match state.service().status().await {
@@ -906,6 +1120,7 @@ fn source_metrics(service: &AmatlService) -> String {
 async fn cache_metrics(service: &AmatlService) -> String {
     let cache = service.cache_effectiveness();
     let storage_available = u8::from(service.storage().is_some());
+    let audit_dropped = service.audit().dropped();
     format!(
         "# HELP amatl_cache_hits_total Cache lookups served from the local cache.\n\
          # TYPE amatl_cache_hits_total counter\n\
@@ -921,7 +1136,10 @@ async fn cache_metrics(service: &AmatlService) -> String {
          amatl_cache_hit_rate{{cache=\"document\"}} {:.4}\n\
          # HELP amatl_storage_available Whether local persistence is usable (1) or not (0).\n\
          # TYPE amatl_storage_available gauge\n\
-         amatl_storage_available {storage_available}\n",
+         amatl_storage_available {storage_available}\n\
+         # HELP amatl_audit_events_dropped_total Security events dropped because too many audit writes were in flight.\n\
+         # TYPE amatl_audit_events_dropped_total counter\n\
+         amatl_audit_events_dropped_total {audit_dropped}\n",
         cache.provider_search_hits,
         cache.document_hits,
         cache.provider_search_misses,
@@ -964,10 +1182,11 @@ async fn security_middleware(
     request: Request,
     next: Next,
 ) -> Response {
-    let security = &state.security;
+    let security = state.security();
+    let security = security.as_ref();
     let request_id = next_request_id();
     if header_size(request.headers()) > security.max_header_bytes {
-        audit_security_event("headers_too_large", &request_id, &request);
+        audit_security_event(&state, "headers_too_large", &request_id, &request);
         return secured(
             api_error(ErrorCode::HeadersTooLarge),
             security.https,
@@ -981,7 +1200,7 @@ async fn security_middleware(
         .and_then(|value| value.parse::<usize>().ok())
         .is_some_and(|value| value > security.max_body_bytes)
     {
-        audit_security_event("body_too_large", &request_id, &request);
+        audit_security_event(&state, "body_too_large", &request_id, &request);
         return secured(
             api_error(ErrorCode::BodyTooLarge),
             security.https,
@@ -989,7 +1208,7 @@ async fn security_middleware(
         );
     }
     if !valid_host(request.headers(), &security.allowed_hosts) {
-        audit_security_event("invalid_host", &request_id, &request);
+        audit_security_event(&state, "invalid_host", &request_id, &request);
         return secured(
             api_error(ErrorCode::InvalidHost),
             security.https,
@@ -997,40 +1216,92 @@ async fn security_middleware(
         );
     }
     if !valid_origin(request.headers(), &security.allowed_origins) {
-        audit_security_event("invalid_origin", &request_id, &request);
+        audit_security_event(&state, "invalid_origin", &request_id, &request);
         return secured(
             api_error(ErrorCode::InvalidOrigin),
             security.https,
             &request_id,
         );
     }
-    let protected = is_protected(request.uri().path());
-    if request.method() != Method::OPTIONS && !within_rate_limit(&request, security) {
+    let protected = is_protected(request.method(), request.uri().path());
+    if request.method() != Method::OPTIONS
+        && !within_rate_limit(&request, security, &state.rate_limiter)
+    {
         state
             .metrics
             .rate_limited_total
             .fetch_add(1, Ordering::Relaxed);
-        audit_security_event("rate_limited", &request_id, &request);
+        audit_security_event(&state, "rate_limited", &request_id, &request);
         let mut response = api_error(ErrorCode::RateLimited);
         response
             .headers_mut()
             .insert("retry-after", HeaderValue::from_static("60"));
         return secured(response, security.https, &request_id);
     }
-    if protected
-        && request.method() != Method::OPTIONS
-        && !authorized(request.headers(), security.token.as_deref())
-    {
-        state
-            .metrics
-            .unauthorized_total
-            .fetch_add(1, Ordering::Relaxed);
-        audit_security_event("unauthorized", &request_id, &request);
-        let mut response = api_error(ErrorCode::Unauthorized);
-        response
-            .headers_mut()
-            .insert(WWW_AUTHENTICATE, HeaderValue::from_static("Bearer"));
-        return secured(response, security.https, &request_id);
+    // Authenticate once, then authorize the route against that identity. Both
+    // rejections look the same on the wire; the audit event distinguishes them.
+    let mut identity = ClientIdentity::unauthenticated();
+    if protected && request.method() != Method::OPTIONS {
+        let today = today_iso();
+        match authenticate(request.headers(), security, &today) {
+            Authentication::Anonymous => {}
+            Authentication::Client(client) => {
+                let required =
+                    required_scope(request.method(), request.uri().path()).unwrap_or(Scope::Admin);
+                if !client.scopes.contains(&required) {
+                    state
+                        .metrics
+                        .unauthorized_total
+                        .fetch_add(1, Ordering::Relaxed);
+                    audit_security_event_for_client(
+                        &state,
+                        "scope_denied",
+                        &request_id,
+                        &request,
+                        &client.id,
+                    );
+                    return secured(
+                        api_error(ErrorCode::ScopeDenied),
+                        security.https,
+                        &request_id,
+                    );
+                }
+                identity = ClientIdentity {
+                    id: client.id.clone(),
+                    tools: client.tools.clone(),
+                };
+            }
+            Authentication::Expired(id) => {
+                state
+                    .metrics
+                    .unauthorized_total
+                    .fetch_add(1, Ordering::Relaxed);
+                audit_security_event_for_client(
+                    &state,
+                    "credential_expired",
+                    &request_id,
+                    &request,
+                    &id,
+                );
+                let mut response = api_error(ErrorCode::Unauthorized);
+                response
+                    .headers_mut()
+                    .insert(WWW_AUTHENTICATE, HeaderValue::from_static("Bearer"));
+                return secured(response, security.https, &request_id);
+            }
+            Authentication::Rejected => {
+                state
+                    .metrics
+                    .unauthorized_total
+                    .fetch_add(1, Ordering::Relaxed);
+                audit_security_event(&state, "unauthorized", &request_id, &request);
+                let mut response = api_error(ErrorCode::Unauthorized);
+                response
+                    .headers_mut()
+                    .insert(WWW_AUTHENTICATE, HeaderValue::from_static("Bearer"));
+                return secured(response, security.https, &request_id);
+            }
+        }
     }
     let timeout = security.timeout;
     let https = security.https;
@@ -1040,12 +1311,17 @@ async fn security_middleware(
     request
         .extensions_mut()
         .insert(RequestId(request_id.clone()));
+    let client_id = identity.id.clone();
+    // MCP tools read this back out of `http::request::Parts` to enforce their
+    // own per-tool policy.
+    request.extensions_mut().insert(identity);
     let request_span = tracing::info_span!(
         target: "amatl::http",
         "http_request",
         request_id = %request_id,
         path = %path,
-        client_ip = %client_ip
+        client_ip = %client_ip,
+        client_id = %client_id
     );
     let response =
         match tokio::time::timeout(timeout, next.run(request).instrument(request_span)).await {
@@ -1055,27 +1331,65 @@ async fn security_middleware(
                     .metrics
                     .request_timeout_total
                     .fetch_add(1, Ordering::Relaxed);
-                audit_security_event_context("request_timeout", &request_id, &path, client_ip);
+                audit_security_event_context(
+                    &state,
+                    "request_timeout",
+                    &request_id,
+                    &path,
+                    client_ip,
+                    None,
+                );
                 api_error(ErrorCode::RequestTimeout)
             }
         };
     secured(response, https, &request_id)
 }
 
-fn audit_security_event(event: &'static str, request_id: &str, request: &Request) {
+fn audit_security_event(
+    state: &AppState,
+    event: &'static str,
+    request_id: &str,
+    request: &Request,
+) {
     audit_security_event_context(
+        state,
         event,
         request_id,
         request.uri().path(),
         request_client_ip(request),
+        None,
     );
 }
 
+/// Audit an event that is attributable to an authenticated identity.
+fn audit_security_event_for_client(
+    state: &AppState,
+    event: &'static str,
+    request_id: &str,
+    request: &Request,
+    client_id: &str,
+) {
+    audit_security_event_context(
+        state,
+        event,
+        request_id,
+        request.uri().path(),
+        request_client_ip(request),
+        Some(client_id.to_owned()),
+    );
+}
+
+/// Log the rejection and, when persistence is available, record it durably.
+///
+/// The log line stays authoritative: persistence is best effort and never
+/// delays the response.
 fn audit_security_event_context(
+    state: &AppState,
     event: &'static str,
     request_id: &str,
     path: &str,
     client_ip: IpAddr,
+    client_id: Option<String>,
 ) {
     tracing::warn!(
         target: "amatl::security",
@@ -1083,8 +1397,19 @@ fn audit_security_event_context(
         request_id,
         path,
         client_ip = %client_ip,
+        client_id = client_id.as_deref().unwrap_or("-"),
         "HTTP security control rejected request"
     );
+    state
+        .service()
+        .audit()
+        .record(amatl_core::SecurityEventInput {
+            event: event.to_owned(),
+            request_id: Some(request_id.to_owned()),
+            client_id,
+            path: Some(path.to_owned()),
+            client_ip: Some(client_ip.to_string()),
+        });
 }
 
 pub(crate) fn next_request_id() -> String {
@@ -1137,27 +1462,84 @@ fn valid_query(query: &str) -> bool {
 
 /// Every domain and operator surface requires the bearer token; only the UI
 /// assets, `/health` and `/metrics` stay reachable without it.
-fn is_protected(path: &str) -> bool {
-    matches!(
-        path,
-        "/search" | "/deep" | "/providers" | "/status" | "/history" | "/saved" | "/reload" | "/mcp"
-    ) || path.starts_with("/mcp/")
-        || path.starts_with("/history/")
-        || path.starts_with("/saved/")
+fn is_protected(method: &Method, path: &str) -> bool {
+    required_scope(method, path).is_some()
 }
 
-fn authorized(headers: &HeaderMap, expected: Option<&str>) -> bool {
-    let Some(expected) = expected else {
-        return true;
-    };
-    let Some(actual) = headers
+/// Outcome of matching a bearer token against the accepted credentials.
+enum Authentication<'a> {
+    /// Authentication is disabled; loopback development only.
+    Anonymous,
+    Client(&'a AuthorizedClient),
+    /// The credential matched but its declared expiry has passed.
+    Expired(String),
+    Rejected,
+}
+
+/// Match the presented bearer against every accepted credential.
+///
+/// Comparison is over SHA-256 digests in constant time, and every credential is
+/// checked so the answer does not leak which one nearly matched.
+fn authenticate<'a>(
+    headers: &HeaderMap,
+    security: &'a SecurityState,
+    today: &str,
+) -> Authentication<'a> {
+    if security.clients.is_empty() {
+        return Authentication::Anonymous;
+    }
+    let Some(presented) = headers
         .get(AUTHORIZATION)
         .and_then(|value| value.to_str().ok())
         .and_then(|value| value.strip_prefix("Bearer "))
     else {
-        return false;
+        return Authentication::Rejected;
     };
-    constant_time_eq(actual.as_bytes(), expected.as_bytes())
+    let digest = token_digest(presented);
+    let mut matched: Option<&AuthorizedClient> = None;
+    for client in &security.clients {
+        if constant_time_eq(&digest, &client.digest) {
+            matched = Some(client);
+        }
+    }
+    match matched {
+        None => Authentication::Rejected,
+        Some(client) if !unexpired(client, today) => Authentication::Expired(client.id.clone()),
+        Some(client) => Authentication::Client(client),
+    }
+}
+
+fn unexpired(client: &AuthorizedClient, today: &str) -> bool {
+    amatl_core::ServerClient {
+        expires_at: client.expires_at.clone(),
+        ..Default::default()
+    }
+    .unexpired_on(today)
+}
+
+/// Current UTC day as `YYYY-MM-DD`, the granularity credentials expire at.
+fn today_iso() -> String {
+    let days = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .unwrap_or_default()
+        .as_secs()
+        / 86_400;
+    let (year, month, day) = civil_from_days(days as i64);
+    format!("{year:04}-{month:02}-{day:02}")
+}
+
+/// Days since the Unix epoch to a civil date (Howard Hinnant's algorithm).
+fn civil_from_days(days: i64) -> (i64, u32, u32) {
+    let z = days + 719_468;
+    let era = z.div_euclid(146_097);
+    let doe = z.rem_euclid(146_097);
+    let yoe = (doe - doe / 1_460 + doe / 36_524 - doe / 146_096) / 365;
+    let year = yoe + era * 400;
+    let doy = doe - (365 * yoe + yoe / 4 - yoe / 100);
+    let mp = (5 * doy + 2) / 153;
+    let day = (doy - (153 * mp + 2) / 5 + 1) as u32;
+    let month = if mp < 10 { mp + 3 } else { mp - 9 } as u32;
+    (if month <= 2 { year + 1 } else { year }, month, day)
 }
 
 fn constant_time_eq(left: &[u8], right: &[u8]) -> bool {
@@ -1202,11 +1584,14 @@ fn header_size(headers: &HeaderMap) -> usize {
         .sum()
 }
 
-fn within_rate_limit(request: &Request, security: &SecurityState) -> bool {
+fn within_rate_limit(
+    request: &Request,
+    security: &SecurityState,
+    rate_limiter: &Mutex<RateLimiter>,
+) -> bool {
     let ip = request_client_ip(request);
     let now = Instant::now();
-    let mut limiter = security
-        .rate_limiter
+    let mut limiter = rate_limiter
         .lock()
         .unwrap_or_else(|error| error.into_inner());
     if now.duration_since(limiter.last_cleanup) >= Duration::from_secs(60) {

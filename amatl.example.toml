@@ -54,6 +54,27 @@ path = "amatl.sqlite3"
 history_enabled = true
 # Upper bound for one saved document payload, in bytes (1 MiB, max 16 MiB).
 saved_document_max_bytes = 1048576
+# Days a persisted security rejection is kept (1..=365).
+audit_retention_days = 90
+
+# Credenciales con nombre. El secreto nunca vive aquí: declara la variable de
+# entorno que lo contiene o el digest SHA-256 del token. Cada cliente lleva sus
+# scopes HTTP y su lista explícita de herramientas MCP; sin `tools` no puede
+# usar MCP. `POST /reload` o SIGHUP aplican altas, bajas y rotaciones sin
+# reiniciar. Sin ningún `[[server.clients]]`, el token global de
+# `server.token_env` sigue funcionando como cliente `default` con todo.
+# [[server.clients]]
+# id = "reader"
+# token_env = "AMATL_TOKEN_READER"
+# scopes = ["search", "read", "mcp"]
+# tools = ["search", "status"]
+# expires_at = "2026-12-31"
+#
+# [[server.clients]]
+# id = "operator"
+# token_sha256 = "0000000000000000000000000000000000000000000000000000000000000000"
+# scopes = ["search", "deep", "read", "write", "admin", "mcp"]
+# tools = ["search", "deep_search", "fetch", "providers", "status"]
 
 # Persistent provider circuit breaker: consecutive failures stop calling a
 # source until its cooldown expires. State survives restarts when persistence
@@ -87,6 +108,11 @@ max_bytes = 20971520
 max_redirects = 5
 max_crawl_urls = 10
 max_depth = 1
+# Ask the origin's robots.txt before following a link AMATL discovered itself.
+# URLs that came from Search are requested by the user and are never gated.
+respect_robots = true
+robots_timeout_ms = 3000
+robots_max_bytes = 524288
 timeout_ms = 20000
 
 [deep.extractor]

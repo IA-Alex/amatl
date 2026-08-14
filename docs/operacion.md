@@ -120,6 +120,60 @@ migración, entradas de historial y documentos guardados— y efectividad de las
 cachés. Devuelve `status: degraded` cuando alguna fuente declarada no está
 disponible o cuando la persistencia está habilitada pero no es usable.
 
+### Credenciales, scopes y herramientas
+
+Sin `[[server.clients]]`, el token de `server.token_env` sigue siendo el único
+cliente (`default`) con todas las capacidades: nada cambia para un despliegue
+de un solo operador. Declarar clientes con nombre reparte capacidad:
+
+| Scope | Rutas |
+|---|---|
+| `search` | `POST/GET /search` |
+| `deep` | `POST/GET /deep` |
+| `read` | `/providers`, `/status`, lectura de `/history` y `/saved` |
+| `write` | escritura y borrado en `/history` y `/saved` |
+| `admin` | `/reload`, `/security-events` |
+| `mcp` | la superficie `/mcp`; `tools` la acota herramienta por herramienta |
+
+El secreto nunca se escribe en configuración: se declara `token_env` (variable
+de entorno) o `token_sha256` (digest). La comparación es sobre digests y en
+tiempo constante, así que una fuga del archivo no entrega una credencial usable.
+`expires_at` caduca la credencial sin editar nada más, y `POST /reload` o
+`SIGHUP` aplican altas, bajas y rotaciones sin reiniciar el proceso: la ventana
+de rate limit **no** se reinicia con la recarga.
+
+Un token sin capacidad para una ruta recibe `403 scope_denied`, distinto de
+`401 unauthorized`; ambos quedan en la auditoría. En MCP, cada herramienta
+comprueba la lista `tools` de la identidad autenticada —no un encabezado del
+cliente— así que puedes conceder `search` y negar `fetch`, que es la más
+sensible, sin apagar el egress para todos.
+
+### Bitácora de seguridad
+
+Con persistencia activa, cada rechazo del borde HTTP (`unauthorized`,
+`scope_denied`, `credential_expired`, `invalid_host`, `invalid_origin`,
+`rate_limited`, `headers_too_large`, `body_too_large`, `request_timeout`) se
+guarda además en SQLite y se consulta con `GET /security-events` (scope `admin`)
+o `amatl db security-events`. La escritura es en segundo plano y acotada: bajo
+una avalancha se descartan eventos y el contador
+`amatl_audit_events_dropped_total` lo declara, en vez de convertir la auditoría
+en la caída. Sin persistencia, el endpoint responde `storage_unavailable` y los
+logs siguen siendo el único registro. Retención:
+`persistence.audit_retention_days` (90 días por defecto).
+
+### Cortesía de crawl y robots.txt
+
+Deep distingue dos cosas: una URL que el usuario pidió (resultado de Search) se
+recupera como user-agent, sin consultar `robots.txt`; una URL que AMATL
+descubrió siguiendo un enlace a profundidad ≥ 1 es crawl y sí pasa por el
+`robots.txt` del origen. El grupo específico `amatl` gana sobre `*`, se aplica
+longest-match con `Allow` desempatando, y se respeta `Crawl-delay` hasta 5 s y
+siempre dentro del deadline de Deep. Un 4xx (incluido 404) permite el crawl; un
+5xx o un origen inalcanzable lo detiene. Cada rechazo aparece como degradación
+(`robots_disallowed`, `robots_unavailable`, `robots_crawl_delay_too_long`).
+`deep.respect_robots = false` lo desactiva, y es decisión explícita del
+operador.
+
 ### Recarga en caliente
 
 Alta, baja o reaprobación de una fuente no requiere reinicio: edita el archivo
@@ -232,6 +286,7 @@ amatl db backups                   # copias tomadas antes de migrar o degradar
 amatl db downgrade --to 4          # rollback de esquema, con copia previa
 amatl db restore <copia>           # reemplaza la base por una copia
 amatl db circuits [--reset]        # estado de los cortacircuitos por fuente
+amatl db security-events --json    # bitácora de rechazos, más recientes primero
 ```
 
 `db downgrade` es destructivo por definición: toma una copia antes de aplicar

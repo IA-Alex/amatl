@@ -574,23 +574,24 @@ async fn request_timeout_cancels_a_slow_handler() {
     let service = AmatlService::new(config.clone(), true).await;
     let allowed_origins = effective_origins(&config, false);
     let security = Arc::new(SecurityState {
-        token: Some(TOKEN.into()),
+        clients: resolve_clients(&config, Some(TOKEN.into())).unwrap(),
         allowed_hosts: config.server.allowed_hosts.clone(),
         allowed_origins,
         max_header_bytes: config.server.max_header_bytes,
         max_body_bytes: config.server.max_body_bytes,
         timeout: Duration::from_millis(config.server.request_timeout_ms),
         rate_limit_per_minute: config.server.rate_limit_per_minute,
-        rate_limiter: Mutex::new(RateLimiter {
-            windows: BTreeMap::new(),
-            last_cleanup: Instant::now(),
-        }),
         https: false,
     });
     let state = AppState {
         service: Arc::new(RwLock::new(service)),
         config_path: None,
-        security,
+        security: Arc::new(RwLock::new(security)),
+        rate_limiter: Arc::new(Mutex::new(RateLimiter {
+            windows: BTreeMap::new(),
+            last_cleanup: Instant::now(),
+        })),
+        explicit_token: Some(TOKEN.into()),
         metrics: Arc::new(RequestMetrics::default()),
     };
     let app = Router::new()
@@ -2191,4 +2192,371 @@ async fn mcp_search_accepts_server_side_pagination() {
     assert_eq!(content["page"], 0);
     assert_eq!(content["page_size"], 1);
     assert!(content["results"].as_array().unwrap().len() <= 1);
+}
+
+// ── Credentials, scopes and per-tool authorization ──────────────────
+
+const SEARCH_ONLY_TOKEN: &str = "search-only-client-token-0123456789ab";
+const ADMIN_TOKEN: &str = "admin-client-token-0123456789abcdef01";
+
+fn sha256_hex(value: &str) -> String {
+    format!("{:x}", Sha256::digest(value.as_bytes()))
+}
+
+/// Configuration with two named clients: one restricted to Search plus the
+/// `search` MCP tool, one with everything.
+fn scoped_config() -> amatl_core::Config {
+    let mut config = amatl_core::Config::default();
+    config.server.clients = vec![
+        amatl_core::ServerClient {
+            id: "search_only".into(),
+            token_sha256: Some(sha256_hex(SEARCH_ONLY_TOKEN)),
+            scopes: vec![amatl_core::Scope::Search, amatl_core::Scope::Mcp],
+            tools: vec!["search".into()],
+            ..Default::default()
+        },
+        amatl_core::ServerClient {
+            id: "operator".into(),
+            token_sha256: Some(sha256_hex(ADMIN_TOKEN)),
+            scopes: amatl_core::Scope::ALL.to_vec(),
+            tools: MCP_TOOLS.iter().map(|tool| (*tool).to_owned()).collect(),
+            ..Default::default()
+        },
+    ];
+    config.validate().unwrap();
+    config
+}
+
+async fn scoped_app() -> Router {
+    build_router(
+        AmatlService::new(scoped_config(), true).await,
+        Some(TOKEN.into()),
+    )
+    .await
+    .unwrap()
+}
+
+fn as_client(path: &str, token: &str) -> axum::http::request::Builder {
+    request(path).header(AUTHORIZATION, format!("Bearer {token}"))
+}
+
+#[tokio::test]
+async fn several_credentials_are_accepted_and_scoped_independently() {
+    let app = scoped_app().await;
+
+    // The restricted client may search…
+    let allowed = app
+        .clone()
+        .oneshot(
+            as_client("/search?q=scoped+client", SEARCH_ONLY_TOKEN)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(allowed.status(), StatusCode::OK);
+
+    // …but not reach an operator surface, and the refusal is a scope refusal,
+    // not a generic authentication failure.
+    let denied = app
+        .clone()
+        .oneshot(
+            as_client("/status", SEARCH_ONLY_TOKEN)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(denied.status(), StatusCode::FORBIDDEN);
+    assert_eq!(json_body(denied).await["error"]["code"], "scope_denied");
+
+    // Reload is admin-only.
+    let reload_denied = app
+        .clone()
+        .oneshot(
+            as_client("/reload", SEARCH_ONLY_TOKEN)
+                .method(Method::POST)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(reload_denied.status(), StatusCode::FORBIDDEN);
+
+    // The operator credential reaches all of them.
+    for (path, method) in [("/status", Method::GET), ("/reload", Method::POST)] {
+        let response = app
+            .clone()
+            .oneshot(
+                as_client(path, ADMIN_TOKEN)
+                    .method(method)
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::OK, "{path}");
+    }
+
+    // An unknown token is still rejected outright.
+    let unknown = app
+        .oneshot(
+            as_client("/search?q=nope", "unknown-token-0123456789abcdefghij")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(unknown.status(), StatusCode::UNAUTHORIZED);
+}
+
+#[tokio::test]
+async fn an_expired_credential_stops_being_accepted() {
+    let mut config = scoped_config();
+    config.server.clients[0].expires_at = Some("2020-01-01".into());
+    config.validate().unwrap();
+    let app = build_router(AmatlService::new(config, true).await, Some(TOKEN.into()))
+        .await
+        .unwrap();
+    let response = app
+        .oneshot(
+            as_client("/search?q=expired", SEARCH_ONLY_TOKEN)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::UNAUTHORIZED);
+}
+
+#[tokio::test]
+async fn mcp_tools_are_authorized_per_client() {
+    let app = scoped_app().await;
+    let call = |tool: &str| {
+        mcp_request(
+            "tools/call",
+            json!({
+                "name": tool,
+                "arguments": if tool == "fetch" {
+                    json!({ "url": "https://example.com/" })
+                } else {
+                    json!({ "query": "rust" })
+                },
+                "_meta": {
+                    "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+                    "io.modelcontextprotocol/clientInfo": { "name": "scoped", "version": "1" },
+                    "io.modelcontextprotocol/clientCapabilities": {}
+                }
+            }),
+        )
+    };
+    let send = |tool: &'static str, token: &'static str, app: Router| async move {
+        let response = app
+            .oneshot(
+                as_client("/mcp", token)
+                    .method(Method::POST)
+                    .header(CONTENT_TYPE, "application/json")
+                    .header("accept", "application/json, text/event-stream")
+                    .header("mcp-protocol-version", "2026-07-28")
+                    .header("mcp-method", "tools/call")
+                    .header("mcp-name", tool)
+                    .body(Body::from(call(tool).to_string()))
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        json_body(response).await
+    };
+
+    // The restricted client may call `search`…
+    let allowed = send("search", SEARCH_ONLY_TOKEN, app.clone()).await;
+    assert_ne!(allowed["result"]["isError"], true, "{allowed}");
+
+    // …and is refused `fetch`, the sensitive tool, without disabling egress
+    // for anyone else.
+    let denied = send("fetch", SEARCH_ONLY_TOKEN, app.clone()).await;
+    assert_eq!(denied["result"]["isError"], true);
+    assert_eq!(
+        denied["result"]["structuredContent"]["error"]["code"],
+        "scope_denied"
+    );
+
+    // A client-supplied tool header cannot widen the allowlist. The transport
+    // refuses a header that disagrees with the body before any tool runs, and
+    // the tool itself decides from the authenticated identity, never the
+    // header — so neither half of the spoof works.
+    let spoofed = app
+        .clone()
+        .oneshot(
+            as_client("/mcp", SEARCH_ONLY_TOKEN)
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .header("accept", "application/json, text/event-stream")
+                .header("mcp-protocol-version", "2026-07-28")
+                .header("mcp-method", "tools/call")
+                .header("mcp-name", "search")
+                .body(Body::from(call("fetch").to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    let spoofed = json_body(spoofed).await;
+    assert!(spoofed["result"].is_null(), "{spoofed}");
+    assert!(
+        spoofed["error"]["message"]
+            .as_str()
+            .unwrap_or_default()
+            .contains("does not match body value"),
+        "{spoofed}"
+    );
+
+    // The operator credential keeps full access.
+    let operator = send("providers", ADMIN_TOKEN, app).await;
+    assert_ne!(operator["result"]["isError"], true, "{operator}");
+}
+
+#[tokio::test]
+async fn reload_rotates_credentials_without_restarting() {
+    let rotated = "rotated-operator-token-0123456789abcd";
+    let base = format!(
+        "schema_version = \"1\"\n\n[[server.clients]]\nid = \"operator\"\ntoken_sha256 = \"{}\"\nscopes = [\"read\", \"admin\"]\n",
+        sha256_hex(ADMIN_TOKEN)
+    );
+    let (app, path) = reloadable_app(&base).await;
+
+    assert_eq!(
+        app.clone()
+            .oneshot(
+                as_client("/status", ADMIN_TOKEN)
+                    .body(Body::empty())
+                    .unwrap()
+            )
+            .await
+            .unwrap()
+            .status(),
+        StatusCode::OK
+    );
+
+    std::fs::write(
+        &path,
+        format!(
+            "schema_version = \"1\"\n\n[[server.clients]]\nid = \"operator\"\ntoken_sha256 = \"{}\"\nscopes = [\"read\", \"admin\"]\n",
+            sha256_hex(rotated)
+        ),
+    )
+    .unwrap();
+    let report = app
+        .clone()
+        .oneshot(
+            as_client("/reload", ADMIN_TOKEN)
+                .method(Method::POST)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(report.status(), StatusCode::OK);
+    let report = json_body(report).await;
+    let clients = report["clients"].as_array().unwrap();
+    assert!(
+        clients.iter().any(|client| client == "operator"),
+        "{report}"
+    );
+
+    // The old secret stops working and the new one starts, same process.
+    assert_eq!(
+        app.clone()
+            .oneshot(
+                as_client("/status", ADMIN_TOKEN)
+                    .body(Body::empty())
+                    .unwrap()
+            )
+            .await
+            .unwrap()
+            .status(),
+        StatusCode::UNAUTHORIZED
+    );
+    assert_eq!(
+        app.oneshot(as_client("/status", rotated).body(Body::empty()).unwrap())
+            .await
+            .unwrap()
+            .status(),
+        StatusCode::OK
+    );
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn security_rejections_are_persisted_and_queryable() {
+    let (app, path) = persistent_app().await;
+
+    // Two different rejections: no credential, and a bad one.
+    for headers in [None, Some("Bearer wrong-token-0123456789abcdefghijkl")] {
+        let mut builder = request("/search?q=audited");
+        if let Some(value) = headers {
+            builder = builder.header(AUTHORIZATION, value);
+        }
+        let response = app
+            .clone()
+            .oneshot(builder.body(Body::empty()).unwrap())
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::UNAUTHORIZED);
+    }
+
+    // Auditing is backgrounded, so the trail settles a moment later.
+    let mut body = serde_json::Value::Null;
+    for _ in 0..50 {
+        let response = app
+            .clone()
+            .oneshot(
+                authorized("/security-events?limit=10")
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::OK);
+        body = json_body(response).await;
+        if body["events"].as_array().unwrap().len() >= 2 {
+            break;
+        }
+        tokio::time::sleep(Duration::from_millis(10)).await;
+    }
+    let events = body["events"].as_array().unwrap();
+    assert!(events.len() >= 2, "{body}");
+    assert!(events
+        .iter()
+        .all(|event| event["event"] == "unauthorized" && event["path"] == "/search"));
+    assert!(events[0]["request_id"].is_string());
+    assert_eq!(body["dropped"], 0);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn the_audit_trail_is_admin_only_and_fails_closed_without_persistence() {
+    // Persistence disabled: the endpoint reports it instead of returning an
+    // empty trail that looks like "nothing happened".
+    let response = app()
+        .await
+        .oneshot(authorized("/security-events").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::SERVICE_UNAVAILABLE);
+    assert_eq!(
+        json_body(response).await["error"]["code"],
+        "storage_unavailable"
+    );
+
+    // A non-admin credential cannot read it at all.
+    let scoped = scoped_app().await;
+    let denied = scoped
+        .oneshot(
+            as_client("/security-events", SEARCH_ONLY_TOKEN)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(denied.status(), StatusCode::FORBIDDEN);
 }

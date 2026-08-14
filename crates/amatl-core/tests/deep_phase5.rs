@@ -380,3 +380,160 @@ async fn document_cache_is_rights_gated_versioned_and_drops_body_by_default() {
     drop(cache);
     let _ = std::fs::remove_file(path);
 }
+
+/// Serves a distinct body per path so a crawl can be observed end to end.
+struct RoutingFetcher {
+    robots: (u16, &'static str),
+    seen: Arc<std::sync::Mutex<Vec<String>>>,
+}
+
+#[async_trait]
+impl Fetcher for RoutingFetcher {
+    async fn fetch(&self, request: FetchRequest) -> Result<FetchResult, FetchError> {
+        let url = request.url.clone();
+        self.seen.lock().unwrap().push(url.to_string());
+        let (status, body) = if url.path() == "/robots.txt" {
+            (self.robots.0, self.robots.1.to_owned())
+        } else if url.path() == "/article" {
+            (200, "<html><a href='/deeper'>deeper</a></html>".to_owned())
+        } else {
+            (200, "<html><p>discovered</p></html>".to_owned())
+        };
+        Ok(FetchResult {
+            final_url: amatl_core::FinalUrl(url),
+            status,
+            headers_safe: BTreeMap::new(),
+            content_type: Some("text/html".into()),
+            size: body.len() as u64,
+            body: body.into_bytes(),
+            redirect_chain: vec![],
+            retrieved_at: "2026-08-14T00:00:00Z".into(),
+        })
+    }
+}
+
+fn crawling_orchestrator(fetcher: Arc<dyn Fetcher>) -> DeepOrchestrator {
+    DeepOrchestrator::new(
+        DeepBudget::new(4, 100_000, 2, 1, 4, 5_000).with_gap_limits(0, 0),
+        fetcher,
+        Arc::new(FixedExtractor {
+            version: "fixed-v1",
+            result: Ok(extraction_ok()),
+        }),
+        RendererPool::new(Arc::new(NoRenderer), 1),
+        None,
+        5_000,
+        100_000,
+        2,
+        2,
+        // One level of crawl, which is the default configuration.
+        1,
+    )
+}
+
+#[tokio::test]
+async fn a_disallowed_discovered_link_is_not_crawled() {
+    let seen = Arc::new(std::sync::Mutex::new(vec![]));
+    let fetcher = Arc::new(RoutingFetcher {
+        robots: (200, "User-agent: *\nDisallow: /deeper\n"),
+        seen: seen.clone(),
+    });
+    let mut deep = crawling_orchestrator(fetcher).with_robots(amatl_core::RobotsCache::new(
+        Arc::new(RoutingFetcher {
+            robots: (200, "User-agent: *\nDisallow: /deeper\n"),
+            seen: seen.clone(),
+        }),
+        1_000,
+        64 * 1024,
+    ));
+    let output = deep
+        .enrich(request(vec![DeepCandidate {
+            result: result(),
+            storage_rights: false,
+        }]))
+        .await;
+
+    // The URL the user asked for is fetched; the link AMATL discovered is not.
+    let seen = seen.lock().unwrap().clone();
+    assert!(seen.iter().any(|url| url.ends_with("/article")), "{seen:?}");
+    assert!(!seen.iter().any(|url| url.ends_with("/deeper")), "{seen:?}");
+    assert!(
+        seen.iter().any(|url| url.ends_with("/robots.txt")),
+        "{seen:?}"
+    );
+    assert_eq!(output.documents.len(), 1);
+    assert!(
+        output
+            .degradations
+            .iter()
+            .any(|degradation| degradation.code == "robots_disallowed"),
+        "{:?}",
+        output.degradations
+    );
+}
+
+#[tokio::test]
+async fn an_allowed_discovered_link_is_still_crawled() {
+    let seen = Arc::new(std::sync::Mutex::new(vec![]));
+    let mut deep = crawling_orchestrator(Arc::new(RoutingFetcher {
+        robots: (404, ""),
+        seen: seen.clone(),
+    }))
+    .with_robots(amatl_core::RobotsCache::new(
+        Arc::new(RoutingFetcher {
+            // No robots.txt published: RFC 9309 allows the crawl.
+            robots: (404, ""),
+            seen: seen.clone(),
+        }),
+        1_000,
+        64 * 1024,
+    ));
+    let output = deep
+        .enrich(request(vec![DeepCandidate {
+            result: result(),
+            storage_rights: false,
+        }]))
+        .await;
+    let seen = seen.lock().unwrap().clone();
+    assert!(seen.iter().any(|url| url.ends_with("/deeper")), "{seen:?}");
+    assert_eq!(output.documents.len(), 2);
+}
+
+#[tokio::test]
+async fn an_unreachable_robots_file_stops_the_crawl() {
+    struct DeadRobots;
+
+    #[async_trait]
+    impl Fetcher for DeadRobots {
+        async fn fetch(&self, _: FetchRequest) -> Result<FetchResult, FetchError> {
+            Err(FetchError::Timeout)
+        }
+    }
+
+    let seen = Arc::new(std::sync::Mutex::new(vec![]));
+    let mut deep = crawling_orchestrator(Arc::new(RoutingFetcher {
+        robots: (200, ""),
+        seen: seen.clone(),
+    }))
+    .with_robots(amatl_core::RobotsCache::new(
+        Arc::new(DeadRobots),
+        200,
+        1024,
+    ));
+    let output = deep
+        .enrich(request(vec![DeepCandidate {
+            result: result(),
+            storage_rights: false,
+        }]))
+        .await;
+    let seen = seen.lock().unwrap().clone();
+    assert!(!seen.iter().any(|url| url.ends_with("/deeper")), "{seen:?}");
+    assert!(
+        output
+            .degradations
+            .iter()
+            .any(|degradation| degradation.code == "robots_unavailable"),
+        "{:?}",
+        output.degradations
+    );
+}

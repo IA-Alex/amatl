@@ -6,7 +6,7 @@ use std::sync::Arc;
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 use thiserror::Error;
 
-pub const MIGRATION_VERSION: i64 = 6;
+pub const MIGRATION_VERSION: i64 = 7;
 const POOL_SIZE: u32 = 4;
 
 #[derive(Clone)]
@@ -76,6 +76,21 @@ pub struct SavedDocument {
     pub saved_at: i64,
     pub source_query: Option<String>,
     pub tags: String,
+}
+
+/// One recorded security rejection.
+#[derive(Clone, Debug, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+pub struct SecurityEvent {
+    pub id: i64,
+    /// Unix seconds.
+    pub observed_at: i64,
+    /// Stable event name, for example `unauthorized` or `scope_denied`.
+    pub event: String,
+    pub request_id: Option<String>,
+    /// Authenticated identity when the caller had one; never a secret.
+    pub client_id: Option<String>,
+    pub path: Option<String>,
+    pub client_ip: Option<String>,
 }
 
 /// Persisted circuit breaker row for one provider.
@@ -199,6 +214,7 @@ impl SqliteStorage {
         let _write_guard = self.write_lock.lock().await;
         for version in (target_version + 1..=current).rev() {
             let script = match version {
+                7 => include_str!("../migrations/downgrade/0007_to_0006.sql"),
                 6 => include_str!("../migrations/downgrade/0006_to_0005.sql"),
                 5 => include_str!("../migrations/downgrade/0005_to_0004.sql"),
                 4 => include_str!("../migrations/downgrade/0004_to_0003.sql"),
@@ -1007,6 +1023,79 @@ impl SqliteStorage {
         Ok(rows > 0)
     }
 
+    // ── Security audit trail ────────────────────────────────────────────
+
+    /// Append one security event and prune anything past the retention window.
+    pub async fn security_event_insert(
+        &self,
+        event: &SecurityEvent,
+        retention_days: u32,
+    ) -> Result<(), StorageError> {
+        let _write_guard = self.write_lock.lock().await;
+        sqlx::query(
+            "INSERT INTO security_events
+               (observed_at, event, request_id, client_id, path, client_ip)
+             VALUES (?, ?, ?, ?, ?, ?)",
+        )
+        .bind(event.observed_at)
+        .bind(&event.event)
+        .bind(&event.request_id)
+        .bind(&event.client_id)
+        .bind(&event.path)
+        .bind(&event.client_ip)
+        .execute(&self.pool)
+        .await
+        .map_err(operation)?;
+        let cutoff = event
+            .observed_at
+            .saturating_sub(i64::from(retention_days).saturating_mul(86_400));
+        sqlx::query("DELETE FROM security_events WHERE observed_at < ?")
+            .bind(cutoff)
+            .execute(&self.pool)
+            .await
+            .map_err(operation)?;
+        Ok(())
+    }
+
+    /// Recorded events, newest first.
+    pub async fn security_events(
+        &self,
+        limit: i64,
+        offset: i64,
+    ) -> Result<Vec<SecurityEvent>, StorageError> {
+        let rows = sqlx::query(
+            "SELECT id, observed_at, event, request_id, client_id, path, client_ip
+             FROM security_events
+             ORDER BY observed_at DESC, id DESC
+             LIMIT ? OFFSET ?",
+        )
+        .bind(limit)
+        .bind(offset)
+        .fetch_all(&self.pool)
+        .await
+        .map_err(operation)?;
+        Ok(rows
+            .into_iter()
+            .map(|row| SecurityEvent {
+                id: row.get("id"),
+                observed_at: row.get("observed_at"),
+                event: row.get("event"),
+                request_id: row.get("request_id"),
+                client_id: row.get("client_id"),
+                path: row.get("path"),
+                client_ip: row.get("client_ip"),
+            })
+            .collect())
+    }
+
+    /// Count recorded events.
+    pub async fn security_event_count(&self) -> Result<i64, StorageError> {
+        sqlx::query_scalar("SELECT COUNT(*) FROM security_events")
+            .fetch_one(&self.pool)
+            .await
+            .map_err(operation)
+    }
+
     // ── Provider circuit breaker ────────────────────────────────────────
 
     /// Persist the breaker state of one provider.
@@ -1149,6 +1238,11 @@ async fn run_migrations(pool: SqlitePool, db_path: PathBuf) -> Result<(), Storag
             6_i64,
             "provider_circuit",
             include_str!("../migrations/0006_provider_circuit.sql"),
+        ),
+        (
+            7_i64,
+            "security_events",
+            include_str!("../migrations/0007_security_events.sql"),
         ),
     ]
     .into_iter()

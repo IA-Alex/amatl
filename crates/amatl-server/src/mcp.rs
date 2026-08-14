@@ -3,6 +3,10 @@
 //! The tool set mirrors the HTTP contract on purpose, with two deliberate
 //! differences:
 //!
+//! * **Capability per tool.** The bearer that reaches `/mcp` carries a client
+//!   identity with an explicit tool allowlist; every tool checks it before
+//!   doing any work. `fetch` is the sensitive one — a credential can be granted
+//!   `search` and denied `fetch` without turning off egress for everyone.
 //! * **No ingestion tool.** `amatl ingest` reads the local filesystem and stays
 //!   CLI-only. Exposing it here would turn a listener that an agent can drive
 //!   into a remote file reader, which is a different threat model than "search
@@ -15,7 +19,7 @@
 //! `deep_search` is the long operation: it honors client cancellation and
 //! reports progress when the caller supplied a progress token.
 
-use crate::{next_request_id, ServiceHandle};
+use crate::{next_request_id, ClientIdentity, ServiceHandle};
 use amatl_core::{
     AmatlService, ErrorCode, FetchError, FetchRequest, ServiceSurface, SCHEMA_VERSION,
 };
@@ -69,6 +73,38 @@ impl McpSurface {
         Self { service }
     }
 
+    /// Identity attached by the HTTP security middleware.
+    ///
+    /// The transport forwards the original `http::request::Parts`, so the
+    /// authorization decision keeps using what the middleware authenticated —
+    /// never a client-supplied header, which would be trivially spoofable.
+    fn identity(context: &RequestContext<RoleServer>) -> Option<ClientIdentity> {
+        context
+            .extensions
+            .get::<http::request::Parts>()
+            .and_then(|parts| parts.extensions.get::<ClientIdentity>())
+            .cloned()
+    }
+
+    /// `Err` when this caller may not use `tool`.
+    fn authorize(context: &RequestContext<RoleServer>, tool: &str) -> Result<(), CallToolResult> {
+        // No identity means the request never crossed the middleware; refuse.
+        let Some(identity) = Self::identity(context) else {
+            return Err(tool_error(ErrorCode::Unauthorized));
+        };
+        if identity.allows_tool(tool) {
+            return Ok(());
+        }
+        tracing::warn!(
+            target: "amatl::security",
+            security_event = "tool_denied",
+            client_id = %identity.id,
+            tool,
+            "MCP tool call rejected by the client tool allowlist"
+        );
+        Err(tool_error(ErrorCode::ScopeDenied))
+    }
+
     /// Current service snapshot, so a configuration reload reaches MCP too.
     fn service(&self) -> AmatlService {
         self.service
@@ -81,7 +117,14 @@ impl McpSurface {
 #[tool_router]
 impl McpSurface {
     #[tool(description = "Search configured providers with the public AMATL Search contract")]
-    async fn search(&self, Parameters(input): Parameters<QueryInput>) -> CallToolResult {
+    async fn search(
+        &self,
+        Parameters(input): Parameters<QueryInput>,
+        context: RequestContext<RoleServer>,
+    ) -> CallToolResult {
+        if let Err(denied) = Self::authorize(&context, "search") {
+            return denied;
+        }
         if !valid_query(&input.query) {
             return tool_error(ErrorCode::InvalidQuery);
         }
@@ -107,6 +150,9 @@ impl McpSurface {
         Parameters(input): Parameters<DeepInput>,
         context: RequestContext<RoleServer>,
     ) -> CallToolResult {
+        if let Err(denied) = Self::authorize(&context, "deep_search") {
+            return denied;
+        }
         if !valid_query(&input.query) {
             return tool_error(ErrorCode::InvalidQuery);
         }
@@ -129,7 +175,14 @@ impl McpSurface {
     }
 
     #[tool(description = "Fetch one public HTTP(S) URL with SSRF, redirect, byte and time limits")]
-    async fn fetch(&self, Parameters(input): Parameters<FetchInput>) -> CallToolResult {
+    async fn fetch(
+        &self,
+        Parameters(input): Parameters<FetchInput>,
+        context: RequestContext<RoleServer>,
+    ) -> CallToolResult {
+        if let Err(denied) = Self::authorize(&context, "fetch") {
+            return denied;
+        }
         let Ok(url) = Url::parse(&input.url) else {
             return tool_error(ErrorCode::InvalidUrl);
         };
@@ -161,7 +214,10 @@ impl McpSurface {
     }
 
     #[tool(description = "List configured provider availability and declared capabilities")]
-    async fn providers(&self) -> CallToolResult {
+    async fn providers(&self, context: RequestContext<RoleServer>) -> CallToolResult {
+        if let Err(denied) = Self::authorize(&context, "providers") {
+            return denied;
+        }
         match self.service().provider_summaries() {
             Ok(providers) => CallToolResult::structured(json!({
                 "schema_version": SCHEMA_VERSION,
@@ -174,7 +230,10 @@ impl McpSurface {
     #[tool(
         description = "Report AMATL availability: sources, local persistence, caches and the effective MCP limits"
     )]
-    async fn status(&self) -> CallToolResult {
+    async fn status(&self, context: RequestContext<RoleServer>) -> CallToolResult {
+        if let Err(denied) = Self::authorize(&context, "status") {
+            return denied;
+        }
         let service = self.service();
         let limits = service.execution_limits(ServiceSurface::mcp());
         match service.status().await {

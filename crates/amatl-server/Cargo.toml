@@ -10,9 +10,11 @@ amatl-core = { version = "0.1.0-rc.1", path = "../amatl-core" }
 amatl-ui = { version = "0.1.0-rc.1", path = "../amatl-ui" }
 axum.workspace = true
 axum-server.workspace = true
+http.workspace = true
 hyper-util.workspace = true
 rmcp.workspace = true
 serde.workspace = true
+sha2.workspace = true
 serde_json.workspace = true
 thiserror.workspace = true
 tokio.workspace = true

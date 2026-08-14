@@ -71,6 +71,26 @@ adapter/extractor versions are independent axes as well.
   list|delete|purge`, `amatl saved list|show|delete`, and `amatl db
   health|backups|restore|downgrade|circuits`. `serve` and `mcp serve` accept
   `--bind`, `--port` and `--json`.
+- Named credentials (`[[server.clients]]`): each one carries its own HTTP
+  scopes, MCP tool allowlist and optional expiry. Secrets stay out of
+  configuration — declare the environment variable or the SHA-256 digest — and
+  are matched as digests in constant time. `POST /reload` and `SIGHUP` rotate,
+  add and revoke credentials without a restart, while deliberately preserving
+  rate-limit windows. The single `server.token_env` token still works as the
+  `default` client.
+- Per-tool MCP authorization: every tool checks the authenticated identity's
+  allowlist, so `fetch` can be denied to a client without disabling egress for
+  everyone. The decision never reads a client-supplied header.
+- Durable security audit (`security_events`, migration 0007): edge rejections
+  are persisted with request id, identity, path and address, queryable through
+  `GET /security-events` (admin scope) and `amatl db security-events`, with
+  `persistence.audit_retention_days` retention. Writes are backgrounded and
+  bounded; drops are counted in `amatl_audit_events_dropped_total`.
+- `robots.txt` compliance for crawl-discovered links (`[deep] respect_robots`):
+  user-requested URLs are fetched as a user agent, while links AMATL discovers
+  itself at depth ≥ 1 obey the origin's rules, including `Crawl-delay` within
+  the Deep deadline. An unreachable `robots.txt` stops the crawl instead of
+  assuming consent.
 - Ranking v2 is gated in CI: `contract-gate` and the release workflow run
   `amatl benchmark ranking-v2`, and a unit test pins the recorded calibration so
   a silent drift fails the build.

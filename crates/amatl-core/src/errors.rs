@@ -59,6 +59,8 @@ pub enum ErrorCode {
     RankingBackendUnavailable,
     /// Persistent storage is unavailable; degraded operation continues.
     StorageUnavailable,
+    /// Credential is valid but lacks the capability this surface requires.
+    ScopeDenied,
     /// Caller cancelled the request before it completed.
     RequestCancelled,
     /// Response could not be serialized for the surface.
@@ -68,7 +70,7 @@ pub enum ErrorCode {
 }
 
 /// Every code in the catalog, in declaration order.
-pub const ERROR_CATALOG: [ErrorCode; 27] = [
+pub const ERROR_CATALOG: [ErrorCode; 28] = [
     ErrorCode::InvalidRequest,
     ErrorCode::InvalidQuery,
     ErrorCode::InvalidUrl,
@@ -93,6 +95,7 @@ pub const ERROR_CATALOG: [ErrorCode; 27] = [
     ErrorCode::InferenceUnavailable,
     ErrorCode::RankingBackendUnavailable,
     ErrorCode::StorageUnavailable,
+    ErrorCode::ScopeDenied,
     ErrorCode::RequestCancelled,
     ErrorCode::SerializationFailed,
     ErrorCode::InternalError,
@@ -126,6 +129,7 @@ impl ErrorCode {
             Self::InferenceUnavailable => "inference_unavailable",
             Self::RankingBackendUnavailable => "ranking_backend_unavailable",
             Self::StorageUnavailable => "storage_unavailable",
+            Self::ScopeDenied => "scope_denied",
             Self::RequestCancelled => "request_cancelled",
             Self::SerializationFailed => "serialization_failed",
             Self::InternalError => "internal_error",
@@ -137,7 +141,10 @@ impl ErrorCode {
         match self {
             Self::InvalidRequest | Self::InvalidQuery | Self::InvalidUrl | Self::InvalidHost => 400,
             Self::Unauthorized => 401,
-            Self::InvalidOrigin | Self::EgressDenied | Self::ProviderNetworkBlocked => 403,
+            Self::InvalidOrigin
+            | Self::EgressDenied
+            | Self::ProviderNetworkBlocked
+            | Self::ScopeDenied => 403,
             Self::NotFound => 404,
             // 499 is the conventional "client closed request"; MCP renders it
             // as a tool error rather than a transport status.
@@ -189,6 +196,7 @@ impl ErrorCode {
             Self::InferenceUnavailable => "required inference backend is unavailable",
             Self::RankingBackendUnavailable => "optional ranking backend is unavailable",
             Self::StorageUnavailable => "persistent storage is unavailable",
+            Self::ScopeDenied => "credential lacks the required capability",
             Self::RequestCancelled => "request was cancelled by the caller",
             Self::SerializationFailed => "response could not be serialized",
             Self::InternalError => "internal failure",
