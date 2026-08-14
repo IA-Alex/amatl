@@ -552,7 +552,20 @@ pub struct RendererConfig {
     pub timeout_ms: u64,
     pub shutdown_grace_ms: u64,
     pub max_memory_mb: u64,
+    /// Redirect ceiling inherited by the fetch that produced the DOM.
+    ///
+    /// The renderer itself never navigates — it is handed bytes that
+    /// [`crate::SafeFetcher`] already retrieved — so it contributes no
+    /// redirects of its own.
     pub max_redirects: u32,
+    /// Path to the `amatl-chromium-sandbox` isolation harness.
+    ///
+    /// Chromium is never launched directly: the harness is the only supported
+    /// entry point because it is what enforces the network, memory, task and
+    /// filesystem confinement the renderer's safety argument rests on.
+    pub sandbox_path: String,
+    /// Largest DOM the harness may return, in bytes.
+    pub max_dom_bytes: u64,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
@@ -874,6 +887,8 @@ impl Default for RendererConfig {
             shutdown_grace_ms: 500,
             max_memory_mb: 512,
             max_redirects: 5,
+            sandbox_path: "amatl-chromium-sandbox".into(),
+            max_dom_bytes: 8 * 1024 * 1024,
         }
     }
 }

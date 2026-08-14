@@ -126,8 +126,11 @@ Invariantes no negociables:
   exige candidatos obtenibles bajo `data_policy` y texto del extractor. Con
   `isolated`, el botón Deep muestra degradación sin intentar DNS; para archivos
   sensibles se usa la ingestión CLI, no la UI.
-- `ChromiumRenderer` permanece no disponible hasta implementar y verificar un
-  backend CDP aislado; no habilitar Chromium como fallback inseguro.
+- `ChromiumRenderer` ejecuta JavaScript a través del harness
+  `amatl-chromium-sandbox`. Recibe bytes, no una URL: `SafeFetcher` sigue siendo
+  el único dueño del egress y el renderer no puede navegar. Queda no disponible
+  —sin fallback inseguro— si faltan el harness, `bwrap`, `systemd-run` o el
+  binario de Chromium.
 - Persistencia y ambas cachés están deshabilitadas por defecto. Un fallo de
   SQLite no invalida Search.
 - `/health` sólo comprueba proceso/router; no prueba providers, SQLite ni
@@ -217,8 +220,9 @@ No son defectos del core y no deben resolverse inventando datos:
 5. Para cada RC futura, ejecutar el workflow, validar musl/.deb/.rpm/Arch y sólo
    después crear el tag anotado; la publicación externa requiere autoridad del
    propietario.
-6. El aislamiento real de Chromium está probado sin red; implementar y revisar
-   el bridge CDP antes de habilitar Renderer en core.
+6. Renderer conectado: el aislamiento se verifica en `chromium-isolation`, que
+   además ejercita el backend desde Rust y prueba que una página renderizada no
+   alcanza loopback. Falta decidir si ese workflow entra en `contract-gate`.
 
 ## Protocolo de reanudación
 

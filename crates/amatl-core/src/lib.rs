@@ -49,8 +49,8 @@ pub use circuit::{CircuitPolicy, CircuitSnapshot, CircuitState, ProviderCircuit}
 pub use classify::classify;
 pub use config::{
     ApprovalStatus, Config, ConfigError, DataPolicyConfig, EgressPolicy, ExecutionConfig,
-    InferenceConfig, InferenceMode, ProviderConfig, ProviderRuntimeConfig, Scope, SecurityProfile,
-    ServerClient, ServerConfig, TlsConfig, MCP_TOOLS,
+    InferenceConfig, InferenceMode, ProviderConfig, ProviderRuntimeConfig, RendererConfig, Scope,
+    SecurityProfile, ServerClient, ServerConfig, TlsConfig, MCP_TOOLS,
 };
 pub use deep::{DeepCandidate, DeepOrchestrator, DeepRequest};
 pub use diversity::{DiversityDecision, DiversityMetrics, DiversityOutput, DiversityPolicyV1};

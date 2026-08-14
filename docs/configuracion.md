@@ -251,11 +251,13 @@ disponibles.
 
 | Clave | Tipo/default | Rango validado/estado |
 |---|---:|---|
-| `deep.renderer.enabled` | bool / `false` | backend de core aún no activo; el harness Linux aislado se valida por separado |
+| `deep.renderer.enabled` | bool / `false` | Habilitarlo no basta: el renderer sólo queda disponible si `sandbox_path`, `bwrap`, `systemd-run` y un binario Chromium están presentes en Linux. Si falta cualquiera, Deep conserva el documento superficial en vez de lanzar un navegador sin confinar |
 | `.max_browser_calls` | u32 / 2 | >0 |
 | `.timeout_ms` | u64 / 8000 | >0 |
 | `.shutdown_grace_ms` | u64 / 500 | >0 |
-| `.max_memory_mb` | u64 / 512 | >0 |
+| `.max_memory_mb` | u64 / 512 | >0; se propaga al harness como `AMATL_CHROMIUM_MEMORY_MB` |
+| `.sandbox_path` | string / `amatl-chromium-sandbox` | Ruta al harness de aislamiento; se resuelve por `PATH` si es un nombre simple. Chromium nunca se lanza directamente |
+| `.max_dom_bytes` | u64 / 8388608 | Tope del DOM devuelto; se propaga como `AMATL_CHROMIUM_MAX_DOM_BYTES` |
 | `.max_redirects` | u32 / 5 | cualquier u32 |
 
 ### Ranking v2

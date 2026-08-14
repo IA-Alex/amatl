@@ -7,9 +7,10 @@ es `buscar → revisar → abrir`.
 
 No es un chatbot, generador de texto, crawler masivo, dashboard analítico, agente
 autónomo ni sistema dependiente de LLM o de un único provider. Search permanece
-ligero; Deep, Trafilatura, Chromium, SQLite y cachés son opcionales. El harness
-de aislamiento de Chromium está verificado por separado; el backend permanece
-desactivado hasta conectarlo sin transferir a Chromium el ownership de red.
+ligero; Deep, Trafilatura, Chromium, SQLite y cachés son opcionales. El renderer
+de Chromium está conectado a través del harness de aislamiento, desactivado por
+defecto y sin ownership de red: recibe el DOM que `SafeFetcher` ya obtuvo, nunca
+una URL, de modo que no puede convertirse en una segunda vía de egress.
 
 ## Invariantes visibles
 

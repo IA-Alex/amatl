@@ -327,22 +327,26 @@ impl DeepOrchestrator {
                     .await
                     .unwrap_or(Err(ExtractError::Timeout));
             let mut fetch_method = FetchMethod::Http;
-            let mut final_url = fetched.final_url;
+            let final_url = fetched.final_url;
             let mut document_size = fetched.size;
             if extraction.is_err() && self.renderer.available() {
                 match self.budget.reserve_browser() {
                     Ok(()) => {
-                        match tokio::time::timeout_at(deadline, self.renderer.render(&final_url.0))
+                        // The renderer is handed the bytes SafeFetcher already
+                        // retrieved, never the URL: it executes scripts, it does
+                        // not navigate. `final_url` therefore stays whatever the
+                        // fetcher resolved, and the render contributes no
+                        // redirects of its own.
+                        match tokio::time::timeout_at(deadline, self.renderer.render(&fetched.body))
                             .await
                             .unwrap_or(Err(crate::render::RenderError::Timeout))
                         {
                             Ok(rendered) => {
                                 if self
                                     .budget
-                                    .consume_fetch(rendered.dom.len() as u64, rendered.redirects)
+                                    .consume_fetch(rendered.dom.len() as u64, 0)
                                     .is_ok()
                                 {
-                                    final_url = rendered.final_url;
                                     content_hash = hex_digest(&rendered.dom);
                                     document_size = rendered.dom.len() as u64;
                                     extraction = tokio::time::timeout_at(

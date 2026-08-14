@@ -153,6 +153,12 @@ timeout_ms = 8000
 shutdown_grace_ms = 500
 max_memory_mb = 512
 max_redirects = 5
+# Chromium is never launched directly: this harness is what enforces the
+# network, memory, task and filesystem confinement. Enabling the renderer
+# without it leaves the renderer unavailable rather than falling back to an
+# unconfined browser.
+sandbox_path = "amatl-chromium-sandbox"
+max_dom_bytes = 8388608
 
 [deep.ranking_v2]
 enabled = true

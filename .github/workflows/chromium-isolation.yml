@@ -69,3 +69,12 @@ jobs:
           printf '%s' '<!doctype html><p id="state">pending</p><script>fetch("http://127.0.0.1:8765/").then(()=>state.textContent="network-leak").catch(()=>state.textContent="blocked")</script>' > "$fixture"
           packaging/amatl-chromium-sandbox "$fixture" "$output" 60
           grep --fixed-strings --quiet '>blocked<' "$output"
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Drive the harness through ChromiumRenderer
+        # The shell steps above prove the harness itself confines Chromium.
+        # This proves the Rust backend actually reaches it, that scripts run,
+        # and that a rendered page still cannot open a loopback connection.
+        env:
+          AMATL_CHROMIUM_INTEGRATION: "1"
+        run: cargo test --locked -p amatl-core --test deep_phase5 -- --test-threads=1

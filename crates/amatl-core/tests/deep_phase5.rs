@@ -87,7 +87,7 @@ impl Renderer for NoRenderer {
     fn available(&self) -> bool {
         false
     }
-    async fn render(&self, _: &Url) -> Result<RenderResult, RenderError> {
+    async fn render(&self, _: &[u8]) -> Result<RenderResult, RenderError> {
         Err(RenderError::Unavailable)
     }
 }
@@ -537,5 +537,131 @@ async fn an_unreachable_robots_file_stops_the_crawl() {
             .any(|degradation| degradation.code == "robots_unavailable"),
         "{:?}",
         output.degradations
+    );
+}
+
+/// Absolute path to the isolation harness, resolved from the workspace root.
+///
+/// Tests run with the crate directory as CWD, so a repository-relative path
+/// would not resolve.
+#[cfg(test)]
+fn harness_path() -> String {
+    std::env::var("AMATL_CHROMIUM_SANDBOX").unwrap_or_else(|_| {
+        std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+            .join("../../packaging/amatl-chromium-sandbox")
+            .to_string_lossy()
+            .into_owned()
+    })
+}
+
+/// Drives the real isolation harness through `ChromiumRenderer`.
+///
+/// Gated like the Trafilatura integration test: inert unless
+/// `AMATL_CHROMIUM_INTEGRATION=1`, because it needs `bwrap`, `systemd-run`, a
+/// Chromium binary and unprivileged user namespaces.
+#[tokio::test]
+async fn chromium_renderer_executes_scripts_through_the_isolation_harness() {
+    if std::env::var("AMATL_CHROMIUM_INTEGRATION").as_deref() != Ok("1") {
+        return;
+    }
+    use amatl_core::{ChromiumRenderer, RendererConfig};
+
+    let harness = harness_path();
+    let config = RendererConfig {
+        enabled: true,
+        sandbox_path: std::fs::canonicalize(&harness)
+            .expect("harness path")
+            .to_string_lossy()
+            .into_owned(),
+        timeout_ms: 30_000,
+        ..RendererConfig::default()
+    };
+    let renderer = ChromiumRenderer::detect(&config);
+    assert!(
+        renderer.available(),
+        "harness prerequisites missing: {}",
+        renderer.unavailable_reason()
+    );
+
+    let html = br#"<!doctype html><html><body>
+        <div id="target">before</div>
+        <script>document.getElementById('target').textContent = 'RENDERED_BY_JS';</script>
+        </body></html>"#;
+    let rendered = renderer.render(html).await.expect("render succeeds");
+    let dom = String::from_utf8_lossy(&rendered.dom);
+    assert!(
+        dom.contains("RENDERED_BY_JS"),
+        "scripts did not run; DOM was: {dom}"
+    );
+    assert!(!dom.contains(">before<"), "the pre-script DOM was returned");
+}
+
+/// The renderer must not be able to reach the network, including loopback.
+///
+/// This is the invariant the whole design rests on: `SafeFetcher` stays the
+/// only owner of egress. A page that tries to fetch must fail inside the
+/// sandbox rather than reaching a local listener.
+#[tokio::test]
+async fn rendered_pages_cannot_reach_the_network() {
+    if std::env::var("AMATL_CHROMIUM_INTEGRATION").as_deref() != Ok("1") {
+        return;
+    }
+    use amatl_core::{ChromiumRenderer, RendererConfig};
+
+    let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+    let port = listener.local_addr().unwrap().port();
+    let reached = std::sync::Arc::new(std::sync::atomic::AtomicBool::new(false));
+    let flag = reached.clone();
+    tokio::spawn(async move {
+        while let Ok((_stream, _)) = listener.accept().await {
+            flag.store(true, std::sync::atomic::Ordering::SeqCst);
+        }
+    });
+
+    let harness = harness_path();
+    let config = RendererConfig {
+        enabled: true,
+        sandbox_path: std::fs::canonicalize(&harness)
+            .expect("harness path")
+            .to_string_lossy()
+            .into_owned(),
+        timeout_ms: 30_000,
+        ..RendererConfig::default()
+    };
+    let renderer = ChromiumRenderer::detect(&config);
+    assert!(renderer.available(), "{}", renderer.unavailable_reason());
+
+    // The outcome markers are assembled at runtime so the literals never
+    // appear in the script source: the dumped DOM includes the script text, so
+    // searching for a literal would match whether or not it ever executed.
+    let html = format!(
+        r#"<!doctype html><html><body><div id="r">pending</div><script>
+        var mark = function (suffix) {{
+          document.getElementById('r').textContent = 'NET' + '_' + suffix;
+        }};
+        fetch("http://127.0.0.1:{port}/")
+          .then(function () {{ mark('OK'); }})
+          .catch(function () {{ mark('FAIL'); }});
+        </script></body></html>"#
+    );
+    let rendered = renderer.render(html.as_bytes()).await.expect("render");
+    let dom = String::from_utf8_lossy(&rendered.dom);
+
+    // The authoritative signal: no connection may ever arrive, regardless of
+    // whether the page's promise had settled by the time the DOM was dumped.
+    assert!(
+        !reached.load(std::sync::atomic::Ordering::SeqCst),
+        "a connection arrived at the loopback listener from inside the sandbox"
+    );
+    assert!(
+        !dom.contains("NET_OK"),
+        "the page observed a successful fetch to loopback: {dom}"
+    );
+    // Guards against the test passing vacuously: the fetch must actually have
+    // run and been refused, not merely still be pending when the DOM was
+    // dumped.
+    assert!(
+        dom.contains("NET_FAIL"),
+        "the fetch never resolved, so isolation was not exercised: {dom}"
     );
 }
