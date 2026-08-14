@@ -218,7 +218,7 @@ async fn benchmark_sqlite(
     concurrency: usize,
 ) -> Result<SqliteOperationalReport, OperationalBenchmarkError> {
     let path = benchmark_database_path();
-    let storage = SqliteStorage::open(&path).await?;
+    let storage = SqliteStorage::open(&path, crate::config::SqliteLockingMode::Normal).await?;
     let cache = ProviderSearchCache::new(
         storage,
         ProviderSearchCachePolicy {

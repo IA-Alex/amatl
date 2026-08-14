@@ -48,7 +48,9 @@ fn enabled_cache(storage: SqliteStorage) -> ProviderSearchCache {
 
 #[tokio::test]
 async fn provider_cache_runs_before_pipeline_and_avoids_second_adapter_call() {
-    let storage = SqliteStorage::open(path("hit")).await.unwrap();
+    let storage = SqliteStorage::open(path("hit"), amatl_core::config::SqliteLockingMode::Normal)
+        .await
+        .unwrap();
     let mock = Arc::new(MockProvider::success(
         "p",
         vec![item("https://example.com/?utm_source=provider")],
@@ -74,7 +76,12 @@ async fn provider_cache_runs_before_pipeline_and_avoids_second_adapter_call() {
 
 #[tokio::test]
 async fn missing_storage_rights_bypasses_cache_even_when_globally_enabled() {
-    let storage = SqliteStorage::open(path("rights")).await.unwrap();
+    let storage = SqliteStorage::open(
+        path("rights"),
+        amatl_core::config::SqliteLockingMode::Normal,
+    )
+    .await
+    .unwrap();
     let cache = enabled_cache(storage);
     let mock = Arc::new(MockProvider::success(
         "p",
@@ -116,7 +123,12 @@ async fn search_records_live_provider_health_for_later_routing() {
 
 #[tokio::test]
 async fn optional_telemetry_persistence_restores_window_but_memory_remains_authoritative() {
-    let storage = SqliteStorage::open(path("telemetry")).await.unwrap();
+    let storage = SqliteStorage::open(
+        path("telemetry"),
+        amatl_core::config::SqliteLockingMode::Normal,
+    )
+    .await
+    .unwrap();
     let now = amatl_core::telemetry::now_unix();
     let telemetry = InMemoryTelemetry::with_optional_storage(Some(storage.clone())).await;
     telemetry
@@ -145,10 +157,11 @@ async fn optional_telemetry_persistence_restores_window_but_memory_remains_autho
 async fn corrupt_database_is_quarantined_without_overwrite() {
     let database = path("corrupt");
     std::fs::write(&database, b"not a sqlite database").unwrap();
-    let error = match SqliteStorage::open(&database).await {
-        Ok(_) => panic!("corrupt database must not open"),
-        Err(error) => error,
-    };
+    let error =
+        match SqliteStorage::open(&database, amatl_core::config::SqliteLockingMode::Normal).await {
+            Ok(_) => panic!("corrupt database must not open"),
+            Err(error) => error,
+        };
     let StorageError::Corrupt { quarantine_path } = error else {
         panic!("corruption must be quarantined");
     };
@@ -159,4 +172,48 @@ async fn corrupt_database_is_quarantined_without_overwrite() {
         b"not a sqlite database"
     );
     std::fs::remove_file(quarantine_path).unwrap();
+}
+
+/// The background maintenance task must not outlive the service that spawned
+/// it. It holds a clone of the storage handle, so a leaked task keeps both the
+/// connection pool and the advisory file lock alive; under
+/// `locking_mode = "exclusive"` no other process could then open the database.
+#[tokio::test]
+async fn dropping_the_service_releases_the_exclusive_database_lock() {
+    use amatl_core::config::SqliteLockingMode;
+    use amatl_core::{AmatlService, Config};
+
+    let database = path("maintenance-lock");
+    let mut config = Config::default();
+    config.persistence.enabled = true;
+    config.persistence.path = database.to_string_lossy().into_owned();
+    config.persistence.locking_mode = SqliteLockingMode::Exclusive;
+    // Long enough that the task is certainly still waiting on its first tick.
+    config.persistence.purge_interval_seconds = 3_600;
+    config.validate().expect("config is valid");
+
+    let service = AmatlService::new(config, true).await;
+
+    // While the service is alive the lock is held.
+    assert!(
+        matches!(
+            SqliteStorage::open(&database, SqliteLockingMode::Exclusive).await,
+            Err(StorageError::LockContention)
+        ),
+        "a live service must hold the advisory lock"
+    );
+
+    drop(service);
+    // Cancellation is observed by the task asynchronously; give it a moment to
+    // unwind and release the pool.
+    for _ in 0..50 {
+        if SqliteStorage::open(&database, SqliteLockingMode::Exclusive)
+            .await
+            .is_ok()
+        {
+            return;
+        }
+        tokio::time::sleep(std::time::Duration::from_millis(20)).await;
+    }
+    panic!("the advisory lock was never released after dropping the service");
 }

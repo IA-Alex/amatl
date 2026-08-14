@@ -17,6 +17,8 @@ use std::time::{Duration, Instant};
 use tokio::io::AsyncReadExt;
 use tokio::net::TcpStream;
 
+/// MCP protocol version this surface speaks; must match `mcp::McpSurface`.
+const MCP_PROTOCOL_VERSION: &str = "2026-07-28";
 const DURATION_SECS: u64 = 15;
 const CONCURRENCY: usize = 16;
 const WARMUP_SECS: u64 = 2;
@@ -130,11 +132,25 @@ async fn http_get(port: u16, path: &str) -> (bool, u64) {
 
 async fn mcp_list_tools(port: u16) -> (bool, u64) {
     let start = Instant::now();
+    // The MCP surface negotiates a protocol version. Omitting the
+    // `mcp-protocol-version` header and the `_meta` block makes the server
+    // reject every call, which is exactly what happened while this test was
+    // `#[ignore]`d and never executed: it reported a steady 33% error rate,
+    // one third being precisely the share of MCP requests below.
     let body = json!({
         "jsonrpc": "2.0",
         "id": 1,
         "method": "tools/list",
-        "params": {}
+        "params": {
+            "_meta": {
+                "io.modelcontextprotocol/protocolVersion": MCP_PROTOCOL_VERSION,
+                "io.modelcontextprotocol/clientInfo": {
+                    "name": "amatl-soak",
+                    "version": "1"
+                },
+                "io.modelcontextprotocol/clientCapabilities": {}
+            }
+        }
     });
     let body_str = body.to_string();
     let result: Result<bool, std::io::Error> = async {
@@ -144,6 +160,8 @@ async fn mcp_list_tools(port: u16) -> (bool, u64) {
              Host: localhost:{port}\r\n\
              Content-Type: application/json\r\n\
              Accept: application/json, text/event-stream\r\n\
+             mcp-protocol-version: {MCP_PROTOCOL_VERSION}\r\n\
+             mcp-method: tools/list\r\n\
              Content-Length: {}\r\n\
              Connection: close\r\n\
              \r\n\

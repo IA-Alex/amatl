@@ -127,6 +127,24 @@ pub struct InferenceConfig {
     pub max_input_chars: usize,
     /// Weight the reranker keeps for the upstream relevance signal.
     pub reranker_prior_weight: f64,
+    /// Path to a local word-vector model file used by the `local_model_v1`
+    /// backend. Each line is `token v0 v1 … vN` (space separated floats).
+    /// When unset, `local_model_v1` fails closed and Deep degrades to the
+    /// hashing backend.
+    pub local_model_path: Option<String>,
+    /// Sizing hint for the on-disk embedding cache of `local_model_v1`.
+    ///
+    /// Despite the name this does **not** cap how many documents are embedded
+    /// per call: nothing in the pipeline batches on it. Its only effect is the
+    /// capacity of [`crate::inference::EmbeddingCache`] (this value times 64
+    /// entries). The name is kept for rc.1 to avoid breaking existing
+    /// configuration files; it should be renamed to `local_cache_capacity`
+    /// before 1.0.
+    pub local_model_batch: usize,
+    /// Optional path where computed embeddings are cached between executions.
+    /// The cache is namespaced by the vector-space identity so artifacts are
+    /// never reused across backends or widths. When unset, no cache is used.
+    pub local_cache_path: Option<String>,
     /// Embeddings endpoint used by `data_policy.inference = "remote_explicit"`.
     /// Must be absolute HTTPS, or HTTP on loopback for a self-hosted server,
     /// and must not embed credentials.
@@ -150,6 +168,9 @@ impl Default for InferenceConfig {
             max_documents: 64,
             max_input_chars: 20_000,
             reranker_prior_weight: 0.5,
+            local_model_path: None,
+            local_model_batch: 32,
+            local_cache_path: None,
             remote_endpoint: None,
             remote_model: None,
             remote_credential_env: None,
@@ -414,6 +435,43 @@ pub struct PersistenceConfig {
     pub saved_document_max_bytes: u64,
     /// Days a persisted security event is kept. Requires `enabled`.
     pub audit_retention_days: u32,
+    /// Days search history entries are kept (0 = unlimited). Requires `enabled`.
+    pub history_retention_days: u32,
+    /// Days provider search cache entries are kept (0 = unlimited). Requires `enabled`.
+    pub cache_retention_days: u32,
+    /// Days document cache entries are kept (0 = unlimited). Requires `enabled`.
+    pub document_cache_retention_days: u32,
+    /// Seconds between scheduled purge cycles (0 = disabled). Requires `enabled`.
+    pub purge_interval_seconds: u64,
+    /// Whether to create automatic periodic backups. Requires `enabled`.
+    pub auto_backup_enabled: bool,
+    /// Seconds between automatic backups (86400 = daily). Requires `auto_backup_enabled`.
+    pub auto_backup_interval_seconds: u64,
+    /// Maximum number of automatic backups to retain (oldest rotated first).
+    pub auto_backup_max_count: u32,
+    /// Directory for automatic backups (default: same directory as the database).
+    pub backup_directory: Option<String>,
+    /// Cross-process locking discipline: "normal" (default) or "exclusive".
+    pub locking_mode: SqliteLockingMode,
+}
+
+/// How AMATL processes coordinate access to one database file.
+///
+/// This does **not** map to SQLite's `PRAGMA locking_mode`. That pragma would
+/// lock out every reader, including `amatl db health` and the `sqlite3` CLI,
+/// and is incompatible with keeping WAL mode usable. What is taken instead is
+/// an advisory `flock` on a sibling `.lock` file.
+#[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+pub enum SqliteLockingMode {
+    /// Default WAL mode: concurrent readers, one writer.
+    Normal,
+    /// Advisory exclusive lock between AMATL processes.
+    ///
+    /// Cooperative by nature: it stops a second `amatl` from opening the
+    /// database, but any other tool that does not check the lock file is
+    /// unaffected.
+    Exclusive,
 }
 
 #[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
@@ -716,6 +774,15 @@ impl Default for PersistenceConfig {
             history_enabled: true,
             saved_document_max_bytes: 1_048_576,
             audit_retention_days: crate::audit::AUDIT_DEFAULT_RETENTION_DAYS,
+            history_retention_days: 90,
+            cache_retention_days: 7,
+            document_cache_retention_days: 30,
+            purge_interval_seconds: 3600,
+            auto_backup_enabled: false,
+            auto_backup_interval_seconds: 86400,
+            auto_backup_max_count: 7,
+            backup_directory: None,
+            locking_mode: SqliteLockingMode::Normal,
         }
     }
 }
@@ -927,6 +994,54 @@ impl Config {
             return Err(ConfigError::Policy(
                 "persistence.audit_retention_days must be between 1 and 365".into(),
             ));
+        }
+        if self.persistence.history_retention_days > 365 {
+            return Err(ConfigError::Policy(
+                "persistence.history_retention_days must be between 0 and 365".into(),
+            ));
+        }
+        if self.persistence.cache_retention_days > 365 {
+            return Err(ConfigError::Policy(
+                "persistence.cache_retention_days must be between 0 and 365".into(),
+            ));
+        }
+        if self.persistence.document_cache_retention_days > 365 {
+            return Err(ConfigError::Policy(
+                "persistence.document_cache_retention_days must be between 0 and 365".into(),
+            ));
+        }
+        if self.persistence.purge_interval_seconds > 0
+            && self.persistence.purge_interval_seconds < 60
+        {
+            return Err(ConfigError::Policy(
+                "persistence.purge_interval_seconds must be 0 (disabled) or >= 60".into(),
+            ));
+        }
+        if self.persistence.auto_backup_enabled {
+            if self.persistence.auto_backup_interval_seconds < 3600 {
+                return Err(ConfigError::Policy(
+                    "persistence.auto_backup_interval_seconds must be >= 3600 (1 hour)".into(),
+                ));
+            }
+            if self.persistence.auto_backup_max_count == 0
+                || self.persistence.auto_backup_max_count > 365
+            {
+                return Err(ConfigError::Policy(
+                    "persistence.auto_backup_max_count must be between 1 and 365".into(),
+                ));
+            }
+            if let Some(directory) = self.persistence.backup_directory.as_deref() {
+                if directory.trim().is_empty() {
+                    return Err(ConfigError::Policy(
+                        "persistence.backup_directory must not be empty".into(),
+                    ));
+                }
+                if !std::path::Path::new(directory).is_absolute() {
+                    return Err(ConfigError::Policy(
+                        "persistence.backup_directory must be an absolute path".into(),
+                    ));
+                }
+            }
         }
         if self.deep.respect_robots
             && (!(100..=30_000).contains(&self.deep.robots_timeout_ms)
@@ -1195,11 +1310,36 @@ impl Config {
     }
 
     fn validate_inference(&self) -> Result<(), ConfigError> {
-        if self.inference.backend != crate::inference::LOCAL_EMBEDDING_BACKEND_ID {
-            return Err(ConfigError::Policy(format!(
-                "unknown inference backend: {}",
-                self.inference.backend
-            )));
+        // `backend` selects the *local* embedder. The remote backend is chosen
+        // by `data_policy.inference = "remote_explicit"`, never by this key, so
+        // naming it here stays an error on purpose.
+        match self.inference.backend.as_str() {
+            crate::inference::LOCAL_EMBEDDING_BACKEND_ID => {}
+            crate::inference::LOCAL_MODEL_BACKEND_ID => {
+                let path = self
+                    .inference
+                    .local_model_path
+                    .as_deref()
+                    .filter(|value| !value.trim().is_empty())
+                    .ok_or_else(|| {
+                        ConfigError::Policy(format!(
+                            "inference.local_model_path is required with backend = {}",
+                            crate::inference::LOCAL_MODEL_BACKEND_ID
+                        ))
+                    })?;
+                if !std::path::Path::new(path).is_absolute() {
+                    return Err(ConfigError::Policy(
+                        "inference.local_model_path must be an absolute path".into(),
+                    ));
+                }
+            }
+            other => {
+                return Err(ConfigError::Policy(format!(
+                    "unknown inference backend: {other} (expected {} or {}; the remote backend is selected by data_policy.inference)",
+                    crate::inference::LOCAL_EMBEDDING_BACKEND_ID,
+                    crate::inference::LOCAL_MODEL_BACKEND_ID
+                )));
+            }
         }
         if self.data_policy.inference == InferenceMode::RemoteExplicit {
             if !self.data_policy.allows_remote_inference() {
@@ -1553,6 +1693,44 @@ mod tests {
         unknown.inference.backend = "hosted".into();
         let error = unknown.validate().unwrap_err().to_string();
         assert!(error.contains("unknown inference backend"), "{error}");
+    }
+
+    #[test]
+    fn local_model_backend_is_reachable_from_a_config_file() {
+        // Regression: validation only accepted `local_hashing_v1`, so a TOML
+        // selecting the documented `local_model_v1` failed to load and the
+        // backend was unreachable end to end. Constructing `InferenceConfig`
+        // directly (as the inference tests do) never exercised this path.
+        let accepted = Config::from_toml(
+            r#"
+            [inference]
+            backend = "local_model_v1"
+            local_model_path = "/opt/amatl/vectors.txt"
+            "#,
+        )
+        .unwrap();
+        assert!(accepted.validate().is_ok(), "{:?}", accepted.validate());
+
+        let missing_path = Config::from_toml(
+            r#"
+            [inference]
+            backend = "local_model_v1"
+            "#,
+        )
+        .unwrap();
+        let error = missing_path.validate().unwrap_err().to_string();
+        assert!(error.contains("local_model_path"), "{error}");
+
+        let relative = Config::from_toml(
+            r#"
+            [inference]
+            backend = "local_model_v1"
+            local_model_path = "vectors.txt"
+            "#,
+        )
+        .unwrap();
+        let error = relative.validate().unwrap_err().to_string();
+        assert!(error.contains("absolute"), "{error}");
     }
 
     #[test]

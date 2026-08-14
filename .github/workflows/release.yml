@@ -112,6 +112,38 @@ jobs:
           cd dist
           sha256sum *.tar.gz *.deb *.rpm *.pkg.tar.zst > SHA256SUMS
           sha256sum --check SHA256SUMS
+      - name: Smoke-test Linux packages (.deb, .rpm, .pkg.tar.zst)
+        env:
+          PACKAGE_VERSION: ${{ steps.version.outputs.package_version }}
+        run: |
+          set -euo pipefail
+          cd dist
+
+          # --- .deb ---
+          echo "::group::Smoke-test .deb"
+          sudo dpkg -i amatl_*.deb
+          amatl --version | grep --fixed-strings --quiet "amatl $PACKAGE_VERSION"
+          echo ".deb installed and executes correctly"
+          sudo dpkg --purge amatl
+          echo "::endgroup::"
+
+          # --- .rpm ---
+          echo "::group::Smoke-test .rpm"
+          sudo rpm -i amatl-*.rpm 2>/dev/null || sudo rpm -i --nodeps amatl-*.rpm
+          amatl --version | grep --fixed-strings --quiet "amatl $PACKAGE_VERSION"
+          echo ".rpm installed and executes correctly"
+          sudo rpm -e amatl
+          echo "::endgroup::"
+
+          # --- .pkg.tar.zst (Arch) ---
+          echo "::group::Smoke-test .pkg.tar.zst"
+          # pacman needs an Arch-like environment; install via bsdtar + manual check
+          mkdir -p /tmp/amatl-arch-test
+          bsdtar -xf amatl-*.pkg.tar.zst -C /tmp/amatl-arch-test
+          /tmp/amatl-arch-test/usr/bin/amatl --version | grep --fixed-strings --quiet "amatl $PACKAGE_VERSION"
+          echo ".pkg.tar.zst extracted and executes correctly"
+          rm -rf /tmp/amatl-arch-test
+          echo "::endgroup::"
       - name: Attest artifacts when GitHub supports the repository visibility
         if: github.event.repository.visibility == 'public'
         uses: actions/attest@v4

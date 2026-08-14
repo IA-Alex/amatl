@@ -725,6 +725,20 @@ async fn db_command(command: DbCommand, config: &Config) -> anyhow::Result<()> {
                         "migration_version": health.migration_version,
                         "code_migration_version": amatl_core::MIGRATION_VERSION,
                         "pool_size": health.pool_size,
+                        "lock_held": health.lock_held,
+                        "readable": health.readable,
+                        "writable": health.writable,
+                        "file_size_bytes": health.file_size_bytes,
+                        "wal_size_bytes": health.wal_size_bytes,
+                        "free_space_bytes": health.free_space_bytes,
+                        "total_space_bytes": health.total_space_bytes,
+                        "disk_usage_percent": health.disk_usage_percent,
+                        "last_purge_at": health.last_purge_at,
+                        "last_purge_rows_removed": health.last_purge_rows_removed,
+                        "last_backup_at": health.last_backup_at,
+                        "last_backup_integrity_ok": health.last_backup_integrity_ok,
+                        "backup_count": health.backup_count,
+                        "last_fs_error": health.last_fs_error,
                     })
                 );
             } else {
@@ -738,11 +752,44 @@ async fn db_command(command: DbCommand, config: &Config) -> anyhow::Result<()> {
                     amatl_core::MIGRATION_VERSION
                 );
                 println!("pool_size: {}", health.pool_size);
+                println!("lock_held: {}", health.lock_held);
+                println!(
+                    "access: readable={} writable={}",
+                    health.readable, health.writable
+                );
+                println!(
+                    "file_size_bytes: {} (wal {})",
+                    health.file_size_bytes, health.wal_size_bytes
+                );
+                println!(
+                    "disk: {:.1}% used ({} free of {} bytes)",
+                    health.disk_usage_percent, health.free_space_bytes, health.total_space_bytes
+                );
+                println!(
+                    "last_purge: {} ({} rows removed)",
+                    health
+                        .last_purge_at
+                        .map_or_else(|| "never".to_owned(), |value| value.to_string()),
+                    health.last_purge_rows_removed
+                );
+                println!(
+                    "last_backup: {} (integrity_ok={}, retained={})",
+                    health
+                        .last_backup_at
+                        .map_or_else(|| "never".to_owned(), |value| value.to_string()),
+                    health.last_backup_integrity_ok,
+                    health.backup_count
+                );
+                if let Some(error) = &health.last_fs_error {
+                    println!("last_fs_error: {error}");
+                }
             }
         }
         DbCommand::Backups => {
-            let backups =
-                SqliteStorage::list_backups(std::path::Path::new(&config.persistence.path))?;
+            let backups = SqliteStorage::list_backups(
+                std::path::Path::new(&config.persistence.path),
+                config.persistence.backup_directory.as_deref(),
+            )?;
             if backups.is_empty() {
                 println!("backups: none");
             }
@@ -752,7 +799,12 @@ async fn db_command(command: DbCommand, config: &Config) -> anyhow::Result<()> {
         }
         DbCommand::Restore { backup } => {
             anyhow::ensure!(backup.exists(), "backup file does not exist");
-            SqliteStorage::restore_from_backup(&config.persistence.path, &backup).await?;
+            SqliteStorage::restore_from_backup(
+                &config.persistence.path,
+                &backup,
+                config.persistence.locking_mode,
+            )
+            .await?;
             println!(
                 "restored {} from {}",
                 config.persistence.path,
@@ -1193,7 +1245,9 @@ async fn optional_storage(config: &Config) -> Option<SqliteStorage> {
     if !config.persistence.enabled {
         return None;
     }
-    SqliteStorage::open(&config.persistence.path).await.ok()
+    SqliteStorage::open(&config.persistence.path, config.persistence.locking_mode)
+        .await
+        .ok()
 }
 
 async fn cache_command(config: &Config, purge: bool) {

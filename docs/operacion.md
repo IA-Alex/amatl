@@ -90,9 +90,26 @@ autorizados. Consulta [el contrato y los límites](ingestion-local.md).
 
 ## Salud y diagnóstico
 
-`/health` sólo prueba que router/proceso responden y devuelve
-`{"schema_version":"1","status":"ok"}`. No consulta red, providers, SQLite ni
-credenciales. `GET /status` y la herramienta MCP `status` reportan además el estado de
+`/health` es la sonda de **liveness**: sólo prueba que router/proceso responden
+y devuelve `{"schema_version":"1","status":"ok"}` con `200` siempre. No consulta
+red, providers, SQLite ni credenciales, y eso es deliberado: un orquestador la
+usa para decidir si reinicia el proceso, decisión que no debe depender de que un
+provider esté alcanzable.
+
+`/ready` es la sonda de **readiness**, también pública y sin token. Devuelve
+`200` cuando la instancia puede servir tráfico útil y `503` cuando está
+degradada, de modo que un balanceador pueda drenarla sin interpretar el cuerpo:
+
+```json
+{"schema_version":"1","status":"ok","storage_ok":true,"sources_available":1}
+```
+
+El cuerpo es agregado a propósito. Nombres de fuentes, códigos de error y rutas
+describen el despliegue y sólo aparecen en `GET /status`, que exige el scope
+`read`. La persistencia desactivada cuenta como sana; habilitada pero no
+disponible, no.
+
+`GET /status` y la herramienta MCP `status` reportan además el estado de
 circuito por fuente. `amatl doctor` carga toda la configuración, lista providers,
 comprueba SQLite/migración si procede, reporta telemetría y muestra preparación
 de token/TLS. Un `doctor` degradado puede terminar con código 0 porque es un
@@ -281,8 +298,8 @@ amatl history purge                # todo el historial
 amatl saved list                   # documentos guardados
 amatl saved show 3                 # payload almacenado de uno
 amatl saved delete 3
-amatl db health --json             # journal, versión de migración, pool
-amatl db backups                   # copias tomadas antes de migrar o degradar
+amatl db health --json             # journal, migración, pool, disco, purga y backups
+amatl db backups                   # copias automáticas, de migración y de pre-restauración
 amatl db downgrade --to 4          # rollback de esquema, con copia previa
 amatl db restore <copia>           # reemplaza la base por una copia
 amatl db circuits [--reset]        # estado de los cortacircuitos por fuente
@@ -292,6 +309,44 @@ amatl db security-events --json    # bitácora de rechazos, más recientes prime
 `db downgrade` es destructivo por definición: toma una copia antes de aplicar
 los scripts y vuelve a migrar hacia adelante la próxima vez que un binario
 nuevo abra la base. Detén los demás procesos AMATL antes de `db restore`.
+
+### Mantenimiento en segundo plano
+
+Con `[persistence] enabled = true`, el servicio lanza una tarea de fondo con dos
+cadencias independientes:
+
+| Parámetro | Efecto | 0 significa |
+|---|---|---|
+| `purge_interval_seconds` | Periodo del ciclo de purga | purga desactivada |
+| `auto_backup_interval_seconds` | Periodo del backup automático | — (requiere `auto_backup_enabled`) |
+| `auto_backup_max_count` | Copias automáticas retenidas | — |
+| `backup_directory` | Destino de las copias automáticas | por defecto, el directorio de la base |
+
+Cada ciclo de purga elimina entradas más antiguas que
+`history_retention_days`, `cache_retention_days`,
+`document_cache_retention_days`, `audit_retention_days` y la retención de
+telemetría; en todas ellas `0` significa *sin límite*, no *purgar todo*.
+
+Los backups automáticos se escriben con `VACUUM INTO`, de modo que la copia es
+transaccionalmente consistente y ya está checkpointeada: no lleva `-wal`
+asociado y puede restaurarse tal cual. Cada copia se verifica con
+`PRAGMA quick_check` abriéndola en solo lectura, y se descarta si no pasa.
+
+`db backups` lista los tres tipos con el mismo comando:
+
+| Nombre | Origen | ¿Rota? |
+|---|---|---|
+| `<base>-auto-<ts>.sqlite3` | tarea de fondo | sí, por `auto_backup_max_count` |
+| `<base>.backup-<ts>.sqlite3` | previa a migración o `db downgrade` | no |
+| `<base>.pre-restore-<ts>.sqlite3` | previa a `db restore` | no |
+
+La rotación sólo borra copias automáticas; las de migración y pre-restauración
+son puntos de recuperación deliberados y se conservan.
+
+`db health` expone además el espacio libre del sistema de ficheros, el uso en
+porcentaje, si el proceso mantiene el lock advisory, los tamaños de la base y su
+WAL, y las marcas del último ciclo de purga y del último backup con su resultado
+de integridad.
 
 ## Runbooks
 

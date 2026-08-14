@@ -323,7 +323,9 @@ mod tests {
             "amatl-circuit-{}-{nonce}.sqlite3",
             std::process::id()
         ));
-        let storage = SqliteStorage::open(&path).await.unwrap();
+        let storage = SqliteStorage::open(&path, crate::config::SqliteLockingMode::Normal)
+            .await
+            .unwrap();
         let breaker = ProviderCircuit::restored(policy(), Some(storage.clone())).await;
         breaker.record("brave", false, 5_000).await;
         breaker.record("brave", false, 5_001).await;

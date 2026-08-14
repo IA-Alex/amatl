@@ -152,10 +152,13 @@ mod tests {
             .duration_since(std::time::UNIX_EPOCH)
             .unwrap()
             .as_nanos();
-        SqliteStorage::open(std::env::temp_dir().join(format!(
-            "amatl-audit-{}-{nonce}.sqlite3",
-            std::process::id()
-        )))
+        SqliteStorage::open(
+            std::env::temp_dir().join(format!(
+                "amatl-audit-{}-{nonce}.sqlite3",
+                std::process::id()
+            )),
+            crate::config::SqliteLockingMode::Normal,
+        )
         .await
         .unwrap()
     }

@@ -62,7 +62,8 @@ pub use evidence::{
 };
 pub use execution::{ParallelSearchOutput, SearchOrchestrator};
 pub use extract::{
-    ExtractError, ExtractionResult, Extractor, TrafilaturaExtractor, UnavailableExtractor,
+    ExtractError, ExtractionResult, Extractor, FallbackExtractor, NativeHtmlExtractor,
+    TrafilaturaExtractor, UnavailableExtractor,
 };
 pub use fetch::{
     DnsResolver, FetchError, FetchRequest, FetchResult, Fetcher, SafeFetcher, SystemDnsResolver,

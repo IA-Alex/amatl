@@ -4,6 +4,13 @@ version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+documentation.workspace = true
+readme = "../../README.md"
+description = "HTTP + MCP server for the Amatl multi-source search engine"
+keywords = ["search", "metasearch", "server", "mcp"]
+categories = ["web-programming::http-server"]
 
 [dependencies]
 amatl-core = { version = "0.1.0-rc.1", path = "../amatl-core" }
@@ -28,6 +35,7 @@ url.workspace = true
 workspace = true
 
 [dev-dependencies]
+fantoccini = { version = "0.22.1", default-features = false }
 rcgen = "0.14.8"
 reqwest.workspace = true
 tracing-subscriber.workspace = true

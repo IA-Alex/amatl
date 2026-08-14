@@ -95,6 +95,67 @@ async fn health_is_lightweight_public_and_hardened() {
 }
 
 #[tokio::test]
+async fn ready_reports_readiness_without_leaking_deployment_internals() {
+    let response = app()
+        .await
+        .oneshot(request("/ready").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    // Public like /health: no bearer required.
+    assert_ne!(response.status(), StatusCode::UNAUTHORIZED);
+    let status = response.status();
+    assert!(
+        status == StatusCode::OK || status == StatusCode::SERVICE_UNAVAILABLE,
+        "unexpected status: {status}"
+    );
+
+    let body = json_body(response).await;
+    // Aggregate shape only. Source names, error codes and paths describe the
+    // deployment and stay behind /status, which requires the read scope.
+    let object = body.as_object().expect("object body");
+    assert_eq!(
+        object
+            .keys()
+            .map(String::as_str)
+            .collect::<std::collections::BTreeSet<_>>(),
+        [
+            "schema_version",
+            "sources_available",
+            "status",
+            "storage_ok"
+        ]
+        .into()
+    );
+    assert_eq!(body["schema_version"], "1");
+    assert!(body["storage_ok"].is_boolean());
+    assert!(body["sources_available"].is_u64());
+    let rendered = body.to_string();
+    for internal in ["provider_", "mock", "sqlite", "/", "path"] {
+        assert!(
+            !rendered.contains(internal),
+            "readiness body leaked {internal:?}: {rendered}"
+        );
+    }
+}
+
+#[tokio::test]
+async fn health_stays_a_pure_liveness_probe_independent_of_readiness() {
+    // /health must not acquire service state: an orchestrator uses it to decide
+    // whether to restart the process, which cannot depend on SQLite or on a
+    // provider being reachable.
+    let response = app()
+        .await
+        .oneshot(request("/health").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    assert_eq!(
+        json_body(response).await,
+        json!({"schema_version": "1", "status": "ok"})
+    );
+}
+
+#[tokio::test]
 async fn protected_api_requires_bearer_and_preserves_search_contract() {
     let unauthorized = app()
         .await

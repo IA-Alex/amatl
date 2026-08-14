@@ -25,6 +25,13 @@ embedding_dimensions = 256
 max_documents = 64
 max_input_chars = 20000
 reranker_prior_weight = 0.5
+# Model-backed offline backend: point backend = "local_model_v1" at a plain-text
+# word-vector file (one `token v0 v1 … vN` per line). Without a path it fails
+# closed and Deep degrades to lexical ranking.
+# local_model_path = "/var/lib/amatl/vectors.txt"
+# local_model_batch = 32
+# Optional persistent embedding cache, namespaced by backend@width.
+# local_cache_path = "/var/lib/amatl/embeddings-cache.json"
 # Governed remote backend, used only with data_policy.inference = "remote_explicit".
 # The endpoint must be https (or http on loopback for a self-hosted server) and
 # must not embed credentials; the key is read from the environment, never here.
@@ -56,6 +63,24 @@ history_enabled = true
 saved_document_max_bytes = 1048576
 # Days a persisted security rejection is kept (1..=365).
 audit_retention_days = 90
+# Days search history entries are kept (0 = unlimited).
+history_retention_days = 90
+# Days provider search cache entries are kept (0 = unlimited).
+cache_retention_days = 7
+# Days document cache entries are kept (0 = unlimited).
+document_cache_retention_days = 30
+# Seconds between scheduled purge cycles (0 = disabled).
+purge_interval_seconds = 3600
+# Create automatic periodic backups (requires enabled).
+auto_backup_enabled = false
+# Seconds between automatic backups (86400 = daily).
+auto_backup_interval_seconds = 86400
+# Maximum number of automatic backups to retain.
+auto_backup_max_count = 7
+# Directory for automatic backups (default: same directory as the database).
+# backup_directory = "/var/lib/amatl/backups"
+# SQLite locking mode: "normal" (default) or "exclusive".
+locking_mode = "normal"
 
 # Credenciales con nombre. El secreto nunca vive aquí: declara la variable de
 # entorno que lo contiene o el digest SHA-256 del token. Cada cliente lleva sus

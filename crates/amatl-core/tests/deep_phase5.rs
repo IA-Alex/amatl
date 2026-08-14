@@ -323,7 +323,9 @@ async fn document_cache_is_rights_gated_versioned_and_drops_body_by_default() {
             .unwrap()
             .as_nanos()
     ));
-    let storage = SqliteStorage::open(&path).await.unwrap();
+    let storage = SqliteStorage::open(&path, amatl_core::config::SqliteLockingMode::Normal)
+        .await
+        .unwrap();
     let cache = DocumentCache::new(
         storage,
         DocumentCachePolicy {

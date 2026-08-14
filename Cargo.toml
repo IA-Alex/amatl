@@ -7,6 +7,9 @@ edition = "2021"
 rust-version = "1.88"
 license = "MIT OR Apache-2.0"
 version = "0.1.0-rc.1"
+repository = "https://github.com/IA-Alex/amatl"
+homepage = "https://github.com/IA-Alex/amatl"
+documentation = "https://github.com/IA-Alex/amatl"
 
 [workspace.dependencies]
 anyhow = "1"
@@ -34,6 +37,7 @@ tower = { version = "0.5", features = ["limit", "timeout", "util"] }
 tower-http = { version = "0.7.0", features = ["cors", "limit", "timeout"] }
 url = { version = "2", features = ["serde"] }
 unicode-normalization = "0.1"
+fs2 = "0.4"
 
 [workspace.metadata.release]
 primary-target = "x86_64-unknown-linux-musl"

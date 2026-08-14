@@ -6,12 +6,12 @@ use crate::telemetry::{now_unix, ProviderValueSnapshot};
 use crate::{
     parse_query, Budget, CachedProvider, ChromiumRenderer, Config, DeepBudget, DeepCandidate,
     DeepOrchestrator, DeepRequest, DeepResponse, DocumentCache, DocumentCachePolicy, ErrorCode,
-    GapAnalyzer, InMemoryTelemetry, InferenceRuntime, MockProvider, Provider, ProviderAvailability,
-    ProviderBuildContext, ProviderCapabilities, ProviderItem, ProviderRegistry,
-    ProviderRuntimeConfig, ProviderSearchCache, ProviderSearchCachePolicy, Query, Rank,
-    RankingV2Engine, RendererPool, ReqwestTransport, SafeFetcher, SearchOrchestrator, SearchPlan,
-    SearchResponse, SearchSubQueryExecutor, SqliteStorage, StorageError, TrafilaturaExtractor,
-    SCHEMA_VERSION,
+    FallbackExtractor, GapAnalyzer, InMemoryTelemetry, InferenceRuntime, MockProvider,
+    NativeHtmlExtractor, Provider, ProviderAvailability, ProviderBuildContext,
+    ProviderCapabilities, ProviderItem, ProviderRegistry, ProviderRuntimeConfig,
+    ProviderSearchCache, ProviderSearchCachePolicy, Query, Rank, RankingV2Engine, RendererPool,
+    ReqwestTransport, SafeFetcher, SearchOrchestrator, SearchPlan, SearchResponse,
+    SearchSubQueryExecutor, SqliteStorage, StorageError, TrafilaturaExtractor, SCHEMA_VERSION,
 };
 use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
@@ -312,6 +312,13 @@ pub struct AmatlService {
     circuit: ProviderCircuit,
     /// Durable security audit trail; inert without persistence.
     audit: SecurityAudit,
+    /// Stops the background maintenance task when the service is dropped.
+    ///
+    /// Must be a `DropGuard`, not a bare `CancellationToken`: a token does not
+    /// cancel on drop, so the task would outlive the service and keep the
+    /// connection pool and the advisory file lock alive forever. `Arc` because
+    /// the service is `Clone`; the task stops when the last clone is dropped.
+    _maintenance_cancel: Option<Arc<tokio_util::sync::DropGuard>>,
 }
 
 impl AmatlService {
@@ -324,7 +331,12 @@ impl AmatlService {
     /// remove sources without changing the core.
     pub async fn with_registry(config: Config, mock: bool, registry: ProviderRegistry) -> Self {
         let (storage, storage_degradation) = if config.persistence.enabled {
-            match SqliteStorage::open(std::path::PathBuf::from(&config.persistence.path)).await {
+            match SqliteStorage::open(
+                std::path::PathBuf::from(&config.persistence.path),
+                config.persistence.locking_mode,
+            )
+            .await
+            {
                 Ok(storage) => (Some(storage), None),
                 Err(error) => {
                     let message = storage_failure_message(&error);
@@ -348,6 +360,22 @@ impl AmatlService {
         } else {
             (None, None)
         };
+        // Spawn background maintenance if persistence is enabled and either
+        // purging or automatic backups are configured.
+        let maintenance_wanted =
+            config.persistence.purge_interval_seconds > 0 || config.persistence.auto_backup_enabled;
+        let maintenance_cancel = match (&storage, maintenance_wanted) {
+            (Some(storage), true) => {
+                let storage_arc = Arc::new(storage.clone());
+                Some(Arc::new(
+                    storage_arc
+                        .spawn_maintenance(&config.persistence, config.telemetry.retention_days)
+                        .drop_guard(),
+                ))
+            }
+            _ => None,
+        };
+
         let config_circuit_policy = config.circuit_breaker;
         let storage_for_circuit = storage.clone();
         let storage_for_audit = storage.clone();
@@ -415,6 +443,7 @@ impl AmatlService {
             cache_counters: Arc::new(CacheCounters::default()),
             circuit: ProviderCircuit::restored(config_circuit_policy, storage_for_circuit).await,
             audit: SecurityAudit::new(storage_for_audit, audit_retention_days),
+            _maintenance_cancel: maintenance_cancel,
         }
     }
 
@@ -645,11 +674,14 @@ impl AmatlService {
             remaining_deep_ms,
         )
         .with_gap_limits(limits.deep_max_subqueries, limits.deep_max_subquery_cost);
-        let extractor = Arc::new(TrafilaturaExtractor::new(
-            self.config.deep.extractor.executable.clone(),
-            self.config.deep.extractor.version.clone(),
-            self.config.deep.extractor.timeout_ms.min(remaining_deep_ms),
-            self.config.deep.extractor.max_output_bytes,
+        let extractor = Arc::new(FallbackExtractor::new(
+            TrafilaturaExtractor::new(
+                self.config.deep.extractor.executable.clone(),
+                self.config.deep.extractor.version.clone(),
+                self.config.deep.extractor.timeout_ms.min(remaining_deep_ms),
+                self.config.deep.extractor.max_output_bytes,
+            ),
+            NativeHtmlExtractor::new(self.config.deep.extractor.max_output_bytes),
         ));
         let mut orchestrator = DeepOrchestrator::new(
             deep_budget,

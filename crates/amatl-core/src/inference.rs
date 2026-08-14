@@ -73,6 +73,10 @@ pub enum InferenceError {
     RemoteRequestFailed,
     #[error("remote inference response did not match the embedding contract")]
     RemoteResponseInvalid,
+    #[error("local model file is missing, malformed or incompatible")]
+    ModelUnavailable,
+    #[error("embedding backend returned a result that violates the embedding contract")]
+    BackendContractViolation,
 }
 
 /// Contract every embedding backend must honor.
@@ -151,6 +155,350 @@ impl EmbeddingBackend for LocalHashingEmbedder {
                 }
                 Ok(l2_normalized(vector))
             })
+            .collect()
+    }
+}
+
+/// Identifier of the local word-vector model backend.
+pub const LOCAL_MODEL_BACKEND_ID: &str = "local_model_v1";
+/// Largest word-vector model file the local backend will load.
+///
+/// Parsing expands the file several times over in memory, so this is a hard
+/// ceiling rather than a hint: exceeding it fails the optional backend and Deep
+/// degrades, which is preferable to being killed by the OOM reaper at startup.
+pub const MAX_LOCAL_MODEL_BYTES: u64 = 512 * 1024 * 1024;
+
+/// Offline embedding backend backed by a word-vector model file.
+///
+/// The model is a plain-text table of `token v0 v1 … vN` lines. Each input is
+/// tokenized and the vectors of every token present in the model are summed
+/// (with sublinear term-frequency weighting), then L2-normalized. Unlike the
+/// hashing backend this carries real weights, so it is a genuine model-backed
+/// embedder rather than a feature hash.
+pub struct LocalModelEmbedder {
+    dimensions: usize,
+    max_input_chars: usize,
+    vectors: BTreeMap<String, Vec<f32>>,
+}
+
+impl LocalModelEmbedder {
+    /// Load a word-vector model from `path`, validating width and limits.
+    pub fn load(
+        path: &std::path::Path,
+        dimensions: usize,
+        max_input_chars: usize,
+    ) -> Result<Self, InferenceError> {
+        if !(MINIMUM_EMBEDDING_DIMENSIONS..=MAXIMUM_EMBEDDING_DIMENSIONS).contains(&dimensions)
+            || max_input_chars == 0
+        {
+            return Err(InferenceError::InvalidLimit);
+        }
+        // Bound the model before reading it. A word-vector table expands to
+        // several times its on-disk size once parsed into a map of `Vec<f32>`,
+        // so an oversized or mistyped path would otherwise be an OOM at
+        // startup. `max_input_chars` already bounds the input side; the model
+        // side was unbounded.
+        let size = std::fs::metadata(path)
+            .map_err(|_| InferenceError::ModelUnavailable)?
+            .len();
+        if size > MAX_LOCAL_MODEL_BYTES {
+            tracing::warn!(
+                target: "amatl::inference",
+                path = %path.display(),
+                size_bytes = size,
+                limit_bytes = MAX_LOCAL_MODEL_BYTES,
+                "local model file exceeds the size limit"
+            );
+            return Err(InferenceError::ModelUnavailable);
+        }
+
+        let file = std::fs::File::open(path).map_err(|_| InferenceError::ModelUnavailable)?;
+        let reader = std::io::BufReader::new(file);
+        let mut vectors = BTreeMap::new();
+        for line in std::io::BufRead::lines(reader) {
+            let line = line.map_err(|_| InferenceError::ModelUnavailable)?;
+            let line = line.trim();
+            if line.is_empty() || line.starts_with('#') {
+                continue;
+            }
+            let mut fields = line.split_whitespace();
+            let Some(token) = fields.next() else {
+                continue;
+            };
+            let mut vector = Vec::with_capacity(dimensions);
+            for field in fields {
+                let value: f32 = field
+                    .parse()
+                    .map_err(|_| InferenceError::ModelUnavailable)?;
+                vector.push(value);
+            }
+            if vector.len() != dimensions {
+                return Err(InferenceError::ModelUnavailable);
+            }
+            vectors.insert(token.to_owned(), vector);
+        }
+        if vectors.is_empty() {
+            return Err(InferenceError::ModelUnavailable);
+        }
+        Ok(Self {
+            dimensions,
+            max_input_chars,
+            vectors,
+        })
+    }
+}
+
+#[async_trait]
+impl EmbeddingBackend for LocalModelEmbedder {
+    fn id(&self) -> &str {
+        LOCAL_MODEL_BACKEND_ID
+    }
+    fn dimensions(&self) -> usize {
+        self.dimensions
+    }
+    async fn embed(&self, inputs: &[String]) -> Result<Vec<Vec<f32>>, InferenceError> {
+        inputs
+            .iter()
+            .map(|input| {
+                let bounded = bounded_text(input, self.max_input_chars);
+                let tokens = terms(&bounded);
+                let mut counts: BTreeMap<String, usize> = BTreeMap::new();
+                for token in &tokens {
+                    *counts.entry(token.clone()).or_insert(0) += 1;
+                }
+                let mut vector = vec![0.0_f32; self.dimensions];
+                let mut weight_sum = 0.0_f64;
+                for (token, count) in counts {
+                    let Some(model_vector) = self.vectors.get(&token) else {
+                        continue;
+                    };
+                    let weight = 1.0 + (count as f64).ln();
+                    for (slot, value) in vector.iter_mut().zip(model_vector.iter()) {
+                        *slot += (*value as f64 * weight) as f32;
+                    }
+                    weight_sum += weight;
+                }
+                if weight_sum == 0.0 {
+                    return Ok(vector);
+                }
+                Ok(l2_normalized(vector))
+            })
+            .collect()
+    }
+}
+
+/// Persistent embedding cache keyed by text hash and namespaced by the vector
+/// space identity, so artifacts are never reused across backends or widths.
+///
+/// The cache is bounded and evicts least-recently-used entries. Insertion order
+/// is persisted alongside the vectors, so eviction stays meaningful across
+/// runs; a plain map would restore in hash order and evict essentially at
+/// random. It is written back to disk on drop, giving reuse between executions
+/// without unbounded growth.
+pub struct EmbeddingCache {
+    path: std::path::PathBuf,
+    namespace: String,
+    capacity: usize,
+    entries: BTreeMap<String, Vec<f32>>,
+    order: std::collections::VecDeque<String>,
+}
+
+/// On-disk cache layout. Versioned so a future change can be detected rather
+/// than silently discarded, and ordered so LRU survives a restart.
+#[derive(serde::Serialize, serde::Deserialize)]
+struct EmbeddingCacheFile {
+    version: u32,
+    /// Least-recently-used first.
+    entries: Vec<(String, Vec<f32>)>,
+}
+
+/// Current [`EmbeddingCacheFile`] layout version.
+const EMBEDDING_CACHE_VERSION: u32 = 1;
+
+impl EmbeddingCache {
+    pub fn load(path: std::path::PathBuf, namespace: String, capacity: usize) -> Self {
+        let mut entries = BTreeMap::new();
+        let mut order = std::collections::VecDeque::new();
+        match std::fs::read(&path) {
+            Ok(bytes) => match serde_json::from_slice::<EmbeddingCacheFile>(&bytes) {
+                Ok(file) if file.version == EMBEDDING_CACHE_VERSION => {
+                    for (key, vector) in file.entries {
+                        order.push_back(key.clone());
+                        entries.insert(key, vector);
+                    }
+                }
+                Ok(file) => {
+                    tracing::warn!(
+                        target: "amatl::inference",
+                        path = %path.display(),
+                        found = file.version,
+                        expected = EMBEDDING_CACHE_VERSION,
+                        "embedding cache has an unknown layout version; starting empty"
+                    );
+                }
+                Err(error) => {
+                    // Previously swallowed: a truncated file silently threw the
+                    // whole cache away with no signal to the operator.
+                    tracing::warn!(
+                        target: "amatl::inference",
+                        path = %path.display(),
+                        error = %error,
+                        "embedding cache is unreadable; starting empty"
+                    );
+                }
+            },
+            Err(error) if error.kind() == std::io::ErrorKind::NotFound => {}
+            Err(error) => {
+                tracing::warn!(
+                    target: "amatl::inference",
+                    path = %path.display(),
+                    error = %error,
+                    "embedding cache could not be read; starting empty"
+                );
+            }
+        }
+        while order.len() > capacity {
+            if let Some(oldest) = order.pop_front() {
+                entries.remove(&oldest);
+            }
+        }
+        Self {
+            path,
+            namespace,
+            capacity,
+            entries,
+            order,
+        }
+    }
+
+    /// Look up `text`, marking the entry as most recently used.
+    pub fn get(&mut self, text: &str) -> Option<Vec<f32>> {
+        let key = cache_key(&self.namespace, text);
+        let vector = self.entries.get(&key).cloned()?;
+        if let Some(position) = self.order.iter().position(|entry| entry == &key) {
+            self.order.remove(position);
+        }
+        self.order.push_back(key);
+        Some(vector)
+    }
+
+    pub fn insert(&mut self, text: &str, vector: Vec<f32>) {
+        let key = cache_key(&self.namespace, text);
+        if self.entries.insert(key.clone(), vector).is_some() {
+            // Refresh recency rather than returning early, so a repeatedly used
+            // entry is not evicted ahead of one touched once.
+            if let Some(position) = self.order.iter().position(|entry| entry == &key) {
+                self.order.remove(position);
+            }
+        }
+        self.order.push_back(key);
+        while self.order.len() > self.capacity {
+            if let Some(oldest) = self.order.pop_front() {
+                self.entries.remove(&oldest);
+            }
+        }
+    }
+
+    pub fn save(&self) {
+        if let Some(parent) = self.path.parent() {
+            let _ = std::fs::create_dir_all(parent);
+        }
+        let file = EmbeddingCacheFile {
+            version: EMBEDDING_CACHE_VERSION,
+            entries: self
+                .order
+                .iter()
+                .filter_map(|key| {
+                    self.entries
+                        .get(key)
+                        .map(|vector| (key.clone(), vector.clone()))
+                })
+                .collect(),
+        };
+        let Ok(json) = serde_json::to_vec(&file) else {
+            return;
+        };
+        // Write-then-rename: `fs::write` truncates first, so a crash mid-write
+        // leaves a truncated file that the next run has to discard entirely.
+        let temporary = self.path.with_extension("tmp");
+        if std::fs::write(&temporary, json).is_ok()
+            && std::fs::rename(&temporary, &self.path).is_err()
+        {
+            let _ = std::fs::remove_file(&temporary);
+        }
+    }
+}
+
+impl Drop for EmbeddingCache {
+    fn drop(&mut self) {
+        self.save();
+    }
+}
+
+fn cache_key(namespace: &str, text: &str) -> String {
+    let digest = Sha256::digest(text.as_bytes());
+    format!("{namespace}:{:x}", digest)
+}
+
+/// Wraps an [`EmbeddingBackend`] with a persistent [`EmbeddingCache`], serving
+/// previously computed vectors without re-running the backend.
+pub struct CachedEmbeddingBackend {
+    inner: Arc<dyn EmbeddingBackend>,
+    cache: Arc<std::sync::Mutex<EmbeddingCache>>,
+}
+
+impl CachedEmbeddingBackend {
+    pub fn new(inner: Arc<dyn EmbeddingBackend>, cache: EmbeddingCache) -> Self {
+        Self {
+            inner,
+            cache: Arc::new(std::sync::Mutex::new(cache)),
+        }
+    }
+}
+
+#[async_trait]
+impl EmbeddingBackend for CachedEmbeddingBackend {
+    fn id(&self) -> &str {
+        self.inner.id()
+    }
+    fn dimensions(&self) -> usize {
+        self.inner.dimensions()
+    }
+    fn is_remote(&self) -> bool {
+        self.inner.is_remote()
+    }
+    async fn embed(&self, inputs: &[String]) -> Result<Vec<Vec<f32>>, InferenceError> {
+        let mut missing_indices = Vec::new();
+        let mut missing_inputs = Vec::new();
+        let mut result: Vec<Option<Vec<f32>>> = vec![None; inputs.len()];
+        {
+            // A panic elsewhere must not poison the cache into permanently
+            // failing every later embed call; the repo already treats its other
+            // shared caches this way.
+            let mut cache = self.cache.lock().unwrap_or_else(|error| error.into_inner());
+            for (index, input) in inputs.iter().enumerate() {
+                if let Some(vector) = cache.get(input) {
+                    result[index] = Some(vector);
+                } else {
+                    missing_indices.push(index);
+                    missing_inputs.push(input.clone());
+                }
+            }
+        }
+        if !missing_inputs.is_empty() {
+            let computed = self.inner.embed(&missing_inputs).await?;
+            if computed.len() != missing_inputs.len() {
+                return Err(InferenceError::BackendContractViolation);
+            }
+            let mut cache = self.cache.lock().unwrap_or_else(|error| error.into_inner());
+            for (index, vector) in missing_indices.into_iter().zip(computed) {
+                cache.insert(&inputs[index], vector.clone());
+                result[index] = Some(vector);
+            }
+        }
+        result
+            .into_iter()
+            .map(|vector| vector.ok_or(InferenceError::BackendContractViolation))
             .collect()
     }
 }
@@ -521,16 +869,43 @@ impl InferenceRuntime {
 
     /// Build the offline runtime described by `config`.
     pub fn local(config: &InferenceConfig) -> Result<Self, InferenceError> {
-        if config.backend != LOCAL_EMBEDDING_BACKEND_ID {
-            return Err(InferenceError::UnknownBackend(config.backend.clone()));
-        }
         if config.max_documents == 0 {
             return Err(InferenceError::InvalidLimit);
         }
-        let backend =
-            LocalHashingEmbedder::new(config.embedding_dimensions, config.max_input_chars)?;
+        let backend: Arc<dyn EmbeddingBackend> = match config.backend.as_str() {
+            LOCAL_EMBEDDING_BACKEND_ID => Arc::new(LocalHashingEmbedder::new(
+                config.embedding_dimensions,
+                config.max_input_chars,
+            )?),
+            LOCAL_MODEL_BACKEND_ID => {
+                let path = config
+                    .local_model_path
+                    .as_deref()
+                    .ok_or(InferenceError::ModelUnavailable)?;
+                Arc::new(LocalModelEmbedder::load(
+                    std::path::Path::new(path),
+                    config.embedding_dimensions,
+                    config.max_input_chars,
+                )?)
+            }
+            other => return Err(InferenceError::UnknownBackend(other.into())),
+        };
+        let backend = match &config.local_cache_path {
+            Some(path) => {
+                let namespace = format!("{}@{}", backend.id(), backend.dimensions());
+                Arc::new(CachedEmbeddingBackend::new(
+                    backend,
+                    EmbeddingCache::load(
+                        std::path::PathBuf::from(path),
+                        namespace,
+                        config.local_model_batch.max(1) * 64,
+                    ),
+                )) as Arc<dyn EmbeddingBackend>
+            }
+            None => backend,
+        };
         Ok(Self {
-            backend: Arc::new(backend),
+            backend,
             max_documents: config.max_documents,
             reranker_prior_weight: config.reranker_prior_weight,
         })
@@ -566,9 +941,111 @@ impl InferenceRuntime {
         ))
     }
 
+    /// Reranker for Deep, chosen by whether the backend carries real semantics.
+    ///
+    /// `local_hashing_v1` is a signed feature hash, not a model: the cosine
+    /// between two hashes is a far weaker signal than lexical coverage. On the
+    /// labeled ranking corpus it scores measurably worse (nDCG@3 0.925 against
+    /// 1.000; see `ranking_v2::reranker_measurement`), so it must not be the
+    /// default. A remote backend is excluded for a different reason: reranking
+    /// through it would ship the text of every candidate document to a third
+    /// party on every Deep call, which is a change of privacy posture and needs
+    /// its own opt-in rather than riding on the inference mode.
     pub fn reranker(&self) -> Result<Arc<dyn DeepReranker>, InferenceError> {
-        LexicalCoverageReranker::new(self.max_documents, self.reranker_prior_weight)
-            .map(|value| Arc::new(value) as Arc<dyn DeepReranker>)
+        let semantic_backend =
+            !self.backend.is_remote() && self.backend.id() != LOCAL_EMBEDDING_BACKEND_ID;
+        if !semantic_backend {
+            return LexicalCoverageReranker::new(self.max_documents, self.reranker_prior_weight)
+                .map(|value| Arc::new(value) as Arc<dyn DeepReranker>);
+        }
+        EmbeddingReranker::new(
+            self.backend.clone(),
+            self.max_documents,
+            self.reranker_prior_weight,
+        )
+        .map(|value| Arc::new(value) as Arc<dyn DeepReranker>)
+    }
+}
+
+/// Semantic reranker backed by an [`EmbeddingBackend`].
+///
+/// Scores combine the query–document cosine similarity (a genuine semantic
+/// signal) with the upstream relevance prior. When the embedding backend fails
+/// — for example because the local model file is missing — it degrades to the
+/// deterministic [`LexicalCoverageReranker`] instead of failing Deep.
+pub struct EmbeddingReranker {
+    backend: Arc<dyn EmbeddingBackend>,
+    max_documents: usize,
+    prior_weight: f64,
+    lexical: LexicalCoverageReranker,
+}
+
+impl EmbeddingReranker {
+    pub fn new(
+        backend: Arc<dyn EmbeddingBackend>,
+        max_documents: usize,
+        prior_weight: f64,
+    ) -> Result<Self, InferenceError> {
+        if max_documents == 0 || !(0.0..=1.0).contains(&prior_weight) {
+            return Err(InferenceError::InvalidLimit);
+        }
+        Ok(Self {
+            backend,
+            max_documents,
+            prior_weight,
+            lexical: LexicalCoverageReranker::new(max_documents, prior_weight)?,
+        })
+    }
+}
+
+#[async_trait]
+impl DeepReranker for EmbeddingReranker {
+    fn name(&self) -> &str {
+        "embedding_semantic_v1"
+    }
+
+    async fn score(
+        &self,
+        query: &Query,
+        documents: &[Document],
+        relevance: &[f64],
+    ) -> Result<Vec<f64>, RankingV2Error> {
+        if documents.len() > self.max_documents || relevance.len() != documents.len() {
+            return Err(RankingV2Error::Backend);
+        }
+        let mut inputs = Vec::with_capacity(documents.len() + 1);
+        inputs.push(query.normalized_query.clone());
+        inputs.extend(documents.iter().map(document_text));
+        let vectors = match self.backend.embed(&inputs).await {
+            Ok(vectors) => vectors,
+            Err(error) => {
+                // Degrading is correct, degrading silently is not: a
+                // misconfigured or unreachable backend would otherwise return
+                // permanently worse rankings with no log, metric or signal.
+                tracing::warn!(
+                    target: "amatl::inference",
+                    backend = self.backend.id(),
+                    error = %error,
+                    "embedding backend failed; falling back to lexical reranking"
+                );
+                return self.lexical.score(query, documents, relevance).await;
+            }
+        };
+        let Some((query_vector, document_vectors)) = vectors.split_first() else {
+            return Err(RankingV2Error::Backend);
+        };
+        if document_vectors.len() != documents.len() {
+            return Err(RankingV2Error::Backend);
+        }
+        Ok(document_vectors
+            .iter()
+            .enumerate()
+            .map(|(index, vector)| {
+                let similarity = dot(query_vector, vector).clamp(0.0, 1.0);
+                ((1.0 - self.prior_weight) * similarity + self.prior_weight * relevance[index])
+                    .clamp(0.0, 1.0)
+            })
+            .collect())
     }
 }
 
@@ -946,5 +1423,150 @@ mod tests {
             InferenceRuntime::local(&invalid),
             Err(InferenceError::InvalidLimit)
         ));
+    }
+
+    fn write_model(path: &std::path::Path, dimensions: usize) {
+        let mut content = String::from("# test word vectors\n");
+        for (token, values) in [
+            ("rust", vec![1.0, 0.0, 0.0]),
+            ("async", vec![0.9, 0.1, 0.0]),
+            ("runtime", vec![0.8, 0.2, 0.0]),
+            ("bread", vec![0.0, 1.0, 0.0]),
+            ("recipe", vec![0.1, 0.9, 0.0]),
+        ] {
+            content.push_str(token);
+            for index in 0..dimensions {
+                content.push(' ');
+                content.push_str(&values.get(index).copied().unwrap_or(0.0).to_string());
+            }
+            content.push('\n');
+        }
+        std::fs::write(path, content).unwrap();
+    }
+
+    #[test]
+    fn local_model_backend_loads_and_embeds_from_a_model_file() {
+        let dir = std::env::temp_dir().join(format!("amatl-model-{}", std::process::id()));
+        std::fs::create_dir_all(&dir).unwrap();
+        let path = dir.join("vectors.txt");
+        write_model(&path, 64);
+        let embedder = LocalModelEmbedder::load(&path, 64, 512).unwrap();
+        let vectors = tokio::runtime::Runtime::new()
+            .unwrap()
+            .block_on(embedder.embed(&["rust async runtime".into(), "bread recipe".into()]))
+            .unwrap();
+        assert_eq!(vectors.len(), 2);
+        for vector in &vectors {
+            let norm = dot(vector, vector);
+            assert!((norm - 1.0).abs() < 1e-6, "{norm}");
+        }
+        // The rust cluster is closer to the rust query than the bread cluster.
+        let query = tokio::runtime::Runtime::new()
+            .unwrap()
+            .block_on(embedder.embed(&["rust async".into()]))
+            .unwrap();
+        assert!(dot(&query[0], &vectors[0]) > dot(&query[0], &vectors[1]));
+        let _ = std::fs::remove_dir_all(&dir);
+    }
+
+    #[test]
+    fn local_model_backend_fails_closed_on_missing_or_malformed_models() {
+        let missing = std::path::Path::new("/definitely/not/a/model.txt");
+        assert!(matches!(
+            LocalModelEmbedder::load(missing, 64, 512),
+            Err(InferenceError::ModelUnavailable)
+        ));
+        let dir = std::env::temp_dir().join(format!("amatl-badmodel-{}", std::process::id()));
+        std::fs::create_dir_all(&dir).unwrap();
+        let path = dir.join("bad.txt");
+        std::fs::write(&path, "token not_a_number\n").unwrap();
+        assert!(matches!(
+            LocalModelEmbedder::load(&path, 64, 512),
+            Err(InferenceError::ModelUnavailable)
+        ));
+        let _ = std::fs::remove_dir_all(&dir);
+    }
+
+    #[test]
+    fn embedding_cache_persists_and_namespaces_by_vector_space() {
+        let dir = std::env::temp_dir().join(format!("amatl-cache-{}", std::process::id()));
+        std::fs::create_dir_all(&dir).unwrap();
+        let path = dir.join("cache.json");
+        let mut cache = EmbeddingCache::load(path.clone(), "local_hashing_v1@64".into(), 16);
+        cache.insert("hello world", vec![1.0, 2.0, 3.0]);
+        cache.save();
+        // A fresh load from disk sees the persisted entry.
+        let mut reloaded = EmbeddingCache::load(path.clone(), "local_hashing_v1@64".into(), 16);
+        assert_eq!(reloaded.get("hello world"), Some(vec![1.0, 2.0, 3.0]));
+        // A different namespace never reuses the artifact.
+        let mut other = EmbeddingCache::load(path.clone(), "local_model_v1@64".into(), 16);
+        assert_eq!(other.get("hello world"), None);
+        let _ = std::fs::remove_dir_all(&dir);
+    }
+
+    #[tokio::test]
+    async fn embedding_reranker_uses_semantic_similarity_and_degrades_to_lexical() {
+        let query = crate::query::parse_query("rust async runtime".into()).unwrap();
+        let documents = corpus();
+        // Built directly: the default runtime deliberately does *not* select
+        // this reranker, because the default backend is a feature hash rather
+        // than a model (see `InferenceRuntime::reranker`).
+        let reranker = EmbeddingReranker::new(runtime().embedding_backend(), 64, 0.5).unwrap();
+        assert_eq!(reranker.name(), "embedding_semantic_v1");
+        let scores = reranker
+            .score(&query, &documents, &[0.5, 0.5])
+            .await
+            .unwrap();
+        assert!(scores[0] > scores[1], "{scores:?}");
+        assert!(scores.iter().all(|value| (0.0..=1.0).contains(value)));
+        // A backend that always fails degrades to the lexical reranker.
+        struct Broken;
+        #[async_trait]
+        impl EmbeddingBackend for Broken {
+            fn id(&self) -> &str {
+                "broken"
+            }
+            fn dimensions(&self) -> usize {
+                64
+            }
+            async fn embed(&self, _: &[String]) -> Result<Vec<Vec<f32>>, InferenceError> {
+                Err(InferenceError::ModelUnavailable)
+            }
+        }
+        let degraded = EmbeddingReranker::new(Arc::new(Broken), 64, 0.5).unwrap();
+        let scores = degraded
+            .score(&query, &documents, &[0.5, 0.5])
+            .await
+            .unwrap();
+        assert!(scores[0] > scores[1], "{scores:?}");
+    }
+
+    #[test]
+    fn local_model_backend_is_selectable_through_the_runtime() {
+        let dir = std::env::temp_dir().join(format!("amatl-runtime-{}", std::process::id()));
+        std::fs::create_dir_all(&dir).unwrap();
+        let path = dir.join("vectors.txt");
+        write_model(&path, 64);
+        assert!(path.exists(), "model file missing at {path:?}");
+        let config = InferenceConfig {
+            backend: LOCAL_MODEL_BACKEND_ID.into(),
+            local_model_path: Some(path.to_string_lossy().into_owned()),
+            embedding_dimensions: 64,
+            ..InferenceConfig::default()
+        };
+        let runtime = InferenceRuntime::local(&config).unwrap();
+        assert_eq!(runtime.backend_id(), LOCAL_MODEL_BACKEND_ID);
+        assert_eq!(runtime.version_key(), "local_model_v1@64");
+        // Without a model path the model backend fails closed.
+        let no_model = InferenceConfig {
+            backend: LOCAL_MODEL_BACKEND_ID.into(),
+            local_model_path: None,
+            ..InferenceConfig::default()
+        };
+        assert!(matches!(
+            InferenceRuntime::local(&no_model),
+            Err(InferenceError::ModelUnavailable)
+        ));
+        let _ = std::fs::remove_dir_all(&dir);
     }
 }

@@ -4,6 +4,13 @@ version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+documentation.workspace = true
+readme = "../../README.md"
+description = "Core types, search pipeline, provider registry, and persistence for the Amatl multi-source search engine"
+keywords = ["search", "metasearch", "aggregator"]
+categories = ["web-programming::http-client", "development-tools"]
 
 [dependencies]
 async-trait.workspace = true
@@ -21,6 +28,8 @@ toml.workspace = true
 tracing.workspace = true
 url.workspace = true
 unicode-normalization.workspace = true
+fs2.workspace = true
+tokio-util.workspace = true
 
 [dev-dependencies]
 axum.workspace = true

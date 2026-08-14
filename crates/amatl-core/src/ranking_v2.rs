@@ -753,3 +753,81 @@ mod tests {
         assert!(output.results.is_empty());
     }
 }
+
+/// Measures the Deep reranker against the labeled corpus.
+///
+/// The Ranking v2 gate gives the *search* pipeline; it never exercises
+/// [`crate::DeepReranker`], which is why a reranker regression could land
+/// without turning CI red. This module closes that hole.
+#[cfg(test)]
+mod reranker_measurement {
+    use super::*;
+
+    /// Rank the labeled corpus with a reranker and report mean nDCG@3.
+    async fn measure(reranker: &dyn DeepReranker) -> f64 {
+        let cases: Vec<BenchmarkCase> = serde_json::from_str(BENCHMARK_CORPUS).unwrap();
+        let mut total = 0.0;
+        for case in &cases {
+            let query = crate::query::parse_query(case.query.clone()).unwrap();
+            let documents = corpus_documents(&case.documents).unwrap();
+            let relevance: Vec<u32> = case.documents.iter().map(|d| d.relevance).collect();
+            // Uniform prior so the measurement isolates the reranker signal.
+            let prior = vec![0.5_f64; documents.len()];
+            let scores = reranker.score(&query, &documents, &prior).await.unwrap();
+            let mut order: Vec<usize> = (0..documents.len()).collect();
+            order.sort_by(|a, b| {
+                scores[*b]
+                    .partial_cmp(&scores[*a])
+                    .unwrap_or(std::cmp::Ordering::Equal)
+                    .then_with(|| a.cmp(b))
+            });
+            total += ndcg(&order, &relevance, 3);
+        }
+        total / cases.len() as f64
+    }
+
+    /// Records the evidence behind `InferenceRuntime::reranker` defaulting to
+    /// lexical coverage: with the default feature-hashing backend, embedding
+    /// similarity ranks the labeled corpus strictly worse.
+    #[tokio::test]
+    async fn hashing_embeddings_rerank_worse_than_lexical_coverage() {
+        use crate::inference::{EmbeddingReranker, LexicalCoverageReranker, LocalHashingEmbedder};
+        use std::sync::Arc;
+
+        let lexical = LexicalCoverageReranker::new(64, 0.5).unwrap();
+        let lexical_score = measure(&lexical).await;
+
+        let backend = Arc::new(LocalHashingEmbedder::new(256, 4096).unwrap());
+        let embedding = EmbeddingReranker::new(backend, 64, 0.5).unwrap();
+        let embedding_score = measure(&embedding).await;
+
+        assert!(
+            lexical_score > embedding_score,
+            "expected lexical coverage to beat hashed embeddings on the labeled corpus \
+             (lexical={lexical_score:.6}, embedding={embedding_score:.6}); if this flips, \
+             revisit the default chosen in InferenceRuntime::reranker"
+        );
+    }
+
+    /// The default runtime must therefore report the lexical reranker.
+    #[tokio::test]
+    async fn default_runtime_reranker_is_lexical() {
+        use crate::config::{DataPolicyConfig, InferenceConfig, InferenceMode};
+
+        let policy = DataPolicyConfig {
+            inference: InferenceMode::LocalOnly,
+            ..DataPolicyConfig::default()
+        };
+        let runtime = crate::inference::InferenceRuntime::from_policy(
+            &policy,
+            &InferenceConfig::default(),
+            None,
+        )
+        .unwrap()
+        .expect("local_only yields a runtime");
+        assert_eq!(
+            runtime.reranker().unwrap().name(),
+            crate::inference::LOCAL_RERANKER_ID
+        );
+    }
+}

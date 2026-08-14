@@ -560,6 +560,7 @@ pub async fn build_router_with_reload(
         .route("/reload", axum::routing::post(reload))
         .route("/security-events", get(security_events))
         .route("/health", get(health))
+        .route("/ready", get(ready))
         .route("/metrics", get(metrics))
         .nest_service("/mcp", mcp_service)
         .fallback(static_asset)
@@ -985,8 +986,61 @@ async fn delete_saved_document(State(state): State<AppState>, Path(id): Path<i64
     }
 }
 
+/// Liveness: the process is up and the router is serving.
+///
+/// Deliberately stateless and always `200`. Orchestrators use it to decide
+/// whether to restart the process, which must not depend on a provider being
+/// reachable or on SQLite being healthy. Readiness lives on `/ready`.
 async fn health() -> Json<serde_json::Value> {
     Json(json!({ "schema_version": SCHEMA_VERSION, "status": "ok" }))
+}
+
+/// Readiness: whether this instance can currently serve useful traffic.
+///
+/// Public like `/health`, so the body is intentionally coarse: aggregate
+/// booleans and a count, never source names, error codes or paths. Those name
+/// the deployment's internals and stay behind `/status`, which requires the
+/// `read` scope.
+///
+/// Returns `503` when degraded so a load balancer can drain the instance
+/// without parsing the body.
+async fn ready(State(state): State<AppState>) -> Response {
+    let Ok(status) = state.service().status().await else {
+        return (
+            StatusCode::SERVICE_UNAVAILABLE,
+            Json(json!({
+                "schema_version": SCHEMA_VERSION,
+                "status": "degraded",
+                "storage_ok": false,
+                "sources_available": 0,
+            })),
+        )
+            .into_response();
+    };
+    // Persistence is optional by design: disabled is healthy, enabled but
+    // unavailable is not.
+    let storage_ok = !status.storage.enabled || status.storage.available;
+    let sources_available = status
+        .sources
+        .iter()
+        .filter(|source| source.status == amatl_core::ProviderSurfaceStatus::Available)
+        .count();
+    let ready = status.status == "ok";
+    let code = if ready {
+        StatusCode::OK
+    } else {
+        StatusCode::SERVICE_UNAVAILABLE
+    };
+    (
+        code,
+        Json(json!({
+            "schema_version": SCHEMA_VERSION,
+            "status": if ready { "ok" } else { "degraded" },
+            "storage_ok": storage_ok,
+            "sources_available": sources_available,
+        })),
+    )
+        .into_response()
 }
 
 /// Exposes Prometheus-compatible metrics in text exposition format.

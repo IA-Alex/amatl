@@ -142,6 +142,64 @@ adapter/extractor versions are independent axes as well.
 - SQLite downgrade from migration 5 now applies: the script was present but
   outside `migrations/downgrade/` and unreferenced, so a downgrade silently
   skipped it. `amatl db downgrade` exercises the whole chain.
+- Database backups are written with `VACUUM INTO` instead of copying the file
+  while WAL mode is active. A plain copy could omit the most recent commits or
+  capture a torn state, and this applied to the copy taken before a destructive
+  schema migration as well. Backup verification now opens the copy read-only, so
+  certifying an artifact no longer modifies it.
+- `amatl db backups` lists automatic backups, and `amatl db restore` can select
+  them. The three naming schemes (automatic, pre-migration, pre-restore) had
+  diverged and the listing recognised only two, leaving every automatic backup
+  unreachable from the product. Rotation now only removes automatic copies.
+- Dropping `AmatlService` stops its background maintenance task. The task held a
+  `CancellationToken`, which does not cancel on drop, so it outlived the service
+  and kept the connection pool and the advisory file lock alive; with
+  `locking_mode = "exclusive"` no other process could reopen the database.
+- The native HTML extractor traverses the DOM iteratively. The recursive walk
+  overflowed the stack on deeply nested markup — an abort, not a catchable
+  panic — reachable from any fetched page well within the size budget.
+- `inference.backend = "local_model_v1"` can be selected from a configuration
+  file. Validation accepted only `local_hashing_v1`, so the documented backend
+  failed to load and was unreachable end to end.
+- `FallbackExtractor::version()` reports a composite identity instead of its
+  primary's. Deep keys the document cache on this value, so natively extracted
+  documents were stored under Trafilatura's version and served as if that
+  extractor had produced them.
+- Filesystem space reporting in `db health` uses `statvfs` rather than the
+  directory inode's block count, which reported ~32 KiB total and pinned disk
+  usage at 0%, making the "disk critically full" warning unreachable.
+- Confusable folding no longer transliterates Greek phonetically. Mapping θ and
+  φ onto `o`, or γ and ψ onto `y`, collapsed letters that look nothing alike and
+  could mark unrelated Greek titles as possible duplicates. The final sigma `ς`
+  now agrees with the medial `σ`, an invariant the folding itself had broken.
+- The embedding cache evicts by real recency and persists its ordering, is
+  written atomically, and warns instead of silently discarding an unreadable
+  file. Ordering was restored from a map in hash order, making eviction
+  arbitrary after every restart.
+- The local model file is size-bounded before loading, so a mistyped path no
+  longer risks an out-of-memory abort at startup.
+- The soak test negotiates the MCP protocol version. Every MCP request in it had
+  been rejected, a steady 33% error rate that went unnoticed because the test is
+  `#[ignore]`d and no workflow ran it; a nightly job now does.
+- `publish-aur.yml` runs `makepkg` in an Arch container as an unprivileged user
+  (it is absent from `ubuntu-latest` and refuses to run as root), and rewrites
+  `sha256sums` unconditionally — anchoring on the initial `SKIP` matched nothing
+  from the second release onward and would have shipped a stale checksum.
+
+### Changed
+
+- Deep's default reranker stays lexical. `local_hashing_v1` is a feature hash,
+  not a model, and ranking the labeled corpus by cosine similarity over those
+  hashes scores measurably worse than lexical coverage (nDCG@3 0.925 against
+  1.000). Embedding-based reranking is selected only when a genuine model
+  backend is configured, and never for a remote backend, which would ship every
+  candidate document's text to a third party on each Deep call. A degradation
+  to lexical is now logged instead of discarded silently.
+- `publish-crates.yml` and `publish-aur.yml` trigger on stable tags only, with
+  `workflow_dispatch` for candidates. Publishing to crates.io is irreversible
+  and an AUR push replaces the package every Arch user installs.
+- The crates.io publish waits on the sparse index for the leaf crates instead of
+  sleeping a fixed 30 seconds before publishing their dependents.
 
 ## [0.1.0-rc.1] - 2026-08-13
 

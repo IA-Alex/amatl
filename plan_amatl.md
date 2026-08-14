@@ -134,7 +134,7 @@ amatl/
  ├── fetch/
  ├── render/
  ├── extract/
- ├── gaps/      (stub post-MVP)
+ ├── gaps/      (implementado)
  ├── cache/
  ├── storage/
  ├── telemetry/
@@ -145,7 +145,7 @@ amatl/
  └── ui/
 ```
 
-La lógica funcional **MUST** permanecer fuera de CLI, UI, API y MCP. Todas las superficies **MUST** consumir el mismo core. `gaps/` y la entidad `Evidence` existen como stubs hasta su fase (post-MVP).
+La lógica funcional **MUST** permanecer fuera de CLI, UI, API y MCP. Todas las superficies **MUST** consumir el mismo core. `gaps/` y la entidad `Evidence` se planificaron como stubs post-MVP; ambos están implementados desde la fase 5 (`gaps.rs`, `evidence.rs`) y este documento se mantiene como registro de la normativa original.
 
 ### 5.1 Ownership de la orquestación
 
@@ -175,8 +175,8 @@ Query → Classification → SearchPlan → ProviderResult → NormalizedResult
 - `DeduplicatedResult`: recurso consolidado.
 - `SearchResult`: salida final de Search.
 - `Document`: contenido enriquecido en Deep.
-- `Evidence`: señal derivada del Document (stub post-MVP).
-- `Gap`: déficit observable (stub post-MVP).
+- `Evidence`: señal derivada del Document (implementado).
+- `Gap`: déficit observable (implementado).
 - `SubQuery`: propuesta de expansión.
 
 `SearchResult` **MUST NOT** almacenar el cuerpo completo; el cuerpo pertenece a `Document`.
@@ -513,7 +513,7 @@ Cada Document conserva: `search_result_id`, `original_url`, `canonical_url`, `fi
 
 El cuerpo completo pertenece a Document, no a SearchResult.
 
-### 7.22 Evidence (stub post-MVP)
+### 7.22 Evidence (implementado)
 
 Entidad exclusiva de Deep. Representa señales derivadas de Document para Ranking v2 y Gap Analyzer. Puede incluir: fact density, verified date, metadata quality, named entities, citation span, freshness, originality. **MUST NOT** formar parte del Search MVP.
 
@@ -521,7 +521,7 @@ Entidad exclusiva de Deep. Representa señales derivadas de Document para Rankin
 
 Sólo sobre candidatos Deep. Puede utilizar: BM25, embeddings, reranking, `evidence_score`. `evidence_score` permanece separado del score de relevancia. **MUST NOT** incorporarse sin benchmark frente a Ranking MVP.
 
-### 7.24 Gap Analyzer (stub post-MVP)
+### 7.24 Gap Analyzer (implementado)
 
 Responsabilidad: detectar déficits observables. No ejecuta búsquedas.
 

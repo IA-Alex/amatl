@@ -6,11 +6,19 @@ on:
       - packaging/amatl-chromium-sandbox
       - docs/security/chromium-isolation.md
       - .github/workflows/chromium-isolation.yml
+      # The isolation contract is only meaningful together with the code that
+      # owns rendering and network egress; a change there must re-run it.
+      - crates/amatl-core/src/render.rs
+      - crates/amatl-core/src/fetch.rs
   pull_request:
     paths:
       - packaging/amatl-chromium-sandbox
       - docs/security/chromium-isolation.md
       - .github/workflows/chromium-isolation.yml
+      # The isolation contract is only meaningful together with the code that
+      # owns rendering and network egress; a change there must re-run it.
+      - crates/amatl-core/src/render.rs
+      - crates/amatl-core/src/fetch.rs
   workflow_dispatch:
 
 permissions:
