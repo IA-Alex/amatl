@@ -213,8 +213,12 @@ No son defectos del core y no deben resolverse inventando datos:
    SLA y URL canónica ya están definidos; mantenerlos vigentes.
 2. Marcar `contract-gate` como required check cuando GitHub habilite protección
    para este repositorio privado (requiere plan superior o hacerlo público).
-3. Completar aprobación, ToS, cuotas, costes, región y credenciales de cada
-   provider antes de habilitar red real.
+3. Elegir una fuente de búsqueda y completar su ficha. No es sólo papeleo: los
+   dos adapters implementados (Brave, Mojeek) exigen plan de pago —Brave eliminó
+   su tier gratuito en 2026-02— y DuckDuckGo no tiene API de búsqueda web ni
+   implementación en el repositorio. Las opciones gratuitas verificadas
+   (Marginalia, SearXNG autohospedado) requieren escribir un `ProviderFactory`.
+   Ver la sección «Viabilidad y coste» de `docs/gobernanza-providers.md`.
 4. Configurar el environment `provider-canary`, sus revisores y secretos; luego
    capturar latencia/errores reales sin incorporar credenciales al repositorio.
 5. Para cada RC futura, ejecutar el workflow, validar musl/.deb/.rpm/Arch y sólo

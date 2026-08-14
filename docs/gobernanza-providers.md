@@ -58,7 +58,7 @@ repositorio si contienen información privada.
 |---|---|---|---|---|---|
 | Brave Search API | `stable` | `brave-v1`; API oficial; credencial `BRAVE_API_KEY` | `draft`, no habilitado | No disponible | reviewer/reviewed_at vigentes, plan, cuota, coste, derechos, datos y riesgo |
 | Mojeek Search API | `stable` | `mojeek-v1`; API oficial; credencial `MOJEEK_API_KEY` | `draft`, no habilitado | No disponible | versión/fecha ToS y todos los campos de revisión comercial/operativa |
-| DuckDuckGo HTML | `best_effort` | adapter bloqueado sin acceso de red | ficha vacía `draft` | Siempre no disponible: `provider_pending_explicit_approval` | autorización verificable, ToS/coste y ficha completa antes de implementar acceso |
+| DuckDuckGo HTML | `best_effort` | **Sin implementación.** `duckduckgo.rs` es un stub de 73 líneas: sin endpoint, sin cliente HTTP y sin parseo; `search()` devuelve error siempre | ficha vacía `draft` | Siempre no disponible: `provider_pending_explicit_approval` | Implementación completa, autorización verificable y ficha. No es un adapter apagado: no existe |
 
 La fecha `2026-02-11` existente en el default de Brave es
 `terms_version_or_date`; **no** es `reviewed_at`. No se registra como revisión.
@@ -66,6 +66,68 @@ Mojeek tiene URL de soporte pero no una versión/fecha de términos. Ningún rev
 está definido. Por ello, el estado correcto actual es bloqueado para tráfico
 real aunque existan adapters (`config.rs:318-350`, `service.rs:277-353`,
 `providers/duckduckgo.rs:8-59`).
+
+## Viabilidad y coste de las fuentes
+
+Verificado el **2026-08-14**. Esta sección describe el mercado, no el código:
+cambia sin que el repositorio cambie, y debe revisarse junto con cada ficha.
+
+La puerta de gobernanza no exige pagar nada. `cost_model` es un campo de texto:
+`"0"` o `"free tier"` son valores válidos y aprueban igual. Lo que exige es que
+el coste esté **declarado**, sea cual sea.
+
+| Fuente | Coste real | Clave | API de búsqueda web | Cobertura |
+|---|---|---|---|---|
+| Brave Search API | **De pago desde 2026-02.** Tarjeta obligatoria al registrarse; 5 USD/mes de crédito (~1 000 consultas) y luego cobro por uso | Sí | Sí, oficial | Índice propio amplio |
+| Mojeek Search API | De pago | Sí | Sí, oficial | Índice propio, medio |
+| Marginalia | **0** para uso no comercial (CC-BY-NC-SA) | Sí, gratuita por correo; clave `public` para pruebas | Sí, oficial (`api2.marginalia-search.com`) | Índice propio pequeño, orientado a web independiente |
+| SearXNG autohospedado | **0**, sin cuota | No | Sí, la de tu instancia (`format=json`, desactivado por defecto) | Agrega Google, Bing, DuckDuckGo y otros |
+| DuckDuckGo | 0 | No | **No existe.** Sólo Instant Answer API, que devuelve definiciones y resúmenes, no resultados web | — |
+
+Consecuencia práctica: **gratuito, amplio y con términos permisivos no coexisten
+en una sola fuente.** Toda elección sacrifica una de las tres.
+
+### Sobre los términos y qué significa el riesgo
+
+El riesgo de usar una fuente cuyos términos prohíben la consulta automatizada no
+es judicial en la práctica: es **operativo**. El origen empieza a devolver
+captchas o bloquea la dirección IP, y la fuente deja de servir resultados. Eso lo
+absorbe el cortacircuitos como cualquier otro fallo, pero degrada el buscador de
+forma permanente en lugar de transitoria.
+
+Por eso `operational_risk` debe recoger esa exposición explícitamente y no
+tratarse como un trámite.
+
+### SearXNG como fuente
+
+Es la única opción gratuita con cobertura amplia, y traslada un problema en lugar
+de eliminarlo: no tiene índice propio, sino que consulta motores cuyos términos
+pueden prohibir el acceso automatizado. La ficha debe declararlo:
+
+- `terms_url` y `terms_version_or_date` apuntan a **tu** instancia, que no tiene
+  términos propios; se trata de una autocertificación y conviene decirlo en
+  `data_handling_notes` en lugar de dejar el campo aparentando una revisión
+  externa que no existe.
+- `allowed_access_method = "self_hosted"`, `cost_model = "0"`,
+  `plan_or_contract = "self-hosted"`.
+- `operational_risk` debe nombrar la dependencia de los motores upstream y la
+  posibilidad de bloqueo por reputación de IP a volumen alto.
+
+Configurar la instancia con sólo motores de términos permisivos reduce ese riesgo
+a costa de cobertura. Es una decisión del operador, no del core.
+
+Nota de implementación: `ProviderRuntimeConfig` no tiene campo para la URL de la
+instancia ni mapa libre, de modo que una factory de SearXNG debe resolver su
+dirección por variable de entorno o requiere ampliar la configuración.
+
+### Alcance de red de los providers
+
+El guard anti-SSRF (`validate_resolved_addresses`) protege **Deep**, no el
+transporte de providers, que usa `ReqwestTransport` sin validación de dirección.
+Una fuente autohospedada en `127.0.0.1` o en la red local es por tanto
+alcanzable, lo que hace viable SearXNG. La contrapartida es que una ficha
+aprobada puede apuntar a infraestructura interna: es coherente con el modelo —los
+providers los configura el operador— pero debe ser una decisión consciente.
 
 ## Alta o renovación
 

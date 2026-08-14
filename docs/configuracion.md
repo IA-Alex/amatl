@@ -83,9 +83,11 @@ AMATL.
 Defaults específicos: Brave usa `brave-v1`, `BRAVE_API_KEY`, API oficial, URL
 de términos, fecha de términos `2026-02-11` y filtros site/filetype/language/
 region/time_range. Mojeek usa `mojeek-v1`, `MOJEEK_API_KEY`, API oficial y URL de
-soporte. Ambos siguen `draft`; DuckDuckGo queda completamente `draft` y su
-adapter está bloqueado aunque aparezca en `enabled`. Ver
-`docs/gobernanza-providers.md`.
+soporte. Ambos siguen `draft` y ambos requieren un plan de pago: Brave eliminó su
+tier gratuito en 2026-02. DuckDuckGo queda completamente `draft` y no dispone de
+implementación —su fichero es un stub sin acceso de red—, de modo que declararlo
+en `enabled` no produce tráfico. Antes de elegir fuente, consulta la sección
+«Viabilidad y coste» de `docs/gobernanza-providers.md`.
 
 `[providers]` es un mapa abierto: cada tabla `[providers.<nombre>]` declara una
 fuente y se fusiona sobre los expedientes incorporados, de modo que ajustar uno
