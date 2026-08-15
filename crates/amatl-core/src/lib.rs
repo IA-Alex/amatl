@@ -103,7 +103,7 @@ pub use progressive::{
 pub use providers::{
     BraveProvider, DuckDuckGoHtmlProvider, HttpRequest, HttpResponse, HttpTransport, MockBehavior,
     MockProvider, MojeekProvider, Provider, ProviderAvailability, ProviderBuildContext,
-    ProviderContext, ProviderFactory, ProviderRegistry, ReqwestTransport,
+    ProviderContext, ProviderFactory, ProviderRegistry, ReqwestTransport, SearXngProvider,
 };
 pub use query::{parse_query, QueryParseError};
 pub use ranking::{RankingPolicyError, RankingPolicyV1};

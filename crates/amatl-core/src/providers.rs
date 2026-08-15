@@ -10,14 +10,18 @@ use std::time::Duration;
 mod brave;
 mod duckduckgo;
 mod http;
+mod marginalia;
 mod mojeek;
 mod registry;
+mod searxng;
 
 pub use brave::BraveProvider;
 pub use duckduckgo::DuckDuckGoHtmlProvider;
 pub use http::{HttpRequest, HttpResponse, HttpTransport, ReqwestTransport};
+pub use marginalia::MarginaliaProvider;
 pub use mojeek::MojeekProvider;
 pub use registry::{ProviderBuildContext, ProviderFactory, ProviderRegistry};
+pub use searxng::SearXngProvider;
 
 #[derive(Clone, Debug)]
 pub struct ProviderContext {

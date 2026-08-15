@@ -5,7 +5,10 @@
 //! source therefore means shipping a factory and a governance record — no
 //! `match` arm inside the service, no new field in the configuration struct.
 
-use super::{BraveProvider, DuckDuckGoHtmlProvider, HttpTransport, MojeekProvider, Provider};
+use super::{
+    BraveProvider, DuckDuckGoHtmlProvider, HttpTransport, MarginaliaProvider, MojeekProvider,
+    Provider, SearXngProvider,
+};
 use crate::config::ProviderRuntimeConfig;
 use std::collections::BTreeMap;
 use std::sync::Arc;
@@ -61,6 +64,8 @@ impl ProviderRegistry {
             .with(Arc::new(BraveFactory))
             .with(Arc::new(MojeekFactory))
             .with(Arc::new(DuckDuckGoHtmlFactory))
+            .with(Arc::new(SearXngFactory))
+            .with(Arc::new(MarginaliaFactory))
     }
 
     /// Builder-style registration, replacing any factory with the same name.
@@ -155,6 +160,63 @@ impl ProviderFactory for DuckDuckGoHtmlFactory {
     }
 }
 
+// ---------------------------------------------------------------------------
+// SearXNG factory
+// ---------------------------------------------------------------------------
+
+pub struct SearXngFactory;
+
+impl ProviderFactory for SearXngFactory {
+    fn name(&self) -> &str {
+        "searxng"
+    }
+
+    fn requires_credential(&self) -> bool {
+        false
+    }
+
+    fn build(&self, context: &ProviderBuildContext<'_>) -> Arc<dyn Provider> {
+        let url = context
+            .credential
+            .as_deref()
+            .and_then(|url| url::Url::parse(url).ok())
+            .unwrap_or_else(|| {
+                url::Url::parse("http://127.0.0.1:8888").expect("default SearXNG URL is valid")
+            });
+        Arc::new(SearXngProvider::new(
+            url,
+            context.enabled,
+            context.approved,
+            context.transport.clone(),
+        ))
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Marginalia factory (scaffold)
+// ---------------------------------------------------------------------------
+
+pub struct MarginaliaFactory;
+
+impl ProviderFactory for MarginaliaFactory {
+    fn name(&self) -> &str {
+        "marginalia"
+    }
+
+    fn requires_credential(&self) -> bool {
+        true
+    }
+
+    fn build(&self, context: &ProviderBuildContext<'_>) -> Arc<dyn Provider> {
+        Arc::new(MarginaliaProvider::new(
+            context.credential.clone(),
+            context.enabled,
+            context.approved,
+            context.transport.clone(),
+        ))
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -221,12 +283,23 @@ mod tests {
     #[test]
     fn builtin_registry_exposes_the_shipped_sources() {
         let registry = ProviderRegistry::builtin();
-        assert_eq!(registry.names(), vec!["brave", "duckduckgo_html", "mojeek"]);
+        assert_eq!(
+            registry.names(),
+            vec![
+                "brave",
+                "duckduckgo_html",
+                "marginalia",
+                "mojeek",
+                "searxng"
+            ]
+        );
         assert!(!registry
             .get("duckduckgo_html")
             .unwrap()
             .supports_network_canary());
         assert!(registry.get("brave").unwrap().requires_credential());
+        assert!(!registry.get("searxng").unwrap().requires_credential());
+        assert!(registry.get("marginalia").unwrap().requires_credential());
     }
 
     #[test]

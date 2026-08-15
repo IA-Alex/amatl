@@ -57,6 +57,8 @@ repositorio si contienen información privada.
 | Provider | Nivel de diseño | Adapter | Config default | Estado efectivo | Datos pendientes |
 |---|---|---|---|---|---|
 | Brave Search API | `stable` | `brave-v1`; API oficial; credencial `BRAVE_API_KEY` | `draft`, no habilitado | No disponible | reviewer/reviewed_at vigentes, plan, cuota, coste, derechos, datos y riesgo |
+| SearXNG (autohospedado) | `stable` | `searxng-v1`; API JSON; URL via `SEARXNG_INSTANCE_URL` (por defecto `http://127.0.0.1:8888`); sin credencial | `draft`, no habilitado | No disponible | reviewer/reviewed_at vigentes |
+| Marginalia Search API | `scaffold` | `marginalia-v1`; **Sin implementacion.** `search()` devuelve error siempre | ficha vacia `draft` | Siempre no disponible: `provider_pending_explicit_approval` | Implementacion completa, revision de API, terminos, cuota, coste, datos y riesgo |
 | Mojeek Search API | `stable` | `mojeek-v1`; API oficial; credencial `MOJEEK_API_KEY` | `draft`, no habilitado | No disponible | versión/fecha ToS y todos los campos de revisión comercial/operativa |
 | DuckDuckGo HTML | `best_effort` | **Sin implementación.** `duckduckgo.rs` es un stub de 73 líneas: sin endpoint, sin cliente HTTP y sin parseo; `search()` devuelve error siempre | ficha vacía `draft` | Siempre no disponible: `provider_pending_explicit_approval` | Implementación completa, autorización verificable y ficha. No es un adapter apagado: no existe |
 

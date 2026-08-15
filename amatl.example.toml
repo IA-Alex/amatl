@@ -12,10 +12,32 @@ egress = "governed"
 inference = "disabled"
 
 # Mapa abierto: cada [providers.<nombre>] declara una fuente y se fusiona sobre
-# los expedientes incorporados (brave, mojeek, duckduckgo_html). Un nombre en
-# "enabled" debe estar declarado aquí y registrado en el ProviderRegistry.
+# los expedientes incorporados (brave, mojeek, duckduckgo_html, searxng,
+# marginalia). Un nombre en "enabled" debe estar declarado aquí y registrado en
+# el ProviderRegistry.
 [providers]
 enabled = []
+# Ejemplo: activar SearXNG autohospedado (gratis, sin cuota).
+# La URL de la instancia se lee de SEARXNG_INSTANCE_URL (por defecto
+# http://127.0.0.1:8888). No requiere credencial.
+# enabled = ["searxng"]
+# [providers.searxng]
+# approval_status = "approved"
+# reviewed_at = "2026-08-14"
+# reviewer = "owner"
+#
+# Ejemplo: activar Marginalia (requiere MARGINALIA_API_KEY).
+# El adapter es un scaffold — search() devuelve error hasta implementarlo.
+# enabled = ["marginalia"]
+# [providers.marginalia]
+# approval_status = "approved"
+# reviewed_at = "2026-08-14"
+# reviewer = "owner"
+# terms_version_or_date = "2026-08-01"
+# rate_limit = "TBD"
+# cost_model = "TBD"
+# data_handling_notes = "TBD"
+# operational_risk = "TBD"
 
 # Backend de inferencia. El modo vive en [data_policy]; esta sección lo dimensiona.
 # Los pesos semánticos de deep.ranking_v2 exigen inference = "local_only".

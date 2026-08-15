@@ -741,9 +741,42 @@ fn builtin_provider_records() -> std::collections::BTreeMap<String, ProviderRunt
         allowed_access_method: Some("official_api".into()),
         ..ProviderRuntimeConfig::default()
     };
+    let searxng = ProviderRuntimeConfig {
+        adapter_version: Some("searxng-v1".into()),
+        credential_env: Some("SEARXNG_INSTANCE_URL".into()),
+        terms_url: Some("https://docs.searxng.org/".into()),
+        terms_version_or_date: Some("self-certified".into()),
+        allowed_access_method: Some("self_hosted".into()),
+        plan_or_contract: Some("self-hosted".into()),
+        rate_limit: Some("unlimited (self-hosted)".into()),
+        cost_model: Some("0".into()),
+        storage_rights: false,
+        data_handling_notes: Some(
+            "Self-hosted SearXNG instance; no external terms. \
+             Upstream engines have their own terms — operator must verify \
+             compliance. No data stored by AMATL."
+                .into(),
+        ),
+        operational_risk: Some(
+            "Depends on upstream search engines that may block automated \
+             access. IP reputation risk at volume. Operator should configure \
+             only permissive engines."
+                .into(),
+        ),
+        ..ProviderRuntimeConfig::default()
+    };
+    let marginalia = ProviderRuntimeConfig {
+        adapter_version: Some("marginalia-v1".into()),
+        credential_env: Some("MARGINALIA_API_KEY".into()),
+        terms_url: Some("https://www.marginalia.nu/".into()),
+        allowed_access_method: Some("official_api".into()),
+        ..ProviderRuntimeConfig::default()
+    };
     std::collections::BTreeMap::from([
         ("brave".to_string(), brave),
         ("mojeek".to_string(), mojeek),
+        ("searxng".to_string(), searxng),
+        ("marginalia".to_string(), marginalia),
         (
             "duckduckgo_html".to_string(),
             ProviderRuntimeConfig::default(),
@@ -1597,7 +1630,7 @@ mod tests {
         assert!(config.validate().is_ok());
         assert_eq!(
             config.providers.names(),
-            vec!["brave", "custom_archive", "duckduckgo_html", "mojeek"]
+            vec!["brave", "custom_archive", "duckduckgo_html", "marginalia", "mojeek", "searxng"]
         );
         assert_eq!(
             config
