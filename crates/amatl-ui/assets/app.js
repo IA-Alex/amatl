@@ -1,5 +1,29 @@
 "use strict";
 
+// ── Theme ───────────────────────────────────────────────────────
+// Applied as the very first thing this file does, ahead of i18n and every
+// other module below: the CSP (script-src 'self', no inline scripts) rules
+// out the usual head-of-document inline snippet that would set this before
+// first paint, so the next best thing is doing it before anything else in
+// the one script that does run.
+const THEME_KEY = "amatl-theme";
+function storedTheme() {
+  try {
+    const value = localStorage.getItem(THEME_KEY);
+    return value === "light" || value === "dark" ? value : null;
+  } catch {
+    return null;
+  }
+}
+function applyTheme(theme) {
+  if (theme === "light" || theme === "dark") {
+    document.documentElement.setAttribute("data-theme", theme);
+  } else {
+    document.documentElement.removeAttribute("data-theme");
+  }
+}
+applyTheme(storedTheme());
+
 // ── i18n ────────────────────────────────────────────────────────
 // Catalogs live in /i18n.js so this file holds behavior only.
 const CATALOG = globalThis.AMATL_LOCALES || { defaultLocale: "en", locales: { en: {} } };
@@ -30,6 +54,7 @@ const state = {
   totalPages: 1,
   totalResults: 0,
   controller: null,
+  answer: null,
 };
 const form = document.querySelector("#search-form");
 const queryInput = document.querySelector("#query");
@@ -39,6 +64,15 @@ const fileTypeInput = document.querySelector("#file-type");
 const tokenInput = document.querySelector("#local-token");
 const searchButton = document.querySelector("#search-button");
 const deepButton = document.querySelector("#deep-button");
+const answerButton = document.querySelector("#answer-button");
+const answerHint = document.querySelector("#answer-hint");
+const answerCard = document.querySelector("#answer-card");
+const answerTextNode = document.querySelector("#answer-text");
+const answerMetaNode = document.querySelector("#answer-meta");
+const answerConfig = document.querySelector("#answer-config");
+const answerConfigBody = document.querySelector("#answer-config-body");
+const answerEnabledToggle = document.querySelector("#answer-enabled-toggle");
+const answerToggleStatus = document.querySelector("#answer-toggle-status");
 const resultHeading = document.querySelector("#result-heading");
 const statusNode = document.querySelector("#status");
 const loadingNode = document.querySelector("#loading");
@@ -51,6 +85,36 @@ const resultTemplate = document.querySelector("#result-template");
 const deepTemplate = document.querySelector("#deep-template");
 const fragmentTemplate = document.querySelector("#fragment-template");
 const cancelButton = document.querySelector("#cancel-button");
+const themeToggle = document.querySelector("#theme-toggle");
+
+function resolvedTheme() {
+  const explicit = document.documentElement.getAttribute("data-theme");
+  if (explicit) return explicit;
+  const prefersLight =
+    typeof globalThis.matchMedia === "function" &&
+    globalThis.matchMedia("(prefers-color-scheme: light)").matches;
+  return prefersLight ? "light" : "dark";
+}
+
+function updateThemeToggle() {
+  const isLight = resolvedTheme() === "light";
+  themeToggle.setAttribute("aria-pressed", String(isLight));
+  themeToggle.setAttribute("aria-label", isLight ? t("themeToggleToDark") : t("themeToggleToLight"));
+  themeToggle.querySelector(".icon-sun").classList.toggle("is-active", !isLight);
+  themeToggle.querySelector(".icon-moon").classList.toggle("is-active", isLight);
+}
+
+themeToggle.addEventListener("click", () => {
+  const next = resolvedTheme() === "light" ? "dark" : "light";
+  applyTheme(next);
+  try {
+    localStorage.setItem(THEME_KEY, next);
+  } catch {
+    // Private browsing or a full storage quota: the toggle still works for
+    // this page load, it just won't be remembered on the next visit.
+  }
+  updateThemeToggle();
+});
 
 function safeHttpUrl(value) {
   if (typeof value !== "string" || value.length > 8192) return null;
@@ -116,7 +180,7 @@ function searchMetadata(result) {
   return values.join(" · ");
 }
 
-function renderSearchResult(result) {
+function renderSearchResult(result, citationIndex) {
   const url = safeHttpUrl(result.canonical_url);
   if (!url || result.status !== "visible") return;
   const fragment = resultTemplate.content.cloneNode(true);
@@ -129,6 +193,15 @@ function renderSearchResult(result) {
   const meta = fragment.querySelector(".result-meta");
   meta.textContent = searchMetadata(result);
   meta.hidden = !meta.textContent;
+  // Only in answer mode, and only the true 1-based position in the source
+  // array AMATL sent the model — not a post-filter counter — so it matches
+  // the [n] markers in the answer text exactly, even when an earlier item
+  // was skipped above.
+  if (state.mode === "answer" && Number.isInteger(citationIndex)) {
+    const badge = fragment.querySelector(".result-index");
+    badge.textContent = `[${citationIndex}]`;
+    badge.hidden = false;
+  }
   resultsNode.append(fragment);
 }
 
@@ -302,10 +375,27 @@ function renderDeepDocument(item) {
   resultsNode.append(fragment);
 }
 
+function renderAnswerCard(answer) {
+  if (!answer || typeof answer.text !== "string") {
+    answerCard.hidden = true;
+    return;
+  }
+  answerTextNode.textContent = answer.text;
+  const citations = Array.isArray(answer.citations) ? answer.citations.length : 0;
+  answerMetaNode.textContent = `${t("answerSourcesNote")} ${citations} — ${boundedText(answer.model, 120)}`;
+  answerCard.hidden = false;
+}
+
 function render() {
   resultsNode.replaceChildren();
   if (state.mode === "deep") {
     for (const item of state.items) renderDeepDocument(item);
+    paginationNode.hidden = true;
+    return;
+  }
+  if (state.mode === "answer") {
+    renderAnswerCard(state.answer);
+    state.items.forEach((result, i) => renderSearchResult(result, i + 1));
     paginationNode.hidden = true;
     return;
   }
@@ -343,6 +433,15 @@ function validatePayload(payload, mode) {
   if (mode === "deep") {
     return Array.isArray(payload.documents) && Array.isArray(payload.evidence_v2);
   }
+  if (mode === "answer") {
+    return (
+      payload.answer
+      && typeof payload.answer.text === "string"
+      && Array.isArray(payload.answer.citations)
+      && payload.search
+      && Array.isArray(payload.search.results)
+    );
+  }
   return Array.isArray(payload.results);
 }
 
@@ -374,14 +473,22 @@ async function run(mode, page) {
   state.items = [];
   state.mode = mode;
   state.page = mode === "deep" ? 0 : page;
-  resultHeading.textContent = mode === "deep" ? t("evidenceHeading") : t("resultsHeading");
+  resultHeading.textContent = mode === "deep"
+    ? t("evidenceHeading")
+    : mode === "answer"
+      ? t("answerHeading")
+      : t("resultsHeading");
   resultsNode.replaceChildren();
+  answerCard.hidden = true;
   paginationNode.hidden = true;
   setBusy(true, mode);
-  setStatus(mode === "deep" ? t("analyzing") : t("searching"), "loading");
+  setStatus(
+    mode === "deep" ? t("analyzing") : mode === "answer" ? t("answerGenerating") : t("searching"),
+    "loading",
+  );
   try {
     const headers = authHeaders({ "Content-Type": "application/json" });
-    const endpoint = mode === "deep" ? "/deep" : "/search";
+    const endpoint = mode === "deep" ? "/deep" : mode === "answer" ? "/answer" : "/search";
     const body = { q: queryText() };
     if (mode === "search") {
       body.page = state.page;
@@ -412,6 +519,11 @@ async function run(mode, page) {
       } else {
         setStatus(`${state.items.length} ${t("evidenceCount")} ${fragments} ${t("evidenceFragments")}`, "success");
       }
+    } else if (mode === "answer") {
+      state.items = payload.search.results;
+      state.answer = payload.answer;
+      render();
+      setStatus(`${t("answerDone")} ${payload.answer.citations.length} ${t("answerCitations")}`, "success");
     } else {
       state.items = payload.results;
       const pageSize = typeof payload.page_size === "number" && payload.page_size > 0
@@ -445,9 +557,18 @@ async function run(mode, page) {
 
 function execute(event) {
   event.preventDefault();
+  if (requestedModeIsUnavailable(event.submitter)) {
+    setStatus(t("answerHintMissingCredential"), "error");
+    return;
+  }
   if (!form.reportValidity()) return;
-  const mode = event.submitter?.dataset.mode === "deep" ? "deep" : "search";
+  const requested = event.submitter?.dataset.mode;
+  const mode = requested === "deep" || requested === "answer" ? requested : "search";
   run(mode, 0);
+}
+
+function requestedModeIsUnavailable(submitter) {
+  return submitter === answerButton && answerButton.classList.contains("is-unavailable");
 }
 
 form.addEventListener("submit", execute);
@@ -533,6 +654,16 @@ function indicator(label, value, indicatorState) {
   return item;
 }
 
+function configRow(label, value) {
+  const wrapper = document.createElement("div");
+  const dt = document.createElement("dt");
+  dt.textContent = label;
+  const dd = document.createElement("dd");
+  dd.textContent = value;
+  wrapper.append(dt, dd);
+  return wrapper;
+}
+
 function percentage(value) {
   return `${Math.round((typeof value === "number" ? value : 0) * 100)}%`;
 }
@@ -577,6 +708,43 @@ async function fetchServiceState() {
     serviceIndicators.append(
       indicator(t("cacheLabel"), percentage(cache.provider_search_hit_rate), "success"),
     );
+    const answerStatus = payload.answer && typeof payload.answer === "object" ? payload.answer : {};
+    let answerLabel = t("storageOff");
+    let answerState = "partial";
+    if (answerStatus.available) {
+      answerLabel = t("storageOn");
+      answerState = "success";
+    } else if (answerStatus.enabled) {
+      answerLabel = t("storageBroken");
+      answerState = "error";
+    }
+    serviceIndicators.append(indicator(t("answerButton"), answerLabel, answerState));
+    // Always visible, never truly `disabled`: a disabled button gives no
+    // hover/touch feedback and no reason why. This one stays clickable —
+    // execute() intercepts the click and explains instead of submitting.
+    answerButton.classList.toggle("is-unavailable", !answerStatus.available);
+    answerButton.setAttribute("aria-disabled", String(!answerStatus.available));
+    // Lives right by the search buttons, not just in the status panel below
+    // the fold: that panel is easy to miss, and this is the one place an
+    // operator will actually look when the button they expect isn't there.
+    answerHint.hidden = !(answerStatus.enabled && !answerStatus.available);
+    answerHint.textContent = t("answerHintMissingCredential");
+    // `configured` (endpoint+model on disk) is independent of `enabled`, on
+    // purpose: the toggle below needs a real setting to switch even while
+    // it's off, or turning the feature back on would never be reachable.
+    if (answerStatus.configured) {
+      answerConfigBody.replaceChildren();
+      answerConfigBody.append(
+        configRow(t("answerConfigStateLabel"), answerLabel),
+        configRow(t("answerConfigModelLabel"), boundedText(answerStatus.model, 160) || t("unavailable")),
+        configRow(t("answerConfigEndpointLabel"), boundedText(answerStatus.endpoint, 160) || t("unavailable")),
+      );
+      answerConfig.hidden = false;
+      answerEnabledToggle.checked = Boolean(answerStatus.enabled);
+      answerEnabledToggle.disabled = false;
+    } else {
+      answerConfig.hidden = true;
+    }
     const degraded = payload.status !== "ok";
     serviceSummary.textContent = degraded ? t("serviceDegraded") : t("serviceOk");
     serviceSummary.dataset.state = degraded ? "partial" : "success";
@@ -587,6 +755,33 @@ async function fetchServiceState() {
     return null;
   }
 }
+
+// Admin-only: flips just `answer.enabled` on the server, persisted to its
+// config file and applied without a restart. Never touches the credential,
+// provider, or model — see `docs/resumen-con-ia.md`.
+async function toggleAnswer() {
+  const desired = answerEnabledToggle.checked;
+  answerEnabledToggle.disabled = true;
+  answerToggleStatus.hidden = true;
+  try {
+    const response = await fetch("/answer/enabled", {
+      method: "POST",
+      headers: authHeaders({ "Content-Type": "application/json" }),
+      body: JSON.stringify({ enabled: desired }),
+      credentials: "same-origin",
+    });
+    if (!response.ok) throw new Error(statusFromHttp(response));
+    await fetchServiceState();
+  } catch (error) {
+    answerEnabledToggle.checked = !desired;
+    answerEnabledToggle.disabled = false;
+    answerToggleStatus.hidden = false;
+    answerToggleStatus.textContent =
+      error.message === "unauthorized" ? t("unauthorized") : t("answerToggleFailed");
+  }
+}
+
+answerEnabledToggle.addEventListener("change", toggleAnswer);
 
 // ── History ─────────────────────────────────────────────────────
 const historyPanel = document.querySelector(".history-panel");
@@ -794,12 +989,14 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#search-heading").textContent = t("searchHeading");
   document.querySelector("#search-button").textContent = t("searchButton");
   document.querySelector("#deep-button").textContent = t("deepButton");
+  document.querySelector("#answer-button").textContent = t("answerButton");
+  document.querySelector("#answer-config-summary").textContent = t("answerConfigLabel");
+  document.querySelector("#answer-toggle-label").textContent = t("answerToggleLabel");
   document.querySelector("#previous").textContent = t("previous");
   document.querySelector("#next").textContent = t("next");
   document.querySelector("#cancel-button").textContent = t("cancel");
   document.querySelector(".skip-link").textContent = t("skipToResults");
   document.querySelector(".brand").setAttribute("aria-label", t("brandLabel"));
-  document.querySelector(".product-label").textContent = t("productLabel");
   document.querySelector("#result-heading").textContent = t("resultsHeading");
   document.querySelector("#provider-heading").textContent = t("providerHeading");
   document.querySelector("#service-heading").textContent = t("serviceHeading");
@@ -814,4 +1011,5 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#file-type option[value='']").textContent = t("fileTypeAny");
   document.querySelector("label[for='local-token']").textContent = t("tokenLabel");
   document.querySelector("#token-help").textContent = t("tokenHelp");
+  updateThemeToggle();
 });

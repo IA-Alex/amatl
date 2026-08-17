@@ -972,7 +972,15 @@ async fn mcp_uses_streamable_http_and_exposes_exactly_the_declared_tools() {
         .collect::<std::collections::BTreeSet<_>>();
     assert_eq!(
         names,
-        ["deep_search", "fetch", "providers", "search", "status"].into()
+        [
+            "answer",
+            "deep_search",
+            "fetch",
+            "providers",
+            "search",
+            "status"
+        ]
+        .into()
     );
     // Local file ingestion is deliberately CLI-only: an MCP listener must not
     // become a remote file reader.
@@ -2170,6 +2178,99 @@ async fn a_rejected_reload_leaves_the_running_service_in_place() {
         .await
         .unwrap();
     assert_eq!(still_serving.status(), StatusCode::OK);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn answer_toggle_requires_the_bearer_token() {
+    let response = app()
+        .await
+        .oneshot(
+            request("/answer/enabled")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"enabled": true}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::UNAUTHORIZED);
+}
+
+#[tokio::test]
+async fn answer_toggle_flips_the_flag_and_applies_without_restart() {
+    let base = "schema_version = \"1\"\n\n\
+                [data_policy]\ninference = \"remote_explicit\"\n\n\
+                [inference]\nremote_endpoint = \"https://api.deepinfra.com/v1/openai/embeddings\"\n\
+                remote_model = \"BAAI/bge-base-en-v1.5\"\n\n\
+                [answer]\nenabled = false\n\
+                endpoint = \"https://api.deepinfra.com/v1/openai/chat/completions\"\n\
+                model = \"deepseek-ai/DeepSeek-V3\"\n\
+                credential_env = \"AMATL_TEST_ANSWER_KEY\"\n";
+    let (app, path) = reloadable_app(base).await;
+
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/answer/enabled")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"enabled": true}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+
+    // Persisted: a fresh read of the file (not just the in-memory service)
+    // shows the flag flipped.
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(on_disk.contains("enabled = true"));
+    // Untouched: the toggle never wrote near the credential or model.
+    assert!(on_disk.contains("credential_env = \"AMATL_TEST_ANSWER_KEY\""));
+    assert!(on_disk.contains("model = \"deepseek-ai/DeepSeek-V3\""));
+
+    let status = json_body(
+        app.oneshot(authorized("/status").body(Body::empty()).unwrap())
+            .await
+            .unwrap(),
+    )
+    .await;
+    assert_eq!(status["answer"]["enabled"], true);
+    // Model/endpoint were already on disk before the toggle — configured
+    // reflects that regardless of enabled, so this was already true.
+    assert_eq!(status["answer"]["configured"], true);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn answer_toggle_refuses_to_enable_an_incomplete_config_without_writing() {
+    // No endpoint/model: enabling this would fail Config::validate.
+    let base = "schema_version = \"1\"\n\n\
+                [data_policy]\ninference = \"remote_explicit\"\n\n\
+                [inference]\nremote_endpoint = \"https://api.deepinfra.com/v1/openai/embeddings\"\n\
+                remote_model = \"BAAI/bge-base-en-v1.5\"\n\n\
+                [answer]\nenabled = false\n";
+    let (app, path) = reloadable_app(base).await;
+
+    let response = app
+        .oneshot(
+            authorized("/answer/enabled")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"enabled": true}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(
+        json_body(response).await["error"]["code"],
+        "configuration_invalid"
+    );
+    // Fails closed before ever writing: the file on disk is untouched.
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(on_disk.contains("enabled = false"));
     let _ = std::fs::remove_file(path);
 }
 

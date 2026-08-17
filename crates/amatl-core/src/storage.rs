@@ -2243,6 +2243,70 @@ mod tests {
     }
 
     #[tokio::test]
+    async fn saved_document_crud_round_trips() {
+        let storage =
+            SqliteStorage::open(path("saved-crud"), crate::config::SqliteLockingMode::Normal)
+                .await
+                .unwrap();
+        let id = storage
+            .saved_document_put(
+                "https://example.com/doc",
+                Some("Example"),
+                Some("A snippet"),
+                "hash-1",
+                "extractor-v1",
+                "payload-bytes",
+                Some("rust"),
+                "tag-a,tag-b",
+            )
+            .await
+            .unwrap();
+        assert!(id > 0);
+
+        // Read back the persisted document.
+        let loaded = storage
+            .saved_document_get("https://example.com/doc", "hash-1", "extractor-v1")
+            .await
+            .unwrap()
+            .expect("saved document must be readable");
+        assert_eq!(loaded.canonical_url, "https://example.com/doc");
+        assert_eq!(loaded.title.as_deref(), Some("Example"));
+        assert_eq!(loaded.snippet.as_deref(), Some("A snippet"));
+        assert_eq!(loaded.payload, "payload-bytes");
+        assert_eq!(loaded.source_query.as_deref(), Some("rust"));
+        assert_eq!(loaded.tags, "tag-a,tag-b");
+
+        // Upsert on the same (url, hash, extractor) updates instead of duplicating.
+        storage
+            .saved_document_put(
+                "https://example.com/doc",
+                Some("Example Updated"),
+                Some("New snippet"),
+                "hash-1",
+                "extractor-v1",
+                "new-payload",
+                Some("rust"),
+                "tag-a",
+            )
+            .await
+            .unwrap();
+        let list = storage.saved_document_list(10, 0).await.unwrap();
+        assert_eq!(list.len(), 1, "upsert must not create a duplicate row");
+        assert_eq!(list[0].title.as_deref(), Some("Example Updated"));
+        assert_eq!(list[0].payload, "new-payload");
+
+        // Delete removes the row.
+        assert!(storage.saved_document_delete(id).await.unwrap());
+        assert!(storage
+            .saved_document_get("https://example.com/doc", "hash-1", "extractor-v1")
+            .await
+            .unwrap()
+            .is_none());
+        storage.pool.close().await;
+        let _ = std::fs::remove_file(path("saved-crud"));
+    }
+
+    #[tokio::test]
     async fn cache_enforces_ttl_and_lru_entry_limit() {
         let storage = SqliteStorage::open(
             path("cache-policy"),

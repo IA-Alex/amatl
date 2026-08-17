@@ -1,5 +1,6 @@
 //! Core shared by every AMATL surface. Keep product logic out of CLI/UI/API/MCP.
 
+pub mod answer;
 pub mod audit;
 pub mod budget;
 pub mod cache;
@@ -37,6 +38,7 @@ pub mod storage;
 pub mod telemetry;
 mod text;
 
+pub use answer::{Answer, AnswerError, AnswerSource, CompletionBackend, RemoteCompletionBackend};
 pub use audit::{
     SecurityAudit, SecurityEventInput, AUDIT_DEFAULT_RETENTION_DAYS, AUDIT_MAX_RETENTION_DAYS,
 };
@@ -48,9 +50,9 @@ pub use cache::{
 pub use circuit::{CircuitPolicy, CircuitSnapshot, CircuitState, ProviderCircuit};
 pub use classify::classify;
 pub use config::{
-    ApprovalStatus, Config, ConfigError, DataPolicyConfig, EgressPolicy, ExecutionConfig,
-    InferenceConfig, InferenceMode, ProviderConfig, ProviderRuntimeConfig, RendererConfig, Scope,
-    SecurityProfile, ServerClient, ServerConfig, TlsConfig, MCP_TOOLS,
+    AnswerConfig, ApprovalStatus, Config, ConfigError, DataPolicyConfig, EgressPolicy,
+    ExecutionConfig, InferenceConfig, InferenceMode, ProviderConfig, ProviderRuntimeConfig,
+    RendererConfig, Scope, SecurityProfile, ServerClient, ServerConfig, TlsConfig, MCP_TOOLS,
 };
 pub use deep::{DeepCandidate, DeepOrchestrator, DeepRequest};
 pub use diversity::{DiversityDecision, DiversityMetrics, DiversityOutput, DiversityPolicyV1};
@@ -101,9 +103,9 @@ pub use progressive::{
     CoverageMetrics, ProgressiveRoundTrace, SearchPolicyError, SearchPolicyV1, SearchStopReason,
 };
 pub use providers::{
-    BraveProvider, DuckDuckGoHtmlProvider, HttpRequest, HttpResponse, HttpTransport, MockBehavior,
-    MockProvider, MojeekProvider, Provider, ProviderAvailability, ProviderBuildContext,
-    ProviderContext, ProviderFactory, ProviderRegistry, ReqwestTransport, SearXngProvider,
+    BraveProvider, HttpRequest, HttpResponse, HttpTransport, MockBehavior, MockProvider,
+    MojeekProvider, Provider, ProviderAvailability, ProviderBuildContext, ProviderContext,
+    ProviderFactory, ProviderRegistry, ReqwestTransport, SearXngProvider,
 };
 pub use query::{parse_query, QueryParseError};
 pub use ranking::{RankingPolicyError, RankingPolicyV1};
@@ -117,10 +119,10 @@ pub use robots::{
 };
 pub use router::{AdaptiveRouter, AdaptiveRoutingRecommendation, ProviderDescriptor, StaticRouter};
 pub use service::{
-    validate_provider_canary, validate_provider_canary_with, AmatlService, CacheStatus,
-    ExecutionLimits, ProviderCanaryError, ProviderSummary, ProviderSurfaceStatus,
-    SaveDocumentInput, SearchExecution, ServiceError, ServiceStatus, ServiceSurface,
-    ServiceSurfaceKind, SourceStatus, StorageStatus,
+    validate_provider_canary, validate_provider_canary_with, AmatlService, AnswerResult,
+    AnswerStatus, CacheStatus, ExecutionLimits, ProviderCanaryError, ProviderSummary,
+    ProviderSurfaceStatus, SaveDocumentInput, SearchExecution, ServiceError, ServiceStatus,
+    ServiceSurface, ServiceSurfaceKind, SourceStatus, StorageStatus,
 };
 pub use storage::{
     CacheStats, CachedDocument, SavedDocument, SearchHistoryEntry, SecurityEvent, SqliteStorage,

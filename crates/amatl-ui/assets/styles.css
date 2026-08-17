@@ -7,13 +7,66 @@
   --secondary: #9da5ae;
   --muted: #6f7780;
   --accent: #4f8cff;
+  /* Same hue as --accent, darkened so white-on-accent (buttons) clears WCAG
+     2 AA's 4.5:1 for normal text; --accent itself already clears it as text
+     on --background/--surface and does not need to move. */
+  --accent-strong: #3d6dc6;
   --cyan: #48b8c7;
   --success: #4fae72;
   --warning: #d6a84b;
   --error: #d95c5c;
+  /* Same hue as --error, lightened so text clears WCAG 2 AA against the
+     translucent --error tint used as this element's own background
+     (`.provider-badge--unavailable`); --error itself already clears 4.5:1
+     as plain text on --background/--surface. */
+  --error-on-tint: #e07c7c;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: var(--background);
   color: var(--text);
+}
+
+/* Light theme, opt-in only: AMATL shipped dark-only until now, so the bare
+   :root above stays exactly as it was (no regression for anyone who never
+   touches the toggle). This block applies only on an explicit choice
+   (#theme-toggle, persisted to localStorage by app.js); the media query
+   below covers an OS light preference when the visitor hasn't chosen yet.
+   Every color here is deepened from its dark-theme hue, not lightened from
+   it, so it clears WCAG 2 AA's 4.5:1 as plain text on --background/--surface
+   the same way the dark tokens above do. */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --background: #f5f7fa;
+  --surface: #ffffff;
+  --border: #d8dee5;
+  --text: #14181c;
+  --secondary: #4b5560;
+  --muted: #737d87;
+  --accent: #2f6fe0;
+  --accent-strong: #2757b8;
+  --cyan: #157a8a;
+  --success: #21804a;
+  --warning: #92660f;
+  --error: #b3342f;
+  --error-on-tint: #7a231f;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --background: #f5f7fa;
+    --surface: #ffffff;
+    --border: #d8dee5;
+    --text: #14181c;
+    --secondary: #4b5560;
+    --muted: #737d87;
+    --accent: #2f6fe0;
+    --accent-strong: #2757b8;
+    --cyan: #157a8a;
+    --success: #21804a;
+    --warning: #92660f;
+    --error: #b3342f;
+    --error-on-tint: #7a231f;
+  }
 }
 
 * { box-sizing: border-box; }
@@ -49,7 +102,12 @@ button, input, select, summary, a { outline-offset: 0.2rem; }
 
 .masthead {
   display: flex;
-  align-items: baseline;
+  /* center, not baseline: .brand now leads with an SVG icon rather than
+     plain text, and a flex item's synthesized "first baseline" when its
+     content has no real text baseline is inconsistent enough across engines
+     to be worth avoiding outright. center is unambiguous and is the
+     standard choice for an icon+wordmark+controls header row. */
+  align-items: center;
   gap: 0.8rem;
   width: min(100% - 2rem, 72rem);
   margin: 0 auto;
@@ -58,6 +116,9 @@ button, input, select, summary, a { outline-offset: 0.2rem; }
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42em;
   color: var(--text);
   font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
   font-size: clamp(1.25rem, 4vw, 1.4rem);
@@ -66,7 +127,15 @@ button, input, select, summary, a { outline-offset: 0.2rem; }
   text-decoration: none;
 }
 
-.product-label { color: var(--secondary); font-size: 0.8rem; }
+.brand-icon {
+  /* Intrinsic aspect ratio is taller than wide (a codex, not a square badge)
+     — height-only sizing keeps it undistorted at any font-size the wordmark
+     scales to; width comes from the image's own ratio. */
+  height: 1.7em;
+  width: auto;
+  flex: none;
+}
+
 
 .shell {
   width: min(100% - 2rem, 72rem);
@@ -101,9 +170,9 @@ input:focus, select:focus { border-color: var(--accent); }
 button {
   min-height: 2.75rem;
   padding: 0.65rem 1rem;
-  border: 0.0625rem solid var(--accent);
+  border: 0.0625rem solid var(--accent-strong);
   border-radius: 0.5rem;
-  background: var(--accent);
+  background: var(--accent-strong);
   color: #fff;
   cursor: pointer;
   font-weight: 650;
@@ -112,9 +181,51 @@ button {
 button:hover { filter: brightness(1.08); }
 button:disabled { cursor: not-allowed; filter: grayscale(0.6); opacity: 0.55; }
 
-.search-actions { display: flex; gap: 0.5rem; }
+.search-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .secondary-action { border-color: var(--border); background: var(--surface); color: var(--text); }
 button[data-active="true"] { box-shadow: 0 0 0 0.125rem var(--cyan); }
+
+/* Looks muted like :disabled (same grayscale/opacity), but stays a real,
+   clickable, focusable button — a genuinely disabled element can't be
+   hovered on touch and gives no reason why. Clicking it explains what's
+   missing instead of firing a request that would just fail. */
+.secondary-action.is-unavailable { filter: grayscale(0.6); opacity: 0.55; }
+.secondary-action.is-unavailable:hover { filter: grayscale(0.4) brightness(1.05); }
+
+/* Matches the [n] citation markers in .answer-text so a source can be found
+   by eye, not just trusted blindly. */
+.result-index {
+  display: inline-block;
+  margin-right: 0.4rem;
+  color: var(--cyan);
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.75rem;
+}
+
+/* Sits at the far right of .masthead (margin-left: auto), mirroring .brand
+   at the far left — the header stays a two-point layout, identity on one
+   side and the one control on the other, at any width. */
+.theme-toggle {
+  margin-left: auto;
+  flex: none;
+  min-height: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-color: var(--border);
+  background: var(--surface);
+  color: var(--secondary);
+}
+.theme-toggle:hover { color: var(--text); border-color: var(--accent); filter: none; }
+/* Explicit show/hide by class, not the `hidden` attribute/`.hidden` IDL
+   property: those are unreliable on inline <svg> (an SVGElement, not an
+   HTMLElement) across engines and were the reason both icons rendered at
+   once regardless of theme. This is unambiguous regardless of element type. */
+.theme-toggle svg { width: 1.2rem; height: 1.2rem; display: none; }
+.theme-toggle svg.is-active { display: block; }
 
 .filters { margin-top: 0.8rem; color: var(--secondary); }
 .filters summary { width: fit-content; cursor: pointer; font-size: 0.85rem; }
@@ -138,6 +249,20 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 .status[data-state="success"] { color: var(--success); }
 .status[data-state="partial"] { color: var(--warning); }
 .status[data-state="error"] { color: var(--error); }
+
+/* Sits above the raw results, never in place of them — search/deep results
+   always render below unchanged; this is an additional, clearly separate
+   layer, not a replacement view. */
+.answer-card {
+  min-width: 0;
+  margin-top: 1.2rem;
+  padding: 1.1rem 1.2rem;
+  border: 0.0625rem solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--surface);
+}
+.answer-text { margin: 0; color: var(--text); line-height: 1.6; overflow-wrap: anywhere; }
+.answer-meta { margin: 0.7rem 0 0; color: var(--muted); font-size: 0.75rem; }
 
 .results { min-width: 0; margin: 1rem 0 0; padding: 0; list-style: none; }
 .result-card { min-width: 0; padding: 1.2rem 0; border-top: 0.0625rem solid var(--border); }
@@ -230,6 +355,37 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 .provenance dl div { min-width: 0; }
 .provenance dt { color: var(--muted); font-size: 0.68rem; }
 .provenance dd { margin: 0.2rem 0 0; color: var(--secondary); font-size: 0.75rem; overflow-wrap: anywhere; }
+
+/* Read-only — matches .provenance's disclosure/definition-list treatment so
+   it reads as the same kind of "more detail, collapsed by default" control,
+   not a new visual pattern. */
+.answer-config { margin-top: 0.8rem; color: var(--secondary); }
+.answer-config summary { width: fit-content; cursor: pointer; font-size: 0.8rem; }
+.answer-config-body {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin: 0.75rem 0 0;
+  padding: 0.9rem;
+  border: 0.0625rem solid var(--border);
+  border-radius: 0.5rem;
+}
+.answer-config-body div { min-width: 0; }
+.answer-config-body dt { color: var(--muted); font-size: 0.68rem; }
+.answer-config-body dd { margin: 0.2rem 0 0; color: var(--secondary); font-size: 0.75rem; overflow-wrap: anywhere; }
+
+.answer-toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--text);
+  cursor: pointer;
+  width: fit-content;
+}
+.answer-toggle-row input { accent-color: var(--accent-strong); width: 1rem; height: 1rem; margin: 0; }
+.answer-toggle-row input:disabled { cursor: not-allowed; opacity: 0.55; }
 .provenance a { color: var(--accent); }
 
 .loading { display: flex; gap: 0.35rem; margin: 2rem 0; }
@@ -255,11 +411,11 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
   .filter-grid { grid-template-columns: minmax(0, 1fr); }
   .result-header { display: block; }
   .status { margin-top: 0.4rem; text-align: left; }
-  .product-label { display: none; }
   .result-snippet { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
   .document-header, .fragment-footer { display: block; }
   .document-status, .fragment-verification { display: inline-block; margin-top: 0.5rem; }
   .provenance dl { grid-template-columns: minmax(0, 1fr); }
+  .answer-config-body { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -318,7 +474,7 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 
 .provider-badge--unavailable {
   background: color-mix(in srgb, var(--error) 20%, transparent);
-  color: var(--error);
+  color: var(--error-on-tint);
 }
 
 /* ── Cancel button ──────────────────────────────────────────── */

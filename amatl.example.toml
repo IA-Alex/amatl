@@ -12,32 +12,41 @@ egress = "governed"
 inference = "disabled"
 
 # Mapa abierto: cada [providers.<nombre>] declara una fuente y se fusiona sobre
-# los expedientes incorporados (brave, mojeek, duckduckgo_html, searxng,
-# marginalia). Un nombre en "enabled" debe estar declarado aquí y registrado en
-# el ProviderRegistry.
+# los expedientes incorporados (brave, mojeek, searxng, marginalia). Un nombre
+# en "enabled" debe estar declarado aquí y registrado en el ProviderRegistry.
 [providers]
 enabled = []
 # Ejemplo: activar SearXNG autohospedado (gratis, sin cuota).
 # La URL de la instancia se lee de SEARXNG_INSTANCE_URL (por defecto
-# http://127.0.0.1:8888). No requiere credencial.
+# http://127.0.0.1:8888). No requiere credencial. El resto de la ficha
+# (método, contrato, cuota, coste, datos y riesgo) ya viene del expediente
+# incorporado en config.rs; aquí sólo se aprueba con identidad y fecha reales.
 # enabled = ["searxng"]
 # [providers.searxng]
 # approval_status = "approved"
 # reviewed_at = "2026-08-14"
-# reviewer = "owner"
+# reviewer = "identidad verificable"
 #
 # Ejemplo: activar Marginalia (requiere MARGINALIA_API_KEY).
-# El adapter es un scaffold — search() devuelve error hasta implementarlo.
+# El adapter está implementado y probado — consulta api2.marginalia-search.com
+# con el header API-Key. Sólo falta aprobar la ficha con identidad y fecha
+# reales (ver docs/gobernanza-providers.md, sección «Fichas de aprobación»).
 # enabled = ["marginalia"]
 # [providers.marginalia]
 # approval_status = "approved"
-# reviewed_at = "2026-08-14"
-# reviewer = "owner"
-# terms_version_or_date = "2026-08-01"
-# rate_limit = "TBD"
-# cost_model = "TBD"
-# data_handling_notes = "TBD"
-# operational_risk = "TBD"
+# adapter_version = "marginalia-v1"
+# reviewed_at = "YYYY-MM-DD"
+# reviewer = "identidad verificable"
+# terms_url = "https://www.marginalia.nu/"
+# terms_version_or_date = "..."
+# allowed_access_method = "official_api"
+# plan_or_contract = "..."
+# rate_limit = "..."
+# cost_model = "0"
+# credential_env = "MARGINALIA_API_KEY"
+# storage_rights = false
+# data_handling_notes = "Uso no comercial (CC-BY-NC-SA). Índice pequeño orientado a web independiente."
+# operational_risk = "Dependencia de la API externa (api2.marginalia-search.com); cuota y posible bloqueo por automatización."
 
 # Backend de inferencia. El modo vive en [data_policy]; esta sección lo dimensiona.
 # Los pesos semánticos de deep.ranking_v2 exigen inference = "local_only".
@@ -62,6 +71,26 @@ reranker_prior_weight = 0.5
 # remote_credential_env = "AMATL_INFERENCE_KEY"
 # remote_timeout_ms = 5000
 # remote_max_batch = 32
+
+# Answer synthesis: an optional, explicit layer on top of Search. `search`/
+# `deep` are unaffected either way — this only adds a distinct capability a
+# caller invokes on purpose (HTTP /answer, MCP tool `answer`) that turns
+# AMATL's own ranked results into a short, cited answer. The model only ever
+# sees the sources AMATL retrieved; it is instructed to cite every claim and
+# say plainly when the sources don't answer the question, never to fill the
+# gap from its own knowledge. Requires data_policy.inference =
+# "remote_explicit" (same gate as the remote embeddings backend above),
+# because this is another remote model call that leaves the machine.
+# [answer]
+# enabled = true
+# Example: DeepInfra's OpenAI-compatible chat completions endpoint.
+# endpoint = "https://api.deepinfra.com/v1/openai/chat/completions"
+# model = "deepseek-ai/DeepSeek-V3"
+# credential_env = "DEEPINFRA_API_KEY"
+# timeout_ms = 20000
+# max_sources = 8
+# max_source_chars = 1200
+# max_answer_tokens = 700
 
 [timeouts]
 provider_ms = 3000

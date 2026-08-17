@@ -30,12 +30,6 @@ use serde::Deserialize;
 use std::sync::Arc;
 use url::Url;
 
-/// Default SearXNG instance URL when `SEARXNG_INSTANCE_URL` is unset.
-const DEFAULT_INSTANCE_URL: &str = "http://127.0.0.1:8888";
-
-/// Environment variable that overrides the SearXNG instance URL.
-const INSTANCE_URL_ENV: &str = "SEARXNG_INSTANCE_URL";
-
 pub struct SearXngProvider {
     instance_url: Url,
     enabled: bool,
@@ -63,16 +57,13 @@ impl SearXngProvider {
         plan: &SearchPlan,
         timeout_ms: u64,
     ) -> Result<(HttpRequest, FilterUse), ProviderError> {
-        let mut url = self
-            .instance_url
-            .join("/search")
-            .map_err(|_| {
-                error(
-                    ProviderErrorKind::InvalidResponse,
-                    "SearXNG instance URL is invalid",
-                    None,
-                )
-            })?;
+        let mut url = self.instance_url.join("/search").map_err(|_| {
+            error(
+                ProviderErrorKind::InvalidResponse,
+                "SearXNG instance URL is invalid",
+                None,
+            )
+        })?;
 
         let (query, filters) = translated_query(plan);
         {
@@ -96,7 +87,6 @@ impl SearXngProvider {
         ))
     }
 }
-
 
 #[async_trait]
 impl Provider for SearXngProvider {
@@ -155,14 +145,12 @@ impl Provider for SearXngProvider {
     }
 }
 
-
 // ---------------------------------------------------------------------------
 // Filter translation
 // ---------------------------------------------------------------------------
 
 #[derive(Default)]
 struct FilterUse {
-    accepted: Vec<String>,
     ignored: Vec<String>,
     approximated: Vec<String>,
 }
@@ -214,7 +202,6 @@ fn translated_query(plan: &SearchPlan) -> (String, FilterUse) {
     (search.trim().to_string(), filters)
 }
 
-
 // ---------------------------------------------------------------------------
 // Response parsing
 // ---------------------------------------------------------------------------
@@ -223,13 +210,18 @@ fn translated_query(plan: &SearchPlan) -> (String, FilterUse) {
 #[derive(Deserialize)]
 #[serde(rename_all = "snake_case")]
 struct SearXngResponse {
-    query: String,
     #[serde(default)]
     results: Vec<SearXngResult>,
     #[serde(default)]
     answers: Vec<SearXngAnswer>,
+    /// `[engine_name, error_type]` pairs, e.g. `["brave", "too many
+    /// requests"]`. A plain `Vec<String>` here previously produced "invalid
+    /// type: sequence, expected a string" on any real SearXNG instance,
+    /// since every element is itself a 2-item array, not a string — this
+    /// only ever passed against the fixtures below because they were typed
+    /// (incorrectly) to match the old field, not a real response.
     #[serde(default)]
-    unresponsive_engines: Vec<String>,
+    unresponsive_engines: Vec<(String, String)>,
 }
 
 #[derive(Deserialize)]
@@ -237,7 +229,6 @@ struct SearXngResult {
     title: Option<String>,
     url: Option<String>,
     content: Option<String>,
-    engine: Option<String>,
     #[serde(default)]
     published_date: Option<String>,
 }
@@ -459,18 +450,63 @@ mod tests {
 
     #[test]
     fn marks_partial_when_engines_are_unresponsive() {
+        // Real shape: a list of `[engine_name, error_type]` pairs, not a
+        // list of plain strings — see the field's doc comment.
         let response = HttpResponse {
             status: 200,
             headers: BTreeMap::new(),
             body: br#"{
                 "query": "rust",
                 "results": [{"title": "Rust", "url": "https://rust-lang.org/", "content": "ok"}],
-                "unresponsive_engines": ["duckduckgo", "google"]
+                "unresponsive_engines": [["duckduckgo", "timeout"], ["google", "too many requests"]]
             }"#
             .to_vec(),
         };
         let result = parse_response(response, FilterUse::default()).unwrap();
         assert_eq!(result.status, ProviderExecutionStatus::Partial);
+    }
+
+    /// Regression for a real `searxng/searxng:latest` response (captured
+    /// 2026-08-15): extra per-result fields this parser never mapped
+    /// (`engines`, `positions`, `parsed_url`, `score`, …) are silently
+    /// ignored as always, and `unresponsive_engines` — the one field whose
+    /// real shape didn't match this struct — now parses instead of failing
+    /// with "invalid type: sequence, expected a string".
+    #[test]
+    fn parses_a_real_instance_response_including_unmapped_extra_fields() {
+        let response = HttpResponse {
+            status: 200,
+            headers: BTreeMap::new(),
+            body: br#"{
+                "query": "rust",
+                "results": [{
+                    "template": "default.html",
+                    "title": "Rust Programming Language",
+                    "url": "https://www.rust-lang.org/",
+                    "content": "A language empowering everyone.",
+                    "img_src": "", "iframe_src": "", "audio_src": "", "thumbnail": "",
+                    "publishedDate": null, "pubdate": "", "length": null,
+                    "views": "", "author": "", "metadata": "", "priority": "",
+                    "engines": ["google", "brave"],
+                    "open_group": false, "close_group": false,
+                    "positions": [1, 3],
+                    "score": 4.5,
+                    "category": "general",
+                    "engine": "google",
+                    "parsed_url": ["https", "www.rust-lang.org", "/", "", "", ""]
+                }],
+                "answers": [],
+                "corrections": [],
+                "infoboxes": [],
+                "suggestions": [],
+                "unresponsive_engines": [["brave", "too many requests"], ["startpage", "Suspended: CAPTCHA"]]
+            }"#
+            .to_vec(),
+        };
+        let result = parse_response(response, FilterUse::default()).unwrap();
+        assert_eq!(result.status, ProviderExecutionStatus::Partial);
+        assert_eq!(result.results.len(), 1);
+        assert_eq!(result.results[0].url, "https://www.rust-lang.org/");
     }
 
     #[test]
@@ -483,6 +519,31 @@ mod tests {
         let error = parse_response(response, FilterUse::default()).unwrap_err();
         assert_eq!(error.kind, ProviderErrorKind::RateLimit);
         assert_eq!(error.retry_after_ms, Some(5_000));
+    }
+
+    #[test]
+    fn malformed_json_is_typed_invalid_response_not_a_panic() {
+        let response = HttpResponse {
+            status: 200,
+            headers: BTreeMap::new(),
+            body: b"{\"results\": [".to_vec(),
+        };
+        let error = parse_response(response, FilterUse::default()).unwrap_err();
+        assert_eq!(error.kind, ProviderErrorKind::InvalidResponse);
+    }
+
+    #[test]
+    fn result_missing_optional_fields_falls_back_to_an_empty_url() {
+        let response = HttpResponse {
+            status: 200,
+            headers: BTreeMap::new(),
+            body: br#"{"results": [{"title": "Rust"}], "answers": [], "unresponsive_engines": []}"#
+                .to_vec(),
+        };
+        let result = parse_response(response, FilterUse::default()).unwrap();
+        assert_eq!(result.results.len(), 1);
+        assert_eq!(result.results[0].url, "");
+        assert_eq!(result.results[0].snippet, None);
     }
 
     #[test]
@@ -530,5 +591,24 @@ mod tests {
             available.availability(),
             ProviderAvailability::Available
         ));
+    }
+
+    proptest::proptest! {
+        /// No response body, however malformed, should ever panic the parser —
+        /// only a typed `ProviderError` is an acceptable outcome. Mirrors the
+        /// arbitrary-bytes pattern already used for the local-ingest parsers
+        /// in `ingest.rs`.
+        #[test]
+        fn parser_never_panics_on_arbitrary_bytes(
+            status in proptest::num::u16::ANY,
+            body in proptest::collection::vec(proptest::num::u8::ANY, 0..4096)
+        ) {
+            let response = HttpResponse {
+                status,
+                headers: BTreeMap::new(),
+                body,
+            };
+            let _ = parse_response(response, FilterUse::default());
+        }
     }
 }

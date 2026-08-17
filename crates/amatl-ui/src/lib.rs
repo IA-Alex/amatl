@@ -38,6 +38,20 @@ pub fn asset(path: &str) -> Option<UiAsset> {
             cache_control: "public, max-age=3600",
             body: include_bytes!("../assets/i18n.js"),
         }),
+        // Brand mark. Fixed brown, not a `--accent`-family token: this is
+        // the one deliberately single-theme element on the page (see
+        // docs/identidad-visual.md) — the rest of the UI's color system is
+        // untouched by it.
+        "/brand-icon.png" => Some(UiAsset {
+            content_type: "image/png",
+            cache_control: "public, max-age=3600",
+            body: include_bytes!("../assets/brand-icon.png"),
+        }),
+        "/favicon.png" => Some(UiAsset {
+            content_type: "image/png",
+            cache_control: "public, max-age=3600",
+            body: include_bytes!("../assets/favicon.png"),
+        }),
         _ => None,
     }
 }
@@ -80,6 +94,8 @@ mod tests {
         );
         assert!(asset("/../Cargo.toml").is_none());
         assert!(asset("/unknown").is_none());
+        assert_eq!(asset("/brand-icon.png").unwrap().content_type, "image/png");
+        assert_eq!(asset("/favicon.png").unwrap().content_type, "image/png");
     }
 
     #[test]
@@ -183,7 +199,9 @@ mod tests {
             assert!(html.contains(field), "missing UI field: {field}");
         }
         assert!(javascript.contains("payload.schema_version !== \"1\""));
-        assert!(javascript.contains("mode === \"deep\" ? \"/deep\" : \"/search\""));
+        assert!(javascript.contains(
+            "mode === \"deep\" ? \"/deep\" : mode === \"answer\" ? \"/answer\" : \"/search\""
+        ));
         assert!(javascript.contains("fetch(endpoint"));
         assert!(javascript.contains("method: \"POST\""));
         assert!(javascript.contains("\"Content-Type\": \"application/json\""));

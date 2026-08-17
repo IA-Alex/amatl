@@ -209,6 +209,75 @@ async fn an_empty_result_set_renders_its_own_state() {
     client.close().await.unwrap();
 }
 
+/// axe-core 4.13.0, vendored — see `fixtures/axe-core/NOTICE.md` for
+/// provenance, license and upgrade instructions.
+const AXE_CORE_SOURCE: &str = include_str!("fixtures/axe-core/axe.min.js");
+
+#[tokio::test]
+async fn the_ui_has_no_automatically_detectable_accessibility_violations() {
+    if !enabled() {
+        return;
+    }
+    let port = spawn_server().await;
+    let Some(client) = browser().await else {
+        return;
+    };
+
+    client
+        .goto(&format!("http://127.0.0.1:{port}/"))
+        .await
+        .unwrap();
+
+    // Populate the results and status regions before auditing: the idle page
+    // and the results page are different DOM states, and both matter.
+    let query = client.find(Locator::Id("query")).await.unwrap();
+    query.send_keys("rust async").await.unwrap();
+    query.send_keys("\u{E007}").await.unwrap(); // Enter
+    wait_for(&client, Locator::Css("#results li")).await;
+
+    // `execute` runs through the WebDriver "Execute Script" command (CDP
+    // `Runtime.evaluate` under Chrome), not a `<script>` tag the page parses
+    // itself — it is not subject to the page's own `script-src 'self'` CSP,
+    // the same way the DevTools console isn't. This assertion is the load-
+    // bearing part of the test: if axe-core fails to define `window.axe`
+    // here, CSP (or something else) blocked injection and the run below is
+    // meaningless.
+    client.execute(AXE_CORE_SOURCE, vec![]).await.unwrap();
+    let axe_defined: bool = client
+        .execute("return typeof window.axe !== 'undefined';", vec![])
+        .await
+        .unwrap()
+        .as_bool()
+        .unwrap_or(false);
+    assert!(
+        axe_defined,
+        "axe-core did not load — script injection was blocked (CSP or otherwise)"
+    );
+
+    // `axe.run()` is promise-based; `execute_async` supplies the completion
+    // callback as the last element of `arguments`.
+    let report = client
+        .execute_async(
+            "var callback = arguments[arguments.length - 1]; \
+             axe.run(document, {}).then( \
+                 function(results) { callback(results.violations); }, \
+                 function(error) { callback([{ id: 'axe-run-failed', description: String(error) }]); } \
+             );",
+            vec![],
+        )
+        .await
+        .unwrap();
+
+    let violations = report.as_array().cloned().unwrap_or_default();
+    assert!(
+        violations.is_empty(),
+        "axe-core reported accessibility violations: {}",
+        serde_json::to_string_pretty(&violations).unwrap_or_default()
+    );
+
+    client.close().await.unwrap();
+}
+
 #[tokio::test]
 async fn the_layout_holds_at_a_narrow_viewport() {
     if !enabled() {

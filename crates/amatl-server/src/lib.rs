@@ -22,7 +22,7 @@ use axum::{
     },
     middleware::{self, Next},
     response::{IntoResponse, Response},
-    routing::{delete, get},
+    routing::{delete, get, post},
     Json, Router,
 };
 use rmcp::transport::streamable_http_server::{
@@ -207,13 +207,16 @@ struct ReloadReport {
 struct RequestMetrics {
     search_total: AtomicU64,
     deep_total: AtomicU64,
+    answer_total: AtomicU64,
     search_errors: AtomicU64,
     deep_errors: AtomicU64,
+    answer_errors: AtomicU64,
     rate_limited_total: AtomicU64,
     unauthorized_total: AtomicU64,
     request_timeout_total: AtomicU64,
     search_latency: LatencyWindow,
     deep_latency: LatencyWindow,
+    answer_latency: LatencyWindow,
 }
 
 /// Bounded ring of recent latencies used to publish quantiles without a
@@ -398,11 +401,18 @@ fn required_scope(method: &Method, path: &str) -> Option<Scope> {
     match path {
         "/search" => Some(Scope::Search),
         "/deep" => Some(Scope::Deep),
+        // Reuses Deep's scope rather than a dedicated one: like Deep, this
+        // runs a full search and then does more expensive, sensitive work on
+        // top of it (here, an outbound call to a third-party LLM).
+        "/answer" => Some(Scope::Deep),
         "/providers" | "/status" => Some(Scope::Read),
         "/history" | "/saved" if mutating => Some(Scope::Write),
         "/history" | "/saved" => Some(Scope::Read),
         // The audit trail names identities and addresses: operator only.
-        "/security-events" | "/reload" => Some(Scope::Admin),
+        // The answer toggle is admin too, same tier as /reload: it rewrites
+        // the running configuration file, even though the field it touches
+        // is narrow (see `Config::set_answer_enabled`).
+        "/security-events" | "/reload" | "/answer/enabled" => Some(Scope::Admin),
         "/mcp" => Some(Scope::Mcp),
         _ if path.starts_with("/mcp/") => Some(Scope::Mcp),
         // `/history/{id}` and `/saved/{id}` only ever delete.
@@ -551,6 +561,7 @@ pub async fn build_router_with_reload(
     let router = Router::new()
         .route("/search", get(search).post(search_post))
         .route("/deep", get(deep).post(deep_post))
+        .route("/answer", post(answer_post))
         .route("/providers", get(providers))
         .route("/status", get(status))
         .route("/history", get(history).delete(purge_history))
@@ -558,6 +569,7 @@ pub async fn build_router_with_reload(
         .route("/saved", get(saved_documents).post(save_document))
         .route("/saved/{id}", delete(delete_saved_document))
         .route("/reload", axum::routing::post(reload))
+        .route("/answer/enabled", post(answer_toggle))
         .route("/security-events", get(security_events))
         .route("/health", get(health))
         .route("/ready", get(ready))
@@ -836,6 +848,46 @@ async fn deep_post(
     }
 }
 
+/// Runs a search and synthesizes a grounded, cited answer from it. Mirrors
+/// `search_post`/`deep_post` exactly; the only difference is which service
+/// method it calls. Distinct from both on purpose: `search`/`deep` never
+/// change behavior because this route exists, and this route never runs
+/// unless the caller explicitly hits it.
+async fn answer_post(
+    State(state): State<AppState>,
+    Extension(request_id): Extension<RequestId>,
+    params: Result<Json<SearchParams>, JsonRejection>,
+) -> Response {
+    let Json(params) = match params {
+        Ok(params) => params,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    if !valid_query(&params.q) {
+        return api_error(ErrorCode::InvalidQuery);
+    }
+    let started = Instant::now();
+    let outcome = state
+        .service()
+        .answer(params.q, ServiceSurface::api(Some(request_id.into_inner())))
+        .await;
+    state
+        .metrics
+        .answer_latency
+        .record(started.elapsed().as_millis() as u64);
+    match outcome {
+        Ok(value) => {
+            state.metrics.answer_total.fetch_add(1, Ordering::Relaxed);
+            Json(value).into_response()
+        }
+        Err(error) => {
+            state.metrics.answer_errors.fetch_add(1, Ordering::Relaxed);
+            service_error(error)
+        }
+    }
+}
+
 async fn providers(State(state): State<AppState>) -> Response {
     match state.service().provider_summaries() {
         Ok(providers) => Json(ProviderResponse {
@@ -871,6 +923,46 @@ impl PageParams {
 /// call. The reload is atomic from a client's point of view: it either swaps a
 /// fully built service or changes nothing and reports why.
 async fn reload(State(state): State<AppState>) -> Response {
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+#[derive(Debug, Deserialize)]
+struct AnswerToggleParams {
+    enabled: bool,
+}
+
+/// Flip `answer.enabled` and nothing else — admin scoped, same trust tier as
+/// `/reload`, which this reuses for the actual apply step.
+///
+/// Validates a would-be config with the flag flipped *before* writing
+/// anything: if turning the feature on would leave `answer` unable to pass
+/// `Config::validate` (missing `endpoint`/`model`, an operator never
+/// finished configuring), this fails closed without ever touching the file
+/// or the credential — a half-written toggle is worse than no toggle.
+async fn answer_toggle(
+    State(state): State<AppState>,
+    params: Result<Json<AnswerToggleParams>, JsonRejection>,
+) -> Response {
+    let Json(params) = match params {
+        Ok(params) => params,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    candidate.answer.enabled = params.enabled;
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_answer_enabled(&path, params.enabled).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
     match state.clone().reload().await {
         Ok(report) => Json(report).into_response(),
         Err(error) => service_error(error),
@@ -1057,12 +1149,18 @@ async fn metrics(State(state): State<AppState>) -> Response {
          # HELP amatl_deep_requests_total Total deep requests received.\n\
          # TYPE amatl_deep_requests_total counter\n\
          amatl_deep_requests_total {}\n\
+         # HELP amatl_answer_requests_total Total answer requests received.\n\
+         # TYPE amatl_answer_requests_total counter\n\
+         amatl_answer_requests_total {}\n\
          # HELP amatl_search_errors_total Search requests that resulted in error.\n\
          # TYPE amatl_search_errors_total counter\n\
          amatl_search_errors_total {}\n\
          # HELP amatl_deep_errors_total Deep requests that resulted in error.\n\
          # TYPE amatl_deep_errors_total counter\n\
          amatl_deep_errors_total {}\n\
+         # HELP amatl_answer_errors_total Answer requests that resulted in error.\n\
+         # TYPE amatl_answer_errors_total counter\n\
+         amatl_answer_errors_total {}\n\
          # HELP amatl_rate_limited_total Requests rejected by rate limiter.\n\
          # TYPE amatl_rate_limited_total counter\n\
          amatl_rate_limited_total {}\n\
@@ -1074,14 +1172,17 @@ async fn metrics(State(state): State<AppState>) -> Response {
          amatl_request_timeout_total {}\n",
         m.search_total.load(Ordering::Relaxed),
         m.deep_total.load(Ordering::Relaxed),
+        m.answer_total.load(Ordering::Relaxed),
         m.search_errors.load(Ordering::Relaxed),
         m.deep_errors.load(Ordering::Relaxed),
+        m.answer_errors.load(Ordering::Relaxed),
         m.rate_limited_total.load(Ordering::Relaxed),
         m.unauthorized_total.load(Ordering::Relaxed),
         m.request_timeout_total.load(Ordering::Relaxed),
     );
     body.push_str(&latency_metrics("search", &m.search_latency));
     body.push_str(&latency_metrics("deep", &m.deep_latency));
+    body.push_str(&latency_metrics("answer", &m.answer_latency));
     let service = state.service();
     body.push_str(&source_metrics(&service));
     body.push_str(&cache_metrics(&service).await);
@@ -1175,6 +1276,7 @@ async fn cache_metrics(service: &AmatlService) -> String {
     let cache = service.cache_effectiveness();
     let storage_available = u8::from(service.storage().is_some());
     let audit_dropped = service.audit().dropped();
+    let telemetry = service.telemetry_status();
     format!(
         "# HELP amatl_cache_hits_total Cache lookups served from the local cache.\n\
          # TYPE amatl_cache_hits_total counter\n\
@@ -1193,13 +1295,21 @@ async fn cache_metrics(service: &AmatlService) -> String {
          amatl_storage_available {storage_available}\n\
          # HELP amatl_audit_events_dropped_total Security events dropped because too many audit writes were in flight.\n\
          # TYPE amatl_audit_events_dropped_total counter\n\
-         amatl_audit_events_dropped_total {audit_dropped}\n",
+         amatl_audit_events_dropped_total {audit_dropped}\n\
+         # HELP amatl_telemetry_persistence_failures_total Telemetry storage writes that failed since start; memory stays authoritative and self-heals on restart via restore_best_effort.\n\
+         # TYPE amatl_telemetry_persistence_failures_total counter\n\
+         amatl_telemetry_persistence_failures_total {}\n\
+         # HELP amatl_telemetry_in_memory_observations Observations currently retained in the in-memory telemetry window.\n\
+         # TYPE amatl_telemetry_in_memory_observations gauge\n\
+         amatl_telemetry_in_memory_observations {}\n",
         cache.provider_search_hits,
         cache.document_hits,
         cache.provider_search_misses,
         cache.document_misses,
         cache.provider_search_hit_rate,
         cache.document_hit_rate,
+        telemetry.persistence_failures,
+        telemetry.in_memory_observations,
     )
 }
 

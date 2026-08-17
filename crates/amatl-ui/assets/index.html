@@ -7,7 +7,7 @@
     <meta name="referrer" content="no-referrer">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'">
     <title>AMATL — Búsqueda y evidencia</title>
-    <link rel="icon" href="data:,">
+    <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="stylesheet" href="/styles.css">
     <script src="/i18n.js" defer></script>
     <script src="/app.js" defer></script>
@@ -15,8 +15,28 @@
   <body>
     <a class="skip-link" href="#results">Ir a resultados</a>
     <header class="masthead">
-      <a class="brand" href="/" aria-label="AMATL, inicio">AMATL</a>
-      <span class="product-label">Búsqueda multifuente y evidencia verificable</span>
+      <a class="brand" href="/" aria-label="AMATL, inicio">
+        <img class="brand-icon" src="/brand-icon.png" alt="" width="71" height="120">
+        <span>AMATL</span>
+      </a>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Cambiar a tema claro">
+        <svg class="icon-sun is-active" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+          <g fill="currentColor">
+            <polygon points="12,1.2 13.6,5.6 10.4,5.6"/>
+            <polygon points="12,22.8 13.6,18.4 10.4,18.4"/>
+            <polygon points="1.2,12 5.6,10.4 5.6,13.6"/>
+            <polygon points="22.8,12 18.4,13.6 18.4,10.4"/>
+            <polygon points="4.4,4.4 8.2,6.6 6.6,8.2"/>
+            <polygon points="19.6,19.6 15.8,17.4 17.4,15.8"/>
+            <polygon points="4.4,19.6 6.6,15.8 8.2,17.4"/>
+            <polygon points="19.6,4.4 17.4,8.2 15.8,6.6"/>
+            <circle cx="12" cy="12" r="4.6"/>
+          </g>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+          <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z" fill="currentColor"/>
+        </svg>
+      </button>
     </header>
 
     <main class="shell">
@@ -29,8 +49,10 @@
             <div class="search-actions" aria-label="Tipo de búsqueda">
               <button id="search-button" type="submit" data-mode="search">Buscar</button>
               <button id="deep-button" class="secondary-action" type="submit" data-mode="deep">Analizar evidencia</button>
+              <button id="answer-button" class="secondary-action is-unavailable" type="submit" data-mode="answer" aria-disabled="true">Resumen con IA</button>
             </div>
           </div>
+          <p id="answer-hint" class="field-help" hidden></p>
           <details class="filters">
             <summary id="filters-summary">Filtros y acceso</summary>
             <div class="filter-grid">
@@ -70,6 +92,10 @@
           <span></span><span></span><span></span>
         </div>
         <button id="cancel-button" class="cancel-button" type="button" hidden aria-hidden="true">Cancelar</button>
+        <div id="answer-card" class="answer-card" hidden>
+          <p id="answer-text" class="answer-text"></p>
+          <p id="answer-meta" class="answer-meta"></p>
+        </div>
         <ol id="results" class="results" tabindex="-1"></ol>
         <nav id="pagination" class="pagination" aria-label="Páginas de resultados" hidden>
           <button id="previous" type="button">Anterior</button>
@@ -89,6 +115,15 @@
           <h2 id="service-heading">Estado del servicio</h2>
           <p id="service-summary" class="status" role="status" aria-live="polite"></p>
           <ul id="service-indicators" class="indicator-list" role="list"></ul>
+          <details id="answer-config" class="answer-config" hidden>
+            <summary id="answer-config-summary">Configuración de IA</summary>
+            <dl id="answer-config-body" class="answer-config-body"></dl>
+            <label class="answer-toggle-row">
+              <input type="checkbox" id="answer-enabled-toggle">
+              <span id="answer-toggle-label">Activar función</span>
+            </label>
+            <p id="answer-toggle-status" class="field-help" hidden></p>
+          </details>
         </section>
 
         <section class="history-panel" aria-labelledby="history-heading" hidden>
@@ -110,6 +145,7 @@
 
     <template id="result-template">
       <li class="result-card">
+        <span class="result-index" hidden></span>
         <p class="result-url"></p>
         <h3><a class="result-title" rel="noopener noreferrer"></a></h3>
         <p class="result-snippet"></p>

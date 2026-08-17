@@ -174,6 +174,34 @@ impl McpSurface {
         }
     }
 
+    #[tool(
+        description = "Search and synthesize a short, cited answer grounded only in AMATL's own results. Disabled unless the operator configured a completion backend; distinct from `search`, which never generates text."
+    )]
+    async fn answer(
+        &self,
+        Parameters(input): Parameters<DeepInput>,
+        context: RequestContext<RoleServer>,
+    ) -> CallToolResult {
+        if let Err(denied) = Self::authorize(&context, "answer") {
+            return denied;
+        }
+        if !valid_query(&input.query) {
+            return tool_error(ErrorCode::InvalidQuery);
+        }
+        let service = self.service();
+        let work = service.answer(
+            input.query,
+            ServiceSurface::mcp_with_request_id(Some(next_request_id())),
+        );
+        let Some(outcome) = run_cancellable(&context.ct, work).await else {
+            return tool_error(ErrorCode::RequestCancelled);
+        };
+        match outcome {
+            Ok(value) => structured(value),
+            Err(error) => tool_error(error.code()),
+        }
+    }
+
     #[tool(description = "Fetch one public HTTP(S) URL with SSRF, redirect, byte and time limits")]
     async fn fetch(
         &self,

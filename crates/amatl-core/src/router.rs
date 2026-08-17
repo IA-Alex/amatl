@@ -105,8 +105,10 @@ impl AdaptiveRouter {
                     0.0
                 };
                 let exploration_boost = if exploration_due { 2.0 } else { 0.0 };
-                let score =
-                    base + expected_gain * adaptive_weight + exploration_boost - health_penalty;
+                let cost_penalty = provider.capabilities.estimated_cost.unwrap_or(0) as f64 * 0.05;
+                let score = base + expected_gain * adaptive_weight + exploration_boost
+                    - health_penalty
+                    - cost_penalty;
                 (
                     index,
                     provider.name.clone(),

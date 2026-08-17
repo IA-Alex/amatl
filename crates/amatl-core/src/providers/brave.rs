@@ -363,4 +363,58 @@ mod tests {
         assert_eq!(error.retry_after_ms, Some(2_000));
         assert!(!error.message.contains("secret"));
     }
+
+    #[test]
+    fn malformed_json_is_typed_invalid_response_not_a_panic() {
+        let response = HttpResponse {
+            status: 200,
+            headers: BTreeMap::new(),
+            body: b"{not json".to_vec(),
+        };
+        let error = parse_response(response, FilterUse::default()).unwrap_err();
+        assert_eq!(error.kind, ProviderErrorKind::InvalidResponse);
+    }
+
+    #[test]
+    fn missing_web_field_is_empty_results_not_an_error() {
+        let response = HttpResponse {
+            status: 200,
+            headers: BTreeMap::new(),
+            body: b"{}".to_vec(),
+        };
+        let result = parse_response(response, FilterUse::default()).unwrap();
+        assert!(result.results.is_empty());
+    }
+
+    #[test]
+    fn item_missing_optional_fields_still_parses() {
+        let response = HttpResponse {
+            status: 200,
+            headers: BTreeMap::new(),
+            body: br#"{"web":{"results":[{"url":"https://one.example/"}]}}"#.to_vec(),
+        };
+        let result = parse_response(response, FilterUse::default()).unwrap();
+        assert_eq!(result.results.len(), 1);
+        assert_eq!(result.results[0].title, None);
+        assert_eq!(result.results[0].snippet, None);
+    }
+
+    proptest::proptest! {
+        /// No response body, however malformed, should ever panic the parser —
+        /// only a typed `ProviderError` is an acceptable outcome. Mirrors the
+        /// arbitrary-bytes pattern already used for the local-ingest parsers
+        /// in `ingest.rs`.
+        #[test]
+        fn parser_never_panics_on_arbitrary_bytes(
+            status in proptest::num::u16::ANY,
+            body in proptest::collection::vec(proptest::num::u8::ANY, 0..4096)
+        ) {
+            let response = HttpResponse {
+                status,
+                headers: BTreeMap::new(),
+                body,
+            };
+            let _ = parse_response(response, FilterUse::default());
+        }
+    }
 }

@@ -17,6 +17,7 @@ pub struct Config {
     pub schema_version: String,
     pub data_policy: DataPolicyConfig,
     pub inference: InferenceConfig,
+    pub answer: AnswerConfig,
     pub providers: ProviderConfig,
     pub timeouts: TimeoutConfig,
     pub budget: BudgetConfig,
@@ -176,6 +177,57 @@ impl Default for InferenceConfig {
             remote_credential_env: None,
             remote_timeout_ms: 5_000,
             remote_max_batch: 32,
+        }
+    }
+}
+
+/// Governs the optional answer-synthesis step: an LLM completion call that
+/// turns AMATL's own search results into a grounded, cited answer.
+///
+/// Disabled by default, and gated the same way as remote embeddings — it only
+/// takes effect when `data_policy.inference = "remote_explicit"`, since it is
+/// exactly that: a remote model call that leaves the machine. AMATL's search
+/// and deep-fetch stay unaffected either way; this only adds a distinct,
+/// explicitly invoked capability layered on top of results AMATL already
+/// retrieved, never a replacement for them.
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+#[serde(default)]
+pub struct AnswerConfig {
+    pub enabled: bool,
+    /// Chat-completions endpoint, OpenAI-compatible (`{"model":…,
+    /// "messages":[…]}` → `choices[0].message.content`). Must be absolute
+    /// HTTPS, or HTTP on loopback for a self-hosted server, and must not
+    /// embed credentials — validated the same way as
+    /// `inference.remote_endpoint`.
+    pub endpoint: Option<String>,
+    /// Model identifier sent in the completion request body.
+    pub model: Option<String>,
+    /// Environment variable holding the bearer credential. Never written to
+    /// configuration or logs.
+    pub credential_env: Option<String>,
+    /// Deadline for one completion request. Bounded, not open-ended, so
+    /// `answer` never turns into an unbounded wait on top of the search it
+    /// already ran.
+    pub timeout_ms: u64,
+    /// Top-N ranked search results handed to the model as grounding sources.
+    pub max_sources: usize,
+    /// Characters of snippet kept per source before it reaches the prompt.
+    pub max_source_chars: usize,
+    /// Upper bound on the completion response length.
+    pub max_answer_tokens: u32,
+}
+
+impl Default for AnswerConfig {
+    fn default() -> Self {
+        Self {
+            enabled: false,
+            endpoint: None,
+            model: None,
+            credential_env: None,
+            timeout_ms: 20_000,
+            max_sources: 8,
+            max_source_chars: 1_200,
+            max_answer_tokens: 700,
         }
     }
 }
@@ -715,9 +767,22 @@ impl Default for ProviderConfig {
 
 /// Governance records shipped with AMATL, used as the base every configuration
 /// file extends or overrides.
+///
+/// Brave and Mojeek are declared `Rejected`, not `Draft`: both adapters are
+/// implemented and tested, but both sources require a paid plan (Brave
+/// dropped its free tier in 2026-02; Mojeek has none), and operator policy is
+/// to run only no-cost sources. This is a deliberate, closed decision, not an
+/// incomplete governance filing — `approved()` treats `Rejected` the same as
+/// `Draft` (neither passes the gate), so the distinction changes nothing at
+/// runtime; it exists so a future review (human or automated) reads the
+/// status and finds a closed "no", not an invitation to fill in the paperwork
+/// and enable a paid source. Re-approving either requires an explicit policy
+/// change, not just completing the dossier. See «Viabilidad y coste» in
+/// `docs/gobernanza-providers.md`.
 fn builtin_provider_records() -> std::collections::BTreeMap<String, ProviderRuntimeConfig> {
     let brave = ProviderRuntimeConfig {
         adapter_version: Some("brave-v1".into()),
+        approval_status: ApprovalStatus::Rejected,
         credential_env: Some("BRAVE_API_KEY".into()),
         terms_url: Some(
             "https://api-dashboard.search.brave.com/documentation/resources/terms-of-service"
@@ -725,6 +790,17 @@ fn builtin_provider_records() -> std::collections::BTreeMap<String, ProviderRunt
         ),
         terms_version_or_date: Some("2026-02-11".into()),
         allowed_access_method: Some("official_api".into()),
+        cost_model: Some(
+            "Paid since 2026-02 (card required at signup; ~5 USD/mo credit, \
+             usage billed beyond it)."
+                .into(),
+        ),
+        operational_risk: Some(
+            "Rejected by operator policy: no paid search providers. Do not \
+             enable without an explicit policy change; see «Viabilidad y \
+             coste» in docs/gobernanza-providers.md."
+                .into(),
+        ),
         supported_filters: vec![
             "site".into(),
             "filetype".into(),
@@ -736,9 +812,17 @@ fn builtin_provider_records() -> std::collections::BTreeMap<String, ProviderRunt
     };
     let mojeek = ProviderRuntimeConfig {
         adapter_version: Some("mojeek-v1".into()),
+        approval_status: ApprovalStatus::Rejected,
         credential_env: Some("MOJEEK_API_KEY".into()),
         terms_url: Some("https://www.mojeek.com/support/api/".into()),
         allowed_access_method: Some("official_api".into()),
+        cost_model: Some("Paid; no free tier.".into()),
+        operational_risk: Some(
+            "Rejected by operator policy: no paid search providers. Do not \
+             enable without an explicit policy change; see «Viabilidad y \
+             coste» in docs/gobernanza-providers.md."
+                .into(),
+        ),
         ..ProviderRuntimeConfig::default()
     };
     let searxng = ProviderRuntimeConfig {
@@ -777,10 +861,6 @@ fn builtin_provider_records() -> std::collections::BTreeMap<String, ProviderRunt
         ("mojeek".to_string(), mojeek),
         ("searxng".to_string(), searxng),
         ("marginalia".to_string(), marginalia),
-        (
-            "duckduckgo_html".to_string(),
-            ProviderRuntimeConfig::default(),
-        ),
     ])
 }
 
@@ -962,6 +1042,7 @@ impl Default for Config {
             schema_version: crate::SCHEMA_VERSION.to_string(),
             data_policy: DataPolicyConfig::default(),
             inference: InferenceConfig::default(),
+            answer: AnswerConfig::default(),
             providers: ProviderConfig::default(),
             timeouts: TimeoutConfig::default(),
             budget: BudgetConfig::default(),
@@ -994,6 +1075,34 @@ impl Config {
         Ok(config)
     }
 
+    /// Flip `[answer].enabled` on disk and nothing else.
+    ///
+    /// The only configuration mutation any running AMATL process makes to
+    /// its own file — every other setting is still operator-edited text.
+    /// Kept this narrow on purpose: it exists so the web UI's admin-scoped
+    /// toggle never needs to touch, or even see, `endpoint`/`model`/the
+    /// credential. Uses `toml_edit`, not a struct round-trip through
+    /// `toml::to_string`, specifically so every comment an operator (or this
+    /// project) wrote in the file survives the edit untouched.
+    ///
+    /// The caller is expected to have already checked that the resulting
+    /// configuration will validate (build it in memory with the flag
+    /// flipped and call `.validate()`) before calling this — this function
+    /// only performs the write, so a file is never left in a state the
+    /// running process didn't already agree to serve.
+    pub fn set_answer_enabled(path: &Path, enabled: bool) -> Result<(), ConfigError> {
+        let text = std::fs::read_to_string(path)?;
+        let mut document = text
+            .parse::<toml_edit::DocumentMut>()
+            .map_err(|error| ConfigError::Policy(format!("invalid TOML: {error}")))?;
+        if document.get("answer").is_none() {
+            document["answer"] = toml_edit::Item::Table(toml_edit::Table::new());
+        }
+        document["answer"]["enabled"] = toml_edit::value(enabled);
+        std::fs::write(path, document.to_string())?;
+        Ok(())
+    }
+
     pub fn validate(&self) -> Result<(), ConfigError> {
         if self.schema_version != crate::SCHEMA_VERSION {
             return Err(ConfigError::Policy(format!(
@@ -1023,6 +1132,7 @@ impl Config {
             )));
         }
         self.validate_inference()?;
+        self.validate_answer()?;
         if self.execution.global_concurrency == 0
             || self.execution.per_provider_concurrency == 0
             || self.execution.per_provider_concurrency > self.execution.global_concurrency
@@ -1450,12 +1560,57 @@ impl Config {
         }
         Ok(())
     }
+
+    /// Same governance as `validate_inference`'s remote block, for the same
+    /// reason: `answer` is a second, independent kind of remote model call
+    /// (chat completions, not embeddings), so it gets its own endpoint,
+    /// credential and bounded limits rather than silently reusing
+    /// `inference.remote_*` for a different contract.
+    fn validate_answer(&self) -> Result<(), ConfigError> {
+        if !self.answer.enabled {
+            return Ok(());
+        }
+        if !self.data_policy.allows_remote_inference() {
+            return Err(ConfigError::Policy(
+                "answer.enabled requires a standard profile, governed egress and \
+                 data_policy.inference = \"remote_explicit\""
+                    .into(),
+            ));
+        }
+        let endpoint =
+            self.answer.endpoint.as_deref().ok_or_else(|| {
+                ConfigError::Policy("answer.enabled requires answer.endpoint".into())
+            })?;
+        crate::inference::validate_remote_endpoint(endpoint)
+            .map_err(|error| ConfigError::Policy(error.to_string()))?;
+        if self.answer.model.as_deref().is_none_or(str::is_empty) {
+            return Err(ConfigError::Policy(
+                "answer.enabled requires answer.model".into(),
+            ));
+        }
+        if !(100..=60_000).contains(&self.answer.timeout_ms)
+            || self.answer.max_sources == 0
+            || self.answer.max_sources > 32
+            || self.answer.max_source_chars == 0
+            || self.answer.max_answer_tokens == 0
+        {
+            return Err(ConfigError::Policy("invalid answer limit".into()));
+        }
+        Ok(())
+    }
 }
 
 /// Tool names the MCP surface exposes, and the vocabulary a client allowlist
 /// may use. Kept here so an unknown name is rejected by configuration
 /// validation instead of silently granting nothing.
-pub const MCP_TOOLS: [&str; 5] = ["search", "deep_search", "fetch", "providers", "status"];
+pub const MCP_TOOLS: [&str; 6] = [
+    "search",
+    "deep_search",
+    "fetch",
+    "providers",
+    "status",
+    "answer",
+];
 
 fn is_sha256_hex(value: &str) -> bool {
     value.len() == 64
@@ -1611,6 +1766,46 @@ mod tests {
         assert!(config.validate().is_err());
     }
 
+    /// Locks in a policy decision, not just a paperwork gap: Brave and
+    /// Mojeek are `Rejected`, with the reason stated in `cost_model`/
+    /// `operational_risk`, precisely so a future review — human or
+    /// automated — reads a closed "no" instead of an incomplete dossier
+    /// inviting completion. If this regresses to `Draft`, that decision was
+    /// silently lost.
+    #[test]
+    fn paid_providers_are_rejected_by_default_not_merely_draft() {
+        let config = Config::default();
+        for name in ["brave", "mojeek"] {
+            let record = config.providers.get(name).unwrap();
+            assert_eq!(
+                record.approval_status,
+                ApprovalStatus::Rejected,
+                "{name} must stay Rejected, not Draft: it requires a paid plan and \
+                 operator policy excludes paid providers"
+            );
+            assert!(
+                !record.approved(),
+                "{name} must never pass the approval gate"
+            );
+            assert!(
+                record
+                    .operational_risk
+                    .as_deref()
+                    .is_some_and(|value| value.contains("operator policy")),
+                "{name}'s rejection reason must stay explicit, not silently blanked"
+            );
+        }
+        // The two free sources stay eligible for approval — only their
+        // operator-specific identity/date fields are missing, not the
+        // decision itself.
+        for name in ["searxng", "marginalia"] {
+            assert_eq!(
+                config.providers.get(name).unwrap().approval_status,
+                ApprovalStatus::Draft
+            );
+        }
+    }
+
     #[test]
     fn declared_providers_extend_the_builtin_records_without_losing_them() {
         let config = Config::from_toml(
@@ -1630,7 +1825,7 @@ mod tests {
         assert!(config.validate().is_ok());
         assert_eq!(
             config.providers.names(),
-            vec!["brave", "custom_archive", "duckduckgo_html", "marginalia", "mojeek", "searxng"]
+            vec!["brave", "custom_archive", "marginalia", "mojeek", "searxng"]
         );
         assert_eq!(
             config
@@ -1821,5 +2016,55 @@ mod tests {
         let config = Config::from_toml("").unwrap();
         assert_eq!(config.schema_version, crate::SCHEMA_VERSION);
         assert!(config.validate().is_ok());
+    }
+
+    /// The one config mutation a running server ever makes to its own file
+    /// touches exactly one key and leaves every comment an operator wrote —
+    /// including the ones documenting *other* fields — untouched.
+    #[test]
+    fn set_answer_enabled_flips_only_that_key_and_keeps_comments() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-toggle-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(
+            &path,
+            "schema_version = \"1\"\n\n\
+             # A comment an operator wrote about something unrelated.\n\
+             [server]\n\
+             port = 8080\n\n\
+             [answer]\n\
+             enabled = false\n\
+             model = \"deepseek-ai/DeepSeek-V3\"\n",
+        )
+        .unwrap();
+
+        Config::set_answer_enabled(&path, true).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+
+        assert!(written.contains("enabled = true"));
+        assert!(written.contains("# A comment an operator wrote about something unrelated."));
+        assert!(written.contains("model = \"deepseek-ai/DeepSeek-V3\""));
+        assert!(written.contains("port = 8080"));
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert!(reparsed.answer.enabled);
+        assert_eq!(reparsed.server.port, 8080);
+    }
+
+    #[test]
+    fn set_answer_enabled_creates_the_table_when_absent() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-toggle-notable-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+
+        Config::set_answer_enabled(&path, true).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert!(reparsed.answer.enabled);
     }
 }

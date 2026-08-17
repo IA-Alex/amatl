@@ -4,14 +4,15 @@ use crate::circuit::{CircuitSnapshot, ProviderCircuit};
 use crate::storage::{CacheStats, SavedDocument, SearchHistoryEntry};
 use crate::telemetry::{now_unix, ProviderValueSnapshot};
 use crate::{
-    parse_query, Budget, CachedProvider, ChromiumRenderer, Config, DeepBudget, DeepCandidate,
-    DeepOrchestrator, DeepRequest, DeepResponse, DocumentCache, DocumentCachePolicy, ErrorCode,
-    FallbackExtractor, GapAnalyzer, InMemoryTelemetry, InferenceRuntime, MockProvider,
-    NativeHtmlExtractor, Provider, ProviderAvailability, ProviderBuildContext,
-    ProviderCapabilities, ProviderItem, ProviderRegistry, ProviderRuntimeConfig,
-    ProviderSearchCache, ProviderSearchCachePolicy, Query, Rank, RankingV2Engine, RendererPool,
-    ReqwestTransport, SafeFetcher, SearchOrchestrator, SearchPlan, SearchResponse,
-    SearchSubQueryExecutor, SqliteStorage, StorageError, TrafilaturaExtractor, SCHEMA_VERSION,
+    parse_query, Answer, AnswerError, Budget, CachedProvider, ChromiumRenderer, CompletionBackend,
+    Config, DeepBudget, DeepCandidate, DeepOrchestrator, DeepRequest, DeepResponse, DocumentCache,
+    DocumentCachePolicy, ErrorCode, FallbackExtractor, GapAnalyzer, InMemoryTelemetry,
+    InferenceRuntime, MockProvider, NativeHtmlExtractor, Provider, ProviderAvailability,
+    ProviderBuildContext, ProviderCapabilities, ProviderItem, ProviderRegistry,
+    ProviderRuntimeConfig, ProviderSearchCache, ProviderSearchCachePolicy, Query, Rank,
+    RankingV2Engine, RemoteCompletionBackend, RendererPool, ReqwestTransport, SafeFetcher,
+    SearchOrchestrator, SearchPlan, SearchResponse, SearchSubQueryExecutor, SqliteStorage,
+    StorageError, TrafilaturaExtractor, SCHEMA_VERSION,
 };
 use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
@@ -134,6 +135,16 @@ pub struct SearchExecution {
     pub response: SearchResponse,
 }
 
+/// Output of [`AmatlService::answer`]: the search AMATL ran plus the grounded
+/// synthesis on top of it, kept separate on purpose so a caller always has
+/// the raw results even when it only wants the summary.
+#[derive(Clone, Debug, Serialize)]
+pub struct AnswerResult {
+    pub schema_version: String,
+    pub answer: Answer,
+    pub search: SearchResponse,
+}
+
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
 pub enum ProviderSurfaceStatus {
@@ -175,6 +186,8 @@ pub enum ServiceError {
     StorageUnavailable,
     #[error("request payload is invalid")]
     InvalidInput,
+    #[error("answer synthesis backend is unavailable or its response was not grounded")]
+    AnswerUnavailable,
 }
 
 impl ServiceError {
@@ -190,6 +203,7 @@ impl ServiceError {
             Self::InferenceUnavailable => ErrorCode::InferenceUnavailable,
             Self::StorageUnavailable => ErrorCode::StorageUnavailable,
             Self::InvalidInput => ErrorCode::InvalidRequest,
+            Self::AnswerUnavailable => ErrorCode::AnswerUnavailable,
         }
     }
 }
@@ -225,6 +239,33 @@ pub struct ServiceStatus {
     pub storage: StorageStatus,
     pub cache: CacheStatus,
     pub inference_backend: Option<String>,
+    /// Read-only view of the answer-synthesis configuration: never the
+    /// credential, only what a settings screen needs to explain *why* the
+    /// feature is or isn't available right now.
+    pub answer: AnswerStatus,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+pub struct AnswerStatus {
+    /// `answer.enabled` in configuration — the operator's on/off intent,
+    /// exactly what the web toggle flips. Independent of `configured`: an
+    /// operator can turn this off without erasing `endpoint`/`model`, and a
+    /// settings screen needs to keep showing those to make the toggle mean
+    /// anything when it's off.
+    pub enabled: bool,
+    /// Whether `endpoint` and `model` are both present, regardless of
+    /// `enabled` — "is there a real configuration on disk to toggle",
+    /// answered even while it's switched off.
+    pub configured: bool,
+    /// Whether a call to `answer()` will actually work right now: `enabled`
+    /// AND `configured` AND the credential was present in the environment
+    /// at startup. A UI should gate the feature on this, not on `enabled` or
+    /// `configured` alone.
+    pub available: bool,
+    /// Shown whenever set on disk, independent of `enabled` — see the field
+    /// doc on `enabled` for why.
+    pub model: Option<String>,
+    pub endpoint: Option<String>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
@@ -303,6 +344,11 @@ pub struct AmatlService {
     transport: Option<Arc<dyn crate::HttpTransport>>,
     fetcher: Arc<dyn crate::Fetcher>,
     inference: Option<InferenceRuntime>,
+    /// Governed answer-synthesis backend; `None` whenever `answer.enabled` is
+    /// false or its configuration/credential is unavailable, in which case
+    /// [`AmatlService::answer`] fails closed with `AnswerUnavailable` instead
+    /// of falling back to anything.
+    answer_backend: Option<Arc<dyn CompletionBackend>>,
     mock: bool,
     /// Renderer pool created once at startup and reused across deep requests.
     renderer_pool: RendererPool,
@@ -426,6 +472,24 @@ impl AmatlService {
                 None
             }
         };
+        let answer_backend: Option<Arc<dyn CompletionBackend>> = if config.answer.enabled {
+            match transport.clone() {
+                Some(transport) => match RemoteCompletionBackend::new(&config.answer, transport) {
+                    Ok(backend) => Some(Arc::new(backend) as Arc<dyn CompletionBackend>),
+                    Err(error) => {
+                        tracing::warn!(
+                            target: "amatl::answer",
+                            error = %error,
+                            "answer synthesis backend is unavailable; answer() will fail closed"
+                        );
+                        None
+                    }
+                },
+                None => None,
+            }
+        } else {
+            None
+        };
         let renderer = Arc::new(ChromiumRenderer::detect(&config.deep.renderer));
         let renderer_pool =
             RendererPool::new(renderer, config.deep.renderer.max_browser_calls as usize);
@@ -438,6 +502,7 @@ impl AmatlService {
             transport,
             fetcher,
             inference,
+            answer_backend,
             mock,
             renderer_pool,
             cache_counters: Arc::new(CacheCounters::default()),
@@ -611,6 +676,41 @@ impl AmatlService {
             query,
             plan,
             response,
+        })
+    }
+
+    /// Run a search and synthesize a grounded, cited answer from its results.
+    ///
+    /// Distinct from [`Self::search`] on purpose: this is the only surface
+    /// that calls out to an LLM, and only when `answer.enabled` in
+    /// configuration explicitly turns it on. `search`/`deep` never change
+    /// behavior because this exists. See [`crate::answer`] for the grounding
+    /// contract enforced on the model's response.
+    pub async fn answer(
+        &self,
+        raw_query: String,
+        surface: ServiceSurface,
+    ) -> Result<AnswerResult, ServiceError> {
+        let backend = self
+            .answer_backend
+            .as_ref()
+            .ok_or(ServiceError::AnswerUnavailable)?;
+        let search = self
+            .search_inner(raw_query.clone(), surface.clone(), None, None)
+            .await?;
+        self.record_history(&search, 0, surface).await;
+        let sources = crate::answer::build_sources(
+            &search.response.results,
+            self.config.answer.max_sources,
+            self.config.answer.max_source_chars,
+        );
+        let answer = crate::answer::synthesize(backend.as_ref(), &raw_query, sources)
+            .await
+            .map_err(|_: AnswerError| ServiceError::AnswerUnavailable)?;
+        Ok(AnswerResult {
+            schema_version: SCHEMA_VERSION.into(),
+            answer,
+            search: search.response,
         })
     }
 
@@ -939,6 +1039,14 @@ impl AmatlService {
         self.telemetry.snapshots(now_unix())
     }
 
+    /// In-memory telemetry health: sample count and how many `storage`
+    /// writes have failed since start. `record`'s memory and storage writes
+    /// are deliberately independent (see its doc comment), so this is the
+    /// only visibility into how often they've drifted apart.
+    pub fn telemetry_status(&self) -> crate::telemetry::TelemetryStatus {
+        self.telemetry.status()
+    }
+
     /// Operator status: source availability, persistence and cache state.
     pub async fn status(&self) -> Result<ServiceStatus, ServiceError> {
         let summaries = self.provider_summaries()?;
@@ -993,6 +1101,14 @@ impl AmatlService {
             storage,
             cache,
             inference_backend: self.inference_backend().map(str::to_owned),
+            answer: AnswerStatus {
+                enabled: self.config.answer.enabled,
+                configured: self.config.answer.endpoint.is_some()
+                    && self.config.answer.model.is_some(),
+                available: self.answer_backend.is_some(),
+                model: self.config.answer.model.clone(),
+                endpoint: self.config.answer.endpoint.clone(),
+            },
         })
     }
 
@@ -1425,6 +1541,87 @@ mod tests {
         }
     }
 
+    /// A provider whose availability depends on a resolved credential. When the
+    /// credential is absent it reports `credential_missing` — the same fallback
+    /// contract as the real Marginalia adapter — so the orchestrator must
+    /// degrade it instead of failing the round.
+    struct CredentialGatedFactory;
+
+    impl ProviderFactory for CredentialGatedFactory {
+        fn name(&self) -> &str {
+            "credential_gated"
+        }
+
+        fn requires_credential(&self) -> bool {
+            true
+        }
+
+        fn build(&self, context: &ProviderBuildContext<'_>) -> Arc<dyn Provider> {
+            Arc::new(CredentialGatedProvider {
+                name: context.name.into(),
+                credential: context.credential.clone(),
+            })
+        }
+    }
+
+    struct CredentialGatedProvider {
+        name: String,
+        credential: Option<String>,
+    }
+
+    #[async_trait]
+    impl Provider for CredentialGatedProvider {
+        fn name(&self) -> &str {
+            &self.name
+        }
+
+        fn capabilities(&self) -> ProviderCapabilities {
+            ProviderCapabilities {
+                schema_version: SCHEMA_VERSION.into(),
+                pagination: false,
+                language: false,
+                region: false,
+                time_range: false,
+                site_filter: false,
+                file_filter: false,
+                news: false,
+                code: false,
+                docs: true,
+                academic: false,
+                authentication: true,
+                estimated_cost: Some(0),
+            }
+        }
+
+        fn availability(&self) -> ProviderAvailability {
+            if self.credential.is_none() {
+                ProviderAvailability::Unavailable {
+                    code: "credential_missing".into(),
+                    message: "credential is not set".into(),
+                }
+            } else {
+                ProviderAvailability::Available
+            }
+        }
+
+        async fn search(
+            &self,
+            _plan: &crate::SearchPlan,
+            _context: &crate::ProviderContext,
+        ) -> Result<crate::ProviderResult, crate::ProviderError> {
+            Ok(crate::ProviderResult {
+                schema_version: SCHEMA_VERSION.into(),
+                provider: self.name.clone(),
+                status: crate::ProviderExecutionStatus::Success,
+                results: vec![],
+                accepted_filters: vec![],
+                ignored_filters: vec![],
+                approximated_filters: vec![],
+                errors: vec![],
+            })
+        }
+    }
+
     /// Governance record that satisfies the runtime approval gate today.
     fn approved_record(adapter_version: &str) -> ProviderRuntimeConfig {
         ProviderRuntimeConfig {
@@ -1558,13 +1755,50 @@ mod tests {
             validate_provider_canary(&enabled, "brave"),
             Err(ProviderCanaryError::Governance("brave".into()))
         );
-        enabled.providers.enabled = vec!["duckduckgo_html".into()];
-        assert_eq!(
-            validate_provider_canary(&enabled, "duckduckgo_html"),
-            Err(ProviderCanaryError::NetworkBlocked(
-                "duckduckgo_html".into()
-            ))
+    }
+
+    #[tokio::test]
+    async fn missing_credential_degrades_the_provider_instead_of_failing_the_search() {
+        let mut config = Config::default();
+        config.providers.declare(
+            "credential_gated",
+            ProviderRuntimeConfig {
+                credential_env: Some("AMATL_TEST_CREDENTIAL_NEVER_SET".into()),
+                ..approved_record("credential-gated-v1")
+            },
         );
+        config
+            .providers
+            .declare("custom_archive", approved_record("archive-v1"));
+        config.providers.enabled = vec!["credential_gated".into(), "custom_archive".into()];
+        // The credential env var is intentionally left unset: `credential()`
+        // resolves it to `None`, which must degrade the provider rather than
+        // fail the search. The name is unique to this test and never exported.
+        let service = AmatlService::with_registry(
+            config,
+            false,
+            ProviderRegistry::builtin()
+                .with(Arc::new(CredentialGatedFactory))
+                .with(Arc::new(ArchiveFactory)),
+        )
+        .await;
+        let execution = service
+            .search("rust".into(), ServiceSurface::cli())
+            .await
+            .unwrap();
+        // The working provider answered, so the search is not a hard failure.
+        assert_eq!(
+            execution.response.providers_used,
+            vec!["custom_archive".to_string()]
+        );
+        assert!(execution.response.providers_failed.is_empty());
+        // The missing credential degraded the gated provider instead of failing it.
+        assert!(execution
+            .response
+            .degradations
+            .iter()
+            .any(|degradation| degradation.code == "credential_missing"
+                && degradation.component == "credential_gated"));
     }
 
     #[tokio::test]

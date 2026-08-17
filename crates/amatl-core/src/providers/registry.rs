@@ -6,8 +6,7 @@
 //! `match` arm inside the service, no new field in the configuration struct.
 
 use super::{
-    BraveProvider, DuckDuckGoHtmlProvider, HttpTransport, MarginaliaProvider, MojeekProvider,
-    Provider, SearXngProvider,
+    BraveProvider, HttpTransport, MarginaliaProvider, MojeekProvider, Provider, SearXngProvider,
 };
 use crate::config::ProviderRuntimeConfig;
 use std::collections::BTreeMap;
@@ -63,7 +62,6 @@ impl ProviderRegistry {
         Self::empty()
             .with(Arc::new(BraveFactory))
             .with(Arc::new(MojeekFactory))
-            .with(Arc::new(DuckDuckGoHtmlFactory))
             .with(Arc::new(SearXngFactory))
             .with(Arc::new(MarginaliaFactory))
     }
@@ -140,26 +138,6 @@ impl ProviderFactory for MojeekFactory {
     }
 }
 
-struct DuckDuckGoHtmlFactory;
-
-impl ProviderFactory for DuckDuckGoHtmlFactory {
-    fn name(&self) -> &str {
-        "duckduckgo_html"
-    }
-
-    fn supports_network_canary(&self) -> bool {
-        false
-    }
-
-    fn requires_credential(&self) -> bool {
-        false
-    }
-
-    fn build(&self, _context: &ProviderBuildContext<'_>) -> Arc<dyn Provider> {
-        Arc::new(DuckDuckGoHtmlProvider::blocked())
-    }
-}
-
 // ---------------------------------------------------------------------------
 // SearXNG factory
 // ---------------------------------------------------------------------------
@@ -193,7 +171,7 @@ impl ProviderFactory for SearXngFactory {
 }
 
 // ---------------------------------------------------------------------------
-// Marginalia factory (scaffold)
+// Marginalia factory
 // ---------------------------------------------------------------------------
 
 pub struct MarginaliaFactory;
@@ -285,18 +263,8 @@ mod tests {
         let registry = ProviderRegistry::builtin();
         assert_eq!(
             registry.names(),
-            vec![
-                "brave",
-                "duckduckgo_html",
-                "marginalia",
-                "mojeek",
-                "searxng"
-            ]
+            vec!["brave", "marginalia", "mojeek", "searxng"]
         );
-        assert!(!registry
-            .get("duckduckgo_html")
-            .unwrap()
-            .supports_network_canary());
         assert!(registry.get("brave").unwrap().requires_credential());
         assert!(!registry.get("searxng").unwrap().requires_credential());
         assert!(registry.get("marginalia").unwrap().requires_credential());

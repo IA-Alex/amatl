@@ -216,6 +216,22 @@ Dos compuertas se aplican en cada búsqueda, no sólo al arrancar:
   a gastar presupuesto redescubriendo la caída. `amatl db circuits` lo muestra y
   `--reset` lo cierra.
 
+### Activar o desactivar Resumen con IA
+
+`POST /answer/enabled` (scope `admin`, cuerpo `{"enabled": bool}`) reutiliza
+exactamente este mismo mecanismo de recarga en caliente: escribe sólo la
+clave `answer.enabled` en el archivo de configuración con `toml_edit`
+(preserva comentarios y el resto del archivo), valida una configuración
+candidata con el flag ya volteado *antes* de escribir nada, y aplica el
+cambio con el mismo `reload` atómico de arriba. Activar la función con
+`answer.endpoint`/`answer.model` incompletos falla cerrado
+(`configuration_invalid`) sin tocar el archivo ni el servicio en ejecución.
+Es la única vía soportada para operar el interruptor en caliente; editar
+`answer.enabled` a mano en el archivo sigue funcionando, pero exige el mismo
+`POST /reload` o `SIGHUP` de cualquier otro cambio manual. El botón `Resumen
+con IA` en la UI web llama a esta misma ruta. Detalle completo del feature en
+`docs/resumen-con-ia.md`.
+
 ### Métricas
 
 `GET /metrics` es público, como `/health`, y expone formato de exposición
@@ -223,11 +239,11 @@ Prometheus 0.0.4:
 
 | Métrica | Tipo | Significado |
 |---|---|---|
-| `amatl_search_requests_total`, `amatl_deep_requests_total` | counter | solicitudes recibidas por superficie |
-| `amatl_search_errors_total`, `amatl_deep_errors_total` | counter | solicitudes que terminaron en error |
+| `amatl_search_requests_total`, `amatl_deep_requests_total`, `amatl_answer_requests_total` | counter | solicitudes recibidas por superficie |
+| `amatl_search_errors_total`, `amatl_deep_errors_total`, `amatl_answer_errors_total` | counter | solicitudes que terminaron en error, incluida `answer_unavailable` (sin cita válida o backend no disponible) |
 | `amatl_rate_limited_total`, `amatl_unauthorized_total`, `amatl_request_timeout_total` | counter | rechazos del borde HTTP |
-| `amatl_search_latency_ms`, `amatl_deep_latency_ms` | gauge | p50/p95/p99 sobre las últimas 1024 solicitudes de esa superficie |
-| `amatl_search_latency_samples`, `amatl_deep_latency_samples` | gauge | muestras retenidas en la ventana |
+| `amatl_search_latency_ms`, `amatl_deep_latency_ms`, `amatl_answer_latency_ms` | gauge | p50/p95/p99 sobre las últimas 1024 solicitudes de esa superficie |
+| `amatl_search_latency_samples`, `amatl_deep_latency_samples`, `amatl_answer_latency_samples` | gauge | muestras retenidas en la ventana |
 | `amatl_source_available{source}` | gauge | 1 si la fuente declarada está disponible |
 | `amatl_source_success_rate{source}`, `amatl_source_latency_ms{source}` | gauge | valor observado por fuente; sólo aparecen con muestras |
 | `amatl_cache_hits_total{cache}`, `amatl_cache_misses_total{cache}`, `amatl_cache_hit_rate{cache}` | counter/gauge | reuso de la caché de búsqueda y de documentos |
@@ -255,8 +271,8 @@ documento para una URL bloqueada sin invalidar Search.
 
 El canario ejecuta exactamente un provider y falla antes de acceder a la red si
 el nombre no está habilitado, la ficha de gobernanza no está aprobada/vigente o
-falta la variable de credencial declarada. DuckDuckGo HTML sigue bloqueado. No
-uses consultas sensibles: el resultado JSON se conserva en el log del operador.
+falta la variable de credencial declarada. No uses consultas sensibles: el
+resultado JSON se conserva en el log del operador.
 
 ```bash
 amatl --config-file amatl.toml \

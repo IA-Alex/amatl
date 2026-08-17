@@ -56,18 +56,112 @@ repositorio si contienen información privada.
 
 | Provider | Nivel de diseño | Adapter | Config default | Estado efectivo | Datos pendientes |
 |---|---|---|---|---|---|
-| Brave Search API | `stable` | `brave-v1`; API oficial; credencial `BRAVE_API_KEY` | `draft`, no habilitado | No disponible | reviewer/reviewed_at vigentes, plan, cuota, coste, derechos, datos y riesgo |
-| SearXNG (autohospedado) | `stable` | `searxng-v1`; API JSON; URL via `SEARXNG_INSTANCE_URL` (por defecto `http://127.0.0.1:8888`); sin credencial | `draft`, no habilitado | No disponible | reviewer/reviewed_at vigentes |
-| Marginalia Search API | `scaffold` | `marginalia-v1`; **Sin implementacion.** `search()` devuelve error siempre | ficha vacia `draft` | Siempre no disponible: `provider_pending_explicit_approval` | Implementacion completa, revision de API, terminos, cuota, coste, datos y riesgo |
-| Mojeek Search API | `stable` | `mojeek-v1`; API oficial; credencial `MOJEEK_API_KEY` | `draft`, no habilitado | No disponible | versión/fecha ToS y todos los campos de revisión comercial/operativa |
-| DuckDuckGo HTML | `best_effort` | **Sin implementación.** `duckduckgo.rs` es un stub de 73 líneas: sin endpoint, sin cliente HTTP y sin parseo; `search()` devuelve error siempre | ficha vacía `draft` | Siempre no disponible: `provider_pending_explicit_approval` | Implementación completa, autorización verificable y ficha. No es un adapter apagado: no existe |
+| Brave Search API | `stable` | `brave-v1`; API oficial; credencial `BRAVE_API_KEY` | **`rejected`**, no habilitado | **Descartado por política del operador** (fuente de pago; no es papeleo pendiente) | Ninguno — no se completa la ficha salvo cambio explícito de política |
+| SearXNG (autohospedado) | `stable` | `searxng-v1`; API JSON; URL via `SEARXNG_INSTANCE_URL` (por defecto `http://127.0.0.1:8888`); sin credencial | `draft`, no habilitado | Aprobable: adapter completo; sólo faltan `reviewer`/`reviewed_at`/`approval_status` | Ficha completa en `config.rs`; ver «Fichas de aprobación» |
+| Marginalia Search API | `stable` | `marginalia-v1`; API oficial `api2.marginalia-search.com`, header `API-Key`, credencial `MARGINALIA_API_KEY` | `draft`, no habilitado | Aprobable: adapter completo y probado; sólo faltan `reviewer`/`reviewed_at`/`approval_status` | Ficha completa en «Fichas de aprobación» |
+| Mojeek Search API | `stable` | `mojeek-v1`; API oficial; credencial `MOJEEK_API_KEY` | **`rejected`**, no habilitado | **Descartado por política del operador** (fuente de pago; no es papeleo pendiente) | Ninguno — no se completa la ficha salvo cambio explícito de política |
+
+**Brave y Mojeek están descartados, no pendientes.** `builtin_provider_records()`
+(`config.rs`) fija `approval_status = "rejected"` para ambos por defecto, con el
+motivo explícito en `cost_model`/`operational_risk` ("Rejected by operator
+policy: no paid search providers"). Un test dedicado
+(`paid_providers_are_rejected_by_default_not_merely_draft`) falla si esto
+regresa silenciosamente a `draft`. Reactivarlos exige una decisión explícita de
+política, no simplemente completar `reviewer`/`reviewed_at` — a diferencia de
+SearXNG y Marginalia, que sí son papeleo pendiente sobre una decisión ya
+tomada (usarlas).
+
+`duckduckgo_html` se retiró del registro y de `providers/`: era un stub de 73
+líneas sin endpoint, cliente HTTP ni parseo, y DuckDuckGo no ofrece API de
+búsqueda web (sólo Instant Answer, que no devuelve resultados web). Mantenerlo
+listado como provider era engañoso; ver «Viabilidad y coste» más abajo.
 
 La fecha `2026-02-11` existente en el default de Brave es
 `terms_version_or_date`; **no** es `reviewed_at`. No se registra como revisión.
-Mojeek tiene URL de soporte pero no una versión/fecha de términos. Ningún revisor
-está definido. Por ello, el estado correcto actual es bloqueado para tráfico
-real aunque existan adapters (`config.rs:318-350`, `service.rs:277-353`,
-`providers/duckduckgo.rs:8-59`).
+Mojeek tiene URL de soporte pero no una versión/fecha de términos. Ningún
+revisor está definido para ninguno de los dos, pero eso ya no es lo que los
+bloquea: `approval_status = "rejected"` los bloquea por decisión de política,
+con o sin revisor. Ambos quedan bloqueados para tráfico real aunque existan
+adapters (`config.rs`, `service.rs:277-353`).
+
+## Fichas de aprobación: SearXNG y Marginalia
+
+Esta sección fija las fichas de gobernanza para las dos fuentes gratuitas
+verificadas. La puerta de activación (`config.rs:603-626`, `approved_on`) exige,
+además de `approval_status = "approved"` y un `reviewed_at` vigente (≤ 90 días),
+valores no vacíos para `adapter_version`, `reviewer`, `terms_url`,
+`terms_version_or_date`, `allowed_access_method`, `plan_or_contract`,
+`rate_limit`, `cost_model`, `data_handling_notes` y `operational_risk`. Una
+ficha que omita `plan_or_contract` o `rate_limit` **no aprueba**, aunque el
+resto esté completo. `adapter_version` debe coincidir con el valor registrado en
+`ProviderRegistry` (`searxng-v1`, `marginalia-v1`), no un literal genérico.
+
+### SearXNG (autohospedado) — aprobable
+
+El adapter está implementado y probado (`providers/searxng.rs`); la ficha
+incorporada en `config.rs` ya declara método, contrato, cuota, coste, derechos,
+notas de datos y riesgo. Sólo faltan `reviewer`, `reviewed_at` y
+`approval_status`, que son específicos del operador:
+
+```toml
+[providers.searxng]
+adapter_version = "searxng-v1"
+approval_status = "approved"
+reviewed_at = "2026-08-14"         # fecha real de la revisión, ≤ 90 días
+reviewer = "identidad verificable" # identidad real, no un rol
+terms_url = "https://docs.searxng.org/"
+terms_version_or_date = "self-certified"
+allowed_access_method = "self_hosted"
+plan_or_contract = "self-hosted"
+rate_limit = "unlimited (self-hosted)"
+cost_model = "0"
+credential_env = "SEARXNG_INSTANCE_URL"
+storage_rights = false
+supported_regions = []
+supported_filters = []
+data_handling_notes = "Instancia SearXNG autohospedada; sin términos externos. Los motores upstream tienen sus propios términos — el operador debe verificar cumplimiento. AMATL no almacena datos."
+operational_risk = "Depende de motores de búsqueda upstream que pueden bloquear el acceso automatizado. Riesgo de reputación de IP a volumen. El operador debe configurar sólo motores permisivos."
+```
+
+`terms_url` apunta a la documentación de la instancia, no a una revisión externa
+que no existe: es una autocertificación y así se declara en
+`terms_version_or_date = "self-certified"` y en `data_handling_notes`.
+
+### Marginalia — aprobable
+
+El adapter está implementado y probado (`providers/marginalia.rs`): consulta
+`api2.marginalia-search.com/search` (el endpoint `api.marginalia.nu` original
+está deprecado), envía la clave en el header `API-Key` y traduce `site:` de
+forma nativa. Sólo faltan `reviewer`, `reviewed_at` y `approval_status`,
+específicos del operador:
+
+```toml
+[providers.marginalia]
+adapter_version = "marginalia-v1"
+approval_status = "approved"
+reviewed_at = "YYYY-MM-DD"          # fecha real de la revisión
+reviewer = "identidad verificable"
+terms_url = "https://www.marginalia.nu/" # verificar URL de términos
+terms_version_or_date = "..."        # versión/fecha real de los términos
+allowed_access_method = "official_api"
+plan_or_contract = "..."             # plan/contrato verificado
+rate_limit = "..."                   # cuota real, no "TBD"
+cost_model = "0"                     # uso no comercial (CC-BY-NC-SA)
+credential_env = "MARGINALIA_API_KEY"
+storage_rights = false
+supported_regions = []
+supported_filters = []
+data_handling_notes = "Uso no comercial (CC-BY-NC-SA). Índice pequeño orientado a web independiente."
+operational_risk = "Dependencia de la API externa (api2.marginalia-search.com); cuota y posible bloqueo por automatización."
+```
+
+Notas sobre la ficha de Marginalia:
+
+- `operational_risk` **no** es "nulo": depende de una API externa con cuota y
+  posible bloqueo. Declararlo como "sin dependencias externas" sería falso.
+- `terms_url` y `terms_version_or_date` deben ser verificados, no hipotéticos.
+- `adapter_version` debe ser `marginalia-v1` (el valor registrado en
+  `ProviderRegistry`), no `v1`.
 
 ## Viabilidad y coste de las fuentes
 

@@ -113,6 +113,83 @@ paths:
         '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '500': { $ref: '#/components/responses/ServiceUnavailable' }
         '504': { $ref: '#/components/responses/RequestTimeout' }
+  /answer:
+    post:
+      operationId: answerPost
+      summary: Run Search and synthesize a grounded, cited answer from it
+      description: >-
+        Runs the same search `/search` would and additionally asks the
+        configured model to answer from those results only, citing `[n]`
+        markers the response validates against real source indices — a
+        citation to a source that was never retrieved is stripped from the
+        visible text, not merely uncounted. Requires
+        `data_policy.inference = "remote_explicit"` and `answer.enabled`;
+        returns `answer_unavailable` otherwise, or when the model's response
+        cited no valid source at all (a refusal, not a best-effort guess).
+        The raw search results are always included alongside the answer, so a
+        caller has them even when it only wants the summary.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryInput'
+      responses:
+        '200':
+          description: Search completed and an answer was synthesized and grounded
+          headers:
+            X-Request-ID: { $ref: '#/components/headers/RequestId' }
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnswerResult'
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '422': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '413': { $ref: '#/components/responses/BodyTooLarge' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '431': { $ref: '#/components/responses/HeadersTooLarge' }
+        '500': { $ref: '#/components/responses/ServiceUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
+  /answer/enabled:
+    post:
+      operationId: answerToggle
+      summary: Flip answer.enabled in the configuration file and apply it live
+      description: >-
+        Admin-scoped, same trust tier as `/reload` (which this reuses for the
+        actual apply step). Builds a candidate configuration with the flag
+        flipped and validates it *before* writing anything: turning the
+        feature on when `answer.endpoint`/`answer.model` are still incomplete
+        fails closed with `configuration_invalid` and neither the file nor
+        the running service change. On success, writes only `answer.enabled`
+        to the configuration file with comments and every other key
+        preserved, then reloads the service without a restart.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [enabled]
+              properties:
+                enabled: { type: boolean }
+      responses:
+        '200':
+          description: The flag was written and the service reloaded with it applied
+          headers:
+            X-Request-ID: { $ref: '#/components/headers/RequestId' }
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReloadReport'
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '500': { $ref: '#/components/responses/ServiceUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /providers:
     get:
       operationId: providers
@@ -536,7 +613,7 @@ components:
               description: >-
                 Shared error catalog (amatl-core/src/errors.rs). Every AMATL
                 surface renders the same identifiers.
-              enum: [invalid_request, invalid_query, invalid_url, unauthorized, invalid_host, invalid_origin, rate_limited, body_too_large, headers_too_large, request_timeout, not_found, egress_denied, fetch_failed, provider_not_declared, provider_not_registered, provider_not_enabled, provider_not_approved, provider_credential_missing, provider_network_blocked, search_planning_failed, configuration_invalid, inference_unavailable, ranking_backend_unavailable, storage_unavailable, scope_denied, request_cancelled, serialization_failed, internal_error]
+              enum: [invalid_request, invalid_query, invalid_url, unauthorized, invalid_host, invalid_origin, rate_limited, body_too_large, headers_too_large, request_timeout, not_found, egress_denied, fetch_failed, provider_not_declared, provider_not_registered, provider_not_enabled, provider_not_approved, provider_credential_missing, provider_network_blocked, search_planning_failed, configuration_invalid, inference_unavailable, ranking_backend_unavailable, answer_unavailable, storage_unavailable, scope_denied, request_cancelled, serialization_failed, internal_error]
             message: { type: string }
     SearchStatus:
       type: string
@@ -613,6 +690,47 @@ components:
           description: Size of the whole ranked set; present only when the request paginated.
         page: { type: integer, minimum: 0 }
         page_size: { type: integer, minimum: 1, maximum: 100 }
+    AnswerSource:
+      type: object
+      additionalProperties: false
+      required: [index, title, url, snippet]
+      properties:
+        index:
+          type: integer
+          minimum: 1
+          description: 1-based index the model must cite; stable within one response.
+        title: { type: [string, 'null'] }
+        url: { type: string, format: uri }
+        snippet: { type: string }
+    Answer:
+      type: object
+      additionalProperties: false
+      required: [text, citations, sources, model]
+      properties:
+        text:
+          type: string
+          description: >-
+            Citations to sources the response never actually cited are
+            stripped from this text before it is returned, not merely
+            excluded from the `citations` count.
+        citations:
+          type: array
+          description: Source indices the answer actually cited, in order of first mention.
+          items: { type: integer, minimum: 1 }
+        sources:
+          type: array
+          items: { $ref: '#/components/schemas/AnswerSource' }
+        model: { type: string }
+    AnswerResult:
+      type: object
+      additionalProperties: false
+      required: [schema_version, answer, search]
+      properties:
+        schema_version: { $ref: '#/components/schemas/SchemaVersion' }
+        answer: { $ref: '#/components/schemas/Answer' }
+        search:
+          $ref: '#/components/schemas/SearchResponse'
+          description: The same search AMATL ran to ground the answer, kept alongside it.
     FetchMethod:
       type: string
       description: local is emitted by the CLI-only ingestion contract, not by HTTP Deep
@@ -941,10 +1059,35 @@ components:
         document_hits: { type: integer, minimum: 0 }
         document_misses: { type: integer, minimum: 0 }
         document_hit_rate: { type: number, minimum: 0, maximum: 1 }
+    AnswerStatus:
+      type: object
+      additionalProperties: false
+      required: [enabled, configured, available, model, endpoint]
+      properties:
+        enabled:
+          type: boolean
+          description: >-
+            answer.enabled in configuration — the operator's on/off intent,
+            exactly what POST /answer/enabled flips.
+        configured:
+          type: boolean
+          description: >-
+            Whether endpoint and model are both present, regardless of
+            enabled — "is there a real configuration on disk to toggle",
+            answered even while the feature is switched off.
+        available:
+          type: boolean
+          description: >-
+            Whether a call to POST /answer will actually work right now:
+            enabled AND configured AND the credential was present in the
+            environment at startup. A UI should gate the feature on this,
+            not on enabled or configured alone.
+        model: { type: [string, 'null'] }
+        endpoint: { type: [string, 'null'] }
     ServiceStatus:
       type: object
       additionalProperties: false
-      required: [schema_version, status, sources, storage, cache, inference_backend]
+      required: [schema_version, status, sources, storage, cache, inference_backend, answer]
       properties:
         schema_version: { $ref: '#/components/schemas/SchemaVersion' }
         status: { type: string, enum: [ok, degraded] }
@@ -954,6 +1097,12 @@ components:
         storage: { $ref: '#/components/schemas/StorageStatus' }
         cache: { $ref: '#/components/schemas/CacheStatus' }
         inference_backend: { type: [string, 'null'] }
+        answer:
+          $ref: '#/components/schemas/AnswerStatus'
+          description: >-
+            Read-only view of the answer-synthesis configuration: never the
+            credential, only what a settings screen needs to explain why the
+            feature is or isn't available right now.
     SearchHistoryEntry:
       type: object
       additionalProperties: false

@@ -26,12 +26,93 @@ Estado de los documentos rectores:
 |---|---|---|
 | `plan_amatl.md` | `0fdd6761cb8c568145d6e00dfa0d37d56d68b02239bac8a92c061d4fb4b9ae11` | **Modificado** en `56c5ec1` |
 | `fase_a_contratos.md` | `03034b7abfbcfaba3da7ada7b43267ed38936ff09453326cd9db40b2cede4744` | Intacto |
-| `decisiones_amatl.md` | `52f465d22cf64fc18f62a5ef89617e3e9456dbba8b19080f426fa4c094d50d18` | Intacto |
+| `decisiones_amatl.md` | `3b260a0f34c934b61e103f71303b3c4effbebf3a0e231e2ff5574e41d0a36ee5` | **Modificado** (append-only): ADR-010 añadida, 2026-08-15 |
 
 `plan_amatl.md` declaraba `Evidence` y `Gap` como «stub post-MVP» cuando
 `evidence.rs` (527 líneas) y `gaps.rs` (513) llevaban implementados desde la
 fase 5. La corrección alinea el documento con el código; la normativa original
 se conserva como registro.
+
+`decisiones_amatl.md` no es un documento protegido por ADR-001 (sólo
+`plan_amatl.md` y `fase_a_contratos.md` lo son); su cambio es append-only —
+ADR-010 documenta el retiro de `duckduckgo_html` y la implementación real de
+Marginalia sin reescribir ADR-005.
+
+**Actualización 2026-08-15 (no comiteada):** cierre de la Etapa 1 de la brecha
+de proveedores — `providers/marginalia.rs` deja de ser scaffold (adapter real
+contra `api2.marginalia-search.com`, header `API-Key`), `router.rs` penaliza
+por `estimated_cost`, y `duckduckgo_html` se retiró del código, del registro y
+de la documentación de gobernanza (no es un adapter apagado: dejó de existir).
+Compuerta local verificada: `cargo fmt --check`, `cargo clippy -D warnings` y
+`cargo test --workspace` en verde. Detalle en ADR-010 y en
+`docs/gobernanza-providers.md`.
+
+**Actualización 2026-08-16 (no comiteada, sobre el mismo working tree que la
+entrada anterior — nada se comiteó desde `f46ad90`):** cuatro bloques de
+trabajo nuevos, todos en `amatl-core`/`amatl-server`/`amatl-ui` y su
+documentación, ninguno cambia `schema_version` ni las invariantes de Search:
+
+1. **"Resumen con IA" (síntesis de respuesta, nuevo módulo `answer.rs`).**
+   Sintetiza una respuesta en español citando `[n]` sólo sobre índices de
+   fuente reales (`extract_citations` valida, `strip_invalid_citations`
+   elimina marcadores fabricados del texto visible de forma segura en UTF-8);
+   requiere `data_policy.inference = "remote_explicit"` y `[answer]` con
+   credencial propia por variable de entorno — apagado y sin llamar a nadie
+   por defecto. Expuesto en HTTP (`POST /answer`), MCP y UI (botón `Resumen
+   con IA`, siempre visible, deshabilitado visualmente cuando no está
+   disponible). Un interruptor `POST /answer/enabled` con scope `admin`
+   permite encenderlo/apagarlo desde la propia UI: valida la configuración
+   candidata completa antes de escribir, escribe sólo `answer.enabled` en
+   `amatl.toml` con `toml_edit` (conserva comentarios y el resto del
+   archivo intacto) y recarga el servicio sin reinicio. `AnswerStatus`
+   separa a propósito `enabled` (intención de config), `configured`
+   (endpoint+modelo presentes) y `available` (credencial cargada) como tres
+   campos independientes — un bug real de diseño anterior ataba `configured`
+   a `enabled` y volvía indescubrible el propio interruptor al apagar la
+   función. Documentado en `docs/resumen-con-ia.md`.
+2. **Selector de tema claro/oscuro.** Paleta clara completa en
+   `styles.css` (verificada WCAG-AA), `data-theme` + `prefers-color-scheme`,
+   ícono único visible por estado (sol u luna) mediante clase `is-active`,
+   no `hidden`/`display` en el propio SVG — la primera implementación
+   mostraba ambos íconos a la vez porque `element.hidden` en un `SVGElement`
+   no es fiable entre motores.
+3. **Reemplazo íntegro del logo.** Ícono de marca y favicon nuevos
+   (`brand-icon.png`, `favicon.png`, PNG embebidos vía `include_bytes!`),
+   sustituyendo el símbolo geométrico anterior por completo. Alcance
+   acotado explícitamente por decisión del propietario: sólo el símbolo usa
+   el color café de la imagen origen; el resto de la aplicación conserva su
+   paleta funcional azul/cian/esmeralda, y el wordmark conserva JetBrains
+   Mono. Paleta completa (oscura y clara) documentada como fuente única de
+   verdad en `docs/identidad-visual.md`, con la regla de no introducir
+   colores funcionales nuevos sin documentarlos ahí. El subtítulo
+   `"Búsqueda multifuente y evidencia verificable"` bajo la marca se retiró
+   por completo (leía como texto publicitario) — la cabecera sólo conserva
+   marca y selector de tema.
+4. **Curación operativa de motores de SearXNG (fuera de este repositorio,
+   sin cambio de código).** El contenedor Docker autohospedado empezó a
+   devolver cero resultados reales porque los motores upstream por defecto
+   (Brave, DuckDuckGo, Google CSE, Startpage) bloqueaban la IP del operador
+   por volumen de pruebas — confirmado con `docker logs searxng`, no con
+   pruebas a nivel de AMATL. Se descartó explícitamente rotar IP/proxy por
+   ir contra los términos de esos motores. La corrección fue editar
+   `/etc/searxng/settings.yml` dentro del contenedor para deshabilitar los
+   motores bloqueados y habilitar otros más tolerantes (Bing confirmado con
+   resultados reales tras el cambio; Mojeek/Qwant quedaron habilitados aun
+   fallando en las pruebas porque no perjudican el agregado cuando fallan).
+   `persistence` y `cache.provider_search` se habilitaron en el
+   `amatl.toml` del operador, pero la caché de ambos providers activos
+   sigue siendo un no-op real porque `storage_rights = false` en sus
+   fichas — no se cambió `storage_rights` "por conveniencia técnica",
+   siguiendo `docs/gobernanza-providers.md`.
+
+Compuerta local verificada tras estos cuatro bloques: `cargo test -p
+amatl-core`, `cargo test -p amatl-server`, `cargo test -p amatl-ui` en verde
+(incluye `user_visible_copy_lives_only_in_the_message_catalog` tras retirar el
+subtítulo). Falta repetir la compuerta completa del workspace
+(`cargo fmt --all -- --check`, `cargo clippy --workspace --all-targets -- -D
+warnings`, `cargo test --workspace`, `cargo doc`, `cargo audit`, `cargo deny`,
+`cargo cyclonedx`) antes de comitear, según el protocolo de esta misma
+sección.
 
 ## Jerarquía para retomar trabajo
 
@@ -130,11 +211,18 @@ Invariantes no negociables:
 ## Disponibilidad real y límites
 
 - `MockProvider` es la vía determinista para desarrollo y pruebas sin red.
-- Brave y Mojeek tienen adapters, pero permanecen sujetos a configuración,
-  credencial y aprobación vigente de gobernanza; ningún provider real está
-  activo por defecto.
-- DuckDuckGo HTML está bloqueado fail-closed con
-  `provider_pending_explicit_approval`.
+- Brave y Mojeek tienen adapters completos, pero están **descartados por
+  política del operador** (`approval_status = "rejected"` por defecto, no
+  `draft`): ambos son de pago y no se contratan providers de pago. No es un
+  papeleo de gobernanza pendiente — reactivarlos exige revertir esa decisión
+  explícitamente. Ver «Estado actual verificable» en
+  `docs/gobernanza-providers.md`.
+- SearXNG y Marginalia tienen adapter real y completo (ficha aprobable); ninguno
+  está activo por defecto — falta `reviewer`/`reviewed_at`/`approval_status`
+  con identidad real, decisión del propietario, no del código. Son los dos
+  candidatos gratuitos.
+- `duckduckgo_html` se retiró: DuckDuckGo no ofrece API de búsqueda web, sólo
+  Instant Answer (no devuelve resultados web). No queda como adapter apagado.
 - Trafilatura es opcional; su ausencia degrada Deep a documento superficial.
 - La UI puede mostrar Search con el mock sin red, pero una vista Deep enriquecida
   exige candidatos obtenibles bajo `data_policy` y texto del extractor. Con
@@ -268,12 +356,22 @@ No son defectos del core y no deben resolverse inventando datos:
    SLA y URL canónica ya están definidos; mantenerlos vigentes.
 2. Marcar `contract-gate` como required check cuando GitHub habilite protección
    para este repositorio privado (requiere plan superior o hacerlo público).
-3. Elegir una fuente de búsqueda y completar su ficha. No es sólo papeleo: los
-   dos adapters implementados (Brave, Mojeek) exigen plan de pago —Brave eliminó
-   su tier gratuito en 2026-02— y DuckDuckGo no tiene API de búsqueda web ni
-   implementación en el repositorio. Las opciones gratuitas verificadas
-   (Marginalia, SearXNG autohospedado) requieren escribir un `ProviderFactory`.
-   Ver la sección «Viabilidad y coste» de `docs/gobernanza-providers.md`.
+3. Aprobar la ficha de una fuente gratuita ya implementada (SearXNG o
+   Marginalia): ambos `ProviderFactory` existen y sólo falta
+   `reviewer`/`reviewed_at`/`approval_status` con identidad real — no es
+   trabajo de código, es papeleo de gobernanza. Marginalia ya se aprobó en un
+   `amatl.toml` de operador real (2026-08-15, gitignored, no forma parte del
+   repositorio) usando la clave pública compartida de Marginalia mientras se
+   espera una clave propia por correo; el `amatl.example.toml` que sí se
+   versiona sigue con la ficha en `draft` a propósito, porque
+   `reviewer`/`reviewed_at` son específicos de cada operador y no deben
+   inventarse en un ejemplo. SearXNG sigue sin aprobar en ningún lado; exige
+   además que el operador levante su propia instancia. Brave y Mojeek
+   **quedan descartados, no pendientes**: ambos exigen plan de pago —Brave
+   eliminó su tier gratuito en 2026-02—, y `config.rs` ya los fija en
+   `approval_status = "rejected"` por decisión de política, con el motivo en
+   `cost_model`/`operational_risk`. Ver la sección «Viabilidad y coste» de
+   `docs/gobernanza-providers.md`.
 4. Configurar el environment `provider-canary`, sus revisores y secretos; luego
    capturar latencia/errores reales sin incorporar credenciales al repositorio.
 5. Para cada RC futura, ejecutar el workflow, validar musl/.deb/.rpm/Arch y sólo
@@ -321,38 +419,54 @@ introducido debe ser el mismo valor exportado en `AMATL_SERVER_TOKEN`.
 
 ## Próximo hito seguro
 
-El hito anterior —pruebas browser E2E— **está cumplido**: `browser_e2e.rs`
-ejercita Search, navegación por teclado, estado vacío y viewport estrecho contra
-Chrome real, con su job en `ci.yml`. Queda pendiente de ese bloque la
-accesibilidad automatizada: axe-core exige inyectar un script y eso choca con la
-CSP `script-src 'self'` que el propio crate `amatl-ui` asegura por test.
-Inyectarlo vía `execute_script` de WebDriver evita instalar Node, pero hay que
-verificar que no obliga a relajar la CSP.
+El hito anterior —pruebas browser E2E— **está cumplido, accesibilidad
+incluida**: `browser_e2e.rs` ejercita Search, navegación por teclado, estado
+vacío y viewport estrecho contra Chrome real, con su job en `ci.yml`. La
+accesibilidad automatizada también está resuelta:
+`the_ui_has_no_automatically_detectable_accessibility_violations` inyecta
+axe-core 4.13.0 (vendorizado, `fixtures/axe-core/`) vía `execute_script` de
+WebDriver — evita instalar Node — y confirma primero que la inyección no
+quedó bloqueada por la CSP `script-src 'self'` (el test falla explícitamente
+si `window.axe` no se define) antes de correr `axe.run()`. No queda nada
+pendiente en este bloque.
 
-**El siguiente paso real es conectar una fuente de búsqueda.** Es hoy la única
-capacidad declarada que no existe: el core agrega, deduplica, rankea y tolera
-fallos parciales, pero no recibe nada que agregar. No es una Fase 10 ni un
-cambio de contrato; es escribir un `ProviderFactory` y su ficha.
+**Conectar una fuente de búsqueda real está cumplido a nivel de código** (ver
+ADR-010, 2026-08-15, cambios sin comitear):
 
-Decisión tomada el 2026-08-14, pendiente de ejecución:
+1. **SearXNG autohospedado** — `providers/searxng.rs` implementado y probado;
+   sin credencial. Ficha aprobable.
+2. **Marginalia** — `providers/marginalia.rs` deja de ser scaffold: `search()`
+   real contra `api2.marginalia-search.com` (el endpoint `api.marginalia.nu`
+   de la referencia original está deprecado; se verificó contra la
+   documentación oficial), header `API-Key`, traducción de `site:`, manejo
+   tipado de rate limit/auth/errores de servidor. Ficha aprobable.
+3. **Prioridad por coste cerrada** (era el hueco conocido): `router.rs` resta
+   una penalización proporcional a `estimated_cost` al score de cada
+   candidato, de modo que un mal día de SearXNG ya no empuja a Brave (fuente
+   de pago) a primera ronda sin control de coste.
+4. **DuckDuckGo HTML retirado**, no sólo bloqueado: `providers/duckduckgo.rs`
+   se eliminó junto con su entrada en `ProviderRegistry`, `config.rs` y la
+   documentación de gobernanza, porque DuckDuckGo no tiene API de búsqueda web
+   (sólo Instant Answer). ADR-005 queda como registro histórico; ADR-010
+   documenta el cierre.
+5. **Brave y Mojeek quedan descartados, decisión cerrada (2026-08-15): no se
+   contratan providers de pago.** Su adapter está completo (Brave: 366 líneas,
+   endpoint y parseo correctos), pero `builtin_provider_records()`
+   (`config.rs`) fija ambos en `approval_status = "rejected"` por defecto, con
+   el motivo en `cost_model`/`operational_risk`, y un test dedicado
+   (`paid_providers_are_rejected_by_default_not_merely_draft`) impide que esto
+   regrese silenciosamente a `draft`. No queda abierto a "segunda ronda con
+   datos de uso": reactivarlos exige revertir la política, no juntar métricas.
 
-1. **SearXNG autohospedado como fuente principal.** Gratis, sin cuota, con
-   cobertura amplia porque agrega varios motores. Requiere un fichero nuevo en
-   `providers/` y resolver la URL de la instancia, para la que
-   `ProviderRuntimeConfig` no tiene campo.
-2. **Brave como segunda ronda, no como principal.** El router ya expande a más
-   fuentes sólo si la cobertura de la primera ronda es insuficiente, de modo que
-   Brave consumiría cuota en una minoría de búsquedas. Su adapter está completo
-   y verificado (366 líneas, endpoint y parseo correctos): no requiere
-   implementación, sólo ficha y credencial.
-3. **No contratar Brave hasta medir.** Su crédito mensual de 5 USD cubre unas
-   1 000 peticiones, y una búsqueda de AMATL consume entre 1 y 7 según
-   `budget.max_provider_calls` y la expansión de Deep. La decisión de pagar debe
-   tomarse con datos de uso propios, no con estimaciones.
-4. **Hueco conocido:** el router ordena por salud y latencia, no por coste. Sin
-   un criterio de prioridad por coste, un mal día de SearXNG puede poner a Brave
-   en primera ronda. Son unas 20 líneas en `router.rs`.
+Compuerta local verificada tras el cambio: `cargo fmt --all -- --check`,
+`cargo clippy --workspace --all-targets --all-features -- -D warnings`,
+`cargo test --workspace` (348 tests, 0 fallos). Falta comitear y, antes de
+publicar, repetir la compuerta completa (`cargo doc`, `cargo audit`, `cargo
+deny`, `cargo cyclonedx`) según el protocolo de esta misma sección.
 
+**El siguiente paso real es de gobernanza, no de código:** aprobar la ficha de
+SearXNG o Marginalia (`reviewer`, `reviewed_at`, `approval_status` con
+identidad real) para que el binario tenga al menos una fuente real activa.
 Contexto de coste y viabilidad de cada fuente: sección «Viabilidad y coste» de
 `docs/gobernanza-providers.md`.
 

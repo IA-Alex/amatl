@@ -137,3 +137,94 @@ reemplaza. Fecha base trazable: commit `51c6d34`, 2026-08-12.
   promover Ranking v2 sin benchmark.
 - **Trazabilidad:** `model.rs:7`; `ranking.rs`; `diversity.rs`; `progressive.rs`;
   `ranking_v2.rs:11-128`; corpus `ranking_v2_corpus.json`.
+
+## ADR-010 — Retiro de DuckDuckGo HTML; Marginalia pasa de scaffold a adapter real
+
+- **Fecha:** 2026-08-15
+- **Estado:** Aceptada
+- **Contexto:** ADR-005 bloqueaba DuckDuckGo HTML fail-closed a la espera de
+  revisión, pero DuckDuckGo no ofrece API de búsqueda web (sólo Instant
+  Answer, que no devuelve resultados web); el adapter era un stub de 73
+  líneas sin endpoint, cliente HTTP ni parseo que nunca podría aprobar
+  gobernanza. Mantenerlo listado era una fuente "en progreso" fantasma.
+  Marginalia, por otro lado, sí tiene API de búsqueda oficial y era el
+  scaffold señalado como siguiente paso en `CONTINUIDAD.md`.
+- **Decisión:** Se retira `duckduckgo_html` del código (`providers/duckduckgo.rs`
+  eliminado), del `ProviderRegistry`, de `config.rs` y de la documentación de
+  gobernanza — no queda como adapter apagado, deja de existir. Se implementa
+  `search()` real de Marginalia contra `api2.marginalia-search.com` (el
+  endpoint `api.marginalia.nu` original está deprecado), con el header
+  `API-Key`, traducción de `site:` y manejo tipado de errores/rate limit. El
+  router (`AdaptiveRouter`) añade una penalización proporcional a
+  `estimated_cost` para que una fuente de pago no ocupe la primera ronda sólo
+  por un mal día de latencia/salud de una fuente gratuita.
+- **Consecuencias:** ADR-005 queda históricamente correcta para su fecha, pero
+  superada: ya no aplica porque el sujeto que bloqueaba no existe. La ficha de
+  Marginalia pasa a "aprobable" en `docs/gobernanza-providers.md`, pendiente
+  sólo de `reviewer`/`reviewed_at`/`approval_status` (decisión del propietario,
+  no de código). SearXNG sigue siendo la única fuente sin credencial.
+- **Alternativas descartadas:** implementar el stub de DuckDuckGo HTML (sin API
+  de búsqueda real, exige scraping sin ToS verificable — contradice la puerta
+  de gobernanza); mantener el criterio de routing ciego a coste.
+- **Trazabilidad:** `providers/marginalia.rs`; `router.rs` (penalización por
+  `estimated_cost`); `providers/registry.rs`; `config.rs::builtin_provider_records`;
+  `docs/gobernanza-providers.md`.
+
+## ADR-011 — Síntesis de respuesta opcional ("Resumen con IA") sobre resultados de Search
+
+- **Fecha:** 2026-08-16
+- **Estado:** Aceptada
+- **Contexto:** `plan_amatl.md` y `fase_a_contratos.md` prohíben introducir un
+  LLM obligatorio, pero no prohíben uno opcional, apagado por defecto y con
+  decisión explícita — la misma cláusula que ya exige `data_policy` para
+  cualquier salida de red nueva. El propietario pidió sintetizar los
+  resultados de Search en una respuesta citada, sujeta a dos condiciones no
+  negociables planteadas desde el inicio: la credencial nunca toca el
+  navegador ni el archivo de configuración (sólo variable de entorno), y la
+  respuesta debe ser verificable contra fuentes reales, no texto generado
+  libremente.
+- **Decisión:** Nuevo módulo `amatl-core/src/answer.rs`, gateado por dos
+  interruptores independientes: `data_policy.inference = "remote_explicit"`
+  (mismo gate que el backend de embeddings remoto) y `answer.enabled` en
+  `[answer]`. El modelo sólo ve los resultados que Search ya obtuvo —título,
+  URL, snippet acotado por `max_source_chars`— nunca contenido no obtenido
+  por AMATL. Cada cita `[n]` se valida contra los índices de fuente reales
+  tras la llamada (`extract_citations`); una cita a una fuente que no existe
+  se elimina del texto visible, no sólo del conteo (`strip_invalid_citations`,
+  UTF-8-safe); una respuesta sin ninguna cita válida se rechaza como
+  `AnswerError::Ungrounded` en vez de mostrarse. Expuesto por igual en HTTP
+  (`POST /answer`), MCP (`answer`) y UI (botón `Resumen con IA`, siempre
+  visible, visualmente deshabilitado cuando no está disponible). Un
+  interruptor admin-scoped (`POST /answer/enabled`) permite activarlo/
+  desactivarlo desde la propia UI: valida la configuración candidata completa
+  antes de escribir nada, y escribe sólo la clave `answer.enabled` en
+  `amatl.toml` con `toml_edit`, preservando comentarios y el resto del
+  archivo. `AnswerStatus` separa `enabled`/`configured`/`available` como tres
+  campos independientes a propósito, para que apagar la función no oculte el
+  propio panel de configuración que permite volver a encenderla.
+- **Consecuencias:** Primer backend de inferencia remota realmente activo en
+  un despliegue de operador (antes sólo existía el gate de `data_policy`, sin
+  código que lo usara). Amplía la superficie de amenaza con una ruta de
+  egress gobernada hacia un tercero (hoy DeepInfra) — documentado en
+  `docs/security/threat-model.md` bajo `Core → inference (answer)`, incluida
+  la matización de que el grounding acota qué puede citarse, no qué puede
+  decir el modelo en prosa libre ante una fuente hostil con inyección de
+  instrucciones. `README.md` mantiene "no es un chatbot... ni sistema
+  dependiente de LLM" porque sigue siendo cierto en sentido estricto: es una
+  síntesis de un solo turno sobre resultados ya obtenidos, no una
+  conversación con memoria, y permanece apagada hasta decisión explícita del
+  operador. Un chat conversacional multi-turno se evaluó y se descartó
+  explícitamente por ahora (ver «Pendientes» más abajo): cambiaría esa
+  invariante y exige su propia decisión.
+- **Alternativas descartadas:** dejar la síntesis sin verificación de citas
+  (harían al texto generado indistinguible de una alucinación con apariencia
+  de fuente real); atar `configured` a `enabled` en el estado expuesto
+  (bug real detectado y corregido antes de enviar: apagar la función ocultaba
+  el propio interruptor para volver a encenderla); permitir memoria
+  multi-turno o persistencia de conversación en esta misma entrega (mayor
+  superficie de retención de datos y de costo por sesión sin límite
+  equivalente al `Budget` de Search — evaluado aparte, sin implementar).
+- **Trazabilidad:** `answer.rs`; `config.rs::set_answer_enabled`;
+  `amatl-server/src/lib.rs::{answer_post,answer_toggle}`;
+  `service.rs::AnswerStatus`; `docs/resumen-con-ia.md`;
+  `docs/security/threat-model.md`; `docs/api/openapi.yaml`.

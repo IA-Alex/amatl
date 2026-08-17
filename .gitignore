@@ -1,9 +1,15 @@
 /target/
 /amatl.toml
 /amatl.sqlite3*
+# Covers every backup AMATL's own storage module produces next to the live
+# DB — auto (`.backup-`), migration (`.migration-`) and pre-restore
+# (`.pre-restore-`) — none of which match the literal prefix above, and all
+# of which can carry the operator's real search history/saved documents.
+/amatl*.sqlite3*
 **/*.cdx.json
 **/*.cdx.xml
 /.env
 /.claude/
 *.pem
 *.key
+*~

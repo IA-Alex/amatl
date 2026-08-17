@@ -148,13 +148,33 @@ impl InMemoryTelemetry {
         telemetry
     }
 
+    /// Record one observation in memory and, when configured, in `storage`.
+    ///
+    /// The two writes are deliberately **not** transactional. Memory is the
+    /// source of truth `snapshot`/`snapshot_for_routing` read from; `storage`
+    /// is a durability backup that `restore_best_effort` replays into memory
+    /// on the next startup. Making them atomic — rolling the memory write
+    /// back when the storage write fails, or vice versa — would mean an
+    /// ordinary SQLite hiccup (already expected and non-fatal everywhere else
+    /// in this codebase; see the module-level invariant that storage failures
+    /// never invalidate Search) starts also discarding the in-memory sample
+    /// that routing depends on right now. That trades a purely cosmetic
+    /// inconsistency (storage briefly ahead of memory, self-healed by
+    /// `restore_best_effort` on the next restart) for a real one: a flaky
+    /// disk degrading routing decisions. `lock_state` already closes the gap
+    /// this method used to have — a poisoned mutex no longer skips the memory
+    /// write silently and permanently (see its doc comment and
+    /// `survives_a_poisoned_state_mutex_without_losing_future_observations`);
+    /// what remains is two independent stores with intentionally independent
+    /// failure domains, not a bug.
     pub async fn record(&self, mut observation: TelemetryObservation) {
         observation.duplicate_ratio = observation.duplicate_ratio.clamp(0.0, 1.0);
         observation.top_k_contribution = observation.top_k_contribution.clamp(0.0, 1.0);
         observation.diversity = observation.diversity.clamp(0.0, 1.0);
         let now = observation.observed_at;
         let cutoff = now - self.window_seconds;
-        if let Ok(mut state) = self.state.lock() {
+        {
+            let mut state = self.lock_state();
             state.observations.push_back(observation.clone());
             prune_memory(&mut state.observations, cutoff);
         }
@@ -250,17 +270,11 @@ impl InMemoryTelemetry {
 
     pub fn snapshots(&self, now: i64) -> Vec<ProviderValueSnapshot> {
         let providers = self
-            .state
-            .lock()
-            .ok()
-            .map(|state| {
-                state
-                    .observations
-                    .iter()
-                    .map(|observation| observation.provider.clone())
-                    .collect::<std::collections::BTreeSet<_>>()
-            })
-            .unwrap_or_default();
+            .lock_state()
+            .observations
+            .iter()
+            .map(|observation| observation.provider.clone())
+            .collect::<std::collections::BTreeSet<_>>();
         providers
             .into_iter()
             .map(|provider| self.snapshot_global(&provider, now))
@@ -268,18 +282,12 @@ impl InMemoryTelemetry {
     }
 
     pub fn status(&self) -> TelemetryStatus {
-        self.state
-            .lock()
-            .map(|state| TelemetryStatus {
-                in_memory_observations: state.observations.len(),
-                persistence_enabled: self.storage.is_some(),
-                persistence_failures: state.persistence_failures,
-            })
-            .unwrap_or(TelemetryStatus {
-                in_memory_observations: 0,
-                persistence_enabled: self.storage.is_some(),
-                persistence_failures: 1,
-            })
+        let state = self.lock_state();
+        TelemetryStatus {
+            in_memory_observations: state.observations.len(),
+            persistence_enabled: self.storage.is_some(),
+            persistence_failures: state.persistence_failures,
+        }
     }
 
     fn snapshot(
@@ -290,24 +298,18 @@ impl InMemoryTelemetry {
     ) -> ProviderValueSnapshot {
         let cutoff = now - self.window_seconds;
         let observations = self
-            .state
-            .lock()
-            .ok()
-            .map(|state| {
-                state
-                    .observations
-                    .iter()
-                    .filter(|item| {
-                        item.provider == provider
-                            && item.observed_at >= cutoff
-                            && category
-                                .as_ref()
-                                .is_none_or(|value| &item.category == value)
-                    })
-                    .cloned()
-                    .collect::<Vec<_>>()
+            .lock_state()
+            .observations
+            .iter()
+            .filter(|item| {
+                item.provider == provider
+                    && item.observed_at >= cutoff
+                    && category
+                        .as_ref()
+                        .is_none_or(|value| &item.category == value)
             })
-            .unwrap_or_default();
+            .cloned()
+            .collect::<Vec<_>>();
         calculate_snapshot(provider, category, &observations, now, self.window_days())
     }
 
@@ -315,21 +317,46 @@ impl InMemoryTelemetry {
         let Some(storage) = &self.storage else { return };
         match storage.telemetry_load(now - self.window_seconds).await {
             Ok(observations) => {
-                if let Ok(mut state) = self.state.lock() {
-                    state.observations = observations
-                        .into_iter()
-                        .filter_map(TelemetryObservation::try_from_stored)
-                        .collect();
-                }
+                self.lock_state().observations = observations
+                    .into_iter()
+                    .filter_map(TelemetryObservation::try_from_stored)
+                    .collect();
             }
             Err(_) => self.mark_persistence_failure(),
         }
     }
 
     fn mark_persistence_failure(&self) {
-        if let Ok(mut state) = self.state.lock() {
-            state.persistence_failures = state.persistence_failures.saturating_add(1);
-        }
+        let mut state = self.lock_state();
+        state.persistence_failures = state.persistence_failures.saturating_add(1);
+    }
+
+    /// Lock the shared in-memory state, recovering it if a previous holder
+    /// panicked mid-access.
+    ///
+    /// `record` writes to memory and to `storage` (when configured)
+    /// independently and deliberately: a storage failure must not make an
+    /// observation invisible to routing, and a poisoned in-memory lock must
+    /// not make every later observation invisible either — the two stores
+    /// already have distinct failure semantics (storage failures are counted
+    /// in `persistence_failures` and never treated as fatal to `record`,
+    /// `snapshot`, or `snapshots`). The `VecDeque`/counter mutations guarded
+    /// by this mutex only push, retain, or increment; none of them can leave
+    /// the state in a form that would be unsafe to keep using after a panic,
+    /// so recovering — rather than letting every subsequent call silently see
+    /// an empty state — restores the same in-memory bookkeeping that
+    /// `storage` keeps receiving, instead of leaving telemetry permanently
+    /// blind to memory-only observations for the rest of the process.
+    fn lock_state(&self) -> std::sync::MutexGuard<'_, TelemetryState> {
+        self.state.lock().unwrap_or_else(|error| {
+            tracing::error!(
+                target: "amatl::telemetry",
+                security_event = "mutex_poisoned",
+                component = "in_memory_state",
+                "recovered a poisoned telemetry state mutex; a prior operation must have panicked while holding it"
+            );
+            error.into_inner()
+        })
     }
 
     fn window_days(&self) -> u32 {
@@ -585,5 +612,29 @@ mod tests {
         assert_eq!(snapshot.sample, 2);
         assert!((snapshot.weighted_sample - 1.5).abs() < 1e-12);
         assert!(snapshot.success_rate > snapshot.timeout_rate);
+    }
+
+    /// A panic while another thread holds `state` poisons the mutex. Memory
+    /// recording must survive that (matching the recovery pattern already
+    /// used for the client-cache mutex in `fetch.rs`), rather than going
+    /// permanently blind for the rest of the process while `storage` keeps
+    /// receiving observations — the divergence the audit flagged.
+    #[tokio::test]
+    async fn survives_a_poisoned_state_mutex_without_losing_future_observations() {
+        let telemetry = InMemoryTelemetry::new();
+        let poisoned_state = telemetry.state.clone();
+        let _ = std::thread::spawn(move || {
+            let _guard = poisoned_state.lock().unwrap();
+            panic!("simulated panic while holding the telemetry state lock");
+        })
+        .join();
+        assert!(telemetry.state.is_poisoned());
+
+        telemetry
+            .record(observation(1_000, TelemetryOutcome::Success))
+            .await;
+
+        assert_eq!(telemetry.status().in_memory_observations, 1);
+        assert_eq!(telemetry.snapshot_global("p", 1_000).sample, 1);
     }
 }

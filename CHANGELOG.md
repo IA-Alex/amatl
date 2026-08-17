@@ -94,6 +94,39 @@ adapter/extractor versions are independent axes as well.
 - Ranking v2 is gated in CI: `contract-gate` and the release workflow run
   `amatl benchmark ranking-v2`, and a unit test pins the recorded calibration so
   a silent drift fails the build.
+- Optional grounded answer synthesis ("Resumen con IA", `amatl-core/src/answer.rs`):
+  a second remote-inference capability, independent from the embeddings
+  backend above, that turns AMATL's own ranked Search results into a short,
+  cited answer. The model only ever sees the sources AMATL retrieved
+  (bounded by `max_sources`/`max_source_chars`); every `[n]` citation in the
+  response is validated against real source indices, and a citation to a
+  source that was never retrieved is stripped from the visible text, not
+  merely excluded from the count. A response citing no valid source is
+  refused (`answer_unavailable`) rather than shown. Requires
+  `data_policy.inference = "remote_explicit"` and a new `[answer]`
+  configuration section (`enabled`, `endpoint`, `model`, `credential_env`,
+  `timeout_ms`, `max_sources`, `max_source_chars`, `max_answer_tokens`).
+  Exposed on `POST /answer`, the MCP tool `answer`, and the always-visible,
+  visually-disabled-when-unavailable `Resumen con IA` button in the web UI.
+  See `docs/resumen-con-ia.md`, ADR-011 and the new `Core → inference
+  (answer)` rows in `docs/security/threat-model.md`.
+- Admin-scoped `POST /answer/enabled`, backed by `Config::set_answer_enabled`
+  (via `toml_edit`): flips only the `answer.enabled` key in the configuration
+  file, preserving every comment and every other key, and validates a
+  candidate configuration with the flag flipped *before* writing anything —
+  turning the feature on with an incomplete `[answer]` section fails closed
+  without touching the file. `GET /status`'s `answer` field now reports
+  `enabled`/`configured`/`available` as three independent booleans, so a
+  settings panel can keep explaining the feature (and offer the toggle) even
+  while it is switched off.
+- Light/dark theme toggle in the web UI (`#theme-toggle`): follows
+  `prefers-color-scheme` by default, can be overridden per visit, and shows
+  exactly one of the sun/moon icons at a time via a CSS `is-active` class
+  rather than element visibility attributes. A full light-theme token palette
+  was added to `styles.css`, verified WCAG-AA.
+- `docs/identidad-visual.md`: the canonical reference for AMATL's color
+  tokens (dark and light) and typography, with the rule that no new
+  functional color ships without being documented there first.
 
 ### Changed
 
@@ -129,6 +162,13 @@ adapter/extractor versions are independent axes as well.
   matching old entries instead of silently reusing artifacts from another space.
 - Local file ingestion remains CLI-only by design; a contract test now asserts
   that no MCP tool exposes it.
+- The web UI's brand mark was replaced end to end (`brand-icon.png`,
+  `favicon.png`), scoped so only the icon symbol carries the new brown color
+  and the rest of the application keeps its functional blue/cyan/emerald
+  palette; the wordmark keeps JetBrains Mono. The masthead's promotional
+  subtitle ("Búsqueda multifuente y evidencia verificable") was removed
+  entirely — it read as marketing copy, not product state, and the header now
+  only carries the brand and the theme toggle.
 
 ### Removed
 
@@ -185,6 +225,15 @@ adapter/extractor versions are independent axes as well.
   (it is absent from `ubuntu-latest` and refuses to run as root), and rewrites
   `sha256sums` unconditionally — anchoring on the initial `SKIP` matched nothing
   from the second release onward and would have shipped a stale checksum.
+- `answer.rs`'s public `synthesize` doc comment linked to a private item,
+  which `cargo doc --no-deps` with `RUSTDOCFLAGS="-D warnings"` — part of the
+  required gate — rejects as an error, not a lint.
+- `.gitignore`'s `/amatl.sqlite3*` pattern did not match the backup file names
+  `storage.rs` actually produces (`amatl.backup-<timestamp>.sqlite3`,
+  `amatl.migration-<timestamp>.sqlite3`, `amatl.pre-restore-<timestamp>.sqlite3`),
+  so a real backup — potentially containing the operator's search history and
+  saved documents — was one `git add -A` away from entering history. Widened
+  to `/amatl*.sqlite3*`; also added `*~` for stray editor-backup files.
 
 ### Changed
 

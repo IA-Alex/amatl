@@ -59,6 +59,9 @@ pub enum ErrorCode {
     RankingBackendUnavailable,
     /// Persistent storage is unavailable; degraded operation continues.
     StorageUnavailable,
+    /// Remote answer-synthesis backend is unavailable, failed, or its
+    /// response could not be grounded in the sources it was given.
+    AnswerUnavailable,
     /// Credential is valid but lacks the capability this surface requires.
     ScopeDenied,
     /// Caller cancelled the request before it completed.
@@ -70,7 +73,7 @@ pub enum ErrorCode {
 }
 
 /// Every code in the catalog, in declaration order.
-pub const ERROR_CATALOG: [ErrorCode; 28] = [
+pub const ERROR_CATALOG: [ErrorCode; 29] = [
     ErrorCode::InvalidRequest,
     ErrorCode::InvalidQuery,
     ErrorCode::InvalidUrl,
@@ -95,6 +98,7 @@ pub const ERROR_CATALOG: [ErrorCode; 28] = [
     ErrorCode::InferenceUnavailable,
     ErrorCode::RankingBackendUnavailable,
     ErrorCode::StorageUnavailable,
+    ErrorCode::AnswerUnavailable,
     ErrorCode::ScopeDenied,
     ErrorCode::RequestCancelled,
     ErrorCode::SerializationFailed,
@@ -129,6 +133,7 @@ impl ErrorCode {
             Self::InferenceUnavailable => "inference_unavailable",
             Self::RankingBackendUnavailable => "ranking_backend_unavailable",
             Self::StorageUnavailable => "storage_unavailable",
+            Self::AnswerUnavailable => "answer_unavailable",
             Self::ScopeDenied => "scope_denied",
             Self::RequestCancelled => "request_cancelled",
             Self::SerializationFailed => "serialization_failed",
@@ -164,6 +169,7 @@ impl ErrorCode {
             | Self::ConfigurationInvalid
             | Self::InferenceUnavailable
             | Self::RankingBackendUnavailable
+            | Self::AnswerUnavailable
             | Self::SerializationFailed
             | Self::InternalError => 500,
         }
@@ -196,6 +202,9 @@ impl ErrorCode {
             Self::InferenceUnavailable => "required inference backend is unavailable",
             Self::RankingBackendUnavailable => "optional ranking backend is unavailable",
             Self::StorageUnavailable => "persistent storage is unavailable",
+            Self::AnswerUnavailable => {
+                "answer synthesis backend is unavailable or its response was not grounded"
+            }
             Self::ScopeDenied => "credential lacks the required capability",
             Self::RequestCancelled => "request was cancelled by the caller",
             Self::SerializationFailed => "response could not be serialized",

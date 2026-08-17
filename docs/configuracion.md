@@ -23,6 +23,7 @@ bytes y tiempos en milisegundos/segundos según el sufijo.
 | `deep.ranking_v2` | 6 | ranking Deep sujeto a benchmark |
 | `deep.gaps` | 7 | déficits y SubQuery |
 | `server` | 9 | UI/API/MCP y exposición |
+| `answer` | ADR-011, opcional | síntesis de respuesta citada sobre resultados de Search; no forma parte de las fases 0–9 del golden template |
 
 ## Política de datos, egress e inferencia
 
@@ -83,11 +84,16 @@ AMATL.
 Defaults específicos: Brave usa `brave-v1`, `BRAVE_API_KEY`, API oficial, URL
 de términos, fecha de términos `2026-02-11` y filtros site/filetype/language/
 region/time_range. Mojeek usa `mojeek-v1`, `MOJEEK_API_KEY`, API oficial y URL de
-soporte. Ambos siguen `draft` y ambos requieren un plan de pago: Brave eliminó su
-tier gratuito en 2026-02. DuckDuckGo queda completamente `draft` y no dispone de
-implementación —su fichero es un stub sin acceso de red—, de modo que declararlo
-en `enabled` no produce tráfico. Antes de elegir fuente, consulta la sección
-«Viabilidad y coste» de `docs/gobernanza-providers.md`.
+soporte. **Ambos están `rejected` por defecto**, no `draft`: ambos requieren un
+plan de pago (Brave eliminó su tier gratuito en 2026-02; Mojeek no tiene tier
+gratuito) y la política del operador excluye providers de pago. No es papeleo
+pendiente — reactivarlos exige revertir esa decisión explícitamente, no sólo
+completar `reviewer`/`reviewed_at`. SearXNG (`searxng-v1`, sin credencial) y
+Marginalia (`marginalia-v1`, `MARGINALIA_API_KEY`) sí están `draft` con adapter
+completo y ficha aprobable; sólo falta `reviewer`/`reviewed_at`/
+`approval_status` con identidad real. `duckduckgo_html` se retiró del
+registro: DuckDuckGo no ofrece API de búsqueda web. Antes de elegir fuente,
+consulta la sección «Viabilidad y coste» de `docs/gobernanza-providers.md`.
 
 `[providers]` es un mapa abierto: cada tabla `[providers.<nombre>]` declara una
 fuente y se fusiona sobre los expedientes incorporados, de modo que ajustar uno
@@ -123,6 +129,35 @@ Cambiar el backend o `embedding_dimensions` cambia el espacio vectorial: la
 caché documental queda namespaced por `backend@dimensiones`, de modo que las
 entradas del espacio anterior dejan de coincidir en vez de reutilizarse en
 silencio.
+
+## Respuesta con IA (`answer`)
+
+Síntesis opcional, apagada por defecto: toma los resultados que Search ya
+obtuvo y pide a un modelo remoto una respuesta corta citando `[n]` sólo sobre
+esas fuentes. No es un backend de embeddings ni comparte contrato con
+`[inference]` — es una llamada de *chat completions* independiente, con su
+propio endpoint, credencial y límites. Detalle completo, incluidos los tres
+campos de estado (`enabled`/`configured`/`available`) y el interruptor
+administrable, en `docs/resumen-con-ia.md`.
+
+| Clave | Tipo/default | Validez y efecto |
+|---|---|---|
+| `answer.enabled` | bool / `false` | El interruptor del operador. Con `true`, el resto de esta tabla se valida; `POST /answer/enabled` (scope `admin`) es la única vía soportada para cambiarlo en caliente, y valida antes de escribir |
+| `answer.endpoint` | string / vacío | Obligatorio si `enabled = true`; URL absoluta https, o http sólo en loopback, sin credenciales embebidas — misma validación que `inference.remote_endpoint` |
+| `answer.model` | string / vacío | Obligatorio si `enabled = true`; identificador enviado en el cuerpo de la solicitud |
+| `answer.credential_env` | string / vacío | Variable de entorno con el bearer; el valor nunca se escribe en configuración ni en logs |
+| `answer.timeout_ms` | u64 / `20000` | 100..=60000 por llamada |
+| `answer.max_sources` | usize / `8` | 1..=32 resultados de Search entregados al modelo como fuentes citables |
+| `answer.max_source_chars` | usize / `1200` | >0; recorte de snippet por fuente antes de entrar al prompt |
+| `answer.max_answer_tokens` | u32 / `700` | >0; cota superior de la respuesta generada |
+
+`answer.enabled = true` exige `data_policy.inference = "remote_explicit"`
+(perfil `standard`, `egress = "governed"`) — el mismo candado que ya usa el
+backend de embeddings remoto, pero evaluado por separado: activar uno no
+activa el otro. Cada cita `[n]` en la respuesta se valida contra los índices
+reales de fuente después de la llamada; una cita a una fuente que no existe
+se elimina del texto visible, no sólo del conteo, y una respuesta sin
+ninguna cita válida se rechaza (`answer_unavailable`) en vez de mostrarse.
 
 ## Search, ejecución y Budget
 
