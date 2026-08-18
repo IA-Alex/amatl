@@ -594,6 +594,65 @@ const providerStatus = document.querySelector(".provider-status");
 const providerList = document.querySelector("#provider-list");
 const providerStatusText = document.querySelector("#provider-status-text");
 
+// Maps the `code` a provider's availability carries (amatl-core
+// `ProviderAvailability::Unavailable`) to a catalog key with a plain-language
+// reason. Unrecognized codes still get a visible, if generic, explanation
+// instead of silence — the raw code stays in the title attribute for support.
+const PROVIDER_REASON_KEYS = {
+  provider_not_approved: "providerReasonNotApproved",
+  provider_disabled: "providerReasonDisabled",
+  provider_credential_missing: "providerReasonCredentialMissing",
+  credential_missing: "providerReasonCredentialMissing",
+  provider_circuit_open: "providerReasonCircuitOpen",
+  egress_denied: "providerReasonEgressDenied",
+};
+
+function providerReason(code) {
+  const key = code ? PROVIDER_REASON_KEYS[code] : undefined;
+  return t(key ?? "providerReasonUnknown");
+}
+
+// Admin-only: POST an `{ enabled }` flip to the server, refresh the relevant
+// surface, and on failure roll the checkbox back and surface the error.
+// Shared by `toggleAnswer` and `toggleProvider` so the disabled-while-in-flight
+// discipline, the rollback and the i18n of failures live in one place instead
+// of drifting apart.
+async function toggleEnabled({ endpoint, desired, checkbox, statusNode, refresh, failKey }) {
+  checkbox.disabled = true;
+  if (statusNode) statusNode.hidden = true;
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: authHeaders({ "Content-Type": "application/json" }),
+      body: JSON.stringify({ enabled: desired }),
+      credentials: "same-origin",
+    });
+    if (!response.ok) throw new Error(statusFromHttp(response));
+    await refresh();
+  } catch (error) {
+    checkbox.checked = !desired;
+    checkbox.disabled = false;
+    if (statusNode) statusNode.hidden = false;
+    statusNode.textContent =
+      error.message === "unauthorized" ? t("unauthorized") : t(failKey);
+  }
+}
+
+// Admin-only: flips whether `name` is in `providers.enabled`, persisted to
+// the config file and applied without a restart. Never touches the
+// provider's governance ficha — approval, credential and terms stay exactly
+// as they were; see `Config::set_provider_enabled`.
+async function toggleProvider(name, desired, checkbox, reasonNode) {
+  await toggleEnabled({
+    endpoint: `/providers/${encodeURIComponent(name)}/enabled`,
+    desired,
+    checkbox,
+    statusNode: reasonNode,
+    refresh: fetchProviderStatus,
+    failKey: "providerToggleFailed",
+  });
+}
+
 async function fetchProviderStatus() {
   try {
     const response = await fetch("/providers", {
@@ -608,6 +667,8 @@ async function fetchProviderStatus() {
     for (const provider of payload.providers) {
       const item = document.createElement("li");
       item.className = "provider-item";
+      const row = document.createElement("div");
+      row.className = "provider-item-row";
       const name = document.createElement("span");
       name.className = "provider-name";
       name.textContent = provider.name;
@@ -615,9 +676,30 @@ async function fetchProviderStatus() {
       badge.className = `provider-badge provider-badge--${provider.status}`;
       badge.textContent = provider.status === "available" ? t("available") : t("notAvailable");
       if (provider.code) badge.title = provider.code;
-      item.append(name, badge);
+      const toggleLabel = document.createElement("label");
+      toggleLabel.className = "provider-toggle";
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.checked = Boolean(provider.enabled);
+      checkbox.setAttribute("aria-label", `${t("providerToggleLabel")} ${provider.name}`);
+      const toggleText = document.createElement("span");
+      toggleText.textContent = t("providerToggleLabel");
+      toggleLabel.append(checkbox, toggleText);
+      row.append(name, badge, toggleLabel);
+      item.append(row);
+      const reason = document.createElement("span");
+      reason.className = "provider-reason";
+      if (provider.status !== "available") {
+        reason.textContent = providerReason(provider.code);
+        unavailable += 1;
+      } else {
+        reason.hidden = true;
+      }
+      item.append(reason);
+      checkbox.addEventListener("change", () =>
+        toggleProvider(provider.name, checkbox.checked, checkbox, reason),
+      );
       providerList.append(item);
-      if (provider.status !== "available") unavailable += 1;
     }
     providerStatus.hidden = false;
     if (unavailable === 0) {
@@ -760,25 +842,14 @@ async function fetchServiceState() {
 // config file and applied without a restart. Never touches the credential,
 // provider, or model — see `docs/resumen-con-ia.md`.
 async function toggleAnswer() {
-  const desired = answerEnabledToggle.checked;
-  answerEnabledToggle.disabled = true;
-  answerToggleStatus.hidden = true;
-  try {
-    const response = await fetch("/answer/enabled", {
-      method: "POST",
-      headers: authHeaders({ "Content-Type": "application/json" }),
-      body: JSON.stringify({ enabled: desired }),
-      credentials: "same-origin",
-    });
-    if (!response.ok) throw new Error(statusFromHttp(response));
-    await fetchServiceState();
-  } catch (error) {
-    answerEnabledToggle.checked = !desired;
-    answerEnabledToggle.disabled = false;
-    answerToggleStatus.hidden = false;
-    answerToggleStatus.textContent =
-      error.message === "unauthorized" ? t("unauthorized") : t("answerToggleFailed");
-  }
+  await toggleEnabled({
+    endpoint: "/answer/enabled",
+    desired: answerEnabledToggle.checked,
+    checkbox: answerEnabledToggle,
+    statusNode: answerToggleStatus,
+    refresh: fetchServiceState,
+    failKey: "answerToggleFailed",
+  });
 }
 
 answerEnabledToggle.addEventListener("change", toggleAnswer);
@@ -972,11 +1043,216 @@ async function saveDocument(documentValue, provenance, button) {
   }
 }
 
+// ── Server clients (admin) ──────────────────────────────────────
+// Only reachable with an Admin-scoped token; `fetchServerClients` hides the
+// whole panel on anything but a successful `200`, the same fail-closed
+// convention `fetchServiceState`/`fetchSavedDocuments` already use — a
+// non-admin credential simply never sees this section, rather than seeing
+// it and hitting a wall of 403s.
+const clientsPanel = document.querySelector(".clients-panel");
+const clientList = document.querySelector("#client-list");
+const clientListEmpty = document.querySelector("#client-list-empty");
+const clientCreateDetails = document.querySelector("#client-create");
+const clientCreateForm = document.querySelector("#client-create-form");
+const clientIdInput = document.querySelector("#client-id");
+const clientExpiresInput = document.querySelector("#client-expires");
+const clientCreateError = document.querySelector("#client-create-error");
+const clientTokenDialog = document.querySelector("#client-token-dialog");
+const clientTokenId = document.querySelector("#client-token-id");
+const clientTokenValue = document.querySelector("#client-token-value");
+const clientTokenClose = document.querySelector("#client-token-close");
+
+const SCOPE_LABEL_KEYS = {
+  search: "scopeSearch",
+  deep: "scopeDeep",
+  read: "scopeRead",
+  write: "scopeWrite",
+  admin: "scopeAdmin",
+  mcp: "scopeMcp",
+};
+
+function scopeLabel(scope) {
+  const key = SCOPE_LABEL_KEYS[scope];
+  return key ? t(key) : scope;
+}
+
+function renderClientRow(client) {
+  const item = document.createElement("li");
+  item.className = "client-item";
+  const row = document.createElement("div");
+  row.className = "client-item-row";
+  const id = document.createElement("span");
+  id.className = "client-id";
+  id.textContent = client.id;
+  const scopes = document.createElement("span");
+  scopes.className = "client-scopes-value";
+  const scopeList = Array.isArray(client.scopes) ? client.scopes : [];
+  scopes.textContent = scopeList.length
+    ? scopeList.map(scopeLabel).join(", ")
+    : t("clientScopesEmpty");
+  row.append(id, scopes);
+  item.append(row);
+
+  const meta = document.createElement("p");
+  meta.className = "client-meta";
+  meta.textContent =
+    typeof client.expires_at === "string" && client.expires_at
+      ? `${t("clientExpiresLabelRow")}: ${boundedText(client.expires_at, 32)}`
+      : t("clientNeverExpires");
+  item.append(meta);
+
+  const actions = document.createElement("div");
+  actions.className = "client-actions";
+  const rotate = document.createElement("button");
+  rotate.type = "button";
+  rotate.className = "ghost-action";
+  rotate.textContent = t("clientRotate");
+  rotate.addEventListener("click", () => rotateServerClient(client.id, rotate));
+  const remove = document.createElement("button");
+  remove.type = "button";
+  remove.className = "ghost-action";
+  remove.textContent = t("clientDelete");
+  remove.addEventListener("click", () => deleteServerClient(client.id, remove));
+  actions.append(rotate, remove);
+  item.append(actions);
+  return item;
+}
+
+async function fetchServerClients() {
+  try {
+    const response = await fetch("/server/clients", {
+      headers: authHeaders(),
+      credentials: "same-origin",
+    });
+    if (!response.ok) {
+      clientsPanel.hidden = true;
+      return;
+    }
+    const payload = await response.json();
+    if (!payload || payload.schema_version !== "1" || !Array.isArray(payload.clients)) {
+      clientsPanel.hidden = true;
+      return;
+    }
+    clientList.replaceChildren();
+    for (const client of payload.clients) {
+      if (!client || typeof client.id !== "string") continue;
+      clientList.append(renderClientRow(client));
+    }
+    clientListEmpty.hidden = clientList.childElementCount > 0;
+    clientListEmpty.textContent = t("clientsEmpty");
+    clientsPanel.hidden = false;
+  } catch (_) {
+    clientsPanel.hidden = true;
+  }
+}
+
+// The one place the plaintext token is ever visible: it never leaves this
+// dialog, never touches `localStorage`, and the field is cleared the moment
+// the operator closes it (see `client-token-close`'s listener below).
+function openClientTokenDialog(id, token) {
+  clientTokenId.textContent = id;
+  clientTokenValue.value = token;
+  clientTokenDialog.showModal();
+  clientTokenValue.focus();
+  clientTokenValue.select();
+}
+
+clientTokenClose.addEventListener("click", () => {
+  clientTokenValue.value = "";
+  clientTokenDialog.close();
+});
+
+async function createServerClient(event) {
+  event.preventDefault();
+  const id = clientIdInput.value.trim();
+  const scopes = Array.from(
+    clientCreateForm.querySelectorAll('input[name="scope"]:checked'),
+  ).map((input) => input.value);
+  clientCreateError.hidden = true;
+  if (!id || scopes.length === 0) {
+    clientCreateError.textContent = t("clientCreateMissingFields");
+    clientCreateError.hidden = false;
+    return;
+  }
+  const submitButton = clientCreateForm.querySelector("#client-create-submit");
+  submitButton.disabled = true;
+  try {
+    const body = { id, scopes, tools: [] };
+    if (clientExpiresInput.value) body.expires_at = clientExpiresInput.value;
+    const response = await fetch("/server/clients", {
+      method: "POST",
+      headers: authHeaders({ "Content-Type": "application/json" }),
+      credentials: "same-origin",
+      body: JSON.stringify(body),
+    });
+    if (response.status === 409) throw new Error("duplicate");
+    if (!response.ok) throw new Error(statusFromHttp(response));
+    const payload = await response.json();
+    clientCreateForm.reset();
+    clientCreateDetails.open = false;
+    await fetchServerClients();
+    if (payload && typeof payload.token === "string" && typeof payload.id === "string") {
+      openClientTokenDialog(payload.id, payload.token);
+    }
+  } catch (error) {
+    clientCreateError.textContent =
+      error.message === "duplicate"
+        ? t("clientCreateDuplicate")
+        : error.message === "unauthorized"
+          ? t("unauthorized")
+          : t("clientCreateFailed");
+    clientCreateError.hidden = false;
+  } finally {
+    submitButton.disabled = false;
+  }
+}
+
+async function deleteServerClient(id, button) {
+  if (!globalThis.confirm(t("clientDeleteConfirm"))) return;
+  button.disabled = true;
+  try {
+    const response = await fetch(`/server/clients/${encodeURIComponent(id)}`, {
+      method: "DELETE",
+      headers: authHeaders(),
+      credentials: "same-origin",
+    });
+    setStatus(response.ok ? t("clientDeleted") : t("clientDeleteFailed"), response.ok ? "success" : "error");
+    await fetchServerClients();
+  } catch (_) {
+    setStatus(t("clientDeleteFailed"), "error");
+    button.disabled = false;
+  }
+}
+
+async function rotateServerClient(id, button) {
+  if (!globalThis.confirm(t("clientRotateConfirm"))) return;
+  button.disabled = true;
+  try {
+    const response = await fetch(`/server/clients/${encodeURIComponent(id)}/rotate`, {
+      method: "POST",
+      headers: authHeaders(),
+      credentials: "same-origin",
+    });
+    if (!response.ok) throw new Error(statusFromHttp(response));
+    const payload = await response.json();
+    await fetchServerClients();
+    if (payload && typeof payload.token === "string" && typeof payload.id === "string") {
+      openClientTokenDialog(payload.id, payload.token);
+    }
+  } catch (_) {
+    setStatus(t("clientRotateFailed"), "error");
+    button.disabled = false;
+  }
+}
+
+clientCreateForm.addEventListener("submit", createServerClient);
+
 function refreshPanels() {
   fetchProviderStatus();
   fetchServiceState();
   fetchHistory();
   fetchSavedDocuments();
+  fetchServerClients();
 }
 
 historyPurgeButton.addEventListener("click", purgeHistory);
@@ -1011,5 +1287,19 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#file-type option[value='']").textContent = t("fileTypeAny");
   document.querySelector("label[for='local-token']").textContent = t("tokenLabel");
   document.querySelector("#token-help").textContent = t("tokenHelp");
+  document.querySelector("#clients-heading").textContent = t("clientsHeading");
+  document.querySelector("#client-create-summary").textContent = t("clientCreateLabel");
+  document.querySelector("label[for='client-id']").textContent = t("clientIdLabel");
+  document.querySelector("#client-id-help").textContent = t("clientIdHelp");
+  document.querySelector("#client-scopes-legend").textContent = t("clientScopesLabel");
+  document.querySelector("label[for='client-expires']").textContent = t("clientExpiresLabel");
+  document.querySelector("#client-create-submit").textContent = t("clientCreateSubmit");
+  for (const option of document.querySelectorAll("#client-scopes .scope-option")) {
+    const input = option.querySelector("input");
+    option.querySelector("span").textContent = scopeLabel(input.value);
+  }
+  document.querySelector("#client-token-heading").textContent = t("clientTokenHeading");
+  document.querySelector("#client-token-warning").textContent = t("clientTokenWarning");
+  document.querySelector("#client-token-close").textContent = t("clientTokenClose");
   updateThemeToggle();
 });

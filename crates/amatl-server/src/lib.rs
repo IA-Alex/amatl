@@ -25,6 +25,7 @@ use axum::{
     routing::{delete, get, post},
     Json, Router,
 };
+use rand::RngCore;
 use rmcp::transport::streamable_http_server::{
     session::local::LocalSessionManager, StreamableHttpServerConfig, StreamableHttpService,
 };
@@ -42,6 +43,7 @@ use std::{
     time::{Duration, Instant, SystemTime, UNIX_EPOCH},
 };
 use thiserror::Error;
+use tokio::sync::Mutex as AsyncMutex;
 use tower::limit::ConcurrencyLimitLayer;
 use tower_http::cors::CorsLayer;
 use tracing::Instrument;
@@ -85,6 +87,13 @@ struct AppState {
     /// one. Without it a reload revalidates and rebuilds from the running
     /// configuration, which still resets provider construction and breakers.
     config_path: Option<PathBuf>,
+    /// Serializes every config-file write in this process. Two concurrent
+    /// admin PATCHes would otherwise read the same file text and each write
+    /// back their own version, silently dropping the other's change (a lost
+    /// update). Held for the whole validate → write → reload section of every
+    /// config-mutating handler, so a reload always observes the file the
+    /// request just wrote.
+    config_write_lock: Arc<AsyncMutex<()>>,
     metrics: Arc<RequestMetrics>,
 }
 
@@ -395,12 +404,28 @@ fn digest_from_hex(value: &str) -> Option<[u8; 32]> {
 ///
 /// This is the single source of truth for "is this protected": reading and
 /// mutating the same path are different capabilities, so the method is part of
-/// the decision.
+/// the decision. The fallback arm is **fail-closed**: a path that no arm
+/// matches (a route someone registered in the router without declaring a
+/// scope here) is admin-protected, never public — see `docs/arquitectura.md`
+/// ("añadir una ruta sin declarar su scope la deja protegida por defecto").
+/// Public surfaces are therefore explicit, so the list below is the complete
+/// set of paths reachable without a credential.
 fn required_scope(method: &Method, path: &str) -> Option<Scope> {
     let mutating = matches!(*method, Method::POST | Method::PUT | Method::DELETE);
+    // Public surfaces, explicitly listed so the fail-closed default below
+    // cannot silently lock them down: liveness probes, the metrics scrape,
+    // and the UI assets served by the fallback handler. `amatl_ui::asset` is
+    // the same table `static_asset` serves, so the two cannot drift.
+    if matches!(path, "/health" | "/ready" | "/metrics") || asset(path).is_some() {
+        return None;
+    }
     match path {
         "/search" => Some(Scope::Search),
         "/deep" => Some(Scope::Deep),
+        // `PATCH /answer` edits the endpoint/model/limits — a config write,
+        // admin scoped like every other one. `POST /answer` (below) is the
+        // domain call that actually runs a search and synthesizes from it.
+        "/answer" if *method == Method::PATCH => Some(Scope::Admin),
         // Reuses Deep's scope rather than a dedicated one: like Deep, this
         // runs a full search and then does more expensive, sensitive work on
         // top of it (here, an outbound call to a third-party LLM).
@@ -413,11 +438,53 @@ fn required_scope(method: &Method, path: &str) -> Option<Scope> {
         // the running configuration file, even though the field it touches
         // is narrow (see `Config::set_answer_enabled`).
         "/security-events" | "/reload" | "/answer/enabled" => Some(Scope::Admin),
+        // Same tier and the same reasoning as `/answer/enabled`: it rewrites
+        // the running configuration file, narrowly (see
+        // `Config::set_provider_enabled`).
+        _ if path.starts_with("/providers/") && path.ends_with("/enabled") => Some(Scope::Admin),
+        // `GET /providers/{name}` reads the full governance ficha (still no
+        // secret in it); `PATCH /providers/{name}` edits it, admin scoped
+        // like every other config write.
+        _ if path.starts_with("/providers/") && *method == Method::PATCH => Some(Scope::Admin),
+        _ if path.starts_with("/providers/") => Some(Scope::Read),
+        // Every credential the server accepts is granted or revoked here —
+        // the highest-trust surface in the API, same tier as `/reload`.
+        "/server/clients" => Some(Scope::Admin),
+        _ if path.starts_with("/server/clients/") => Some(Scope::Admin),
+        "/server/pending-config" if *method == Method::PATCH => Some(Scope::Admin),
+        "/server/pending-config" => Some(Scope::Read),
+        // Governs egress, remote inference and the unsandboxed renderer for
+        // the whole process — same trust tier as the client registry above.
+        "/data-policy" => Some(Scope::Admin),
+        // Same reasoning as `PATCH /answer`: a config write over the
+        // embedding backend and its remote endpoint.
+        "/inference" => Some(Scope::Admin),
+        // Read the search-quality policies freely; only an admin replaces
+        // one.
+        "/policies" => Some(Scope::Read),
+        _ if path.starts_with("/policies/") => Some(Scope::Admin),
+        // Retention/backup settings are read freely; changing them, writing
+        // a backup on demand, or closing circuits are all admin actions.
+        "/persistence" if *method == Method::PATCH => Some(Scope::Admin),
+        "/persistence" | "/persistence/backups" => Some(Scope::Read),
+        "/persistence/backup" => Some(Scope::Admin),
+        "/circuits" => Some(Scope::Read),
+        "/circuits/reset" => Some(Scope::Admin),
+        "/telemetry" if *method == Method::PATCH => Some(Scope::Admin),
+        "/telemetry" => Some(Scope::Read),
+        "/deep/limits" if *method == Method::PATCH => Some(Scope::Admin),
+        "/deep/limits" => Some(Scope::Read),
+        "/deep/extractor" | "/deep/renderer" => Some(Scope::Admin),
         "/mcp" => Some(Scope::Mcp),
         _ if path.starts_with("/mcp/") => Some(Scope::Mcp),
         // `/history/{id}` and `/saved/{id}` only ever delete.
         _ if path.starts_with("/history/") || path.starts_with("/saved/") => Some(Scope::Write),
-        _ => None,
+        // Fail closed: every route the router registers must declare its
+        // scope here. A route that forgets its arm is admin-protected, never
+        // public — an unknown path reaching this arm can still 404 via the
+        // static-asset fallback, but only for an identity with the admin
+        // scope. (See the `required_scope` doc comment.)
+        _ => Some(Scope::Admin),
     }
 }
 
@@ -552,6 +619,7 @@ pub async fn build_router_with_reload(
             last_cleanup: Instant::now(),
         })),
         explicit_token,
+        config_write_lock: Arc::new(AsyncMutex::new(())),
         metrics: Arc::new(RequestMetrics::default()),
     };
     let cors = cors_layer(&allowed_origins)?;
@@ -561,7 +629,7 @@ pub async fn build_router_with_reload(
     let router = Router::new()
         .route("/search", get(search).post(search_post))
         .route("/deep", get(deep).post(deep_post))
-        .route("/answer", post(answer_post))
+        .route("/answer", post(answer_post).patch(update_answer_fields))
         .route("/providers", get(providers))
         .route("/status", get(status))
         .route("/history", get(history).delete(purge_history))
@@ -570,6 +638,49 @@ pub async fn build_router_with_reload(
         .route("/saved/{id}", delete(delete_saved_document))
         .route("/reload", axum::routing::post(reload))
         .route("/answer/enabled", post(answer_toggle))
+        .route("/providers/{name}/enabled", post(provider_toggle))
+        .route(
+            "/providers/{name}",
+            get(provider_record).patch(update_provider_record),
+        )
+        .route("/inference", axum::routing::patch(update_inference))
+        .route(
+            "/server/clients",
+            get(list_server_clients).post(create_server_client),
+        )
+        .route(
+            "/server/clients/{id}",
+            axum::routing::patch(update_server_client).delete(delete_server_client),
+        )
+        .route(
+            "/server/clients/{id}/rotate",
+            post(rotate_server_client_token),
+        )
+        .route(
+            "/server/pending-config",
+            get(server_pending_config).patch(update_server_pending_config),
+        )
+        .route("/data-policy", post(data_policy_update))
+        .route("/policies", get(policies))
+        .route("/policies/{name}", axum::routing::patch(update_policy))
+        .route(
+            "/persistence",
+            get(persistence_config).patch(update_persistence),
+        )
+        .route("/persistence/backups", get(list_backups))
+        .route("/persistence/backup", post(create_backup))
+        .route("/circuits", get(circuits))
+        .route("/circuits/reset", post(reset_circuits))
+        .route("/telemetry", get(telemetry_config).patch(update_telemetry))
+        // Not `/deep` — that path is already `GET`/`POST` for the domain
+        // deep-fetch surface (see above). Configuration for it lives at
+        // `/deep/limits` and below so the two never collide.
+        .route("/deep/limits", get(deep_config).patch(update_deep))
+        .route(
+            "/deep/extractor",
+            axum::routing::patch(update_deep_extractor),
+        )
+        .route("/deep/renderer", axum::routing::patch(update_deep_renderer))
         .route("/security-events", get(security_events))
         .route("/health", get(health))
         .route("/ready", get(ready))
@@ -952,6 +1063,7 @@ async fn answer_toggle(
             return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
         }
     };
+    let _config_guard = state.config_write_lock.lock().await;
     let Some(path) = state.config_path.clone() else {
         return api_error(ErrorCode::ConfigurationInvalid);
     };
@@ -967,6 +1079,1072 @@ async fn answer_toggle(
         Ok(report) => Json(report).into_response(),
         Err(error) => service_error(error),
     }
+}
+
+#[derive(Debug, Deserialize)]
+struct ProviderToggleParams {
+    enabled: bool,
+}
+
+/// Add or remove one name from `providers.enabled` — admin scoped, same
+/// trust tier as `/answer/enabled` and `/reload`, whose pattern this copies
+/// exactly (validate a candidate config first, write only the narrow field,
+/// then apply through the same atomic reload).
+///
+/// This never writes or touches a provider's governance ficha
+/// (`approval_status`, `reviewer`, `reviewed_at`, …). Enabling a name whose
+/// ficha is missing, expired, or was never approved does not send traffic:
+/// `select_providers` re-checks approval at call time and reports
+/// `provider_not_approved` instead. The toggle can only ever turn on what
+/// governance already allowed to run.
+async fn provider_toggle(
+    State(state): State<AppState>,
+    Path(name): Path<String>,
+    params: Result<Json<ProviderToggleParams>, JsonRejection>,
+) -> Response {
+    let Json(params) = match params {
+        Ok(params) => params,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    let enabled = &mut candidate.providers.enabled;
+    let already_present = enabled.iter().any(|existing| existing == &name);
+    if params.enabled && !already_present {
+        enabled.push(name.clone());
+    } else if !params.enabled {
+        enabled.retain(|existing| existing != &name);
+    }
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_provider_enabled(&path, &name, params.enabled).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Read the full governance ficha for one declared provider — read scoped,
+/// like `/providers` and `/status`: nothing in a ficha is a secret
+/// (`credential_env` names an environment variable, never its value).
+async fn provider_record(State(state): State<AppState>, Path(name): Path<String>) -> Response {
+    let config = state.service().config().clone();
+    match config.providers.get(&name) {
+        Some(record) => Json(json!({
+            "schema_version": SCHEMA_VERSION,
+            "name": name,
+            "record": record,
+            "approved": record.approved(),
+        }))
+        .into_response(),
+        None => api_error(ErrorCode::NotFound),
+    }
+}
+
+/// Fields a `PATCH /providers/{name}` request may set. Every field is
+/// optional so a request only changes what it names; on the optional string
+/// fields, an empty string clears them — same convention as
+/// [`amatl_core::InferenceConfigPatch`].
+#[derive(Debug, Deserialize, Default)]
+struct ProviderRecordParams {
+    adapter_version: Option<String>,
+    approval_status: Option<amatl_core::ApprovalStatus>,
+    reviewed_at: Option<String>,
+    reviewer: Option<String>,
+    terms_url: Option<String>,
+    terms_version_or_date: Option<String>,
+    allowed_access_method: Option<String>,
+    plan_or_contract: Option<String>,
+    rate_limit: Option<String>,
+    cost_model: Option<String>,
+    credential_env: Option<String>,
+    storage_rights: Option<bool>,
+    supported_regions: Option<Vec<String>>,
+    supported_filters: Option<Vec<String>>,
+    data_handling_notes: Option<String>,
+    operational_risk: Option<String>,
+}
+
+fn clearable_patch_field(current: &mut Option<String>, incoming: &Option<String>) {
+    if let Some(value) = incoming {
+        *current = if value.is_empty() {
+            None
+        } else {
+            Some(value.clone())
+        };
+    }
+}
+
+/// Apply `params` onto `existing`, leaving unset fields untouched.
+fn apply_provider_record_params(
+    mut existing: amatl_core::ProviderRuntimeConfig,
+    params: &ProviderRecordParams,
+) -> amatl_core::ProviderRuntimeConfig {
+    clearable_patch_field(&mut existing.adapter_version, &params.adapter_version);
+    if let Some(status) = params.approval_status {
+        existing.approval_status = status;
+    }
+    clearable_patch_field(&mut existing.reviewed_at, &params.reviewed_at);
+    clearable_patch_field(&mut existing.reviewer, &params.reviewer);
+    clearable_patch_field(&mut existing.terms_url, &params.terms_url);
+    clearable_patch_field(
+        &mut existing.terms_version_or_date,
+        &params.terms_version_or_date,
+    );
+    clearable_patch_field(
+        &mut existing.allowed_access_method,
+        &params.allowed_access_method,
+    );
+    clearable_patch_field(&mut existing.plan_or_contract, &params.plan_or_contract);
+    clearable_patch_field(&mut existing.rate_limit, &params.rate_limit);
+    clearable_patch_field(&mut existing.cost_model, &params.cost_model);
+    clearable_patch_field(&mut existing.credential_env, &params.credential_env);
+    if let Some(storage_rights) = params.storage_rights {
+        existing.storage_rights = storage_rights;
+    }
+    if let Some(regions) = &params.supported_regions {
+        existing.supported_regions = regions.clone();
+    }
+    if let Some(filters) = &params.supported_filters {
+        existing.supported_filters = filters.clone();
+    }
+    clearable_patch_field(
+        &mut existing.data_handling_notes,
+        &params.data_handling_notes,
+    );
+    clearable_patch_field(&mut existing.operational_risk, &params.operational_risk);
+    existing
+}
+
+/// Edit a provider's governance ficha — admin scoped, same
+/// validate-then-write pattern as every mutation here. Upserts: a name with
+/// no ficha on file yet starts from
+/// [`amatl_core::ProviderRuntimeConfig::default`], so this can declare a
+/// brand-new custom source's paperwork, not just amend an existing one. This
+/// never touches `providers.enabled` — approving a ficha here does not turn
+/// the source's traffic on; see [`Config::set_provider_enabled`] for that.
+async fn update_provider_record(
+    State(state): State<AppState>,
+    Path(name): Path<String>,
+    params: Result<Json<ProviderRecordParams>, JsonRejection>,
+) -> Response {
+    let Json(params) = match params {
+        Ok(params) => params,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    let existing = candidate.providers.get(&name).cloned().unwrap_or_default();
+    let updated = apply_provider_record_params(existing, &params);
+    candidate.providers.declare(name.clone(), updated.clone());
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::upsert_provider_record(&path, &name, &updated).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(_) => Json(json!({
+            "schema_version": SCHEMA_VERSION,
+            "name": name,
+            "record": updated,
+            "approved": updated.approved(),
+        }))
+        .into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// `[[server.clients]]` as returned to an admin caller: capability, never
+/// the secret. `credential_kind` tells the operator which mechanism backs
+/// the entry (`token_env` clients rotate by changing the environment;
+/// `token_sha256` clients rotate through `POST
+/// /server/clients/{id}/rotate`) without ever exposing the value of either.
+#[derive(Debug, Serialize)]
+struct ServerClientSummary {
+    id: String,
+    scopes: Vec<Scope>,
+    tools: Vec<String>,
+    expires_at: Option<String>,
+    credential_kind: &'static str,
+}
+
+impl From<&amatl_core::ServerClient> for ServerClientSummary {
+    fn from(client: &amatl_core::ServerClient) -> Self {
+        Self {
+            id: client.id.clone(),
+            scopes: client.scopes.clone(),
+            tools: client.tools.clone(),
+            expires_at: client.expires_at.clone(),
+            credential_kind: if client.token_env.is_some() {
+                "token_env"
+            } else {
+                "token_sha256"
+            },
+        }
+    }
+}
+
+/// List every declared `[[server.clients]]` entry — admin scoped, same
+/// reasoning as `/security-events`: this names every capability granted to
+/// every credential the server accepts.
+async fn list_server_clients(State(state): State<AppState>) -> Response {
+    let clients: Vec<ServerClientSummary> = state
+        .service()
+        .config()
+        .server
+        .clients
+        .iter()
+        .map(ServerClientSummary::from)
+        .collect();
+    Json(json!({ "schema_version": SCHEMA_VERSION, "clients": clients })).into_response()
+}
+
+#[derive(Debug, Deserialize)]
+struct CreateServerClientParams {
+    id: String,
+    scopes: Vec<Scope>,
+    #[serde(default)]
+    tools: Vec<String>,
+    #[serde(default)]
+    expires_at: Option<String>,
+}
+
+/// Response to `POST /server/clients`: the plaintext token, once.
+///
+/// Nothing above this layer ever reconstructs it — only `token_sha256` is
+/// written to disk (see [`amatl_core::Config::upsert_server_client`]) — so
+/// this response is the only place in the system the value is ever visible
+/// after creation. Losing it means minting a new one via
+/// `POST /server/clients/{id}/rotate`.
+#[derive(Debug, Serialize)]
+struct CreatedServerClient {
+    schema_version: &'static str,
+    #[serde(flatten)]
+    summary: ServerClientSummary,
+    token: String,
+}
+
+/// Mint a new client credential — admin scoped, same trust tier as
+/// `/reload`, which this reuses for the actual apply step.
+///
+/// Generates a fresh 256-bit token, writes only its SHA-256 digest
+/// (`Config::upsert_server_client` never sees the plaintext), and validates
+/// a candidate config with the new entry applied *before* writing anything,
+/// exactly like `/answer/enabled` and `/providers/{name}/enabled`: a client
+/// that would fail `Config::validate` (duplicate id, no scope, unknown MCP
+/// tool, malformed `expires_at`) never reaches the file.
+async fn create_server_client(
+    State(state): State<AppState>,
+    params: Result<Json<CreateServerClientParams>, JsonRejection>,
+) -> Response {
+    let Json(params) = match params {
+        Ok(params) => params,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let token = generate_client_token();
+    let client = amatl_core::ServerClient {
+        id: params.id,
+        token_env: None,
+        token_sha256: Some(digest_to_hex(token_digest(&token))),
+        expires_at: params.expires_at,
+        scopes: params.scopes,
+        tools: params.tools,
+    };
+    // Reject a duplicate id instead of silently replacing the existing entry:
+    // a replace would mint a new credential and the reload below would stop
+    // authenticating whoever held the old one, revoking it without warning.
+    let already_exists = state
+        .service()
+        .config()
+        .server
+        .clients
+        .iter()
+        .any(|existing| existing.id == client.id);
+    if already_exists {
+        return api_error(ErrorCode::Conflict);
+    }
+    let mut candidate = state.service().config().clone();
+    candidate.server.clients.push(client.clone());
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::upsert_server_client(&path, &client).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if let Err(error) = state.clone().reload().await {
+        return service_error(error);
+    }
+    Json(CreatedServerClient {
+        schema_version: SCHEMA_VERSION,
+        summary: ServerClientSummary::from(&client),
+        token,
+    })
+    .into_response()
+}
+
+#[derive(Debug, Deserialize)]
+struct UpdateServerClientParams {
+    scopes: Option<Vec<Scope>>,
+    tools: Option<Vec<String>>,
+    /// Present-and-null clears the expiry; absent leaves it unchanged.
+    #[serde(default, deserialize_with = "deserialize_optional_field")]
+    expires_at: Option<Option<String>>,
+}
+
+/// Update the capability of an existing client without touching its
+/// credential — admin scoped, same pattern as every other write here:
+/// validate a candidate config first, then write only through
+/// `Config::upsert_server_client`, which re-serializes the *whole* entry, so
+/// unset fields are carried forward from the currently loaded config, not
+/// merged at the TOML layer.
+async fn update_server_client(
+    State(state): State<AppState>,
+    Path(id): Path<String>,
+    params: Result<Json<UpdateServerClientParams>, JsonRejection>,
+) -> Response {
+    let Json(params) = match params {
+        Ok(params) => params,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    let Some(existing) = candidate
+        .server
+        .clients
+        .iter()
+        .find(|c| c.id == id)
+        .cloned()
+    else {
+        return api_error(ErrorCode::NotFound);
+    };
+    let updated = amatl_core::ServerClient {
+        id: existing.id,
+        token_env: existing.token_env,
+        token_sha256: existing.token_sha256,
+        expires_at: params.expires_at.unwrap_or(existing.expires_at),
+        scopes: params.scopes.unwrap_or(existing.scopes),
+        tools: params.tools.unwrap_or(existing.tools),
+    };
+    for client in &mut candidate.server.clients {
+        if client.id == id {
+            *client = updated.clone();
+        }
+    }
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::upsert_server_client(&path, &updated).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(_) => Json(json!({
+            "schema_version": SCHEMA_VERSION,
+            "client": ServerClientSummary::from(&updated)
+        }))
+        .into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Revoke a client credential — admin scoped. A no-op-shaped 404 (not a
+/// crash) when the id is already absent, matching `delete_history_entry`'s
+/// and `delete_saved_document`'s idempotent-delete convention.
+async fn delete_server_client(State(state): State<AppState>, Path(id): Path<String>) -> Response {
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let existed = state
+        .service()
+        .config()
+        .server
+        .clients
+        .iter()
+        .any(|client| client.id == id);
+    if !existed {
+        return api_error(ErrorCode::NotFound);
+    }
+    if amatl_core::Config::remove_server_client(&path, &id).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Mint a replacement token for an existing client, keeping its scopes,
+/// tools and expiry — admin scoped. The old token stops authenticating the
+/// instant the reload below swaps `SecurityState`.
+async fn rotate_server_client_token(
+    State(state): State<AppState>,
+    Path(id): Path<String>,
+) -> Response {
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let Some(existing) = state
+        .service()
+        .config()
+        .server
+        .clients
+        .iter()
+        .find(|client| client.id == id)
+        .cloned()
+    else {
+        return api_error(ErrorCode::NotFound);
+    };
+    let token = generate_client_token();
+    let rotated = amatl_core::ServerClient {
+        token_env: None,
+        token_sha256: Some(digest_to_hex(token_digest(&token))),
+        ..existing
+    };
+    let mut candidate = state.service().config().clone();
+    for client in &mut candidate.server.clients {
+        if client.id == id {
+            *client = rotated.clone();
+        }
+    }
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::upsert_server_client(&path, &rotated).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if let Err(error) = state.clone().reload().await {
+        return service_error(error);
+    }
+    Json(CreatedServerClient {
+        schema_version: SCHEMA_VERSION,
+        summary: ServerClientSummary::from(&rotated),
+        token,
+    })
+    .into_response()
+}
+
+/// 256 bits from the OS CSPRNG, hex-encoded — long enough to clear
+/// `MINIMUM_TOKEN_BYTES` by a wide margin and never derived from anything
+/// guessable (time, PID, sequence counters).
+fn generate_client_token() -> String {
+    let mut bytes = [0_u8; 32];
+    rand::rng().fill_bytes(&mut bytes);
+    digest_to_hex(bytes)
+}
+
+fn digest_to_hex(digest: [u8; 32]) -> String {
+    use std::fmt::Write;
+    digest
+        .iter()
+        .fold(String::with_capacity(64), |mut hex, byte| {
+            let _ = write!(hex, "{byte:02x}");
+            hex
+        })
+}
+
+/// Distinguishes an absent `expires_at` (leave unchanged) from an explicit
+/// `null` (clear it) in a JSON PATCH body, since plain `Option<T>` collapses
+/// both to `None`.
+fn deserialize_optional_field<'de, D>(deserializer: D) -> Result<Option<Option<String>>, D::Error>
+where
+    D: serde::Deserializer<'de>,
+{
+    Ok(Some(Option::deserialize(deserializer)?))
+}
+
+/// Change `data_policy.{profile,egress,inference}` — admin scoped, same
+/// trust tier and the same validate-then-write pattern as every other
+/// mutation here. Every field is optional so a caller can flip just the one
+/// it means to change; whichever are omitted keep their current value.
+///
+/// This is the gate every other capability in the system checks against
+/// (network egress, remote inference, the unsandboxed renderer — see
+/// `DataPolicyConfig::allows_*` and the `isolated` cross-checks in
+/// `Config::validate`), so a candidate is validated in full before anything
+/// is written: e.g. switching to `isolated` while `answer.enabled` is still
+/// on fails closed here instead of leaving the file in a state the running
+/// process would then refuse to reload.
+///
+/// Unlike every other config section, the write is a single atomic edit
+/// ([`amatl_core::Config::set_data_policy_fields`]) rather than one
+/// `fs::write` per field: profile, egress and inference cross-check each
+/// other in `Config::validate`, so three independent writes could leave the
+/// file in a mix a reload would reject if the second one failed.
+async fn data_policy_update(
+    State(state): State<AppState>,
+    params: Result<Json<amatl_core::DataPolicyConfigPatch>, JsonRejection>,
+) -> Response {
+    let Json(patch) = match params {
+        Ok(patch) => patch,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    patch.apply(&mut candidate.data_policy);
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_data_policy_fields(&path, &patch).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Edit `[inference]` — admin scoped, same validate-then-write pattern as
+/// every mutation here. See [`amatl_core::InferenceConfigPatch`] for what a
+/// request may set and the "empty string clears" convention on its optional
+/// string fields.
+async fn update_inference(
+    State(state): State<AppState>,
+    params: Result<Json<amatl_core::InferenceConfigPatch>, JsonRejection>,
+) -> Response {
+    let Json(patch) = match params {
+        Ok(patch) => patch,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    patch.apply(&mut candidate.inference);
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_inference_fields(&path, &patch).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Edit `[answer]`'s endpoint, model and limits — admin scoped. Deliberately
+/// separate from `POST /answer/enabled`: this can never flip the feature on
+/// or off, see [`amatl_core::AnswerConfigPatch`].
+async fn update_answer_fields(
+    State(state): State<AppState>,
+    params: Result<Json<amatl_core::AnswerConfigPatch>, JsonRejection>,
+) -> Response {
+    let Json(patch) = match params {
+        Ok(patch) => patch,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    patch.apply(&mut candidate.answer);
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_answer_fields(&path, &patch).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Every search-quality policy in one read — read scoped, like `/status`.
+async fn policies(State(state): State<AppState>) -> Response {
+    let config = state.service().config().clone();
+    Json(json!({
+        "schema_version": SCHEMA_VERSION,
+        "ranking_policy": config.ranking_policy,
+        "diversity_policy": config.diversity_policy,
+        "search_policy": config.search_policy,
+        "ranking_v2_policy": config.deep.ranking_v2.policy,
+        "gap_policy": config.deep.gaps.policy,
+    }))
+    .into_response()
+}
+
+/// Replace one search-quality policy wholesale — admin scoped.
+///
+/// `{name}` selects both the target field and the wire shape expected in
+/// the body: `ranking`, `diversity`, `search`, `ranking_v2` or `gaps`. Each
+/// arm builds a full candidate config with that one policy replaced,
+/// validates it (`diversity` and `search` share three limits
+/// `Config::validate` requires to agree — see
+/// [`amatl_core::Config::set_diversity_policy`] — so an admin editing one
+/// without the other fails closed here, before anything is written), then
+/// writes through the matching [`amatl_core::Config`] setter, which
+/// replaces the whole table (see
+/// [`amatl_core::Config::set_ranking_policy`]'s doc comment for exactly
+/// what that means for comments).
+async fn update_policy(
+    State(state): State<AppState>,
+    Path(name): Path<String>,
+    body: Result<Json<serde_json::Value>, JsonRejection>,
+) -> Response {
+    let Json(body) = match body {
+        Ok(body) => body,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    let write_result = match name.as_str() {
+        "ranking" => {
+            let Ok(policy) = serde_json::from_value::<amatl_core::RankingPolicyV1>(body) else {
+                return api_error(ErrorCode::InvalidRequest);
+            };
+            candidate.ranking_policy = policy.clone();
+            if candidate.validate().is_err() {
+                return api_error(ErrorCode::ConfigurationInvalid);
+            }
+            amatl_core::Config::set_ranking_policy(&path, &policy)
+        }
+        "diversity" => {
+            let Ok(policy) = serde_json::from_value::<amatl_core::DiversityPolicyV1>(body) else {
+                return api_error(ErrorCode::InvalidRequest);
+            };
+            candidate.diversity_policy = policy.clone();
+            if candidate.validate().is_err() {
+                return api_error(ErrorCode::ConfigurationInvalid);
+            }
+            amatl_core::Config::set_diversity_policy(&path, &policy)
+        }
+        "search" => {
+            let Ok(policy) = serde_json::from_value::<amatl_core::SearchPolicyV1>(body) else {
+                return api_error(ErrorCode::InvalidRequest);
+            };
+            candidate.search_policy = policy.clone();
+            if candidate.validate().is_err() {
+                return api_error(ErrorCode::ConfigurationInvalid);
+            }
+            amatl_core::Config::set_search_policy(&path, &policy)
+        }
+        "ranking_v2" => {
+            let Ok(policy) = serde_json::from_value::<amatl_core::RankingV2Policy>(body) else {
+                return api_error(ErrorCode::InvalidRequest);
+            };
+            candidate.deep.ranking_v2.policy = policy.clone();
+            if candidate.validate().is_err() {
+                return api_error(ErrorCode::ConfigurationInvalid);
+            }
+            amatl_core::Config::set_ranking_v2_policy(&path, &policy)
+        }
+        "gaps" => {
+            let Ok(policy) = serde_json::from_value::<amatl_core::GapPolicyV1>(body) else {
+                return api_error(ErrorCode::InvalidRequest);
+            };
+            candidate.deep.gaps.policy = policy.clone();
+            if candidate.validate().is_err() {
+                return api_error(ErrorCode::ConfigurationInvalid);
+            }
+            amatl_core::Config::set_gap_policy(&path, &policy)
+        }
+        _ => return api_error(ErrorCode::NotFound),
+    };
+    if write_result.is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// `[persistence]` as it stands — read scoped, like `/status`. Nothing in
+/// it is a secret: `path` and `backup_directory` are filesystem locations,
+/// never credentials.
+async fn persistence_config(State(state): State<AppState>) -> Response {
+    let config = state.service().config().clone();
+    Json(json!({
+        "schema_version": SCHEMA_VERSION,
+        "persistence": config.persistence,
+    }))
+    .into_response()
+}
+
+/// Edit `[persistence]`'s retention windows, purge cadence and
+/// automatic-backup settings — admin scoped. Never touches `enabled`,
+/// `path` or `locking_mode`; see [`amatl_core::PersistenceConfigPatch`].
+async fn update_persistence(
+    State(state): State<AppState>,
+    params: Result<Json<amatl_core::PersistenceConfigPatch>, JsonRejection>,
+) -> Response {
+    let Json(patch) = match params {
+        Ok(patch) => patch,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    patch.apply(&mut candidate.persistence);
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_persistence_fields(&path, &patch).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Backup files on disk for the configured database, newest first — read
+/// scoped. Fails closed with `storage_unavailable` when persistence is off,
+/// same as `/history` and `/saved`.
+async fn list_backups(State(state): State<AppState>) -> Response {
+    match state.service().list_backups() {
+        Ok(paths) => Json(json!({
+            "schema_version": SCHEMA_VERSION,
+            "backups": paths
+                .into_iter()
+                .map(|path| path.display().to_string())
+                .collect::<Vec<_>>(),
+        }))
+        .into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Write an on-demand backup right now — admin scoped, since it touches the
+/// filesystem and competes with the periodic maintenance task's rotation.
+/// Identical in every way to what that task writes; see
+/// [`amatl_core::AmatlService::trigger_backup`].
+async fn create_backup(State(state): State<AppState>) -> Response {
+    match state.service().trigger_backup().await {
+        Ok(path) => Json(json!({
+            "schema_version": SCHEMA_VERSION,
+            "path": path.display().to_string(),
+        }))
+        .into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Current breaker state for every provider the process has observed —
+/// read scoped, like `/status` (which already summarizes this per source;
+/// this is the same data on its own, for a dedicated operator view).
+async fn circuits(State(state): State<AppState>) -> Response {
+    Json(json!({
+        "schema_version": SCHEMA_VERSION,
+        "circuits": state.service().circuit_snapshots(),
+    }))
+    .into_response()
+}
+
+/// Close every open circuit — admin scoped, same effect as `amatl db
+/// circuits --reset`. Global, not per-provider: the breaker has no
+/// per-provider reset today (see [`amatl_core::AmatlService::reset_circuits`]),
+/// so this exposes exactly that capability rather than inventing a new one.
+async fn reset_circuits(State(state): State<AppState>) -> Response {
+    state.service().reset_circuits().await;
+    Json(json!({
+        "schema_version": SCHEMA_VERSION,
+        "circuits": state.service().circuit_snapshots(),
+    }))
+    .into_response()
+}
+
+/// `[telemetry]` as it stands — read scoped.
+async fn telemetry_config(State(state): State<AppState>) -> Response {
+    let config = state.service().config().clone();
+    Json(json!({
+        "schema_version": SCHEMA_VERSION,
+        "telemetry": config.telemetry,
+    }))
+    .into_response()
+}
+
+/// Edit `[telemetry]` — admin scoped.
+async fn update_telemetry(
+    State(state): State<AppState>,
+    params: Result<Json<amatl_core::TelemetryConfigPatch>, JsonRejection>,
+) -> Response {
+    let Json(patch) = match params {
+        Ok(patch) => patch,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    patch.apply(&mut candidate.telemetry);
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_telemetry_fields(&path, &patch).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// `[deep]` in full — top-level safety limits plus `extractor`, `renderer`,
+/// `ranking_v2` and `gaps` — read scoped, like `/status`.
+async fn deep_config(State(state): State<AppState>) -> Response {
+    let config = state.service().config().clone();
+    Json(json!({
+        "schema_version": SCHEMA_VERSION,
+        "deep": config.deep,
+    }))
+    .into_response()
+}
+
+/// Edit `[deep]`'s top-level safety limits — admin scoped. Never touches
+/// `extractor`, `renderer`, `ranking_v2` or `gaps`; see
+/// [`amatl_core::DeepConfigPatch`] and the dedicated endpoints below for
+/// those.
+async fn update_deep(
+    State(state): State<AppState>,
+    params: Result<Json<amatl_core::DeepConfigPatch>, JsonRejection>,
+) -> Response {
+    let Json(patch) = match params {
+        Ok(patch) => patch,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    patch.apply(&mut candidate.deep);
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_deep_fields(&path, &patch).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Edit `[deep.extractor]` — admin scoped.
+async fn update_deep_extractor(
+    State(state): State<AppState>,
+    params: Result<Json<amatl_core::ExtractorConfigPatch>, JsonRejection>,
+) -> Response {
+    let Json(patch) = match params {
+        Ok(patch) => patch,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    patch.apply(&mut candidate.deep.extractor);
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_deep_extractor_fields(&path, &patch).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Edit `[deep.renderer]` — admin scoped. Setting `enabled = true` under an
+/// `isolated` `data_policy.profile` fails `Config::validate` (the isolated
+/// profile forbids the unsandboxed renderer), so that combination is
+/// refused here before anything is written — see
+/// [`amatl_core::RendererConfigPatch`].
+async fn update_deep_renderer(
+    State(state): State<AppState>,
+    params: Result<Json<amatl_core::RendererConfigPatch>, JsonRejection>,
+) -> Response {
+    let Json(patch) = match params {
+        Ok(patch) => patch,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    patch.apply(&mut candidate.deep.renderer);
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_deep_renderer_fields(&path, &patch).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// `[server]` in full except `clients` (which has its own surface at
+/// `/server/clients*`) — read scoped. `token_env` names an environment
+/// variable, `tls` paths name files; neither is a secret value itself.
+async fn server_pending_config(State(state): State<AppState>) -> Response {
+    let server = state.service().config().server.clone();
+    Json(json!({
+        "schema_version": SCHEMA_VERSION,
+        "server": {
+            "bind": server.bind,
+            "port": server.port,
+            "token_env": server.token_env,
+            "no_auth": server.no_auth,
+            "allowed_hosts": server.allowed_hosts,
+            "allowed_origins": server.allowed_origins,
+            "max_body_bytes": server.max_body_bytes,
+            "max_header_bytes": server.max_header_bytes,
+            "request_timeout_ms": server.request_timeout_ms,
+            "idle_timeout_ms": server.idle_timeout_ms,
+            "rate_limit_per_minute": server.rate_limit_per_minute,
+            "max_connections": server.max_connections,
+            "tls": {
+                "cert_path": server.tls.cert_path,
+                "key_path": server.tls.key_path,
+            },
+        },
+    }))
+    .into_response()
+}
+
+/// What `PATCH /server/pending-config` wrote, and whether it is already in
+/// effect.
+#[derive(Debug, Serialize)]
+struct ServerPendingConfigReport {
+    schema_version: &'static str,
+    /// `"section.key"` for every field the request set, in the order
+    /// [`amatl_core::ServerConfigPatch::changed_fields`] reports them.
+    written: Vec<String>,
+    /// Always `false`: this endpoint never triggers a reload — see the
+    /// doc comment on [`update_server_pending_config`] for why.
+    applied: bool,
+    /// `true` when any written field is [`amatl_core::ReloadKind::Cold`]
+    /// (only takes full effect on the next process start).
+    requires_restart: bool,
+    /// Written fields that a subsequent `POST /reload` would pick up.
+    hot_fields: Vec<String>,
+    /// Written fields a `POST /reload` cannot apply; only a restart can.
+    cold_fields: Vec<String>,
+}
+
+/// Edit `[server]`'s listener, security and transport settings — admin
+/// scoped, and deliberately the one write endpoint in this file that never
+/// calls `reload()` on the caller's behalf.
+///
+/// Every other setter here applies immediately because everything it
+/// touches is genuinely hot (see `AppState::reload`, which rebuilds the
+/// security snapshot from the freshly loaded config on every call). This
+/// one is different: several `[server]` fields are read once at process
+/// startup — the TCP bind, the TLS acceptor, the connection-limit and
+/// body-limit layers, the idle-timeout builder (see [`amatl_core::ReloadKind`]
+/// for the full accounting) — and an automatic reload right after writing
+/// a change to, say, `allowed_hosts` or `bind` could take effect
+/// mid-request in a way an operator did not explicitly ask for, on the
+/// surface most likely to lock them out if it goes wrong. So this endpoint
+/// only writes the file and reports, per field, whether a follow-up `POST
+/// /reload` would apply it (`hot_fields`) or whether nothing short of a
+/// restart will (`cold_fields`) — applying either is a separate, explicit
+/// step the caller takes on purpose.
+async fn update_server_pending_config(
+    State(state): State<AppState>,
+    params: Result<Json<amatl_core::ServerConfigPatch>, JsonRejection>,
+) -> Response {
+    let Json(patch) = match params {
+        Ok(patch) => patch,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    patch.apply(&mut candidate.server);
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_server_fields(&path, &patch).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    let changed = patch.changed_fields();
+    let mut hot_fields = Vec::new();
+    let mut cold_fields = Vec::new();
+    for (section, key) in &changed {
+        match amatl_core::ReloadKind::of(section, key) {
+            amatl_core::ReloadKind::Hot => hot_fields.push(format!("{section}.{key}")),
+            amatl_core::ReloadKind::Cold => cold_fields.push(format!("{section}.{key}")),
+        }
+    }
+    Json(ServerPendingConfigReport {
+        schema_version: SCHEMA_VERSION,
+        written: changed
+            .iter()
+            .map(|(section, key)| format!("{section}.{key}"))
+            .collect(),
+        applied: false,
+        requires_restart: !cold_fields.is_empty(),
+        hot_fields,
+        cold_fields,
+    })
+    .into_response()
 }
 
 /// Recorded security rejections, newest first.

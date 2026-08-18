@@ -2,14 +2,16 @@
 
 ## Snapshot verificable
 
-Estado revisado el **2026-08-14** sobre la rama `consolidacion-ui-observabilidad`:
+Estado revisado el **2026-08-16** sobre la rama `consolidacion-ui-observabilidad`:
 
-- último commit: `71637d3` (`docs: record what each search provider actually costs and offers`);
+- último commit: `e9b0c9e` (`feat(answer): síntesis de respuesta citada opcional, tema claro/oscuro y refresco de marca`);
 - baseline de implementación: tag `baseline-fases-0-9`, commit `51c6d34`;
 - workspace: Rust 2021, MSRV 1.88, versión candidata `0.1.0-rc.1`, cuatro crates;
 - fases 0–9: cerradas y verificadas;
 - publicación SemVer: RC actual `0.1.0-rc.1`; estado externo verificable en GitHub Releases;
-- Fase 10: no existe en el golden template y no debe inferirse.
+- Fase 10: no existe en el golden template y no debe inferirse; `answer` (ver
+  ADR-011) tampoco es una fase — es una capacidad opcional transversal,
+  documentada como tal en `docs/configuracion.md`.
 
 Commits de esta rama sobre `ce99222`:
 
@@ -19,6 +21,16 @@ Commits de esta rama sobre `ce99222`:
 | `1658a02` | Publicación en crates.io y AUR sólo en tags estables |
 | `bd266cc` | Renderer Chromium conectado a través del harness de aislamiento |
 | `71637d3` | Coste y viabilidad real de cada provider (sólo documentación) |
+| `f46ad90` | SearXNG y Marginalia: adapter real, DuckDuckGo HTML retirado |
+| `e9b0c9e` | Resumen con IA (grounded, opcional), tema claro/oscuro, refresco de marca, ADR-011 |
+
+El binario `target/release/amatl` corriendo en el operador (PID variable por
+sesión, ver `pgrep -af 'target/release/amatl'`) corresponde exactamente a
+`e9b0c9e` — reconstruido después del commit, no antes, para no dejar ambigüedad
+entre "lo compilado" y "lo comiteado". Primera ronda de pruebas en ambiente
+real (no `--mock`) iniciada el 2026-08-16 contra SearXNG + Marginalia +
+DeepInfra reales: `/search` y `/answer` verificados con resultados reales, no
+sólo con el smoke test de CI.
 
 Estado de los documentos rectores:
 
@@ -38,7 +50,7 @@ se conserva como registro.
 ADR-010 documenta el retiro de `duckduckgo_html` y la implementación real de
 Marginalia sin reescribir ADR-005.
 
-**Actualización 2026-08-15 (no comiteada):** cierre de la Etapa 1 de la brecha
+**Actualización 2026-08-15 (comiteada como `f46ad90`):** cierre de la Etapa 1 de la brecha
 de proveedores — `providers/marginalia.rs` deja de ser scaffold (adapter real
 contra `api2.marginalia-search.com`, header `API-Key`), `router.rs` penaliza
 por `estimated_cost`, y `duckduckgo_html` se retiró del código, del registro y
@@ -47,8 +59,7 @@ Compuerta local verificada: `cargo fmt --check`, `cargo clippy -D warnings` y
 `cargo test --workspace` en verde. Detalle en ADR-010 y en
 `docs/gobernanza-providers.md`.
 
-**Actualización 2026-08-16 (no comiteada, sobre el mismo working tree que la
-entrada anterior — nada se comiteó desde `f46ad90`):** cuatro bloques de
+**Actualización 2026-08-16 (comiteada como `e9b0c9e`):** cuatro bloques de
 trabajo nuevos, todos en `amatl-core`/`amatl-server`/`amatl-ui` y su
 documentación, ninguno cambia `schema_version` ni las invariantes de Search:
 
@@ -105,14 +116,19 @@ documentación, ninguno cambia `schema_version` ni las invariantes de Search:
    fichas — no se cambió `storage_rights` "por conveniencia técnica",
    siguiendo `docs/gobernanza-providers.md`.
 
-Compuerta local verificada tras estos cuatro bloques: `cargo test -p
-amatl-core`, `cargo test -p amatl-server`, `cargo test -p amatl-ui` en verde
-(incluye `user_visible_copy_lives_only_in_the_message_catalog` tras retirar el
-subtítulo). Falta repetir la compuerta completa del workspace
-(`cargo fmt --all -- --check`, `cargo clippy --workspace --all-targets -- -D
-warnings`, `cargo test --workspace`, `cargo doc`, `cargo audit`, `cargo deny`,
-`cargo cyclonedx`) antes de comitear, según el protocolo de esta misma
-sección.
+Compuerta completa verificada tras estos cuatro bloques y antes de comitear:
+`cargo fmt --all -- --check`, `cargo test --workspace`, `cargo clippy
+--workspace --all-targets -- -D warnings`, `cargo doc` (con
+`RUSTDOCFLAGS="-D warnings"` — encontró y corrigió un intra-doc link privado
+real en `answer.rs`), `cargo audit`, `cargo deny check`, `cargo cyclonedx`.
+Documentación de contrato y gobernanza puesta al día en el mismo commit:
+ADR-011 (`decisiones_amatl.md`), `docs/security/threat-model.md` (nuevo
+límite `Core → inference (answer)`), `docs/api/openapi.yaml` (`/answer`,
+`/answer/enabled`, `AnswerStatus`/`AnswerResult`), `docs/configuracion.md`,
+`docs/operacion.md`, `CHANGELOG.md`. De paso se corrigió un patrón de
+`.gitignore` que no cubría los backups reales que `storage.rs` genera
+(`amatl.backup-<timestamp>.sqlite3` no coincidía con `/amatl.sqlite3*`).
+Comiteado como `e9b0c9e`.
 
 ## Jerarquía para retomar trabajo
 
@@ -430,8 +446,8 @@ quedó bloqueada por la CSP `script-src 'self'` (el test falla explícitamente
 si `window.axe` no se define) antes de correr `axe.run()`. No queda nada
 pendiente en este bloque.
 
-**Conectar una fuente de búsqueda real está cumplido a nivel de código** (ver
-ADR-010, 2026-08-15, cambios sin comitear):
+**Conectar una fuente de búsqueda real está cumplido, código y gobernanza**
+(ver ADR-010, comiteado como `f46ad90`):
 
 1. **SearXNG autohospedado** — `providers/searxng.rs` implementado y probado;
    sin credencial. Ficha aprobable.
@@ -458,17 +474,28 @@ ADR-010, 2026-08-15, cambios sin comitear):
    regrese silenciosamente a `draft`. No queda abierto a "segunda ronda con
    datos de uso": reactivarlos exige revertir la política, no juntar métricas.
 
-Compuerta local verificada tras el cambio: `cargo fmt --all -- --check`,
-`cargo clippy --workspace --all-targets --all-features -- -D warnings`,
-`cargo test --workspace` (348 tests, 0 fallos). Falta comitear y, antes de
-publicar, repetir la compuerta completa (`cargo doc`, `cargo audit`, `cargo
-deny`, `cargo cyclonedx`) según el protocolo de esta misma sección.
+Compuerta completa verificada, comiteado como `f46ad90`.
 
-**El siguiente paso real es de gobernanza, no de código:** aprobar la ficha de
-SearXNG o Marginalia (`reviewer`, `reviewed_at`, `approval_status` con
-identidad real) para que el binario tenga al menos una fuente real activa.
-Contexto de coste y viabilidad de cada fuente: sección «Viabilidad y coste» de
-`docs/gobernanza-providers.md`.
+**El paso de gobernanza que quedaba pendiente ya se resolvió**, pero en el
+`amatl.toml` real del operador, no en el `amatl.example.toml` versionado (que
+sigue en `draft` a propósito — `reviewer`/`reviewed_at` son específicos de
+cada operador y no deben inventarse en un ejemplo público). SearXNG y
+Marginalia están `approval_status = "approved"`, `reviewer = "Alexis
+Hernandez"`, `reviewed_at = "2026-08-15"` en la configuración real, y desde
+`e9b0c9e` el binario corre con ambas fuentes activas contra tráfico real,
+más "Resumen con IA" grounded sobre esos resultados (ver la actualización
+2026-08-16 más arriba y ADR-011). Motores upstream de SearXNG curados a nivel
+de operación (Docker, fuera de este repositorio) tras detectar bloqueo por
+volumen en Brave/DuckDuckGo/Google CSE/Startpage; Bing confirmado con
+resultados reales. Contexto de coste y viabilidad de cada fuente: sección
+«Viabilidad y coste» de `docs/gobernanza-providers.md`.
+
+**Próximo hito real: primera ronda de pruebas en ambiente real** (no
+`--mock`), iniciada el 2026-08-16 con el binario `target/release/amatl`
+construido desde `e9b0c9e`, corriendo en segundo plano (`nohup`) contra
+SearXNG autohospedado, Marginalia y DeepInfra reales — no queda nada de
+código bloqueando este paso. Persistencia y hallazgos de esa ronda son la
+próxima entrada a registrar aquí, no una fase nueva.
 
 En paralelo, los controles externos de GitHub, gobernanza/credenciales del
 environment y canario real continúan como decisiones del propietario. No

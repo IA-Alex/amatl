@@ -804,6 +804,39 @@ impl SqliteStorage {
         Ok(())
     }
 
+    /// Trigger an on-demand backup, identical in every way to what the
+    /// periodic maintenance task writes (same naming scheme, same integrity
+    /// check, same rotation against `max_count`) — the only difference is
+    /// *when* it runs. Exists so an operator can ask for one right before a
+    /// risky change without waiting for the next scheduled interval,
+    /// without adding a second backup kind or a second rotation policy to
+    /// reason about.
+    ///
+    /// Also identical in what it *reports*: the shared [`MaintenanceState`]
+    /// is updated the same way the maintenance task updates it, so
+    /// `health()` (and anything built on it) reflects the manual backup
+    /// immediately instead of waiting for the next automatic cycle.
+    pub async fn trigger_backup(
+        &self,
+        backup_dir: Option<&str>,
+        max_count: u32,
+    ) -> Result<PathBuf, StorageError> {
+        match self.create_auto_backup(backup_dir, max_count).await {
+            Ok((path, integrity_ok)) => {
+                let mut state = self.maintenance.lock().await;
+                state.last_backup_at = Some(now_unix());
+                state.last_backup_integrity_ok = integrity_ok;
+                state.backup_count = Self::count_backups(&self.path, backup_dir);
+                Ok(path)
+            }
+            Err(error) => {
+                let mut state = self.maintenance.lock().await;
+                state.last_fs_error = Some(error.to_string());
+                Err(error)
+            }
+        }
+    }
+
     /// Create an automatic backup, verify its integrity, and rotate old backups.
     async fn create_auto_backup(
         &self,
@@ -2153,6 +2186,44 @@ mod tests {
             1,
             "backup lost a committed transaction"
         );
+    }
+
+    #[tokio::test]
+    async fn trigger_backup_updates_the_shared_maintenance_state() {
+        // Regression: an on-demand backup claimed to be "identical in every
+        // way" to the periodic task but never touched `MaintenanceState`, so
+        // `health()` kept reporting the previous automatic cycle until the
+        // next one ran.
+        let path = path("trigger-backup");
+        let storage = SqliteStorage::open(&path, crate::config::SqliteLockingMode::Normal)
+            .await
+            .unwrap();
+        assert_eq!(storage.health().await.unwrap().last_backup_at, None);
+
+        let backup_path = storage.trigger_backup(None, 5).await.unwrap();
+        let health = storage.health().await.unwrap();
+        assert!(
+            health.last_backup_at.is_some(),
+            "manual backup must update last_backup_at"
+        );
+        assert!(health.last_backup_integrity_ok, "fresh backup must verify");
+        assert_eq!(health.backup_count, 1);
+
+        // A second manual backup rotates to the configured maximum, and the
+        // reported count tracks it. Backups are named at second resolution, so
+        // space the triggers out to keep the filenames distinct.
+        tokio::time::sleep(Duration::from_secs(1)).await;
+        storage.trigger_backup(None, 2).await.unwrap();
+        tokio::time::sleep(Duration::from_secs(1)).await;
+        storage.trigger_backup(None, 2).await.unwrap();
+        let health = storage.health().await.unwrap();
+        assert_eq!(health.backup_count, 2, "rotation must respect max_count");
+
+        let _ = std::fs::remove_file(&path);
+        let _ = std::fs::remove_file(backup_path);
+        for entry in scan_backups(path.parent().unwrap(), &database_stem(&path)) {
+            let _ = std::fs::remove_file(entry.path);
+        }
     }
 
     #[tokio::test]

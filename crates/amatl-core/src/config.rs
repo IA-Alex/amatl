@@ -111,6 +111,39 @@ impl InferenceMode {
     }
 }
 
+/// The [`DataPolicyConfig`] fields an admin-scoped caller may change in one
+/// request, each optional so only the fields actually sent are changed.
+///
+/// Unlike every other config section, `data_policy`'s three fields cross-check
+/// each other in `Config::validate` (`isolated` requires `deny`, `remote
+/// explicit` requires `governed`), so this patch is applied and written as a
+/// *unit* — one TOML read and one write — never as three independent writes
+/// that could leave the file in a mix the next reload would reject. See
+/// [`Config::set_data_policy_fields`].
+#[derive(Clone, Debug, Default, Deserialize)]
+#[serde(default)]
+pub struct DataPolicyConfigPatch {
+    pub profile: Option<SecurityProfile>,
+    pub egress: Option<EgressPolicy>,
+    pub inference: Option<InferenceMode>,
+}
+
+impl DataPolicyConfigPatch {
+    /// Apply every field this patch sets to `config`, leaving the rest
+    /// untouched. Mirrors [`Config::set_data_policy_fields`] exactly.
+    pub fn apply(&self, config: &mut DataPolicyConfig) {
+        if let Some(value) = self.profile {
+            config.profile = value;
+        }
+        if let Some(value) = self.egress {
+            config.egress = value;
+        }
+        if let Some(value) = self.inference {
+            config.inference = value;
+        }
+    }
+}
+
 /// Backend limits for the optional inference layer.
 ///
 /// The mode itself lives in `data_policy.inference`; this section only sizes
@@ -181,6 +214,113 @@ impl Default for InferenceConfig {
     }
 }
 
+/// Every [`InferenceConfig`] field an admin-scoped caller may update in one
+/// request, each optional so only the fields actually sent are changed.
+///
+/// On the `Option<String>` fields that are themselves optional in
+/// [`InferenceConfig`] (`local_model_path`, `local_cache_path`,
+/// `remote_endpoint`, `remote_model`, `remote_credential_env`): submitting an
+/// empty string clears the field (sets it back to `None`); omitting the
+/// field from the request leaves it exactly as it was. There is no separate
+/// "clear" flag — an admin who wants to blank a value out sends `""`.
+#[derive(Clone, Debug, Default, Deserialize)]
+#[serde(default)]
+pub struct InferenceConfigPatch {
+    pub backend: Option<String>,
+    pub embedding_dimensions: Option<usize>,
+    pub max_documents: Option<usize>,
+    pub max_input_chars: Option<usize>,
+    pub reranker_prior_weight: Option<f64>,
+    pub local_model_path: Option<String>,
+    pub local_model_batch: Option<usize>,
+    pub local_cache_path: Option<String>,
+    pub remote_endpoint: Option<String>,
+    pub remote_model: Option<String>,
+    pub remote_credential_env: Option<String>,
+    pub remote_timeout_ms: Option<u64>,
+    pub remote_max_batch: Option<usize>,
+}
+
+impl InferenceConfigPatch {
+    /// Apply every field this patch sets to `config`, leaving the rest
+    /// untouched.
+    ///
+    /// Mirrors exactly what [`Config::set_inference_fields`] writes to disk
+    /// (same "empty string clears" convention on the optional string
+    /// fields), so a caller that builds a candidate with this before
+    /// validating and writing through that function never validates
+    /// something different from what ends up on disk.
+    pub fn apply(&self, config: &mut InferenceConfig) {
+        if let Some(backend) = &self.backend {
+            config.backend = backend.clone();
+        }
+        if let Some(value) = self.embedding_dimensions {
+            config.embedding_dimensions = value;
+        }
+        if let Some(value) = self.max_documents {
+            config.max_documents = value;
+        }
+        if let Some(value) = self.max_input_chars {
+            config.max_input_chars = value;
+        }
+        if let Some(value) = self.reranker_prior_weight {
+            config.reranker_prior_weight = value;
+        }
+        if let Some(value) = &self.local_model_path {
+            config.local_model_path = clearable(value);
+        }
+        if let Some(value) = self.local_model_batch {
+            config.local_model_batch = value;
+        }
+        if let Some(value) = &self.local_cache_path {
+            config.local_cache_path = clearable(value);
+        }
+        if let Some(value) = &self.remote_endpoint {
+            config.remote_endpoint = clearable(value);
+        }
+        if let Some(value) = &self.remote_model {
+            config.remote_model = clearable(value);
+        }
+        if let Some(value) = &self.remote_credential_env {
+            config.remote_credential_env = clearable(value);
+        }
+        if let Some(value) = self.remote_timeout_ms {
+            config.remote_timeout_ms = value;
+        }
+        if let Some(value) = self.remote_max_batch {
+            config.remote_max_batch = value;
+        }
+    }
+}
+
+/// `""` reads as "clear this field"; anything else is the new value.
+/// Shared by every config patch's `apply` and its disk-writing counterpart
+/// so the two never drift apart on what an empty string means.
+fn clearable(value: &str) -> Option<String> {
+    if value.is_empty() {
+        None
+    } else {
+        Some(value.to_string())
+    }
+}
+
+/// Convert an unsigned patch integer to the `i64` `toml_edit` needs, failing
+/// closed instead of wrapping.
+///
+/// `Config::validate` bounds every numeric field below `i64::MAX` before a
+/// caller is allowed to write, so a value that reaches here is already in
+/// range; this is the last line of defense for a future caller that forgets
+/// to validate. Without it, `usize::MAX as i64` wraps to `-1` and lands in
+/// the file, which the next `/reload` or restart refuses to parse.
+fn signed_integer<T>(value: T, key: &str) -> Result<i64, ConfigError>
+where
+    T: TryInto<i64>,
+{
+    value
+        .try_into()
+        .map_err(|_| ConfigError::Policy(format!("{key} exceeds the maximum storable value")))
+}
+
 /// Governs the optional answer-synthesis step: an LLM completion call that
 /// turns AMATL's own search results into a grounded, cited answer.
 ///
@@ -228,6 +368,56 @@ impl Default for AnswerConfig {
             max_sources: 8,
             max_source_chars: 1_200,
             max_answer_tokens: 700,
+        }
+    }
+}
+
+/// Every [`AnswerConfig`] field an admin-scoped caller may update in one
+/// request, except `enabled` — that stays the sole responsibility of
+/// [`Config::set_answer_enabled`] (and the web UI's dedicated toggle), so
+/// this patch can never accidentally flip the feature on or off as a side
+/// effect of editing its endpoint or limits.
+///
+/// Same "empty string clears" convention on `endpoint`, `model` and
+/// `credential_env` as [`InferenceConfigPatch`].
+#[derive(Clone, Debug, Default, Deserialize)]
+#[serde(default)]
+pub struct AnswerConfigPatch {
+    pub endpoint: Option<String>,
+    pub model: Option<String>,
+    pub credential_env: Option<String>,
+    pub timeout_ms: Option<u64>,
+    pub max_sources: Option<usize>,
+    pub max_source_chars: Option<usize>,
+    pub max_answer_tokens: Option<u32>,
+}
+
+impl AnswerConfigPatch {
+    /// Apply every field this patch sets to `config`, leaving `enabled` and
+    /// every unset field untouched. Mirrors
+    /// [`Config::set_answer_fields`] exactly; see
+    /// [`InferenceConfigPatch::apply`] for the shared reasoning.
+    pub fn apply(&self, config: &mut AnswerConfig) {
+        if let Some(value) = &self.endpoint {
+            config.endpoint = clearable(value);
+        }
+        if let Some(value) = &self.model {
+            config.model = clearable(value);
+        }
+        if let Some(value) = &self.credential_env {
+            config.credential_env = clearable(value);
+        }
+        if let Some(value) = self.timeout_ms {
+            config.timeout_ms = value;
+        }
+        if let Some(value) = self.max_sources {
+            config.max_sources = value;
+        }
+        if let Some(value) = self.max_source_chars {
+            config.max_source_chars = value;
+        }
+        if let Some(value) = self.max_answer_tokens {
+            config.max_answer_tokens = value;
         }
     }
 }
@@ -443,7 +633,7 @@ pub struct ProviderRuntimeConfig {
     pub operational_risk: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
+#[derive(Clone, Copy, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
 pub enum ApprovalStatus {
     #[default]
@@ -451,6 +641,17 @@ pub enum ApprovalStatus {
     Approved,
     Expired,
     Rejected,
+}
+
+impl ApprovalStatus {
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Draft => "draft",
+            Self::Approved => "approved",
+            Self::Expired => "expired",
+            Self::Rejected => "rejected",
+        }
+    }
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
@@ -913,6 +1114,76 @@ impl Default for PersistenceConfig {
     }
 }
 
+/// The [`PersistenceConfig`] fields an admin-scoped caller may update in one
+/// request: retention windows, the purge cadence and automatic-backup
+/// settings.
+///
+/// Deliberately excludes `enabled`, `path` and `locking_mode` — those pick
+/// *which* database file this process has open and how it coordinates with
+/// other AMATL processes over it, which is not something to flip through a
+/// running HTTP request; changing them stays a manual edit of the
+/// configuration file followed by a restart.
+///
+/// Same "empty string clears" convention as [`InferenceConfigPatch`] on
+/// `backup_directory` (clearing it falls back to the database's own
+/// directory).
+#[derive(Clone, Debug, Default, Deserialize)]
+#[serde(default)]
+pub struct PersistenceConfigPatch {
+    pub history_enabled: Option<bool>,
+    pub saved_document_max_bytes: Option<u64>,
+    pub audit_retention_days: Option<u32>,
+    pub history_retention_days: Option<u32>,
+    pub cache_retention_days: Option<u32>,
+    pub document_cache_retention_days: Option<u32>,
+    pub purge_interval_seconds: Option<u64>,
+    pub auto_backup_enabled: Option<bool>,
+    pub auto_backup_interval_seconds: Option<u64>,
+    pub auto_backup_max_count: Option<u32>,
+    pub backup_directory: Option<String>,
+}
+
+impl PersistenceConfigPatch {
+    /// Apply every field this patch sets to `config`, leaving `enabled`,
+    /// `path`, `locking_mode` and every unset field untouched. Mirrors
+    /// [`Config::set_persistence_fields`] exactly.
+    pub fn apply(&self, config: &mut PersistenceConfig) {
+        if let Some(value) = self.history_enabled {
+            config.history_enabled = value;
+        }
+        if let Some(value) = self.saved_document_max_bytes {
+            config.saved_document_max_bytes = value;
+        }
+        if let Some(value) = self.audit_retention_days {
+            config.audit_retention_days = value;
+        }
+        if let Some(value) = self.history_retention_days {
+            config.history_retention_days = value;
+        }
+        if let Some(value) = self.cache_retention_days {
+            config.cache_retention_days = value;
+        }
+        if let Some(value) = self.document_cache_retention_days {
+            config.document_cache_retention_days = value;
+        }
+        if let Some(value) = self.purge_interval_seconds {
+            config.purge_interval_seconds = value;
+        }
+        if let Some(value) = self.auto_backup_enabled {
+            config.auto_backup_enabled = value;
+        }
+        if let Some(value) = self.auto_backup_interval_seconds {
+            config.auto_backup_interval_seconds = value;
+        }
+        if let Some(value) = self.auto_backup_max_count {
+            config.auto_backup_max_count = value;
+        }
+        if let Some(value) = &self.backup_directory {
+            config.backup_directory = clearable(value);
+        }
+    }
+}
+
 impl Default for ProviderSearchCacheConfig {
     fn default() -> Self {
         Self {
@@ -1006,11 +1277,176 @@ impl Default for RendererConfig {
     }
 }
 
+/// The [`DeepConfig`] top-level safety limits an admin-scoped caller may
+/// update in one request. Deliberately excludes `extractor`, `renderer`,
+/// `ranking_v2` and `gaps` — each of those is its own nested table with its
+/// own patch type ([`ExtractorConfigPatch`], [`RendererConfigPatch`]) or, for
+/// `ranking_v2.policy`/`gaps.policy`, its own `/policies/*` endpoint (see
+/// `Config::set_ranking_v2_policy`/`set_gap_policy`), rather than being
+/// folded into this one.
+#[derive(Clone, Debug, Default, Deserialize)]
+#[serde(default)]
+pub struct DeepConfigPatch {
+    pub top_k: Option<u32>,
+    pub max_fetches: Option<u32>,
+    pub max_bytes: Option<u64>,
+    pub max_redirects: Option<u32>,
+    pub max_crawl_urls: Option<u32>,
+    pub max_depth: Option<u8>,
+    pub respect_robots: Option<bool>,
+    pub robots_timeout_ms: Option<u64>,
+    pub robots_max_bytes: Option<u64>,
+    pub timeout_ms: Option<u64>,
+}
+
+impl DeepConfigPatch {
+    /// Apply every field this patch sets to `config`, leaving `extractor`,
+    /// `renderer`, `ranking_v2` and `gaps` untouched. Mirrors
+    /// [`Config::set_deep_fields`] exactly.
+    pub fn apply(&self, config: &mut DeepConfig) {
+        if let Some(value) = self.top_k {
+            config.top_k = value;
+        }
+        if let Some(value) = self.max_fetches {
+            config.max_fetches = value;
+        }
+        if let Some(value) = self.max_bytes {
+            config.max_bytes = value;
+        }
+        if let Some(value) = self.max_redirects {
+            config.max_redirects = value;
+        }
+        if let Some(value) = self.max_crawl_urls {
+            config.max_crawl_urls = value;
+        }
+        if let Some(value) = self.max_depth {
+            config.max_depth = value;
+        }
+        if let Some(value) = self.respect_robots {
+            config.respect_robots = value;
+        }
+        if let Some(value) = self.robots_timeout_ms {
+            config.robots_timeout_ms = value;
+        }
+        if let Some(value) = self.robots_max_bytes {
+            config.robots_max_bytes = value;
+        }
+        if let Some(value) = self.timeout_ms {
+            config.timeout_ms = value;
+        }
+    }
+}
+
+/// Every [`ExtractorConfig`] field an admin-scoped caller may update.
+#[derive(Clone, Debug, Default, Deserialize)]
+#[serde(default)]
+pub struct ExtractorConfigPatch {
+    pub executable: Option<String>,
+    pub version: Option<String>,
+    pub timeout_ms: Option<u64>,
+    pub max_output_bytes: Option<u64>,
+}
+
+impl ExtractorConfigPatch {
+    /// Apply every field this patch sets to `config`. Mirrors
+    /// [`Config::set_deep_extractor_fields`] exactly. Unlike the
+    /// `Option<String>` fields on [`InferenceConfigPatch`], `executable` and
+    /// `version` are themselves required (non-optional) strings in
+    /// [`ExtractorConfig`], so there is no "clear" case to support here —
+    /// `Some(value)` always sets a real replacement.
+    pub fn apply(&self, config: &mut ExtractorConfig) {
+        if let Some(value) = &self.executable {
+            config.executable = value.clone();
+        }
+        if let Some(value) = &self.version {
+            config.version = value.clone();
+        }
+        if let Some(value) = self.timeout_ms {
+            config.timeout_ms = value;
+        }
+        if let Some(value) = self.max_output_bytes {
+            config.max_output_bytes = value;
+        }
+    }
+}
+
+/// Every [`RendererConfig`] field an admin-scoped caller may update.
+///
+/// Setting `enabled = true` while `data_policy.profile = "isolated"` fails
+/// `Config::validate` (an isolated profile forbids the unsandboxed
+/// renderer), so a candidate built with this patch and validated before
+/// writing already fails closed on that combination — see
+/// [`Config::set_deep_renderer_fields`].
+#[derive(Clone, Debug, Default, Deserialize)]
+#[serde(default)]
+pub struct RendererConfigPatch {
+    pub enabled: Option<bool>,
+    pub max_browser_calls: Option<u32>,
+    pub timeout_ms: Option<u64>,
+    pub shutdown_grace_ms: Option<u64>,
+    pub max_memory_mb: Option<u64>,
+    pub max_redirects: Option<u32>,
+    pub sandbox_path: Option<String>,
+    pub max_dom_bytes: Option<u64>,
+}
+
+impl RendererConfigPatch {
+    /// Apply every field this patch sets to `config`. Mirrors
+    /// [`Config::set_deep_renderer_fields`] exactly.
+    pub fn apply(&self, config: &mut RendererConfig) {
+        if let Some(value) = self.enabled {
+            config.enabled = value;
+        }
+        if let Some(value) = self.max_browser_calls {
+            config.max_browser_calls = value;
+        }
+        if let Some(value) = self.timeout_ms {
+            config.timeout_ms = value;
+        }
+        if let Some(value) = self.shutdown_grace_ms {
+            config.shutdown_grace_ms = value;
+        }
+        if let Some(value) = self.max_memory_mb {
+            config.max_memory_mb = value;
+        }
+        if let Some(value) = self.max_redirects {
+            config.max_redirects = value;
+        }
+        if let Some(value) = &self.sandbox_path {
+            config.sandbox_path = value.clone();
+        }
+        if let Some(value) = self.max_dom_bytes {
+            config.max_dom_bytes = value;
+        }
+    }
+}
+
 impl Default for TelemetryConfig {
     fn default() -> Self {
         Self {
             persistence_enabled: false,
             retention_days: 30,
+        }
+    }
+}
+
+/// Every [`TelemetryConfig`] field an admin-scoped caller may update.
+#[derive(Clone, Debug, Default, Deserialize)]
+#[serde(default)]
+pub struct TelemetryConfigPatch {
+    pub persistence_enabled: Option<bool>,
+    pub retention_days: Option<u32>,
+}
+
+impl TelemetryConfigPatch {
+    /// Apply every field this patch sets to `config`. Mirrors
+    /// [`Config::set_telemetry_fields`] exactly.
+    pub fn apply(&self, config: &mut TelemetryConfig) {
+        if let Some(value) = self.persistence_enabled {
+            config.persistence_enabled = value;
+        }
+        if let Some(value) = self.retention_days {
+            config.retention_days = value;
         }
     }
 }
@@ -1033,6 +1469,125 @@ impl Default for ServerConfig {
             max_connections: 64,
             tls: TlsConfig::default(),
         }
+    }
+}
+
+/// Every [`ServerConfig`] field an admin-scoped caller may update in one
+/// request, except `clients` — that has its own dedicated surface
+/// ([`Config::upsert_server_client`]/[`Config::remove_server_client`], and
+/// `/server/clients*` in `amatl-server`) because credentials need
+/// create/rotate/revoke semantics no generic field patch should also try to
+/// express.
+///
+/// Unlike every other patch type in this module, applying this one does
+/// *not* mean every field takes effect once the file is written and the
+/// process reloads: several of these are read once at process startup (see
+/// [`ReloadKind`]) and only take full effect on restart. This patch does
+/// not hide that — it is the caller's job (see `PATCH
+/// /server/pending-config` in `amatl-server`) to report, per field it
+/// wrote, whether [`ReloadKind::of`] says `Hot` or `Cold`.
+///
+/// Same "empty string clears" convention as [`InferenceConfigPatch`] on
+/// `tls_cert_path`/`tls_key_path` (clearing either drops back to plaintext
+/// HTTP — `Config::validate` still enforces that a remote bind requires
+/// both or neither).
+#[derive(Clone, Debug, Default, Deserialize)]
+#[serde(default)]
+pub struct ServerConfigPatch {
+    pub bind: Option<String>,
+    pub port: Option<u16>,
+    pub token_env: Option<String>,
+    pub no_auth: Option<bool>,
+    pub allowed_hosts: Option<Vec<String>>,
+    pub allowed_origins: Option<Vec<String>>,
+    pub max_body_bytes: Option<usize>,
+    pub max_header_bytes: Option<usize>,
+    pub request_timeout_ms: Option<u64>,
+    pub idle_timeout_ms: Option<u64>,
+    pub rate_limit_per_minute: Option<u32>,
+    pub max_connections: Option<usize>,
+    pub tls_cert_path: Option<String>,
+    pub tls_key_path: Option<String>,
+}
+
+impl ServerConfigPatch {
+    /// Apply every field this patch sets to `config`, leaving `clients` and
+    /// every unset field untouched. Mirrors [`Config::set_server_fields`]
+    /// exactly.
+    pub fn apply(&self, config: &mut ServerConfig) {
+        if let Some(value) = &self.bind {
+            config.bind = value.clone();
+        }
+        if let Some(value) = self.port {
+            config.port = value;
+        }
+        if let Some(value) = &self.token_env {
+            config.token_env = value.clone();
+        }
+        if let Some(value) = self.no_auth {
+            config.no_auth = value;
+        }
+        if let Some(value) = &self.allowed_hosts {
+            config.allowed_hosts = value.clone();
+        }
+        if let Some(value) = &self.allowed_origins {
+            config.allowed_origins = value.clone();
+        }
+        if let Some(value) = self.max_body_bytes {
+            config.max_body_bytes = value;
+        }
+        if let Some(value) = self.max_header_bytes {
+            config.max_header_bytes = value;
+        }
+        if let Some(value) = self.request_timeout_ms {
+            config.request_timeout_ms = value;
+        }
+        if let Some(value) = self.idle_timeout_ms {
+            config.idle_timeout_ms = value;
+        }
+        if let Some(value) = self.rate_limit_per_minute {
+            config.rate_limit_per_minute = value;
+        }
+        if let Some(value) = self.max_connections {
+            config.max_connections = value;
+        }
+        if let Some(value) = &self.tls_cert_path {
+            config.tls.cert_path = clearable(value);
+        }
+        if let Some(value) = &self.tls_key_path {
+            config.tls.key_path = clearable(value);
+        }
+    }
+
+    /// `[section, key]` pairs for every field this patch actually sets, in
+    /// the shape [`ReloadKind::of`] expects — `tls_cert_path`/`tls_key_path`
+    /// report as `("server.tls", "cert_path"/"key_path")`, everything else
+    /// as `("server", <field name>)`. Lets a caller classify exactly what it
+    /// wrote without re-deriving the field list or the `tls_*` renaming.
+    pub fn changed_fields(&self) -> Vec<(&'static str, &'static str)> {
+        let mut fields = Vec::new();
+        macro_rules! push_if_set {
+            ($field:ident, $section:expr, $key:expr) => {
+                if self.$field.is_some() {
+                    fields.push(($section, $key));
+                }
+            };
+        }
+        push_if_set!(bind, "server", "bind");
+        push_if_set!(port, "server", "port");
+        push_if_set!(token_env, "server", "token_env");
+        push_if_set!(no_auth, "server", "no_auth");
+        push_if_set!(allowed_hosts, "server", "allowed_hosts");
+        push_if_set!(allowed_origins, "server", "allowed_origins");
+        push_if_set!(max_body_bytes, "server", "max_body_bytes");
+        push_if_set!(max_header_bytes, "server", "max_header_bytes");
+        push_if_set!(request_timeout_ms, "server", "request_timeout_ms");
+        push_if_set!(idle_timeout_ms, "server", "idle_timeout_ms");
+        push_if_set!(rate_limit_per_minute, "server", "rate_limit_per_minute");
+        push_if_set!(max_connections, "server", "max_connections");
+        push_if_set!(tls_cert_path, "server.tls", "cert_path");
+        push_if_set!(tls_key_path, "server.tls", "key_path");
+        fields
     }
 }
 
@@ -1075,22 +1630,332 @@ impl Config {
         Ok(config)
     }
 
+    /// Write `[section].key = value` to the file at `path`, creating the
+    /// section table if it is absent, and nothing else.
+    ///
+    /// This is the write primitive every narrow, admin-scoped config
+    /// mutation shares — today that is [`Config::set_answer_enabled`], and it
+    /// exists precisely so a future toggle (another scalar field under
+    /// `Config`) can reuse the same guarantee without re-deriving it: uses
+    /// `toml_edit`, not a struct round-trip through `toml::to_string`,
+    /// specifically so every comment an operator (or this project) wrote in
+    /// the file survives the edit untouched.
+    ///
+    /// The caller is expected to have already checked that the resulting
+    /// configuration will validate (build it in memory with the change
+    /// applied and call `.validate()`) before calling this — this function
+    /// only performs the write, so a file is never left in a state the
+    /// running process didn't already agree to serve.
+    fn set_scalar_field(
+        path: &Path,
+        section: &str,
+        key: &str,
+        value: impl Into<toml_edit::Value>,
+    ) -> Result<(), ConfigError> {
+        let text = std::fs::read_to_string(path)?;
+        let mut document = text
+            .parse::<toml_edit::DocumentMut>()
+            .map_err(|error| ConfigError::Policy(format!("invalid TOML: {error}")))?;
+        if document.get(section).is_none() {
+            document[section] = toml_edit::Item::Table(toml_edit::Table::new());
+        }
+        document[section][key] = toml_edit::value(value);
+        std::fs::write(path, document.to_string())?;
+        Ok(())
+    }
+
+    /// Add or remove `item` from the string array at `[section].key`, and
+    /// nothing else.
+    ///
+    /// The write primitive behind [`Config::set_provider_enabled`], kept
+    /// generic so a future admin-scoped toggle over another string-array
+    /// field does not need to re-derive the same `toml_edit` membership
+    /// logic. Same guarantees as `Config::set_scalar_field`: comments
+    /// survive, and the caller must validate a candidate config before
+    /// calling this.
+    fn set_list_membership(
+        path: &Path,
+        section: &str,
+        key: &str,
+        item: &str,
+        present: bool,
+    ) -> Result<(), ConfigError> {
+        let text = std::fs::read_to_string(path)?;
+        let mut document = text
+            .parse::<toml_edit::DocumentMut>()
+            .map_err(|error| ConfigError::Policy(format!("invalid TOML: {error}")))?;
+        if document.get(section).is_none() {
+            document[section] = toml_edit::Item::Table(toml_edit::Table::new());
+        }
+        let list = document[section]
+            .as_table_mut()
+            .ok_or_else(|| ConfigError::Policy(format!("{section} is not a table")))?
+            .entry(key)
+            .or_insert_with(|| toml_edit::Item::Value(toml_edit::Array::new().into()));
+        let array = list
+            .as_array_mut()
+            .ok_or_else(|| ConfigError::Policy(format!("{section}.{key} is not an array")))?;
+        let already_present = array.iter().any(|value| value.as_str() == Some(item));
+        if present && !already_present {
+            array.push(item);
+        } else if !present && already_present {
+            let index = array
+                .iter()
+                .position(|value| value.as_str() == Some(item))
+                .expect("already_present implies a match");
+            array.remove(index);
+        }
+        std::fs::write(path, document.to_string())?;
+        Ok(())
+    }
+
     /// Flip `[answer].enabled` on disk and nothing else.
     ///
     /// The only configuration mutation any running AMATL process makes to
     /// its own file — every other setting is still operator-edited text.
     /// Kept this narrow on purpose: it exists so the web UI's admin-scoped
     /// toggle never needs to touch, or even see, `endpoint`/`model`/the
-    /// credential. Uses `toml_edit`, not a struct round-trip through
-    /// `toml::to_string`, specifically so every comment an operator (or this
-    /// project) wrote in the file survives the edit untouched.
-    ///
-    /// The caller is expected to have already checked that the resulting
-    /// configuration will validate (build it in memory with the flag
-    /// flipped and call `.validate()`) before calling this — this function
-    /// only performs the write, so a file is never left in a state the
-    /// running process didn't already agree to serve.
+    /// credential. A thin wrapper over `Config::set_scalar_field`; see
+    /// that function for the write guarantees (comments survive, caller
+    /// validates first).
     pub fn set_answer_enabled(path: &Path, enabled: bool) -> Result<(), ConfigError> {
+        Self::set_scalar_field(path, "answer", "enabled", enabled)
+    }
+
+    /// Add or remove one name from `providers.enabled` and nothing else.
+    ///
+    /// A thin wrapper over `Config::set_list_membership`; see that
+    /// function for the write guarantees (comments survive, caller
+    /// validates first). This never touches a provider's approval ficha —
+    /// governance still gates whether an enabled name actually sends
+    /// traffic (`approved()` is checked again at call time), so flipping
+    /// this switch on an unapproved or undeclared name degrades to
+    /// `provider_not_approved` rather than bypassing the gate.
+    pub fn set_provider_enabled(path: &Path, name: &str, enabled: bool) -> Result<(), ConfigError> {
+        if !is_provider_key(name) {
+            return Err(ConfigError::Policy(format!(
+                "invalid provider name: {name}"
+            )));
+        }
+        Self::set_list_membership(path, "providers", "enabled", name, enabled)
+    }
+
+    /// Insert a new `[[server.clients]]` entry, or replace the one with the
+    /// same `id`, and nothing else.
+    ///
+    /// Same guarantees as `Config::set_scalar_field`: `toml_edit`, so every
+    /// comment survives; the caller is expected to have already validated a
+    /// candidate config with this entry applied (in particular, that `id` is
+    /// a valid, unique client key — see `Config::validate_clients`). The
+    /// credential itself is never handled here: `client.token_sha256` (or
+    /// `token_env`) is written exactly as given, so a caller minting a new
+    /// client must hash the raw token *before* calling this and hand the raw
+    /// value to the operator exactly once — it is never reconstructible from
+    /// what gets written to disk.
+    pub fn upsert_server_client(path: &Path, client: &ServerClient) -> Result<(), ConfigError> {
+        let text = std::fs::read_to_string(path)?;
+        let mut document = text
+            .parse::<toml_edit::DocumentMut>()
+            .map_err(|error| ConfigError::Policy(format!("invalid TOML: {error}")))?;
+        if document.get("server").is_none() {
+            document["server"] = toml_edit::Item::Table(toml_edit::Table::new());
+        }
+        let server_table = document["server"]
+            .as_table_mut()
+            .ok_or_else(|| ConfigError::Policy("server is not a table".into()))?;
+        if server_table.get("clients").is_none() {
+            server_table.insert(
+                "clients",
+                toml_edit::Item::ArrayOfTables(toml_edit::ArrayOfTables::new()),
+            );
+        }
+        let clients = server_table["clients"]
+            .as_array_of_tables_mut()
+            .ok_or_else(|| {
+                ConfigError::Policy("server.clients is not an array of tables".into())
+            })?;
+        // Replacing in place at the discovered index keeps a stable read
+        // order for an operator diffing the file; client order carries no
+        // runtime meaning either way, since `id` is the only identity
+        // `validate_clients` enforces unique.
+        let table = server_client_to_table(client);
+        let existing_index = clients.iter().position(|table| {
+            table.get("id").and_then(|item| item.as_str()) == Some(client.id.as_str())
+        });
+        match existing_index.and_then(|index| clients.get_mut(index)) {
+            Some(existing) => *existing = table,
+            None => clients.push(table),
+        }
+        std::fs::write(path, document.to_string())?;
+        Ok(())
+    }
+
+    /// Remove one `[[server.clients]]` entry by id, and nothing else.
+    ///
+    /// A no-op, not an error, when `id` is not declared — the caller already
+    /// knows whether it expected a removal from the config it read before
+    /// calling this.
+    pub fn remove_server_client(path: &Path, id: &str) -> Result<(), ConfigError> {
+        let text = std::fs::read_to_string(path)?;
+        let mut document = text
+            .parse::<toml_edit::DocumentMut>()
+            .map_err(|error| ConfigError::Policy(format!("invalid TOML: {error}")))?;
+        if let Some(clients) = document
+            .get_mut("server")
+            .and_then(|server| server.get_mut("clients"))
+            .and_then(|item| item.as_array_of_tables_mut())
+        {
+            clients.retain(|table| table.get("id").and_then(|item| item.as_str()) != Some(id));
+        }
+        std::fs::write(path, document.to_string())?;
+        Ok(())
+    }
+
+    /// Write `[data_policy].profile` and nothing else.
+    ///
+    /// A thin wrapper over `Config::set_scalar_field`, same as
+    /// [`Config::set_answer_enabled`]: the caller validates a candidate
+    /// config first, this only performs the write.
+    pub fn set_data_policy_profile(
+        path: &Path,
+        profile: SecurityProfile,
+    ) -> Result<(), ConfigError> {
+        Self::set_scalar_field(path, "data_policy", "profile", profile.as_str())
+    }
+
+    /// Write `[data_policy].egress` and nothing else. See
+    /// [`Config::set_data_policy_profile`].
+    pub fn set_data_policy_egress(path: &Path, egress: EgressPolicy) -> Result<(), ConfigError> {
+        Self::set_scalar_field(path, "data_policy", "egress", egress.as_str())
+    }
+
+    /// Write `[data_policy].inference` and nothing else. See
+    /// [`Config::set_data_policy_profile`].
+    pub fn set_data_policy_inference(
+        path: &Path,
+        inference: InferenceMode,
+    ) -> Result<(), ConfigError> {
+        Self::set_scalar_field(path, "data_policy", "inference", inference.as_str())
+    }
+
+    /// Write every field `patch` sets to `[data_policy]` — and nothing else —
+    /// in a single read and a single write.
+    ///
+    /// This is deliberately the *whole-section* setter for `data_policy`, not
+    /// three calls to the per-field setters above: the three fields cross-check
+    /// each other in `Config::validate` (`isolated` requires `deny`, `remote
+    /// explicit` requires `governed`), and three independent writes could
+    /// leave the file in a mix `validate()` would reject if the second one
+    /// failed — a file the next `/reload` or restart would then refuse. One
+    /// `std::fs::write` is atomic at the filesystem level, so the file is
+    /// either the old state or the fully applied new state. Same guarantees as
+    /// `Config::set_scalar_field`: comments survive, and the caller must
+    /// validate a candidate config first.
+    pub fn set_data_policy_fields(
+        path: &Path,
+        patch: &DataPolicyConfigPatch,
+    ) -> Result<(), ConfigError> {
+        let text = std::fs::read_to_string(path)?;
+        let mut document = text
+            .parse::<toml_edit::DocumentMut>()
+            .map_err(|error| ConfigError::Policy(format!("invalid TOML: {error}")))?;
+        if document.get("data_policy").is_none() {
+            document["data_policy"] = toml_edit::Item::Table(toml_edit::Table::new());
+        }
+        let table = document["data_policy"]
+            .as_table_mut()
+            .ok_or_else(|| ConfigError::Policy("data_policy is not a table".into()))?;
+        if let Some(profile) = patch.profile {
+            table.insert("profile", toml_edit::value(profile.as_str()));
+        }
+        if let Some(egress) = patch.egress {
+            table.insert("egress", toml_edit::value(egress.as_str()));
+        }
+        if let Some(inference) = patch.inference {
+            table.insert("inference", toml_edit::value(inference.as_str()));
+        }
+        std::fs::write(path, document.to_string())?;
+        Ok(())
+    }
+
+    /// Write every field `patch` sets to `[inference]`, and nothing else.
+    ///
+    /// Same guarantees as `Config::set_scalar_field` (comments survive,
+    /// caller validates a candidate first) — see
+    /// [`InferenceConfigPatch::apply`], which every field here mirrors.
+    pub fn set_inference_fields(
+        path: &Path,
+        patch: &InferenceConfigPatch,
+    ) -> Result<(), ConfigError> {
+        let text = std::fs::read_to_string(path)?;
+        let mut document = text
+            .parse::<toml_edit::DocumentMut>()
+            .map_err(|error| ConfigError::Policy(format!("invalid TOML: {error}")))?;
+        if document.get("inference").is_none() {
+            document["inference"] = toml_edit::Item::Table(toml_edit::Table::new());
+        }
+        let table = document["inference"]
+            .as_table_mut()
+            .ok_or_else(|| ConfigError::Policy("inference is not a table".into()))?;
+        if let Some(backend) = &patch.backend {
+            table.insert("backend", toml_edit::value(backend.as_str()));
+        }
+        if let Some(value) = patch.embedding_dimensions {
+            table.insert(
+                "embedding_dimensions",
+                toml_edit::value(signed_integer(value, "inference.embedding_dimensions")?),
+            );
+        }
+        if let Some(value) = patch.max_documents {
+            table.insert(
+                "max_documents",
+                toml_edit::value(signed_integer(value, "inference.max_documents")?),
+            );
+        }
+        if let Some(value) = patch.max_input_chars {
+            table.insert(
+                "max_input_chars",
+                toml_edit::value(signed_integer(value, "inference.max_input_chars")?),
+            );
+        }
+        if let Some(value) = patch.reranker_prior_weight {
+            table.insert("reranker_prior_weight", toml_edit::value(value));
+        }
+        set_clearable_string(table, "local_model_path", patch.local_model_path.as_deref());
+        if let Some(value) = patch.local_model_batch {
+            table.insert(
+                "local_model_batch",
+                toml_edit::value(signed_integer(value, "inference.local_model_batch")?),
+            );
+        }
+        set_clearable_string(table, "local_cache_path", patch.local_cache_path.as_deref());
+        set_clearable_string(table, "remote_endpoint", patch.remote_endpoint.as_deref());
+        set_clearable_string(table, "remote_model", patch.remote_model.as_deref());
+        set_clearable_string(
+            table,
+            "remote_credential_env",
+            patch.remote_credential_env.as_deref(),
+        );
+        if let Some(value) = patch.remote_timeout_ms {
+            table.insert(
+                "remote_timeout_ms",
+                toml_edit::value(signed_integer(value, "inference.remote_timeout_ms")?),
+            );
+        }
+        if let Some(value) = patch.remote_max_batch {
+            table.insert(
+                "remote_max_batch",
+                toml_edit::value(signed_integer(value, "inference.remote_max_batch")?),
+            );
+        }
+        std::fs::write(path, document.to_string())?;
+        Ok(())
+    }
+
+    /// Write every field `patch` sets to `[answer]`, and nothing else —
+    /// `enabled` is never touched here (see [`AnswerConfigPatch`]). Same
+    /// guarantees as [`Config::set_inference_fields`].
+    pub fn set_answer_fields(path: &Path, patch: &AnswerConfigPatch) -> Result<(), ConfigError> {
         let text = std::fs::read_to_string(path)?;
         let mut document = text
             .parse::<toml_edit::DocumentMut>()
@@ -1098,7 +1963,550 @@ impl Config {
         if document.get("answer").is_none() {
             document["answer"] = toml_edit::Item::Table(toml_edit::Table::new());
         }
-        document["answer"]["enabled"] = toml_edit::value(enabled);
+        let table = document["answer"]
+            .as_table_mut()
+            .ok_or_else(|| ConfigError::Policy("answer is not a table".into()))?;
+        set_clearable_string(table, "endpoint", patch.endpoint.as_deref());
+        set_clearable_string(table, "model", patch.model.as_deref());
+        set_clearable_string(table, "credential_env", patch.credential_env.as_deref());
+        if let Some(value) = patch.timeout_ms {
+            table.insert(
+                "timeout_ms",
+                toml_edit::value(signed_integer(value, "answer.timeout_ms")?),
+            );
+        }
+        if let Some(value) = patch.max_sources {
+            table.insert(
+                "max_sources",
+                toml_edit::value(signed_integer(value, "answer.max_sources")?),
+            );
+        }
+        if let Some(value) = patch.max_source_chars {
+            table.insert(
+                "max_source_chars",
+                toml_edit::value(signed_integer(value, "answer.max_source_chars")?),
+            );
+        }
+        if let Some(value) = patch.max_answer_tokens {
+            table.insert(
+                "max_answer_tokens",
+                toml_edit::value(signed_integer(value, "answer.max_answer_tokens")?),
+            );
+        }
+        std::fs::write(path, document.to_string())?;
+        Ok(())
+    }
+
+    /// Write every field `patch` sets to `[persistence]`, and nothing else —
+    /// `enabled`, `path` and `locking_mode` are never touched here (see
+    /// [`PersistenceConfigPatch`]). Same guarantees as
+    /// [`Config::set_inference_fields`].
+    pub fn set_persistence_fields(
+        path: &Path,
+        patch: &PersistenceConfigPatch,
+    ) -> Result<(), ConfigError> {
+        let text = std::fs::read_to_string(path)?;
+        let mut document = text
+            .parse::<toml_edit::DocumentMut>()
+            .map_err(|error| ConfigError::Policy(format!("invalid TOML: {error}")))?;
+        if document.get("persistence").is_none() {
+            document["persistence"] = toml_edit::Item::Table(toml_edit::Table::new());
+        }
+        let table = document["persistence"]
+            .as_table_mut()
+            .ok_or_else(|| ConfigError::Policy("persistence is not a table".into()))?;
+        if let Some(value) = patch.history_enabled {
+            table.insert("history_enabled", toml_edit::value(value));
+        }
+        if let Some(value) = patch.saved_document_max_bytes {
+            table.insert(
+                "saved_document_max_bytes",
+                toml_edit::value(signed_integer(
+                    value,
+                    "persistence.saved_document_max_bytes",
+                )?),
+            );
+        }
+        if let Some(value) = patch.audit_retention_days {
+            table.insert(
+                "audit_retention_days",
+                toml_edit::value(signed_integer(value, "persistence.audit_retention_days")?),
+            );
+        }
+        if let Some(value) = patch.history_retention_days {
+            table.insert(
+                "history_retention_days",
+                toml_edit::value(signed_integer(value, "persistence.history_retention_days")?),
+            );
+        }
+        if let Some(value) = patch.cache_retention_days {
+            table.insert(
+                "cache_retention_days",
+                toml_edit::value(signed_integer(value, "persistence.cache_retention_days")?),
+            );
+        }
+        if let Some(value) = patch.document_cache_retention_days {
+            table.insert(
+                "document_cache_retention_days",
+                toml_edit::value(signed_integer(
+                    value,
+                    "persistence.document_cache_retention_days",
+                )?),
+            );
+        }
+        if let Some(value) = patch.purge_interval_seconds {
+            table.insert(
+                "purge_interval_seconds",
+                toml_edit::value(signed_integer(value, "persistence.purge_interval_seconds")?),
+            );
+        }
+        if let Some(value) = patch.auto_backup_enabled {
+            table.insert("auto_backup_enabled", toml_edit::value(value));
+        }
+        if let Some(value) = patch.auto_backup_interval_seconds {
+            table.insert(
+                "auto_backup_interval_seconds",
+                toml_edit::value(signed_integer(
+                    value,
+                    "persistence.auto_backup_interval_seconds",
+                )?),
+            );
+        }
+        if let Some(value) = patch.auto_backup_max_count {
+            table.insert(
+                "auto_backup_max_count",
+                toml_edit::value(signed_integer(value, "persistence.auto_backup_max_count")?),
+            );
+        }
+        set_clearable_string(table, "backup_directory", patch.backup_directory.as_deref());
+        std::fs::write(path, document.to_string())?;
+        Ok(())
+    }
+
+    /// Write every field `patch` sets to `[telemetry]`, and nothing else.
+    /// Same guarantees as [`Config::set_inference_fields`].
+    pub fn set_telemetry_fields(
+        path: &Path,
+        patch: &TelemetryConfigPatch,
+    ) -> Result<(), ConfigError> {
+        let text = std::fs::read_to_string(path)?;
+        let mut document = text
+            .parse::<toml_edit::DocumentMut>()
+            .map_err(|error| ConfigError::Policy(format!("invalid TOML: {error}")))?;
+        if document.get("telemetry").is_none() {
+            document["telemetry"] = toml_edit::Item::Table(toml_edit::Table::new());
+        }
+        let table = document["telemetry"]
+            .as_table_mut()
+            .ok_or_else(|| ConfigError::Policy("telemetry is not a table".into()))?;
+        if let Some(value) = patch.persistence_enabled {
+            table.insert("persistence_enabled", toml_edit::value(value));
+        }
+        if let Some(value) = patch.retention_days {
+            table.insert(
+                "retention_days",
+                toml_edit::value(signed_integer(value, "telemetry.retention_days")?),
+            );
+        }
+        std::fs::write(path, document.to_string())?;
+        Ok(())
+    }
+
+    /// Write every field `patch` sets to `[deep]`, and nothing else —
+    /// `extractor`, `renderer`, `ranking_v2` and `gaps` are separate nested
+    /// tables this never touches (see [`DeepConfigPatch`]). Same guarantees
+    /// as [`Config::set_inference_fields`].
+    pub fn set_deep_fields(path: &Path, patch: &DeepConfigPatch) -> Result<(), ConfigError> {
+        let text = std::fs::read_to_string(path)?;
+        let mut document = text
+            .parse::<toml_edit::DocumentMut>()
+            .map_err(|error| ConfigError::Policy(format!("invalid TOML: {error}")))?;
+        let table = Self::table_at(&mut document, &["deep"])?;
+        if let Some(value) = patch.top_k {
+            table.insert(
+                "top_k",
+                toml_edit::value(signed_integer(value, "deep.top_k")?),
+            );
+        }
+        if let Some(value) = patch.max_fetches {
+            table.insert(
+                "max_fetches",
+                toml_edit::value(signed_integer(value, "deep.max_fetches")?),
+            );
+        }
+        if let Some(value) = patch.max_bytes {
+            table.insert(
+                "max_bytes",
+                toml_edit::value(signed_integer(value, "deep.max_bytes")?),
+            );
+        }
+        if let Some(value) = patch.max_redirects {
+            table.insert(
+                "max_redirects",
+                toml_edit::value(signed_integer(value, "deep.max_redirects")?),
+            );
+        }
+        if let Some(value) = patch.max_crawl_urls {
+            table.insert(
+                "max_crawl_urls",
+                toml_edit::value(signed_integer(value, "deep.max_crawl_urls")?),
+            );
+        }
+        if let Some(value) = patch.max_depth {
+            table.insert(
+                "max_depth",
+                toml_edit::value(signed_integer(value, "deep.max_depth")?),
+            );
+        }
+        if let Some(value) = patch.respect_robots {
+            table.insert("respect_robots", toml_edit::value(value));
+        }
+        if let Some(value) = patch.robots_timeout_ms {
+            table.insert(
+                "robots_timeout_ms",
+                toml_edit::value(signed_integer(value, "deep.robots_timeout_ms")?),
+            );
+        }
+        if let Some(value) = patch.robots_max_bytes {
+            table.insert(
+                "robots_max_bytes",
+                toml_edit::value(signed_integer(value, "deep.robots_max_bytes")?),
+            );
+        }
+        if let Some(value) = patch.timeout_ms {
+            table.insert(
+                "timeout_ms",
+                toml_edit::value(signed_integer(value, "deep.timeout_ms")?),
+            );
+        }
+        std::fs::write(path, document.to_string())?;
+        Ok(())
+    }
+
+    /// Write every field `patch` sets to `[deep.extractor]`, and nothing
+    /// else. Same guarantees as [`Config::set_inference_fields`].
+    pub fn set_deep_extractor_fields(
+        path: &Path,
+        patch: &ExtractorConfigPatch,
+    ) -> Result<(), ConfigError> {
+        let text = std::fs::read_to_string(path)?;
+        let mut document = text
+            .parse::<toml_edit::DocumentMut>()
+            .map_err(|error| ConfigError::Policy(format!("invalid TOML: {error}")))?;
+        let table = Self::table_at(&mut document, &["deep", "extractor"])?;
+        if let Some(value) = &patch.executable {
+            table.insert("executable", toml_edit::value(value.as_str()));
+        }
+        if let Some(value) = &patch.version {
+            table.insert("version", toml_edit::value(value.as_str()));
+        }
+        if let Some(value) = patch.timeout_ms {
+            table.insert(
+                "timeout_ms",
+                toml_edit::value(signed_integer(value, "deep.extractor.timeout_ms")?),
+            );
+        }
+        if let Some(value) = patch.max_output_bytes {
+            table.insert(
+                "max_output_bytes",
+                toml_edit::value(signed_integer(value, "deep.extractor.max_output_bytes")?),
+            );
+        }
+        std::fs::write(path, document.to_string())?;
+        Ok(())
+    }
+
+    /// Write every field `patch` sets to `[deep.renderer]`, and nothing
+    /// else. Same guarantees as [`Config::set_inference_fields`]; see
+    /// [`RendererConfigPatch`] for the `isolated`-profile interaction the
+    /// caller's pre-write validation is expected to catch.
+    pub fn set_deep_renderer_fields(
+        path: &Path,
+        patch: &RendererConfigPatch,
+    ) -> Result<(), ConfigError> {
+        let text = std::fs::read_to_string(path)?;
+        let mut document = text
+            .parse::<toml_edit::DocumentMut>()
+            .map_err(|error| ConfigError::Policy(format!("invalid TOML: {error}")))?;
+        let table = Self::table_at(&mut document, &["deep", "renderer"])?;
+        if let Some(value) = patch.enabled {
+            table.insert("enabled", toml_edit::value(value));
+        }
+        if let Some(value) = patch.max_browser_calls {
+            table.insert(
+                "max_browser_calls",
+                toml_edit::value(signed_integer(value, "deep.renderer.max_browser_calls")?),
+            );
+        }
+        if let Some(value) = patch.timeout_ms {
+            table.insert(
+                "timeout_ms",
+                toml_edit::value(signed_integer(value, "deep.renderer.timeout_ms")?),
+            );
+        }
+        if let Some(value) = patch.shutdown_grace_ms {
+            table.insert(
+                "shutdown_grace_ms",
+                toml_edit::value(signed_integer(value, "deep.renderer.shutdown_grace_ms")?),
+            );
+        }
+        if let Some(value) = patch.max_memory_mb {
+            table.insert(
+                "max_memory_mb",
+                toml_edit::value(signed_integer(value, "deep.renderer.max_memory_mb")?),
+            );
+        }
+        if let Some(value) = patch.max_redirects {
+            table.insert(
+                "max_redirects",
+                toml_edit::value(signed_integer(value, "deep.renderer.max_redirects")?),
+            );
+        }
+        if let Some(value) = &patch.sandbox_path {
+            table.insert("sandbox_path", toml_edit::value(value.as_str()));
+        }
+        if let Some(value) = patch.max_dom_bytes {
+            table.insert(
+                "max_dom_bytes",
+                toml_edit::value(signed_integer(value, "deep.renderer.max_dom_bytes")?),
+            );
+        }
+        std::fs::write(path, document.to_string())?;
+        Ok(())
+    }
+
+    /// Navigate `document` to the (possibly nested) table at `path`,
+    /// creating any missing intermediate table along the way. Shared by
+    /// every field-level setter that writes into a nested section (`[deep]`,
+    /// `[deep.extractor]`, `[deep.renderer]`, …) so each one only states its
+    /// own path instead of re-deriving this walk.
+    fn table_at<'a>(
+        document: &'a mut toml_edit::DocumentMut,
+        path: &[&str],
+    ) -> Result<&'a mut toml_edit::Table, ConfigError> {
+        let mut current = document.as_table_mut();
+        for segment in path {
+            if current.get(segment).is_none() {
+                current.insert(segment, toml_edit::Item::Table(toml_edit::Table::new()));
+            }
+            current = current[segment]
+                .as_table_mut()
+                .ok_or_else(|| ConfigError::Policy(format!("{segment} is not a table")))?;
+        }
+        Ok(current)
+    }
+
+    /// Write every field `patch` sets to `[server]` (and `[server.tls]` for
+    /// the two TLS fields), and nothing else — `clients` is never touched
+    /// here (see [`ServerConfigPatch`]). Same guarantees as
+    /// [`Config::set_inference_fields`]: the caller validates a candidate
+    /// first; this only performs the write. Writing does **not** mean every
+    /// field takes effect without a restart — see [`ServerConfigPatch`] and
+    /// [`ReloadKind`].
+    pub fn set_server_fields(path: &Path, patch: &ServerConfigPatch) -> Result<(), ConfigError> {
+        let text = std::fs::read_to_string(path)?;
+        let mut document = text
+            .parse::<toml_edit::DocumentMut>()
+            .map_err(|error| ConfigError::Policy(format!("invalid TOML: {error}")))?;
+        {
+            let table = Self::table_at(&mut document, &["server"])?;
+            if let Some(value) = &patch.bind {
+                table.insert("bind", toml_edit::value(value.as_str()));
+            }
+            if let Some(value) = patch.port {
+                table.insert("port", toml_edit::value(i64::from(value)));
+            }
+            if let Some(value) = &patch.token_env {
+                table.insert("token_env", toml_edit::value(value.as_str()));
+            }
+            if let Some(value) = patch.no_auth {
+                table.insert("no_auth", toml_edit::value(value));
+            }
+            if let Some(value) = &patch.allowed_hosts {
+                let mut hosts = toml_edit::Array::new();
+                for host in value {
+                    hosts.push(host.as_str());
+                }
+                table.insert("allowed_hosts", toml_edit::value(hosts));
+            }
+            if let Some(value) = &patch.allowed_origins {
+                let mut origins = toml_edit::Array::new();
+                for origin in value {
+                    origins.push(origin.as_str());
+                }
+                table.insert("allowed_origins", toml_edit::value(origins));
+            }
+            if let Some(value) = patch.max_body_bytes {
+                table.insert(
+                    "max_body_bytes",
+                    toml_edit::value(signed_integer(value, "server.max_body_bytes")?),
+                );
+            }
+            if let Some(value) = patch.max_header_bytes {
+                table.insert(
+                    "max_header_bytes",
+                    toml_edit::value(signed_integer(value, "server.max_header_bytes")?),
+                );
+            }
+            if let Some(value) = patch.request_timeout_ms {
+                table.insert(
+                    "request_timeout_ms",
+                    toml_edit::value(signed_integer(value, "server.request_timeout_ms")?),
+                );
+            }
+            if let Some(value) = patch.idle_timeout_ms {
+                table.insert(
+                    "idle_timeout_ms",
+                    toml_edit::value(signed_integer(value, "server.idle_timeout_ms")?),
+                );
+            }
+            if let Some(value) = patch.rate_limit_per_minute {
+                table.insert(
+                    "rate_limit_per_minute",
+                    toml_edit::value(signed_integer(value, "server.rate_limit_per_minute")?),
+                );
+            }
+            if let Some(value) = patch.max_connections {
+                table.insert(
+                    "max_connections",
+                    toml_edit::value(signed_integer(value, "server.max_connections")?),
+                );
+            }
+        }
+        if patch.tls_cert_path.is_some() || patch.tls_key_path.is_some() {
+            let table = Self::table_at(&mut document, &["server", "tls"])?;
+            set_clearable_string(table, "cert_path", patch.tls_cert_path.as_deref());
+            set_clearable_string(table, "key_path", patch.tls_key_path.as_deref());
+        }
+        std::fs::write(path, document.to_string())?;
+        Ok(())
+    }
+
+    /// Insert a new `[providers.<name>]` governance record, or replace the
+    /// one declared for `name`, and nothing else.
+    ///
+    /// Same guarantees as `Config::set_scalar_field`: comments survive;
+    /// the caller is expected to have already validated a candidate config
+    /// with this record applied. This is the *ficha* (`approval_status`,
+    /// `reviewer`, `terms_url`, …) — it never touches `providers.enabled`,
+    /// which stays [`Config::set_provider_enabled`]'s job, so approving a
+    /// source's paperwork here never silently turns its traffic on.
+    pub fn upsert_provider_record(
+        path: &Path,
+        name: &str,
+        record: &ProviderRuntimeConfig,
+    ) -> Result<(), ConfigError> {
+        if !is_provider_key(name) {
+            return Err(ConfigError::Policy(format!(
+                "invalid provider name: {name}"
+            )));
+        }
+        let text = std::fs::read_to_string(path)?;
+        let mut document = text
+            .parse::<toml_edit::DocumentMut>()
+            .map_err(|error| ConfigError::Policy(format!("invalid TOML: {error}")))?;
+        if document.get("providers").is_none() {
+            document["providers"] = toml_edit::Item::Table(toml_edit::Table::new());
+        }
+        let providers_table = document["providers"]
+            .as_table_mut()
+            .ok_or_else(|| ConfigError::Policy("providers is not a table".into()))?;
+        providers_table.insert(
+            name,
+            toml_edit::Item::Table(provider_record_to_table(record)),
+        );
+        std::fs::write(path, document.to_string())?;
+        Ok(())
+    }
+
+    /// Replace `[ranking_policy]` wholesale with `policy`, and nothing else.
+    /// See `Config::replace_table` for what "wholesale" means here.
+    pub fn set_ranking_policy(path: &Path, policy: &RankingPolicyV1) -> Result<(), ConfigError> {
+        Self::replace_table(path, &["ranking_policy"], policy)
+    }
+
+    /// Replace `[diversity_policy]` wholesale. See
+    /// [`Config::set_ranking_policy`].
+    ///
+    /// The caller must validate a candidate first: `diversity_policy` and
+    /// `search_policy` share three limits that `Config::validate` requires
+    /// to agree (see the cross-check there), so replacing one alone can
+    /// make the pair invalid even though each is individually well-formed.
+    pub fn set_diversity_policy(
+        path: &Path,
+        policy: &DiversityPolicyV1,
+    ) -> Result<(), ConfigError> {
+        Self::replace_table(path, &["diversity_policy"], policy)
+    }
+
+    /// Replace `[search_policy]` wholesale. See
+    /// [`Config::set_diversity_policy`] for the cross-check with
+    /// `diversity_policy` this must still satisfy.
+    pub fn set_search_policy(path: &Path, policy: &SearchPolicyV1) -> Result<(), ConfigError> {
+        Self::replace_table(path, &["search_policy"], policy)
+    }
+
+    /// Replace `[deep.ranking_v2.policy]` wholesale. See
+    /// [`Config::set_ranking_policy`].
+    pub fn set_ranking_v2_policy(path: &Path, policy: &RankingV2Policy) -> Result<(), ConfigError> {
+        Self::replace_table(path, &["deep", "ranking_v2", "policy"], policy)
+    }
+
+    /// Replace `[deep.gaps.policy]` wholesale. See
+    /// [`Config::set_ranking_policy`].
+    pub fn set_gap_policy(path: &Path, policy: &GapPolicyV1) -> Result<(), ConfigError> {
+        Self::replace_table(path, &["deep", "gaps", "policy"], policy)
+    }
+
+    /// Replace the table at the (possibly nested) `path` with the TOML
+    /// serialization of `value`, and nothing else — every other section, and
+    /// every comment outside the replaced table, is untouched.
+    ///
+    /// The comment block immediately above `[section]`, if any, survives
+    /// (it reads as documenting the section, so it carries over onto the
+    /// replacement); unlike `Config::set_scalar_field`, comments *inside*
+    /// the table do not — the whole table is swapped for a fresh
+    /// serialization of `value`, not merged key by key. That trade-off fits
+    /// the search-quality policies this backs — an admin-scoped caller
+    /// fetches the current policy in full, edits it, and sends the whole
+    /// object back, so there is no "one field at a time" comment to
+    /// preserve the way there is for `answer.enabled` or a single provider
+    /// field. The caller is expected to have already validated a candidate
+    /// config with this change applied, exactly as with every other setter
+    /// here.
+    fn replace_table<T: Serialize>(
+        path: &Path,
+        section: &[&str],
+        value: &T,
+    ) -> Result<(), ConfigError> {
+        let text = std::fs::read_to_string(path)?;
+        let mut document = text
+            .parse::<toml_edit::DocumentMut>()
+            .map_err(|error| ConfigError::Policy(format!("invalid TOML: {error}")))?;
+        let fragment = toml::to_string(value)
+            .map_err(|error| ConfigError::Policy(format!("failed to serialize policy: {error}")))?;
+        let fragment_document = fragment
+            .parse::<toml_edit::DocumentMut>()
+            .map_err(|error| ConfigError::Policy(format!("failed to render policy: {error}")))?;
+        let mut table = fragment_document.as_table().clone();
+        let mut current = document.as_table_mut();
+        for segment in &section[..section.len() - 1] {
+            if current.get(segment).is_none() {
+                current.insert(segment, toml_edit::Item::Table(toml_edit::Table::new()));
+            }
+            current = current[segment]
+                .as_table_mut()
+                .ok_or_else(|| ConfigError::Policy(format!("{segment} is not a table")))?;
+        }
+        let leaf = section[section.len() - 1];
+        // A comment immediately above `[section]` reads as documenting the
+        // section, not "inside" it — carry that leading decor over from the
+        // table being replaced so it survives, same as every other setter's
+        // surrounding comments do.
+        if let Some(existing) = current.get(leaf).and_then(toml_edit::Item::as_table) {
+            *table.decor_mut() = existing.decor().clone();
+        }
+        current.insert(leaf, toml_edit::Item::Table(table));
         std::fs::write(path, document.to_string())?;
         Ok(())
     }
@@ -1168,11 +2576,28 @@ impl Config {
                 "persistence.document_cache_retention_days must be between 0 and 365".into(),
             ));
         }
-        if self.persistence.purge_interval_seconds > 0
-            && self.persistence.purge_interval_seconds < 60
+        // Every numeric limit is bounded in *both* directions, unconditionally,
+        // even when the feature that uses it is currently off: the value is
+        // still written to the file as an i64, and an unbounded one (e.g.
+        // `usize::MAX`) would wrap negative on write and poison the file for
+        // the next reload or restart. The ceilings below are deliberately
+        // generous — far above any real deployment, far below `i64::MAX`.
+        if self.persistence.purge_interval_seconds > 30 * 86_400
+            || (self.persistence.purge_interval_seconds > 0
+                && self.persistence.purge_interval_seconds < 60)
         {
             return Err(ConfigError::Policy(
-                "persistence.purge_interval_seconds must be 0 (disabled) or >= 60".into(),
+                "persistence.purge_interval_seconds must be 0 (disabled) or between 60 and 2592000 (30 days)".into(),
+            ));
+        }
+        if self.persistence.auto_backup_interval_seconds > 30 * 86_400 {
+            return Err(ConfigError::Policy(
+                "persistence.auto_backup_interval_seconds must be at most 2592000 (30 days)".into(),
+            ));
+        }
+        if self.persistence.auto_backup_max_count > 365 {
+            return Err(ConfigError::Policy(
+                "persistence.auto_backup_max_count must be at most 365".into(),
             ));
         }
         if self.persistence.auto_backup_enabled {
@@ -1201,9 +2626,11 @@ impl Config {
                 }
             }
         }
-        if self.deep.respect_robots
-            && (!(100..=30_000).contains(&self.deep.robots_timeout_ms)
-                || !(1_024..=1_048_576).contains(&self.deep.robots_max_bytes))
+        // Robots retrieval limits are bounded unconditionally (see the note on
+        // `persistence` above): the values are written to the file even while
+        // `respect_robots` is off, and must never wrap negative on write.
+        if !(100..=30_000).contains(&self.deep.robots_timeout_ms)
+            || !(1_024..=1_048_576).contains(&self.deep.robots_max_bytes)
         {
             return Err(ConfigError::Policy(
                 "invalid robots.txt retrieval limit".into(),
@@ -1266,18 +2693,25 @@ impl Config {
                 "SQLite persistence must be enabled for document cache".into(),
             ));
         }
-        if self.deep.top_k == 0
-            || self.deep.max_fetches == 0
-            || self.deep.max_bytes == 0
-            || self.deep.max_crawl_urls == 0
+        // Deep safety limits, bounded in both directions (see the note on
+        // `persistence` above). `max_redirects`/`max_dom_bytes` had no check
+        // at all before; everything here is written to the file as an i64 and
+        // must stay far below `i64::MAX`.
+        if !(1..=1_000).contains(&self.deep.top_k)
+            || !(1..=1_000).contains(&self.deep.max_fetches)
+            || !(1..=4 * 1024 * 1024 * 1024).contains(&self.deep.max_bytes)
+            || !(0..=100).contains(&self.deep.max_redirects)
+            || !(1..=10_000).contains(&self.deep.max_crawl_urls)
             || self.deep.max_depth > 2
-            || self.deep.timeout_ms == 0
-            || self.deep.extractor.timeout_ms == 0
-            || self.deep.extractor.max_output_bytes == 0
-            || self.deep.renderer.max_browser_calls == 0
-            || self.deep.renderer.timeout_ms == 0
-            || self.deep.renderer.shutdown_grace_ms == 0
-            || self.deep.renderer.max_memory_mb == 0
+            || !(1..=86_400_000).contains(&self.deep.timeout_ms)
+            || !(1..=86_400_000).contains(&self.deep.extractor.timeout_ms)
+            || !(1..=4 * 1024 * 1024 * 1024).contains(&self.deep.extractor.max_output_bytes)
+            || !(1..=1_000_000).contains(&self.deep.renderer.max_browser_calls)
+            || !(1..=86_400_000).contains(&self.deep.renderer.timeout_ms)
+            || !(1..=86_400_000).contains(&self.deep.renderer.shutdown_grace_ms)
+            || !(1..=1_048_576).contains(&self.deep.renderer.max_memory_mb)
+            || !(0..=100).contains(&self.deep.renderer.max_redirects)
+            || !(1..=4 * 1024 * 1024 * 1024).contains(&self.deep.renderer.max_dom_bytes)
         {
             return Err(ConfigError::Policy("invalid Deep safety limit".into()));
         }
@@ -1350,8 +2784,11 @@ impl Config {
             || self.server.max_header_bytes == 0
             || self.server.max_header_bytes > 64 * 1024
             || self.server.request_timeout_ms == 0
+            || self.server.request_timeout_ms > 86_400_000
             || self.server.idle_timeout_ms == 0
+            || self.server.idle_timeout_ms > 86_400_000
             || self.server.rate_limit_per_minute == 0
+            || self.server.rate_limit_per_minute > 1_000_000
             || self.server.max_connections == 0
             || self.server.max_connections > 10_000
             || tls_partial
@@ -1523,20 +2960,22 @@ impl Config {
                     "remote_explicit inference requires inference.remote_model".into(),
                 ));
             }
-            if !(1..=crate::inference::MAXIMUM_REMOTE_BATCH)
-                .contains(&self.inference.remote_max_batch)
-                || !(100..=60_000).contains(&self.inference.remote_timeout_ms)
-            {
-                return Err(ConfigError::Policy(
-                    "invalid remote inference batch or timeout limit".into(),
-                ));
-            }
         }
+        // Every numeric inference limit is bounded unconditionally, even while
+        // `data_policy.inference` is `disabled`/`local_only`: the values are
+        // still written to the file as an i64, and an unbounded one would wrap
+        // negative on write and poison the file for the next reload or restart.
+        // The ceilings are deliberately generous — far above any real
+        // deployment, far below `i64::MAX`.
         if !(crate::inference::MINIMUM_EMBEDDING_DIMENSIONS
             ..=crate::inference::MAXIMUM_EMBEDDING_DIMENSIONS)
             .contains(&self.inference.embedding_dimensions)
-            || self.inference.max_documents == 0
-            || self.inference.max_input_chars == 0
+            || !(1..=1_000_000).contains(&self.inference.max_documents)
+            || !(1..=100_000_000).contains(&self.inference.max_input_chars)
+            || !(1..=1_000_000).contains(&self.inference.local_model_batch)
+            || !(1..=crate::inference::MAXIMUM_REMOTE_BATCH)
+                .contains(&self.inference.remote_max_batch)
+            || !(100..=60_000).contains(&self.inference.remote_timeout_ms)
             || !self.inference.reranker_prior_weight.is_finite()
             || !(0.0..=1.0).contains(&self.inference.reranker_prior_weight)
         {
@@ -1567,6 +3006,19 @@ impl Config {
     /// credential and bounded limits rather than silently reusing
     /// `inference.remote_*` for a different contract.
     fn validate_answer(&self) -> Result<(), ConfigError> {
+        // Numeric limits are bounded unconditionally, even while the feature
+        // is off: they are still written to the file as an i64, and an
+        // unbounded value would wrap negative on write (see
+        // `validate_inference`). `max_sources` keeps its documented `<= 32`
+        // operating bound; the others get generous ceilings far below
+        // `i64::MAX`.
+        if !(100..=60_000).contains(&self.answer.timeout_ms)
+            || !(1..=32).contains(&self.answer.max_sources)
+            || !(1..=10_000_000).contains(&self.answer.max_source_chars)
+            || !(1..=1_000_000).contains(&self.answer.max_answer_tokens)
+        {
+            return Err(ConfigError::Policy("invalid answer limit".into()));
+        }
         if !self.answer.enabled {
             return Ok(());
         }
@@ -1588,15 +3040,66 @@ impl Config {
                 "answer.enabled requires answer.model".into(),
             ));
         }
-        if !(100..=60_000).contains(&self.answer.timeout_ms)
-            || self.answer.max_sources == 0
-            || self.answer.max_sources > 32
-            || self.answer.max_source_chars == 0
-            || self.answer.max_answer_tokens == 0
-        {
-            return Err(ConfigError::Policy("invalid answer limit".into()));
-        }
         Ok(())
+    }
+}
+
+/// Whether writing a field to the config file and asking the running
+/// process to reload (`Config::load_optional` + a service rebuild — see
+/// `AppState::reload` in `amatl-server`) is enough to apply the change, or
+/// whether the process must be restarted because that value is only read
+/// once, at process startup.
+///
+/// Every section of [`Config`] other than `server` is rebuilt in full on
+/// every reload (`AmatlService::reloaded_detached`), so [`ReloadKind::of`]
+/// defaults to [`ReloadKind::Hot`]. Within `server`, most fields *are*
+/// re-read on reload too — `AppState::reload` recomputes the security
+/// snapshot (host/origin allowlists, header/body ceilings, request timeout,
+/// rate limit, TLS flag, and the client/credential set) from the freshly
+/// loaded config on every call. What a reload cannot change is the listener
+/// itself and the axum layers wired onto it once, in
+/// `build_router_with_reload`:
+/// - `server.bind`, `server.port`: the TCP socket is bound once in
+///   `serve_with_config_path`.
+/// - `server.tls.cert_path`, `server.tls.key_path`: the TLS acceptor is
+///   built from the same call.
+/// - `server.max_connections`: `ConcurrencyLimitLayer` is constructed once
+///   and never swapped.
+/// - `server.max_body_bytes`: `DefaultBodyLimit` is also a fixed layer.
+///   Lowering it still takes effect (the reloaded security snapshot
+///   double-checks the new, smaller ceiling in `security_middleware`), but
+///   *raising* it does nothing until restart, because the original,
+///   smaller layer limit still rejects the request first. Classified
+///   `Cold` here because a caller that only checks this classification
+///   should never advertise a change as fully applied when it may not be.
+/// - `server.idle_timeout_ms`: read once in `serve_with_config_path` and
+///   baked into the HTTP/1 and HTTP/2 keep-alive/header-read timers passed
+///   to `axum_server`'s builder; a reload never touches that builder.
+///
+/// This exists so an admin endpoint can check the classification instead of
+/// re-deriving this judgment — see `PATCH /server/pending-config` in
+/// `amatl-server`, which reports exactly this per field it writes.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "snake_case")]
+pub enum ReloadKind {
+    /// Applied by a reload; no restart required.
+    Hot,
+    /// Only takes full effect the next time the process starts.
+    Cold,
+}
+
+impl ReloadKind {
+    /// Classify `[section].key` (or, for a nested field, the dotted path
+    /// e.g. `"server.tls.cert_path"`).
+    pub fn of(section: &str, key: &str) -> Self {
+        match (section, key) {
+            (
+                "server",
+                "bind" | "port" | "max_connections" | "max_body_bytes" | "idle_timeout_ms",
+            ) => Self::Cold,
+            ("server.tls", "cert_path" | "key_path") => Self::Cold,
+            _ => Self::Hot,
+        }
     }
 }
 
@@ -1628,6 +3131,118 @@ fn is_provider_key(name: &str) -> bool {
 
 fn default_schema_version() -> String {
     crate::SCHEMA_VERSION.to_string()
+}
+
+/// Render one [`ServerClient`] as the `toml_edit` table
+/// [`Config::upsert_server_client`] writes into `[[server.clients]]`.
+///
+/// Only fields that are `Some`/non-empty are written, matching how an
+/// operator would hand-author the same entry: an absent `expires_at` means
+/// "never expires", not an explicit null.
+fn server_client_to_table(client: &ServerClient) -> toml_edit::Table {
+    let mut table = toml_edit::Table::new();
+    table.insert("id", toml_edit::value(client.id.as_str()));
+    if let Some(token_env) = client.token_env.as_deref() {
+        table.insert("token_env", toml_edit::value(token_env));
+    }
+    if let Some(token_sha256) = client.token_sha256.as_deref() {
+        table.insert("token_sha256", toml_edit::value(token_sha256));
+    }
+    if let Some(expires_at) = client.expires_at.as_deref() {
+        table.insert("expires_at", toml_edit::value(expires_at));
+    }
+    let mut scopes = toml_edit::Array::new();
+    for scope in &client.scopes {
+        scopes.push(scope.as_str());
+    }
+    table.insert("scopes", toml_edit::value(scopes));
+    let mut tools = toml_edit::Array::new();
+    for tool in &client.tools {
+        tools.push(tool.as_str());
+    }
+    table.insert("tools", toml_edit::value(tools));
+    table
+}
+
+/// Set `table[key]` to `value` when it's non-empty, or remove the key
+/// entirely when it's `Some("")` — `clearable`'s disk-writing counterpart.
+/// `None` (the field was absent from the patch) leaves the key untouched
+/// either way.
+fn set_clearable_string(table: &mut toml_edit::Table, key: &str, value: Option<&str>) {
+    if let Some(value) = value {
+        if value.is_empty() {
+            table.remove(key);
+        } else {
+            table.insert(key, toml_edit::value(value));
+        }
+    }
+}
+
+/// Render one [`ProviderRuntimeConfig`] as the `toml_edit` table
+/// [`Config::upsert_provider_record`] writes into `[providers.<name>]`.
+///
+/// Only fields that are `Some`/non-empty are written, matching how every
+/// hand-authored ficha in the repository already looks (see
+/// `docs/gobernanza-providers.md`): an absent field reads as "not on file",
+/// not as an explicit empty value.
+fn provider_record_to_table(record: &ProviderRuntimeConfig) -> toml_edit::Table {
+    let mut table = toml_edit::Table::new();
+    if let Some(value) = record.adapter_version.as_deref() {
+        table.insert("adapter_version", toml_edit::value(value));
+    }
+    table.insert(
+        "approval_status",
+        toml_edit::value(record.approval_status.as_str()),
+    );
+    if let Some(value) = record.reviewed_at.as_deref() {
+        table.insert("reviewed_at", toml_edit::value(value));
+    }
+    if let Some(value) = record.reviewer.as_deref() {
+        table.insert("reviewer", toml_edit::value(value));
+    }
+    if let Some(value) = record.terms_url.as_deref() {
+        table.insert("terms_url", toml_edit::value(value));
+    }
+    if let Some(value) = record.terms_version_or_date.as_deref() {
+        table.insert("terms_version_or_date", toml_edit::value(value));
+    }
+    if let Some(value) = record.allowed_access_method.as_deref() {
+        table.insert("allowed_access_method", toml_edit::value(value));
+    }
+    if let Some(value) = record.plan_or_contract.as_deref() {
+        table.insert("plan_or_contract", toml_edit::value(value));
+    }
+    if let Some(value) = record.rate_limit.as_deref() {
+        table.insert("rate_limit", toml_edit::value(value));
+    }
+    if let Some(value) = record.cost_model.as_deref() {
+        table.insert("cost_model", toml_edit::value(value));
+    }
+    if let Some(value) = record.credential_env.as_deref() {
+        table.insert("credential_env", toml_edit::value(value));
+    }
+    table.insert("storage_rights", toml_edit::value(record.storage_rights));
+    if !record.supported_regions.is_empty() {
+        let mut regions = toml_edit::Array::new();
+        for region in &record.supported_regions {
+            regions.push(region.as_str());
+        }
+        table.insert("supported_regions", toml_edit::value(regions));
+    }
+    if !record.supported_filters.is_empty() {
+        let mut filters = toml_edit::Array::new();
+        for filter in &record.supported_filters {
+            filters.push(filter.as_str());
+        }
+        table.insert("supported_filters", toml_edit::value(filters));
+    }
+    if let Some(value) = record.data_handling_notes.as_deref() {
+        table.insert("data_handling_notes", toml_edit::value(value));
+    }
+    if let Some(value) = record.operational_risk.as_deref() {
+        table.insert("operational_risk", toml_edit::value(value));
+    }
+    table
 }
 
 #[cfg(test)]
@@ -1939,6 +3554,129 @@ mod tests {
     }
 
     #[test]
+    fn unbounded_patch_values_are_rejected_by_validation() {
+        // Regression for the overflow corruption: numeric patch fields only
+        // checked `!= 0` (or a bare minimum), so `usize::MAX`/`u64::MAX`
+        // passed validation, were cast `as i64` on write (wrapping to -1),
+        // and poisoned the file for the next reload or restart. Every field
+        // below is written to the file as an i64, so every one must be
+        // bounded — even while the feature that uses it is currently off.
+        let mut inference_documents = Config::default();
+        inference_documents.inference.max_documents = usize::MAX;
+        assert!(inference_documents.validate().is_err());
+
+        let mut inference_chars = Config::default();
+        inference_chars.inference.max_input_chars = usize::MAX;
+        assert!(inference_chars.validate().is_err());
+
+        let mut inference_batch = Config::default();
+        inference_batch.inference.local_model_batch = usize::MAX;
+        assert!(inference_batch.validate().is_err());
+
+        let mut remote_timeout = Config::default();
+        remote_timeout.inference.remote_timeout_ms = u64::MAX;
+        assert!(remote_timeout.validate().is_err());
+
+        let mut remote_batch = Config::default();
+        remote_batch.inference.remote_max_batch = usize::MAX;
+        assert!(remote_batch.validate().is_err());
+
+        let mut answer_timeout = Config::default();
+        answer_timeout.answer.timeout_ms = u64::MAX;
+        assert!(answer_timeout.validate().is_err());
+
+        let mut answer_chars = Config::default();
+        answer_chars.answer.max_source_chars = usize::MAX;
+        assert!(answer_chars.validate().is_err());
+
+        let mut answer_tokens = Config::default();
+        answer_tokens.answer.max_answer_tokens = u32::MAX;
+        assert!(answer_tokens.validate().is_err());
+
+        let mut purge = Config::default();
+        purge.persistence.purge_interval_seconds = u64::MAX;
+        assert!(purge.validate().is_err());
+
+        let mut backup_interval = Config::default();
+        backup_interval.persistence.auto_backup_interval_seconds = u64::MAX;
+        assert!(backup_interval.validate().is_err());
+
+        let mut backup_count = Config::default();
+        backup_count.persistence.auto_backup_max_count = u32::MAX;
+        assert!(backup_count.validate().is_err());
+
+        let mut deep_bytes = Config::default();
+        deep_bytes.deep.max_bytes = u64::MAX;
+        assert!(deep_bytes.validate().is_err());
+
+        let mut deep_timeout = Config::default();
+        deep_timeout.deep.timeout_ms = u64::MAX;
+        assert!(deep_timeout.validate().is_err());
+
+        let mut robots_timeout = Config::default();
+        robots_timeout.deep.robots_timeout_ms = u64::MAX;
+        assert!(robots_timeout.validate().is_err());
+
+        let mut extractor_timeout = Config::default();
+        extractor_timeout.deep.extractor.timeout_ms = u64::MAX;
+        assert!(extractor_timeout.validate().is_err());
+
+        let mut renderer_timeout = Config::default();
+        renderer_timeout.deep.renderer.timeout_ms = u64::MAX;
+        assert!(renderer_timeout.validate().is_err());
+
+        let mut renderer_dom = Config::default();
+        renderer_dom.deep.renderer.max_dom_bytes = u64::MAX;
+        assert!(renderer_dom.validate().is_err());
+
+        let mut request_timeout = Config::default();
+        request_timeout.server.request_timeout_ms = u64::MAX;
+        assert!(request_timeout.validate().is_err());
+
+        let mut idle_timeout = Config::default();
+        idle_timeout.server.idle_timeout_ms = u64::MAX;
+        assert!(idle_timeout.validate().is_err());
+
+        let mut rate_limit = Config::default();
+        rate_limit.server.rate_limit_per_minute = u32::MAX;
+        assert!(rate_limit.validate().is_err());
+    }
+
+    #[test]
+    fn set_inference_fields_rejects_an_unstorable_value_without_touching_the_file() {
+        // Last line of defense for the same corruption: even a caller that
+        // skips `Config::validate` must not be able to write a value that
+        // wraps negative (`usize::MAX as i64` is `-1`). The file is left
+        // exactly as it was.
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-inference-overflow-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(
+            &path,
+            "schema_version = \"1\"\n\n[inference]\nmax_documents = 64\n",
+        )
+        .unwrap();
+
+        let patch = InferenceConfigPatch {
+            max_documents: Some(usize::MAX),
+            ..Default::default()
+        };
+        let error = Config::set_inference_fields(&path, &patch)
+            .unwrap_err()
+            .to_string();
+        assert!(error.contains("max_documents"), "{error}");
+
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+        assert!(written.contains("max_documents = 64"), "{written}");
+        assert!(
+            !written.contains("-1"),
+            "file must never be corrupted: {written}"
+        );
+    }
+
+    #[test]
     fn local_model_backend_is_reachable_from_a_config_file() {
         // Regression: validation only accepted `local_hashing_v1`, so a TOML
         // selecting the documented `local_model_v1` failed to load and the
@@ -2066,5 +3804,790 @@ mod tests {
 
         let reparsed = Config::from_toml(&written).unwrap();
         assert!(reparsed.answer.enabled);
+    }
+
+    #[test]
+    fn set_provider_enabled_adds_and_removes_the_name_only() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-provider-toggle-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(
+            &path,
+            "schema_version = \"1\"\n\n\
+             # A comment an operator wrote about something unrelated.\n\
+             [providers]\n\
+             enabled = [\"searxng\"]\n",
+        )
+        .unwrap();
+
+        Config::set_provider_enabled(&path, "marginalia", true).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        assert!(written.contains("# A comment an operator wrote about something unrelated."));
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert_eq!(
+            reparsed.providers.enabled,
+            vec!["searxng".to_string(), "marginalia".to_string()]
+        );
+
+        // Enabling an already-enabled name does not duplicate it.
+        Config::set_provider_enabled(&path, "marginalia", true).unwrap();
+        let reparsed = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
+        assert_eq!(
+            reparsed.providers.enabled,
+            vec!["searxng".to_string(), "marginalia".to_string()]
+        );
+
+        Config::set_provider_enabled(&path, "searxng", false).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert_eq!(reparsed.providers.enabled, vec!["marginalia".to_string()]);
+    }
+
+    #[test]
+    fn set_provider_enabled_creates_the_table_when_absent() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-provider-toggle-notable-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+
+        Config::set_provider_enabled(&path, "searxng", true).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert_eq!(reparsed.providers.enabled, vec!["searxng".to_string()]);
+    }
+
+    #[test]
+    fn set_provider_enabled_rejects_an_invalid_name() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-provider-toggle-invalid-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+        let result = Config::set_provider_enabled(&path, "Not Valid!", true);
+        std::fs::remove_file(&path).ok();
+        assert!(result.is_err());
+    }
+
+    #[test]
+    fn reload_kind_flags_the_listener_level_server_fields_as_cold() {
+        assert_eq!(ReloadKind::of("server", "bind"), ReloadKind::Cold);
+        assert_eq!(ReloadKind::of("server", "port"), ReloadKind::Cold);
+        assert_eq!(
+            ReloadKind::of("server", "max_connections"),
+            ReloadKind::Cold
+        );
+        assert_eq!(ReloadKind::of("server", "max_body_bytes"), ReloadKind::Cold);
+        assert_eq!(
+            ReloadKind::of("server", "idle_timeout_ms"),
+            ReloadKind::Cold
+        );
+        assert_eq!(ReloadKind::of("server.tls", "cert_path"), ReloadKind::Cold);
+        assert_eq!(ReloadKind::of("server.tls", "key_path"), ReloadKind::Cold);
+    }
+
+    #[test]
+    fn reload_kind_defaults_to_hot() {
+        // Fields amatl-server's `AppState::reload` re-derives every call.
+        assert_eq!(ReloadKind::of("server", "allowed_hosts"), ReloadKind::Hot);
+        assert_eq!(ReloadKind::of("server", "clients"), ReloadKind::Hot);
+        assert_eq!(
+            ReloadKind::of("server", "rate_limit_per_minute"),
+            ReloadKind::Hot
+        );
+        // A whole other section, rebuilt in full by `reloaded_detached`.
+        assert_eq!(ReloadKind::of("answer", "enabled"), ReloadKind::Hot);
+        assert_eq!(ReloadKind::of("providers", "enabled"), ReloadKind::Hot);
+        assert_eq!(ReloadKind::of("deep", "max_fetches"), ReloadKind::Hot);
+    }
+
+    fn sample_client(id: &str) -> ServerClient {
+        ServerClient {
+            id: id.to_string(),
+            token_env: None,
+            token_sha256: Some("a".repeat(64)),
+            expires_at: None,
+            scopes: vec![Scope::Read, Scope::Search],
+            tools: vec![],
+        }
+    }
+
+    #[test]
+    fn upsert_server_client_appends_a_new_entry_and_keeps_comments() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-client-upsert-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(
+            &path,
+            "schema_version = \"1\"\n\n\
+             # A comment an operator wrote about something unrelated.\n\
+             [server]\n\
+             port = 8080\n",
+        )
+        .unwrap();
+
+        Config::upsert_server_client(&path, &sample_client("dashboard")).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+
+        assert!(written.contains("# A comment an operator wrote about something unrelated."));
+        assert!(written.contains("port = 8080"));
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert_eq!(reparsed.server.clients.len(), 1);
+        assert_eq!(reparsed.server.clients[0].id, "dashboard");
+        assert_eq!(
+            reparsed.server.clients[0].scopes,
+            vec![Scope::Read, Scope::Search]
+        );
+        assert_eq!(
+            reparsed.server.clients[0].token_sha256.as_deref(),
+            Some("a".repeat(64).as_str())
+        );
+    }
+
+    #[test]
+    fn upsert_server_client_replaces_the_entry_with_the_same_id_only() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-client-upsert-replace-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+
+        Config::upsert_server_client(&path, &sample_client("dashboard")).unwrap();
+        Config::upsert_server_client(&path, &sample_client("other")).unwrap();
+        let mut replacement = sample_client("dashboard");
+        replacement.scopes = vec![Scope::Admin];
+        Config::upsert_server_client(&path, &replacement).unwrap();
+
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert_eq!(reparsed.server.clients.len(), 2);
+        let dashboard = reparsed
+            .server
+            .clients
+            .iter()
+            .find(|client| client.id == "dashboard")
+            .unwrap();
+        assert_eq!(dashboard.scopes, vec![Scope::Admin]);
+        assert!(reparsed
+            .server
+            .clients
+            .iter()
+            .any(|client| client.id == "other"));
+    }
+
+    #[test]
+    fn remove_server_client_drops_only_the_matching_id() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-client-remove-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+        Config::upsert_server_client(&path, &sample_client("dashboard")).unwrap();
+        Config::upsert_server_client(&path, &sample_client("other")).unwrap();
+
+        Config::remove_server_client(&path, "dashboard").unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert_eq!(reparsed.server.clients.len(), 1);
+        assert_eq!(reparsed.server.clients[0].id, "other");
+    }
+
+    #[test]
+    fn remove_server_client_is_a_no_op_when_absent() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-client-remove-absent-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+        let result = Config::remove_server_client(&path, "nobody");
+        std::fs::remove_file(&path).ok();
+        assert!(result.is_ok());
+    }
+
+    #[test]
+    fn set_data_policy_fields_flip_only_that_key_and_keep_comments() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-data-policy-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(
+            &path,
+            "schema_version = \"1\"\n\n\
+             # A comment an operator wrote about something unrelated.\n\
+             [data_policy]\n\
+             profile = \"standard\"\n\
+             egress = \"governed\"\n\
+             inference = \"disabled\"\n",
+        )
+        .unwrap();
+
+        Config::set_data_policy_profile(&path, SecurityProfile::Isolated).unwrap();
+        Config::set_data_policy_egress(&path, EgressPolicy::Deny).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+
+        assert!(written.contains("# A comment an operator wrote about something unrelated."));
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert_eq!(reparsed.data_policy.profile, SecurityProfile::Isolated);
+        assert_eq!(reparsed.data_policy.egress, EgressPolicy::Deny);
+        // Untouched by either call.
+        assert_eq!(reparsed.data_policy.inference, InferenceMode::Disabled);
+    }
+
+    #[test]
+    fn set_data_policy_inference_creates_the_table_when_absent() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-data-policy-notable-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+
+        Config::set_data_policy_inference(&path, InferenceMode::LocalOnly).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert_eq!(reparsed.data_policy.inference, InferenceMode::LocalOnly);
+    }
+
+    #[test]
+    fn data_policy_patch_writes_all_requested_fields_in_one_edit() {
+        // `profile`, `egress` and `inference` cross-check each other in
+        // `Config::validate`, so the HTTP endpoint must write them in a
+        // single edit, never three independent writes that could leave the
+        // file in a mix the next reload would reject.
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-data-policy-patch-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(
+            &path,
+            "schema_version = \"1\"\n\n[data_policy]\nprofile = \"standard\"\negress = \"governed\"\ninference = \"disabled\"\n",
+        )
+        .unwrap();
+
+        let patch = DataPolicyConfigPatch {
+            profile: Some(SecurityProfile::Isolated),
+            egress: Some(EgressPolicy::Deny),
+            inference: Some(InferenceMode::LocalOnly),
+        };
+        let mut candidate = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
+        patch.apply(&mut candidate.data_policy);
+        assert!(candidate.validate().is_ok());
+
+        Config::set_data_policy_fields(&path, &patch).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert_eq!(reparsed.data_policy.profile, SecurityProfile::Isolated);
+        assert_eq!(reparsed.data_policy.egress, EgressPolicy::Deny);
+        assert_eq!(reparsed.data_policy.inference, InferenceMode::LocalOnly);
+        // In-memory apply and the single on-disk write agree.
+        assert_eq!(reparsed.data_policy, candidate.data_policy);
+    }
+
+    #[test]
+    fn inference_patch_apply_and_disk_write_agree() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-inference-patch-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(
+            &path,
+            "schema_version = \"1\"\n\n\
+             # A comment an operator wrote about something unrelated.\n\
+             [inference]\n\
+             remote_endpoint = \"https://old.example/embeddings\"\n\
+             remote_timeout_ms = 5000\n",
+        )
+        .unwrap();
+
+        let patch = InferenceConfigPatch {
+            remote_endpoint: Some("https://api.deepinfra.com/v1/openai/embeddings".into()),
+            remote_model: Some("BAAI/bge-base-en-v1.5".into()),
+            embedding_dimensions: Some(384),
+            ..Default::default()
+        };
+
+        // In-memory apply and the on-disk write must agree.
+        let mut config = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
+        patch.apply(&mut config.inference);
+
+        Config::set_inference_fields(&path, &patch).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        assert!(written.contains("# A comment an operator wrote about something unrelated."));
+        let reparsed = Config::from_toml(&written).unwrap();
+
+        assert_eq!(
+            reparsed.inference.remote_endpoint,
+            config.inference.remote_endpoint
+        );
+        assert_eq!(
+            reparsed.inference.remote_model,
+            config.inference.remote_model
+        );
+        assert_eq!(
+            reparsed.inference.embedding_dimensions,
+            config.inference.embedding_dimensions
+        );
+        // Untouched by the patch, both in memory and on disk.
+        assert_eq!(reparsed.inference.remote_timeout_ms, 5000);
+        assert_eq!(config.inference.remote_timeout_ms, 5000);
+
+        // An empty string clears a previously-set optional field.
+        let clear = InferenceConfigPatch {
+            remote_endpoint: Some(String::new()),
+            ..Default::default()
+        };
+        clear.apply(&mut config.inference);
+        assert_eq!(config.inference.remote_endpoint, None);
+        Config::set_inference_fields(&path, &clear).unwrap();
+        let reparsed = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
+        std::fs::remove_file(&path).ok();
+        assert_eq!(reparsed.inference.remote_endpoint, None);
+    }
+
+    #[test]
+    fn answer_patch_never_touches_enabled() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-answer-patch-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(
+            &path,
+            "schema_version = \"1\"\n\n[answer]\nenabled = true\nmodel = \"old-model\"\n",
+        )
+        .unwrap();
+
+        let patch = AnswerConfigPatch {
+            model: Some("deepseek-ai/DeepSeek-V3".into()),
+            max_sources: Some(4),
+            ..Default::default()
+        };
+        Config::set_answer_fields(&path, &patch).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert_eq!(
+            reparsed.answer.model.as_deref(),
+            Some("deepseek-ai/DeepSeek-V3")
+        );
+        assert_eq!(reparsed.answer.max_sources, 4);
+        // `enabled` survives untouched.
+        assert!(reparsed.answer.enabled);
+    }
+
+    #[test]
+    fn upsert_provider_record_writes_only_the_named_provider() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-provider-record-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(
+            &path,
+            "schema_version = \"1\"\n\n\
+             # A comment an operator wrote about something unrelated.\n\
+             [providers]\n\
+             enabled = [\"searxng\"]\n\n\
+             [providers.searxng]\n\
+             adapter_version = \"searxng-v1\"\n",
+        )
+        .unwrap();
+
+        let record = ProviderRuntimeConfig {
+            adapter_version: Some("custom-v2".into()),
+            approval_status: ApprovalStatus::Approved,
+            reviewer: Some("Alexis Hernandez".into()),
+            supported_regions: vec!["us".into(), "eu".into()],
+            ..Default::default()
+        };
+        Config::upsert_provider_record(&path, "custom_archive", &record).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+
+        assert!(written.contains("# A comment an operator wrote about something unrelated."));
+        let reparsed = Config::from_toml(&written).unwrap();
+        // The existing provider and the `enabled` list are untouched.
+        assert_eq!(reparsed.providers.enabled, vec!["searxng".to_string()]);
+        assert_eq!(
+            reparsed
+                .providers
+                .get("searxng")
+                .unwrap()
+                .adapter_version
+                .as_deref(),
+            Some("searxng-v1")
+        );
+        let custom = reparsed.providers.get("custom_archive").unwrap();
+        assert_eq!(custom.adapter_version.as_deref(), Some("custom-v2"));
+        assert_eq!(custom.approval_status, ApprovalStatus::Approved);
+        assert_eq!(custom.reviewer.as_deref(), Some("Alexis Hernandez"));
+        assert_eq!(
+            custom.supported_regions,
+            vec!["us".to_string(), "eu".to_string()]
+        );
+    }
+
+    #[test]
+    fn upsert_provider_record_rejects_an_invalid_name() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-provider-record-invalid-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+        let result =
+            Config::upsert_provider_record(&path, "Not Valid!", &ProviderRuntimeConfig::default());
+        std::fs::remove_file(&path).ok();
+        assert!(result.is_err());
+    }
+
+    #[test]
+    fn set_ranking_policy_replaces_the_section_and_keeps_other_sections_and_comments() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-ranking-policy-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(
+            &path,
+            "schema_version = \"1\"\n\n\
+             # A comment an operator wrote about something unrelated.\n\
+             [ranking_policy]\n\
+             version = \"v1\"\n\
+             rrf_k = 60\n\n\
+             [server]\n\
+             port = 8080\n",
+        )
+        .unwrap();
+
+        let policy = RankingPolicyV1 {
+            rrf_k: 42,
+            ..RankingPolicyV1::default()
+        };
+        Config::set_ranking_policy(&path, &policy).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+
+        assert!(written.contains("# A comment an operator wrote about something unrelated."));
+        assert!(written.contains("port = 8080"));
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert_eq!(reparsed.ranking_policy.rrf_k, 42);
+        assert_eq!(reparsed.server.port, 8080);
+    }
+
+    #[test]
+    fn set_ranking_v2_policy_writes_the_nested_table_creating_parents_as_needed() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-ranking-v2-policy-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+
+        let policy = RankingV2Policy::default();
+        Config::set_ranking_v2_policy(&path, &policy).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        assert!(written.contains("[deep.ranking_v2.policy]") || written.contains("[deep]"));
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert_eq!(reparsed.deep.ranking_v2.policy, policy);
+
+        // A second write replaces the same nested table, doesn't duplicate it.
+        Config::set_gap_policy(&path, &GapPolicyV1::default()).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert_eq!(reparsed.deep.ranking_v2.policy, policy);
+        assert_eq!(reparsed.deep.gaps.policy, GapPolicyV1::default());
+    }
+
+    #[test]
+    fn set_diversity_policy_alone_can_break_the_search_policy_cross_check() {
+        // Documents the contract `set_diversity_policy`'s doc comment
+        // promises: the caller must validate the *pair* before writing
+        // either one, because `Config::validate` requires them to agree.
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-diversity-cross-check-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+
+        let mut diversity = DiversityPolicyV1::default();
+        diversity.max_visible_per_domain += 1;
+        Config::set_diversity_policy(&path, &diversity).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert!(reparsed.validate().is_err());
+    }
+
+    #[test]
+    fn persistence_patch_changes_only_the_requested_fields_and_keeps_comments() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-persistence-patch-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(
+            &path,
+            "schema_version = \"1\"\n\n\
+             # A comment an operator wrote about something unrelated.\n\
+             [persistence]\n\
+             enabled = true\n\
+             path = \"amatl.sqlite3\"\n\
+             history_retention_days = 90\n",
+        )
+        .unwrap();
+
+        let patch = PersistenceConfigPatch {
+            auto_backup_enabled: Some(true),
+            auto_backup_interval_seconds: Some(7_200),
+            ..Default::default()
+        };
+        let mut config = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
+        patch.apply(&mut config.persistence);
+
+        Config::set_persistence_fields(&path, &patch).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+
+        assert!(written.contains("# A comment an operator wrote about something unrelated."));
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert!(reparsed.persistence.auto_backup_enabled);
+        assert_eq!(reparsed.persistence.auto_backup_interval_seconds, 7_200);
+        // Untouched: not part of the patch, both in memory and on disk.
+        assert!(reparsed.persistence.enabled);
+        assert_eq!(reparsed.persistence.path, "amatl.sqlite3");
+        assert_eq!(reparsed.persistence.history_retention_days, 90);
+        assert_eq!(config.persistence.path, "amatl.sqlite3");
+    }
+
+    #[test]
+    fn persistence_patch_backup_directory_empty_string_clears_it() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-persistence-clear-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(
+            &path,
+            "schema_version = \"1\"\n\n[persistence]\nbackup_directory = \"/var/backups/amatl\"\n",
+        )
+        .unwrap();
+
+        let clear = PersistenceConfigPatch {
+            backup_directory: Some(String::new()),
+            ..Default::default()
+        };
+        Config::set_persistence_fields(&path, &clear).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert_eq!(reparsed.persistence.backup_directory, None);
+    }
+
+    #[test]
+    fn telemetry_patch_writes_only_the_requested_fields() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-telemetry-patch-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+
+        let patch = TelemetryConfigPatch {
+            retention_days: Some(45),
+            ..Default::default()
+        };
+        Config::set_telemetry_fields(&path, &patch).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert_eq!(reparsed.telemetry.retention_days, 45);
+        assert!(!reparsed.telemetry.persistence_enabled);
+    }
+
+    #[test]
+    fn deep_patch_writes_top_level_fields_without_touching_nested_tables() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-deep-patch-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(
+            &path,
+            "schema_version = \"1\"\n\n\
+             # A comment an operator wrote about something unrelated.\n\
+             [deep]\n\
+             max_fetches = 10\n\n\
+             [deep.extractor]\n\
+             executable = \"trafilatura\"\n\n\
+             [deep.renderer]\n\
+             enabled = false\n",
+        )
+        .unwrap();
+
+        let patch = DeepConfigPatch {
+            max_fetches: Some(20),
+            timeout_ms: Some(30_000),
+            ..Default::default()
+        };
+        Config::set_deep_fields(&path, &patch).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+
+        assert!(written.contains("# A comment an operator wrote about something unrelated."));
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert_eq!(reparsed.deep.max_fetches, 20);
+        assert_eq!(reparsed.deep.timeout_ms, 30_000);
+        // Untouched nested tables, on disk and after reparsing.
+        assert_eq!(reparsed.deep.extractor.executable, "trafilatura");
+        assert!(!reparsed.deep.renderer.enabled);
+        assert!(written.contains("[deep.extractor]"));
+        assert!(written.contains("[deep.renderer]"));
+    }
+
+    #[test]
+    fn deep_extractor_and_renderer_patches_write_into_their_own_nested_table() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-deep-nested-patch-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+
+        let extractor_patch = ExtractorConfigPatch {
+            timeout_ms: Some(12_000),
+            ..Default::default()
+        };
+        Config::set_deep_extractor_fields(&path, &extractor_patch).unwrap();
+
+        let renderer_patch = RendererConfigPatch {
+            enabled: Some(true),
+            max_memory_mb: Some(1024),
+            ..Default::default()
+        };
+        Config::set_deep_renderer_fields(&path, &renderer_patch).unwrap();
+
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert_eq!(reparsed.deep.extractor.timeout_ms, 12_000);
+        // Untouched: not part of the extractor patch.
+        assert_eq!(reparsed.deep.extractor.executable, "trafilatura");
+        assert!(reparsed.deep.renderer.enabled);
+        assert_eq!(reparsed.deep.renderer.max_memory_mb, 1024);
+    }
+
+    #[test]
+    fn renderer_patch_enabling_under_isolated_profile_fails_validate_before_any_write() {
+        // Documents the contract `RendererConfigPatch`'s doc comment
+        // promises: the caller validates a candidate first, and this
+        // combination is exactly what `Config::validate` rejects.
+        let mut config = Config::default();
+        config.data_policy.profile = SecurityProfile::Isolated;
+        config.data_policy.egress = EgressPolicy::Deny;
+        let patch = RendererConfigPatch {
+            enabled: Some(true),
+            ..Default::default()
+        };
+        patch.apply(&mut config.deep.renderer);
+        assert!(config.validate().is_err());
+    }
+
+    #[test]
+    fn server_patch_writes_only_the_requested_fields_and_keeps_comments() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-server-patch-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(
+            &path,
+            "schema_version = \"1\"\n\n\
+             # A comment an operator wrote about something unrelated.\n\
+             [server]\n\
+             port = 8080\n\
+             rate_limit_per_minute = 60\n",
+        )
+        .unwrap();
+
+        let patch = ServerConfigPatch {
+            allowed_hosts: Some(vec!["example.internal".into()]),
+            request_timeout_ms: Some(45_000),
+            ..Default::default()
+        };
+        Config::set_server_fields(&path, &patch).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+
+        assert!(written.contains("# A comment an operator wrote about something unrelated."));
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert_eq!(
+            reparsed.server.allowed_hosts,
+            vec!["example.internal".to_string()]
+        );
+        assert_eq!(reparsed.server.request_timeout_ms, 45_000);
+        // Untouched: not part of the patch.
+        assert_eq!(reparsed.server.port, 8080);
+        assert_eq!(reparsed.server.rate_limit_per_minute, 60);
+    }
+
+    #[test]
+    fn server_patch_tls_fields_write_the_nested_table_and_clear_via_empty_string() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-server-tls-patch-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+
+        let set = ServerConfigPatch {
+            tls_cert_path: Some("/etc/amatl/cert.pem".into()),
+            tls_key_path: Some("/etc/amatl/key.pem".into()),
+            ..Default::default()
+        };
+        Config::set_server_fields(&path, &set).unwrap();
+        let reparsed = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
+        assert_eq!(
+            reparsed.server.tls.cert_path.as_deref(),
+            Some("/etc/amatl/cert.pem")
+        );
+
+        let clear = ServerConfigPatch {
+            tls_cert_path: Some(String::new()),
+            tls_key_path: Some(String::new()),
+            ..Default::default()
+        };
+        Config::set_server_fields(&path, &clear).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert_eq!(reparsed.server.tls.cert_path, None);
+        assert_eq!(reparsed.server.tls.key_path, None);
+    }
+
+    #[test]
+    fn server_patch_changed_fields_classifies_hot_and_cold_correctly() {
+        let patch = ServerConfigPatch {
+            port: Some(9090),
+            allowed_hosts: Some(vec!["example.internal".into()]),
+            tls_cert_path: Some("/etc/amatl/cert.pem".into()),
+            ..Default::default()
+        };
+        let changed = patch.changed_fields();
+        assert_eq!(changed.len(), 3);
+        assert!(changed.contains(&("server", "port")));
+        assert!(changed.contains(&("server", "allowed_hosts")));
+        assert!(changed.contains(&("server.tls", "cert_path")));
+
+        let classified: Vec<ReloadKind> = changed
+            .iter()
+            .map(|(section, key)| ReloadKind::of(section, key))
+            .collect();
+        assert!(classified.contains(&ReloadKind::Cold)); // port, tls.cert_path
+        assert!(classified.contains(&ReloadKind::Hot)); // allowed_hosts
+        assert_eq!(ReloadKind::of("server", "port"), ReloadKind::Cold);
+        assert_eq!(ReloadKind::of("server", "allowed_hosts"), ReloadKind::Hot);
+        assert_eq!(ReloadKind::of("server.tls", "cert_path"), ReloadKind::Cold);
     }
 }

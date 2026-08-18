@@ -140,6 +140,37 @@
           <ol id="saved-list" class="saved-list"></ol>
           <p id="saved-empty" class="empty-note" hidden></p>
         </section>
+
+        <section class="clients-panel" aria-labelledby="clients-heading" hidden>
+          <h2 id="clients-heading">Clientes y tokens</h2>
+          <ul id="client-list" class="client-list" role="list"></ul>
+          <p id="client-list-empty" class="empty-note" hidden></p>
+          <details id="client-create">
+            <summary id="client-create-summary">Nuevo cliente</summary>
+            <form id="client-create-form">
+              <div>
+                <label for="client-id">Identificador</label>
+                <input id="client-id" name="id" required maxlength="64" pattern="[a-z0-9_]+" autocomplete="off" placeholder="dashboard">
+                <p id="client-id-help" class="field-help">Minúsculas, números y guión bajo.</p>
+              </div>
+              <fieldset id="client-scopes" class="client-scopes">
+                <legend id="client-scopes-legend">Capacidades</legend>
+                <label class="scope-option"><input type="checkbox" name="scope" value="search"><span>Search</span></label>
+                <label class="scope-option"><input type="checkbox" name="scope" value="deep"><span>Deep</span></label>
+                <label class="scope-option"><input type="checkbox" name="scope" value="read"><span>Lectura</span></label>
+                <label class="scope-option"><input type="checkbox" name="scope" value="write"><span>Escritura</span></label>
+                <label class="scope-option"><input type="checkbox" name="scope" value="admin"><span>Administración</span></label>
+                <label class="scope-option"><input type="checkbox" name="scope" value="mcp"><span>MCP</span></label>
+              </fieldset>
+              <div>
+                <label for="client-expires">Expira (opcional)</label>
+                <input id="client-expires" type="date">
+              </div>
+              <button type="submit" id="client-create-submit">Crear cliente</button>
+              <p id="client-create-error" class="field-help" role="alert" hidden></p>
+            </form>
+          </details>
+        </section>
       </aside>
     </main>
 
@@ -223,5 +254,14 @@
         <p class="fragment-hash"><span>SHA-256</span> <code></code></p>
       </li>
     </template>
+
+    <dialog id="client-token-dialog" class="token-dialog" aria-labelledby="client-token-heading">
+      <h2 id="client-token-heading">Token generado</h2>
+      <p id="client-token-warning">Cópialo ahora — no volverá a mostrarse.</p>
+      <p class="token-dialog-id"><strong id="client-token-id"></strong></p>
+      <label class="sr-only" for="client-token-value">Token</label>
+      <input id="client-token-value" type="text" readonly>
+      <button type="button" id="client-token-close">Cerrar</button>
+    </dialog>
   </body>
 </html>

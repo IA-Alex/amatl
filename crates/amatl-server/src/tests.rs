@@ -653,6 +653,7 @@ async fn request_timeout_cancels_a_slow_handler() {
             last_cleanup: Instant::now(),
         })),
         explicit_token: Some(TOKEN.into()),
+        config_write_lock: Arc::new(AsyncMutex::new(())),
         metrics: Arc::new(RequestMetrics::default()),
     };
     let app = Router::new()
@@ -667,7 +668,7 @@ async fn request_timeout_cancels_a_slow_handler() {
         .layer(middleware::from_fn_with_state(state, security_middleware));
 
     let response = app
-        .oneshot(request("/slow").body(Body::empty()).unwrap())
+        .oneshot(authorized("/slow").body(Body::empty()).unwrap())
         .await
         .unwrap();
 
@@ -1876,6 +1877,11 @@ async fn status_reports_sources_storage_and_cache() {
     assert_eq!(body["storage"]["enabled"], false);
     assert_eq!(body["storage"]["available"], false);
     assert!(body["cache"]["provider_search_hit_rate"].is_number());
+    // Default data policy, read-only here — see the `/data-policy` tests for
+    // the write path.
+    assert_eq!(body["data_policy"]["profile"], "standard");
+    assert_eq!(body["data_policy"]["egress"], "governed");
+    assert_eq!(body["data_policy"]["inference"], "disabled");
 }
 
 #[tokio::test]
@@ -2721,4 +2727,1493 @@ async fn the_audit_trail_is_admin_only_and_fails_closed_without_persistence() {
         .await
         .unwrap();
     assert_eq!(denied.status(), StatusCode::FORBIDDEN);
+}
+
+// ── Server client administration ─────────────────────────────────────
+
+#[tokio::test]
+async fn server_clients_endpoints_require_the_admin_scope() {
+    let scoped = scoped_app().await;
+    for (path, method) in [
+        ("/server/clients", Method::GET),
+        ("/server/clients", Method::POST),
+        ("/server/clients/search_only", Method::DELETE),
+        ("/server/clients/search_only/rotate", Method::POST),
+    ] {
+        let response = scoped
+            .clone()
+            .oneshot(
+                as_client(path, SEARCH_ONLY_TOKEN)
+                    .method(method.clone())
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::FORBIDDEN, "{path} {method}");
+    }
+}
+
+#[tokio::test]
+async fn create_server_client_mints_a_token_and_persists_only_its_digest() {
+    let (app, path) = reloadable_app("schema_version = \"1\"\n").await;
+
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/server/clients")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(
+                    json!({"id": "dashboard", "scopes": ["read", "write"], "tools": []})
+                        .to_string(),
+                ))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    let token = body["token"].as_str().unwrap().to_string();
+    assert_eq!(token.len(), 64, "expected a 256-bit hex token");
+    assert_eq!(body["id"], "dashboard");
+    assert_eq!(body["credential_kind"], "token_sha256");
+
+    // The raw token never touches disk — only its digest does.
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(!on_disk.contains(&token));
+    assert!(on_disk.contains(&sha256_hex(&token)));
+
+    // The minted token authenticates immediately, without a restart.
+    let authenticated = app
+        .oneshot(as_client("/status", &token).body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(authenticated.status(), StatusCode::OK);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn create_server_client_refuses_a_scopeless_client_without_writing() {
+    let (app, path) = reloadable_app("schema_version = \"1\"\n").await;
+
+    let response = app
+        .oneshot(
+            authorized("/server/clients")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(
+                    json!({"id": "dashboard", "scopes": []}).to_string(),
+                ))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(
+        json_body(response).await["error"]["code"],
+        "configuration_invalid"
+    );
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(!on_disk.contains("dashboard"));
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn list_server_clients_never_exposes_a_credential() {
+    let (app, path) = reloadable_app("schema_version = \"1\"\n").await;
+    app.clone()
+        .oneshot(
+            authorized("/server/clients")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(
+                    json!({"id": "dashboard", "scopes": ["read"]}).to_string(),
+                ))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+
+    let response = app
+        .oneshot(authorized("/server/clients").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    let clients = body["clients"].as_array().unwrap();
+    assert_eq!(clients.len(), 1);
+    assert_eq!(clients[0]["id"], "dashboard");
+    assert!(clients[0].get("token").is_none());
+    assert!(clients[0].get("token_sha256").is_none());
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn create_server_client_rejects_a_duplicate_id_without_overwriting() {
+    // Regression: POST used to `retain` the id away and re-push, silently
+    // replacing the existing entry — minting a new credential that stopped
+    // authenticating whoever held the old one, with no warning.
+    let (app, path) = reloadable_app("schema_version = \"1\"\n").await;
+    let created = json_body(
+        app.clone()
+            .oneshot(
+                authorized("/server/clients")
+                    .method(Method::POST)
+                    .header(CONTENT_TYPE, "application/json")
+                    .body(Body::from(
+                        json!({"id": "dashboard", "scopes": ["read"]}).to_string(),
+                    ))
+                    .unwrap(),
+            )
+            .await
+            .unwrap(),
+    )
+    .await;
+    let original_token = created["token"].as_str().unwrap().to_string();
+
+    let duplicate = app
+        .clone()
+        .oneshot(
+            authorized("/server/clients")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(
+                    json!({"id": "dashboard", "scopes": ["read", "admin"]}).to_string(),
+                ))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(duplicate.status(), StatusCode::CONFLICT);
+    assert_eq!(json_body(duplicate).await["error"]["code"], "conflict");
+
+    // Nothing changed on disk and the original credential still authenticates.
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(on_disk.contains(&sha256_hex(&original_token)));
+    let authenticated = app
+        .oneshot(
+            as_client("/status", &original_token)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(authenticated.status(), StatusCode::OK);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn update_server_client_changes_scopes_without_rotating_the_credential() {
+    let (app, path) = reloadable_app("schema_version = \"1\"\n").await;
+    let created = json_body(
+        app.clone()
+            .oneshot(
+                authorized("/server/clients")
+                    .method(Method::POST)
+                    .header(CONTENT_TYPE, "application/json")
+                    .body(Body::from(
+                        json!({"id": "dashboard", "scopes": ["read"]}).to_string(),
+                    ))
+                    .unwrap(),
+            )
+            .await
+            .unwrap(),
+    )
+    .await;
+    let token = created["token"].as_str().unwrap().to_string();
+
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/server/clients/dashboard")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"scopes": ["read", "write"]}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    assert_eq!(body["client"]["scopes"], json!(["read", "write"]));
+
+    // The original token, untouched by the update, still authenticates.
+    let authenticated = app
+        .oneshot(as_client("/status", &token).body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(authenticated.status(), StatusCode::OK);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn update_server_client_reports_not_found_for_an_unknown_id() {
+    let (app, path) = reloadable_app("schema_version = \"1\"\n").await;
+    let response = app
+        .oneshot(
+            authorized("/server/clients/nobody")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"scopes": ["read"]}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::NOT_FOUND);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn delete_server_client_revokes_access_immediately() {
+    let (app, path) = reloadable_app("schema_version = \"1\"\n").await;
+    let created = json_body(
+        app.clone()
+            .oneshot(
+                authorized("/server/clients")
+                    .method(Method::POST)
+                    .header(CONTENT_TYPE, "application/json")
+                    .body(Body::from(
+                        json!({"id": "dashboard", "scopes": ["read"]}).to_string(),
+                    ))
+                    .unwrap(),
+            )
+            .await
+            .unwrap(),
+    )
+    .await;
+    let token = created["token"].as_str().unwrap().to_string();
+
+    let deleted = app
+        .clone()
+        .oneshot(
+            authorized("/server/clients/dashboard")
+                .method(Method::DELETE)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(deleted.status(), StatusCode::OK);
+
+    let revoked = app
+        .clone()
+        .oneshot(as_client("/status", &token).body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(revoked.status(), StatusCode::UNAUTHORIZED);
+
+    // Deleting it again is a clean not-found, not a crash.
+    let again = app
+        .oneshot(
+            authorized("/server/clients/dashboard")
+                .method(Method::DELETE)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(again.status(), StatusCode::NOT_FOUND);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn rotate_server_client_token_invalidates_the_old_token() {
+    let (app, path) = reloadable_app("schema_version = \"1\"\n").await;
+    let created = json_body(
+        app.clone()
+            .oneshot(
+                authorized("/server/clients")
+                    .method(Method::POST)
+                    .header(CONTENT_TYPE, "application/json")
+                    .body(Body::from(
+                        json!({"id": "dashboard", "scopes": ["read"]}).to_string(),
+                    ))
+                    .unwrap(),
+            )
+            .await
+            .unwrap(),
+    )
+    .await;
+    let original_token = created["token"].as_str().unwrap().to_string();
+
+    let rotated = json_body(
+        app.clone()
+            .oneshot(
+                authorized("/server/clients/dashboard/rotate")
+                    .method(Method::POST)
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap(),
+    )
+    .await;
+    let new_token = rotated["token"].as_str().unwrap().to_string();
+    assert_ne!(original_token, new_token);
+    // Scope carried forward from the entry being rotated.
+    assert_eq!(rotated["scopes"], json!(["read"]));
+
+    let old_rejected = app
+        .clone()
+        .oneshot(
+            as_client("/status", &original_token)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(old_rejected.status(), StatusCode::UNAUTHORIZED);
+
+    let new_accepted = app
+        .oneshot(
+            as_client("/status", &new_token)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(new_accepted.status(), StatusCode::OK);
+    let _ = std::fs::remove_file(path);
+}
+
+// ── Data policy administration ───────────────────────────────────────
+
+#[tokio::test]
+async fn data_policy_update_requires_the_admin_scope() {
+    let scoped = scoped_app().await;
+    let response = scoped
+        .oneshot(
+            as_client("/data-policy", SEARCH_ONLY_TOKEN)
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"egress": "deny"}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::FORBIDDEN);
+}
+
+#[tokio::test]
+async fn data_policy_update_changes_only_the_requested_fields_and_applies_without_restart() {
+    let base = "schema_version = \"1\"\n\n\
+                # A comment an operator wrote about something unrelated.\n\
+                [data_policy]\nprofile = \"standard\"\negress = \"governed\"\ninference = \"disabled\"\n";
+    let (app, path) = reloadable_app(base).await;
+
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/data-policy")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"inference": "local_only"}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(on_disk.contains("# A comment an operator wrote about something unrelated."));
+    assert!(on_disk.contains("inference = \"local_only\""));
+    // Untouched: only `inference` was in the request body.
+    assert!(on_disk.contains("profile = \"standard\""));
+    assert!(on_disk.contains("egress = \"governed\""));
+
+    let status = json_body(
+        app.oneshot(authorized("/status").body(Body::empty()).unwrap())
+            .await
+            .unwrap(),
+    )
+    .await;
+    assert_eq!(status["data_policy"]["inference"], "local_only");
+    assert_eq!(status["data_policy"]["profile"], "standard");
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn data_policy_update_refuses_a_contradictory_combination_without_writing() {
+    // isolated requires denied egress; asking for isolated while leaving
+    // egress governed must fail Config::validate and never touch the file.
+    let base = "schema_version = \"1\"\n\n\
+                [data_policy]\nprofile = \"standard\"\negress = \"governed\"\n";
+    let (app, path) = reloadable_app(base).await;
+
+    let response = app
+        .oneshot(
+            authorized("/data-policy")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"profile": "isolated"}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(
+        json_body(response).await["error"]["code"],
+        "configuration_invalid"
+    );
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(on_disk.contains("profile = \"standard\""));
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn patch_endpoint_rejects_a_value_that_cannot_be_stored() {
+    // Regression: `usize::MAX` used to pass validation (only `!= 0` was
+    // checked), was cast `as i64` on write (wrapping to -1), and corrupted
+    // the file for the next reload. The candidate must fail `Config::validate`
+    // before anything touches the file.
+    let base = "schema_version = \"1\"\n\n[inference]\nmax_documents = 64\n";
+    let (app, path) = reloadable_app(base).await;
+
+    let response = app
+        .oneshot(
+            authorized("/inference")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"max_documents": usize::MAX}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(
+        json_body(response).await["error"]["code"],
+        "configuration_invalid"
+    );
+
+    // The file is byte-for-byte untouched; in particular it never gains a
+    // negative value that the next reload would refuse to parse.
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(on_disk.contains("max_documents = 64"));
+    assert!(!on_disk.contains("-1"), "file corrupted: {on_disk}");
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn unknown_paths_are_admin_protected_and_public_surfaces_stay_public() {
+    // The scope matcher fails closed: a path with no declared arm is
+    // admin-protected (the structural guarantee `docs/arquitectura.md`
+    // promises), while the explicitly public surfaces keep working without
+    // a credential.
+    let app = app().await;
+
+    // Public surfaces: liveness probes, the metrics scrape, UI assets.
+    // `/ready` is public too but reports 503 while persistence (the thing it
+    // checks) is disabled in the default test app — the point is that it is
+    // reachable *without a credential*, not its payload.
+    for path in ["/health", "/metrics", "/", "/app.js", "/styles.css"] {
+        let response = app
+            .clone()
+            .oneshot(request(path).body(Body::empty()).unwrap())
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::OK, "{path} must stay public");
+    }
+    let ready = app
+        .clone()
+        .oneshot(request("/ready").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_ne!(
+        ready.status(),
+        StatusCode::UNAUTHORIZED,
+        "/ready must be public"
+    );
+
+    // An undeclared path is protected by default: no credential -> 401,
+    // a non-admin credential -> 403, an admin credential -> reaches the
+    // fallback and 404s cleanly.
+    let scoped = scoped_app().await;
+    let anonymous = app
+        .clone()
+        .oneshot(
+            request("/some-undeclared-route")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(anonymous.status(), StatusCode::UNAUTHORIZED);
+
+    let denied = scoped
+        .oneshot(
+            as_client("/some-undeclared-route", SEARCH_ONLY_TOKEN)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(denied.status(), StatusCode::FORBIDDEN);
+
+    let admin = app
+        .clone()
+        .oneshot(
+            authorized("/some-undeclared-route")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(admin.status(), StatusCode::NOT_FOUND);
+}
+
+// ── Provider governance ficha, inference and answer advanced fields ───
+
+#[tokio::test]
+async fn provider_record_is_read_scoped_and_reports_not_found_for_an_undeclared_name() {
+    let app = app().await;
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/providers/searxng")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    assert_eq!(body["name"], "searxng");
+    assert!(body["record"]["adapter_version"].is_string());
+
+    let missing = app
+        .oneshot(
+            authorized("/providers/does_not_exist")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(missing.status(), StatusCode::NOT_FOUND);
+}
+
+#[tokio::test]
+async fn update_provider_record_edits_the_ficha_without_enabling_traffic() {
+    let base = "schema_version = \"1\"\n\n\
+                # A comment an operator wrote about something unrelated.\n\
+                [providers]\nenabled = []\n";
+    let (app, path) = reloadable_app(base).await;
+
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/providers/custom_archive")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(
+                    json!({
+                        "adapter_version": "custom-v1",
+                        "approval_status": "approved",
+                        "reviewer": "Alexis Hernandez",
+                        "supported_regions": ["us", "eu"]
+                    })
+                    .to_string(),
+                ))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    assert_eq!(body["record"]["adapter_version"], "custom-v1");
+    assert_eq!(body["record"]["approval_status"], "approved");
+
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(on_disk.contains("# A comment an operator wrote about something unrelated."));
+    assert!(on_disk.contains("custom-v1"));
+
+    // The ficha exists now, but the source was never added to
+    // `providers.enabled` — editing governance never turns traffic on.
+    let reparsed = amatl_core::Config::load_optional(&path).unwrap();
+    assert!(!reparsed
+        .providers
+        .enabled
+        .contains(&"custom_archive".to_string()));
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn update_provider_record_requires_the_admin_scope() {
+    let scoped = scoped_app().await;
+    let response = scoped
+        .oneshot(
+            as_client("/providers/searxng", SEARCH_ONLY_TOKEN)
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"reviewer": "someone"}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::FORBIDDEN);
+}
+
+#[tokio::test]
+async fn update_inference_changes_only_the_requested_fields_and_applies_without_restart() {
+    let base = "schema_version = \"1\"\n\n\
+                # A comment an operator wrote about something unrelated.\n\
+                [data_policy]\ninference = \"remote_explicit\"\n\n\
+                [inference]\nremote_endpoint = \"https://old.example/embeddings\"\n\
+                remote_model = \"old-model\"\n\
+                remote_timeout_ms = 5000\n";
+    let (app, path) = reloadable_app(base).await;
+
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/inference")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(
+                    json!({
+                        "remote_endpoint": "https://api.deepinfra.com/v1/openai/embeddings",
+                        "remote_model": "BAAI/bge-base-en-v1.5"
+                    })
+                    .to_string(),
+                ))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(on_disk.contains("# A comment an operator wrote about something unrelated."));
+    assert!(on_disk.contains("api.deepinfra.com"));
+    // Untouched: not part of the request body.
+    assert!(on_disk.contains("remote_timeout_ms = 5000"));
+
+    let reparsed = amatl_core::Config::load_optional(&path).unwrap();
+    assert_eq!(
+        reparsed.inference.remote_endpoint.as_deref(),
+        Some("https://api.deepinfra.com/v1/openai/embeddings")
+    );
+    assert_eq!(reparsed.inference.remote_timeout_ms, 5000);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn update_inference_refuses_clearing_the_endpoint_out_from_under_remote_explicit() {
+    // Starts valid (remote_explicit with endpoint/model set); clearing the
+    // endpoint via the empty-string convention while the mode stays
+    // remote_explicit must be refused by Config::validate and never written.
+    let base = "schema_version = \"1\"\n\n\
+                [data_policy]\ninference = \"remote_explicit\"\n\n\
+                [inference]\nremote_endpoint = \"https://old.example/embeddings\"\n\
+                remote_model = \"old-model\"\n";
+    let (app, path) = reloadable_app(base).await;
+
+    let response = app
+        .oneshot(
+            authorized("/inference")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"remote_endpoint": ""}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(on_disk.contains("https://old.example/embeddings"));
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn update_answer_fields_never_touches_enabled() {
+    let base = "schema_version = \"1\"\n\n\
+                [data_policy]\ninference = \"remote_explicit\"\n\n\
+                [inference]\nremote_endpoint = \"https://api.deepinfra.com/v1/openai/embeddings\"\n\
+                remote_model = \"BAAI/bge-base-en-v1.5\"\n\n\
+                [answer]\nenabled = true\n\
+                endpoint = \"https://api.deepinfra.com/v1/openai/chat/completions\"\n\
+                model = \"old-model\"\n\
+                credential_env = \"AMATL_TEST_ANSWER_KEY\"\n";
+    let (app, path) = reloadable_app(base).await;
+
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/answer")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(
+                    json!({"model": "deepseek-ai/DeepSeek-V3", "max_sources": 4}).to_string(),
+                ))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+
+    let status = json_body(
+        app.oneshot(authorized("/status").body(Body::empty()).unwrap())
+            .await
+            .unwrap(),
+    )
+    .await;
+    assert_eq!(status["answer"]["enabled"], true);
+    assert_eq!(status["answer"]["model"], "deepseek-ai/DeepSeek-V3");
+
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(on_disk.contains("enabled = true"));
+    assert!(on_disk.contains("max_sources = 4"));
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn update_answer_fields_requires_the_admin_scope() {
+    let scoped = scoped_app().await;
+    let response = scoped
+        .oneshot(
+            as_client("/answer", SEARCH_ONLY_TOKEN)
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"max_sources": 4}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::FORBIDDEN);
+}
+
+// ── Search-quality policies ────────────────────────────────────────────
+
+#[tokio::test]
+async fn policies_reports_all_five_and_is_read_scoped() {
+    let scoped = scoped_app().await;
+    let response = scoped
+        .clone()
+        .oneshot(
+            as_client("/policies", SEARCH_ONLY_TOKEN)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::FORBIDDEN);
+
+    let response = scoped
+        .oneshot(
+            as_client("/policies", ADMIN_TOKEN)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    assert!(body["ranking_policy"]["version"].is_string());
+    assert!(body["diversity_policy"].is_object());
+    assert!(body["search_policy"].is_object());
+    assert!(body["ranking_v2_policy"].is_object());
+    assert!(body["gap_policy"].is_object());
+}
+
+#[tokio::test]
+async fn update_policy_replaces_ranking_and_applies_without_restart() {
+    let base = "schema_version = \"1\"\n\n\
+                # A comment an operator wrote about something unrelated.\n\
+                [ranking_policy]\nversion = \"v1\"\nrrf_k = 60\n";
+    let (app, path) = reloadable_app(base).await;
+
+    let current = json_body(
+        app.clone()
+            .oneshot(authorized("/policies").body(Body::empty()).unwrap())
+            .await
+            .unwrap(),
+    )
+    .await;
+    let mut ranking = current["ranking_policy"].clone();
+    ranking["rrf_k"] = json!(42);
+
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/policies/ranking")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(ranking.to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(on_disk.contains("# A comment an operator wrote about something unrelated."));
+    assert!(on_disk.contains("rrf_k = 42"));
+
+    let updated = json_body(
+        app.oneshot(authorized("/policies").body(Body::empty()).unwrap())
+            .await
+            .unwrap(),
+    )
+    .await;
+    assert_eq!(updated["ranking_policy"]["rrf_k"], 42);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn update_policy_requires_the_admin_scope() {
+    let scoped = scoped_app().await;
+    let ranking = json_body(
+        scoped
+            .clone()
+            .oneshot(
+                as_client("/policies", ADMIN_TOKEN)
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap(),
+    )
+    .await["ranking_policy"]
+        .clone();
+
+    let response = scoped
+        .oneshot(
+            as_client("/policies/ranking", SEARCH_ONLY_TOKEN)
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(ranking.to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::FORBIDDEN);
+}
+
+#[tokio::test]
+async fn update_policy_rejects_an_unknown_policy_name() {
+    let (app, path) = reloadable_app("schema_version = \"1\"\n").await;
+    let response = app
+        .oneshot(
+            authorized("/policies/nonsense")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::NOT_FOUND);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn update_policy_diversity_alone_can_fail_the_search_policy_cross_check() {
+    let (app, path) = reloadable_app("schema_version = \"1\"\n").await;
+    let current = json_body(
+        app.clone()
+            .oneshot(authorized("/policies").body(Body::empty()).unwrap())
+            .await
+            .unwrap(),
+    )
+    .await;
+    let mut diversity = current["diversity_policy"].clone();
+    let bumped = diversity["max_visible_per_domain"].as_u64().unwrap() + 1;
+    diversity["max_visible_per_domain"] = json!(bumped);
+
+    let response = app
+        .oneshot(
+            authorized("/policies/diversity")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(diversity.to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    // `diversity_policy.max_visible_per_domain` now disagrees with
+    // `search_policy.maximum_results_per_domain` — Config::validate refuses
+    // the pair, so the write never happens.
+    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    let _ = std::fs::remove_file(path);
+}
+
+// ── Persistence, backups, circuits and telemetry administration ───────
+
+#[tokio::test]
+async fn persistence_config_is_read_scoped_and_reports_current_settings() {
+    let scoped = scoped_app().await;
+    let denied = scoped
+        .clone()
+        .oneshot(
+            as_client("/persistence", SEARCH_ONLY_TOKEN)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(denied.status(), StatusCode::FORBIDDEN);
+
+    let response = scoped
+        .oneshot(
+            as_client("/persistence", ADMIN_TOKEN)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    assert_eq!(body["persistence"]["enabled"], false);
+}
+
+#[tokio::test]
+async fn update_persistence_changes_only_the_requested_fields_and_applies_without_restart() {
+    let base = "schema_version = \"1\"\n\n\
+                # A comment an operator wrote about something unrelated.\n\
+                [persistence]\nenabled = true\npath = \"amatl.sqlite3\"\n\
+                history_retention_days = 90\n";
+    let (app, path) = reloadable_app(base).await;
+
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/persistence")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(
+                    json!({"auto_backup_enabled": true, "auto_backup_interval_seconds": 7200})
+                        .to_string(),
+                ))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(on_disk.contains("# A comment an operator wrote about something unrelated."));
+    assert!(on_disk.contains("auto_backup_interval_seconds = 7200"));
+    // Untouched: not part of the request body.
+    assert!(on_disk.contains("path = \"amatl.sqlite3\""));
+    assert!(on_disk.contains("history_retention_days = 90"));
+
+    let status = json_body(
+        app.oneshot(authorized("/persistence").body(Body::empty()).unwrap())
+            .await
+            .unwrap(),
+    )
+    .await;
+    assert_eq!(status["persistence"]["auto_backup_enabled"], true);
+    assert_eq!(status["persistence"]["path"], "amatl.sqlite3");
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn update_persistence_requires_the_admin_scope() {
+    let scoped = scoped_app().await;
+    let response = scoped
+        .oneshot(
+            as_client("/persistence", SEARCH_ONLY_TOKEN)
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"auto_backup_enabled": true}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::FORBIDDEN);
+}
+
+#[tokio::test]
+async fn backups_fail_closed_without_persistence_and_round_trip_when_enabled() {
+    // Without persistence, both surfaces report the same storage_unavailable
+    // failure the history/saved endpoints already use.
+    let app = app().await;
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/persistence/backups")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::SERVICE_UNAVAILABLE);
+    let response = app
+        .oneshot(
+            authorized("/persistence/backup")
+                .method(Method::POST)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::SERVICE_UNAVAILABLE);
+
+    // Enabled: a manual backup is written and then listed.
+    let (app, path) = persistent_app().await;
+    let created = app
+        .clone()
+        .oneshot(
+            authorized("/persistence/backup")
+                .method(Method::POST)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(created.status(), StatusCode::OK);
+    let created_body = json_body(created).await;
+    let backup_path = created_body["path"].as_str().unwrap().to_string();
+
+    let listed = json_body(
+        app.oneshot(
+            authorized("/persistence/backups")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap(),
+    )
+    .await;
+    let backups = listed["backups"].as_array().unwrap();
+    assert!(backups.iter().any(|entry| entry == &backup_path));
+
+    let _ = std::fs::remove_file(&path);
+    let _ = std::fs::remove_file(&backup_path);
+}
+
+#[tokio::test]
+async fn create_backup_requires_the_admin_scope() {
+    let scoped = scoped_app().await;
+    let response = scoped
+        .oneshot(
+            as_client("/persistence/backup", SEARCH_ONLY_TOKEN)
+                .method(Method::POST)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::FORBIDDEN);
+}
+
+#[tokio::test]
+async fn circuits_reports_snapshots_and_reset_closes_them() {
+    let app = app().await;
+    let response = app
+        .clone()
+        .oneshot(authorized("/circuits").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    assert!(body["circuits"].is_array());
+
+    let response = app
+        .oneshot(
+            authorized("/circuits/reset")
+                .method(Method::POST)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    assert_eq!(body["circuits"].as_array().unwrap().len(), 0);
+}
+
+#[tokio::test]
+async fn circuits_read_and_reset_both_require_a_scope_the_search_only_client_lacks() {
+    let scoped = scoped_app().await;
+    let read = scoped
+        .clone()
+        .oneshot(
+            as_client("/circuits", SEARCH_ONLY_TOKEN)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(read.status(), StatusCode::FORBIDDEN);
+
+    let reset = scoped
+        .oneshot(
+            as_client("/circuits/reset", SEARCH_ONLY_TOKEN)
+                .method(Method::POST)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(reset.status(), StatusCode::FORBIDDEN);
+}
+
+#[tokio::test]
+async fn update_telemetry_changes_only_the_requested_field_and_applies_without_restart() {
+    let base = "schema_version = \"1\"\n\n[telemetry]\nretention_days = 30\n";
+    let (app, path) = reloadable_app(base).await;
+
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/telemetry")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"retention_days": 45}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+
+    let status = json_body(
+        app.oneshot(authorized("/telemetry").body(Body::empty()).unwrap())
+            .await
+            .unwrap(),
+    )
+    .await;
+    assert_eq!(status["telemetry"]["retention_days"], 45);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn update_telemetry_requires_the_admin_scope() {
+    let scoped = scoped_app().await;
+    let response = scoped
+        .oneshot(
+            as_client("/telemetry", SEARCH_ONLY_TOKEN)
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"retention_days": 45}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::FORBIDDEN);
+}
+
+// ── Deep advanced: top-level limits, extractor, renderer ───────────────
+
+#[tokio::test]
+async fn deep_limits_does_not_collide_with_the_domain_deep_fetch_route() {
+    // `/deep` (GET/POST) stays the domain surface; config lives at
+    // `/deep/limits` precisely so the two never share a path.
+    let app = app().await;
+    let domain = app
+        .clone()
+        .oneshot(
+            authorized("/deep?url=https://example.com")
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_ne!(domain.status(), StatusCode::NOT_FOUND);
+
+    let config = app
+        .oneshot(authorized("/deep/limits").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(config.status(), StatusCode::OK);
+    let body = json_body(config).await;
+    assert!(body["deep"]["max_fetches"].is_number());
+    assert!(body["deep"]["extractor"].is_object());
+    assert!(body["deep"]["renderer"].is_object());
+}
+
+#[tokio::test]
+async fn update_deep_limits_changes_only_top_level_fields_and_applies_without_restart() {
+    let base = "schema_version = \"1\"\n\n\
+                # A comment an operator wrote about something unrelated.\n\
+                [deep]\nmax_fetches = 10\n\n\
+                [deep.extractor]\nexecutable = \"trafilatura\"\n";
+    let (app, path) = reloadable_app(base).await;
+
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/deep/limits")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"max_fetches": 20}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(on_disk.contains("# A comment an operator wrote about something unrelated."));
+    assert!(on_disk.contains("max_fetches = 20"));
+    assert!(on_disk.contains("executable = \"trafilatura\""));
+
+    let updated = json_body(
+        app.oneshot(authorized("/deep/limits").body(Body::empty()).unwrap())
+            .await
+            .unwrap(),
+    )
+    .await;
+    assert_eq!(updated["deep"]["max_fetches"], 20);
+    assert_eq!(updated["deep"]["extractor"]["executable"], "trafilatura");
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn update_deep_limits_requires_the_admin_scope() {
+    let scoped = scoped_app().await;
+    let response = scoped
+        .oneshot(
+            as_client("/deep/limits", SEARCH_ONLY_TOKEN)
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"max_fetches": 20}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::FORBIDDEN);
+}
+
+#[tokio::test]
+async fn update_deep_extractor_writes_into_its_own_nested_table() {
+    let (app, path) = reloadable_app("schema_version = \"1\"\n").await;
+    let response = app
+        .oneshot(
+            authorized("/deep/extractor")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"timeout_ms": 12000}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let reparsed = amatl_core::Config::load_optional(&path).unwrap();
+    assert_eq!(reparsed.deep.extractor.timeout_ms, 12_000);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn update_deep_renderer_refuses_enabling_under_the_isolated_profile() {
+    let base = "schema_version = \"1\"\n\n\
+                [data_policy]\nprofile = \"isolated\"\negress = \"deny\"\n";
+    let (app, path) = reloadable_app(base).await;
+    let response = app
+        .oneshot(
+            authorized("/deep/renderer")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"enabled": true}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(!on_disk.contains("[deep.renderer]"));
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn update_deep_extractor_and_renderer_require_the_admin_scope() {
+    let scoped = scoped_app().await;
+    for path in ["/deep/extractor", "/deep/renderer"] {
+        let response = scoped
+            .clone()
+            .oneshot(
+                as_client(path, SEARCH_ONLY_TOKEN)
+                    .method(Method::PATCH)
+                    .header(CONTENT_TYPE, "application/json")
+                    .body(Body::from(json!({}).to_string()))
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::FORBIDDEN, "{path}");
+    }
+}
+
+// ── Server "cold" fields: bind/port/TLS/allowed_hosts/limits ──────────
+
+#[tokio::test]
+async fn server_pending_config_is_read_scoped_and_omits_clients() {
+    let scoped = scoped_app().await;
+    let denied = scoped
+        .clone()
+        .oneshot(
+            as_client("/server/pending-config", SEARCH_ONLY_TOKEN)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(denied.status(), StatusCode::FORBIDDEN);
+
+    let response = scoped
+        .oneshot(
+            as_client("/server/pending-config", ADMIN_TOKEN)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    assert!(body["server"]["bind"].is_string());
+    assert!(body["server"]["clients"].is_null());
+}
+
+#[tokio::test]
+async fn update_server_pending_config_writes_but_never_applies_and_classifies_cold_fields() {
+    let base = "schema_version = \"1\"\n\n\
+                # A comment an operator wrote about something unrelated.\n\
+                [server]\nport = 8080\n";
+    let (app, path) = reloadable_app(base).await;
+
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/server/pending-config")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"port": 9090}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    assert_eq!(body["applied"], false);
+    assert_eq!(body["requires_restart"], true);
+    assert_eq!(body["cold_fields"], json!(["server.port"]));
+    assert_eq!(body["hot_fields"], json!([]));
+
+    // Written to disk...
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(on_disk.contains("# A comment an operator wrote about something unrelated."));
+    assert!(on_disk.contains("port = 9090"));
+
+    // ...but a live request to the running listener is unaffected: the old
+    // bind/port are still what's actually serving, exactly as promised.
+    let status = app
+        .oneshot(authorized("/status").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(status.status(), StatusCode::OK);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn update_server_pending_config_classifies_a_hot_field_without_requiring_restart() {
+    let (app, path) = reloadable_app("schema_version = \"1\"\n").await;
+
+    let response = app
+        .oneshot(
+            authorized("/server/pending-config")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"rate_limit_per_minute": 30}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    assert_eq!(body["applied"], false);
+    assert_eq!(body["requires_restart"], false);
+    assert_eq!(body["hot_fields"], json!(["server.rate_limit_per_minute"]));
+    assert_eq!(body["cold_fields"], json!([]));
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn update_server_pending_config_a_hot_field_only_applies_after_a_manual_reload() {
+    // `request()`/`authorized()` send `Host: localhost:8080`, which the
+    // default `allowed_hosts` accepts. Narrowing it to a host that excludes
+    // that should keep working until an explicit `/reload`, then start
+    // rejecting — proving the write alone changed nothing live.
+    let (app, path) = reloadable_app("schema_version = \"1\"\n").await;
+
+    let patched = app
+        .clone()
+        .oneshot(
+            authorized("/server/pending-config")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(
+                    json!({"allowed_hosts": ["example.internal"]}).to_string(),
+                ))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(patched.status(), StatusCode::OK);
+
+    // Still live on the old allowlist: the write did not reload anything.
+    let before_reload = app
+        .clone()
+        .oneshot(authorized("/status").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(before_reload.status(), StatusCode::OK);
+
+    let reloaded = app
+        .clone()
+        .oneshot(
+            authorized("/reload")
+                .method(Method::POST)
+                .body(Body::empty())
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(reloaded.status(), StatusCode::OK);
+
+    // Now that the operator explicitly reloaded, the narrowed allowlist is
+    // in force and `localhost` is no longer on it.
+    let after_reload = app
+        .oneshot(authorized("/status").body(Body::empty()).unwrap())
+        .await
+        .unwrap();
+    assert_eq!(after_reload.status(), StatusCode::BAD_REQUEST);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn update_server_pending_config_requires_the_admin_scope() {
+    let scoped = scoped_app().await;
+    let response = scoped
+        .oneshot(
+            as_client("/server/pending-config", SEARCH_ONLY_TOKEN)
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"port": 9090}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::FORBIDDEN);
+}
+
+#[tokio::test]
+async fn update_server_pending_config_refuses_an_invalid_candidate_without_writing() {
+    // Remote (non-loopback) bind without TLS or auth is refused by
+    // Config::validate.
+    let (app, path) = reloadable_app("schema_version = \"1\"\n").await;
+    let response = app
+        .oneshot(
+            authorized("/server/pending-config")
+                .method(Method::PATCH)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"bind": "0.0.0.0"}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(!on_disk.contains("0.0.0.0"));
+    let _ = std::fs::remove_file(path);
 }

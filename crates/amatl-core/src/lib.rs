@@ -50,9 +50,11 @@ pub use cache::{
 pub use circuit::{CircuitPolicy, CircuitSnapshot, CircuitState, ProviderCircuit};
 pub use classify::classify;
 pub use config::{
-    AnswerConfig, ApprovalStatus, Config, ConfigError, DataPolicyConfig, EgressPolicy,
-    ExecutionConfig, InferenceConfig, InferenceMode, ProviderConfig, ProviderRuntimeConfig,
-    RendererConfig, Scope, SecurityProfile, ServerClient, ServerConfig, TlsConfig, MCP_TOOLS,
+    AnswerConfig, AnswerConfigPatch, ApprovalStatus, Config, ConfigError, DataPolicyConfig,
+    DataPolicyConfigPatch, DeepConfigPatch, EgressPolicy, ExecutionConfig, ExtractorConfigPatch,
+    InferenceConfig, InferenceConfigPatch, InferenceMode, PersistenceConfigPatch, ProviderConfig,
+    ProviderRuntimeConfig, ReloadKind, RendererConfig, RendererConfigPatch, Scope, SecurityProfile,
+    ServerClient, ServerConfig, ServerConfigPatch, TelemetryConfigPatch, TlsConfig, MCP_TOOLS,
 };
 pub use deep::{DeepCandidate, DeepOrchestrator, DeepRequest};
 pub use diversity::{DiversityDecision, DiversityMetrics, DiversityOutput, DiversityPolicyV1};
@@ -120,9 +122,9 @@ pub use robots::{
 pub use router::{AdaptiveRouter, AdaptiveRoutingRecommendation, ProviderDescriptor, StaticRouter};
 pub use service::{
     validate_provider_canary, validate_provider_canary_with, AmatlService, AnswerResult,
-    AnswerStatus, CacheStatus, ExecutionLimits, ProviderCanaryError, ProviderSummary,
-    ProviderSurfaceStatus, SaveDocumentInput, SearchExecution, ServiceError, ServiceStatus,
-    ServiceSurface, ServiceSurfaceKind, SourceStatus, StorageStatus,
+    AnswerStatus, CacheStatus, DataPolicyStatus, ExecutionLimits, ProviderCanaryError,
+    ProviderSummary, ProviderSurfaceStatus, SaveDocumentInput, SearchExecution, ServiceError,
+    ServiceStatus, ServiceSurface, ServiceSurfaceKind, SourceStatus, StorageStatus,
 };
 pub use storage::{
     CacheStats, CachedDocument, SavedDocument, SearchHistoryEntry, SecurityEvent, SqliteStorage,

@@ -23,6 +23,30 @@
    mantiene el token sólo en memoria de la página y lo envía exclusivamente en
    `Authorization`; no expongas consultas ni tokens en query strings.
 
+### Proceso de larga duración
+
+`amatl serve` corre en primer plano por diseño; para una ronda de pruebas que
+sobreviva al cierre de la terminal, despáchalo en segundo plano desde el
+binario ya compilado en vez de `cargo run`:
+
+```bash
+nohup ./target/release/amatl serve > amatl.log 2>&1 & disown
+```
+
+Esto desprende el proceso de la terminal, pero **no** lo convierte en un
+servicio del sistema: un apagado o reinicio de la máquina sí lo mata, y hay
+que relanzarlo a mano (no arranca solo sin una unidad `systemd` propia, que
+no forma parte de esta distribución). Verificá que sigue vivo con
+`pgrep -af 'target/release/amatl'` antes de asumir que una prueba tardía va a
+encontrar el servidor arriba.
+
+Importante no confundir esto con la persistencia de datos: `persistence`
+escribe en `amatl.sqlite3`, un archivo en disco independiente del proceso.
+Historial y documentos guardados sobreviven a que el proceso se caiga y lo
+vuelvas a levantar — sólo se pierden si borrás el archivo o si
+`persistence.enabled = false`. Reiniciar el servidor nunca vacía el
+historial.
+
 En la UI, `Buscar` llama a `/search` y `Analizar evidencia` llama a `/deep` con
 la misma consulta, filtros y bearer. La vista Deep despliega fragmentos,
 procedencia y resultado de verificación local de rango/hash. Requiere que los

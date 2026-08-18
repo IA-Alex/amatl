@@ -33,6 +33,11 @@ pub enum ErrorCode {
     RequestTimeout,
     /// No route or asset matches the request path.
     NotFound,
+    /// A resource already exists in a conflicting state (e.g. a client id
+    /// that is already declared). Distinct from `ConfigurationInvalid`: the
+    /// request is well-formed, but acting on it would silently clobber
+    /// something the caller did not ask to replace.
+    Conflict,
     /// Data policy denies outbound network access for this operation.
     EgressDenied,
     /// Outbound fetch failed or was rejected by the safety controls.
@@ -73,7 +78,7 @@ pub enum ErrorCode {
 }
 
 /// Every code in the catalog, in declaration order.
-pub const ERROR_CATALOG: [ErrorCode; 29] = [
+pub const ERROR_CATALOG: [ErrorCode; 30] = [
     ErrorCode::InvalidRequest,
     ErrorCode::InvalidQuery,
     ErrorCode::InvalidUrl,
@@ -85,6 +90,7 @@ pub const ERROR_CATALOG: [ErrorCode; 29] = [
     ErrorCode::HeadersTooLarge,
     ErrorCode::RequestTimeout,
     ErrorCode::NotFound,
+    ErrorCode::Conflict,
     ErrorCode::EgressDenied,
     ErrorCode::FetchFailed,
     ErrorCode::ProviderNotDeclared,
@@ -120,6 +126,7 @@ impl ErrorCode {
             Self::HeadersTooLarge => "headers_too_large",
             Self::RequestTimeout => "request_timeout",
             Self::NotFound => "not_found",
+            Self::Conflict => "conflict",
             Self::EgressDenied => "egress_denied",
             Self::FetchFailed => "fetch_failed",
             Self::ProviderNotDeclared => "provider_not_declared",
@@ -151,6 +158,7 @@ impl ErrorCode {
             | Self::ProviderNetworkBlocked
             | Self::ScopeDenied => 403,
             Self::NotFound => 404,
+            Self::Conflict => 409,
             // 499 is the conventional "client closed request"; MCP renders it
             // as a tool error rather than a transport status.
             Self::RequestCancelled => 499,
@@ -189,6 +197,7 @@ impl ErrorCode {
             Self::HeadersTooLarge => "request headers exceed the configured limit",
             Self::RequestTimeout => "request exceeded the configured deadline",
             Self::NotFound => "no route or asset matches this path",
+            Self::Conflict => "the resource already exists and would be overwritten",
             Self::EgressDenied => "data policy denies outbound network access",
             Self::FetchFailed => "outbound fetch failed or was rejected by safety controls",
             Self::ProviderNotDeclared => "enabled provider has no governance record",

@@ -159,6 +159,12 @@ pub struct ProviderSummary {
     pub status: ProviderSurfaceStatus,
     pub code: Option<String>,
     pub capabilities: ProviderCapabilities,
+    /// Whether `name` is currently in `providers.enabled` — independent of
+    /// `status`: an enabled provider can still be `Unavailable` (missing
+    /// approval, credential, or egress), and a disabled one is always
+    /// `Unavailable` regardless of how complete its ficha is. Surfaces
+    /// exist to flip this without also claiming they approved anything.
+    pub enabled: bool,
 }
 
 /// Domain failures a surface can receive from the service.
@@ -243,6 +249,18 @@ pub struct ServiceStatus {
     /// credential, only what a settings screen needs to explain *why* the
     /// feature is or isn't available right now.
     pub answer: AnswerStatus,
+    /// Read-only view of `data_policy` — the profile, egress and inference
+    /// gate every other capability in this status checks against. Exposed
+    /// so a settings screen can explain *why* a source, remote embedding or
+    /// `answer` call is unavailable instead of just reporting that it is.
+    pub data_policy: DataPolicyStatus,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+pub struct DataPolicyStatus {
+    pub profile: crate::config::SecurityProfile,
+    pub egress: crate::config::EgressPolicy,
+    pub inference: crate::config::InferenceMode,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
@@ -1029,6 +1047,32 @@ impl AmatlService {
             .map_err(|_| ServiceError::StorageUnavailable)
     }
 
+    /// Write an on-demand backup right now, identical to what the periodic
+    /// maintenance task writes — see
+    /// [`crate::storage::SqliteStorage::trigger_backup`]. Returns the path
+    /// written.
+    pub async fn trigger_backup(&self) -> Result<std::path::PathBuf, ServiceError> {
+        self.storage_or_error()?
+            .trigger_backup(
+                self.config.persistence.backup_directory.as_deref(),
+                self.config.persistence.auto_backup_max_count,
+            )
+            .await
+            .map_err(|_| ServiceError::StorageUnavailable)
+    }
+
+    /// Backup files on disk for the configured database, newest first.
+    pub fn list_backups(&self) -> Result<Vec<std::path::PathBuf>, ServiceError> {
+        if !self.config.persistence.enabled {
+            return Err(ServiceError::StorageUnavailable);
+        }
+        SqliteStorage::list_backups(
+            std::path::Path::new(&self.config.persistence.path),
+            self.config.persistence.backup_directory.as_deref(),
+        )
+        .map_err(|_| ServiceError::StorageUnavailable)
+    }
+
     /// Cache hit/miss counters accumulated since start.
     pub fn cache_effectiveness(&self) -> CacheEffectiveness {
         self.cache_counters.snapshot()
@@ -1108,6 +1152,11 @@ impl AmatlService {
                 available: self.answer_backend.is_some(),
                 model: self.config.answer.model.clone(),
                 endpoint: self.config.answer.endpoint.clone(),
+            },
+            data_policy: DataPolicyStatus {
+                profile: self.config.data_policy.profile,
+                egress: self.config.data_policy.egress,
+                inference: self.config.data_policy.inference,
             },
         })
     }
@@ -1207,6 +1256,12 @@ impl AmatlService {
                     status,
                     code,
                     capabilities: provider.capabilities(),
+                    enabled: self
+                        .config
+                        .providers
+                        .enabled
+                        .iter()
+                        .any(|name| name == provider.name()),
                 }
             })
             .collect())
