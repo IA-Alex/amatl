@@ -9,6 +9,8 @@
 # AUDIT-02: server integration runs can create their state database below a
 # crate directory. Keep every AMATL SQLite database and its backups local.
 **/amatl*.sqlite3*
+# AUDIT-03: runtime logs are local operational output, never source material.
+*.log
 **/*.cdx.json
 **/*.cdx.xml
 /.env
