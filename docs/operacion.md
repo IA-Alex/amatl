@@ -40,6 +40,13 @@ no forma parte de esta distribución). Verificá que sigue vivo con
 `pgrep -af 'target/release/amatl'` antes de asumir que una prueba tardía va a
 encontrar el servidor arriba.
 
+`target/` es la salida de compilación local, no el almacenamiento operativo:
+concentra binarios y cachés de Cargo y puede crecer a decenas de GiB tras
+tests, lint y benchmarks. `cargo clean` lo puede eliminar para recuperar
+espacio, pero borra también `target/release/amatl`; detén primero cualquier
+proceso iniciado desde esa ruta y ejecuta `cargo build --release` antes de
+volver a usar el comando `nohup` anterior.
+
 Importante no confundir esto con la persistencia de datos: `persistence`
 escribe en `amatl.sqlite3`, un archivo en disco independiente del proceso.
 Historial y documentos guardados sobreviven a que el proceso se caiga y lo

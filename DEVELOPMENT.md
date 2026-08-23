@@ -66,6 +66,27 @@ En TTY los logs de stderr son compactos y humanos. Redirigidos, son JSON con
 de autenticación, cookies ni URLs no sanitizadas a eventos. stdout pertenece al
 contrato de salida CLI.
 
+## Artefactos de compilación
+
+Cargo concentra fuera del código fuente los artefactos temporales en
+`target/` (por defecto, `<raíz-del-repositorio>/target/`). Ahí quedan las
+dependencias compiladas, binarios de `debug` y `release`, ejecutables de tests,
+cachés incrementales y resultados auxiliares de benchmarks. Una ejecución
+repetida de `cargo test --workspace --all-targets`, Clippy y benchmarks puede
+hacer que esta carpeta ocupe decenas de GiB.
+
+`target/` está ignorado por Git: no contiene configuración, fuentes, secretos
+ni las bases SQLite de AMATL. Para recuperar espacio, con ningún binario de
+AMATL ejecutándose desde esa ruta, usa:
+
+```bash
+cargo clean
+```
+
+La siguiente compilación será más lenta. Si se necesita volver a ejecutar el
+binario directo, reconstruye primero con `cargo build --release`; el binario
+queda en `target/release/amatl`.
+
 ## Añadir un provider
 
 1. Completa y aprueba la ficha descrita en
