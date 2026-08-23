@@ -4217,3 +4217,61 @@ async fn update_server_pending_config_refuses_an_invalid_candidate_without_writi
     assert!(!on_disk.contains("0.0.0.0"));
     let _ = std::fs::remove_file(path);
 }
+
+#[test]
+fn openapi_covers_every_router_operation() {
+    // AUDIT-01: keep the public OpenAPI inventory synchronized with the Axum
+    // router. The endpoint-specific request/response contracts are documented
+    // in the same file; this guard specifically prevents a route or method
+    // from being omitted altogether.
+    let openapi = include_str!("../../../docs/api/openapi.yaml");
+    let operations = [
+        ("/search", &["get", "post"][..]),
+        ("/deep", &["get", "post"][..]),
+        ("/answer", &["post", "patch"][..]),
+        ("/providers", &["get"][..]),
+        ("/status", &["get"][..]),
+        ("/history", &["get", "delete"][..]),
+        ("/history/{id}", &["delete"][..]),
+        ("/saved", &["get", "post"][..]),
+        ("/saved/{id}", &["delete"][..]),
+        ("/reload", &["post"][..]),
+        ("/answer/enabled", &["post"][..]),
+        ("/providers/{name}/enabled", &["post"][..]),
+        ("/providers/{name}", &["get", "patch"][..]),
+        ("/inference", &["patch"][..]),
+        ("/server/clients", &["get", "post"][..]),
+        ("/server/clients/{id}", &["patch", "delete"][..]),
+        ("/server/clients/{id}/rotate", &["post"][..]),
+        ("/server/pending-config", &["get", "patch"][..]),
+        ("/data-policy", &["post"][..]),
+        ("/policies", &["get"][..]),
+        ("/policies/{name}", &["patch"][..]),
+        ("/persistence", &["get", "patch"][..]),
+        ("/persistence/backups", &["get"][..]),
+        ("/persistence/backup", &["post"][..]),
+        ("/circuits", &["get"][..]),
+        ("/circuits/reset", &["post"][..]),
+        ("/telemetry", &["get", "patch"][..]),
+        ("/deep/limits", &["get", "patch"][..]),
+        ("/deep/extractor", &["patch"][..]),
+        ("/deep/renderer", &["patch"][..]),
+        ("/security-events", &["get"][..]),
+        ("/health", &["get"][..]),
+        ("/ready", &["get"][..]),
+        ("/metrics", &["get"][..]),
+    ];
+
+    for (path, methods) in operations {
+        let (_, section) = openapi
+            .split_once(&format!("  {path}:\n"))
+            .unwrap_or_else(|| panic!("OpenAPI omite la ruta {path}"));
+        let section = section.split("\n  /").next().unwrap();
+        for method in methods {
+            assert!(
+                section.contains(&format!("    {method}:")),
+                "OpenAPI omite {method} {path}"
+            );
+        }
+    }
+}
