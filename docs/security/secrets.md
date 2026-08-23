@@ -12,6 +12,23 @@ autorización en código, commits, configuración TOML, fixtures, logs, telemetr
 mensajes de error o URLs visibles. La caché y SQLite tampoco son almacenes de
 secretos.
 
+## Credenciales de providers
+
+Una variable no vacía no equivale a una credencial válida. Para un provider
+externo como Marginalia, la key debe ser genuina, vigente, emitida para el
+operador y tener una cuota/contrato que autorice el uso previsto. No se usan
+placeholders, valores compartidos ni claves públicas de ejemplo para tráfico
+productivo. La ficha de procedencia y aprobación se mantiene fuera del
+repositorio en el sistema de secretos del operador.
+
+Aplica mínimo privilegio: entrega la key sólo al proceso que la necesita, evita
+`set -x`, `printenv` y comandos que la incluyan en argumentos, y revócala en el
+portal del provider si se sospecha exposición. Para una prueba real, el
+`provider-canary` debe producir resultados utilizables; un error `429` indica
+cuota o QPM y no certifica autenticación. Estas reglas siguen los principios de
+ciclo de vida, control de acceso y minimización de exposición de la [OWASP
+Secrets Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html).
+
 ## Token del servidor
 
 El bearer debe tener al menos 32 bytes. Generación local sugerida:

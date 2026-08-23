@@ -27,7 +27,9 @@ enabled = []
 # reviewed_at = "2026-08-14"
 # reviewer = "identidad verificable"
 #
-# Ejemplo: activar Marginalia (requiere MARGINALIA_API_KEY).
+# Ejemplo: activar Marginalia. Requiere una key genuina, vigente y emitida al
+# operador por Marginalia en MARGINALIA_API_KEY; un placeholder, una key
+# compartida o una key pública de ejemplo no autoriza uso productivo.
 # El adapter está implementado y probado — consulta api2.marginalia-search.com
 # con el header API-Key. Sólo falta aprobar la ficha con identidad y fecha
 # reales (ver docs/gobernanza-providers.md, sección «Fichas de aprobación»).

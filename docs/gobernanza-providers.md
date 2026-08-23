@@ -132,8 +132,11 @@ que no existe: es una autocertificación y así se declara en
 El adapter está implementado y probado (`providers/marginalia.rs`): consulta
 `api2.marginalia-search.com/search` (el endpoint `api.marginalia.nu` original
 está deprecado), envía la clave en el header `API-Key` y traduce `site:` de
-forma nativa. Sólo faltan `reviewer`, `reviewed_at` y `approval_status`,
-específicos del operador:
+forma nativa. Antes de aprobar o habilitar uso productivo, el operador debe
+tener una key **genuina, vigente y emitida para su cuenta por Marginalia**. Una
+variable no vacía, un placeholder, una key compartida o una key pública de
+ejemplo no prueban autenticación ni autorización. Sólo después se completan
+`reviewer`, `reviewed_at` y `approval_status` con evidencia real:
 
 ```toml
 [providers.marginalia]
@@ -157,6 +160,14 @@ operational_risk = "Dependencia de la API externa (api2.marginalia-search.com); 
 
 Notas sobre la ficha de Marginalia:
 
+- `credential_env` sólo referencia `MARGINALIA_API_KEY`; el valor nunca entra
+  en TOML, Git, logs ni evidencia de aprobación. Su ciclo de vida (custodia,
+  rotación y revocación) sigue `docs/security/secrets.md`.
+- El revisor debe registrar la fecha y la fuente de emisión de la key en el
+  sistema de secretos o expediente privado, no en este repositorio. El canario
+  `provider-canary marginalia` debe devolver resultados utilizables antes de
+  habilitar tráfico normal. Un `429` sólo indica límite de cuota/QPM; no valida
+  que la key sea auténtica.
 - `operational_risk` **no** es "nulo": depende de una API externa con cuota y
   posible bloqueo. Declararlo como "sin dependencias externas" sería falso.
 - `terms_url` y `terms_version_or_date` deben ser verificados, no hipotéticos.
@@ -176,7 +187,7 @@ el coste esté **declarado**, sea cual sea.
 |---|---|---|---|---|
 | Brave Search API | **De pago desde 2026-02.** Tarjeta obligatoria al registrarse; 5 USD/mes de crédito (~1 000 consultas) y luego cobro por uso | Sí | Sí, oficial | Índice propio amplio |
 | Mojeek Search API | De pago | Sí | Sí, oficial | Índice propio, medio |
-| Marginalia | **0** para uso no comercial (CC-BY-NC-SA) | Sí, gratuita por correo; clave `public` para pruebas | Sí, oficial (`api2.marginalia-search.com`) | Índice propio pequeño, orientado a web independiente |
+| Marginalia | **0** para uso no comercial (CC-BY-NC-SA) | Sí; para producción requiere una key genuina emitida al operador y una cuota verificable. Una key pública/de ejemplo no es una credencial productiva. | Sí, oficial (`api2.marginalia-search.com`) | Índice propio pequeño, orientado a web independiente |
 | SearXNG autohospedado | **0**, sin cuota | No | Sí, la de tu instancia (`format=json`, desactivado por defecto) | Agrega Google, Bing, DuckDuckGo y otros |
 | DuckDuckGo | 0 | No | **No existe.** Sólo Instant Answer API, que devuelve definiciones y resúmenes, no resultados web | — |
 

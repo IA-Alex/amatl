@@ -302,13 +302,20 @@ documento para una URL bloqueada sin invalidar Search.
 
 El canario ejecuta exactamente un provider y falla antes de acceder a la red si
 el nombre no está habilitado, la ficha de gobernanza no está aprobada/vigente o
-falta la variable de credencial declarada. No uses consultas sensibles: el
-resultado JSON se conserva en el log del operador.
+falta la variable de credencial declarada. Para Marginalia, usa sólo una key
+genuina y vigente emitida al operador; la presencia de `MARGINALIA_API_KEY` no
+prueba que sea válida. No uses consultas sensibles: el resultado JSON se
+conserva en el log del operador.
 
 ```bash
 amatl --config-file amatl.toml \
   provider-canary brave "rust programming language" --json
 ```
+
+Para Marginalia, ejecuta una sola consulta canario y comprueba que el resultado
+incluya `marginalia` en `providers_used`. Si devuelve `429`/`QPM Limit Exceeded`,
+detén reintentos, espera la ventana de cuota y revisa el plan o la key en el
+portal del provider; ese estado no confirma autenticación.
 
 En GitHub, el workflow manual `provider-canary` usa el environment homónimo para
 aprobación humana. Requiere el secreto `AMATL_CANARY_CONFIG` con el TOML completo
