@@ -152,6 +152,17 @@ paths:
         '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '500': { $ref: '#/components/responses/ServiceUnavailable' }
         '504': { $ref: '#/components/responses/RequestTimeout' }
+    patch:
+      operationId: answerUpdate
+      summary: Update answer synthesis settings and apply them live
+      description: Admin-scoped partial update of `[answer]`; unset fields are preserved.
+      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      responses:
+        '200': { $ref: '#/components/responses/AdminSuccess' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '500': { $ref: '#/components/responses/ServiceUnavailable' }
   /answer/enabled:
     post:
       operationId: answerToggle
@@ -448,6 +459,154 @@ paths:
         '403': { $ref: '#/components/responses/Forbidden' }
         '431': { $ref: '#/components/responses/HeadersTooLarge' }
         '504': { $ref: '#/components/responses/RequestTimeout' }
+  # AUDIT-01: administrative routes implemented by amatl-server.
+  /providers/{name}:
+    parameters: [{ $ref: '#/components/parameters/ProviderName' }]
+    get:
+      operationId: providerRecord
+      summary: Read a provider governance record
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '404': { $ref: '#/components/responses/NotFound' } }
+    patch:
+      operationId: providerRecordUpdate
+      summary: Upsert a provider governance record
+      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+  /providers/{name}/enabled:
+    parameters: [{ $ref: '#/components/parameters/ProviderName' }]
+    post:
+      operationId: providerToggle
+      summary: Enable or disable a declared provider and reload it
+      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+  /inference:
+    patch:
+      operationId: inferenceUpdate
+      summary: Update inference settings and apply them live
+      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+  /server/clients:
+    get:
+      operationId: serverClientsList
+      summary: List configured server clients without credentials
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' } }
+    post:
+      operationId: serverClientCreate
+      summary: Create a client and return its token once
+      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' }, '409': { $ref: '#/components/responses/Conflict' } }
+  /server/clients/{id}:
+    parameters: [{ $ref: '#/components/parameters/ClientId' }]
+    patch:
+      operationId: serverClientUpdate
+      summary: Update one client's scopes, tools, or expiry
+      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '404': { $ref: '#/components/responses/NotFound' } }
+    delete:
+      operationId: serverClientDelete
+      summary: Revoke one server client
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '404': { $ref: '#/components/responses/NotFound' } }
+  /server/clients/{id}/rotate:
+    parameters: [{ $ref: '#/components/parameters/ClientId' }]
+    post:
+      operationId: serverClientRotate
+      summary: Rotate a client's token and return the replacement once
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '404': { $ref: '#/components/responses/NotFound' } }
+  /server/pending-config:
+    get:
+      operationId: serverPendingConfig
+      summary: Read listener and transport configuration
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' } }
+    patch:
+      operationId: serverPendingConfigUpdate
+      summary: Persist server settings without an implicit reload
+      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+  /data-policy:
+    post:
+      operationId: dataPolicyUpdate
+      summary: Update egress and inference data-policy gates
+      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+  /policies:
+    get:
+      operationId: policies
+      summary: Read all search-quality policies
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' } }
+  /policies/{name}:
+    parameters: [{ $ref: '#/components/parameters/PolicyName' }]
+    patch:
+      operationId: policyUpdate
+      summary: Replace one named search-quality policy
+      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' }, '404': { $ref: '#/components/responses/NotFound' } }
+  /persistence:
+    get:
+      operationId: persistenceConfig
+      summary: Read local persistence configuration
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' } }
+    patch:
+      operationId: persistenceUpdate
+      summary: Update persistence retention and backup settings
+      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+  /persistence/backups:
+    get:
+      operationId: persistenceBackups
+      summary: List database backups
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '503': { $ref: '#/components/responses/StorageUnavailable' } }
+  /persistence/backup:
+    post:
+      operationId: persistenceBackupCreate
+      summary: Create an on-demand database backup
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '503': { $ref: '#/components/responses/StorageUnavailable' } }
+  /circuits:
+    get:
+      operationId: circuits
+      summary: List provider circuit-breaker snapshots
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' } }
+  /circuits/reset:
+    post:
+      operationId: circuitsReset
+      summary: Close all observed provider circuits
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' } }
+  /telemetry:
+    get:
+      operationId: telemetryConfig
+      summary: Read telemetry configuration
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' } }
+    patch:
+      operationId: telemetryUpdate
+      summary: Update telemetry configuration
+      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+  /deep/limits:
+    get:
+      operationId: deepConfig
+      summary: Read Deep safety limits and configuration
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' } }
+    patch:
+      operationId: deepConfigUpdate
+      summary: Update Deep safety limits
+      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+  /deep/extractor:
+    patch:
+      operationId: deepExtractorUpdate
+      summary: Update Deep extractor configuration
+      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+  /deep/renderer:
+    patch:
+      operationId: deepRendererUpdate
+      summary: Update Deep renderer configuration
+      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+  /ready:
+    get:
+      operationId: ready
+      summary: Read process readiness, including local state availability
+      security: []
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '503': { $ref: '#/components/responses/StorageUnavailable' } }
 components:
   headers:
     RequestId:
@@ -490,7 +649,47 @@ components:
       in: path
       required: true
       schema: { type: integer }
+    ProviderName:
+      name: name
+      in: path
+      required: true
+      schema: { type: string, minLength: 1 }
+    PolicyName:
+      name: name
+      in: path
+      required: true
+      description: One of ranking, diversity, search, ranking_v2, or gaps.
+      schema: { type: string, enum: [ranking, diversity, search, ranking_v2, gaps] }
+    ClientId:
+      name: id
+      in: path
+      required: true
+      schema: { type: string, minLength: 1 }
+  requestBodies:
+    AdminPatch:
+      required: true
+      description: >-
+        Endpoint-specific partial configuration object. Field names and limits
+        are defined by the matching TOML section in docs/configuracion.md;
+        omitted fields retain their current values.
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/AdminPayload' }
   responses:
+    AdminSuccess:
+      description: Current or updated administrative resource.
+      headers:
+        X-Request-ID: { $ref: '#/components/headers/RequestId' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/AdminPayload' }
+    Conflict:
+      description: Resource already exists or cannot be changed in its current state
+      headers:
+        X-Request-ID: { $ref: '#/components/headers/RequestId' }
+      content:
+        application/json:
+          schema: { $ref: '#/components/schemas/ErrorResponse' }
     BadRequest:
       description: Invalid query, JSON, or request shape
       headers:
@@ -568,6 +767,14 @@ components:
         application/json:
           schema: { $ref: '#/components/schemas/ErrorResponse' }
   schemas:
+    AdminPayload:
+      type: object
+      description: >-
+        Administrative response or endpoint-specific update object. It always
+        uses JSON and may contain the schema_version field. Configuration
+        shapes are intentionally open because their precise fields are the
+        versioned TOML contract documented in docs/configuracion.md.
+      additionalProperties: true
     SchemaVersion:
       type: string
       const: '1'
