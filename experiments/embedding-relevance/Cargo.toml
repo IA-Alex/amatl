@@ -22,6 +22,31 @@ default-features = false
 # machine only). `hf-hub` pulls the model once into the HF cache.
 features = ["ort-download-binaries", "hf-hub"]
 
+# STEP 4B — Candle (pure-Rust) backend. No C++ runtime; the CPU backend is
+# plain Rust + a small amount of `gemm`/`memchr` etc. (also pure Rust).
+# `candle-transformers` gives BERT; `tokenizers` (onig-free build) the
+# WordPiece tokenizer; `hf-hub` a one-time dev-machine model download.
+[dependencies.candle-core]
+version = "0.9"
+default-features = false
+
+[dependencies.candle-nn]
+version = "0.9"
+default-features = false
+
+[dependencies.candle-transformers]
+version = "0.9"
+default-features = false
+
+# Pure-Rust build: the default `onig` feature pulls a C oniguruma
+# (`onig_sys`), which breaks the musl cross-build. `unstable_wasm` selects the
+# pure-Rust `fancy-regex` backend and no C code. bge-small's WordPiece
+# tokenizer does not need PCRE features.
+[dependencies.tokenizers]
+version = "0.20"
+default-features = false
+features = ["unstable_wasm"]
+
 [dev-dependencies]
 
 [[bin]]
@@ -31,6 +56,18 @@ path = "src/bin/bench.rs"
 [[bin]]
 name = "diagnostic"
 path = "src/bin/diagnostic.rs"
+
+[[bin]]
+name = "candle_bench"
+path = "src/bin/candle_bench.rs"
+
+[[bin]]
+name = "agreement"
+path = "src/bin/agreement.rs"
+
+[[bin]]
+name = "candle_diagnostic"
+path = "src/bin/candle_diagnostic.rs"
 
 [profile.release]
 debug = false

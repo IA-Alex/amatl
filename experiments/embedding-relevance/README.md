@@ -1,4 +1,4 @@
-# amatl — local embedding relevance experiment (STEP 4A)
+# amatl — local embedding relevance experiment (STEP 4A + 4B)
 
 **Status: feasibility experiment. Not production code. Not wired into
 `amatl-core`.**
@@ -6,8 +6,41 @@
 This crate is deliberately **outside** the amatl workspace (`exclude` in the
 root `Cargo.toml`). `cargo {check,clippy,test} --workspace` and every
 production build never see it. It carries heavy ML dependencies
-(`fastembed` → `ort` → a downloaded static ONNX Runtime) and downloads an
-embedding model **at development time only**.
+(`fastembed` → `ort` → a downloaded static ONNX Runtime; **and** the STEP 4B
+`candle` pure-Rust stack) and downloads an embedding model **at development
+time only**.
+
+## STEP 4B — Candle (pure-Rust, musl) backend
+
+`src/candle_backend.rs` — `CandleBackend`, same `EmbeddingBackend` trait,
+same model (`BAAI/bge-small-en-v1.5`, loaded as fp32 `model.safetensors`),
+CLS pooling + L2 normalize, query instruction prefix. Pure Rust: **zero
+`-sys` crates, no ONNX Runtime, no C++**. The tokenizer uses the
+`unstable_wasm` (fancy-regex) feature so there is no `onig_sys` C dependency
+— which is what lets the whole stack cross-compile to
+`x86_64-unknown-linux-musl` with only `musl-tools` (already installed by
+amatl's `release.yml` for `ring`).
+
+- `src/bin/candle_bench.rs` — Candle latency / RSS / batch, same methodology
+  as `bench.rs`.
+- `src/bin/agreement.rs` — ONNX vs Candle embedding cosine agreement and
+  Spearman rank correlation on the consumed diagnostic set. **Links both
+  backends** → needs the large code model (see `.cargo/config.toml`); a real
+  build would ship exactly one backend and would not.
+- `src/bin/candle_diagnostic.rs` — the A/B/C/D diagnostic with Candle
+  similarities, thresholds **reused** from the ONNX sweep (no re-tuning).
+- `tests/candle_failure_modes.rs` — §5 safety: empty / non-ascii / long /
+  determinism / batch-vs-single / corrupt-model → clean `Err`.
+
+```sh
+cargo run  --release --bin candle_bench        # downloads safetensors once
+cargo run  --release --bin agreement
+cargo run  --release --bin candle_diagnostic -- 0.72 0.55
+cargo test --release --test candle_failure_modes -- --ignored
+```
+
+Full measured numbers, the musl cross-build proof, and the decision:
+`../../docs/experiments/candle-musl-feasibility.md`.
 
 ## What it does
 

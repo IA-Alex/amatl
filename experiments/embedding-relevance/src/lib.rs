@@ -8,6 +8,7 @@
 
 use std::collections::BTreeSet;
 
+pub mod candle_backend;
 pub mod corpus;
 pub mod deterministic;
 pub mod fastembed_backend;
