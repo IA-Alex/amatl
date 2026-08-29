@@ -16,6 +16,10 @@ pub mod document_cache;
 pub mod errors;
 pub mod evidence;
 pub mod execution;
+/// STEP 4C experimental local-embedding integration boundary. Compiled only
+/// under `--features experimental-local-embeddings`; never on the default path.
+#[cfg(feature = "experimental-local-embeddings")]
+pub mod experimental_embeddings;
 pub mod extract;
 pub mod fetch;
 pub mod gaps;

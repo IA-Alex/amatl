@@ -12,6 +12,16 @@ description = "Core types, search pipeline, provider registry, and persistence f
 keywords = ["search", "metasearch", "aggregator"]
 categories = ["web-programming::http-client", "development-tools"]
 
+[features]
+# STEP 4C — EXPERIMENTAL. Compiles in the local-embedding integration boundary
+# (`experimental_embeddings`). OFF by default. Adds NO dependencies (the real
+# Candle backend stays in `experiments/embedding-relevance/`, outside the
+# workspace); only unlocks the in-workspace seam + the deterministic fixture
+# backend used by the STEP 4C latency harness and failure-mode tests. Enabling
+# it does not change any production relevance / routing / ranking / telemetry
+# behaviour — nothing on the default search path calls into the module.
+experimental-local-embeddings = []
+
 [dependencies]
 async-trait.workspace = true
 http.workspace = true

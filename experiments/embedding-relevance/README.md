@@ -42,6 +42,23 @@ cargo test --release --test candle_failure_modes -- --ignored
 Full measured numbers, the musl cross-build proof, and the decision:
 `../../docs/experiments/candle-musl-feasibility.md`.
 
+## STEP 4C — release path, E2E latency, model distribution
+
+STEP 4C moved the *integration boundary* into the workspace (behind the
+`amatl-core` feature `experimental-local-embeddings`, **no** Candle deps
+added) and measured the real end-to-end search-path cost:
+
+- `../../docs/experiments/candle-e2e-4c.md` — full musl build attempt
+  (`BLOCKED_BY_ENVIRONMENT` by pre-existing `ring`/`libsqlite3-sys`, not
+  Candle), isolated Candle musl build reproduced, E2E latency
+  (`+241 / +468 / +921 ms` per search for 5 / 10 / 20 results, naive path),
+  latency decision `LATENCY_COST_ACCEPTABLE_WITH_OPTIMIZATION`.
+- `../../docs/experiments/candle-model-distribution.md` — model distribution
+  analysis; decision `MODEL_DISTRIBUTION_OPTIONAL_PACKAGE`.
+
+`STATUS = STEP_4C_PARTIAL_ENVIRONMENT_BLOCK` (the full-amatl musl link needs a
+runner with `musl-tools`, already in `release.yml`). No production change.
+
 ## What it does
 
 Measures whether a small, fully-local sentence-embedding model can address the
