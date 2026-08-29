@@ -1,5 +1,10 @@
 [workspace]
 members = ["crates/amatl-core", "crates/amatl-cli", "crates/amatl-ui", "crates/amatl-server"]
+# STEP 4A local-embedding feasibility experiment. Standalone crate with its own
+# lockfile and heavy ML dependencies (fastembed/ort). Deliberately excluded from
+# the workspace so `cargo {check,clippy,test} --workspace` and production builds
+# never see it. See experiments/embedding-relevance/README.md.
+exclude = ["experiments/embedding-relevance"]
 resolver = "2"
 
 [workspace.package]
