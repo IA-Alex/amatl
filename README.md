@@ -7,9 +7,19 @@ es `buscar → revisar → abrir`.
 
 No es un chatbot, generador de texto, crawler masivo, dashboard analítico, agente
 autónomo ni sistema dependiente de LLM o de un único provider. Search permanece
-ligero; Deep, Trafilatura, Chromium, SQLite y cachés son opcionales. El harness
-de aislamiento de Chromium está verificado por separado; el backend permanece
-desactivado hasta conectarlo sin transferir a Chromium el ownership de red.
+ligero; Deep, Trafilatura, Chromium, SQLite, cachés y la síntesis de respuesta
+("Resumen con IA", ver abajo) son opcionales. El renderer de Chromium está
+conectado a través del harness de aislamiento, desactivado por defecto y sin
+ownership de red: recibe el DOM que `SafeFetcher` ya obtuvo, nunca una URL, de
+modo que no puede convertirse en una segunda vía de egress.
+
+Sobre resultados de Search, AMATL puede sintetizar opcionalmente una respuesta
+citada por número de fuente (`[1]`, `[2]`…) usando un modelo remoto configurado
+explícitamente por el operador (`data_policy.inference = "remote_explicit"` y
+`[answer]`). Sigue sin ser obligatorio: apagado por defecto, exige credencial
+propia por variable de entorno y un interruptor con scope `admin` permite
+activarlo/desactivarlo desde la UI sin reiniciar el proceso ni tocar el resto
+de `amatl.toml`. Ver [docs/resumen-con-ia.md](docs/resumen-con-ia.md).
 
 ## Invariantes visibles
 
@@ -93,12 +103,19 @@ curl -X POST 'http://127.0.0.1:8080/search' \
   --data '{"q":"rust"}'
 ```
 
-La UI ofrece `Buscar` y `Analizar evidencia`. Ambas acciones usan POST JSON para
-que la consulta no aparezca en URL, historial o access logs. Deep presenta cada
+La UI ofrece `Buscar`, `Analizar evidencia` y, si el operador activó la síntesis
+de respuesta, `Resumen con IA`. Las tres acciones usan POST JSON para que la
+consulta no aparezca en URL, historial o access logs. Deep presenta cada
 documento con fragmentos Evidence v2, linaje de URL, extractor y hashes, y
-comprueba en el navegador el rango UTF-8 y SHA-256 del fragmento. El token viaja
+comprueba en el navegador el rango UTF-8 y SHA-256 del fragmento. `Resumen con
+IA` sólo cita índices de fuente que existen en los resultados devueltos; el
+botón permanece visible pero deshabilitado cuando la función está apagada o le
+falta credencial en el servidor, para que el operador siempre pueda descubrir
+y accionar el interruptor de administrador que la enciende. El token viaja
 únicamente en `Authorization`, nunca como campo del formulario ni como query
-parameter. La ingestión local continúa siendo exclusiva de CLI.
+parameter. La ingestión local continúa siendo exclusiva de CLI. La cabecera
+incluye un selector de tema claro/oscuro que respeta la preferencia del
+sistema y se puede fijar manualmente.
 
 Todas las respuestas de la aplicación incluyen un `X-Request-ID` generado por
 AMATL para correlacionarlas con los eventos operativos y de seguridad. Los IDs
@@ -134,8 +151,10 @@ al redirigir; controla detalle con `RUST_LOG`.
 - Producto: [arquitectura](docs/arquitectura.md),
   [glosario](docs/glosario.md), [configuración](docs/configuracion.md),
   [Evidence v2](docs/evidence-v2.md), [ingestión local](docs/ingestion-local.md),
-  [operación](docs/operacion.md) y
-  [gobernanza de providers](docs/gobernanza-providers.md).
+  [operación](docs/operacion.md),
+  [gobernanza de providers](docs/gobernanza-providers.md),
+  [resumen con IA](docs/resumen-con-ia.md) e
+  [identidad visual](docs/identidad-visual.md).
 - Contratos: [OpenAPI](docs/api/openapi.yaml) y [MCP](docs/api/mcp.md).
 - Ingeniería: [desarrollo](DEVELOPMENT.md), [contribución](CONTRIBUTING.md),
   [contribución en español](docs/contribuir.md),

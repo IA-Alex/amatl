@@ -8,6 +8,7 @@ use std::net::{IpAddr, SocketAddr};
 use std::sync::{Arc, Mutex};
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 use thiserror::Error;
+use tracing::Instrument;
 use url::Url;
 
 #[derive(Clone, Debug)]
@@ -17,6 +18,11 @@ pub struct FetchRequest {
     pub max_bytes: u64,
     pub max_redirects: u32,
     pub headers: BTreeMap<String, String>,
+    /// Correlates this outbound fetch with the originating HTTP request, CLI
+    /// invocation or MCP session. It never travels on the wire; it only tags
+    /// the local trace so a fetch can be tied back to the request that caused
+    /// it.
+    pub request_id: Option<String>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
@@ -81,6 +87,15 @@ impl DnsResolver for SystemDnsResolver {
 #[derive(Clone)]
 pub struct SafeFetcher<R = SystemDnsResolver> {
     resolver: R,
+    /// Pinned-client cache, keyed by host and the exact DNS answer used to
+    /// pin it. Stays a `Mutex`, not a `RwLock`: every access — including
+    /// cache hits — takes the lock for only a `get`/`clone` or an
+    /// `insert`/`clear` on a map bounded at 64 entries, so the critical
+    /// section is already as cheap as a read lock would be, and a `RwLock`
+    /// would add a second lock type and a check-then-insert race (harmless
+    /// here, since building a client twice is only wasted work, but still
+    /// complexity) for a contention problem this cache has never been shown
+    /// to have.
     clients: Arc<Mutex<BTreeMap<String, reqwest::Client>>>,
 }
 
@@ -101,7 +116,40 @@ impl<R: DnsResolver> SafeFetcher<R> {
         }
     }
 
+    /// Fetch one URL under the SSRF, redirect, byte and time limits carried by
+    /// the request, tracing the attempt under the caller's request id.
     pub async fn fetch(&self, request: FetchRequest) -> Result<FetchResult, FetchError> {
+        let span = tracing::info_span!(
+            target: "amatl::fetch",
+            "outbound_fetch",
+            request_id = request.request_id.as_deref().unwrap_or("-"),
+            host = request.url.host_str().unwrap_or("-"),
+            max_bytes = request.max_bytes,
+            timeout_ms = request.timeout_ms
+        );
+        let started = std::time::Instant::now();
+        let outcome = self.fetch_inner(request).instrument(span.clone()).await;
+        let _entered = span.enter();
+        match &outcome {
+            Ok(result) => tracing::debug!(
+                target: "amatl::fetch",
+                status = result.status,
+                size = result.size,
+                redirects = result.redirect_chain.len(),
+                latency_ms = started.elapsed().as_millis() as u64,
+                "outbound fetch completed"
+            ),
+            Err(error) => tracing::warn!(
+                target: "amatl::fetch",
+                error = %error,
+                latency_ms = started.elapsed().as_millis() as u64,
+                "outbound fetch failed"
+            ),
+        }
+        outcome
+    }
+
+    async fn fetch_inner(&self, request: FetchRequest) -> Result<FetchResult, FetchError> {
         validate_headers(&request.headers)?;
         let deadline = tokio::time::Instant::now() + Duration::from_millis(request.timeout_ms);
         let mut current = request.url;
@@ -168,13 +216,7 @@ impl<R: DnsResolver> SafeFetcher<R> {
         sorted_addresses.sort_unstable();
         sorted_addresses.dedup();
         let key = format!("{host}|{sorted_addresses:?}");
-        if let Some(client) = self
-            .clients
-            .lock()
-            .unwrap_or_else(|error| error.into_inner())
-            .get(&key)
-            .cloned()
-        {
+        if let Some(client) = self.lock_clients().get(&key).cloned() {
             return Ok(client);
         }
         let client = reqwest::Client::builder()
@@ -184,16 +226,79 @@ impl<R: DnsResolver> SafeFetcher<R> {
             .referer(false)
             .resolve_to_addrs(host, &sorted_addresses)
             .build()
-            .map_err(|_| FetchError::Network)?;
-        let mut clients = self
-            .clients
-            .lock()
-            .unwrap_or_else(|error| error.into_inner());
+            .map_err(|error| {
+                tracing::warn!(
+                    target: "amatl::fetch",
+                    kind = classify_transport_error(&error),
+                    "failed to build pinned HTTP client"
+                );
+                FetchError::Network
+            })?;
+        let mut clients = self.lock_clients();
         if clients.len() >= 64 {
             clients.clear();
         }
         clients.insert(key, client.clone());
         Ok(client)
+    }
+
+    /// Lock the pinned-client cache, recovering it if a previous holder
+    /// panicked mid-access and logging that recovery.
+    ///
+    /// The cache only ever sees `get`/`clone`/`insert`/`clear`, none of which
+    /// can leave the `BTreeMap` in a form that is unsafe to keep using after a
+    /// panic — losing entries only costs rebuilding a `reqwest::Client`, never
+    /// correctness — so recovering (as already done throughout `telemetry.rs`)
+    /// is the right response, not a mask over the underlying bug. Poisoning
+    /// itself can only be caused by a panic elsewhere in this critical
+    /// section, which would be a real defect; the `security_event` field
+    /// below makes that observable (grep/alert on
+    /// `target: "amatl::fetch"` and `security_event: "mutex_poisoned"`,
+    /// the same convention `security.rs` uses for SSRF rejections) instead of
+    /// silently swallowing it. A dedicated public counter was considered and
+    /// rejected: it would grow the public API for an event whose only
+    /// possible cause is an unrelated panic bug, which this project has never
+    /// observed in practice.
+    fn lock_clients(&self) -> std::sync::MutexGuard<'_, BTreeMap<String, reqwest::Client>> {
+        self.clients.lock().unwrap_or_else(|error| {
+            tracing::error!(
+                target: "amatl::fetch",
+                security_event = "mutex_poisoned",
+                component = "client_cache",
+                "recovered a poisoned client-cache mutex; a prior operation must have panicked while holding it"
+            );
+            error.into_inner()
+        })
+    }
+}
+
+/// Coarse transport-error classification for internal observability only,
+/// mirroring `providers::http::classify_transport_error`'s reasoning: this
+/// never becomes a new `FetchError` variant. `FetchError::Network` already
+/// covers everything reqwest can throw at build/connect/send/read time, and
+/// every caller of this fetcher treats it identically (a retryable transport
+/// failure); a finer-grained public variant would ripple through the
+/// `FetchError` contract without changing any decision this fetcher makes.
+/// It exists purely so the `outbound fetch failed` log line records *which*
+/// kind of transport failure happened, instead of collapsing all of them
+/// into one opaque "network request failed".
+fn classify_transport_error(error: &reqwest::Error) -> &'static str {
+    if error.is_timeout() {
+        "timeout"
+    } else if error.is_connect() {
+        "connect"
+    } else if error.is_body() {
+        "body"
+    } else if error.is_decode() {
+        "decode"
+    } else if error.is_builder() {
+        "builder"
+    } else if error.is_redirect() {
+        "redirect"
+    } else if error.is_request() {
+        "request"
+    } else {
+        "other"
     }
 }
 
@@ -204,6 +309,7 @@ impl<R: DnsResolver> Fetcher for SafeFetcher<R> {
     }
 }
 
+#[derive(Debug)]
 struct RawResponse {
     status: u16,
     location: Option<String>,
@@ -230,7 +336,14 @@ async fn execute_pinned(
         .headers(headers)
         .send()
         .await
-        .map_err(|_| FetchError::Network)?;
+        .map_err(|error| {
+            tracing::warn!(
+                target: "amatl::fetch",
+                kind = classify_transport_error(&error),
+                "outbound send failed"
+            );
+            FetchError::Network
+        })?;
     let status = response.status().as_u16();
     let location = response
         .headers()
@@ -249,7 +362,14 @@ async fn execute_pinned(
         });
     }
     let mut body = Vec::new();
-    while let Some(chunk) = response.chunk().await.map_err(|_| FetchError::Network)? {
+    while let Some(chunk) = response.chunk().await.map_err(|error| {
+        tracing::warn!(
+            target: "amatl::fetch",
+            kind = classify_transport_error(&error),
+            "outbound response body read failed"
+        );
+        FetchError::Network
+    })? {
         if body.len() as u64 + chunk.len() as u64 > max_bytes {
             return Err(FetchError::ByteLimit);
         }
@@ -354,6 +474,104 @@ mod client_cache_tests {
 }
 
 #[cfg(test)]
+mod byte_limit_tests {
+    use super::*;
+    use tokio::io::{AsyncReadExt, AsyncWriteExt};
+
+    /// `execute_pinned` is exercised directly (bypassing `SafeFetcher`'s SSRF
+    /// gate, which would otherwise reject a loopback test server before the
+    /// byte limit ever came into play) to pin down the boundary: a body of
+    /// exactly `max_bytes` is accepted, one byte more is rejected.
+    async fn serve_body_once(body: &'static [u8]) -> SocketAddr {
+        let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+        let address = listener.local_addr().unwrap();
+        tokio::spawn(async move {
+            let (mut stream, _) = listener.accept().await.unwrap();
+            let mut request = [0_u8; 1024];
+            let _ = stream.read(&mut request).await;
+            let header = format!(
+                "HTTP/1.1 200 OK\r\nContent-Length: {}\r\nConnection: close\r\n\r\n",
+                body.len()
+            );
+            stream.write_all(header.as_bytes()).await.unwrap();
+            stream.write_all(body).await.unwrap();
+        });
+        address
+    }
+
+    #[tokio::test]
+    async fn accepts_a_body_exactly_at_the_byte_limit() {
+        let address = serve_body_once(b"12345").await;
+        let client = reqwest::Client::new();
+        let url = Url::parse(&format!("http://{address}/")).unwrap();
+        let result = execute_pinned(&client, &url, &BTreeMap::new(), 5)
+            .await
+            .unwrap();
+        assert_eq!(result.body, b"12345");
+    }
+
+    #[tokio::test]
+    async fn rejects_a_body_one_byte_over_the_limit() {
+        let address = serve_body_once(b"123456").await;
+        let client = reqwest::Client::new();
+        let url = Url::parse(&format!("http://{address}/")).unwrap();
+        let error = execute_pinned(&client, &url, &BTreeMap::new(), 5)
+            .await
+            .unwrap_err();
+        assert_eq!(error, FetchError::ByteLimit);
+    }
+}
+
+#[cfg(test)]
+mod transport_error_classification_tests {
+    use super::*;
+
+    /// Mirrors `providers::http`'s equivalent test: a refused connection is
+    /// still reported as the single public `FetchError::Network`, but the
+    /// internal classifier used for the `outbound fetch failed` log line
+    /// distinguishes it from a timeout or a body-read failure.
+    #[tokio::test]
+    async fn classifies_a_refused_connection_as_connect() {
+        let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+        let address = listener.local_addr().unwrap();
+        drop(listener); // nothing listens on `address` anymore: refused.
+
+        let error = reqwest::Client::new()
+            .get(format!("http://{address}/"))
+            .send()
+            .await
+            .unwrap_err();
+        assert_eq!(classify_transport_error(&error), "connect");
+
+        let client = reqwest::Client::new();
+        let url = Url::parse(&format!("http://{address}/")).unwrap();
+        let fetch_error = execute_pinned(&client, &url, &BTreeMap::new(), 100)
+            .await
+            .unwrap_err();
+        assert_eq!(fetch_error, FetchError::Network);
+    }
+
+    #[tokio::test]
+    async fn classifies_an_expired_deadline_as_timeout() {
+        let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+        let address = listener.local_addr().unwrap();
+        let _server = tokio::spawn(async move {
+            let (stream, _) = listener.accept().await.unwrap();
+            tokio::time::sleep(Duration::from_secs(5)).await;
+            drop(stream);
+        });
+
+        let error = reqwest::Client::new()
+            .get(format!("http://{address}/"))
+            .timeout(Duration::from_millis(50))
+            .send()
+            .await
+            .unwrap_err();
+        assert_eq!(classify_transport_error(&error), "timeout");
+    }
+}
+
+#[cfg(test)]
 mod tests {
     use super::*;
 
@@ -374,6 +592,7 @@ mod tests {
             max_bytes: 100,
             max_redirects: 1,
             headers: BTreeMap::new(),
+            request_id: Some("test-request".into()),
         }
     }
 
@@ -421,5 +640,41 @@ mod tests {
             validate_redirect(&current, "http://127.0.0.1/admin"),
             Err(FetchError::BlockedUrl(_))
         ));
+    }
+
+    #[test]
+    fn rejects_redirect_that_downgrades_to_a_non_http_scheme() {
+        // A redirect is just another URL to validate: `validate_deep_url`'s
+        // http/https-only policy applies on every hop, not only to the
+        // initial request.
+        let current = Url::parse("https://example.com/start").unwrap();
+        for location in [
+            "file:///etc/passwd",
+            "javascript:alert(1)",
+            "ftp://example.com/x",
+        ] {
+            assert!(
+                matches!(
+                    validate_redirect(&current, location),
+                    Err(FetchError::BlockedUrl(_))
+                ),
+                "{location} should have been rejected"
+            );
+        }
+    }
+
+    #[tokio::test]
+    async fn rejects_non_http_scheme_before_any_dns_lookup() {
+        let fetcher = SafeFetcher::new(FixedResolver(vec![]));
+        for url in [
+            "file:///etc/passwd",
+            "javascript:alert(1)",
+            "ftp://example.com/x",
+        ] {
+            assert!(matches!(
+                fetcher.fetch(request(url)).await,
+                Err(FetchError::BlockedUrl(_))
+            ));
+        }
     }
 }

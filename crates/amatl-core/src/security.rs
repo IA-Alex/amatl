@@ -1,3 +1,9 @@
+//! Módulo básico de seguridad. Extender para JWT/OAuth2 en futuras versiones.
+//!
+//! Alcance actual: validación de URLs de búsqueda y de direcciones resueltas
+//! (SSRF), más auditoría de rechazos. No implementa autenticación ni
+//! autorización de llamadas entrantes; eso queda fuera de este módulo hasta
+//! que se introduzca un esquema de identidad (JWT/OAuth2).
 use std::net::{IpAddr, Ipv4Addr, Ipv6Addr};
 use url::{Host, Url};
 
@@ -135,5 +141,33 @@ mod tests {
             "127.0.0.1".parse().unwrap(),
         ])
         .is_err());
+    }
+
+    /// `url::Url` normalizes a Unicode host to its Punycode (`xn--`) form
+    /// during parsing, so `validate_deep_url` sees plain ASCII either way.
+    /// This only confirms that holds and that no Unicode host — accepted or
+    /// rejected — panics the validator.
+    #[test]
+    fn unicode_hosts_are_punycode_normalized_before_validation_and_never_panic() {
+        // "münchen.example" — legitimate public IDN, must be accepted.
+        let accepted = validate_search_url("https://münchen.example/").unwrap();
+        assert_eq!(accepted.host_str(), Some("xn--mnchen-3ya.example"));
+
+        // "localhost" spelled with a homoglyph normalizes to plain ASCII
+        // `localhost` and must still be blocked, not smuggled past
+        // `blocked_hostname` by the raw Unicode form.
+        for hostile in [
+            "http://xn--localhost-062a/", // arbitrary non-ASCII label, must not panic
+            "http://\u{feff}localhost/",  // BOM-prefixed, must not panic
+        ] {
+            let _ = validate_search_url(hostile);
+        }
+    }
+
+    #[test]
+    fn rejects_ipv4_mapped_and_compat_ipv6_that_resolve_to_private_space() {
+        for address in ["::ffff:10.0.0.1", "::ffff:169.254.1.1"] {
+            assert!(!is_public_ip(address.parse().unwrap()), "{address}");
+        }
     }
 }

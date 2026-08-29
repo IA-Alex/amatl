@@ -1,0 +1,20 @@
+{
+  "artifact_notice": "Generated test artifact — SearXNG mapping diagnostic — do not treat as project documentation.",
+  "status": "complete",
+  "query": "rust async",
+  "query_executions": 1,
+  "http_status": 200,
+  "searxng_results": 0,
+  "searxng_answers": 0,
+  "unresponsive_engines": 2,
+  "mapped_items": 0,
+  "final_usable_results": 0,
+  "amatl_elapsed_ms": 1001,
+  "search_status": "failure",
+  "error_code": "no_usable_results",
+  "observed_case": "A",
+  "temporary_instrumentation_reverted": true,
+  "source_sha256_before": "0f16ac5e8befdeac03fa4029d5d5588443acd2ee452c1bb27f46d7affb7b7b0d",
+  "source_sha256_after": "0f16ac5e8befdeac03fa4029d5d5588443acd2ee452c1bb27f46d7affb7b7b0d",
+  "source_diff_after": "empty"
+}

@@ -1,0 +1,55 @@
+{
+  "artifact_notice": "Generated benchmark artifact \u2014 AMATL SearXNG Baseline v2 post-change.",
+  "classification_rule": "PARTIAL_SUCCESS when final_results>0 and partial=true; SUCCESS when final_results>0 and partial=false; ZERO_RESULTS when final_results=0 without explicit failure; FAILURE when search_status=failure or explicit provider/transport/parsing/timeout error.",
+  "completed_runs": 30,
+  "counts": {
+    "failure": 30,
+    "partial_success": 0,
+    "success": 0,
+    "zero_results": 0
+  },
+  "errors": {
+    "no_usable_results": 30
+  },
+  "execution_integrity": {
+    "document_cache": false,
+    "duplicates": 0,
+    "expected_positions": 30,
+    "generated_positions": 30,
+    "history": false,
+    "inter_request_interval_seconds": 3,
+    "marginalia_executions": 0,
+    "missing": 0,
+    "persistence": false,
+    "provider_cache": false,
+    "recorded_attempts": 30,
+    "retries": 0,
+    "sequence": "1..30",
+    "sequential": true,
+    "unique_positions": 30
+  },
+  "latency_ms": {
+    "max": 1746,
+    "mean": 296.93333333333334,
+    "min": 121,
+    "p50_nearest_rank": 122,
+    "p95_nearest_rank": 724
+  },
+  "percentile_method": "nearest rank: ceil(p*n), with n=30",
+  "planned_runs": 30,
+  "rates": {
+    "failure": 1.0,
+    "partial_success": 0.0,
+    "success": 0.0,
+    "zero_results": 0.0
+  },
+  "results": {
+    "max": 0,
+    "mean": 0.0,
+    "min": 0,
+    "p50_nearest_rank": 0,
+    "total": 0
+  },
+  "status": "complete",
+  "usable_result_rate": 0.0
+}

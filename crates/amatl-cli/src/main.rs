@@ -1,8 +1,8 @@
 use amatl_core::{
     parse_query, run_builtin_benchmark, run_operational_benchmark, validate_provider_canary,
-    AmatlService, Config, DocumentCache, DocumentCachePolicy, InMemoryTelemetry, LocalIngestor,
-    ProviderSearchCache, ProviderSearchCachePolicy, ProviderSurfaceStatus, SearchResponse,
-    ServiceSurface, SqliteStorage, TrafilaturaExtractor,
+    AmatlService, Config, DocumentCache, DocumentCachePolicy, ErrorCode, InMemoryTelemetry,
+    LocalIngestor, ProviderSearchCache, ProviderSearchCachePolicy, ProviderSurfaceStatus,
+    SearchResponse, ServiceSurface, SqliteStorage, TrafilaturaExtractor,
 };
 use anyhow::Context;
 use clap::{Parser, Subcommand};
@@ -330,27 +330,176 @@ enum Command {
         #[arg(long, default_value_t = 8)]
         concurrency: usize,
     },
+    /// Local search history recorded by this machine.
+    History {
+        #[command(subcommand)]
+        command: HistoryCommand,
+    },
+    /// Documents saved for cross-session reuse.
+    Saved {
+        #[command(subcommand)]
+        command: SavedCommand,
+    },
+    /// SQLite maintenance: health, backups, restore, downgrade and breakers.
+    Db {
+        #[command(subcommand)]
+        command: DbCommand,
+    },
+    /// Serve the UI, REST API and MCP surface on one listener.
     Serve {
+        #[command(flatten)]
+        listener: ListenerArgs,
         #[arg(long, hide = true)]
         mock: bool,
     },
+    /// MCP surface commands.
     Mcp {
         #[command(subcommand)]
         command: McpCommand,
     },
 }
 
+/// Listener overrides shared by `serve` and `mcp serve`.
+///
+/// They override the configuration file for this process only; nothing is
+/// written back, so a temporary port never becomes permanent state.
+#[derive(clap::Args, Clone, Default)]
+struct ListenerArgs {
+    /// Bind address override, for example 127.0.0.1.
+    #[arg(long)]
+    bind: Option<String>,
+    /// TCP port override.
+    #[arg(long)]
+    port: Option<u16>,
+    /// Print one JSON object describing the listener before serving.
+    #[arg(long)]
+    json: bool,
+}
+
 #[derive(Subcommand)]
 enum McpCommand {
+    /// Serve MCP over Streamable HTTP on the shared listener.
     Serve {
+        #[command(flatten)]
+        listener: ListenerArgs,
         #[arg(long, hide = true)]
         mock: bool,
+    },
+}
+
+#[derive(Subcommand)]
+enum HistoryCommand {
+    /// List recorded searches, newest first.
+    List {
+        #[arg(long, default_value_t = 20)]
+        limit: u32,
+        #[arg(long, default_value_t = 0)]
+        offset: u32,
+        #[arg(long)]
+        json: bool,
+    },
+    /// Delete one entry by id.
+    Delete { id: i64 },
+    /// Delete every recorded search.
+    Purge,
+}
+
+#[derive(Subcommand)]
+enum SavedCommand {
+    /// List saved documents, newest first.
+    List {
+        #[arg(long, default_value_t = 20)]
+        limit: u32,
+        #[arg(long, default_value_t = 0)]
+        offset: u32,
+        #[arg(long)]
+        json: bool,
+    },
+    /// Print the stored payload of one saved document.
+    Show { id: i64 },
+    /// Delete one saved document by id.
+    Delete { id: i64 },
+}
+
+#[derive(Subcommand)]
+enum DbCommand {
+    /// Report journal mode, migration version and pool size.
+    Health {
+        #[arg(long)]
+        json: bool,
+    },
+    /// List the automatic backups taken before migrations and downgrades.
+    Backups,
+    /// Replace the database with a backup file. The caller must stop other
+    /// AMATL processes first.
+    Restore {
+        /// Backup file produced by a migration, downgrade or restore.
+        backup: PathBuf,
+    },
+    /// Roll the schema back to an older migration version.
+    Downgrade {
+        /// Target `user_version`; must be lower than the current one.
+        #[arg(long)]
+        to: i64,
+    },
+    /// Show recorded security rejections, newest first.
+    SecurityEvents {
+        #[arg(long, default_value_t = 20)]
+        limit: u32,
+        #[arg(long, default_value_t = 0)]
+        offset: u32,
+        #[arg(long)]
+        json: bool,
+    },
+    /// Show provider circuit breaker state, optionally closing every circuit.
+    Circuits {
+        #[arg(long)]
+        reset: bool,
+        #[arg(long)]
+        json: bool,
     },
 }
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     init_logging();
+    let outcome = run().await;
+    if let Err(error) = &outcome {
+        report_error_code(error);
+    }
+    outcome
+}
+
+/// Print the shared catalog code for a failure, when the cause carries one.
+///
+/// The CLI keeps its human message, but an operator or a script comparing
+/// behavior across surfaces gets the same stable identifier the API and MCP
+/// return, on stderr and separate from JSON output on stdout.
+fn report_error_code(error: &anyhow::Error) {
+    let code = error
+        .downcast_ref::<amatl_core::ServiceError>()
+        .map(amatl_core::ServiceError::code)
+        .or_else(|| {
+            error
+                .downcast_ref::<amatl_core::ProviderCanaryError>()
+                .map(amatl_core::ProviderCanaryError::code)
+        })
+        .or_else(|| {
+            error
+                .downcast_ref::<amatl_core::ConfigError>()
+                .map(|_| ErrorCode::ConfigurationInvalid)
+        })
+        .or_else(|| {
+            error
+                .downcast_ref::<amatl_core::StorageError>()
+                .map(|_| ErrorCode::StorageUnavailable)
+        });
+    if let Some(code) = code {
+        eprintln!("error_code={} message={}", code.as_str(), code.message());
+    }
+}
+
+async fn run() -> anyhow::Result<()> {
     let cli = Cli::parse();
     let config = Config::load_optional(&cli.config_file).context("configuration failed")?;
     match cli.command {
@@ -369,7 +518,9 @@ async fn main() -> anyhow::Result<()> {
         Command::Config => {
             println!("config_file = {}", cli.config_file.display());
             print_data_policy(&config);
+            println!("providers.declared = {:?}", config.providers.names());
             println!("providers.enabled = {:?}", config.providers.enabled);
+            println!("inference.backend = {}", config.inference.backend);
             println!("timeouts.provider_ms = {}", config.timeouts.provider_ms);
             println!("timeouts.global_ms = {}", config.timeouts.global_ms);
             println!(
@@ -387,6 +538,14 @@ async fn main() -> anyhow::Result<()> {
                 config.deep.ranking_v2.enabled
             );
             println!("deep.gaps.enabled = {}", config.deep.gaps.enabled);
+            println!(
+                "circuit_breaker.enabled = {}",
+                config.circuit_breaker.enabled
+            );
+            println!(
+                "persistence.enabled = {} (history={})",
+                config.persistence.enabled, config.persistence.history_enabled
+            );
             println!("server.bind = {}", config.server.bind);
             println!("server.port = {}", config.server.port);
             println!("server.no_auth = {}", config.server.no_auth);
@@ -401,9 +560,11 @@ async fn main() -> anyhow::Result<()> {
             println!("core: ok");
             print_data_policy(&config);
             print_providers(&config).await?;
+            doctor_inference(&config).await;
             doctor_persistence(&config).await;
             doctor_extractor(&config).await;
             doctor_server(&config);
+            doctor_credentials(&config);
             Ok(())
         }
         Command::Benchmark {
@@ -412,17 +573,306 @@ async fn main() -> anyhow::Result<()> {
             iterations,
             concurrency,
         } => benchmark_command(&component, json, iterations, concurrency, &config).await,
-        Command::Serve { mock } => {
-            amatl_server::serve(AmatlService::new(config, mock).await).await?;
-            Ok(())
+        Command::History { command } => history_command(command, &config).await,
+        Command::Saved { command } => saved_command(command, &config).await,
+        Command::Db { command } => db_command(command, &config).await,
+        Command::Serve { listener, mock } => {
+            serve_command(config, listener, mock, cli.config_file).await
         }
         Command::Mcp {
-            command: McpCommand::Serve { mock },
+            command: McpCommand::Serve { listener, mock },
+        } => serve_command(config, listener, mock, cli.config_file).await,
+    }
+}
+
+/// Start the shared listener that serves UI, REST and MCP.
+async fn serve_command(
+    mut config: Config,
+    listener: ListenerArgs,
+    mock: bool,
+    config_file: PathBuf,
+) -> anyhow::Result<()> {
+    if let Some(bind) = listener.bind {
+        config.server.bind = bind;
+    }
+    if let Some(port) = listener.port {
+        config.server.port = port;
+    }
+    config.validate().context("configuration failed")?;
+    if listener.json {
+        println!(
+            "{}",
+            serde_json::json!({
+                "schema_version": amatl_core::SCHEMA_VERSION,
+                "event": "listening",
+                "bind": config.server.bind,
+                "port": config.server.port,
+                "tls": config.server.tls.cert_path.is_some(),
+                "authenticated": !config.server.no_auth,
+                "config_file": config_file.display().to_string(),
+                "reload": ["POST /reload", "SIGHUP"],
+                "surfaces": ["ui", "rest", "mcp"],
+            })
+        );
+    }
+    amatl_server::serve_with_config_path(AmatlService::new(config, mock).await, Some(config_file))
+        .await?;
+    Ok(())
+}
+
+/// Service handle for the local domain commands, which need persistence.
+async fn domain_service(config: &Config) -> anyhow::Result<AmatlService> {
+    anyhow::ensure!(
+        config.persistence.enabled,
+        "this command requires [persistence] enabled = true"
+    );
+    Ok(AmatlService::new(config.clone(), false).await)
+}
+
+async fn history_command(command: HistoryCommand, config: &Config) -> anyhow::Result<()> {
+    let service = domain_service(config).await?;
+    match command {
+        HistoryCommand::List {
+            limit,
+            offset,
+            json,
         } => {
-            amatl_server::serve(AmatlService::new(config, mock).await).await?;
-            Ok(())
+            let entries = service.history(limit, offset).await?;
+            if json {
+                println!("{}", serde_json::to_string_pretty(&entries)?);
+            } else if entries.is_empty() {
+                println!("history: empty");
+            } else {
+                for entry in entries {
+                    println!(
+                        "{}\t{}\t{} results\t{}",
+                        entry.id, entry.surface, entry.total_results, entry.raw_query
+                    );
+                }
+            }
+        }
+        HistoryCommand::Delete { id } => {
+            anyhow::ensure!(
+                service.delete_history_entry(id).await?,
+                "no history entry with id {id}"
+            );
+            println!("history entry {id} deleted");
+        }
+        HistoryCommand::Purge => {
+            println!("history purged: {} entries", service.purge_history().await?);
         }
     }
+    Ok(())
+}
+
+async fn saved_command(command: SavedCommand, config: &Config) -> anyhow::Result<()> {
+    let service = domain_service(config).await?;
+    match command {
+        SavedCommand::List {
+            limit,
+            offset,
+            json,
+        } => {
+            let documents = service.saved_documents(limit, offset).await?;
+            if json {
+                println!("{}", serde_json::to_string_pretty(&documents)?);
+            } else if documents.is_empty() {
+                println!("saved documents: none");
+            } else {
+                for document in documents {
+                    println!(
+                        "{}\t{} bytes\t{}",
+                        document.id, document.size_bytes, document.canonical_url
+                    );
+                }
+            }
+        }
+        SavedCommand::Show { id } => {
+            let document = service
+                .saved_documents(200, 0)
+                .await?
+                .into_iter()
+                .find(|document| document.id == id)
+                .ok_or_else(|| anyhow::anyhow!("no saved document with id {id}"))?;
+            println!("{}", document.payload);
+        }
+        SavedCommand::Delete { id } => {
+            anyhow::ensure!(
+                service.delete_saved_document(id).await?,
+                "no saved document with id {id}"
+            );
+            println!("saved document {id} deleted");
+        }
+    }
+    Ok(())
+}
+
+async fn db_command(command: DbCommand, config: &Config) -> anyhow::Result<()> {
+    match command {
+        DbCommand::Health { json } => {
+            let storage = optional_storage(config)
+                .await
+                .ok_or_else(|| anyhow::anyhow!("SQLite persistence is disabled or unavailable"))?;
+            let health = storage.health().await?;
+            if json {
+                println!(
+                    "{}",
+                    serde_json::json!({
+                        "path": health.path.display().to_string(),
+                        "journal_mode": health.journal_mode,
+                        "synchronous": health.synchronous,
+                        "busy_timeout_ms": health.busy_timeout_ms,
+                        "migration_version": health.migration_version,
+                        "code_migration_version": amatl_core::MIGRATION_VERSION,
+                        "pool_size": health.pool_size,
+                        "lock_held": health.lock_held,
+                        "readable": health.readable,
+                        "writable": health.writable,
+                        "file_size_bytes": health.file_size_bytes,
+                        "wal_size_bytes": health.wal_size_bytes,
+                        "free_space_bytes": health.free_space_bytes,
+                        "total_space_bytes": health.total_space_bytes,
+                        "disk_usage_percent": health.disk_usage_percent,
+                        "last_purge_at": health.last_purge_at,
+                        "last_purge_rows_removed": health.last_purge_rows_removed,
+                        "last_backup_at": health.last_backup_at,
+                        "last_backup_integrity_ok": health.last_backup_integrity_ok,
+                        "backup_count": health.backup_count,
+                        "last_fs_error": health.last_fs_error,
+                    })
+                );
+            } else {
+                println!("path: {}", health.path.display());
+                println!("journal_mode: {}", health.journal_mode);
+                println!("synchronous: {}", health.synchronous);
+                println!("busy_timeout_ms: {}", health.busy_timeout_ms);
+                println!(
+                    "migration_version: {} (binary expects {})",
+                    health.migration_version,
+                    amatl_core::MIGRATION_VERSION
+                );
+                println!("pool_size: {}", health.pool_size);
+                println!("lock_held: {}", health.lock_held);
+                println!(
+                    "access: readable={} writable={}",
+                    health.readable, health.writable
+                );
+                println!(
+                    "file_size_bytes: {} (wal {})",
+                    health.file_size_bytes, health.wal_size_bytes
+                );
+                println!(
+                    "disk: {:.1}% used ({} free of {} bytes)",
+                    health.disk_usage_percent, health.free_space_bytes, health.total_space_bytes
+                );
+                println!(
+                    "last_purge: {} ({} rows removed)",
+                    health
+                        .last_purge_at
+                        .map_or_else(|| "never".to_owned(), |value| value.to_string()),
+                    health.last_purge_rows_removed
+                );
+                println!(
+                    "last_backup: {} (integrity_ok={}, retained={})",
+                    health
+                        .last_backup_at
+                        .map_or_else(|| "never".to_owned(), |value| value.to_string()),
+                    health.last_backup_integrity_ok,
+                    health.backup_count
+                );
+                if let Some(error) = &health.last_fs_error {
+                    println!("last_fs_error: {error}");
+                }
+            }
+        }
+        DbCommand::Backups => {
+            let backups = SqliteStorage::list_backups(
+                std::path::Path::new(&config.persistence.path),
+                config.persistence.backup_directory.as_deref(),
+            )?;
+            if backups.is_empty() {
+                println!("backups: none");
+            }
+            for backup in backups {
+                println!("{}", backup.display());
+            }
+        }
+        DbCommand::Restore { backup } => {
+            anyhow::ensure!(backup.exists(), "backup file does not exist");
+            SqliteStorage::restore_from_backup(
+                &config.persistence.path,
+                &backup,
+                config.persistence.locking_mode,
+            )
+            .await?;
+            println!(
+                "restored {} from {}",
+                config.persistence.path,
+                backup.display()
+            );
+        }
+        DbCommand::Downgrade { to } => {
+            let storage = optional_storage(config)
+                .await
+                .ok_or_else(|| anyhow::anyhow!("SQLite persistence is disabled or unavailable"))?;
+            storage.downgrade_to(to).await?;
+            println!(
+                "downgraded to migration version {to}; a backup was written next to the database"
+            );
+        }
+        DbCommand::SecurityEvents {
+            limit,
+            offset,
+            json,
+        } => {
+            let service = domain_service(config).await?;
+            let events = service
+                .audit()
+                .events(limit, offset)
+                .await
+                .map_err(|_| anyhow::anyhow!("security audit trail is unavailable"))?;
+            if json {
+                println!("{}", serde_json::to_string_pretty(&events)?);
+            } else if events.is_empty() {
+                println!("security events: none recorded");
+            } else {
+                for event in events {
+                    println!(
+                        "{}\t{}\t{}\t{}\t{}",
+                        event.observed_at,
+                        event.event,
+                        event.client_id.as_deref().unwrap_or("-"),
+                        event.path.as_deref().unwrap_or("-"),
+                        event.client_ip.as_deref().unwrap_or("-")
+                    );
+                }
+            }
+        }
+        DbCommand::Circuits { reset, json } => {
+            let service = domain_service(config).await?;
+            if reset {
+                service.reset_circuits().await;
+                println!("provider circuits closed");
+                return Ok(());
+            }
+            let snapshots = service.circuit_snapshots();
+            if json {
+                println!("{}", serde_json::to_string_pretty(&snapshots)?);
+            } else if snapshots.is_empty() {
+                println!("provider circuits: all closed");
+            } else {
+                for snapshot in snapshots {
+                    println!(
+                        "{}\t{}\tfailures={}",
+                        snapshot.provider,
+                        snapshot.state.as_str(),
+                        snapshot.consecutive_failures
+                    );
+                }
+            }
+        }
+    }
+    Ok(())
 }
 
 fn print_data_policy(config: &Config) {
@@ -459,7 +909,7 @@ async fn provider_canary(
     isolated.providers.enabled = vec![provider.clone()];
     let execution = AmatlService::new(isolated, false)
         .await
-        .search(query, ServiceSurface::Cli)
+        .search(query, ServiceSurface::cli())
         .await?;
     if execution.response.status == amatl_core::SearchStatus::Failure
         || !execution.response.providers_used.contains(&provider)
@@ -498,6 +948,46 @@ fn init_logging() {
     }
 }
 
+fn doctor_credentials(config: &Config) {
+    if config.server.no_auth {
+        println!("credentials: disabled (no_auth, loopback only)");
+        return;
+    }
+    println!(
+        "credentials: default={} named={}",
+        std::env::var(&config.server.token_env)
+            .ok()
+            .is_some_and(|value| value.len() >= 32),
+        config.server.clients.len()
+    );
+    for client in &config.server.clients {
+        let ready = match (&client.token_env, &client.token_sha256) {
+            (Some(name), _) => std::env::var(name)
+                .ok()
+                .is_some_and(|value| value.len() >= 32),
+            (None, Some(_)) => true,
+            _ => false,
+        };
+        println!(
+            "  {}: ready={} expires={} scopes={} tools={}",
+            client.id,
+            ready,
+            client.expires_at.as_deref().unwrap_or("never"),
+            client
+                .scopes
+                .iter()
+                .map(|scope| scope.as_str())
+                .collect::<Vec<_>>()
+                .join(","),
+            if client.tools.is_empty() {
+                "none".to_string()
+            } else {
+                client.tools.join(",")
+            }
+        );
+    }
+}
+
 fn doctor_server(config: &Config) {
     let token = std::env::var(&config.server.token_env)
         .ok()
@@ -521,6 +1011,36 @@ fn doctor_server(config: &Config) {
     );
 }
 
+async fn doctor_inference(config: &Config) {
+    let ranking = &config.deep.ranking_v2.policy;
+    let required = config.deep.ranking_v2.enabled
+        && (ranking.weight_semantic > 0.0 || ranking.weight_reranker > 0.0);
+    match AmatlService::new(config.clone(), false)
+        .await
+        .inference_backend()
+    {
+        Some(backend) => {
+            let remote = config.data_policy.inference == amatl_core::InferenceMode::RemoteExplicit;
+            println!("inference: ready ({backend}, required={required}, remote={remote})");
+            if remote {
+                println!(
+                    "inference.remote_endpoint = {}",
+                    config
+                        .inference
+                        .remote_endpoint
+                        .as_deref()
+                        .unwrap_or("unset")
+                );
+            }
+        }
+        None if required => println!(
+            "inference: unavailable ({}); ranking would degrade to lexical signals",
+            config.data_policy.inference.as_str()
+        ),
+        None => println!("inference: {}", config.data_policy.inference.as_str()),
+    }
+}
+
 async fn doctor_extractor(config: &Config) {
     let extractor = TrafilaturaExtractor::new(
         config.deep.extractor.executable.clone(),
@@ -537,11 +1057,22 @@ async fn doctor_extractor(config: &Config) {
 async fn search(raw_query: String, json: bool, mock: bool, config: &Config) -> anyhow::Result<()> {
     let execution = AmatlService::new(config.clone(), mock)
         .await
-        .search(raw_query, ServiceSurface::Cli)
+        .search(raw_query, ServiceSurface::cli())
         .await?;
     let failed = execution.response.status == amatl_core::SearchStatus::Failure;
+    // A failed response is a contract outcome, not an error type: report the
+    // codes it already carries instead of inventing one.
+    let codes = execution
+        .response
+        .errors
+        .iter()
+        .map(|error| error.code.clone())
+        .collect::<Vec<_>>();
     print_search(execution.response, json)?;
     if failed {
+        if !codes.is_empty() {
+            eprintln!("error_code={}", codes.join(","));
+        }
         anyhow::bail!("search failed");
     }
     Ok(())
@@ -577,7 +1108,7 @@ fn print_search(response: SearchResponse, json: bool) -> anyhow::Result<()> {
 async fn deep(raw_query: String, json: bool, mock: bool, config: &Config) -> anyhow::Result<()> {
     let deep = AmatlService::new(config.clone(), mock)
         .await
-        .deep(raw_query, ServiceSurface::Cli)
+        .deep(raw_query, ServiceSurface::cli())
         .await?;
     if json {
         println!("{}", serde_json::to_string_pretty(&deep)?);
@@ -714,7 +1245,9 @@ async fn optional_storage(config: &Config) -> Option<SqliteStorage> {
     if !config.persistence.enabled {
         return None;
     }
-    SqliteStorage::open(&config.persistence.path).await.ok()
+    SqliteStorage::open(&config.persistence.path, config.persistence.locking_mode)
+        .await
+        .ok()
 }
 
 async fn cache_command(config: &Config, purge: bool) {
@@ -739,6 +1272,9 @@ async fn cache_command(config: &Config, purge: bool) {
             max_entries: config.cache.document.max_entries,
             max_bytes: config.cache.document.max_bytes,
             store_content: config.cache.document.store_content,
+            stale_while_revalidate_seconds: config.cache.document.stale_while_revalidate_seconds,
+            // Maintenance addresses every namespace, so no model is pinned.
+            model_version: None,
         },
     );
     if purge {
@@ -781,6 +1317,25 @@ async fn doctor_persistence(config: &Config) {
         None => println!("sqlite: disabled"),
     }
     println!(
+        "security audit: {} (retention {} days)",
+        if config.persistence.enabled {
+            "persisted"
+        } else {
+            "logs only"
+        },
+        config.persistence.audit_retention_days
+    );
+    println!(
+        "circuit breaker: {} (threshold={}, cooldown={}s)",
+        if config.circuit_breaker.enabled {
+            "enabled"
+        } else {
+            "disabled"
+        },
+        config.circuit_breaker.failure_threshold,
+        config.circuit_breaker.open_seconds
+    );
+    println!(
         "telemetry: in-memory{}",
         if config.telemetry.persistence_enabled {
             " + optional SQLite"
@@ -789,7 +1344,9 @@ async fn doctor_persistence(config: &Config) {
         }
     );
     if config.telemetry.persistence_enabled {
-        let telemetry = InMemoryTelemetry::with_optional_storage(storage).await;
+        let telemetry =
+            InMemoryTelemetry::with_storage_and_retention(storage, config.telemetry.retention_days)
+                .await;
         let snapshots = telemetry.snapshots(amatl_core::telemetry::now_unix());
         if snapshots.is_empty() {
             println!("provider health: Bootstrap (no persisted samples)");

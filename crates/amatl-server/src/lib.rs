@@ -2,13 +2,16 @@
 
 mod mcp;
 
-use amatl_core::{AmatlService, ConfigError, ServiceError, ServiceSurface, SCHEMA_VERSION};
+use amatl_core::{
+    AmatlService, ConfigError, ErrorCode, Scope, ServiceError, ServiceSurface, MCP_TOOLS,
+    SCHEMA_VERSION,
+};
 use amatl_ui::{asset, security_headers};
 use axum::{
     body::Body,
     extract::{
         rejection::{JsonRejection, QueryRejection},
-        ConnectInfo, DefaultBodyLimit, Query, Request, State,
+        ConnectInfo, DefaultBodyLimit, Extension, Path, Query, Request, State,
     },
     http::{
         header::{
@@ -19,47 +22,470 @@ use axum::{
     },
     middleware::{self, Next},
     response::{IntoResponse, Response},
-    routing::get,
+    routing::{delete, get, post},
     Json, Router,
 };
+use rand::RngCore;
 use rmcp::transport::streamable_http_server::{
     session::local::LocalSessionManager, StreamableHttpServerConfig, StreamableHttpService,
 };
 use serde::{Deserialize, Serialize};
 use serde_json::json;
+use sha2::{Digest, Sha256};
 use std::{
-    collections::BTreeMap,
+    collections::{BTreeMap, VecDeque},
     net::{IpAddr, SocketAddr},
+    path::PathBuf,
     sync::{
         atomic::{AtomicU64, Ordering},
-        Arc, Mutex,
+        Arc, Mutex, RwLock,
     },
     time::{Duration, Instant, SystemTime, UNIX_EPOCH},
 };
 use thiserror::Error;
+use tokio::sync::Mutex as AsyncMutex;
 use tower::limit::ConcurrencyLimitLayer;
 use tower_http::cors::CorsLayer;
 use tracing::Instrument;
 
 const REQUEST_ID_HEADER: &str = "x-request-id";
+/// Shortest bearer token accepted from configuration or the environment.
+const MINIMUM_TOKEN_BYTES: usize = 32;
 static REQUEST_SEQUENCE: AtomicU64 = AtomicU64::new(1);
+
+/// Wrapper so handlers can extract the request-id injected by the security
+/// middleware via [`axum::Extension`] or [`Request::extensions`].
+#[derive(Clone, Debug)]
+struct RequestId(String);
+
+impl RequestId {
+    fn into_inner(self) -> String {
+        self.0
+    }
+}
+
+/// Shared, swappable service handle.
+///
+/// A reload builds a brand new [`AmatlService`] and swaps the pointer, so
+/// requests already running finish against the configuration they started
+/// with and the next request picks up the new one. Handlers therefore take a
+/// snapshot (`state.service()`) instead of holding the lock across `.await`.
+/// Swappable service shared by every surface in one process.
+pub(crate) type ServiceHandle = Arc<RwLock<AmatlService>>;
 
 #[derive(Clone)]
 struct AppState {
-    service: AmatlService,
-    security: Arc<SecurityState>,
+    service: ServiceHandle,
+    /// Swapped on reload so credentials rotate without a restart.
+    security: Arc<RwLock<Arc<SecurityState>>>,
+    /// Survives reloads on purpose: a reload must not reset rate windows.
+    rate_limiter: Arc<Mutex<RateLimiter>>,
+    /// Token supplied programmatically at construction, if any; re-applied on
+    /// every reload so an embedder keeps its credential.
+    explicit_token: Option<String>,
+    /// Configuration file a reload re-reads, when the process was started with
+    /// one. Without it a reload revalidates and rebuilds from the running
+    /// configuration, which still resets provider construction and breakers.
+    config_path: Option<PathBuf>,
+    /// Serializes every config-file write in this process. Two concurrent
+    /// admin PATCHes would otherwise read the same file text and each write
+    /// back their own version, silently dropping the other's change (a lost
+    /// update). Held for the whole validate → write → reload section of every
+    /// config-mutating handler, so a reload always observes the file the
+    /// request just wrote.
+    config_write_lock: Arc<AsyncMutex<()>>,
+    metrics: Arc<RequestMetrics>,
 }
 
+impl AppState {
+    /// Current security snapshot; cheap, and never held across an await.
+    fn security(&self) -> Arc<SecurityState> {
+        self.security
+            .read()
+            .unwrap_or_else(|error| error.into_inner())
+            .clone()
+    }
+
+    /// Current service snapshot; cheap, every field behind it is an `Arc`.
+    fn service(&self) -> AmatlService {
+        self.service
+            .read()
+            .unwrap_or_else(|error| error.into_inner())
+            .clone()
+    }
+
+    /// Rebuild the service from the configuration file, or from the running
+    /// configuration when the process was started without one.
+    ///
+    /// The new service is validated and fully built before the swap, so a
+    /// rejected reload leaves the running one in place.
+    async fn reload(self) -> Result<ReloadReport, ServiceError> {
+        let current = self.service();
+        let config = match &self.config_path {
+            Some(path) => {
+                amatl_core::Config::load_optional(path).map_err(|_| ServiceError::Configuration)?
+            }
+            None => current.config().clone(),
+        };
+        // Credentials are part of the reloaded configuration: rotating a token
+        // or retiring a client must not need a restart either. Rebuilt before
+        // the swap so a bad credential set changes nothing.
+        let security =
+            resolve_clients(replacement_config_ref(&config), self.explicit_token.clone())
+                .map_err(|_| ServiceError::Configuration)?;
+        let clients = security
+            .iter()
+            .map(|client| client.id.clone())
+            .collect::<Vec<_>>();
+        let replacement = current.reloaded_detached(config).await?;
+        let security = Arc::new(SecurityState {
+            clients: security,
+            allowed_hosts: replacement.config().server.allowed_hosts.clone(),
+            allowed_origins: effective_origins(
+                replacement.config(),
+                replacement.config().server.tls.cert_path.is_some(),
+            ),
+            max_header_bytes: replacement.config().server.max_header_bytes,
+            max_body_bytes: replacement.config().server.max_body_bytes,
+            timeout: Duration::from_millis(replacement.config().server.request_timeout_ms),
+            rate_limit_per_minute: replacement.config().server.rate_limit_per_minute,
+            https: replacement.config().server.tls.cert_path.is_some(),
+        });
+        let report = ReloadReport {
+            schema_version: SCHEMA_VERSION.into(),
+            config_file: self
+                .config_path
+                .as_ref()
+                .map(|path| path.display().to_string()),
+            declared_sources: replacement
+                .config()
+                .providers
+                .names()
+                .into_iter()
+                .map(str::to_owned)
+                .collect(),
+            enabled_sources: replacement.config().providers.enabled.clone(),
+            registered_sources: replacement
+                .registry()
+                .names()
+                .into_iter()
+                .map(str::to_owned)
+                .collect(),
+            inference_backend: replacement.inference_backend().map(str::to_owned),
+            clients,
+        };
+        *self
+            .service
+            .write()
+            .unwrap_or_else(|error| error.into_inner()) = replacement;
+        *self
+            .security
+            .write()
+            .unwrap_or_else(|error| error.into_inner()) = security;
+        tracing::info!(
+            target: "amatl::http",
+            enabled_sources = ?report.enabled_sources,
+            "configuration reloaded"
+        );
+        Ok(report)
+    }
+}
+
+/// Borrow helper that keeps the reload readable: the configuration is moved
+/// into the rebuild, so credentials are resolved from it first.
+fn replacement_config_ref(config: &amatl_core::Config) -> &amatl_core::Config {
+    config
+}
+
+/// What a successful reload put in place.
+#[derive(Debug, Serialize)]
+struct ReloadReport {
+    schema_version: String,
+    config_file: Option<String>,
+    declared_sources: Vec<String>,
+    enabled_sources: Vec<String>,
+    registered_sources: Vec<String>,
+    inference_backend: Option<String>,
+    /// Credential identities accepted after the reload. Never their secrets.
+    clients: Vec<String>,
+}
+
+/// Lightweight request counters exposed via `/metrics` in Prometheus
+/// exposition format. Counters are monotonic and reset on restart.
+#[derive(Default)]
+struct RequestMetrics {
+    search_total: AtomicU64,
+    deep_total: AtomicU64,
+    answer_total: AtomicU64,
+    search_errors: AtomicU64,
+    deep_errors: AtomicU64,
+    answer_errors: AtomicU64,
+    rate_limited_total: AtomicU64,
+    unauthorized_total: AtomicU64,
+    request_timeout_total: AtomicU64,
+    search_latency: LatencyWindow,
+    deep_latency: LatencyWindow,
+    answer_latency: LatencyWindow,
+}
+
+/// Bounded ring of recent latencies used to publish quantiles without a
+/// dependency on a metrics runtime. Only the last [`LATENCY_WINDOW`] samples
+/// are kept, so memory stays constant under load.
+#[derive(Default)]
+struct LatencyWindow {
+    samples: Mutex<VecDeque<u64>>,
+}
+
+const LATENCY_WINDOW: usize = 1_024;
+
+impl LatencyWindow {
+    fn record(&self, elapsed_ms: u64) {
+        let mut samples = self
+            .samples
+            .lock()
+            .unwrap_or_else(|error| error.into_inner());
+        if samples.len() == LATENCY_WINDOW {
+            samples.pop_front();
+        }
+        samples.push_back(elapsed_ms);
+    }
+
+    /// `(samples, p50, p95, p99)` over the retained window.
+    fn quantiles(&self) -> (usize, u64, u64, u64) {
+        let samples = self
+            .samples
+            .lock()
+            .unwrap_or_else(|error| error.into_inner());
+        if samples.is_empty() {
+            return (0, 0, 0, 0);
+        }
+        let mut sorted = samples.iter().copied().collect::<Vec<_>>();
+        sorted.sort_unstable();
+        let at = |quantile: f64| {
+            let index = (((sorted.len() - 1) as f64) * quantile).ceil() as usize;
+            sorted[index]
+        };
+        (sorted.len(), at(0.50), at(0.95), at(0.99))
+    }
+}
+
+/// Everything the security middleware needs for one request.
+///
+/// Rebuilt wholesale on reload, which is what makes credential rotation work
+/// without a restart. The rate limiter deliberately lives outside: keeping it
+/// across reloads means a reload cannot be used to reset someone's window.
 struct SecurityState {
-    token: Option<String>,
+    /// Accepted credentials. Empty means authentication is disabled
+    /// (`no_auth`, loopback only).
+    clients: Vec<AuthorizedClient>,
     allowed_hosts: Vec<String>,
     allowed_origins: Vec<String>,
     max_header_bytes: usize,
     max_body_bytes: usize,
     timeout: Duration,
     rate_limit_per_minute: u32,
-    rate_limiter: Mutex<RateLimiter>,
     https: bool,
+}
+
+/// One credential resolved to the digest actually compared at request time.
+struct AuthorizedClient {
+    id: String,
+    /// SHA-256 of the bearer token. The token itself is never stored.
+    digest: [u8; 32],
+    expires_at: Option<String>,
+    scopes: Vec<Scope>,
+    tools: Vec<String>,
+}
+
+/// Identity of the caller, attached to the request for handlers, the MCP
+/// surface and audit events.
+#[derive(Clone, Debug)]
+pub(crate) struct ClientIdentity {
+    pub(crate) id: String,
+    pub(crate) tools: Vec<String>,
+}
+
+impl ClientIdentity {
+    /// Identity used when authentication is disabled: loopback development
+    /// only, and still explicit rather than implied.
+    fn unauthenticated() -> Self {
+        Self {
+            id: "anonymous".into(),
+            tools: MCP_TOOLS.iter().map(|tool| (*tool).to_owned()).collect(),
+        }
+    }
+
+    pub(crate) fn allows_tool(&self, tool: &str) -> bool {
+        self.tools.iter().any(|allowed| allowed == tool)
+    }
+}
+
+/// Build the accepted credential set from configuration and the environment.
+///
+/// A declared client whose secret is missing from the environment is skipped
+/// with a warning instead of silently accepting anything: the surface stays
+/// closed for that identity and open for the others.
+fn resolve_clients(
+    config: &amatl_core::Config,
+    explicit_token: Option<String>,
+) -> Result<Vec<AuthorizedClient>, ServerError> {
+    let server = &config.server;
+    if server.no_auth {
+        return Ok(vec![]);
+    }
+    let mut clients = Vec::new();
+    if let Some(token) = explicit_token
+        .or_else(|| std::env::var(&server.token_env).ok())
+        .filter(|value| value.len() >= MINIMUM_TOKEN_BYTES)
+    {
+        clients.push(AuthorizedClient {
+            id: "default".into(),
+            digest: token_digest(&token),
+            expires_at: None,
+            scopes: Scope::ALL.to_vec(),
+            tools: MCP_TOOLS.iter().map(|tool| (*tool).to_owned()).collect(),
+        });
+    }
+    for declared in &server.clients {
+        let digest = match (&declared.token_env, &declared.token_sha256) {
+            (Some(name), _) => match std::env::var(name)
+                .ok()
+                .filter(|value| value.len() >= MINIMUM_TOKEN_BYTES)
+            {
+                Some(token) => token_digest(&token),
+                None => {
+                    tracing::warn!(
+                        target: "amatl::security",
+                        security_event = "client_credential_missing",
+                        client_id = %declared.id,
+                        "declared client has no usable credential in the environment; it cannot authenticate"
+                    );
+                    continue;
+                }
+            },
+            (None, Some(hex)) => match digest_from_hex(hex) {
+                Some(digest) => digest,
+                None => continue,
+            },
+            (None, None) => continue,
+        };
+        clients.push(AuthorizedClient {
+            id: declared.id.clone(),
+            digest,
+            expires_at: declared.expires_at.clone(),
+            scopes: declared.scopes.clone(),
+            tools: declared.tools.clone(),
+        });
+    }
+    if clients.is_empty() {
+        return Err(ServerError::MissingToken);
+    }
+    Ok(clients)
+}
+
+fn token_digest(token: &str) -> [u8; 32] {
+    let mut digest = [0_u8; 32];
+    digest.copy_from_slice(&Sha256::digest(token.as_bytes()));
+    digest
+}
+
+fn digest_from_hex(value: &str) -> Option<[u8; 32]> {
+    if value.len() != 64 {
+        return None;
+    }
+    let mut digest = [0_u8; 32];
+    for (index, byte) in digest.iter_mut().enumerate() {
+        *byte = u8::from_str_radix(value.get(index * 2..index * 2 + 2)?, 16).ok()?;
+    }
+    Some(digest)
+}
+
+/// Capability a route requires. `None` means the route is public.
+///
+/// This is the single source of truth for "is this protected": reading and
+/// mutating the same path are different capabilities, so the method is part of
+/// the decision. The fallback arm is **fail-closed**: a path that no arm
+/// matches (a route someone registered in the router without declaring a
+/// scope here) is admin-protected, never public — see `docs/arquitectura.md`
+/// ("añadir una ruta sin declarar su scope la deja protegida por defecto").
+/// Public surfaces are therefore explicit, so the list below is the complete
+/// set of paths reachable without a credential.
+fn required_scope(method: &Method, path: &str) -> Option<Scope> {
+    let mutating = matches!(*method, Method::POST | Method::PUT | Method::DELETE);
+    // Public surfaces, explicitly listed so the fail-closed default below
+    // cannot silently lock them down: liveness probes, the metrics scrape,
+    // and the UI assets served by the fallback handler. `amatl_ui::asset` is
+    // the same table `static_asset` serves, so the two cannot drift.
+    if matches!(path, "/health" | "/ready" | "/metrics") || asset(path).is_some() {
+        return None;
+    }
+    match path {
+        "/search" => Some(Scope::Search),
+        "/deep" => Some(Scope::Deep),
+        // `PATCH /answer` edits the endpoint/model/limits — a config write,
+        // admin scoped like every other one. `POST /answer` (below) is the
+        // domain call that actually runs a search and synthesizes from it.
+        "/answer" if *method == Method::PATCH => Some(Scope::Admin),
+        // Reuses Deep's scope rather than a dedicated one: like Deep, this
+        // runs a full search and then does more expensive, sensitive work on
+        // top of it (here, an outbound call to a third-party LLM).
+        "/answer" => Some(Scope::Deep),
+        "/providers" | "/status" => Some(Scope::Read),
+        "/history" | "/saved" if mutating => Some(Scope::Write),
+        "/history" | "/saved" => Some(Scope::Read),
+        // The audit trail names identities and addresses: operator only.
+        // The answer toggle is admin too, same tier as /reload: it rewrites
+        // the running configuration file, even though the field it touches
+        // is narrow (see `Config::set_answer_enabled`).
+        "/security-events" | "/reload" | "/answer/enabled" => Some(Scope::Admin),
+        // Same tier and the same reasoning as `/answer/enabled`: it rewrites
+        // the running configuration file, narrowly (see
+        // `Config::set_provider_enabled`).
+        _ if path.starts_with("/providers/") && path.ends_with("/enabled") => Some(Scope::Admin),
+        // `GET /providers/{name}` reads the full governance ficha (still no
+        // secret in it); `PATCH /providers/{name}` edits it, admin scoped
+        // like every other config write.
+        _ if path.starts_with("/providers/") && *method == Method::PATCH => Some(Scope::Admin),
+        _ if path.starts_with("/providers/") => Some(Scope::Read),
+        // Every credential the server accepts is granted or revoked here —
+        // the highest-trust surface in the API, same tier as `/reload`.
+        "/server/clients" => Some(Scope::Admin),
+        _ if path.starts_with("/server/clients/") => Some(Scope::Admin),
+        "/server/pending-config" if *method == Method::PATCH => Some(Scope::Admin),
+        "/server/pending-config" => Some(Scope::Read),
+        // Governs egress, remote inference and the unsandboxed renderer for
+        // the whole process — same trust tier as the client registry above.
+        "/data-policy" => Some(Scope::Admin),
+        // Same reasoning as `PATCH /answer`: a config write over the
+        // embedding backend and its remote endpoint.
+        "/inference" => Some(Scope::Admin),
+        // Read the search-quality policies freely; only an admin replaces
+        // one.
+        "/policies" => Some(Scope::Read),
+        _ if path.starts_with("/policies/") => Some(Scope::Admin),
+        // Retention/backup settings are read freely; changing them, writing
+        // a backup on demand, or closing circuits are all admin actions.
+        "/persistence" if *method == Method::PATCH => Some(Scope::Admin),
+        "/persistence" | "/persistence/backups" => Some(Scope::Read),
+        "/persistence/backup" => Some(Scope::Admin),
+        "/circuits" => Some(Scope::Read),
+        "/circuits/reset" => Some(Scope::Admin),
+        "/telemetry" if *method == Method::PATCH => Some(Scope::Admin),
+        "/telemetry" => Some(Scope::Read),
+        "/deep/limits" if *method == Method::PATCH => Some(Scope::Admin),
+        "/deep/limits" => Some(Scope::Read),
+        "/deep/extractor" | "/deep/renderer" => Some(Scope::Admin),
+        "/mcp" => Some(Scope::Mcp),
+        _ if path.starts_with("/mcp/") => Some(Scope::Mcp),
+        // `/history/{id}` and `/saved/{id}` only ever delete.
+        _ if path.starts_with("/history/") || path.starts_with("/saved/") => Some(Scope::Write),
+        // Fail closed: every route the router registers must declare its
+        // scope here. A route that forgets its arm is admin-protected, never
+        // public — an unknown path reaching this arm can still 404 via the
+        // static-asset fallback, but only for an identity with the admin
+        // scope. (See the `required_scope` doc comment.)
+        _ => Some(Scope::Admin),
+    }
 }
 
 struct RateWindow {
@@ -93,6 +519,10 @@ impl From<ConfigError> for ServerError {
 #[derive(Debug, Deserialize)]
 struct SearchParams {
     q: String,
+    #[serde(default)]
+    page: Option<u32>,
+    #[serde(default)]
+    page_size: Option<u32>,
 }
 
 #[derive(Debug, Serialize)]
@@ -105,31 +535,60 @@ pub async fn build_router(
     service: AmatlService,
     explicit_token: Option<String>,
 ) -> Result<Router, ServerError> {
+    build_router_with_config_path(service, explicit_token, None).await
+}
+
+/// Triggers the same reload as `POST /reload` from outside the HTTP surface.
+#[derive(Clone)]
+pub struct ReloadHandle {
+    state: AppState,
+}
+
+impl ReloadHandle {
+    /// Rebuild the service; errors are reported, never fatal to the listener.
+    pub async fn reload(&self) -> Result<(), ServerError> {
+        self.state
+            .clone()
+            .reload()
+            .await
+            .map(|_| ())
+            .map_err(|_| ServerError::Configuration)
+    }
+}
+
+/// Router that can reload from a configuration file on demand.
+///
+/// `config_path` is the file `POST /reload` and `SIGHUP` re-read; pass `None`
+/// when the process was started without one.
+pub async fn build_router_with_config_path(
+    service: AmatlService,
+    explicit_token: Option<String>,
+    config_path: Option<PathBuf>,
+) -> Result<Router, ServerError> {
+    build_router_with_reload(service, explicit_token, config_path)
+        .await
+        .map(|(router, _)| router)
+}
+
+/// Router plus the handle a signal listener uses to reload it.
+pub async fn build_router_with_reload(
+    service: AmatlService,
+    explicit_token: Option<String>,
+    config_path: Option<PathBuf>,
+) -> Result<(Router, ReloadHandle), ServerError> {
     service.config().validate()?;
     let server = service.config().server.clone();
     let https = server.tls.cert_path.is_some();
-    let token = if server.no_auth {
-        None
-    } else {
-        explicit_token
-            .or_else(|| std::env::var(&server.token_env).ok())
-            .filter(|value| value.len() >= 32)
-            .ok_or(ServerError::MissingToken)
-            .map(Some)?
-    };
+    let clients = resolve_clients(service.config(), explicit_token.clone())?;
     let allowed_origins = effective_origins(service.config(), https);
     let security = Arc::new(SecurityState {
-        token,
+        clients,
         allowed_hosts: server.allowed_hosts.clone(),
         allowed_origins: allowed_origins.clone(),
         max_header_bytes: server.max_header_bytes,
         max_body_bytes: server.max_body_bytes,
         timeout: Duration::from_millis(server.request_timeout_ms),
         rate_limit_per_minute: server.rate_limit_per_minute,
-        rate_limiter: Mutex::new(RateLimiter {
-            windows: BTreeMap::new(),
-            last_cleanup: Instant::now(),
-        }),
         https,
     });
     let mcp_config = StreamableHttpServerConfig::default()
@@ -140,32 +599,115 @@ pub async fn build_router(
         .with_allowed_origins(allowed_origins.clone())
         .with_max_request_body_bytes(server.max_body_bytes)
         .with_stateless_protocol_metadata_required(true);
+    // One handle, shared by HTTP and MCP, so a reload reaches both surfaces.
+    let handle: ServiceHandle = Arc::new(RwLock::new(service));
     let mcp_service: StreamableHttpService<mcp::McpSurface, LocalSessionManager> =
         StreamableHttpService::new(
             {
-                let service = service.clone();
-                move || Ok(mcp::McpSurface::new(service.clone()))
+                let handle = handle.clone();
+                move || Ok(mcp::McpSurface::new(handle.clone()))
             },
             Default::default(),
             mcp_config,
         );
-    let state = AppState { service, security };
+    let state = AppState {
+        service: handle,
+        config_path,
+        security: Arc::new(RwLock::new(security)),
+        rate_limiter: Arc::new(Mutex::new(RateLimiter {
+            windows: BTreeMap::new(),
+            last_cleanup: Instant::now(),
+        })),
+        explicit_token,
+        config_write_lock: Arc::new(AsyncMutex::new(())),
+        metrics: Arc::new(RequestMetrics::default()),
+    };
     let cors = cors_layer(&allowed_origins)?;
-    Ok(Router::new()
+    let reload_handle = ReloadHandle {
+        state: state.clone(),
+    };
+    let router = Router::new()
         .route("/search", get(search).post(search_post))
         .route("/deep", get(deep).post(deep_post))
+        .route("/answer", post(answer_post).patch(update_answer_fields))
         .route("/providers", get(providers))
+        .route("/status", get(status))
+        .route("/history", get(history).delete(purge_history))
+        .route("/history/{id}", delete(delete_history_entry))
+        .route("/saved", get(saved_documents).post(save_document))
+        .route("/saved/{id}", delete(delete_saved_document))
+        .route("/reload", axum::routing::post(reload))
+        .route("/answer/enabled", post(answer_toggle))
+        .route("/providers/{name}/enabled", post(provider_toggle))
+        .route(
+            "/providers/{name}",
+            get(provider_record).patch(update_provider_record),
+        )
+        .route("/inference", axum::routing::patch(update_inference))
+        .route(
+            "/server/clients",
+            get(list_server_clients).post(create_server_client),
+        )
+        .route(
+            "/server/clients/{id}",
+            axum::routing::patch(update_server_client).delete(delete_server_client),
+        )
+        .route(
+            "/server/clients/{id}/rotate",
+            post(rotate_server_client_token),
+        )
+        .route(
+            "/server/pending-config",
+            get(server_pending_config).patch(update_server_pending_config),
+        )
+        .route("/data-policy", post(data_policy_update))
+        .route("/policies", get(policies))
+        .route("/policies/{name}", axum::routing::patch(update_policy))
+        .route(
+            "/persistence",
+            get(persistence_config).patch(update_persistence),
+        )
+        .route("/persistence/backups", get(list_backups))
+        .route("/persistence/backup", post(create_backup))
+        .route("/circuits", get(circuits))
+        .route("/circuits/reset", post(reset_circuits))
+        .route("/telemetry", get(telemetry_config).patch(update_telemetry))
+        // Not `/deep` — that path is already `GET`/`POST` for the domain
+        // deep-fetch surface (see above). Configuration for it lives at
+        // `/deep/limits` and below so the two never collide.
+        .route("/deep/limits", get(deep_config).patch(update_deep))
+        .route(
+            "/deep/extractor",
+            axum::routing::patch(update_deep_extractor),
+        )
+        .route("/deep/renderer", axum::routing::patch(update_deep_renderer))
+        .route("/security-events", get(security_events))
         .route("/health", get(health))
+        .route("/ready", get(ready))
+        .route("/metrics", get(metrics))
         .nest_service("/mcp", mcp_service)
         .fallback(static_asset)
         .with_state(state.clone())
         .layer(ConcurrencyLimitLayer::new(server.max_connections))
         .layer(DefaultBodyLimit::max(server.max_body_bytes))
         .layer(cors)
-        .layer(middleware::from_fn_with_state(state, security_middleware)))
+        .layer(middleware::from_fn_with_state(state, security_middleware));
+    Ok((router, reload_handle))
 }
 
 pub async fn serve(service: AmatlService) -> Result<(), ServerError> {
+    serve_with_config_path(service, None).await
+}
+
+/// Serve with a configuration file that `POST /reload` and `SIGHUP` re-read.
+///
+/// Startup reports the effective listener as one structured log line, so a
+/// supervisor can confirm bind, TLS, authentication and reload support without
+/// parsing prose.
+pub async fn serve_with_config_path(
+    service: AmatlService,
+    config_path: Option<PathBuf>,
+) -> Result<(), ServerError> {
     let address = SocketAddr::new(
         service
             .config()
@@ -177,7 +719,19 @@ pub async fn serve(service: AmatlService) -> Result<(), ServerError> {
     );
     let idle = Duration::from_millis(service.config().server.idle_timeout_ms);
     let tls = service.config().server.tls.clone();
-    let app = build_router(service, None).await?;
+    let authenticated = !service.config().server.no_auth;
+    let (app, reload_handle) = build_router_with_reload(service, None, config_path.clone()).await?;
+    install_reload_signal(reload_handle);
+    tracing::info!(
+        target: "amatl::http",
+        event = "listening",
+        bind = %address,
+        tls = tls.cert_path.is_some(),
+        authenticated,
+        config_file = config_path.as_ref().map(|path| path.display().to_string()),
+        reload = "POST /reload or SIGHUP",
+        "AMATL server is listening"
+    );
     let make_service = app.into_make_service_with_connect_info::<SocketAddr>();
     match (tls.cert_path, tls.key_path) {
         (Some(cert), Some(key)) => {
@@ -225,74 +779,228 @@ pub async fn serve(service: AmatlService) -> Result<(), ServerError> {
     }
 }
 
+/// Reload on `SIGHUP`, the conventional signal for "re-read configuration".
+///
+/// Unix only; on other platforms `POST /reload` remains the way in.
+#[cfg(unix)]
+fn install_reload_signal(handle: ReloadHandle) {
+    tokio::spawn(async move {
+        let Ok(mut hangup) = tokio::signal::unix::signal(tokio::signal::unix::SignalKind::hangup())
+        else {
+            tracing::warn!(
+                target: "amatl::http",
+                "SIGHUP handler could not be installed; use POST /reload instead"
+            );
+            return;
+        };
+        while hangup.recv().await.is_some() {
+            match handle.reload().await {
+                Ok(()) => tracing::info!(
+                    target: "amatl::http",
+                    event = "reloaded",
+                    signal = "SIGHUP",
+                    "configuration reloaded"
+                ),
+                Err(_) => tracing::warn!(
+                    target: "amatl::http",
+                    event = "reload_rejected",
+                    signal = "SIGHUP",
+                    "configuration reload was rejected; the running service is unchanged"
+                ),
+            }
+        }
+    });
+}
+
+#[cfg(not(unix))]
+fn install_reload_signal(_handle: ReloadHandle) {}
+
 async fn search(
     State(state): State<AppState>,
+    Extension(request_id): Extension<RequestId>,
     params: Result<Query<SearchParams>, QueryRejection>,
 ) -> Response {
     let Ok(Query(params)) = params else {
-        return api_error(StatusCode::BAD_REQUEST, "invalid_request");
+        return api_error(ErrorCode::InvalidRequest);
     };
     if !valid_query(&params.q) {
-        return api_error(StatusCode::BAD_REQUEST, "invalid_query");
+        return api_error(ErrorCode::InvalidQuery);
     }
-    match state.service.search(params.q, ServiceSurface::Api).await {
-        Ok(value) => Json(value.response).into_response(),
-        Err(error) => service_error(error),
+    let started = Instant::now();
+    let outcome = state
+        .service()
+        .search_paginated(
+            params.q,
+            ServiceSurface::api(Some(request_id.into_inner())),
+            params.page,
+            params.page_size,
+        )
+        .await;
+    state
+        .metrics
+        .search_latency
+        .record(started.elapsed().as_millis() as u64);
+    match outcome {
+        Ok(value) => {
+            state.metrics.search_total.fetch_add(1, Ordering::Relaxed);
+            Json(value.response).into_response()
+        }
+        Err(error) => {
+            state.metrics.search_errors.fetch_add(1, Ordering::Relaxed);
+            service_error(error)
+        }
     }
 }
 
 async fn deep(
     State(state): State<AppState>,
+    Extension(request_id): Extension<RequestId>,
     params: Result<Query<SearchParams>, QueryRejection>,
 ) -> Response {
     let Ok(Query(params)) = params else {
-        return api_error(StatusCode::BAD_REQUEST, "invalid_request");
+        return api_error(ErrorCode::InvalidRequest);
     };
     if !valid_query(&params.q) {
-        return api_error(StatusCode::BAD_REQUEST, "invalid_query");
+        return api_error(ErrorCode::InvalidQuery);
     }
-    match state.service.deep(params.q, ServiceSurface::Api).await {
-        Ok(value) => Json(value).into_response(),
-        Err(error) => service_error(error),
+    let started = Instant::now();
+    let outcome = state
+        .service()
+        .deep(params.q, ServiceSurface::api(Some(request_id.into_inner())))
+        .await;
+    state
+        .metrics
+        .deep_latency
+        .record(started.elapsed().as_millis() as u64);
+    match outcome {
+        Ok(value) => {
+            state.metrics.deep_total.fetch_add(1, Ordering::Relaxed);
+            Json(value).into_response()
+        }
+        Err(error) => {
+            state.metrics.deep_errors.fetch_add(1, Ordering::Relaxed);
+            service_error(error)
+        }
     }
 }
 
 async fn search_post(
     State(state): State<AppState>,
+    Extension(request_id): Extension<RequestId>,
     params: Result<Json<SearchParams>, JsonRejection>,
 ) -> Response {
     let Json(params) = match params {
         Ok(params) => params,
-        Err(rejection) => return api_error(rejection.status(), "invalid_request"),
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
     };
     if !valid_query(&params.q) {
-        return api_error(StatusCode::BAD_REQUEST, "invalid_query");
+        return api_error(ErrorCode::InvalidQuery);
     }
-    match state.service.search(params.q, ServiceSurface::Api).await {
-        Ok(value) => Json(value.response).into_response(),
-        Err(error) => service_error(error),
+    let started = Instant::now();
+    let outcome = state
+        .service()
+        .search_paginated(
+            params.q,
+            ServiceSurface::api(Some(request_id.into_inner())),
+            params.page,
+            params.page_size,
+        )
+        .await;
+    state
+        .metrics
+        .search_latency
+        .record(started.elapsed().as_millis() as u64);
+    match outcome {
+        Ok(value) => {
+            state.metrics.search_total.fetch_add(1, Ordering::Relaxed);
+            Json(value.response).into_response()
+        }
+        Err(error) => {
+            state.metrics.search_errors.fetch_add(1, Ordering::Relaxed);
+            service_error(error)
+        }
     }
 }
 
 async fn deep_post(
     State(state): State<AppState>,
+    Extension(request_id): Extension<RequestId>,
     params: Result<Json<SearchParams>, JsonRejection>,
 ) -> Response {
     let Json(params) = match params {
         Ok(params) => params,
-        Err(rejection) => return api_error(rejection.status(), "invalid_request"),
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
     };
     if !valid_query(&params.q) {
-        return api_error(StatusCode::BAD_REQUEST, "invalid_query");
+        return api_error(ErrorCode::InvalidQuery);
     }
-    match state.service.deep(params.q, ServiceSurface::Api).await {
-        Ok(value) => Json(value).into_response(),
-        Err(error) => service_error(error),
+    let started = Instant::now();
+    let outcome = state
+        .service()
+        .deep(params.q, ServiceSurface::api(Some(request_id.into_inner())))
+        .await;
+    state
+        .metrics
+        .deep_latency
+        .record(started.elapsed().as_millis() as u64);
+    match outcome {
+        Ok(value) => {
+            state.metrics.deep_total.fetch_add(1, Ordering::Relaxed);
+            Json(value).into_response()
+        }
+        Err(error) => {
+            state.metrics.deep_errors.fetch_add(1, Ordering::Relaxed);
+            service_error(error)
+        }
+    }
+}
+
+/// Runs a search and synthesizes a grounded, cited answer from it. Mirrors
+/// `search_post`/`deep_post` exactly; the only difference is which service
+/// method it calls. Distinct from both on purpose: `search`/`deep` never
+/// change behavior because this route exists, and this route never runs
+/// unless the caller explicitly hits it.
+async fn answer_post(
+    State(state): State<AppState>,
+    Extension(request_id): Extension<RequestId>,
+    params: Result<Json<SearchParams>, JsonRejection>,
+) -> Response {
+    let Json(params) = match params {
+        Ok(params) => params,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    if !valid_query(&params.q) {
+        return api_error(ErrorCode::InvalidQuery);
+    }
+    let started = Instant::now();
+    let outcome = state
+        .service()
+        .answer(params.q, ServiceSurface::api(Some(request_id.into_inner())))
+        .await;
+    state
+        .metrics
+        .answer_latency
+        .record(started.elapsed().as_millis() as u64);
+    match outcome {
+        Ok(value) => {
+            state.metrics.answer_total.fetch_add(1, Ordering::Relaxed);
+            Json(value).into_response()
+        }
+        Err(error) => {
+            state.metrics.answer_errors.fetch_add(1, Ordering::Relaxed);
+            service_error(error)
+        }
     }
 }
 
 async fn providers(State(state): State<AppState>) -> Response {
-    match state.service.provider_summaries() {
+    match state.service().provider_summaries() {
         Ok(providers) => Json(ProviderResponse {
             schema_version: SCHEMA_VERSION.into(),
             providers,
@@ -302,13 +1010,1504 @@ async fn providers(State(state): State<AppState>) -> Response {
     }
 }
 
+/// Bounded listing window for the local domain surfaces.
+#[derive(Debug, Deserialize)]
+struct PageParams {
+    #[serde(default)]
+    limit: Option<u32>,
+    #[serde(default)]
+    offset: Option<u32>,
+}
+
+impl PageParams {
+    fn window(&self) -> (u32, u32) {
+        (
+            self.limit.unwrap_or(50).clamp(1, 200),
+            self.offset.unwrap_or(0),
+        )
+    }
+}
+
+/// Rebuild the service from configuration without restarting the process.
+///
+/// Adding, removing or re-approving a source is therefore a file edit plus one
+/// call. The reload is atomic from a client's point of view: it either swaps a
+/// fully built service or changes nothing and reports why.
+async fn reload(State(state): State<AppState>) -> Response {
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+#[derive(Debug, Deserialize)]
+struct AnswerToggleParams {
+    enabled: bool,
+}
+
+/// Flip `answer.enabled` and nothing else — admin scoped, same trust tier as
+/// `/reload`, which this reuses for the actual apply step.
+///
+/// Validates a would-be config with the flag flipped *before* writing
+/// anything: if turning the feature on would leave `answer` unable to pass
+/// `Config::validate` (missing `endpoint`/`model`, an operator never
+/// finished configuring), this fails closed without ever touching the file
+/// or the credential — a half-written toggle is worse than no toggle.
+async fn answer_toggle(
+    State(state): State<AppState>,
+    params: Result<Json<AnswerToggleParams>, JsonRejection>,
+) -> Response {
+    let Json(params) = match params {
+        Ok(params) => params,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    candidate.answer.enabled = params.enabled;
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_answer_enabled(&path, params.enabled).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+#[derive(Debug, Deserialize)]
+struct ProviderToggleParams {
+    enabled: bool,
+}
+
+/// Add or remove one name from `providers.enabled` — admin scoped, same
+/// trust tier as `/answer/enabled` and `/reload`, whose pattern this copies
+/// exactly (validate a candidate config first, write only the narrow field,
+/// then apply through the same atomic reload).
+///
+/// This never writes or touches a provider's governance ficha
+/// (`approval_status`, `reviewer`, `reviewed_at`, …). Enabling a name whose
+/// ficha is missing, expired, or was never approved does not send traffic:
+/// `select_providers` re-checks approval at call time and reports
+/// `provider_not_approved` instead. The toggle can only ever turn on what
+/// governance already allowed to run.
+async fn provider_toggle(
+    State(state): State<AppState>,
+    Path(name): Path<String>,
+    params: Result<Json<ProviderToggleParams>, JsonRejection>,
+) -> Response {
+    let Json(params) = match params {
+        Ok(params) => params,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    let enabled = &mut candidate.providers.enabled;
+    let already_present = enabled.iter().any(|existing| existing == &name);
+    if params.enabled && !already_present {
+        enabled.push(name.clone());
+    } else if !params.enabled {
+        enabled.retain(|existing| existing != &name);
+    }
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_provider_enabled(&path, &name, params.enabled).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Read the full governance ficha for one declared provider — read scoped,
+/// like `/providers` and `/status`: nothing in a ficha is a secret
+/// (`credential_env` names an environment variable, never its value).
+async fn provider_record(State(state): State<AppState>, Path(name): Path<String>) -> Response {
+    let config = state.service().config().clone();
+    match config.providers.get(&name) {
+        Some(record) => Json(json!({
+            "schema_version": SCHEMA_VERSION,
+            "name": name,
+            "record": record,
+            "approved": record.approved(),
+        }))
+        .into_response(),
+        None => api_error(ErrorCode::NotFound),
+    }
+}
+
+/// Fields a `PATCH /providers/{name}` request may set. Every field is
+/// optional so a request only changes what it names; on the optional string
+/// fields, an empty string clears them — same convention as
+/// [`amatl_core::InferenceConfigPatch`].
+#[derive(Debug, Deserialize, Default)]
+struct ProviderRecordParams {
+    adapter_version: Option<String>,
+    approval_status: Option<amatl_core::ApprovalStatus>,
+    reviewed_at: Option<String>,
+    reviewer: Option<String>,
+    terms_url: Option<String>,
+    terms_version_or_date: Option<String>,
+    allowed_access_method: Option<String>,
+    plan_or_contract: Option<String>,
+    rate_limit: Option<String>,
+    cost_model: Option<String>,
+    credential_env: Option<String>,
+    storage_rights: Option<bool>,
+    supported_regions: Option<Vec<String>>,
+    supported_filters: Option<Vec<String>>,
+    data_handling_notes: Option<String>,
+    operational_risk: Option<String>,
+}
+
+fn clearable_patch_field(current: &mut Option<String>, incoming: &Option<String>) {
+    if let Some(value) = incoming {
+        *current = if value.is_empty() {
+            None
+        } else {
+            Some(value.clone())
+        };
+    }
+}
+
+/// Apply `params` onto `existing`, leaving unset fields untouched.
+fn apply_provider_record_params(
+    mut existing: amatl_core::ProviderRuntimeConfig,
+    params: &ProviderRecordParams,
+) -> amatl_core::ProviderRuntimeConfig {
+    clearable_patch_field(&mut existing.adapter_version, &params.adapter_version);
+    if let Some(status) = params.approval_status {
+        existing.approval_status = status;
+    }
+    clearable_patch_field(&mut existing.reviewed_at, &params.reviewed_at);
+    clearable_patch_field(&mut existing.reviewer, &params.reviewer);
+    clearable_patch_field(&mut existing.terms_url, &params.terms_url);
+    clearable_patch_field(
+        &mut existing.terms_version_or_date,
+        &params.terms_version_or_date,
+    );
+    clearable_patch_field(
+        &mut existing.allowed_access_method,
+        &params.allowed_access_method,
+    );
+    clearable_patch_field(&mut existing.plan_or_contract, &params.plan_or_contract);
+    clearable_patch_field(&mut existing.rate_limit, &params.rate_limit);
+    clearable_patch_field(&mut existing.cost_model, &params.cost_model);
+    clearable_patch_field(&mut existing.credential_env, &params.credential_env);
+    if let Some(storage_rights) = params.storage_rights {
+        existing.storage_rights = storage_rights;
+    }
+    if let Some(regions) = &params.supported_regions {
+        existing.supported_regions = regions.clone();
+    }
+    if let Some(filters) = &params.supported_filters {
+        existing.supported_filters = filters.clone();
+    }
+    clearable_patch_field(
+        &mut existing.data_handling_notes,
+        &params.data_handling_notes,
+    );
+    clearable_patch_field(&mut existing.operational_risk, &params.operational_risk);
+    existing
+}
+
+/// Edit a provider's governance ficha — admin scoped, same
+/// validate-then-write pattern as every mutation here. Upserts: a name with
+/// no ficha on file yet starts from
+/// [`amatl_core::ProviderRuntimeConfig::default`], so this can declare a
+/// brand-new custom source's paperwork, not just amend an existing one. This
+/// never touches `providers.enabled` — approving a ficha here does not turn
+/// the source's traffic on; see [`Config::set_provider_enabled`] for that.
+async fn update_provider_record(
+    State(state): State<AppState>,
+    Path(name): Path<String>,
+    params: Result<Json<ProviderRecordParams>, JsonRejection>,
+) -> Response {
+    let Json(params) = match params {
+        Ok(params) => params,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    let existing = candidate.providers.get(&name).cloned().unwrap_or_default();
+    let updated = apply_provider_record_params(existing, &params);
+    candidate.providers.declare(name.clone(), updated.clone());
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::upsert_provider_record(&path, &name, &updated).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(_) => Json(json!({
+            "schema_version": SCHEMA_VERSION,
+            "name": name,
+            "record": updated,
+            "approved": updated.approved(),
+        }))
+        .into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// `[[server.clients]]` as returned to an admin caller: capability, never
+/// the secret. `credential_kind` tells the operator which mechanism backs
+/// the entry (`token_env` clients rotate by changing the environment;
+/// `token_sha256` clients rotate through `POST
+/// /server/clients/{id}/rotate`) without ever exposing the value of either.
+#[derive(Debug, Serialize)]
+struct ServerClientSummary {
+    id: String,
+    scopes: Vec<Scope>,
+    tools: Vec<String>,
+    expires_at: Option<String>,
+    credential_kind: &'static str,
+}
+
+impl From<&amatl_core::ServerClient> for ServerClientSummary {
+    fn from(client: &amatl_core::ServerClient) -> Self {
+        Self {
+            id: client.id.clone(),
+            scopes: client.scopes.clone(),
+            tools: client.tools.clone(),
+            expires_at: client.expires_at.clone(),
+            credential_kind: if client.token_env.is_some() {
+                "token_env"
+            } else {
+                "token_sha256"
+            },
+        }
+    }
+}
+
+/// List every declared `[[server.clients]]` entry — admin scoped, same
+/// reasoning as `/security-events`: this names every capability granted to
+/// every credential the server accepts.
+async fn list_server_clients(State(state): State<AppState>) -> Response {
+    let clients: Vec<ServerClientSummary> = state
+        .service()
+        .config()
+        .server
+        .clients
+        .iter()
+        .map(ServerClientSummary::from)
+        .collect();
+    Json(json!({ "schema_version": SCHEMA_VERSION, "clients": clients })).into_response()
+}
+
+#[derive(Debug, Deserialize)]
+struct CreateServerClientParams {
+    id: String,
+    scopes: Vec<Scope>,
+    #[serde(default)]
+    tools: Vec<String>,
+    #[serde(default)]
+    expires_at: Option<String>,
+}
+
+/// Response to `POST /server/clients`: the plaintext token, once.
+///
+/// Nothing above this layer ever reconstructs it — only `token_sha256` is
+/// written to disk (see [`amatl_core::Config::upsert_server_client`]) — so
+/// this response is the only place in the system the value is ever visible
+/// after creation. Losing it means minting a new one via
+/// `POST /server/clients/{id}/rotate`.
+#[derive(Debug, Serialize)]
+struct CreatedServerClient {
+    schema_version: &'static str,
+    #[serde(flatten)]
+    summary: ServerClientSummary,
+    token: String,
+}
+
+/// Mint a new client credential — admin scoped, same trust tier as
+/// `/reload`, which this reuses for the actual apply step.
+///
+/// Generates a fresh 256-bit token, writes only its SHA-256 digest
+/// (`Config::upsert_server_client` never sees the plaintext), and validates
+/// a candidate config with the new entry applied *before* writing anything,
+/// exactly like `/answer/enabled` and `/providers/{name}/enabled`: a client
+/// that would fail `Config::validate` (duplicate id, no scope, unknown MCP
+/// tool, malformed `expires_at`) never reaches the file.
+async fn create_server_client(
+    State(state): State<AppState>,
+    params: Result<Json<CreateServerClientParams>, JsonRejection>,
+) -> Response {
+    let Json(params) = match params {
+        Ok(params) => params,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let token = generate_client_token();
+    let client = amatl_core::ServerClient {
+        id: params.id,
+        token_env: None,
+        token_sha256: Some(digest_to_hex(token_digest(&token))),
+        expires_at: params.expires_at,
+        scopes: params.scopes,
+        tools: params.tools,
+    };
+    // Reject a duplicate id instead of silently replacing the existing entry:
+    // a replace would mint a new credential and the reload below would stop
+    // authenticating whoever held the old one, revoking it without warning.
+    let already_exists = state
+        .service()
+        .config()
+        .server
+        .clients
+        .iter()
+        .any(|existing| existing.id == client.id);
+    if already_exists {
+        return api_error(ErrorCode::Conflict);
+    }
+    let mut candidate = state.service().config().clone();
+    candidate.server.clients.push(client.clone());
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::upsert_server_client(&path, &client).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if let Err(error) = state.clone().reload().await {
+        return service_error(error);
+    }
+    Json(CreatedServerClient {
+        schema_version: SCHEMA_VERSION,
+        summary: ServerClientSummary::from(&client),
+        token,
+    })
+    .into_response()
+}
+
+#[derive(Debug, Deserialize)]
+struct UpdateServerClientParams {
+    scopes: Option<Vec<Scope>>,
+    tools: Option<Vec<String>>,
+    /// Present-and-null clears the expiry; absent leaves it unchanged.
+    #[serde(default, deserialize_with = "deserialize_optional_field")]
+    expires_at: Option<Option<String>>,
+}
+
+/// Update the capability of an existing client without touching its
+/// credential — admin scoped, same pattern as every other write here:
+/// validate a candidate config first, then write only through
+/// `Config::upsert_server_client`, which re-serializes the *whole* entry, so
+/// unset fields are carried forward from the currently loaded config, not
+/// merged at the TOML layer.
+async fn update_server_client(
+    State(state): State<AppState>,
+    Path(id): Path<String>,
+    params: Result<Json<UpdateServerClientParams>, JsonRejection>,
+) -> Response {
+    let Json(params) = match params {
+        Ok(params) => params,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    let Some(existing) = candidate
+        .server
+        .clients
+        .iter()
+        .find(|c| c.id == id)
+        .cloned()
+    else {
+        return api_error(ErrorCode::NotFound);
+    };
+    let updated = amatl_core::ServerClient {
+        id: existing.id,
+        token_env: existing.token_env,
+        token_sha256: existing.token_sha256,
+        expires_at: params.expires_at.unwrap_or(existing.expires_at),
+        scopes: params.scopes.unwrap_or(existing.scopes),
+        tools: params.tools.unwrap_or(existing.tools),
+    };
+    for client in &mut candidate.server.clients {
+        if client.id == id {
+            *client = updated.clone();
+        }
+    }
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::upsert_server_client(&path, &updated).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(_) => Json(json!({
+            "schema_version": SCHEMA_VERSION,
+            "client": ServerClientSummary::from(&updated)
+        }))
+        .into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Revoke a client credential — admin scoped. A no-op-shaped 404 (not a
+/// crash) when the id is already absent, matching `delete_history_entry`'s
+/// and `delete_saved_document`'s idempotent-delete convention.
+async fn delete_server_client(State(state): State<AppState>, Path(id): Path<String>) -> Response {
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let existed = state
+        .service()
+        .config()
+        .server
+        .clients
+        .iter()
+        .any(|client| client.id == id);
+    if !existed {
+        return api_error(ErrorCode::NotFound);
+    }
+    if amatl_core::Config::remove_server_client(&path, &id).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Mint a replacement token for an existing client, keeping its scopes,
+/// tools and expiry — admin scoped. The old token stops authenticating the
+/// instant the reload below swaps `SecurityState`.
+async fn rotate_server_client_token(
+    State(state): State<AppState>,
+    Path(id): Path<String>,
+) -> Response {
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let Some(existing) = state
+        .service()
+        .config()
+        .server
+        .clients
+        .iter()
+        .find(|client| client.id == id)
+        .cloned()
+    else {
+        return api_error(ErrorCode::NotFound);
+    };
+    let token = generate_client_token();
+    let rotated = amatl_core::ServerClient {
+        token_env: None,
+        token_sha256: Some(digest_to_hex(token_digest(&token))),
+        ..existing
+    };
+    let mut candidate = state.service().config().clone();
+    for client in &mut candidate.server.clients {
+        if client.id == id {
+            *client = rotated.clone();
+        }
+    }
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::upsert_server_client(&path, &rotated).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if let Err(error) = state.clone().reload().await {
+        return service_error(error);
+    }
+    Json(CreatedServerClient {
+        schema_version: SCHEMA_VERSION,
+        summary: ServerClientSummary::from(&rotated),
+        token,
+    })
+    .into_response()
+}
+
+/// 256 bits from the OS CSPRNG, hex-encoded — long enough to clear
+/// `MINIMUM_TOKEN_BYTES` by a wide margin and never derived from anything
+/// guessable (time, PID, sequence counters).
+fn generate_client_token() -> String {
+    let mut bytes = [0_u8; 32];
+    rand::rng().fill_bytes(&mut bytes);
+    digest_to_hex(bytes)
+}
+
+fn digest_to_hex(digest: [u8; 32]) -> String {
+    use std::fmt::Write;
+    digest
+        .iter()
+        .fold(String::with_capacity(64), |mut hex, byte| {
+            let _ = write!(hex, "{byte:02x}");
+            hex
+        })
+}
+
+/// Distinguishes an absent `expires_at` (leave unchanged) from an explicit
+/// `null` (clear it) in a JSON PATCH body, since plain `Option<T>` collapses
+/// both to `None`.
+fn deserialize_optional_field<'de, D>(deserializer: D) -> Result<Option<Option<String>>, D::Error>
+where
+    D: serde::Deserializer<'de>,
+{
+    Ok(Some(Option::deserialize(deserializer)?))
+}
+
+/// Change `data_policy.{profile,egress,inference}` — admin scoped, same
+/// trust tier and the same validate-then-write pattern as every other
+/// mutation here. Every field is optional so a caller can flip just the one
+/// it means to change; whichever are omitted keep their current value.
+///
+/// This is the gate every other capability in the system checks against
+/// (network egress, remote inference, the unsandboxed renderer — see
+/// `DataPolicyConfig::allows_*` and the `isolated` cross-checks in
+/// `Config::validate`), so a candidate is validated in full before anything
+/// is written: e.g. switching to `isolated` while `answer.enabled` is still
+/// on fails closed here instead of leaving the file in a state the running
+/// process would then refuse to reload.
+///
+/// Unlike every other config section, the write is a single atomic edit
+/// ([`amatl_core::Config::set_data_policy_fields`]) rather than one
+/// `fs::write` per field: profile, egress and inference cross-check each
+/// other in `Config::validate`, so three independent writes could leave the
+/// file in a mix a reload would reject if the second one failed.
+async fn data_policy_update(
+    State(state): State<AppState>,
+    params: Result<Json<amatl_core::DataPolicyConfigPatch>, JsonRejection>,
+) -> Response {
+    let Json(patch) = match params {
+        Ok(patch) => patch,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    patch.apply(&mut candidate.data_policy);
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_data_policy_fields(&path, &patch).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Edit `[inference]` — admin scoped, same validate-then-write pattern as
+/// every mutation here. See [`amatl_core::InferenceConfigPatch`] for what a
+/// request may set and the "empty string clears" convention on its optional
+/// string fields.
+async fn update_inference(
+    State(state): State<AppState>,
+    params: Result<Json<amatl_core::InferenceConfigPatch>, JsonRejection>,
+) -> Response {
+    let Json(patch) = match params {
+        Ok(patch) => patch,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    patch.apply(&mut candidate.inference);
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_inference_fields(&path, &patch).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Edit `[answer]`'s endpoint, model and limits — admin scoped. Deliberately
+/// separate from `POST /answer/enabled`: this can never flip the feature on
+/// or off, see [`amatl_core::AnswerConfigPatch`].
+async fn update_answer_fields(
+    State(state): State<AppState>,
+    params: Result<Json<amatl_core::AnswerConfigPatch>, JsonRejection>,
+) -> Response {
+    let Json(patch) = match params {
+        Ok(patch) => patch,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    patch.apply(&mut candidate.answer);
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_answer_fields(&path, &patch).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Every search-quality policy in one read — read scoped, like `/status`.
+async fn policies(State(state): State<AppState>) -> Response {
+    let config = state.service().config().clone();
+    Json(json!({
+        "schema_version": SCHEMA_VERSION,
+        "ranking_policy": config.ranking_policy,
+        "diversity_policy": config.diversity_policy,
+        "search_policy": config.search_policy,
+        "ranking_v2_policy": config.deep.ranking_v2.policy,
+        "gap_policy": config.deep.gaps.policy,
+    }))
+    .into_response()
+}
+
+/// Replace one search-quality policy wholesale — admin scoped.
+///
+/// `{name}` selects both the target field and the wire shape expected in
+/// the body: `ranking`, `diversity`, `search`, `ranking_v2` or `gaps`. Each
+/// arm builds a full candidate config with that one policy replaced,
+/// validates it (`diversity` and `search` share three limits
+/// `Config::validate` requires to agree — see
+/// [`amatl_core::Config::set_diversity_policy`] — so an admin editing one
+/// without the other fails closed here, before anything is written), then
+/// writes through the matching [`amatl_core::Config`] setter, which
+/// replaces the whole table (see
+/// [`amatl_core::Config::set_ranking_policy`]'s doc comment for exactly
+/// what that means for comments).
+async fn update_policy(
+    State(state): State<AppState>,
+    Path(name): Path<String>,
+    body: Result<Json<serde_json::Value>, JsonRejection>,
+) -> Response {
+    let Json(body) = match body {
+        Ok(body) => body,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    let write_result = match name.as_str() {
+        "ranking" => {
+            let Ok(policy) = serde_json::from_value::<amatl_core::RankingPolicyV1>(body) else {
+                return api_error(ErrorCode::InvalidRequest);
+            };
+            candidate.ranking_policy = policy.clone();
+            if candidate.validate().is_err() {
+                return api_error(ErrorCode::ConfigurationInvalid);
+            }
+            amatl_core::Config::set_ranking_policy(&path, &policy)
+        }
+        "diversity" => {
+            let Ok(policy) = serde_json::from_value::<amatl_core::DiversityPolicyV1>(body) else {
+                return api_error(ErrorCode::InvalidRequest);
+            };
+            candidate.diversity_policy = policy.clone();
+            if candidate.validate().is_err() {
+                return api_error(ErrorCode::ConfigurationInvalid);
+            }
+            amatl_core::Config::set_diversity_policy(&path, &policy)
+        }
+        "search" => {
+            let Ok(policy) = serde_json::from_value::<amatl_core::SearchPolicyV1>(body) else {
+                return api_error(ErrorCode::InvalidRequest);
+            };
+            candidate.search_policy = policy.clone();
+            if candidate.validate().is_err() {
+                return api_error(ErrorCode::ConfigurationInvalid);
+            }
+            amatl_core::Config::set_search_policy(&path, &policy)
+        }
+        "ranking_v2" => {
+            let Ok(policy) = serde_json::from_value::<amatl_core::RankingV2Policy>(body) else {
+                return api_error(ErrorCode::InvalidRequest);
+            };
+            candidate.deep.ranking_v2.policy = policy.clone();
+            if candidate.validate().is_err() {
+                return api_error(ErrorCode::ConfigurationInvalid);
+            }
+            amatl_core::Config::set_ranking_v2_policy(&path, &policy)
+        }
+        "gaps" => {
+            let Ok(policy) = serde_json::from_value::<amatl_core::GapPolicyV1>(body) else {
+                return api_error(ErrorCode::InvalidRequest);
+            };
+            candidate.deep.gaps.policy = policy.clone();
+            if candidate.validate().is_err() {
+                return api_error(ErrorCode::ConfigurationInvalid);
+            }
+            amatl_core::Config::set_gap_policy(&path, &policy)
+        }
+        _ => return api_error(ErrorCode::NotFound),
+    };
+    if write_result.is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// `[persistence]` as it stands — read scoped, like `/status`. Nothing in
+/// it is a secret: `path` and `backup_directory` are filesystem locations,
+/// never credentials.
+async fn persistence_config(State(state): State<AppState>) -> Response {
+    let config = state.service().config().clone();
+    Json(json!({
+        "schema_version": SCHEMA_VERSION,
+        "persistence": config.persistence,
+    }))
+    .into_response()
+}
+
+/// Edit `[persistence]`'s retention windows, purge cadence and
+/// automatic-backup settings — admin scoped. Never touches `enabled`,
+/// `path` or `locking_mode`; see [`amatl_core::PersistenceConfigPatch`].
+async fn update_persistence(
+    State(state): State<AppState>,
+    params: Result<Json<amatl_core::PersistenceConfigPatch>, JsonRejection>,
+) -> Response {
+    let Json(patch) = match params {
+        Ok(patch) => patch,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    patch.apply(&mut candidate.persistence);
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_persistence_fields(&path, &patch).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Backup files on disk for the configured database, newest first — read
+/// scoped. Fails closed with `storage_unavailable` when persistence is off,
+/// same as `/history` and `/saved`.
+async fn list_backups(State(state): State<AppState>) -> Response {
+    match state.service().list_backups() {
+        Ok(paths) => Json(json!({
+            "schema_version": SCHEMA_VERSION,
+            "backups": paths
+                .into_iter()
+                .map(|path| path.display().to_string())
+                .collect::<Vec<_>>(),
+        }))
+        .into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Write an on-demand backup right now — admin scoped, since it touches the
+/// filesystem and competes with the periodic maintenance task's rotation.
+/// Identical in every way to what that task writes; see
+/// [`amatl_core::AmatlService::trigger_backup`].
+async fn create_backup(State(state): State<AppState>) -> Response {
+    match state.service().trigger_backup().await {
+        Ok(path) => Json(json!({
+            "schema_version": SCHEMA_VERSION,
+            "path": path.display().to_string(),
+        }))
+        .into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Current breaker state for every provider the process has observed —
+/// read scoped, like `/status` (which already summarizes this per source;
+/// this is the same data on its own, for a dedicated operator view).
+async fn circuits(State(state): State<AppState>) -> Response {
+    Json(json!({
+        "schema_version": SCHEMA_VERSION,
+        "circuits": state.service().circuit_snapshots(),
+    }))
+    .into_response()
+}
+
+/// Close every open circuit — admin scoped, same effect as `amatl db
+/// circuits --reset`. Global, not per-provider: the breaker has no
+/// per-provider reset today (see [`amatl_core::AmatlService::reset_circuits`]),
+/// so this exposes exactly that capability rather than inventing a new one.
+async fn reset_circuits(State(state): State<AppState>) -> Response {
+    state.service().reset_circuits().await;
+    Json(json!({
+        "schema_version": SCHEMA_VERSION,
+        "circuits": state.service().circuit_snapshots(),
+    }))
+    .into_response()
+}
+
+/// `[telemetry]` as it stands — read scoped.
+async fn telemetry_config(State(state): State<AppState>) -> Response {
+    let config = state.service().config().clone();
+    Json(json!({
+        "schema_version": SCHEMA_VERSION,
+        "telemetry": config.telemetry,
+    }))
+    .into_response()
+}
+
+/// Edit `[telemetry]` — admin scoped.
+async fn update_telemetry(
+    State(state): State<AppState>,
+    params: Result<Json<amatl_core::TelemetryConfigPatch>, JsonRejection>,
+) -> Response {
+    let Json(patch) = match params {
+        Ok(patch) => patch,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    patch.apply(&mut candidate.telemetry);
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_telemetry_fields(&path, &patch).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// `[deep]` in full — top-level safety limits plus `extractor`, `renderer`,
+/// `ranking_v2` and `gaps` — read scoped, like `/status`.
+async fn deep_config(State(state): State<AppState>) -> Response {
+    let config = state.service().config().clone();
+    Json(json!({
+        "schema_version": SCHEMA_VERSION,
+        "deep": config.deep,
+    }))
+    .into_response()
+}
+
+/// Edit `[deep]`'s top-level safety limits — admin scoped. Never touches
+/// `extractor`, `renderer`, `ranking_v2` or `gaps`; see
+/// [`amatl_core::DeepConfigPatch`] and the dedicated endpoints below for
+/// those.
+async fn update_deep(
+    State(state): State<AppState>,
+    params: Result<Json<amatl_core::DeepConfigPatch>, JsonRejection>,
+) -> Response {
+    let Json(patch) = match params {
+        Ok(patch) => patch,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    patch.apply(&mut candidate.deep);
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_deep_fields(&path, &patch).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Edit `[deep.extractor]` — admin scoped.
+async fn update_deep_extractor(
+    State(state): State<AppState>,
+    params: Result<Json<amatl_core::ExtractorConfigPatch>, JsonRejection>,
+) -> Response {
+    let Json(patch) = match params {
+        Ok(patch) => patch,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    patch.apply(&mut candidate.deep.extractor);
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_deep_extractor_fields(&path, &patch).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Edit `[deep.renderer]` — admin scoped. Setting `enabled = true` under an
+/// `isolated` `data_policy.profile` fails `Config::validate` (the isolated
+/// profile forbids the unsandboxed renderer), so that combination is
+/// refused here before anything is written — see
+/// [`amatl_core::RendererConfigPatch`].
+async fn update_deep_renderer(
+    State(state): State<AppState>,
+    params: Result<Json<amatl_core::RendererConfigPatch>, JsonRejection>,
+) -> Response {
+    let Json(patch) = match params {
+        Ok(patch) => patch,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    patch.apply(&mut candidate.deep.renderer);
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_deep_renderer_fields(&path, &patch).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+/// `[server]` in full except `clients` (which has its own surface at
+/// `/server/clients*`) — read scoped. `token_env` names an environment
+/// variable, `tls` paths name files; neither is a secret value itself.
+async fn server_pending_config(State(state): State<AppState>) -> Response {
+    let server = state.service().config().server.clone();
+    Json(json!({
+        "schema_version": SCHEMA_VERSION,
+        "server": {
+            "bind": server.bind,
+            "port": server.port,
+            "token_env": server.token_env,
+            "no_auth": server.no_auth,
+            "allowed_hosts": server.allowed_hosts,
+            "allowed_origins": server.allowed_origins,
+            "max_body_bytes": server.max_body_bytes,
+            "max_header_bytes": server.max_header_bytes,
+            "request_timeout_ms": server.request_timeout_ms,
+            "idle_timeout_ms": server.idle_timeout_ms,
+            "rate_limit_per_minute": server.rate_limit_per_minute,
+            "max_connections": server.max_connections,
+            "tls": {
+                "cert_path": server.tls.cert_path,
+                "key_path": server.tls.key_path,
+            },
+        },
+    }))
+    .into_response()
+}
+
+/// What `PATCH /server/pending-config` wrote, and whether it is already in
+/// effect.
+#[derive(Debug, Serialize)]
+struct ServerPendingConfigReport {
+    schema_version: &'static str,
+    /// `"section.key"` for every field the request set, in the order
+    /// [`amatl_core::ServerConfigPatch::changed_fields`] reports them.
+    written: Vec<String>,
+    /// Always `false`: this endpoint never triggers a reload — see the
+    /// doc comment on [`update_server_pending_config`] for why.
+    applied: bool,
+    /// `true` when any written field is [`amatl_core::ReloadKind::Cold`]
+    /// (only takes full effect on the next process start).
+    requires_restart: bool,
+    /// Written fields that a subsequent `POST /reload` would pick up.
+    hot_fields: Vec<String>,
+    /// Written fields a `POST /reload` cannot apply; only a restart can.
+    cold_fields: Vec<String>,
+}
+
+/// Edit `[server]`'s listener, security and transport settings — admin
+/// scoped, and deliberately the one write endpoint in this file that never
+/// calls `reload()` on the caller's behalf.
+///
+/// Every other setter here applies immediately because everything it
+/// touches is genuinely hot (see `AppState::reload`, which rebuilds the
+/// security snapshot from the freshly loaded config on every call). This
+/// one is different: several `[server]` fields are read once at process
+/// startup — the TCP bind, the TLS acceptor, the connection-limit and
+/// body-limit layers, the idle-timeout builder (see [`amatl_core::ReloadKind`]
+/// for the full accounting) — and an automatic reload right after writing
+/// a change to, say, `allowed_hosts` or `bind` could take effect
+/// mid-request in a way an operator did not explicitly ask for, on the
+/// surface most likely to lock them out if it goes wrong. So this endpoint
+/// only writes the file and reports, per field, whether a follow-up `POST
+/// /reload` would apply it (`hot_fields`) or whether nothing short of a
+/// restart will (`cold_fields`) — applying either is a separate, explicit
+/// step the caller takes on purpose.
+async fn update_server_pending_config(
+    State(state): State<AppState>,
+    params: Result<Json<amatl_core::ServerConfigPatch>, JsonRejection>,
+) -> Response {
+    let Json(patch) = match params {
+        Ok(patch) => patch,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    patch.apply(&mut candidate.server);
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_server_fields(&path, &patch).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    let changed = patch.changed_fields();
+    let mut hot_fields = Vec::new();
+    let mut cold_fields = Vec::new();
+    for (section, key) in &changed {
+        match amatl_core::ReloadKind::of(section, key) {
+            amatl_core::ReloadKind::Hot => hot_fields.push(format!("{section}.{key}")),
+            amatl_core::ReloadKind::Cold => cold_fields.push(format!("{section}.{key}")),
+        }
+    }
+    Json(ServerPendingConfigReport {
+        schema_version: SCHEMA_VERSION,
+        written: changed
+            .iter()
+            .map(|(section, key)| format!("{section}.{key}"))
+            .collect(),
+        applied: false,
+        requires_restart: !cold_fields.is_empty(),
+        hot_fields,
+        cold_fields,
+    })
+    .into_response()
+}
+
+/// Recorded security rejections, newest first.
+///
+/// Requires the admin scope: the trail names client identities and addresses.
+async fn security_events(
+    State(state): State<AppState>,
+    params: Result<Query<PageParams>, QueryRejection>,
+) -> Response {
+    let Ok(Query(params)) = params else {
+        return api_error(ErrorCode::InvalidRequest);
+    };
+    let (limit, offset) = params.window();
+    let service = state.service();
+    let audit = service.audit();
+    match audit.events(limit, offset).await {
+        Ok(events) => Json(json!({
+            "schema_version": SCHEMA_VERSION,
+            "events": events,
+            "dropped": audit.dropped()
+        }))
+        .into_response(),
+        Err(_) => api_error(ErrorCode::StorageUnavailable),
+    }
+}
+
+/// Operator status: source availability, persistence and cache state.
+async fn status(State(state): State<AppState>) -> Response {
+    match state.service().status().await {
+        Ok(value) => Json(value).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+async fn history(
+    State(state): State<AppState>,
+    params: Result<Query<PageParams>, QueryRejection>,
+) -> Response {
+    let Ok(Query(params)) = params else {
+        return api_error(ErrorCode::InvalidRequest);
+    };
+    let (limit, offset) = params.window();
+    match state.service().history(limit, offset).await {
+        Ok(entries) => Json(json!({
+            "schema_version": SCHEMA_VERSION,
+            "entries": entries
+        }))
+        .into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+async fn delete_history_entry(State(state): State<AppState>, Path(id): Path<i64>) -> Response {
+    match state.service().delete_history_entry(id).await {
+        Ok(true) => Json(json!({ "schema_version": SCHEMA_VERSION, "deleted": 1 })).into_response(),
+        Ok(false) => api_error(ErrorCode::NotFound),
+        Err(error) => service_error(error),
+    }
+}
+
+async fn purge_history(State(state): State<AppState>) -> Response {
+    match state.service().purge_history().await {
+        Ok(deleted) => {
+            Json(json!({ "schema_version": SCHEMA_VERSION, "deleted": deleted })).into_response()
+        }
+        Err(error) => service_error(error),
+    }
+}
+
+async fn saved_documents(
+    State(state): State<AppState>,
+    params: Result<Query<PageParams>, QueryRejection>,
+) -> Response {
+    let Ok(Query(params)) = params else {
+        return api_error(ErrorCode::InvalidRequest);
+    };
+    let (limit, offset) = params.window();
+    match state.service().saved_documents(limit, offset).await {
+        Ok(documents) => Json(json!({
+            "schema_version": SCHEMA_VERSION,
+            "documents": documents
+        }))
+        .into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+async fn save_document(
+    State(state): State<AppState>,
+    input: Result<Json<amatl_core::SaveDocumentInput>, JsonRejection>,
+) -> Response {
+    let Json(input) = match input {
+        Ok(input) => input,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    match state.service().save_document(input).await {
+        Ok(id) => Json(json!({ "schema_version": SCHEMA_VERSION, "id": id })).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+async fn delete_saved_document(State(state): State<AppState>, Path(id): Path<i64>) -> Response {
+    match state.service().delete_saved_document(id).await {
+        Ok(true) => Json(json!({ "schema_version": SCHEMA_VERSION, "deleted": 1 })).into_response(),
+        Ok(false) => api_error(ErrorCode::NotFound),
+        Err(error) => service_error(error),
+    }
+}
+
+/// Liveness: the process is up and the router is serving.
+///
+/// Deliberately stateless and always `200`. Orchestrators use it to decide
+/// whether to restart the process, which must not depend on a provider being
+/// reachable or on SQLite being healthy. Readiness lives on `/ready`.
 async fn health() -> Json<serde_json::Value> {
     Json(json!({ "schema_version": SCHEMA_VERSION, "status": "ok" }))
 }
 
+/// Readiness: whether this instance can currently serve useful traffic.
+///
+/// Public like `/health`, so the body is intentionally coarse: aggregate
+/// booleans and a count, never source names, error codes or paths. Those name
+/// the deployment's internals and stay behind `/status`, which requires the
+/// `read` scope.
+///
+/// Returns `503` when degraded so a load balancer can drain the instance
+/// without parsing the body.
+async fn ready(State(state): State<AppState>) -> Response {
+    let Ok(status) = state.service().status().await else {
+        return (
+            StatusCode::SERVICE_UNAVAILABLE,
+            Json(json!({
+                "schema_version": SCHEMA_VERSION,
+                "status": "degraded",
+                "storage_ok": false,
+                "sources_available": 0,
+            })),
+        )
+            .into_response();
+    };
+    // Persistence is optional by design: disabled is healthy, enabled but
+    // unavailable is not.
+    let storage_ok = !status.storage.enabled || status.storage.available;
+    let sources_available = status
+        .sources
+        .iter()
+        .filter(|source| source.status == amatl_core::ProviderSurfaceStatus::Available)
+        .count();
+    let ready = status.status == "ok";
+    let code = if ready {
+        StatusCode::OK
+    } else {
+        StatusCode::SERVICE_UNAVAILABLE
+    };
+    (
+        code,
+        Json(json!({
+            "schema_version": SCHEMA_VERSION,
+            "status": if ready { "ok" } else { "degraded" },
+            "storage_ok": storage_ok,
+            "sources_available": sources_available,
+        })),
+    )
+        .into_response()
+}
+
+/// Exposes Prometheus-compatible metrics in text exposition format.
+///
+/// Counters are monotonic since the last server restart; latency quantiles
+/// describe the last [`LATENCY_WINDOW`] requests per surface, and the source,
+/// cache and storage gauges are read from the service at scrape time.
+async fn metrics(State(state): State<AppState>) -> Response {
+    let m = &state.metrics;
+    let mut body = format!(
+        "# HELP amatl_search_requests_total Total search requests received.\n\
+         # TYPE amatl_search_requests_total counter\n\
+         amatl_search_requests_total {}\n\
+         # HELP amatl_deep_requests_total Total deep requests received.\n\
+         # TYPE amatl_deep_requests_total counter\n\
+         amatl_deep_requests_total {}\n\
+         # HELP amatl_answer_requests_total Total answer requests received.\n\
+         # TYPE amatl_answer_requests_total counter\n\
+         amatl_answer_requests_total {}\n\
+         # HELP amatl_search_errors_total Search requests that resulted in error.\n\
+         # TYPE amatl_search_errors_total counter\n\
+         amatl_search_errors_total {}\n\
+         # HELP amatl_deep_errors_total Deep requests that resulted in error.\n\
+         # TYPE amatl_deep_errors_total counter\n\
+         amatl_deep_errors_total {}\n\
+         # HELP amatl_answer_errors_total Answer requests that resulted in error.\n\
+         # TYPE amatl_answer_errors_total counter\n\
+         amatl_answer_errors_total {}\n\
+         # HELP amatl_rate_limited_total Requests rejected by rate limiter.\n\
+         # TYPE amatl_rate_limited_total counter\n\
+         amatl_rate_limited_total {}\n\
+         # HELP amatl_unauthorized_total Requests rejected for missing/invalid auth.\n\
+         # TYPE amatl_unauthorized_total counter\n\
+         amatl_unauthorized_total {}\n\
+         # HELP amatl_request_timeout_total Requests that exceeded the timeout.\n\
+         # TYPE amatl_request_timeout_total counter\n\
+         amatl_request_timeout_total {}\n",
+        m.search_total.load(Ordering::Relaxed),
+        m.deep_total.load(Ordering::Relaxed),
+        m.answer_total.load(Ordering::Relaxed),
+        m.search_errors.load(Ordering::Relaxed),
+        m.deep_errors.load(Ordering::Relaxed),
+        m.answer_errors.load(Ordering::Relaxed),
+        m.rate_limited_total.load(Ordering::Relaxed),
+        m.unauthorized_total.load(Ordering::Relaxed),
+        m.request_timeout_total.load(Ordering::Relaxed),
+    );
+    body.push_str(&latency_metrics("search", &m.search_latency));
+    body.push_str(&latency_metrics("deep", &m.deep_latency));
+    body.push_str(&latency_metrics("answer", &m.answer_latency));
+    let service = state.service();
+    body.push_str(&source_metrics(&service));
+    body.push_str(&cache_metrics(&service).await);
+    let mut response = Response::new(Body::from(body));
+    response.headers_mut().insert(
+        CONTENT_TYPE,
+        HeaderValue::from_static("text/plain; version=0.0.4; charset=utf-8"),
+    );
+    response
+        .headers_mut()
+        .insert(CACHE_CONTROL, HeaderValue::from_static("no-store"));
+    response
+}
+
+/// Latency quantiles for one surface, as gauges over the retained window.
+fn latency_metrics(surface: &str, window: &LatencyWindow) -> String {
+    let (samples, p50, p95, p99) = window.quantiles();
+    format!(
+        "# HELP amatl_{surface}_latency_ms Request latency quantiles over the last {LATENCY_WINDOW} {surface} requests.\n\
+         # TYPE amatl_{surface}_latency_ms gauge\n\
+         amatl_{surface}_latency_ms{{quantile=\"0.5\"}} {p50}\n\
+         amatl_{surface}_latency_ms{{quantile=\"0.95\"}} {p95}\n\
+         amatl_{surface}_latency_ms{{quantile=\"0.99\"}} {p99}\n\
+         # HELP amatl_{surface}_latency_samples Retained latency samples for {surface}.\n\
+         # TYPE amatl_{surface}_latency_samples gauge\n\
+         amatl_{surface}_latency_samples {samples}\n"
+    )
+}
+
+/// Per-source availability and observed value, labelled by source name.
+fn source_metrics(service: &AmatlService) -> String {
+    let Ok(summaries) = service.provider_summaries() else {
+        return String::new();
+    };
+    let snapshots = service.source_snapshots();
+    let circuits = service.circuit_snapshots();
+    let mut body = String::from(
+        "# HELP amatl_source_available Whether a declared source is available (1) or not (0).\n\
+         # TYPE amatl_source_available gauge\n",
+    );
+    let mut value_block = String::from(
+        "# HELP amatl_source_success_rate Observed success ratio per source in the telemetry window.\n\
+         # TYPE amatl_source_success_rate gauge\n",
+    );
+    let mut latency_block = String::from(
+        "# HELP amatl_source_latency_ms Observed average latency per source in the telemetry window.\n\
+         # TYPE amatl_source_latency_ms gauge\n",
+    );
+    let mut circuit_block = String::from(
+        "# HELP amatl_source_circuit_open Whether a source is currently in circuit cooldown.\n\
+         # TYPE amatl_source_circuit_open gauge\n",
+    );
+    for summary in summaries {
+        let label = escape_label(&summary.name);
+        let available = u8::from(summary.status == amatl_core::ProviderSurfaceStatus::Available);
+        body.push_str(&format!(
+            "amatl_source_available{{source=\"{label}\"}} {available}\n"
+        ));
+        let open = u8::from(
+            circuits
+                .iter()
+                .find(|snapshot| snapshot.provider == summary.name)
+                .is_some_and(|snapshot| snapshot.state == amatl_core::CircuitState::Open),
+        );
+        circuit_block.push_str(&format!(
+            "amatl_source_circuit_open{{source=\"{label}\"}} {open}\n"
+        ));
+        if let Some(snapshot) = snapshots
+            .iter()
+            .find(|snapshot| snapshot.provider == summary.name)
+            .filter(|snapshot| snapshot.sample > 0)
+        {
+            value_block.push_str(&format!(
+                "amatl_source_success_rate{{source=\"{label}\"}} {:.4}\n",
+                snapshot.success_rate
+            ));
+            latency_block.push_str(&format!(
+                "amatl_source_latency_ms{{source=\"{label}\"}} {:.1}\n",
+                snapshot.average_latency_ms
+            ));
+        }
+    }
+    body.push_str(&circuit_block);
+    body.push_str(&value_block);
+    body.push_str(&latency_block);
+    body
+}
+
+/// Cache effectiveness and persistence gauges.
+async fn cache_metrics(service: &AmatlService) -> String {
+    let cache = service.cache_effectiveness();
+    let storage_available = u8::from(service.storage().is_some());
+    let audit_dropped = service.audit().dropped();
+    let telemetry = service.telemetry_status();
+    format!(
+        "# HELP amatl_cache_hits_total Cache lookups served from the local cache.\n\
+         # TYPE amatl_cache_hits_total counter\n\
+         amatl_cache_hits_total{{cache=\"provider_search\"}} {}\n\
+         amatl_cache_hits_total{{cache=\"document\"}} {}\n\
+         # HELP amatl_cache_misses_total Cache lookups that reached the origin.\n\
+         # TYPE amatl_cache_misses_total counter\n\
+         amatl_cache_misses_total{{cache=\"provider_search\"}} {}\n\
+         amatl_cache_misses_total{{cache=\"document\"}} {}\n\
+         # HELP amatl_cache_hit_rate Hit ratio per cache since start.\n\
+         # TYPE amatl_cache_hit_rate gauge\n\
+         amatl_cache_hit_rate{{cache=\"provider_search\"}} {:.4}\n\
+         amatl_cache_hit_rate{{cache=\"document\"}} {:.4}\n\
+         # HELP amatl_storage_available Whether local persistence is usable (1) or not (0).\n\
+         # TYPE amatl_storage_available gauge\n\
+         amatl_storage_available {storage_available}\n\
+         # HELP amatl_audit_events_dropped_total Security events dropped because too many audit writes were in flight.\n\
+         # TYPE amatl_audit_events_dropped_total counter\n\
+         amatl_audit_events_dropped_total {audit_dropped}\n\
+         # HELP amatl_telemetry_persistence_failures_total Telemetry storage writes that failed since start; memory stays authoritative and self-heals on restart via restore_best_effort.\n\
+         # TYPE amatl_telemetry_persistence_failures_total counter\n\
+         amatl_telemetry_persistence_failures_total {}\n\
+         # HELP amatl_telemetry_in_memory_observations Observations currently retained in the in-memory telemetry window.\n\
+         # TYPE amatl_telemetry_in_memory_observations gauge\n\
+         amatl_telemetry_in_memory_observations {}\n",
+        cache.provider_search_hits,
+        cache.document_hits,
+        cache.provider_search_misses,
+        cache.document_misses,
+        cache.provider_search_hit_rate,
+        cache.document_hit_rate,
+        telemetry.persistence_failures,
+        telemetry.in_memory_observations,
+    )
+}
+
+/// Escape a Prometheus label value; source names are configuration-controlled
+/// but the exposition format must stay parseable regardless.
+fn escape_label(value: &str) -> String {
+    value
+        .chars()
+        .flat_map(|character| match character {
+            '\\' => vec!['\\', '\\'],
+            '"' => vec!['\\', '"'],
+            '\n' => vec!['\\', 'n'],
+            other => vec![other],
+        })
+        .collect()
+}
+
 async fn static_asset(uri: Uri) -> Response {
     let Some(value) = asset(uri.path()) else {
-        return api_error(StatusCode::NOT_FOUND, "not_found");
+        return api_error(ErrorCode::NotFound);
     };
     let mut response = Response::new(Body::from(value.body));
     response
@@ -325,15 +2524,13 @@ async fn security_middleware(
     request: Request,
     next: Next,
 ) -> Response {
-    let security = &state.security;
+    let security = state.security();
+    let security = security.as_ref();
     let request_id = next_request_id();
     if header_size(request.headers()) > security.max_header_bytes {
-        audit_security_event("headers_too_large", &request_id, &request);
+        audit_security_event(&state, "headers_too_large", &request_id, &request);
         return secured(
-            api_error(
-                StatusCode::REQUEST_HEADER_FIELDS_TOO_LARGE,
-                "headers_too_large",
-            ),
+            api_error(ErrorCode::HeadersTooLarge),
             security.https,
             &request_id,
         );
@@ -345,85 +2542,196 @@ async fn security_middleware(
         .and_then(|value| value.parse::<usize>().ok())
         .is_some_and(|value| value > security.max_body_bytes)
     {
-        audit_security_event("body_too_large", &request_id, &request);
+        audit_security_event(&state, "body_too_large", &request_id, &request);
         return secured(
-            api_error(StatusCode::PAYLOAD_TOO_LARGE, "body_too_large"),
+            api_error(ErrorCode::BodyTooLarge),
             security.https,
             &request_id,
         );
     }
     if !valid_host(request.headers(), &security.allowed_hosts) {
-        audit_security_event("invalid_host", &request_id, &request);
+        audit_security_event(&state, "invalid_host", &request_id, &request);
         return secured(
-            api_error(StatusCode::BAD_REQUEST, "invalid_host"),
+            api_error(ErrorCode::InvalidHost),
             security.https,
             &request_id,
         );
     }
     if !valid_origin(request.headers(), &security.allowed_origins) {
-        audit_security_event("invalid_origin", &request_id, &request);
+        audit_security_event(&state, "invalid_origin", &request_id, &request);
         return secured(
-            api_error(StatusCode::FORBIDDEN, "invalid_origin"),
+            api_error(ErrorCode::InvalidOrigin),
             security.https,
             &request_id,
         );
     }
-    let protected = is_protected(request.uri().path());
-    if request.method() != Method::OPTIONS && !within_rate_limit(&request, security) {
-        audit_security_event("rate_limited", &request_id, &request);
-        let mut response = api_error(StatusCode::TOO_MANY_REQUESTS, "rate_limited");
+    let protected = is_protected(request.method(), request.uri().path());
+    if request.method() != Method::OPTIONS
+        && !within_rate_limit(&request, security, &state.rate_limiter)
+    {
+        state
+            .metrics
+            .rate_limited_total
+            .fetch_add(1, Ordering::Relaxed);
+        audit_security_event(&state, "rate_limited", &request_id, &request);
+        let mut response = api_error(ErrorCode::RateLimited);
         response
             .headers_mut()
             .insert("retry-after", HeaderValue::from_static("60"));
         return secured(response, security.https, &request_id);
     }
-    if protected
-        && request.method() != Method::OPTIONS
-        && !authorized(request.headers(), security.token.as_deref())
-    {
-        audit_security_event("unauthorized", &request_id, &request);
-        let mut response = api_error(StatusCode::UNAUTHORIZED, "unauthorized");
-        response
-            .headers_mut()
-            .insert(WWW_AUTHENTICATE, HeaderValue::from_static("Bearer"));
-        return secured(response, security.https, &request_id);
+    // Authenticate once, then authorize the route against that identity. Both
+    // rejections look the same on the wire; the audit event distinguishes them.
+    let mut identity = ClientIdentity::unauthenticated();
+    if protected && request.method() != Method::OPTIONS {
+        let today = today_iso();
+        match authenticate(request.headers(), security, &today) {
+            Authentication::Anonymous => {}
+            Authentication::Client(client) => {
+                let required =
+                    required_scope(request.method(), request.uri().path()).unwrap_or(Scope::Admin);
+                if !client.scopes.contains(&required) {
+                    state
+                        .metrics
+                        .unauthorized_total
+                        .fetch_add(1, Ordering::Relaxed);
+                    audit_security_event_for_client(
+                        &state,
+                        "scope_denied",
+                        &request_id,
+                        &request,
+                        &client.id,
+                    );
+                    return secured(
+                        api_error(ErrorCode::ScopeDenied),
+                        security.https,
+                        &request_id,
+                    );
+                }
+                identity = ClientIdentity {
+                    id: client.id.clone(),
+                    tools: client.tools.clone(),
+                };
+            }
+            Authentication::Expired(id) => {
+                state
+                    .metrics
+                    .unauthorized_total
+                    .fetch_add(1, Ordering::Relaxed);
+                audit_security_event_for_client(
+                    &state,
+                    "credential_expired",
+                    &request_id,
+                    &request,
+                    &id,
+                );
+                let mut response = api_error(ErrorCode::Unauthorized);
+                response
+                    .headers_mut()
+                    .insert(WWW_AUTHENTICATE, HeaderValue::from_static("Bearer"));
+                return secured(response, security.https, &request_id);
+            }
+            Authentication::Rejected => {
+                state
+                    .metrics
+                    .unauthorized_total
+                    .fetch_add(1, Ordering::Relaxed);
+                audit_security_event(&state, "unauthorized", &request_id, &request);
+                let mut response = api_error(ErrorCode::Unauthorized);
+                response
+                    .headers_mut()
+                    .insert(WWW_AUTHENTICATE, HeaderValue::from_static("Bearer"));
+                return secured(response, security.https, &request_id);
+            }
+        }
     }
     let timeout = security.timeout;
     let https = security.https;
     let path = request.uri().path().to_owned();
     let client_ip = request_client_ip(&request);
+    let mut request = request;
+    request
+        .extensions_mut()
+        .insert(RequestId(request_id.clone()));
+    let client_id = identity.id.clone();
+    // MCP tools read this back out of `http::request::Parts` to enforce their
+    // own per-tool policy.
+    request.extensions_mut().insert(identity);
     let request_span = tracing::info_span!(
         target: "amatl::http",
         "http_request",
         request_id = %request_id,
         path = %path,
-        client_ip = %client_ip
+        client_ip = %client_ip,
+        client_id = %client_id
     );
     let response =
         match tokio::time::timeout(timeout, next.run(request).instrument(request_span)).await {
             Ok(response) => response,
             Err(_) => {
-                audit_security_event_context("request_timeout", &request_id, &path, client_ip);
-                api_error(StatusCode::GATEWAY_TIMEOUT, "request_timeout")
+                state
+                    .metrics
+                    .request_timeout_total
+                    .fetch_add(1, Ordering::Relaxed);
+                audit_security_event_context(
+                    &state,
+                    "request_timeout",
+                    &request_id,
+                    &path,
+                    client_ip,
+                    None,
+                );
+                api_error(ErrorCode::RequestTimeout)
             }
         };
     secured(response, https, &request_id)
 }
 
-fn audit_security_event(event: &'static str, request_id: &str, request: &Request) {
+fn audit_security_event(
+    state: &AppState,
+    event: &'static str,
+    request_id: &str,
+    request: &Request,
+) {
     audit_security_event_context(
+        state,
         event,
         request_id,
         request.uri().path(),
         request_client_ip(request),
+        None,
     );
 }
 
+/// Audit an event that is attributable to an authenticated identity.
+fn audit_security_event_for_client(
+    state: &AppState,
+    event: &'static str,
+    request_id: &str,
+    request: &Request,
+    client_id: &str,
+) {
+    audit_security_event_context(
+        state,
+        event,
+        request_id,
+        request.uri().path(),
+        request_client_ip(request),
+        Some(client_id.to_owned()),
+    );
+}
+
+/// Log the rejection and, when persistence is available, record it durably.
+///
+/// The log line stays authoritative: persistence is best effort and never
+/// delays the response.
 fn audit_security_event_context(
+    state: &AppState,
     event: &'static str,
     request_id: &str,
     path: &str,
     client_ip: IpAddr,
+    client_id: Option<String>,
 ) {
     tracing::warn!(
         target: "amatl::security",
@@ -431,11 +2739,22 @@ fn audit_security_event_context(
         request_id,
         path,
         client_ip = %client_ip,
+        client_id = client_id.as_deref().unwrap_or("-"),
         "HTTP security control rejected request"
     );
+    state
+        .service()
+        .audit()
+        .record(amatl_core::SecurityEventInput {
+            event: event.to_owned(),
+            request_id: Some(request_id.to_owned()),
+            client_id,
+            path: Some(path.to_owned()),
+            client_ip: Some(client_ip.to_string()),
+        });
 }
 
-fn next_request_id() -> String {
+pub(crate) fn next_request_id() -> String {
     let epoch_nanos = SystemTime::now()
         .duration_since(UNIX_EPOCH)
         .unwrap_or_default()
@@ -483,22 +2802,86 @@ fn valid_query(query: &str) -> bool {
     !query.trim().is_empty() && query.len() <= 2048
 }
 
-fn is_protected(path: &str) -> bool {
-    matches!(path, "/search" | "/deep" | "/providers" | "/mcp") || path.starts_with("/mcp/")
+/// Every domain and operator surface requires the bearer token; only the UI
+/// assets, `/health` and `/metrics` stay reachable without it.
+fn is_protected(method: &Method, path: &str) -> bool {
+    required_scope(method, path).is_some()
 }
 
-fn authorized(headers: &HeaderMap, expected: Option<&str>) -> bool {
-    let Some(expected) = expected else {
-        return true;
-    };
-    let Some(actual) = headers
+/// Outcome of matching a bearer token against the accepted credentials.
+enum Authentication<'a> {
+    /// Authentication is disabled; loopback development only.
+    Anonymous,
+    Client(&'a AuthorizedClient),
+    /// The credential matched but its declared expiry has passed.
+    Expired(String),
+    Rejected,
+}
+
+/// Match the presented bearer against every accepted credential.
+///
+/// Comparison is over SHA-256 digests in constant time, and every credential is
+/// checked so the answer does not leak which one nearly matched.
+fn authenticate<'a>(
+    headers: &HeaderMap,
+    security: &'a SecurityState,
+    today: &str,
+) -> Authentication<'a> {
+    if security.clients.is_empty() {
+        return Authentication::Anonymous;
+    }
+    let Some(presented) = headers
         .get(AUTHORIZATION)
         .and_then(|value| value.to_str().ok())
         .and_then(|value| value.strip_prefix("Bearer "))
     else {
-        return false;
+        return Authentication::Rejected;
     };
-    constant_time_eq(actual.as_bytes(), expected.as_bytes())
+    let digest = token_digest(presented);
+    let mut matched: Option<&AuthorizedClient> = None;
+    for client in &security.clients {
+        if constant_time_eq(&digest, &client.digest) {
+            matched = Some(client);
+        }
+    }
+    match matched {
+        None => Authentication::Rejected,
+        Some(client) if !unexpired(client, today) => Authentication::Expired(client.id.clone()),
+        Some(client) => Authentication::Client(client),
+    }
+}
+
+fn unexpired(client: &AuthorizedClient, today: &str) -> bool {
+    amatl_core::ServerClient {
+        expires_at: client.expires_at.clone(),
+        ..Default::default()
+    }
+    .unexpired_on(today)
+}
+
+/// Current UTC day as `YYYY-MM-DD`, the granularity credentials expire at.
+fn today_iso() -> String {
+    let days = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .unwrap_or_default()
+        .as_secs()
+        / 86_400;
+    let (year, month, day) = civil_from_days(days as i64);
+    format!("{year:04}-{month:02}-{day:02}")
+}
+
+/// Days since the Unix epoch to a civil date (Howard Hinnant's algorithm).
+fn civil_from_days(days: i64) -> (i64, u32, u32) {
+    let z = days + 719_468;
+    let era = z.div_euclid(146_097);
+    let doe = z.rem_euclid(146_097);
+    let yoe = (doe - doe / 1_460 + doe / 36_524 - doe / 146_096) / 365;
+    let year = yoe + era * 400;
+    let doy = doe - (365 * yoe + yoe / 4 - yoe / 100);
+    let mp = (5 * doy + 2) / 153;
+    let day = (doy - (153 * mp + 2) / 5 + 1) as u32;
+    let month = if mp < 10 { mp + 3 } else { mp - 9 } as u32;
+    (if month <= 2 { year + 1 } else { year }, month, day)
 }
 
 fn constant_time_eq(left: &[u8], right: &[u8]) -> bool {
@@ -543,11 +2926,14 @@ fn header_size(headers: &HeaderMap) -> usize {
         .sum()
 }
 
-fn within_rate_limit(request: &Request, security: &SecurityState) -> bool {
+fn within_rate_limit(
+    request: &Request,
+    security: &SecurityState,
+    rate_limiter: &Mutex<RateLimiter>,
+) -> bool {
     let ip = request_client_ip(request);
     let now = Instant::now();
-    let mut limiter = security
-        .rate_limiter
+    let mut limiter = rate_limiter
         .lock()
         .unwrap_or_else(|error| error.into_inner());
     if now.duration_since(limiter.last_cleanup) >= Duration::from_secs(60) {
@@ -592,21 +2978,36 @@ fn cors_layer(origins: &[String]) -> Result<CorsLayer, ServerError> {
         .expose_headers([HeaderName::from_static(REQUEST_ID_HEADER)]))
 }
 
+/// Render a domain failure with its catalog code and status.
 fn service_error(error: ServiceError) -> Response {
-    match error {
-        ServiceError::InvalidQuery => api_error(StatusCode::BAD_REQUEST, "invalid_query"),
-        ServiceError::MissingPlan | ServiceError::Configuration => {
-            api_error(StatusCode::INTERNAL_SERVER_ERROR, "service_unavailable")
-        }
+    let code = error.code();
+    if code.http_status() >= 500 {
+        tracing::warn!(
+            target: "amatl::http",
+            error_code = code.as_str(),
+            error = %error,
+            "request failed"
+        );
     }
+    api_error(code)
 }
 
-fn api_error(status: StatusCode, code: &'static str) -> Response {
+/// Error body for a catalog code, using the code's own transport status.
+fn api_error(code: ErrorCode) -> Response {
+    api_error_with_status(
+        StatusCode::from_u16(code.http_status()).unwrap_or(StatusCode::INTERNAL_SERVER_ERROR),
+        code,
+    )
+}
+
+/// Error body for a catalog code with a transport-imposed status, used when the
+/// framework already decided the status (for example a body rejection).
+fn api_error_with_status(status: StatusCode, code: ErrorCode) -> Response {
     (
         status,
         Json(json!({
             "schema_version": SCHEMA_VERSION,
-            "error": { "code": code, "message": code }
+            "error": { "code": code.as_str(), "message": code.message() }
         })),
     )
         .into_response()

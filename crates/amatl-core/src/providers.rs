@@ -8,18 +8,37 @@ use std::sync::Arc;
 use std::time::Duration;
 
 mod brave;
-mod duckduckgo;
 mod http;
+mod marginalia;
 mod mojeek;
+mod registry;
+mod searxng;
 
 pub use brave::BraveProvider;
-pub use duckduckgo::DuckDuckGoHtmlProvider;
 pub use http::{HttpRequest, HttpResponse, HttpTransport, ReqwestTransport};
+pub use marginalia::MarginaliaProvider;
 pub use mojeek::MojeekProvider;
+pub use registry::{ProviderBuildContext, ProviderFactory, ProviderRegistry};
+pub use searxng::SearXngProvider;
 
 #[derive(Clone, Debug)]
 pub struct ProviderContext {
     pub timeout_ms: u64,
+    /// Correlates this outbound provider call with the originating request so
+    /// local traces and telemetry share one identifier. It is never sent to the
+    /// provider.
+    pub request_id: Option<String>,
+}
+
+impl ProviderContext {
+    /// Context without request correlation, for callers outside a traced
+    /// request (benchmarks, canaries and tests).
+    pub fn new(timeout_ms: u64) -> Self {
+        Self {
+            timeout_ms,
+            request_id: None,
+        }
+    }
 }
 
 #[derive(Clone, Debug, PartialEq, Eq)]

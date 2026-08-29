@@ -1,9 +1,27 @@
 /target/
 /amatl.toml
 /amatl.sqlite3*
+# Covers every backup AMATL's own storage module produces next to the live
+# DB — auto (`.backup-`), migration (`.migration-`) and pre-restore
+# (`.pre-restore-`) — none of which match the literal prefix above, and all
+# of which can carry the operator's real search history/saved documents.
+/amatl*.sqlite3*
+# AUDIT-02: server integration runs can create their state database below a
+# crate directory. Keep every AMATL SQLite database and its backups local.
+**/amatl*.sqlite3*
+# AUDIT-03: runtime logs are local operational output, never source material.
+*.log
 **/*.cdx.json
 **/*.cdx.xml
 /.env
 /.claude/
 *.pem
 *.key
+*~
+# Stray files and transient outputs
+0:
+*.docx
+AMATL_documentado.docx
+amatl.backup-*.sqlite3
+amatl.log
+amatl_logo.png~

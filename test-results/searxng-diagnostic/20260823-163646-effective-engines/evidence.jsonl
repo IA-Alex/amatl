@@ -1,0 +1,4 @@
+{"artifact_notice":"Generated test artifact — SearXNG effective engine audit — do not treat as project documentation.","type":"STATIC","fact":"effective configured enabled count","value":111}
+{"type":"STATIC","fact":"default-category selection","value":"general","source":"installed searx/webadapter.py get_selected_categories + parse_generic"}
+{"type":"RUNTIME_EXISTING","fact":"normal post-disable AMATL rust async","searxng_results":0,"amatl_status":"success","unresponsive_engines_exposed":[],"marginalia":"rate limit (not tested)"}
+{"type":"RUNTIME_EXISTING","engine":"wikidata","fact":"startup INIT failure","error":"HTTP 403; processor cannot register"}

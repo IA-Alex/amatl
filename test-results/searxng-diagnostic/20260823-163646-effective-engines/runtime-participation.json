@@ -1,0 +1,16 @@
+{
+  "artifact_notice":"Generated test artifact — SearXNG effective engine audit — do not treat as project documentation.",
+  "observation":"post-disable normal AMATL rust async, existing functional-test artifact",
+  "searxng":{"chain":"CONFIGURED -> ELIGIBLE -> ATTEMPT_CONFIRMED","http_status":200,"results":0,"unresponsive_engines_exposed":[],"amatl_status":"success"},
+  "engines":[
+    {"name":"duckduckgo","chain":"NOT_SELECTED","reason":"disabled=true; existing post-change log interval has no execution/unresponsive entry"},
+    {"name":"mojeek","chain":"NOT_SELECTED","reason":"disabled=true; existing post-change log interval has no execution/unresponsive entry"},
+    {"name":"qwant","chain":"NOT_SELECTED","reason":"disabled=true; existing post-change log interval has no execution/unresponsive entry"},
+    {"name":"wikidata","chain":"CONFIGURED -> ELIGIBLE_STATIC -> NOT_SELECTED","reason":"current startup log: INIT HTTP 403, processor cannot register"},
+    {"name":"remaining 17 static general candidates","chain":"CONFIGURED -> ELIGIBLE_STATIC -> UNKNOWN","reason":"response and existing logs do not expose selected engine list or per-engine attempts"}
+  ],
+  "attempts_confirmed":0,
+  "result_contributors_confirmed":0,
+  "failed_attempts_confirmed":0,
+  "unknown_participation":17
+}

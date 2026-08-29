@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+#
+# Builds the Linux native packages (.deb, .rpm, .pkg.tar.zst) for one already
+# built binary. Linux-only by design: macOS and Windows ship archives from the
+# release workflow instead, and the Chromium sandbox helper packaged here needs
+# bubblewrap user namespaces. See docs/release.md for the full support scope.
 set -euo pipefail
 
 if [[ $# -ne 4 ]]; then
@@ -14,7 +19,7 @@ repo_root=$(realpath "$(dirname "$0")/..")
 
 [[ -x "$binary" ]]
 [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+-rc\.[0-9]+$ ]]
-[[ "$arch" == "x86_64" ]]
+[[ "$arch" == "x86_64" || "$arch" == "aarch64" ]]
 
 source_date_epoch=${SOURCE_DATE_EPOCH:-$(git -C "$repo_root" log -1 --format=%ct)}
 [[ "$source_date_epoch" =~ ^[0-9]+$ ]]
@@ -36,6 +41,11 @@ install_payload() {
 
 deb_version=${version/-rc./~rc.}
 deb_asset_version=${deb_version//\~/.}
+case "$arch" in
+  x86_64) deb_arch="amd64" ;;
+  aarch64) deb_arch="arm64" ;;
+  *) echo "unsupported architecture: $arch" >&2; exit 1 ;;
+esac
 deb_root="$work/deb"
 install_payload "$deb_root"
 mkdir -p "$deb_root/DEBIAN"
@@ -44,7 +54,7 @@ Package: amatl
 Version: $deb_version
 Section: utils
 Priority: optional
-Architecture: amd64
+Architecture: $deb_arch
 Maintainer: IA-Alex <IA-Alex@users.noreply.github.com>
 Homepage: https://github.com/IA-Alex/amatl
 Description: Generalist multi-source search
@@ -52,7 +62,7 @@ Description: Generalist multi-source search
 EOF
 touch --date="@$source_date_epoch" "$deb_root/DEBIAN/control" "$deb_root/DEBIAN"
 dpkg-deb --root-owner-group --build "$deb_root" \
-  "$output_dir/amatl_${deb_asset_version}_amd64.deb"
+  "$output_dir/amatl_${deb_asset_version}_${deb_arch}.deb"
 
 arch_root="$work/arch"
 install_payload "$arch_root"
@@ -66,27 +76,32 @@ url = https://github.com/IA-Alex/amatl
 builddate = $source_date_epoch
 packager = IA-Alex <IA-Alex@users.noreply.github.com>
 size = $(du -sb "$arch_root" | cut -f1)
-arch = x86_64
+arch = $arch
 license = MIT
 license = Apache-2.0
 EOF
 touch --date="@$source_date_epoch" "$arch_root/.PKGINFO"
 tar --sort=name --owner=0 --group=0 --numeric-owner --mtime="@$source_date_epoch" \
-  --zstd -C "$arch_root" -cf "$output_dir/amatl-${arch_version}-1-x86_64.pkg.tar.zst" .
+  --zstd -C "$arch_root" -cf "$output_dir/amatl-${arch_version}-1-${arch}.pkg.tar.zst" .
 
 rpm_version=${version%%-*}
 rpm_release=${version#*-}
 rpm_release=${rpm_release//-/.}
+case "$arch" in
+  x86_64) rpm_arch="x86_64" ;;
+  aarch64) rpm_arch="aarch64" ;;
+  *) echo "unsupported architecture: $arch" >&2; exit 1 ;;
+esac
 rpm_top="$work/rpm"
 mkdir -p "$rpm_top"/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
-cat >"$rpm_top/SPECS/amatl.spec" <<'EOF'
+cat >"$rpm_top/SPECS/amatl.spec" <<EOF
 Name:           amatl
 Version:        %{amatl_version}
 Release:        %{amatl_release}%{?dist}
 Summary:        Generalist multi-source search
 License:        MIT OR Apache-2.0
 URL:            https://github.com/IA-Alex/amatl
-BuildArch:      x86_64
+BuildArch:      $rpm_arch
 
 %description
 Fast, modular and failure-tolerant Linux-first search with optional Deep evidence.

@@ -1,0 +1,32 @@
+{
+  "artifact_notice": "Generated test artifact — SearXNG engine diagnostic — do not treat as project documentation.",
+  "configured_engines": {
+    "brave": {"disabled": true},
+    "duckduckgo": {"disabled": false},
+    "google cse": {"disabled": true},
+    "startpage": {"disabled": true},
+    "mojeek": {"disabled": false},
+    "qwant": {"disabled": false},
+    "bing": {"disabled": true}
+  },
+  "requested_engines": [],
+  "requested_categories": [],
+  "other_request_parameters": ["q=rust async", "format=json", "pageno=1"],
+  "effective_engines": "UNKNOWN",
+  "unresponsive_engines": {
+    "baseline_execution_with_results_0": "UNKNOWN: prior artifact preserved only count=2, not the two pairs",
+    "single_repeat_execution": [
+      {"name": "duckduckgo", "error": "access denied"}
+    ]
+  },
+  "single_repeat": {
+    "http_status": 200,
+    "results": 10,
+    "answers": "not instrumented; outside this experiment's minimal metadata scope",
+    "unresponsive_engines": 1,
+    "final_status": "partial_success",
+    "elapsed_ms": 1284
+  },
+  "temporary_instrumentation_reverted": true,
+  "source_sha256_before_and_after": "0f16ac5e8befdeac03fa4029d5d5588443acd2ee452c1bb27f46d7affb7b7b0d"
+}

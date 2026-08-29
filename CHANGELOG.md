@@ -14,10 +14,241 @@ adapter/extractor versions are independent axes as well.
 
 ## [Unreleased]
 
+### Added
+
+- Provider registry (`ProviderRegistry`, `ProviderFactory`) and an open
+  `[providers.<name>]` configuration map, so a search source is added by
+  declaring a governance record and registering a factory —
+  `AmatlService::with_registry` builds providers without a hardcoded match.
+- Local inference layer (`amatl-core/src/inference.rs`): an `EmbeddingBackend`
+  contract plus the offline, deterministic `local_hashing_v1` backend that now
+  backs Ranking v2's `SemanticScorer` and `DeepReranker`, sized by the new
+  `[inference]` configuration section. `remote_explicit` fails closed and Deep
+  degrades with `inference_unavailable` when a required backend is missing.
+- Shared error catalog (`amatl-core/src/errors.rs`): CLI, API and MCP render the
+  same stable codes, transport statuses and messages. The CLI prints
+  `error_code=…` on stderr for any failure carrying a catalog code, and reports
+  a failed Search with the composite codes the response already contains.
+- `amatl doctor` reports inference readiness; `amatl config` lists declared
+  providers and the inference backend.
+- Local domain HTTP surfaces backed by the existing SQLite tables: `GET /status`
+  (source availability, persistence and cache state), `GET/DELETE /history`,
+  `DELETE /history/{id}`, `GET/POST /saved` and `DELETE /saved/{id}`. Every
+  executed search is recorded in the local history when
+  `persistence.history_enabled` is on; all of them require the bearer token and
+  fail closed with `storage_unavailable` when persistence is disabled.
+- UI panels for service state, search history and saved documents, plus a
+  `Guardar` action on each Deep document. The panels appear only when the
+  corresponding surface answers.
+- `/metrics` now publishes p50/p95/p99 latency over the last 1024 requests per
+  surface, per-source availability and observed value
+  (`amatl_source_available`, `amatl_source_success_rate`,
+  `amatl_source_latency_ms`), cache hit/miss counters and hit rates, and
+  `amatl_storage_available`.
+- `[persistence] history_enabled` and `[persistence] saved_document_max_bytes`
+  configuration keys.
+- `contract-gate` runs the workspace test suite on macOS and Windows in addition
+  to Linux, so the published Tier 2 archives cannot silently rot.
+- Governed remote inference: `data_policy.inference = "remote_explicit"` now has
+  a real backend (`remote_embeddings_v1`) behind the async `EmbeddingBackend`
+  contract, configured by `[inference] remote_endpoint`, `remote_model`,
+  `remote_credential_env`, `remote_timeout_ms` and `remote_max_batch`. It is
+  built only under a standard profile with governed egress, refuses endpoints
+  that are not HTTPS (or loopback HTTP) or that embed credentials, sends the
+  credential only as a bearer header, and bounds batch, input, response width
+  and time. Anything else fails closed.
+- Persistent provider circuit breaker (`[circuit_breaker]`, migration 0006): a
+  source that fails repeatedly is skipped for a cooldown, then probed once. The
+  state survives restarts when persistence is enabled, and is visible through
+  `GET /status`, `/metrics`, the MCP `status` tool and `amatl db circuits`.
+- Runtime configuration reload: `POST /reload` and `SIGHUP` rebuild the service
+  from the configuration file and swap it atomically, so adding, removing or
+  re-approving a source no longer needs a restart. HTTP and MCP share the same
+  handle. `ProviderRegistry::unregister` completes the registry lifecycle.
+- MCP `status` tool, server-side pagination on `search`, cancellation and
+  progress notifications for `deep_search`.
+- CLI commands for the local domain and maintenance: `amatl history
+  list|delete|purge`, `amatl saved list|show|delete`, and `amatl db
+  health|backups|restore|downgrade|circuits`. `serve` and `mcp serve` accept
+  `--bind`, `--port` and `--json`.
+- Named credentials (`[[server.clients]]`): each one carries its own HTTP
+  scopes, MCP tool allowlist and optional expiry. Secrets stay out of
+  configuration — declare the environment variable or the SHA-256 digest — and
+  are matched as digests in constant time. `POST /reload` and `SIGHUP` rotate,
+  add and revoke credentials without a restart, while deliberately preserving
+  rate-limit windows. The single `server.token_env` token still works as the
+  `default` client.
+- Per-tool MCP authorization: every tool checks the authenticated identity's
+  allowlist, so `fetch` can be denied to a client without disabling egress for
+  everyone. The decision never reads a client-supplied header.
+- Durable security audit (`security_events`, migration 0007): edge rejections
+  are persisted with request id, identity, path and address, queryable through
+  `GET /security-events` (admin scope) and `amatl db security-events`, with
+  `persistence.audit_retention_days` retention. Writes are backgrounded and
+  bounded; drops are counted in `amatl_audit_events_dropped_total`.
+- `robots.txt` compliance for crawl-discovered links (`[deep] respect_robots`):
+  user-requested URLs are fetched as a user agent, while links AMATL discovers
+  itself at depth ≥ 1 obey the origin's rules, including `Crawl-delay` within
+  the Deep deadline. An unreachable `robots.txt` stops the crawl instead of
+  assuming consent.
+- Ranking v2 is gated in CI: `contract-gate` and the release workflow run
+  `amatl benchmark ranking-v2`, and a unit test pins the recorded calibration so
+  a silent drift fails the build.
+- Optional grounded answer synthesis ("Resumen con IA", `amatl-core/src/answer.rs`):
+  a second remote-inference capability, independent from the embeddings
+  backend above, that turns AMATL's own ranked Search results into a short,
+  cited answer. The model only ever sees the sources AMATL retrieved
+  (bounded by `max_sources`/`max_source_chars`); every `[n]` citation in the
+  response is validated against real source indices, and a citation to a
+  source that was never retrieved is stripped from the visible text, not
+  merely excluded from the count. A response citing no valid source is
+  refused (`answer_unavailable`) rather than shown. Requires
+  `data_policy.inference = "remote_explicit"` and a new `[answer]`
+  configuration section (`enabled`, `endpoint`, `model`, `credential_env`,
+  `timeout_ms`, `max_sources`, `max_source_chars`, `max_answer_tokens`).
+  Exposed on `POST /answer`, the MCP tool `answer`, and the always-visible,
+  visually-disabled-when-unavailable `Resumen con IA` button in the web UI.
+  See `docs/resumen-con-ia.md`, ADR-011 and the new `Core → inference
+  (answer)` rows in `docs/security/threat-model.md`.
+- Admin-scoped `POST /answer/enabled`, backed by `Config::set_answer_enabled`
+  (via `toml_edit`): flips only the `answer.enabled` key in the configuration
+  file, preserving every comment and every other key, and validates a
+  candidate configuration with the flag flipped *before* writing anything —
+  turning the feature on with an incomplete `[answer]` section fails closed
+  without touching the file. `GET /status`'s `answer` field now reports
+  `enabled`/`configured`/`available` as three independent booleans, so a
+  settings panel can keep explaining the feature (and offer the toggle) even
+  while it is switched off.
+- Light/dark theme toggle in the web UI (`#theme-toggle`): follows
+  `prefers-color-scheme` by default, can be overridden per visit, and shows
+  exactly one of the sun/moon icons at a time via a CSS `is-active` class
+  rather than element visibility attributes. A full light-theme token palette
+  was added to `styles.css`, verified WCAG-AA.
+- `docs/identidad-visual.md`: the canonical reference for AMATL's color
+  tokens (dark and light) and typography, with the rule that no new
+  functional color ships without being documented there first.
+
+### Changed
+
+- Semantic and reranker ranking weights now require an inference mode with an
+  available backend; the configuration is rejected otherwise.
+- HTTP and MCP surfaces report precise failures (`search_planning_failed`,
+  `provider_not_registered`, `inference_unavailable`, …) instead of the generic
+  `service_unavailable`, `search_failed` and `deep_search_failed` codes.
+- The request id now reaches outbound work: `ProviderContext` and `FetchRequest`
+  carry it, and provider calls and Deep fetches run inside spans that declare
+  it. It is never sent to the provider or origin; MCP tool calls generate one
+  per invocation.
+- Result pagination is server-side only. The UI always sends `page`/`page_size`
+  and renders the returned window as-is instead of keeping a parallel
+  client-side pager; `SearchResponse.total_results` describes the whole ranked
+  set. `/deep` remains unpaginated.
+- UI copy moved out of `app.js` into the `/i18n.js` message catalog; adding a
+  language means adding one entry with the same keys as `en`.
+- `docs/release.md` states the distribution scope explicitly as Tier 1 (Linux
+  x86_64 musl, native packages) and Tier 2 (Linux aarch64, macOS, Windows
+  archives); everything else is out of scope.
+- The provider governance record is enforced at call time, not only at startup:
+  an enabled source whose approval is incomplete or expired is never built and
+  the response carries a `provider_not_approved` degradation naming it.
+- MCP `fetch` limits are derived from `ExecutionLimits::for_surface` instead of
+  being hardcoded, so lowering a configured limit lowers it for MCP too. The
+  effective numbers are reported by the `status` tool.
+- `SemanticScorer`, `DeepReranker`, `EmbeddingBackend` and `RankingV2Engine::rank`
+  are async, which is what makes a remote backend possible without blocking the
+  runtime.
+- The document cache is namespaced by the active vector space
+  (`backend@dimensions`), so changing the embedding backend or width stops
+  matching old entries instead of silently reusing artifacts from another space.
+- Local file ingestion remains CLI-only by design; a contract test now asserts
+  that no MCP tool exposes it.
+- The web UI's brand mark was replaced end to end (`brand-icon.png`,
+  `favicon.png`), scoped so only the icon symbol carries the new brown color
+  and the rest of the application keeps its functional blue/cyan/emerald
+  palette; the wordmark keeps JetBrains Mono. The masthead's promotional
+  subtitle ("Búsqueda multifuente y evidencia verificable") was removed
+  entirely — it read as marketing copy, not product state, and the header now
+  only carries the brand and the theme toggle.
+
+### Removed
+
+- Empty `api.rs`, `mcp.rs` and `ui.rs` surface markers in `amatl-core`; the real
+  transport surfaces live in `amatl-server`.
+
 ### Fixed
 
 - Debian release asset names avoid GitHub's `~` normalization so published
   `SHA256SUMS` manifests remain directly verifiable.
+- SQLite downgrade from migration 5 now applies: the script was present but
+  outside `migrations/downgrade/` and unreferenced, so a downgrade silently
+  skipped it. `amatl db downgrade` exercises the whole chain.
+- Database backups are written with `VACUUM INTO` instead of copying the file
+  while WAL mode is active. A plain copy could omit the most recent commits or
+  capture a torn state, and this applied to the copy taken before a destructive
+  schema migration as well. Backup verification now opens the copy read-only, so
+  certifying an artifact no longer modifies it.
+- `amatl db backups` lists automatic backups, and `amatl db restore` can select
+  them. The three naming schemes (automatic, pre-migration, pre-restore) had
+  diverged and the listing recognised only two, leaving every automatic backup
+  unreachable from the product. Rotation now only removes automatic copies.
+- Dropping `AmatlService` stops its background maintenance task. The task held a
+  `CancellationToken`, which does not cancel on drop, so it outlived the service
+  and kept the connection pool and the advisory file lock alive; with
+  `locking_mode = "exclusive"` no other process could reopen the database.
+- The native HTML extractor traverses the DOM iteratively. The recursive walk
+  overflowed the stack on deeply nested markup — an abort, not a catchable
+  panic — reachable from any fetched page well within the size budget.
+- `inference.backend = "local_model_v1"` can be selected from a configuration
+  file. Validation accepted only `local_hashing_v1`, so the documented backend
+  failed to load and was unreachable end to end.
+- `FallbackExtractor::version()` reports a composite identity instead of its
+  primary's. Deep keys the document cache on this value, so natively extracted
+  documents were stored under Trafilatura's version and served as if that
+  extractor had produced them.
+- Filesystem space reporting in `db health` uses `statvfs` rather than the
+  directory inode's block count, which reported ~32 KiB total and pinned disk
+  usage at 0%, making the "disk critically full" warning unreachable.
+- Confusable folding no longer transliterates Greek phonetically. Mapping θ and
+  φ onto `o`, or γ and ψ onto `y`, collapsed letters that look nothing alike and
+  could mark unrelated Greek titles as possible duplicates. The final sigma `ς`
+  now agrees with the medial `σ`, an invariant the folding itself had broken.
+- The embedding cache evicts by real recency and persists its ordering, is
+  written atomically, and warns instead of silently discarding an unreadable
+  file. Ordering was restored from a map in hash order, making eviction
+  arbitrary after every restart.
+- The local model file is size-bounded before loading, so a mistyped path no
+  longer risks an out-of-memory abort at startup.
+- The soak test negotiates the MCP protocol version. Every MCP request in it had
+  been rejected, a steady 33% error rate that went unnoticed because the test is
+  `#[ignore]`d and no workflow ran it; a nightly job now does.
+- `publish-aur.yml` runs `makepkg` in an Arch container as an unprivileged user
+  (it is absent from `ubuntu-latest` and refuses to run as root), and rewrites
+  `sha256sums` unconditionally — anchoring on the initial `SKIP` matched nothing
+  from the second release onward and would have shipped a stale checksum.
+- `answer.rs`'s public `synthesize` doc comment linked to a private item,
+  which `cargo doc --no-deps` with `RUSTDOCFLAGS="-D warnings"` — part of the
+  required gate — rejects as an error, not a lint.
+- `.gitignore`'s `/amatl.sqlite3*` pattern did not match the backup file names
+  `storage.rs` actually produces (`amatl.backup-<timestamp>.sqlite3`,
+  `amatl.migration-<timestamp>.sqlite3`, `amatl.pre-restore-<timestamp>.sqlite3`),
+  so a real backup — potentially containing the operator's search history and
+  saved documents — was one `git add -A` away from entering history. Widened
+  to `/amatl*.sqlite3*`; also added `*~` for stray editor-backup files.
+
+### Changed
+
+- Deep's default reranker stays lexical. `local_hashing_v1` is a feature hash,
+  not a model, and ranking the labeled corpus by cosine similarity over those
+  hashes scores measurably worse than lexical coverage (nDCG@3 0.925 against
+  1.000). Embedding-based reranking is selected only when a genuine model
+  backend is configured, and never for a remote backend, which would ship every
+  candidate document's text to a third party on each Deep call. A degradation
+  to lexical is now logged instead of discarded silently.
+- `publish-crates.yml` and `publish-aur.yml` trigger on stable tags only, with
+  `workflow_dispatch` for candidates. Publishing to crates.io is irreversible
+  and an AUR push replaces the package every Arch user installs.
+- The crates.io publish waits on the sparse index for the leaf crates instead of
+  sleeping a fixed 30 seconds before publishing their dependents.
 
 ## [0.1.0-rc.1] - 2026-08-13
 

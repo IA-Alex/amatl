@@ -16,7 +16,7 @@ matching annotated tag.
 
 Do not open a public issue, discussion, or pull request for a suspected
 vulnerability. Email
-[`alexishernande87@hotmail.com`](mailto:alexishernande87@hotmail.com?subject=AMATL%20security%20report)
+[`amatl_mexa@outlook.com`](mailto:amatl_mexa@outlook.com?subject=AMATL%20security%20report)
 with subject `AMATL security report`. This address is the verified owner contact
 used by the repository history; no PGP key is currently published. The
 repository owner and security maintainer is

@@ -7,15 +7,36 @@
     <meta name="referrer" content="no-referrer">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'">
     <title>AMATL — Búsqueda y evidencia</title>
-    <link rel="icon" href="data:,">
+    <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="stylesheet" href="/styles.css">
+    <script src="/i18n.js" defer></script>
     <script src="/app.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#results">Ir a resultados</a>
     <header class="masthead">
-      <a class="brand" href="/" aria-label="AMATL, inicio">AMATL</a>
-      <span class="product-label">Búsqueda multifuente y evidencia verificable</span>
+      <a class="brand" href="/" aria-label="AMATL, inicio">
+        <img class="brand-icon" src="/brand-icon.png" alt="" width="71" height="120">
+        <span>AMATL</span>
+      </a>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Cambiar a tema claro">
+        <svg class="icon-sun is-active" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+          <g fill="currentColor">
+            <polygon points="12,1.2 13.6,5.6 10.4,5.6"/>
+            <polygon points="12,22.8 13.6,18.4 10.4,18.4"/>
+            <polygon points="1.2,12 5.6,10.4 5.6,13.6"/>
+            <polygon points="22.8,12 18.4,13.6 18.4,10.4"/>
+            <polygon points="4.4,4.4 8.2,6.6 6.6,8.2"/>
+            <polygon points="19.6,19.6 15.8,17.4 17.4,15.8"/>
+            <polygon points="4.4,19.6 6.6,15.8 8.2,17.4"/>
+            <polygon points="19.6,4.4 17.4,8.2 15.8,6.6"/>
+            <circle cx="12" cy="12" r="4.6"/>
+          </g>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+          <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z" fill="currentColor"/>
+        </svg>
+      </button>
     </header>
 
     <main class="shell">
@@ -28,10 +49,12 @@
             <div class="search-actions" aria-label="Tipo de búsqueda">
               <button id="search-button" type="submit" data-mode="search">Buscar</button>
               <button id="deep-button" class="secondary-action" type="submit" data-mode="deep">Analizar evidencia</button>
+              <button id="answer-button" class="secondary-action is-unavailable" type="submit" data-mode="answer" aria-disabled="true">Resumen con IA</button>
             </div>
           </div>
+          <p id="answer-hint" class="field-help" hidden></p>
           <details class="filters">
-            <summary>Filtros y acceso</summary>
+            <summary id="filters-summary">Filtros y acceso</summary>
             <div class="filter-grid">
               <div>
                 <label for="language">Idioma</label>
@@ -68,6 +91,11 @@
         <div id="loading" class="loading" hidden aria-hidden="true">
           <span></span><span></span><span></span>
         </div>
+        <button id="cancel-button" class="cancel-button" type="button" hidden aria-hidden="true">Cancelar</button>
+        <div id="answer-card" class="answer-card" hidden>
+          <p id="answer-text" class="answer-text"></p>
+          <p id="answer-meta" class="answer-meta"></p>
+        </div>
         <ol id="results" class="results" tabindex="-1"></ol>
         <nav id="pagination" class="pagination" aria-label="Páginas de resultados" hidden>
           <button id="previous" type="button">Anterior</button>
@@ -75,10 +103,80 @@
           <button id="next" type="button">Siguiente</button>
         </nav>
       </section>
+
+      <aside class="side-panels">
+        <section class="provider-status" aria-labelledby="provider-heading" hidden>
+          <h2 id="provider-heading">Estado de fuentes</h2>
+          <ul id="provider-list" class="provider-list" role="list"></ul>
+          <p id="provider-status-text" class="status"></p>
+        </section>
+
+        <section class="service-state" aria-labelledby="service-heading" hidden>
+          <h2 id="service-heading">Estado del servicio</h2>
+          <p id="service-summary" class="status" role="status" aria-live="polite"></p>
+          <ul id="service-indicators" class="indicator-list" role="list"></ul>
+          <details id="answer-config" class="answer-config" hidden>
+            <summary id="answer-config-summary">Configuración de IA</summary>
+            <dl id="answer-config-body" class="answer-config-body"></dl>
+            <label class="answer-toggle-row">
+              <input type="checkbox" id="answer-enabled-toggle">
+              <span id="answer-toggle-label">Activar función</span>
+            </label>
+            <p id="answer-toggle-status" class="field-help" hidden></p>
+          </details>
+        </section>
+
+        <section class="history-panel" aria-labelledby="history-heading" hidden>
+          <div class="panel-header">
+            <h2 id="history-heading">Historial de búsquedas</h2>
+            <button id="history-purge" type="button" class="ghost-action">Borrar historial</button>
+          </div>
+          <ol id="history-list" class="history-list"></ol>
+          <p id="history-empty" class="empty-note" hidden></p>
+        </section>
+
+        <section class="saved-panel" aria-labelledby="saved-heading" hidden>
+          <h2 id="saved-heading">Documentos guardados</h2>
+          <ol id="saved-list" class="saved-list"></ol>
+          <p id="saved-empty" class="empty-note" hidden></p>
+        </section>
+
+        <section class="clients-panel" aria-labelledby="clients-heading" hidden>
+          <h2 id="clients-heading">Clientes y tokens</h2>
+          <ul id="client-list" class="client-list" role="list"></ul>
+          <p id="client-list-empty" class="empty-note" hidden></p>
+          <details id="client-create">
+            <summary id="client-create-summary">Nuevo cliente</summary>
+            <form id="client-create-form">
+              <div>
+                <label for="client-id">Identificador</label>
+                <input id="client-id" name="id" required maxlength="64" pattern="[a-z0-9_]+" autocomplete="off" placeholder="dashboard">
+                <p id="client-id-help" class="field-help">Minúsculas, números y guión bajo.</p>
+              </div>
+              <fieldset id="client-scopes" class="client-scopes">
+                <legend id="client-scopes-legend">Capacidades</legend>
+                <label class="scope-option"><input type="checkbox" name="scope" value="search"><span>Search</span></label>
+                <label class="scope-option"><input type="checkbox" name="scope" value="deep"><span>Deep</span></label>
+                <label class="scope-option"><input type="checkbox" name="scope" value="read"><span>Lectura</span></label>
+                <label class="scope-option"><input type="checkbox" name="scope" value="write"><span>Escritura</span></label>
+                <label class="scope-option"><input type="checkbox" name="scope" value="admin"><span>Administración</span></label>
+                <label class="scope-option"><input type="checkbox" name="scope" value="mcp"><span>MCP</span></label>
+              </fieldset>
+              <div>
+                <label for="client-expires">Expira (opcional)</label>
+                <input id="client-expires" type="date">
+              </div>
+              <button type="submit" id="client-create-submit">Crear cliente</button>
+              <p id="client-create-error" class="field-help" role="alert" hidden></p>
+            </form>
+          </details>
+        </section>
+      </aside>
     </main>
 
     <template id="result-template">
       <li class="result-card">
+        <span class="result-index" hidden></span>
         <p class="result-url"></p>
         <h3><a class="result-title" rel="noopener noreferrer"></a></h3>
         <p class="result-snippet"></p>
@@ -104,6 +202,9 @@
           <p class="empty-evidence" hidden></p>
           <ol class="evidence-fragments"></ol>
         </section>
+        <div class="document-actions">
+          <button type="button" class="save-document ghost-action">Guardar</button>
+        </div>
         <details class="provenance">
           <summary>Procedencia verificable</summary>
           <dl>
@@ -120,6 +221,29 @@
       </li>
     </template>
 
+    <template id="history-template">
+      <li class="history-item">
+        <div class="history-body">
+          <p class="history-query"></p>
+          <p class="history-meta"></p>
+        </div>
+        <div class="history-actions">
+          <button type="button" class="history-reuse ghost-action"></button>
+          <button type="button" class="history-delete ghost-action"></button>
+        </div>
+      </li>
+    </template>
+
+    <template id="saved-template">
+      <li class="saved-item">
+        <div class="saved-body">
+          <h3><a class="saved-title" rel="noopener noreferrer"></a></h3>
+          <p class="saved-meta"></p>
+        </div>
+        <button type="button" class="saved-delete ghost-action"></button>
+      </li>
+    </template>
+
     <template id="fragment-template">
       <li class="evidence-fragment">
         <blockquote></blockquote>
@@ -130,5 +254,14 @@
         <p class="fragment-hash"><span>SHA-256</span> <code></code></p>
       </li>
     </template>
+
+    <dialog id="client-token-dialog" class="token-dialog" aria-labelledby="client-token-heading">
+      <h2 id="client-token-heading">Token generado</h2>
+      <p id="client-token-warning">Cópialo ahora — no volverá a mostrarse.</p>
+      <p class="token-dialog-id"><strong id="client-token-id"></strong></p>
+      <label class="sr-only" for="client-token-value">Token</label>
+      <input id="client-token-value" type="text" readonly>
+      <button type="button" id="client-token-close">Cerrar</button>
+    </dialog>
   </body>
 </html>

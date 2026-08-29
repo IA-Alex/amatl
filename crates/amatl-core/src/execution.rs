@@ -26,6 +26,7 @@ use std::sync::Arc;
 use std::time::{Duration, Instant, SystemTime, UNIX_EPOCH};
 use tokio::sync::Semaphore;
 use tokio::task::JoinSet;
+use tracing::Instrument;
 
 static JITTER_COUNTER: AtomicU64 = AtomicU64::new(0);
 
@@ -54,6 +55,7 @@ pub struct SearchOrchestrator {
     telemetry: InMemoryTelemetry,
     routing_trace: Vec<ProgressiveRoundTrace>,
     last_plan: Option<SearchPlan>,
+    request_id: Option<String>,
 }
 
 impl SearchOrchestrator {
@@ -71,6 +73,7 @@ impl SearchOrchestrator {
             telemetry: InMemoryTelemetry::new(),
             routing_trace: vec![],
             last_plan: None,
+            request_id: None,
         }
     }
 
@@ -90,6 +93,11 @@ impl SearchOrchestrator {
 
     pub fn with_telemetry(mut self, telemetry: InMemoryTelemetry) -> Self {
         self.telemetry = telemetry;
+        self
+    }
+
+    pub fn with_request_id(mut self, request_id: Option<String>) -> Self {
+        self.request_id = request_id;
         self
     }
 
@@ -404,6 +412,9 @@ impl SearchOrchestrator {
             errors,
             degradations,
             elapsed_ms: started.elapsed().as_millis() as u64,
+            total_results: None,
+            page: None,
+            page_size: None,
         }
     }
 
@@ -443,89 +454,118 @@ impl SearchOrchestrator {
             let provider_semaphore = provider_semaphores[provider_name].clone();
             let max_retries = self.max_retries;
             let retry_jitter_ms = self.retry_jitter_ms;
-            tasks.spawn(async move {
-                let provider_started = Instant::now();
-                let hard_deadline = tokio::time::Instant::now()
-                    + Duration::from_millis(plan.global_budget.deadline_ms);
-                let permits = tokio::time::timeout_at(hard_deadline, async {
-                    let global = global_semaphore.acquire_owned().await.map_err(|_| ())?;
-                    let provider = provider_semaphore.acquire_owned().await.map_err(|_| ())?;
-                    Ok::<_, ()>((global, provider))
-                })
-                .await;
-                let _permits = match permits {
-                    Ok(Ok(permits)) => permits,
-                    _ => {
-                        return (
-                            name.clone(),
-                            Err(ProviderError {
+            let request_id = self.request_id.clone();
+            let provider_span = tracing::info_span!(
+                target: "amatl::providers",
+                "provider_call",
+                request_id = request_id.as_deref().unwrap_or("-"),
+                provider = %name,
+                timeout_ms
+            );
+            tasks.spawn(
+                async move {
+                    let provider_started = Instant::now();
+                    let hard_deadline = tokio::time::Instant::now()
+                        + Duration::from_millis(plan.global_budget.deadline_ms);
+                    let permits = tokio::time::timeout_at(hard_deadline, async {
+                        let global = global_semaphore.acquire_owned().await.map_err(|_| ())?;
+                        let provider = provider_semaphore.acquire_owned().await.map_err(|_| ())?;
+                        Ok::<_, ()>((global, provider))
+                    })
+                    .await;
+                    let _permits = match permits {
+                        Ok(Ok(permits)) => permits,
+                        _ => {
+                            return (
+                                name.clone(),
+                                Err(ProviderError {
+                                    schema_version: SCHEMA_VERSION.into(),
+                                    provider: name,
+                                    kind: ProviderErrorKind::Timeout,
+                                    message: "provider concurrency deadline exceeded".into(),
+                                    retry_after_ms: None,
+                                }),
+                                provider_started.elapsed().as_millis() as u64,
+                                category,
+                                estimated_cost,
+                            )
+                        }
+                    };
+                    let mut attempt = 0_u32;
+                    loop {
+                        let remaining =
+                            hard_deadline.saturating_duration_since(tokio::time::Instant::now());
+                        let attempt_timeout = Duration::from_millis(timeout_ms).min(remaining);
+                        let result = if attempt_timeout.is_zero() {
+                            Err(())
+                        } else {
+                            tokio::time::timeout(
+                                attempt_timeout,
+                                provider.search(
+                                    &plan,
+                                    &ProviderContext {
+                                        timeout_ms,
+                                        request_id: request_id.clone(),
+                                    },
+                                ),
+                            )
+                            .await
+                            .map_err(|_| ())
+                        };
+                        tracing::debug!(
+                            target: "amatl::providers",
+                            attempt,
+                            outcome = match &result {
+                                Ok(Ok(_)) => "ok",
+                                Ok(Err(_)) => "provider_error",
+                                Err(()) => "timeout",
+                            },
+                            latency_ms = provider_started.elapsed().as_millis() as u64,
+                            "provider call finished"
+                        );
+                        let provider_result = match result {
+                            Ok(result) => result,
+                            Err(()) => Err(ProviderError {
                                 schema_version: SCHEMA_VERSION.into(),
-                                provider: name,
+                                provider: name.clone(),
                                 kind: ProviderErrorKind::Timeout,
-                                message: "provider concurrency deadline exceeded".into(),
+                                message: "provider deadline exceeded".into(),
                                 retry_after_ms: None,
                             }),
-                            provider_started.elapsed().as_millis() as u64,
-                            category,
-                            estimated_cost,
-                        )
+                        };
+                        let retry_delay_ms = provider_result.as_ref().err().and_then(|error| {
+                            is_recoverable(&error.kind)
+                                .then_some(error.retry_after_ms.unwrap_or(50))
+                        });
+                        if attempt >= max_retries || retry_delay_ms.is_none() {
+                            break (
+                                name,
+                                provider_result,
+                                provider_started.elapsed().as_millis() as u64,
+                                category,
+                                estimated_cost,
+                            );
+                        }
+                        attempt += 1;
+                        let exponential = retry_delay_ms
+                            .unwrap_or(50)
+                            .saturating_mul(1_u64 << attempt.saturating_sub(1));
+                        let jitter_ms = retry_jitter(&name, attempt, retry_jitter_ms);
+                        let backoff = Duration::from_millis(exponential.saturating_add(jitter_ms));
+                        if tokio::time::Instant::now() + backoff >= hard_deadline {
+                            break (
+                                name,
+                                provider_result,
+                                provider_started.elapsed().as_millis() as u64,
+                                category,
+                                estimated_cost,
+                            );
+                        }
+                        tokio::time::sleep(backoff).await;
                     }
-                };
-                let mut attempt = 0_u32;
-                loop {
-                    let remaining =
-                        hard_deadline.saturating_duration_since(tokio::time::Instant::now());
-                    let attempt_timeout = Duration::from_millis(timeout_ms).min(remaining);
-                    let result = if attempt_timeout.is_zero() {
-                        Err(())
-                    } else {
-                        tokio::time::timeout(
-                            attempt_timeout,
-                            provider.search(&plan, &ProviderContext { timeout_ms }),
-                        )
-                        .await
-                        .map_err(|_| ())
-                    };
-                    let provider_result = match result {
-                        Ok(result) => result,
-                        Err(()) => Err(ProviderError {
-                            schema_version: SCHEMA_VERSION.into(),
-                            provider: name.clone(),
-                            kind: ProviderErrorKind::Timeout,
-                            message: "provider deadline exceeded".into(),
-                            retry_after_ms: None,
-                        }),
-                    };
-                    let retry_delay_ms = provider_result.as_ref().err().and_then(|error| {
-                        is_recoverable(&error.kind).then_some(error.retry_after_ms.unwrap_or(50))
-                    });
-                    if attempt >= max_retries || retry_delay_ms.is_none() {
-                        break (
-                            name,
-                            provider_result,
-                            provider_started.elapsed().as_millis() as u64,
-                            category,
-                            estimated_cost,
-                        );
-                    }
-                    attempt += 1;
-                    let exponential = retry_delay_ms
-                        .unwrap_or(50)
-                        .saturating_mul(1_u64 << attempt.saturating_sub(1));
-                    let jitter_ms = retry_jitter(&name, attempt, retry_jitter_ms);
-                    let backoff = Duration::from_millis(exponential.saturating_add(jitter_ms));
-                    if tokio::time::Instant::now() + backoff >= hard_deadline {
-                        break (
-                            name,
-                            provider_result,
-                            provider_started.elapsed().as_millis() as u64,
-                            category,
-                            estimated_cost,
-                        );
-                    }
-                    tokio::time::sleep(backoff).await;
                 }
-            });
+                .instrument(provider_span),
+            );
         }
         let mut output = ParallelSearchOutput {
             provider_results: vec![],
@@ -558,6 +598,7 @@ impl SearchOrchestrator {
                                 error: result.errors.first().map(|error| &error.kind),
                                 partial: result.status == ProviderExecutionStatus::Partial,
                                 estimated_cost,
+                                request_id: self.request_id.clone(),
                             },
                         ));
                     output.providers_used.push(name.clone());
@@ -580,6 +621,7 @@ impl SearchOrchestrator {
                                 error: Some(&error.kind),
                                 partial: false,
                                 estimated_cost,
+                                request_id: self.request_id.clone(),
                             },
                         ));
                     output.providers_failed.push(name);
@@ -955,6 +997,45 @@ mod tests {
             thumbnail: None,
             metadata: Default::default(),
         }
+    }
+
+    /// Provider that records the request id it was called with.
+    struct RecordingProvider {
+        seen: Arc<std::sync::Mutex<Vec<Option<String>>>>,
+    }
+
+    #[async_trait::async_trait]
+    impl Provider for RecordingProvider {
+        fn name(&self) -> &str {
+            "recorder"
+        }
+
+        fn capabilities(&self) -> crate::ProviderCapabilities {
+            MockProvider::success("recorder", vec![]).capabilities()
+        }
+
+        async fn search(
+            &self,
+            plan: &SearchPlan,
+            context: &ProviderContext,
+        ) -> Result<ProviderResult, ProviderError> {
+            self.seen.lock().unwrap().push(context.request_id.clone());
+            MockProvider::success("recorder", vec![item("https://example.com/recorded")])
+                .search(plan, context)
+                .await
+        }
+    }
+
+    #[tokio::test]
+    async fn request_id_reaches_every_outbound_provider_call() {
+        let seen = Arc::new(std::sync::Mutex::new(vec![]));
+        let providers: Vec<Arc<dyn Provider>> =
+            vec![Arc::new(RecordingProvider { seen: seen.clone() })];
+        SearchOrchestrator::new(Budget::new(1, 8_000), 100)
+            .with_request_id(Some("req-42".into()))
+            .search(parse_query("rust async".into()).unwrap(), providers)
+            .await;
+        assert_eq!(seen.lock().unwrap().as_slice(), [Some("req-42".to_owned())]);
     }
 
     #[tokio::test]

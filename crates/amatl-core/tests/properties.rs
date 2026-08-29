@@ -58,6 +58,36 @@ fn evidence_document(content: String) -> Document {
     }
 }
 
+/// Sufijos de host que la política SSRF bloquea deliberadamente en
+/// `crates/amatl-core/src/security.rs` (`blocked_hostname`); el catálogo
+/// completo está documentado en `docs/security/ssrf-controls.md`
+/// (sección "Block catalog"). Los tests de este archivo verifican
+/// propiedades sobre URLs que `normalize()` **acepta**; `normalize()` descarta
+/// los ítems que fallan `validate_search_url`, así que un host generado como
+/// `a.lan` sería rechazado a propósito y no constituye un fallo del código.
+const SSRF_BLOCKED_HOST_SUFFIXES: [&str; 7] = [
+    ".localhost",
+    ".local",
+    ".localdomain",
+    ".internal",
+    ".intranet",
+    ".lan",
+    ".home",
+];
+
+/// Host de dos etiquetas con sufijo que la política SSRF no bloquea: mantiene
+/// la forma del generador original (`[a-z]{1,12}\.[a-z]{2,6}`) pero excluye
+/// los TLD reservados a redes locales (`.lan`, `.local`, `.home`, ...) para
+/// que la propiedad "toda URL bien formada con host público produce 1
+/// resultado aceptado" siga siendo válida y significativa.
+fn public_host() -> impl Strategy<Value = String> {
+    "[a-z]{1,12}\\.[a-z]{2,6}".prop_filter("host must not end in an SSRF-blocked suffix", |host| {
+        !SSRF_BLOCKED_HOST_SUFFIXES
+            .iter()
+            .any(|suffix| host.ends_with(suffix))
+    })
+}
+
 proptest! {
     #[test]
     fn query_parser_preserves_raw_input(raw in ".{1,256}") {
@@ -69,7 +99,7 @@ proptest! {
 
     #[test]
     fn accepted_search_urls_are_http_without_credentials(
-        host in "[a-z]{1,12}\\.[a-z]{2,6}",
+        host in public_host(),
         path in "[a-z0-9/_-]{0,48}"
     ) {
         let raw = format!("https://{host}/{path}");
@@ -105,7 +135,7 @@ proptest! {
 
     #[test]
     fn canonicalization_is_idempotent_for_safe_urls(
-        host in "[a-z]{1,12}\\.[a-z]{2,6}",
+        host in public_host(),
         path in "[a-z0-9/_-]{0,48}",
         id in 0_u32..100_000
     ) {

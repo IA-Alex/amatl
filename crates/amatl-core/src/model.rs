@@ -498,6 +498,15 @@ pub struct SearchResponse {
     pub errors: Vec<CompositeError>,
     pub degradations: Vec<Degradation>,
     pub elapsed_ms: u64,
+    /// Total number of results before pagination (server-side count).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub total_results: Option<u64>,
+    /// Current page number (0-based) when pagination is active.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub page: Option<u32>,
+    /// Number of results per page when pagination is active.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub page_size: Option<u32>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]

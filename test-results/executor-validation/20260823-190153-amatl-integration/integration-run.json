@@ -1,0 +1,13 @@
+{
+  "benchmark_id": "searxng-v2",
+  "elapsed_ms": 1262,
+  "final_results": 0,
+  "partial": true,
+  "process_exit_code": 1,
+  "provider": "searxng",
+  "public_error": "no_usable_results",
+  "query_id": "Q01",
+  "repetition": 1,
+  "search_status": "failure",
+  "sequence_number": 1
+}

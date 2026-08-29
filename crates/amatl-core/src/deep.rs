@@ -8,7 +8,8 @@ use crate::model::{
     OriginalUrl, SearchResult, SearchStatus, SubQuery, SubQueryStatus, SCHEMA_VERSION,
 };
 use crate::ranking_v2::{disabled_output, rejected_output, RankingV2Engine};
-use crate::render::Renderer;
+use crate::render::RendererPool;
+use crate::robots::{RobotsCache, RobotsDecision};
 use sha2::{Digest, Sha256};
 use std::collections::{BTreeMap, BTreeSet, VecDeque};
 use std::sync::Arc;
@@ -31,7 +32,7 @@ pub struct DeepOrchestrator {
     budget: DeepBudget,
     fetcher: Arc<dyn Fetcher>,
     extractor: Arc<dyn Extractor>,
-    renderer: Arc<dyn Renderer>,
+    renderer: RendererPool,
     cache: Option<DocumentCache>,
     timeout_ms: u64,
     per_fetch_bytes: u64,
@@ -41,6 +42,11 @@ pub struct DeepOrchestrator {
     ranking_v2: Option<RankingV2Engine>,
     gap_analyzer: Option<GapAnalyzer>,
     subquery_executor: Option<Arc<dyn SubQueryExecutor>>,
+    /// Correlates every outbound document fetch with the originating request.
+    request_id: Option<String>,
+    /// Consulted for links AMATL discovers itself. `None` disables the check,
+    /// which only an operator may choose.
+    robots: Option<RobotsCache>,
 }
 
 impl DeepOrchestrator {
@@ -49,7 +55,7 @@ impl DeepOrchestrator {
         budget: DeepBudget,
         fetcher: Arc<dyn Fetcher>,
         extractor: Arc<dyn Extractor>,
-        renderer: Arc<dyn Renderer>,
+        renderer: RendererPool,
         cache: Option<DocumentCache>,
         timeout_ms: u64,
         per_fetch_bytes: u64,
@@ -71,7 +77,25 @@ impl DeepOrchestrator {
             ranking_v2: None,
             gap_analyzer: None,
             subquery_executor: None,
+            request_id: None,
+            robots: None,
         }
+    }
+
+    /// Consult `robots.txt` before fetching any link discovered by the crawl.
+    ///
+    /// URLs that came from Search are not gated: those are requested by the
+    /// user, not discovered by AMATL.
+    pub fn with_robots(mut self, robots: RobotsCache) -> Self {
+        self.robots = Some(robots);
+        self
+    }
+
+    /// Correlate every fetch this orchestrator performs with the caller's
+    /// request id.
+    pub fn with_request_id(mut self, request_id: Option<String>) -> Self {
+        self.request_id = request_id;
+        self
     }
 
     pub fn with_ranking_v2(mut self, engine: RankingV2Engine) -> Self {
@@ -157,6 +181,37 @@ impl DeepOrchestrator {
                 ));
                 break;
             }
+            // Depth 0 is what the user asked for; anything deeper is our own
+            // discovery and needs the origin's consent first.
+            if depth > 0 {
+                if let Some(robots) = &self.robots {
+                    match robots
+                        .decide(&candidate.result.canonical_url.0, self.request_id.clone())
+                        .await
+                    {
+                        RobotsDecision::Allowed { crawl_delay_ms } if crawl_delay_ms > 0 => {
+                            let wait = std::time::Duration::from_millis(crawl_delay_ms);
+                            // Politeness never outlives the Deep deadline.
+                            if tokio::time::Instant::now() + wait >= deadline {
+                                response.degradations.push(degradation(
+                                    "robots_crawl_delay_too_long",
+                                    "Declared crawl delay exceeded the remaining Deep deadline",
+                                ));
+                                continue;
+                            }
+                            tokio::time::sleep(wait).await;
+                        }
+                        RobotsDecision::Allowed { .. } => {}
+                        refusal => {
+                            response.degradations.push(degradation(
+                                refusal.as_str(),
+                                "Discovered link was not crawled: the origin's robots.txt refused it or could not be read",
+                            ));
+                            continue;
+                        }
+                    }
+                }
+            }
             let remaining = match self.budget.reserve_fetch() {
                 Ok(value) => value,
                 Err(cause) => {
@@ -204,6 +259,7 @@ impl DeepOrchestrator {
                     max_bytes: limit,
                     max_redirects: redirect_limit,
                     headers: request_headers,
+                    request_id: self.request_id.clone(),
                 })
                 .await;
             let fetched = match fetch {
@@ -271,22 +327,26 @@ impl DeepOrchestrator {
                     .await
                     .unwrap_or(Err(ExtractError::Timeout));
             let mut fetch_method = FetchMethod::Http;
-            let mut final_url = fetched.final_url;
+            let final_url = fetched.final_url;
             let mut document_size = fetched.size;
             if extraction.is_err() && self.renderer.available() {
                 match self.budget.reserve_browser() {
                     Ok(()) => {
-                        match tokio::time::timeout_at(deadline, self.renderer.render(&final_url.0))
+                        // The renderer is handed the bytes SafeFetcher already
+                        // retrieved, never the URL: it executes scripts, it does
+                        // not navigate. `final_url` therefore stays whatever the
+                        // fetcher resolved, and the render contributes no
+                        // redirects of its own.
+                        match tokio::time::timeout_at(deadline, self.renderer.render(&fetched.body))
                             .await
                             .unwrap_or(Err(crate::render::RenderError::Timeout))
                         {
                             Ok(rendered) => {
                                 if self
                                     .budget
-                                    .consume_fetch(rendered.dom.len() as u64, rendered.redirects)
+                                    .consume_fetch(rendered.dom.len() as u64, 0)
                                     .is_ok()
                                 {
-                                    final_url = rendered.final_url;
                                     content_hash = hex_digest(&rendered.dom);
                                     document_size = rendered.dom.len() as u64;
                                     extraction = tokio::time::timeout_at(
@@ -389,6 +449,8 @@ impl DeepOrchestrator {
                         &document,
                         self.extractor.version(),
                         candidate.storage_rights,
+                        None,
+                        None,
                     )
                     .await
                     && candidate.storage_rights
@@ -401,12 +463,15 @@ impl DeepOrchestrator {
         (response.evidence, response.evidence_v2) =
             crate::evidence::analyze_evidence_bundle(&request.query, &response.documents);
         if let Some(engine) = &self.ranking_v2 {
-            match engine.rank(
-                &request.query,
-                &response.documents,
-                &response.evidence,
-                &original_ranks,
-            ) {
+            match engine
+                .rank(
+                    &request.query,
+                    &response.documents,
+                    &response.evidence,
+                    &original_ranks,
+                )
+                .await
+            {
                 Ok(ranking) => response.ranking_v2 = ranking,
                 Err(_) => {
                     response.ranking_v2 = rejected_output();

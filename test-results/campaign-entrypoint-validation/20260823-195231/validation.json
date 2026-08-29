@@ -1,0 +1,33 @@
+{
+  "notice": "Offline/static campaign-entrypoint validation; --campaign was not executed against AMATL.",
+  "runner_sha256_before": "a4c5bda60d9ae51d22af088ad539e59bdfff6b9c0bd52e7be3761ba140ecec80",
+  "runner_sha256_after": "fd4e7b8c320e9ebcd68d967b2c771f41c7eb8e6140909d2f3b91ff65a3664759",
+  "campaign": {
+    "defined": true,
+    "cli_reachable": true,
+    "wiring": ["load_dataset", "build_plan", "validated_plan", "AmatlProcessExecutor", "DurableJSONLWriter", "execute_plan"],
+    "max_positions": null,
+    "own_position_loop": false
+  },
+  "structural_plan": {
+    "positions": 30,
+    "unique_identities": 30,
+    "duplicates": 0,
+    "missing": 0,
+    "argv": 30,
+    "amatl_subprocess_invocations": 0,
+    "network_requests": 0
+  },
+  "negative_tests": {
+    "campaign_missing_fixture_or_binary": "ABORT:CAMPAIGN_ARGUMENTS_REQUIRED",
+    "campaign_existing_output": "ABORT:OUTPUT_ALREADY_EXISTS",
+    "campaign_invalid_dataset": "ABORT:INVALID_DATASET",
+    "duplicate_position_before_executor": "PASS",
+    "foreign_position_before_executor": "PASS",
+    "conceptual_position_31_before_executor": "PASS",
+    "negative_mock_invocations": 0
+  },
+  "existing_modes_structurally_preserved": ["offline", "--mock-executor-validation", "--production-validation"],
+  "modified_by_this_task": ["tools/benchmark_plan_runner.py", "test-results/campaign-entrypoint-validation/20260823-195231/"],
+  "unmodified_by_this_task": ["crates/", "Cargo.lock", "test-results/searxng/20260823-145832/amatl-isolated.toml", "test-results/benchmarks/searxng-v2/20260823-190535/dataset.json"]
+}

@@ -262,3 +262,155 @@ fn unavailable_sqlite_does_not_break_search() {
     std::fs::remove_dir(database_is_a_directory).unwrap();
     std::fs::remove_dir(base).unwrap();
 }
+
+/// Configuration directory with persistence enabled, for the local domain and
+/// maintenance commands.
+fn persistent_config() -> (std::path::PathBuf, std::path::PathBuf) {
+    let id = TEMP_ID.fetch_add(1, Ordering::SeqCst);
+    let base = std::env::temp_dir().join(format!("amatl-cli-domain-{}-{id}", std::process::id()));
+    std::fs::create_dir_all(&base).unwrap();
+    let database = base.join("amatl.sqlite3");
+    let config = base.join("amatl.toml");
+    std::fs::write(
+        &config,
+        format!(
+            "schema_version = \"1\"\n\n[persistence]\nenabled = true\npath = \"{}\"\n",
+            database.display()
+        ),
+    )
+    .unwrap();
+    (config, database)
+}
+
+fn amatl(config: &std::path::Path, args: &[&str]) -> std::process::Output {
+    Command::new(env!("CARGO_BIN_EXE_amatl"))
+        .arg("--config-file")
+        .arg(config)
+        .args(args)
+        .output()
+        .expect("amatl binary should run")
+}
+
+#[test]
+fn history_and_saved_commands_manage_local_domain_state() {
+    let (config, _database) = persistent_config();
+    assert!(amatl(&config, &["search", "rust async", "--mock"])
+        .status
+        .success());
+
+    let listed = amatl(&config, &["history", "list"]);
+    assert!(listed.status.success());
+    let stdout = String::from_utf8(listed.stdout).unwrap();
+    assert!(stdout.contains("rust async"), "{stdout}");
+    assert!(stdout.contains("cli"), "{stdout}");
+    let id = stdout.split('\t').next().unwrap().trim().to_owned();
+
+    assert!(amatl(&config, &["history", "delete", &id]).status.success());
+    // Deleting the same entry twice is an error, not a silent success.
+    assert!(!amatl(&config, &["history", "delete", &id]).status.success());
+
+    let purged = amatl(&config, &["history", "purge"]);
+    assert!(purged.status.success());
+    assert!(String::from_utf8(purged.stdout).unwrap().contains("purged"));
+
+    let saved = amatl(&config, &["saved", "list"]);
+    assert!(saved.status.success());
+    assert!(String::from_utf8(saved.stdout).unwrap().contains("none"));
+}
+
+#[test]
+fn domain_commands_require_persistence() {
+    let output = Command::new(env!("CARGO_BIN_EXE_amatl"))
+        .args(["history", "list"])
+        .output()
+        .expect("amatl binary should run");
+    assert!(!output.status.success());
+    assert!(String::from_utf8(output.stderr)
+        .unwrap()
+        .contains("requires [persistence]"));
+}
+
+#[test]
+fn db_maintenance_reports_health_and_rolls_the_schema_back() {
+    let (config, database) = persistent_config();
+    assert!(amatl(&config, &["search", "rust async", "--mock"])
+        .status
+        .success());
+
+    let health = amatl(&config, &["db", "health", "--json"]);
+    assert!(health.status.success());
+    let value: serde_json::Value = serde_json::from_slice(&health.stdout).unwrap();
+    assert_eq!(value["migration_version"], value["code_migration_version"]);
+    assert_eq!(value["journal_mode"], "wal");
+
+    // Downgrade takes a backup and really moves the schema version back.
+    let downgraded = amatl(&config, &["db", "downgrade", "--to", "4"]);
+    assert!(
+        downgraded.status.success(),
+        "{}",
+        String::from_utf8_lossy(&downgraded.stderr)
+    );
+    let backups = amatl(&config, &["db", "backups"]);
+    assert!(String::from_utf8(backups.stdout)
+        .unwrap()
+        .contains(".sqlite3"));
+    assert!(database.exists());
+
+    // Reopening migrates forward again, so the tool is not one-way.
+    let health = amatl(&config, &["db", "health", "--json"]);
+    let value: serde_json::Value = serde_json::from_slice(&health.stdout).unwrap();
+    assert_eq!(value["migration_version"], value["code_migration_version"]);
+
+    let circuits = amatl(&config, &["db", "circuits", "--json"]);
+    assert!(circuits.status.success());
+    let snapshots: serde_json::Value = serde_json::from_slice(&circuits.stdout).unwrap();
+    assert!(snapshots.is_array());
+    assert!(amatl(&config, &["db", "circuits", "--reset"])
+        .status
+        .success());
+}
+
+#[test]
+fn serve_reports_the_effective_listener_before_binding() {
+    let (config, _database) = persistent_config();
+    // An invalid override is rejected before the listener is created.
+    let output = amatl(
+        &config,
+        &["serve", "--bind", "not-an-address", "--port", "0", "--json"],
+    );
+    assert!(!output.status.success());
+    assert!(String::from_utf8(output.stderr)
+        .unwrap()
+        .to_lowercase()
+        .contains("configuration"));
+}
+
+#[test]
+fn cli_reports_the_same_error_catalog_codes_as_the_other_surfaces() {
+    // A domain failure carries a catalog code on stderr, next to the message.
+    let canary = Command::new(env!("CARGO_BIN_EXE_amatl"))
+        .args(["provider-canary", "brave", "rust"])
+        .output()
+        .expect("amatl binary should run");
+    assert!(!canary.status.success());
+    let stderr = String::from_utf8(canary.stderr).unwrap();
+    assert!(
+        stderr.contains("error_code=provider_not_enabled"),
+        "{stderr}"
+    );
+
+    // A failed Search is a contract outcome: its own composite codes are
+    // reported instead of an invented one, and stdout stays clean.
+    let search = Command::new(env!("CARGO_BIN_EXE_amatl"))
+        .args(["search", "ordinary query", "--json"])
+        .output()
+        .expect("amatl binary should run");
+    assert_eq!(search.status.code(), Some(1));
+    let stderr = String::from_utf8(search.stderr).unwrap();
+    assert!(
+        stderr.contains("error_code=no_available_provider"),
+        "{stderr}"
+    );
+    let stdout = String::from_utf8(search.stdout).unwrap();
+    assert!(!stdout.contains("error_code="), "{stdout}");
+}

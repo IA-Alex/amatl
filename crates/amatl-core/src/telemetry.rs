@@ -5,8 +5,14 @@ use std::collections::{BTreeMap, VecDeque};
 use std::sync::{Arc, Mutex};
 use std::time::{SystemTime, UNIX_EPOCH};
 
-const WINDOW_SECONDS: i64 = 30 * 86_400;
 const DECAY_HALF_LIFE_DAYS: f64 = 30.0;
+
+/// Minimum allowed telemetry retention window (7 days).
+pub const TELEMETRY_MIN_RETENTION_DAYS: u32 = 7;
+/// Maximum allowed telemetry retention window (365 days).
+pub const TELEMETRY_MAX_RETENTION_DAYS: u32 = 365;
+/// Default retention window when no config is provided.
+pub const TELEMETRY_DEFAULT_RETENTION_DAYS: u32 = 30;
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]
@@ -46,6 +52,10 @@ pub struct TelemetryObservation {
     pub top_k_contribution: f64,
     pub diversity: f64,
     pub cost_units: u64,
+    /// Correlates this observation with the originating HTTP request, CLI
+    /// invocation, or MCP session so traces can be reconstructed end-to-end.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub request_id: Option<String>,
 }
 
 pub(crate) struct ProviderTelemetryInput<'a> {
@@ -57,6 +67,8 @@ pub(crate) struct ProviderTelemetryInput<'a> {
     pub error: Option<&'a ProviderErrorKind>,
     pub partial: bool,
     pub estimated_cost: Option<u64>,
+    /// Correlates this observation with the originating request.
+    pub request_id: Option<String>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
@@ -89,6 +101,7 @@ pub struct TelemetryStatus {
 pub struct InMemoryTelemetry {
     state: Arc<Mutex<TelemetryState>>,
     storage: Option<SqliteStorage>,
+    window_seconds: i64,
 }
 
 #[derive(Default)]
@@ -99,26 +112,71 @@ struct TelemetryState {
 
 impl InMemoryTelemetry {
     pub fn new() -> Self {
-        Self::default()
+        Self {
+            window_seconds: TELEMETRY_DEFAULT_RETENTION_DAYS as i64 * 86_400,
+            ..Default::default()
+        }
+    }
+
+    pub fn with_retention_days(retention_days: u32) -> Self {
+        Self {
+            window_seconds: (retention_days as i64).saturating_mul(86_400),
+            ..Default::default()
+        }
     }
 
     pub async fn with_optional_storage(storage: Option<SqliteStorage>) -> Self {
         let telemetry = Self {
             state: Arc::new(Mutex::new(TelemetryState::default())),
             storage,
+            window_seconds: TELEMETRY_DEFAULT_RETENTION_DAYS as i64 * 86_400,
         };
         telemetry.restore_best_effort(now_unix()).await;
         telemetry
     }
 
+    pub async fn with_storage_and_retention(
+        storage: Option<SqliteStorage>,
+        retention_days: u32,
+    ) -> Self {
+        let telemetry = Self {
+            state: Arc::new(Mutex::new(TelemetryState::default())),
+            storage,
+            window_seconds: (retention_days as i64).saturating_mul(86_400),
+        };
+        telemetry.restore_best_effort(now_unix()).await;
+        telemetry
+    }
+
+    /// Record one observation in memory and, when configured, in `storage`.
+    ///
+    /// The two writes are deliberately **not** transactional. Memory is the
+    /// source of truth `snapshot`/`snapshot_for_routing` read from; `storage`
+    /// is a durability backup that `restore_best_effort` replays into memory
+    /// on the next startup. Making them atomic — rolling the memory write
+    /// back when the storage write fails, or vice versa — would mean an
+    /// ordinary SQLite hiccup (already expected and non-fatal everywhere else
+    /// in this codebase; see the module-level invariant that storage failures
+    /// never invalidate Search) starts also discarding the in-memory sample
+    /// that routing depends on right now. That trades a purely cosmetic
+    /// inconsistency (storage briefly ahead of memory, self-healed by
+    /// `restore_best_effort` on the next restart) for a real one: a flaky
+    /// disk degrading routing decisions. `lock_state` already closes the gap
+    /// this method used to have — a poisoned mutex no longer skips the memory
+    /// write silently and permanently (see its doc comment and
+    /// `survives_a_poisoned_state_mutex_without_losing_future_observations`);
+    /// what remains is two independent stores with intentionally independent
+    /// failure domains, not a bug.
     pub async fn record(&self, mut observation: TelemetryObservation) {
         observation.duplicate_ratio = observation.duplicate_ratio.clamp(0.0, 1.0);
         observation.top_k_contribution = observation.top_k_contribution.clamp(0.0, 1.0);
         observation.diversity = observation.diversity.clamp(0.0, 1.0);
         let now = observation.observed_at;
-        if let Ok(mut state) = self.state.lock() {
+        let cutoff = now - self.window_seconds;
+        {
+            let mut state = self.lock_state();
             state.observations.push_back(observation.clone());
-            prune_memory(&mut state.observations, now - WINDOW_SECONDS);
+            prune_memory(&mut state.observations, cutoff);
         }
         if let Some(storage) = &self.storage {
             if storage
@@ -128,7 +186,7 @@ impl InMemoryTelemetry {
             {
                 self.mark_persistence_failure();
             }
-            if storage.telemetry_prune(now - WINDOW_SECONDS).await.is_err() {
+            if storage.telemetry_prune(cutoff).await.is_err() {
                 self.mark_persistence_failure();
             }
         }
@@ -184,7 +242,7 @@ impl InMemoryTelemetry {
             category: Some(category),
             state: global.state,
             health: health_for(global.sample, success_rate, timeout_rate),
-            window_days: 30,
+            window_days: self.window_days(),
             sample: global.sample,
             weighted_sample: total_weight,
             success_rate,
@@ -212,17 +270,11 @@ impl InMemoryTelemetry {
 
     pub fn snapshots(&self, now: i64) -> Vec<ProviderValueSnapshot> {
         let providers = self
-            .state
-            .lock()
-            .ok()
-            .map(|state| {
-                state
-                    .observations
-                    .iter()
-                    .map(|observation| observation.provider.clone())
-                    .collect::<std::collections::BTreeSet<_>>()
-            })
-            .unwrap_or_default();
+            .lock_state()
+            .observations
+            .iter()
+            .map(|observation| observation.provider.clone())
+            .collect::<std::collections::BTreeSet<_>>();
         providers
             .into_iter()
             .map(|provider| self.snapshot_global(&provider, now))
@@ -230,18 +282,12 @@ impl InMemoryTelemetry {
     }
 
     pub fn status(&self) -> TelemetryStatus {
-        self.state
-            .lock()
-            .map(|state| TelemetryStatus {
-                in_memory_observations: state.observations.len(),
-                persistence_enabled: self.storage.is_some(),
-                persistence_failures: state.persistence_failures,
-            })
-            .unwrap_or(TelemetryStatus {
-                in_memory_observations: 0,
-                persistence_enabled: self.storage.is_some(),
-                persistence_failures: 1,
-            })
+        let state = self.lock_state();
+        TelemetryStatus {
+            in_memory_observations: state.observations.len(),
+            persistence_enabled: self.storage.is_some(),
+            persistence_failures: state.persistence_failures,
+        }
     }
 
     fn snapshot(
@@ -250,47 +296,71 @@ impl InMemoryTelemetry {
         category: Option<Category>,
         now: i64,
     ) -> ProviderValueSnapshot {
+        let cutoff = now - self.window_seconds;
         let observations = self
-            .state
-            .lock()
-            .ok()
-            .map(|state| {
-                state
-                    .observations
-                    .iter()
-                    .filter(|item| {
-                        item.provider == provider
-                            && item.observed_at >= now - WINDOW_SECONDS
-                            && category
-                                .as_ref()
-                                .is_none_or(|value| &item.category == value)
-                    })
-                    .cloned()
-                    .collect::<Vec<_>>()
+            .lock_state()
+            .observations
+            .iter()
+            .filter(|item| {
+                item.provider == provider
+                    && item.observed_at >= cutoff
+                    && category
+                        .as_ref()
+                        .is_none_or(|value| &item.category == value)
             })
-            .unwrap_or_default();
-        calculate_snapshot(provider, category, &observations, now)
+            .cloned()
+            .collect::<Vec<_>>();
+        calculate_snapshot(provider, category, &observations, now, self.window_days())
     }
 
     async fn restore_best_effort(&self, now: i64) {
         let Some(storage) = &self.storage else { return };
-        match storage.telemetry_load(now - WINDOW_SECONDS).await {
+        match storage.telemetry_load(now - self.window_seconds).await {
             Ok(observations) => {
-                if let Ok(mut state) = self.state.lock() {
-                    state.observations = observations
-                        .into_iter()
-                        .filter_map(TelemetryObservation::try_from_stored)
-                        .collect();
-                }
+                self.lock_state().observations = observations
+                    .into_iter()
+                    .filter_map(TelemetryObservation::try_from_stored)
+                    .collect();
             }
             Err(_) => self.mark_persistence_failure(),
         }
     }
 
     fn mark_persistence_failure(&self) {
-        if let Ok(mut state) = self.state.lock() {
-            state.persistence_failures = state.persistence_failures.saturating_add(1);
-        }
+        let mut state = self.lock_state();
+        state.persistence_failures = state.persistence_failures.saturating_add(1);
+    }
+
+    /// Lock the shared in-memory state, recovering it if a previous holder
+    /// panicked mid-access.
+    ///
+    /// `record` writes to memory and to `storage` (when configured)
+    /// independently and deliberately: a storage failure must not make an
+    /// observation invisible to routing, and a poisoned in-memory lock must
+    /// not make every later observation invisible either — the two stores
+    /// already have distinct failure semantics (storage failures are counted
+    /// in `persistence_failures` and never treated as fatal to `record`,
+    /// `snapshot`, or `snapshots`). The `VecDeque`/counter mutations guarded
+    /// by this mutex only push, retain, or increment; none of them can leave
+    /// the state in a form that would be unsafe to keep using after a panic,
+    /// so recovering — rather than letting every subsequent call silently see
+    /// an empty state — restores the same in-memory bookkeeping that
+    /// `storage` keeps receiving, instead of leaving telemetry permanently
+    /// blind to memory-only observations for the rest of the process.
+    fn lock_state(&self) -> std::sync::MutexGuard<'_, TelemetryState> {
+        self.state.lock().unwrap_or_else(|error| {
+            tracing::error!(
+                target: "amatl::telemetry",
+                security_event = "mutex_poisoned",
+                component = "in_memory_state",
+                "recovered a poisoned telemetry state mutex; a prior operation must have panicked while holding it"
+            );
+            error.into_inner()
+        })
+    }
+
+    fn window_days(&self) -> u32 {
+        (self.window_seconds / 86_400) as u32
     }
 }
 
@@ -319,6 +389,7 @@ impl TelemetryObservation {
             top_k_contribution: 0.0,
             diversity: 0.0,
             cost_units: input.estimated_cost.unwrap_or(0),
+            request_id: input.request_id,
         }
     }
 
@@ -341,6 +412,7 @@ impl TelemetryObservation {
             top_k_contribution: value.top_k_contribution,
             diversity: value.diversity,
             cost_units: value.cost_units,
+            request_id: value.request_id,
         })
     }
 }
@@ -365,6 +437,7 @@ impl From<TelemetryObservation> for StoredTelemetryObservation {
             top_k_contribution: value.top_k_contribution,
             diversity: value.diversity,
             cost_units: value.cost_units,
+            request_id: value.request_id,
         }
     }
 }
@@ -374,6 +447,7 @@ fn calculate_snapshot(
     category: Option<Category>,
     observations: &[TelemetryObservation],
     now: i64,
+    window_days: u32,
 ) -> ProviderValueSnapshot {
     let mut weights = BTreeMap::new();
     let mut total_weight = 0.0;
@@ -423,7 +497,7 @@ fn calculate_snapshot(
             _ => ProviderValueState::Mature,
         },
         health,
-        window_days: 30,
+        window_days,
         sample,
         weighted_sample: total_weight,
         success_rate,
@@ -457,7 +531,7 @@ pub fn now_unix() -> i64 {
         .map_or(0, |duration| duration.as_secs() as i64)
 }
 
-fn category_name(category: &Category) -> &'static str {
+pub(crate) fn category_name(category: &Category) -> &'static str {
     match category {
         Category::General => "general",
         Category::Technical => "technical",
@@ -507,6 +581,7 @@ mod tests {
             top_k_contribution: 0.5,
             diversity: 0.6,
             cost_units: 1,
+            request_id: None,
         }
     }
 
@@ -521,7 +596,7 @@ mod tests {
                 .map(|_| observation(1_000, TelemetryOutcome::Success))
                 .collect::<Vec<_>>();
             assert_eq!(
-                calculate_snapshot("p", None, &observations, 1_000).state,
+                calculate_snapshot("p", None, &observations, 1_000, 30).state,
                 expected
             );
         }
@@ -533,9 +608,33 @@ mod tests {
             observation(1_000, TelemetryOutcome::Success),
             observation(1_000 - 30 * 86_400, TelemetryOutcome::Timeout),
         ];
-        let snapshot = calculate_snapshot("p", None, &observations, 1_000);
+        let snapshot = calculate_snapshot("p", None, &observations, 1_000, 30);
         assert_eq!(snapshot.sample, 2);
         assert!((snapshot.weighted_sample - 1.5).abs() < 1e-12);
         assert!(snapshot.success_rate > snapshot.timeout_rate);
+    }
+
+    /// A panic while another thread holds `state` poisons the mutex. Memory
+    /// recording must survive that (matching the recovery pattern already
+    /// used for the client-cache mutex in `fetch.rs`), rather than going
+    /// permanently blind for the rest of the process while `storage` keeps
+    /// receiving observations — the divergence the audit flagged.
+    #[tokio::test]
+    async fn survives_a_poisoned_state_mutex_without_losing_future_observations() {
+        let telemetry = InMemoryTelemetry::new();
+        let poisoned_state = telemetry.state.clone();
+        let _ = std::thread::spawn(move || {
+            let _guard = poisoned_state.lock().unwrap();
+            panic!("simulated panic while holding the telemetry state lock");
+        })
+        .join();
+        assert!(telemetry.state.is_poisoned());
+
+        telemetry
+            .record(observation(1_000, TelemetryOutcome::Success))
+            .await;
+
+        assert_eq!(telemetry.status().in_memory_observations, 1);
+        assert_eq!(telemetry.snapshot_global("p", 1_000).sample, 1);
     }
 }

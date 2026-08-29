@@ -1,0 +1,48 @@
+{
+  "artifact_notice": "Generated test artifact — SearXNG characterization — do not treat as project documentation.",
+  "provider": "searxng",
+  "adapter_version": "searxng-v1",
+  "planned_queries": 3,
+  "executed_queries": 3,
+  "query_execution": {
+    "sequential": true,
+    "configured_provider_timeout_ms": 20000,
+    "configured_global_timeout_ms": 45000,
+    "configured_retries": 0
+  },
+  "outcomes": {
+    "successes": 0,
+    "failures": 3,
+    "provider_selected": 1,
+    "provider_partial": 1,
+    "provider_failed": 0,
+    "no_provider_selected": 2,
+    "timeouts_observed": 0,
+    "http_or_provider_error_codes": {
+      "no_usable_results": 1,
+      "no_available_provider": 2
+    }
+  },
+  "latency_ms_from_amatl_response": {
+    "samples": [816, 0, 0],
+    "min": 0,
+    "max": 816,
+    "mean": 272,
+    "provider_selected_sample": 816
+  },
+  "results": {
+    "total": 0,
+    "unique_canonical_urls": 0,
+    "confirmed_duplicates": 0,
+    "possible_duplicates": 0
+  },
+  "canonicalization_and_deduplication": {
+    "observable_items": 0,
+    "conclusion": "not observable: no result entered canonicalization or deduplication"
+  },
+  "preflight": {
+    "provider_canary_baseline": "failed_without_usable_response",
+    "sandbox_transport_attempt": "provider_unavailable at 0 ms; not counted as a characterization query",
+    "network_access_for_battery": "executed outside sandbox after approval"
+  }
+}

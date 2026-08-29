@@ -3,6 +3,10 @@ name: contract-gate
 on:
   push:
   pull_request:
+  schedule:
+    # Nightly, for the long-running jobs excluded from the per-push gate.
+    - cron: "0 3 * * *"
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -27,7 +31,18 @@ jobs:
       - run: cargo fmt --all -- --check
       - run: cargo test --workspace --locked
       - run: cargo check --workspace --benches --locked
-      - run: cargo clippy --workspace --all-targets --locked -- -D warnings
+      # `--all-features` so the gate covers exactly what is verified locally.
+      - run: cargo clippy --workspace --all-targets --all-features --locked -- -D warnings
+      # The workspace exposes a large public API that ships to docs.rs; broken
+      # intra-doc links would otherwise only surface after publishing.
+      - name: Documentation builds without warnings
+        env:
+          RUSTDOCFLAGS: -D warnings
+        run: cargo doc --workspace --no-deps --locked
+      # Executable quality gate: the CLI exits non-zero when Ranking v2 stops
+      # beating its baseline on the shipped labeled corpus.
+      - name: Ranking v2 quality gate
+        run: cargo run --locked --quiet -p amatl-cli -- benchmark ranking-v2 --json
       - run: cargo audit
       - run: cargo deny check
       - run: cargo cyclonedx
@@ -49,6 +64,67 @@ jobs:
           toolchain: 1.88.0
       - uses: Swatinem/rust-cache@v2
       - run: cargo check --workspace --all-targets --locked
+
+  cross-platform:
+    # Release publishes macOS and Windows archives, so the workspace must keep
+    # compiling and passing tests on those hosts on every push, not only at tag
+    # time. Linux-only capabilities (Chromium sandbox, Debian packaging) stay
+    # out of this job by construction.
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo test --workspace --locked
+
+  soak:
+    # The soak test is `#[ignore]`d because it runs for ~30 s and opens many
+    # sockets, which does not belong in the per-push gate. Without a scheduled
+    # job it never ran at all.
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo test --locked -p amatl-server --test soak -- --ignored --nocapture
+
+  browser-e2e:
+    # The UI's behaviour lives in 32 KB of vanilla JavaScript, so it is only
+    # observable in a real browser. The tests are inert without
+    # AMATL_BROWSER_E2E, which keeps a driver-less checkout green.
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Install Chrome and a matching chromedriver
+        uses: browser-actions/setup-chrome@v2
+        with:
+          chrome-version: stable
+          install-chromedriver: true
+      - name: Start WebDriver
+        run: |
+          set -euo pipefail
+          chromedriver --port=4444 &
+          for _ in $(seq 1 30); do
+            curl -sf http://localhost:4444/status > /dev/null && exit 0
+            sleep 1
+          done
+          echo "::error::chromedriver did not become ready"
+          exit 1
+      - name: Drive the UI end to end
+        env:
+          AMATL_BROWSER_E2E: "1"
+          AMATL_WEBDRIVER_URL: http://localhost:4444
+        run: cargo test --locked -p amatl-server --test browser_e2e -- --test-threads=1
 
   trafilatura-integration:
     runs-on: ubuntu-latest
