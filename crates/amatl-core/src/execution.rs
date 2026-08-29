@@ -17,7 +17,8 @@ use crate::providers::ProviderAvailability;
 use crate::providers::{Provider, ProviderContext};
 use crate::ranking::{rank, RankingPolicyV1};
 use crate::router::{
-    AdaptiveRouter, AdaptiveRoutingRecommendation, ProviderDescriptor, RoutingRecommendation,
+    AdaptiveRouter, AdaptiveRoutingRecommendation, ProviderDescriptor, RoleAssignment,
+    RoutingRecommendation,
 };
 use crate::telemetry::{now_unix, InMemoryTelemetry, ProviderTelemetryInput, TelemetryObservation};
 use std::collections::{BTreeMap, BTreeSet};
@@ -52,6 +53,7 @@ pub struct SearchOrchestrator {
     ranking_policy: RankingPolicyV1,
     diversity_policy: DiversityPolicyV1,
     search_policy: SearchPolicyV1,
+    role_assignment: RoleAssignment,
     telemetry: InMemoryTelemetry,
     routing_trace: Vec<ProgressiveRoundTrace>,
     last_plan: Option<SearchPlan>,
@@ -70,6 +72,7 @@ impl SearchOrchestrator {
             ranking_policy: RankingPolicyV1::default(),
             diversity_policy: DiversityPolicyV1::default(),
             search_policy: SearchPolicyV1::default(),
+            role_assignment: RoleAssignment::legacy(),
             telemetry: InMemoryTelemetry::new(),
             routing_trace: vec![],
             last_plan: None,
@@ -88,6 +91,13 @@ impl SearchOrchestrator {
         self.per_provider_concurrency = per_provider_concurrency.max(1);
         self.max_retries = max_retries.min(2);
         self.retry_jitter_ms = retry_jitter_ms;
+        self
+    }
+
+    /// Set the primary/expansion role assignment (STEP 1). The default is
+    /// [`RoleAssignment::legacy`], which keeps the pre-role routing behavior.
+    pub fn with_role_assignment(mut self, roles: RoleAssignment) -> Self {
+        self.role_assignment = roles;
         self
     }
 
@@ -161,12 +171,13 @@ impl SearchOrchestrator {
                 available: matches!(provider.availability(), ProviderAvailability::Available),
             })
             .collect::<Vec<_>>();
-        AdaptiveRouter.recommend(
+        AdaptiveRouter.recommend_with_roles(
             query,
             classification,
             &descriptors,
             &self.telemetry,
             &self.search_policy,
+            &self.role_assignment,
             now_unix(),
         )
     }
@@ -192,6 +203,22 @@ impl SearchOrchestrator {
             .collect::<Vec<_>>();
         let classification = classify(&query);
         let adaptive = self.adaptive_recommendation(&query, &classification, &providers);
+        // STEP 1E: the role model is active but the configured PRIMARY
+        // provider is not eligible this run. Expansion providers may still
+        // run so the search is not dead, but the outcome is not a complete
+        // PRIMARY search — record it as a degradation so callers (and STEP 2)
+        // can tell the two apart. The routing trace carries the same fact in
+        // `primary_available`.
+        if self.role_assignment.active && adaptive.primary_provider.is_none() {
+            availability_degradations.push(crate::Degradation {
+                code: "primary_provider_unavailable".into(),
+                component: "routing".into(),
+                message: format!(
+                    "configured primary provider '{}' was not eligible; search ran on expansion providers only",
+                    self.role_assignment.primary_provider
+                ),
+            });
+        }
         let mut next_selected = adaptive.first_round_providers.clone();
         let mut attempted = BTreeSet::new();
         let mut accumulated = empty_parallel_output(self.budget.snapshot());
@@ -305,6 +332,7 @@ impl SearchOrchestrator {
                 selected,
                 &coverage,
                 &adaptive,
+                self.role_assignment.active,
                 observed_gain,
                 stop_reason.clone(),
                 debug_reasons,
@@ -882,6 +910,7 @@ fn round_trace(
     providers_selected: Vec<String>,
     coverage: &CoverageMetrics,
     adaptive: &AdaptiveRoutingRecommendation,
+    role_model_active: bool,
     observed_marginal_gain: Option<f64>,
     stop_reason: Option<SearchStopReason>,
     debug_reasons: Vec<String>,
@@ -901,6 +930,12 @@ fn round_trace(
                 .map(|gain| (provider.clone(), *gain))
         })
         .collect();
+    let provider_roles = adaptive
+        .provider_roles
+        .iter()
+        .map(|(name, role)| (name.clone(), role.as_str().to_string()))
+        .collect::<BTreeMap<_, _>>();
+    let primary_available = role_model_active.then(|| adaptive.primary_provider.is_some());
     ProgressiveRoundTrace {
         round,
         providers_considered,
@@ -915,6 +950,8 @@ fn round_trace(
         low_diversity: coverage.low_diversity,
         expected_marginal_gain_by_provider,
         observed_marginal_gain,
+        provider_roles,
+        primary_available,
         stop_reason,
         debug_reasons,
     }

@@ -51,10 +51,11 @@ pub use circuit::{CircuitPolicy, CircuitSnapshot, CircuitState, ProviderCircuit}
 pub use classify::classify;
 pub use config::{
     AnswerConfig, AnswerConfigPatch, ApprovalStatus, Config, ConfigError, DataPolicyConfig,
-    DataPolicyConfigPatch, DeepConfigPatch, EgressPolicy, ExecutionConfig, ExtractorConfigPatch,
-    InferenceConfig, InferenceConfigPatch, InferenceMode, PersistenceConfigPatch, ProviderConfig,
-    ProviderRuntimeConfig, ReloadKind, RendererConfig, RendererConfigPatch, Scope, SecurityProfile,
-    ServerClient, ServerConfig, ServerConfigPatch, TelemetryConfigPatch, TlsConfig, MCP_TOOLS,
+    DataPolicyConfigPatch, DeepConfigPatch, EgressPolicy, ExecutionConfig, ExpansionConfig,
+    ExpansionMode, ExtractorConfigPatch, InferenceConfig, InferenceConfigPatch, InferenceMode,
+    PersistenceConfigPatch, ProviderConfig, ProviderRuntimeConfig, ReloadKind, RendererConfig,
+    RendererConfigPatch, Scope, SecurityProfile, ServerClient, ServerConfig, ServerConfigPatch,
+    TelemetryConfigPatch, TlsConfig, MCP_TOOLS,
 };
 pub use deep::{DeepCandidate, DeepOrchestrator, DeepRequest};
 pub use diversity::{DiversityDecision, DiversityMetrics, DiversityOutput, DiversityPolicyV1};
@@ -119,7 +120,10 @@ pub use render::{ChromiumRenderer, RenderError, RenderResult, Renderer, Renderer
 pub use robots::{
     RobotsCache, RobotsDecision, RobotsRules, MAXIMUM_CRAWL_DELAY_MS, ROBOTS_USER_AGENT,
 };
-pub use router::{AdaptiveRouter, AdaptiveRoutingRecommendation, ProviderDescriptor, StaticRouter};
+pub use router::{
+    AdaptiveRouter, AdaptiveRoutingRecommendation, ProviderDescriptor, ProviderRole,
+    RoleAssignment, StaticRouter,
+};
 pub use service::{
     validate_provider_canary, validate_provider_canary_with, AmatlService, AnswerResult,
     AnswerStatus, CacheStatus, DataPolicyStatus, ExecutionLimits, ProviderCanaryError,

@@ -25,6 +25,12 @@ pub struct Config {
     pub ranking_policy: RankingPolicyV1,
     pub diversity_policy: DiversityPolicyV1,
     pub search_policy: SearchPolicyV1,
+    /// Primary / expansion provider roles (STEP 1). When
+    /// [`ExpansionConfig::mode`] is `Legacy` (the default) this section is
+    /// inert and routing keeps its pre-role behavior; when
+    /// `PrimaryExpansion` the primary provider always occupies the first
+    /// round and the expansion providers are only reached in later rounds.
+    pub expansion: ExpansionConfig,
     pub persistence: PersistenceConfig,
     /// Trip limits for the persistent provider circuit breaker.
     pub circuit_breaker: crate::circuit::CircuitPolicy,
@@ -419,6 +425,65 @@ impl AnswerConfigPatch {
         if let Some(value) = self.max_answer_tokens {
             config.max_answer_tokens = value;
         }
+    }
+}
+
+/// How the router assigns provider roles.
+///
+/// `Legacy` preserves the pre-STEP-1 behavior exactly: providers are ordered
+/// purely by adaptive score and the first round is filled to
+/// `search_policy.first_round_min_providers`. `PrimaryExpansion` makes the
+/// role dominate the score — the primary provider always runs alone in round
+/// one when it is eligible, and expansion providers are only reached in later
+/// rounds through the existing progressive-round decision. Rollback is a
+/// one-line change back to `Legacy`.
+#[derive(Clone, Copy, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+pub enum ExpansionMode {
+    #[default]
+    Legacy,
+    PrimaryExpansion,
+}
+
+impl ExpansionMode {
+    pub const fn as_str(self) -> &'static str {
+        match self {
+            Self::Legacy => "legacy",
+            Self::PrimaryExpansion => "primary_expansion",
+        }
+    }
+}
+
+/// Primary / expansion provider roles.
+///
+/// The declarative defaults (`primary_provider = "marginalia"`,
+/// `expansion_providers = ["searxng"]`) are always present so an operator
+/// only flips `mode` to activate them, but while `mode = "legacy"` nothing
+/// in routing consults this section. `expansion_providers` is a list, not a
+/// single name, so a second specialized-expansion source can be added later
+/// without a schema change — STEP 1 simply happens to run with one.
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+#[serde(default)]
+pub struct ExpansionConfig {
+    pub mode: ExpansionMode,
+    pub primary_provider: String,
+    pub expansion_providers: Vec<String>,
+}
+
+impl Default for ExpansionConfig {
+    fn default() -> Self {
+        Self {
+            mode: ExpansionMode::Legacy,
+            primary_provider: "marginalia".into(),
+            expansion_providers: vec!["searxng".into()],
+        }
+    }
+}
+
+impl ExpansionConfig {
+    /// Whether the primary/expansion role model is active.
+    pub fn role_model_active(&self) -> bool {
+        self.mode == ExpansionMode::PrimaryExpansion
     }
 }
 
@@ -1605,6 +1670,7 @@ impl Default for Config {
             ranking_policy: RankingPolicyV1::default(),
             diversity_policy: DiversityPolicyV1::default(),
             search_policy: SearchPolicyV1::default(),
+            expansion: ExpansionConfig::default(),
             persistence: PersistenceConfig::default(),
             circuit_breaker: crate::circuit::CircuitPolicy::default(),
             cache: CacheConfig::default(),
@@ -2446,6 +2512,14 @@ impl Config {
         Self::replace_table(path, &["search_policy"], policy)
     }
 
+    /// Replace `[expansion]` wholesale. The caller must have validated a
+    /// candidate config with this change applied first, exactly as with
+    /// [`Config::set_search_policy`] — `validate_expansion` cross-checks the
+    /// role names against the declared providers.
+    pub fn set_expansion(path: &Path, expansion: &ExpansionConfig) -> Result<(), ConfigError> {
+        Self::replace_table(path, &["expansion"], expansion)
+    }
+
     /// Replace `[deep.ranking_v2.policy]` wholesale. See
     /// [`Config::set_ranking_policy`].
     pub fn set_ranking_v2_policy(path: &Path, policy: &RankingV2Policy) -> Result<(), ConfigError> {
@@ -2663,6 +2737,7 @@ impl Config {
                 "search policy and diversity policy limits must agree".into(),
             ));
         }
+        self.validate_expansion()?;
         if self.cache.provider_search.ttl_seconds == 0
             || self.cache.provider_search.max_entries == 0
             || self.cache.provider_search.max_bytes == 0
@@ -3000,6 +3075,59 @@ impl Config {
         Ok(())
     }
 
+    /// Validate the primary/expansion role model.
+    ///
+    /// The declarative names are checked even in `Legacy` mode so a
+    /// misconfigured section is caught before an operator flips `mode`, but
+    /// only `PrimaryExpansion` makes them load-bearing. A role name must be a
+    /// declared provider (the registry builds it), the primary must not also
+    /// appear in the expansion list, and the expansion list must not repeat a
+    /// name.
+    fn validate_expansion(&self) -> Result<(), ConfigError> {
+        let primary = self.expansion.primary_provider.trim();
+        if primary.is_empty() {
+            return Err(ConfigError::Policy(
+                "expansion.primary_provider must not be empty".into(),
+            ));
+        }
+        if !self.providers.is_declared(primary) {
+            return Err(ConfigError::Policy(format!(
+                "expansion.primary_provider '{primary}' is not a declared provider"
+            )));
+        }
+        let mut seen = std::collections::BTreeSet::new();
+        for name in &self.expansion.expansion_providers {
+            let name = name.trim();
+            if name.is_empty() {
+                return Err(ConfigError::Policy(
+                    "expansion.expansion_providers must not contain an empty name".into(),
+                ));
+            }
+            if !self.providers.is_declared(name) {
+                return Err(ConfigError::Policy(format!(
+                    "expansion.expansion_providers entry '{name}' is not a declared provider"
+                )));
+            }
+            if name == primary {
+                return Err(ConfigError::Policy(format!(
+                    "provider '{name}' cannot be both primary and expansion"
+                )));
+            }
+            if !seen.insert(name.to_string()) {
+                return Err(ConfigError::Policy(format!(
+                    "expansion.expansion_providers repeats '{name}'"
+                )));
+            }
+        }
+        if self.expansion.role_model_active() && self.expansion.expansion_providers.is_empty() {
+            return Err(ConfigError::Policy(
+                "expansion.mode = \"primary_expansion\" requires at least one expansion provider"
+                    .into(),
+            ));
+        }
+        Ok(())
+    }
+
     /// Same governance as `validate_inference`'s remote block, for the same
     /// reason: `answer` is a second, independent kind of remote model call
     /// (chat completions, not embeddings), so it gets its own endpoint,
@@ -3306,6 +3434,44 @@ mod tests {
         remote_bind.server.tls.cert_path = Some("cert.pem".into());
         remote_bind.server.tls.key_path = Some("key.pem".into());
         assert!(remote_bind.validate().is_err());
+    }
+
+    #[test]
+    fn expansion_defaults_are_legacy_and_valid() {
+        let config = Config::default();
+        assert_eq!(config.expansion.mode, ExpansionMode::Legacy);
+        assert!(!config.expansion.role_model_active());
+        assert_eq!(config.expansion.primary_provider, "marginalia");
+        assert_eq!(config.expansion.expansion_providers, ["searxng"]);
+        assert!(config.validate().is_ok());
+    }
+
+    #[test]
+    fn expansion_primary_expansion_mode_validates_declared_roles() {
+        let mut config = Config::default();
+        config.expansion.mode = ExpansionMode::PrimaryExpansion;
+        assert!(config.validate().is_ok());
+
+        config.expansion.primary_provider = "not_a_provider".into();
+        assert!(config.validate().is_err());
+    }
+
+    #[test]
+    fn expansion_rejects_provider_in_both_roles_and_empty_expansion() {
+        let mut both = Config::default();
+        both.expansion.mode = ExpansionMode::PrimaryExpansion;
+        both.expansion.expansion_providers = vec!["marginalia".into()];
+        assert!(both.validate().is_err());
+
+        let mut empty = Config::default();
+        empty.expansion.mode = ExpansionMode::PrimaryExpansion;
+        empty.expansion.expansion_providers = vec![];
+        assert!(empty.validate().is_err());
+
+        let mut repeated = Config::default();
+        repeated.expansion.mode = ExpansionMode::PrimaryExpansion;
+        repeated.expansion.expansion_providers = vec!["searxng".into(), "searxng".into()];
+        assert!(repeated.validate().is_err());
     }
 
     #[test]

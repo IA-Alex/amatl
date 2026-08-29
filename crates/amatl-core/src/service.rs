@@ -10,9 +10,9 @@ use crate::{
     InferenceRuntime, MockProvider, NativeHtmlExtractor, Provider, ProviderAvailability,
     ProviderBuildContext, ProviderCapabilities, ProviderItem, ProviderRegistry,
     ProviderRuntimeConfig, ProviderSearchCache, ProviderSearchCachePolicy, Query, Rank,
-    RankingV2Engine, RemoteCompletionBackend, RendererPool, ReqwestTransport, SafeFetcher,
-    SearchOrchestrator, SearchPlan, SearchResponse, SearchSubQueryExecutor, SqliteStorage,
-    StorageError, TrafilaturaExtractor, SCHEMA_VERSION,
+    RankingV2Engine, RemoteCompletionBackend, RendererPool, ReqwestTransport, RoleAssignment,
+    SafeFetcher, SearchOrchestrator, SearchPlan, SearchResponse, SearchSubQueryExecutor,
+    SqliteStorage, StorageError, TrafilaturaExtractor, SCHEMA_VERSION,
 };
 use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
@@ -653,6 +653,7 @@ impl AmatlService {
             self.config.diversity_policy.clone(),
         )
         .with_search_policy(self.config.search_policy.clone())
+        .with_role_assignment(role_assignment_from_config(&self.config))
         .with_telemetry(self.telemetry.clone())
         .with_request_id(surface.request_id.clone());
         let mut response = orchestrator.search(query.clone(), providers).await;
@@ -1434,6 +1435,22 @@ fn credential(config: &ProviderRuntimeConfig) -> Option<String> {
         .as_deref()
         .and_then(|name| std::env::var(name).ok())
         .filter(|value| !value.is_empty())
+}
+
+/// Build the router's [`RoleAssignment`] from `[expansion]` config.
+///
+/// Returns [`RoleAssignment::legacy`] unless `expansion.mode =
+/// "primary_expansion"`, so a default config routes exactly as it did before
+/// STEP 1.
+fn role_assignment_from_config(config: &Config) -> RoleAssignment {
+    if config.expansion.role_model_active() {
+        RoleAssignment::primary_expansion(
+            config.expansion.primary_provider.clone(),
+            config.expansion.expansion_providers.clone(),
+        )
+    } else {
+        RoleAssignment::legacy()
+    }
 }
 
 /// Fail-closed canary preflight against the providers AMATL ships.

@@ -149,6 +149,15 @@ pub struct ProgressiveRoundTrace {
     pub low_diversity: bool,
     pub expected_marginal_gain_by_provider: BTreeMap<String, f64>,
     pub observed_marginal_gain: Option<f64>,
+    /// Role ("primary" / "expansion") the router assigned to each provider
+    /// considered in this round. Empty in legacy mode. Preserved per round so
+    /// STEP 2 can attribute results to a role without re-deriving the
+    /// assignment. See [`crate::router::ProviderRole`].
+    pub provider_roles: BTreeMap<String, String>,
+    /// Whether the configured PRIMARY provider was eligible this run. `false`
+    /// means expansion providers may have run but the result is not a
+    /// complete PRIMARY search (STEP 1E). `None` in legacy mode.
+    pub primary_available: Option<bool>,
     pub stop_reason: Option<SearchStopReason>,
     pub debug_reasons: Vec<String>,
 }
@@ -211,6 +220,17 @@ pub fn evaluate_coverage(
     }
 }
 
+/// Count of results in `current` whose canonical URL was not already in
+/// `previous`.
+///
+/// STEP 2 FRONTIER CONTRACT — do not read this as a relevance signal. A
+/// result that is new here is only VALID + CANONICALIZABLE + UNIQUE; the Wiby
+/// evidence showed that none of those imply RELEVANT. The complementarity
+/// contract (STEP 2) will layer VALID_RESULT → RELEVANT_RESULT →
+/// UNIQUE_RELEVANT_RESULT on top of this, and adaptive learning must be fed
+/// the relevance-filtered signal, never this raw unique count as if it were
+/// utility. Until STEP 2 lands, this stays a purely structural progressive
+/// stop/continue input.
 pub fn observed_marginal_gain(previous: &[SearchResult], current: &[SearchResult]) -> f64 {
     let before = previous
         .iter()
