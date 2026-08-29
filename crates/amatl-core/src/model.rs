@@ -566,30 +566,83 @@ pub struct ComplementarityMetrics {
     pub relevance: RelevanceMetrics,
 }
 
-/// STEP 2E — RELEVANCE FRONTIER.
+/// STEP 2E — RELEVANCE FRONTIER (first deterministic signal).
 ///
-/// AMATL has no trustworthy relevance signal yet. This struct exists only to
-/// reserve the shape: every metric is `Option` and every one is `None` in
-/// STEP 2. `status` states the fact explicitly so a consumer cannot read the
-/// absence of a value as "zero noise" or "fully relevant".
+/// This layer answers a question the complementarity contract deliberately
+/// does not: is a structurally valid / unique result *probably relevant to the
+/// query*? The first implementation is intentionally small — a deterministic,
+/// local, explainable lexical-overlap heuristic (see [`crate::relevance`]). It
+/// never calls an LLM, an embedding service, or any remote API, and it is
+/// computed *after* dedupe + roles but *independently of the final ranking*, so
+/// there is no RELEVANCE → RANKING → RELEVANCE circuit.
 ///
-/// It must be impossible to reach `unique_relevant_expansion` by reading
+/// `status` is `NotImplemented` until [`crate::relevance::assess_relevance`]
+/// populates this struct, then `Assessed`.
+///
+/// It must remain impossible to reach `unique_relevant_expansion` by reading
 /// `ComplementarityMetrics::unique_expansion`: they are different fields, in
-/// different structs, and this one is never populated here.
+/// different structs. `unique_expansion` (the raw structural count) is
+/// preserved untouched; `unique_relevant_expansion` is a strictly smaller-or-
+/// equal subset.
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 pub struct RelevanceMetrics {
     pub status: RelevanceAssessmentStatus,
-    /// PRIMARY results judged relevant. Not implemented.
+
+    /// PRIMARY-role results with assessment `Relevant`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub relevant_primary: Option<u32>,
-    /// EXPANSION results judged relevant. Not implemented.
+    /// EXPANSION-role results with assessment `Relevant`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub relevant_expansion: Option<u32>,
-    /// EXPANSION-exclusive results judged relevant. Not implemented — and
-    /// explicitly not equal to `ComplementarityMetrics::unique_expansion`.
+
+    /// PRIMARY-exclusive (no confirmed overlap) results with assessment
+    /// `Relevant`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub unique_relevant_primary: Option<u32>,
+    /// EXPANSION-exclusive (no confirmed overlap) results with assessment
+    /// `Relevant`. Strictly a subset of `ComplementarityMetrics::unique_expansion`;
+    /// never substitute one for the other.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub unique_relevant_expansion: Option<u32>,
-    /// Fraction of EXPANSION-exclusive results that are noise. Not implemented.
+
+    /// PRIMARY / EXPANSION results assessed `PossiblyRelevant`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub possibly_relevant_primary: Option<u32>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub possibly_relevant_expansion: Option<u32>,
+
+    /// PRIMARY / EXPANSION results assessed `NotRelevant`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub not_relevant_primary: Option<u32>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub not_relevant_expansion: Option<u32>,
+
+    /// PRIMARY / EXPANSION results assessed `Unknown` or `InsufficientEvidence`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub unknown_primary: Option<u32>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub unknown_expansion: Option<u32>,
+
+    /// `relevant_expansion / max(1, FOUND_EXPANSION)`. Structural denominator,
+    /// reported for observation only.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expansion_relevant_ratio: Option<f64>,
+
+    /// `unique_relevant_expansion / max(1, UNIQUE_EXPANSION_RAW)` — how much of
+    /// the raw unique-expansion gain survives the relevance filter.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub raw_to_relevant_expansion_ratio: Option<f64>,
+
+    /// EXPANSION-exclusive confirmed noise rate:
+    /// `not_relevant / max(1, relevant + not_relevant)` over EXPANSION-exclusive
+    /// results. `PossiblyRelevant` / `Unknown` / `InsufficientEvidence` are
+    /// deliberately outside the denominator — an inconclusive result is not
+    /// noise. Never `1 - relevant`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expansion_confirmed_noise_rate: Option<f64>,
+
+    /// Legacy field name kept for payload stability. Mirrors
+    /// `expansion_confirmed_noise_rate`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub expansion_noise_rate: Option<f64>,
 }
@@ -600,7 +653,17 @@ impl Default for RelevanceMetrics {
             status: RelevanceAssessmentStatus::NotImplemented,
             relevant_primary: None,
             relevant_expansion: None,
+            unique_relevant_primary: None,
             unique_relevant_expansion: None,
+            possibly_relevant_primary: None,
+            possibly_relevant_expansion: None,
+            not_relevant_primary: None,
+            not_relevant_expansion: None,
+            unknown_primary: None,
+            unknown_expansion: None,
+            expansion_relevant_ratio: None,
+            raw_to_relevant_expansion_ratio: None,
+            expansion_confirmed_noise_rate: None,
             expansion_noise_rate: None,
         }
     }
@@ -609,10 +672,59 @@ impl Default for RelevanceMetrics {
 #[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq, Eq, Default)]
 #[serde(rename_all = "snake_case")]
 pub enum RelevanceAssessmentStatus {
-    /// No relevance signal exists yet (STEP 2). The frontier phase after the
-    /// complementarity contract will design one before this changes.
+    /// No relevance signal was computed for this payload.
     #[default]
     NotImplemented,
+    /// The deterministic relevance heuristic ran and populated the metrics.
+    Assessed,
+    /// The heuristic ran but too few results carried enough text to judge for
+    /// the aggregate to be meaningful. Individual counts are still present.
+    InsufficientEvidence,
+}
+
+/// STEP 2E — per-result deterministic relevance assessment.
+///
+/// Every component that fed the decision is kept explicit and auditable; the
+/// `classification` is a pure function of the other fields plus the
+/// [`crate::relevance::RelevanceThresholds`] in force. No single opaque float.
+#[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq)]
+pub struct ResultRelevanceAssessment {
+    /// Fraction of significant query terms present in the title (`0.0` when no
+    /// title text is available).
+    pub title_term_coverage: f64,
+    /// Fraction of significant query terms present in the snippet (`0.0` when no
+    /// snippet text is available).
+    pub snippet_term_coverage: f64,
+    /// Fraction of significant query terms present in host + path tokens.
+    pub url_term_coverage: f64,
+    /// A quoted phrase from the query occurred literally in title or snippet.
+    pub exact_phrase_match: bool,
+    /// Distinct significant query terms matched anywhere in title/snippet/url.
+    pub matched_query_terms: u32,
+    /// Total significant query terms considered.
+    pub query_terms_total: u32,
+    /// `true` when the result carried enough text (title or snippet) to judge.
+    pub had_sufficient_text: bool,
+    /// Secondary signal only: `Some(true)` when the provider's own rank for this
+    /// result was 1. Never on its own promotes a result to `Relevant`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub provider_rank_is_top: Option<bool>,
+    pub classification: RelevanceClassification,
+}
+
+#[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq, Eq, Default)]
+#[serde(rename_all = "snake_case")]
+pub enum RelevanceClassification {
+    /// Strong deterministic textual evidence the result matches the query.
+    Relevant,
+    /// Partial, non-trivial textual overlap.
+    PossiblyRelevant,
+    /// Enough text to judge, and essentially no relation to the query.
+    NotRelevant,
+    /// Not enough text (empty/again generic title, no snippet) to judge either
+    /// way. Never treated as noise.
+    #[default]
+    Unknown,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]

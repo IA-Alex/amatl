@@ -388,7 +388,21 @@ impl SearchOrchestrator {
         // dedupe provenance of the last accumulated pipeline. `None` in legacy
         // mode. Never feeds routing.
         let complementarity =
-            compute_complementarity_metrics(&current_pipeline.deduped, &self.role_assignment);
+            compute_complementarity_metrics(&current_pipeline.deduped, &self.role_assignment).map(
+                |mut metrics| {
+                    // STEP 2E: deterministic relevance signal. Additive, local, never
+                    // feeds routing. Round traces stay structural-only; the relevance
+                    // layer appears once, on the final response.
+                    crate::relevance::enrich_relevance_metrics(
+                        &query,
+                        &current_pipeline.deduped,
+                        &self.role_assignment,
+                        &crate::relevance::RelevanceThresholds::default(),
+                        &mut metrics,
+                    );
+                    metrics
+                },
+            );
         let results = current_pipeline.results;
         let mut degradations = current_pipeline.degradations;
         degradations.append(&mut availability_degradations);

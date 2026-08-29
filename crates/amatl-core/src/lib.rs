@@ -30,6 +30,7 @@ pub mod providers;
 pub mod query;
 pub mod ranking;
 pub mod ranking_v2;
+pub mod relevance;
 pub mod render;
 pub mod robots;
 pub mod router;
@@ -97,9 +98,10 @@ pub use model::{
     GapStatus, GapType, GlobalBudgetSnapshot, MergeReason, NormalizedResult, OriginalUrl,
     ProviderCapabilities, ProviderError, ProviderErrorKind, ProviderExecutionStatus, ProviderItem,
     ProviderResult, Query, QueryWarning, Rank, RankedResult, RankingExplanation, RankingScore,
-    RankingV2Output, RankingV2Status, RelevanceAssessmentStatus, RelevanceMetrics, ResultStatus,
-    ResultType, SearchPlan, SearchResponse, SearchResult, SearchStatus, SubQuery, SubQueryStatus,
-    TieBreakReason, ValueInvariantError, SCHEMA_VERSION,
+    RankingV2Output, RankingV2Status, RelevanceAssessmentStatus, RelevanceClassification,
+    RelevanceMetrics, ResultRelevanceAssessment, ResultStatus, ResultType, SearchPlan,
+    SearchResponse, SearchResult, SearchStatus, SubQuery, SubQueryStatus, TieBreakReason,
+    ValueInvariantError, SCHEMA_VERSION,
 };
 pub use operational::{
     run_operational_benchmark, LatencyPercentiles, OperationalBenchmarkError,
@@ -119,6 +121,9 @@ pub use ranking::{RankingPolicyError, RankingPolicyV1};
 pub use ranking_v2::{
     run_builtin_benchmark, DeepReranker, RankingBenchmarkReport, RankingV2Engine, RankingV2Error,
     RankingV2Policy, SemanticScorer, BENCHMARK_ID,
+};
+pub use relevance::{
+    assess_relevance, assess_result, enrich_relevance_metrics, RelevanceThresholds,
 };
 pub use render::{ChromiumRenderer, RenderError, RenderResult, Renderer, RendererPool};
 pub use robots::{
