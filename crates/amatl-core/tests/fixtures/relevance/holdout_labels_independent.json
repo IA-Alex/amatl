@@ -1,0 +1,374 @@
+{
+  "ho-para-001": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly satisfies the requested information or task despite paraphrased wording."
+  },
+  "ho-para-002": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly satisfies the requested information or task despite paraphrased wording."
+  },
+  "ho-para-003": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly satisfies the requested information or task despite paraphrased wording."
+  },
+  "ho-para-004": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly satisfies the requested information or task despite paraphrased wording."
+  },
+  "ho-para-005": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly satisfies the requested information or task despite paraphrased wording."
+  },
+  "ho-para-006": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly satisfies the requested information or task despite paraphrased wording."
+  },
+  "ho-para-007": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly satisfies the requested information or task despite paraphrased wording."
+  },
+  "ho-para-008": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly satisfies the requested information or task despite paraphrased wording."
+  },
+  "ho-para-009": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly satisfies the requested information or task despite paraphrased wording."
+  },
+  "ho-para-010": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly satisfies the requested information or task despite paraphrased wording."
+  },
+  "ho-syn-001": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly addresses the requested technical concept or resource using equivalent terminology."
+  },
+  "ho-syn-002": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly addresses the requested technical concept or resource using equivalent terminology."
+  },
+  "ho-syn-003": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly addresses the requested technical concept or resource using equivalent terminology."
+  },
+  "ho-syn-004": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly addresses the requested technical concept or resource using equivalent terminology."
+  },
+  "ho-syn-005": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly addresses the requested technical concept or resource using equivalent terminology."
+  },
+  "ho-syn-006": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly addresses the requested technical concept or resource using equivalent terminology."
+  },
+  "ho-syn-007": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly addresses the requested technical concept or resource using equivalent terminology."
+  },
+  "ho-syn-008": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly addresses the requested technical concept or resource using equivalent terminology."
+  },
+  "ho-ent-001": {
+    "expected_label": "NOT_RELEVANT",
+    "rationale": "Describes Sydney as a state capital, not the national capital requested."
+  },
+  "ho-ent-002": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly identifies Canberra as the capital of Australia."
+  },
+  "ho-ent-003": {
+    "expected_label": "NOT_RELEVANT",
+    "rationale": "Describes another playwright without establishing authorship of Hamlet."
+  },
+  "ho-ent-004": {
+    "expected_label": "RELEVANT",
+    "rationale": "Identifies Shakespeare and explicitly associates him with Hamlet."
+  },
+  "ho-ent-005": {
+    "expected_label": "RELEVANT",
+    "rationale": "Explicitly states Mount Kenya is second after Kilimanjaro, thereby identifying the highest mountain."
+  },
+  "ho-ent-006": {
+    "expected_label": "POSSIBLY_RELEVANT",
+    "rationale": "Correctly rules out the euro for Switzerland but does not identify the requested currency."
+  },
+  "ho-ent-007": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly identifies the Swiss franc as Switzerland's currency."
+  },
+  "ho-ent-008": {
+    "expected_label": "NOT_RELEVANT",
+    "rationale": "Describes Edison inventions without supporting the requested telephone attribution."
+  },
+  "ho-ent-009": {
+    "expected_label": "NOT_RELEVANT",
+    "rationale": "Answers a narrower freshwater-by-area claim rather than the unqualified largest-lake question."
+  },
+  "ho-ent-010": {
+    "expected_label": "NOT_RELEVANT",
+    "rationale": "Describes Spanish generally without identifying Brazil's national or official language."
+  },
+  "ho-ent-011": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly identifies Brasília as Brazil's federal capital."
+  },
+  "ho-ent-012": {
+    "expected_label": "RELEVANT",
+    "rationale": "The snippet explicitly identifies Albany as the capital of New York State."
+  },
+  "ho-intent-001": {
+    "expected_label": "RELEVANT",
+    "rationale": "Official PostgreSQL documentation directly matches the requested resource."
+  },
+  "ho-intent-002": {
+    "expected_label": "NOT_RELEVANT",
+    "rationale": "A migration opinion article does not satisfy a request for PostgreSQL documentation."
+  },
+  "ho-intent-003": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly provides the official Redis GitHub repository requested."
+  },
+  "ho-intent-004": {
+    "expected_label": "POSSIBLY_RELEVANT",
+    "rationale": "Useful official Redis material, but it is documentation rather than the requested GitHub destination."
+  },
+  "ho-intent-005": {
+    "expected_label": "RELEVANT",
+    "rationale": "Provides a direct definition of a monad in the intended programming sense."
+  },
+  "ho-intent-006": {
+    "expected_label": "RELEVANT",
+    "rationale": "The Rust Book is the requested tutorial-style Rust resource."
+  },
+  "ho-intent-007": {
+    "expected_label": "NOT_RELEVANT",
+    "rationale": "A product comparison does not satisfy the explicit request for Terraform documentation."
+  },
+  "ho-intent-008": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly provides a beginner NumPy tutorial covering core operations."
+  },
+  "ho-noise-001": {
+    "expected_label": "NOT_RELEVANT",
+    "rationale": "The result concerns a different meaning or entity than the query intends."
+  },
+  "ho-noise-002": {
+    "expected_label": "NOT_RELEVANT",
+    "rationale": "The result concerns a different meaning or entity than the query intends."
+  },
+  "ho-noise-003": {
+    "expected_label": "NOT_RELEVANT",
+    "rationale": "The result concerns a different meaning or entity than the query intends."
+  },
+  "ho-noise-004": {
+    "expected_label": "NOT_RELEVANT",
+    "rationale": "The result concerns a different meaning or entity than the query intends."
+  },
+  "ho-noise-005": {
+    "expected_label": "NOT_RELEVANT",
+    "rationale": "The result concerns a different meaning or entity than the query intends."
+  },
+  "ho-noise-006": {
+    "expected_label": "NOT_RELEVANT",
+    "rationale": "The result concerns a different meaning or entity than the query intends."
+  },
+  "ho-noise-007": {
+    "expected_label": "NOT_RELEVANT",
+    "rationale": "The result concerns a different meaning or entity than the query intends."
+  },
+  "ho-noise-008": {
+    "expected_label": "NOT_RELEVANT",
+    "rationale": "The result concerns a different meaning or entity than the query intends."
+  },
+  "ho-noise-009": {
+    "expected_label": "NOT_RELEVANT",
+    "rationale": "The result concerns a different meaning or entity than the query intends."
+  },
+  "ho-noise-010": {
+    "expected_label": "NOT_RELEVANT",
+    "rationale": "The result concerns a different meaning or entity than the query intends."
+  },
+  "ho-partial-001": {
+    "expected_label": "POSSIBLY_RELEVANT",
+    "rationale": "Covers backup and WAL mechanisms related to replication but not streaming replication setup directly."
+  },
+  "ho-partial-002": {
+    "expected_label": "POSSIBLY_RELEVANT",
+    "rationale": "Covers React state management generally but not the requested Redux Toolkit approach."
+  },
+  "ho-partial-003": {
+    "expected_label": "POSSIBLY_RELEVANT",
+    "rationale": "Covers Kubernetes Secrets but does not establish encryption-at-rest configuration."
+  },
+  "ho-partial-004": {
+    "expected_label": "POSSIBLY_RELEVANT",
+    "rationale": "Covers Rust traits generally while explicitly omitting the requested async trait-method topic."
+  },
+  "ho-partial-005": {
+    "expected_label": "POSSIBLY_RELEVANT",
+    "rationale": "Provides relevant container networking concepts but not specifically Compose inter-container configuration."
+  },
+  "ho-partial-006": {
+    "expected_label": "POSSIBLY_RELEVANT",
+    "rationale": "Provides a Python gRPC server example but it is synchronous rather than the requested async server."
+  },
+  "ho-partial-007": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly explains recursive common table expressions used for hierarchical SQL queries."
+  },
+  "ho-partial-008": {
+    "expected_label": "POSSIBLY_RELEVANT",
+    "rationale": "Covers Linux virtual memory broadly but the evidence does not specifically address page-cache behavior."
+  },
+  "ho-rare-001": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly explains the specialized concept requested by the query."
+  },
+  "ho-rare-002": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly explains the specialized concept requested by the query."
+  },
+  "ho-rare-003": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly explains the specialized concept requested by the query."
+  },
+  "ho-rare-004": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly explains the specialized concept requested by the query."
+  },
+  "ho-rare-005": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly explains the specialized concept requested by the query."
+  },
+  "ho-rare-006": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly explains the specialized concept requested by the query."
+  },
+  "ho-doc-001": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly provides documentation or reference material for the requested technical topic."
+  },
+  "ho-doc-002": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly provides documentation or reference material for the requested technical topic."
+  },
+  "ho-doc-003": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly provides documentation or reference material for the requested technical topic."
+  },
+  "ho-doc-004": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly provides documentation or reference material for the requested technical topic."
+  },
+  "ho-doc-005": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly provides documentation or reference material for the requested technical topic."
+  },
+  "ho-doc-006": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly provides documentation or reference material for the requested technical topic."
+  },
+  "ho-insuf-001": {
+    "expected_label": "UNKNOWN",
+    "rationale": "A generic home title with no snippet provides insufficient evidence to judge usefulness."
+  },
+  "ho-insuf-002": {
+    "expected_label": "UNKNOWN",
+    "rationale": "A generic index title with no snippet provides insufficient evidence to judge usefulness."
+  },
+  "ho-insuf-003": {
+    "expected_label": "UNKNOWN",
+    "rationale": "No title or snippet evidence is available to determine relevance."
+  },
+  "ho-insuf-004": {
+    "expected_label": "NOT_RELEVANT",
+    "rationale": "The result is an explicit missing-page response and provides no answer to the comparison."
+  },
+  "ho-insuf-005": {
+    "expected_label": "UNKNOWN",
+    "rationale": "A generic documentation title without a snippet is insufficient to establish the requested import topic."
+  },
+  "ho-phrase-001": {
+    "expected_label": "RELEVANT",
+    "rationale": "The result is the work identified by the quoted phrase and describes its subject."
+  },
+  "ho-phrase-002": {
+    "expected_label": "RELEVANT",
+    "rationale": "The result directly contains and explains both quoted components of the requested saying."
+  },
+  "ho-phrase-003": {
+    "expected_label": "POSSIBLY_RELEVANT",
+    "rationale": "The result is about engineering slogans, but the available evidence does not establish the requested exact phrase."
+  },
+  "ho-phrase-004": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly explains Scheme's proper tail-call behavior corresponding to the requested optimization concept."
+  },
+  "ho-nav-001": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly points to the Hugging Face platform requested by name."
+  },
+  "ho-nav-002": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly points to the Arch Linux community wiki requested."
+  },
+  "ho-nav-003": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly provides the Stripe API reference requested."
+  },
+  "ho-nav-004": {
+    "expected_label": "NOT_RELEVANT",
+    "rationale": "Points to AWS rather than the requested MDN Web Docs destination."
+  },
+  "ho-tech-001": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly explains or documents the requested technical mechanism."
+  },
+  "ho-tech-002": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly explains or documents the requested technical mechanism."
+  },
+  "ho-tech-003": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly explains or documents the requested technical mechanism."
+  },
+  "ho-tech-004": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly explains or documents the requested technical mechanism."
+  },
+  "ho-tech-005": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly explains or documents the requested technical mechanism."
+  },
+  "ho-tech-006": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly explains or documents the requested technical mechanism."
+  },
+  "ho-gen-001": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly provides practical guidance for the task or decision requested."
+  },
+  "ho-gen-002": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly provides practical guidance for the task or decision requested."
+  },
+  "ho-gen-003": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly provides practical guidance for the task or decision requested."
+  },
+  "ho-gen-004": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly provides practical guidance for the task or decision requested."
+  },
+  "ho-gen-005": {
+    "expected_label": "RELEVANT",
+    "rationale": "Directly provides practical guidance for the task or decision requested."
+  },
+  "ho-gen-006": {
+    "expected_label": "NOT_RELEVANT",
+    "rationale": "Discusses tax deductions rather than reducing grocery spending."
+  }
+}
