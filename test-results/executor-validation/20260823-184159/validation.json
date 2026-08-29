@@ -1,0 +1,19 @@
+{
+  "amatl_executions": 0,
+  "artifact_notice": "Generated local mock executor validation artifact \u2014 AMATL and providers were not executed.",
+  "duplicates": 0,
+  "execution_barrier": "attempt_count >= planned_count or 30 aborts before executor invocation",
+  "execution_order": "PASS",
+  "failure_position": "Q05-R2",
+  "failure_without_retry": "PASS",
+  "logical_diff": "Added ValidatedExecutionPlan, injected execute_plan(), execution guards, and LocalMockExecutor; plan generation unchanged.",
+  "missing": 0,
+  "mock_invocations": 30,
+  "network_requests": 0,
+  "plan_validation": "PASS",
+  "planned_positions": 30,
+  "provider_executions": 0,
+  "recorded_executions": 30,
+  "retries": 0,
+  "unique_executions": 30
+}

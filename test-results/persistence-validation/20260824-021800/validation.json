@@ -1,0 +1,55 @@
+{
+  "notice": "Generated local persistence validation artifact \u2014 no AMATL or providers were executed.",
+  "network_requests": 0,
+  "amatl_executions": 0,
+  "searxng_requests": 0,
+  "marginalia_requests": 0,
+  "test_a": {
+    "planned": 30,
+    "mock_invocations": 9,
+    "executed_records": 9,
+    "durable_records": 9,
+    "unique_durable": 9,
+    "duplicates": 0,
+    "missing": 21,
+    "retries": 0,
+    "sequence": "1..9",
+    "position_10_executed": false,
+    "position_10_durable": false,
+    "status": "INVALID_INTERRUPTED",
+    "abort": "ABORT:SIMULATED_INTERRUPTION"
+  },
+  "test_b": {
+    "planned": 30,
+    "mock_invocations": 30,
+    "executed_records": 30,
+    "durable_records": 30,
+    "unique_durable": 30,
+    "duplicates": 0,
+    "missing": 0,
+    "retries": 0,
+    "maximum_sequence": 30,
+    "sequence": "1..30",
+    "status": "PASS"
+  },
+  "test_c": {
+    "result": "ABORT:EXECUTION_LIMIT_EXCEEDED",
+    "mock_invocations": 30,
+    "durable_records": 30,
+    "maximum_sequence": 30
+  },
+  "test_d": {
+    "result": "ABORT:EXECUTION_LIMIT_EXCEEDED",
+    "additional_invocations": 0,
+    "durable_records": 30
+  },
+  "test_e": {
+    "executor_invocations": 1,
+    "retries": 0,
+    "durable_records": 0,
+    "position_marked_durable": false,
+    "next_position_executed": false,
+    "state": "EXECUTED_NOT_DURABLE",
+    "result": "ABORT:PERSISTENCE_FAILURE"
+  }
+}

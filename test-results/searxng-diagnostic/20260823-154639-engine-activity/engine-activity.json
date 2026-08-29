@@ -1,0 +1,59 @@
+{
+  "artifact_notice": "Generated test artifact — SearXNG engine activity validation — do not treat as project documentation.",
+  "generated_at": "2026-08-23T15:46:39-07:00",
+  "scope": {
+    "instance": "project-controlled SearXNG",
+    "query": "rust async",
+    "execution": "three explicit-engine requests; sequential; no retries; 5-second inter-request pause",
+    "direct_upstream_requests": false
+  },
+  "static_inspection": {
+    "effective_engine_overrides": {
+      "duckduckgo": { "disabled": false, "categories": ["general", "web"] },
+      "mojeek": { "disabled": false, "categories": ["general", "web"] },
+      "qwant": { "disabled": false, "categories": ["general", "web"] },
+      "brave": { "disabled": true },
+      "google cse": { "disabled": true },
+      "startpage": { "disabled": true },
+      "bing": { "disabled": true }
+    },
+    "amatl_request_parameters": {
+      "sent": ["q", "format", "pageno"],
+      "not_sent": ["engines", "categories"]
+    },
+    "searxng_default_when_no_engines_or_categories": "SearXNG resolves unspecified categories to general; AMATL does not constrain engine selection."
+  },
+  "engines": [
+    {
+      "engine": "duckduckgo",
+      "configured": true,
+      "runtime_requested": true,
+      "runtime_attempt_evidence": "SearXNG response reported duckduckgo/access denied; container log records a DuckDuckGo POST and HTTP 403.",
+      "results_count": 0,
+      "answers_count": 0,
+      "error": "access denied (log: HTTP 403, suspended_time=180)",
+      "classification": "CONFIRMED_ATTEMPT_FAILED"
+    },
+    {
+      "engine": "mojeek",
+      "configured": true,
+      "runtime_requested": true,
+      "runtime_attempt_evidence": null,
+      "results_count": 0,
+      "answers_count": 0,
+      "error": null,
+      "classification": "UNKNOWN",
+      "reason": "The explicit-engine response was HTTP 200 with zero results and no public error; no matching log entry or other runtime attribution was available."
+    },
+    {
+      "engine": "qwant",
+      "configured": true,
+      "runtime_requested": true,
+      "runtime_attempt_evidence": "The explicit qwant-only request produced 10 results with no unresponsive-engine entry.",
+      "results_count": 10,
+      "answers_count": 0,
+      "error": null,
+      "classification": "CONFIRMED_ACTIVE"
+    }
+  ]
+}

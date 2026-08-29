@@ -1,0 +1,38 @@
+{
+  "runner_sha256_after": "df243c732e734ebabe53c624cebd533a217f8502ce5ff9fd73f85a93433d7c22",
+  "runner_sha256_before": "fd4e7b8c320e9ebcd68d967b2c771f41c7eb8e6140909d2f3b91ff65a3664759",
+  "all_waits_exactly_3": true,
+  "amatl_executions": 0,
+  "configured_interval_seconds": 3,
+  "duplicates": 0,
+  "durable_after_reopen": 30,
+  "executed_records": 30,
+  "expected_waits": 29,
+  "failure_continues": true,
+  "maximum_sequence": 30,
+  "minimum_sequence": 1,
+  "missing": 0,
+  "mock_invocations": 30,
+  "negative_guards": {
+    "duplicate_execution": "PASS",
+    "execution_limit_31": "PASS",
+    "foreign_position": "PASS",
+    "output_already_exists": "PASS",
+    "unvalidated_plan": "PASS"
+  },
+  "network_requests": 0,
+  "observed_waits": 29,
+  "persistence_before_wait": true,
+  "persistence_failure": {
+    "executor_invocations": 5,
+    "next_position_executed": false,
+    "result": "PASS",
+    "waits": 4
+  },
+  "planned": 30,
+  "provider_executions": 0,
+  "retries": 0,
+  "unique_durable": 30,
+  "wait_after_last": false,
+  "wait_before_first": false
+}

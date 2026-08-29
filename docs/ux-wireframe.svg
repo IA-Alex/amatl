@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="720" viewBox="0 0 960 720" role="img" aria-labelledby="title desc">
+  <title id="title">Wireframe de búsqueda y evidencia de AMATL</title>
+  <desc id="desc">Estructura de baja fidelidad con encabezado, consulta, acciones, resultados y paneles secundarios.</desc>
+  <rect width="960" height="720" fill="#fff"/>
+  <g fill="none" stroke="#555" stroke-width="2">
+    <rect x="40" y="24" width="880" height="64"/>
+    <rect x="40" y="128" width="700" height="42"/>
+    <rect x="750" y="128" width="170" height="42"/>
+    <rect x="40" y="184" width="880" height="42"/>
+    <rect x="40" y="264" width="880" height="34"/>
+    <rect x="40" y="314" width="880" height="112"/>
+    <rect x="40" y="442" width="880" height="112"/>
+    <rect x="40" y="580" width="280" height="96"/>
+    <rect x="340" y="580" width="280" height="96"/>
+    <rect x="640" y="580" width="280" height="96"/>
+  </g>
+  <g fill="#333" font-family="system-ui, sans-serif" font-size="18">
+    <text x="64" y="64">AMATL · tema / navegación</text>
+    <text x="56" y="155">Consulta…</text><text x="778" y="155">Buscar</text>
+    <text x="56" y="210">Analizar evidencia · Resumen con IA · Filtros</text>
+    <text x="56" y="287">Resultados                         estado del servicio</text>
+    <text x="56" y="348">01  Título del documento</text>
+    <text x="56" y="380">URL · fragmento · metadatos</text>
+    <text x="56" y="476">02  Documento con evidencia verificable</text>
+    <text x="56" y="508">Fragmentos · Guardar · Procedencia</text>
+    <text x="60" y="620">Fuentes</text><text x="360" y="620">Historial</text><text x="660" y="620">Guardados / clientes</text>
+  </g>
+</svg>

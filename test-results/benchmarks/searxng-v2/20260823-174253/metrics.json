@@ -1,0 +1,28 @@
+{
+  "artifact_notice": "Generated benchmark artifact — AMATL SearXNG Baseline v2 post-change — do not treat as project documentation.",
+  "status": "invalid_experiment",
+  "comparison_classification": "NOT_COMPARABLE",
+  "planned_runs": 30,
+  "unique_planned_positions_observed": 30,
+  "recorded_execution_attempts": 47,
+  "extra_duplicate_attempts": 17,
+  "classification_rule": "PARTIAL_SUCCESS when final_results>0 and partial=true; SUCCESS when final_results>0 and partial=false; ZERO_RESULTS when final_results=0 without explicit failure; FAILURE when search_status=failure or explicit provider/transport/parsing/timeout error.",
+  "counts": {"success": 0, "partial_success": 0, "zero_results": 0, "failure": 47},
+  "rates_over_recorded_attempts": {"usable_result": 0.0, "success": 0.0, "partial_success": 0.0, "zero_results": 0.0, "failure": 1.0},
+  "results": {"total": 0, "mean": 0.0, "p50_nearest_rank": 0, "min": 0, "max": 0},
+  "latency_ms": {"mean": 0.0, "p50_nearest_rank": 0, "p95_nearest_rank": 0, "min": 0, "max": 0},
+  "percentile_method": "nearest rank: ceil(p*n), with n=47; descriptive only because experiment is invalid",
+  "errors": {"provider_unavailable": 47},
+  "execution_integrity": {
+    "sequential": false,
+    "inter_request_interval_seconds": "not preserved across full record set",
+    "retries": "not reliably measurable after duplicate execution records",
+    "persistence": false,
+    "history": false,
+    "provider_cache": false,
+    "document_cache": false,
+    "material_confounder": "47 recorded attempts for a 30-run design, including 17 duplicate positions"
+  },
+  "provider_isolation": {"providers_other_than_searxng_used": [], "providers_other_than_searxng_failed": [], "marginalia_requests": 0},
+  "not_observable": ["http_status", "searxng_results", "mapped_items", "unresponsive_engines_count", "unresponsive_engines", "upstream_error_type"]
+}

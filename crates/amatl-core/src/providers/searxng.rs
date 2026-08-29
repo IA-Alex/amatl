@@ -241,7 +241,7 @@ struct SearXngAnswer {
 
 fn parse_response(
     response: HttpResponse,
-    _filters: FilterUse,
+    filters: FilterUse,
 ) -> Result<ProviderResult, ProviderError> {
     if response.status != 200 {
         return Err(http_status_error("SearXNG", &response));
@@ -313,9 +313,13 @@ fn parse_response(
         provider: "searxng".into(),
         status,
         results,
+        // SearXNG's JSON API has no native filter support (see the module
+        // doc comment), so `FilterUse` never carries an `accepted` list for
+        // this provider — everything is either approximated in the query
+        // string or ignored outright.
         accepted_filters: vec![],
-        ignored_filters: vec![],
-        approximated_filters: vec![],
+        ignored_filters: filters.ignored,
+        approximated_filters: filters.approximated,
         errors: vec![],
     })
 }
@@ -446,6 +450,31 @@ mod tests {
             .as_deref()
             .unwrap()
             .contains("systems programming"));
+    }
+
+    #[test]
+    fn preserves_ignored_and_approximated_filters_in_the_provider_result() {
+        // Reproduces F3: `translated_query` classifies `site` as
+        // approximated and `language`/`region` as ignored, but
+        // `parse_response` used to discard that classification and always
+        // report empty filter lists, even though the schema (and every
+        // other provider) carries it through to `ProviderResult`.
+        let (_query, filters) = translated_query(&plan("rust site:docs.rs lang:es region:MX"));
+        assert!(filters.approximated.contains(&"site".into()));
+        assert!(filters.ignored.contains(&"language".into()));
+        assert!(filters.ignored.contains(&"region".into()));
+
+        let response = HttpResponse {
+            status: 200,
+            headers: BTreeMap::new(),
+            body: br#"{"query": "rust", "results": [], "unresponsive_engines": []}"#.to_vec(),
+        };
+        let result = parse_response(response, filters).unwrap();
+
+        assert!(result.accepted_filters.is_empty());
+        assert!(result.ignored_filters.contains(&"language".into()));
+        assert!(result.ignored_filters.contains(&"region".into()));
+        assert!(result.approximated_filters.contains(&"site".into()));
     }
 
     #[test]

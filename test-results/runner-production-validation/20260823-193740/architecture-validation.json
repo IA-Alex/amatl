@@ -1,0 +1,51 @@
+{
+  "artifact_notice": "Runner production-path validation artifact.",
+  "execution_path": "ValidatedExecutionPlan -> execute_plan -> executor -> DurableJSONLWriter -> runs.jsonl",
+  "executor_internal_max_invocations": null,
+  "global_execution_limit": "execute_plan: planned count and 30",
+  "offline": {
+    "coverage_exact": true,
+    "duplicates": 0,
+    "durable_after_reopen": 30,
+    "executed": 30,
+    "generated": 30,
+    "maximum_sequence": 30,
+    "minimum_sequence": 1,
+    "missing": 0,
+    "mock_invocations": 30,
+    "planned": 30,
+    "retries": 0,
+    "sequence_exact": true,
+    "unique_durable": 30
+  },
+  "real": {
+    "amatl_invocations": 1,
+    "coverage_exact": true,
+    "duplicates": 0,
+    "durable_after_reopen": 1,
+    "executed": 1,
+    "marginalia_executions": 0,
+    "maximum_sequence": 1,
+    "minimum_sequence": 1,
+    "missing": 0,
+    "next_position": "Q02-R1",
+    "next_position_ready": true,
+    "record": {
+      "benchmark_id": "searxng-v2-production-validation-20260823-193740",
+      "elapsed_ms": 0,
+      "final_results": 0,
+      "partial": false,
+      "process_exit_code": 1,
+      "provider": "searxng",
+      "public_error": "provider_unavailable",
+      "query_id": "Q01",
+      "repetition": 1,
+      "search_status": "failure",
+      "sequence_number": 1
+    },
+    "retries": 0,
+    "sequence_exact": true,
+    "unique_durable": 1
+  },
+  "single_execute_plan_path": true
+}

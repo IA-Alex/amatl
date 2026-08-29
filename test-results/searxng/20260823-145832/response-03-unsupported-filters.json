@@ -1,0 +1,20 @@
+{
+  "artifact_notice": "Generated test artifact — SearXNG characterization — do not treat as project documentation.",
+  "schema_version": "1",
+  "query": "rust lang:es region:MX after:2025-01-01 filetype:pdf",
+  "status": "failure",
+  "results": [],
+  "providers_used": [],
+  "providers_failed": [],
+  "providers_partial": [],
+  "errors": [
+    {
+      "code": "no_available_provider",
+      "message": "no approved and configured provider is available",
+      "providers": [],
+      "recoverable": false
+    }
+  ],
+  "degradations": [],
+  "elapsed_ms": 0
+}

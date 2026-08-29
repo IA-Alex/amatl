@@ -1,0 +1,17 @@
+{
+  "artifact_notice": "Generated benchmark artifact — AMATL SearXNG Baseline v2 post-change — do not treat as project documentation.",
+  "dataset_version": "searxng-baseline-v1",
+  "frozen_before_execution": true,
+  "queries": [
+    {"id": "Q01", "intent": "tecnología general", "query": "rust async"},
+    {"id": "Q02", "intent": "documentación técnica", "query": "Rust standard library documentation"},
+    {"id": "Q03", "intent": "programación", "query": "tokio tutorial rust"},
+    {"id": "Q04", "intent": "software open source", "query": "Linux kernel GitHub"},
+    {"id": "Q05", "intent": "consulta factual", "query": "capital of Canada"},
+    {"id": "Q06", "intent": "término poco frecuente", "query": "quasicrystal phason"},
+    {"id": "Q07", "intent": "consulta de varias palabras", "query": "how does distributed consensus work"},
+    {"id": "Q08", "intent": "proyecto tecnológico", "query": "Kubernetes project"},
+    {"id": "Q09", "intent": "búsqueda conceptual", "query": "eventual consistency distributed systems"},
+    {"id": "Q10", "intent": "consulta general no técnica", "query": "history of public libraries"}
+  ]
+}

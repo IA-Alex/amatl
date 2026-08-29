@@ -1,0 +1,11 @@
+{
+  "artifact_notice":"Generated test artifact — SearXNG effective engine audit — do not treat as project documentation.",
+  "request":{"q":"rust async","format":"json","pageno":"1","engines":null,"categories":null},
+  "selection_rule":"Installed webadapter.parse_generic: absent engines/categories -> preference categories -> default ['general']; categories['general'] supplies registered engines, excluding preference-disabled engines.",
+  "configured_enabled_engines_count":111,
+  "eligible_general_search_engines_static":["wikipedia","cloudflareai","currency","elasticsearch","wikidata","dogpile","freesound","google","jina","libretranslate","lingva","yandex api","wolframalpha_api","dictzone","mymemory translated","deepl","braveapi","exaapi"],
+  "eligible_count_static":18,
+  "excluded_engines":{"count":93,"reason":"not members of category general; no categories or explicit engines were sent"},
+  "runtime_registration_exclusions_confirmed":{"wikidata":"engine INIT failed (HTTP 403) and log says processor cannot register","ahmia":"load/register failed; not general","torch":"load/register failed; not general"},
+  "selected_effectively":"UNKNOWN for the observed AMATL request: runtime selection list is not exposed. At most 17 of the 18 static candidates can be registered after confirmed wikidata init failure."
+}

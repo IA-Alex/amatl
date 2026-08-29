@@ -1,0 +1,13 @@
+{
+  "artifact_notice": "Generated offline benchmark-runner validation artifact — no provider execution performed.",
+  "status": "FAIL",
+  "static_failure_analysis": {
+    "duplicate_position": {
+      "expected": "ABORT:DUPLICATE_POSITION",
+      "observed": "ABORT:PLAN_COUNT_MISMATCH",
+      "reason": "negative_tests appends a duplicate, producing 31 positions; validate_plan checks length before identity uniqueness"
+    },
+    "overall": "ABORT:VALIDATION_FAILED"
+  },
+  "not_executed_after_abort": ["missing_position", "plan_count_mismatch", "output_already_exists", "invalid_dataset_duplicate_query_id"]
+}
