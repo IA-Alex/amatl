@@ -486,7 +486,136 @@ pub struct SearchResult {
     pub status: ResultStatus,
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+/// STEP 2 — COMPLEMENTARITY CONTRACT.
+///
+/// Objective, structural measurement of what the PRIMARY role found, what the
+/// EXPANSION role found, what overlapped, and what was exclusive to each. It is
+/// derived entirely from post-dedupe provenance (`DeduplicatedResult.providers`
+/// / `duplicate_status`) plus the router's [`crate::RoleAssignment`]; provider
+/// names are never hardcoded here.
+///
+/// # These numbers are NOT a relevance signal
+///
+/// A result counted in `unique_expansion` is only VALID + CANONICALIZABLE +
+/// structurally UNIQUE. The Wiby evidence showed that a valid canonical URL on a
+/// unique domain that is exclusive to one provider still need not be useful.
+/// `UNIQUE_EXPANSION != UNIQUE_RELEVANT_EXPANSION`. Relevance lives in the
+/// separate, deliberately unpopulated [`RelevanceMetrics`] layer. Nothing in
+/// this struct may feed adaptive routing in STEP 2.
+///
+/// # PROVENANCE vs COMPLEMENTARITY vs RELEVANCE
+///
+/// * PROVENANCE — which role produced a result (STEP 1, already in the trace).
+/// * COMPLEMENTARITY — this struct: overlap / exclusivity arithmetic.
+/// * RELEVANCE — [`RelevanceMetrics`], not implemented.
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Default)]
+pub struct ComplementarityMetrics {
+    pub schema_version: String,
+
+    /// `|PRIMARY_RESULT_SET|` — post-dedupe results where a PRIMARY-role
+    /// provider appears in `providers`.
+    pub found_primary: u32,
+    /// `|EXPANSION_RESULT_SET|` — post-dedupe results where an EXPANSION-role
+    /// provider appears in `providers`.
+    pub found_expansion: u32,
+
+    /// Results where a PRIMARY-role provider AND an EXPANSION-role provider both
+    /// appear in `providers` — i.e. the shared identity was established by the
+    /// confirmed dedupe / canonicalization mechanism (exact original or
+    /// canonical URL match). This is the only overlap the contract treats as
+    /// certain.
+    pub overlap_confirmed: u32,
+    /// Distinct results (one PRIMARY-only, one EXPANSION-only) linked by
+    /// `possible_duplicate_with` under the current `DuplicateStatus` semantics
+    /// (title-similarity across hosts). NOT added to `overlap_confirmed`: a
+    /// possible duplicate is explicitly not a confirmed one. Kept separate so a
+    /// consumer never conflates the two.
+    pub overlap_possible: u32,
+
+    /// PRIMARY results not in the confirmed overlap with EXPANSION.
+    /// `found_primary == overlap_confirmed + unique_primary`.
+    pub unique_primary: u32,
+    /// EXPANSION results not in the confirmed overlap with PRIMARY.
+    /// `found_expansion == overlap_confirmed + unique_expansion`.
+    pub unique_expansion: u32,
+
+    /// Count of distinct hosts that appear only on PRIMARY-exclusive results.
+    pub primary_unique_domains: u32,
+    /// Count of distinct hosts that appear only on EXPANSION-exclusive results.
+    pub expansion_unique_domains: u32,
+    /// Count of distinct hosts across the whole post-dedupe result set.
+    pub final_unique_domains: u32,
+    /// `hosts(EXPANSION) \ hosts(PRIMARY)` — hosts EXPANSION contributed that no
+    /// PRIMARY result carried. Raw coverage gain, NOT "useful domain gain".
+    pub expansion_new_domains: u32,
+
+    /// `OVERLAP_CONFIRMED / max(1, FOUND_EXPANSION)`. `None` when no EXPANSION
+    /// provider ran this search (no denominator to speak of); `0.0` when
+    /// EXPANSION ran but returned nothing. Never NaN.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expansion_overlap_ratio: Option<f64>,
+    /// `UNIQUE_EXPANSION / max(1, FOUND_EXPANSION)`. `None` / `0.0` semantics as
+    /// above. This is a structural exclusivity ratio, not a noise or utility
+    /// rate.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expansion_unique_ratio: Option<f64>,
+
+    /// The relevance layer. Always `not_implemented` in STEP 2; present so the
+    /// shape is stable and consumers can see, in the payload itself, that no
+    /// relevance judgement has been made.
+    pub relevance: RelevanceMetrics,
+}
+
+/// STEP 2E — RELEVANCE FRONTIER.
+///
+/// AMATL has no trustworthy relevance signal yet. This struct exists only to
+/// reserve the shape: every metric is `Option` and every one is `None` in
+/// STEP 2. `status` states the fact explicitly so a consumer cannot read the
+/// absence of a value as "zero noise" or "fully relevant".
+///
+/// It must be impossible to reach `unique_relevant_expansion` by reading
+/// `ComplementarityMetrics::unique_expansion`: they are different fields, in
+/// different structs, and this one is never populated here.
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
+pub struct RelevanceMetrics {
+    pub status: RelevanceAssessmentStatus,
+    /// PRIMARY results judged relevant. Not implemented.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub relevant_primary: Option<u32>,
+    /// EXPANSION results judged relevant. Not implemented.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub relevant_expansion: Option<u32>,
+    /// EXPANSION-exclusive results judged relevant. Not implemented — and
+    /// explicitly not equal to `ComplementarityMetrics::unique_expansion`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub unique_relevant_expansion: Option<u32>,
+    /// Fraction of EXPANSION-exclusive results that are noise. Not implemented.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expansion_noise_rate: Option<f64>,
+}
+
+impl Default for RelevanceMetrics {
+    fn default() -> Self {
+        Self {
+            status: RelevanceAssessmentStatus::NotImplemented,
+            relevant_primary: None,
+            relevant_expansion: None,
+            unique_relevant_expansion: None,
+            expansion_noise_rate: None,
+        }
+    }
+}
+
+#[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq, Eq, Default)]
+#[serde(rename_all = "snake_case")]
+pub enum RelevanceAssessmentStatus {
+    /// No relevance signal exists yet (STEP 2). The frontier phase after the
+    /// complementarity contract will design one before this changes.
+    #[default]
+    NotImplemented,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 pub struct SearchResponse {
     pub schema_version: String,
     pub query: String,
@@ -498,6 +627,11 @@ pub struct SearchResponse {
     pub errors: Vec<CompositeError>,
     pub degradations: Vec<Degradation>,
     pub elapsed_ms: u64,
+    /// STEP 2 — objective provider complementarity measurement. `None` in
+    /// legacy routing mode (no PRIMARY/EXPANSION roles to compare). Additive:
+    /// omitted from JSON when absent, existing consumers are unaffected.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub complementarity: Option<ComplementarityMetrics>,
     /// Total number of results before pagination (server-side count).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub total_results: Option<u64>,

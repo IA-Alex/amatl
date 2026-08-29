@@ -72,7 +72,10 @@ impl RoleAssignment {
         }
     }
 
-    fn role_of(&self, name: &str) -> Option<ProviderRole> {
+    /// Role the assignment gives a provider by name, or `None` in legacy mode
+    /// or for a provider with no configured role. STEP 2 uses this to attribute
+    /// post-dedupe results to PRIMARY / EXPANSION without re-deriving routing.
+    pub fn role_of(&self, name: &str) -> Option<ProviderRole> {
         if !self.active {
             return None;
         }

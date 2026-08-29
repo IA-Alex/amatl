@@ -7,6 +7,7 @@ pub mod cache;
 pub mod canonical;
 pub mod circuit;
 pub mod classify;
+pub mod complementarity;
 pub mod config;
 pub mod dedupe;
 pub mod deep;
@@ -49,6 +50,7 @@ pub use cache::{
 };
 pub use circuit::{CircuitPolicy, CircuitSnapshot, CircuitState, ProviderCircuit};
 pub use classify::classify;
+pub use complementarity::compute_complementarity_metrics;
 pub use config::{
     AnswerConfig, AnswerConfigPatch, ApprovalStatus, Config, ConfigError, DataPolicyConfig,
     DataPolicyConfigPatch, DeepConfigPatch, EgressPolicy, ExecutionConfig, ExpansionConfig,
@@ -88,22 +90,24 @@ pub use ingest::{
 };
 pub use model::{
     CanonicalResult, CanonicalTransformation, CanonicalUrl, CanonicalizationStatus, Category,
-    Classification, CompositeError, DeduplicatedResult, DeepRankedDocument, DeepRankingExplanation,
-    DeepResponse, Degradation, Document, DocumentStatus, DuplicateStatus, Evidence,
-    EvidenceFragment, EvidenceProvenance, EvidenceScoreBasis, EvidenceSignal, EvidenceStatus,
-    EvidenceV2, FetchMethod, FieldProvenance, FinalUrl, Gap, GapSeverity, GapStatus, GapType,
-    GlobalBudgetSnapshot, MergeReason, NormalizedResult, OriginalUrl, ProviderCapabilities,
-    ProviderError, ProviderErrorKind, ProviderExecutionStatus, ProviderItem, ProviderResult, Query,
-    QueryWarning, Rank, RankedResult, RankingExplanation, RankingScore, RankingV2Output,
-    RankingV2Status, ResultStatus, ResultType, SearchPlan, SearchResponse, SearchResult,
-    SearchStatus, SubQuery, SubQueryStatus, TieBreakReason, ValueInvariantError, SCHEMA_VERSION,
+    Classification, ComplementarityMetrics, CompositeError, DeduplicatedResult, DeepRankedDocument,
+    DeepRankingExplanation, DeepResponse, Degradation, Document, DocumentStatus, DuplicateStatus,
+    Evidence, EvidenceFragment, EvidenceProvenance, EvidenceScoreBasis, EvidenceSignal,
+    EvidenceStatus, EvidenceV2, FetchMethod, FieldProvenance, FinalUrl, Gap, GapSeverity,
+    GapStatus, GapType, GlobalBudgetSnapshot, MergeReason, NormalizedResult, OriginalUrl,
+    ProviderCapabilities, ProviderError, ProviderErrorKind, ProviderExecutionStatus, ProviderItem,
+    ProviderResult, Query, QueryWarning, Rank, RankedResult, RankingExplanation, RankingScore,
+    RankingV2Output, RankingV2Status, RelevanceAssessmentStatus, RelevanceMetrics, ResultStatus,
+    ResultType, SearchPlan, SearchResponse, SearchResult, SearchStatus, SubQuery, SubQueryStatus,
+    TieBreakReason, ValueInvariantError, SCHEMA_VERSION,
 };
 pub use operational::{
     run_operational_benchmark, LatencyPercentiles, OperationalBenchmarkError,
     OperationalBenchmarkReport, SearchOperationalReport, SqliteOperationalReport,
 };
 pub use progressive::{
-    CoverageMetrics, ProgressiveRoundTrace, SearchPolicyError, SearchPolicyV1, SearchStopReason,
+    CoverageMetrics, ProgressiveRoundTrace, RoundComplementarity, SearchPolicyError,
+    SearchPolicyV1, SearchStopReason,
 };
 pub use providers::{
     BraveProvider, HttpRequest, HttpResponse, HttpTransport, MockBehavior, MockProvider,

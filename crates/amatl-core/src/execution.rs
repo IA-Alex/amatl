@@ -1,8 +1,10 @@
 use crate::budget::{Budget, BudgetSnapshot};
 use crate::canonical::canonicalize;
 use crate::classify::classify;
+use crate::complementarity::compute_complementarity_metrics;
 use crate::dedupe::deduplicate;
 use crate::diversity::{diversify, DiversityMetrics, DiversityPolicyV1};
+use crate::model::DeduplicatedResult;
 use crate::model::{
     Classification, CompositeError, ProviderError, ProviderErrorKind, ProviderExecutionStatus,
     ProviderResult, Query, SearchPlan, SearchResponse, SearchStatus, SCHEMA_VERSION,
@@ -11,7 +13,7 @@ use crate::normalize::normalize;
 use crate::planning::build_search_plan;
 use crate::progressive::{
     evaluate_coverage, observed_marginal_gain, CoverageMetrics, ProgressiveRoundTrace,
-    SearchPolicyV1, SearchStopReason,
+    RoundComplementarity, SearchPolicyV1, SearchStopReason,
 };
 use crate::providers::ProviderAvailability;
 use crate::providers::{Provider, ProviderContext};
@@ -326,6 +328,19 @@ impl SearchOrchestrator {
             };
 
             let stop_reason = stop_or_next.as_ref().err().cloned();
+            // STEP 2: complementarity of everything accumulated through this
+            // round, from the confirmed dedupe provenance. `None` in legacy
+            // mode. Structural only.
+            let round_complementarity =
+                compute_complementarity_metrics(&current_pipeline.deduped, &self.role_assignment)
+                    .map(|m| RoundComplementarity {
+                        found_primary: m.found_primary,
+                        found_expansion: m.found_expansion,
+                        overlap_confirmed: m.overlap_confirmed,
+                        unique_primary: m.unique_primary,
+                        unique_expansion: m.unique_expansion,
+                        expansion_new_domains: m.expansion_new_domains,
+                    });
             let trace = round_trace(
                 round,
                 considered,
@@ -334,6 +349,7 @@ impl SearchOrchestrator {
                 &adaptive,
                 self.role_assignment.active,
                 observed_gain,
+                round_complementarity,
                 stop_reason.clone(),
                 debug_reasons,
             );
@@ -368,6 +384,11 @@ impl SearchOrchestrator {
             }
         };
 
+        // STEP 2: final complementarity for the response, from the confirmed
+        // dedupe provenance of the last accumulated pipeline. `None` in legacy
+        // mode. Never feeds routing.
+        let complementarity =
+            compute_complementarity_metrics(&current_pipeline.deduped, &self.role_assignment);
         let results = current_pipeline.results;
         let mut degradations = current_pipeline.degradations;
         degradations.append(&mut availability_degradations);
@@ -443,6 +464,7 @@ impl SearchOrchestrator {
             total_results: None,
             page: None,
             page_size: None,
+            complementarity,
         }
     }
 
@@ -695,6 +717,10 @@ struct PipelineOutput {
     results: Vec<crate::SearchResult>,
     degradations: Vec<crate::Degradation>,
     diversity: DiversityMetrics,
+    /// Post-dedupe result set (pre-ranking, pre-diversity). Carried out of the
+    /// pipeline so STEP 2 complementarity can be computed from the confirmed
+    /// dedupe provenance without re-canonicalizing. Not exposed publicly.
+    deduped: Vec<DeduplicatedResult>,
 }
 
 fn run_pipeline(
@@ -721,7 +747,7 @@ fn run_pipeline(
         query,
         ranking_reference_time,
         active_provider_count,
-        deduped,
+        deduped.clone(),
         ranking_policy,
     );
     let diversified = diversify(ranked, diversity_policy);
@@ -729,6 +755,7 @@ fn run_pipeline(
         results: diversified.results,
         degradations,
         diversity: diversified.metrics,
+        deduped,
     }
 }
 
@@ -912,6 +939,7 @@ fn round_trace(
     adaptive: &AdaptiveRoutingRecommendation,
     role_model_active: bool,
     observed_marginal_gain: Option<f64>,
+    complementarity: Option<RoundComplementarity>,
     stop_reason: Option<SearchStopReason>,
     debug_reasons: Vec<String>,
 ) -> ProgressiveRoundTrace {
@@ -952,6 +980,7 @@ fn round_trace(
         observed_marginal_gain,
         provider_roles,
         primary_available,
+        complementarity,
         stop_reason,
         debug_reasons,
     }

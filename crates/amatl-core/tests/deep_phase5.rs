@@ -78,6 +78,7 @@ impl SubQueryExecutor for FixedSubQueryExecutor {
             total_results: None,
             page: None,
             page_size: None,
+            complementarity: None,
         })
     }
 }
