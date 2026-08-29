@@ -18,3 +18,10 @@
 *.pem
 *.key
 *~
+# Stray files and transient outputs
+0:
+*.docx
+AMATL_documentado.docx
+amatl.backup-*.sqlite3
+amatl.log
+amatl_logo.png~
