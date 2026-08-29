@@ -34,9 +34,11 @@
 //! always kept significant.
 
 use crate::model::{
-    ComplementarityMetrics, DeduplicatedResult, Query, RelevanceAssessmentStatus,
-    RelevanceClassification, RelevanceMetrics, ResultRelevanceAssessment,
+    ComplementarityMetrics, DeduplicatedResult, NegativeRelevanceEvidence, Query,
+    RelevanceAssessmentStatus, RelevanceClassification, RelevanceMetrics,
+    ResultRelevanceAssessment,
 };
+use crate::relevance_semantics::{assess_semantics, SemanticAssessment};
 use crate::router::{ProviderRole, RoleAssignment};
 use crate::text::{normalized_text, tokens};
 use std::collections::BTreeSet;
@@ -67,6 +69,56 @@ pub struct RelevanceThresholds {
     /// A title shorter than this many significant tokens, with no snippet, is
     /// treated as "generic / insufficient text" → `Unknown`.
     pub min_title_tokens_without_snippet: usize,
+
+    // ---- STEP 3B — bounded semantic layer feature flags ----
+    //
+    // All default to `true` in production. The ablation harness flips them to
+    // isolate each component's contribution. They never change routing or
+    // telemetry.
+    /// Enable light morphological (stem) matching.
+    pub semantic_morphology: bool,
+    /// Enable the concept / alias map.
+    pub semantic_aliases: bool,
+    /// Enable query-intent + entity/subject consistency + negative evidence.
+    pub semantic_intent: bool,
+}
+
+impl RelevanceThresholds {
+    /// Pure lexical baseline: every STEP 3B semantic signal off. Identical
+    /// behaviour to the STEP 2E heuristic.
+    pub fn lexical_only() -> Self {
+        Self {
+            semantic_morphology: false,
+            semantic_aliases: false,
+            semantic_intent: false,
+            ..Self::default()
+        }
+    }
+
+    /// Lexical + morphology only.
+    pub fn with_morphology() -> Self {
+        Self {
+            semantic_morphology: true,
+            semantic_aliases: false,
+            semantic_intent: false,
+            ..Self::default()
+        }
+    }
+
+    /// Lexical + morphology + aliases (no intent / negative evidence).
+    pub fn with_aliases() -> Self {
+        Self {
+            semantic_morphology: true,
+            semantic_aliases: true,
+            semantic_intent: false,
+            ..Self::default()
+        }
+    }
+
+    /// `true` when any semantic component is enabled.
+    pub fn any_semantic(&self) -> bool {
+        self.semantic_morphology || self.semantic_aliases || self.semantic_intent
+    }
 }
 
 impl Default for RelevanceThresholds {
@@ -78,6 +130,9 @@ impl Default for RelevanceThresholds {
             possibly_relevant_coverage: 0.40,
             not_relevant_ceiling: 0.25,
             min_title_tokens_without_snippet: 2,
+            semantic_morphology: true,
+            semantic_aliases: true,
+            semantic_intent: true,
         }
     }
 }
@@ -188,25 +243,130 @@ pub fn assess_result(
     let strong_snippet =
         snippet_cov >= thresholds.relevant_snippet_coverage && all_matched.len() >= 2;
 
+    // ---- STEP 3B — bounded semantic layer ----
+    //
+    // Computed always (cheap), but each family's *effect* on the decision is
+    // gated by the corresponding feature flag so the ablation harness can
+    // isolate contributions. The raw fields are still reported.
+    let semantic = if thresholds.any_semantic() {
+        assess_semantics(
+            query,
+            title_text,
+            snippet_text,
+            url_blob.as_str(),
+            &all_matched,
+        )
+    } else {
+        SemanticAssessment::default()
+    };
+
+    let morph_hits = if thresholds.semantic_morphology {
+        semantic.stemmed_term_matches.len()
+    } else {
+        0
+    };
+    let alias_hits: BTreeSet<&str> = if thresholds.semantic_aliases {
+        semantic.alias_matches.iter().map(String::as_str).collect()
+    } else {
+        BTreeSet::new()
+    };
+    let intent_active = thresholds.semantic_intent && semantic.query_intent.is_some();
+    let subject_match = intent_active && semantic.subject_match;
+    let entity_match = intent_active && semantic.entity_match;
+    let neg: NegativeRelevanceEvidence = if thresholds.semantic_intent {
+        NegativeRelevanceEvidence {
+            subject_mismatch: semantic.negative_evidence.subject_mismatch,
+            entity_mismatch: semantic.negative_evidence.entity_mismatch,
+            weak_generic_match: semantic.negative_evidence.weak_generic_match,
+            alias_conflict: semantic.negative_evidence.alias_conflict,
+        }
+    } else {
+        // Without the intent family, only the alias-family conflict survives.
+        NegativeRelevanceEvidence {
+            alias_conflict: thresholds.semantic_aliases
+                && semantic.negative_evidence.alias_conflict,
+            ..Default::default()
+        }
+    };
+    let blocking_negative = neg.entity_mismatch || neg.subject_mismatch;
+
+    // Semantic coverage: raw lexical + stem rescues + alias-implied hits, as a
+    // fraction of query terms. Never exceeds 1.0; used only for the moderate
+    // band, never to force Relevant on its own.
+    let semantic_matched = all_matched.len() + morph_hits + alias_hits.len();
+    let semantic_cov = if terms.is_empty() {
+        0.0
+    } else {
+        (semantic_matched as f64 / terms.len() as f64).min(1.0)
+    };
+
+    // Strong semantic rescue: a satisfied intent subject AND corroborating
+    // evidence (an alias match, an entity match, or high semantic coverage),
+    // with no blocking negative evidence. An alias match or high coverage
+    // *without* a satisfied subject is never enough on its own — that is the
+    // "alias_match alone must not force Relevant" rule.
+    let strong_semantic_rescue = !blocking_negative
+        && subject_match
+        && (!alias_hits.is_empty() || entity_match || semantic_cov >= 0.75);
+
+    let lexical_strong = title_cov >= thresholds.relevant_title_coverage
+        || combined >= thresholds.relevant_combined_coverage
+        || strong_snippet;
+    let lexical_moderate = !lexical_strong
+        && (title_cov >= thresholds.possibly_relevant_coverage
+            || snippet_cov >= thresholds.possibly_relevant_coverage
+            || combined >= thresholds.possibly_relevant_coverage
+            || semantic_cov >= 0.5);
+
     let classification = if !had_sufficient_text {
         RelevanceClassification::Unknown
-    } else if exact_phrase_match
-        || title_cov >= thresholds.relevant_title_coverage
-        || combined >= thresholds.relevant_combined_coverage
-        || strong_snippet
+    } else if exact_phrase_match {
+        // EXACT_PHRASE path — unchanged, semantic layer never overrides it.
+        RelevanceClassification::Relevant
+    } else if lexical_strong && blocking_negative {
+        // LEXICAL APPARENTLY STRONG + STRONG ENTITY/INTENT CONTRADICTION
+        // -> must not reach Relevant. Drop to PossiblyRelevant (has text) so we
+        // never *raise* the NOT_RELEVANT->RELEVANT rate, but also do not
+        // silently call it Relevant.
+        if has_snippet {
+            RelevanceClassification::PossiblyRelevant
+        } else {
+            RelevanceClassification::Unknown
+        }
+    } else if lexical_strong {
+        RelevanceClassification::Relevant
+    } else if lexical_moderate && strong_semantic_rescue {
+        // LEXICAL MODERATE + STRONG SEMANTIC/ALIAS EVIDENCE + NO CONTRADICTION
+        RelevanceClassification::Relevant
+    } else if !blocking_negative
+        && intent_active
+        && intent_rescue_qualifies(
+            semantic.query_intent.as_deref(),
+            subject_match,
+            entity_match,
+            &alias_hits,
+            semantic_cov,
+        )
     {
+        // Intent satisfied with supporting evidence and nothing contradicting:
+        // a paraphrased-but-correct answer.
         RelevanceClassification::Relevant
     } else if title_cov >= thresholds.possibly_relevant_coverage
         || snippet_cov >= thresholds.possibly_relevant_coverage
         || combined >= thresholds.possibly_relevant_coverage
         || (url_cov >= thresholds.possibly_relevant_coverage && !all_matched.is_empty())
-        // secondary nudge: some textual overlap AND provider ranked it first.
         || (provider_rank_is_top == Some(true) && !all_matched.is_empty() && combined > 0.0)
+        || (semantic_cov >= 0.5 && !blocking_negative)
+        || (!alias_hits.is_empty() && morph_hits + all_matched.len() >= 1 && !blocking_negative)
     {
-        RelevanceClassification::PossiblyRelevant
+        // Weak-lexical + semantic evidence -> PossiblyRelevant, unless a
+        // blocking contradiction pushes it down.
+        if blocking_negative || neg.weak_generic_match {
+            demote_weak(has_snippet, combined, thresholds)
+        } else {
+            RelevanceClassification::PossiblyRelevant
+        }
     } else if has_snippet && combined <= thresholds.not_relevant_ceiling {
-        // NotRelevant requires a snippet: affirming "no relation" needs real
-        // body text. A missing snippet with a weak title stays Unknown.
         RelevanceClassification::NotRelevant
     } else if has_snippet {
         RelevanceClassification::PossiblyRelevant
@@ -224,6 +384,74 @@ pub fn assess_result(
         had_sufficient_text,
         provider_rank_is_top,
         classification,
+        stemmed_term_matches: if thresholds.semantic_morphology {
+            semantic.stemmed_term_matches.iter().cloned().collect()
+        } else {
+            Vec::new()
+        },
+        alias_matches: if thresholds.semantic_aliases {
+            semantic.alias_matches.iter().cloned().collect()
+        } else {
+            Vec::new()
+        },
+        query_intent: if thresholds.semantic_intent {
+            semantic.query_intent.clone()
+        } else {
+            None
+        },
+        subject_terms: if intent_active {
+            semantic.subject_terms.iter().cloned().collect()
+        } else {
+            Vec::new()
+        },
+        subject_match,
+        entity_match,
+        negative_evidence: neg,
+    }
+}
+
+/// Whether a detected intent, with the given supporting evidence, is strong
+/// enough to promote a weak-lexical result to `Relevant`.
+///
+/// * attribution intents (`who wrote X`, `inventor of X`) require a genuine
+///   `entity_match` — a text that merely *names* the work (e.g. the protocol's
+///   own page for "inventor of TCP") is not the answer;
+/// * subject-oriented intents (`documentation`, `tutorial`, `repository`,
+///   `definition`) require a satisfied `subject_match` plus corroboration
+///   (alias match or high semantic coverage);
+/// * `capital of X` accepts either a positive `entity_match` or a satisfied
+///   subject with corroboration.
+fn intent_rescue_qualifies(
+    intent_tag: Option<&str>,
+    subject_match: bool,
+    entity_match: bool,
+    alias_hits: &BTreeSet<&str>,
+    semantic_cov: f64,
+) -> bool {
+    match intent_tag {
+        Some("factual_attribution") => entity_match,
+        Some("factual_capital") => {
+            entity_match || (subject_match && (!alias_hits.is_empty() || semantic_cov >= 0.6))
+        }
+        Some(_) => subject_match && (!alias_hits.is_empty() || semantic_cov >= 0.6),
+        None => false,
+    }
+}
+
+/// When weak-lexical evidence is undermined by negative evidence, fall to
+/// NotRelevant if there is body text to justify it, else Unknown. Never
+/// promotes.
+fn demote_weak(
+    has_snippet: bool,
+    combined: f64,
+    thresholds: &RelevanceThresholds,
+) -> RelevanceClassification {
+    if has_snippet && combined <= thresholds.not_relevant_ceiling.max(0.5) {
+        RelevanceClassification::NotRelevant
+    } else if has_snippet {
+        RelevanceClassification::PossiblyRelevant
+    } else {
+        RelevanceClassification::Unknown
     }
 }
 
@@ -433,6 +661,173 @@ mod tests {
         let query = parse_query(q.to_string()).unwrap();
         let r = result("https://example.com/page", title, snippet, &["p"], None);
         assess_result(&query, &r, &RelevanceThresholds::default()).classification
+    }
+
+    // ---- STEP 3B — bounded semantic decision-model tests ----
+
+    fn classify_th(
+        q: &str,
+        title: Option<&str>,
+        snippet: Option<&str>,
+        th: &RelevanceThresholds,
+    ) -> RelevanceClassification {
+        let query = parse_query(q.to_string()).unwrap();
+        let r = result("https://example.com/page", title, snippet, &["p"], None);
+        assess_result(&query, &r, th).classification
+    }
+
+    #[test]
+    fn exact_phrase_behavior_is_preserved() {
+        // With and without the semantic layer, an exact quoted-phrase match is
+        // Relevant, and an absent phrase is not rescued to Relevant by it.
+        for th in [
+            RelevanceThresholds::default(),
+            RelevanceThresholds::lexical_only(),
+        ] {
+            assert_eq!(
+                classify_th(
+                    "\"capital of Canada\"",
+                    Some("Cities and towns"),
+                    Some("The capital of Canada is Ottawa."),
+                    &th,
+                ),
+                RelevanceClassification::Relevant
+            );
+        }
+    }
+
+    #[test]
+    fn insufficient_evidence_behavior_is_preserved() {
+        for th in [
+            RelevanceThresholds::default(),
+            RelevanceThresholds::lexical_only(),
+        ] {
+            assert_eq!(
+                classify_th("capital of Canada", Some("Home"), None, &th),
+                RelevanceClassification::Unknown
+            );
+            assert_eq!(
+                classify_th(
+                    "rust async programming",
+                    Some("Documentation index"),
+                    None,
+                    &th
+                ),
+                RelevanceClassification::Unknown
+            );
+        }
+    }
+
+    #[test]
+    fn alias_alone_does_not_force_relevant() {
+        // Query and result share only the alias concept "documentation"; the
+        // actual subject (obscureproj) is absent. Must NOT be Relevant.
+        let c = classify(
+            "obscureproj documentation",
+            Some("General documentation portal"),
+            Some("A reference and manual hub for various unrelated tools."),
+        );
+        assert_ne!(c, RelevanceClassification::Relevant);
+    }
+
+    #[test]
+    fn stemming_alone_does_not_force_relevant() {
+        // Only a stem links query and result ("configuring" ~ "configuration"),
+        // no subject/coverage. Not Relevant.
+        let c = classify(
+            "configuring obscurething",
+            Some("Configuration concepts"),
+            Some("An overview of configuration in general software systems."),
+        );
+        assert_ne!(c, RelevanceClassification::Relevant);
+    }
+
+    #[test]
+    fn entity_mismatch_blocks_false_relevant() {
+        // The fact-002 shape: lexically strong snippet, but a competing entity.
+        let c = classify(
+            "capital of Canada",
+            Some("Toronto - Wikipedia"),
+            Some("Toronto is the most populous city in Canada and the capital of the province of Ontario."),
+        );
+        assert_ne!(c, RelevanceClassification::Relevant, "must not be Relevant");
+    }
+
+    #[test]
+    fn intent_mismatch_does_not_gain_relevance() {
+        // "X documentation" but result is a migration blog about leaving X.
+        let c = classify(
+            "postgres documentation",
+            Some("Why we migrated off PostgreSQL"),
+            Some("Our team moved its analytics workload from PostgreSQL to a columnar store."),
+        );
+        assert_ne!(c, RelevanceClassification::Relevant);
+    }
+
+    #[test]
+    fn semantic_evidence_can_rescue_paraphrase() {
+        // "Rust std documentation" -> title "std - Rust", snippet talks about
+        // the "Rust Standard Library". Weak literal "documentation" coverage,
+        // but subject present + alias(standard library) -> Relevant.
+        let c = classify(
+            "Rust std documentation",
+            Some("std - Rust"),
+            Some("The Rust Standard Library is the foundation of portable Rust software."),
+        );
+        assert_eq!(c, RelevanceClassification::Relevant);
+    }
+
+    #[test]
+    fn negative_evidence_is_explainable() {
+        let query = parse_query("SQLite WAL documentation".into()).unwrap();
+        let r = result(
+            "https://www.postgresql.org/docs/current/wal-intro.html",
+            Some("PostgreSQL: Write-Ahead Logging (WAL)"),
+            Some("WAL is a standard method for ensuring data integrity."),
+            &["p"],
+            Some(1),
+        );
+        let a = assess_result(&query, &r, &RelevanceThresholds::default());
+        assert!(
+            a.negative_evidence.subject_mismatch || a.negative_evidence.alias_conflict,
+            "expected itemised negative evidence, got {:?}",
+            a.negative_evidence
+        );
+        assert_ne!(a.classification, RelevanceClassification::Relevant);
+    }
+
+    #[test]
+    fn new_relevance_fields_are_serialization_compatible() {
+        // Legacy payloads with no STEP 3B fields still deserialize.
+        let legacy = r#"{
+            "title_term_coverage": 0.5,
+            "snippet_term_coverage": 0.5,
+            "url_term_coverage": 0.0,
+            "exact_phrase_match": false,
+            "matched_query_terms": 1,
+            "query_terms_total": 2,
+            "had_sufficient_text": true,
+            "classification": "possibly_relevant"
+        }"#;
+        let parsed: crate::model::ResultRelevanceAssessment =
+            serde_json::from_str(legacy).expect("legacy payload deserializes");
+        assert!(parsed.stemmed_term_matches.is_empty());
+        assert!(parsed.query_intent.is_none());
+        assert!(parsed.negative_evidence.is_empty());
+
+        // A fresh assessment with no semantic hits omits the new fields.
+        let query = parse_query("rust async programming".into()).unwrap();
+        let r = result(
+            "https://example.com/x",
+            Some("Async programming in Rust"),
+            Some("async await in rust"),
+            &["p"],
+            None,
+        );
+        let a = assess_result(&query, &r, &RelevanceThresholds::lexical_only());
+        let json = serde_json::to_string(&a).unwrap();
+        assert!(!json.contains("stemmed_term_matches"), "{json}");
+        assert!(!json.contains("negative_evidence"), "{json}");
     }
 
     #[test]

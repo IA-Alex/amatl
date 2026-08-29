@@ -31,6 +31,7 @@ pub mod query;
 pub mod ranking;
 pub mod ranking_v2;
 pub mod relevance;
+pub mod relevance_semantics;
 pub mod render;
 pub mod robots;
 pub mod router;
@@ -95,13 +96,13 @@ pub use model::{
     DeepRankingExplanation, DeepResponse, Degradation, Document, DocumentStatus, DuplicateStatus,
     Evidence, EvidenceFragment, EvidenceProvenance, EvidenceScoreBasis, EvidenceSignal,
     EvidenceStatus, EvidenceV2, FetchMethod, FieldProvenance, FinalUrl, Gap, GapSeverity,
-    GapStatus, GapType, GlobalBudgetSnapshot, MergeReason, NormalizedResult, OriginalUrl,
-    ProviderCapabilities, ProviderError, ProviderErrorKind, ProviderExecutionStatus, ProviderItem,
-    ProviderResult, Query, QueryWarning, Rank, RankedResult, RankingExplanation, RankingScore,
-    RankingV2Output, RankingV2Status, RelevanceAssessmentStatus, RelevanceClassification,
-    RelevanceMetrics, ResultRelevanceAssessment, ResultStatus, ResultType, SearchPlan,
-    SearchResponse, SearchResult, SearchStatus, SubQuery, SubQueryStatus, TieBreakReason,
-    ValueInvariantError, SCHEMA_VERSION,
+    GapStatus, GapType, GlobalBudgetSnapshot, MergeReason, NegativeRelevanceEvidence,
+    NormalizedResult, OriginalUrl, ProviderCapabilities, ProviderError, ProviderErrorKind,
+    ProviderExecutionStatus, ProviderItem, ProviderResult, Query, QueryWarning, Rank, RankedResult,
+    RankingExplanation, RankingScore, RankingV2Output, RankingV2Status, RelevanceAssessmentStatus,
+    RelevanceClassification, RelevanceMetrics, ResultRelevanceAssessment, ResultStatus, ResultType,
+    SearchPlan, SearchResponse, SearchResult, SearchStatus, SubQuery, SubQueryStatus,
+    TieBreakReason, ValueInvariantError, SCHEMA_VERSION,
 };
 pub use operational::{
     run_operational_benchmark, LatencyPercentiles, OperationalBenchmarkError,
@@ -124,6 +125,9 @@ pub use ranking_v2::{
 };
 pub use relevance::{
     assess_relevance, assess_result, enrich_relevance_metrics, RelevanceThresholds,
+};
+pub use relevance_semantics::{
+    assess_semantics, detect_intent, ConceptAliasSet, QueryIntent, SemanticAssessment, ALIAS_SETS,
 };
 pub use render::{ChromiumRenderer, RenderError, RenderResult, Renderer, RendererPool};
 pub use robots::{

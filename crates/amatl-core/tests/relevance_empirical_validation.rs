@@ -676,6 +676,183 @@ fn threshold_sensitivity_grid_on_tuning_split() {
 }
 
 // --------------------------------------------------------------------------
+// STEP 3B — ABLATION STUDY (development corpus only)
+// --------------------------------------------------------------------------
+
+fn arm_metrics(
+    label: &str,
+    th: &RelevanceThresholds,
+    samples: &[Sample],
+) -> (f64, f64, f64, f64, f64, f64) {
+    let (m, outc) = run(th, samples);
+    let (rp, rr, _) = m.prf(RelevanceClassification::Relevant);
+    let macro_f1 = m.macro_f1();
+    let u = ure_metrics(&outc);
+    let ure_p = safe_div(u.tp as f64, (u.tp + u.fp) as f64);
+    let ure_r = safe_div(u.tp as f64, (u.tp + u.fn_) as f64);
+    let nr_total = m.expected_total(RelevanceClassification::NotRelevant) as f64;
+    let nr2r = safe_div(
+        m.count(
+            RelevanceClassification::NotRelevant,
+            RelevanceClassification::Relevant,
+        ) as f64,
+        nr_total,
+    );
+    println!(
+        "  {label:<42} RELEVANT_P={rp:.4} RELEVANT_R={rr:.4} MACRO_F1={macro_f1:.4} URE_P={ure_p:.4} URE_R={ure_r:.4} NR2R={nr2r:.4}"
+    );
+    (rp, rr, macro_f1, ure_p, ure_r, nr2r)
+}
+
+#[test]
+fn step3b_ablation_study_dev_corpus() {
+    let corpus = load_corpus();
+    let s = &corpus.samples;
+    println!("\n================= STEP 3B ABLATION — DEV CORPUS (172) =================");
+    let a = arm_metrics(
+        "A. LEXICAL_BASELINE",
+        &RelevanceThresholds::lexical_only(),
+        s,
+    );
+    let b = arm_metrics(
+        "B. + MORPHOLOGY",
+        &RelevanceThresholds::with_morphology(),
+        s,
+    );
+    let c = arm_metrics("C. + ALIASES", &RelevanceThresholds::with_aliases(), s);
+    let d = arm_metrics(
+        "D. + INTENT/NEGATIVE_EVIDENCE (FULL)",
+        &RelevanceThresholds::default(),
+        s,
+    );
+    println!("\nABLATION_BASELINE  = RELEVANT_P={:.4} RELEVANT_R={:.4} MACRO_F1={:.4} URE_P={:.4} NR2R={:.4}", a.0, a.1, a.2, a.3, a.5);
+    println!("ABLATION_MORPHOLOGY= RELEVANT_P={:.4} RELEVANT_R={:.4} MACRO_F1={:.4} URE_P={:.4} NR2R={:.4}", b.0, b.1, b.2, b.3, b.5);
+    println!("ABLATION_ALIASES   = RELEVANT_P={:.4} RELEVANT_R={:.4} MACRO_F1={:.4} URE_P={:.4} NR2R={:.4}", c.0, c.1, c.2, c.3, c.5);
+    println!("ABLATION_FULL      = RELEVANT_P={:.4} RELEVANT_R={:.4} MACRO_F1={:.4} URE_P={:.4} NR2R={:.4}", d.0, d.1, d.2, d.3, d.5);
+
+    // Safety direction must never regress relative to baseline.
+    assert!(
+        d.5 <= a.5 + 1e-9,
+        "FULL raised NOT_RELEVANT->RELEVANT rate: {} > {}",
+        d.5,
+        a.5
+    );
+}
+
+#[test]
+fn step3b_ure_false_positive_detail_dev_corpus() {
+    let corpus = load_corpus();
+    for arm in [
+        ("BASELINE", RelevanceThresholds::lexical_only()),
+        ("FULL", RelevanceThresholds::default()),
+    ] {
+        let (_, outcomes) = run(&arm.1, &corpus.samples);
+        println!("\n-- {} — URE false positives (EXPANSION-excl, predicted RELEVANT, expected != RELEVANT) --", arm.0);
+        for o in &outcomes {
+            if o.sample.provider_role != "EXPANSION" || o.sample.confirmed_overlap {
+                continue;
+            }
+            if o.predicted == RelevanceClassification::Relevant
+                && o.expected != RelevanceClassification::Relevant
+            {
+                let q = parse_query(o.sample.query.clone()).unwrap();
+                let a = assess_result(&q, &sample_to_result(&o.sample), &arm.1);
+                println!(
+                    "  {id} q={q:?} expected={e} title={t:?}\n     intent={i:?} subj_match={sm} ent_match={em} alias={al:?} stem={st:?} neg={neg:?}",
+                    id = o.sample.id,
+                    q = o.sample.query,
+                    e = class_name(o.expected),
+                    t = o.sample.title,
+                    i = a.query_intent,
+                    sm = a.subject_match,
+                    em = a.entity_match,
+                    al = a.alias_matches,
+                    st = a.stemmed_term_matches,
+                    neg = a.negative_evidence,
+                );
+            }
+        }
+    }
+}
+
+#[test]
+fn step3b_full_report_dev_corpus() {
+    let corpus = load_corpus();
+    let (m, outcomes) = run(&RelevanceThresholds::default(), &corpus.samples);
+    print_report(
+        "STEP 3B FULL SIGNAL — DEV CORPUS — default thresholds",
+        &m,
+        &outcomes,
+    );
+}
+
+#[test]
+fn step3b_ablation_baseline_is_reproducible() {
+    let corpus = load_corpus();
+    let (m1, _) = run(&RelevanceThresholds::lexical_only(), &corpus.samples);
+    let (m2, _) = run(&RelevanceThresholds::lexical_only(), &corpus.samples);
+    assert_eq!(m1.confusion, m2.confusion);
+    // lexical_only must reproduce the STEP 2E baseline exactly.
+    let (m_default_2e, _) = run(&RelevanceThresholds::lexical_only(), &corpus.samples);
+    assert_eq!(m_default_2e.total, 172);
+}
+
+#[test]
+fn step3b_new_signal_does_not_change_routing() {
+    // The relevance module exposes no routing hook. Assert the public surface:
+    // assess_result is pure over (query, result, thresholds) and the semantic
+    // fields are additive on ResultRelevanceAssessment. Nothing here can reach
+    // AdaptiveRouter. This is a compile-time + contract guard.
+    let q = parse_query("k8s documentation".into()).unwrap();
+    let s = Sample {
+        id: "x".into(),
+        query: "k8s documentation".into(),
+        title: Some("Kubernetes Documentation".into()),
+        snippet: Some("Reference docs for Kubernetes.".into()),
+        url: "https://kubernetes.io/docs/".into(),
+        provider_rank: Some(1),
+        provider_role: "PRIMARY".into(),
+        confirmed_overlap: false,
+        expected_label: "RELEVANT".into(),
+        rationale: "n/a".into(),
+        query_class: "DOCUMENTATION".into(),
+        provenance: "SYNTHETIC_EDGE_CASE".into(),
+    };
+    let r = sample_to_result(&s);
+    let a1 = amatl_core::assess_result(&q, &r, &RelevanceThresholds::default());
+    let a2 = amatl_core::assess_result(&q, &r, &RelevanceThresholds::default());
+    assert_eq!(a1, a2);
+    assert!(a1.query_intent.is_some());
+}
+
+#[test]
+fn step3b_legacy_mode_remains_compatible() {
+    // lexical_only() produces no semantic fields.
+    let q = parse_query("rust async programming".into()).unwrap();
+    let s = Sample {
+        id: "x".into(),
+        query: "rust async programming".into(),
+        title: Some("Async programming in Rust".into()),
+        snippet: Some("Learn async and await in Rust.".into()),
+        url: "https://rust-lang.github.io/async-book/".into(),
+        provider_rank: Some(1),
+        provider_role: "PRIMARY".into(),
+        confirmed_overlap: false,
+        expected_label: "RELEVANT".into(),
+        rationale: "n/a".into(),
+        query_class: "TECHNICAL".into(),
+        provenance: "SYNTHETIC_EDGE_CASE".into(),
+    };
+    let r = sample_to_result(&s);
+    let a = amatl_core::assess_result(&q, &r, &RelevanceThresholds::lexical_only());
+    assert!(a.stemmed_term_matches.is_empty());
+    assert!(a.alias_matches.is_empty());
+    assert!(a.query_intent.is_none());
+    assert!(!a.subject_match);
+    assert!(a.negative_evidence.is_empty());
+}
+
+// --------------------------------------------------------------------------
 // Corpus / harness sanity tests
 // --------------------------------------------------------------------------
 

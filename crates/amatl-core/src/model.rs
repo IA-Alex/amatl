@@ -687,7 +687,7 @@ pub enum RelevanceAssessmentStatus {
 /// Every component that fed the decision is kept explicit and auditable; the
 /// `classification` is a pure function of the other fields plus the
 /// [`crate::relevance::RelevanceThresholds`] in force. No single opaque float.
-#[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq)]
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 pub struct ResultRelevanceAssessment {
     /// Fraction of significant query terms present in the title (`0.0` when no
     /// title text is available).
@@ -710,6 +710,62 @@ pub struct ResultRelevanceAssessment {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub provider_rank_is_top: Option<bool>,
     pub classification: RelevanceClassification,
+
+    // ---- STEP 3B — BOUNDED SEMANTIC RELEVANCE (additive, all optional) ----
+    /// Query terms that matched a result term only after light morphological
+    /// normalization (stemming). Empty / omitted for the pure lexical path.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub stemmed_term_matches: Vec<String>,
+    /// Canonical concept labels evidenced by BOTH the query and the result via
+    /// the versioned alias map.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub alias_matches: Vec<String>,
+    /// Detected query-intent tag (`factual_capital`, `documentation`, …).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub query_intent: Option<String>,
+    /// Content terms of the intent subject, when an intent was detected.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub subject_terms: Vec<String>,
+    /// The intent subject is adequately present in title or snippet.
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub subject_match: bool,
+    /// For entity intents: the queried entity is textually supported.
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub entity_match: bool,
+    /// Itemised negative relevance evidence.
+    #[serde(default, skip_serializing_if = "NegativeRelevanceEvidence::is_empty")]
+    pub negative_evidence: NegativeRelevanceEvidence,
+}
+
+fn is_false(b: &bool) -> bool {
+    !*b
+}
+
+/// STEP 3B — explicit, itemised negative relevance evidence. Never a single
+/// opaque penalty; each field names one unsafe-to-promote condition.
+#[derive(Clone, Copy, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
+pub struct NegativeRelevanceEvidence {
+    /// Query subject terms absent while a different named subject dominates.
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub subject_mismatch: bool,
+    /// A competing entity of the same kind dominates (another "capital", author).
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub entity_mismatch: bool,
+    /// The only overlap was generic / incidental (URL path, one common word).
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub weak_generic_match: bool,
+    /// Query and result name different products within the same family.
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub alias_conflict: bool,
+}
+
+impl NegativeRelevanceEvidence {
+    pub fn is_empty(&self) -> bool {
+        !self.subject_mismatch
+            && !self.entity_mismatch
+            && !self.weak_generic_match
+            && !self.alias_conflict
+    }
 }
 
 #[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq, Eq, Default)]
