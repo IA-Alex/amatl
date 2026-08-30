@@ -1,11 +1,16 @@
-//! STEP 4C — EXPERIMENTAL local-embedding integration boundary.
+//! STEP 4D — EXPERIMENTAL local-embedding integration.
 //!
 //! **This module is compiled only under `--features experimental-local-embeddings`
-//! and is never reachable from the default search path.** It exists so the
-//! Candle feasibility experiment (`experiments/embedding-relevance/`, outside the
-//! workspace) and the STEP 4C end-to-end latency harness have a *stable, typed
-//! seam* to attach to inside `amatl-core`, without any production relevance,
-//! routing, ranking, or telemetry behaviour changing.
+//! and is never reachable from the default search path.** STEP 4C established
+//! the typed seam here; STEP 4D moves the *real* pure-Rust Candle backend into
+//! the workspace behind the same feature (see [`candle`]), adds the optional
+//! model-package config with pinned hashes ([`model_config`]), and the
+//! optimized bounded-K semantic-evaluation pipeline ([`pipeline`]).
+//!
+//! The seam still attaches without any production relevance, routing, ranking,
+//! or telemetry behaviour changing. The real backend is additionally gated on a
+//! valid model package being present; absent/corrupt → bounded-semantic
+//! fallback.
 //!
 //! ## Hard invariants
 //!
@@ -36,6 +41,16 @@
 
 use crate::model::Query;
 use crate::relevance_semantics::SemanticAssessment;
+
+pub mod candle;
+pub mod model_config;
+pub mod pipeline;
+
+pub use candle::CandleBackend;
+pub use model_config::{ModelHashes, ModelPackage, ModelPackageError};
+pub use pipeline::{
+    ExperimentalSemanticConfig, SemanticEvaluation, SemanticEvaluator, DEFAULT_EXPERIMENTAL_K,
+};
 
 /// Why an embedding backend could not produce a vector. Every variant is a
 /// clean, non-panicking outcome that the seam turns into a neutral fallback.

@@ -16,8 +16,11 @@ pub mod document_cache;
 pub mod errors;
 pub mod evidence;
 pub mod execution;
-/// STEP 4C experimental local-embedding integration boundary. Compiled only
-/// under `--features experimental-local-embeddings`; never on the default path.
+/// STEP 4D experimental local-embedding integration: the typed seam, the real
+/// pure-Rust Candle backend, the optional model-package config, and the
+/// optimized bounded-K semantic pipeline. Compiled only under
+/// `--features experimental-local-embeddings`; never on the default path, and
+/// even then only active when a valid model package is present.
 #[cfg(feature = "experimental-local-embeddings")]
 pub mod experimental_embeddings;
 pub mod extract;

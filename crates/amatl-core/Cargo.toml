@@ -13,14 +13,29 @@ keywords = ["search", "metasearch", "aggregator"]
 categories = ["web-programming::http-client", "development-tools"]
 
 [features]
-# STEP 4C — EXPERIMENTAL. Compiles in the local-embedding integration boundary
-# (`experimental_embeddings`). OFF by default. Adds NO dependencies (the real
-# Candle backend stays in `experiments/embedding-relevance/`, outside the
-# workspace); only unlocks the in-workspace seam + the deterministic fixture
-# backend used by the STEP 4C latency harness and failure-mode tests. Enabling
-# it does not change any production relevance / routing / ranking / telemetry
-# behaviour — nothing on the default search path calls into the module.
-experimental-local-embeddings = []
+# STEP 4D — EXPERIMENTAL. Compiles in the local-embedding integration boundary
+# (`experimental_embeddings`) AND the real pure-Rust Candle backend
+# (`experimental_embeddings::candle`). OFF by default.
+#
+# When DISABLED (the default): the module is not compiled, none of the Candle
+# dependencies below are in the dependency graph or the default `cargo build`,
+# and nothing on the search path changes — byte-for-byte identical behaviour.
+#
+# When ENABLED: adds the pure-Rust `candle-core`/`candle-nn`/`candle-transformers`
+# 0.9 stack + `tokenizers` (fancy-regex, no `onig_sys` C dep) + `safetensors` +
+# `memmap2`. Still OFF the default search path unless, additionally, a valid
+# model package is present and a result lands in the ambiguous relevance band.
+# Even then the embedding signal is advisory-only: it can never promote a
+# high-confidence entity/intent contradiction, and it never mutates routing,
+# ranking, telemetry, or provider selection.
+experimental-local-embeddings = [
+    "dep:candle-core",
+    "dep:candle-nn",
+    "dep:candle-transformers",
+    "dep:tokenizers",
+    "dep:safetensors",
+    "dep:memmap2",
+]
 
 [dependencies]
 async-trait.workspace = true
@@ -41,6 +56,17 @@ url.workspace = true
 unicode-normalization.workspace = true
 fs2.workspace = true
 tokio-util.workspace = true
+
+# STEP 4D — real Candle backend, OPTIONAL, only pulled in by
+# `experimental-local-embeddings`. Pure Rust: no C++ runtime, no `-sys` crates,
+# musl-clean. Versions pinned to the STEP 4B feasibility set.
+candle-core = { version = "0.9.2", default-features = false, optional = true }
+candle-nn = { version = "0.9.2", default-features = false, optional = true }
+candle-transformers = { version = "0.9.2", default-features = false, optional = true }
+# `unstable_wasm` selects the pure-Rust `fancy-regex` backend (no `onig_sys`).
+tokenizers = { version = "0.20.4", default-features = false, features = ["unstable_wasm"], optional = true }
+safetensors = { version = "0.7.0", optional = true }
+memmap2 = { version = "0.9", optional = true }
 
 [dev-dependencies]
 axum.workspace = true
