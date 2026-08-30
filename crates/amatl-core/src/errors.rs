@@ -78,7 +78,7 @@ pub enum ErrorCode {
 }
 
 /// Every code in the catalog, in declaration order.
-pub const ERROR_CATALOG: [ErrorCode; 30] = [
+pub const ERROR_CATALOG: &[ErrorCode] = &[
     ErrorCode::InvalidRequest,
     ErrorCode::InvalidQuery,
     ErrorCode::InvalidUrl,
@@ -224,7 +224,8 @@ impl ErrorCode {
     /// Parse a wire identifier back into a catalog entry.
     pub fn from_wire(value: &str) -> Option<Self> {
         ERROR_CATALOG
-            .into_iter()
+            .iter()
+            .copied()
             .find(|code| code.as_str() == value)
     }
 }
@@ -252,7 +253,7 @@ mod tests {
                     .all(|character| character.is_ascii_lowercase() || character == '_'),
                 "non snake_case error code: {value}"
             );
-            assert_eq!(ErrorCode::from_wire(value), Some(code));
+            assert_eq!(ErrorCode::from_wire(value), Some(*code));
         }
     }
 

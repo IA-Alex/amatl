@@ -89,7 +89,7 @@ globalThis.AMATL_LOCALES = {
       serviceHeading: "Estado del servicio",
       serviceOk: "Servicio operativo.",
       serviceDegraded: "Servicio degradado; revisa los indicadores.",
-      serviceUnknown: "Estado del servicio no disponible.",
+
       storageLabel: "Almacenamiento local",
       storageOn: "Activo",
       storageOff: "Desactivado",
@@ -112,7 +112,7 @@ globalThis.AMATL_LOCALES = {
       // History panel
       historyHeading: "Historial de búsquedas",
       historyEmpty: "Aún no hay búsquedas registradas.",
-      historyDisabled: "El historial requiere persistencia local activa.",
+
       historyReuse: "Reutilizar",
       historyDelete: "Eliminar",
       historyPurge: "Borrar historial",
@@ -121,13 +121,13 @@ globalThis.AMATL_LOCALES = {
       // Saved documents panel
       savedHeading: "Documentos guardados",
       savedEmpty: "Todavía no guardas documentos.",
-      savedDisabled: "Guardar documentos requiere persistencia local activa.",
+
       savedAction: "Guardar",
       savedDone: "Documento guardado.",
       savedFailed: "No fue posible guardar el documento.",
       savedDelete: "Eliminar",
       savedDeleted: "Documento eliminado.",
-      refresh: "Actualizar",
+
       // Server clients panel (admin scope only)
       clientsHeading: "Clientes y tokens",
       clientsEmpty: "No hay clientes declarados.",
@@ -238,7 +238,7 @@ globalThis.AMATL_LOCALES = {
       serviceHeading: "Service state",
       serviceOk: "Service operating normally.",
       serviceDegraded: "Service degraded; check the indicators.",
-      serviceUnknown: "Service state unavailable.",
+
       storageLabel: "Local storage",
       storageOn: "Active",
       storageOff: "Disabled",
@@ -261,7 +261,7 @@ globalThis.AMATL_LOCALES = {
       // History panel
       historyHeading: "Search history",
       historyEmpty: "No searches recorded yet.",
-      historyDisabled: "History requires local persistence to be enabled.",
+
       historyReuse: "Reuse",
       historyDelete: "Delete",
       historyPurge: "Clear history",
@@ -270,13 +270,13 @@ globalThis.AMATL_LOCALES = {
       // Saved documents panel
       savedHeading: "Saved documents",
       savedEmpty: "You have not saved any document yet.",
-      savedDisabled: "Saving documents requires local persistence to be enabled.",
+
       savedAction: "Save",
       savedDone: "Document saved.",
       savedFailed: "The document could not be saved.",
       savedDelete: "Delete",
       savedDeleted: "Document deleted.",
-      refresh: "Refresh",
+
       // Server clients panel (admin scope only)
       clientsHeading: "Clients & tokens",
       clientsEmpty: "No clients declared.",

@@ -423,7 +423,7 @@ def _read_and_validate_searxng_fixture(fixture: Path) -> bytes:
         enabled = config["providers"]["enabled"]
     except (OSError, UnicodeDecodeError, tomllib.TOMLDecodeError, KeyError, TypeError) as error:
         raise PlanAbort("ABORT:INVALID_SEARXNG_FIXTURE") from error
-    if enabled != ["searxng"] or "marginalia" in config.get("providers", {}):
+    if enabled != ["searxng"] or "marginalia" in config.get("providers", {}).get("enabled", []):
         raise PlanAbort("ABORT:INVALID_SEARXNG_FIXTURE")
     return raw
 

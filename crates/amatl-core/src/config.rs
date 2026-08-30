@@ -6,6 +6,7 @@ use crate::ranking_v2::RankingV2Policy;
 use serde::{Deserialize, Serialize};
 use std::path::Path;
 use thiserror::Error;
+use time::Date;
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 #[serde(default)]
@@ -950,43 +951,23 @@ fn present(value: &Option<String>) -> bool {
         .is_some_and(|value| !value.trim().is_empty())
 }
 
-fn current_utc_day() -> i64 {
+fn epoch_days() -> i64 {
     std::time::SystemTime::now()
         .duration_since(std::time::UNIX_EPOCH)
         .map(|duration| (duration.as_secs() / 86_400) as i64)
         .unwrap_or(i64::MAX)
 }
 
+fn current_utc_day() -> i64 {
+    let epoch =
+        time::Date::from_calendar_date(1970, time::Month::January, 1).unwrap_or(time::Date::MIN);
+    epoch_days().saturating_add(epoch.to_julian_day() as i64)
+}
+
 fn day_from_iso_date(value: &str) -> Option<i64> {
-    let mut parts = value.split('-');
-    let year = parts.next()?.parse::<i64>().ok()?;
-    let month = parts.next()?.parse::<i64>().ok()?;
-    let day = parts.next()?.parse::<i64>().ok()?;
-    if parts.next().is_some() || !(1..=12).contains(&month) {
-        return None;
-    }
-    let leap = year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
-    let max_day = match month {
-        1 | 3 | 5 | 7 | 8 | 10 | 12 => 31,
-        4 | 6 | 9 | 11 => 30,
-        2 if leap => 29,
-        2 => 28,
-        _ => return None,
-    };
-    if !(1..=max_day).contains(&day) {
-        return None;
-    }
-    let adjusted_year = year - i64::from(month <= 2);
-    let era = if adjusted_year >= 0 {
-        adjusted_year
-    } else {
-        adjusted_year - 399
-    } / 400;
-    let year_of_era = adjusted_year - era * 400;
-    let shifted_month = month + if month > 2 { -3 } else { 9 };
-    let day_of_year = (153 * shifted_month + 2) / 5 + day - 1;
-    let day_of_era = year_of_era * 365 + year_of_era / 4 - year_of_era / 100 + day_of_year;
-    Some(era * 146_097 + day_of_era - 719_468)
+    Date::parse(value, &time::format_description::well_known::Iso8601::DATE)
+        .ok()
+        .map(|date| date.to_julian_day() as i64)
 }
 
 impl Default for ProviderRuntimeConfig {

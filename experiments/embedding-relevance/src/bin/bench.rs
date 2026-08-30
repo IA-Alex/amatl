@@ -38,7 +38,8 @@ fn main() -> anyhow::Result<()> {
             .map(|n| n.get())
             .unwrap_or(0)
     );
-    println!("RSS_BEFORE_KB = {:?}", rss_kb());
+    let rss_before = rss_kb();
+    println!("RSS_BEFORE_KB = {rss_before:?}");
 
     let load_start = Instant::now();
     let backend: FastembedBackend = if which == "minilm" {
@@ -54,9 +55,8 @@ fn main() -> anyhow::Result<()> {
     println!("EMBEDDING_DIMENSION = {}", backend.dim());
     println!("MODEL_LOAD_TIME_MS = {load_ms:.1}");
     println!("RSS_AFTER_LOAD_KB = {rss_after:?}");
-    if let (Some(a), Some(b)) = (rss_kb(), rss_after) {
-        let _ = a;
-        println!("RSS_DELTA_MB = {:.1}", (b as f64) / 1024.0);
+    if let (Some(before), Some(after)) = (rss_before, rss_after) {
+        println!("RSS_DELTA_MB = {:.1}", (after.saturating_sub(before)) as f64 / 1024.0);
     }
 
     // Load real query/doc strings from the consumed diagnostic corpus.

@@ -130,9 +130,8 @@ impl AppState {
         // Credentials are part of the reloaded configuration: rotating a token
         // or retiring a client must not need a restart either. Rebuilt before
         // the swap so a bad credential set changes nothing.
-        let security =
-            resolve_clients(replacement_config_ref(&config), self.explicit_token.clone())
-                .map_err(|_| ServiceError::Configuration)?;
+        let security = resolve_clients(&config, self.explicit_token.clone())
+            .map_err(|_| ServiceError::Configuration)?;
         let clients = security
             .iter()
             .map(|client| client.id.clone())
@@ -189,12 +188,6 @@ impl AppState {
         );
         Ok(report)
     }
-}
-
-/// Borrow helper that keeps the reload readable: the configuration is moved
-/// into the rebuild, so credentials are resolved from it first.
-fn replacement_config_ref(config: &amatl_core::Config) -> &amatl_core::Config {
-    config
 }
 
 /// What a successful reload put in place.
