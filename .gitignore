@@ -25,3 +25,6 @@ AMATL_documentado.docx
 amatl.backup-*.sqlite3
 amatl.log
 amatl_logo.png~
+# AUDIT-04: Python bytecode is a build artifact, never source material.
+**/__pycache__/
+*.py[co]
