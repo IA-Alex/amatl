@@ -659,7 +659,7 @@ async fn request_timeout_cancels_a_slow_handler() {
     let app = Router::new()
         .route(
             "/slow",
-            get(|| async {
+            axum::routing::get(|| async {
                 tokio::time::sleep(Duration::from_millis(100)).await;
                 StatusCode::OK
             }),
@@ -4224,53 +4224,24 @@ fn openapi_covers_every_router_operation() {
     // router. The endpoint-specific request/response contracts are documented
     // in the same file; this guard specifically prevents a route or method
     // from being omitted altogether.
-    let openapi = include_str!("../../../docs/api/openapi.yaml");
-    let operations = [
-        ("/search", &["get", "post"][..]),
-        ("/deep", &["get", "post"][..]),
-        ("/answer", &["post", "patch"][..]),
-        ("/providers", &["get"][..]),
-        ("/status", &["get"][..]),
-        ("/history", &["get", "delete"][..]),
-        ("/history/{id}", &["delete"][..]),
-        ("/saved", &["get", "post"][..]),
-        ("/saved/{id}", &["delete"][..]),
-        ("/reload", &["post"][..]),
-        ("/answer/enabled", &["post"][..]),
-        ("/providers/{name}/enabled", &["post"][..]),
-        ("/providers/{name}", &["get", "patch"][..]),
-        ("/inference", &["patch"][..]),
-        ("/server/clients", &["get", "post"][..]),
-        ("/server/clients/{id}", &["patch", "delete"][..]),
-        ("/server/clients/{id}/rotate", &["post"][..]),
-        ("/server/pending-config", &["get", "patch"][..]),
-        ("/data-policy", &["post"][..]),
-        ("/policies", &["get"][..]),
-        ("/policies/{name}", &["patch"][..]),
-        ("/persistence", &["get", "patch"][..]),
-        ("/persistence/backups", &["get"][..]),
-        ("/persistence/backup", &["post"][..]),
-        ("/circuits", &["get"][..]),
-        ("/circuits/reset", &["post"][..]),
-        ("/telemetry", &["get", "patch"][..]),
-        ("/deep/limits", &["get", "patch"][..]),
-        ("/deep/extractor", &["patch"][..]),
-        ("/deep/renderer", &["patch"][..]),
-        ("/security-events", &["get"][..]),
-        ("/health", &["get"][..]),
-        ("/ready", &["get"][..]),
-        ("/metrics", &["get"][..]),
-    ];
+    use crate::routes::all_routes;
 
-    for (path, methods) in operations {
+    let openapi = include_str!("../../../docs/api/openapi.yaml");
+    let routes = all_routes();
+
+    for route in routes {
         let (_, section) = openapi
-            .split_once(&format!("  {path}:\n"))
-            .unwrap_or_else(|| panic!("OpenAPI omite la ruta {path}"));
+            .split_once(&format!("  {}:\n", route.path))
+            .unwrap_or_else(|| panic!("OpenAPI omite la ruta {}", route.path));
         let section = section.split("\n  /").next().unwrap();
-        for method in methods {
+
+        for method in route.methods {
+            let method_str = format!("{:?}", method).to_lowercase();
             assert!(
-                section.contains(&format!("    {method}:")),
-                "OpenAPI omite {method} {path}"
+                section.contains(&format!("    {}:", method_str)),
+                "OpenAPI omite {} {}",
+                method_str,
+                route.path
             );
         }
     }

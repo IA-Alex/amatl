@@ -1,6 +1,7 @@
 //! Hardened HTTP API, UI hosting and MCP Streamable HTTP surface for AMATL.
 
 mod mcp;
+mod routes;
 
 use amatl_core::{
     AmatlService, ConfigError, ErrorCode, Scope, ServiceError, ServiceSurface, MCP_TOOLS,
@@ -22,7 +23,6 @@ use axum::{
     },
     middleware::{self, Next},
     response::{IntoResponse, Response},
-    routing::{delete, get, post},
     Json, Router,
 };
 use rand::RngCore;
@@ -619,65 +619,7 @@ pub async fn build_router_with_reload(
     let reload_handle = ReloadHandle {
         state: state.clone(),
     };
-    let router = Router::new()
-        .route("/search", get(search).post(search_post))
-        .route("/deep", get(deep).post(deep_post))
-        .route("/answer", post(answer_post).patch(update_answer_fields))
-        .route("/providers", get(providers))
-        .route("/status", get(status))
-        .route("/history", get(history).delete(purge_history))
-        .route("/history/{id}", delete(delete_history_entry))
-        .route("/saved", get(saved_documents).post(save_document))
-        .route("/saved/{id}", delete(delete_saved_document))
-        .route("/reload", axum::routing::post(reload))
-        .route("/answer/enabled", post(answer_toggle))
-        .route("/providers/{name}/enabled", post(provider_toggle))
-        .route(
-            "/providers/{name}",
-            get(provider_record).patch(update_provider_record),
-        )
-        .route("/inference", axum::routing::patch(update_inference))
-        .route(
-            "/server/clients",
-            get(list_server_clients).post(create_server_client),
-        )
-        .route(
-            "/server/clients/{id}",
-            axum::routing::patch(update_server_client).delete(delete_server_client),
-        )
-        .route(
-            "/server/clients/{id}/rotate",
-            post(rotate_server_client_token),
-        )
-        .route(
-            "/server/pending-config",
-            get(server_pending_config).patch(update_server_pending_config),
-        )
-        .route("/data-policy", post(data_policy_update))
-        .route("/policies", get(policies))
-        .route("/policies/{name}", axum::routing::patch(update_policy))
-        .route(
-            "/persistence",
-            get(persistence_config).patch(update_persistence),
-        )
-        .route("/persistence/backups", get(list_backups))
-        .route("/persistence/backup", post(create_backup))
-        .route("/circuits", get(circuits))
-        .route("/circuits/reset", post(reset_circuits))
-        .route("/telemetry", get(telemetry_config).patch(update_telemetry))
-        // Not `/deep` — that path is already `GET`/`POST` for the domain
-        // deep-fetch surface (see above). Configuration for it lives at
-        // `/deep/limits` and below so the two never collide.
-        .route("/deep/limits", get(deep_config).patch(update_deep))
-        .route(
-            "/deep/extractor",
-            axum::routing::patch(update_deep_extractor),
-        )
-        .route("/deep/renderer", axum::routing::patch(update_deep_renderer))
-        .route("/security-events", get(security_events))
-        .route("/health", get(health))
-        .route("/ready", get(ready))
-        .route("/metrics", get(metrics))
+    let router = routes::register_public_routes(Router::new())
         .nest_service("/mcp", mcp_service)
         .fallback(static_asset)
         .with_state(state.clone())
