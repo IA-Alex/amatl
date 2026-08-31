@@ -214,6 +214,10 @@ mod tests {
         assert!(!javascript.contains("serverPagination"));
         assert!(!javascript.contains("state.items.slice"));
         assert!(javascript.contains("body.page_size = PAGE_SIZE"));
+        assert!(html.contains("id=\"deep-max-fetches\""));
+        assert!(html.contains("deep-target-checkbox"));
+        assert!(javascript.contains("body.targets = selectedTargets"));
+        assert!(javascript.contains("body.max_fetches = Number(deepMaxFetchesInput.value)"));
         assert!(javascript.contains("payload.total_results"));
         assert!(javascript.contains("payload.status === \"partial_success\""));
         assert!(javascript.contains("result.canonical_url"));

@@ -211,6 +211,58 @@ async fn enriches_search_result_without_changing_search_contract() {
 }
 
 #[tokio::test]
+async fn shared_deep_budget_stops_selected_candidates_and_keeps_provenance() {
+    let mut first = result();
+    first.providers = vec!["selected-provider".into()];
+    let mut second = result();
+    second.canonical_url = CanonicalUrl(Url::parse("https://example.com/second").unwrap());
+    second.original_url = OriginalUrl(Url::parse("https://example.com/second").unwrap());
+    second.rank = Rank::new(2).unwrap();
+    let mut deep = DeepOrchestrator::new(
+        DeepBudget::new(1, 1024, 2, 1, 2, 1000),
+        Arc::new(FixedFetcher(Ok(fetch_ok()))),
+        Arc::new(FixedExtractor {
+            version: "fixed-v1",
+            result: Ok(extraction_ok()),
+        }),
+        RendererPool::new(Arc::new(NoRenderer), 1),
+        None,
+        1000,
+        1024,
+        2,
+        2,
+        0,
+    );
+    let output = deep
+        .enrich(request(vec![
+            DeepCandidate {
+                result: first,
+                storage_rights: false,
+            },
+            DeepCandidate {
+                result: second,
+                storage_rights: false,
+            },
+        ]))
+        .await;
+    assert_eq!(output.documents.len(), 1);
+    assert_eq!(output.evidence.len(), 1);
+    assert_eq!(
+        output.evidence[0].document_id,
+        output.documents[0].search_result_id
+    );
+    assert_eq!(
+        output.documents[0].metadata.get("search_providers"),
+        Some(&"selected-provider".into())
+    );
+    assert!(output
+        .degradations
+        .iter()
+        .any(|degradation| degradation.code == "fetch_limit"));
+    assert_eq!(deep.budget_snapshot().remaining_fetches, 0);
+}
+
+#[tokio::test]
 async fn ranking_v2_runs_only_inside_deep_after_benchmark_gate() {
     let mut deep = orchestrator(Ok(fetch_ok()), Ok(extraction_ok()))
         .with_ranking_v2(RankingV2Engine::new(RankingV2Policy::default()).unwrap());

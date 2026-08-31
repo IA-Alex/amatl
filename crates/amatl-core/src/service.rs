@@ -4,18 +4,19 @@ use crate::circuit::{CircuitSnapshot, ProviderCircuit};
 use crate::storage::{CacheStats, SavedDocument, SearchHistoryEntry};
 use crate::telemetry::{now_unix, ProviderValueSnapshot};
 use crate::{
-    parse_query, Answer, AnswerError, Budget, CachedProvider, ChromiumRenderer, CompletionBackend,
-    Config, DeepBudget, DeepCandidate, DeepOrchestrator, DeepRequest, DeepResponse, DocumentCache,
-    DocumentCachePolicy, ErrorCode, FallbackExtractor, GapAnalyzer, InMemoryTelemetry,
-    InferenceRuntime, MockProvider, NativeHtmlExtractor, Provider, ProviderAvailability,
-    ProviderBuildContext, ProviderCapabilities, ProviderItem, ProviderRegistry,
-    ProviderRuntimeConfig, ProviderSearchCache, ProviderSearchCachePolicy, Query, Rank,
-    RankingV2Engine, RemoteCompletionBackend, RendererPool, ReqwestTransport, RoleAssignment,
-    SafeFetcher, SearchOrchestrator, SearchPlan, SearchResponse, SearchSubQueryExecutor,
-    SqliteStorage, StorageError, TrafilaturaExtractor, SCHEMA_VERSION,
+    parse_query, Answer, AnswerError, Budget, CachedProvider, CanonicalUrl, ChromiumRenderer,
+    CompletionBackend, Config, DeepBudget, DeepCandidate, DeepOrchestrator, DeepRequest,
+    DeepResponse, DocumentCache, DocumentCachePolicy, ErrorCode, FallbackExtractor, GapAnalyzer,
+    InMemoryTelemetry, InferenceRuntime, MockProvider, NativeHtmlExtractor, Provider,
+    ProviderAvailability, ProviderBuildContext, ProviderCapabilities, ProviderItem,
+    ProviderRegistry, ProviderRuntimeConfig, ProviderSearchCache, ProviderSearchCachePolicy, Query,
+    Rank, RankingV2Engine, RemoteCompletionBackend, RendererPool, ReqwestTransport, RoleAssignment,
+    SafeFetcher, SearchOrchestrator, SearchPlan, SearchResponse, SearchResult,
+    SearchSubQueryExecutor, SqliteStorage, StorageError, TrafilaturaExtractor, SCHEMA_VERSION,
 };
 use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
+use std::collections::{BTreeMap, BTreeSet};
 use std::sync::Arc;
 use thiserror::Error;
 
@@ -135,6 +136,19 @@ pub struct SearchExecution {
     pub response: SearchResponse,
 }
 
+/// One Search result explicitly selected by a Deep caller.
+///
+/// This deliberately accepts only identity and provenance already exposed by
+/// `SearchResult`; Deep always performs the network acquisition itself.
+#[derive(Clone, Debug, Deserialize, Serialize, PartialEq, Eq)]
+#[serde(deny_unknown_fields)]
+pub struct DeepTarget {
+    pub url: String,
+    #[serde(default)]
+    pub title: Option<String>,
+    pub provider: String,
+}
+
 /// Output of [`AmatlService::answer`]: the search AMATL ran plus the grounded
 /// synthesis on top of it, kept separate on purpose so a caller always has
 /// the raw results even when it only wants the summary.
@@ -211,6 +225,17 @@ impl ServiceError {
             Self::InvalidInput => ErrorCode::InvalidRequest,
             Self::AnswerUnavailable => ErrorCode::AnswerUnavailable,
         }
+    }
+}
+
+fn validate_deep_fetch_cap(
+    requested: Option<u32>,
+    configured_maximum: u32,
+) -> Result<(), ServiceError> {
+    if requested.is_some_and(|value| value == 0 || value > configured_maximum) {
+        Err(ServiceError::InvalidInput)
+    } else {
+        Ok(())
     }
 }
 
@@ -738,11 +763,164 @@ impl AmatlService {
         raw_query: String,
         surface: ServiceSurface,
     ) -> Result<DeepResponse, ServiceError> {
+        self.deep_with_fetch_cap(raw_query, None, surface).await
+    }
+
+    /// Run the legacy Search-backed Deep flow with an optional request cap.
+    /// The cap can only narrow the configured surface budget.
+    pub async fn deep_with_fetch_cap(
+        &self,
+        raw_query: String,
+        max_fetches: Option<u32>,
+        surface: ServiceSurface,
+    ) -> Result<DeepResponse, ServiceError> {
+        let limits = ExecutionLimits::for_surface(&self.config, surface.clone());
+        validate_deep_fetch_cap(max_fetches, limits.deep_max_fetches)?;
         let search = self
             .search_inner(raw_query, surface.clone(), None, None)
             .await?;
+        self.deep_from_search(search, max_fetches, surface).await
+    }
+
+    /// Run Deep from explicit Search-result identities without re-running
+    /// Search. Targets are canonicalized and deduplicated before they reach
+    /// the shared Deep budget owner.
+    pub async fn deep_selected(
+        &self,
+        raw_query: String,
+        targets: Vec<DeepTarget>,
+        max_fetches: Option<u32>,
+        surface: ServiceSurface,
+    ) -> Result<DeepResponse, ServiceError> {
+        let limits = ExecutionLimits::for_surface(&self.config, surface.clone());
+        validate_deep_fetch_cap(max_fetches, limits.deep_max_fetches)?;
+        if targets.is_empty() || targets.len() > self.config.deep.top_k as usize {
+            return Err(ServiceError::InvalidInput);
+        }
+
+        let query = parse_query(raw_query).map_err(|_| ServiceError::InvalidQuery)?;
+        let mut seen = BTreeSet::new();
+        let mut candidates = Vec::new();
+        for target in targets {
+            if target.provider.is_empty()
+                || target.provider.len() > 128
+                || target.title.as_ref().is_some_and(|title| title.len() > 512)
+                || !self.target_provider_is_valid(&target.provider)
+            {
+                return Err(ServiceError::InvalidInput);
+            }
+            let url = crate::security::validate_search_url(&target.url)
+                .map_err(|_| ServiceError::InvalidInput)?;
+            let canonicalized = crate::canonical::canonicalize(crate::NormalizedResult {
+                schema_version: SCHEMA_VERSION.into(),
+                title: target.title.clone(),
+                raw_url: target.url,
+                url: crate::OriginalUrl(url),
+                provider: target.provider.clone(),
+                provider_rank: None,
+                snippet: None,
+                result_type: crate::ResultType::Organic,
+                published_at: None,
+                author: None,
+                language: None,
+                file_type: None,
+                thumbnail: None,
+                metadata: BTreeMap::new(),
+                provenance: BTreeMap::new(),
+                degradations: vec![],
+            });
+            let original_url = canonicalized.original_url;
+            let canonical = canonicalized.canonical_url;
+            if !seen.insert(canonical.0.as_str().to_owned()) {
+                continue;
+            }
+            let rank =
+                Rank::new(candidates.len() as u32 + 1).map_err(|_| ServiceError::InvalidInput)?;
+            let storage_rights =
+                !self.mock && self.config.providers.storage_rights(&target.provider);
+            candidates.push(DeepCandidate {
+                result: SearchResult {
+                    schema_version: SCHEMA_VERSION.into(),
+                    rank,
+                    title: target.title,
+                    original_url,
+                    domain: canonical
+                        .0
+                        .host_str()
+                        .ok_or(ServiceError::InvalidInput)?
+                        .to_owned(),
+                    canonical_url: CanonicalUrl(canonical.0),
+                    snippet: None,
+                    providers: vec![target.provider],
+                    published_at: None,
+                    status: crate::ResultStatus::Visible,
+                },
+                storage_rights,
+            });
+        }
+        if candidates.is_empty() {
+            return Err(ServiceError::InvalidInput);
+        }
+
+        let mut planning_budget = Budget::new(limits.max_provider_calls, limits.search_timeout_ms);
+        let plan = crate::planning::build_search_plan(
+            query.clone(),
+            crate::classify(&query),
+            crate::router::RoutingRecommendation {
+                selected_providers: vec![],
+                provider_budget_requests: BTreeMap::new(),
+                debug_reasons: vec!["selected_search_targets".into()],
+            },
+            &mut planning_budget,
+        );
+        let response = SearchResponse {
+            schema_version: SCHEMA_VERSION.into(),
+            query: query.raw_query.clone(),
+            status: crate::SearchStatus::Success,
+            results: candidates
+                .iter()
+                .map(|candidate| candidate.result.clone())
+                .collect(),
+            providers_used: vec![],
+            providers_failed: vec![],
+            providers_partial: vec![],
+            errors: vec![],
+            degradations: vec![],
+            elapsed_ms: 0,
+            total_results: None,
+            page: None,
+            page_size: None,
+            complementarity: None,
+        };
+        self.deep_from_search(
+            SearchExecution {
+                query,
+                plan,
+                response,
+            },
+            max_fetches,
+            surface,
+        )
+        .await
+    }
+
+    fn target_provider_is_valid(&self, provider: &str) -> bool {
+        (self.mock
+            && mock_providers()
+                .iter()
+                .any(|source| source.name() == provider))
+            || (self.config.providers.is_declared(provider) && self.registry.contains(provider))
+    }
+
+    async fn deep_from_search(
+        &self,
+        search: SearchExecution,
+        request_max_fetches: Option<u32>,
+        surface: ServiceSurface,
+    ) -> Result<DeepResponse, ServiceError> {
         let history_execution = search.clone();
         let limits = ExecutionLimits::for_surface(&self.config, surface.clone());
+        let effective_max_fetches = request_max_fetches.unwrap_or(limits.deep_max_fetches);
         let document_cache = self.storage.clone().and_then(|storage| {
             self.config.cache.document.enabled.then(|| {
                 DocumentCache::new(
@@ -785,7 +963,7 @@ impl AmatlService {
             .deep_timeout_ms
             .saturating_sub(search.response.elapsed_ms);
         let deep_budget = DeepBudget::new(
-            limits.deep_max_fetches,
+            effective_max_fetches,
             limits.deep_max_bytes,
             self.config.deep.max_redirects,
             self.config.deep.renderer.max_browser_calls,
@@ -809,7 +987,7 @@ impl AmatlService {
             self.renderer_pool.clone(),
             document_cache,
             remaining_deep_ms,
-            (limits.deep_max_bytes / u64::from(limits.deep_max_fetches)).max(1),
+            (limits.deep_max_bytes / u64::from(effective_max_fetches)).max(1),
             self.config.deep.max_redirects,
             self.config.deep.top_k as usize,
             self.config.deep.max_depth,
@@ -1560,6 +1738,21 @@ fn mock_providers() -> Vec<Arc<dyn Provider>> {
 mod tests {
     use super::*;
     use crate::ProviderFactory;
+
+    #[test]
+    fn request_fetch_cap_only_narrows_the_configured_budget() {
+        assert!(validate_deep_fetch_cap(None, 10).is_ok());
+        assert!(validate_deep_fetch_cap(Some(3), 10).is_ok());
+        assert!(validate_deep_fetch_cap(Some(10), 10).is_ok());
+        assert_eq!(
+            validate_deep_fetch_cap(Some(11), 10),
+            Err(ServiceError::InvalidInput)
+        );
+        assert_eq!(
+            validate_deep_fetch_cap(Some(0), 10),
+            Err(ServiceError::InvalidInput)
+        );
+    }
 
     /// Same registered name as [`ArchiveFactory`], but the source always fails,
     /// so the breaker has something real to trip on.

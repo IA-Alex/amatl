@@ -88,13 +88,13 @@ paths:
         '504': { $ref: '#/components/responses/RequestTimeout' }
     post:
       operationId: deepPost
-      summary: Run bounded Deep enrichment using a JSON body
+      summary: Run bounded Deep enrichment using a JSON body or selected Search targets
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/QueryInput'
+              $ref: '#/components/schemas/DeepInput'
       responses:
         '200':
           description: Deep response, including partial documents and degradations
@@ -797,6 +797,36 @@ components:
           type: integer
           minimum: 1
           maximum: 100
+    DeepInput:
+      type: object
+      additionalProperties: false
+      required: [q]
+      properties:
+        q:
+          type: string
+          minLength: 1
+          maxLength: 2048
+        targets:
+          type: array
+          minItems: 1
+          description: >-
+            Optional selected Search results. Deep canonicalizes and fetches
+            these URLs itself; clients cannot submit document content.
+          items: { $ref: '#/components/schemas/DeepTarget' }
+        max_fetches:
+          type: integer
+          minimum: 1
+          description: >-
+            Optional request cap. It may narrow but never exceed the server's
+            configured Deep fetch limit.
+    DeepTarget:
+      type: object
+      additionalProperties: false
+      required: [url, provider]
+      properties:
+        url: { type: string, format: uri }
+        title: { type: [string, 'null'], maxLength: 512 }
+        provider: { type: string, maxLength: 128 }
     HealthResponse:
       type: object
       additionalProperties: false

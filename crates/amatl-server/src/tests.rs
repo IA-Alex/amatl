@@ -267,6 +267,69 @@ async fn deep_post_exposes_evidence_contract_without_a_local_file_route() {
 }
 
 #[tokio::test]
+async fn deep_post_accepts_selected_targets_and_request_fetch_caps() {
+    let application = isolated_app().await;
+    let response = application
+        .clone()
+        .oneshot(
+            authorized("/deep")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(
+                    json!({
+                        "q": "rust",
+                        "targets": [
+                            {
+                                "url": "https://example.com/rust?utm_source=search",
+                                "title": "Rust",
+                                "provider": "mock-a"
+                            },
+                            {
+                                "url": "https://example.com/rust",
+                                "title": "Duplicate",
+                                "provider": "mock-a"
+                            }
+                        ],
+                        "max_fetches": 2
+                    })
+                    .to_string(),
+                ))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+    let body = json_body(response).await;
+    // Isolated mode rejects egress, but the single error proves the canonical
+    // duplicate was removed before Deep attempted acquisition.
+    assert_eq!(body["errors"].as_array().unwrap().len(), 1);
+    assert_eq!(body["errors"][0]["providers"][0], "mock-a");
+
+    for body in [
+        json!({"q": "rust", "max_fetches": 0}),
+        json!({"q": "rust", "max_fetches": 11}),
+        json!({"q": "rust", "targets": [{"url": "file:///etc/passwd", "provider": "mock-a"}]}),
+    ] {
+        let response = application
+            .clone()
+            .oneshot(
+                authorized("/deep")
+                    .method(Method::POST)
+                    .header(CONTENT_TYPE, "application/json")
+                    .body(Body::from(body.to_string()))
+                    .unwrap(),
+            )
+            .await
+            .unwrap();
+        assert_eq!(response.status(), StatusCode::BAD_REQUEST);
+        assert_eq!(
+            json_body(response).await["error"]["code"],
+            "invalid_request"
+        );
+    }
+}
+
+#[tokio::test]
 async fn host_and_origin_are_explicitly_validated() {
     let invalid_host = app()
         .await

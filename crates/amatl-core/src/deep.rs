@@ -409,6 +409,13 @@ impl DeepOrchestrator {
             if let Some(last_modified) = fetched.headers_safe.get("last-modified") {
                 metadata.insert("http_last_modified".into(), last_modified.clone());
             }
+            // The Document keeps the Search-result provenance that authorized
+            // this Deep acquisition. Evidence remains document-grounded and
+            // does not interpret this metadata.
+            metadata.insert(
+                "search_providers".into(),
+                candidate.result.providers.join(","),
+            );
             let document = Document {
                 schema_version: SCHEMA_VERSION.into(),
                 search_result_id: result_id,

@@ -228,6 +228,9 @@ button[data-active="true"] { box-shadow: 0 0 0 0.125rem var(--cyan); }
 .theme-toggle svg.is-active { display: block; }
 
 .filters { margin-top: 0.8rem; color: var(--secondary); }
+.deep-options { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.7rem; color: var(--secondary); font-size: 0.78rem; }
+.deep-options label { font-size: 0.75rem; }
+.deep-options input { width: 11rem; }
 .filters summary { width: fit-content; cursor: pointer; font-size: 0.85rem; }
 .filter-grid {
   display: grid;
@@ -267,6 +270,8 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 .results { min-width: 0; margin: 1rem 0 0; padding: 0; list-style: none; }
 .result-card { min-width: 0; padding: 1.2rem 0; border-top: 0.0625rem solid var(--border); }
 .result-card:last-child { border-bottom: 0.0625rem solid var(--border); }
+.deep-target-select { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--secondary); font-size: 0.75rem; cursor: pointer; }
+.deep-target-select input { width: auto; }
 .result-card h3 { margin: 0.25rem 0 0.45rem; font-size: clamp(1.0625rem, 3vw, 1.125rem); line-height: 1.35; }
 .result-title { color: var(--accent); text-decoration: none; }
 .result-title:hover { text-decoration: underline; text-underline-offset: 0.2rem; }

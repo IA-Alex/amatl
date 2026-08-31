@@ -146,7 +146,7 @@ pub use router::{
 };
 pub use service::{
     validate_provider_canary, validate_provider_canary_with, AmatlService, AnswerResult,
-    AnswerStatus, CacheStatus, DataPolicyStatus, ExecutionLimits, ProviderCanaryError,
+    AnswerStatus, CacheStatus, DataPolicyStatus, DeepTarget, ExecutionLimits, ProviderCanaryError,
     ProviderSummary, ProviderSurfaceStatus, SaveDocumentInput, SearchExecution, ServiceError,
     ServiceStatus, ServiceSurface, ServiceSurfaceKind, SourceStatus, StorageStatus,
 };

@@ -52,6 +52,10 @@
               <button id="answer-button" class="secondary-action is-unavailable" type="submit" data-mode="answer" aria-disabled="true">Resumen con IA</button>
             </div>
           </div>
+          <div class="deep-options">
+            <label for="deep-max-fetches">Máximo de recuperaciones para Deep (opcional)</label>
+            <input id="deep-max-fetches" type="number" min="1" max="1000" step="1" inputmode="numeric" placeholder="Límite del servidor">
+          </div>
           <p id="answer-hint" class="field-help" hidden></p>
           <details class="filters">
             <summary id="filters-summary">Filtros y acceso</summary>
@@ -176,6 +180,10 @@
 
     <template id="result-template">
       <li class="result-card">
+        <label class="deep-target-select">
+          <input type="checkbox" class="deep-target-checkbox">
+          <span>Seleccionar para Deep</span>
+        </label>
         <span class="result-index" hidden></span>
         <p class="result-url"></p>
         <h3><a class="result-title" rel="noopener noreferrer"></a></h3>

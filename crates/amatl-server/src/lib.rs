@@ -4,8 +4,8 @@ mod mcp;
 mod routes;
 
 use amatl_core::{
-    AmatlService, ConfigError, ErrorCode, Scope, ServiceError, ServiceSurface, MCP_TOOLS,
-    SCHEMA_VERSION,
+    AmatlService, ConfigError, DeepTarget, ErrorCode, Scope, ServiceError, ServiceSurface,
+    MCP_TOOLS, SCHEMA_VERSION,
 };
 use amatl_ui::{asset, security_headers};
 use axum::{
@@ -518,6 +518,18 @@ struct SearchParams {
     page_size: Option<u32>,
 }
 
+/// POST-only Deep extension. `targets` carries no content: it identifies
+/// already displayed Search results, while Deep owns all retrieval.
+#[derive(Debug, Deserialize)]
+#[serde(deny_unknown_fields)]
+struct DeepParams {
+    q: String,
+    #[serde(default)]
+    targets: Option<Vec<DeepTarget>>,
+    #[serde(default)]
+    max_fetches: Option<u32>,
+}
+
 #[derive(Debug, Serialize)]
 struct ProviderResponse {
     schema_version: String,
@@ -862,7 +874,7 @@ async fn search_post(
 async fn deep_post(
     State(state): State<AppState>,
     Extension(request_id): Extension<RequestId>,
-    params: Result<Json<SearchParams>, JsonRejection>,
+    params: Result<Json<DeepParams>, JsonRejection>,
 ) -> Response {
     let Json(params) = match params {
         Ok(params) => params,
@@ -874,10 +886,20 @@ async fn deep_post(
         return api_error(ErrorCode::InvalidQuery);
     }
     let started = Instant::now();
-    let outcome = state
-        .service()
-        .deep(params.q, ServiceSurface::api(Some(request_id.into_inner())))
-        .await;
+    let service = state.service();
+    let surface = ServiceSurface::api(Some(request_id.into_inner()));
+    let outcome = match params.targets {
+        Some(targets) => {
+            service
+                .deep_selected(params.q, targets, params.max_fetches, surface)
+                .await
+        }
+        None => {
+            service
+                .deep_with_fetch_cap(params.q, params.max_fetches, surface)
+                .await
+        }
+    };
     state
         .metrics
         .deep_latency

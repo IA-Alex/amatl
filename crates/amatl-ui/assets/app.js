@@ -55,6 +55,7 @@ const state = {
   totalResults: 0,
   controller: null,
   answer: null,
+  selectedTargets: [],
 };
 const form = document.querySelector("#search-form");
 const queryInput = document.querySelector("#query");
@@ -65,6 +66,7 @@ const tokenInput = document.querySelector("#local-token");
 const searchButton = document.querySelector("#search-button");
 const deepButton = document.querySelector("#deep-button");
 const answerButton = document.querySelector("#answer-button");
+const deepMaxFetchesInput = document.querySelector("#deep-max-fetches");
 const answerHint = document.querySelector("#answer-hint");
 const answerCard = document.querySelector("#answer-card");
 const answerTextNode = document.querySelector("#answer-text");
@@ -184,6 +186,27 @@ function renderSearchResult(result, citationIndex) {
   const url = safeHttpUrl(result.canonical_url);
   if (!url || result.status !== "visible") return;
   const fragment = resultTemplate.content.cloneNode(true);
+  const selection = fragment.querySelector(".deep-target-select");
+  if (state.mode === "search") {
+    selection.querySelector("span").textContent = t("deepTargetSelect");
+    const checkbox = selection.querySelector(".deep-target-checkbox");
+    const provider = Array.isArray(result.providers) && typeof result.providers[0] === "string"
+      ? result.providers[0]
+      : "";
+    const target = {
+      url: url.href,
+      title: boundedText(result.title, 512) || null,
+      provider,
+    };
+    checkbox.checked = state.selectedTargets.some((value) => value.url === target.url);
+    checkbox.disabled = !provider;
+    checkbox.addEventListener("change", () => {
+      state.selectedTargets = state.selectedTargets.filter((value) => value.url !== target.url);
+      if (checkbox.checked) state.selectedTargets.push(target);
+    });
+  } else {
+    selection.remove();
+  }
   const link = fragment.querySelector(".result-title");
   link.href = url.href;
   link.textContent = boundedText(result.title, 300) || boundedText(result.domain, 255) || url.hostname;
@@ -470,6 +493,8 @@ async function run(mode, page) {
   if (state.controller) state.controller.abort();
   const controller = new AbortController();
   state.controller = controller;
+  const selectedTargets = mode === "deep" ? state.selectedTargets.slice() : [];
+  if (mode === "search") state.selectedTargets = [];
   state.items = [];
   state.mode = mode;
   state.page = mode === "deep" ? 0 : page;
@@ -490,6 +515,10 @@ async function run(mode, page) {
     const headers = authHeaders({ "Content-Type": "application/json" });
     const endpoint = mode === "deep" ? "/deep" : mode === "answer" ? "/answer" : "/search";
     const body = { q: queryText() };
+    if (mode === "deep") {
+      if (selectedTargets.length) body.targets = selectedTargets;
+      if (deepMaxFetchesInput.value) body.max_fetches = Number(deepMaxFetchesInput.value);
+    }
     if (mode === "search") {
       body.page = state.page;
       body.page_size = PAGE_SIZE;
@@ -1265,6 +1294,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector("#search-heading").textContent = t("searchHeading");
   document.querySelector("#search-button").textContent = t("searchButton");
   document.querySelector("#deep-button").textContent = t("deepButton");
+  document.querySelector("label[for='deep-max-fetches']").textContent = t("deepMaxFetchesLabel");
+  deepMaxFetchesInput.placeholder = t("deepMaxFetchesPlaceholder");
   document.querySelector("#answer-button").textContent = t("answerButton");
   document.querySelector("#answer-config-summary").textContent = t("answerConfigLabel");
   document.querySelector("#answer-toggle-label").textContent = t("answerToggleLabel");
