@@ -1,0 +1,13 @@
+{
+  "candidate_rows_initial": 150,
+  "exact_leakage_removed": 0,
+  "near_duplicates_removed": 0,
+  "final_blind_rows": 150,
+  "unlabeled_holdout_hash": "730640ec53b2dde6f934ff1290702eb1437ef2cd9e3576fe6df72739e9f16de4",
+  "packet_a_hash": "f03a9d10c33a5952cb5ad855fd15a37884cd79a7c14726a7eb2d9e8fb4e053bc",
+  "packet_b_hash": "3803337777d29f137bf606f744545d5fa322bef47f5217a7a51e5613920fe342",
+  "packet_content_equivalent_except_packet_id": true,
+  "independent_annotators_still_required": true,
+  "predictions_generated": false,
+  "labels_generated": false
+}
