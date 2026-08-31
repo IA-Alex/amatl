@@ -1,6 +1,7 @@
 # STEP4E Evaluation Report
 Frozen blind evaluation of **ARM_A** (production deterministic relevance) vs **ARM_B** (production + Candle semantic advisory) on the 150-row STEP4E holdout.
 - Rows: **150** (50 direct / 50 collision / 50 limited)
+- Dataset SHA-256: `db7eea3026f05adc0b59c6868e78c710928163912e009456cef43785169dc198`; code commit: `974cb095717851854b0cc75a92d87ccf5bba473c`
 - Model: `BAAI/bge-small-en-v1.5` (load 3015 ms)
 - Advisory: `SemanticEvaluator` over `bge-small-en-v1.5`, paraphrase threshold 0.72, bounded-semantic corroboration required.
 - Bootstrap CIs: 10,000 resamples, seed 42 (deterministic).
@@ -13,6 +14,7 @@ Frozen blind evaluation of **ARM_A** (production deterministic relevance) vs **A
 |---|---|---|---|
 | accuracy | 0.2267 [0.1600, 0.2933] | 0.2267 [0.1600, 0.2933] | +0.0000 [0.0000, 0.0000] |
 | macro_f1 | 0.2601 [0.1879, 0.3264] | 0.2601 [0.1879, 0.3264] | +0.0000 [0.0000, 0.0000] |
+| weighted_f1 | 0.2601 [0.1870, 0.3304] | 0.2601 [0.1870, 0.3304] | +0.0000 [0.0000, 0.0000] |
 | rescue_recall | 0.3000 [0.1754, 0.4314] | 0.3000 [0.1754, 0.4314] | +0.0000 [0.0000, 0.0000] |
 | rescue_precision | 1.0000 [1.0000, 1.0000] | 1.0000 [1.0000, 1.0000] | +0.0000 [0.0000, 0.0000] |
 | protection_specificity | 0.1400 [0.0488, 0.2444] | 0.1400 [0.0488, 0.2444] | +0.0000 [0.0000, 0.0000] |
@@ -24,6 +26,15 @@ Frozen blind evaluation of **ARM_A** (production deterministic relevance) vs **A
 | NotRelevant | 0.156 | 0.140 | 0.147 |
 | PossiblyRelevant | 0.133 | 0.240 | 0.171 |
 | Relevant | 1.000 | 0.300 | 0.462 |
+- Weighted F1: **0.2601**
+- Prediction distribution: `{'PossiblyRelevant': 90, 'NotRelevant': 45, 'Relevant': 15}`
+
+## Dispersion and exact failures
+- Errors: **116/150** (77.3%). ARM_B has the identical prediction artifact, hence the same errors.
+- Directional confusion (actual → predicted): `{'NotRelevant': {'PossiblyRelevant': 43, 'Relevant': 0}, 'PossiblyRelevant': {'NotRelevant': 38, 'Relevant': 0}, 'Relevant': {'NotRelevant': 0, 'PossiblyRelevant': 35}}`
+- No independent query-type field is present; query-text groups are reported instead without inferring a type.
+- Query concentration: 25 queries each account for the maximum **3** errors; together that is 75/116 failures. Examples: `calculate paint needed for a room, choose a smoke detector, choose a telescope for beginners, clean a cast iron skillet, debug a Python memory leak`. The complete list and row IDs remain machine-readable.
+- Exact failed row IDs are machine-readable in `error_analysis.arm_a.errors` in `step4e_metrics.json`.
 
 ## Stratified by holdout stratum
 | stratum | n | GT | ARM_A acc | ARM_B acc | Δ acc |
@@ -52,4 +63,6 @@ The bounded gate requires `subject_match && (alias_matches || entity_match)` or 
 - Label counts — ARM_A {'NotRelevant': 45, 'PossiblyRelevant': 90, 'Relevant': 15}, ARM_B {'NotRelevant': 45, 'PossiblyRelevant': 90, 'Relevant': 15}
 
 ## Conclusion
-The STEP4E holdout does not exercise the semantic advisory: ARM_B is identical to ARM_A. The advisory is safe (zero false promotions) but also provides zero rescues on this data. A future holdout whose topics overlap the concept vocabulary, or a relaxation of the bounded gate, would be needed to observe advisory behavior.
+`RELEVANCE_CANDIDATE_DECISION=NO_CANDIDATE_PASSES`. Both implemented candidates have macro-F1 0.2601, weighted-F1 0.2601, 77.3% error, and only 30.0% Relevant recall. ARM_B provides no quality or stability gain over ARM_A and adds 44,474 ms incremental evaluation time in this run. The systematic failure mode is the boundary between PossiblyRelevant and the other two classes; there are zero Relevant↔NotRelevant errors.
+
+`HOLDOUT_RESULT=FAIL`: the frozen holdout had already been opened and evaluated at commit `974cb09` before this evaluator/selection package could freeze a candidate, configuration, and PASS/FAIL criteria. This report records that non-compliance rather than treating a post-hoc selection as a valid final gate. No threshold or algorithm was changed after observing the artifacts.

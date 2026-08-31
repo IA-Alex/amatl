@@ -1,12 +1,41 @@
 {
-  "schema": "amatl.step4e.metrics.v1",
+  "schema": "amatl.step4e.metrics.v2",
+  "evaluation_identity": {
+    "dataset": "STEP4E frozen ground truth",
+    "dataset_sha256": "db7eea3026f05adc0b59c6868e78c710928163912e009456cef43785169dc198",
+    "code_commit": "974cb095717851854b0cc75a92d87ccf5bba473c",
+    "metric_script_sha256": "44d45a83376d4a32dc7482708e4c8d609e32951762869ba84b9a60e971f8e895",
+    "classes": [
+      "NotRelevant",
+      "PossiblyRelevant",
+      "Relevant"
+    ],
+    "determinism": {
+      "bootstrap_seed": 42,
+      "bootstrap_resamples": 10000,
+      "candidate_row_order": "lexicographic row_id"
+    }
+  },
   "n_rows": 150,
+  "candidates": {
+    "arm_a": {
+      "identity": "STEP4A production deterministic relevance",
+      "parameters": "RelevanceThresholds::default(); no embedding",
+      "prediction_artifact_sha256": "daad963a347bc29346737e49b74c0fbc23ac7541dcf160713760a54c2adb09f7"
+    },
+    "arm_b": {
+      "identity": "STEP4B-4D Candle semantic advisory",
+      "parameters": "bge-small-en-v1.5; K=8; paraphrase_threshold=0.72; bounded-semantic corroboration",
+      "prediction_artifact_sha256": "daad963a347bc29346737e49b74c0fbc23ac7541dcf160713760a54c2adb09f7"
+    }
+  },
   "arms": {
     "arm_a": {
       "point": {
         "n": 150,
         "accuracy": 0.22666666666666666,
         "macro_f1": 0.26011181800655486,
+        "weighted_f1": 0.26011181800655486,
         "per_class": {
           "NotRelevant": {
             "tp": 7,
@@ -33,6 +62,28 @@
             "f1": 0.4615384615384615
           }
         },
+        "prediction_distribution": {
+          "PossiblyRelevant": 90,
+          "NotRelevant": 45,
+          "Relevant": 15
+        },
+        "confusion_matrix": {
+          "NotRelevant": {
+            "NotRelevant": 7,
+            "PossiblyRelevant": 43,
+            "Relevant": 0
+          },
+          "PossiblyRelevant": {
+            "NotRelevant": 38,
+            "PossiblyRelevant": 12,
+            "Relevant": 0
+          },
+          "Relevant": {
+            "NotRelevant": 0,
+            "PossiblyRelevant": 35,
+            "Relevant": 15
+          }
+        },
         "rescue_recall": 0.3,
         "rescue_precision": 1.0,
         "protection_specificity": 0.14,
@@ -50,6 +101,13 @@
           "metric": "macro_f1",
           "ci95_low": 0.18785501589832335,
           "ci95_high": 0.32643503754621833,
+          "n_boot": 10000,
+          "seed": 42
+        },
+        "weighted_f1": {
+          "metric": "weighted_f1",
+          "ci95_low": 0.18701751672486264,
+          "ci95_high": 0.33044143109712265,
           "n_boot": 10000,
           "seed": 42
         },
@@ -88,6 +146,7 @@
         "n": 150,
         "accuracy": 0.22666666666666666,
         "macro_f1": 0.26011181800655486,
+        "weighted_f1": 0.26011181800655486,
         "per_class": {
           "NotRelevant": {
             "tp": 7,
@@ -114,6 +173,28 @@
             "f1": 0.4615384615384615
           }
         },
+        "prediction_distribution": {
+          "PossiblyRelevant": 90,
+          "NotRelevant": 45,
+          "Relevant": 15
+        },
+        "confusion_matrix": {
+          "NotRelevant": {
+            "NotRelevant": 7,
+            "PossiblyRelevant": 43,
+            "Relevant": 0
+          },
+          "PossiblyRelevant": {
+            "NotRelevant": 38,
+            "PossiblyRelevant": 12,
+            "Relevant": 0
+          },
+          "Relevant": {
+            "NotRelevant": 0,
+            "PossiblyRelevant": 35,
+            "Relevant": 15
+          }
+        },
         "rescue_recall": 0.3,
         "rescue_precision": 1.0,
         "protection_specificity": 0.14,
@@ -131,6 +212,13 @@
           "metric": "macro_f1",
           "ci95_low": 0.18785501589832335,
           "ci95_high": 0.32643503754621833,
+          "n_boot": 10000,
+          "seed": 42
+        },
+        "weighted_f1": {
+          "metric": "weighted_f1",
+          "ci95_low": 0.18701751672486264,
+          "ci95_high": 0.33044143109712265,
           "n_boot": 10000,
           "seed": 42
         },
@@ -169,6 +257,7 @@
     "point": {
       "accuracy": 0.0,
       "macro_f1": 0.0,
+      "weighted_f1": 0.0,
       "rescue_recall": 0.0,
       "rescue_precision": 0.0,
       "protection_specificity": 0.0,
@@ -184,6 +273,13 @@
       },
       "macro_f1": {
         "metric": "macro_f1",
+        "ci95_low": 0.0,
+        "ci95_high": 0.0,
+        "n_boot": 10000,
+        "seed": 42
+      },
+      "weighted_f1": {
+        "metric": "weighted_f1",
         "ci95_low": 0.0,
         "ci95_high": 0.0,
         "n_boot": 10000,
@@ -229,6 +325,7 @@
         "n": 50,
         "accuracy": 0.3,
         "macro_f1": 0.15384615384615383,
+        "weighted_f1": 0.4615384615384615,
         "per_class": {
           "NotRelevant": {
             "tp": 0,
@@ -253,6 +350,27 @@
             "precision": 1.0,
             "recall": 0.3,
             "f1": 0.4615384615384615
+          }
+        },
+        "prediction_distribution": {
+          "PossiblyRelevant": 35,
+          "Relevant": 15
+        },
+        "confusion_matrix": {
+          "NotRelevant": {
+            "NotRelevant": 0,
+            "PossiblyRelevant": 0,
+            "Relevant": 0
+          },
+          "PossiblyRelevant": {
+            "NotRelevant": 0,
+            "PossiblyRelevant": 0,
+            "Relevant": 0
+          },
+          "Relevant": {
+            "NotRelevant": 0,
+            "PossiblyRelevant": 35,
+            "Relevant": 15
           }
         },
         "rescue_recall": 0.3,
@@ -264,6 +382,7 @@
         "n": 50,
         "accuracy": 0.3,
         "macro_f1": 0.15384615384615383,
+        "weighted_f1": 0.4615384615384615,
         "per_class": {
           "NotRelevant": {
             "tp": 0,
@@ -290,6 +409,27 @@
             "f1": 0.4615384615384615
           }
         },
+        "prediction_distribution": {
+          "PossiblyRelevant": 35,
+          "Relevant": 15
+        },
+        "confusion_matrix": {
+          "NotRelevant": {
+            "NotRelevant": 0,
+            "PossiblyRelevant": 0,
+            "Relevant": 0
+          },
+          "PossiblyRelevant": {
+            "NotRelevant": 0,
+            "PossiblyRelevant": 0,
+            "Relevant": 0
+          },
+          "Relevant": {
+            "NotRelevant": 0,
+            "PossiblyRelevant": 35,
+            "Relevant": 15
+          }
+        },
         "rescue_recall": 0.3,
         "rescue_precision": 1.0,
         "protection_specificity": 0.0,
@@ -298,6 +438,7 @@
       "delta_b_minus_a": {
         "accuracy": 0.0,
         "macro_f1": 0.0,
+        "weighted_f1": 0.0,
         "rescue_recall": 0.0,
         "rescue_precision": 0.0,
         "protection_specificity": 0.0,
@@ -314,6 +455,7 @@
         "n": 50,
         "accuracy": 0.16,
         "macro_f1": 0.09848484848484848,
+        "weighted_f1": 0.2459090909090909,
         "per_class": {
           "NotRelevant": {
             "tp": 7,
@@ -338,6 +480,27 @@
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0
+          }
+        },
+        "prediction_distribution": {
+          "PossiblyRelevant": 43,
+          "NotRelevant": 7
+        },
+        "confusion_matrix": {
+          "NotRelevant": {
+            "NotRelevant": 7,
+            "PossiblyRelevant": 42,
+            "Relevant": 0
+          },
+          "PossiblyRelevant": {
+            "NotRelevant": 0,
+            "PossiblyRelevant": 1,
+            "Relevant": 0
+          },
+          "Relevant": {
+            "NotRelevant": 0,
+            "PossiblyRelevant": 0,
+            "Relevant": 0
           }
         },
         "rescue_recall": 0.0,
@@ -349,6 +512,7 @@
         "n": 50,
         "accuracy": 0.16,
         "macro_f1": 0.09848484848484848,
+        "weighted_f1": 0.2459090909090909,
         "per_class": {
           "NotRelevant": {
             "tp": 7,
@@ -375,6 +539,27 @@
             "f1": 0.0
           }
         },
+        "prediction_distribution": {
+          "PossiblyRelevant": 43,
+          "NotRelevant": 7
+        },
+        "confusion_matrix": {
+          "NotRelevant": {
+            "NotRelevant": 7,
+            "PossiblyRelevant": 42,
+            "Relevant": 0
+          },
+          "PossiblyRelevant": {
+            "NotRelevant": 0,
+            "PossiblyRelevant": 1,
+            "Relevant": 0
+          },
+          "Relevant": {
+            "NotRelevant": 0,
+            "PossiblyRelevant": 0,
+            "Relevant": 0
+          }
+        },
         "rescue_recall": 0.0,
         "rescue_precision": 0.0,
         "protection_specificity": 0.14285714285714285,
@@ -383,6 +568,7 @@
       "delta_b_minus_a": {
         "accuracy": 0.0,
         "macro_f1": 0.0,
+        "weighted_f1": 0.0,
         "rescue_recall": 0.0,
         "rescue_precision": 0.0,
         "protection_specificity": 0.0,
@@ -399,6 +585,7 @@
         "n": 50,
         "accuracy": 0.22,
         "macro_f1": 0.12021857923497269,
+        "weighted_f1": 0.3534426229508197,
         "per_class": {
           "NotRelevant": {
             "tp": 0,
@@ -423,6 +610,27 @@
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0
+          }
+        },
+        "prediction_distribution": {
+          "NotRelevant": 38,
+          "PossiblyRelevant": 12
+        },
+        "confusion_matrix": {
+          "NotRelevant": {
+            "NotRelevant": 0,
+            "PossiblyRelevant": 1,
+            "Relevant": 0
+          },
+          "PossiblyRelevant": {
+            "NotRelevant": 38,
+            "PossiblyRelevant": 11,
+            "Relevant": 0
+          },
+          "Relevant": {
+            "NotRelevant": 0,
+            "PossiblyRelevant": 0,
+            "Relevant": 0
           }
         },
         "rescue_recall": 0.0,
@@ -434,6 +642,7 @@
         "n": 50,
         "accuracy": 0.22,
         "macro_f1": 0.12021857923497269,
+        "weighted_f1": 0.3534426229508197,
         "per_class": {
           "NotRelevant": {
             "tp": 0,
@@ -460,6 +669,27 @@
             "f1": 0.0
           }
         },
+        "prediction_distribution": {
+          "NotRelevant": 38,
+          "PossiblyRelevant": 12
+        },
+        "confusion_matrix": {
+          "NotRelevant": {
+            "NotRelevant": 0,
+            "PossiblyRelevant": 1,
+            "Relevant": 0
+          },
+          "PossiblyRelevant": {
+            "NotRelevant": 38,
+            "PossiblyRelevant": 11,
+            "Relevant": 0
+          },
+          "Relevant": {
+            "NotRelevant": 0,
+            "PossiblyRelevant": 0,
+            "Relevant": 0
+          }
+        },
         "rescue_recall": 0.0,
         "rescue_precision": 0.0,
         "protection_specificity": 0.0,
@@ -468,11 +698,2654 @@
       "delta_b_minus_a": {
         "accuracy": 0.0,
         "macro_f1": 0.0,
+        "weighted_f1": 0.0,
         "rescue_recall": 0.0,
         "rescue_precision": 0.0,
         "protection_specificity": 0.0,
         "false_promotion_count": 0
       }
+    }
+  },
+  "error_analysis": {
+    "arm_a": {
+      "error_count": 116,
+      "error_rate": 0.7733333333333333,
+      "errors": [
+        {
+          "row_id": "step4e-001-collision",
+          "query": "replace a bicycle chain",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-001-direct",
+          "query": "replace a bicycle chain",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-001-limited",
+          "query": "replace a bicycle chain",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-002-collision",
+          "query": "prepare for a job interview",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-002-limited",
+          "query": "prepare for a job interview",
+          "stratum": "limited",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-003-collision",
+          "query": "fix a leaking kitchen faucet",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-003-direct",
+          "query": "fix a leaking kitchen faucet",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-003-limited",
+          "query": "fix a leaking kitchen faucet",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-004-collision",
+          "query": "learn the constellations",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-004-direct",
+          "query": "learn the constellations",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-004-limited",
+          "query": "learn the constellations",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-005-direct",
+          "query": "renew a passport",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-005-limited",
+          "query": "renew a passport",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-006-direct",
+          "query": "start composting at home",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-006-limited",
+          "query": "start composting at home",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-007-collision",
+          "query": "choose a smoke detector",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-007-direct",
+          "query": "choose a smoke detector",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-007-limited",
+          "query": "choose a smoke detector",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-008-collision",
+          "query": "treat rust on garden tools",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-009-limited",
+          "query": "understand credit card interest",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-010-direct",
+          "query": "make sourdough bread",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-011-collision",
+          "query": "configure nginx reverse proxy",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-011-limited",
+          "query": "configure nginx reverse proxy",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-012-collision",
+          "query": "debug a Python memory leak",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-012-direct",
+          "query": "debug a Python memory leak",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-012-limited",
+          "query": "debug a Python memory leak",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-013-collision",
+          "query": "use git rebase safely",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-013-direct",
+          "query": "use git rebase safely",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-013-limited",
+          "query": "use git rebase safely",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-014-collision",
+          "query": "explain DNS propagation",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-014-direct",
+          "query": "explain DNS propagation",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-014-limited",
+          "query": "explain DNS propagation",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-015-limited",
+          "query": "set up two factor authentication",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-016-direct",
+          "query": "compare postgres indexes",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-016-limited",
+          "query": "compare postgres indexes",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-017-collision",
+          "query": "estimate solar panel output",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-017-direct",
+          "query": "estimate solar panel output",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-018-collision",
+          "query": "find a missing phone",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-018-direct",
+          "query": "find a missing phone",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-018-limited",
+          "query": "find a missing phone",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-019-collision",
+          "query": "reduce noise in a recording",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-019-direct",
+          "query": "reduce noise in a recording",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-020-collision",
+          "query": "plan a road trip with an electric car",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-020-direct",
+          "query": "plan a road trip with an electric car",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-020-limited",
+          "query": "plan a road trip with an electric car",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-021-collision",
+          "query": "learn basic first aid",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-021-limited",
+          "query": "learn basic first aid",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-022-collision",
+          "query": "clean a cast iron skillet",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-022-direct",
+          "query": "clean a cast iron skillet",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-022-limited",
+          "query": "clean a cast iron skillet",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-023-collision",
+          "query": "understand quantum entanglement",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-023-direct",
+          "query": "understand quantum entanglement",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-024-collision",
+          "query": "recover deleted files on Windows",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-024-limited",
+          "query": "recover deleted files on Windows",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-025-collision",
+          "query": "train for a 5k race",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-025-direct",
+          "query": "train for a 5k race",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-025-limited",
+          "query": "train for a 5k race",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-026-collision",
+          "query": "calculate paint needed for a room",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-026-direct",
+          "query": "calculate paint needed for a room",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-026-limited",
+          "query": "calculate paint needed for a room",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-027-collision",
+          "query": "prevent phishing attacks",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-027-direct",
+          "query": "prevent phishing attacks",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-027-limited",
+          "query": "prevent phishing attacks",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-028-collision",
+          "query": "organize digital photos",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-028-direct",
+          "query": "organize digital photos",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-028-limited",
+          "query": "organize digital photos",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-029-direct",
+          "query": "choose a home wifi router",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-029-limited",
+          "query": "choose a home wifi router",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-030-collision",
+          "query": "read a balance sheet",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-030-limited",
+          "query": "read a balance sheet",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-031-collision",
+          "query": "identify poison ivy",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-031-direct",
+          "query": "identify poison ivy",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-031-limited",
+          "query": "identify poison ivy",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-032-collision",
+          "query": "improve public speaking",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-032-direct",
+          "query": "improve public speaking",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-032-limited",
+          "query": "improve public speaking",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-033-collision",
+          "query": "change a flat tire",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-033-limited",
+          "query": "change a flat tire",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-034-collision",
+          "query": "understand food expiration dates",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-034-direct",
+          "query": "understand food expiration dates",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-035-collision",
+          "query": "make a household budget",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-035-direct",
+          "query": "make a household budget",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-035-limited",
+          "query": "make a household budget",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-036-collision",
+          "query": "choose a telescope for beginners",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-036-direct",
+          "query": "choose a telescope for beginners",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-036-limited",
+          "query": "choose a telescope for beginners",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-037-collision",
+          "query": "write an accessible HTML form",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-037-direct",
+          "query": "write an accessible HTML form",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-037-limited",
+          "query": "write an accessible HTML form",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-039-collision",
+          "query": "start a vegetable garden",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-039-direct",
+          "query": "start a vegetable garden",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-039-limited",
+          "query": "start a vegetable garden",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-040-collision",
+          "query": "prepare for an earthquake",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-040-direct",
+          "query": "prepare for an earthquake",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-040-limited",
+          "query": "prepare for an earthquake",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-041-collision",
+          "query": "learn to read a circuit diagram",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-041-direct",
+          "query": "learn to read a circuit diagram",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-041-limited",
+          "query": "learn to read a circuit diagram",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-042-collision",
+          "query": "reduce household water use",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-042-limited",
+          "query": "reduce household water use",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-043-collision",
+          "query": "select a password manager",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-043-direct",
+          "query": "select a password manager",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-044-collision",
+          "query": "understand inflation",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-044-direct",
+          "query": "understand inflation",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-044-limited",
+          "query": "understand inflation",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-045-collision",
+          "query": "care for a new kitten",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-046-collision",
+          "query": "compare heat pumps and furnaces",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-046-limited",
+          "query": "compare heat pumps and furnaces",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-047-collision",
+          "query": "use regular expressions in JavaScript",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-048-collision",
+          "query": "find a reputable mechanic",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-048-direct",
+          "query": "find a reputable mechanic",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-048-limited",
+          "query": "find a reputable mechanic",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-049-collision",
+          "query": "understand a rental lease",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-049-direct",
+          "query": "understand a rental lease",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-049-limited",
+          "query": "understand a rental lease",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-050-collision",
+          "query": "make coffee with a french press",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        }
+      ],
+      "row_ids_by_actual_class": {
+        "NotRelevant": [
+          "step4e-001-collision",
+          "step4e-002-collision",
+          "step4e-002-limited",
+          "step4e-003-collision",
+          "step4e-004-collision",
+          "step4e-007-collision",
+          "step4e-008-collision",
+          "step4e-011-collision",
+          "step4e-012-collision",
+          "step4e-013-collision",
+          "step4e-014-collision",
+          "step4e-017-collision",
+          "step4e-018-collision",
+          "step4e-019-collision",
+          "step4e-020-collision",
+          "step4e-021-collision",
+          "step4e-022-collision",
+          "step4e-023-collision",
+          "step4e-024-collision",
+          "step4e-025-collision",
+          "step4e-026-collision",
+          "step4e-027-collision",
+          "step4e-028-collision",
+          "step4e-030-collision",
+          "step4e-031-collision",
+          "step4e-032-collision",
+          "step4e-033-collision",
+          "step4e-034-collision",
+          "step4e-035-collision",
+          "step4e-036-collision",
+          "step4e-037-collision",
+          "step4e-039-collision",
+          "step4e-040-collision",
+          "step4e-041-collision",
+          "step4e-042-collision",
+          "step4e-043-collision",
+          "step4e-044-collision",
+          "step4e-045-collision",
+          "step4e-046-collision",
+          "step4e-047-collision",
+          "step4e-048-collision",
+          "step4e-049-collision",
+          "step4e-050-collision"
+        ],
+        "PossiblyRelevant": [
+          "step4e-001-limited",
+          "step4e-003-limited",
+          "step4e-004-limited",
+          "step4e-005-limited",
+          "step4e-006-limited",
+          "step4e-007-limited",
+          "step4e-009-limited",
+          "step4e-011-limited",
+          "step4e-012-limited",
+          "step4e-013-limited",
+          "step4e-014-limited",
+          "step4e-015-limited",
+          "step4e-016-limited",
+          "step4e-018-limited",
+          "step4e-020-limited",
+          "step4e-021-limited",
+          "step4e-022-limited",
+          "step4e-024-limited",
+          "step4e-025-limited",
+          "step4e-026-limited",
+          "step4e-027-limited",
+          "step4e-028-limited",
+          "step4e-029-limited",
+          "step4e-030-limited",
+          "step4e-031-limited",
+          "step4e-032-limited",
+          "step4e-033-limited",
+          "step4e-035-limited",
+          "step4e-036-limited",
+          "step4e-037-limited",
+          "step4e-039-limited",
+          "step4e-040-limited",
+          "step4e-041-limited",
+          "step4e-042-limited",
+          "step4e-044-limited",
+          "step4e-046-limited",
+          "step4e-048-limited",
+          "step4e-049-limited"
+        ],
+        "Relevant": [
+          "step4e-001-direct",
+          "step4e-003-direct",
+          "step4e-004-direct",
+          "step4e-005-direct",
+          "step4e-006-direct",
+          "step4e-007-direct",
+          "step4e-010-direct",
+          "step4e-012-direct",
+          "step4e-013-direct",
+          "step4e-014-direct",
+          "step4e-016-direct",
+          "step4e-017-direct",
+          "step4e-018-direct",
+          "step4e-019-direct",
+          "step4e-020-direct",
+          "step4e-022-direct",
+          "step4e-023-direct",
+          "step4e-025-direct",
+          "step4e-026-direct",
+          "step4e-027-direct",
+          "step4e-028-direct",
+          "step4e-029-direct",
+          "step4e-031-direct",
+          "step4e-032-direct",
+          "step4e-034-direct",
+          "step4e-035-direct",
+          "step4e-036-direct",
+          "step4e-037-direct",
+          "step4e-039-direct",
+          "step4e-040-direct",
+          "step4e-041-direct",
+          "step4e-043-direct",
+          "step4e-044-direct",
+          "step4e-048-direct",
+          "step4e-049-direct"
+        ]
+      },
+      "directional_confusion": {
+        "NotRelevant": {
+          "PossiblyRelevant": 43,
+          "Relevant": 0
+        },
+        "PossiblyRelevant": {
+          "NotRelevant": 38,
+          "Relevant": 0
+        },
+        "Relevant": {
+          "NotRelevant": 0,
+          "PossiblyRelevant": 35
+        }
+      },
+      "query_error_concentration": [
+        {
+          "query": "calculate paint needed for a room",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-026-collision",
+            "step4e-026-direct",
+            "step4e-026-limited"
+          ]
+        },
+        {
+          "query": "choose a smoke detector",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-007-collision",
+            "step4e-007-direct",
+            "step4e-007-limited"
+          ]
+        },
+        {
+          "query": "choose a telescope for beginners",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-036-collision",
+            "step4e-036-direct",
+            "step4e-036-limited"
+          ]
+        },
+        {
+          "query": "clean a cast iron skillet",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-022-collision",
+            "step4e-022-direct",
+            "step4e-022-limited"
+          ]
+        },
+        {
+          "query": "debug a Python memory leak",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-012-collision",
+            "step4e-012-direct",
+            "step4e-012-limited"
+          ]
+        },
+        {
+          "query": "explain DNS propagation",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-014-collision",
+            "step4e-014-direct",
+            "step4e-014-limited"
+          ]
+        },
+        {
+          "query": "find a missing phone",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-018-collision",
+            "step4e-018-direct",
+            "step4e-018-limited"
+          ]
+        },
+        {
+          "query": "find a reputable mechanic",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-048-collision",
+            "step4e-048-direct",
+            "step4e-048-limited"
+          ]
+        },
+        {
+          "query": "fix a leaking kitchen faucet",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-003-collision",
+            "step4e-003-direct",
+            "step4e-003-limited"
+          ]
+        },
+        {
+          "query": "identify poison ivy",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-031-collision",
+            "step4e-031-direct",
+            "step4e-031-limited"
+          ]
+        },
+        {
+          "query": "improve public speaking",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-032-collision",
+            "step4e-032-direct",
+            "step4e-032-limited"
+          ]
+        },
+        {
+          "query": "learn the constellations",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-004-collision",
+            "step4e-004-direct",
+            "step4e-004-limited"
+          ]
+        },
+        {
+          "query": "learn to read a circuit diagram",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-041-collision",
+            "step4e-041-direct",
+            "step4e-041-limited"
+          ]
+        },
+        {
+          "query": "make a household budget",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-035-collision",
+            "step4e-035-direct",
+            "step4e-035-limited"
+          ]
+        },
+        {
+          "query": "organize digital photos",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-028-collision",
+            "step4e-028-direct",
+            "step4e-028-limited"
+          ]
+        },
+        {
+          "query": "plan a road trip with an electric car",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-020-collision",
+            "step4e-020-direct",
+            "step4e-020-limited"
+          ]
+        },
+        {
+          "query": "prepare for an earthquake",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-040-collision",
+            "step4e-040-direct",
+            "step4e-040-limited"
+          ]
+        },
+        {
+          "query": "prevent phishing attacks",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-027-collision",
+            "step4e-027-direct",
+            "step4e-027-limited"
+          ]
+        },
+        {
+          "query": "replace a bicycle chain",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-001-collision",
+            "step4e-001-direct",
+            "step4e-001-limited"
+          ]
+        },
+        {
+          "query": "start a vegetable garden",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-039-collision",
+            "step4e-039-direct",
+            "step4e-039-limited"
+          ]
+        },
+        {
+          "query": "train for a 5k race",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-025-collision",
+            "step4e-025-direct",
+            "step4e-025-limited"
+          ]
+        },
+        {
+          "query": "understand a rental lease",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-049-collision",
+            "step4e-049-direct",
+            "step4e-049-limited"
+          ]
+        },
+        {
+          "query": "understand inflation",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-044-collision",
+            "step4e-044-direct",
+            "step4e-044-limited"
+          ]
+        },
+        {
+          "query": "use git rebase safely",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-013-collision",
+            "step4e-013-direct",
+            "step4e-013-limited"
+          ]
+        },
+        {
+          "query": "write an accessible HTML form",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-037-collision",
+            "step4e-037-direct",
+            "step4e-037-limited"
+          ]
+        },
+        {
+          "query": "change a flat tire",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-033-collision",
+            "step4e-033-limited"
+          ]
+        },
+        {
+          "query": "choose a home wifi router",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-029-direct",
+            "step4e-029-limited"
+          ]
+        },
+        {
+          "query": "compare heat pumps and furnaces",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-046-collision",
+            "step4e-046-limited"
+          ]
+        },
+        {
+          "query": "compare postgres indexes",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-016-direct",
+            "step4e-016-limited"
+          ]
+        },
+        {
+          "query": "configure nginx reverse proxy",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-011-collision",
+            "step4e-011-limited"
+          ]
+        },
+        {
+          "query": "estimate solar panel output",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-017-collision",
+            "step4e-017-direct"
+          ]
+        },
+        {
+          "query": "learn basic first aid",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-021-collision",
+            "step4e-021-limited"
+          ]
+        },
+        {
+          "query": "prepare for a job interview",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-002-collision",
+            "step4e-002-limited"
+          ]
+        },
+        {
+          "query": "read a balance sheet",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-030-collision",
+            "step4e-030-limited"
+          ]
+        },
+        {
+          "query": "recover deleted files on Windows",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-024-collision",
+            "step4e-024-limited"
+          ]
+        },
+        {
+          "query": "reduce household water use",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-042-collision",
+            "step4e-042-limited"
+          ]
+        },
+        {
+          "query": "reduce noise in a recording",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-019-collision",
+            "step4e-019-direct"
+          ]
+        },
+        {
+          "query": "renew a passport",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-005-direct",
+            "step4e-005-limited"
+          ]
+        },
+        {
+          "query": "select a password manager",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-043-collision",
+            "step4e-043-direct"
+          ]
+        },
+        {
+          "query": "start composting at home",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-006-direct",
+            "step4e-006-limited"
+          ]
+        },
+        {
+          "query": "understand food expiration dates",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-034-collision",
+            "step4e-034-direct"
+          ]
+        },
+        {
+          "query": "understand quantum entanglement",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-023-collision",
+            "step4e-023-direct"
+          ]
+        }
+      ],
+      "query_metadata_status": "No independent query-type field is present; query-text groups are reported instead without inferring a type."
+    },
+    "arm_b": {
+      "error_count": 116,
+      "error_rate": 0.7733333333333333,
+      "errors": [
+        {
+          "row_id": "step4e-001-collision",
+          "query": "replace a bicycle chain",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-001-direct",
+          "query": "replace a bicycle chain",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-001-limited",
+          "query": "replace a bicycle chain",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-002-collision",
+          "query": "prepare for a job interview",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-002-limited",
+          "query": "prepare for a job interview",
+          "stratum": "limited",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-003-collision",
+          "query": "fix a leaking kitchen faucet",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-003-direct",
+          "query": "fix a leaking kitchen faucet",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-003-limited",
+          "query": "fix a leaking kitchen faucet",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-004-collision",
+          "query": "learn the constellations",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-004-direct",
+          "query": "learn the constellations",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-004-limited",
+          "query": "learn the constellations",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-005-direct",
+          "query": "renew a passport",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-005-limited",
+          "query": "renew a passport",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-006-direct",
+          "query": "start composting at home",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-006-limited",
+          "query": "start composting at home",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-007-collision",
+          "query": "choose a smoke detector",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-007-direct",
+          "query": "choose a smoke detector",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-007-limited",
+          "query": "choose a smoke detector",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-008-collision",
+          "query": "treat rust on garden tools",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-009-limited",
+          "query": "understand credit card interest",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-010-direct",
+          "query": "make sourdough bread",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-011-collision",
+          "query": "configure nginx reverse proxy",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-011-limited",
+          "query": "configure nginx reverse proxy",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-012-collision",
+          "query": "debug a Python memory leak",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-012-direct",
+          "query": "debug a Python memory leak",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-012-limited",
+          "query": "debug a Python memory leak",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-013-collision",
+          "query": "use git rebase safely",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-013-direct",
+          "query": "use git rebase safely",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-013-limited",
+          "query": "use git rebase safely",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-014-collision",
+          "query": "explain DNS propagation",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-014-direct",
+          "query": "explain DNS propagation",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-014-limited",
+          "query": "explain DNS propagation",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-015-limited",
+          "query": "set up two factor authentication",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-016-direct",
+          "query": "compare postgres indexes",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-016-limited",
+          "query": "compare postgres indexes",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-017-collision",
+          "query": "estimate solar panel output",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-017-direct",
+          "query": "estimate solar panel output",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-018-collision",
+          "query": "find a missing phone",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-018-direct",
+          "query": "find a missing phone",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-018-limited",
+          "query": "find a missing phone",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-019-collision",
+          "query": "reduce noise in a recording",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-019-direct",
+          "query": "reduce noise in a recording",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-020-collision",
+          "query": "plan a road trip with an electric car",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-020-direct",
+          "query": "plan a road trip with an electric car",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-020-limited",
+          "query": "plan a road trip with an electric car",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-021-collision",
+          "query": "learn basic first aid",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-021-limited",
+          "query": "learn basic first aid",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-022-collision",
+          "query": "clean a cast iron skillet",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-022-direct",
+          "query": "clean a cast iron skillet",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-022-limited",
+          "query": "clean a cast iron skillet",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-023-collision",
+          "query": "understand quantum entanglement",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-023-direct",
+          "query": "understand quantum entanglement",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-024-collision",
+          "query": "recover deleted files on Windows",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-024-limited",
+          "query": "recover deleted files on Windows",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-025-collision",
+          "query": "train for a 5k race",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-025-direct",
+          "query": "train for a 5k race",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-025-limited",
+          "query": "train for a 5k race",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-026-collision",
+          "query": "calculate paint needed for a room",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-026-direct",
+          "query": "calculate paint needed for a room",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-026-limited",
+          "query": "calculate paint needed for a room",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-027-collision",
+          "query": "prevent phishing attacks",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-027-direct",
+          "query": "prevent phishing attacks",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-027-limited",
+          "query": "prevent phishing attacks",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-028-collision",
+          "query": "organize digital photos",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-028-direct",
+          "query": "organize digital photos",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-028-limited",
+          "query": "organize digital photos",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-029-direct",
+          "query": "choose a home wifi router",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-029-limited",
+          "query": "choose a home wifi router",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-030-collision",
+          "query": "read a balance sheet",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-030-limited",
+          "query": "read a balance sheet",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-031-collision",
+          "query": "identify poison ivy",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-031-direct",
+          "query": "identify poison ivy",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-031-limited",
+          "query": "identify poison ivy",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-032-collision",
+          "query": "improve public speaking",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-032-direct",
+          "query": "improve public speaking",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-032-limited",
+          "query": "improve public speaking",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-033-collision",
+          "query": "change a flat tire",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-033-limited",
+          "query": "change a flat tire",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-034-collision",
+          "query": "understand food expiration dates",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-034-direct",
+          "query": "understand food expiration dates",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-035-collision",
+          "query": "make a household budget",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-035-direct",
+          "query": "make a household budget",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-035-limited",
+          "query": "make a household budget",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-036-collision",
+          "query": "choose a telescope for beginners",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-036-direct",
+          "query": "choose a telescope for beginners",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-036-limited",
+          "query": "choose a telescope for beginners",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-037-collision",
+          "query": "write an accessible HTML form",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-037-direct",
+          "query": "write an accessible HTML form",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-037-limited",
+          "query": "write an accessible HTML form",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-039-collision",
+          "query": "start a vegetable garden",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-039-direct",
+          "query": "start a vegetable garden",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-039-limited",
+          "query": "start a vegetable garden",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-040-collision",
+          "query": "prepare for an earthquake",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-040-direct",
+          "query": "prepare for an earthquake",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-040-limited",
+          "query": "prepare for an earthquake",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-041-collision",
+          "query": "learn to read a circuit diagram",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-041-direct",
+          "query": "learn to read a circuit diagram",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-041-limited",
+          "query": "learn to read a circuit diagram",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-042-collision",
+          "query": "reduce household water use",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-042-limited",
+          "query": "reduce household water use",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-043-collision",
+          "query": "select a password manager",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-043-direct",
+          "query": "select a password manager",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-044-collision",
+          "query": "understand inflation",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-044-direct",
+          "query": "understand inflation",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-044-limited",
+          "query": "understand inflation",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-045-collision",
+          "query": "care for a new kitten",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-046-collision",
+          "query": "compare heat pumps and furnaces",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-046-limited",
+          "query": "compare heat pumps and furnaces",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-047-collision",
+          "query": "use regular expressions in JavaScript",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-048-collision",
+          "query": "find a reputable mechanic",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-048-direct",
+          "query": "find a reputable mechanic",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-048-limited",
+          "query": "find a reputable mechanic",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-049-collision",
+          "query": "understand a rental lease",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-049-direct",
+          "query": "understand a rental lease",
+          "stratum": "direct",
+          "actual": "Relevant",
+          "predicted": "PossiblyRelevant"
+        },
+        {
+          "row_id": "step4e-049-limited",
+          "query": "understand a rental lease",
+          "stratum": "limited",
+          "actual": "PossiblyRelevant",
+          "predicted": "NotRelevant"
+        },
+        {
+          "row_id": "step4e-050-collision",
+          "query": "make coffee with a french press",
+          "stratum": "collision",
+          "actual": "NotRelevant",
+          "predicted": "PossiblyRelevant"
+        }
+      ],
+      "row_ids_by_actual_class": {
+        "NotRelevant": [
+          "step4e-001-collision",
+          "step4e-002-collision",
+          "step4e-002-limited",
+          "step4e-003-collision",
+          "step4e-004-collision",
+          "step4e-007-collision",
+          "step4e-008-collision",
+          "step4e-011-collision",
+          "step4e-012-collision",
+          "step4e-013-collision",
+          "step4e-014-collision",
+          "step4e-017-collision",
+          "step4e-018-collision",
+          "step4e-019-collision",
+          "step4e-020-collision",
+          "step4e-021-collision",
+          "step4e-022-collision",
+          "step4e-023-collision",
+          "step4e-024-collision",
+          "step4e-025-collision",
+          "step4e-026-collision",
+          "step4e-027-collision",
+          "step4e-028-collision",
+          "step4e-030-collision",
+          "step4e-031-collision",
+          "step4e-032-collision",
+          "step4e-033-collision",
+          "step4e-034-collision",
+          "step4e-035-collision",
+          "step4e-036-collision",
+          "step4e-037-collision",
+          "step4e-039-collision",
+          "step4e-040-collision",
+          "step4e-041-collision",
+          "step4e-042-collision",
+          "step4e-043-collision",
+          "step4e-044-collision",
+          "step4e-045-collision",
+          "step4e-046-collision",
+          "step4e-047-collision",
+          "step4e-048-collision",
+          "step4e-049-collision",
+          "step4e-050-collision"
+        ],
+        "PossiblyRelevant": [
+          "step4e-001-limited",
+          "step4e-003-limited",
+          "step4e-004-limited",
+          "step4e-005-limited",
+          "step4e-006-limited",
+          "step4e-007-limited",
+          "step4e-009-limited",
+          "step4e-011-limited",
+          "step4e-012-limited",
+          "step4e-013-limited",
+          "step4e-014-limited",
+          "step4e-015-limited",
+          "step4e-016-limited",
+          "step4e-018-limited",
+          "step4e-020-limited",
+          "step4e-021-limited",
+          "step4e-022-limited",
+          "step4e-024-limited",
+          "step4e-025-limited",
+          "step4e-026-limited",
+          "step4e-027-limited",
+          "step4e-028-limited",
+          "step4e-029-limited",
+          "step4e-030-limited",
+          "step4e-031-limited",
+          "step4e-032-limited",
+          "step4e-033-limited",
+          "step4e-035-limited",
+          "step4e-036-limited",
+          "step4e-037-limited",
+          "step4e-039-limited",
+          "step4e-040-limited",
+          "step4e-041-limited",
+          "step4e-042-limited",
+          "step4e-044-limited",
+          "step4e-046-limited",
+          "step4e-048-limited",
+          "step4e-049-limited"
+        ],
+        "Relevant": [
+          "step4e-001-direct",
+          "step4e-003-direct",
+          "step4e-004-direct",
+          "step4e-005-direct",
+          "step4e-006-direct",
+          "step4e-007-direct",
+          "step4e-010-direct",
+          "step4e-012-direct",
+          "step4e-013-direct",
+          "step4e-014-direct",
+          "step4e-016-direct",
+          "step4e-017-direct",
+          "step4e-018-direct",
+          "step4e-019-direct",
+          "step4e-020-direct",
+          "step4e-022-direct",
+          "step4e-023-direct",
+          "step4e-025-direct",
+          "step4e-026-direct",
+          "step4e-027-direct",
+          "step4e-028-direct",
+          "step4e-029-direct",
+          "step4e-031-direct",
+          "step4e-032-direct",
+          "step4e-034-direct",
+          "step4e-035-direct",
+          "step4e-036-direct",
+          "step4e-037-direct",
+          "step4e-039-direct",
+          "step4e-040-direct",
+          "step4e-041-direct",
+          "step4e-043-direct",
+          "step4e-044-direct",
+          "step4e-048-direct",
+          "step4e-049-direct"
+        ]
+      },
+      "directional_confusion": {
+        "NotRelevant": {
+          "PossiblyRelevant": 43,
+          "Relevant": 0
+        },
+        "PossiblyRelevant": {
+          "NotRelevant": 38,
+          "Relevant": 0
+        },
+        "Relevant": {
+          "NotRelevant": 0,
+          "PossiblyRelevant": 35
+        }
+      },
+      "query_error_concentration": [
+        {
+          "query": "calculate paint needed for a room",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-026-collision",
+            "step4e-026-direct",
+            "step4e-026-limited"
+          ]
+        },
+        {
+          "query": "choose a smoke detector",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-007-collision",
+            "step4e-007-direct",
+            "step4e-007-limited"
+          ]
+        },
+        {
+          "query": "choose a telescope for beginners",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-036-collision",
+            "step4e-036-direct",
+            "step4e-036-limited"
+          ]
+        },
+        {
+          "query": "clean a cast iron skillet",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-022-collision",
+            "step4e-022-direct",
+            "step4e-022-limited"
+          ]
+        },
+        {
+          "query": "debug a Python memory leak",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-012-collision",
+            "step4e-012-direct",
+            "step4e-012-limited"
+          ]
+        },
+        {
+          "query": "explain DNS propagation",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-014-collision",
+            "step4e-014-direct",
+            "step4e-014-limited"
+          ]
+        },
+        {
+          "query": "find a missing phone",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-018-collision",
+            "step4e-018-direct",
+            "step4e-018-limited"
+          ]
+        },
+        {
+          "query": "find a reputable mechanic",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-048-collision",
+            "step4e-048-direct",
+            "step4e-048-limited"
+          ]
+        },
+        {
+          "query": "fix a leaking kitchen faucet",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-003-collision",
+            "step4e-003-direct",
+            "step4e-003-limited"
+          ]
+        },
+        {
+          "query": "identify poison ivy",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-031-collision",
+            "step4e-031-direct",
+            "step4e-031-limited"
+          ]
+        },
+        {
+          "query": "improve public speaking",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-032-collision",
+            "step4e-032-direct",
+            "step4e-032-limited"
+          ]
+        },
+        {
+          "query": "learn the constellations",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-004-collision",
+            "step4e-004-direct",
+            "step4e-004-limited"
+          ]
+        },
+        {
+          "query": "learn to read a circuit diagram",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-041-collision",
+            "step4e-041-direct",
+            "step4e-041-limited"
+          ]
+        },
+        {
+          "query": "make a household budget",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-035-collision",
+            "step4e-035-direct",
+            "step4e-035-limited"
+          ]
+        },
+        {
+          "query": "organize digital photos",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-028-collision",
+            "step4e-028-direct",
+            "step4e-028-limited"
+          ]
+        },
+        {
+          "query": "plan a road trip with an electric car",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-020-collision",
+            "step4e-020-direct",
+            "step4e-020-limited"
+          ]
+        },
+        {
+          "query": "prepare for an earthquake",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-040-collision",
+            "step4e-040-direct",
+            "step4e-040-limited"
+          ]
+        },
+        {
+          "query": "prevent phishing attacks",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-027-collision",
+            "step4e-027-direct",
+            "step4e-027-limited"
+          ]
+        },
+        {
+          "query": "replace a bicycle chain",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-001-collision",
+            "step4e-001-direct",
+            "step4e-001-limited"
+          ]
+        },
+        {
+          "query": "start a vegetable garden",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-039-collision",
+            "step4e-039-direct",
+            "step4e-039-limited"
+          ]
+        },
+        {
+          "query": "train for a 5k race",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-025-collision",
+            "step4e-025-direct",
+            "step4e-025-limited"
+          ]
+        },
+        {
+          "query": "understand a rental lease",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-049-collision",
+            "step4e-049-direct",
+            "step4e-049-limited"
+          ]
+        },
+        {
+          "query": "understand inflation",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-044-collision",
+            "step4e-044-direct",
+            "step4e-044-limited"
+          ]
+        },
+        {
+          "query": "use git rebase safely",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-013-collision",
+            "step4e-013-direct",
+            "step4e-013-limited"
+          ]
+        },
+        {
+          "query": "write an accessible HTML form",
+          "error_count": 3,
+          "row_ids": [
+            "step4e-037-collision",
+            "step4e-037-direct",
+            "step4e-037-limited"
+          ]
+        },
+        {
+          "query": "change a flat tire",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-033-collision",
+            "step4e-033-limited"
+          ]
+        },
+        {
+          "query": "choose a home wifi router",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-029-direct",
+            "step4e-029-limited"
+          ]
+        },
+        {
+          "query": "compare heat pumps and furnaces",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-046-collision",
+            "step4e-046-limited"
+          ]
+        },
+        {
+          "query": "compare postgres indexes",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-016-direct",
+            "step4e-016-limited"
+          ]
+        },
+        {
+          "query": "configure nginx reverse proxy",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-011-collision",
+            "step4e-011-limited"
+          ]
+        },
+        {
+          "query": "estimate solar panel output",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-017-collision",
+            "step4e-017-direct"
+          ]
+        },
+        {
+          "query": "learn basic first aid",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-021-collision",
+            "step4e-021-limited"
+          ]
+        },
+        {
+          "query": "prepare for a job interview",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-002-collision",
+            "step4e-002-limited"
+          ]
+        },
+        {
+          "query": "read a balance sheet",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-030-collision",
+            "step4e-030-limited"
+          ]
+        },
+        {
+          "query": "recover deleted files on Windows",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-024-collision",
+            "step4e-024-limited"
+          ]
+        },
+        {
+          "query": "reduce household water use",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-042-collision",
+            "step4e-042-limited"
+          ]
+        },
+        {
+          "query": "reduce noise in a recording",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-019-collision",
+            "step4e-019-direct"
+          ]
+        },
+        {
+          "query": "renew a passport",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-005-direct",
+            "step4e-005-limited"
+          ]
+        },
+        {
+          "query": "select a password manager",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-043-collision",
+            "step4e-043-direct"
+          ]
+        },
+        {
+          "query": "start composting at home",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-006-direct",
+            "step4e-006-limited"
+          ]
+        },
+        {
+          "query": "understand food expiration dates",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-034-collision",
+            "step4e-034-direct"
+          ]
+        },
+        {
+          "query": "understand quantum entanglement",
+          "error_count": 2,
+          "row_ids": [
+            "step4e-023-collision",
+            "step4e-023-direct"
+          ]
+        }
+      ],
+      "query_metadata_status": "No independent query-type field is present; query-text groups are reported instead without inferring a type."
     }
   },
   "semantic_change": {
