@@ -1,0 +1,613 @@
+{
+  "schema": "step4e/predictions/v1",
+  "model_version": "BAAI/bge-small-en-v1.5",
+  "prediction_key": "classification",
+  "predictor_inputs": [
+    "query",
+    "title",
+    "snippet",
+    "canonical_url"
+  ],
+  "rows": [
+    {
+      "row_id": "step4e-040-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-044-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-007-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-029-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-009-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-016-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-040-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-004-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-017-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-014-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-025-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-035-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-034-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-029-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-012-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-020-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-035-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-043-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-043-limited",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-025-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-031-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-050-direct",
+      "prediction": "Relevant"
+    },
+    {
+      "row_id": "step4e-039-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-031-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-044-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-042-direct",
+      "prediction": "Relevant"
+    },
+    {
+      "row_id": "step4e-024-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-038-collision",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-001-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-005-collision",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-012-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-041-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-015-collision",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-043-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-035-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-042-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-002-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-022-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-019-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-028-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-034-limited",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-011-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-001-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-023-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-028-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-002-direct",
+      "prediction": "Relevant"
+    },
+    {
+      "row_id": "step4e-017-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-018-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-030-direct",
+      "prediction": "Relevant"
+    },
+    {
+      "row_id": "step4e-030-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-050-limited",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-046-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-031-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-046-direct",
+      "prediction": "Relevant"
+    },
+    {
+      "row_id": "step4e-049-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-005-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-016-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-039-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-003-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-017-limited",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-006-collision",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-020-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-047-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-032-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-032-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-037-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-019-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-027-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-004-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-033-direct",
+      "prediction": "Relevant"
+    },
+    {
+      "row_id": "step4e-029-collision",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-006-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-013-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-010-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-021-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-026-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-039-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-040-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-030-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-009-direct",
+      "prediction": "Relevant"
+    },
+    {
+      "row_id": "step4e-016-collision",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-047-limited",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-025-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-037-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-023-limited",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-023-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-018-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-021-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-020-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-026-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-022-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-046-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-048-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-034-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-048-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-027-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-004-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-012-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-002-limited",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-003-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-011-direct",
+      "prediction": "Relevant"
+    },
+    {
+      "row_id": "step4e-010-limited",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-049-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-011-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-001-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-015-direct",
+      "prediction": "Relevant"
+    },
+    {
+      "row_id": "step4e-024-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-049-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-041-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-014-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-007-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-019-limited",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-028-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-038-limited",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-013-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-008-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-003-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-018-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-027-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-021-direct",
+      "prediction": "Relevant"
+    },
+    {
+      "row_id": "step4e-050-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-041-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-014-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-024-direct",
+      "prediction": "Relevant"
+    },
+    {
+      "row_id": "step4e-045-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-048-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-033-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-013-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-006-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-022-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-033-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-038-direct",
+      "prediction": "Relevant"
+    },
+    {
+      "row_id": "step4e-008-direct",
+      "prediction": "Relevant"
+    },
+    {
+      "row_id": "step4e-010-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-036-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-008-limited",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-015-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-045-limited",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-037-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-036-collision",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-005-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-007-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-042-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-026-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-009-collision",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-047-direct",
+      "prediction": "Relevant"
+    },
+    {
+      "row_id": "step4e-045-direct",
+      "prediction": "Relevant"
+    },
+    {
+      "row_id": "step4e-036-limited",
+      "prediction": "NotRelevant"
+    },
+    {
+      "row_id": "step4e-044-direct",
+      "prediction": "PossiblyRelevant"
+    },
+    {
+      "row_id": "step4e-032-direct",
+      "prediction": "PossiblyRelevant"
+    }
+  ]
+}
