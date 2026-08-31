@@ -614,3 +614,89 @@ WP3_FINAL=COMPLETED_WITH_EXTERNAL_BLOCK
 AMATL no se declara funcionalmente cerrado. El bloqueo es externo: recuperar
 disponibilidad de una fuente autorizada y repetir WP-1 con la misma cohorte;
 no se abren nuevos work packages ni se atribuye ese bloqueo al core.
+
+## Baseline operacional E2E real congelado (2026-08-31)
+
+Este snapshot registra la primera ejecución real aceptada de extremo a extremo
+posterior al bloqueo de disponibilidad descrito arriba. Es un baseline de
+operación, no una reinterpretación de los contratos: la autoridad de
+arquitectura permanece en `docs/arquitectura.md` y la de Evidence v2 en
+`docs/evidence-v2.md`.
+
+- **Baseline HEAD:** `37d157d0d1a3e65b93d69cfd1193b710c23e8a25`
+  (`fix/audit-repository-hygiene`).
+- **Estado operacional:** `SEARCH_REAL_OPERATIONAL=YES`,
+  `DEEP_REAL_OPERATIONAL=YES`, `EVIDENCE_REAL_OPERATIONAL=YES` y
+  `WEBUI_REAL_OPERATIONAL=YES`.
+- **Flujos E2E validados:** `WebUI → Search → AmatlService → Search
+  orchestrator → SearXNG → normalización → canonicalización → deduplicación →
+  SearchResult`; y `Search → Deep → fetch → extracción → Document → Evidence
+  v2 → WebUI`.
+
+### Providers y Search real
+
+SearXNG está habilitado y operativo. La ruta de resultados reales fue validada
+usando el motor actualmente funcional **Wiby** (`SEARXNG_WORKING_ENGINE=wiby`).
+Marginalia está habilitado pero en `RATE_LIMITED` (último HTTP conocido: `429`);
+su estado de autenticación queda sin confirmar y no es necesario para que
+Search tenga éxito. No se infiere resiliencia general: sólo queda probado el
+escenario de degradación controlada en el que SearXNG permanece disponible.
+
+La consulta real aceptada `SQLite WAL documentation` devolvió `success`, tres
+resultados reales de `searxng` (no fixtures), con título, URL y procedencia.
+Entre los dominios representativos verificados están `sqlite.org` y
+`mjtsai.com`. El orden de esos resultados no es un invariante de release.
+
+### Deep, Document y Evidence v2
+
+`POST /deep` acepta `{"q":"SQLite WAL documentation"}`. A partir de los tres
+resultados Search, Deep completó diez fetches y diez documentos exitosos bajo
+la política de adquisición acotada vigente: `max_depth=1` y `max_fetches=10`.
+La expansión observada de tres resultados a diez documentos es comportamiento
+actual validado, no un defecto declarado por este baseline. Deep no soporta
+IDs de `SearchResult` seleccionados ni un tope de fetch por request.
+
+El contrato Document quedó validado con URL, URL final, contenido no vacío,
+tipo de contenido, linaje de fuente, hash de documento, metadatos de fetch y
+metadatos de extracción. En el caso representativo previamente validado
+`https://sqlite.org/wal.html`, Evidence v2 creó evidencia con linaje de fuente,
+URL fuente, referencia a Document, hash de contenido, fragmento y offsets; la
+validación de offsets UTF-8 pasó.
+
+La cadena de procedencia completa es un candidato a invariante de release:
+`query → SearchResult → searxng → URL canónica → Deep fetch → URL final →
+Document → Evidence v2` (`PROVENANCE_CHAIN_COMPLETE=YES`).
+
+### Límites no bloqueantes de este baseline
+
+Los siguientes elementos se clasifican como `KNOWN_NON_BLOCKING_LIMITATION`;
+no se corrigieron ni se amplía su alcance más allá de la validación realizada:
+
+1. Marginalia está rate-limited y su autenticación sigue sin confirmar mientras
+   persista ese estado.
+2. SearXNG depende operativamente de Wiby para resultados web generales.
+3. El renderer Chromium opcional no estuvo disponible durante la validación.
+4. La automatización de DOM vivo de la WebUI no se ejecutó en esta validación
+   porque no había WebDriver instalado.
+5. Deep no acepta IDs de SearchResult seleccionados ni expone un límite de
+   fetch por request.
+6. `max_fetches=10` adquirió diez documentos desde un conjunto Search inicial
+   de tres.
+7. Un lanzamiento previo duplicado del servidor dejó una línea de log
+   `ServerError::Io` obsoleta; la operación del servidor vivo se validó de
+   forma independiente.
+
+```
+REAL_SEARCH_VALIDATED=YES
+REAL_DEEP_VALIDATED=YES
+REAL_DOCUMENT_VALIDATED=YES
+REAL_EVIDENCE_VALIDATED=YES
+CONTROLLED_PROVIDER_DEGRADATION_PROVEN=YES
+DEEP_SELECTED_RESULT_IDS_SUPPORTED=NO
+PER_REQUEST_FETCH_CAP_SUPPORTED=NO
+DEEP_BUDGET_EXPANSION_OBSERVED=YES
+```
+
+Próxima fase: revisar las integraciones grandes restantes sin cambiar los
+límites, providers, routing, ranking, relevancia ni comportamiento Evidence
+congelados en este baseline.
