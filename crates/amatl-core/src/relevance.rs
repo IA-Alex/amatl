@@ -27,7 +27,7 @@
 //!
 //! ## Tokenization
 //!
-//! Reuses [`crate::text`] (`normalized_text` / `tokens`) — the exact same
+//! Reuses the internal normalized-text and token helpers — the exact same
 //! normalization `ranking` and `classify` use. No second, incompatible
 //! tokenizer. Significant query terms = query tokens with the extremely common
 //! function words removed via a small, fixed stop list; quoted-phrase terms are

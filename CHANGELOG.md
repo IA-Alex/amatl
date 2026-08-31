@@ -127,9 +127,50 @@ adapter/extractor versions are independent axes as well.
 - `docs/identidad-visual.md`: the canonical reference for AMATL's color
   tokens (dark and light) and typography, with the rule that no new
   functional color ships without being documented there first.
+- Primary/expansion provider roles (`[expansion]`, STEP 1): `ExpansionConfig`
+  with `mode = "legacy"` (default) or `"primary_expansion"` plus
+  `primary_provider`. In `primary_expansion` the primary provider always
+  occupies the first round and the expansion providers are only reached in
+  later rounds; `RoleAssignment`/`ProviderRole` in the router make the
+  PRIMARY→EXPANSION progression observable per round. In `legacy` the section
+  is inert and routing keeps its pre-role behavior.
+- Provider complementarity metrics (`complementarity.rs`): an objective,
+  structural measurement of what the PRIMARY role found, what EXPANSION found,
+  what overlapped (confirmed by dedupe) and what was exclusive to each —
+  derived entirely from post-dedupe provenance, never a relevance claim.
+- Deterministic relevance assessment (`relevance.rs`): `assess_result`
+  classifies each result as `Relevant`/`PossiblyRelevant`/`NotRelevant` from
+  explicit negative/entity evidence and lexical corroboration. It is a pure
+  observation that never mutates routing, ranking, telemetry or provider
+  selection.
+- Bounded semantic relevance signals (`relevance_semantics.rs`): an advisory
+  semantic layer with fixed precedence
+  `explicit negative/entity evidence > semantic embedding evidence > lexical
+  corroboration`. It can only *suggest* `PossiblyRelevant → Relevant`, and only
+  when there is no contradiction and the bounded-semantic layer independently
+  corroborates; it is never a sovereign classifier.
+- Empirical validation corpus, a blind held-out corpus and a final
+  bounded-semantic held-out campaign (offline, deterministic, mock providers
+  only) that pin the relevance layer's behaviour.
+- Real pure-Rust Candle integration (STEP 4D) behind the
+  `experimental-local-embeddings` feature (still OFF by default):
+  `CandleBackend` (`bge-small-en-v1.5`, CLS pooling + L2), `ModelPackage`
+  (pinned sha256 of the three model files, purely local, fails closed) and
+  `SemanticEvaluator` (query embedded exactly once, one batched document pass
+  over a bounded candidate set). Candle/tokenizers/safetensors are optional
+  `dep:`-gated dependencies; the default build's dependency graph is unchanged.
+- Route/OpenAPI inventory unification (`routes.rs`): a single macro declares
+  each public route's path and methods and generates both the Axum
+  registration and the inventory used by the OpenAPI coverage guard, so adding
+  a route requires declaring it in one place.
+
 
 ### Changed
 
+- Search now reports `failure` whenever the final normalized result set is
+  empty. In particular, an empty transport-level response from one provider
+  can no longer mask a peer's failure as `success`; the regression is covered
+  by `empty_successful_provider_does_not_mask_a_peer_failure`.
 - Semantic and reranker ranking weights now require an inference mode with an
   available backend; the configuration is rejected otherwise.
 - HTTP and MCP surfaces report precise failures (`search_planning_failed`,
@@ -234,6 +275,20 @@ adapter/extractor versions are independent axes as well.
   so a real backup — potentially containing the operator's search history and
   saved documents — was one `git add -A` away from entering history. Widened
   to `/amatl*.sqlite3*`; also added `*~` for stray editor-backup files.
+- AUDIT-01: the OpenAPI route inventory (`docs/api/openapi.yaml`) was
+  synchronized with the actual router and a coverage-guard test now fails the
+  build if a public route is missing from the spec.
+- AUDIT-02: `.gitignore` now ignores nested AMATL SQLite state.
+- AUDIT-03: `.gitignore` now ignores runtime logs.
+- AUDIT-04: the Cargo target artifact lifecycle is documented in
+  `DEVELOPMENT.md` and `docs/operacion.md`.
+- AUDIT-05: Marginalia credentials now require verification before use
+  (`docs/security/secrets.md`, `amatl.example.toml`,
+  `docs/gobernanza-providers.md`, `docs/operacion.md`).
+- AUDIT-06: SearXNG filter preservation and security contact sync
+  (`providers/searxng.rs`, `CODE_OF_CONDUCT.md`, `SECURITY.md`).
+- Repository-hygiene remediations from the validation audit (`config.rs`,
+  `errors.rs`, `lib.rs`, `i18n.js`, `bench.rs`, `benchmark_plan_runner.py`).
 
 ### Changed
 

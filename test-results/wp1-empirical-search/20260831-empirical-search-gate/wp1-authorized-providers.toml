@@ -1,0 +1,75 @@
+# Generated WP-1 fixture. It is intentionally process-local: no persistent
+# state, cache, circuit memory, inference, or retries can affect the cohort.
+schema_version = "1"
+
+[data_policy]
+profile = "standard"
+egress = "governed"
+inference = "disabled"
+
+[providers]
+enabled = ["marginalia", "searxng"]
+
+[providers.marginalia]
+adapter_version = "marginalia-v1"
+approval_status = "approved"
+reviewed_at = "2026-08-15"
+reviewer = "Alexis Hernandez"
+terms_url = "https://www.marginalia.nu/"
+terms_version_or_date = "self-certified"
+allowed_access_method = "official_api"
+plan_or_contract = "non-commercial, public key"
+rate_limit = "shared with all public-key users; 503 when saturated"
+cost_model = "0"
+credential_env = "MARGINALIA_API_KEY"
+storage_rights = false
+data_handling_notes = "Non-commercial use (CC-BY-NC-SA); process-local WP-1 fixture."
+operational_risk = "External API with a shared quota; may return 503 under saturation."
+
+[providers.searxng]
+adapter_version = "searxng-v1"
+approval_status = "approved"
+reviewed_at = "2026-08-15"
+reviewer = "Alexis Hernandez"
+terms_url = "https://docs.searxng.org/"
+terms_version_or_date = "self-certified"
+allowed_access_method = "self_hosted"
+plan_or_contract = "self-hosted"
+rate_limit = "unlimited (self-hosted)"
+cost_model = "0"
+credential_env = "SEARXNG_INSTANCE_URL"
+storage_rights = false
+data_handling_notes = "Self-hosted local SearXNG; process-local WP-1 fixture."
+operational_risk = "Depends on upstream engines, which can reject or rate-limit requests."
+
+[timeouts]
+provider_ms = 20000
+global_ms = 45000
+
+[budget]
+max_provider_calls = 2
+
+[execution]
+global_concurrency = 2
+per_provider_concurrency = 1
+max_retries = 0
+retry_jitter_ms = 0
+
+[persistence]
+enabled = false
+history_enabled = false
+
+[cache.provider_search]
+enabled = false
+
+[cache.document]
+enabled = false
+
+[telemetry]
+persistence_enabled = false
+
+[circuit_breaker]
+enabled = false
+
+[answer]
+enabled = false

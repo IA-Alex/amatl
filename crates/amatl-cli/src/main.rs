@@ -911,12 +911,62 @@ async fn provider_canary(
         .await
         .search(query, ServiceSurface::cli())
         .await?;
-    if execution.response.status == amatl_core::SearchStatus::Failure
-        || !execution.response.providers_used.contains(&provider)
-    {
+    if !canary_response_is_usable(&execution.response, &provider) {
         anyhow::bail!("provider canary failed without a usable {provider} response");
     }
     print_search(execution.response, json)
+}
+
+/// A network canary validates a provider only when it returned at least one
+/// consumable result. A transport-level `success` with an empty result set is
+/// not evidence that the provider is operational for AMATL's purpose.
+fn canary_response_is_usable(response: &SearchResponse, provider: &str) -> bool {
+    canary_response_is_usable_parts(
+        &response.status,
+        response.providers_used.iter().any(|used| used == provider),
+        response.results.len(),
+    )
+}
+
+#[cfg(test)]
+mod canary_tests {
+    use super::*;
+
+    #[test]
+    fn empty_success_is_not_a_usable_provider_canary_response() {
+        assert!(!canary_response_is_usable_parts(
+            &amatl_core::SearchStatus::Success,
+            true,
+            0,
+        ));
+    }
+
+    #[test]
+    fn provider_canary_requires_a_successful_attempt_and_a_result() {
+        assert!(canary_response_is_usable_parts(
+            &amatl_core::SearchStatus::PartialSuccess,
+            true,
+            1,
+        ));
+        assert!(!canary_response_is_usable_parts(
+            &amatl_core::SearchStatus::Failure,
+            true,
+            1,
+        ));
+        assert!(!canary_response_is_usable_parts(
+            &amatl_core::SearchStatus::Success,
+            false,
+            1,
+        ));
+    }
+}
+
+fn canary_response_is_usable_parts(
+    status: &amatl_core::SearchStatus,
+    provider_was_used: bool,
+    result_count: usize,
+) -> bool {
+    !matches!(status, amatl_core::SearchStatus::Failure) && provider_was_used && result_count > 0
 }
 
 fn init_logging() {
