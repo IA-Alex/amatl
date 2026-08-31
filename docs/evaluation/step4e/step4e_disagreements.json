@@ -1,0 +1,29 @@
+{
+  "schema": "step4e_disagreements_v1",
+  "rows": [
+    {
+      "row_id": "step4e-010-collision",
+      "query": "make sourdough bread",
+      "title": "Sourdough microbes research abstract",
+      "snippet": "A study of microbial diversity in bakery starters.",
+      "canonical_url": "https://capture.step4e.example.org/2026-08/step4e-010-collision",
+      "domain": "capture.step4e.example.org",
+      "label_a": "NotRelevant",
+      "label_b": "PossiblyRelevant",
+      "adjudicated_label": "PossiblyRelevant",
+      "adjudication_reason": "Discusses sourdough starters and their microbes; related to making sourdough bread but does not provide preparation guidance."
+    },
+    {
+      "row_id": "step4e-002-limited",
+      "query": "prepare for a job interview",
+      "title": "Interview archive",
+      "snippet": "Selected interviews from our magazine.",
+      "canonical_url": "https://capture.step4e.example.org/2026-08/step4e-002-limited",
+      "domain": "capture.step4e.example.org",
+      "label_a": "NotRelevant",
+      "label_b": "PossiblyRelevant",
+      "adjudicated_label": "NotRelevant",
+      "adjudication_reason": "The generic magazine interview archive does not indicate job-interview preparation or advice."
+    }
+  ]
+}
