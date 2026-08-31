@@ -1,0 +1,9 @@
+{
+  "schema": "amatl.relevance.dataset-inventory.v1",
+  "independent_protocol_status": "REQUIRES_NEW_LABELLED_DATA",
+  "datasets": [
+    {"dataset_id":"relevance-development-corpus-v1","purpose":"development and threshold experimentation","path":"crates/amatl-core/tests/fixtures/relevance/corpus.json","rows":172,"label_status":"labelled","observed_by_development":true,"used_for_tuning":true,"used_for_selection":true,"used_for_final_evaluation":false,"contamination_status":"KNOWN_TUNED","hash":"760d49ea54940100831def16a9eb977775fb06bdb3b89880f45d1343f4fc6e9a","source_provenance":"Hand-built empirical validation corpus; documented in relevance-empirical-validation.md."},
+    {"dataset_id":"bounded-semantic-historical-holdout-v1","purpose":"historical benchmark only","path":"crates/amatl-core/tests/fixtures/relevance/holdout.json","rows":93,"label_status":"labelled","observed_by_development":true,"used_for_tuning":true,"used_for_selection":true,"used_for_final_evaluation":true,"contamination_status":"HISTORICAL_ONLY","holdout_state":"CONSUMED","hash":"c9124992e4eba406ae58f60149c1ef87522c0c2bd97d9b3ba77dd802f2f001b5","source_provenance":"Frozen unlabeled at 82fd8e2; labels and results were opened and reported before the new protocol."},
+    {"dataset_id":"step4e-v1","purpose":"known development benchmark and candidate comparison","path":"docs/evaluation/step4e/step4e_ground_truth.json","rows":150,"label_status":"adjudicated labelled","observed_by_development":true,"used_for_tuning":true,"used_for_selection":true,"used_for_final_evaluation":true,"contamination_status":"KNOWN_TUNED","holdout_state":"CONSUMED","hash":"db7eea3026f05adc0b59c6868e78c710928163912e009456cef43785169dc198","source_provenance":"Synthetic capture, independently annotated then adjudicated; predictions/results opened at 974cb09."}
+  ]
+}

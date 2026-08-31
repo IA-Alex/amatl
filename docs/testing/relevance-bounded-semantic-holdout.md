@@ -1,4 +1,10 @@
-# STEP 3B — Bounded Semantic Relevance — Final Held-Out Campaign
+# STEP 3B — Bounded Semantic Relevance — Historical Held-Out Campaign
+
+> **Superseded evaluation role:** this 93-row corpus was opened before the
+> candidate, thresholds, and PASS/FAIL policy were frozen. It is therefore a
+> `HISTORICAL_CONTAMINATED_BENCHMARK`, not a final blind holdout. Its results
+> remain evidence only; future candidates must follow the independent protocol
+> in [`docs/evaluation/independent-relevance/protocol.md`](../evaluation/independent-relevance/protocol.md).
 
 **Status:** `BOUNDED_SEMANTIC_RELEVANCE_IMPROVED_BUT_INSUFFICIENT`
 **Telemetry:** remains **blocked** (`TELEMETRY_UNLOCKED = NO`).
