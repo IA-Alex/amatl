@@ -7,7 +7,9 @@ Estado revisado el **2026-08-16** sobre la rama `consolidacion-ui-observabilidad
 - último commit: `e9b0c9e` (`feat(answer): síntesis de respuesta citada opcional, tema claro/oscuro y refresco de marca`);
 - baseline de implementación: tag `baseline-fases-0-9`, commit `51c6d34`;
 - workspace: Rust 2021, MSRV 1.88, versión candidata `0.1.0-rc.1`, cuatro crates;
-- fases 0–9: cerradas y verificadas;
+- fases 0–9: implementadas y verificadas por las compuertas internas; esto no
+  declara cierre funcional definitivo, que queda condicionado a WP-1
+  (Empirical Search Gate) sobre providers reales autorizados;
 - publicación SemVer: RC actual `0.1.0-rc.1`; estado externo verificable en GitHub Releases;
 - Fase 10: no existe en el golden template y no debe inferirse; `answer` (ver
   ADR-011) tampoco es una fase — es una capacidad opcional transversal,
@@ -501,3 +503,114 @@ En paralelo, los controles externos de GitHub, gobernanza/credenciales del
 environment y canario real continúan como decisiones del propietario. No
 bloquear el pulido local por falta de APIs ni simular su aprobación; futuras
 publicaciones deben repetir las compuertas documentadas.
+
+## Cierre de auditoría y experimentos de relevancia (rama `fix/audit-repository-hygiene`)
+
+Actualización 2026-08-30. `HEAD = 10e8aa6`, 14 commits por delante de
+`origin/fix/audit-repository-hygiene`, árbol de trabajo limpio. Todos los gates
+de código pasan en esta revisión: `cargo fmt --all -- --check`, `cargo check
+--workspace --all-targets --locked`, `cargo clippy --workspace --all-targets
+--all-features -- -D warnings` y `cargo test --workspace --locked` (576 pruebas
+aprobadas, 0 fallos, 1 ignorada — soak, que corre en su propio job).
+
+### Remediaciones de auditoría (AUDIT-01 … AUDIT-06)
+
+- **AUDIT-01** — inventario de rutas OpenAPI sincronizado con el router real y
+  guarda de cobertura que falla el build si falta una ruta pública en el spec.
+- **AUDIT-02** — `.gitignore` ignora el estado SQLite anidado de AMATL.
+- **AUDIT-03** — `.gitignore` ignora los logs de runtime.
+- **AUDIT-04** — ciclo de vida de artefactos de target documentado
+  (`DEVELOPMENT.md`, `docs/operacion.md`).
+- **AUDIT-05** — las credenciales de Marginalia exigen verificación antes de
+  usarse (`docs/security/secrets.md`, `amatl.example.toml`,
+  `docs/gobernanza-providers.md`, `docs/operacion.md`).
+- **AUDIT-06** — preservación de filtros de SearXNG y sincronización de
+  contacto de seguridad (`providers/searxng.rs`, `CODE_OF_CONDUCT.md`,
+  `SECURITY.md`).
+- Remediaciones de higiene de repositorio del audit de validación
+  (`config.rs`, `errors.rs`, `lib.rs`, `i18n.js`, `bench.rs`,
+  `benchmark_plan_runner.py`).
+
+### Experimentos de relevancia (STEP 4A → 4D)
+
+Serie de experimentos de relevancia semántica, todos **advisory** y fuera del
+camino de búsqueda por defecto:
+
+- **STEP 4A** — viabilidad de embeddings locales
+  (`docs/experiments/local-embedding-feasibility.md`).
+- **STEP 4B** — viabilidad de backend Candle/musl de producción
+  (`docs/experiments/candle-musl-feasibility.md`).
+- **STEP 4C** — ruta release + latencia E2E, frontera tipada
+  (`docs/experiments/candle-e2e-4c.md`).
+- **STEP 4D** — integración real de Candle en `amatl-core` tras la feature
+  `experimental-local-embeddings` (OFF por defecto): `CandleBackend`,
+  `ModelPackage` y `SemanticEvaluator`
+  (`docs/experiments/candle-integration-4d.md`,
+  `STATUS = STEP_4D_REAL_CANDLE_INTEGRATION_COMPLETE`).
+
+En el camino de búsqueda por defecto se añadieron, de forma aditiva y
+determinista: roles de provider primario/expansión (`[expansion]`), métricas de
+complementariedad entre providers, evaluación determinista de relevancia
+(`assess_result`) y señales semánticas acotadas (`relevance_semantics.rs`) con
+precedencia fija. Ninguna de ellas muta routing, ranking, telemetría ni
+selección de providers; la capa semántica sólo puede *sugerir*
+`PossiblyRelevant → Relevant` sin contradicción y con corroboración
+independiente.
+
+### Unificación de rutas/OpenAPI
+
+`routes.rs` declara cada ruta pública (path + métodos) en un solo lugar y
+genera tanto el registro Axum como el inventario que usa la guarda de cobertura
+OpenAPI, eliminando la duplicación previa entre `lib.rs` y `tests.rs`.
+
+### Estado previo a WP-1
+
+Las remediaciones y experimentos anteriores describen sólo evidencia de
+implementación y compuertas internas. No constituyen cierre funcional
+definitivo: WP-1 (Empirical Search Gate) sigue siendo el siguiente trabajo
+requerido y debe ejecutarse contra providers reales autorizados antes de una
+conclusión de cierre.
+
+Al entrar en la campaña, el estado era:
+
+```
+CODE_GATES=PASS
+CONTRACT_GATES=PASS
+KNOWN_INTERNAL_FUNCTIONAL_WORK_PACKAGES=NONE
+EMPIRICAL_SEARCH_GATE=NOT_EXECUTED
+STATUS=READY_FOR_EMPIRICAL_VALIDATION
+```
+
+### WP-1 / WP-2 / WP-3 — Empirical Search Gate (2026-08-31)
+
+Se ejecutó WP-1 con la cohorte congelada de diez consultas y los dos providers
+reales autorizados (`marginalia`, `searxng`), en un fixture que desactiva
+persistencia, cachés, reintentos y cortacircuito. La primera ejecución expuso
+un defecto interno de clasificación: una respuesta vacía podía etiquetarse
+`success` si un peer fallaba. WP-2 lo corrigió en `execution.rs` y añadió la
+regresión `empty_successful_provider_does_not_mask_a_peer_failure`; las
+compuertas de código posteriores pasan (`fmt`, workspace tests y clippy).
+
+La repetición completó las diez posiciones: `failure=10`,
+`success=0`, `partial_success=0`; Marginalia devolvió `provider_rate_limit` en
+las diez y SearXNG fue llamado en las diez pero no entregó resultados
+utilizables. El aislamiento de llamadas se conserva (el fallo de Marginalia no
+canceló SearXNG), pero normalización y deduplicación no pudieron observarse
+porque no hubo candidatos. Una consulta directa controlada confirmó que la
+instancia SearXNG ya devolvía cero resultados, antes del pipeline de AMATL.
+La evidencia completa y los hashes reproducibles están en
+`test-results/wp1-empirical-search/20260831-empirical-search-gate/README.md`.
+
+```
+CODE_GATES=PASS
+CONTRACT_GATES=PASS
+KNOWN_INTERNAL_FUNCTIONAL_WORK_PACKAGES=NONE
+EMPIRICAL_SEARCH_GATE=BLOCKED_EXTERNAL
+STATUS=BLOCKED_ON_AUTHORIZED_PROVIDER_AVAILABILITY
+WP2_INTERNAL_DEFECT=FIXED_AND_REGRESSION_TESTED
+WP3_FINAL=COMPLETED_WITH_EXTERNAL_BLOCK
+```
+
+AMATL no se declara funcionalmente cerrado. El bloqueo es externo: recuperar
+disponibilidad de una fuente autorizada y repetir WP-1 con la misma cohorte;
+no se abren nuevos work packages ni se atribuye ese bloqueo al core.
