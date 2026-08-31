@@ -433,11 +433,11 @@ impl SearchOrchestrator {
             .iter()
             .map(composite_error)
             .collect::<Vec<_>>();
-        let no_usable_results = results.is_empty()
-            && (attempted.is_empty()
-                || accumulated.providers_failed.len() == attempted.len()
-                || !accumulated.providers_partial.is_empty()
-                || !degradations.is_empty());
+        // Search success is evidence of at least one consumable AMATL result,
+        // not merely a transport-level provider response. A successful empty
+        // provider alongside a failed peer used to leak through as `success`
+        // with an empty result set because neither condition below was true.
+        let no_usable_results = results.is_empty();
         if results.is_empty() && attempted.is_empty() {
             errors.push(CompositeError {
                 code: "no_available_provider".into(),
