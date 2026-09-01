@@ -1,0 +1,133 @@
+{
+  "schema": "amatl.relevance.agreement-report.v1",
+  "PRELABEL_HASH": "acd93a349e88568d4a14054a2c3a44179cca62f7374361777db20d6ca94cdb06",
+  "RAW_ACQUISITION_HASH": "551ab9fd41b0dab20469745bcd9d03220c6600af544635086b5fbe9ad8a23e49",
+  "LABELER_A_HASH": "cdb32ee4ec6d9e31eef56eb331a7c21b77320cd38ddbf7b080bea081786c09e7",
+  "LABELER_B_HASH": "03688971b6f16c1d1a3fc1bd662d6535d21022405b479bc8108ed667e68bd90d",
+  "LABELER_A_VALIDATION": "PASS",
+  "LABELER_B_VALIDATION": "PASS",
+  "labeler_a_validation": {
+    "TOTAL_ROWS": 368,
+    "VALID_ROWS": 368,
+    "MISSING_ROWS": [],
+    "EXTRA_ROWS": [],
+    "DUPLICATE_ROW_IDS": [],
+    "INVALID_LABELS": [],
+    "EMPTY_LABELS": [],
+    "ORIGINAL_FIELD_MISMATCH": [],
+    "ROW_ID_SET_HASH": "637e0c5b3b6e42e3166f9d2350a75b61f70f01ae09ca46639fad8707ddbc97cd"
+  },
+  "labeler_b_validation": {
+    "TOTAL_ROWS": 368,
+    "VALID_ROWS": 368,
+    "MISSING_ROWS": [],
+    "EXTRA_ROWS": [],
+    "DUPLICATE_ROW_IDS": [],
+    "INVALID_LABELS": [],
+    "EMPTY_LABELS": [],
+    "ORIGINAL_FIELD_MISMATCH": [],
+    "ROW_ID_SET_HASH": "637e0c5b3b6e42e3166f9d2350a75b61f70f01ae09ca46639fad8707ddbc97cd"
+  },
+  "TOTAL_COMPARABLE_ROWS": 368,
+  "AGREEMENTS": 336,
+  "DISAGREEMENTS": 32,
+  "PERCENT_AGREEMENT": 91.304348,
+  "COHEN_KAPPA": 0.684441824,
+  "PER_CLASS_AGREEMENT": {
+    "Relevant": {
+      "agreements": 5,
+      "labeler_a_total": 7,
+      "labeler_b_total": 7
+    },
+    "PossiblyRelevant": {
+      "agreements": 36,
+      "labeler_a_total": 60,
+      "labeler_b_total": 44
+    },
+    "NotRelevant": {
+      "agreements": 295,
+      "labeler_a_total": 301,
+      "labeler_b_total": 317
+    },
+    "Unknown": {
+      "agreements": 0,
+      "labeler_a_total": 0,
+      "labeler_b_total": 0
+    }
+  },
+  "DISAGREEMENT_MATRIX": {
+    "Relevant": {
+      "Relevant": 5,
+      "PossiblyRelevant": 2,
+      "NotRelevant": 0,
+      "Unknown": 0
+    },
+    "PossiblyRelevant": {
+      "Relevant": 2,
+      "PossiblyRelevant": 36,
+      "NotRelevant": 22,
+      "Unknown": 0
+    },
+    "NotRelevant": {
+      "Relevant": 0,
+      "PossiblyRelevant": 6,
+      "NotRelevant": 295,
+      "Unknown": 0
+    },
+    "Unknown": {
+      "Relevant": 0,
+      "PossiblyRelevant": 0,
+      "NotRelevant": 0,
+      "Unknown": 0
+    }
+  },
+  "MINOR_BOUNDARY_COUNT": 32,
+  "EXTREME_COUNT": 0,
+  "UNKNOWN_CONFLICT_COUNT": 0,
+  "DISAGREEMENT_ROW_IDS": {
+    "MINOR_BOUNDARY": [
+      "q002-003",
+      "q002-007",
+      "q005-004",
+      "q010-002",
+      "q011-002",
+      "q011-004",
+      "q011-005",
+      "q013-002",
+      "q014-007",
+      "q016-001",
+      "q016-004",
+      "q016-008",
+      "q017-005",
+      "q017-006",
+      "q017-010",
+      "q017-012",
+      "q019-006",
+      "q024-001",
+      "q024-002",
+      "q024-011",
+      "q025-006",
+      "q026-002",
+      "q026-004",
+      "q026-007",
+      "q026-010",
+      "q026-011",
+      "q027-003",
+      "q029-008",
+      "q031-008",
+      "q031-010",
+      "q031-011",
+      "q032-006"
+    ],
+    "EXTREME": [],
+    "UNKNOWN_CONFLICT": []
+  },
+  "ADJUDICATION_PACKET_ROWS": 32,
+  "ADJUDICATION_PACKET_HASH": "3d6b3594729dd6a5e4926bfa97fb8fa168f6bd081e217e9a3c63f34e09efa091",
+  "ADJUDICATION_STATUS": "WAITING_FOR_HUMAN",
+  "SELECTION_STATUS": "NOT_CREATED",
+  "BLIND_HOLDOUT_STATUS": "NOT_CREATED",
+  "SUPPLEMENTAL_ACQUISITION_SPEC_HASH": "613f92ba2b4e269c315727b3f6f75f43caa828ededb60fbe33b5ec2c5a87d105",
+  "ADJUDICATION_RESULT_HASH": "3d6b3594729dd6a5e4926bfa97fb8fa168f6bd081e217e9a3c63f34e09efa091",
+  "WORK_PACKAGE_STATUS": "BLOCKED_WAITING_FOR_ADJUDICATION"
+}

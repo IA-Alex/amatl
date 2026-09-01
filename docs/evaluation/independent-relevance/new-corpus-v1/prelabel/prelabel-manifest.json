@@ -1,0 +1,15 @@
+{
+  "schema": "amatl.relevance.prelabel-manifest.v1",
+  "corpus_id": "independent-relevance-generalist-20260831-v1",
+  "RAW_ROWS": 368,
+  "VALID_ROWS": 368,
+  "DUPLICATES_REMOVED": 0,
+  "EXACT_DUPLICATES_REMOVED": 0,
+  "HISTORICAL_DUPLICATES_REMOVED": 0,
+  "INVALID_ROWS": 0,
+  "FINAL_PRELABEL_ROWS": 368,
+  "prelabel_snapshot_hash": "acd93a349e88568d4a14054a2c3a44179cca62f7374361777db20d6ca94cdb06",
+  "annotation_packet_a_hash": "76bf71f4f1ca9b114005e9ae72465661936903896c56a19cd8c1af5f35e4eb05",
+  "annotation_packet_b_hash": "a1666f9f1ee4b172706b91b9fd62194d0af35b135ce0ba1046ba3ea2f4aef73e",
+  "label_observation_status": "NOT_STARTED"
+}

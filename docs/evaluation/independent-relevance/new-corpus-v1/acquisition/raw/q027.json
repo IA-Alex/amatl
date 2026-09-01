@@ -1,0 +1,93 @@
+{
+  "schema_version": "1",
+  "query": "how to repair a zipper",
+  "status": "partial_success",
+  "results": [
+    {
+      "schema_version": "1",
+      "rank": 1,
+      "title": "ERBzine 7555: TV Tarzan Reviews Eps 74 & 74",
+      "original_url": "https://www.erbzine.com/mag75/7555.html",
+      "canonical_url": "https://www.erbzine.com/mag75/7555.html",
+      "domain": "www.erbzine.com",
+      "snippet": "ago this spring. He was repairing the roof of a mission at the time. Dan, and this is starting to get annoying with this Poppa Nagumi stuff, chimes in that is why the police",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 2,
+      "title": "TTBA -- Volume 1",
+      "original_url": "http://www.viragene.com/ttba1/tmba.htm",
+      "canonical_url": "http://www.viragene.com/ttba1/tmba.htm",
+      "domain": "www.viragene.com",
+      "snippet": "I can drive a car. And repair one, until the point past resuscitation.' 'Well, a pal of mine has a little parcel delivery service, just short runs, so he's got a plane. Kiddie car",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 3,
+      "title": "www.fieggen.com \u2013 Site Map",
+      "original_url": "https://www.fieggen.com/sitemap.htm",
+      "canonical_url": "https://www.fieggen.com/sitemap.htm",
+      "domain": "www.fieggen.com",
+      "snippet": "Tips (\u201cAglets\u201d) Aglet Repair Adhesive Tape Aglet Candle Wax / Resin Aglet Glue / Nail Polish Aglet Thread and Glue Aglet Heat Shrink Tubing Aglet Metal Tubing Aglet Melted Shoelac",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 4,
+      "title": "TableHooters - electronic instrument hacks & collection",
+      "original_url": "http://weltenschule.de/TableHooters/instruments.html",
+      "canonical_url": "http://weltenschule.de/TableHooters/instruments.html",
+      "domain": "weltenschule.de",
+      "snippet": "bass noises (with repair tips) updated 2025-12-15 D\u00fcbreq - Stylophone 350S - stylus operated simple synth with light sensor and VCF new 2025-12-15 chinaware Golden Camel 7A -",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 5,
+      "title": "Bed Bugs Sacramento | Discreet Inspections & Control of Sacramento Bed Bugs",
+      "original_url": "http://www.ardentermite.com/Bed-Bugs/FAQs/",
+      "canonical_url": "http://www.ardentermite.com/Bed-Bugs/FAQs/",
+      "domain": "www.ardentermite.com",
+      "snippet": "Repair peeling wallpaper. Keep bedding and dust ruffles from touching the floor. Better yet, remove the ruffles. When retu",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    }
+  ],
+  "providers_used": [
+    "searxng"
+  ],
+  "providers_failed": [],
+  "providers_partial": [
+    "searxng"
+  ],
+  "errors": [],
+  "degradations": [
+    {
+      "code": "provider_circuit_open",
+      "component": "marginalia",
+      "message": "marginalia is in circuit cooldown after consecutive failures; the source was skipped"
+    }
+  ],
+  "elapsed_ms": 271
+}
