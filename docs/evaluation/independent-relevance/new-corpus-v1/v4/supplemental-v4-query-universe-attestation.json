@@ -1,0 +1,13 @@
+{
+  "schema": "amatl.relevance.supplemental-v4-query-universe-attestation.v1",
+  "universe_id": "independent-relevance-supplemental-v4",
+  "status": "FROZEN",
+  "universe_path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-query-universe.json",
+  "universe_sha256": "c6729fad0f79d0cdbf94e64884e083ab51c59a8cc935fb30efe33a7f7de19bb7",
+  "manifest_path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-query-universe-manifest.json",
+  "manifest_sha256": "6ef0c6aa6bd06df68d05ba304f2d892519b4b4cfddcb9f01a10bdfdaa1ddc52f",
+  "chain": "universe -> manifest -> attestation",
+  "self_hash_in_manifest": false,
+  "network_requests": 0,
+  "attestor": "EXPERIMENTAL_INTEGRITY_AUDITOR"
+}

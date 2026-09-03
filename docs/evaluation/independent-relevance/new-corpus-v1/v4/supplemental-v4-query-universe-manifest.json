@@ -1,0 +1,15 @@
+{
+  "schema": "amatl.relevance.supplemental-v4-query-universe-manifest.v1",
+  "universe_id": "independent-relevance-supplemental-v4",
+  "freeze_status": "FROZEN",
+  "query_count": 600,
+  "treatment_query_count": 300,
+  "control_query_count": 300,
+  "result_depth": 3,
+  "theoretical_capacity": 1800,
+  "planned_capacity_margin": "900 structural slots per arm for 474 valid results; 89.9% above target",
+  "universe_sha256": "c6729fad0f79d0cdbf94e64884e083ab51c59a8cc935fb30efe33a7f7de19bb7",
+  "known_query_overlap": 0,
+  "provenance": "offline authored from pre-V4 S2/V3 compact informational signal; no ground-truth labels read for construction",
+  "randomization_seed": "independent-relevance-supplemental-v4-randomization-v1"
+}

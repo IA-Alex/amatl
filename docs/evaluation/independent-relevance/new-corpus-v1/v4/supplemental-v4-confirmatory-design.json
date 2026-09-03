@@ -1,0 +1,130 @@
+{
+  "schema": "amatl.relevance.supplemental-v4-confirmatory-design.v1",
+  "design_status": "FROZEN",
+  "experiment_type": "CONFIRMATORY",
+  "v3_ground_truth_id": "independent-relevance-supplemental-v3-ground-truth-v1",
+  "v3_rows": 60,
+  "primary_endpoint": "STRICT_RELEVANCE_YIELD",
+  "strict_relevant_class": "Relevant",
+  "strict_non_relevant_classes": [
+    "PossiblyRelevant",
+    "NotRelevant",
+    "Unknown"
+  ],
+  "primary_hypothesis": {
+    "h1": "P(Relevant | Treatment) > P(Relevant | Control)",
+    "h0": "P(Relevant | Treatment) <= P(Relevant | Control)"
+  },
+  "alpha": 0.05,
+  "power_target": 0.9,
+  "sample_size_method": "pooled two-proportion normal approximation; one-sided alpha=.05",
+  "effect_size_contract": {
+    "observed_v3": {
+      "control_rate": 0.047619047619047616,
+      "treatment_rate": 0.10256410256410256,
+      "absolute_delta": 0.054945054945054944,
+      "relative_lift": 2.1538461538461537
+    },
+    "conservative_scenario": {
+      "assumed_control_rate": 0.05,
+      "minimum_detectable_treatment_rate": 0.1,
+      "minimum_detectable_absolute_delta": 0.05,
+      "minimum_detectable_relative_lift": 2.0
+    },
+    "freeze_rule": "The 5 percentage-point / 2.0x improvement is operationally useful and fixed before capture; no post-freeze tuning."
+  },
+  "sample_size": {
+    "required_n_per_arm_power80": 343,
+    "required_n_per_arm_power90": 474,
+    "frozen_n_per_arm": 474,
+    "total_valid_result_target": 948,
+    "assessment_360_per_arm": "insufficient for the 90% sensitivity target; retained only as historical preliminary recommendation"
+  },
+  "randomization": {
+    "method": "seeded deterministic Fisher-Yates shuffle of pre-matched 1:1 pairs",
+    "seed": "independent-relevance-supplemental-v4-randomization-v1",
+    "allocation_ratio": "1:1",
+    "blocking": "matched_topic pair; equal arm allocation"
+  },
+  "treatment_query_generation_rule": "Use only pre-V4 S2/V3 compact informational forms: what is X; how does X work; what causes X; how does X operate. X is a pre-authored informational topic. Lowercase/trim/Unicode NFC; include exactly one form; exclude labels, result features, named providers, temporal modifiers, navigational/commercial intent, and manual edits.",
+  "control_query_generation_rule": "For the same pre-authored topic and in the same deterministic matched-pair order, use a non-compact informational paraphrase: explain the basic idea behind X; tell me about the function of X; give an overview of X; describe the principle behind X. Do not apply the compact treatment signal.",
+  "comparability_contract": [
+    "same topic",
+    "same query count",
+    "same provider",
+    "same depth",
+    "same parsing",
+    "same deduplication",
+    "same canonicalization",
+    "same filters",
+    "same downstream ranking"
+  ],
+  "result_depth": 3,
+  "provider": "SEARXNG",
+  "endpoint_expected": "http://127.0.0.1:8888",
+  "provider_causality_identifiable": false,
+  "contamination_gates": {
+    "identity": "canonical URL: lowercase scheme/host, remove fragment, preserve query, empty path becomes /",
+    "exclude": [
+      "V1",
+      "Supplemental V1/V2",
+      "V3",
+      "historical evaluation corpus",
+      "duplicate within V4"
+    ],
+    "action": "reject deterministically; never relabel or alter frozen query text"
+  },
+  "stopping_rule": "Capture in frozen capture_order until exactly 474 valid results per arm; no interim inferential analysis and no stopping on relevance, p-value, lift, broad relevance, or arm behavior.",
+  "missing_failed_requests": {
+    "HTTP failure": "record failed attempt; retry same query once, then reject",
+    "empty results": "record and reject attempt",
+    "parser failure": "record and reject attempt",
+    "provider timeout": "record; retry same query once, then reject",
+    "duplicate-heavy query": "record accepted/rejected rows; proceed in order",
+    "contamination-heavy query": "reject contaminated rows; proceed in order",
+    "replacement": "only next unused query from frozen universe in capture_order; no manual substitution"
+  },
+  "labeling": {
+    "labelers_required": 2,
+    "allowed_labels": [
+      "Relevant",
+      "PossiblyRelevant",
+      "NotRelevant",
+      "Unknown"
+    ],
+    "disagreements": "independent adjudication only",
+    "arm_blinding": "blind arm designation and all arm metrics; expose only query/result fields needed for labeling"
+  },
+  "primary_analysis": {
+    "comparison": "Treatment Relevant proportion vs Control Relevant proportion",
+    "effects": [
+      "absolute difference in proportions",
+      "relative lift",
+      "odds ratio",
+      "95% CI"
+    ],
+    "test": "one-sided Fisher exact test at alpha=.05; report exact two-sided sensitivity p-value separately if desired",
+    "multiple_testing": "none for the single primary endpoint; additional analyses are secondary/exploratory"
+  },
+  "decision_rule": {
+    "success": "VALIDATE_ACQUISITION_STRATEGY only if strict Treatment yield > strict Control yield, absolute improvement >= 0.05, one-sided Fisher p <= 0.05, and all integrity gates pass.",
+    "failure": "REJECT_ACQUISITION_STRATEGY if integrity passes and the primary endpoint is directionally non-superior or evidence is incompatible with alpha, including failure of the useful-effect threshold.",
+    "inconclusive": "INCONCLUSIVE if integrity is compromised, valid target is not reached under the frozen universe/budget, or the primary test cannot be validly computed.",
+    "secondary_non_rescue": true,
+    "no_automatic_v5": true
+  },
+  "secondary_metrics": [
+    "BROAD_RELEVANCE_YIELD",
+    "NOT_RELEVANT_RATE",
+    "UNKNOWN_RATE"
+  ],
+  "request_budget": {
+    "valid_result_target": 948,
+    "depth": 3,
+    "estimated_query_count": 600,
+    "maximum_planned_requests": 1200,
+    "retry_policy": "at most one retry for HTTP failure or timeout; same query only",
+    "planning_basis": "one initial request per frozen query plus one bounded retry; V3 acceptance rates are planning reference only, not guarantee"
+  },
+  "network_requests": 0
+}
