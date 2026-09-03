@@ -1,0 +1,292 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 1425.443558000552,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is a biopsy",
+    "results": [
+      {
+        "category": "general",
+        "content": "are able to perform a biopsy of the liver, but the small amount of cells extracted are insufficient to produce the effect. How then, can they determine the mechanism and not have",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "asimovonline.com",
+          "/asimov_FAQ.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Isaac Asimov FAQ",
+        "url": "http://asimovonline.com/asimov_FAQ.html"
+      },
+      {
+        "category": "general",
+        "content": "tissue obtained at biopsy or neurosurgery. Thus incubated synaptosomes and brain slices from postmortem human brain respire, accumulate tissue potassium, maintain membrane potenti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "Lab Test Profiles The Biopsy Report: A Patient&#39;s Guide Hemp / Cannabis / Marijuana FAQ Virtual Drugstore Drugs Used for Acne Drugs Used for Aging Drugs Used for AIDS/HIV Drugs Use",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "stason.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Welcome to stason.org",
+        "url": "https://stason.org/"
+      },
+      {
+        "category": "general",
+        "content": "This often involves a biopsy, which, while not necessarily harmful, does involve some level of intervention with the animal. Furthermore, as of my knowledge cutoff in September 20",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.animal-rights.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Veganism as conceived by ChatGPT",
+        "url": "https://www.animal-rights.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "neurosurgical cerebral biopsy and the behavioural consequences of cholinomimetic drugs and cholinergic lesions. Such studies have resulted in the discovery of an association betwe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biopsychiatry.com",
+          "/alzheim.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alzheimer&#39;s disease",
+        "url": "https://www.biopsychiatry.com/alzheim.htm"
+      },
+      {
+        "category": "general",
+        "content": "Mammography Myelogram Biopsy Scans PSA test HIV tests Herpes Tests TB tests Fear ploys [ Fear mongering ] Epidemic Fearmongering Infectious scares Fake vaccine &#39;scarcity&#39; Epidemio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/vaccines.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE VACCINATION RACKET",
+        "url": "http://www.whale.to/vaccines.html"
+      },
+      {
+        "category": "general",
+        "content": "for celiac disease (biopsy and HLA). The authors identified 28 patients with gluten sensitivity and ataxia with no other predisposing cause. The neurological symptoms preceded the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "paleodiet.com",
+          "/ms/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Multiple Sclerosis and the Diet Alternative",
+        "url": "https://paleodiet.com/ms/"
+      },
+      {
+        "category": "general",
+        "content": "Moh. Moh &#34;championed biopsy,&#34; a big industry money-maker, even though biopsies are inherently metastatic , thus guaranteeing future business. Nichols, on the other hand, understoo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.meditopia.org",
+          "/chap2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Meditopia -- Chapter 2",
+        "url": "https://www.meditopia.org/chap2.htm"
+      },
+      {
+        "category": "general",
+        "content": "First, he was given a biopsy to determine that the tumor was still alive, and active, and to collect tissue for later uses. Then, a catheter was implanted into the tumor bed, and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.levity.com",
+          "/eschaton/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "INDEX: Hyperborea",
+        "url": "http://www.levity.com/eschaton/"
+      },
+      {
+        "category": "general",
+        "content": "certain disease, but a biopsy and further examination revealed that this was incorrect, would the man rely upon the preliminary opinion? Certainly not, and we feel it would be wro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "solomonspalding.com",
+          "/tanrpg/1977Tanr.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jerald &amp; Sandra Tanner&#39;s 1977 book",
+        "url": "http://solomonspalding.com/tanrpg/1977Tanr.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-t-006",
+  "query_text": "what is a biopsy",
+  "requested_at": "2026-09-02T22:58:53.997818Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

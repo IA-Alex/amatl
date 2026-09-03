@@ -1,0 +1,346 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 1785.023115000513,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does a barcode work",
+    "results": [
+      {
+        "category": "general",
+        "content": "Docs Edge of Emulation: Barcode Taisen Bardigun . . . . . . . . . . . Source: GameFAQs.com Chasing White Whales A while ago on Reddit, we discussed some of our so-called &#34;Whit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "shonumi.github.io",
+          "/articles/art6.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Edge of Emulation: Barcode Taisen Bardigun",
+        "url": "https://shonumi.github.io/articles/art6.html"
+      },
+      {
+        "category": "general",
+        "content": "in some format like a barcode. Whatever methods of storing private keys are implemented: 1. It must be possible to erase them as toxic waste from memory or from the physical token",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kirill.korins.ky",
+          "/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Electt: Running Auditable and Verifiable Elections in Untrusted Environments - Kirill&#39;s journal",
+        "url": "https://kirill.korins.ky/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/"
+      },
+      {
+        "category": "general",
+        "content": "a wide range of barcode scanning equipment starting in the 1960s. Their products eventually included microprocessor control, one of them must have used this Intel 8080 based proce",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "users.glitchwrks.com",
+          "/~glitch/updates.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Site News and Updates",
+        "url": "http://users.glitchwrks.com/~glitch/updates.html"
+      },
+      {
+        "category": "general",
+        "content": "in love, slap on a barcode and return yourself to the shelf Leigh Beadon has developed a set of games to play at the “Gap” clothing store. There’s something good",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sniggle.net",
+          "/commerce.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Commerce Jamming",
+        "url": "https://sniggle.net/commerce.php"
+      },
+      {
+        "category": "general",
+        "content": "of curiosity... Morse-Barcode - A small PHP script to generate morse encoded barcodes Narrow CW filters, do they help? - listening examples, some theory... Morse My IP - Truly rid",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "fkurz.net",
+          "/ham/stuff.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DJ5CW (ex DJ1YFK) - Ham Stuff",
+        "url": "http://fkurz.net/ham/stuff.html"
+      },
+      {
+        "category": "general",
+        "content": "number labels and then barcode labels and then they have to get shelved. But I did make a red ghost cake! Are y&#39;all ready for Halloween? I might go to the beach for my birthday bu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cousinshahrzad.neocities.org",
+          "/letters",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Your Cousin Shahrzad",
+        "url": "https://cousinshahrzad.neocities.org/letters"
+      },
+      {
+        "category": "general",
+        "content": "1-960434-00 -- United Barcode Industries langUBIDirectProtocol(58), -- Not in RFC 1759 -- An intelligent control language for -- label printers. -- Programmers guide: &#34; UBI Direct",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.iana.org",
+          "/assignments/ianaprinter-mib/ianaprinter-mib",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.iana.org/assignments/ianaprinter-mib/ianaprinter-mib",
+        "url": "http://www.iana.org/assignments/ianaprinter-mib/ianaprinter-mib"
+      },
+      {
+        "category": "general",
+        "content": "of this site. iPhone barcode scanners Comparison of barcode scanner apps for iOS. Mac apps for switchers A list of my favorite Mac OS X applications. Lustro on the streets Adding",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.suffix.be",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog - Suffix",
+        "url": "https://www.suffix.be/blog/"
+      },
+      {
+        "category": "general",
+        "content": "support for the CueCat barcode reader. 8. Tested and verified that Windows ME will work and support both the  interface and networking options. 9. Added options in setup for",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.pinewoodracer.com",
+          "/pinewood_racer_update_history.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PineWood Racer update history",
+        "url": "http://www.pinewoodracer.com/pinewood_racer_update_history.htm"
+      },
+      {
+        "category": "general",
+        "content": "you do with it?! Make barcodes from texts: This is one of my &#34;tutorials&#34; that has most of the didactic material in the comments contained within the sourcecode provided . (Click s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "sheepdogguides.com",
+          "/lut/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lazarus Programming Tutorials Table of Contents",
+        "url": "http://sheepdogguides.com/lut/"
+      },
+      {
+        "category": "general",
+        "content": "because of that little barcode like everybody thinks). A similar strategy is used on game CDs to prevent copying. Rumor has it that Plextor&#39;s CD-R drives are the best at reading p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.tedfelix.com",
+          "/PhotoCD/PCDAdvanced.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kodak Photo CD, Advanced Topics",
+        "url": "http://www.tedfelix.com/PhotoCD/PCDAdvanced.html"
+      },
+      {
+        "category": "general",
+        "content": "2022-08-25: update pst-barcode 2022-07-15: update pst-magneticfield 2021-11-13: update With up-to-date PSTricks you can run yor PSTricks source with lualatex. The output is a PDF",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "tug.org",
+          "/PSTricks/main.cgi/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "/PSTricks/main",
+        "url": "https://tug.org/PSTricks/main.cgi/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-t-007",
+  "query_text": "how does a barcode work",
+  "requested_at": "2026-09-02T22:58:55.783212Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

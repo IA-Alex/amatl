@@ -1,0 +1,2349 @@
+{
+  "corpus_id": "independent-relevance-supplemental-v3-final-20260902",
+  "raw_evidence_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw-evidence.json",
+  "raw_evidence_sha256": "9ffb754e66660a4c220a9aa153db6d108a49592862e47c4cde8b83d56dab85e9",
+  "rows": [
+    {
+      "acquired_at": "2026-09-02T22:59:01.741243Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://gnu.support/",
+      "designation": "control",
+      "domain": "gnu.support",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "https://gnu.support/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.5,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "explain the basic idea behind encryption",
+      "query_id": "sup-v3-s2-c-001",
+      "rank": 2,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-001-attempt-1.json",
+      "raw_response_sha256": "d6dbb3f59b0824992f9a7020444b1dd3c7e85a04fd0bf4e9983ba76c736c552f",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-001-002",
+      "snippet": "Free Cultural Works Encryption and Privacy Schneier on Security Window Managers StumpWM File Managers ROX Filer Midnight Commander Latest pages The LLM Freedom Manifesto: Open-Wei",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "GNU.Support website about GNU Operating Systems"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:01.741257Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor",
+      "designation": "control",
+      "domain": "www.chiark.greenend.org.uk",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "www.chiark.greenend.org.uk",
+          "/~sgtatham/quasiblog/xor/",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.3333333333333333,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "explain the basic idea behind encryption",
+      "query_id": "sup-v3-s2-c-001",
+      "rank": 3,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-001-attempt-1.json",
+      "raw_response_sha256": "d6dbb3f59b0824992f9a7020444b1dd3c7e85a04fd0bf4e9983ba76c736c552f",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-001-003",
+      "snippet": "with more complicated encryption methods than what I’m describing here, this never goes well! 5 ! That’s not to say that there isn’t terrifyingly complicated stuff somewhere in th",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "XOR"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:02.197870Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://www.panspermia.org/neodarw.htm",
+      "designation": "control",
+      "domain": "www.panspermia.org",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "https://www.panspermia.org/neodarw.htm",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "www.panspermia.org",
+          "/neodarw.htm",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "explain the basic idea behind photosynthesis",
+      "query_id": "sup-v3-s2-c-002",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-002-attempt-1.json",
+      "raw_response_sha256": "0c8189408b79e459c5f6069aef783b7f0712712ea0c66108f7d2ca55022bffe0",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-002-001",
+      "snippet": "Origins of C4 Photosynthesis&#34; [ html ], doi:10.1371/journal.pgen.1004365, 10(6): e1004365, PLoS Genet , online 5 Jun 2014. Joe Parker et al., &#34;Genome-wide signatures of convergent",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "Neo-Darwinism: The Current Paradigm. by Brig Klyce"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:02.197882Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://www.dhushara.com/book/bchtm/biocos.htm",
+      "designation": "control",
+      "domain": "www.dhushara.com",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "http://www.dhushara.com/book/bchtm/biocos.htm",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.5,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "explain the basic idea behind photosynthesis",
+      "query_id": "sup-v3-s2-c-002",
+      "rank": 2,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-002-attempt-1.json",
+      "raw_response_sha256": "0c8189408b79e459c5f6069aef783b7f0712712ea0c66108f7d2ca55022bffe0",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-002-002",
+      "snippet": "capable of early photosynthesis (Redfern 2013). Meteorites of Martian origin have more recently come to the Earth. From magnetic studies, some reached temperatures no higher than",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "Biocosmology"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:02.637014Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://chalk-dog.com/",
+      "designation": "control",
+      "domain": "chalk-dog.com",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "https://chalk-dog.com/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "chalk-dog.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "tell me about the function of a diaphragm",
+      "query_id": "sup-v3-s2-c-003",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-003-attempt-1.json",
+      "raw_response_sha256": "748bffe2f09c6d2529a342d519c57b93241ecb61763e011e9b18bc97b24eb5f7",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-003-001",
+      "snippet": "apothecary fast dish - diaphragm smoking buy buying friend bunting video ideas classic owl craft C.M.I. hwy 73 spray paint volume control busy bread flying day look iphone sale tr",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "https://chalk-dog.com/"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:02.637027Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://www.earlychristianwritings.com/text/galen.html",
+      "designation": "control",
+      "domain": "www.earlychristianwritings.com",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "http://www.earlychristianwritings.com/text/galen.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "www.earlychristianwritings.com",
+          "/text/galen.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.5,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "tell me about the function of a diaphragm",
+      "query_id": "sup-v3-s2-c-003",
+      "rank": 2,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-003-attempt-1.json",
+      "raw_response_sha256": "748bffe2f09c6d2529a342d519c57b93241ecb61763e011e9b18bc97b24eb5f7",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-003-002",
+      "snippet": "the peritoneum and the diaphragm, thus filling the whole abdominal cavity and thorax with water? “But,” says he, “of course the peritoneal coat is more imperviou",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "Galen: On the Natural Faculties"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:02.637036Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://shrines.rpgclassics.com/snes/terranigma/facts.shtml",
+      "designation": "control",
+      "domain": "shrines.rpgclassics.com",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "http://shrines.rpgclassics.com/snes/terranigma/facts.shtml",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "shrines.rpgclassics.com",
+          "/snes/terranigma/facts.shtml",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.3333333333333333,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "tell me about the function of a diaphragm",
+      "query_id": "sup-v3-s2-c-003",
+      "rank": 3,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-003-attempt-1.json",
+      "raw_response_sha256": "748bffe2f09c6d2529a342d519c57b93241ecb61763e011e9b18bc97b24eb5f7",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-003-003",
+      "snippet": "in the centre of a diaphragm (which was a stretched flat piece of material) that vibrated when hit by sound waves, causing the needle to move on the tin foil. When Edison spoke in",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "Terranigma - Facts"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:03.035435Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://arcadeblogger.com/feed",
+      "designation": "control",
+      "domain": "arcadeblogger.com",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "https://arcadeblogger.com/feed/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "arcadeblogger.com",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "tell me about the operation of a gyroscope",
+      "query_id": "sup-v3-s2-c-004",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-004-attempt-1.json",
+      "raw_response_sha256": "88a67a2ec004e2cd84214d90e1797535e2d180e9d0e744b6d8630023ff1a919e",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-004-001",
+      "snippet": "both their corporate operations and global game production during the arcade boom: June 1986. Here’s a Sega employee posing next to an assembled sitdown Sega Enduro Racer at",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "The Arcade Blogger"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:03.035451Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://www.copetti.org/writings/consoles/nintendo-3ds",
+      "designation": "control",
+      "domain": "www.copetti.org",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "https://www.copetti.org/writings/consoles/nintendo-3ds/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/nintendo-3ds/",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.5,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "tell me about the operation of a gyroscope",
+      "query_id": "sup-v3-s2-c-004",
+      "rank": 2,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-004-attempt-1.json",
+      "raw_response_sha256": "88a67a2ec004e2cd84214d90e1797535e2d180e9d0e744b6d8630023ff1a919e",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-004-002",
+      "snippet": "The 3DS-only hardware Operation The backwards-compatible block Pipeline I/O External interfaces and peripherals The ‘New’ enhancements Internal interfaces The supplemental compute",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "Nintendo 3DS Architecture | A Practical Analysis"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:03.035460Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://altusmetrum.org/AltOS/doc/altusmetrum.html",
+      "designation": "control",
+      "domain": "altusmetrum.org",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "https://altusmetrum.org/AltOS/doc/altusmetrum.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "altusmetrum.org",
+          "/AltOS/doc/altusmetrum.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.3333333333333333,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "tell me about the operation of a gyroscope",
+      "query_id": "sup-v3-s2-c-004",
+      "rank": 3,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-004-attempt-1.json",
+      "raw_response_sha256": "88a67a2ec004e2cd84214d90e1797535e2d180e9d0e744b6d8630023ff1a919e",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-004-003",
+      "snippet": "Logs Appendix A: System Operation A.1. Firmware Modes A.2. GPS A.3. Controlling An Altimeter Over The Radio Link A.4. Ground Testing A.5. Radio Link A.6. APRS A.7. Configurable Pa",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "The Altus Metrum System: An Owner’s Manual for Altus Metrum Rocketry Electronics"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:03.288354Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://sanpedrorivervalley.org/",
+      "designation": "control",
+      "domain": "sanpedrorivervalley.org",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "https://sanpedrorivervalley.org/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "sanpedrorivervalley.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "give an overview of groundwater movement",
+      "query_id": "sup-v3-s2-c-005",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-005-attempt-1.json",
+      "raw_response_sha256": "b986a5971d7059c377baf9f510bf79b14cf53eaee4b6fd52e3c3aea571f13015",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-005-001",
+      "snippet": "2025. San Pedro River groundwater is its primary source of water and hence anticipated increases in groundwater pumping will soon threaten quality of life around here (including r",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "San Pedro River Ecology"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:03.553170Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://dhushara.com/",
+      "designation": "control",
+      "domain": "dhushara.com",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "http://dhushara.com/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "dhushara.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "give an overview of cellular respiration",
+      "query_id": "sup-v3-s2-c-006",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-006-attempt-1.json",
+      "raw_response_sha256": "d908fb7c30fb3a7fb1323c5764282e50717731a53f1953c482aec4a41ecf43d8",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-006-001",
+      "snippet": "sequestering respiration in the mitochondria, leaving the cell membrane free for edge-of-chaos excitability, sensitive to environmental fluctuations. Subjective consciousness thus",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "Dhushara"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:03.553182Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://www.dhushara.com/book/unraveltree/unravel.htm",
+      "designation": "control",
+      "domain": "www.dhushara.com",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "http://www.dhushara.com/book/unraveltree/unravel.htm",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/unraveltree/unravel.htm",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.5,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "give an overview of cellular respiration",
+      "query_id": "sup-v3-s2-c-006",
+      "rank": 2,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-006-attempt-1.json",
+      "raw_response_sha256": "d908fb7c30fb3a7fb1323c5764282e50717731a53f1953c482aec4a41ecf43d8",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-006-002",
+      "snippet": "- a key step in respiration and photosynthesis, which ultimately led to oxygen-producing photosynthesis and the &#34;great oxygenation event&#34; 2.4 billion years ago, when the",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "Unraveling the Tree of Life"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:03.553193Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://brainmind.com/BrainLecture1.html",
+      "designation": "control",
+      "domain": "brainmind.com",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "http://BrainMind.com/BrainLecture1.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "BrainMind.com",
+          "/BrainLecture1.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.3333333333333333,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "give an overview of cellular respiration",
+      "query_id": "sup-v3-s2-c-006",
+      "rank": 3,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-006-attempt-1.json",
+      "raw_response_sha256": "d908fb7c30fb3a7fb1323c5764282e50717731a53f1953c482aec4a41ecf43d8",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-006-003",
+      "snippet": "accessory muscles of respiration and inspiration (Zhang et al. 1994) and receives extensive input from the amygdala, the anterior cingulate, and the left and right frontal lobes--",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "BrainMind.com"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:03.886092Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://historicbridges.org/index.php",
+      "designation": "control",
+      "domain": "historicbridges.org",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "https://historicbridges.org/index.php",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "historicbridges.org",
+          "/index.php",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "why might a metal bridge expand",
+      "query_id": "sup-v3-s2-c-007",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-007-attempt-1.json",
+      "raw_response_sha256": "ac9ab8c310fa33883768a9dfd768681b9ba6e84ba5da16e83d51cc2304f860a6",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-007-001",
+      "snippet": "Open Menu Home Bridge Locator App Bridge Browser North America and World Map Europe Map Southeast Asia Map USA: AL-GA Alabama A-L Alabama State Map Barbour Chilton Colbert Coosa D",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "Historic Bridges .org"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:03.886112Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://www.howtospotapsychopath.com/feed",
+      "designation": "control",
+      "domain": "www.howtospotapsychopath.com",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "http://www.howtospotapsychopath.com/feed/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "www.howtospotapsychopath.com",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.3333333333333333,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "why might a metal bridge expand",
+      "query_id": "sup-v3-s2-c-007",
+      "rank": 3,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-007-attempt-1.json",
+      "raw_response_sha256": "ac9ab8c310fa33883768a9dfd768681b9ba6e84ba5da16e83d51cc2304f860a6",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-007-003",
+      "snippet": "mind. Water under the bridge, old chap. Some credit is deserved for anybody whose own Big Lie is an accusation that someone else has told a Big Lie.) What occurred to me the other",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "How to Spot a Psychopath"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:04.348208Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://www.pheemcfaddell.com/PageArtistsPage.html",
+      "designation": "control",
+      "domain": "www.pheemcfaddell.com",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "http://www.pheemcfaddell.com/PageArtistsPage.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "www.pheemcfaddell.com",
+          "/PageArtistsPage.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.5,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "why might a lake freeze from the top",
+      "query_id": "sup-v3-s2-c-008",
+      "rank": 2,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-008-attempt-1.json",
+      "raw_response_sha256": "5d43d26476d71bf3543500d0d1e42847ea8fc1b7c800bc37abc2fa0fb68d17d2",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-008-002",
+      "snippet": "let your imagination freeze up.          There are some labels that could use more decorating. Before you cut them out try outlining parts",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "Artist Page"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:04.348222Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://russnelson.com/unfinished-railroads.html",
+      "designation": "control",
+      "domain": "russnelson.com",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "http://russnelson.com/unfinished-railroads.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "russnelson.com",
+          "/unfinished-railroads.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.3333333333333333,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "why might a lake freeze from the top",
+      "query_id": "sup-v3-s2-c-008",
+      "rank": 3,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-008-attempt-1.json",
+      "raw_response_sha256": "5d43d26476d71bf3543500d0d1e42847ea8fc1b7c800bc37abc2fa0fb68d17d2",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-008-003",
+      "snippet": "cause your browser to freeze up. It&#39;s useful to see where the railroads are relative to your location. Here&#39;s a static grab of it: Other states Arizona: Long ago a man named James",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "Unfinished Railroads of New York State"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:04.767304Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://www.informationphilosopher.com/",
+      "designation": "control",
+      "domain": "www.informationphilosopher.com",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "https://www.informationphilosopher.com/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "describe the principle behind induction",
+      "query_id": "sup-v3-s2-c-009",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-009-attempt-1.json",
+      "raw_response_sha256": "16b99cf0fb4da751f471851bbd649ff58061a4378d4cffde00d4abd76c295487",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-009-001",
+      "snippet": "Indeterminism Dirac&#39;s Principles Dirac&#39;s 3 Polarizers Foundations Interpretations Irreversibility Measurement Problem Quantum, Thermo, Info Quantum to Classical Recurrence Problem",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "The Information Philosopher - dedicated to the new information philosophy"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:04.767319Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse",
+      "designation": "control",
+      "domain": "theanarchistlibrary.org",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "theanarchistlibrary.org",
+          "/library/paul-feyerabend-against-method.muse",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.5,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "describe the principle behind induction",
+      "query_id": "sup-v3-s2-c-009",
+      "rank": 2,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-009-attempt-1.json",
+      "raw_response_sha256": "16b99cf0fb4da751f471851bbd649ff58061a4378d4cffde00d4abd76c295487",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-009-002",
+      "snippet": "goes” is not a “principle” I hold - I do not think that “principles” can be used and fruitfully discussed outside the concrete research situation they are supposed to affect - but",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:04.767329Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://www.hetwebsite.net/het/texts/carlyle/carlyle1831characteristics.htm",
+      "designation": "control",
+      "domain": "www.hetwebsite.net",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "original_url": "http://www.hetwebsite.net/het/texts/carlyle/carlyle1831characteristics.htm",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "www.hetwebsite.net",
+          "/het/texts/carlyle/carlyle1831characteristics.htm",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.3333333333333333,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "describe the principle behind induction",
+      "query_id": "sup-v3-s2-c-009",
+      "rank": 3,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-009-attempt-1.json",
+      "raw_response_sha256": "16b99cf0fb4da751f471851bbd649ff58061a4378d4cffde00d4abd76c295487",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-c-009-003",
+      "snippet": "Polity, has a spiritual principle; is the embodiment, tentative and more or less complete, of an Idea: all its tendencies of endeavour, specialties of custom, its laws, politics a",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "title": "T. Carlyle, 1931, &#34;Characteristics&#34;, ER"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:48.060744Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://www.25thandclement.com/~william/projects/tarsum.html",
+      "designation": "treatment",
+      "domain": "www.25thandclement.com",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "http://www.25thandclement.com/~william/projects/tarsum.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "www.25thandclement.com",
+          "/~william/projects/tarsum.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "what is a checksum",
+      "query_id": "sup-v3-s2-t-001",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-001-attempt-1.json",
+      "raw_response_sha256": "9f591016663a4c5f01352c58e951ad980d10ff023b4ed90e116c8372008d10c5",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-001-001",
+      "snippet": "tarsum: checksum utility for tar files description news todo usage contributions license source projects about author description tarsum generates and validates checksums for file",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "tarsum: checksum utility for tar files"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:48.060761Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://searle.x10host.com/cpm",
+      "designation": "treatment",
+      "domain": "searle.x10host.com",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "http://searle.x10host.com/cpm/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "searle.x10host.com",
+          "/cpm/",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.5,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "what is a checksum",
+      "query_id": "sup-v3-s2-t-001",
+      "rank": 2,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-001-attempt-1.json",
+      "raw_response_sha256": "9f591016663a4c5f01352c58e951ad980d10ff023b4ed90e116c8372008d10c5",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-001-002",
+      "snippet": "symbol, followed by a checksum A:DOWNLOAD STAT.COM   &lt;==== Command to create second file STAT.COM in the current drive U0   &lt;==== User selection :C33304202020436F7",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Grant&#39;s home-designed CP/M machine"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:49.016707Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://spaceshuttleguide.com/system/electrical.htm",
+      "designation": "treatment",
+      "domain": "spaceshuttleguide.com",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://spaceshuttleguide.com/system/electrical.htm",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "spaceshuttleguide.com",
+          "/system/electrical.htm",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "what is a heat pump",
+      "query_id": "sup-v3-s2-t-002",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-002-attempt-1.json",
+      "raw_response_sha256": "d045775ae899f225ad69119808e0221c4c70e1cc280caad8da434dac0d221e3c",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-002-001",
+      "snippet": "Reactant Storage and Distribution Fuel Cell Power Plants Electrical Power Distribution and Control Overview The EPS consists of three subsystems: power reactant storage and distri",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Space Shuttle Electrical SYSTEMS; See what the Electrical SYSTEMS of the Space Shuttle"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:49.656219Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://www.etalabs.net/compare_libcs.html",
+      "designation": "treatment",
+      "domain": "www.etalabs.net",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://www.etalabs.net/compare_libcs.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "www.etalabs.net",
+          "/compare_libcs.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "what is a mutex",
+      "query_id": "sup-v3-s2-t-003",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-003-attempt-1.json",
+      "raw_response_sha256": "3ab10f427cfde083929a0b8b820baffd04832c7e062c7b3d475ecd22b7daa015",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-003-001",
+      "snippet": "0.126 45.761 0.142 Mutex lock/unlock 0.042 0.055 0.785 0.046 UTF-8 decode buffered 0.073 0.140 0.257 0.351 UTF-8 decode byte-by-byte 0.153 0.395 0.236 0.563 Stdio putc/getc 0.270",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Comparison of C/POSIX standard library implementations for Linux"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:49.656247Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://sysprog21.github.io/lkmpg",
+      "designation": "treatment",
+      "domain": "sysprog21.github.io",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://sysprog21.github.io/lkmpg/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "sysprog21.github.io",
+          "/lkmpg/",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.3333333333333333,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "what is a mutex",
+      "query_id": "sup-v3-s2-t-003",
+      "rank": 3,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-003-attempt-1.json",
+      "raw_response_sha256": "3ab10f427cfde083929a0b8b820baffd04832c7e062c7b3d475ecd22b7daa015",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-003-003",
+      "snippet": "Synchronization    13.1 Mutex    13.2 Spinlocks    13.3 Read and write locks    13.4 Atomic operations    13.5 Read-Copy-Update (RCU)   14 Replacing Print Macros    14.1 Replaceme",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "The Linux Kernel Module Programming Guide"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:50.625101Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://responsiblegambling.org/for-the-public/problem-gambling-prevention/programs-for-young-adults",
+      "designation": "treatment",
+      "domain": "responsiblegambling.org",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://responsiblegambling.org/for-the-public/problem-gambling-prevention/programs-for-young-adults/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "responsiblegambling.org",
+          "/for-the-public/problem-gambling-prevention/programs-for-young-adults/",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "what is a public key",
+      "query_id": "sup-v3-s2-t-004",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-004-attempt-1.json",
+      "raw_response_sha256": "6780d9f27d2b4eb1cc7e177cb1e0e3ceb9661987a799391eb2aa24b945bc7220",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-004-001",
+      "snippet": "to Main Content For the Public About Gambling What Is Gambling? Gambling Facts Gambling Dictionary Gambling FAQs Gambling Myths The Science Behind Gambling Safer Play What Is Safe",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Programs for Young Adults | Problem Gambling Prevention | For the Public | Responsible Gambling Council"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:50.625111Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://www.cambridgeclarion.org/31.html",
+      "designation": "treatment",
+      "domain": "www.cambridgeclarion.org",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "http://www.cambridgeclarion.org/31.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "www.cambridgeclarion.org",
+          "/31.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.5,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "what is a public key",
+      "query_id": "sup-v3-s2-t-004",
+      "rank": 2,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-004-attempt-1.json",
+      "raw_response_sha256": "6780d9f27d2b4eb1cc7e177cb1e0e3ceb9661987a799391eb2aa24b945bc7220",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-004-002",
+      "snippet": "project part 2: towards public key authentication without central authority using names made of pseudowords by Stephen Hewitt | Published 3 August 2021 Background This is the seco",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Lepron project part 2: towards public key authentication without central authority using names made of pseudowords"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:50.625120Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://www.thesocialcontract.com/",
+      "designation": "treatment",
+      "domain": "www.thesocialcontract.com",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "http://www.thesocialcontract.com/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "www.thesocialcontract.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.3333333333333333,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "what is a public key",
+      "query_id": "sup-v3-s2-t-004",
+      "rank": 3,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-004-attempt-1.json",
+      "raw_response_sha256": "6780d9f27d2b4eb1cc7e177cb1e0e3ceb9661987a799391eb2aa24b945bc7220",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-004-003",
+      "snippet": "issue sidetracks the public from focusing on human population growth , by Brenda Walker Immigration Restriction: A Positive Agenda , by John Vinson Financing Our Own Dispossession",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "The Social Contract Press - a quarterly journal on population environment public issues international migration immigration language and assim"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:52.572299Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://etaps.org/2024/registration",
+      "designation": "treatment",
+      "domain": "etaps.org",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://etaps.org/2024/registration/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "etaps.org",
+          "/2024/registration/",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.5,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "what is a carbon footprint",
+      "query_id": "sup-v3-s2-t-005",
+      "rank": 2,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-005-attempt-1.json",
+      "raw_response_sha256": "2364c948bec8932182be3b8f11793c3137da19ba3392d32a84d881f000dc7fa2",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-005-002",
+      "snippet": "diminishing the carbon footprint of scientific research activities. ETAPS 2024 attendees are encouraged to combine their visit to Luxembourg with collaborations with local researc",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "ETAPS 2024 Registration"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:53.998088Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://asimovonline.com/asimov_FAQ.html",
+      "designation": "treatment",
+      "domain": "asimovonline.com",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "http://asimovonline.com/asimov_FAQ.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "asimovonline.com",
+          "/asimov_FAQ.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "what is a biopsy",
+      "query_id": "sup-v3-s2-t-006",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-006-attempt-1.json",
+      "raw_response_sha256": "8a201abe687f9e4e0601bd0813fe8756f5959134a8f19ba177a02abddb244e2d",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-006-001",
+      "snippet": "are able to perform a biopsy of the liver, but the small amount of cells extracted are insufficient to produce the effect. How then, can they determine the mechanism and not have",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Isaac Asimov FAQ"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:53.998107Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://stason.org/",
+      "designation": "treatment",
+      "domain": "stason.org",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://stason.org/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "stason.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.3333333333333333,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "what is a biopsy",
+      "query_id": "sup-v3-s2-t-006",
+      "rank": 3,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-006-attempt-1.json",
+      "raw_response_sha256": "8a201abe687f9e4e0601bd0813fe8756f5959134a8f19ba177a02abddb244e2d",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-006-003",
+      "snippet": "Lab Test Profiles The Biopsy Report: A Patient&#39;s Guide Hemp / Cannabis / Marijuana FAQ Virtual Drugstore Drugs Used for Acne Drugs Used for Aging Drugs Used for AIDS/HIV Drugs Use",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Welcome to stason.org"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:55.783533Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://shonumi.github.io/articles/art6.html",
+      "designation": "treatment",
+      "domain": "shonumi.github.io",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://shonumi.github.io/articles/art6.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "shonumi.github.io",
+          "/articles/art6.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "how does a barcode work",
+      "query_id": "sup-v3-s2-t-007",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-007-attempt-1.json",
+      "raw_response_sha256": "f3735ba197b8bb386ff22cff9c16189abd14002bd83db0107fef4f02633baa77",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-007-001",
+      "snippet": "Docs Edge of Emulation: Barcode Taisen Bardigun . . . . . . . . . . . Source: GameFAQs.com Chasing White Whales A while ago on Reddit, we discussed some of our so-called &#34;Whit",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Edge of Emulation: Barcode Taisen Bardigun"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:55.783547Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://kirill.korins.ky/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments",
+      "designation": "treatment",
+      "domain": "kirill.korins.ky",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://kirill.korins.ky/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "kirill.korins.ky",
+          "/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.5,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "how does a barcode work",
+      "query_id": "sup-v3-s2-t-007",
+      "rank": 2,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-007-attempt-1.json",
+      "raw_response_sha256": "f3735ba197b8bb386ff22cff9c16189abd14002bd83db0107fef4f02633baa77",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-007-002",
+      "snippet": "in some format like a barcode. Whatever methods of storing private keys are implemented: 1. It must be possible to erase them as toxic waste from memory or from the physical token",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Electt: Running Auditable and Verifiable Elections in Untrusted Environments - Kirill&#39;s journal"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:56.283203Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://greatdreams.com/eclipse.htm",
+      "designation": "treatment",
+      "domain": "greatdreams.com",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "http://greatdreams.com/eclipse.htm",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "greatdreams.com",
+          "/eclipse.htm",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.5,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "how does a solar eclipse work",
+      "query_id": "sup-v3-s2-t-008",
+      "rank": 2,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-008-attempt-1.json",
+      "raw_response_sha256": "69b0bda86be437e57638f5bb9621492a31eaeaf5d0213354769470645d2c2c2f",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-008-002",
+      "snippet": "S OLAR ECLIPSE 1999 - FINAL QUEST FOR THE HOLY GRAIL by Joseph E. Mason Go to Related Crop Circles Solar Eclipse Animations Go to References Resources     The solar ecli",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "SOLAR ECLIPSE 1999 - FINAL QUEST FOR THE HOLY GRAIL"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:56.283213Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://adishakti.org/",
+      "designation": "treatment",
+      "domain": "adishakti.org",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://adishakti.org/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "adishakti.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.3333333333333333,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "how does a solar eclipse work",
+      "query_id": "sup-v3-s2-t-008",
+      "rank": 3,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-008-attempt-1.json",
+      "raw_response_sha256": "69b0bda86be437e57638f5bb9621492a31eaeaf5d0213354769470645d2c2c2f",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-008-003",
+      "snippet": "2, 2027 total solar eclipse. This paper argues that the eclipse, nicknamed the &#39;Eclipse of the Century,&#39; is not a random astronomical event but a divinely orchestrated celestial s",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Adi Shakti | Divine Feminine | Goddess | MahaDevi | Shri Mataji Nirmala Devi"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:57.065080Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://plover.net/~davidw/sol/m/means15.html",
+      "designation": "treatment",
+      "domain": "plover.net",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://plover.net/~davidw/sol/m/means15.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "plover.net",
+          "/~davidw/sol/m/means15.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "how does a compass work",
+      "query_id": "sup-v3-s2-t-009",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-009-attempt-1.json",
+      "raw_response_sha256": "29a1920aac522283870b33825cf5a6b3bbf6a661a8cb58356e115acfde3e0766",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-009-001",
+      "snippet": "top Key &amp; Compass presents: Mean Streets by Bad Dog Studios Mean Streets is a TADS 2 interactive fiction game and is © 2015 by Bad Dog Studios. It was entered in ParserComp 20",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Mean Streets - map and walkthrough | Key &amp; Compass"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:57.065092Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://plover.net/~davidw/sol/h/hat__11.html",
+      "designation": "treatment",
+      "domain": "plover.net",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://plover.net/~davidw/sol/h/hat__11.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "plover.net",
+          "/~davidw/sol/h/hat__11.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.5,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "how does a compass work",
+      "query_id": "sup-v3-s2-t-009",
+      "rank": 2,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-009-attempt-1.json",
+      "raw_response_sha256": "29a1920aac522283870b33825cf5a6b3bbf6a661a8cb58356e115acfde3e0766",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-009-002",
+      "snippet": "top Key &amp; Compass presents: The hat metapuzzle of IF Comp 2011 by Michael D. Hilborn, Kevin Jackson-Mead, Doug Orleans, and Andrew Plotkin The hat metapuzzle of IF Comp 2011 i",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "The hat metapuzzle of IF Comp 2011 - map and walkthrough | Key &amp; Compass"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:57.065099Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://plover.net/~davidw/sol/f/fanta09.html",
+      "designation": "treatment",
+      "domain": "plover.net",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://plover.net/~davidw/sol/f/fanta09.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "plover.net",
+          "/~davidw/sol/f/fanta09.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.3333333333333333,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "how does a compass work",
+      "query_id": "sup-v3-s2-t-009",
+      "rank": 3,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-009-attempt-1.json",
+      "raw_response_sha256": "29a1920aac522283870b33825cf5a6b3bbf6a661a8cb58356e115acfde3e0766",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-009-003",
+      "snippet": "top Key &amp; Compass presents: Fantastic Finale IV by Derek Sutcliffe Fantastic Finale IV is a Z-machine interactive fiction game written with Inform 7 and is © 2009 by Derek Sut",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Fantastic Finale IV - map and walkthrough | Key &amp; Compass"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:58.021372Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://briankoberlein.com/archive",
+      "designation": "treatment",
+      "domain": "briankoberlein.com",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://briankoberlein.com/archive/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "briankoberlein.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "how does a catalytic converter work",
+      "query_id": "sup-v3-s2-t-010",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-010-attempt-1.json",
+      "raw_response_sha256": "0456627422ac54407df3805f6b8a2949d361664dbd7b4dc8a5ccf0b486efe253",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-010-001",
+      "snippet": "Who Ya Gonna Call? 24th Catalytic Converter 23rd Galaxy Quest 22nd How and Why 21st Traffic Jam 20th Order and Chaos 18th All Work and No Play 17th More Massive Evidence 10th Mass",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Archive | by Brian Koberlein"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:58.021386Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://apple-tree.life/~michael/blog/2021",
+      "designation": "treatment",
+      "domain": "apple-tree.life",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://apple-tree.life/~michael/blog/2021/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2021/",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.5,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "how does a catalytic converter work",
+      "query_id": "sup-v3-s2-t-010",
+      "rank": 2,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-010-attempt-1.json",
+      "raw_response_sha256": "0456627422ac54407df3805f6b8a2949d361664dbd7b4dc8a5ccf0b486efe253",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-010-002",
+      "snippet": "Irritating theft of catalytic converter ourside our house, owning a Prius is normally a pleasure, but the combination of quality cat &amp; easy access /maintainability is a poison",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Stuff Michael Meeks is doing"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:58.021394Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://www.varmintal.com/ahunt.htm",
+      "designation": "treatment",
+      "domain": "www.varmintal.com",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "http://www.varmintal.com/ahunt.htm",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "www.varmintal.com",
+          "/ahunt.htm",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.3333333333333333,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "how does a catalytic converter work",
+      "query_id": "sup-v3-s2-t-010",
+      "rank": 3,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-010-attempt-1.json",
+      "raw_response_sha256": "0456627422ac54407df3805f6b8a2949d361664dbd7b4dc8a5ccf0b486efe253",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-010-003",
+      "snippet": "parked my truck so the catalytic converter would be in the clear and not touch any dry grass where it could possibly start a fire. MADE A STAND.... I walked in the last � of a mil",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Varmint Al&#39;s Hunting Page"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:58.348033Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://humanknowledge.net/Thoughts.html",
+      "designation": "treatment",
+      "domain": "humanknowledge.net",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "http://humanknowledge.net/Thoughts.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "humanknowledge.net",
+          "/Thoughts.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "how does a microwave oven work",
+      "query_id": "sup-v3-s2-t-011",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-011-attempt-1.json",
+      "raw_response_sha256": "48344dd113cecb6567706071abf5984d1ee65bae36dca28c533e28a2fc6b03cd",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-011-001",
+      "snippet": "a refrigerator work? How does a microwave oven work? How does a radio work? How does an antenna work? How does a TV work? How does a light bulb work? How does a camera work? Why d",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Human Knowledge: Foundations and Limits"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:58.348048Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://www.qrg.northwestern.edu/projects/vss/docs/thermal/3-what-happens-to-heat-once-its-released.html",
+      "designation": "treatment",
+      "domain": "www.qrg.northwestern.edu",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://www.qrg.northwestern.edu/projects/vss/docs/thermal/3-what-happens-to-heat-once-its-released.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "www.qrg.northwestern.edu",
+          "/projects/vss/docs/thermal/3-what-happens-to-heat-once-its-released.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.5,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "how does a microwave oven work",
+      "query_id": "sup-v3-s2-t-011",
+      "rank": 2,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-011-attempt-1.json",
+      "raw_response_sha256": "48344dd113cecb6567706071abf5984d1ee65bae36dca28c533e28a2fc6b03cd",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-011-002",
+      "snippet": "light side and near the microwave side. However, if you really heat an object up to several hundred degrees, it the starts to generate near infared radiation. If you continue heat",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "What happens to heat once it is released into space?"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:58.348060Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://thechristmasconspiracy.com/RUChristian.htm",
+      "designation": "treatment",
+      "domain": "thechristmasconspiracy.com",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "http://TheChristmasConspiracy.com/RUChristian.htm",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "TheChristmasConspiracy.com",
+          "/RUChristian.htm",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.3333333333333333,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "how does a microwave oven work",
+      "query_id": "sup-v3-s2-t-011",
+      "rank": 3,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-011-attempt-1.json",
+      "raw_response_sha256": "48344dd113cecb6567706071abf5984d1ee65bae36dca28c533e28a2fc6b03cd",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-011-003",
+      "snippet": "computers, televisions, microwave ovens, and other technology, our pursuit of these trinkets reeks of a fundamental selfishness. Do you recall Jesus saying this: Matthew 25:41 The",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Are You a Great Christian?"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:58.627563Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://www.chrismcovell.com/creations.html",
+      "designation": "treatment",
+      "domain": "www.chrismcovell.com",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://www.chrismcovell.com/creations.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "www.chrismcovell.com",
+          "/creations.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "how does a seismograph work",
+      "query_id": "sup-v3-s2-t-012",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-012-attempt-1.json",
+      "raw_response_sha256": "e047e79df294f07ed38bb95b1cd404a8f54cfcf3e9e8c573607c13103f3687a0",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-012-001",
+      "snippet": "like a ticker tape/seismograph/player piano, as the song is playing. You can set each of the 6 channels on/off, zoom out to view more of the note range, change the playback speed,",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Chris Covell&#39;s Creations"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:58.627578Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://www.911timeline.net/",
+      "designation": "treatment",
+      "domain": "www.911timeline.net",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://www.911timeline.net/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "www.911timeline.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.5,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "how does a seismograph work",
+      "query_id": "sup-v3-s2-t-012",
+      "rank": 2,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-012-attempt-1.json",
+      "raw_response_sha256": "e047e79df294f07ed38bb95b1cd404a8f54cfcf3e9e8c573607c13103f3687a0",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-012-002",
+      "snippet": "as indicated by seismographs at Lamont-Doherty and other locations, were the equivalent of a magnitude 0.9 earthquake, one too small to be felt. People in the floors below the 94",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "www.911Timeline.net - The Most Comprehensive Minute By Minute Timeline On 911 by Mark R. Elsis"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:58.627589Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://www.vurdalak.com/tunguska/tunguska_reconstructn.htm",
+      "designation": "treatment",
+      "domain": "www.vurdalak.com",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "http://www.vurdalak.com/tunguska/tunguska_reconstructn.htm",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "www.vurdalak.com",
+          "/tunguska/tunguska_reconstructn.htm",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.3333333333333333,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "how does a seismograph work",
+      "query_id": "sup-v3-s2-t-012",
+      "rank": 3,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-012-attempt-1.json",
+      "raw_response_sha256": "e047e79df294f07ed38bb95b1cd404a8f54cfcf3e9e8c573607c13103f3687a0",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-012-003",
+      "snippet": "it doesn’t take a seismograph to detect these seismic effects: Close in, the isolated camps of the Stony Tunguska Evenki are smashed flat or sent flying as the subterranean",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Vurdalak | The Tunguska Event - An Imaginative Reconstruction"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:58.948649Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://www.oodegr.com/english/koinwnia/koinwnika/zombie_genre_modern_west.htm",
+      "designation": "treatment",
+      "domain": "www.oodegr.com",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://www.oodegr.com/english/koinwnia/koinwnika/zombie_genre_modern_west.htm",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "www.oodegr.com",
+          "/english/koinwnia/koinwnika/zombie_genre_modern_west.htm",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "what causes ocean tides",
+      "query_id": "sup-v3-s2-t-013",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-013-attempt-1.json",
+      "raw_response_sha256": "c2c9f7114a5a9e5399599606c15eaf7949cb72b3f79b5aa8056fa3f3fac6e0f0",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-013-001",
+      "snippet": "and the hypocrisy it causes even within our own psyche. The zombies are a group, but they do not act collectively. They are an unruly mob of mass-consuming individuals. Clearly, f",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "What Does the Zombie Genre Say about the Modern West?"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:59.270711Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://www.sidneyrigdon.com/dbroadhu/NY/miscNYSg.htm",
+      "designation": "treatment",
+      "domain": "www.sidneyrigdon.com",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "http://www.sidneyrigdon.com/dbroadhu/NY/miscNYSg.htm",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "www.sidneyrigdon.com",
+          "/dbroadhu/NY/miscNYSg.htm",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "what causes rust on iron",
+      "query_id": "sup-v3-s2-t-014",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-014-attempt-1.json",
+      "raw_response_sha256": "a5b440265cd3b05fa1b47c67df6f56d0a5d77db5afd1e5f27f6f33b8e1831351",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-014-001",
+      "snippet": "manner, the principal causes which contributed to the origin and establishment of our Independence and National Government, and likewise the prosperous situation of the United Sta",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Uncle Dale&#39;s Old Mormon Articles: NY, 1795-1825"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:59.270735Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://www.halloweenmonsterlist.info/",
+      "designation": "treatment",
+      "domain": "www.halloweenmonsterlist.info",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://www.halloweenmonsterlist.info/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "www.halloweenmonsterlist.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.3333333333333333,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "what causes rust on iron",
+      "query_id": "sup-v3-s2-t-014",
+      "rank": 3,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-014-attempt-1.json",
+      "raw_response_sha256": "a5b440265cd3b05fa1b47c67df6f56d0a5d77db5afd1e5f27f6f33b8e1831351",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-014-003",
+      "snippet": "for a circuit that causes the lights for a hallway to flicker. By T.R. Shaw Flicker Candle - instructions for hacking a battery powered tea light to make a candle. Original by jim",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Monster Page of Halloween Project Links"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:59.896271Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://www.ancapfaq.com/library/WhatIsCapitalism.html",
+      "designation": "treatment",
+      "domain": "www.ancapfaq.com",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "http://www.ancapfaq.com/library/WhatIsCapitalism.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "www.ancapfaq.com",
+          "/library/WhatIsCapitalism.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "what causes static cling",
+      "query_id": "sup-v3-s2-t-016",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-016-attempt-1.json",
+      "raw_response_sha256": "a4ce47d9d5b89baec865badb03b19d7ebd5011f8f604b911245c376deb5c3c00",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-016-001",
+      "snippet": "sciences, one of the causes of the former’s well-earned inferiority complex in regard to the latter. A physical science would not permit itself (not yet, at least) to ignore or by",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "What is Capitalism? - Ayn Rand"
+    },
+    {
+      "acquired_at": "2026-09-02T22:58:59.896290Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://lukesmith.neocities.org/",
+      "designation": "treatment",
+      "domain": "lukesmith.neocities.org",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://lukesmith.neocities.org/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.3333333333333333,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "what causes static cling",
+      "query_id": "sup-v3-s2-t-016",
+      "rank": 3,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-016-attempt-1.json",
+      "raw_response_sha256": "a4ce47d9d5b89baec865badb03b19d7ebd5011f8f604b911245c376deb5c3c00",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-016-003",
+      "snippet": "tl;dr: abortion causes no social harm like murder does; moral outrage over it is mostly abstract or inconsistent; even pro-life groups often act otherwise; real harm comes from fo",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Luke Smith Fanclub &amp; Archive"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:00.247704Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://www.marxists.org/archive/trotsky/works/1944/1944-fas.htm",
+      "designation": "treatment",
+      "domain": "www.marxists.org",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://www.marxists.org/archive/trotsky/works/1944/1944-fas.htm",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "www.marxists.org",
+          "/archive/trotsky/works/1944/1944-fas.htm",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "what causes bread to rise",
+      "query_id": "sup-v3-s2-t-017",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-017-attempt-1.json",
+      "raw_response_sha256": "8ff901dc033bd09911801fc19e3b91c5c5c7d37ce08fd2185c4e12b7110c1ad0",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-017-001",
+      "snippet": "the enemy. Identical causes produce identical effects. Were the march of events dependent upon the social-democratic party leadership, Hitler’s career would be assured. One",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "LEON TROTSKY: Fascism: What it is and how to fight it"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:00.247716Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://www.publicappeal.org/library/unicorn/Frazer/6.html",
+      "designation": "treatment",
+      "domain": "www.publicappeal.org",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "http://www.publicappeal.org/library/unicorn/Frazer/6.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "www.publicappeal.org",
+          "/library/unicorn/Frazer/6.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.5,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "what causes bread to rise",
+      "query_id": "sup-v3-s2-t-017",
+      "rank": 2,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-017-attempt-1.json",
+      "raw_response_sha256": "8ff901dc033bd09911801fc19e3b91c5c5c7d37ce08fd2185c4e12b7110c1ad0",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-017-002",
+      "snippet": "neck. This naturally causes the fall-stick of his trap to drop down on the neck of the marten. Among the Galelareese, who inhabit a district in the northern part of Halmahera, a l",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Chapter 3. Sympathetic Magic. § 2. Homoeopathic or Imitative Magic. Frazer, Sir James George. 1922. The Golden Bough"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:00.567790Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://thelastpsychiatrist.com/2010/04/study_finds_chocolate_causes_d.html",
+      "designation": "treatment",
+      "domain": "thelastpsychiatrist.com",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://thelastpsychiatrist.com/2010/04/study_finds_chocolate_causes_d.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "thelastpsychiatrist.com",
+          "/2010/04/study_finds_chocolate_causes_d.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 1.0,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "what causes an echo",
+      "query_id": "sup-v3-s2-t-018",
+      "rank": 1,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-018-attempt-1.json",
+      "raw_response_sha256": "992d6c248661b515ed52d9bdaaededea4da17b953fadef0d118f3ce796cb8e8e",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-018-001",
+      "snippet": "Study Finds Chocolate Causes Depression. In Other News, These Kinds Of Studies Cause Insanity all three of us are crying inside From the Abstract : Results  Those screening p",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "The Last Psychiatrist: Study Finds Chocolate Causes Depression. In Other News, These Kinds Of Studies Cause Insanity"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:00.567803Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://thelastpsychiatrist.com/2009/02/two_causes_of_autism.html",
+      "designation": "treatment",
+      "domain": "thelastpsychiatrist.com",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://thelastpsychiatrist.com/2009/02/two_causes_of_autism.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "thelastpsychiatrist.com",
+          "/2009/02/two_causes_of_autism.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.5,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "what causes an echo",
+      "query_id": "sup-v3-s2-t-018",
+      "rank": 2,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-018-attempt-1.json",
+      "raw_response_sha256": "992d6c248661b515ed52d9bdaaededea4da17b953fadef0d118f3ce796cb8e8e",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-018-002",
+      "snippet": "February 3, 2009 Two Causes Of Autism Ah, finally, a post about science only, that doesn&#39;t offend anyone. Whoops, sorry, that&#39;s my other blog.  In this blog, I write about ho",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "The Last Psychiatrist: Two Causes Of Autism"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:00.874325Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://people.idsia.ch/~juergen",
+      "designation": "treatment",
+      "domain": "people.idsia.ch",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://people.idsia.ch/~juergen/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "people.idsia.ch",
+          "/~juergen/",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.5,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "how does a heat exchanger work",
+      "query_id": "sup-v3-s2-t-019",
+      "rank": 2,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-019-attempt-1.json",
+      "raw_response_sha256": "343cf2c1717eb09a2224474da8ecd6bee2c36ec8de027cc11ba76b05fee3d3ac",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-019-002",
+      "snippet": "neural one. Neural Heat Exchanger. Like a physical heat exchanger, but with neurons instead of liquid. Perceptions warm up, expectations cool down. Fast weights instead of recurre",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Juergen Schmidhuber&#39;s home page -Universal Artificial Intelligence - AI - Deep Learning - Recurrent Neural Networks -Computer Vision - Object"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:01.203426Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "https://jacobwsmith.xyz/stories/vaccine_discussion.html",
+      "designation": "treatment",
+      "domain": "jacobwsmith.xyz",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "https://jacobwsmith.xyz/stories/vaccine_discussion.html",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "https",
+          "jacobwsmith.xyz",
+          "/stories/vaccine_discussion.html",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.5,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "how does a vaccine work",
+      "query_id": "sup-v3-s2-t-020",
+      "rank": 2,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-020-attempt-1.json",
+      "raw_response_sha256": "0fcccb539bd61993b2630f9f99e364bb3a6bb1fa5e4bf6df64be626e9453b5ee",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-020-002",
+      "snippet": "The Vaccine Discussion is Revolving Around the Wrong Goal The United States should be exporting them, not importing them Dec 27, 2021 Home Blog Projects Cookbook RSS Feed Donate O",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "The Vaccine Discussion is Revolving Around the Wrong Goal"
+    },
+    {
+      "acquired_at": "2026-09-02T22:59:01.203438Z",
+      "acquisition_run_id": "independent-relevance-supplemental-v3",
+      "canonical_url": "http://www.idallen.com/",
+      "designation": "treatment",
+      "domain": "www.idallen.com",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "original_url": "http://www.idallen.com/",
+      "provider_metadata": {
+        "category": "general",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "parsed_url": [
+          "http",
+          "www.idallen.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "score": 0.3333333333333333,
+        "template": "default.html"
+      },
+      "provider_or_source": [
+        "searxng"
+      ],
+      "query": "how does a vaccine work",
+      "query_id": "sup-v3-s2-t-020",
+      "rank": 3,
+      "raw_response_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-020-attempt-1.json",
+      "raw_response_sha256": "0fcccb539bd61993b2630f9f99e364bb3a6bb1fa5e4bf6df64be626e9453b5ee",
+      "result_status": "visible",
+      "row_id": "sup-v3-sup-v3-s2-t-020-003",
+      "snippet": "Salk developed a polio vaccine, he never for a moment considered the idea of pursuing individual ownership rights to the discovery. Nor did Salk imagine the idea of licensing the",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "title": "Ian! D. Allen - Personal Home Page"
+    }
+  ],
+  "schema": "amatl.relevance.supplemental-v3-final-prelabel-corpus.v1",
+  "status": "FROZEN_PRELABEL"
+}

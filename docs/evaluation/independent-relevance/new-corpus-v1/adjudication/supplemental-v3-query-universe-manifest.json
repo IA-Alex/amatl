@@ -1,0 +1,19 @@
+{
+  "schema": "amatl.relevance.supplemental-query-universe-manifest.v3",
+  "universe_id": "independent-relevance-supplemental-v3",
+  "version": 3,
+  "freeze_status": "FROZEN",
+  "query_count": 30,
+  "result_depth": 3,
+  "theoretical_capacity": 90,
+  "expected_valid_capacity": 67,
+  "valid_row_target": 60,
+  "universe_sha256": "d4916130aa8067cc83e3b01c94dbd43f9ee1575feec04f1de5cae710564824c1",
+  "parent_hashes": {
+    "v1-ground-truth.json": "966ffafbe8e4a48ed635bcee93773c034039129927fe87aaebdccf316d7af567",
+    "supplemental-ground-truth-v1.json": "0a065ac01478909713645d9926df9151c8f9f6b49fb4f519da52c803e05aeadf",
+    "supplemental-vs-v1-analysis.json": "e870fdb63328e488b61d1793bf458086242874b1a88700577a49378729ca7fe9"
+  },
+  "provenance": "new universe authored from S2 forensic feature definition; no positive row or label used",
+  "capacity_justification": "90 structural slots; conservative 75% valid acceptance gives 67 expected valid rows, leaving 7 rows of margin over target"
+}

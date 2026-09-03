@@ -1,0 +1,238 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 955.8993600003305,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does a catalytic converter work",
+    "results": [
+      {
+        "category": "general",
+        "content": "Who Ya Gonna Call? 24th Catalytic Converter 23rd Galaxy Quest 22nd How and Why 21st Traffic Jam 20th Order and Chaos 18th All Work and No Play 17th More Massive Evidence 10th Mass",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "briankoberlein.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Archive | by Brian Koberlein",
+        "url": "https://briankoberlein.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "Irritating theft of catalytic converter ourside our house, owning a Prius is normally a pleasure, but the combination of quality cat &amp; easy access /maintainability is a poison",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2021/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2021/"
+      },
+      {
+        "category": "general",
+        "content": "parked my truck so the catalytic converter would be in the clear and not touch any dry grass where it could possibly start a fire. MADE A STAND.... I walked in the last � of a mil",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.varmintal.com",
+          "/ahunt.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Varmint Al&#39;s Hunting Page",
+        "url": "http://www.varmintal.com/ahunt.htm"
+      },
+      {
+        "category": "general",
+        "content": "and flow into the catalytic converter. The PCM uses the O2 signal to fine tune the air/fuel mixture. FUEL MIXTURE FEEDBACK CONTROL LOOP The computer uses the oxygen sensor input t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.aa1car.com",
+          "/library/o2sensor.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OXYGEN SENSORS: HOW TO DIAGNOSE &amp; REPLACE",
+        "url": "http://www.aa1car.com/library/o2sensor.htm"
+      },
+      {
+        "category": "general",
+        "content": "are available: Catalytic converters that chemically turn N₂O into harmless substances and thermal decomposition, which breaks the gas down under high temperatures. Avoiding the eq",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "industrydecarbonization.com",
+          "/news/the-avoidable-super-greenhouse-gas-from-fertilizer-nylon-and-vitamin-b3-production.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The avoidable Super-Greenhouse-Gas from Fertilizer, Nylon, and Vitamin B3 production | Industry Decarbonization Newsletter",
+        "url": "https://industrydecarbonization.com/news/the-avoidable-super-greenhouse-gas-from-fertilizer-nylon-and-vitamin-b3-production.html"
+      },
+      {
+        "category": "general",
+        "content": "essay of this series). Catalytic Converters and the Limits of Volunteerism. Next, an application of the tragedy of the commons that might be more salient to those like myself, who",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gadfly.igc.org",
+          "/libertarian/2-society.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SOcial Atomism",
+        "url": "https://gadfly.igc.org/libertarian/2-society.htm"
+      },
+      {
+        "category": "general",
+        "content": "operation of the catalytic converter. N.B. The sensor does not operate until it has reached its working temperature. Lambda sensors last about 80-100k miles before they die. A dea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gomog.com",
+          "/allmorgan/ZetecIdleIssue.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zetec Idle Issues",
+        "url": "https://www.gomog.com/allmorgan/ZetecIdleIssue.htm"
+      },
+      {
+        "category": "general",
+        "content": "is that it can damage catalytic converters, because the fuel that hasn’t burned in the engine will partially burn in the catalytic converter and may overheat it. On the other hand",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.lpgc.co.uk",
+          "/index_files/page3127.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fuel system basics",
+        "url": "http://www.lpgc.co.uk/index_files/page3127.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-t-010",
+  "query_text": "how does a catalytic converter work",
+  "requested_at": "2026-09-02T22:58:58.021064Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

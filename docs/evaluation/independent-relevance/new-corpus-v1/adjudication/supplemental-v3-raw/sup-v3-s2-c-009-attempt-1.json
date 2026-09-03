@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 418.61123299895553,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind induction",
+    "results": [
+      {
+        "category": "general",
+        "content": "Indeterminism Dirac&#39;s Principles Dirac&#39;s 3 Polarizers Foundations Interpretations Irreversibility Measurement Problem Quantum, Thermo, Info Quantum to Classical Recurrence Problem",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Information Philosopher - dedicated to the new information philosophy",
+        "url": "https://www.informationphilosopher.com/"
+      },
+      {
+        "category": "general",
+        "content": "goes” is not a “principle” I hold - I do not think that “principles” can be used and fruitfully discussed outside the concrete research situation they are supposed to affect - but",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "theanarchistlibrary.org",
+          "/library/paul-feyerabend-against-method.muse",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse",
+        "url": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse"
+      },
+      {
+        "category": "general",
+        "content": "Polity, has a spiritual principle; is the embodiment, tentative and more or less complete, of an Idea: all its tendencies of endeavour, specialties of custom, its laws, politics a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.hetwebsite.net",
+          "/het/texts/carlyle/carlyle1831characteristics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "T. Carlyle, 1931, &#34;Characteristics&#34;, ER",
+        "url": "http://www.hetwebsite.net/het/texts/carlyle/carlyle1831characteristics.htm"
+      },
+      {
+        "category": "general",
+        "content": "the same systematic principles apply to political as to forensic oratory, and although the former is a nobler business, and fitter for a citizen, than that which concerns the rela",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "oaks.nvg.org",
+          "/aristotle-rhetoric.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Aristotle Works: Rhetoric – The Gold Scales",
+        "url": "http://oaks.nvg.org/aristotle-rhetoric.html"
+      },
+      {
+        "category": "general",
+        "content": "and dying could in principle be banished in the population at large. This would be a substantial payoff, though the fear of personal mortality is probably the prime mover of scien",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/ecstasy/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utopian Pharmacology. MDMA / Ecstasy and beyond",
+        "url": "https://www.hedweb.com/ecstasy/"
+      },
+      {
+        "category": "general",
+        "content": "in criminal and mafia principles of their management. And a fight against the Illuminati has to be conducted according to the same principles as with any criminal organization. It",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "antimatrix.org",
+          "/Convert/Books/Sall/Questions_and_Answers_En.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dr. Sall - Secret Knowledge, and Science: from prehistoric civilizations to our days",
+        "url": "http://antimatrix.org/Convert/Books/Sall/Questions_and_Answers_En.html"
+      },
+      {
+        "category": "general",
+        "content": "forms (Huygens principle) and space vibrates in and out around its &#39;particle&#39; like wave center. This is what we observe as matter and its opposite phase standing wave, anti-matter",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WSM: One Substance (Space) &amp; One Law explains causal connection, Metaphysics: deduces Quantum Physics, Einstein Relativity, Cosmology&lt;/tit",
+        "url": "https://www.spaceandmotion.com/"
+      },
+      {
+        "category": "general",
+        "content": "in existence can in principle be observed through the five senses of human beings. We have no reason to expect such good fortune, and it is certainly not a matter of rational nece",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "arcaneknowledge.org",
+          "/philtheo/fallacy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "When a Fallacy is Not a Fallacy",
+        "url": "https://arcaneknowledge.org/philtheo/fallacy.htm"
+      },
+      {
+        "category": "general",
+        "content": "it is doubtful that any principled such boundary can be drawn along doctrinal or sociological lines. The most that one can say is that if a distinction is to be drawn, logical emp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.stanford.edu",
+          "/archIves/fall2011/entries/logical-empiricism/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Logical Empiricism (Stanford Encyclopedia of Philosophy/Fall 2011 Edition)",
+        "url": "https://plato.stanford.edu/archIves/fall2011/entries/logical-empiricism/"
+      },
+      {
+        "category": "general",
+        "content": "the famous fundamental principle of dialectics with which Hegel secured the victory of the German spirit over Europe—“contradiction moves the world; all things contradict themselv",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.globalgreyebooks.com",
+          "/online-ebooks/friedrich-nietzsche_dawn-of-day_complete-text.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dawn of Day by Friedrich Nietzsche - Read Online for free at Global Grey ebooks",
+        "url": "https://www.globalgreyebooks.com/online-ebooks/friedrich-nietzsche_dawn-of-day_complete-text.html"
+      },
+      {
+        "category": "general",
+        "content": "sciences provide principles for the less general and more concrete sciences. However, Peirce includes and assigns a superordinate role to philosophical disciplines which analyse a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/peirce.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peirce&#39;s classification of the sciences (IEKO)",
+        "url": "https://www.isko.org/cyclo/peirce.htm"
+      },
+      {
+        "category": "general",
+        "content": "Summary For Less Wrong Principles of Science - Thierry Dugnolle Intellectual Mathematics - Viktor Blåsjö Wait But Why - Tim Urban ZSA Keyboards Blog - Erez Zukerman Mastering Emac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zero Contradictions Philosophy Home Page",
+        "url": "https://zerocontradictions.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-c-009",
+  "query_text": "describe the principle behind induction",
+  "requested_at": "2026-09-02T22:59:04.766923Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

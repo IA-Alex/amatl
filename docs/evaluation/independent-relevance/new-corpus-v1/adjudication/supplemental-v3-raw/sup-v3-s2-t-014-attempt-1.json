@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 321.5644980009529,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes rust on iron",
+    "results": [
+      {
+        "category": "general",
+        "content": "manner, the principal causes which contributed to the origin and establishment of our Independence and National Government, and likewise the prosperous situation of the United Sta",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sidneyrigdon.com",
+          "/dbroadhu/NY/miscNYSg.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Uncle Dale&#39;s Old Mormon Articles: NY, 1795-1825",
+        "url": "http://www.sidneyrigdon.com/dbroadhu/NY/miscNYSg.htm"
+      },
+      {
+        "category": "general",
+        "content": "- Defect in workmanship causes repeater down time Dictation Buddy - A GREAT audio recorder with VOX. See High Criteria below. Don&#39;t Panic - The truth about bios, chems and nukes.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "w4zt.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "W4ZT - Tony King&#39;s page",
+        "url": "https://w4zt.com/"
+      },
+      {
+        "category": "general",
+        "content": "for a circuit that causes the lights for a hallway to flicker. By T.R. Shaw Flicker Candle - instructions for hacking a battery powered tea light to make a candle. Original by jim",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.halloweenmonsterlist.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Monster Page of Halloween Project Links",
+        "url": "https://www.halloweenmonsterlist.info/"
+      },
+      {
+        "category": "general",
+        "content": "2020-04-28 Root Causes: Backup restore mechanisms didn’t work as expected. Server has booted after upgrade, but has been partly inconsistent. The package manager dnf has stopped w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "techrights.org",
+          "/o/2020/04/29/tde-10th-anniversary/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Links 29/4/2020: TDE 10th Anniversary, Sailfish OS 3.3",
+        "url": "http://techrights.org/o/2020/04/29/tde-10th-anniversary/"
+      },
+      {
+        "category": "general",
+        "content": "of a gamma particle causes the bars to grow and touch momentarily. The average position of the bars depends on the average radiation level. The higher it is, the closer they are.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "slomkowski.eu",
+          "/octoglow-vfd-fallout-inspired-display/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Octoglow VFD - Fallout-inspired post-apocalyptic display | Słomkowski",
+        "url": "https://slomkowski.eu/octoglow-vfd-fallout-inspired-display/"
+      },
+      {
+        "category": "general",
+        "content": "&#39;w&#39; to wield something causes the currently wielded weapon to become your alternate weapon. So the sequence &#39;w&#39;, &#39;w&#39; can be used to first wield the weapon you intend to be seconda",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.nethack.org",
+          "/v360/Guidebook.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NetHack 3.6.0: Guidebook for NetHack 3.6",
+        "url": "http://www.nethack.org/v360/Guidebook.html"
+      },
+      {
+        "category": "general",
+        "content": "zone, where heat causes reactions among sugars and proteins that turn the meat brown, yielding molecules with an appealing flavor. They are all cast iron and need to be kept from",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "equipmentforkitchens.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Kitchen Equipment/Tools/Gadgets Encyclopedia for Paleo/Primal Eaters",
+        "url": "https://equipmentforkitchens.com/"
+      },
+      {
+        "category": "general",
+        "content": "charity drive for nice causes. ------------------------------------------------------------ 2023-07-26 - ` //w.&#34; target=&#34;_blank&#34; rel=&#34;noreferrer noopener&#34; http://` //w. ) ` http:/",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "t0.vc",
+          "/g/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://t0.vc/g/",
+        "url": "http://t0.vc/g/"
+      },
+      {
+        "category": "general",
+        "content": "and the `^&#39; prefix causes the following character to be treated as a control character. The order of the symbols is: solid rock, vertical wall, horizontal wall, upper left corner,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.nethack.org",
+          "/v330/Guidebook.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NetHack 3.3.0: A Guide to the Mazes of Menace",
+        "url": "http://www.nethack.org/v330/Guidebook.html"
+      },
+      {
+        "category": "general",
+        "content": "the scroll) no longer causes the character to forget information that the player could have remembered, or written down. This saves the player the tedium of having to draw all the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "nethack4.org",
+          "/latest/nethack4/doc/changelog.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://nethack4.org/latest/nethack4/doc/changelog.txt",
+        "url": "http://nethack4.org/latest/nethack4/doc/changelog.txt"
+      },
+      {
+        "category": "general",
+        "content": "proximity to Jupiter causes them to be washed out by the glare of Jupiter itself. Sometimes only two or three moons will be seen on a given night - in which case, the re",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nakedeyeplanets.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Naked Eye Planets in the Night Sky (and how to identify them)",
+        "url": "https://nakedeyeplanets.com/"
+      },
+      {
+        "category": "general",
+        "content": "life of food and causes oxidative deterioration, and under the right conditions insects can spawn. An easy way to remove oxygen from a container, is to use oxygen absorbers. In Ja",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "100r.co",
+          "/site/cooking.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "100R — cooking",
+        "url": "http://100r.co/site/cooking.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-t-014",
+  "query_text": "what causes rust on iron",
+  "requested_at": "2026-09-02T22:58:59.270320Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

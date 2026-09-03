@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 351.02999599985196,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes bread to rise",
+    "results": [
+      {
+        "category": "general",
+        "content": "the enemy. Identical causes produce identical effects. Were the march of events dependent upon the social-democratic party leadership, Hitler’s career would be assured. One",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.marxists.org",
+          "/archive/trotsky/works/1944/1944-fas.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "LEON TROTSKY: Fascism: What it is and how to fight it",
+        "url": "https://www.marxists.org/archive/trotsky/works/1944/1944-fas.htm"
+      },
+      {
+        "category": "general",
+        "content": "neck. This naturally causes the fall-stick of his trap to drop down on the neck of the marten. Among the Galelareese, who inhabit a district in the northern part of Halmahera, a l",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.publicappeal.org",
+          "/library/unicorn/Frazer/6.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chapter 3. Sympathetic Magic. § 2. Homoeopathic or Imitative Magic. Frazer, Sir James George. 1922. The Golden Bough",
+        "url": "http://www.publicappeal.org/library/unicorn/Frazer/6.html"
+      },
+      {
+        "category": "general",
+        "content": "upon whom transitory causes operate most strongly, but by all classes, down to the most hard, unlettered and truly natural class, who read little, and especially no poetry, except",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/69284/69284-h/69284-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of Essay on Burns, by Thomas Carlyle",
+        "url": "https://www.gutenberg.org/files/69284/69284-h/69284-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "pp. 53-4] Other chance causes which can raise the profit on capital: The acquisition of new territory, or of new branches of trade, may sometimes rise the profits of stock even in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.marxists.org",
+          "/archive/marx/works/1844/epm/1st.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Economic and Philosophical Manuscripts: 1st",
+        "url": "https://www.marxists.org/archive/marx/works/1844/epm/1st.htm"
+      },
+      {
+        "category": "general",
+        "content": "goes to a variety of causes, many if not most of which used to be handled by the church in a theocratic government. Today, pay deductions and other taxes also help cover tax exemp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tithinginfo.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Tithing, The Truth About Tithing And The Tithe",
+        "url": "http://tithinginfo.com/"
+      },
+      {
+        "category": "general",
+        "content": "day of any of 10 other causes . The body will be raised in power though: look to Jesus, he appears through locked doors; he appears so suddenly he startles them A ghost does not h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2003/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2003/"
+      },
+      {
+        "category": "general",
+        "content": "for political or other causes. Such a decision, in effect, puts the private property at the disposal of the public and renders the commercial enterprise of the private individual",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/corrupt.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Corruption of Civil Rights and Civil Law",
+        "url": "https://friesian.com/corrupt.htm"
+      },
+      {
+        "category": "general",
+        "content": "pull.     The causes and motives of seditions are, innovation in religion; taxes; alteration of laws and customs; breaking of privileges; general oppression; advancement",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.luminarium.org",
+          "/renascence-editions/bacon.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE ESSAYS",
+        "url": "https://www.luminarium.org/renascence-editions/bacon.html"
+      },
+      {
+        "category": "general",
+        "content": "fares well sometimes causes people distress - not that he intends to do so; rather, it is their own wickedness which is responsible for their distress. He who possesses the qualit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.gnosis.org",
+          "/naghamm/gop.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Gospel of Philip -- The Nag Hammadi Library",
+        "url": "http://www.gnosis.org/naghamm/gop.html"
+      },
+      {
+        "category": "general",
+        "content": "celestial bodies, the causes of which ancient observers did not know, gave rise to the idea that the positions and movements of celestial bodies are related to other phenomena on",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "astronuclphysics.info",
+          "/Veda-vira.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Science and Religion: Consistency or Contradiction?",
+        "url": "https://astronuclphysics.info/Veda-vira.htm"
+      },
+      {
+        "category": "general",
+        "content": "and decide no great causes, and make great refusals. He thus sets for himself 10 the limits within which art, undisturbed by any moral ambition, does its most sincere and surest w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book180/book180.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Great Pictures, As Seen and Described by Famous Writers, by Esther Singleton",
+        "url": "https://www.ajhw.co.uk/books/book180/book180.html"
+      },
+      {
+        "category": "general",
+        "content": "verse in the bible that causes teeth-gnashing and fits of scripture-twisting extraordinaire (among those who wish to continue in disobedience) is directly in the context of knowle",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.acts17-11.com",
+          "/apocalyptic.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acts 17:11 Dialog: Cautions Concerning Christian End Times Teachings",
+        "url": "http://www.acts17-11.com/apocalyptic.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-t-017",
+  "query_text": "what causes bread to rise",
+  "requested_at": "2026-09-02T22:59:00.247398Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

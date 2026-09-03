@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 252.57599000178743,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of groundwater movement",
+    "results": [
+      {
+        "category": "general",
+        "content": "2025. San Pedro River groundwater is its primary source of water and hence anticipated increases in groundwater pumping will soon threaten quality of life around here (including r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sanpedrorivervalley.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "San Pedro River Ecology",
+        "url": "https://sanpedrorivervalley.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-c-005",
+  "query_text": "give an overview of groundwater movement",
+  "requested_at": "2026-09-02T22:59:03.288083Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

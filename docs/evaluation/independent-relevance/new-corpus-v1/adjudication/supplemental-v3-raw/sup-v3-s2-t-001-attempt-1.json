@@ -1,0 +1,346 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 1089.8023799963994,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is a checksum",
+    "results": [
+      {
+        "category": "general",
+        "content": "tarsum: checksum utility for tar files description news todo usage contributions license source projects about author description tarsum generates and validates checksums for file",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.25thandclement.com",
+          "/~william/projects/tarsum.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "tarsum: checksum utility for tar files",
+        "url": "http://www.25thandclement.com/~william/projects/tarsum.html"
+      },
+      {
+        "category": "general",
+        "content": "symbol, followed by a checksum A:DOWNLOAD STAT.COM   &lt;==== Command to create second file STAT.COM in the current drive U0   &lt;==== User selection :C33304202020436F7",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "searle.x10host.com",
+          "/cpm/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Grant&#39;s home-designed CP/M machine",
+        "url": "http://searle.x10host.com/cpm/"
+      },
+      {
+        "category": "general",
+        "content": "zip ( MD5 checksum ) .zip ( MD5 checksum ) .zip ( MD5 checksum ) .zip ( MD5 checksum ) .zip ( MD5 checksum ) .zip ( MD5 checksum ) .zip ( MD5 ch",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.web3d.org",
+          "/x3d/content/examples/X3dResources.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "X3D Resources",
+        "url": "https://www.web3d.org/x3d/content/examples/X3dResources.html"
+      },
+      {
+        "category": "general",
+        "content": ". You can access its checksum here . Alternatively, you can checkout a copy of the execline git repository : git clone git://git.skarnet.org/execline There&#39;s also a Codeberg mirro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.skarnet.org",
+          "/software/execline/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "execline: a small scripting language",
+        "url": "http://www.skarnet.org/software/execline/"
+      },
+      {
+        "category": "general",
+        "content": "the web (not name/size/checksum). The system is not perfect but most of the times it works. What is the flaw of the &#34;seen&#34; numbers? Flash files that orient from the same project/t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "swfchan.com",
+          "/about.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "swfchan: About",
+        "url": "http://swfchan.com/about.shtml"
+      },
+      {
+        "category": "general",
+        "content": "the serial number (and checksum) altered. We assume these are &#34;crack&#34; versions modified by users. I have included them regardless. The patches archive also includes a set of game",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "eblong.com",
+          "/infocom/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Obsessively Complete Infocom Catalog",
+        "url": "https://eblong.com/infocom/"
+      },
+      {
+        "category": "general",
+        "content": "(sha256 checksum) 1f442f97799593282d20a4b882955803ce7bf6fd2ef1d90b5ba57b21003fb070 open a terminal and become root: i.e. by typing sudo su move the dowoaded tarball to /opt mv tre",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "treetools.haschka.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "MNHN-Tree-Tools: Creating Trees from Sequences",
+        "url": "http://treetools.haschka.net/"
+      },
+      {
+        "category": "general",
+        "content": "| ttl | protocol | checksum | saddr | daddr } Table 40. IPv4 header expression Keyword Description Type version IP header version (4) integer (4 bit) hdrlength IP header",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.netfilter.org",
+          "/projects/nftables/manpage.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Man page of NFT",
+        "url": "https://www.netfilter.org/projects/nftables/manpage.html"
+      },
+      {
+        "category": "general",
+        "content": ". You can access its checksum here . You can checkout a copy of the tipidee git repository : git clone git://git.skarnet.org/tipidee There&#39;s also a Codeberg mirror , or a GitHub m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.skarnet.org:80",
+          "/software/tipidee/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "tipidee - a small and fast HTTP/1.1 server",
+        "url": "http://www.skarnet.org:80/software/tipidee/"
+      },
+      {
+        "category": "general",
+        "content": "the 32-bit CRC checksum of files (© by Joe Forster/STA , 2004) [crc32.zip, 4.143 bytes] File Comparer &amp; Browser for DOS , compares two binary files on an interactive inte",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "sta.c64.org",
+          "/dosprg.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Useful DOS software",
+        "url": "http://sta.c64.org/dosprg.html"
+      },
+      {
+        "category": "general",
+        "content": ". Then verify checksum and flash: sha256sum split-live-x86_64-musl-current.iso | grep c2b382bcc5821def440e0ebb4338808f2c11d940e8c01053dd39163ed4cf2d35 &amp;&amp; dd status=progres",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "splitlinux.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Split Linux - Just give me the light!",
+        "url": "https://splitlinux.org/"
+      },
+      {
+        "category": "general",
+        "content": "RET ; return 1FFD: 65 ; checksum fix This patch has been tested by using a MAME cheat code and it does work.  When applied, the left-right controls no longer respond during t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "donhodges.com",
+          "/galaga_demo_control_fix.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DONHODGES.COM - GALAGA&#39;S PLAYABLE DEMO ANALYZED AND FIXED",
+        "url": "http://donhodges.com/galaga_demo_control_fix.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-t-001",
+  "query_text": "what is a checksum",
+  "requested_at": "2026-09-02T22:58:48.060406Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

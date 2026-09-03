@@ -1,0 +1,346 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 1946.6945300009684,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is a carbon footprint",
+    "results": [
+      {
+        "category": "general",
+        "content": "mean? [Read article...] What Is A Carbon Footprint? Everybody&#39;s talking about their carbon footprint, but what is a carbon footprint anyway? Is it as simple as it sounds? [Read ar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.eejitsguides.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Environment and Technology Guides - eejitsguides.com",
+        "url": "http://www.eejitsguides.com/"
+      },
+      {
+        "category": "general",
+        "content": "diminishing the carbon footprint of scientific research activities. ETAPS 2024 attendees are encouraged to combine their visit to Luxembourg with collaborations with local researc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "etaps.org",
+          "/2024/registration/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ETAPS 2024 Registration",
+        "url": "https://etaps.org/2024/registration/"
+      },
+      {
+        "category": "general",
+        "content": "reduce our ecological footprint and help preserve the planet for future generations. Negative utilitarianism: This ethical framework prioritizes the reduction of suffering over th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.antinatalism.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Antinatalism as conceived as conceived by ChatGPT",
+        "url": "https://www.antinatalism.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "or a smaller footprint, export your program as C code then simply compile and link against the supplied frameworks. Try it for yourself. Interested? Currently, Marten is free. We",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "andescotia.com",
+          "/products/marten/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Andescotia Software | Products : Marten IDE 1.6",
+        "url": "http://andescotia.com/products/marten/"
+      },
+      {
+        "category": "general",
+        "content": "to Reduce Your Carbon Footprint Education &amp; Feminism When choosing an education and a career, women who go down the path of becoming a &#34; working girl &#34; make some interesting choic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.feministezine.com",
+          "/feminist/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Feminist eZine",
+        "url": "http://www.feministezine.com/feminist/"
+      },
+      {
+        "category": "general",
+        "content": "a far bigger ecological footprint than manufacturing a new replacement part. If you must get a new PC, look for product longevity, including upgradability, repairability and modul",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "100r.co",
+          "/site/off_the_grid.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "100R — off the grid",
+        "url": "http://100r.co/site/off_the_grid.html"
+      },
+      {
+        "category": "general",
+        "content": "reduce website carbon footprint, build lighter pages, improve speed and create a greener website without sacrificing performance. Introducing Ekosystem and Krystal Cloud Post",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "blog.k.io",
+          "/krystal/archive",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Krystal Blog - Archives - Krystal Blog",
+        "url": "https://blog.k.io/krystal/archive"
+      },
+      {
+        "category": "general",
+        "content": "nd cloud’s carbon footprint. An insider look at WCAG 3.0 Bookmarked 2022-03-06 14:32 Tags: accessibility , w3c , web WCAG 3.0 is coming, and makes many changes to its priorities an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "seirdy.one",
+          "/bookmarks/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "My bookmarks - Seirdy",
+        "url": "https://seirdy.one/bookmarks/"
+      },
+      {
+        "category": "general",
+        "content": "days, where our ‘carbon footprint’, economic crisis, weather climate changes and just everything seems to be falling apart, it is time to put into action little changes in one’s l",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.robertschoch.net",
+          "/Circular%20Times.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dr. Colette Dowell Circular Times Magazine",
+        "url": "http://www.robertschoch.net/Circular%20Times.htm"
+      },
+      {
+        "category": "general",
+        "content": "of their future carbon footprint is nothing short of misanthropic lunacy. In case I need to spell it out: The elitists don’t want you to have children! That’s why ther",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "brettlindler.xyz",
+          "/sexual-morality/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "On Sexual Morality | Brett&#39;s Website",
+        "url": "https://brettlindler.xyz/sexual-morality/"
+      },
+      {
+        "category": "general",
+        "content": "of non-human species. Footprint, personal quiz These personal quizzes continue to improve. One major flaw which may never be addressed: the more offspring you have the smaller you",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.vhemt.org",
+          "/links.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Related Links Page",
+        "url": "https://www.vhemt.org/links.htm"
+      },
+      {
+        "category": "general",
+        "content": "reduce website carbon footprint, build lighter pages, improve speed and create a greener website without sacrificing performance. 26 Things You Can Do With a Website Posted o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "blog.k.io",
+          "/krystal",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Krystal Blog - Krystal Blog",
+        "url": "https://blog.k.io/krystal"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-t-005",
+  "query_text": "what is a carbon footprint",
+  "requested_at": "2026-09-02T22:58:52.571905Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 537.3274650009989,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind encryption",
+    "results": [
+      {
+        "category": "general",
+        "content": "World Alliance Send Encryption Keys Directly To End-User Computer Systems Without Monitor Proxies Which Add A Risky 3rd Wheel To All Transmissions. E-Mails Send New Encryption Key",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteList.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/FWAsiteList.html"
+      },
+      {
+        "category": "general",
+        "content": "Free Cultural Works Encryption and Privacy Schneier on Security Window Managers StumpWM File Managers ROX Filer Midnight Commander Latest pages The LLM Freedom Manifesto: Open-Wei",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "with more complicated encryption methods than what I’m describing here, this never goes well! 5 ! That’s not to say that there isn’t terrifyingly complicated stuff somewhere in th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chiark.greenend.org.uk",
+          "/~sgtatham/quasiblog/xor/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "XOR",
+        "url": "https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/"
+      },
+      {
+        "category": "general",
+        "content": "ORBit2 to do nice SSL encryption we&#39;d be fine. Tried to help &#39;CoCo&#39; setup a LinuxPPC OO.o tinderbox machine - building on the evil MacOS/X unfortunately. J. home late, Natchos, ce",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2002/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2002/"
+      },
+      {
+        "category": "general",
+        "content": "gzip myfile encryption: auth/secstore -p myfile replication: tar xzf myfiles.tar.gz deduplication: &lt;buy a disk man&gt; self healing: tel mysysadmin/man gefs Package Management",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pspodcasting.net",
+          "/dan/blog/2019/plan9_desktop.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Plan 9 Desktop Guide",
+        "url": "https://pspodcasting.net/dan/blog/2019/plan9_desktop.html"
+      },
+      {
+        "category": "general",
+        "content": "Control transfer . ↩︎ Encryption 64,  N64 memory . Archived. ↩︎ Nintendo Power,  The dream team . 1995. ↩︎ NEC Electronics,  Application specific memory 1995 data b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/nintendo-64/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nintendo 64 Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/nintendo-64/"
+      },
+      {
+        "category": "general",
+        "content": "it uses, and the encryption method used to store data on the toys. I plan to work on emulating the portal using an 84&#43;/SE or 89Ti for all the major consoles. And for the Xbox 360,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "brandonw.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "brandonw.net",
+        "url": "https://brandonw.net/"
+      },
+      {
+        "category": "general",
+        "content": "Control transfer . ↩︎ Encryption 64,  N64 memory . Archived. ↩︎ Nintendo Power,  The dream team . 1995. ↩︎ NEC Electronics,  Application specific memory 1995 data b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "classic.copetti.org",
+          "/writings/consoles/nintendo-64/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nintendo 64 Architecture | A Practical Analysis",
+        "url": "https://classic.copetti.org/writings/consoles/nintendo-64/"
+      },
+      {
+        "category": "general",
+        "content": "parties are behind. The encryption is driven by a secret key shared between the parties. And it just so happens that gs-netcat also supports the scenario necessary to create an IR",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lynx.luxferre.top",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lynx thoughts",
+        "url": "https://lynx.luxferre.top/"
+      },
+      {
+        "category": "general",
+        "content": "diversity emacs encryption enforcement exceptions faif fdl for-profit fosdem foss fsf gcc git gnome gnu google GPL gpl gpl-compatibility gpl-enforcement gplv3 guadec ibm identica",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ebb.org",
+          "/bkuhn/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog - Bradley Kühn ( bkuhn )",
+        "url": "https://ebb.org/bkuhn/blog/"
+      },
+      {
+        "category": "general",
+        "content": "and privacy-focused encryption; involves partitioning, encrypting, and configuring logical volume management; installation covers configuring portage, setting up a secure and effi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Luke Smith Fanclub &amp; Archive",
+        "url": "https://lukesmith.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "thorough covering of encryption algorithms and protocols and their practical implementation. This book could have been titled The Joy of Cryptography . Object-Oriented Software Co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "david.tribble.com",
+          "/text/biblio.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "David Tribble&#39;s Bibliography of Good Books",
+        "url": "http://david.tribble.com/text/biblio.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-c-001",
+  "query_text": "explain the basic idea behind encryption",
+  "requested_at": "2026-09-02T22:59:01.740877Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

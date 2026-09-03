@@ -1,0 +1,346 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 499.24907000240637,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does a solar eclipse work",
+    "results": [
+      {
+        "category": "general",
+        "content": "as solar and lunar eclipses, and require more complicated computations than ordinary planetary transits—they were ignored in this project. Download Complete Canon Database Y",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/documents/canon_transits/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quarter Million Year Canon of Solar System Transits",
+        "url": "https://www.fourmilab.ch/documents/canon_transits/"
+      },
+      {
+        "category": "general",
+        "content": "S OLAR ECLIPSE 1999 - FINAL QUEST FOR THE HOLY GRAIL by Joseph E. Mason Go to Related Crop Circles Solar Eclipse Animations Go to References Resources     The solar ecli",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "greatdreams.com",
+          "/eclipse.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SOLAR ECLIPSE 1999 - FINAL QUEST FOR THE HOLY GRAIL",
+        "url": "http://greatdreams.com/eclipse.htm"
+      },
+      {
+        "category": "general",
+        "content": "2, 2027 total solar eclipse. This paper argues that the eclipse, nicknamed the &#39;Eclipse of the Century,&#39; is not a random astronomical event but a divinely orchestrated celestial s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "adishakti.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Adi Shakti | Divine Feminine | Goddess | MahaDevi | Shri Mataji Nirmala Devi",
+        "url": "https://adishakti.org/"
+      },
+      {
+        "category": "general",
+        "content": "are also used in the Eclipse XML Security Tools set of plugins. Proprietary encryption tools are occasionally available. User beware: security through obscurity is not strong secu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.web3d.org",
+          "/x3d/content/examples/X3dResources.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "X3D Resources",
+        "url": "https://www.web3d.org/x3d/content/examples/X3dResources.html"
+      },
+      {
+        "category": "general",
+        "content": "the sun was in full eclipse.&#34; I looked back at my daughter to tell her about the eclipse, then I looked back up and the sun was still in full eclipse but now the sun was in t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greatdreams.com",
+          "/poleshift.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Pole Shift - When, Where, and How",
+        "url": "http://www.greatdreams.com/poleshift.htm"
+      },
+      {
+        "category": "general",
+        "content": "update: The total solar eclipse dated in hexagram 55 by S J Marshall in The Mandate of Heaven is of course a lunar eclipse in Stein&#39;s crass book.]   The I Chin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biroco.com",
+          "/yijing/survey.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Yijing Dao - A critical survey of I Ching books, by Joel Biroco",
+        "url": "https://www.biroco.com/yijing/survey.htm"
+      },
+      {
+        "category": "general",
+        "content": "by demons during an eclipse. (Contenau 248, 292) Father Nannar, lord, moon-god, prince of the gods, Father Nannar, lord of Uru, prince of the gods. Lord, thy deity fills the far-o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/orsin/origsin.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Origin of Sin and the Queen of Heaven: Part 1 The Moon God and Goddess",
+        "url": "http://www.dhushara.com/book/orsin/origsin.htm"
+      },
+      {
+        "category": "general",
+        "content": "- Crop Circle Solar Eclipse 1999 - Final Quest for the Holy Grail CROP CIRCLES, THEIR MEANING AND CONNECTIONS TO DREAMS 11:11 - Humanity&#39;s Leap to the Heart Chakra Vision of 11:11",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greatdreams.com",
+          "/menorah.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE MENORAH CROP CIRCLE FORMATION",
+        "url": "http://www.greatdreams.com/menorah.htm"
+      },
+      {
+        "category": "general",
+        "content": "12, 2026 Partial solar eclipse Conny and I watched the partial solar eclipse from our back garden and from the street in front of our house. I took several pictures with my Panaso",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.iwriteiam.nl",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "I write, therefore I am",
+        "url": "http://www.iwriteiam.nl/"
+      },
+      {
+        "category": "general",
+        "content": "social news forums. Eclipse 2017 A spectacular celestial event. Evolution What we can learn from biology&#39;s most important theory. Gravitation Description and Equations A collectio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "arachnoid.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "* arachnoid.com",
+        "url": "https://arachnoid.com/"
+      },
+      {
+        "category": "general",
+        "content": "The Magician and the Eclipse 30th Blinded by the Light 29th Small Ideas, Big Science 14th Steel Magnolias 11th Spoiler Free Study Zone 8th April Together We Can 14th Dark of the S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "briankoberlein.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Archive | by Brian Koberlein",
+        "url": "https://briankoberlein.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "is also an attested eclipse in 249 dated with a regal year date. Aśoka&#39;s reign is used to date the life of the Buddha , since tradition in Sri Lanka ( Ceylon ) is that the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/sangoku.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Indian, Chinese, &amp; Japanese Emperors",
+        "url": "https://friesian.com/sangoku.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-t-008",
+  "query_text": "how does a solar eclipse work",
+  "requested_at": "2026-09-02T22:58:56.282879Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}
