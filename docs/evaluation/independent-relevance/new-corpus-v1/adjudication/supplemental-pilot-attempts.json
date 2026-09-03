@@ -1,0 +1,2440 @@
+{
+  "schema": "amatl.relevance.supplemental-pilot-attempt.v1",
+  "network_requests": 0,
+  "source": "offline-results only",
+  "valid_counts": {
+    "S1_PROCEDURAL_SHALLOW": 52,
+    "S2_INFORMATIONAL_SHALLOW": 60,
+    "S3_MIXED_DEPTH_CONTROL": 60
+  },
+  "total_valid": 172,
+  "status": "EXHAUSTED_FROZEN_UNIVERSE",
+  "attempts": [
+    {
+      "query_id": "sup-s1-001",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.combatreform.org/killerbees3.htm",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-001",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-001",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://lukesmith.neocities.org/vids/calendar",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-003",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-003",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.pchell.com/",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-003",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://vinnyflowers.neocities.org/webtv-troubleshooting",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-005",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://equipmentforkitchens.com/",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-005",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.ledmuseum.net/fifteen/dybarney.htm",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-006",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://responsiblegambling.org/for-the-public/safer-play/cost2play",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-006",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.geisswerks.com/milkdrop/milkdrop_preset_authoring.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-006",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://dataswamp.org/~solene/2021-02-24-nginx-stream.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-007",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-007",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-007",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.billdietrich.me/ReasonTaxes.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-008",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://8w.forix.com/f14.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-008",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://mike-tanner.co.nz/40sport.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-008",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://svedic.org/",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-009",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.senior-gardening.com/how2s/growing_transplants-1.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-009",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://creationism.org/english/EarlyChurchLit6Days_en.htm",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-009",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.living-foods.com/news/eatitrawcoast.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-010",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.louiscandell.com/lyrics/s/schoolhouse.rock/words.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-010",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.cthulhufiles.com/stories/lovecraft/lovecraft-the-dunwich-horror.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-010",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://anterras.net/CDRR/stories/STORY-Dreams.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-011",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-011",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-011",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.sidneyrigdon.com/dbroadhu/UT/tribune2.htm",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-012",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-012",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.bilderberg.org/masons.htm",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-012",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://jackrusher.com/strange-loop-2022",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-013",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-013",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-013",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.gutenberg.org/cache/epub/13435/pg13435-images.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-014",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.inventors-emporium.co.uk/pages/newton-emate-hinge.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-014",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.bristolwatch.com/",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-014",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://jepspectro.com/htm/folding-ebike.htm",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-015",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-015",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-015",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-016",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.ecofuture.org/pk/pkaction.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-017",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-017",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://the-wanderling.com/mystic_sun_god.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-017",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-018",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-018",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-018",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-019",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://inspectapedia.com/",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-019",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.ajhw.co.uk/books/book173.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-019",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-020",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-020",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://thesimplerway.info/RemakingSettlements.htm",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-020",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://thesimplerway.info/THEALTSOCLong.htm",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-021",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-021",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-021",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-022",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.somethingunderthebed.com/CURTAIN/REVIEWSmags/CraftsnThings1990s.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-022",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.kunstsprachen.de/s25/lex-static",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-022",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.ajhw.co.uk/books/book245/book245.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-023",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://lwn.net/",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-023",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.iciworld.com/seminars.shtml",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-023",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://frankchimero.com/blog/2018/the-good-room",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-024",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-024",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.scummvm.org/compatibility",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-024",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://philip.greenspun.com/samantha/samantha-XVII",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-025",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.applerepairmanuals.com/",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-025",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.bmsoftware.com/",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-025",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://rinkworks.com/stupid/cs_floppies.shtml",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-026",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-026",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.erbzine.com/mag14/1416.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-026",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.senior-gardening.com/features/saving_tomato_seed.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-027",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://industrydecarbonization.com/news/the-trouble-with-european-green-electricity-certificates.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-027",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "DUPLICATE_CURRENT_PILOT"
+    },
+    {
+      "query_id": "sup-s1-027",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-028",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-028",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://solar.lowtechmagazine.com/",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-028",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "DUPLICATE_CURRENT_PILOT"
+    },
+    {
+      "query_id": "sup-s1-029",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://cidoku.net/links/all",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-029",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s1-029",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://0pointer.net/blog/authenticated-boot-and-disk-encryption-on-linux.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-030",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://praxibetel.org/covid",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-030",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.skccgroup.com/operating_activities/weekend_sprintathon/past_wes.php",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s1-030",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.wa8lmf.net/bruninga/aprs.html",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-001",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://bobbyhiltz.com/posts/2026/01/credit-feed-6",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-001",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://bobbyhiltz.com/posts/2025/09/credit-feed-2",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-001",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://bobbyhiltz.com/posts/2026/05/credit-feed-9",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-002",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-002",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-002",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://davidpratt.info/vaccin.htm",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-003",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.fourmilab.ch/documents/canon_transits",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-003",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.cambridgeclarion.org/70.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-003",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.kronos-press.com/juergens/k0802-electric-ii.htm",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-004",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.jldr.com/ohindex.shtml",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-004",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://davidpratt.info/climcat.htm",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-004",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-005",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.naturalnews.com/z008511.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-005",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-005",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://art-bin.com/art/sallstrom_en.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-006",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://sheepdogguides.com/dt5i.htm",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-006",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.paulburgess.org/bateson.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-006",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://gadfly.igc.org/eds/econ/theory.htm",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-007",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.gutenberg.org/files/36769/36769-h/36769-h.htm",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-007",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://am-i-fat.com/weight-loss_tax.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-007",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.dankalia.com/literature/rme147.htm",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-008",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-008",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.round-earth.com/",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-008",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.socrethics.com/Folder2/Biology.htm",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-009",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://users.glitchwrks.com/~glitch/updates.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-009",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-009",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-010",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.nirsoft.net/",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-010",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://furtidev.github.io/blog/my-experience-with-password-managers",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-010",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://pwsafe.org/relatedprojects.shtml",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-011",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://madaidans-insecurities.github.io/firefox-chromium.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-011",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.eskeleto.com.br/",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-011",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://tug.org/texlive/pkgcontrib.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-012",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.jungcircle.com/temenos.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-012",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-012",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-013",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://archive.lewrockwell.com/woods/woods7.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-013",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.mathguide.com/issues/ColusaRentACar.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-013",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://anthonyflood.com/machananarchismminarchism.htm",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-014",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "DUPLICATE_CURRENT_PILOT"
+    },
+    {
+      "query_id": "sup-s2-014",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-014",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.jawest.net/tours2.htm",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-015",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-015",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://reducing-suffering.org/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-016",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.erbzine.com/mag22/2280.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-016",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.repeater-builder.com/motorola/maxtrac/maxtrac-index.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-016",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.greenhomebuilding.com/",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-017",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-017",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.rexresearch.com/hooper/horizon.htm",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-017",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.bibliotecapleyades.net/sociopolitica/esp_sociopol_mindcon23.htm",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-018",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://inflationomics.com/",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-018",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-018",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.takelifeback.com/trilib",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-019",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.migadu.com/pricing",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-019",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://blog.ari.lt/b/set-up-selfhosted-email",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-019",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-020",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-020",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.mind-body-health.net/cfs.shtml",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-020",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://davidpratt.info/humphries.htm",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-021",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://emreed.net/ZinesFV",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-021",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://sites.pitt.edu/~dash/folktexts.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-021",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.gaby.de/ftp/pub/win3x/archive",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-022",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://foodtimeline.org/",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-022",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "DUPLICATE_CURRENT_PILOT"
+    },
+    {
+      "query_id": "sup-s2-022",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-023",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-023",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-023",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.ki4u.com/survive/doomsday.htm",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-024",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "DUPLICATE_CURRENT_PILOT"
+    },
+    {
+      "query_id": "sup-s2-024",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.didik.com/didik_ev.htm",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-024",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.hudsonscustommachining.com/",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-025",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.impsec.org/linux/security/scanner-tarpit.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-025",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://nmap.org/book/firewall-subversion.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-025",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://neon1.net/misc/firewall.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-026",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.theabsolute.net/misogyny/zubaty.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-026",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.ozarkia.net/bill/anarchism/library/thelaw.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-026",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-027",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-027",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-027",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-028",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://theprivacydad.com/",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-028",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://gribblenet.xyz/tech-altfront-2022-11-05.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-028",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-029",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://lateralcast.com/episodes/68",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-029",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-029",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://kevincraig.us/defense_budget.htm",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-030",
+      "provider": "searxng",
+      "rank": 1,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://thirdworldtraveler.com/New_World_Order/BigOil_Bankers_PersianGulf.html",
+      "stratum": "S2_INFORMATIONAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-s2-030",
+      "provider": "searxng",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s2-030",
+      "provider": "searxng",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-001",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-001",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-001",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-001",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-001",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-002",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://dejap.eludevisibility.org/",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-002",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://routersecurity.org/",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-002",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.ancienttexts.org/library/scandinavian/geatish/beowulf.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-002",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.myinsulators.com/acw/bookref/overvoltage",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-002",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://dukenukemis.cool/my-fears",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-003",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-003",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "DUPLICATE_CURRENT_PILOT"
+    },
+    {
+      "query_id": "sup-s3-003",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-003",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://jutean.neocities.org/bats",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-003",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://the-wanderling.com/firehair.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-004",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.anarchism.net/newlibertarianmanifesto.htm",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-004",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-004",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://rense.com//Datapages/davemartindat.htm",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-004",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-004",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://antimatrix.org/Convert/Books/Sall/Questions_and_Answers_En.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-005",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-005",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-005",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://apple-tree.life/~michael/blog/2011",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-005",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-005",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-006",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-006",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.laits.utexas.edu/poltheory/mill/three/utilrelig.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-006",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://cyberwolfman.com/",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-006",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.hopspress.com/Books/Living_Homes.htm",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-006",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-007",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-007",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-007",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.oldcalculatormuseum.com/monroe770.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-007",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://nekhbet.com/popper/chapter-02.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-007",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.filmscanner.info/en/Bildwandformat.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-009",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.pantheism.net/paul/faith.htm",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-009",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.first.org/global/sigs/dns",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-009",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.fullbooks.com/Religions-of-Ancient-China.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-009",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://warracket.net/",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-009",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.latinamericanstudies.org/diaz-verson.htm",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-010",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://goughlui.com/2013/03/01/hard-drive-disassembly-the-ibm-deathstar",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-010",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.repairfaq.org/sam/lasercva.htm",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-010",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://amasci.com/amateur/whygnd.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-010",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://arcaneknowledge.org/science/vitapsych2.htm",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-011",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://100r.co/site/cooking.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-012",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.fourmilab.ch/images/animal_magnetism",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-012",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-012",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-012",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.davidrevoy.com/static9/shop",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-012",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.dirtcheapbuilder.com/Articles/Stone_House.5.htm",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-013",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-013",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.erbzine.com/mag21/2166.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-013",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://geometer.org/bman2002",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-013",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://jodie.website/",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-013",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://bustastic.com/Blog",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-014",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-014",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-014",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-014",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.living-foods.com/news/meatless.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-014",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-015",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.billdietrich.me/DrivingInSpain.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-015",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "DUPLICATE_CURRENT_PILOT"
+    },
+    {
+      "query_id": "sup-s3-015",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-015",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.giantitp.com/comics/oots.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-015",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.daclarke.org/AltTrans/BikeSurvey/Results.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-016",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://olivercowdery.com/texts/1814Humb.htm",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-016",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-016",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.fullbooks.com/Anthem.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-016",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://web.viu.ca/johnstoi/nietzsche/genealogy2.htm",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-016",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-017",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://nuwen.net/download.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-017",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-017",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://smcameron.github.io/space-nerds-in-space",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-017",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.w3.org/History/1989/proposal-msw.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-017",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.splode.com/~friedman/software/emacs-lisp",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-018",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.redrok.com/main.htm",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-018",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://toastytech.com/guis/abuse.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-019",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.mephedrone.org/archive/legal-highs.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-019",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-019",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://retrogaming.hazard-city.de/",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-019",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-019",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.smecc.org/sage_a_n_fsq-7.htm",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-020",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.rfc-editor.org/rfc/rfc1866.txt",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-020",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-020",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://framalistes.org/abc/en",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-020",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-020",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.vlib.us/amdocs",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-022",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "DUPLICATE_CURRENT_PILOT"
+    },
+    {
+      "query_id": "sup-s3-022",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://slomkowski.eu/octoglow-vfd-fallout-inspired-display",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-022",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.animeexpressway.com/rugrats/rrep1992.htm",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-022",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.landlist.ch/landlist/landacc.htm",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-022",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://www.shoestring-graphics.com/CP2020/slang",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-023",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://harmonyzone.org/A1REVIEWS.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-023",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "http://richfiles.solarbotics.net/RichNews.html",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-023",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "ACCEPTED",
+      "canonical_url": "https://www.kojak.tv/kojak-3.htm",
+      "stratum": "S3_MIXED_DEPTH_CONTROL"
+    },
+    {
+      "query_id": "sup-s3-023",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-023",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-024",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "DUPLICATE_CURRENT_PILOT"
+    },
+    {
+      "query_id": "sup-s3-024",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-024",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "DUPLICATE_CURRENT_PILOT"
+    },
+    {
+      "query_id": "sup-s3-024",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-024",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-025",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-025",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-025",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-025",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-025",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "DUPLICATE_CURRENT_PILOT"
+    },
+    {
+      "query_id": "sup-s3-026",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-026",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-026",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-026",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-026",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-027",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-027",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-027",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-027",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-027",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-028",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-028",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-028",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-028",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "DUPLICATE_CURRENT_PILOT"
+    },
+    {
+      "query_id": "sup-s3-028",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-029",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "DUPLICATE_CURRENT_PILOT"
+    },
+    {
+      "query_id": "sup-s3-029",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-029",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-029",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "DUPLICATE_CURRENT_PILOT"
+    },
+    {
+      "query_id": "sup-s3-029",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-030",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-030",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-030",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-030",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-030",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-031",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-031",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-031",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-031",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-031",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "DUPLICATE_CURRENT_PILOT"
+    },
+    {
+      "query_id": "sup-s3-032",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-032",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-032",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-032",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-032",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-034",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-034",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-034",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-034",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "DUPLICATE_CURRENT_PILOT"
+    },
+    {
+      "query_id": "sup-s3-034",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-035",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-035",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-035",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-035",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-035",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-036",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-036",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-036",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "DUPLICATE_CURRENT_PILOT"
+    },
+    {
+      "query_id": "sup-s3-036",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-036",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-037",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-037",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-037",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "DUPLICATE_CURRENT_PILOT"
+    },
+    {
+      "query_id": "sup-s3-037",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-037",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-038",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "DUPLICATE_CURRENT_PILOT"
+    },
+    {
+      "query_id": "sup-s3-038",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-038",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-038",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-038",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-039",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-039",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-039",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-039",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-039",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-040",
+      "provider": "searxng",
+      "rank": 4,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-040",
+      "provider": "searxng",
+      "rank": 5,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-040",
+      "provider": "searxng",
+      "rank": 6,
+      "reason_code": "QUOTA_FILLED"
+    },
+    {
+      "query_id": "sup-s3-040",
+      "provider": "searxng",
+      "rank": 7,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "query_id": "sup-s3-040",
+      "provider": "searxng",
+      "rank": 8,
+      "reason_code": "OVERLAP_V1"
+    }
+  ]
+}

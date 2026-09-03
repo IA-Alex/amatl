@@ -1,0 +1,80 @@
+{
+  "schema": "amatl.relevance.supplemental-vs-v1-analysis.v1",
+  "analysis_status": "COMPLETE",
+  "scope": "READ_ONLY_ANALYSIS_OF_FROZEN_GROUND_TRUTHS",
+  "network_requests": 0,
+  "inputs": {
+    "v1": {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/v1-ground-truth.json",
+      "ground_truth_id": "independent-relevance-ground-truth-v1",
+      "sha256": "966ffafbe8e4a48ed635bcee93773c034039129927fe87aaebdccf316d7af567",
+      "manifest_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/v1-ground-truth-manifest.json",
+      "manifest_sha256": "c7bee347a972da71048a84316a22b9bb2c92bcdd177083d7fb91247d1d97cadc",
+      "integrity": "PASS"
+    },
+    "supplemental": {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-ground-truth-v1.json",
+      "ground_truth_id": "independent-relevance-supplemental-ground-truth-v1",
+      "sha256": "0a065ac01478909713645d9926df9151c8f9f6b49fb4f519da52c803e05aeadf",
+      "manifest_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-ground-truth-v1-manifest.json",
+      "manifest_sha256": "00959ff553973c92966cdb49ae8e8598aa2d68b504ce236f5c756abc3c524a94",
+      "attestation_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-ground-truth-v1-attestation.json",
+      "attestation_sha256": "c3e48a6e4e3524ac9ccc9e70a43d244f7b7b50335e030d46c598428738097eb0",
+      "validation_report_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-ground-truth-validation-report.json",
+      "validation_report_sha256": "95570eff55c081b07ecb48de5e4540c95a51bb6850db615bade3d552edd8f759",
+      "integrity": "PASS"
+    },
+    "integrity_gate": {
+      "v1_rows": 368,
+      "supplemental_rows": 180,
+      "supplemental_strata_rows": {"S1_PROCEDURAL_SHALLOW": 60, "S2_INFORMATIONAL_SHALLOW": 60, "S3_MIXED_DEPTH_CONTROL": 60},
+      "supplemental_source_run_rows": {"supplemental-v1": 172, "supplemental-v2": 8},
+      "supplemental_counts": {"Relevant": 10, "PossiblyRelevant": 72, "NotRelevant": 98, "Unknown": 0},
+      "ground_truth_label_source": "UNANIMOUS_A_B_AGREEMENT",
+      "adjudication_used": "NO"
+    }
+  },
+  "metric_definitions": {
+    "strict_relevance_yield": "Relevant / total_rows",
+    "broad_relevance_yield": "(Relevant + PossiblyRelevant) / total_rows",
+    "not_relevant_rate": "NotRelevant / total_rows",
+    "unknown_rate": "Unknown / total_rows",
+    "relative_lift": "comparison_yield / V1_yield",
+    "absolute_delta_pp": "(comparison_rate - V1_rate) * 100"
+  },
+  "v1": {
+    "counts": {"rows": 368, "Relevant": 9, "PossiblyRelevant": 51, "NotRelevant": 308, "Unknown": 0},
+    "metrics": {"strict_relevance_yield": 0.024456521739130436, "broad_relevance_yield": 0.16304347826086957, "not_relevant_rate": 0.8369565217391305, "unknown_rate": 0.0, "possibly_relevant_rate": 0.13858695652173914},
+    "rank_contract": {"observed_ranks": "1-12", "rank_counts": {"1": 35, "2": 34, "3": 33, "4": 32, "5": 32, "6": 31, "7": 31, "8": 31, "9": 30, "10": 27, "11": 27, "12": 25}},
+    "rank_metrics": {"RELEVANT_AT_RANK_1": 2, "RELEVANT_AT_RANK_2": 2, "RELEVANT_AT_RANK_3": 3, "RELEVANT_AT_RANK_4_5": 0, "RELEVANT_AT_RANK_6_10": 2, "RELEVANT_BELOW_RANK_10": 0, "RELEVANT_TOP3_SHARE": 0.7777777777777778, "RELEVANT_TOP5_SHARE": 0.7777777777777778, "RELEVANT_TOP10_SHARE": 1.0},
+    "strict_relevance_wilson_95": [0.012918953998719061, 0.04581967856249384]
+  },
+  "supplemental": {
+    "counts": {"rows": 180, "Relevant": 10, "PossiblyRelevant": 72, "NotRelevant": 98, "Unknown": 0},
+    "metrics": {"strict_relevance_yield": 0.05555555555555555, "broad_relevance_yield": 0.45555555555555555, "not_relevant_rate": 0.5444444444444444, "unknown_rate": 0.0, "possibly_relevant_rate": 0.4},
+    "rank_contract": {"observed_ranks": "1-8", "not_comparable_as_equal_depth_to_v1": true, "rank_counts": {"1": 40, "2": 39, "3": 41, "4": 13, "5": 8, "6": 14, "7": 13, "8": 12}},
+    "rank_metrics": {"RELEVANT_AT_RANK_1": 4, "RELEVANT_AT_RANK_2": 2, "RELEVANT_AT_RANK_3": 3, "RELEVANT_AT_RANK_4_5": 1, "RELEVANT_AT_RANK_6_10": 0, "RELEVANT_BELOW_RANK_10": 0, "RELEVANT_TOP3_SHARE": 0.9, "RELEVANT_TOP5_SHARE": 1.0, "RELEVANT_TOP10_SHARE": 1.0},
+    "strict_relevance_wilson_95": [0.030453273623977824, 0.09923161341745598]
+  },
+  "v1_to_supplemental_change": {"strict_yield_absolute_delta_pp": 3.1099033816425116, "strict_yield_relative_lift": 2.2716049382716048, "broad_yield_absolute_delta_pp": 29.2512077294686, "broad_yield_relative_lift": 2.793827160493827, "not_relevant_rate_delta_pp": -29.2512077294686, "interpretation": "Supplemental strict yield is higher pointwise, but the broad-yield increase is driven primarily by PossiblyRelevant, not by Relevant."},
+  "supplemental_by_stratum": {
+    "S1_PROCEDURAL_SHALLOW": {"rows": 60, "Relevant": 0, "PossiblyRelevant": 24, "NotRelevant": 36, "Unknown": 0, "strict_relevance_yield": 0.0, "broad_relevance_yield": 0.4, "not_relevant_rate": 0.6, "possibly_relevant_rate": 0.4, "relevant_total": 0, "relevant_top3": 0, "relevant_top5": 0, "relevant_top10": 0, "strict_relevance_wilson_95": [0.0, 0.06017185214208986]},
+    "S2_INFORMATIONAL_SHALLOW": {"rows": 60, "Relevant": 9, "PossiblyRelevant": 25, "NotRelevant": 26, "Unknown": 0, "strict_relevance_yield": 0.15, "broad_relevance_yield": 0.5666666666666667, "not_relevant_rate": 0.43333333333333335, "possibly_relevant_rate": 0.4166666666666667, "relevant_total": 9, "relevant_top3": 9, "relevant_top5": 9, "relevant_top10": 9, "strict_relevance_wilson_95": [0.0809744058016774, 0.2611458906977855]},
+    "S3_MIXED_DEPTH_CONTROL": {"rows": 60, "Relevant": 1, "PossiblyRelevant": 23, "NotRelevant": 36, "Unknown": 0, "strict_relevance_yield": 0.016666666666666666, "broad_relevance_yield": 0.4, "not_relevant_rate": 0.6, "possibly_relevant_rate": 0.38333333333333336, "relevant_total": 1, "relevant_top3": 0, "relevant_top5": 1, "relevant_top10": 1, "strict_relevance_wilson_95": [0.0029481597947862486, 0.08855129727590061]}
+  },
+  "stratum_comparison": {"highest_strict_yield": "S2_INFORMATIONAL_SHALLOW", "highest_broad_yield": "S2_INFORMATIONAL_SHALLOW", "lowest_not_relevant_rate": "S2_INFORMATIONAL_SHALLOW", "descriptive_only": true, "caution": "One 60-row stratum is not sufficient to claim reproducible superiority."},
+  "possibly_relevant_analysis": {"v1_rate": 0.13858695652173914, "supplemental_rate": 0.4, "broad_relevance_increment_components": {"new_relevant": 10, "new_possibly_relevant": 72, "possibly_share_of_new_broad_labels": 0.8780487804878049}, "interpretation": "The broad-yield increase is mainly PossiblyRelevant; it must not be promoted to Relevant."},
+  "combined_descriptive_only": {"total_frozen_rows": 548, "Relevant": 19, "PossiblyRelevant": 123, "NotRelevant": 406, "Unknown": 0, "strict_relevance_yield": 0.03467153284671533, "broad_relevance_yield": 0.2591240875912409, "not_relevant_rate": 0.7408759124087592, "unknown_rate": 0.0, "iid_interpretation_permitted": false},
+  "historical_deficit": {"historical_relevant_target": 100, "historical_possibly_relevant_target": 100, "current_relevant_total": 19, "current_possibly_relevant_total": 123, "relevant_target_deficit": 81, "possibly_relevant_target_deficit": 0, "evidence": "Supplemental added 10 Relevant and 72 PossiblyRelevant; the Relevant deficit remains 81. Targets are experimental references, not an automatic acquisition authorization."},
+  "acquisition_projections": {
+    "relevant_deficit": 81,
+    "relevant": {"v1_strict_yield": {"observed_yield": 0.024456521739130436, "projected_additional_valid_rows": 3312}, "supplemental_aggregate_strict_yield": {"observed_yield": 0.05555555555555555, "projected_additional_valid_rows": 1458}, "best_supplemental_stratum_S2": {"observed_yield": 0.15, "projected_additional_valid_rows": 540}},
+    "possibly_relevant_secondary": {"v1_rate": {"observed_yield": 0.13858695652173914, "projected_additional_valid_rows": 195}, "supplemental_aggregate_rate": {"observed_yield": 0.4, "projected_additional_valid_rows": 68}, "best_supplemental_stratum_S2": {"observed_yield": 0.4166666666666667, "projected_additional_valid_rows": 65}},
+    "method": "ceil(deficit / observed_yield)",
+    "caveat": "Projections from observed yields only; they are not guarantees and do not authorize network acquisition."
+  },
+  "provider_causality": {"providers_observed": ["searxng"], "provider_causality_identifiable": "NO", "attribution_statement": "The data can support an acquisition-strategy effect description, not a provider effect comparison; no controlled SearXNG-versus-Marginalia comparison exists."},
+  "decision": {"classification": "REDESIGN_ACQUISITION_STRATEGY", "recommended_valid_rows": 0, "rationale": "Supplemental aggregate strict yield remains only 10/180 (5.56%), with a wide Wilson interval and no reproducible cross-stratum pattern: S1=0/60, S2=9/60, S3=1/60. The broad improvement is mostly PossiblyRelevant. Continuing the same design to fill the remaining Relevant deficit would be inefficient; any future work should first redesign and independently replicate the S2 signal under a controlled protocol."},
+  "limitations": ["V1 and Supplemental use different acquisition strategies and are not automatically IID.", "Rank contracts differ: V1 observes ranks 1-12 while Supplemental observes ranks 1-8.", "Stratum comparisons are descriptive and have overlapping uncertainty; no statistical superiority claim is made.", "PossiblyRelevant is not treated as Relevant.", "No provider causality is identifiable.", "No acquisition, label, ranking, heuristic, model, or network state was changed."],
+  "deterministic_validation": {"v1_counts_sum": "PASS", "supplemental_counts_sum": "PASS", "combined_counts_sum": "PASS", "strata_sum_to_supplemental": "PASS", "strict_and_broad_formulas": "PASS", "rank_buckets_sum": "PASS", "deficits": "PASS", "frozen_artifacts_modified": "NO"}
+}

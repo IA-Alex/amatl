@@ -1,0 +1,11 @@
+{
+  "SUPPLEMENTAL_LABELER_A_HASH": "846241cb666d56d2fb090f9258d949425b826c245e5e30605a64410b3f458e94",
+  "SUPPLEMENTAL_LABELER_A_PACKET": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-labeler-a-packet.json",
+  "SUPPLEMENTAL_LABELER_B_HASH": "833524848c0cd91757fd2eb27208098d98d38aacec6c2cae8a8df70351ce9be4",
+  "SUPPLEMENTAL_LABELER_B_PACKET": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-labeler-b-packet.json",
+  "SUPPLEMENTAL_PACKETS_LABELS_EMPTY": "PASS",
+  "SUPPLEMENTAL_PACKETS_UNIVERSE_MATCH": "PASS",
+  "corpus_id": "independent-relevance-supplemental-final-20260902",
+  "rows_per_packet": 180,
+  "schema": "amatl.relevance.supplemental-packet-manifest.v1"
+}

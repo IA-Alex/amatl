@@ -1,0 +1,14 @@
+{
+  "schema": "amatl.relevance.supplemental-ground-truth-attestation.v1",
+  "ground_truth_id": "independent-relevance-supplemental-ground-truth-v1",
+  "status": "FROZEN",
+  "ground_truth_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-ground-truth-v1.json",
+  "ground_truth_hash": "0a065ac01478909713645d9926df9151c8f9f6b49fb4f519da52c803e05aeadf",
+  "manifest_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-ground-truth-v1-manifest.json",
+  "manifest_hash": "00959ff553973c92966cdb49ae8e8598aa2d68b504ce236f5c756abc3c524a94",
+  "attested_at": "2026-09-02T00:00:00Z",
+  "attestor": "EXPERIMENTAL_INTEGRITY_AUDITOR",
+  "adjudication_used": "NO",
+  "ground_truth_label_source": "UNANIMOUS_A_B_AGREEMENT",
+  "network_requests": 0
+}

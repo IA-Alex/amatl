@@ -1,0 +1,16 @@
+{
+  "schema": "amatl.relevance.supplemental-v2-multirun-provenance-contract.v1",
+  "status": "FROZEN",
+  "preserved_source_run": "supplemental-v1",
+  "preserved_rows": 172,
+  "new_source_run": "supplemental-v2",
+  "new_rows_required": 8,
+  "final_rows_expected": 180,
+  "row_identity_rule": "Preserve existing supplemental-v1 row IDs exactly; assign SOURCE_RUN without regenerating them.",
+  "dedup_order": [
+    "v1-ground-truth",
+    "historical",
+    "supplemental-v1-valid",
+    "accepted-supplemental-v2"
+  ]
+}

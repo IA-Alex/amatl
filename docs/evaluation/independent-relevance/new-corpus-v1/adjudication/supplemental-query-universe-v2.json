@@ -1,0 +1,169 @@
+{
+  "schema": "amatl.relevance.supplemental-query-universe.v2",
+  "universe_id": "independent-relevance-supplemental-v2",
+  "version": 2,
+  "freeze_status": "FROZEN",
+  "parent_universe": "independent-relevance-supplemental-v1",
+  "reason_for_revision": "S1 deficit of eight valid rows after v1 frozen-universe exhaustion; S2/S3 remain preserved and complete.",
+  "target_stratum": "S1_PROCEDURAL_SHALLOW",
+  "valid_deficit": 8,
+  "provider_requirement": "SEARXNG_ONLY",
+  "dynamic_expansion": "DISABLED",
+  "deterministic_ordering": "order ascending; no insertion or expansion after freeze",
+  "normalization_rules": {
+    "query": "Unicode NFC, trim, collapse ASCII whitespace, case-insensitive duplicate check",
+    "url": "lowercase scheme/host; remove fragment; preserve query; normalize empty path to slash"
+  },
+  "exclusion_rules": [
+    "S1 only; ranks 1..3 only",
+    "no v1 query text",
+    "no label-informed selection",
+    "deduplicate accepted v2 rows against v1 ground truth, historical URLs, supplemental-v1 valid rows, and accepted v2 rows"
+  ],
+  "queries": [
+    {
+      "query_id": "sup-v2-s1-001",
+      "query": "how to tune a guitar by ear",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "semantic_form": "procedural",
+      "order": 1
+    },
+    {
+      "query_id": "sup-v2-s1-002",
+      "query": "how to calibrate a digital kitchen scale",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "semantic_form": "procedural",
+      "order": 2
+    },
+    {
+      "query_id": "sup-v2-s1-003",
+      "query": "how to bleed air from a home radiator",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "semantic_form": "procedural",
+      "order": 3
+    },
+    {
+      "query_id": "sup-v2-s1-004",
+      "query": "how to program a universal remote control",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "semantic_form": "procedural",
+      "order": 4
+    },
+    {
+      "query_id": "sup-v2-s1-005",
+      "query": "how to repot an orchid",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "semantic_form": "procedural",
+      "order": 5
+    },
+    {
+      "query_id": "sup-v2-s1-006",
+      "query": "how to create a bootable USB installer",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "semantic_form": "procedural",
+      "order": 6
+    },
+    {
+      "query_id": "sup-v2-s1-007",
+      "query": "how to level a washing machine",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "semantic_form": "procedural",
+      "order": 7
+    },
+    {
+      "query_id": "sup-v2-s1-008",
+      "query": "how to make a backup of an Android phone",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "semantic_form": "procedural",
+      "order": 8
+    },
+    {
+      "query_id": "sup-v2-s1-009",
+      "query": "how to season a carbon steel wok",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "semantic_form": "procedural",
+      "order": 9
+    },
+    {
+      "query_id": "sup-v2-s1-010",
+      "query": "how to replace a watch battery",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "semantic_form": "procedural",
+      "order": 10
+    },
+    {
+      "query_id": "sup-v2-s1-011",
+      "query": "how to scan a document with an iPhone",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "semantic_form": "procedural",
+      "order": 11
+    },
+    {
+      "query_id": "sup-v2-s1-012",
+      "query": "how to adjust bicycle disc brakes",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "semantic_form": "procedural",
+      "order": 12
+    }
+  ]
+}

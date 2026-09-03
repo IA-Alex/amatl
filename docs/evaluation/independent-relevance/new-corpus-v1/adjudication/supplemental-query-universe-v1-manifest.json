@@ -1,0 +1,26 @@
+{
+  "schema": "amatl.relevance.supplemental-query-universe-manifest.v1",
+  "universe_id": "independent-relevance-supplemental-v1",
+  "version": 1,
+  "freeze_status": "FROZEN",
+  "query_count": 100,
+  "query_counts_by_stratum": {
+    "S1_PROCEDURAL_SHALLOW": 30,
+    "S2_INFORMATIONAL_SHALLOW": 30,
+    "S3_MIXED_DEPTH_CONTROL": 40
+  },
+  "structural_capacity_by_stratum": {
+    "S1_PROCEDURAL_SHALLOW": 90,
+    "S2_INFORMATIONAL_SHALLOW": 90,
+    "S3_MIXED_DEPTH_CONTROL": 200,
+    "S3_MIXED_DEPTH_CONTROL_PROCEDURAL_HALF": 100,
+    "S3_MIXED_DEPTH_CONTROL_INFORMATIONAL_HALF": 100
+  },
+  "universe_sha256": "f8fcdc356fa0d00d3a657c2c49d5b3155c9ec4bb7fdeb67692cb7c5f734e1ae1",
+  "contract_input_sha256": {
+    "supplemental_pilot_design": "22e16c8983162585e4c03c265aaa71f29f07da6d9b2ea21105a42f121a8112da",
+    "v1_ground_truth_manifest": "c7bee347a972da71048a84316a22b9bb2c92bcdd177083d7fb91247d1d97cadc",
+    "v1_ground_truth": "966ffafbe8e4a48ed635bcee93773c034039129927fe87aaebdccf316d7af567"
+  },
+  "freeze_rule": "Any byte change to the universe or a contractual input requires a new version and fresh authorization; runtime expansion is prohibited."
+}

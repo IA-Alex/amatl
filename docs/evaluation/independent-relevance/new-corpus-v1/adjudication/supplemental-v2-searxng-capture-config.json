@@ -1,0 +1,37 @@
+{
+  "schema": "amatl.relevance.supplemental-v2-searxng-capture-config.v1",
+  "experiment_id": "independent-relevance-supplemental-v2",
+  "universe_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-query-universe-v2.json",
+  "query_universe_id": "independent-relevance-supplemental-v2",
+  "query_universe_hash": "7fec12b253873a7f83fe64d02f658dcb77d86118dba72a2a001f3b56f980975d",
+  "provider": "searxng",
+  "provider_fallback": "none",
+  "dynamic_provider_selection": false,
+  "dynamic_query_expansion": false,
+  "authorization_source": "EXPLICIT_OPERATOR_INPUT",
+  "authorized_scope": "S1-only supplemental-v2 acquisition; stop after 8 new valid rows",
+  "authorized_provider": "SEARXNG_ONLY",
+  "searxng_endpoint_binding": {
+    "source": "EXPLICIT_OPERATOR_INPUT",
+    "endpoint": "http://127.0.0.1:8888",
+    "endpoint_sha256": "529c4adb33a177f5a5e38daf3c68da5c4f1603e535f0edead04bde15fc4d08e1"
+  },
+  "retry_policy": {
+    "max_attempts": 2,
+    "same_query_only": true,
+    "retryable_error_classes": [
+      "TIMEOUT",
+      "TEMPORARY_HTTP_FAILURE"
+    ]
+  },
+  "rank_depth_policy": {
+    "source": "frozen_universe_permitted_positions"
+  },
+  "s1_new_valid_target": 8,
+  "dedup_inputs": [
+    "v1-ground-truth.json",
+    "supplemental-pilot-historical-canonical-urls.json",
+    "supplemental-pilot-attempts.json",
+    "accepted-v2-rows"
+  ]
+}
