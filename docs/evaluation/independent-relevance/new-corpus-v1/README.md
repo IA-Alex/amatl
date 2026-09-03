@@ -1,6 +1,6 @@
 # Independent relevance corpus acquisition — 2026-08-31
 
-`NEW_CORPUS_STATUS=ADJUDICATION_REQUIRED`.
+`NEW_CORPUS_STATUS=GROUND_TRUTH_FROZEN`.
 
 The campaign identity was frozen before labelling in `corpus-identity.json`.
 It used only the operator-approved AMATL providers and recorded every raw
@@ -19,8 +19,9 @@ LABELER_B_STATUS=COMPLETE_VALIDATED
 AGREEMENT=336/368 (91.304348%)
 COHEN_KAPPA=0.684441824
 DISAGREEMENTS=32
-ADJUDICATION_STATUS=NOT_STARTED
-WORK_PACKAGE_STATUS=BLOCKED_WAITING_FOR_ADJUDICATION
+ADJUDICATION_STATUS=COMPLETE
+V1_ROLE=KNOWN_INDEPENDENT_GROUND_TRUTH
+WORK_PACKAGE_STATUS=COMPLETE_V1_WAITING_FOR_SUPPLEMENTAL_AUTHORIZATION
 ```
 
 All 32 disagreements are `MINOR_BOUNDARY` decisions (Relevant ↔
@@ -37,21 +38,31 @@ BLIND_HOLDOUT_STATUS=NOT_CREATED
 BLIND_GROUND_TRUTH_ACCESS=NOT_APPLICABLE
 ```
 
-The next single action is independent human completion of every blank
-`adjudicated_label` in `adjudication/adjudication-packet.json`, preserving all
-source fields. Only then may the validator create final ground truth and
-calculate final class deficits.
+The completed human packet is preserved at
+`adjudication/adjudication-packet.json`. The frozen reconstruction is
+`adjudication/v1-ground-truth.json`, with all source fields, A/B labels,
+final-label provenance, hashes and role recorded by
+`adjudication/v1-ground-truth-manifest.json`. V1 is known ground truth and is
+not, and can never again be claimed as, a blind holdout.
 
-Capacity is already provably insufficient for the required natural 100
-Relevant examples: 5 are agreed Relevant and only 4 remaining disagreements
-could possibly become Relevant, for a hard maximum of 9. Final deficits remain
-unknown until adjudication, but the minimum possible Relevant deficit is 91.
-At the observed first-campaign Relevant yield of 7/368 (1.90%), acquiring 91
-new final Relevant labels alone implies about 4,784 raw observations; a 25%
-acquisition margin gives a preliminary `RAW_ACQUISITION_TARGET=5,980` for that
-class. The machine-readable specification is
-`adjudication/supplemental-acquisition-spec.json`. This is planning evidence
-only, not authorization to acquire data.
+Final V1 distribution is 9 Relevant, 51 PossiblyRelevant, 308 NotRelevant and
+0 Unknown. Deficits to the 100/100/100 minimum are 91, 49 and 0 respectively.
+The old 5,980 estimate is superseded: final Relevant yield is 9/368 (2.4457%),
+so the same unstratified 25% calculation is 4,652 raw rows for 91 Relevant.
+It is not an acquisition commitment. Rank and query evidence is in
+`adjudication/v1-yield-analysis.json`; it finds 7 of 9 V1 Relevant rows at
+ranks 1--3 and none below rank 7, while explicitly not assigning provider
+causality from a one-provider campaign.
+
+The designed, pre-label-only supplemental pilot is
+`adjudication/supplemental-pilot-design.json`: 180 rows across two shallow
+query-type strata and a mixed-depth control stratum. It remains unexecuted
+because the existing acquisition specification states
+`NOT_AUTHORIZED_BY_THIS_WORK_PACKAGE`. No supplemental packets exist and no
+labels have been created. The next single action is explicit authorization for
+that 180-row capture; after a contamination check and pre-label freeze, two
+identical unlabeled A/B packets must be generated and work must stop for the
+independent evaluators.
 
 Rows not selected remain an append-only reserve pool. A separate sealing tool
 and focused validation must be completed before any `CLEAN_UNSEEN` claim.

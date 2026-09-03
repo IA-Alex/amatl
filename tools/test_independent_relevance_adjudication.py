@@ -2,8 +2,10 @@
 """Regression checks for the independent-relevance agreement artifacts."""
 import hashlib
 import json
+import shutil
 import subprocess
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -47,24 +49,30 @@ class IndependentRelevanceAgreementTests(unittest.TestCase):
         self.assertTrue(all(not (forbidden & set(row)) for row in rows))
         self.assertEqual(hashlib.sha256((OUT / "adjudication-packet.json").read_bytes()).hexdigest(), self.report["ADJUDICATION_PACKET_HASH"])
 
-    def test_no_ground_truth_is_created_before_human_adjudication(self):
-        self.assertEqual(self.report["WORK_PACKAGE_STATUS"], "BLOCKED_WAITING_FOR_ADJUDICATION")
-        self.assertEqual(self.report["ADJUDICATION_STATUS"], "WAITING_FOR_HUMAN")
-        self.assertFalse((OUT / "final-ground-truth.json").exists())
+    def test_complete_human_adjudication_enables_only_the_rule_based_final_corpus(self):
+        self.assertEqual(self.report["WORK_PACKAGE_STATUS"], "COMPLETE")
+        self.assertEqual(self.report["ADJUDICATION_STATUS"], "COMPLETE")
+        self.assertTrue((OUT / "final-ground-truth.json").exists())
+        final = json.loads((OUT / "final-ground-truth.json").read_text())
+        adjudicated = {row["row_id"]: row["adjudicated_label"] for row in self.packet["rows"]}
+        self.assertEqual(len(final["rows"]), 368)
+        self.assertTrue(all(row["final_label"] == adjudicated[row["row_id"]]
+                            for row in final["rows"] if row["row_id"] in adjudicated))
 
     def test_validation_preserves_a_human_adjudication_entry(self):
-        packet_path = OUT / "adjudication-packet.json"
-        packet = json.loads(packet_path.read_text())
-        packet["rows"][0]["adjudicated_label"] = "Relevant"
-        packet_path.write_text(json.dumps(packet, indent=2) + "\n")
-        try:
-            subprocess.run([sys.executable, str(ROOT / "tools/validate_independent_relevance_adjudication.py")], cwd=ROOT, check=True)
+        # Never mutate the actual human adjudication record to test preservation.
+        with tempfile.TemporaryDirectory() as temp:
+            output = Path(temp)
+            packet_path = output / "adjudication-packet.json"
+            shutil.copy2(OUT / "adjudication-packet.json", packet_path)
+            packet = json.loads(packet_path.read_text())
+            original = packet["rows"][0]["adjudicated_label"]
+            subprocess.run([
+                sys.executable, str(ROOT / "tools/validate_independent_relevance_adjudication.py"),
+                "--output-dir", str(output),
+            ], cwd=ROOT, check=True)
             preserved = json.loads(packet_path.read_text())
-            self.assertEqual(preserved["rows"][0]["adjudicated_label"], "Relevant")
-        finally:
-            packet["rows"][0]["adjudicated_label"] = ""
-            packet_path.write_text(json.dumps(packet, indent=2) + "\n")
-            subprocess.run([sys.executable, str(ROOT / "tools/validate_independent_relevance_adjudication.py")], cwd=ROOT, check=True)
+            self.assertEqual(preserved["rows"][0]["adjudicated_label"], original)
 
 
 if __name__ == "__main__":

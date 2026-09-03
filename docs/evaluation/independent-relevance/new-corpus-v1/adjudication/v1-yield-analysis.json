@@ -1,0 +1,542 @@
+{
+  "schema": "amatl.relevance.v1-yield-analysis.v1",
+  "ground_truth_hash": "966ffafbe8e4a48ed635bcee93773c034039129927fe87aaebdccf316d7af567",
+  "total_rows": 368,
+  "class_distribution": {
+    "NotRelevant": 308,
+    "PossiblyRelevant": 51,
+    "Relevant": 9
+  },
+  "global_relevant_yield": 0.024456521739130436,
+  "by_rank": {
+    "1": {
+      "total": 35,
+      "Relevant": 2,
+      "PossiblyRelevant": 8,
+      "NotRelevant": 25,
+      "Unknown": 0,
+      "relevant_rate": 0.05714285714285714,
+      "possibly_relevant_rate": 0.22857142857142856,
+      "not_relevant_rate": 0.7142857142857143
+    },
+    "2": {
+      "total": 34,
+      "Relevant": 2,
+      "PossiblyRelevant": 8,
+      "NotRelevant": 24,
+      "Unknown": 0,
+      "relevant_rate": 0.058823529411764705,
+      "possibly_relevant_rate": 0.23529411764705882,
+      "not_relevant_rate": 0.7058823529411765
+    },
+    "3": {
+      "total": 33,
+      "Relevant": 3,
+      "PossiblyRelevant": 6,
+      "NotRelevant": 24,
+      "Unknown": 0,
+      "relevant_rate": 0.09090909090909091,
+      "possibly_relevant_rate": 0.18181818181818182,
+      "not_relevant_rate": 0.7272727272727273
+    },
+    "4": {
+      "total": 32,
+      "Relevant": 0,
+      "PossiblyRelevant": 5,
+      "NotRelevant": 27,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.15625,
+      "not_relevant_rate": 0.84375
+    },
+    "5": {
+      "total": 32,
+      "Relevant": 0,
+      "PossiblyRelevant": 5,
+      "NotRelevant": 27,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.15625,
+      "not_relevant_rate": 0.84375
+    },
+    "6": {
+      "total": 31,
+      "Relevant": 1,
+      "PossiblyRelevant": 4,
+      "NotRelevant": 26,
+      "Unknown": 0,
+      "relevant_rate": 0.03225806451612903,
+      "possibly_relevant_rate": 0.12903225806451613,
+      "not_relevant_rate": 0.8387096774193549
+    },
+    "7": {
+      "total": 31,
+      "Relevant": 1,
+      "PossiblyRelevant": 2,
+      "NotRelevant": 28,
+      "Unknown": 0,
+      "relevant_rate": 0.03225806451612903,
+      "possibly_relevant_rate": 0.06451612903225806,
+      "not_relevant_rate": 0.9032258064516129
+    },
+    "8": {
+      "total": 31,
+      "Relevant": 0,
+      "PossiblyRelevant": 3,
+      "NotRelevant": 28,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.0967741935483871,
+      "not_relevant_rate": 0.9032258064516129
+    },
+    "9": {
+      "total": 30,
+      "Relevant": 0,
+      "PossiblyRelevant": 3,
+      "NotRelevant": 27,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.1,
+      "not_relevant_rate": 0.9
+    },
+    "10": {
+      "total": 27,
+      "Relevant": 0,
+      "PossiblyRelevant": 2,
+      "NotRelevant": 25,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.07407407407407407,
+      "not_relevant_rate": 0.9259259259259259
+    },
+    "11": {
+      "total": 27,
+      "Relevant": 0,
+      "PossiblyRelevant": 3,
+      "NotRelevant": 24,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.1111111111111111,
+      "not_relevant_rate": 0.8888888888888888
+    },
+    "12": {
+      "total": 25,
+      "Relevant": 0,
+      "PossiblyRelevant": 2,
+      "NotRelevant": 23,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.08,
+      "not_relevant_rate": 0.92
+    }
+  },
+  "by_query": {
+    "q001": {
+      "total": 3,
+      "Relevant": 0,
+      "PossiblyRelevant": 0,
+      "NotRelevant": 3,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.0,
+      "not_relevant_rate": 1.0
+    },
+    "q002": {
+      "total": 12,
+      "Relevant": 2,
+      "PossiblyRelevant": 1,
+      "NotRelevant": 9,
+      "Unknown": 0,
+      "relevant_rate": 0.16666666666666666,
+      "possibly_relevant_rate": 0.08333333333333333,
+      "not_relevant_rate": 0.75
+    },
+    "q003": {
+      "total": 1,
+      "Relevant": 0,
+      "PossiblyRelevant": 0,
+      "NotRelevant": 1,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.0,
+      "not_relevant_rate": 1.0
+    },
+    "q004": {
+      "total": 2,
+      "Relevant": 0,
+      "PossiblyRelevant": 0,
+      "NotRelevant": 2,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.0,
+      "not_relevant_rate": 1.0
+    },
+    "q005": {
+      "total": 9,
+      "Relevant": 0,
+      "PossiblyRelevant": 0,
+      "NotRelevant": 9,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.0,
+      "not_relevant_rate": 1.0
+    },
+    "q006": {
+      "total": 8,
+      "Relevant": 0,
+      "PossiblyRelevant": 0,
+      "NotRelevant": 8,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.0,
+      "not_relevant_rate": 1.0
+    },
+    "q007": {
+      "total": 12,
+      "Relevant": 0,
+      "PossiblyRelevant": 0,
+      "NotRelevant": 12,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.0,
+      "not_relevant_rate": 1.0
+    },
+    "q008": {
+      "total": 12,
+      "Relevant": 0,
+      "PossiblyRelevant": 0,
+      "NotRelevant": 12,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.0,
+      "not_relevant_rate": 1.0
+    },
+    "q009": {
+      "total": 12,
+      "Relevant": 0,
+      "PossiblyRelevant": 0,
+      "NotRelevant": 12,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.0,
+      "not_relevant_rate": 1.0
+    },
+    "q010": {
+      "total": 12,
+      "Relevant": 0,
+      "PossiblyRelevant": 2,
+      "NotRelevant": 10,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.16666666666666666,
+      "not_relevant_rate": 0.8333333333333334
+    },
+    "q011": {
+      "total": 12,
+      "Relevant": 2,
+      "PossiblyRelevant": 3,
+      "NotRelevant": 7,
+      "Unknown": 0,
+      "relevant_rate": 0.16666666666666666,
+      "possibly_relevant_rate": 0.25,
+      "not_relevant_rate": 0.5833333333333334
+    },
+    "q012": {
+      "total": 9,
+      "Relevant": 0,
+      "PossiblyRelevant": 0,
+      "NotRelevant": 9,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.0,
+      "not_relevant_rate": 1.0
+    },
+    "q013": {
+      "total": 12,
+      "Relevant": 1,
+      "PossiblyRelevant": 1,
+      "NotRelevant": 10,
+      "Unknown": 0,
+      "relevant_rate": 0.08333333333333333,
+      "possibly_relevant_rate": 0.08333333333333333,
+      "not_relevant_rate": 0.8333333333333334
+    },
+    "q014": {
+      "total": 12,
+      "Relevant": 0,
+      "PossiblyRelevant": 1,
+      "NotRelevant": 11,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.08333333333333333,
+      "not_relevant_rate": 0.9166666666666666
+    },
+    "q015": {
+      "total": 12,
+      "Relevant": 0,
+      "PossiblyRelevant": 1,
+      "NotRelevant": 11,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.08333333333333333,
+      "not_relevant_rate": 0.9166666666666666
+    },
+    "q016": {
+      "total": 12,
+      "Relevant": 0,
+      "PossiblyRelevant": 8,
+      "NotRelevant": 4,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.6666666666666666,
+      "not_relevant_rate": 0.3333333333333333
+    },
+    "q017": {
+      "total": 12,
+      "Relevant": 0,
+      "PossiblyRelevant": 1,
+      "NotRelevant": 11,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.08333333333333333,
+      "not_relevant_rate": 0.9166666666666666
+    },
+    "q018": {
+      "total": 12,
+      "Relevant": 0,
+      "PossiblyRelevant": 0,
+      "NotRelevant": 12,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.0,
+      "not_relevant_rate": 1.0
+    },
+    "q019": {
+      "total": 12,
+      "Relevant": 0,
+      "PossiblyRelevant": 1,
+      "NotRelevant": 11,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.08333333333333333,
+      "not_relevant_rate": 0.9166666666666666
+    },
+    "q020": {
+      "total": 9,
+      "Relevant": 0,
+      "PossiblyRelevant": 0,
+      "NotRelevant": 9,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.0,
+      "not_relevant_rate": 1.0
+    },
+    "q021": {
+      "total": 12,
+      "Relevant": 0,
+      "PossiblyRelevant": 0,
+      "NotRelevant": 12,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.0,
+      "not_relevant_rate": 1.0
+    },
+    "q022": {
+      "total": 12,
+      "Relevant": 0,
+      "PossiblyRelevant": 2,
+      "NotRelevant": 10,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.16666666666666666,
+      "not_relevant_rate": 0.8333333333333334
+    },
+    "q023": {
+      "total": 11,
+      "Relevant": 0,
+      "PossiblyRelevant": 1,
+      "NotRelevant": 10,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.09090909090909091,
+      "not_relevant_rate": 0.9090909090909091
+    },
+    "q024": {
+      "total": 12,
+      "Relevant": 0,
+      "PossiblyRelevant": 5,
+      "NotRelevant": 7,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.4166666666666667,
+      "not_relevant_rate": 0.5833333333333334
+    },
+    "q025": {
+      "total": 12,
+      "Relevant": 1,
+      "PossiblyRelevant": 8,
+      "NotRelevant": 3,
+      "Unknown": 0,
+      "relevant_rate": 0.08333333333333333,
+      "possibly_relevant_rate": 0.6666666666666666,
+      "not_relevant_rate": 0.25
+    },
+    "q026": {
+      "total": 12,
+      "Relevant": 2,
+      "PossiblyRelevant": 6,
+      "NotRelevant": 4,
+      "Unknown": 0,
+      "relevant_rate": 0.16666666666666666,
+      "possibly_relevant_rate": 0.5,
+      "not_relevant_rate": 0.3333333333333333
+    },
+    "q027": {
+      "total": 5,
+      "Relevant": 0,
+      "PossiblyRelevant": 0,
+      "NotRelevant": 5,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.0,
+      "not_relevant_rate": 1.0
+    },
+    "q028": {
+      "total": 12,
+      "Relevant": 0,
+      "PossiblyRelevant": 0,
+      "NotRelevant": 12,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.0,
+      "not_relevant_rate": 1.0
+    },
+    "q029": {
+      "total": 12,
+      "Relevant": 1,
+      "PossiblyRelevant": 3,
+      "NotRelevant": 8,
+      "Unknown": 0,
+      "relevant_rate": 0.08333333333333333,
+      "possibly_relevant_rate": 0.25,
+      "not_relevant_rate": 0.6666666666666666
+    },
+    "q030": {
+      "total": 11,
+      "Relevant": 0,
+      "PossiblyRelevant": 0,
+      "NotRelevant": 11,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.0,
+      "not_relevant_rate": 1.0
+    },
+    "q031": {
+      "total": 12,
+      "Relevant": 0,
+      "PossiblyRelevant": 3,
+      "NotRelevant": 9,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.25,
+      "not_relevant_rate": 0.75
+    },
+    "q032": {
+      "total": 12,
+      "Relevant": 0,
+      "PossiblyRelevant": 2,
+      "NotRelevant": 10,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.16666666666666666,
+      "not_relevant_rate": 0.8333333333333334
+    },
+    "q033": {
+      "total": 12,
+      "Relevant": 0,
+      "PossiblyRelevant": 0,
+      "NotRelevant": 12,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.0,
+      "not_relevant_rate": 1.0
+    },
+    "q034": {
+      "total": 12,
+      "Relevant": 0,
+      "PossiblyRelevant": 0,
+      "NotRelevant": 12,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.0,
+      "not_relevant_rate": 1.0
+    },
+    "q035": {
+      "total": 12,
+      "Relevant": 0,
+      "PossiblyRelevant": 2,
+      "NotRelevant": 10,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.16666666666666666,
+      "not_relevant_rate": 0.8333333333333334
+    }
+  },
+  "by_provider": {
+    "searxng": {
+      "total": 368,
+      "Relevant": 9,
+      "PossiblyRelevant": 51,
+      "NotRelevant": 308,
+      "Unknown": 0,
+      "relevant_rate": 0.024456521739130436,
+      "possibly_relevant_rate": 0.13858695652173914,
+      "not_relevant_rate": 0.8369565217391305
+    }
+  },
+  "by_query_type": {
+    "informational": {
+      "total": 60,
+      "Relevant": 3,
+      "PossiblyRelevant": 19,
+      "NotRelevant": 38,
+      "Unknown": 0,
+      "relevant_rate": 0.05,
+      "possibly_relevant_rate": 0.31666666666666665,
+      "not_relevant_rate": 0.6333333333333333
+    },
+    "other": {
+      "total": 1,
+      "Relevant": 0,
+      "PossiblyRelevant": 0,
+      "NotRelevant": 1,
+      "Unknown": 0,
+      "relevant_rate": 0.0,
+      "possibly_relevant_rate": 0.0,
+      "not_relevant_rate": 1.0
+    },
+    "procedural": {
+      "total": 307,
+      "Relevant": 6,
+      "PossiblyRelevant": 32,
+      "NotRelevant": 269,
+      "Unknown": 0,
+      "relevant_rate": 0.019543973941368076,
+      "possibly_relevant_rate": 0.10423452768729642,
+      "not_relevant_rate": 0.8762214983713354
+    }
+  },
+  "concentration": {
+    "relevant_in_ranks_1_to_3": 7,
+    "possibly_relevant_in_ranks_1_to_3": 22,
+    "relevant_query_ids": [
+      "q002",
+      "q011",
+      "q013",
+      "q025",
+      "q026",
+      "q029"
+    ]
+  },
+  "finding": "Seven of nine Relevant rows occur at ranks 1-3; the other two occur at ranks 6 and 7, and none occur below rank 7. PossiblyRelevant falls from 22/102 at ranks 1-3 to 29/266 afterwards. With one provider only, provider causality is not identifiable. The evidence supports a combination of shallow-rank concentration and query mix, not a causal claim about provider behavior."
+}

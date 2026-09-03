@@ -23,7 +23,7 @@
       "raw_response_sha256": "e5b3d596bd645a8bc07c33190dede92a17bc0bc1975bc0cd0f522ebb638b2fbf",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "Relevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -48,7 +48,7 @@
       "raw_response_sha256": "e5b3d596bd645a8bc07c33190dede92a17bc0bc1975bc0cd0f522ebb638b2fbf",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "Relevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -73,7 +73,7 @@
       "raw_response_sha256": "a761bb55eb20341d52b2f6fef85d5db72e2d15fadc524041a1cd8439c5a39aff",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "NotRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -98,7 +98,7 @@
       "raw_response_sha256": "d3d197736938ed864b45ed6abfb96239cc064c7c545c7acb0440df9e54a62d15",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "PossiblyRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -123,7 +123,7 @@
       "raw_response_sha256": "ec500deaefd95415b262dc66440bb62a00bc1d37a9721c3bd715fd590bfe1d06",
       "label_a": "PossiblyRelevant",
       "label_b": "Relevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "Relevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -148,7 +148,7 @@
       "raw_response_sha256": "ec500deaefd95415b262dc66440bb62a00bc1d37a9721c3bd715fd590bfe1d06",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "PossiblyRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -173,7 +173,7 @@
       "raw_response_sha256": "ec500deaefd95415b262dc66440bb62a00bc1d37a9721c3bd715fd590bfe1d06",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "PossiblyRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -198,7 +198,7 @@
       "raw_response_sha256": "4a111c732851408c270f4eca0e4e3c746d22544bb5b43cce5ee286e2aa6aff44",
       "label_a": "PossiblyRelevant",
       "label_b": "Relevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "Relevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -223,7 +223,7 @@
       "raw_response_sha256": "1f7740f6442c49d4b7be64109dfcb5f6a0b8ced1537e65ffd9679c2d3691b63e",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "NotRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -248,7 +248,7 @@
       "raw_response_sha256": "68473b0b7c5d224cd541dda6146a8ec201743c384a2068d3e793b6e20e80cd36",
       "label_a": "Relevant",
       "label_b": "PossiblyRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "PossiblyRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -273,7 +273,7 @@
       "raw_response_sha256": "68473b0b7c5d224cd541dda6146a8ec201743c384a2068d3e793b6e20e80cd36",
       "label_a": "NotRelevant",
       "label_b": "PossiblyRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "NotRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -298,7 +298,7 @@
       "raw_response_sha256": "68473b0b7c5d224cd541dda6146a8ec201743c384a2068d3e793b6e20e80cd36",
       "label_a": "NotRelevant",
       "label_b": "PossiblyRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "PossiblyRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -323,7 +323,7 @@
       "raw_response_sha256": "c6891433b2b365d0898941871e5cd0600ccf235ae055faa52b54e2847771b758",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "PossiblyRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -348,7 +348,7 @@
       "raw_response_sha256": "c6891433b2b365d0898941871e5cd0600ccf235ae055faa52b54e2847771b758",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "NotRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -373,7 +373,7 @@
       "raw_response_sha256": "c6891433b2b365d0898941871e5cd0600ccf235ae055faa52b54e2847771b758",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "NotRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -398,7 +398,7 @@
       "raw_response_sha256": "c6891433b2b365d0898941871e5cd0600ccf235ae055faa52b54e2847771b758",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "NotRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -423,7 +423,7 @@
       "raw_response_sha256": "04bf843727d3972c353028fc8c6b54778429de2b9910aaeb3664a5ba77fd40b2",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "PossiblyRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -448,7 +448,7 @@
       "raw_response_sha256": "99b4143175945c23242d4d1dc3ebfc28c95ac58906ed242b99f41986550584b6",
       "label_a": "NotRelevant",
       "label_b": "PossiblyRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "PossiblyRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -473,7 +473,7 @@
       "raw_response_sha256": "99b4143175945c23242d4d1dc3ebfc28c95ac58906ed242b99f41986550584b6",
       "label_a": "NotRelevant",
       "label_b": "PossiblyRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "PossiblyRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -498,7 +498,7 @@
       "raw_response_sha256": "99b4143175945c23242d4d1dc3ebfc28c95ac58906ed242b99f41986550584b6",
       "label_a": "NotRelevant",
       "label_b": "PossiblyRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "NotRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -523,7 +523,7 @@
       "raw_response_sha256": "7d1ee7d4dacce0e024eb4a72de4bb3785b6b00d685ca9fa38efdc3be1fa54969",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "PossiblyRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -548,7 +548,7 @@
       "raw_response_sha256": "0a60d17d3a9631dbb422aafe963e6fdc303d856cf775b9d5e50bd3f67f43b726",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "PossiblyRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -573,7 +573,7 @@
       "raw_response_sha256": "0a60d17d3a9631dbb422aafe963e6fdc303d856cf775b9d5e50bd3f67f43b726",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "NotRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -598,7 +598,7 @@
       "raw_response_sha256": "0a60d17d3a9631dbb422aafe963e6fdc303d856cf775b9d5e50bd3f67f43b726",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "PossiblyRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -623,7 +623,7 @@
       "raw_response_sha256": "0a60d17d3a9631dbb422aafe963e6fdc303d856cf775b9d5e50bd3f67f43b726",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "NotRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -648,7 +648,7 @@
       "raw_response_sha256": "0a60d17d3a9631dbb422aafe963e6fdc303d856cf775b9d5e50bd3f67f43b726",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "PossiblyRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -673,7 +673,7 @@
       "raw_response_sha256": "cd095ed0d37f08164bf351668228768c233690f06a51476f84181352ab814e69",
       "label_a": "NotRelevant",
       "label_b": "PossiblyRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "NotRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -698,7 +698,7 @@
       "raw_response_sha256": "6b2f3dad56405a43f683a177feef8c33bd1b7ad47235e853b4d718e26aa18a59",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "NotRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -723,7 +723,7 @@
       "raw_response_sha256": "06e7fe7c41c2adc0d378e5b0f9b8ed4ae12b4cd269f617ca55d742f7dd80ff81",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "PossiblyRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -748,7 +748,7 @@
       "raw_response_sha256": "06e7fe7c41c2adc0d378e5b0f9b8ed4ae12b4cd269f617ca55d742f7dd80ff81",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "NotRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -773,7 +773,7 @@
       "raw_response_sha256": "06e7fe7c41c2adc0d378e5b0f9b8ed4ae12b4cd269f617ca55d742f7dd80ff81",
       "label_a": "PossiblyRelevant",
       "label_b": "NotRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "NotRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     },
@@ -798,7 +798,7 @@
       "raw_response_sha256": "e7a72e5db98badb3d4d62e6b57dda9e4db488662e228f0f8d146933db8ac6616",
       "label_a": "Relevant",
       "label_b": "PossiblyRelevant",
-      "adjudicated_label": "",
+      "adjudicated_label": "PossiblyRelevant",
       "adjudication_note": "",
       "disagreement_severity": "MINOR_BOUNDARY"
     }
