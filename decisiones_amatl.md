@@ -228,3 +228,163 @@ reemplaza. Fecha base trazable: commit `51c6d34`, 2026-08-12.
   `amatl-server/src/lib.rs::{answer_post,answer_toggle}`;
   `service.rs::AnswerStatus`; `docs/resumen-con-ia.md`;
   `docs/security/threat-model.md`; `docs/api/openapi.yaml`.
+
+## ADR-012 — Adquisición confirmatoria con compuerta previa de novedad y diversidad
+
+- **Fecha:** 2026-09-04
+- **Estado:** Aceptada
+- **Contexto:** V5 terminó `COMPLETE_INCONCLUSIVE` con SearXNG, sin fallos HTTP:
+  2,172/2,172 requests fueron exitosos. El universo congelado se agotó antes de
+  474 resultados válidos por brazo. Esta decisión cierra el análisis post-V5;
+  no autoriza V6, no reabre V5 y no modifica ground truths ni resultados V1–V5.
+- **Evidencia y funnel:** El ledger V5 (`docs/evaluation/independent-relevance/v5/execution/`)
+  contiene 2,172 queries y 3,870 filas raw. La reconciliación es:
+  `3,870 - 1,354 DUPLICATE_CURRENT - (911 OVERLAP_V1 + 167 OVERLAP_V3 +
+  811 OVERLAP_V4) = 627 VALID_RESULTS`; `REJECTED_TOTAL=3,243` y
+  `627 + 3,243 = 3,870`. Por tanto, `RAW_RESULTS_PER_QUERY=1.7831`,
+  `VALID_RESULTS_PER_QUERY=0.2887`, `VALID_RATE_RAW=16.20%` y
+  `REJECTION_RATE_RAW=83.80%`. Participación de rechazo: duplicación 41.75%,
+  V1 28.09%, V3 5.15% y V4 25.01%. `CANONICAL_RESULTS=2,516` después de
+  deduplicación actual; `FINAL_ACCEPTED_RESULTS=627`.
+- **Saturación y duplicación:** El V5 raw tiene 916 URLs canónicas únicas
+  (23.67% de 3,870); los 1,354 duplicados proceden de
+  `CROSS_QUERY_DUPLICATION=1,354`, incluyendo 1,320 cruces de pares y 34
+  cruces de brazos; no se observó duplicación dentro de una misma query.
+  Hay 322 URLs distintas entre las filas duplicadas. Las más repetidas son
+  `vixra.org/astro` (46), `millermicro.com` (44), `unabomber.neocities.org`
+  (34), `greenmagi.com` (34) y `billdietrich.me` (39 en duplicados).
+  Los cuatro motivos históricos suman 1,889 filas (48.81% de raw); los
+  conteos por versión son V1=911 (23.54%), V2=0 (0%), V3=167 (4.32%) y
+  V4=811 (20.96%). Esto demuestra saturación histórica severa del espacio
+  recuperado bajo el universo V5, aunque no permite atribuir una tasa de
+  unión URL-a-URL histórica adicional sin reinterpretar el ledger.
+- **Diversidad efectiva:** Las 2,172 cadenas son únicas literalmente y tras
+  normalización de espacios/case (`QUERY_UNIQUENESS=100%`), pero representan
+  1,086 pares y sólo 217 temas de sujeto, 36 contextos y plantillas
+  lingüísticas repetidas por brazo. La similitud Jaccard media de los
+  conjuntos de resultados de los pares fue 27.18%; 844 queries tuvieron un
+  conjunto idéntico a uno previo y el mayor grupo idéntico tuvo 629 filas.
+  La diversidad nominal, por ello, sobrestima la diversidad documental.
+  `DOMAIN_CONCENTRATION` se reporta como alta cualitativamente cuantificable:
+  los 15 dominios principales concentran 1,002/3,870 filas (25.89%); no se
+  usa una cifra de concentración de dominios únicos porque el ledger no la
+  define como métrica normativa.
+- **Treatment vs control:** Treatment produjo 2,342 raw y 402 válidos
+  (`17.16%`); Control 1,528 raw y 225 válidos (`14.73%`). Rechazos por
+  brazo (raw): Treatment: duplicado 802, V1 610, V3 92, V4 436; Control:
+  duplicado 552, V1 301, V3 75, V4 375. La diferencia 402–225 queda
+  explicada por mayor volumen raw de Treatment (814 filas más) y menor
+  proporción de solapamiento V1/V4 en Control; no es una medida de relevancia.
+  `ARM_YIELD_ASYMMETRY=EXPLAINED` para yield de adquisición.
+- **Canonicalización:** `tools/execute_v5_searxng_capture.py` baja scheme y
+  host, elimina fragmentos, quita sólo la slash final y preserva íntegramente
+  query parameters. En 3,870 filas hubo 0 colisiones de distintas URLs
+  originales hacia una misma canónica; transformaciones observadas:
+  8 fragmentos, 27 hosts con cambio de case y 1,389 slash finales. No hay
+  false collapse demostrado: `CANONICALIZATION_FALSE_COLLAPSE_RISK=LOW`.
+- **Hipótesis:**
+  `H1_QUERY_UNIVERSE_LOW_EFFECTIVE_DIVERSITY=SUPPORTED` (217 temas/contextos
+  y plantillas repetidas); `H2_SEARXNG_RESULT_CONCENTRATION=SUPPORTED`
+  (916 URLs únicas, conjuntos idénticos y concentración documental);
+  `H3_HISTORICAL_CORPUS_SATURATION=SUPPORTED` (48.81% de raw rechazado por
+  V1/V3/V4); `H4_INTERNAL_DUPLICATION=SUPPORTED` (1,354/3,870=34.99% de
+  raw); `H5_CANONICALIZATION_OVER_COLLAPSE=NOT_SUPPORTED` (0 colisiones);
+  `H6_SINGLE_PROVIDER_LIMITATION=INSUFFICIENT_EVIDENCE` (el proveedor
+  respondió 100% de requests, pero no se puede separar su techo de la
+  estrategia); `H7_ARM_SPECIFIC_QUERY_BEHAVIOR=PARTIALLY_SUPPORTED`
+  (yield raw asimétrico explicado por volumen/solapamiento, sin inferencia de
+  relevancia). Causa primaria: baja diversidad efectiva del universo de
+  queries, que amplifica concentración de resultados y saturación histórica.
+  Secundarias: duplicación interna y contaminación del corpus histórico.
+- **Capas dominantes:** domina `QUERY STRATEGY LIMIT`; `SEARCH ENGINE LIMIT`
+  es secundario/no aislable con estos datos; `EVALUATION CORPUS LIMIT` es
+  también dominante para el objetivo confirmatorio porque casi la mitad del
+  raw fue histórico. El resultado es ambos impactos: experimentalmente V5 no
+  tiene potencia confirmatoria; productivamente no prueba que AMATL no halle
+  resultados útiles.
+- **Decisión:** `ARCHITECTURE_DECISION=PRE_EXECUTION_NOVELTY_DIVERSITY_GATE`.
+  Antes de congelar o ejecutar una campaña, AMATL debe estimar novedad contra
+  el corpus histórico y diversidad efectiva de queries/result-set esperados,
+  y rechazar o sustituir candidatos redundantes hasta satisfacer gates por
+  brazo. La compuerta es una sola arquitectura coherente: selección
+  estratificada por familia/tema/dominio con presupuesto de novedad; no es una
+  iniciativa separada de multi-provider ni una revisión de canonicalización.
+  Su efecto esperado es trasladar el rechazo desde después de requests a la
+  planificación, reducir duplicación/contaminación y hacer auditable la
+  capacidad de llegar a 474/474. Alcance: generador/manifest de queries,
+  estimador offline de novelty, estratificación, reporte de gates y bloqueo
+  pre-ejecución. No cambiar: código productivo de búsqueda, canonicalizador
+  actual, provider routing, ground truths, V1–V5 ni artefactos históricos.
+- **Readiness futura:** no considerar otro confirmatorio hasta disponer de
+  estimación previa de novelty por brazo, diversidad efectiva y result-set
+  overlap, contaminación histórica esperada, yield conservador y balance de
+  brazos. Gates mínimos derivados de V5: novelty histórica esperada <20% del
+  raw por brazo (V5 fue 48.81% global), duplicación interna esperada <20%
+  (V5 fue 34.99%), y capacidad conservadora `>=474` válidos por brazo con
+  margen explícito; además, ningún brazo puede proyectar menos del 90% del
+  otro sin explicación pre-registrada. El gate debe basarse en estas
+  proyecciones y no sólo en raw-result yield histórico.
+- **Consecuencias:** Se añade una barrera de planificación y coste de
+  instrumentación; pueden descartarse muchas queries nominalmente distintas.
+  A cambio, una campaña deja de consumir presupuesto en resultados que el
+  propio corpus ya invalida y puede distinguir fallo de adquisición de
+  saturación experimental.
+- **Siguiente acción única:** implementar la compuerta offline de
+  `novelty/diversity` que produzca un manifest bloqueable por brazo antes de
+  cualquier request.
+- **Trazabilidad:** V5 `final-closure-report.json`, `execution-report.json`,
+  `attempt-ledger.json`, `raw-capture.json`, `prelabel-freeze.json`;
+  V4 `new-corpus-v1/v4/supplemental-v4-closure-report.json` y
+  `supplemental-v4-attempt-ledger.json`; canonicalización en
+  `tools/execute_v5_searxng_capture.py`.
+
+### Cierre estructurado post-V5
+
+```text
+POST_V5_ANALYSIS_STATUS=COMPLETE_WITH_ARCHITECTURAL_DECISION
+STARTING_HEAD=a4d0fb1c4fd619e6810a665732acb510a78b2cde
+WORKTREE_INITIAL=CLEAN
+FROZEN_QUERIES=2172 (1086 pares)
+EXECUTED_QUERIES=2172
+RAW_RESULTS=3870
+CANONICAL_RESULTS=2516
+VALID_RESULTS=627
+FINAL_ACCEPTED_RESULTS=627
+V5_RAW_RESULTS=3870
+V5_VALID_RESULTS=627
+V5_VALID_RATE=16.20%
+V5_REJECTION_RATE=83.80%
+DUPLICATE_CURRENT_RATE=34.99%
+HISTORICAL_OVERLAP_RATE=48.81%
+UNIQUE_URLS_V5_RAW=916
+V5_NEW_UNIQUE_URLS=627
+UNIQUE_URLS_V1=INSUFFICIENT_EVIDENCE_AS_VERSION_UNION
+UNIQUE_URLS_V2=INSUFFICIENT_EVIDENCE_AS_VERSION_UNION
+UNIQUE_URLS_V3=INSUFFICIENT_EVIDENCE_AS_VERSION_UNION
+UNIQUE_URLS_V4=INSUFFICIENT_EVIDENCE_AS_VERSION_UNION
+UNION_HISTORICAL_URLS=INSUFFICIENT_EVIDENCE_AS_VERSION_UNION
+CORPUS_SATURATION=SEVERE
+QUERY_UNIQUENESS=100% exact y normalizada
+QUERY_FAMILY_COUNT=217 sujetos; 36 contextos; 8 formas lingüísticas observadas
+EFFECTIVE_QUERY_DIVERSITY=LOW relative to nominal count
+RESULT_SET_OVERLAP=27.18% mean paired Jaccard; 844 identical-to-prior sets
+DOMAIN_CONCENTRATION=HIGH; top 15 domains=25.89% of raw rows
+TREATMENT_VALID_YIELD=17.16%
+CONTROL_VALID_YIELD=14.73%
+ARM_YIELD_ASYMMETRY=EXPLAINED
+CANONICALIZATION_FALSE_COLLAPSE_RISK=LOW
+PRIMARY_ROOT_CAUSE=H1_QUERY_UNIVERSE_LOW_EFFECTIVE_DIVERSITY
+SECONDARY_ROOT_CAUSES=H2_SEARXNG_RESULT_CONCENTRATION; H3_HISTORICAL_CORPUS_SATURATION; H4_INTERNAL_DUPLICATION
+DOMINANT_LIMIT_LAYER=QUERY_STRATEGY_LIMIT (with EVALUATION_CORPUS_LIMIT co-dominant for confirmation)
+PRODUCT_IMPACT=B (not a demonstrated product failure)
+EXPERIMENTAL_IMPACT=V5 inconclusive; target not reached
+FUTURE_CONFIRMATORY_READINESS=NOT_READY_UNTIL_PRE_EXECUTION_GATES_PASS
+FILES_CREATED=0
+FILES_MODIFIED=decisiones_amatl.md
+TESTS_RUN=offline JSON/ledger reconciliation and canonicalization collision audit
+TESTS_STATUS=PASS; no network requests
+COMMIT_CREATED=PENDING
+BLOCKERS=none for decision; implementation intentionally deferred
+FINAL_DECISION=ACCEPT ADR-012; do not execute V6 or reopen V5
+NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any request
+```
