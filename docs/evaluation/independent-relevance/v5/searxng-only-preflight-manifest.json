@@ -1,5 +1,5 @@
 {
-  "artifact_sha256_basis": "preflight hash covers canonical JSON before artifact_sha256 field",
+  "artifact_sha256_basis": "authoritative preflight hash is canonical JSON excluding artifact_sha256; full-file SHA-256 is tracked separately",
   "artifacts": {
     "searxng-only-attainability-preflight.json": "f7cfc0c83f803c48116e175b8993e586d2ba6b3925f515faa63d4a118658872e",
     "searxng-only-canary-raw.json": "c16658bd235431fbfeb6fd6051591bb228f2fa94c3e4e3c27592a4fabaf4aa85",

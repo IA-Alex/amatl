@@ -10,7 +10,7 @@
     "searxng-only-attainability-preflight.json": "f7cfc0c83f803c48116e175b8993e586d2ba6b3925f515faa63d4a118658872e",
     "searxng-only-canary-raw.json": "c16658bd235431fbfeb6fd6051591bb228f2fa94c3e4e3c27592a4fabaf4aa85",
     "searxng-only-canary-run-report.json": "de7cd30500bcffe1015cb35e78372b461dc771be072209fb7beb60c4ffde1351",
-    "searxng-only-preflight-manifest.json": "dca5d47a42abb00f292b27c67d46d9e8bfe345bc2b7ea1532747fab1f45bf4bb"
+    "searxng-only-preflight-manifest.json": "60bb6edfa6be286400cde80799de87ab9b88d1ee7b164f6579889f2f15fe6765"
   },
   "base_head": "c85aaefb20cf0a505285a6d81836eb49f639eb8a",
   "experiment_id": "independent-relevance-confirmatory-v5",

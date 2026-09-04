@@ -98,7 +98,7 @@ def main() -> int:
     artifact_path = OUT / "searxng-only-attainability-preflight.json"
     base["artifact_sha256"] = canonical_payload_sha256(base)
     dump(artifact_path, base)
-    manifest = {"schema": "amatl.relevance.v5-searxng-only-preflight-manifest.v1", "experiment_id": raw_obj["experiment_id"], "provider": "SearXNG", "artifacts": {p.name: sha_file(p) for p in (raw_path, run_path, artifact_path)}, "network_requests": len(attempts), "artifact_sha256_basis": "preflight hash covers canonical JSON before artifact_sha256 field", "preflight_payload_sha256": base["artifact_sha256"], "preflight_file_sha256": sha_file(artifact_path)}
+    manifest = {"schema": "amatl.relevance.v5-searxng-only-preflight-manifest.v1", "experiment_id": raw_obj["experiment_id"], "provider": "SearXNG", "artifacts": {p.name: sha_file(p) for p in (raw_path, run_path, artifact_path)}, "network_requests": len(attempts), "artifact_sha256_basis": "authoritative preflight hash is canonical JSON excluding artifact_sha256; full-file SHA-256 is tracked separately", "preflight_payload_sha256": base["artifact_sha256"], "preflight_file_sha256": sha_file(artifact_path)}
     dump(OUT / "searxng-only-preflight-manifest.json", manifest)
     print(json.dumps({"decision": decision, "canary": run_obj, "historical": base["historical_measurements"], "conservative_valid_yield": conservative_query_rate, "minimum_required_queries_per_arm": min_queries, "recommended_queries_per_arm": recommended, "expected": expected, "margin": margin}, indent=2, sort_keys=True))
     return 0
