@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 322.0010139993974,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of version control in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "brief and comprehensive overview of Scheme. A shallow read of the following text is sufficient to begin being productive with Scheme, but the enthusiastic reader will find much de",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "files.spritely.institute",
+          "/papers/scheme-primer.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Scheme Primer",
+        "url": "https://files.spritely.institute/papers/scheme-primer.html"
+      },
+      {
+        "category": "general",
+        "content": "tedium; some overview of what an exciting project it is etc. an introduction to IRC. Knocked off late; back to the hotel very tired, eat at the Jockey Club - home of kitz music, b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2003/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2003/"
+      },
+      {
+        "category": "general",
+        "content": "section provides an overview of solar energy research. Click here for the Main Power Technology Menu Direct Solar-Electric Generation Improved Efficiency for Existing Power Plants",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIDIK.com The original and official DIDIK site. Cutting edge and sometimes controversial thoughts, designs, proposals and projects conceiv",
+        "url": "http://www.didik.com/"
+      },
+      {
+        "category": "general",
+        "content": "Beug, Michael 2004. “An Overview of Mushroom Poisonings in North America.” The Mycophile Vol. 45:2, pp. 4-5 April 2004. Beug, M. 2006. “Thirty-Plus Years of Mushroom Poisoning: Su",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bayareamushrooms.org",
+          "/education/further_reflections_amanita_muscaria.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Further Reflections on Amanita muscaria as an Edible Species - Bay Area Mycological Society",
+        "url": "http://www.bayareamushrooms.org/education/further_reflections_amanita_muscaria.html"
+      },
+      {
+        "category": "general",
+        "content": "Action Background, overview and recap articles: Entrenched Sexism:  The War in Ukraine Is Not Some Great Feminist Victory .  Hundreds of thousands, maybe millions, of Am",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "akdart.com",
+          "/culture21.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Feminism, Antimasculinism and Gender-based Affirmative Action",
+        "url": "http://akdart.com/culture21.html"
+      },
+      {
+        "category": "general",
+        "content": "these things. Overview Arguments in Favor Analogies Commentators Factors That Don&#39;t Matter Future Overview Levels of exploration Observation (telescopes). &#34;Space&#34; (out of atmosphe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "parts on the web. Good overview of man&#39;s diet over the past 65 million years. Long but highly recommended reading. First published in Chet Day&#39;s &#34;Health &amp; Beyond&#34; newsletter.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "paleodiet.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Paleo Diet (Paleolithic, Primal, Caveman, Stone Age, Hunter-Gatherer Diet)",
+        "url": "https://paleodiet.com/"
+      },
+      {
+        "category": "general",
+        "content": "projects? Check out the overview of all our current and recent projects ... Search Search Submit search NLnet news archive 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/news/2023/20231123-announcing-projects.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; 55 New Projects Awarded NGI0 Grants",
+        "url": "https://nlnet.nl/news/2023/20231123-announcing-projects.html"
+      },
+      {
+        "category": "general",
+        "content": "Family History Hominid overview Hominids and hominins Hominid sites in Africa and nearby regions Hominid sites in Europe and nearby regions Homo Erectus - Homo Sapiens skull found",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.donsmaps.com",
+          "/venusfigurespurpose.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Palaeolithic Venus figures - their purpose",
+        "url": "https://www.donsmaps.com/venusfigurespurpose.html"
+      },
+      {
+        "category": "general",
+        "content": "hours. Below is a short overview of the design process. 1. Create rooms and walls To speed up the process, SH3D has the option to import a floor plan as a background image: Then y",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "svedic.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Svedic.org",
+        "url": "https://svedic.org/"
+      },
+      {
+        "category": "general",
+        "content": "together and giving an overview of the generality of the abstraction. Verifying Quantitative Reliability of Programs That Execute on Unreliable Hardware Authors: Michael Carbin (M",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "a very high level overview of running VMs in HyperV or VMware might yield some fertile territory for inspiration (though some of it may fall into the &#34;makes life better for M",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "qntm.org",
+          "/mmacevedo",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lena @ Things Of Interest",
+        "url": "https://qntm.org/mmacevedo"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0243",
+  "query_text": "give an overview of version control in food science",
+  "requested_at": "2026-09-03T01:42:52.333369Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

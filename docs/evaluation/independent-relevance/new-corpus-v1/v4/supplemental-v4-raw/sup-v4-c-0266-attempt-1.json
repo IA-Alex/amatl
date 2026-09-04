@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 122.2178470052313,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of lunar phases in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "MOS (CMOS) process technology.   1.2 Functional Description The gate array is designed to be the Stack/Stack Jointer and Program Counter for the analog vector generator circu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.jmargolin.com",
+          "/vgens/vgens.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Secret Life of Vector Generators",
+        "url": "http://www.jmargolin.com/vgens/vgens.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0266",
+  "query_text": "tell me about the function of lunar phases in music technology",
+  "requested_at": "2026-09-03T01:42:03.810309Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

@@ -1,0 +1,216 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 303.4832940029446,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does cloud formation in agriculture operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "by the Ministry of Agriculture: A special division was established to research and manufacture anti-livestock and anti-crop weapons. The division was given the uninspired title of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.isegoria.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Isegoria",
+        "url": "http://www.isegoria.net/"
+      },
+      {
+        "category": "general",
+        "content": "implications.&#34; Animal agriculture is a crime against sentience. How can we create more empathy for victims of factory-farming, slaughterhouses and fishing? Promoting empathy for t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.empathogens.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Empathogens as conceived by ChatGPT",
+        "url": "https://www.empathogens.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "Numa, therefore, hoping agriculture would be a sort of charm to captivate the affections of his people to peace, and viewing it rather as a means to moral than to economical profi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "spiritualpilgrim.net",
+          "/08_Classics-Library/hellenist-roman/plutarch/05_numa.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Numa Pompilius - by Plutarch",
+        "url": "http://spiritualpilgrim.net/08_Classics-Library/hellenist-roman/plutarch/05_numa.htm"
+      },
+      {
+        "category": "general",
+        "content": "Timmerman Vocational Agriculture Mrs. Irene Weydell Homemaking Mr. J.E. White Biology &amp; Gen. Science Mrs. Dixie Davenport Jr. High Math &amp; World History The Rockdale Board of Trust",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.forttumbleweed.net",
+          "/rockdale.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "History of Rockdale, Milam County, Texas",
+        "url": "http://www.forttumbleweed.net/rockdale.html"
+      },
+      {
+        "category": "general",
+        "content": "so open to criticism. Agriculture and industry, like everything else, were struck down and all but buried in the morass where the nation was decaying.... But is Spain dead? Not at",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/cache/epub/69751/pg69751-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of The inequality of human races by Arthur De Gobineau",
+        "url": "https://www.gutenberg.org/cache/epub/69751/pg69751-images.html"
+      },
+      {
+        "category": "general",
+        "content": "cows, the precarious agriculture made by hand. But the russians always stood in middle of the indoeuropean continent, they have no excuse for their savagism. In the same regard, t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "asynchronousexchange.com",
+          "/documents/the-saint-petersburg-hive",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://asynchronousexchange.com/documents/the-saint-petersburg-hive",
+        "url": "http://asynchronousexchange.com/documents/the-saint-petersburg-hive"
+      },
+      {
+        "category": "general",
+        "content": "of commerce and of agriculture, throughout the mass of the community, to go regularly on. Thus absolute monarchs, however ambitious, and selfish, and domineering in their characte",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book71/book71e/book71e.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Xerxes, Makers Of History, by Jacob Abbott.",
+        "url": "https://www.ajhw.co.uk/books/book71/book71e/book71e.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0240",
+  "query_text": "how does cloud formation in agriculture operate",
+  "requested_at": "2026-09-03T01:42:23.316271Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

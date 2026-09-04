@@ -1,0 +1,135 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 420.56448999937857,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of access tokens in agriculture",
+    "results": [
+      {
+        "category": "general",
+        "content": "graph of employment in agriculture over time, which fell from 90% to 2% of the population, and argues that all jobs above that line are largely &#34;fake jobs&#34;. Service employment is",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "AI automated agriculture &#43; chip farming. &#43;3 @DigitalMetal - 2025-06-03 11:45:00 Completely true. I feel like I&#39;m at the 99.99999%, or at lest 95% Wish I could get to 100%, but the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/too_popular",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Linux, Bitcoin: When Tech Projects Become &#34;Too Popular...&#34; Don&#39;t forget the goal.",
+        "url": "https://lukesmith.neocities.org/vids/too_popular"
+      },
+      {
+        "category": "general",
+        "content": "with the birth of agriculture and large urban societies, the rise of patriarchy led to the dominance and control of female reproductive choice by often violent and sometimes homic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/fall.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sexual Paradox: The Fall",
+        "url": "http://www.dhushara.com/paradoxhtm/fall.htm"
+      },
+      {
+        "category": "general",
+        "content": "it must have a local agriculture. The local food committee would research what useful plants from around the world thrive in your local conditions, and investigate the development",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "thesimplerway.info",
+          "/THEALTSOCLong.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "TheAltSocLongNew.html",
+        "url": "http://thesimplerway.info/THEALTSOCLong.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0230",
+  "query_text": "tell me about the function of access tokens in agriculture",
+  "requested_at": "2026-09-03T01:44:53.571053Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

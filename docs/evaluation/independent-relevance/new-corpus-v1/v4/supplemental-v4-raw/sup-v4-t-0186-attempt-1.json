@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 266.0019109971472,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does voltage regulators in chemistry work",
+    "results": [
+      {
+        "category": "general",
+        "content": "LM78XX Series Voltage Regulators Bi-Polar Power Supplies Connecting Series-Parallel Batteries Basic Power Transformers Connecting Transformers in Series-Parallel Voltage Buck-Boos",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bristolwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Student-Hobbyist Electronics Projects Tutorials",
+        "url": "https://www.bristolwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "in Precision Current Regulators   Applies the k2 series in current regulator service . pdf 0.5MB contributed by Achim Das sow(added 10-3-10) 1959_September_1st_Domestic_Price",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "philbrickarchive.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Philbrick Archive",
+        "url": "http://philbrickarchive.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0186",
+  "query_text": "how does voltage regulators in chemistry work",
+  "requested_at": "2026-09-03T01:43:02.801920Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

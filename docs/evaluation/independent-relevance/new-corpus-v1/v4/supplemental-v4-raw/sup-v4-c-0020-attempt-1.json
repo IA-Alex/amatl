@@ -1,0 +1,189 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 377.0132529971306,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind access tokens in operating systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "dc:title &#34;Principles of Compiler Design&#34; . &lt;http://example/book1&gt; dc:date &#34;1977-01-01T00:00:00-02:00&#34;^^xsd:dateTime . &lt;http://example/book2&gt; ns:price 42 . &lt;http://e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/sparql11-update/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SPARQL 1.1 Update",
+        "url": "https://www.w3.org/TR/sparql11-update/"
+      },
+      {
+        "category": "general",
+        "content": "dc:title &#34;Principles of Compiler Design&#34; . &lt;http://example/book1&gt; dc:date &#34;1977-01-01T00:00:00-02:00&#34;^^xsd:dateTime . &lt;http://example/book2&gt; ns:price 42 . &lt;http://e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/2013/REC-sparql11-update-20130321/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SPARQL 1.1 Update",
+        "url": "https://www.w3.org/TR/2013/REC-sparql11-update-20130321/"
+      },
+      {
+        "category": "general",
+        "content": "adhere to this design principle as well. Implementation status: SPDY and HTTP/2 are currently disabled by setting the Firefox preferences network.http.spdy.enabled , network.http.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "2019.www.torproject.org",
+          "/projects/torbrowser/design/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Design and Implementation of the Tor Browser [DRAFT]",
+        "url": "https://2019.www.torproject.org/projects/torbrowser/design/"
+      },
+      {
+        "category": "general",
+        "content": "learned via a series of principles or assertions surrounded by supporting reasoning and illustrative anecdotes. A more formal and thorough exposition will have to come later in so",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fudco.com",
+          "/chip/lessons.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Lessons of Lucasfilm&#39;s Habitat",
+        "url": "http://www.fudco.com/chip/lessons.html"
+      },
+      {
+        "category": "general",
+        "content": "guided by established principles of operating system security. Scheme 48&#39;s security kernel is small, consisting of the call-by-value lambda-calculus with a few simple extensions t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mumble.net",
+          "/~jar/pubs/secureos/secureos.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Emergent Technologies Inc. -- Security Kernel&lt;/TITLE",
+        "url": "http://mumble.net/~jar/pubs/secureos/secureos.html"
+      },
+      {
+        "category": "general",
+        "content": "equivalent of the principle of deferred gratification.       The delay in therapeutic benefit stemming from gene-triggered receptor re-regulation can",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "1. The Hedonistic Imperative",
+        "url": "https://www.hedweb.com/hedethic/hedon1.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0020",
+  "query_text": "describe the principle behind access tokens in operating systems",
+  "requested_at": "2026-09-03T01:44:44.268059Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

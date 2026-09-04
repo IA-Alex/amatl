@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 355.4852890010807,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of voltage regulators in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "from government regulators on issues like safety and consent. In time, the technology will improve, and implant-based brain-machine interfaces will be worthwhile for a great many",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wireheading.com",
+          "/brainstim/cyborgs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cyborgs, transhumans and neuroelectronics",
+        "url": "https://www.wireheading.com/brainstim/cyborgs.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0246",
+  "query_text": "tell me about the function of voltage regulators in food science",
+  "requested_at": "2026-09-03T01:43:15.985265Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

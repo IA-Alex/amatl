@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 410.68084700236795,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does access tokens in data management work",
+    "results": [
+      {
+        "category": "general",
+        "content": "To use Forth&#39;s block-management system for disk storage, you should add 3 Kbytes or more for buffers. For a 32-bit Forth model, double these numbers. These are the minimums to get",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "bradrodriguez.com",
+          "/papers/moving1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Moving Forth: Part 1",
+        "url": "http://bradrodriguez.com/papers/moving1.htm"
+      },
+      {
+        "category": "general",
+        "content": "through redundancy. Management of the instances is fully automated, and under the control of an impartial operator who is independent of the candidates and observers. An instance",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kirill.korins.ky",
+          "/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Electt: Running Auditable and Verifiable Elections in Untrusted Environments - Kirill&#39;s journal",
+        "url": "https://kirill.korins.ky/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/"
+      },
+      {
+        "category": "general",
+        "content": "to use. Each identity management module is documented in a separate manual page. The standard idmap backends are tdb ( idmap_tdb (8) ), tdb2 ( idmap_tdb2 (8) ), ldap ( idmap_ldap",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.samba.org",
+          "/samba/docs/current/man-html/smb.conf.5.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "smb.conf",
+        "url": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+      },
+      {
+        "category": "general",
+        "content": "CLEAR     3.2 Graph Management         3.2.1 CREATE         3.2.2 DROP         3.2.3 COPY         3.2.4 MOVE         3.2.5 ADD 4 SPARQL Update Formal Model     4.1 General Definit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/sparql11-update/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SPARQL 1.1 Update",
+        "url": "https://www.w3.org/TR/sparql11-update/"
+      },
+      {
+        "category": "general",
+        "content": "Namespacing in Service Management Post #28: Marking Experimental OS Releases in /etc/os-release Post #29: Decoding Capability Masks with systemd-analyze Post #30: Investigating Pa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "0pointer.net",
+          "/blog/category/projects.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Category: projects",
+        "url": "http://0pointer.net/blog/category/projects.html"
+      },
+      {
+        "category": "general",
+        "content": "my key&#34;. Use LUKS key management to enroll multiple versions of the TPM keys in relevant volumes, to support multiple versions of the OS code (or multiple versions of the certific",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "0pointer.net",
+          "/blog/authenticated-boot-and-disk-encryption-on-linux.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Authenticated Boot and Disk Encryption on Linux",
+        "url": "http://0pointer.net/blog/authenticated-boot-and-disk-encryption-on-linux.html"
+      },
+      {
+        "category": "general",
+        "content": "work very well. Memory management: Alignment trick Since Quake2 still does manipulate a lot of raw pointers there is a nice trick to align a pointer on 32bits (or align on 8KB to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "fabiensanglard.net",
+          "/quake2/index.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quake 2 Source Code Review",
+        "url": "https://fabiensanglard.net/quake2/index.php"
+      },
+      {
+        "category": "general",
+        "content": "Kerberos 5 Profile Management library (required by leashw32.dll) comerr32.dll Kerberos 5 Common Error Library (required by Kerberos 5 and Leash32.exe) gssapi32.dll GSS API for Ker",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "web.mit.edu",
+          "/kerberos/kfw-2.6/kfw-2.6/relnotes.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Release Notes for Kerberos for Windows 2.6",
+        "url": "https://web.mit.edu/kerberos/kfw-2.6/kfw-2.6/relnotes.html"
+      },
+      {
+        "category": "general",
+        "content": "8 User registration and management · Registration · User groups and permissions · Creating user accounts · Anonymous editing · Login integration",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "workingwithmediawiki.com",
+          "/book/chapter8.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Working with MediaWiki - Chapter 8 -",
+        "url": "http://workingwithmediawiki.com/book/chapter8.html"
+      },
+      {
+        "category": "general",
+        "content": "CLEAR     3.2 Graph Management         3.2.1 CREATE         3.2.2 DROP         3.2.3 COPY         3.2.4 MOVE         3.2.5 ADD 4 SPARQL Update Formal Model     4.1 General Definit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/2013/REC-sparql11-update-20130321/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SPARQL 1.1 Update",
+        "url": "https://www.w3.org/TR/2013/REC-sparql11-update-20130321/"
+      },
+      {
+        "category": "general",
+        "content": "- Consulting &amp; Management offers consulting, installaton and adminstrative services for qmail, djbdns and other software including help with general server tasks to customers",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.usenix.org.uk",
+          "/mirrors/qmail/top.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "qmail: Second most popular MTA on the Internet",
+        "url": "http://www.usenix.org.uk/mirrors/qmail/top.html"
+      },
+      {
+        "category": "general",
+        "content": "memory management for armies/army controllers. Optimized a particularly slow army loop. Fixed crash associated to transformed creatures with fewer body parts than their untransfor",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bay12games.com",
+          "/dwarves/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bay 12 Games: Dwarf Fortress",
+        "url": "http://www.bay12games.com/dwarves/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0050",
+  "query_text": "how does access tokens in data management work",
+  "requested_at": "2026-09-03T01:44:30.890363Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

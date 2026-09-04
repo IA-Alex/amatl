@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 252.85003399767447,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes access tokens in mechanical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "former hardware engineering chief John Ternus officially became CEO of the company today, with the change now reflected on Apple’s leadership page . […] Tim Cook is no",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mjtsai.com",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Tsai - Blog",
+        "url": "https://mjtsai.com/blog/"
+      },
+      {
+        "category": "general",
+        "content": "before global paradise-engineering unfolds, chemical mood-uplifters will be essential too. 1.1 The Biological Program. Grand meta-narratives currently aren&#39;t very fashionable. His",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "1. The Hedonistic Imperative",
+        "url": "https://www.hedweb.com/hedethic/hedon1.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0095",
+  "query_text": "what causes access tokens in mechanical engineering",
+  "requested_at": "2026-09-03T01:44:15.779951Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

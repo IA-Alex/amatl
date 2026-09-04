@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 278.8785149969044,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is ceramic coatings in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Coastal Engineering Coatings &amp; Paints Cocaine Detection by Hair Analysis Cockpit Configuration Cocoa Processing Coefficient of Friction Coin-Operated Amusements Coin-Operated Mach",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "VFTonline.org",
+          "/VFTprayer/heaven/000list.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://VFTonline.org/VFTprayer/heaven/000list.txt",
+        "url": "http://VFTonline.org/VFTprayer/heaven/000list.txt"
+      },
+      {
+        "category": "general",
+        "content": "CdTe Solar Cells Coatings: mirror protected gold 8-12 micron - Protected Gold at 0.9µm-12µm - Protected Gold at 0.76 - 1.6 microns Microchannel Plates, Detectors and Imaging Syste",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "delmarphotonics.com",
+          "/index.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Femtosecond laser products from Del Mar Photonics",
+        "url": "http://delmarphotonics.com/index.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0249",
+  "query_text": "what is ceramic coatings in food science",
+  "requested_at": "2026-09-03T01:43:00.721229Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

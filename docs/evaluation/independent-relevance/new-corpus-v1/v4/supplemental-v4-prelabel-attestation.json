@@ -1,0 +1,13 @@
+{
+  "attestor": "EXPERIMENTAL_INTEGRITY_AUDITOR",
+  "chain": "prelabel corpus -> prelabel manifest -> prelabel attestation",
+  "corpus_id": "independent-relevance-supplemental-v4-final-20260902",
+  "manifest_path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-prelabel-manifest.json",
+  "manifest_sha256": "3eb498cd7c34926c6089dc72394c0bf87469efb31a7b43c9a8b20befb7e8175a",
+  "network_requests": 600,
+  "prelabel_corpus_path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-final-prelabel-corpus.json",
+  "prelabel_corpus_sha256": "e234e28a9fcb21fd27ac7b3c5b2791a6392c02de3976c534d9b7969f000a0303",
+  "schema": "amatl.relevance.supplemental-v4-prelabel-attestation.v1",
+  "self_hash_in_manifest": false,
+  "status": "INCOMPLETE"
+}

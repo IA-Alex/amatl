@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 253.4585790053825,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes voltage regulators in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "and transistorized regulators keeping the voltages consistent. Amidst the power supply is a small fan that pulls air through vents in the bottom plate of the machine and directs i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/canon161.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Canon 161 Desktop Calculator",
+        "url": "https://www.oldcalculatormuseum.com/canon161.html"
+      },
+      {
+        "category": "general",
+        "content": "connectors, around all regulators, around places that look toasted, brownish or cooked - and re-solder these points adding a bit of fresh solder with fresh flux. 6. Moving cables",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.lampizator.eu",
+          "/lampizator/transport/laser/laserology.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Laserology",
+        "url": "http://www.lampizator.eu/lampizator/transport/laser/laserology.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0051",
+  "query_text": "what causes voltage regulators in data management",
+  "requested_at": "2026-09-03T01:42:22.101150Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 261.19647499581333,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does voltage regulators in digital security work",
+    "results": [
+      {
+        "category": "general",
+        "content": "had only two voltage regulators on the PCB and the later second and third had four, but their are more subtle differences on the PCB layout between the 2nd and 3rd productions. Al",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.satellitemuseum.com",
+          "/vintagesatellite.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Museum of vintage satellite receivers. BSB squarial, History of Satellite TV. Chaparral, Echostar, Uniden, Drake",
+        "url": "http://www.satellitemuseum.com/vintagesatellite.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0066",
+  "query_text": "how does voltage regulators in digital security work",
+  "requested_at": "2026-09-03T01:44:27.130900Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

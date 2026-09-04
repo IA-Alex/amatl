@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 330.2704410016304,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind routing tables in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "by far the most visible engineering error on my Apple and I&#39;d like to see some Cupertino beard-stroker homeless over this oversight. But it still works (for the moment), and takin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "galexander.org",
+          "/laptops/mac/impressions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "My impressions",
+        "url": "http://galexander.org/laptops/mac/impressions.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0076",
+  "query_text": "describe the principle behind routing tables in electrical engineering",
+  "requested_at": "2026-09-03T01:43:06.611725Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

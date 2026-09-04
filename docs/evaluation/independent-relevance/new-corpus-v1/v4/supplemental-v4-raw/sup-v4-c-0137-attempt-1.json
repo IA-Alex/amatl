@@ -1,0 +1,108 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 121.76819299929775,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind process scheduling in earth science",
+    "results": [
+      {
+        "category": "general",
+        "content": "so for convenience or scheduling purposes. Others cited personal preference (28.9 percent) or reducing menstrual symptoms (16.7 percent) as reasons they altered menstruation patte",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mum.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Museum of Menstruation and Women&#39;s Health",
+        "url": "http://www.mum.org/"
+      },
+      {
+        "category": "general",
+        "content": "feature, rigorously scheduling a student body twice as large as before into the same space and time, earned it the informal name &#34;platoon school.&#34; While the prototype wa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.lewrockwell.com",
+          "/gatto/gatto-uhae-9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cult of Scientific Management by John Taylor Gatto",
+        "url": "https://archive.lewrockwell.com/gatto/gatto-uhae-9.html"
+      },
+      {
+        "category": "general",
+        "content": "(email, data entry, scheduling, etc)? What is the best step-by-step process for implementing automation solutions? Copy To Clipboard Tech Support Converting Audio Files I&#39;ve got a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "freegptprompts.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Free GPT Prompts | A Curated Directory of 300&#43; AI Prompts For Free",
+        "url": "https://freegptprompts.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0137",
+  "query_text": "explain the basic idea behind process scheduling in earth science",
+  "requested_at": "2026-09-03T01:42:07.530802Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

@@ -1,0 +1,297 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 279.94603700062726,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is voltage regulators in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "Lightning Arrester Engineering Section, Westinghouse Electric Corporation). Lightning Protection for Electric Systems . New York, NY: McGraw-Hill Book Company, Inc. Copyright 1954",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.myinsulators.com",
+          "/acw/bookref/overvoltage/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ACW&#39;s Insulator Info - Book Reference Info - Overvoltage and Flashovers",
+        "url": "https://www.myinsulators.com/acw/bookref/overvoltage/"
+      },
+      {
+        "category": "general",
+        "content": "Microwave and Lightwave Engineering (located in the Electrical and Computer Engineering Department of Drexel University, Philadelphia, PA) has been added to the Table of Contents.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.repairfaq.org",
+          "/sam/lasersam.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sam&#39;s Laser FAQ: Welcome Page",
+        "url": "http://www.repairfaq.org/sam/lasersam.htm"
+      },
+      {
+        "category": "general",
+        "content": "bad thing) it&#39;s a real engineering challenge. Point-to-point wiring to Compactron sockets can be tricky. Compactrons were developed late enough in tube history to have been intend",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.junkbox.com",
+          "/electronics/CompactronTubesIndex.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Compactron Tubes: A Junkbox Guide",
+        "url": "https://www.junkbox.com/electronics/CompactronTubesIndex.shtml"
+      },
+      {
+        "category": "general",
+        "content": "rate information RC Engineering, Inc. (Torrance, CA; 310-320-2277) sends to the client in the form of an Excel spreadsheet. RCE notes that they use a test fluid with a 0.76 specif",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.stealth316.com",
+          "/2-fuelpumpguide.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stealth 316 - Fuel Pump Upgrade Guide",
+        "url": "http://www.stealth316.com/2-fuelpumpguide.htm"
+      },
+      {
+        "category": "general",
+        "content": "Paul Ducroiset , an Engineering Supervisor at WCBS and WCBS-FM, kindly sent me a note which gives more details of what actually happened. Thanks for the information, Paul! SEVENTY",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "j-hawkins.com",
+          "/wabc.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "JIM HAWKINS&#39; WABC RADIO 77 Transmitter Page",
+        "url": "http://j-hawkins.com/wabc.shtml"
+      },
+      {
+        "category": "general",
+        "content": "&#34;qui-binary&#34; IBM Field Engineering Maintenance Manual 1401 System, 225-6487-3 , PDF, 8 MB, resized from Paul Pierce&#39;s web site How to increase reliability Physical Layout with nom",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ibm-1401.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "1401Restoration-CHM",
+        "url": "https://ibm-1401.info/"
+      },
+      {
+        "category": "general",
+        "content": "at the GE General Engineering Lab in Schenectady. Mr. Harnden is the founder of the Edison Tech Center in Schenectady, NY. 12. Testing for Lightning Today engineers model for ligh",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "edisontechcenter.org",
+          "/LightningSuppression.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lightning and Fault Suppression",
+        "url": "https://edisontechcenter.org/LightningSuppression.html"
+      },
+      {
+        "category": "general",
+        "content": "applies particularly to engineering types, who have to argue their ideas through to practical realisation in the workplace. Sometimes, just sometimes, the ability to say &#39;I was wr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      },
+      {
+        "category": "general",
+        "content": "in many branches of engineering. Structural, hydraulic, electrical power and radio engineering have each of them their special problems which call for solution, and in each subjec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stephen.shawweb.co.uk",
+          "/radio02.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Early broadcast radio stations",
+        "url": "http://stephen.shawweb.co.uk/radio02.html"
+      },
+      {
+        "category": "general",
+        "content": "from a resistor. The engineering fact is that a resistor of resistance R acts like a noise generator.&#34; V 2 = 4 k T R B I 2 = 4 k T G B = 4 k T B / R R = resistance, ohms G = 1/R =",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ciphersbyritter.com",
+          "/RES/NOISE.HTM",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Random Electrical Noise: A Literature Survey",
+        "url": "http://www.ciphersbyritter.com/RES/NOISE.HTM"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0081",
+  "query_text": "what is voltage regulators in electrical engineering",
+  "requested_at": "2026-09-03T01:43:23.501983Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

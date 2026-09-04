@@ -1,0 +1,189 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 280.2490440008114,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes load bearing walls in earth science",
+    "results": [
+      {
+        "category": "general",
+        "content": "of Placentas in Live-Bearing Fishv,&#34; by Henri van Kruistum, et al, doi:10.1093/molbev/msab057, Mol. Biol. Evol. [ link ], online 23 Feb 2021. ...changing the regulation of otherwi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.panspermia.org",
+          "/neodarw.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Neo-Darwinism: The Current Paradigm. by Brig Klyce",
+        "url": "https://www.panspermia.org/neodarw.htm"
+      },
+      {
+        "category": "general",
+        "content": "These shakes are load-bearing to my quality of life. My body hates the obvious solution The first thing anyone suggests when you try to eat less meat is legumes. Cheap, nutritious",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jodie.website",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jodie&#39;s Website",
+        "url": "https://jodie.website/"
+      },
+      {
+        "category": "general",
+        "content": "Spinning Spindle Bearing. Gessner Cloth Press. 1879—Dr. Siemens’ Electric Railway at Berlin. Mississippi Jetties completed by Capt. Eads. Samarium discovered by Boisba",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book389/book389.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Progress of Invention in the Nineteenth Century, by Edward W. Byrn.",
+        "url": "https://www.ajhw.co.uk/books/book389/book389.html"
+      },
+      {
+        "category": "general",
+        "content": "With the central core bearing the weight of the building, the platters were tied together and stabilized by another set of steel columns at the outside rim, closely spaced and com",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "911review.com",
+          "/articles/jm/mslp_1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Muslims Suspend Laws of Physics, Part I",
+        "url": "http://911review.com/articles/jm/mslp_1.htm"
+      },
+      {
+        "category": "general",
+        "content": "or that, by an over-bearing power of the stars, or fortune:&#34; and the latter assert, &#34;that temporal good or evil is the necessary effect of their own conduct; and that the Deity pr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "olivercowdery.com",
+          "/texts/1775Adr1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "James Adair&#39;s 1775 &#34;History of the American Indians&#34;",
+        "url": "http://olivercowdery.com/texts/1775Adr1.htm"
+      },
+      {
+        "category": "general",
+        "content": "one of the sides has no bearing whatsoever on whether supporting it becomes neutral . Every dictionary is in agreement, that all sides of a conflict are equal as far as neutrality",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/wikipedia.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Wikipedia is the Ministry of Truth",
+        "url": "http://digdeeper.love/articles/wikipedia.xhtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0143",
+  "query_text": "what causes load bearing walls in earth science",
+  "requested_at": "2026-09-03T01:44:13.303222Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

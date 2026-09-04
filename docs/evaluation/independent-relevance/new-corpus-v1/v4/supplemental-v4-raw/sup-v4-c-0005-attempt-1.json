@@ -1,0 +1,108 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 359.5205609963159,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind access tokens in computer networks",
+    "results": [
+      {
+        "category": "general",
+        "content": "different physical computer every time you visit that site, or at least a different OS / browser combination and also change your IP. For third party fingerprinting, it is easy -",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/browsers.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to choose a browser for everyday use?",
+        "url": "http://digdeeper.love/articles/browsers.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "(which &#34;rethink computer architecture&#34;) and people who find &#34;one more use-after-free in the canvas 2D component&#34; repeatedly for money. The former is hacking, the latter is &#34;workin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "revive at least one old computer on at least one FOSS OS in their miserable lives. 2026-08-16-05-58-33 All that being said, that doesn’t mean that new harnesses can’t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lynx.luxferre.top",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lynx thoughts",
+        "url": "https://lynx.luxferre.top/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0005",
+  "query_text": "explain the basic idea behind access tokens in computer networks",
+  "requested_at": "2026-09-03T01:42:54.499109Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

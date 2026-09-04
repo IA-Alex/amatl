@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 347.17256499425275,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes version control in computer networks",
+    "results": [
+      {
+        "category": "general",
+        "content": "geek that is currently computer savvy, but wants to someday make money at it. Types of Geeks Geeks come in many flavors. The flavors relate to the vocation (or, if a student, what",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.joereiss.net",
+          "/geek/geek.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Code of the Geeks v3.1 Generator",
+        "url": "http://www.joereiss.net/geek/geek.html"
+      },
+      {
+        "category": "general",
+        "content": "&#39; allow nt4 crypto:COMPUTERACCOUNT = yes &#39; instead! Which is available with the patches for CVE-2022-38023 see https://bugzilla.samba.org/show_bug.cgi?id=15240 Samba will log an e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.samba.org",
+          "/samba/docs/current/man-html/smb.conf.5.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "smb.conf",
+        "url": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+      },
+      {
+        "category": "general",
+        "content": "on electronic and computer gadgetry that they weren&#39;t using and they couldn&#39;t help out a needy Christian that, due to illness and hardship, needed a small sum to avoid a utility s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tithinginfo.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Tithing, The Truth About Tithing And The Tithe",
+        "url": "http://tithinginfo.com/"
+      },
+      {
+        "category": "general",
+        "content": "software on your computer (so do I!). Ok, I have read all that, I want to download ! (current version: 1.3.8 from September 4th, 2010) or try a beta version   Getting started",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "home.snafu.de",
+          "/tilman/xenulink.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Find broken links on your site with Xenu&#39;s Link Sleuth (TM)",
+        "url": "http://home.snafu.de/tilman/xenulink.html"
+      },
+      {
+        "category": "general",
+        "content": "offers the best brain-computer integration experience there is, with our current technology. Coding Style Guidelines Unix/Linux Commands, Syntax, And Notes Language / Linguistics",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/directory",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zero Contradictions - Directory",
+        "url": "https://zerocontradictions.net/directory"
+      },
+      {
+        "category": "general",
+        "content": "demonstrate that the computer press doesn&#39;t understand network security, and reprints boilerplate self-promotion from the anti-virus industry in lieu of news and analysis. Saying",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "linuxmafia.com",
+          "/~rick/faq/",
+          "",
+          "",
+          "willbethere"
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "But That&#39;s Just My Opinion. I Could Be Wrong.",
+        "url": "http://linuxmafia.com/~rick/faq/#willbethere"
+      },
+      {
+        "category": "general",
+        "content": "No Signaling Quantum Computers Quantum Eraser Quantum Keys Quantum Weirdness Qubits Spherical Symmetry Spooky Action at a Distance Wheeler&#39;s Delayed Choice Topics Introduction Pro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Information Philosopher - dedicated to the new information philosophy",
+        "url": "https://www.informationphilosopher.com/"
+      },
+      {
+        "category": "general",
+        "content": "by the nature of their computer (although that doesn&#39;t neccessarily mean that they would not have shown &#34;loser&#34; symptoms had they bought an Apple or IBM). More often than not, thi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "rmitz.org",
+          "/bbsloser.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Documentary: The LoserUsers",
+        "url": "http://rmitz.org/bbsloser.html"
+      },
+      {
+        "category": "general",
+        "content": "similar to today&#39;s computers were invented by Fal Siva, a scientist in Zodanga. Spacecraft capable of reaching the moon Thuria was developed by Gal Nar, a scientist of Zodanga. De",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.erbzine.com",
+          "/mag4/0459.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ERBzine 0459: ERB the Prophet",
+        "url": "https://www.erbzine.com/mag4/0459.html"
+      },
+      {
+        "category": "general",
+        "content": "router to my ARM plug computer jukebox. Though famed for its uptime in the datacenter the same OS is just as suited to desktop or laptop computing with a little work. Why use Free",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cooltrainer.org",
+          "/a-freebsd-desktop-howto/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A FreeBSD 11 Desktop How-to » Cooltrainer.org",
+        "url": "https://cooltrainer.org/a-freebsd-desktop-howto/"
+      },
+      {
+        "category": "general",
+        "content": "facsimiles, e-mail, and computer communications. The Motorola CipherTAC 2000 (CTAC) STU-III family compatible secure voice communications via cellular phone. CTAC without an inser",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.tscm.com",
+          "/stu.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "STU-III Secure Telephone Units, Crypto Key Generators, Encryption Equipment and Scramblers",
+        "url": "http://www.tscm.com/stu.html"
+      },
+      {
+        "category": "general",
+        "content": "Nietzsche Section A: Computers 01. How do I access the password file under Unix? 02. How do I crack Unix passwords? 03. What is password shadowing? 04. Where can I find the passwo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "webarchive.me",
+          "/geocities/SiliconValley/2072/2600faq.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "alt.2600 FAQ, Beta .013 - Part 1/1",
+        "url": "http://webarchive.me/geocities/SiliconValley/2072/2600faq.txt"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0003",
+  "query_text": "what causes version control in computer networks",
+  "requested_at": "2026-09-03T01:43:11.631797Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

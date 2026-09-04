@@ -1,0 +1,162 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 122.08971899963217,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes wave interference in agriculture",
+    "results": [
+      {
+        "category": "general",
+        "content": "&#34;Economic interference in the internal affairs of sovereign states as well as the persistent threat of military intervention have played a crucial role in sustaining and impo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "empireofchaos.net",
+          "/Economic%20Warfare.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ECONOMIC WARFARE - EMPIRE OF CHAOS, GLOBAL HEGEMONY, AXIS OF EVIL, FOREIGN INTERVENTIONS, NATO, REGIME CHANGE, IMPERIALISM, FINANCIALIZATION,",
+        "url": "https://empireofchaos.net/Economic%20Warfare.html"
+      },
+      {
+        "category": "general",
+        "content": "less than the total interference of all “brothers” and “sisters” with the entire private life of each member. In addition to this, the difference was not sufficiently noted as bet",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.luminist.org",
+          "/archives/communism_and_anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Luminist Archives: Communism and Anarchy by Peter Kropotkin",
+        "url": "http://www.luminist.org/archives/communism_and_anarchy.htm"
+      },
+      {
+        "category": "general",
+        "content": "who complained of interference in his ability to take part .* To do this to a person who has never shown any tendency to violence, and who is hardly able to access weapons, is she",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-nov-feb.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: November - February Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-nov-feb.html"
+      },
+      {
+        "category": "general",
+        "content": "has interposed to the interference of the Federal Government in that same work of internal improvement, by so reorganizing the legislature that Virginia, too, may be hitched to th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "monadnock.net",
+          "/turner/frontier.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Significance of the Frontier in American History, by Frederick Jackson Turner",
+        "url": "https://monadnock.net/turner/frontier.html"
+      },
+      {
+        "category": "general",
+        "content": "people.&#39; ( Plato ) &#39;Interference by the three classes with each other&#39;s jobs, and interchange of jobs between them, therefore, does the greatest harm to our state, and we are enti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/Philosophy-Politics-Globalisation.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Famous Philosophers on Politics, Political Science, Globalisation, Oligarchy,Democracy",
+        "url": "https://www.spaceandmotion.com/Philosophy-Politics-Globalisation.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0239",
+  "query_text": "what causes wave interference in agriculture",
+  "requested_at": "2026-09-03T01:42:05.424552Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

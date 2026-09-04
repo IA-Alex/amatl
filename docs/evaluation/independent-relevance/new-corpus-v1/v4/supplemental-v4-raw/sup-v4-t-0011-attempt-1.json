@@ -1,0 +1,26 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 279.0317300023162,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes lunar phases in computer networks",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0011",
+  "query_text": "what causes lunar phases in computer networks",
+  "requested_at": "2026-09-03T01:43:00.441995Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

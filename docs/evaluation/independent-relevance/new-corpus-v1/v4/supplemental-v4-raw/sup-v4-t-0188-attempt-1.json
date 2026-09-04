@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 251.7144619996543,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does load bearing walls in chemistry operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "CHAPTER XVIII . Chemistry. Its Evolution as a Science. The Coal Tar Products. Fermenting and Brewing. Glucose, Gun Cotton, and Nitro-Glycerine. Electro-Chemistry. Fertilizers and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book389/book389.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Progress of Invention in the Nineteenth Century, by Edward W. Byrn.",
+        "url": "https://www.ajhw.co.uk/books/book389/book389.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0188",
+  "query_text": "how does load bearing walls in chemistry operate",
+  "requested_at": "2026-09-03T01:42:25.986494Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

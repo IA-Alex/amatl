@@ -1,0 +1,162 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 280.18031000101473,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is load bearing walls in biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "on either side. &#34;Food-bearing, practically all of them,&#34; they announced returning. &#34;The rest, splendid hardwood. Call this a forest? It&#39;s a truck farm!&#34; &#34;Good thing to have a bota",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.luminist.org",
+          "/archives/Gilman%20-%20Herland.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.luminist.org/archives/Gilman%20-%20Herland.txt",
+        "url": "http://www.luminist.org/archives/Gilman%20-%20Herland.txt"
+      },
+      {
+        "category": "general",
+        "content": "&#34;You have a Godly bearing.&#34; &#34;Perhaps, even, a god -- for I can&#39;t die -- This tree has made me so, and that is why -- O -- Let me show you how to love for aye.&#34;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.tenlinetales.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ten Line Tales",
+        "url": "https://www.tenlinetales.com/"
+      },
+      {
+        "category": "general",
+        "content": "moon euphoric, spore-bearing mists of genesis. There is a dying purple sun on Andromeda&#39;s rim whose rays support life on all seven of its planets. On the fourth planet there are e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.projectrho.com",
+          "/public_html/rocket/alienbody.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alien Bodies - Atomic Rockets",
+        "url": "https://www.projectrho.com/public_html/rocket/alienbody.php"
+      },
+      {
+        "category": "general",
+        "content": "of Placentas in Live-Bearing Fishv,&#34; by Henri van Kruistum, et al, doi:10.1093/molbev/msab057, Mol. Biol. Evol. [ link ], online 23 Feb 2021. ...changing the regulation of otherwi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.panspermia.org",
+          "/neodarw.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Neo-Darwinism: The Current Paradigm. by Brig Klyce",
+        "url": "https://www.panspermia.org/neodarw.htm"
+      },
+      {
+        "category": "general",
+        "content": "700mm extension ball-bearing cupboard runners for H&#39;s attic; without much luck. Up late revising Physics with H. 2017-05-05 Friday. Slept poorly; out for a run with J. mail chew;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2017/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2017/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0173",
+  "query_text": "what is load bearing walls in biology",
+  "requested_at": "2026-09-03T01:43:21.481515Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

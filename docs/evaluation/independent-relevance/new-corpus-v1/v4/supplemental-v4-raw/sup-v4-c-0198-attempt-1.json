@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 441.5988840046339,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of version control in physics",
+    "results": [
+      {
+        "category": "general",
+        "content": "Photoshop for these functions if they are necessary. (My most common uses of Photoshop for my wildflower photos are cropping, brightening the picture, and sharpening the picture w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.swcoloradowildflowers.com",
+          "/learning%20about%20plants.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Learning about plants",
+        "url": "https://www.swcoloradowildflowers.com/learning%20about%20plants.htm"
+      },
+      {
+        "category": "general",
+        "content": "to have any hope of functioning off of this planet. When considering the mass budget, if you think them&#39;s good economics then you&#39;re plain crazy. Fortunately, for every worthwhile",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "a 10:32.57 higher order function to go over it and add 10:33.94 one to each of them. This is a tremendous 10:35.38 improvement by going back in time. 10:38.16 But we can do better",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jackrusher.com",
+          "/strange-loop-2022/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stop Writing Dead Programs, Strange Loop 2022",
+        "url": "https://jackrusher.com/strange-loop-2022/"
+      },
+      {
+        "category": "general",
+        "content": "on the utility, or function, or metaphysical status of Language or of Thought. The Wittgenstein-Sellars-Quine-Davidson attack on distinctions between classes of sentences is the s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.marxists.org",
+          "/reference/subject/philosophy/works/us/rorty.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Richard Rorty&#39;s Platonists, Positivists, and Pragmatists",
+        "url": "https://www.marxists.org/reference/subject/philosophy/works/us/rorty.htm"
+      },
+      {
+        "category": "general",
+        "content": "Collapse of the Wave Function Conscious Observer Copenhagen Interpretation Decoherence Determinism Indeterminism Dirac&#39;s Principles Dirac&#39;s 3 Polarizers Foundations Interpretation",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Information Philosopher - dedicated to the new information philosophy",
+        "url": "https://www.informationphilosopher.com/"
+      },
+      {
+        "category": "general",
+        "content": "whose true function is simply to report it. Yet even the poet has his teachers: first of all, since poetry is vocal, those from whom he learns the speech wherewith he lisps in num",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.lyriktheorie.uni-wuppertal.de",
+          "/lyriktheorie/texte/1892_stedman1.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "1892 Edmund Clarence Stedman: The Nature and Elements of Poetry",
+        "url": "https://www.lyriktheorie.uni-wuppertal.de/lyriktheorie/texte/1892_stedman1.html"
+      },
+      {
+        "category": "general",
+        "content": "process and the only function of a rational argument may lie in the fact that it increases the mental tension that preceded *and caused* the behavioural outburst. Now, if there ar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "theanarchistlibrary.org",
+          "/library/paul-feyerabend-against-method.muse",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse",
+        "url": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse"
+      },
+      {
+        "category": "general",
+        "content": "at figuring out hard functions (we&#39;ve played a lot of Guess My Rule lately, instigated mainly by Jerry, Anna, and David). Don asked him how he did this. He announced to Don today",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mathman.biz",
+          "/home.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The MATHMAN",
+        "url": "http://mathman.biz/home.html"
+      },
+      {
+        "category": "general",
+        "content": "sees property as a function of capital rather than labor. Property as a store of value or as an instrument of production, or both at once, reflects both the financial and material",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/locke.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John Locke (1632-1704)",
+        "url": "https://friesian.com/locke.htm"
+      },
+      {
+        "category": "general",
+        "content": "the hyperbolic cosine function cosh(x), which is really 1/2 (e^x &#43; e^(-x) ? More interestingly, any light flexible chain or string will naturally assume the shape of a catenary wh",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nuwen.net",
+          "/books.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Book Reviews - nuwen.net",
+        "url": "https://nuwen.net/books.html"
+      },
+      {
+        "category": "general",
+        "content": "try rewriting every C function in Assembly. That&#39;s where the real programming begins. How to get views: Stop using everything channel (scam): http://web.archive.org/web/2026081304",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "the X of the road a function of its Z. In other terms, we&#39;re keeping the curve the same shape regardless of how the points which approximate it scroll. The frontmost segment is &#34;p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.extentofthejam.com",
+          "/pseudo/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lou&#39;s Pseudo 3D Page",
+        "url": "https://www.extentofthejam.com/pseudo/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0198",
+  "query_text": "tell me about the function of version control in physics",
+  "requested_at": "2026-09-03T01:44:14.620818Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

@@ -1,0 +1,162 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 262.3915699950885,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is access tokens in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "(with the growth of chemistry and library science) and the 20th century (with the arrival of mathematical models and computer science) mathematics (especially theory of orders and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/mathematical_theory_of_classification.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mathematical theory of classification (IEKO)",
+        "url": "https://www.isko.org/cyclo/mathematical_theory_of_classification.htm"
+      },
+      {
+        "category": "general",
+        "content": "living through chemistry.&#34; The ivory-tower alchemist was looking for a way to put the wealth of the workers into his own pockets. His goal was not service (to increase the am",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "KevinCraig.us",
+          "/pockets.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How Government-Dependent Borrowers Steal from the Poor -- KEVIN CRAIG - &#34;Liberty Under God&#34; Beginning in Missouri&#39;s 7th Congression",
+        "url": "https://KevinCraig.us/pockets.htm"
+      },
+      {
+        "category": "general",
+        "content": "of their style, the chemistry of their patina, and so on, does not only confirm authenticity and therefore value; they are a corpus of historical information that is drawn forward",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "emreed.net",
+          "/provenance",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Provenance is a Technology! - Em Reed",
+        "url": "https://emreed.net/provenance"
+      },
+      {
+        "category": "general",
+        "content": "vocabulary of chemistry and molecular biology is all we can rely on for communicating how to get things done. An earthly paradise can be achieved only by the profane application o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "1. The Hedonistic Imperative",
+        "url": "https://www.hedweb.com/hedethic/hedon1.htm"
+      },
+      {
+        "category": "general",
+        "content": "B engaged his skill in chemistry, learned years ago at the university, to save A ’s life. This is an example of a small isolated natural economy; but, after all, we are all brothe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "dematerialism.net",
+          "/On%20My%20Philosophy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "On My Philosophy",
+        "url": "https://dematerialism.net/On%20My%20Philosophy.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0185",
+  "query_text": "what is access tokens in chemistry",
+  "requested_at": "2026-09-03T01:44:23.821299Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

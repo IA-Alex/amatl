@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 318.56002700078534,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind gear trains in agriculture",
+    "results": [
+      {
+        "category": "general",
+        "content": "the world, bigger than agriculture, bigger than armies. One other significant set of numbers parallels the absolute growth in the power and expense of government schooling, but in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.lewrockwell.com",
+          "/gatto/gatto-uhae-9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cult of Scientific Management by John Taylor Gatto",
+        "url": "https://archive.lewrockwell.com/gatto/gatto-uhae-9.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0232",
+  "query_text": "describe the principle behind gear trains in agriculture",
+  "requested_at": "2026-09-03T01:43:14.838288Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

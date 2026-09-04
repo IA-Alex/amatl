@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 126.12252800317947,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind database indexes in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "a model for vocabulary management and the creation of multi-dimensional knowledge structures&#34;. The New Review of Hypermedia and Multimedia , 7(1), 67-102. Broughton, V. (2007). &#34;M",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/facet_analysis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Facet analysis (IEKO)",
+        "url": "https://www.isko.org/cyclo/facet_analysis.htm"
+      },
+      {
+        "category": "general",
+        "content": "and active knowledge management environment that supports diverse user classes, precision browsing, and seamless workflow integration across personal, collaborative, and organizat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0049",
+  "query_text": "explain the basic idea behind database indexes in data management",
+  "requested_at": "2026-09-03T01:42:00.606365Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

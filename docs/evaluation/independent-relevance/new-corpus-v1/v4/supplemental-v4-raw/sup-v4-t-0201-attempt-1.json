@@ -1,0 +1,216 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 275.49179600464413,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is voltage regulators in physics",
+    "results": [
+      {
+        "category": "general",
+        "content": "LM78XX Series Voltage Regulators Bi-Polar Power Supplies Connecting Series-Parallel Batteries Basic Power Transformers Connecting Transformers in Series-Parallel Voltage Buck-Boos",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bristolwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Student-Hobbyist Electronics Projects Tutorials",
+        "url": "https://www.bristolwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "support circuits like regulators and modulators. Operation, internal construction (optical and electrical), adjustment, and repair of a variety of commercial lasers of all types i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.repairfaq.org",
+          "/sam/lasersam.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sam&#39;s Laser FAQ: Welcome Page",
+        "url": "http://www.repairfaq.org/sam/lasersam.htm"
+      },
+      {
+        "category": "general",
+        "content": "likely to be seen by regulators as worthy of bandspace? Since the matter has not been aired publically and the ARRL not formulated a policy, the ARRL is ill-prepared to handle the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wm7d.net",
+          "/az_proj/az_html/arrl_restructuring.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Letter to ARRL - Restructing of Ham Radio Licensing",
+        "url": "https://www.wm7d.net/az_proj/az_html/arrl_restructuring.html"
+      },
+      {
+        "category": "general",
+        "content": "current, low g m triode regulators were placed in parallel with low-value balancing resistors in their cathode returns. The anodes had a nasty habit of glowing a dull red when the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      },
+      {
+        "category": "general",
+        "content": "supplies, no extra regulators, and no expensive Link cables to cut up and use. I can make 16&#43; cartridges out of the connectors in a Radio Shack male header pack for $2.98! That&#39;s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "richfiles.solarbotics.net",
+          "/SPinTerfaceFAQ.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Richfiles: SPinTerface FAQs Page",
+        "url": "http://richfiles.solarbotics.net/SPinTerfaceFAQ.html"
+      },
+      {
+        "category": "general",
+        "content": "widely used as voltage regulators, and devices intended for this service are called Zener diodes or breakdown diodes . (p. 64) &#34;There are two electronic breakdown mechanisms in th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ciphersbyritter.com",
+          "/RES/NOISE.HTM",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Random Electrical Noise: A Literature Survey",
+        "url": "http://www.ciphersbyritter.com/RES/NOISE.HTM"
+      },
+      {
+        "category": "general",
+        "content": "no effect. Influence regulators : Use political lobbying to maintain lenient exposure limits and to promote the narrative that only thermal effects matter. Defunding and Regulator",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.rfsafe.com",
+          "/articles/cell-phone-radiation/when-wireless-becomes-risk-examining-the-unseen-dangers-of-emf-exposure.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "When Wireless Becomes Risk: Examining the Unseen Dangers of EMF Exposure",
+        "url": "https://www.rfsafe.com/articles/cell-phone-radiation/when-wireless-becomes-risk-examining-the-unseen-dangers-of-emf-exposure.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0201",
+  "query_text": "what is voltage regulators in physics",
+  "requested_at": "2026-09-03T01:42:17.737132Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

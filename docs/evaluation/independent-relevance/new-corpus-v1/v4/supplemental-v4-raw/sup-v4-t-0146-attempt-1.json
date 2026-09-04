@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 336.6450860048644,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does lunar phases in earth science work",
+    "results": [
+      {
+        "category": "general",
+        "content": "page. The Best of the Science Papers of Miles Mathis. The top 50 of 700 papers, ranked. NEW! What my Enemies will Never Tell You. 17 of the strongest points in my favor. You can u",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "milesmathis.com",
+          "/updates.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "updates",
+        "url": "https://milesmathis.com/updates.html"
+      },
+      {
+        "category": "general",
+        "content": "conclusions of natural science, yet extend beyond the idea that &#34;man stands in the world alone endowed only with conciousness that is exclusively restricted to the ability to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/orsin/origsin.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Origin of Sin and the Queen of Heaven: Part 1 The Moon God and Goddess",
+        "url": "http://www.dhushara.com/book/orsin/origsin.htm"
+      },
+      {
+        "category": "general",
+        "content": "Libertarianism found Science Fiction already in the field.     From the political, economic, philosophical, psychological, historical and artistic realms the partis",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.anarchism.net",
+          "/newlibertarianmanifesto.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ANARCHISM.net: The New Libertarian Manifesto, by Samuel Edward Konkin III",
+        "url": "https://www.anarchism.net/newlibertarianmanifesto.htm"
+      },
+      {
+        "category": "general",
+        "content": "Dark Matter IS Light. ScienceAlert reports I am right again. 5pp. 296a. The Earth&#39;s Dark Matter Halo? No. I clear up more mainstream confusion. 11pp. 296b. Solid Light? NO. While",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "milesmathis.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Homepage for Miles Mathis science site",
+        "url": "https://milesmathis.com/"
+      },
+      {
+        "category": "general",
+        "content": "a mixture of Art and Science, not Magic.          Referring to Figure 12a, we&#39;ll start by generating a number of clock phases by using a Counter which is Decod",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.jmargolin.com",
+          "/vgens/vgens.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Secret Life of Vector Generators",
+        "url": "http://www.jmargolin.com/vgens/vgens.htm"
+      },
+      {
+        "category": "general",
+        "content": "experience with its science budget. The charismatic new Administrator has staked his reputation on increasing launch cadence, and set an explicit goal of landing astronauts on the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "idlewords.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Idle Words",
+        "url": "https://idlewords.com/"
+      },
+      {
+        "category": "general",
+        "content": "easily blinded by &#39;science&#39; wrote to me taking exception to certain statements on my probabilities page. He cited Luksha &#39;s paper and taking it a stage further he drew the inferen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biroco.com",
+          "/yijing/links.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Yijing Dao - Annotated links to other Yijing sites, and journal articles",
+        "url": "https://www.biroco.com/yijing/links.htm"
+      },
+      {
+        "category": "general",
+        "content": "AM UTC | Planetary Science At least once in our lives, we’ve all seen a bright streak of light briefly blaze across the sky and have quickly referred to it as an asteroid, meteor,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.universetoday.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Universe Today - Space and Astronomy News",
+        "url": "https://www.universetoday.com/"
+      },
+      {
+        "category": "general",
+        "content": "we propose that science must look for an internal algorithmic &#34;bug&#34; in existing frameworks. We propose a specific high-precision experiment: testing whether the mathematical sign",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/relcos/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Relativity and Cosmology",
+        "url": "https://vixra.org/relcos/"
+      },
+      {
+        "category": "general",
+        "content": "economy, art, science, administration, etc. initiated ca. 3000 BCE, had ended. It had only been interrupted two times, covering 5 centuries. But in no way did this demise herald t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/maat/hermes2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ANCIENT EGYPT : The rise of Alexandro-Egyptian Hellenism and Hermetism",
+        "url": "http://www.sofiatopia.org/maat/hermes2.htm"
+      },
+      {
+        "category": "general",
+        "content": "Calendar Philosophy of Science, Calendars Philosophy of History, Calendars Philosophy of Science Philosophy of History Home Page Copyright (c) 1996, 1997, 1998, 1999, 2008, 2010,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/calendar.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Babylonian, Jewish, Muslim, Luni-Solar, Indian, Iranian Calendars",
+        "url": "https://friesian.com/calendar.htm"
+      },
+      {
+        "category": "general",
+        "content": "psychology, proper science, everyday experience, and common sense.  Still, many unproven assumptions will remain, which, of course, are irrelevant to the correctness of the t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "dematerialism.net",
+          "/On%20My%20Philosophy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "On My Philosophy",
+        "url": "https://dematerialism.net/On%20My%20Philosophy.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0146",
+  "query_text": "how does lunar phases in earth science work",
+  "requested_at": "2026-09-03T01:43:29.471833Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

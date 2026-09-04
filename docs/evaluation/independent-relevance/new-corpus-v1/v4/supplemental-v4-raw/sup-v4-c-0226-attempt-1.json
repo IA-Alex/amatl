@@ -1,0 +1,26 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 375.7373620028375,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of routing tables in agriculture",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0226",
+  "query_text": "tell me about the function of routing tables in agriculture",
+  "requested_at": "2026-09-03T01:43:50.903886Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

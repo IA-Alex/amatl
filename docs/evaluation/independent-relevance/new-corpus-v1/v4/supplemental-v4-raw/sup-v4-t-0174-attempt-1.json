@@ -1,0 +1,26 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 253.26682200102368,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does ceramic coatings in biology work",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0174",
+  "query_text": "how does ceramic coatings in biology work",
+  "requested_at": "2026-09-03T01:43:42.008580Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

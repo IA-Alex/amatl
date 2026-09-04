@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 392.9580719996011,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of lunar phases in physics",
+    "results": [
+      {
+        "category": "general",
+        "content": "Why Gravity is not a Function of Charge. A short paper, explaining why I have unified gravity and charge, but not resolved them into one field. PAPER UPDATE , added 9/16/15, The R",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "milesmathis.com",
+          "/updates.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "updates",
+        "url": "https://milesmathis.com/updates.html"
+      },
+      {
+        "category": "general",
+        "content": "reasoning, which is a function of the Soul (as opposed to the intuiting Mind, or Nous ). More generally, the World Soul is also called Wisdom ( Sophia ) and Thought ( Ennoia ). Si",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "opsopaus.com",
+          "/OM/BA/ETP/II.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Summary of Pythagorean Theology II: Goddesses",
+        "url": "http://opsopaus.com/OM/BA/ETP/II.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0206",
+  "query_text": "tell me about the function of lunar phases in physics",
+  "requested_at": "2026-09-03T01:43:06.281005Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

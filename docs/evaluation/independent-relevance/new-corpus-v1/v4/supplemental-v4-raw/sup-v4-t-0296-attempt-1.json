@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 256.49043999874266,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does lunar phases in transportation operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "they got there was by transportation through the Orovars. And in turn, this raises the likelihood that the winged Mercurians and their civilization were also transplanted by the O",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.erbzine.com",
+          "/mag17/1743.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ERBzine 1743: Tama, Princess of Mercury - by Den Valdron",
+        "url": "https://www.erbzine.com/mag17/1743.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0296",
+  "query_text": "how does lunar phases in transportation operate",
+  "requested_at": "2026-09-03T01:44:15.111315Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 240.103051000915,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of routing tables in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "there has been an engineering failure. Note 1 from 2026-07-11 Published on 2026-07-11 Occasionally I get really melancholy about spaceflight. I feel like we&#39;ve mostly gone backwar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.alm.website",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Athena&#39;s blog - Athena&#39;s Site",
+        "url": "https://www.alm.website/blog/"
+      },
+      {
+        "category": "general",
+        "content": "that most UNIX based engineering software vendors have been converting everything over to NT. The great following for Linux points out the fact that people want something other th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.forth.org",
+          "/svfig/osf.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OS/Forth",
+        "url": "https://www.forth.org/svfig/osf.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0031",
+  "query_text": "give an overview of routing tables in software engineering",
+  "requested_at": "2026-09-03T01:43:41.111421Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

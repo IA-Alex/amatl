@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 320.3844579984434,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes cloud formation in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "of the discursive formation. Thus, for systematic Natural History and methodical Natural History, which were in constant opposition for a good part of the eighteenth century, one",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "web.maths.unsw.edu.au",
+          "/%7Ejim/wrongthoughts.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stove, What Is Wrong With Our Thoughts",
+        "url": "https://web.maths.unsw.edu.au/%7Ejim/wrongthoughts.html"
+      },
+      {
+        "category": "general",
+        "content": "balanced News and Information ALTERNATIVE NEWS NEWS http://www.alternet.org NEWS http://www.centrexnews.com NEWS http://www.link.no/IPS/eng/last.html NEWSLINKS http://www.truthinm",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "and concept formation, as well as for other kinds of changes in behavior said to show cognitive processes.  To the extent that they do so adequately, no explanatory role surv",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "anthonyflood.com",
+          "/blanshardskinnerdebate.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Brand Blanshard &#34;The Problem of Consciousness: A Debate with B. F. Skinner&#34;",
+        "url": "http://anthonyflood.com/blanshardskinnerdebate.htm"
+      },
+      {
+        "category": "general",
+        "content": "reliable information on this topic is extraordinarily difficult for laity and professionals alike. The layman is more likely to be given heavily slanted propaganda. Unvarnished fa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/gooddrug.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Good Drug Guide: The Responsible Parent&#39;s Guide To Healthy Mood-Boosters For All The Family",
+        "url": "https://www.hedweb.com/gooddrug.htm"
+      },
+      {
+        "category": "general",
+        "content": "to “ego-formation” (Edinger, 1985, p.218). His notion of “incarnation” implies that the individual, like an actor, should go through the different stages (",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mats-winther.github.io",
+          "/hillmcrit.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Critique of Archetypal Psychology",
+        "url": "https://mats-winther.github.io/hillmcrit.htm"
+      },
+      {
+        "category": "general",
+        "content": "&#34;divine transformation,&#34; a &#34;state of Samadhi&#34; and many other names in other cultures. It is not connected to the &#43;1, &#43;2 and &#43;3 of the measuring of a drug&#39;s intensity. It is a stat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/ecstasy/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utopian Pharmacology. MDMA / Ecstasy and beyond",
+        "url": "https://www.hedweb.com/ecstasy/"
+      },
+      {
+        "category": "general",
+        "content": "basic premise of its formation is an illustrative example of abjectly failing this test. The vision promoted for several decades now is that a future persecution of the Jews is co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.acts17-11.com",
+          "/apocalyptic.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acts 17:11 Dialog: Cautions Concerning Christian End Times Teachings",
+        "url": "http://www.acts17-11.com/apocalyptic.html"
+      },
+      {
+        "category": "general",
+        "content": "learning information classified to you), and religion. Freedom to experience any form of consciousness. Freedom to do any type of drugs regardless of the tendency to addiction (un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.e-democracy.biz",
+          "/E-Democracy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Judicially Arbitrated Imperial E-Democracy",
+        "url": "http://www.e-democracy.biz/E-Democracy.html"
+      },
+      {
+        "category": "general",
+        "content": "learning information classified to you), and religion. Freedom to experience any form of consciousness. Freedom to do any type of drugs regardless of the tendency to addiction (un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.e-democracy.biz",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Judicially Arbitrated Imperial E-Democracy",
+        "url": "http://www.e-democracy.biz/"
+      },
+      {
+        "category": "general",
+        "content": "from the physical conformations of the soil. The Egyptians were a quiet, gentle, and harmless race of tillers of the ground. They spent their lives in pumping water from the river",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book71/book71e/book71e.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Xerxes, Makers Of History, by Jacob Abbott.",
+        "url": "https://www.ajhw.co.uk/books/book71/book71e/book71e.html"
+      },
+      {
+        "category": "general",
+        "content": "dynamically varying conformations — and the dynamics of variation, the balance among subtly or dramatically metamorphosing, plastic forms, is often pivotal for protein function. T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bwo.life",
+          "/org/comm/ar/2014/machines_18.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biology’s Shameful Refusal to Disown the Machine-Organism",
+        "url": "https://bwo.life/org/comm/ar/2014/machines_18.htm"
+      },
+      {
+        "category": "general",
+        "content": "to every request for information with more than could be used, some of it being especially compiled at the cost of considerable effort. R. B. Pearson January 15th, 1942 1. PRIOR H",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/a/b/pearson.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dream &amp; Lie of Louis Pasteur by R. B. Pearson",
+        "url": "http://www.whale.to/a/b/pearson.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0255",
+  "query_text": "what causes cloud formation in food science",
+  "requested_at": "2026-09-03T01:43:54.955951Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

@@ -1,0 +1,162 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 404.3444420021842,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind wave interference in operating systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "of bioelements, as an interference interaction between H and CNO, followed by secondary ionic, covalent and catalytic interactions. (b) Boiling points of hydrides illustrate the o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "its mother is always interference with its momentary annoying act, to stop it.  The concept of a deed , and hence praise and punishment, belong to human life. 15 See esp. M.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "anthonyflood.com",
+          "/langeroriginsspeech.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Susanne K. Langer &#34;&#39;The Origins of Speech and Its Communicative Function&#34;",
+        "url": "http://anthonyflood.com/langeroriginsspeech.htm"
+      },
+      {
+        "category": "general",
+        "content": "distribution. In an interference experiment (fig 5) we get the bands of light and dark color representing the wave amplitudes as probability distributions of photons on the photog",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/stc/ct.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Space, Time and Consciousness",
+        "url": "http://www.dhushara.com/stc/ct.htm"
+      },
+      {
+        "category": "general",
+        "content": "who complained of interference in his ability to take part .* To do this to a person who has never shown any tendency to violence, and who is hardly able to access weapons, is she",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-nov-feb.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: November - February Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-nov-feb.html"
+      },
+      {
+        "category": "general",
+        "content": "for government interference. It will be complexity on steroids ( blog Register Schneier ). Threat Models over Space and Time: A Case Study of E2EE Messaging Applications shows how",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0029",
+  "query_text": "explain the basic idea behind wave interference in operating systems",
+  "requested_at": "2026-09-03T01:44:36.186258Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

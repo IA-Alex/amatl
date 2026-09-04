@@ -1,0 +1,26 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 259.56728100572946,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does load bearing walls in digital security operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0068",
+  "query_text": "how does load bearing walls in digital security operate",
+  "requested_at": "2026-09-03T01:44:31.150625Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

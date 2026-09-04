@@ -1,0 +1,162 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 252.80547000147635,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is lunar phases in photography",
+    "results": [
+      {
+        "category": "general",
+        "content": "lunar eclipse photography is easy provided that you have the right equipment and use it correctly. See MrEclipse&#39;s Picks for camera, lens and tripod recommendations. For more phot",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mreclipse.com",
+          "/Special/LEprimer.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lunar Eclipses for Beginners",
+        "url": "http://www.mreclipse.com/Special/LEprimer.html"
+      },
+      {
+        "category": "general",
+        "content": "more photos) Telephoto Photography To achieve large images of the Moon, you need to use a long telephoto lens or a telescope. Point &amp; Shoot cameras can be used if they have a powe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mreclipse.com",
+          "/LEphoto/LEphoto.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Photograph a Lunar Eclipse",
+        "url": "http://www.mreclipse.com/LEphoto/LEphoto.html"
+      },
+      {
+        "category": "general",
+        "content": "Solar Eclipse Photography is easy provided that you have the right equipment and use it correctly. See MrEclipse&#39;s Picks for camera, lens and tripod recommendations. For more phot",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mreclipse.com",
+          "/Special/SEprimer.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Solar Eclipses for Beginners",
+        "url": "http://www.mreclipse.com/Special/SEprimer.html"
+      },
+      {
+        "category": "general",
+        "content": "to teach another photography class and lead a hike in Santa Teresa Park&#39;s Bernal Ranch on May 16, 2020. Both events were cancelled due to the COVID-19 shutdown. All volunteer acti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.stpfriends.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Friends of Santa Teresa Park Welcome Page",
+        "url": "http://www.stpfriends.org/"
+      },
+      {
+        "category": "general",
+        "content": "drawing, chemical photography, COBOL programming, composing music, copy editing, digital editing (film and video), digital photography, directing (film and video), flat bed editin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "teenwitch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "TeenWitch.com (Witchcraft, Wicca, Pagan)",
+        "url": "http://teenwitch.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0281",
+  "query_text": "what is lunar phases in photography",
+  "requested_at": "2026-09-03T01:44:26.869156Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

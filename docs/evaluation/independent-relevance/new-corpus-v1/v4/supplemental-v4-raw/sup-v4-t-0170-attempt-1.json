@@ -1,0 +1,135 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 287.7931580005679,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does access tokens in biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "methods derived from biology (neural networks, genetic algorithms) or physics (super-paramagnetic clustering) have emerged, as well as methods for comparing these classifications",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/mathematical_theory_of_classification.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mathematical theory of classification (IEKO)",
+        "url": "https://www.isko.org/cyclo/mathematical_theory_of_classification.htm"
+      },
+      {
+        "category": "general",
+        "content": "equations of biology. Bottleneck in software versus trying to stop agents stealing your food. Created without a central designer. We want to build applications with mixes of softw",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.objs.com",
+          "/isig/wg-agents01.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OMG - ECDTF/Internet PSIG - Agents Working Group - Meeting #01",
+        "url": "http://www.objs.com/isig/wg-agents01.html"
+      },
+      {
+        "category": "general",
+        "content": "chemistry and molecular biology is all we can rely on for communicating how to get things done. An earthly paradise can be achieved only by the profane application of science. Wor",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "1. The Hedonistic Imperative",
+        "url": "https://www.hedweb.com/hedethic/hedon1.htm"
+      },
+      {
+        "category": "general",
+        "content": "Those that Help Current Biology doi:10.1016/j.cub.2017.11.061). Bonobo (left) and chimp (right) using spears to hunt. Bonobos&#39; tool-using abilities look a lot like those of early",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/homo.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sexual Paradox: Human Evolution",
+        "url": "http://www.dhushara.com/paradoxhtm/homo.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0170",
+  "query_text": "how does access tokens in biology work",
+  "requested_at": "2026-09-03T01:42:38.870139Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

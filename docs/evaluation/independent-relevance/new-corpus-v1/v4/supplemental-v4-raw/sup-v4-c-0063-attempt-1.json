@@ -1,0 +1,346 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 624.7063410046394,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of version control in digital security",
+    "results": [
+      {
+        "category": "general",
+        "content": "of such systems 123 . 3 Overview of the system 3.1 Threshold encryption and quorums Ballot sheets are encrypted using onion routing in which each layer is encrypted using a group",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kirill.korins.ky",
+          "/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Electt: Running Auditable and Verifiable Elections in Untrusted Environments - Kirill&#39;s journal",
+        "url": "https://kirill.korins.ky/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/"
+      },
+      {
+        "category": "general",
+        "content": "it a good conceptual overview but insufficient for understanding the full technical and financial realities of implementation. Debunking Karpathy&#39;s LLM Wiki: The Truth Behind",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "Americas PRIVACY POLICY Overview This Privacy Policy (the &#34;Policy&#34;) discloses the privacy practices of AVTech Media Americas Media, Inc. This Policy governs how we use and protect",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.avtechmediausa.com",
+          "/privacy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.avtechmediausa.com/privacy.html",
+        "url": "http://www.avtechmediausa.com/privacy.html"
+      },
+      {
+        "category": "general",
+        "content": "tax returns&#34; (good overview of a tax return) My experience with Renta WEB 2015, in 2016 On March 21, went to Agencia Tributaria&#39;s &#34;Income Tax&#34; to download PADRE program. Notice sa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/TaxesInSpain.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Taxes in Spain",
+        "url": "https://www.billdietrich.me/TaxesInSpain.html"
+      },
+      {
+        "category": "general",
+        "content": "hypertext system. Overview Many of the discussions of the future at CERN and the LHC era end with the question - ÒYes, but how will we ever keep track of such a large proje",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/History/1989/proposal-msw.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Information Management: A Proposal",
+        "url": "https://www.w3.org/History/1989/proposal-msw.html"
+      },
+      {
+        "category": "general",
+        "content": "hypertext system. Overview Many of the discussions of the future at CERN and the LHC era end with the question - ªYes, but how will we ever keep track of such a large project?º Th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/History/1989/proposal.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The original proposal of the WWW, HTMLized",
+        "url": "https://www.w3.org/History/1989/proposal.html"
+      },
+      {
+        "category": "general",
+        "content": "for. It also gives an overview of the way the power supply voltage is produced for the driver board.   I&#39;ve found that certain pages continually need to be referred to by mys",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bcae1.com",
+          "/repairtutorialcdinfo.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Learn To Repair Car Audio Power Amplifiers",
+        "url": "https://www.bcae1.com/repairtutorialcdinfo.htm"
+      },
+      {
+        "category": "general",
+        "content": "to implement the overview pane in the popup panel, thus also preventing the implementation of the advanced-user mode and the ability to point-and-click to set dynamic rules. The n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/mozilla.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mozilla - Devil Incarnate",
+        "url": "http://digdeeper.love/articles/mozilla.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "with 16-bit resolution. Overview of how the audio pipeline is commonly implemented. The repertoire Time to check out the soundtracks made for the N64. There are too many (good one",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/nintendo-64/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nintendo 64 Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/nintendo-64/"
+      },
+      {
+        "category": "general",
+        "content": "PROMELA. A high level overview with nice pictures can be found here . Efficient Networks : (a wholly owned subsidiary of Siemens) has sold more than 8 million licenses worldwide o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stroustrup.com",
+          "/applications.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C&#43;&#43; Applications",
+        "url": "https://www.stroustrup.com/applications.html"
+      },
+      {
+        "category": "general",
+        "content": "Fallows, that gives an overview of the deregulation argument and the anticipated future of the media. Interesting reading in light of discussions here (John Callarman, KA9SPA, Fam",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.worldofradio.com",
+          "/dxld3136.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.worldofradio.com/dxld3136.txt",
+        "url": "http://www.worldofradio.com/dxld3136.txt"
+      },
+      {
+        "category": "general",
+        "content": "Cable Modems Technology Overview CISCO/VALVE PowerPlay MTU, what difference does it make ? Satellite Internet - What is it ? Server Based Network Guide Tom\\&#39;s Easy Home Networking",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "speedguide.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SpeedGuide :: Broadband Tweaks, Wireless Networks, Security",
+        "url": "https://speedguide.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0063",
+  "query_text": "give an overview of version control in digital security",
+  "requested_at": "2026-09-03T01:44:04.641083Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

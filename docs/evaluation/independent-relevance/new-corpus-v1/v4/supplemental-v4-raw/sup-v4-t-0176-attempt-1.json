@@ -1,0 +1,26 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 250.42993799434043,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does lunar phases in biology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0176",
+  "query_text": "how does lunar phases in biology operate",
+  "requested_at": "2026-09-03T01:44:34.098733Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

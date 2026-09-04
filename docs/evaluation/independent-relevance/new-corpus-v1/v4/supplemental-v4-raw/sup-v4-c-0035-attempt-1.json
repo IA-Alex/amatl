@@ -1,0 +1,216 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 281.5028559998609,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of access tokens in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "high level of software engineering robustness. XSLT 3.0 is designed to be used in conjunction with XPath 3.0, which is defined in [XPath 3.0] . XSLT shares the same data model as",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/XML/Group/qtspecs/specifications/xslt-30/html/Overview.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "XSL Transformations (XSLT) Version 3.0",
+        "url": "https://www.w3.org/XML/Group/qtspecs/specifications/xslt-30/html/Overview.html"
+      },
+      {
+        "category": "general",
+        "content": "claim in software engineering circles nowadays, and this to me is where the previously mentioned meme (or at least one variation of it) comes into play. The idea behind this claim",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "blarg.ca",
+          "/rss/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Gered&#39;s Ramblings",
+        "url": "http://blarg.ca/rss/"
+      },
+      {
+        "category": "general",
+        "content": "terms of performance or engineering effort, and the relative expected usage of a feature is rare, site permissions can be used to prevent the usage of a feature for cross-site tra",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "2019.www.torproject.org",
+          "/projects/torbrowser/design/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Design and Implementation of the Tor Browser [DRAFT]",
+        "url": "https://2019.www.torproject.org/projects/torbrowser/design/"
+      },
+      {
+        "category": "general",
+        "content": "former hardware engineering chief John Ternus officially became CEO of the company today, with the change now reflected on Apple’s leadership page . […] Tim Cook is no",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mjtsai.com",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Tsai - Blog",
+        "url": "https://mjtsai.com/blog/"
+      },
+      {
+        "category": "general",
+        "content": "Software Engineering) tools, as they have independently developed in various areas, often do the same things in more formalized and difficult style, and have typically not been ge",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cs.brown.edu",
+          "/memex/ACM_HypertextTestbed/papers/60.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Xanalogical Structure, Needed Now More than Ever",
+        "url": "https://cs.brown.edu/memex/ACM_HypertextTestbed/papers/60.html"
+      },
+      {
+        "category": "general",
+        "content": "19 ]. A large amount of engineering goes into making a practical programming environment, and in Scheme 48 security has been a concern in nearly every component. Major facilities",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mumble.net",
+          "/~jar/pubs/secureos/secureos.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Emergent Technologies Inc. -- Security Kernel&lt;/TITLE",
+        "url": "http://mumble.net/~jar/pubs/secureos/secureos.html"
+      },
+      {
+        "category": "general",
+        "content": "sound as performance engineering; the political consequence is that speed optimization normalizes dependence on shared infrastructure whose operators can observe traffic patterns.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kirill.korins.ky",
+          "/articles/the-walled-garden-of-the-surveilled-web/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Walled Garden of the Surveilled Web - Kirill&#39;s journal",
+        "url": "https://kirill.korins.ky/articles/the-walled-garden-of-the-surveilled-web/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0035",
+  "query_text": "give an overview of access tokens in software engineering",
+  "requested_at": "2026-09-03T01:43:39.470012Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

@@ -1,0 +1,216 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 300.63504700228805,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does cloud formation in biology operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "have recorded the information about the defective filter in the logbook for the next shift, but perhaps the importance of the technician’s note didn’t register in his mind, or per",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.isegoria.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Isegoria",
+        "url": "http://www.isegoria.net/"
+      },
+      {
+        "category": "general",
+        "content": "saw black dots in vee-formation against cirrus clouds to the south, and dared not glance toward the east, lest Denebola blind. Then abovehead they glided. Something made me tense.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "paulburgess.org",
+          "/light.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bearing Light",
+        "url": "http://paulburgess.org/light.html"
+      },
+      {
+        "category": "general",
+        "content": "those with limited information. Artistic Interpretation: Show participants pieces of abstract art and ask them to interpret potential perspectives or emotions it might represent.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.empathogens.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Empathogens as conceived by ChatGPT",
+        "url": "https://www.empathogens.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "and see the following formation: Sadowsky, there is a chest of  gold buried in your garden. Interpreting the above as a message, I proceed to dig.  Lo and behold, the bu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "anthonyflood.com",
+          "/sadowskydarwindesign.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "James A. Sadowsky &#34;Did Darwin Destroy the Design Argument?&#34;",
+        "url": "http://anthonyflood.com/sadowskydarwindesign.htm"
+      },
+      {
+        "category": "general",
+        "content": "to Cameron, saw a rock formation looking down over a dale some two miles north of present-day Rockdale. She climbed up the rock formation to get a look at the end of the railroad",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.forttumbleweed.net",
+          "/rockdale.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "History of Rockdale, Milam County, Texas",
+        "url": "http://www.forttumbleweed.net/rockdale.html"
+      },
+      {
+        "category": "general",
+        "content": "dynamically varying conformations — and the dynamics of variation, the balance among subtly or dramatically metamorphosing, plastic forms, is often pivotal for protein function. T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bwo.life",
+          "/org/comm/ar/2014/machines_18.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biology’s Shameful Refusal to Disown the Machine-Organism",
+        "url": "https://bwo.life/org/comm/ar/2014/machines_18.htm"
+      },
+      {
+        "category": "general",
+        "content": "it. Therefore the information on this site may not be current or accurate and should not be relied upon. For more information follow this link ( This Webpage Page in No Frames Mod",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lachlan.bluehaze.com.au",
+          "/nanoshite/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NanoShite: A nano-apostate webpage dedicated to the slimeycanceroushype flim-flam-barnum-and-bailey-charlatan delusional bollocks nanosleaze /",
+        "url": "http://lachlan.bluehaze.com.au/nanoshite/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0180",
+  "query_text": "how does cloud formation in biology operate",
+  "requested_at": "2026-09-03T01:42:49.969617Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

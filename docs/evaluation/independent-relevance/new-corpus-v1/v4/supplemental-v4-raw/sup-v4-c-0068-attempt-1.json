@@ -1,0 +1,26 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 312.7212729959865,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind load bearing walls in digital security",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0068",
+  "query_text": "describe the principle behind load bearing walls in digital security",
+  "requested_at": "2026-09-03T01:44:12.054273Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

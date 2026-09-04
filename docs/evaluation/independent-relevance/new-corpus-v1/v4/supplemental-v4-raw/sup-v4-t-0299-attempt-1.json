@@ -1,0 +1,216 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 284.6488130016951,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes wave interference in transportation",
+    "results": [
+      {
+        "category": "general",
+        "content": "during operation and transportation whilst being in the way of everything! Not all computers/sound cards are created equal.   While audio filtering can be done with a rather",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/optical_comms/comb_filter.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "KA7OEI - Audio comb filter for hum removal",
+        "url": "http://www.modulatedlight.org/optical_comms/comb_filter.html"
+      },
+      {
+        "category": "general",
+        "content": "What is the future of transportation? What is the future of education? Social Science Economics What is wealth? How is wealth created? What is money? What causes inflation? What d",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "humanknowledge.net",
+          "/Thoughts.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Human Knowledge: Foundations and Limits",
+        "url": "http://humanknowledge.net/Thoughts.html"
+      },
+      {
+        "category": "general",
+        "content": "used great airships for transportation purposes. As the development reached a still higher point, they had little need for them, except in the outlying districts. All the official",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.reversespins.com",
+          "/Sahara_Desert_Civilization.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Golden Age Civilization in the Sahara Desert",
+        "url": "http://www.reversespins.com/Sahara_Desert_Civilization.htm"
+      },
+      {
+        "category": "general",
+        "content": "of resources and transportation has produced enough for everyone, without pressure on the market. DO NOT DEFUND THE POLICE With skyrocketing crime, it is clear that NYC must have",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.news1.net",
+          "/march2021.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "News1.net Breaking News in New York City, United States and the World. March 2021",
+        "url": "http://www.news1.net/march2021.htm"
+      },
+      {
+        "category": "general",
+        "content": "and the need of transportation facilities to connect it with the East called out important schemes of internal improvement, which will be noted farther on. The &#34;West,&#34; as a self-c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "monadnock.net",
+          "/turner/frontier.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Significance of the Frontier in American History, by Frederick Jackson Turner",
+        "url": "https://monadnock.net/turner/frontier.html"
+      },
+      {
+        "category": "general",
+        "content": "electric impulses. The transportation and storage can be analog (acoustic waves are represented as electric waves), or digital (acoustic waves are represented as series of bits).",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "forgottencomputer.com",
+          "/retro/sound/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Understanding Computer Sound",
+        "url": "https://forgottencomputer.com/retro/sound/"
+      },
+      {
+        "category": "general",
+        "content": "land October 16, 2019 Transportation Tracking October 15, 2019 Whistle-based Synthesis October 14, 2019 MA Price Accuracy Law October 13, 2019 Planned Power Outages October 12, 20",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jefftk.com",
+          "/p/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog Posts",
+        "url": "https://www.jefftk.com/p/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0299",
+  "query_text": "what causes wave interference in transportation",
+  "requested_at": "2026-09-03T01:42:56.507100Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

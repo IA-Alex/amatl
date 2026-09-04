@@ -1,0 +1,189 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 283.0222480042721,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes routing tables in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "trying to p0wn, Social engineering with a phone, Can you phish me? Black Hat, with your buffer overflows Waiting for someone to hit one Can you probe me? Black Hat, do you do this",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.openbsd.org",
+          "/lyrics.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OpenBSD: Release Songs",
+        "url": "http://www.openbsd.org/lyrics.html"
+      },
+      {
+        "category": "general",
+        "content": "call; calls with engineering team; admin, reference call, TDF marketing call, reviews &amp; catch up with Tracie &amp; Julie, sync with Philippe. 2021-12-12 Sunday All Saints with",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2021/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2021/"
+      },
+      {
+        "category": "general",
+        "content": "kernel trap software engineering technique to implement an OS application programming interface (API) on a 65816 system. Alarms An alarm is run like an interrupt, again a run-to-c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wilsonminesco.com",
+          "/multitask/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "simple multitask",
+        "url": "http://wilsonminesco.com/multitask/"
+      },
+      {
+        "category": "general",
+        "content": "School of Electrical Engineering. We learnt there about legendary 8-bit processor Zilog Z80. Unfortunately we didn&#39;t touch any real hardware but all practises was done on simulato",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "rayer.g6.cz",
+          "/programm/programe.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RayeR&#39;s homepage/Programming",
+        "url": "http://rayer.g6.cz/programm/programe.htm"
+      },
+      {
+        "category": "general",
+        "content": "Gergely Orosz&#39;s &#34;10 Engineering Challenges Due to the Nature of Mobile Applications&#34; &#34;Development&#34; section of my Android page Electron (Simple App) From someone on reddit: An Elec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/DevelopApplication.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Develop an Application",
+        "url": "https://www.billdietrich.me/DevelopApplication.html"
+      },
+      {
+        "category": "general",
+        "content": "or for reverse-engineering. dyndbg[=&#34;val&#34;][KNL,DYNAMIC_DEBUG] .dyndbg[=&#34;val&#34;] Enable debug messages at boot time. See Documentation/admin-guide/dynamic-debug-howto.rst for details",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kernel.org",
+          "/doc/Documentation/admin-guide/kernel-parameters.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://www.kernel.org/doc/Documentation/admin-guide/kernel-parameters.txt",
+        "url": "https://www.kernel.org/doc/Documentation/admin-guide/kernel-parameters.txt"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0031",
+  "query_text": "what causes routing tables in software engineering",
+  "requested_at": "2026-09-03T01:43:42.600623Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

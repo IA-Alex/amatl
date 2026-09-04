@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 237.1495000043069,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of gear trains in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "read and a terrific overview of what we currently understand about the ways that infections travel, change tactics, and kill us. Highly recommended. May 1, 2002: A friend sent me",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.duntemann.com",
+          "/may2002.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jeff Duntemann&#39;s ContraPositive Diary",
+        "url": "http://www.duntemann.com/may2002.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0247",
+  "query_text": "give an overview of gear trains in food science",
+  "requested_at": "2026-09-03T01:43:13.271900Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

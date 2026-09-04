@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 122.00572399888188,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does acid base reactions in data management work",
+    "results": [
+      {
+        "category": "general",
+        "content": "Sciences to Research Management Office of Science and Technology SRI Business Intelligence Program U.S. Department of Defense Directorate of Defense Research and Engineering U.S.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "thirdworldtraveler.com",
+          "/New_World_Order/Tavistock_Institute.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Tavistock Institute - the best kept secret in America Dr. Byron T. Weeks, MD, Col. AFUS, MC, Ret.",
+        "url": "https://thirdworldtraveler.com/New_World_Order/Tavistock_Institute.html"
+      },
+      {
+        "category": "general",
+        "content": "Nichols, took over the management of the Sanatorium, in accordance with his will. 62 The successful work of the Sanatorium was represented in its annual &#34;yearbooks,&#34; that the inst",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.meditopia.org",
+          "/chap2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Meditopia -- Chapter 2",
+        "url": "https://www.meditopia.org/chap2.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0058",
+  "query_text": "how does acid base reactions in data management work",
+  "requested_at": "2026-09-03T01:42:05.546963Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 338.1286110015935,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does wave interference in materials science work",
+    "results": [
+      {
+        "category": "general",
+        "content": "incorrect frequencies - interference caused to other broadcasters on some channels - interference on the same or adjacent frequencies from other stations broadcasting to the same",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.worldofradio.com",
+          "/dxld3134.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.worldofradio.com/dxld3134.txt",
+        "url": "http://www.worldofradio.com/dxld3134.txt"
+      },
+      {
+        "category": "general",
+        "content": "do as he likes without interference — without interference, because without society. But civility represents the kind of freedom we can enjoy “sociably”: I speak of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "thornwalker.com",
+          "/recoveries/sobran/pensees.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Pensees, by Joe Sobran",
+        "url": "https://thornwalker.com/recoveries/sobran/pensees.html"
+      },
+      {
+        "category": "general",
+        "content": "means of persuasion and interference, stunt the emergence of young democracies in the name of democracy.&#34; John le Carre&#39;   &#34;The greatest purveyor of violence on ear",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "barbariansinsuits.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BARBARIANS IN SUITS - GLOBAL ELITE, RULING ELITE, DYNASTIC ELITE, GLOBAL OLIGARCHY, GLOBALISM, FINANCIAL OLIGARCHY, PLUTOCRACY, KLEPTOCRACY, P",
+        "url": "https://barbariansinsuits.net/"
+      },
+      {
+        "category": "general",
+        "content": "the Quantum Two-slit Interference and Complementarity The Cat Paradox and the Role of Conciousness The Two-timing Nature of Special Relativity Reality and Virtuality: Quantum fiel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/quant.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quantum Reality and Cosmology",
+        "url": "http://www.dhushara.com/paradoxhtm/quant.htm"
+      },
+      {
+        "category": "general",
+        "content": "of bioelements, as an interference interaction between H and CNO, followed by secondary ionic, covalent and catalytic interactions. (b) Boiling points of hydrides illustrate the o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "Turn 17th Planning for Interference 16th Poor and Simple 15th When You’re a Jet, You’re a Jet all the Way 14th Cut to the Core 8th A Longer View 6th Ruins of History 1",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "briankoberlein.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Archive | by Brian Koberlein",
+        "url": "https://briankoberlein.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "by that outer world any interference in what did not concern it. America was our field,—a field amply large for our development. It was therefore declared that, while we had",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/16542/16542-h/16542-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of &#34;Imperialism&#34; and &#34;The Tracks of Our Forefathers&#34;, by Charles Francis Adams.",
+        "url": "https://www.gutenberg.org/files/16542/16542-h/16542-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "2006 Perhaps to prevent interference with their own communications, the military have altered their radio jamming in such a way that only experienced radio operators can broadcast",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.urbandead.com",
+          "/oldnews.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Urban Dead - Older News",
+        "url": "https://www.urbandead.com/oldnews.html"
+      },
+      {
+        "category": "general",
+        "content": "[Whittaker 1904], their interference reproduces potential gradients [normal &#34;force field&#34; EM], which do couple to electrons and translate them. In fact, potential gradie",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/newenergy/defeatcancer/cancer.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Tom Bearden Website",
+        "url": "https://www.bibliotecapleyades.net/ciencia/newenergy/defeatcancer/cancer.htm"
+      },
+      {
+        "category": "general",
+        "content": "wavelengths produced interference where they merged. This interference was, in effect, a third, longer wave which fell into the visible portion of the electromagnetic spectrum. Th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "truthquest2.com",
+          "/germtheory.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE FALSE GERM THEORY OF DISEASE",
+        "url": "http://truthquest2.com/germtheory.htm"
+      },
+      {
+        "category": "general",
+        "content": "the disasters following interference with the normal development of industries and trade which cause supersaturation. About 1800, her industries were completely destro... Industri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "chestofbooks.com",
+          "/history/anthropology/Race-Expansion/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Expansion of Races | by Charles Edward Woodruff",
+        "url": "https://chestofbooks.com/history/anthropology/Race-Expansion/"
+      },
+      {
+        "category": "general",
+        "content": "in order to explain interference effects, whereas the photoeffect should prove its particle property. However, any such apparent evidence for a wave-particle duality arises in rea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.physicsmyths.org.uk",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Physics Myths and physics facts",
+        "url": "https://www.physicsmyths.org.uk/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0134",
+  "query_text": "how does wave interference in materials science work",
+  "requested_at": "2026-09-03T01:44:43.890417Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

@@ -1,0 +1,135 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 395.6515070021851,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of process scheduling in computer networks",
+    "results": [
+      {
+        "category": "general",
+        "content": "change the process scheduling algorithm or other things. There are various named configurations (AKA &#34;spins&#34;): Zen , Liquorix , GNU Linux-libre , XanMod . Modules and Drivers : &#34;l",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/Linux.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Linux",
+        "url": "https://www.billdietrich.me/Linux.html"
+      },
+      {
+        "category": "general",
+        "content": "I was planning on also scheduling some light reading. But lately, I keep finding I&#39;m swamped with chores on those days. So I might have to switch some days around. I&#39;ve also been",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lakesnet.nekoweb.org",
+          "/blog-2025.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lakes&#39; Blog",
+        "url": "https://lakesnet.nekoweb.org/blog-2025.html"
+      },
+      {
+        "category": "general",
+        "content": "[JVDOR16] Scheduling Of Defensive Security Actions In Information Processing Systems . Ari Juels, Marten Erik van Dijk, Alina M. Oprea, and Ronald L. Rivest. U.S. Patent 9,471,777",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.csail.mit.edu",
+          "/rivest/pubs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ronald L. Rivest: Publications and Talks",
+        "url": "https://people.csail.mit.edu/rivest/pubs.html"
+      },
+      {
+        "category": "general",
+        "content": "electronic mail, scheduling, and SQL database access. PPP Point to point Protocol facilitates Internet connections over serial lines, including modem connections. PPP software req",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lisans.cozum.info.tr",
+          "/networking/7KATMANNetworkProtocolsandStandards.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Network Protocols and Standards",
+        "url": "https://lisans.cozum.info.tr/networking/7KATMANNetworkProtocolsandStandards.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0002",
+  "query_text": "tell me about the function of process scheduling in computer networks",
+  "requested_at": "2026-09-03T01:44:22.069605Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

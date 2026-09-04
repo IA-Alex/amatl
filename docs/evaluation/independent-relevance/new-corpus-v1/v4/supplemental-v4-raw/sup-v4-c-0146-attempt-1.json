@@ -1,0 +1,189 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 403.30028000607854,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of lunar phases in earth science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Why Gravity is not a Function of Charge. A short paper, explaining why I have unified gravity and charge, but not resolved them into one field. PAPER UPDATE , added 9/16/15, The R",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "milesmathis.com",
+          "/updates.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "updates",
+        "url": "https://milesmathis.com/updates.html"
+      },
+      {
+        "category": "general",
+        "content": "associated with the functions, not of men, but of women. It is the source not only of their reproductive powers but all their other powers, especially their magic powers. Furtherm",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/orsin/origsin.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Origin of Sin and the Queen of Heaven: Part 1 The Moon God and Goddess",
+        "url": "http://www.dhushara.com/book/orsin/origsin.htm"
+      },
+      {
+        "category": "general",
+        "content": "the maximum number of functions (eight). The disadvantage is that we will only be able to perform one function per machine cycle. By not decoding the states we will be able to per",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.jmargolin.com",
+          "/vgens/vgens.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Secret Life of Vector Generators",
+        "url": "http://www.jmargolin.com/vgens/vgens.htm"
+      },
+      {
+        "category": "general",
+        "content": "transliminality &#39;might function as a connecting principle between paranormal effects and other personality variables&#39;, where transliminality is defined as &#39;a hypothesised tendency",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biroco.com",
+          "/yijing/links.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Yijing Dao - Annotated links to other Yijing sites, and journal articles",
+        "url": "https://www.biroco.com/yijing/links.htm"
+      },
+      {
+        "category": "general",
+        "content": "became a political function (safeguarding unity) deprived of its former &#34;religious&#34; grandeur and importance (Pharaoh as &#34;son of Re&#34;, living in Maat ). Indeed,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/maat/hermes2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ANCIENT EGYPT : The rise of Alexandro-Egyptian Hellenism and Hermetism",
+        "url": "http://www.sofiatopia.org/maat/hermes2.htm"
+      },
+      {
+        "category": "general",
+        "content": "reasoning, which is a function of the Soul (as opposed to the intuiting Mind, or Nous ). More generally, the World Soul is also called Wisdom ( Sophia ) and Thought ( Ennoia ). Si",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "opsopaus.com",
+          "/OM/BA/ETP/II.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Summary of Pythagorean Theology II: Goddesses",
+        "url": "http://opsopaus.com/OM/BA/ETP/II.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0146",
+  "query_text": "tell me about the function of lunar phases in earth science",
+  "requested_at": "2026-09-03T01:42:26.390297Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

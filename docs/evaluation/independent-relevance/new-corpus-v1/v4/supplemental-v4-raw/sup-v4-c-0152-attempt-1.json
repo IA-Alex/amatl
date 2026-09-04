@@ -1,0 +1,26 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 309.6650950028561,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind process scheduling in astronomy",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0152",
+  "query_text": "describe the principle behind process scheduling in astronomy",
+  "requested_at": "2026-09-03T01:43:25.969971Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

@@ -1,0 +1,189 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 313.4745749994181,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does wave interference in digital security work",
+    "results": [
+      {
+        "category": "general",
+        "content": "noticed severe digital interference on BBC R5 on 693 kHz around midnight. It sounded like strong jamming in the background. Apparently this was some sort of DRM test from the Funk",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.w4uvh.net",
+          "/dxldtd3h.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DX LISTENING DIGEST AUGUST 2003 ARCHIVE",
+        "url": "http://www.w4uvh.net/dxldtd3h.html"
+      },
+      {
+        "category": "general",
+        "content": "Cyber-Nanny Shit, Pig Interference, Corporate Spying, And Non-Fwa Agency Monitoring Unless Your Systems Are Detected Going Through A Non-Ghosted{Never Turned On Like You Need To D",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteList.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/FWAsiteList.html"
+      },
+      {
+        "category": "general",
+        "content": "incorrect frequencies - interference caused to other broadcasters on some channels - interference on the same or adjacent frequencies from other stations broadcasting to the same",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.worldofradio.com",
+          "/dxld3134.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.worldofradio.com/dxld3134.txt",
+        "url": "http://www.worldofradio.com/dxld3134.txt"
+      },
+      {
+        "category": "general",
+        "content": "do as he likes without interference — without interference, because without society. But civility represents the kind of freedom we can enjoy “sociably”: I speak of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "thornwalker.com",
+          "/recoveries/sobran/pensees.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Pensees, by Joe Sobran",
+        "url": "https://thornwalker.com/recoveries/sobran/pensees.html"
+      },
+      {
+        "category": "general",
+        "content": "caused by government interference, not &#39;market failures.&#39; Sincerely, Jim Lorenz   ----- Original Message -----   From: Scott Hildebrandt   To: brojim@charter.net &amp;n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "voluntarysociety.org",
+          "/conditioning/conspiracy/warofseparation.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Voluntary Society - Conditioning - Conspiracy - False Flags - War of Separation",
+        "url": "http://voluntarysociety.org/conditioning/conspiracy/warofseparation.html"
+      },
+      {
+        "category": "general",
+        "content": "network traffic, radio interference, vehicle speeds, and other variables that are difficult to create under actual conditions. Workbench was introduced by Cellular Data (Palo Alto",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "halfhill.com",
+          "/bytelink.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Online BYTE Archive",
+        "url": "https://halfhill.com/bytelink.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0074",
+  "query_text": "how does wave interference in digital security work",
+  "requested_at": "2026-09-03T01:44:28.087540Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

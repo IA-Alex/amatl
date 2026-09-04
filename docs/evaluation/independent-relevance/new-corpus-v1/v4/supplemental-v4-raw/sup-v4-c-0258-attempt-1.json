@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 443.20589000562904,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of version control in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "00:30.47 journey in technology. I&#39;m going to ask 00:31.66 you for some feedback at some different 00:34.13 places, so first off – by applause – how 00:36.97 many of yo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jackrusher.com",
+          "/strange-loop-2022/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stop Writing Dead Programs, Strange Loop 2022",
+        "url": "https://jackrusher.com/strange-loop-2022/"
+      },
+      {
+        "category": "general",
+        "content": "successful aware technology attitude attitudes exactly beyond style goal goals october popular skill skills affair affairs science seat seats technique techniques attempt attempts",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "even by adaptive technology. But there are virtually no access features that are entirely un supported. There’s always some population out there that can use what you code,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "joeclark.org",
+          "/book/sashay/serialization/Chapter06.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "06. The image problem",
+        "url": "https://joeclark.org/book/sashay/serialization/Chapter06.html"
+      },
+      {
+        "category": "general",
+        "content": "It’s really interesting technology, while not as private as XMR. I really enjoy... I’m familiar with Nano and I’m familiar with the block lattice stuff. I’m not totally sold on it",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/happy_monday",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Happy Monday Stream!",
+        "url": "https://lukesmith.neocities.org/vids/happy_monday"
+      },
+      {
+        "category": "general",
+        "content": "is no mystery of/to technology, just follow the trail of mental pictures in the imagination of the what was just before, and then the next just before ... until you get to ~!~!~!~",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/Culmination.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "the Culmination",
+        "url": "http://ipwebdev.com/hermit/Culmination.html"
+      },
+      {
+        "category": "general",
+        "content": "Gravis Computer Technology Ltd. , 1993-1996) [guace410.zip, 6.508.055 bytes] Gravis Ultrasound ACE driver 4.10 (1995-03-20), ready-to-use package (© by Advanced Gravis Comput",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "sta.c64.org",
+          "/dosprg.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Useful DOS software",
+        "url": "http://sta.c64.org/dosprg.html"
+      },
+      {
+        "category": "general",
+        "content": "California Institute of Technology, studying Chemistry.  I very much enjoyed working with you when I was younger, and I don&#39;t recall whether I ever really got to thank you, s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mathman.biz",
+          "/home.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The MATHMAN",
+        "url": "http://mathman.biz/home.html"
+      },
+      {
+        "category": "general",
+        "content": "Activate any assistive technology in your Windows 7/8.1, for instance, click &#43; U and enable the onscreen keyboard and follow this link . Officially in January 2018 Microsoft ended",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "itvision.altervista.org",
+          "/why-windows-10-sucks.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Why Windows 10 sucks or Everything Wrong with Microsoft Windows",
+        "url": "http://itvision.altervista.org/why-windows-10-sucks.html"
+      },
+      {
+        "category": "general",
+        "content": "Power, wealth and technology are what drive the world today; that&#39;s what you&#39;ll find on the front page.  Even pagans have qualms about worshipping the goddess of love:",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "sex-is-sacred.org",
+          "/whore.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Sacred Whore",
+        "url": "http://sex-is-sacred.org/whore.htm"
+      },
+      {
+        "category": "general",
+        "content": "nothing to do with the technology: Almost nobody actually wants a website that changes entirely on its own. Why “Just Make It Autonomous” Is The Wrong Goal The obvious move, once",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.smashingmagazine.com",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Articles on Smashing Magazine — For Web Designers And Developers",
+        "url": "https://www.smashingmagazine.com/feed/"
+      },
+      {
+        "category": "general",
+        "content": "Archivist – Lucent Technology 600 Mt. Avenue Rm 3A-302 Murray Hill, NJ   - 07974   Bunny, Attached is a map showing the principal installations of the SAGE System",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.smecc.org",
+          "/sage_a_n_fsq-7.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SAGE A/N FSQ-7",
+        "url": "http://www.smecc.org/sage_a_n_fsq-7.htm"
+      },
+      {
+        "category": "general",
+        "content": "is that this march of technology cannot continue uninterrupted. We don&#39;t have unlimited energy resources, or a place to dispose of the millions of tons of CO 2 that are generated",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kevinboone.me",
+          "/artix.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kevin Boone: Adventures with Artix",
+        "url": "https://kevinboone.me/artix.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0258",
+  "query_text": "tell me about the function of version control in music technology",
+  "requested_at": "2026-09-03T01:43:21.200756Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

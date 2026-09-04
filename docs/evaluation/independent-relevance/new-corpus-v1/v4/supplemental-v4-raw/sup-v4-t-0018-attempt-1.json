@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 384.1068880064995,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does version control in operating systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "dia 10 March 2024 Images Operating Exhibits 1983 • 640 × 400 PNG (6 KB) VisiCorp Visi On Screen capture: Turbo XT Clone — Visi On 1.0 This screenshot",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.typewritten.org",
+          "/Media/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Retrotechnology Media - Typewritten Software",
+        "url": "http://www.typewritten.org/Media/"
+      },
+      {
+        "category": "general",
+        "content": "seems that a Unix-based operating system is the OS of choice among most geeks. In addition to telling us about your unix abilities, you can also show which specific unix OS you ar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.joereiss.net",
+          "/geek/geek.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Code of the Geeks v3.1 Generator",
+        "url": "http://www.joereiss.net/geek/geek.html"
+      },
+      {
+        "category": "general",
+        "content": "by programs in the GEM operating environment. Shareware. ConvertLX (35 KB) added 08/26/1998 (Calculator) Version 1.0 by John McDonald ConvertLX is a PAL program that converts betw",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mizj.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "S.U.P.E.R. - The Largest 200LX Software Archive",
+        "url": "http://mizj.com/"
+      },
+      {
+        "category": "general",
+        "content": "GNU.Support website about GNU Operating Systems ䷖ GNU Support GNU.Support Articles GNU Emacs Emacs Lisp packages Frequently Asked Questions for GNU/Linux Operating Systems Large L",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "ction to 10 GHz Wideband Operating in Ontario ( c) 1999 by Steve Kavanagh VE3SMA INTRODUCTION WIDEBAND FM EQUIPMENT SOURCES OF PARTS OPERATING TECHNIQUES ACTIVITY IN AND AROUND ONT",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.kwarc.org",
+          "/10ghz/10GHZ-4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "An Introduction to 10 GHz Wideband Operating in Ontario",
+        "url": "http://www.kwarc.org/10ghz/10GHZ-4.htm"
+      },
+      {
+        "category": "general",
+        "content": "of Android-based Operating Systems This is a comparison of popular Android &#34;ROMs&#34; (better term: AOSP distributions or Android-based OS). Please note I&#39;m not affiliated with any of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "eylenburg.github.io",
+          "/android_comparison.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Comparison of Android-based Operating Systems",
+        "url": "https://eylenburg.github.io/android_comparison.htm"
+      },
+      {
+        "category": "general",
+        "content": "Are Slower Than Other Operating Systems. Here Is Why.&#34; By Marc Bevand 10 May 2013 Keywords: performance windows I was explaining on Hacker News why Windows fell behind Linux in te",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "blog.zorinaq.com",
+          "/i-contribute-to-the-windows-kernel-we-are-slower-than-other-oper/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "&#34;I Contribute to the Windows Kernel. We Are Slower Than Other Operating Systems. Here Is Why.&#34;",
+        "url": "http://blog.zorinaq.com/i-contribute-to-the-windows-kernel-we-are-slower-than-other-oper/"
+      },
+      {
+        "category": "general",
+        "content": "on this website. Operating System Technical Comparison Overview     This web site compares and contrasts operating systems. It originally started out on a smal",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.osdata.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Server Operating Systems Technical Comparison",
+        "url": "http://www.osdata.com/"
+      },
+      {
+        "category": "general",
+        "content": "FreeBSD is an amazing operating system Published on 2020-01-20 . Modified on 2023-10-23 . This is a small article about some of my adventures with FreeBSD and why I believe it is",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unixdigest.com",
+          "/articles/freebsd-is-an-amazing-operating-system.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "FreeBSD is an amazing operating system",
+        "url": "https://unixdigest.com/articles/freebsd-is-an-amazing-operating-system.html"
+      },
+      {
+        "category": "general",
+        "content": "← Sitemap Comparison of Operating Systems Compared are these different operating systems: Windows : Most popular desktop OS. High overall market share. Probably the best soft",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "eylenburg.github.io",
+          "/os_comparison.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Comparison of Operating Systems",
+        "url": "https://eylenburg.github.io/os_comparison.htm"
+      },
+      {
+        "category": "general",
+        "content": "interfaces between operating systems and applications. All in all, it has done nothing to improve the lot of the developer or the consumer. The Taos operating system addresses the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.uruk.org",
+          "/emu/Taos.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "TAOS Operating System",
+        "url": "http://www.uruk.org/emu/Taos.html"
+      },
+      {
+        "category": "general",
+        "content": "Operating Systems: Three Easy Pieces Remzi H. Arpaci-Dusseau and Andrea C. Arpaci-Dusseau (University of Wisconsin-Madison) NEW: Security Chapters by Peter Reiher (UCLA) Blog: Why",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pages.cs.wisc.edu",
+          "/~remzi/OSTEP/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Operating Systems: Three Easy Pieces",
+        "url": "https://pages.cs.wisc.edu/~remzi/OSTEP/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0018",
+  "query_text": "how does version control in operating systems work",
+  "requested_at": "2026-09-03T01:44:41.313221Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

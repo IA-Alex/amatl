@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 124.23668400151655,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does version control in earth science work",
+    "results": [
+      {
+        "category": "general",
+        "content": "article is an HTML version of the preprint of a published article from 2013, see colophon ). Table of contents: 1. Introduction 2. Historical developments 3. Basic principles of f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/facet_analysis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Facet analysis (IEKO)",
+        "url": "https://www.isko.org/cyclo/facet_analysis.htm"
+      },
+      {
+        "category": "general",
+        "content": "I lost track about ten versions ago. Linux newbies consider me a net.god. ( ) &gt; L&#43;&#43;&#43; I use Linux exclusively on my system. I monitor comp.os.linux.* and even answer questions s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.joereiss.net",
+          "/geek/geek.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Code of the Geeks v3.1 Generator",
+        "url": "http://www.joereiss.net/geek/geek.html"
+      },
+      {
+        "category": "general",
+        "content": "derived forms. A text version is also available . Note that sometimes, two principle entries cannot be separated because they share forms, e.g. &#39;to live&#39; and &#39;the life&#39; both have",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "frequency of the mutant version evolves to respond to the severity of the disease in the region. Among African-Americans in the U.S., where falciparum malaria is not common, it ap",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hope-of-israel.org",
+          "/thegreatreplacement.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Great Replacement of Israel",
+        "url": "https://www.hope-of-israel.org/thegreatreplacement.html"
+      },
+      {
+        "category": "general",
+        "content": "magnitude (Mw), Version=8 Source USGS NEIC (WDCS-D)   Event ID usslav Quake Summary The following is a release by the United States Geological Survey, National Earthquake Inf",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greatdreams.com",
+          "/poleshift.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Pole Shift - When, Where, and How",
+        "url": "http://www.greatdreams.com/poleshift.htm"
+      },
+      {
+        "category": "general",
+        "content": "to 2013. The latest version of the GISTEMP dataset shows only about 0.13°C of cooling in the northern hemisphere from 1940 to 1970 ( climexp.knmi.nl ) – far lower than t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/climcat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Climate models and climate catastrophe: a reality check",
+        "url": "https://davidpratt.info/climcat.htm"
+      },
+      {
+        "category": "general",
+        "content": "and in each available version viewed below. Stats for this page can be viewed here . Commercial publishers interested in producing an actual book (or other media form) of the mate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "rgbrown.org",
+          "/Philosophy/philosophy.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Robert G. Brown&#39;s Philosophy Page",
+        "url": "http://rgbrown.org/Philosophy/philosophy.php"
+      },
+      {
+        "category": "general",
+        "content": "official support for conversions was toned down after the Mutiny (1857-1858). It was not many decades, however, before a Western educated and alarmingly Anglicized Indian elite ca",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/british.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Sun Never Set on the British Empire",
+        "url": "https://friesian.com/british.htm"
+      },
+      {
+        "category": "general",
+        "content": "their modern translated version, as it would be worse Vol. 1, Page  23   PROEM. than useless to make the subject still more difficult by introducing the archaic phraseol",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theosociety.org",
+          "/pasadena/sd/sd1-0-pr.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "vol 1, Proem - The Secret Doctrine",
+        "url": "https://www.theosociety.org/pasadena/sd/sd1-0-pr.htm"
+      },
+      {
+        "category": "general",
+        "content": "I also sent early versions of this review to ten amateur and professional botanists around Colorado for their suggestions which I used to improve the review.    &amp;nb",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.swcoloradowildflowers.com",
+          "/learning%20about%20plants.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Learning about plants",
+        "url": "https://www.swcoloradowildflowers.com/learning%20about%20plants.htm"
+      },
+      {
+        "category": "general",
+        "content": "system (the ?weak? version of the Gaia hypothesis); however, positing humanity as the entity?s brain is bad metaphor and worse science, unless you think Gaia is a very disturbed p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.setileague.org",
+          "/reviews/lonely.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SETI Book Review: Lonely Planets",
+        "url": "http://www.setileague.org/reviews/lonely.htm"
+      },
+      {
+        "category": "general",
+        "content": "to control the version. Such a method, however, is more easily prescribed on paper than followed in the field. When the witness is illiterate-as commonly happens when there is gen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dankalia.com",
+          "/literature/frc201.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hausa Folklore",
+        "url": "https://www.dankalia.com/literature/frc201.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0138",
+  "query_text": "how does version control in earth science work",
+  "requested_at": "2026-09-03T01:42:04.058198Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

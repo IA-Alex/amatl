@@ -1,0 +1,26 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 354.0750769971055,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind river deltas in electrical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0085",
+  "query_text": "explain the basic idea behind river deltas in electrical engineering",
+  "requested_at": "2026-09-03T01:43:19.197123Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

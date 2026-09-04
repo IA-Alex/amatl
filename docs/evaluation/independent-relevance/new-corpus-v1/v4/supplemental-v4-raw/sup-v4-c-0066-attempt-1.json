@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 424.97616100445157,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of voltage regulators in digital security",
+    "results": [
+      {
+        "category": "general",
+        "content": "types of voltage regulators used in various amplifiers. For each one, I provide a photo of the regulators in an amplifier. This will help you to more quickly identify the circuits",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bcae1.com",
+          "/repairtutorialcdinfo.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Learn To Repair Car Audio Power Amplifiers",
+        "url": "https://www.bcae1.com/repairtutorialcdinfo.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0066",
+  "query_text": "tell me about the function of voltage regulators in digital security",
+  "requested_at": "2026-09-03T01:43:15.263675Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 354.3589890032308,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of database indexes in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "I intuit that this function is usually served by exiting and restarting Eclipse, but in my case that wasn&#39;t enough. I got the cache cleared by rebooting the system, and suddenly,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.duntemann.com",
+          "/november2008.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jeff Duntemann&#39;s ContraPositive Diary",
+        "url": "http://www.duntemann.com/november2008.htm"
+      },
+      {
+        "category": "general",
+        "content": "Your Browser&#39;s FIND Function to Search this Library) 500 B.C. - 500 A.D. 500 A.D - 1500 1500 - 1600 1600 - 1700 1700 -1800 American Colonists With Royal Ancestries - A large numbe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "constitution.org",
+          "/1-History/primarysources/primarysources.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Primary Source Documents",
+        "url": "https://constitution.org/1-History/primarysources/primarysources.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0214",
+  "query_text": "tell me about the function of database indexes in climate science",
+  "requested_at": "2026-09-03T01:43:23.221583Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

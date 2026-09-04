@@ -1,0 +1,108 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 281.3232300031814,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes process scheduling in transportation",
+    "results": [
+      {
+        "category": "general",
+        "content": "3D Printers Airplane Transportation Improvements in Medical Care and Health Treatments Improvements in Building and Construction The Internet technological progress has slowed dow",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/civilization/technology",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Technology and Civilization",
+        "url": "https://zerocontradictions.net/civilization/technology"
+      },
+      {
+        "category": "general",
+        "content": "land October 16, 2019 Transportation Tracking October 15, 2019 Whistle-based Synthesis October 14, 2019 MA Price Accuracy Law October 13, 2019 Planned Power Outages October 12, 20",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jefftk.com",
+          "/p/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog Posts",
+        "url": "https://www.jefftk.com/p/"
+      },
+      {
+        "category": "general",
+        "content": "consists in the transportation of “real” products of European culture and civilization to the “roof of the world”.   The most recent western attempt at spreading the Tibetan",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.trimondi.de",
+          "/SDLE/Part-2-11.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Shadow of the Dalai Lama – Part II – 11",
+        "url": "http://www.trimondi.de/SDLE/Part-2-11.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0287",
+  "query_text": "what causes process scheduling in transportation",
+  "requested_at": "2026-09-03T01:44:56.606431Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

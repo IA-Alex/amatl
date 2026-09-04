@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 321.4662610043888,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is version control in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "death,&#34; I asked my astronomy department professors, how is it today we can be having such intelligent conversations about cosmology? How is all our knowledge, all this information",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Information Philosopher - dedicated to the new information philosophy",
+        "url": "https://www.informationphilosopher.com/"
+      },
+      {
+        "category": "general",
+        "content": ", Laser , and Astronomy headings for information on optical transmission and reception.  Note:   This page may not render properly on some Mozilla or Netscape-type brows",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/optical_comms/optical_index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "KA7OEI Optical (lightbeam) through-the-air communications page",
+        "url": "http://www.modulatedlight.org/optical_comms/optical_index.html"
+      },
+      {
+        "category": "general",
+        "content": "of modern galactic astronomy have indicated that the sun is indeed moving around a center in the Milky Way galaxy in a gigantic orbit that would require two million centuries to c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.answering-islam.org",
+          "/Responses/Isawa/flatearth.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Christian Response To &#34;Islam Awareness&#34; : The Flat-Earth Bible",
+        "url": "https://www.answering-islam.org/Responses/Isawa/flatearth.htm"
+      },
+      {
+        "category": "general",
+        "content": "including elements of astronomy. “Several thousand Cuahuila Indians never exhausted the natural resources of a desert region in South California, in which today only a handful of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "theanarchistlibrary.org",
+          "/library/paul-feyerabend-against-method.muse",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse",
+        "url": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse"
+      },
+      {
+        "category": "general",
+        "content": "Leonardo Da Vinci, astronomy, the cosmos, rockets to the Moon and Mars, Buck Rogers and Flash Gordon, along with a myriad superheroes, especially the &#39;mortal&#39; type such as the Spi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "the-wanderling.com",
+          "/firehair.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "FIREHAIR: Queen of the Sagebrush Frontier",
+        "url": "https://the-wanderling.com/firehair.html"
+      },
+      {
+        "category": "general",
+        "content": "inventor, a scholar of astronomy or history, a master tactician. All these activities are explained when one imagines men whose thinking is active in one particular direction; who",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.publicappeal.org",
+          "/library/nietzsche/Nietzsche_human_all_too_human/sect4_from_the_soul_of_artists.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SECTION FOUR From the Soul of Artists and Writers",
+        "url": "http://www.publicappeal.org/library/nietzsche/Nietzsche_human_all_too_human/sect4_from_the_soul_of_artists.htm"
+      },
+      {
+        "category": "general",
+        "content": "story: In  his astronomy PhD thesis , our older son, Alex, wrote &#39;Mom and Dad (Jan S. and Tim H.), thank you for all the ways you nurtured my curiosity (maybe even including",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mathman.biz",
+          "/home.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The MATHMAN",
+        "url": "http://mathman.biz/home.html"
+      },
+      {
+        "category": "general",
+        "content": "autour de Jupiter ( Astronomy: space probe Juno put in orbit around Jupiter ). Le Monde article Astronomie : la sonde Juno s’est mise en orbite autour de Jupiter If you run this U",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "neustadt.fr",
+          "/essays/against-a-user-hostile-web/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Against an Increasingly User-Hostile Web - Neustadt.fr",
+        "url": "https://neustadt.fr/essays/against-a-user-hostile-web/"
+      },
+      {
+        "category": "general",
+        "content": "Leonardo Da Vinci, astronomy, the cosmos, rockets to the Moon and Mars, Buck Rogers and Flash Gordon, along with a myriad superheroes, especially the &#39;mortal&#39; type such as the Spi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "the-wanderling.com",
+          "/cowboy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COWBOY CODE OF THE WEST",
+        "url": "https://the-wanderling.com/cowboy.html"
+      },
+      {
+        "category": "general",
+        "content": "15.4.1996 http://www-astronomy.mps.ohio-state.edu/~stephens/vrml/vrml_history.html [11] Crispen, B.: VRML History, 5.6.1997 http://fly.hiwaay.net/~crispen/vrml/history.html [12] P",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "old.cescg.org",
+          "/CESCG99/DHanuska/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Information Systems and VRML Worlds",
+        "url": "https://old.cescg.org/CESCG99/DHanuska/"
+      },
+      {
+        "category": "general",
+        "content": "The more we learn about astronomy, the less it seems that earth is special. It&#39;s a small part of the universe, and each human is a small part of the earth. We are all spinning thr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "triptico.com",
+          "/links/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Links",
+        "url": "https://triptico.com/links/"
+      },
+      {
+        "category": "general",
+        "content": "signals, fossils, or astronomy. But contrary to common expectations, evidence of extraterrestrials is likely bad (though valuable) news. The easier it was for life to evolve to ou",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mason.gmu.edu",
+          "/~rhanson/greatfilter.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Great Filter",
+        "url": "https://mason.gmu.edu/~rhanson/greatfilter.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0153",
+  "query_text": "what is version control in astronomy",
+  "requested_at": "2026-09-03T01:44:27.452823Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

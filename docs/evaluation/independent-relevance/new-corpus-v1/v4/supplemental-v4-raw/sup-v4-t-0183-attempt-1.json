@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 339.0932719994453,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes version control in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "artificial thought. The chemistry and electricity of the human brain can be manipulated by satellite and even suicide can be induced.   Through ferocious anti-humanitarian me",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/esp_sociopol_mindcon23.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Total Population Control",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/esp_sociopol_mindcon23.htm"
+      },
+      {
+        "category": "general",
+        "content": "of Science (Physics, Chemistry, Biology, etc.) GSS -- Geek of Social Science (Psychology, Sociology, etc.) GTW -- Geek of Technical Writing GO --- Geek of Other. Some types of gee",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.joereiss.net",
+          "/geek/geek.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Code of the Geeks v3.1 Generator",
+        "url": "http://www.joereiss.net/geek/geek.html"
+      },
+      {
+        "category": "general",
+        "content": "a PhD in inorganic chemistry - 1/2 of them are girls it seems. Back to VCL, some re-factoring to dung some mess out. Out to Louise&#39; for dinner, had a pleasant time but very tired,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2003/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2003/"
+      },
+      {
+        "category": "general",
+        "content": "understood laws of chemistry and physics) and the kinds of damage caused by current methods of freezing. It then considers whether methods of repairing the kinds of damage caused",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "sciences as physics and chemistry, there is little to no standardization in botany: there is no national or international group that sets plant names and there are no standards fo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.swcoloradowildflowers.com",
+          "/learning%20about%20plants.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Learning about plants",
+        "url": "https://www.swcoloradowildflowers.com/learning%20about%20plants.htm"
+      },
+      {
+        "category": "general",
+        "content": "who&#39;ve taken physics or chemistry in high school. Although looking at problems through the lens of information can provide new insights, you will find no radical new science in th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Information Philosopher - dedicated to the new information philosophy",
+        "url": "https://www.informationphilosopher.com/"
+      },
+      {
+        "category": "general",
+        "content": "and the personal chemistry of the band&#39;s always prevented an extra person joining, especially a drummers, who is a breed monstrous and moronic generally. Also in Leeds it would ha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.vamp.org",
+          "/zines/egozine-3.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Prayers to a Broken Stone Issue 3",
+        "url": "https://www.vamp.org/zines/egozine-3.html"
+      },
+      {
+        "category": "general",
+        "content": "knew something about chemistry, quickly realised that Elizabeth&#39;s concept, while appealing to the uninformed, was science fiction, not science, and no amount of arm-waving about n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/archives/Monthly/2018/2018-07.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason: July 2018 Archives",
+        "url": "https://www.fourmilab.ch/fourmilog/archives/Monthly/2018/2018-07.html"
+      },
+      {
+        "category": "general",
+        "content": "issues of physics and chemistry, and then someone comes into their meeting and challenges them to prove that the earth revolves around the sun. At first, they might be unable to b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "evans-legal.com",
+          "/dan/tpfaq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Tax Protester FAQ",
+        "url": "http://evans-legal.com/dan/tpfaq.html"
+      },
+      {
+        "category": "general",
+        "content": "than on the panel...the chemistry and the sense of community work better when there&#39;s a crowd in the room. If anything, we&#39;ve grown far too isolated in our genres-within-genres, o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cherryh.com",
+          "/www/panel_room.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C.J. Cherryh - The Panel Room",
+        "url": "https://www.cherryh.com/www/panel_room.htm"
+      },
+      {
+        "category": "general",
+        "content": "physics and organic chemistry, Hume would be astonished and perplexed by the progress of later science. His epistemology makes no provision for it, a fact that is rarely noted in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/miracles.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "On Miracles",
+        "url": "https://friesian.com/miracles.htm"
+      },
+      {
+        "category": "general",
+        "content": "little about the chemistry and physics of brain cells and of the conduction of nervous impulses through them, and the growth of such recondite knowledge is likely to be slow. &amp;nbs",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "anthonyflood.com",
+          "/blanshardlimitsofnaturalism.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Brand Blanshard &#34;The Limits of Naturalism&#34;",
+        "url": "http://anthonyflood.com/blanshardlimitsofnaturalism.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0183",
+  "query_text": "what causes version control in chemistry",
+  "requested_at": "2026-09-03T01:43:01.574947Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

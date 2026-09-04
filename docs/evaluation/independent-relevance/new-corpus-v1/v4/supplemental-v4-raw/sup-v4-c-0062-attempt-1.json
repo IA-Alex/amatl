@@ -1,0 +1,162 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 387.3441859977902,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of process scheduling in digital security",
+    "results": [
+      {
+        "category": "general",
+        "content": "I was planning on also scheduling some light reading. But lately, I keep finding I&#39;m swamped with chores on those days. So I might have to switch some days around. I&#39;ve also been",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lakesnet.nekoweb.org",
+          "/blog-2025.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lakes&#39; Blog",
+        "url": "https://lakesnet.nekoweb.org/blog-2025.html"
+      },
+      {
+        "category": "general",
+        "content": "management. Process scheduling. Inter-Process Communication. On the other side, Process9 is a userland application that implements these services: Communication with the ARM11, ca",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/nintendo-3ds/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nintendo 3DS Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/nintendo-3ds/"
+      },
+      {
+        "category": "general",
+        "content": "[JVDOR16] Scheduling Of Defensive Security Actions In Information Processing Systems . Ari Juels, Marten Erik van Dijk, Alina M. Oprea, and Ronald L. Rivest. U.S. Patent 9,471,777",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.csail.mit.edu",
+          "/rivest/pubs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ronald L. Rivest: Publications and Talks",
+        "url": "https://people.csail.mit.edu/rivest/pubs.html"
+      },
+      {
+        "category": "general",
+        "content": "electronic mail, scheduling, and SQL database access. PPP Point to point Protocol facilitates Internet connections over serial lines, including modem connections. PPP software req",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lisans.cozum.info.tr",
+          "/networking/7KATMANNetworkProtocolsandStandards.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Network Protocols and Standards",
+        "url": "https://lisans.cozum.info.tr/networking/7KATMANNetworkProtocolsandStandards.htm"
+      },
+      {
+        "category": "general",
+        "content": "independent calendar scheduling, the workaround hits a hard wall that no amount of filter tweaking can fix. Use the free alias workaround if:  One trusted person needs a prof",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.helloari.com",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ari Salomon: WordPress Expert",
+        "url": "https://www.helloari.com/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0062",
+  "query_text": "tell me about the function of process scheduling in digital security",
+  "requested_at": "2026-09-03T01:43:58.219629Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

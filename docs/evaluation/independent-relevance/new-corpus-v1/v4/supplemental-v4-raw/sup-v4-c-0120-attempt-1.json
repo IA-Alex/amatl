@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 329.617411000072,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind cloud formation in civil engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "politicians. Weather engineering, freezing time, precursor robot wars, the nature of mind, artificial life, mind conversion, EM disease propagation - all are explained in this tou",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "of the US computer engineering : Donald Knuth : TAoCP and its Influence of Computer Science : Richard Stallman : Linus Torvalds   : Larry Wall  : John K. Ousterhout : CT",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "softpanorama.org",
+          "/Skeptics/Political_skeptic/Fighting_russophobia/multipolarity.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Russia fight for multipolarity",
+        "url": "https://softpanorama.org/Skeptics/Political_skeptic/Fighting_russophobia/multipolarity.shtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0120",
+  "query_text": "describe the principle behind cloud formation in civil engineering",
+  "requested_at": "2026-09-03T01:44:11.741116Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

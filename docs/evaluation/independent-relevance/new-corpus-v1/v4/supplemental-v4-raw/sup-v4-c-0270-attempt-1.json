@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 376.63220400281716,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of cloud formation in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "Palmer Science and technology reporter, BBC News The team has published its work so other scientists can determine if the approach contains any mistakes. If it does not, one of th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "the highest priority of technology&#39; is like saying that &#39;Throwing out the vacuum cleaner should be the highest priority of home economics&#39;.&#34; &#34;The purest ideology is &#39;Fuck you, Dad",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/a-frogs-collection-of-quotes",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Frog&#39;s Collection of Quotes — Chadnet",
+        "url": "https://wiki.chadnet.org/a-frogs-collection-of-quotes"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0270",
+  "query_text": "tell me about the function of cloud formation in music technology",
+  "requested_at": "2026-09-03T01:42:11.738961Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

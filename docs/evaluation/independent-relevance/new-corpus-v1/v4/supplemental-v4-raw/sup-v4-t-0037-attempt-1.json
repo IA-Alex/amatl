@@ -1,0 +1,243 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 274.760492000496,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is gear trains in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "Mar 15 Proper reverse engineering of 1802-based Motronic - Part II I&#39;ve now analyzed all of the code from the 027 ROM, though the meaning of all values is not yet understood. It s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.hyakushiki.net",
+          "/anachro.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Anachro-mputing blog",
+        "url": "http://www.hyakushiki.net/anachro.htm"
+      },
+      {
+        "category": "general",
+        "content": "SEMESTER - V - Sofware Engineering [ESC501] - Compiler Design [PCC-CS501] - Operating Systems [PCC-CS502] - Obj. Oriented Programming [PCC-CS503] - Intro. to Industrial Management",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "hdmtp.github.io",
+          "/blog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "hdmtp&#39;s archive (blog)",
+        "url": "https://hdmtp.github.io/blog.html"
+      },
+      {
+        "category": "general",
+        "content": "piece of mechanical engineering. Although Paul did not initially realise its full significance, it was the spark that set the ball rolling for the Julius Tote&#39;s engineering recogn",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tote-history-atl.net.au",
+          "/george_julius_genealogy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "George Julius Genealogy",
+        "url": "http://tote-history-atl.net.au/george_julius_genealogy.htm"
+      },
+      {
+        "category": "general",
+        "content": "QUOTES SCIENCE-ENGINEERING SHOPPING (general) SPORTS STOCKS-investment TRAVEL UNIVERSITIES WORLD-IMPROVEMENT YOUTUBE-VIDS ... or simply scroll down this page to go to MENUS and Ex",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "subdude-site.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Home page of Blaze the Maintainer (Son of a Series of Dudes, thus a SubDude)",
+        "url": "http://subdude-site.com/"
+      },
+      {
+        "category": "general",
+        "content": "piece of software engineering: which sounds like it should be software - but is really about people - and more importantly - them working together collaboratively in a constructiv",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2010/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2010/"
+      },
+      {
+        "category": "general",
+        "content": "Comments Oct 3 Web engineering for mobile devices Sep 29 London Sep 27 RIML Sep 26 There can be only one Sep 26 My first grey hair Sep 21 Debian Master Class near Exeter Sep 19 Bu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "natalian.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kai Hendry&#39;s blog",
+        "url": "https://natalian.org/"
+      },
+      {
+        "category": "general",
+        "content": "Gettiers in software engineering DocWriter: the typewriter that sends its keystrokes in real time to a Google Doc Most book clubs are doing it wrong Speed matters * You&#39;re probabl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "jsomers.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "James Somers",
+        "url": "http://jsomers.net/"
+      },
+      {
+        "category": "general",
+        "content": "of hack-and-try genetic engineering (which is all we&#39;re capable of right now) can actually produce results in months rather than decades. Furthermore, bacteria have only a few mov",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.duntemann.com",
+          "/may2002.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jeff Duntemann&#39;s ContraPositive Diary",
+        "url": "http://www.duntemann.com/may2002.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0037",
+  "query_text": "what is gear trains in software engineering",
+  "requested_at": "2026-09-03T01:44:42.449568Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

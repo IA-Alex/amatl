@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 317.28350200137356,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes access tokens in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Imperialis [2h] [hn] Climate change is strengthening El Niño, coral records suggest [4h] [hn] Show HN: FnScribe – Open-source, offline dictation for macOS [4h] [hn] A Looming Rare",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "brutalist.report",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Brutalist Report",
+        "url": "https://brutalist.report/"
+      },
+      {
+        "category": "general",
+        "content": "in Ethiopia suggests climate change spurred the transition from tree dweller to upright walker. Below: Teeth and jaw of Australopithecus deyiremeda from 3.3-3.5-million-year-old d",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/homo.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sexual Paradox: Human Evolution",
+        "url": "http://www.dhushara.com/paradoxhtm/homo.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0215",
+  "query_text": "what causes access tokens in climate science",
+  "requested_at": "2026-09-03T01:44:26.615705Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

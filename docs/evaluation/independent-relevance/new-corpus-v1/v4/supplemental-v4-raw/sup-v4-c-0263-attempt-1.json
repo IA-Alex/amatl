@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 128.67938599811168,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of load bearing walls in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "and His Obsolete Technology June 20, 2016 Handling CD Money June 19, 2016 Effective Marginal Tax Rates June 16, 2016 Reading about guns June 15, 2016 Food Poll Summary June 14, 20",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jefftk.com",
+          "/p/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog Posts",
+        "url": "https://www.jefftk.com/p/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0263",
+  "query_text": "give an overview of load bearing walls in music technology",
+  "requested_at": "2026-09-03T01:41:59.000711Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

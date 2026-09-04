@@ -1,0 +1,162 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 290.75854500115383,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does cloud formation in data management operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "consideration and management of these factors would be essential should these substances become more widely used.&#34; What would be the ideal characteristics of a perfect empathogeni",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.empathogens.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Empathogens as conceived by ChatGPT",
+        "url": "https://www.empathogens.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "writes first email management program (RD) to list, selectively read, file, forward, and respond to messages (July) International Conference on Computer Communications (ICCC) at t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zakon.org",
+          "/robert/internet/timeline/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hobbes&#39; Internet Timeline - the definitive ARPAnet &amp; Internet history",
+        "url": "https://www.zakon.org/robert/internet/timeline/"
+      },
+      {
+        "category": "general",
+        "content": "that&#39;s poor vagina management. If you knock up a woman that aborts a kid you want, doesn&#39;t abort a kid you don&#39;t want, or puts you on child support, that&#39;s poor penis management.&#34;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/a-frogs-collection-of-quotes",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Frog&#39;s Collection of Quotes — Chadnet",
+        "url": "https://wiki.chadnet.org/a-frogs-collection-of-quotes"
+      },
+      {
+        "category": "general",
+        "content": "old PhD is arguing to management that research in nano machines is ridiculous and a waste of money. He has seen only recently some of Drexler&#39;s designs on the web and also read th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lachlan.bluehaze.com.au",
+          "/nanoshite/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NanoShite: A nano-apostate webpage dedicated to the slimeycanceroushype flim-flam-barnum-and-bailey-charlatan delusional bollocks nanosleaze /",
+        "url": "http://lachlan.bluehaze.com.au/nanoshite/"
+      },
+      {
+        "category": "general",
+        "content": "to ensure the effective management of collection assets. However, he must rely on a downward flow of intelligence and combat information, such as unmanned aerial vehicle and joint",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.nuui.com",
+          "/Sections/Military/Field_Manuals/FM3-90/ch11.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "FM3-90 Chapter 11 The Retrograde",
+        "url": "http://www.nuui.com/Sections/Military/Field_Manuals/FM3-90/ch11.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0060",
+  "query_text": "how does cloud formation in data management operate",
+  "requested_at": "2026-09-03T01:44:20.835257Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

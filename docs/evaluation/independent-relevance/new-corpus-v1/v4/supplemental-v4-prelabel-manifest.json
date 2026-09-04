@@ -1,0 +1,25 @@
+{
+  "attestation_sha256": "ea2ada51b84b1be6d9cb2aaff963cb040f83d03e2cd44b28c9aa0856c0fc09d3",
+  "control_rows": 107,
+  "corpus_id": "independent-relevance-supplemental-v4-final-20260902",
+  "created_at": "2026-09-03T01:44:58.479150Z",
+  "design_sha256": "66e7b5808607a452ab898f882c8dd457830b574bac33d631ec54ef3e476c6817",
+  "freeze_status": "INCOMPLETE",
+  "label_fields": [
+    "Relevant",
+    "PossiblyRelevant",
+    "NotRelevant",
+    "Unknown"
+  ],
+  "labels_present": false,
+  "manifest_sha256": "6ef0c6aa6bd06df68d05ba304f2d892519b4b4cfddcb9f01a10bdfdaa1ddc52f",
+  "network_requests": 600,
+  "prelabel_corpus_path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-final-prelabel-corpus.json",
+  "prelabel_corpus_sha256": "e234e28a9fcb21fd27ac7b3c5b2791a6392c02de3976c534d9b7969f000a0303",
+  "rows": 312,
+  "schema": "amatl.relevance.supplemental-v4-prelabel-manifest.v1",
+  "source_experiment": "independent-relevance-supplemental-v4",
+  "treatment_rows": 205,
+  "universe_sha256": "c6729fad0f79d0cdbf94e64884e083ab51c59a8cc935fb30efe33a7f7de19bb7",
+  "version": 1
+}

@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 208.96832500147866,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of routing tables in transportation",
+    "results": [
+      {
+        "category": "general",
+        "content": "of Service Company&#39;s transportation platoon back the route of advance to pick up more supplies. Several days later the trucks returned without the full load. On the way back to jo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.5ad.org",
+          "/units/81st.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "History of the 81st Tank Battalion",
+        "url": "http://www.5ad.org/units/81st.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0286",
+  "query_text": "tell me about the function of routing tables in transportation",
+  "requested_at": "2026-09-03T01:42:02.950232Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 425.5520279984921,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind version control in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "a model for vocabulary management and the creation of multi-dimensional knowledge structures&#34;. The New Review of Hypermedia and Multimedia , 7(1), 67-102. Broughton, V. (2007). &#34;M",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/facet_analysis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Facet analysis (IEKO)",
+        "url": "https://www.isko.org/cyclo/facet_analysis.htm"
+      },
+      {
+        "category": "general",
+        "content": "standard standards management send sent product products certain agree agreed committee committees letter letters ground, groundsheet grounds evidence rathe rather speak spoke, sp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "CLEAR     3.2 Graph Management         3.2.1 CREATE         3.2.2 DROP         3.2.3 COPY         3.2.4 MOVE         3.2.5 ADD 4 SPARQL Update Formal Model     4.1 General Definit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/sparql11-update/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SPARQL 1.1 Update",
+        "url": "https://www.w3.org/TR/sparql11-update/"
+      },
+      {
+        "category": "general",
+        "content": "site uses a content-management system that assigns a filename only when source code is uploaded or saved, you will not know the filename to which to append the anchor link until t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "joeclark.org",
+          "/book/sashay/serialization/Chapter06.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "06. The image problem",
+        "url": "https://joeclark.org/book/sashay/serialization/Chapter06.html"
+      },
+      {
+        "category": "general",
+        "content": "dynamic allocation and management of a shared state, synchronization, and typically type-erasure of work and continuation. Many of these costs are inherent in the nature of “futur",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.open-std.org",
+          "/jtc1/sc22/wg21/docs/papers/2020/p0443r14.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Unified Executors Proposal for C&#43;&#43; | P0443R14",
+        "url": "https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/p0443r14.html"
+      },
+      {
+        "category": "general",
+        "content": "It addresses anger management and amygdala hijacking (15 seconds of rage, seeing red, can cause damage to your life for days, weeks, months or years). In heated situations, people",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.loveeducation101.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Love Education 101.com",
+        "url": "http://www.loveeducation101.com/"
+      },
+      {
+        "category": "general",
+        "content": "intelligence, and data management, including Conceptual Graphs, logic-based knowledge representation, frames, and relational databases. Some possible sources of background informa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/2001/09/rdfprimer/rdf-primer-2003LCrevised15July.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RDF Primer",
+        "url": "https://www.w3.org/2001/09/rdfprimer/rdf-primer-2003LCrevised15July.html"
+      },
+      {
+        "category": "general",
+        "content": "(re: Robust software management.) Epistasis and the Structure of Fitness Landscapes... by François Blanquart and Thomas Bataillon, doi:10.1534/genetics.115.182691, Genetics ,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.panspermia.org",
+          "/neodarw.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Neo-Darwinism: The Current Paradigm. by Brig Klyce",
+        "url": "https://www.panspermia.org/neodarw.htm"
+      },
+      {
+        "category": "general",
+        "content": "standard [standards] management send [sent] product [products] certain agree [agreed] committee [committees] letter [letters] ground, groundsheet [grounds] evidence rathe [rather]",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq-bnc.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.conlang.info/wordfreq-bnc.txt",
+        "url": "http://www.conlang.info/wordfreq-bnc.txt"
+      },
+      {
+        "category": "general",
+        "content": "CLEAR     3.2 Graph Management         3.2.1 CREATE         3.2.2 DROP         3.2.3 COPY         3.2.4 MOVE         3.2.5 ADD 4 SPARQL Update Formal Model     4.1 General Definit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/2013/REC-sparql11-update-20130321/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SPARQL 1.1 Update",
+        "url": "https://www.w3.org/TR/2013/REC-sparql11-update-20130321/"
+      },
+      {
+        "category": "general",
+        "content": "a qualified assessment: management is breathtakingly incompetent. In any given day, the dumpsters that were filled with unused, spoiled, or thrown out food would have fed all the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.meditopia.org",
+          "/chap3-2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Meditopia -- Chapter 3, Section 2",
+        "url": "https://www.meditopia.org/chap3-2.htm"
+      },
+      {
+        "category": "general",
+        "content": "The Cult of Scientific Management by John Taylor Gatto Chapter 9 of The Underground History of American Public Education On the night of June 9, 1834, a group of prominent men &amp;qu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.lewrockwell.com",
+          "/gatto/gatto-uhae-9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cult of Scientific Management by John Taylor Gatto",
+        "url": "https://archive.lewrockwell.com/gatto/gatto-uhae-9.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0048",
+  "query_text": "describe the principle behind version control in data management",
+  "requested_at": "2026-09-03T01:43:28.459909Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

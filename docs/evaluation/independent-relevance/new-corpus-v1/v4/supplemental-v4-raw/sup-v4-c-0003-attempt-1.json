@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 303.3009100035997,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of version control in computer networks",
+    "results": [
+      {
+        "category": "general",
+        "content": "We begin our version overview with version 6, because this version seems to be very good and mature for the first time through its new user interface. The most important picture p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scandig.eu",
+          "/en/PhotoshopElementsVersionen.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Adobe Photoshop Elements - test review, comparison of the versions concerning features, function scope, user interface",
+        "url": "https://www.scandig.eu/en/PhotoshopElementsVersionen.html"
+      },
+      {
+        "category": "general",
+        "content": "of such systems 123 . 3 Overview of the system 3.1 Threshold encryption and quorums Ballot sheets are encrypted using onion routing in which each layer is encrypted using a group",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kirill.korins.ky",
+          "/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Electt: Running Auditable and Verifiable Elections in Untrusted Environments - Kirill&#39;s journal",
+        "url": "https://kirill.korins.ky/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/"
+      },
+      {
+        "category": "general",
+        "content": "AVR assembler overview AVR assembler examples AVR NeoPixel driver using assembler ARM assembler overview ARM assembler instructions ARM assembler examples ARM assembler Thumb-2 ex",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ulisp.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "uLisp",
+        "url": "http://www.ulisp.com/"
+      },
+      {
+        "category": "general",
+        "content": "Thought *** An overview of linguistic relativity, gavagai semantics, classical conditioning, selective attention, and examples where language influences thought and vice versa. De",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/directory",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zero Contradictions - Directory",
+        "url": "https://zerocontradictions.net/directory"
+      },
+      {
+        "category": "general",
+        "content": "it a good conceptual overview but insufficient for understanding the full technical and financial realities of implementation. Debunking Karpathy&#39;s LLM Wiki: The Truth Behind",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "code . They give a good overview of how a compliant Pigeon... Read more… Published 30 / 4 / 2020 SSB Log Entry 525 ONLY 90s KIDS WILL RECOGNIZE THIS ONE: I made the switch to a de",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tilde.town",
+          "/~netscape_navigator/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Netscape Blog",
+        "url": "http://tilde.town/~netscape_navigator/"
+      },
+      {
+        "category": "general",
+        "content": "section provides an overview of solar energy research. Click here for the Main Power Technology Menu Direct Solar-Electric Generation Improved Efficiency for Existing Power Plants",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIDIK.com The original and official DIDIK site. Cutting edge and sometimes controversial thoughts, designs, proposals and projects conceiv",
+        "url": "http://www.didik.com/"
+      },
+      {
+        "category": "general",
+        "content": "hypertext system. Overview Many of the discussions of the future at CERN and the LHC era end with the question - ÒYes, but how will we ever keep track of such a large proje",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/History/1989/proposal-msw.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Information Management: A Proposal",
+        "url": "https://www.w3.org/History/1989/proposal-msw.html"
+      },
+      {
+        "category": "general",
+        "content": "the W3C Patent Policy Overview . Table of Contents Abstract Status of This Document 1. Overview 2. Licensing Goals for W3C Recommendations 3. Licensing Obligations of Working Grou",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/Consortium/Patent-Policy-20040205/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "W3C Patent Policy",
+        "url": "https://www.w3.org/Consortium/Patent-Policy-20040205/"
+      },
+      {
+        "category": "general",
+        "content": "About us Deutsch Overview Details What&#39;s new? Screenshots Download Notes TinkerTool Known Issues There are currently no known issues for this product. Release Notes There are curr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bresink.com",
+          "/osx/0TinkerTool/issues.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "TinkerTool: Notes",
+        "url": "http://www.bresink.com/osx/0TinkerTool/issues.html"
+      },
+      {
+        "category": "general",
+        "content": "PROMELA. A high level overview with nice pictures can be found here . Efficient Networks : (a wholly owned subsidiary of Siemens) has sold more than 8 million licenses worldwide o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stroustrup.com",
+          "/applications.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C&#43;&#43; Applications",
+        "url": "https://www.stroustrup.com/applications.html"
+      },
+      {
+        "category": "general",
+        "content": "True Do&#39;s &#34;Fedora - Overview&#34; Plenty of huge companies (Intel, Microsoft, Google, Samsung, more) and smaller companies/foundations (Mozilla, Apache, more) contribute code and/or m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/Linux.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Linux",
+        "url": "https://www.billdietrich.me/Linux.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0003",
+  "query_text": "give an overview of version control in computer networks",
+  "requested_at": "2026-09-03T01:43:05.495421Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

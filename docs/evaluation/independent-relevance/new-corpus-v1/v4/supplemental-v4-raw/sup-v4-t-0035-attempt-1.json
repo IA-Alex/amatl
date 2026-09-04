@@ -1,0 +1,243 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 298.3445709978696,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes access tokens in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "high level of software engineering robustness. XSLT 3.0 is designed to be used in conjunction with XPath 3.0, which is defined in [XPath 3.0] . XSLT shares the same data model as",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/2015/CR-xslt-30-20151119/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "XSL Transformations (XSLT) Version 3.0",
+        "url": "https://www.w3.org/TR/2015/CR-xslt-30-20151119/"
+      },
+      {
+        "category": "general",
+        "content": "the most relevant engineering practices, promoting those that enable a better user experience and warning against those that are considered harmful. Status of This Document This s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/mwabp/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mobile Web Application Best Practices",
+        "url": "https://www.w3.org/TR/mwabp/"
+      },
+      {
+        "category": "general",
+        "content": "high level of software engineering robustness. XSLT 3.0 is designed to be used in conjunction with XPath 3.0, which is defined in [XPath 3.0] . XSLT shares the same data model as",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/XML/Group/qtspecs/specifications/xslt-30/html/Overview.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "XSL Transformations (XSLT) Version 3.0",
+        "url": "https://www.w3.org/XML/Group/qtspecs/specifications/xslt-30/html/Overview.html"
+      },
+      {
+        "category": "general",
+        "content": "terms of performance or engineering effort, and the relative expected usage of a feature is rare, site permissions can be used to prevent the usage of a feature for cross-site tra",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "2019.www.torproject.org",
+          "/projects/torbrowser/design/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Design and Implementation of the Tor Browser [DRAFT]",
+        "url": "https://2019.www.torproject.org/projects/torbrowser/design/"
+      },
+      {
+        "category": "general",
+        "content": "former hardware engineering chief John Ternus officially became CEO of the company today, with the change now reflected on Apple’s leadership page . […] Tim Cook is no",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mjtsai.com",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Tsai - Blog",
+        "url": "https://mjtsai.com/blog/"
+      },
+      {
+        "category": "general",
+        "content": "mobile workstation for engineering students — and it&#39;s just got a $3030 discount [20h] Five years after its announcement Grand Theft Auto: San Andreas VR has finally come to t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "brutalist.report",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Brutalist Report",
+        "url": "https://brutalist.report/"
+      },
+      {
+        "category": "general",
+        "content": "19 ]. A large amount of engineering goes into making a practical programming environment, and in Scheme 48 security has been a concern in nearly every component. Major facilities",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mumble.net",
+          "/~jar/pubs/secureos/secureos.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Emergent Technologies Inc. -- Security Kernel&lt;/TITLE",
+        "url": "http://mumble.net/~jar/pubs/secureos/secureos.html"
+      },
+      {
+        "category": "general",
+        "content": "before global paradise-engineering unfolds, chemical mood-uplifters will be essential too. 1.1 The Biological Program. Grand meta-narratives currently aren&#39;t very fashionable. His",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "1. The Hedonistic Imperative",
+        "url": "https://www.hedweb.com/hedethic/hedon1.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0035",
+  "query_text": "what causes access tokens in software engineering",
+  "requested_at": "2026-09-03T01:43:31.460702Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

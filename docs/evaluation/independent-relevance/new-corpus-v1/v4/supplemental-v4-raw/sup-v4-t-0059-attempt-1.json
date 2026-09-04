@@ -1,0 +1,270 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 316.4886180020403,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes wave interference in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "incorrect frequencies - interference caused to other broadcasters on some channels - interference on the same or adjacent frequencies from other stations broadcasting to the same",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.worldofradio.com",
+          "/dxld3134.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.worldofradio.com/dxld3134.txt",
+        "url": "http://www.worldofradio.com/dxld3134.txt"
+      },
+      {
+        "category": "general",
+        "content": "to 100kHz or more) interference into audio systems, and these Boss adaptors have an elaborate double toroid filter in the output cable in an effort to reduce this. Also pictured i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.firstpr.com.au",
+          "/rwi/dfish/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Devil Fish mods for the TB-303",
+        "url": "https://www.firstpr.com.au/rwi/dfish/"
+      },
+      {
+        "category": "general",
+        "content": "Monroe Doctrine: reject interference in our hemisphere. (Sep 2018) European Union is a foe in trade, &amp; in lack of NATO payments. (Jul 2018) I said it was obsolete, but NATO is no",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ontheissues.org",
+          "/Donald_Trump.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Donald Trump on the Issues",
+        "url": "https://www.ontheissues.org/Donald_Trump.htm"
+      },
+      {
+        "category": "general",
+        "content": "Red (or other color) Interference resulting in jiggling or wiggling Interference from electrical wiring Interference from power lines Interference from cross-connected buildings I",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.repairfaq.org",
+          "/sam/monfaq.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notes on the Troubleshooting and Repair of Computer and Video Monitors",
+        "url": "http://www.repairfaq.org/sam/monfaq.htm"
+      },
+      {
+        "category": "general",
+        "content": "the disasters following interference with the normal development of industries and trade which cause supersaturation. About 1800, her industries were completely destro... Industri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "chestofbooks.com",
+          "/history/anthropology/Race-Expansion/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Expansion of Races | by Charles Edward Woodruff",
+        "url": "https://chestofbooks.com/history/anthropology/Race-Expansion/"
+      },
+      {
+        "category": "general",
+        "content": "fading caused by interference between signals which have traveled from the transmitter to the receiver by two (or more) different ionospheric paths. Since the sun&#39;s radia-tion cre",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "Multi-path interference   Must-Carry   Native format    NTSC  (National Television System Committee technical standard)    OAR &amp;nbs",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "hdtvprimer.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HDTV Primer",
+        "url": "http://hdtvprimer.com/"
+      },
+      {
+        "category": "general",
+        "content": "laws operate without interference. Naturalism is the thesis that reality exists and operates without supernatural intervention and according to lawlike regularities that can be un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "humanknowledge.net",
+          "/Thoughts.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Human Knowledge: Foundations and Limits",
+        "url": "http://humanknowledge.net/Thoughts.html"
+      },
+      {
+        "category": "general",
+        "content": "applies unless quantum interference occurs. If the bridge breaks down any photons or phonons traveling along the trajectory will merge with the once blackholephoton releasing what",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.omniscientcomputers.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AllA’s Grand Unified Theory",
+        "url": "http://www.omniscientcomputers.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0059",
+  "query_text": "what causes wave interference in data management",
+  "requested_at": "2026-09-03T01:42:15.509607Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

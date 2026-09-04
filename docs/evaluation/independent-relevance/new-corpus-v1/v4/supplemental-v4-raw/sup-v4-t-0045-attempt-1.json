@@ -1,0 +1,297 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 298.53546399681363,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is cloud formation in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "majority of software engineering is the reverse. For example, in object oriented design the aim is to organise the program around &#34;classes&#34;, which are coherent groupings of behavi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "calpaterson.com",
+          "/bank-python.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "An oral history of Bank Python",
+        "url": "https://calpaterson.com/bank-python.html"
+      },
+      {
+        "category": "general",
+        "content": "3 Security 3 Software Engineering 9 Spain 1 Spanish 1 Standards 4 Stocks 2 Swedish 2 Taxonomy 1 Usa 2 Web 1 Weltanschauung 5 Wip 4 Zig 2 Русская Поэзия 6 About Jan 2024 - I’",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alexalejandre.com",
+          "/about/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "About",
+        "url": "https://alexalejandre.com/about/"
+      },
+      {
+        "category": "general",
+        "content": "Genetic Engineering Network http://www.geneticsaction.org.uk/ Gulf War Veterans of the USA http://www.gulfwarvets.com/ Mid Atlantic Anarcho Infoshop http://www.infoshop.org/ Consp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "in science and engineering of &#34;deliberate introduction of chance&#34;, for instance randomized algorithms , appear later. * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stat.berkeley.edu",
+          "/~aldous/Real_World/100_list.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Annotated list of contexts where we perceive chance",
+        "url": "https://www.stat.berkeley.edu/~aldous/Real_World/100_list.html"
+      },
+      {
+        "category": "general",
+        "content": "kind of software engineering realization, but certainly I’ve realized most of the hard parts of programming isn’t learning how to use a particular language, it’s learning how to –",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "changelog.com",
+          "/podcast/455",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Building software for yourself with Linus Lee (Changelog Interviews #455)",
+        "url": "https://changelog.com/podcast/455"
+      },
+      {
+        "category": "general",
+        "content": "politicians. Weather engineering, freezing time, precursor robot wars, the nature of mind, artificial life, mind conversion, EM disease propagation - all are explained in this tou",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "animals. Some mini «engineering firms» (10 – 20 people) attempted to do something, with survival success, low or none technological input, and basically wasting their time. Got tw",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "asynchronousexchange.com",
+          "/documents/the-saint-petersburg-hive",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://asynchronousexchange.com/documents/the-saint-petersburg-hive",
+        "url": "http://asynchronousexchange.com/documents/the-saint-petersburg-hive"
+      },
+      {
+        "category": "general",
+        "content": "London in a mechanical engineering firm which produced the models required by the Patent Office in those days, before issuing a patent. He told me they had many people come to him",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lachlan.bluehaze.com.au",
+          "/nanoshite/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NanoShite: A nano-apostate webpage dedicated to the slimeycanceroushype flim-flam-barnum-and-bailey-charlatan delusional bollocks nanosleaze /",
+        "url": "http://lachlan.bluehaze.com.au/nanoshite/"
+      },
+      {
+        "category": "general",
+        "content": "surface deformation, engineering surveys, boreholes made at the sites, and independent seismic data. All of which gives the researchers confidence that, despite all the approximat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "soylentnews.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SoylentNews: SoylentNews is people",
+        "url": "https://soylentnews.org/"
+      },
+      {
+        "category": "general",
+        "content": "of the US computer engineering : Donald Knuth : TAoCP and its Influence of Computer Science : Richard Stallman : Linus Torvalds   : Larry Wall  : John K. Ousterhout : CT",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "softpanorama.org",
+          "/Skeptics/Political_skeptic/Fighting_russophobia/multipolarity.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Russia fight for multipolarity",
+        "url": "https://softpanorama.org/Skeptics/Political_skeptic/Fighting_russophobia/multipolarity.shtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0045",
+  "query_text": "what is cloud formation in software engineering",
+  "requested_at": "2026-09-03T01:42:35.888923Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

@@ -1,0 +1,135 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 284.7880690023885,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does wave interference in climate science operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "means of persuasion and interference, stunt the emergence of young democracies in the name of democracy.&#34; John le Carre&#39;   &#34;The greatest purveyor of violence on ear",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "barbariansinsuits.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BARBARIANS IN SUITS - GLOBAL ELITE, RULING ELITE, DYNASTIC ELITE, GLOBAL OLIGARCHY, GLOBALISM, FINANCIAL OLIGARCHY, PLUTOCRACY, KLEPTOCRACY, P",
+        "url": "https://barbariansinsuits.net/"
+      },
+      {
+        "category": "general",
+        "content": "forbade any interference - political or military - by one state in the affairs of any other state. (3) Chile, September 1970: the CIA, with the collaboration of International Tele",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/nato.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nazi influence on NATO - Defensive Treaty? - North Atlantic Treaty Organisation - Why we should say no to NATO",
+        "url": "http://www.bilderberg.org/nato.htm"
+      },
+      {
+        "category": "general",
+        "content": "go forward without his interference. This, said Squealer, was something called tactics. He repeated a number of times, &#34;Tactics, comrades, tactics!&#34; skipping round and whisking hi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "gutenberg.net.au",
+          "/ebooks01/0100011h.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Animal Farm",
+        "url": "http://gutenberg.net.au/ebooks01/0100011h.html"
+      },
+      {
+        "category": "general",
+        "content": "fading caused by interference between signals which have traveled from the transmitter to the receiver by two (or more) different ionospheric paths. Since the sun&#39;s radia-tion cre",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0224",
+  "query_text": "how does wave interference in climate science operate",
+  "requested_at": "2026-09-03T01:44:51.984617Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 122.40955399465747,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes load bearing walls in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "CHAPTER XXVII . Civil Engineering. Great Bridges , Pneumatic Caissons , Tunnels. The Beach Tunnel Shield. Suez Canal. Dredges. The Lidgerwood Cable Ways. Canal Locks. Artesian Wel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book389/book389.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Progress of Invention in the Nineteenth Century, by Edward W. Byrn.",
+        "url": "https://www.ajhw.co.uk/books/book389/book389.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0083",
+  "query_text": "what causes load bearing walls in electrical engineering",
+  "requested_at": "2026-09-03T01:42:02.740910Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

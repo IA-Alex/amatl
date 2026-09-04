@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 267.8085809966433,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does load bearing walls in astronomy work",
+    "results": [
+      {
+        "category": "general",
+        "content": "had been physics, astronomy, and ethics. 10:2 -- Plato, Repub. v 473. 10:3 -- Plato, Repub. vi, 488, 489. Page 11 common welfare of all good men. Thence followed bitter quarrels w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "faculty.georgetown.edu",
+          "/jod/boethius/boetrans.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Consolation of Philosophy",
+        "url": "https://faculty.georgetown.edu/jod/boethius/boetrans.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0158",
+  "query_text": "how does load bearing walls in astronomy work",
+  "requested_at": "2026-09-03T01:43:02.535492Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

@@ -1,0 +1,162 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 314.76707399997395,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does access tokens in agriculture work",
+    "results": [
+      {
+        "category": "general",
+        "content": "graph of employment in agriculture over time, which fell from 90% to 2% of the population, and argues that all jobs above that line are largely &#34;fake jobs&#34;. Service employment is",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "AI automated agriculture &#43; chip farming. &#43;3 @DigitalMetal - 2025-06-03 11:45:00 Completely true. I feel like I&#39;m at the 99.99999%, or at lest 95% Wish I could get to 100%, but the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/too_popular",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Linux, Bitcoin: When Tech Projects Become &#34;Too Popular...&#34; Don&#39;t forget the goal.",
+        "url": "https://lukesmith.neocities.org/vids/too_popular"
+      },
+      {
+        "category": "general",
+        "content": "with the birth of agriculture and large urban societies, the rise of patriarchy led to the dominance and control of female reproductive choice by often violent and sometimes homic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/fall.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sexual Paradox: The Fall",
+        "url": "http://www.dhushara.com/paradoxhtm/fall.htm"
+      },
+      {
+        "category": "general",
+        "content": "it must have a local agriculture. The local food committee would research what useful plants from around the world thrive in your local conditions, and investigate the development",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "thesimplerway.info",
+          "/THEALTSOCLong.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "TheAltSocLongNew.html",
+        "url": "http://thesimplerway.info/THEALTSOCLong.htm"
+      },
+      {
+        "category": "general",
+        "content": "mailing list for the Agriculture Community Group . Anyone may read or write to this list. View latest messages public-annotation [ Historical list - Inactive ] View latest message",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lists.w3.org",
+          "/Archives/Public/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "W3C Public mailing list archives",
+        "url": "https://lists.w3.org/Archives/Public/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0230",
+  "query_text": "how does access tokens in agriculture work",
+  "requested_at": "2026-09-03T01:42:14.332620Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

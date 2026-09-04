@@ -1,0 +1,135 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 266.0669629985932,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is cell membranes in transportation",
+    "results": [
+      {
+        "category": "general",
+        "content": "inability to use public transportation). Over 75% of people over 85 have 3−9 pathological conditions, and the cause of death for these people is frequently unknown. Agin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "benbest.com",
+          "/lifeext/aging.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "MECHANISMS OF AGING",
+        "url": "https://benbest.com/lifeext/aging.html"
+      },
+      {
+        "category": "general",
+        "content": "manufacturers and transportation companies while making value-added taxes more productive for governments than sales taxes. &#34;Nanotechnology&#39;s increasing relevance creates clear ma",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lachlan.bluehaze.com.au",
+          "/nanoshite/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NanoShite: A nano-apostate webpage dedicated to the slimeycanceroushype flim-flam-barnum-and-bailey-charlatan delusional bollocks nanosleaze /",
+        "url": "http://lachlan.bluehaze.com.au/nanoshite/"
+      },
+      {
+        "category": "general",
+        "content": "obtain alien weapons, transportation mechanisms, and advanced medical techniques. In 1450, without much warning, the aliens all leave: political situations on their home planets m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.lord-enki.net",
+          "/stories.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stories I Will Not Write",
+        "url": "https://www.lord-enki.net/stories.html"
+      },
+      {
+        "category": "general",
+        "content": "an animal to do the transportation. While other animals are included as pollinators, the majority of pollination is done by insects.[136] Because insects usually receive benefit f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scientificlib.com",
+          "/en/Biology/Animalia/Arthropoda/Insects/Insecta.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Insecta",
+        "url": "https://www.scientificlib.com/en/Biology/Animalia/Arthropoda/Insects/Insecta.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0297",
+  "query_text": "what is cell membranes in transportation",
+  "requested_at": "2026-09-03T01:42:59.030163Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

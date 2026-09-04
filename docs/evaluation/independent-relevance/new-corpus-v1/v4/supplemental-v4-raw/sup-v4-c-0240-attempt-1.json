@@ -1,0 +1,135 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 354.2792340012966,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind cloud formation in agriculture",
+    "results": [
+      {
+        "category": "general",
+        "content": "the State-administered agriculture systems, the Central Banking system, and the legal system, are all seen as less relevant by the theologically-trained archeologists. They do not",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "VFTonline.org",
+          "/xmaspiracy/5/Romans13/stars.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stars and Idolatry",
+        "url": "http://VFTonline.org/xmaspiracy/5/Romans13/stars.htm"
+      },
+      {
+        "category": "general",
+        "content": "against the theory that agriculture in Denmark was suddenly introduced by superior short-skulled conquerors. Drawing Claus Deleuran. Others explain the transition by saying that i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dandebat.dk",
+          "/eng-dan16.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "History of Denmark before Gorm the Old",
+        "url": "https://www.dandebat.dk/eng-dan16.htm"
+      },
+      {
+        "category": "general",
+        "content": "and those used in agriculture are by man endowed with life and power before which he bows in reverence. In India there is a festival lasting three days, observed in October by Hin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.globalgreyebooks.com",
+          "/online-ebooks/george-william-gilmore_animism_complete-text.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Animism by George William Gilmore - Read Online for free at Global Grey ebooks",
+        "url": "https://www.globalgreyebooks.com/online-ebooks/george-william-gilmore_animism_complete-text.html"
+      },
+      {
+        "category": "general",
+        "content": "to the introduction of agriculture a mere 10,000 years or so ago. That means we are still genetically programmed mainly for the former, since evolution takes a lot of time. As far",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stenudd.com",
+          "/myth/jungians_on_myth_and_religion/JordanBPeterson.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jordan B. Peterson - Jungians on myth and religion.",
+        "url": "https://www.stenudd.com/myth/jungians_on_myth_and_religion/JordanBPeterson.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0240",
+  "query_text": "describe the principle behind cloud formation in agriculture",
+  "requested_at": "2026-09-03T01:42:52.688543Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 330.0219750017277,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is version control in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "of a required class for engineering students to prepare them for the possibility that they would encounter punch cards in the wild. Most of us never did, beyond this one class. 01",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jackrusher.com",
+          "/strange-loop-2022/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stop Writing Dead Programs, Strange Loop 2022",
+        "url": "https://jackrusher.com/strange-loop-2022/"
+      },
+      {
+        "category": "general",
+        "content": "Processor Board Reverse Engineering 2026 AUG 10 in identicon After hacking on the Identicon 8080 board and getting it running some test programs, I wanted to reverse engineer the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "users.glitchwrks.com",
+          "/~glitch/updates.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Site News and Updates",
+        "url": "http://users.glitchwrks.com/~glitch/updates.html"
+      },
+      {
+        "category": "general",
+        "content": "GE --- Geek of Engineering GED -- Geek of Education GFA -- Geek of Fine Arts GG --- Geek of Government GH --- Geek of Humanities GIT -- Geek of Information Technology GJ --- Geek",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.joereiss.net",
+          "/geek/geek.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Code of the Geeks v3.1 Generator",
+        "url": "http://www.joereiss.net/geek/geek.html"
+      },
+      {
+        "category": "general",
+        "content": "flight engineer engineering farmer farmers significance rare via least somewhat museum phase terrible metal motion unfortunately severe factory wild strongly laugh laughed bloody",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "majority of software engineering is the reverse. For example, in object oriented design the aim is to organise the program around &#34;classes&#34;, which are coherent groupings of behavi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "calpaterson.com",
+          "/bank-python.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "An oral history of Bank Python",
+        "url": "https://calpaterson.com/bank-python.html"
+      },
+      {
+        "category": "general",
+        "content": "and professionals in engineering or mathematical sciences. AMP allows the user to edit and simplify numerous expressions or equations in a mathematical derivation quickly and accu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mizj.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "S.U.P.E.R. - The Largest 200LX Software Archive",
+        "url": "http://mizj.com/"
+      },
+      {
+        "category": "general",
+        "content": "for Internet Engineering Task Force Standard Protocols . XML/HTML security resources relevant to X3D scenes: Open Web Application Security Project (OWASP) resources include a list",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.web3d.org",
+          "/x3d/content/examples/X3dResources.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "X3D Resources",
+        "url": "https://www.web3d.org/x3d/content/examples/X3dResources.html"
+      },
+      {
+        "category": "general",
+        "content": "suppose like any great engineering project, there were hazards. If you were a Doozer, working hard day and night, trying to erect some great piece of scaffolding or complete some",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.codersnotes.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "codersnotes.com",
+        "url": "http://www.codersnotes.com/"
+      },
+      {
+        "category": "general",
+        "content": "Innovations in Software Engineering Conference (ISEC), which is sponsored by SIGSE , the Special Interest Group on Software Engineering of the Computer Society of India (CSI). Rul",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sigsoft.org",
+          "/awards/distinguishedPaperAward.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGSOFT - ACM Special Interest Group on Software Engineering",
+        "url": "http://www.sigsoft.org/awards/distinguishedPaperAward.html"
+      },
+      {
+        "category": "general",
+        "content": "application of civil engineering. Therefore, you are wrong.   Mine is the oldest profession. The software engineer leaned back in his chair, smiled, and said confidently",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cs.uni.edu",
+          "/~mccormic/humor.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Software Engineering Humor",
+        "url": "http://www.cs.uni.edu/~mccormic/humor.html"
+      },
+      {
+        "category": "general",
+        "content": "Software Engineering, Software Tools, Electronics Engineering, and Integrating Hardware and Software as a Solution Getting things DONE , quickly, on-budget, and on-time Public and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mrp3.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "S.F.T. Inc. - Software Tools, Engineering, and the Home of MRP III",
+        "url": "http://www.mrp3.com/"
+      },
+      {
+        "category": "general",
+        "content": "ill Electrical Engineering Series  ] [  Richard Florac - First Pager, Early Portable FM Radios  ] [  Type",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.smecc.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Southwest Museum Of Engineering, Communications and Computation -Arizona&#39;s Radio and Television Museum - Also History Of Computers andComputa",
+        "url": "http://www.smecc.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0033",
+  "query_text": "what is version control in software engineering",
+  "requested_at": "2026-09-03T01:43:37.174150Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

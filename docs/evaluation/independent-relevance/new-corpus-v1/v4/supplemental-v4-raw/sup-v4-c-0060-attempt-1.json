@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 329.1766930051381,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind cloud formation in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "who asked the management of the Garden to bury the snake in the vicinity with due ceremony. It was accordingly interred in the pine groves at the rear of the Kagetsu restaurant. &#34;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.globalgreyebooks.com",
+          "/online-ebooks/george-william-gilmore_animism_complete-text.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Animism by George William Gilmore - Read Online for free at Global Grey ebooks",
+        "url": "https://www.globalgreyebooks.com/online-ebooks/george-william-gilmore_animism_complete-text.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0060",
+  "query_text": "describe the principle behind cloud formation in data management",
+  "requested_at": "2026-09-03T01:42:42.055258Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

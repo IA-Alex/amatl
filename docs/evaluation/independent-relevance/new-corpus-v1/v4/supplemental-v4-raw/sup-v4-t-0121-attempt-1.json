@@ -1,0 +1,108 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 263.17130400275346,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is routing tables in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Required course materials : The Transfeminine Handbook , 3rd Edition (Pearson). Cosmetic supplies provided. Students will be required to purchase their own clothes for some course",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.alm.website",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Athena&#39;s blog - Athena&#39;s Site",
+        "url": "https://www.alm.website/blog/"
+      },
+      {
+        "category": "general",
+        "content": "Hardware Bill-of-Materials (HBOM) generator NGI Zero Core 2024 Create CycloneDX HBoM compliant inventory of hardware Hassle-free Peppol bootstrapping and onboarding NGI0 Commons F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/project/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; All projects",
+        "url": "https://nlnet.nl/project/"
+      },
+      {
+        "category": "general",
+        "content": "Hardware Bill-of-Materials (HBOM) generator NGI Zero Core 2024 Create CycloneDX HBoM compliant inventory of hardware Hassle-free Peppol bootstrapping and onboarding NGI0 Commons F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/project/index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; All projects",
+        "url": "https://nlnet.nl/project/index.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0121",
+  "query_text": "what is routing tables in materials science",
+  "requested_at": "2026-09-03T01:44:17.200972Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

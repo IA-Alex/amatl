@@ -1,0 +1,270 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 274.1979819984408,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is process scheduling in physics",
+    "results": [
+      {
+        "category": "general",
+        "content": "over budgets and scheduling, and, perhaps most significantly, control over a recalcitrant workforce.” This was precisely the kind of professional that waterfall development was de",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "logicmag.io",
+          "/clouds/agile-and-the-long-crisis-of-software/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Agile and the Long Crisis of Software",
+        "url": "https://logicmag.io/clouds/agile-and-the-long-crisis-of-software/"
+      },
+      {
+        "category": "general",
+        "content": "to Precognant Scheduling Dr. Shelley T.C. Lovelace — World Scientific — September 1992 Format: Scanned PDF Language: English Category: Nonfiction - Unix Scheduling (00",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "suricrasia.online",
+          "/library/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Suricrasia Online&#39;s Online Library",
+        "url": "https://suricrasia.online/library/"
+      },
+      {
+        "category": "general",
+        "content": "and closing. Window scheduling used a simple &#34;loopless&#34; control scheme that threaded all of the windows together. One of the next classes to be implemented on the Interim Dynabook",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "worrydream.com",
+          "/EarlyHistoryOfSmalltalk/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Early History Of Smalltalk",
+        "url": "https://worrydream.com/EarlyHistoryOfSmalltalk/"
+      },
+      {
+        "category": "general",
+        "content": "after another horrible scheduling conflict. Skype call with great news from Rob &amp; Amelia. 2018-07-01 Sunday. Played at All Saints in the morning; stayed for meal with the chur",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2018/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2018/"
+      },
+      {
+        "category": "general",
+        "content": "Basic-block instruction scheduling using reinforcement learning and rollouts Proceedings of the 1999 IJCAI workshop on learning and optimization . [ ps ] 1998 Sutton, R.S., and Ba",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.cs.umass.edu",
+          "/~barto/pubs-Barto.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A. G. Barto&#39;s Publications",
+        "url": "https://people.cs.umass.edu/~barto/pubs-Barto.html"
+      },
+      {
+        "category": "general",
+        "content": "especially if scheduling or memory are provided via these authorities.) 3. Naive transparent persistence of the sort you describe here will conflict with maintenance and upgrade c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.loper-os.org",
+          "/",
+          "",
+          "p=284",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Loper OS » Seven Laws of Sane Personal Computing",
+        "url": "http://www.loper-os.org/?p=284"
+      },
+      {
+        "category": "general",
+        "content": "Free hints: windows , scheduling , sftp , software , scripting , macro , automatic , automated , automate , automation , ... Automate offers scalable, no-code automation software",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cuteapps.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CuteApps.com - Quality Software, Commercial, Free Downloads: Windows Linux Java MP3 Pocket PC Palm PocketPC PalmOs, Freeware, Shareware, Demo,",
+        "url": "http://cuteapps.com/"
+      },
+      {
+        "category": "general",
+        "content": "2005 ADOCH 21 Apr 2005 Scheduling tasks 13 Apr 2005 Tax time! 13 Apr 2005 The role of my blog 13 Apr 2005 Anime Boston? 07 Apr 2005 C awesomeness 05 Apr 2005 Bermuda 03 Apr 2005 C",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.lincolnquirk.com",
+          "/blog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "stuff i wrote | Home",
+        "url": "https://www.lincolnquirk.com/blog.html"
+      },
+      {
+        "category": "general",
+        "content": "proving, planning and scheduling, and computer vision. These were problems that required a lot of hard-to-write software; to make a dent in them, AI programmers needed a powerful",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gigamonkeys.com",
+          "/book/introduction-why-lisp.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Introduction: Why Lisp?",
+        "url": "https://gigamonkeys.com/book/introduction-why-lisp.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0197",
+  "query_text": "what is process scheduling in physics",
+  "requested_at": "2026-09-03T01:44:42.174282Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

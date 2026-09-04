@@ -1,0 +1,108 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 289.386172000377,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does access tokens in transportation work",
+    "results": [
+      {
+        "category": "general",
+        "content": "cure wounds Elevator Transportation from one floor of a tall building to another Flashlight Provides light in dark places Fountain Scenic highlight; provides communication to syst",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fudco.com",
+          "/chip/lessons.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Lessons of Lucasfilm&#39;s Habitat",
+        "url": "http://www.fudco.com/chip/lessons.html"
+      },
+      {
+        "category": "general",
+        "content": "most bare bones public transportation doesn&#39;t reach many places, is usually lost on them. Capitalism has hollowed out both a sense of commons and budgets for public services throu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "emreed.net",
+          "/provenance",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Provenance is a Technology! - Em Reed",
+        "url": "https://emreed.net/provenance"
+      },
+      {
+        "category": "general",
+        "content": "name of &#34;Intelligent Transportation Systems.&#34; Some of those efforts will apply as much, if not more, to robocars. Indeed, for the best results, we want a world where even human-dr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.templetons.com",
+          "/brad/robocars/congestion.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Traffic Congestion &amp; Capacity",
+        "url": "https://www.templetons.com/brad/robocars/congestion.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0290",
+  "query_text": "how does access tokens in transportation work",
+  "requested_at": "2026-09-03T01:43:45.136354Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

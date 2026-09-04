@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 280.3747569996631,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does river deltas in chemistry work",
+    "results": [
+      {
+        "category": "general",
+        "content": "their Maths, Physics, Chemistry, and some Art &amp; History thrown-in, lovely. Some mail chew to get on top of things. Watched &#39;Divergent&#39; with the babes in the evening - strong,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2019/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2019/"
+      },
+      {
+        "category": "general",
+        "content": "not affect my taste chemistry—and that people who are MSG blind are generally the people who react badly to the chemical. Alas, I can&#39;t find anything about this online, but i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.duntemann.com",
+          "/july2008.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jeff Duntemann&#39;s ContraPositive Diary",
+        "url": "http://www.duntemann.com/july2008.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0190",
+  "query_text": "how does river deltas in chemistry work",
+  "requested_at": "2026-09-03T01:42:47.439947Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

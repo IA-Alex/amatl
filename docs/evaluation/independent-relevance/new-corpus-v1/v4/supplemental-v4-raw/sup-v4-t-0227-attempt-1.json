@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 123.23947500408394,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes process scheduling in agriculture",
+    "results": [
+      {
+        "category": "general",
+        "content": "Shelter Clothing Wheel Agriculture Domesticated Animals Building / Hunting / Agriculture Tools Aquaducts Naval Transportation Clocks Writing Systems Positional Base-10 Numbering S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/civilization/technology",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Technology and Civilization",
+        "url": "https://zerocontradictions.net/civilization/technology"
+      },
+      {
+        "category": "general",
+        "content": "toxins. 3. Animal agriculture and its connection to the medical-pharmaceutical complex, and the hidden consequences of participating in our culturally-mandated meals. 4. Why disea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.worldpeacemastery.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The World Peace Diet Mastery Series",
+        "url": "http://www.worldpeacemastery.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0227",
+  "query_text": "what causes process scheduling in agriculture",
+  "requested_at": "2026-09-03T01:42:05.796846Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

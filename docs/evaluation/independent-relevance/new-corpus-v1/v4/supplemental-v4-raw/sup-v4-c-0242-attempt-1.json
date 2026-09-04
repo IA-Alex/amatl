@@ -1,0 +1,26 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 359.58237900194945,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of process scheduling in food science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0242",
+  "query_text": "tell me about the function of process scheduling in food science",
+  "requested_at": "2026-09-03T01:43:09.454547Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

@@ -1,0 +1,108 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 367.73845800053095,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of process scheduling in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "especially if scheduling or memory are provided via these authorities.) 3. Naive transparent persistence of the sort you describe here will conflict with maintenance and upgrade c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.loper-os.org",
+          "/",
+          "",
+          "p=284",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Loper OS » Seven Laws of Sane Personal Computing",
+        "url": "http://www.loper-os.org/?p=284"
+      },
+      {
+        "category": "general",
+        "content": "link for exhibit hours, scheduling tours and other details. In late September of this year I received information about the Ann Arbor exhibit directly from my dear friend Fr. Rafa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "shroud.com",
+          "/late22.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2022 Website News!",
+        "url": "https://shroud.com/late22.htm"
+      },
+      {
+        "category": "general",
+        "content": "feature, rigorously scheduling a student body twice as large as before into the same space and time, earned it the informal name &#34;platoon school.&#34; While the prototype wa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.lewrockwell.com",
+          "/gatto/gatto-uhae-9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cult of Scientific Management by John Taylor Gatto",
+        "url": "https://archive.lewrockwell.com/gatto/gatto-uhae-9.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0122",
+  "query_text": "tell me about the function of process scheduling in materials science",
+  "requested_at": "2026-09-03T01:43:16.670974Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

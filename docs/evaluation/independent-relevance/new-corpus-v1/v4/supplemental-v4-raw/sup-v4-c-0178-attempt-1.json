@@ -1,0 +1,135 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 124.54252799943788,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of acid base reactions in biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "chemical reactions that join amino acids are reversible and do not occur spontaneously in water. However, most scientists no longer argue that the first proteins assembled spontan",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "creationism.org",
+          "/heinze/SciEvidGodLife_en.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scientific Evidence that God Created Life",
+        "url": "https://creationism.org/heinze/SciEvidGodLife_en.htm"
+      },
+      {
+        "category": "general",
+        "content": "single bonds in these reactions results is delocalized π-orbitals (Pullman and Pullman 1962). Such orbitals in heterocyclic (N-C) rings with conjugated resonance configurations",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "through condensation reactions. One may calculate the enthalpy change in the formation of a dipeptide from amino acids to be 5-8 kcal/mole for a variety of amino acids, using data",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ldolphin.org",
+          "/mystery/chapt8.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Thermodynamics and the Origin of Life",
+        "url": "https://www.ldolphin.org/mystery/chapt8.html"
+      },
+      {
+        "category": "general",
+        "content": "a bunch of chemical reactions running around in a bag.&#34; 15 I would agree with John Polkinghorne that &#34;you can&#39;t cut [faith] down to the lowest common denominator of gene",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.onenesspentecostal.com",
+          "/godgene.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The God-Gene: Is Religious Faith and Experience a Biological Misunderstanding?",
+        "url": "http://www.onenesspentecostal.com/godgene.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0178",
+  "query_text": "tell me about the function of acid base reactions in biology",
+  "requested_at": "2026-09-03T01:42:07.408602Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

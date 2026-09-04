@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 295.5803320000996,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is cloud formation in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "IPCC presented the information in a way that made it difficult to understand and buried the graph in the supplementary material for chapter 10, where it would receive little atten",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/climcat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Climate models and climate catastrophe: a reality check",
+        "url": "https://davidpratt.info/climcat.htm"
+      },
+      {
+        "category": "general",
+        "content": "balanced News and Information ALTERNATIVE NEWS NEWS http://www.alternet.org NEWS http://www.centrexnews.com NEWS http://www.link.no/IPS/eng/last.html NEWSLINKS http://www.truthinm",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "of Deception and Disinformation (1984).pdf 2021-07-01 19:59 1.5M   Anatoliy Golitsyn - The Perestroika Deception - Memoranda to the Central Intelligence Agency (1998).pdf 202",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "avalonlibrary.net",
+          "/ebooks/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of /ebooks",
+        "url": "https://avalonlibrary.net/ebooks/"
+      },
+      {
+        "category": "general",
+        "content": "stage in coronae formation. Coronae are roughly circular, volcanic features believed to form over hot upwellings of magma within the Venusian mantle. Also, we found that surface h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astrocappella.com",
+          "/background/habzone_background.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Habitable Zone - Background Info",
+        "url": "https://www.astrocappella.com/background/habzone_background.shtml"
+      },
+      {
+        "category": "general",
+        "content": "are shifting, and transformation is at hand as new frequencies stimulate an expansion of consciousness. If advances in quantum physics are indicators, the new paradigm is the real",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "- Insurance - Information Casio - watches Castrol Catamaran Hull Catamaran - 1/20th model drive Catamaran - 120th model frame Catamaran - 1/20th model trials Catamaran - auxiliary",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.solarnavigator.net",
+          "/solarnavigator_index.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SOLAR NAVIGATOR MARINE PORTAL WEBSITE INDEX EDUCATIONAL GEOGRAPHY HISTORY RESOURCE WORLD ATLAS A TO Z INDEX OF PLANET EARTH FREE ENCYCLOPEDIA&lt;",
+        "url": "https://www.solarnavigator.net/solarnavigator_index.htm"
+      },
+      {
+        "category": "general",
+        "content": "evaporation, cloud formation, precipitation (rain/snow/hail). When you have permanent overcast, something is wrong energetically. Orgonite is a potent cure against this, especiall",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "exo-science.com",
+          "/orgonite.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Protect Yourself From EMF With Orgonite — Exo-Science… Beyond Mainstream Academia",
+        "url": "http://exo-science.com/orgonite.html"
+      },
+      {
+        "category": "general",
+        "content": "large amounts of information which are made by several witnesses, if possible, who as far as I can ascertain, have unimpeachable reputations and are competent. For example, I migh",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.project1947.com",
+          "/shg/symposium/hynek.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SHG - UFO Symposium 1968: Hynek Statement",
+        "url": "http://www.project1947.com/shg/symposium/hynek.html"
+      },
+      {
+        "category": "general",
+        "content": "Holes Can Trigger Star Formation 3rd Hello, Rock! 2nd Black Holes And Dark Matter 1st March ALMA Sees Hydrogen Super-Halos Around Young Spiral Galaxies 29th Nitrogen Powered 23rd",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "briankoberlein.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Archive | by Brian Koberlein",
+        "url": "https://briankoberlein.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "from New England by the formation of the coast below: besides, it is too shallow to be of any service. Icebergs float down against its surface-current, and fill all the New-Englan",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fullbooks.com",
+          "/How-Spring-Came-in-New-England.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How Spring Came in New England by Charles Dudley Warner - Full Text Free Book",
+        "url": "http://www.fullbooks.com/How-Spring-Came-in-New-England.html"
+      },
+      {
+        "category": "general",
+        "content": "getting the necessary information from Michael Mann, who put many obstacles in their path. He refused to release his computer code, saying that ‘giving them the algorithm wo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/warm.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The global warming scare",
+        "url": "https://davidpratt.info/warm.htm"
+      },
+      {
+        "category": "general",
+        "content": "and a point of transformation in what was possible. So long as history is taught the time which brought about our first steps on another world will attract attention. If the bulk",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.donaldedavis.com",
+          "/2021NEW/Apollo1152.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Apollo will begin a new era if space migration ever takes place, or shine like a beacon of times when miracles were possible if space travel i",
+        "url": "http://www.donaldedavis.com/2021NEW/Apollo1152.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0225",
+  "query_text": "what is cloud formation in climate science",
+  "requested_at": "2026-09-03T01:43:31.756856Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

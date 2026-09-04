@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 223.63490799762076,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of routing tables in photography",
+    "results": [
+      {
+        "category": "general",
+        "content": "One of my hobbies is photography. You can see some examples here . Some of my favourites are One Tree Hill, Auckland , the Whangarei heads , Whangaroa harbour in the far north , C",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cs.auckland.ac.nz",
+          "/~pgut001/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Gutmann&#39;s Home Page",
+        "url": "https://www.cs.auckland.ac.nz/~pgut001/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0271",
+  "query_text": "give an overview of routing tables in photography",
+  "requested_at": "2026-09-03T01:43:12.325369Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

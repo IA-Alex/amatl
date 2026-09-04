@@ -1,0 +1,189 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 281.0560779980733,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is access tokens in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "help in getting all the materials together. I. 1960-66—Early OOP and other formative ideas of the sixties Though OOP came from many motivations, two were central. The large",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "worrydream.com",
+          "/EarlyHistoryOfSmalltalk/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Early History Of Smalltalk",
+        "url": "https://worrydream.com/EarlyHistoryOfSmalltalk/"
+      },
+      {
+        "category": "general",
+        "content": "related projects, lost materials, community‑driven preservation, and the technical challenges of retargeting and modifying the game, offering a comprehensive historical record of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "arcadeblogger.com",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Arcade Blogger",
+        "url": "https://arcadeblogger.com/feed/"
+      },
+      {
+        "category": "general",
+        "content": "phrasing in marketing materials. Kalshi spokeswoman Dani Lever said in a statement: “Despite the Ninth Circuit’s opinion, we still believe the CFTC regulations as written do not p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alterslash.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alterslash, the unofficial Slashdot digest",
+        "url": "https://alterslash.org/"
+      },
+      {
+        "category": "general",
+        "content": "(for thermodynamics and materials science) in combination with specialized algorithms. Homework assignments required 5 digits, which was not feasible with a slide rule. However, t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "invisible-island.net",
+          "/personal/oldprogs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Old, but Interesting Programs",
+        "url": "https://invisible-island.net/personal/oldprogs.html"
+      },
+      {
+        "category": "general",
+        "content": "and anthologized materials, and content transiting betwen versions (transclusions). This may be simplified to: connections between things which are *different*, and connections be",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cs.brown.edu",
+          "/memex/ACM_HypertextTestbed/papers/60.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Xanalogical Structure, Needed Now More than Ever",
+        "url": "https://cs.brown.edu/memex/ACM_HypertextTestbed/papers/60.html"
+      },
+      {
+        "category": "general",
+        "content": "storage of radioactive materials for thousands of years.  If the emergy costs overwhelm the emergy costs of sustainable routes to electricity, nuclear fission should be rejec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "dematerialism.net",
+          "/On%20My%20Philosophy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "On My Philosophy",
+        "url": "https://dematerialism.net/On%20My%20Philosophy.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0125",
+  "query_text": "what is access tokens in materials science",
+  "requested_at": "2026-09-03T01:42:47.158965Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

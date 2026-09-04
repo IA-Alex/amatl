@@ -1,0 +1,162 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 379.999703996873,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of wave interference in computer networks",
+    "results": [
+      {
+        "category": "general",
+        "content": "incorrect frequencies - interference caused to other broadcasters on some channels - interference on the same or adjacent frequencies from other stations broadcasting to the same",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.worldofradio.com",
+          "/dxld3134.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.worldofradio.com/dxld3134.txt",
+        "url": "http://www.worldofradio.com/dxld3134.txt"
+      },
+      {
+        "category": "general",
+        "content": "a quantum interference effect that can demonstrate the wave-like nature of particles. However, even with advancements in this technology, there are serious doubts that we could ef",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.panpsychism.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Panpsychism as conceived by ChatGPT",
+        "url": "https://www.panpsychism.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "an RF link, the Radio Interference messes up the transmission! It is extremely dificult to make a Radio link work. It&#39;s a dificult task. The TI Modem. Is it possible? Several peop",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "richfiles.solarbotics.net",
+          "/SPinTerfaceFAQ.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Richfiles: SPinTerface FAQs Page",
+        "url": "http://richfiles.solarbotics.net/SPinTerfaceFAQ.html"
+      },
+      {
+        "category": "general",
+        "content": "Cyber Noodle Soup , Interference on the Brain Screen , Cyberpunk Timeline, PKD Otaku and Simulacrum Meltdown. These zines were all edited by Patrick Clark. Line Noiz was an e-Zine",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cyb-sec.neocities.org",
+          "/pages/alt-cyberpunk-faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "alt.cyberpunk FAQ – /cyb/&#43;/sec/ wiki",
+        "url": "https://cyb-sec.neocities.org/pages/alt-cyberpunk-faq/"
+      },
+      {
+        "category": "general",
+        "content": "for government interference. It will be complexity on steroids ( blog Register Schneier ). Threat Models over Space and Time: A Case Study of E2EE Messaging Applications shows how",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0014",
+  "query_text": "tell me about the function of wave interference in computer networks",
+  "requested_at": "2026-09-03T01:44:34.479435Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

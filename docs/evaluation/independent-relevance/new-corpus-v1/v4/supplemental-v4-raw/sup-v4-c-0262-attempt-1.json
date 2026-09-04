@@ -1,0 +1,108 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 394.0836869951454,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of gear trains in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "top hat. -- Top 5&#34;, &#34;&#39;Technology&#39; is &#39;things invented after I was born&#39;. -- Alan Kay&#34;, &#34;&#39;Twas in a restaurant they met, Romeo and Juliet; Julie could not pay the debt, So Rome-oed",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ifindkarma.com",
+          "/oneliners/oneliners-2000",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.ifindkarma.com/oneliners/oneliners-2000",
+        "url": "http://www.ifindkarma.com/oneliners/oneliners-2000"
+      },
+      {
+        "category": "general",
+        "content": "thinking about science, technology, engineering, mathematics, logic and history. Don&#39;t get the idea this is something for youth only, I am 65 and find it absolutely enthralling an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tote-history-atl.net.au",
+          "/george_julius_genealogy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "George Julius Genealogy",
+        "url": "http://tote-history-atl.net.au/george_julius_genealogy.htm"
+      },
+      {
+        "category": "general",
+        "content": "ultimate toy?! Sunrich Technology eDVR digital camera - Small, light, cheap... and quirky. Swann Wireless Guardian and SpyCam - A one-box wireless surveillance system, and a video",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dansdata.com",
+          "/altindex.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dan&#39;s Data - Full Index",
+        "url": "http://www.dansdata.com/altindex.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0262",
+  "query_text": "tell me about the function of gear trains in music technology",
+  "requested_at": "2026-09-03T01:43:04.386681Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

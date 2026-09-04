@@ -1,0 +1,216 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 307.1829000036814,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does database indexes in climate science work",
+    "results": [
+      {
+        "category": "general",
+        "content": "tp://www.antenna.nl/wise-database/uranium/dhap99.html George Bush - The Unauthorised Biography http://www.padrak.com/alt/BUSHBOOK_INDEX.html Bohemian Club and other research http:/",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "Terminological studies Database semantics Discourse analyses Cognition, expert knowledge and AI The methods used most are informetric analysis and discourse analyses, both of whic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/phenomenon.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Phenomenon-based classification (IEKO)",
+        "url": "https://www.isko.org/cyclo/phenomenon.htm"
+      },
+      {
+        "category": "general",
+        "content": "2022) Retraction Watch Database entry (04 August 2022) Yellow Car again again (11 June 2022) Stuart Maconie&#39;s Freak Zone (06 June 2022) Hammett (03 June 2022) Article retraction (",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.miskatonic.org",
+          "/posts/all/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "List of all blog posts | William Denton",
+        "url": "https://www.miskatonic.org/posts/all/"
+      },
+      {
+        "category": "general",
+        "content": "in the Codeweavers database, so it was the perfect choice. And it went it just fine, though I put it in its own bottle, as Crossover recommends. Alas, although it runs, when you c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.duntemann.com",
+          "/november2008.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jeff Duntemann&#39;s ContraPositive Diary",
+        "url": "http://www.duntemann.com/november2008.htm"
+      },
+      {
+        "category": "general",
+        "content": "State Civil War Soldier Database New York Military Records Revolutionary War Soldiers Genealogy - and (impressive) Related Resources Revolutionary War Spies and Espionage The Deci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "constitution.org",
+          "/1-History/primarysources/primarysources.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Primary Source Documents",
+        "url": "https://constitution.org/1-History/primarysources/primarysources.html"
+      },
+      {
+        "category": "general",
+        "content": "The On-Line Music Database has gone through some changes in the last week. It is now searchable by: Track, Album, Artist, and Submitter. It now also allows editing of existing dat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "home.mcom.com",
+          "/home/whatsnew/whats_new_0194.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "What&#39;s New! January 1994",
+        "url": "http://home.mcom.com/home/whatsnew/whats_new_0194.html"
+      },
+      {
+        "category": "general",
+        "content": "and the Creation of a Database of Printers’ Ornaments ” ( Digital Humanities Quarterly vol. 15 no. 1, 2021), from which I quote: “All of the content is in the public domain, so th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.miskatonic.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miskatonic University Press | William Denton",
+        "url": "https://www.miskatonic.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0214",
+  "query_text": "how does database indexes in climate science work",
+  "requested_at": "2026-09-03T01:43:24.458370Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

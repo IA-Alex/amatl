@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 420.10179399949266,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind version control in biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "Indeterminism Dirac&#39;s Principles Dirac&#39;s 3 Polarizers Foundations Interpretations Irreversibility Measurement Problem Quantum, Thermo, Info Quantum to Classical Recurrence Problem",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Information Philosopher - dedicated to the new information philosophy",
+        "url": "https://www.informationphilosopher.com/"
+      },
+      {
+        "category": "general",
+        "content": "goes” is not a “principle” I hold - I do not think that “principles” can be used and fruitfully discussed outside the concrete research situation they are supposed to affect - but",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "theanarchistlibrary.org",
+          "/library/paul-feyerabend-against-method.muse",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse",
+        "url": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse"
+      },
+      {
+        "category": "general",
+        "content": "graduate level math&#34; principle behind this collection of books. I first learned about the RSA cryptosystem from these books, along with fractals and many other things. Why don&#39;t I",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nuwen.net",
+          "/books.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Book Reviews - nuwen.net",
+        "url": "https://nuwen.net/books.html"
+      },
+      {
+        "category": "general",
+        "content": "shielding works on the principle of putting a lot of nuclei between you and the radiation source. The obvious thing to use is stuff up the periodic table like lead, but unfortunat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "is unqualified in principle to deal with the set of activities with which humanists are concerned, and that any attempt to deal with them in a purely scientific way is bound eithe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "anthonyflood.com",
+          "/blanshardlimitsofnaturalism.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Brand Blanshard &#34;The Limits of Naturalism&#34;",
+        "url": "http://anthonyflood.com/blanshardlimitsofnaturalism.htm"
+      },
+      {
+        "category": "general",
+        "content": "with the transcendental principles of thought as defined by transcendental logic (cf. Clearings , 2006). To answer the question : &#34;What must I do ?&#34;, develop, by means o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/equiaeon/behaviours.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHY : Behaviours : Formal Sketch of a Critical Ethics",
+        "url": "http://www.sofiatopia.org/equiaeon/behaviours.htm"
+      },
+      {
+        "category": "general",
+        "content": "concise and general principle of ethics. This rule is also endorsed by non-religious people in the common phrase, &#34;Treat others as you would like to be treated.&#34; It is obviously v",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.loveeducation101.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Love Education 101.com",
+        "url": "http://www.loveeducation101.com/"
+      },
+      {
+        "category": "general",
+        "content": "outraged by the Lucifer Principle&#39;s consequences . . . for we are casualties of Nature&#39;s callous indifference to life, pawns who suffer and die to live out her schemes. One result",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meditopia.org",
+          "/chap5.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Meditopia -- Chapter 5",
+        "url": "https://meditopia.org/chap5.htm"
+      },
+      {
+        "category": "general",
+        "content": "overall utility. Principle of Utility : The principle that states the best action is the one that maximizes utility. Felicitous Calculus : Another term for Bentham&#39;s Hedonic Calcu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.utilitarianism.com",
+          "/chatgpt/glossary.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utilitarianism glossary by ChatGPT-4",
+        "url": "https://www.utilitarianism.com/chatgpt/glossary.html"
+      },
+      {
+        "category": "general",
+        "content": "by the pauli exclusion principle. when the atom&#39;s orientations are paralell, this exhange is symmetric. when the orientations are antiparallel, the exhange is antisymmetric. betwe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/black_swans",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Black Swans, the Paranormal and Miracles",
+        "url": "https://lukesmith.neocities.org/vids/black_swans"
+      },
+      {
+        "category": "general",
+        "content": "It is thus possible in principle for a single ion channel, potentially triggered by only one or two neurotransmitter molecules, if suitably situated on the receptor neuron, e.g. a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/stc/ct.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Space, Time and Consciousness",
+        "url": "http://www.dhushara.com/stc/ct.htm"
+      },
+      {
+        "category": "general",
+        "content": "↩ I know, in principle, bank notes have a serial number and could be tracked , but it seems that in practice they are not, and in any case using the information maliciously",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "a3nm.net",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "a3nm&#39;s blog",
+        "url": "http://a3nm.net/blog/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0168",
+  "query_text": "describe the principle behind version control in biology",
+  "requested_at": "2026-09-03T01:42:57.244947Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

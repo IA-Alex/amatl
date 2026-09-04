@@ -1,0 +1,243 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 312.3520879962598,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is access tokens in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Learning Revolution Science Technology Radio: Kan ein ta seg råd til kultur- og humaniorafag i framtiden? Ja, det trur eg. Dec 16, 2012. 1min. Nils Norman Haukås . 🏷   Humani",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nilsnh.no",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "nilsnh.no",
+        "url": "https://nilsnh.no/"
+      },
+      {
+        "category": "general",
+        "content": "is about deeds, with science the happy medium somewhere in between. It is not too much of an exaggeration to say that most of my ideas from then on took their roots from Simula&amp;md",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "worrydream.com",
+          "/EarlyHistoryOfSmalltalk/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Early History Of Smalltalk",
+        "url": "https://worrydream.com/EarlyHistoryOfSmalltalk/"
+      },
+      {
+        "category": "general",
+        "content": "George Hotz | Science | Thermodynamics is to Energy as ??? is to Intelligence | Part 1: https://www.youtube.com/embed/vn9Dq24RDn8 George Hotz | Science | Thermodynamics is to Ener",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "with a Bachelor of Science in Electrical Engineering from the University of California in Berkeley, where he graduated in 1973. He had a big hand in the creation of Asteroids (arg",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "arcadeblogger.com",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Arcade Blogger",
+        "url": "https://arcadeblogger.com/feed/"
+      },
+      {
+        "category": "general",
+        "content": "these, and gave their science free course among all men. At any rate, his friend Dion, although the moon suffered an eclipse at the time when he was about to set out from Zacynthu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lexundria.com",
+          "/plut_nic/1-30/prr",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Plutarch, Life of Nicias 1-30",
+        "url": "https://lexundria.com/plut_nic/1-30/prr"
+      },
+      {
+        "category": "general",
+        "content": "| News | Business | Science | Gaming | Culture | Politics | Sports | WordCloud | Summarizer | Premium | iOS App | Live | About Limit: [ 5 | 10 | 15 | 25 | 50 ] Time: [ 1h | 3h | 6",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "brutalist.report",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Brutalist Report",
+        "url": "https://brutalist.report/"
+      },
+      {
+        "category": "general",
+        "content": "some of the pop neuroscience is simplistic to the point of parody. Eyebrows should be raised, too, at the dogmatic brevity with which various philosophical problems deserving book",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "1. The Hedonistic Imperative",
+        "url": "https://www.hedweb.com/hedethic/hedon1.htm"
+      },
+      {
+        "category": "general",
+        "content": "psychology, proper science, everyday experience, and common sense.  Still, many unproven assumptions will remain, which, of course, are irrelevant to the correctness of the t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "dematerialism.net",
+          "/On%20My%20Philosophy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "On My Philosophy",
+        "url": "https://dematerialism.net/On%20My%20Philosophy.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0245",
+  "query_text": "what is access tokens in food science",
+  "requested_at": "2026-09-03T01:42:14.880058Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

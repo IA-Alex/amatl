@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 314.71839499863563,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is access tokens in digital security",
+    "results": [
+      {
+        "category": "general",
+        "content": "Journal of Information Security, 15(2):211-221, March 2015. DOI: 10.1007/s10207-015-0279-8 .  ↩︎ Véronique Cortier, Pierrick Gaudry, Stéphane Glondu. Belenios: A",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kirill.korins.ky",
+          "/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Electt: Running Auditable and Verifiable Elections in Untrusted Environments - Kirill&#39;s journal",
+        "url": "https://kirill.korins.ky/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/"
+      },
+      {
+        "category": "general",
+        "content": "ensure your privacy and security, we don’t monitor, log or store your queries or associate them with your account. So, the learning argument probably isn’t why other u",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "マリウス.com",
+          "/doubting-your-favorite-web-search-engine/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "マリウス . Doubting Your Favorite Web Search Engine",
+        "url": "http://マリウス.com/doubting-your-favorite-web-search-engine/"
+      },
+      {
+        "category": "general",
+        "content": "GRDDL-Aware Agents Security Considerations The GRDDL Vocabulary References Appendix: Transformations for Styling versus data extraction Appendix: Base IRI considerations Appendix:",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/grddl/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Gleaning Resource Descriptions from Dialects of Languages (GRDDL)",
+        "url": "https://www.w3.org/TR/grddl/"
+      },
+      {
+        "category": "general",
+        "content": "CryptoLine can provide security for digital voice, video and facsimile traffic, none of which has a protocol base. It provides two levels of security: a primary key, which is set",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.decodesystems.com",
+          "/help-wanted/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Help Wanted",
+        "url": "http://www.decodesystems.com/help-wanted/"
+      },
+      {
+        "category": "general",
+        "content": "or oh, privacy and security in cryptocurrency, you know, having something like Monero or a more private crypto setup, you know, let’s say these are good things, but I’m not going",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/too_popular",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Linux, Bitcoin: When Tech Projects Become &#34;Too Popular...&#34; Don&#39;t forget the goal.",
+        "url": "https://lukesmith.neocities.org/vids/too_popular"
+      },
+      {
+        "category": "general",
+        "content": "an employee tests security locks for Qix coin doors. Bottom right: Mattell overseeing testing procedures for Qix. More from the Qix cabinet build operation at Taito America. Note",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "arcadeblogger.com",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Arcade Blogger",
+        "url": "https://arcadeblogger.com/feed/"
+      },
+      {
+        "category": "general",
+        "content": "technically a breach in security but that you also rely on. The obvious example being YouTube if you make videos (technically there are alternatives, but no one really goes there)",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lurkbeforepost.win",
+          "/tutorials/privacy/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Privacy Tips || LurkBeforePost",
+        "url": "http://lurkbeforepost.win/tutorials/privacy/"
+      },
+      {
+        "category": "general",
+        "content": "GRDDL-Aware Agents Security Considerations The GRDDL Vocabulary References Appendix: Transformations for Styling versus data extraction Appendix: Base IRI considerations Appendix:",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/2007/REC-grddl-20070911/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Gleaning Resource Descriptions from Dialects of Languages (GRDDL)",
+        "url": "https://www.w3.org/TR/2007/REC-grddl-20070911/"
+      },
+      {
+        "category": "general",
+        "content": "calls mostly just as a security blanket in case developer intervention was required. I feel bad for the folks who have to deal with the FCC paperwork. You never wanted to get invi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alterslash.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alterslash, the unofficial Slashdot digest",
+        "url": "https://alterslash.org/"
+      },
+      {
+        "category": "general",
+        "content": "and describes related security concerns for implementations. Status of This Memo This is an Internet Standards Track document. This document is a product of the Internet Engineeri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.rfc-editor.org",
+          "/rfc/rfc7230.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://www.rfc-editor.org/rfc/rfc7230.txt",
+        "url": "https://www.rfc-editor.org/rfc/rfc7230.txt"
+      },
+      {
+        "category": "general",
+        "content": "restore absolute value, security or trust to currency in the first place, as Max Haiven notes in Art After Money, Money After Art : “...the vast majority of cryptocurrency,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "emreed.net",
+          "/provenance",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Provenance is a Technology! - Em Reed",
+        "url": "https://emreed.net/provenance"
+      },
+      {
+        "category": "general",
+        "content": "LABORATORY March 1996 A Security Kernel Based on the Lambda Calculus Jonathan A. Rees This publication can be retrieved by anonymous ftp to publications.ai.mit.edu. Abstract Coope",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mumble.net",
+          "/~jar/pubs/secureos/secureos.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Emergent Technologies Inc. -- Security Kernel&lt;/TITLE",
+        "url": "http://mumble.net/~jar/pubs/secureos/secureos.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0065",
+  "query_text": "what is access tokens in digital security",
+  "requested_at": "2026-09-03T01:44:17.854790Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

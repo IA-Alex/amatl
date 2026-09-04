@@ -1,0 +1,216 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 311.2415110008442,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does process scheduling in materials science work",
+    "results": [
+      {
+        "category": "general",
+        "content": "to Precognant Scheduling Dr. Shelley T.C. Lovelace — World Scientific — September 1992 Format: Scanned PDF Language: English Category: Nonfiction - Unix Scheduling (00",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "suricrasia.online",
+          "/library/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Suricrasia Online&#39;s Online Library",
+        "url": "https://suricrasia.online/library/"
+      },
+      {
+        "category": "general",
+        "content": "especially if scheduling or memory are provided via these authorities.) 3. Naive transparent persistence of the sort you describe here will conflict with maintenance and upgrade c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.loper-os.org",
+          "/",
+          "",
+          "p=284",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Loper OS » Seven Laws of Sane Personal Computing",
+        "url": "http://www.loper-os.org/?p=284"
+      },
+      {
+        "category": "general",
+        "content": "fragment&#39;s mobility, scheduling and data exchange. The programming model is embodied in a simulator that supports development, test and visualization on a 2D particle ensemble. Ex",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "groups.csail.mit.edu",
+          "/mac/projects/amorphous/paperlisting.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Amorphous Computing Paper Listing",
+        "url": "https://groups.csail.mit.edu/mac/projects/amorphous/paperlisting.html"
+      },
+      {
+        "category": "general",
+        "content": "so for convenience or scheduling purposes. Others cited personal preference (28.9 percent) or reducing menstrual symptoms (16.7 percent) as reasons they altered menstruation patte",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mum.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Museum of Menstruation and Women&#39;s Health",
+        "url": "http://www.mum.org/"
+      },
+      {
+        "category": "general",
+        "content": "link for exhibit hours, scheduling tours and other details. In late September of this year I received information about the Ann Arbor exhibit directly from my dear friend Fr. Rafa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "shroud.com",
+          "/late22.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2022 Website News!",
+        "url": "https://shroud.com/late22.htm"
+      },
+      {
+        "category": "general",
+        "content": "feature, rigorously scheduling a student body twice as large as before into the same space and time, earned it the informal name &#34;platoon school.&#34; While the prototype wa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.lewrockwell.com",
+          "/gatto/gatto-uhae-9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cult of Scientific Management by John Taylor Gatto",
+        "url": "https://archive.lewrockwell.com/gatto/gatto-uhae-9.html"
+      },
+      {
+        "category": "general",
+        "content": "and flexible regarding scheduling.&#34; – Joan N., World Peace Diet Facilitator                                        ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ &#34;It is the most comprehens",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.worldpeacemastery.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The World Peace Diet Mastery Series",
+        "url": "http://www.worldpeacemastery.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0122",
+  "query_text": "how does process scheduling in materials science work",
+  "requested_at": "2026-09-03T01:44:35.468542Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

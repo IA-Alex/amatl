@@ -1,0 +1,162 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 262.68469099886715,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is routing tables in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "obscure but important routing-level protocols. Content-location: the trouble with some RFCs (and most w3.org docs) is that they don&#39;t have enough examples. So RFC2616 gives the of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "davidchess.com",
+          "/words/log.20001229.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Log -- David Chess",
+        "url": "http://davidchess.com/words/log.20001229.html"
+      },
+      {
+        "category": "general",
+        "content": "on putting up doors, routing hinges out of doors, frames, getting a lock chiselled out &amp; other fun stuff, good to work on it together. 2021-05-21 Friday Irritating theft of ca",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2021/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2021/"
+      },
+      {
+        "category": "general",
+        "content": "to my PC Interex Routing Apollo Domain (Cisco) Apollo Documentation On the Web Scanned to pdf by helpful volunteers. Bitsavers (textfiles mirror) Typewritten Other Info On the Web",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jim.rees.org",
+          "/apollo-archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Apollo Archive",
+        "url": "https://jim.rees.org/apollo-archive/"
+      },
+      {
+        "category": "general",
+        "content": "in Rust Atom-Based Routing 2003 Improving global internet routing by implementing atom-based routers. Atomic Data NGI Assure 2021 2023 Typesafe handling of LinkedData Atomic Table",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/project/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; All projects",
+        "url": "https://nlnet.nl/project/"
+      },
+      {
+        "category": "general",
+        "content": "in Rust Atom-Based Routing 2003 Improving global internet routing by implementing atom-based routers. Atomic Data NGI Assure 2021 2023 Typesafe handling of LinkedData Atomic Table",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/project/index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; All projects",
+        "url": "https://nlnet.nl/project/index.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0241",
+  "query_text": "what is routing tables in food science",
+  "requested_at": "2026-09-03T01:42:53.529889Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

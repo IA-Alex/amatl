@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 271.85680199909257,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does voltage regulators in astronomy operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "likely to be seen by regulators as worthy of bandspace? Since the matter has not been aired publically and the ARRL not formulated a policy, the ARRL is ill-prepared to handle the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wm7d.net",
+          "/az_proj/az_html/arrl_restructuring.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Letter to ARRL - Restructing of Ham Radio Licensing",
+        "url": "https://www.wm7d.net/az_proj/az_html/arrl_restructuring.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0156",
+  "query_text": "how does voltage regulators in astronomy operate",
+  "requested_at": "2026-09-03T01:42:13.046013Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

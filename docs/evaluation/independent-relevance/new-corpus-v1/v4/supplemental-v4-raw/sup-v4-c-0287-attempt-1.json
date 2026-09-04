@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 230.83917400072096,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of process scheduling in transportation",
+    "results": [
+      {
+        "category": "general",
+        "content": "land October 16, 2019 Transportation Tracking October 15, 2019 Whistle-based Synthesis October 14, 2019 MA Price Accuracy Law October 13, 2019 Planned Power Outages October 12, 20",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jefftk.com",
+          "/p/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog Posts",
+        "url": "https://www.jefftk.com/p/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0287",
+  "query_text": "give an overview of process scheduling in transportation",
+  "requested_at": "2026-09-03T01:44:57.197265Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

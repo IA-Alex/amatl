@@ -1,0 +1,108 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 269.0392950025853,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes cell membranes in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "record of science and technology is a basis to believe pure physicalist science will show how the brain “makes” consciousness in any sense greater than the neural correlate of con",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/cossym/SEC/SEC0.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Symbiotic Existential Cosmology Introduction",
+        "url": "http://www.dhushara.com/cossym/SEC/SEC0.htm"
+      },
+      {
+        "category": "general",
+        "content": "field and holo-imaging technology within a chamber known as a &#34;holodeck&#34;. Under certain circumstances, holomatter can take on all the recognized features of life forms; however, a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.midwinter.com",
+          "/~koreth/particles/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Particles of Star Trek",
+        "url": "http://www.midwinter.com/~koreth/particles/"
+      },
+      {
+        "category": "general",
+        "content": "his access to advanced technology and large sums of money, Batman becomes incredibly effective at defeating petty criminals and preventing petty crime. As a result, the police for",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.lord-enki.net",
+          "/stories.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stories I Will Not Write",
+        "url": "https://www.lord-enki.net/stories.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0267",
+  "query_text": "what causes cell membranes in music technology",
+  "requested_at": "2026-09-03T01:43:11.002413Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

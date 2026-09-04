@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 343.5131360020023,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind routing tables in digital security",
+    "results": [
+      {
+        "category": "general",
+        "content": "The present need for security products far exceeds the number of individuals capable of designing secure systems. Consequently, industry has resorted to employing folks and purcha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cs.auckland.ac.nz",
+          "/~pgut001/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Gutmann&#39;s Home Page",
+        "url": "https://www.cs.auckland.ac.nz/~pgut001/"
+      },
+      {
+        "category": "general",
+        "content": "privacy platforms, and security tools. The Hidden Wiki functions as a complete directory of active onion links , deep web resources , and Tor services available online right now.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "realdeepweb.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Real Deep Web | Hidden Wiki Access &amp; Deep Web Tools",
+        "url": "http://realdeepweb.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0061",
+  "query_text": "explain the basic idea behind routing tables in digital security",
+  "requested_at": "2026-09-03T01:43:08.162001Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

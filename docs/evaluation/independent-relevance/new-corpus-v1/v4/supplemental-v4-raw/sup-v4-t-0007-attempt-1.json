@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 289.6082680017571,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes gear trains in computer networks",
+    "results": [
+      {
+        "category": "general",
+        "content": "world&#39;s first digital computer based totalisator. This was a big project for Automatic Totalsators Limited, the customer being the New York Racing Association (NYRA). The project",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tote-history-atl.net.au",
+          "/george_julius_genealogy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "George Julius Genealogy",
+        "url": "http://tote-history-atl.net.au/george_julius_genealogy.htm"
+      },
+      {
+        "category": "general",
+        "content": "together at a single computer, one of them working the keyboard, the other sitting back, correcting and cajoling like a producer in a news anchor&#39;s ear. (read more) The Atlan",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "jsomers.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "James Somers",
+        "url": "http://jsomers.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0007",
+  "query_text": "what causes gear trains in computer networks",
+  "requested_at": "2026-09-03T01:43:18.291632Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

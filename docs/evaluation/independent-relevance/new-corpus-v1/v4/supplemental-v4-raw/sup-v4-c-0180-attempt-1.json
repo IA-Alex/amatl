@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 311.90419899940025,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind cloud formation in biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "refer to the scientific principle of Occam’s razor, which is to find the solution reached by the fewest steps. If that is what he suggests, then mythology has an abundance of exam",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stenudd.com",
+          "/myth/jungians_on_myth_and_religion/JordanBPeterson.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jordan B. Peterson - Jungians on myth and religion.",
+        "url": "https://www.stenudd.com/myth/jungians_on_myth_and_religion/JordanBPeterson.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0180",
+  "query_text": "describe the principle behind cloud formation in biology",
+  "requested_at": "2026-09-03T01:42:40.018170Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

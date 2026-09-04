@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 330.66048700129613,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind gear trains in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "voltage. The received engineering wisdom is that it is meaningless to measure the unloaded voltage to determine the remaining battery capacity. Most discharge-graphs in battery sp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "jepspectro.com",
+          "/htm/folding-ebike.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SmartMotion e20 Folding Electric Bike",
+        "url": "http://jepspectro.com/htm/folding-ebike.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0037",
+  "query_text": "explain the basic idea behind gear trains in software engineering",
+  "requested_at": "2026-09-03T01:44:56.324722Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

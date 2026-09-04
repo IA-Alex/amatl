@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 368.453742004931,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind wave interference in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "voltage spikes are the interference from the boost converters, which are partially suppressed by C35 . It should be noted that a small value of the tube series resistance may lowe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "slomkowski.eu",
+          "/octoglow-vfd-fallout-inspired-display/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Octoglow VFD - Fallout-inspired post-apocalyptic display | Słomkowski",
+        "url": "https://slomkowski.eu/octoglow-vfd-fallout-inspired-display/"
+      },
+      {
+        "category": "general",
+        "content": "for government interference. It will be complexity on steroids ( blog Register Schneier ). Threat Models over Space and Time: A Case Study of E2EE Messaging Applications shows how",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0044",
+  "query_text": "describe the principle behind wave interference in software engineering",
+  "requested_at": "2026-09-03T01:43:37.764269Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

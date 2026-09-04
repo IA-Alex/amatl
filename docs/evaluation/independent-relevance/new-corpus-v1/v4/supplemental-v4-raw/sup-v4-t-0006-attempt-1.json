@@ -1,0 +1,108 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 286.6186969986302,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does voltage regulators in computer networks work",
+    "results": [
+      {
+        "category": "general",
+        "content": "TV service, like shunt regulators, just to avoid cluttering up the list with devices that hobbyists are not likely to use. There are a handful of types that I am omitting because",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.junkbox.com",
+          "/electronics/CompactronTubesIndex.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Compactron Tubes: A Junkbox Guide",
+        "url": "https://www.junkbox.com/electronics/CompactronTubesIndex.shtml"
+      },
+      {
+        "category": "general",
+        "content": "with switching power regulators back in 1968, so I understand the basics. I will continue to update technical information on this page to assure its accuracy as I have been gettin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "j-hawkins.com",
+          "/wabc.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "JIM HAWKINS&#39; WABC RADIO 77 Transmitter Page",
+        "url": "http://j-hawkins.com/wabc.shtml"
+      },
+      {
+        "category": "general",
+        "content": "supplies, no extra regulators, and no expensive Link cables to cut up and use. I can make 16&#43; cartridges out of the connectors in a Radio Shack male header pack for $2.98! That&#39;s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "richfiles.solarbotics.net",
+          "/SPinTerfaceFAQ.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Richfiles: SPinTerface FAQs Page",
+        "url": "http://richfiles.solarbotics.net/SPinTerfaceFAQ.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0006",
+  "query_text": "how does voltage regulators in computer networks work",
+  "requested_at": "2026-09-03T01:43:04.673675Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

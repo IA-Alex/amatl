@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 334.70481199765345,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does cloud formation in operating systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "saw black dots in vee-formation against cirrus clouds to the south, and dared not glance toward the east, lest Denebola blind. Then abovehead they glided. Something made me tense.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "paulburgess.org",
+          "/light.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bearing Light",
+        "url": "http://paulburgess.org/light.html"
+      },
+      {
+        "category": "general",
+        "content": "fabrication, is the formation of covalent chemical bonds using precisely applied mechanical forces to build diamondoid structures. DMS may be automated via computer control, enabl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.molecularassembler.com",
+          "/Nanofactory/DMS.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Diamond Mechanosynthesis",
+        "url": "http://www.molecularassembler.com/Nanofactory/DMS.htm"
+      },
+      {
+        "category": "general",
+        "content": "long-term transformation of culture * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * [38-40 in reserve for future edits] * * * * * * * * * * * * * * *",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stat.berkeley.edu",
+          "/~aldous/Real_World/100_list.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Annotated list of contexts where we perceive chance",
+        "url": "https://www.stat.berkeley.edu/~aldous/Real_World/100_list.html"
+      },
+      {
+        "category": "general",
+        "content": "of black holes, galaxy formation and the big-bang. Its tiny entropy-reducing photosynthetic energy budget and fragile chemical bonds are insignificant on the cosmic scale. Biologi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "17 months after its formation. Like other radioactive isotopes of fallout, strontium 90 falls on the surface of plants and can be consumed with foods and forage. Some of it is dep",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ki4u.com",
+          "/transpacific.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Trans-Pacific Radioactive Fallout here from Japan, North Korea, Iran, Mid-East, etc.",
+        "url": "https://www.ki4u.com/transpacific.htm"
+      },
+      {
+        "category": "general",
+        "content": "learning information classified to you), and religion. Freedom to experience any form of consciousness. Freedom to do any type of drugs regardless of the tendency to addiction (un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.e-democracy.biz",
+          "/E-Democracy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Judicially Arbitrated Imperial E-Democracy",
+        "url": "http://www.e-democracy.biz/E-Democracy.html"
+      },
+      {
+        "category": "general",
+        "content": "learning information classified to you), and religion. Freedom to experience any form of consciousness. Freedom to do any type of drugs regardless of the tendency to addiction (un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.e-democracy.biz",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Judicially Arbitrated Imperial E-Democracy",
+        "url": "http://www.e-democracy.biz/"
+      },
+      {
+        "category": "general",
+        "content": "cryptic pieces of information describing your current status. If either status line becomes longer than the width of the screen, you might not see all of it. Here are explanations",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.nethack.org",
+          "/v330/Guidebook.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NetHack 3.3.0: A Guide to the Mazes of Menace",
+        "url": "http://www.nethack.org/v330/Guidebook.html"
+      },
+      {
+        "category": "general",
+        "content": "could not find other information where similar effects are be mentioned. In this paper we present the experimental device the results we have obtained. The Description of the Expe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.rexresearch.com",
+          "/roschin/roschin.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Roschin &amp; Godin: Magneto-Gravity Effects; Verification of the Searl Effect",
+        "url": "http://www.rexresearch.com/roschin/roschin.htm"
+      },
+      {
+        "category": "general",
+        "content": "means to distribute information and censor it at their whim under “content guidelines”. We have now had to deactivate entirely our social-media apparatus due to the fact that the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ciml.250x.com",
+          "/index1.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Comintern (SH)",
+        "url": "http://ciml.250x.com/index1.html"
+      },
+      {
+        "category": "general",
+        "content": "(40 years after the formation of the State of Israel in 1948, minus 7 years of Tribulation) and then again in 1988 , the view is rapidly losing its most passionate supporters. Thi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "vftonline.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Vine &amp; Fig Tree Worldview",
+        "url": "http://vftonline.com/"
+      },
+      {
+        "category": "general",
+        "content": "other followed the Reformation at almost equal intervals. Dante was the first religious reformer, and Luther surpassed him rather in the rudeness and acrimony, than in the boldnes",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.lyriktheorie.uni-wuppertal.de",
+          "/lyriktheorie/texte/1821_shelley.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "1821 Percy Bysshe Shelley: A Defence of Poetry",
+        "url": "https://www.lyriktheorie.uni-wuppertal.de/lyriktheorie/texte/1821_shelley.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0030",
+  "query_text": "how does cloud formation in operating systems work",
+  "requested_at": "2026-09-03T01:43:13.033973Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

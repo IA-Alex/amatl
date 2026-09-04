@@ -1,0 +1,135 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 387.92558400018606,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of load bearing walls in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "serving a reproductive function resembling that of a queen ant and the data storage function of a Starbase Core—though the brood mass could not manipulate that data itself .",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.projectrho.com",
+          "/public_html/rocket/alienbody.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alien Bodies - Atomic Rockets",
+        "url": "https://www.projectrho.com/public_html/rocket/alienbody.php"
+      },
+      {
+        "category": "general",
+        "content": "be purified for the function of his sacerdotal office; or the latter, be admitted to the benefit of religious communion. Their chief dress is very simple, like that of the patriar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "olivercowdery.com",
+          "/texts/1775Adr1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "James Adair&#39;s 1775 &#34;History of the American Indians&#34;",
+        "url": "http://olivercowdery.com/texts/1775Adr1.htm"
+      },
+      {
+        "category": "general",
+        "content": "as a whole continues to function. Once established, a strategy of KEEPING IT WORKING preserves a municipality’s vitality as it grows. Systems and their constituent elements e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.laputan.org",
+          "/mud/mud.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Big Ball of Mud",
+        "url": "https://www.laputan.org/mud/mud.html"
+      },
+      {
+        "category": "general",
+        "content": "on sexual pleasure, function, desire, or fertility. It is more carefully worded than it used to be in 2022 (MozArchive) : Circumcision does not affect sexual function, sensation,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/wikipedia.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Wikipedia is the Ministry of Truth",
+        "url": "http://digdeeper.love/articles/wikipedia.xhtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0218",
+  "query_text": "tell me about the function of load bearing walls in climate science",
+  "requested_at": "2026-09-03T01:42:45.118526Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

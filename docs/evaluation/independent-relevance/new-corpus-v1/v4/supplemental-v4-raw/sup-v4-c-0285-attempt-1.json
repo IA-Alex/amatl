@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 343.2626059948234,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind cloud formation in photography",
+    "results": [
+      {
+        "category": "general",
+        "content": "and Scope Photography. None of these subjects suggests Marcel had even an introduction to the use of radar targets for measuring the direction and speed of winds aloft, which was",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.astronomyufo.com",
+          "/UFO/Rosmyths.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Popular Roswell myths",
+        "url": "http://www.astronomyufo.com/UFO/Rosmyths.htm"
+      },
+      {
+        "category": "general",
+        "content": "fasteners /invention of photography /development of color photography importance of technology American technology American technology American technology science and technology a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0285",
+  "query_text": "explain the basic idea behind cloud formation in photography",
+  "requested_at": "2026-09-03T01:43:17.771285Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}
