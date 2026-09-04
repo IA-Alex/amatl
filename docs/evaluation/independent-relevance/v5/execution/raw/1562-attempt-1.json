@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 239.384,
+  "pair_id": "v5-p-0427",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of carbon capture in forensic science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ffcd0effb841661d85fe8dad451c5d09f3e22ac20ba32049086b5c386c6983cc",
+  "provider": "SearXNG",
+  "query": "give an overview of carbon capture in forensic science",
+  "query_id": "v5-p-0427-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:33.510265Z"
+}

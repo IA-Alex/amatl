@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 266.88,
+  "pair_id": "v5-p-0111",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes database indexing in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "Community 2021-10-31 Chemistry in the city 2022-01-30 Show HN: Searchall – search all major indexes on one page (with iframes) | Hacker News 2022-01-31 Firefox Experiment is testi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "seirdy.one",
+          "/posts/2021/03/10/search-engines-with-own-indexes/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A look at search engines with their own indexes - Seirdy",
+        "url": "https://seirdy.one/posts/2021/03/10/search-engines-with-own-indexes/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b0ec42d7375041ac0bd9f4ab7a6c84909dc49772bddad8f5e853404e6a809063",
+  "provider": "SearXNG",
+  "query": "what causes database indexing in chemistry",
+  "query_id": "v5-p-0111-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:15:59.216035Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 341.745,
+  "pair_id": "v5-p-0241",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind plate tectonics in software engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d0f98e9a433619ba9e075dfe6fa3ea3407434d3fe4974086e06dd46186efb089",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind plate tectonics in software engineering",
+  "query_id": "v5-p-0241-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:59.902797Z"
+}

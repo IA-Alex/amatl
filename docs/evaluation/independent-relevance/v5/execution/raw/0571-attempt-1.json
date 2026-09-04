@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 313.35,
+  "pair_id": "v5-p-0517",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is neural networks in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "studies where neural networks have been trained against iris photographs (there are open libraries) to diagnose different health conditions with very high accuracy. Here is an inc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "exo-science.com",
+          "/iridology.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "What Your Eyes Can Tell You About Your Health (Iridology) — Exo-Science… Beyond Mainstream Academia",
+        "url": "http://exo-science.com/iridology.html"
+      },
+      {
+        "category": "general",
+        "content": "in &#34;Bayesian networks.&#34;     Asked recently when computers would finally begin to understand human speech, Gates began discussing the critical role of &amp;quo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cs.ubc.ca",
+          "/~murphyk/Bayes/la.times.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bayesian Networks",
+        "url": "https://www.cs.ubc.ca/~murphyk/Bayes/la.times.html"
+      },
+      {
+        "category": "general",
+        "content": "to work on all networks. Copyrighted freeware. DIA (Diary for 1000CX) (3 KB) added 06/18/1999 (Productivity) Version 1.1 by Jorgen Dybdahl DIA is a UNIX-like calendar program that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mizj.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "S.U.P.E.R. - The Largest 200LX Software Archive",
+        "url": "http://mizj.com/"
+      },
+      {
+        "category": "general",
+        "content": "easy it is for belief networks to use intuition for forming coherence , while rejecting scientific consensuses. For the most part, the videos were a waste of time, aside from the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/case-against-carnivore-diet",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Case Against The Carnivore Diet",
+        "url": "https://zerocontradictions.net/misc/case-against-carnivore-diet"
+      },
+      {
+        "category": "general",
+        "content": "through end-to-end networks and cryptographic protocols, has more than enough resources to replace literally all current services being provided on the Internet. From banking to i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unsigned.io",
+          "/articles/2022_04_02_From_Here_to_There.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "From Here to There, or: Walls Have Ears | unsigned.io",
+        "url": "https://unsigned.io/articles/2022_04_02_From_Here_to_There.html"
+      },
+      {
+        "category": "general",
+        "content": "industrial spying networks, the development of nuclear, biological and chemical weapons, even the development of a genetic killer program by Israel to find an organism that will o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "chemistry and neural networks in the brain grows, but often at a cost to genuine human understanding (I say this from direct experience, as one who has worked in a neuropsychiatri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/tidom.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Idea of Mind",
+        "url": "http://ipwebdev.com/hermit/tidom.html"
+      },
+      {
+        "category": "general",
+        "content": "process extends social networks and, in turn, induces an extension of empathy [Rifkin]. Possibly the world community passes thru a learning process which leads to a global consens",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.socrethics.com",
+          "/Folder2/Culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cultural Evolution of Suffering",
+        "url": "http://www.socrethics.com/Folder2/Culture.htm"
+      },
+      {
+        "category": "general",
+        "content": "can also affect neural networks, brainwaves and gene expression (and therefore the proteins our bodies make). The placebo effect is stronger in people with a positive, optimistic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/psycho.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mass psychosis and the power of thought",
+        "url": "https://davidpratt.info/psycho.htm"
+      },
+      {
+        "category": "general",
+        "content": "the use of neural networks, which are modeled after the structure and function of the human brain. AI is used in a wide range of applications, from chatbots and virtual assistants",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biointelligence-explosion.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biointelligence Explosion as conceived by ChatGPT",
+        "url": "https://www.biointelligence-explosion.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "random or chaotic, and networks of neurons that usually fire together become desynchronized. This may contribute to psilocybin&#39;s potential therapeutic effect. Researchers   g",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.andyross.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE ROSS BLOG",
+        "url": "https://www.andyross.net/"
+      },
+      {
+        "category": "general",
+        "content": "(neurons) that form networks to manage our thinking, learning, and remembering. By the mid-1990s, studies were indicating a link between Alzheimer’s and aluminum. But just as the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bibliotecapleyades.net",
+          "/sociopolitica/esp_sociopol_mindcon52.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nazi Mind Control",
+        "url": "https://bibliotecapleyades.net/sociopolitica/esp_sociopol_mindcon52.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f8389f649eeed8bd7b0c4685f0d83716f4d1fbd85d09e2547876aedf434e3c92",
+  "provider": "SearXNG",
+  "query": "what is neural networks in health science",
+  "query_id": "v5-p-0517-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:08.664571Z"
+}

@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 299.334,
+  "pair_id": "v5-p-0462",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does supply chain logistics in energy systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "as Artyomovsk), a key logistics hub, turned into another slaughterhouse for the Ukrainian forces. Determined to hold on to it, the army kept pouring soldiers into the city, many o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/multipol.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Decline of the west &amp; rise of a multipolar world",
+        "url": "https://davidpratt.info/multipol.htm"
+      },
+      {
+        "category": "general",
+        "content": "Strategy is easy, but logistics is hard. Golden Dome proves it. The Golden Dome missile defense system will require major space-based capabilities, from sensors to interceptors. B",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.thespacereview.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Space Review: essays and commentary about the final frontier",
+        "url": "https://www.thespacereview.com/"
+      },
+      {
+        "category": "general",
+        "content": "et al. “Last mile logistics life cycle assessment: a comparative analysis from diesel van to e-cargo bike.” Energies 15.20 (2022): 7817.. https://www.mdpi.com/1996-107",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2023/02/can-we-make-bicycles-sustainable-again",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Can We Make Bicycles Sustainable Again? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2023/02/can-we-make-bicycles-sustainable-again"
+      },
+      {
+        "category": "general",
+        "content": "other nations lacked: logistics (e.g. the US currently has over 230 strategic airlift transports and over 430 aerial refueling tankers - the rest of NATO has about 10 strategic ai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/USPolicy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "US Policy Choices",
+        "url": "https://www.billdietrich.me/USPolicy.html"
+      },
+      {
+        "category": "general",
+        "content": "and began to set up the logistics to carry it out. During the next four years, meetings were held in Malaysia and Germany and al-Qaeda used its banking accounts in Dubai to pay fo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.eaec.org",
+          "/desk/2023/10-31-2023.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Attack on Israel: False Flag Operations and the Distortion of Truth -- John S. Torell",
+        "url": "https://www.eaec.org/desk/2023/10-31-2023.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9ab0c7a88629277c2e2863b9c3a8af85f872c4957c3629eba32a33e959feb842",
+  "provider": "SearXNG",
+  "query": "how does supply chain logistics in energy systems work",
+  "query_id": "v5-p-0462-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:25.279095Z"
+}

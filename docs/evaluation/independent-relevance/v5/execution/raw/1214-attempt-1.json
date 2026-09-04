@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 233.048,
+  "pair_id": "v5-p-0963",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of cloud formation in architecture",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6434fa43dbd7fe1c1281bd09d636937bfdfcc8aa073842ac2cc31cb6bc679628",
+  "provider": "SearXNG",
+  "query": "give an overview of cloud formation in architecture",
+  "query_id": "v5-p-0963-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:44.962746Z"
+}

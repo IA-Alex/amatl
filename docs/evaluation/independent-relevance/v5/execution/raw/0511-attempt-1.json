@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 258.139,
+  "pair_id": "v5-p-0240",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does plate tectonics in robotics operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "30e5db7cb35ac1068b19ae990634e928368ddc89a6e389abf54ad36f8061834a",
+  "provider": "SearXNG",
+  "query": "how does plate tectonics in robotics operate",
+  "query_id": "v5-p-0240-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:50.038761Z"
+}

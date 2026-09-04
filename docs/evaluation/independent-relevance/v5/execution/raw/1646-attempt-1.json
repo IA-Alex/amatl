@@ -1,0 +1,273 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 387.667,
+  "pair_id": "v5-p-0002",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of photosynthesis in biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "role in the process of photosynthesis in plants and in the sense of smell in animals. These findings suggest that some quantum effects may be relevant for biological systems, incl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biointelligence-explosion.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biointelligence Explosion as conceived by ChatGPT",
+        "url": "https://www.biointelligence-explosion.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "at all (most likely by photosynthesis or chemosynthesis): they simply could not gather enough energy by such means to support their activity – a single human being requires",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.projectrho.com",
+          "/public_html/rocket/alienbody.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alien Bodies - Atomic Rockets",
+        "url": "https://www.projectrho.com/public_html/rocket/alienbody.php"
+      },
+      {
+        "category": "general",
+        "content": "the form of light. This photosynthesis results in the plant’s internal production of carbon. It utilizes this carbon to create and reinforce tissue as it grows, so it is a v",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.microbeorganics.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Microbe Organics",
+        "url": "http://www.microbeorganics.com/"
+      },
+      {
+        "category": "general",
+        "content": "capable of early photosynthesis (Redfern 2013). Meteorites of Martian origin have more recently come to the Earth. From magnetic studies, some reached temperatures no higher than",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "whether green leaves do photosynthesis were settled as matters of fact. There is no room for logic chopping or conceptual analysis, since we are talking about matters of hard scie",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "newdualism.org",
+          "/papers/J.Searle/searle.comp.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Is the Brain a Digital Computer?",
+        "url": "http://newdualism.org/papers/J.Searle/searle.comp.html"
+      },
+      {
+        "category": "general",
+        "content": "read there the entry on photosynthesis,   we will find all manner of observations and categories of the processes by which the Sun acts on our World to create the food we eat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/electricityandthespiritinnature.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Electricity and the Spirit in Nature",
+        "url": "http://ipwebdev.com/hermit/electricityandthespiritinnature.html"
+      },
+      {
+        "category": "general",
+        "content": "development, reducing photosynthesis, and weakening trees over time (Carta et al., 2020; Reed et al., 2020). Although researchers continue to investigate the complete disease proc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      },
+      {
+        "category": "general",
+        "content": "green leaves do photosynthesis were settled as matters of fact. There is no room for logic chopping or conceptual analysis, since we are talking about matters of ha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lafavephilosophy.x10host.com",
+          "/is_brain_a_computer.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Is the Brain a Digital Computer?",
+        "url": "http://lafavephilosophy.x10host.com/is_brain_a_computer.html"
+      },
+      {
+        "category": "general",
+        "content": "Only the invention of photosynthesis -- using the energy of the sun to split down matter in order to get electrons -- allowed life to go on. Life is driven by the force of electro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/a/lanka4.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "INTERVIEW STEFAN LANKA",
+        "url": "http://www.whale.to/a/lanka4.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "928fbd64579a445d805f1bfc45b800a673b8aff11ea69ca71e756d52bc9efbf0",
+  "provider": "SearXNG",
+  "query": "tell me about the function of photosynthesis in biology",
+  "query_id": "v5-p-0002-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:58.362154Z"
+}

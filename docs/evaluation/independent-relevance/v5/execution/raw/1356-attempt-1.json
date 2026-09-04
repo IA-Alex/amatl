@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 328.578,
+  "pair_id": "v5-p-0386",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of solar eclipses in urban planning",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "496bf6b5c03400b4481f15cca7f7ade2e63640193c299d7691dae3b39f3efbc2",
+  "provider": "SearXNG",
+  "query": "tell me about the function of solar eclipses in urban planning",
+  "query_id": "v5-p-0386-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:29.063619Z"
+}

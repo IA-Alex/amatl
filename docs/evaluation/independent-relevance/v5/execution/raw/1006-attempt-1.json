@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 309.425,
+  "pair_id": "v5-p-0248",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind plate tectonics in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9ef4116739768fff0643b8c51be59f188235110b736b2dccac1b2f7cb73e9e0a",
+  "provider": "SearXNG",
+  "query": "describe the principle behind plate tectonics in hydrology",
+  "query_id": "v5-p-0248-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:10:33.955317Z"
+}

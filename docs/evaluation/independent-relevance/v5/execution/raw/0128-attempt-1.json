@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 309.372,
+  "pair_id": "v5-p-1072",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind microbial fermentation in communication studies",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0c6167a631069dfb4e4cbf47b7ee1a8ee99d4343f40b6441855befbc8076d768",
+  "provider": "SearXNG",
+  "query": "describe the principle behind microbial fermentation in communication studies",
+  "query_id": "v5-p-1072-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:48.670909Z"
+}

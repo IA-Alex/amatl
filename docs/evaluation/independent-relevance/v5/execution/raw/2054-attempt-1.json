@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 366.191,
+  "pair_id": "v5-p-0802",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of battery chemistry in environmental science",
+    "results": [
+      {
+        "category": "general",
+        "content": "I can work in corporate environmental and I feel like this will craft the perfect story. He also added the following advice: get your GIT and PG as soon as possible bachelors is e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sciencecareergeneral.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Science Career General Paste",
+        "url": "https://sciencecareergeneral.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "A Healthier Medical and Environmental Industry                   Chapter 1 - Introduction To The War in Medicine Introduction We live",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_industrybigpharma42.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The War Between Orthodox Medicine and Alternative Medicine",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_industrybigpharma42.htm"
+      },
+      {
+        "category": "general",
+        "content": "of the Air Force&#39;s Environmental Impact State-ment which evaluated potential environmental effects of con-structing and operating the HAARP facility, a Record of Decision (ROD) si",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "Age Mysticism and Gaia Environmentalism Science, Method, &amp; Critique The Scientific Method: Foundations and Limits The Scientific Method and Its Misuse in Public Policy Evoluti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.lloflin.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lloflin.com Reason Based Exploration of Religion &amp; Philosophy",
+        "url": "https://www.lloflin.com/"
+      },
+      {
+        "category": "general",
+        "content": "use of micros in environmental research is in the analysis of images from earth-orbiting spacecraft. Undercover consumer joins the club. Persistent and n-persistent numbers. Explo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.atarimagazines.com",
+          "/creative/index/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of Creative Computing articles",
+        "url": "https://www.atarimagazines.com/creative/index/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "174bcf30bf65dffc87d7a8b9699d7617705fdcbb9027b029ba837a25b66249c7",
+  "provider": "SearXNG",
+  "query": "tell me about the function of battery chemistry in environmental science",
+  "query_id": "v5-p-0802-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:12.097549Z"
+}

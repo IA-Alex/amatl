@@ -1,0 +1,219 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 288.743,
+  "pair_id": "v5-p-0925",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is bridge resonance in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "In Bed Practical Engineering Prema Naljor Professor Linnell Project Shivoham Psicologicamente Royalty Now Studios Richard Feynman - Tema S.CRAFT Saikrishna Ravikanti saiwisdom SAI",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.eskeleto.com.br",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "🅔🅢🅚🅔🅛🅔🅣🅞",
+        "url": "https://www.eskeleto.com.br/"
+      },
+      {
+        "category": "general",
+        "content": "of industry, jobs of engineering and the hygiene, etc. You can become a member of these councils and can elect these as a citizen in another day. You must choose the person who ha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "orientals.web.fc2.com",
+          "/Koreanoldtextbooken.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Korean textbooks during the period of Japanese rule",
+        "url": "http://orientals.web.fc2.com/Koreanoldtextbooken.html"
+      },
+      {
+        "category": "general",
+        "content": "process of genetically engineering crops to protect them or their consumers from disease. For example, researchers at Texas A&amp;M and Tulane University have genetically altered pota",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.shoestring-graphics.com",
+          "/CP2020/slang/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Word on The Streets",
+        "url": "http://www.shoestring-graphics.com/CP2020/slang/"
+      },
+      {
+        "category": "general",
+        "content": "the university (civil engineering in physics) I also got back into prime numbers by writing a Lucas-Lehmer program for Mersenne primes. When I later learned about Prime95 I jumped",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fermatsearch.org",
+          "/researchers.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": ":: F E R M A T S E A R C H . O R G :: Researchers",
+        "url": "https://www.fermatsearch.org/researchers.html"
+      },
+      {
+        "category": "general",
+        "content": "programming, software engineering, how to write a Windows app, computer graphics, like that. I used to be a pure mathematician, but when I came out here in 1986, I let the chip in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.rudyrucker.com",
+          "/saucerwisdom/html/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Saucer Wisdom",
+        "url": "https://www.rudyrucker.com/saucerwisdom/html/"
+      },
+      {
+        "category": "general",
+        "content": "the Jane Street Reverse Engineering Challenge [1h] [hn] The Raspberry Pi Interactive Timeline · 2006–2026 [2h] [hn] Carbon-aware electricity pricing, measured daily on 38 grids [3",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "brutalist.report",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Brutalist Report",
+        "url": "https://brutalist.report/"
+      },
+      {
+        "category": "general",
+        "content": "applies particularly to engineering types, who have to argue their ideas through to practical realisation in the workplace. Sometimes, just sometimes, the ability to say &#39;I was wr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8db61618f35a3f1c23115be589844f14bd804b1b6037d1c8074a081cde0af7ca",
+  "provider": "SearXNG",
+  "query": "what is bridge resonance in software engineering",
+  "query_id": "v5-p-0925-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:22.771454Z"
+}

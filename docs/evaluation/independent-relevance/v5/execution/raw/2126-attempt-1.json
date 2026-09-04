@@ -1,0 +1,246 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 295.154,
+  "pair_id": "v5-p-0275",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of binary search in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "is a talk he gave, an overview of the ideas in his book THE QUEST FOR COSMIC JUSTICE . How do “traditional” justice and “cosmic” justice (or, “social",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.infidelnotions.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Infidel Notions",
+        "url": "https://www.infidelnotions.com/"
+      },
+      {
+        "category": "general",
+        "content": "a new command `^O`/`#overview`; additionally, a character can select a level from this menu to view their memory of it, and name levels using the `#annotate` or `Cf` commands. (Bi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "nethack4.org",
+          "/latest/nethack4/doc/changelog.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://nethack4.org/latest/nethack4/doc/changelog.txt",
+        "url": "http://nethack4.org/latest/nethack4/doc/changelog.txt"
+      },
+      {
+        "category": "general",
+        "content": "usage Here&#39;s basic overview of how you&#39;d go about using redbean alongside InfoZIP which is a free tool that comes included with most UNIX systems. echo &#39;&lt;b&gt;hello&lt;/b&gt;&#39;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "redbean.dev",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "redbean",
+        "url": "http://redbean.dev/"
+      },
+      {
+        "category": "general",
+        "content": "adversary with a global overview of the entire network aka the 5 Eyes Alliance. Tor is just one step in the anon h4xrz chain I would imagine you would want to move around often an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "learnaifromscratch.github.io",
+          "/theabsolutestateofsoftware.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A 2026 Security Curriculum",
+        "url": "https://learnaifromscratch.github.io/theabsolutestateofsoftware.html"
+      },
+      {
+        "category": "general",
+        "content": "I’ll proceed to overview each kind, describing their purpose, location, and exploitation. Crawl Space blank Suspended Timber Floor It turns out that the ground floor of a building",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "smolthots.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Small Thoughts",
+        "url": "https://smolthots.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "provides an excellent overview of the book&#39;s contents and includes some well-worth-reading outtakes. Buy the terrific book here . Some of the buzz around the web: Randall Parker t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2009/01/a_week_with_gre_1.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: A Week With Gregory Cochran: Day Two",
+        "url": "http://www.2blowhards.com/archives/2009/01/a_week_with_gre_1.html"
+      },
+      {
+        "category": "general",
+        "content": "Open Source Software Overview and Preliminary Guidelines for the Government of Canada , and Seth Gottlieb&#39;s &#34;How to choose an open-source CMS&#34; . There are also sites that track an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "dwheeler.com",
+          "/oss_fs_eval.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Evaluate Open Source Software / Free Software (OSS/FS) Programs",
+        "url": "https://dwheeler.com/oss_fs_eval.html"
+      },
+      {
+        "category": "general",
+        "content": "pieces: And a project overview of where we&#39;re at now (sadly missing the 3.6/3.7 new feature slides that I didn&#39;t get time to build on the train) from the openSUSE conference: Than",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2012/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2012/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ad76b8bb4dcded59984797bae08d97fd97935d43db736f3429918fc333f6c8d4",
+  "provider": "SearXNG",
+  "query": "give an overview of binary search in public health",
+  "query_id": "v5-p-0275-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:35.493791Z"
+}

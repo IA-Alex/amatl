@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 269.789,
+  "pair_id": "v5-p-1081",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is satellite orbits in biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "from an overhead satellite which is orbiting with velocity v 2 in a gravitational potential V 2 . The experimentally confirmed ( 41 ) equation for the redshift, as derived from th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.halos.com",
+          "/reports/aaas-1984-perspective.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Radiohalos in a Radiochronological and Cosmological Perspective",
+        "url": "https://www.halos.com/reports/aaas-1984-perspective.htm"
+      },
+      {
+        "category": "general",
+        "content": "next image. Image from satellite: the extra-thin curved bluish line between the Earth and the dark outer space is the atmosphere of the Earth. The bluish color is caused by the ai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.foundalis.com",
+          "/rlg/Quran_and_science.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Science in the Qur’an? Surely you’re joking, Mr. Muslim!",
+        "url": "https://www.foundalis.com/rlg/Quran_and_science.htm"
+      },
+      {
+        "category": "general",
+        "content": "found by NASA&#39;s Kepler satellite. They looked at 151 planetary systems - ones where Kepler had detected between three and six planets - and found that the Titius-Bode law fits wel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "056d2a358a336b7f943be13ae05cd9e322ab94c7fd2d1472d0a79d018ddf0fd1",
+  "provider": "SearXNG",
+  "query": "what is satellite orbits in biology",
+  "query_id": "v5-p-1081-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:17.684359Z"
+}

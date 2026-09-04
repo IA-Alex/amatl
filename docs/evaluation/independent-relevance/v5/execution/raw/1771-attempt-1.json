@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 308.111,
+  "pair_id": "v5-p-0889",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is vaccination in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "You Because The 1%, The Vaccination Effect, And Extra Funding Makes It Definitely Worth The Angels&#39; While. Don&#39;t Waste Any Money On OverPriced Shit Because Then You Won&#39;t Have Mon",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "in Germany it was three vaccinations, because if you sign it three times, the contract with the Devil is quite hard! &#34;So, the next step is to consciously [renounce] the contract..",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.philosophicalanthropology.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHICAL ANTHROPOLOGY",
+        "url": "https://www.philosophicalanthropology.net/"
+      },
+      {
+        "category": "general",
+        "content": "developed Covid vaccination causes micro blood clots, but this has yet to be proven. Something however is causing a decline in rapid thinking and cognitive ability in the populati",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIDIK.com The original and official DIDIK site. Cutting edge and sometimes controversial thoughts, designs, proposals and projects conceiv",
+        "url": "http://www.didik.com/"
+      },
+      {
+        "category": "general",
+        "content": "You Because The 1%, The Vaccination Effect, And Extra Funding Makes It Definitely Worth The Angels&#39; While. Don&#39;t Waste Any Money On OverPriced Shit Because Then You Won&#39;t Have Mon",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/FountainOfYouth.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/FountainOfYouth.html"
+      },
+      {
+        "category": "general",
+        "content": "chew, catch-up, booster vaccination, partner sales call, dinner. Out to sing carols to the local retirement home (from outside) - worked late. 2021-12-20 Monday Planning call; adm",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2021/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2021/"
+      },
+      {
+        "category": "general",
+        "content": "To eliminate mask and vaccination requirements for everyone else would force that fraction into permanent isolation, along with any family members who join them in isolation. 23 F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2021-nov-feb.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2021: November - February Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2021-nov-feb.html"
+      },
+      {
+        "category": "general",
+        "content": "Jesus Do ... About Vaccination? February Mercer Bay January Dehydration Tongariro Northern Circuit 2021 2020 December Rees-Dart Track Kepler Track 2020 Exploiting Precognition In",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "robert.ocallahan.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Eyes Above The Waves",
+        "url": "https://robert.ocallahan.org/"
+      },
+      {
+        "category": "general",
+        "content": "-  The Vaccination Agenda - Implicit Transhumanism      -  They are Using Lab-Grown Human Brains that they have Enslaved called &#34;Organoids&#34;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_transhumanism.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Transhumanism - Transhumanismo",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_transhumanism.htm"
+      },
+      {
+        "category": "general",
+        "content": "cafe. ...and even store vaccination records (archive) (MozArchive) : People in Sweden are increasingly seeking to have microchips implanted that contain their COVID-19 vaccination",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/technological_slavery.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Technological slavery",
+        "url": "http://digdeeper.love/articles/technological_slavery.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "28 iperf3 charts Dec 9 Vaccination cost between Malaysia and Singapore Dec 4 What is good security? Nov 29 Neighbourhood watch on the Web Nov 12 Identification numbers should chan",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "natalian.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kai Hendry&#39;s blog",
+        "url": "https://natalian.org/"
+      },
+      {
+        "category": "general",
+        "content": "chew, catch-up, booster vaccination, partner sales call, dinner. Out to sing carols to the local retirement home (from outside) - worked late. 2021-12-20 Monday Planning call; adm",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2021/Dec/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2021/Dec/"
+      },
+      {
+        "category": "general",
+        "content": "2024 On Not Requiring Vaccination February 01, 2024 Sequencing Swabs January 31, 2024 Stacked Laptop Monitor January 26, 2024 Importing a Python File by Name January 25, 2024 Maki",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jefftk.com",
+          "/p/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog Posts",
+        "url": "https://www.jefftk.com/p/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1f7dcc86b6f11d865deebb75909d82692cf4da5dc53bfb2e70ab33050380429a",
+  "provider": "SearXNG",
+  "query": "what is vaccination in software engineering",
+  "query_id": "v5-p-0889-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:44.099961Z"
+}

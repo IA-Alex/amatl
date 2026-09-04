@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 279.041,
+  "pair_id": "v5-p-0046",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does compiler operation in environmental science work",
+    "results": [
+      {
+        "category": "general",
+        "content": "A short glossary of environmental terms compiled by Patrick Oblander envgloss.inf some information envgloss.gz the file Another short file, of manufacturing terms extracted from a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "edrdg.org",
+          "/pub/Nihongo/00INDEX.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Monash Nihongo ftp Archive",
+        "url": "http://edrdg.org/pub/Nihongo/00INDEX.html"
+      },
+      {
+        "category": "general",
+        "content": "was awful from both an environmental and a geopolitical perspective: environmental, as I would emit somewhere around 2.5 tons of CO2 equivalent per year to heat my home, which com",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wingolog.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "wingolog",
+        "url": "http://wingolog.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "eb28aee7e0eb59eaa0d31d6258b668aea00dc6c2f48bf9e3b09ec294bfe4c80b",
+  "provider": "SearXNG",
+  "query": "how does compiler operation in environmental science work",
+  "query_id": "v5-p-0046-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:13:49.283029Z"
+}

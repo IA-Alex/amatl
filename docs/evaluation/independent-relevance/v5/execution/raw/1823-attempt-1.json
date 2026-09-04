@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 244.911,
+  "pair_id": "v5-p-0999",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes wastewater treatment in architecture",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "aa3d91534859d1673b8b0aee587275a6bb001499e50266fe04db1b96dca270fa",
+  "provider": "SearXNG",
+  "query": "what causes wastewater treatment in architecture",
+  "query_id": "v5-p-0999-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:00.150107Z"
+}

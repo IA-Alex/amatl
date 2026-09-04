@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 259.86,
+  "pair_id": "v5-p-1002",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does wastewater treatment in forensic science work",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4894a226c40658e5dad928f5192d3deed581c7dbdebfdfdbae9544ca4445c4c7",
+  "provider": "SearXNG",
+  "query": "how does wastewater treatment in forensic science work",
+  "query_id": "v5-p-1002-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:44.583069Z"
+}

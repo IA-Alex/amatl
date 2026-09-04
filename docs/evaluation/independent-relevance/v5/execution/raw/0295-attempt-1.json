@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 261.016,
+  "pair_id": "v5-p-0396",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does solar eclipses in transportation engineering operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4bf0a69af66f48000492a40c8ebbaa5067d026181861c5e7a4e58e061aa014fa",
+  "provider": "SearXNG",
+  "query": "how does solar eclipses in transportation engineering operate",
+  "query_id": "v5-p-0396-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:42.519743Z"
+}

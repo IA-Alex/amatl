@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 281.896,
+  "pair_id": "v5-p-0272",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does binary search in optics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "OSI application to operate over TCP/IP (:gck:) CA*net formed by 10 regional networks as national Canadian backbone with direct connection to NSFNET (:ec1:) The first remotely oper",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zakon.org",
+          "/robert/internet/timeline/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hobbes&#39; Internet Timeline - the definitive ARPAnet &amp; Internet history",
+        "url": "https://www.zakon.org/robert/internet/timeline/"
+      },
+      {
+        "category": "general",
+        "content": "Back then Sky Net operated on analogue signals. Multiple encrypted signals were sent to satellites, which signaled to nukes on the ground. If enough signals were not sent to the s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bimavs.com",
+          "/CellularDiamondArmor.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BiMAVs; Bipedal Mechanized Assault Vehicles",
+        "url": "http://www.bimavs.com/CellularDiamondArmor.html"
+      },
+      {
+        "category": "general",
+        "content": "Back then Sky Net operated on analogue signals. Multiple encrypted signals were sent to satellites, which signaled to nukes on the ground. If enough signals were not sent to the s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bimavs.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BiMAVs; Bipedal Mechanized Assault Vehicles",
+        "url": "http://www.bimavs.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8154eae0f1a520b04119ada9b2e36342c06f652d3ddf420c8774257fe41293ea",
+  "provider": "SearXNG",
+  "query": "how does binary search in optics operate",
+  "query_id": "v5-p-0272-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:58.113565Z"
+}

@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 321.052,
+  "pair_id": "v5-p-0084",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind ocean tides in geology",
+    "results": [
+      {
+        "category": "general",
+        "content": "formed before the same principle manifests itself again and gives rise to a further emigration; and so is it destined to go on until a physical barrier must finally obstruct its p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "monadnock.net",
+          "/turner/frontier.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Significance of the Frontier in American History, by Frederick Jackson Turner",
+        "url": "https://monadnock.net/turner/frontier.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9fc2c21761d39f5b15c28d24f74fa0743c543d08d0c70043094e7a40530eba48",
+  "provider": "SearXNG",
+  "query": "describe the principle behind ocean tides in geology",
+  "query_id": "v5-p-0084-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:15:10.345678Z"
+}

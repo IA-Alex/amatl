@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 257.129,
+  "pair_id": "v5-p-0393",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is solar eclipses in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "Is Revolutionizing Industrial Design , Jim Morrison, Smithsonian Magazine, 23 April 2019. Ancient Origami Art Becomes Engineers’ Dream in Space , Elizabeth Lee, Voice of America,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mananarya.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Manan Arya",
+        "url": "https://mananarya.com/"
+      },
+      {
+        "category": "general",
+        "content": "ew owners The space industrial base is undergoing major changes with new players and new investment. Bharath Gopalaswamy and Daniel Dant argue that those companies would also benef",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.thespacereview.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Space Review: essays and commentary about the final frontier",
+        "url": "https://www.thespacereview.com/"
+      },
+      {
+        "category": "general",
+        "content": "2016), The fourth industrial revolution: a primer on Artificial Intelligence (AI) , Artificial intelligence positioned to be a game-changer (60 Minutes, 2016), What is deep learni",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "as a far greater industrial and manufacturing nation than any in Europe or than any other in Asia….She had great engineering works. She had great merchants, great businessmen, grea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "indiancentury.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Indian Century - Dedicated to Indian Culture, Religion, and Philosophy",
+        "url": "http://indiancentury.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f52cfc8787f06db0e7e68c7c06cf430899280a42f173d1c648c56557cebd73b8",
+  "provider": "SearXNG",
+  "query": "what is solar eclipses in industrial design",
+  "query_id": "v5-p-0393-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:50.878783Z"
+}

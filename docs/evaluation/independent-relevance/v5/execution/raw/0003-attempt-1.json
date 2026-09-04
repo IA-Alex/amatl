@@ -1,0 +1,24 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 1288.978,
+  "pair_id": "v5-p-0450",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does supply chain logistics in neuroscience work",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "e648147da12aea3c015e46e03016dccf36e73fe497eae26a7431679db981b5a1",
+  "provider": "SearXNG",
+  "query": "how does supply chain logistics in neuroscience work",
+  "query_id": "v5-p-0450-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:04:59.798811Z"
+}

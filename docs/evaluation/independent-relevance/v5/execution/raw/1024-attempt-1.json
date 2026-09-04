@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 401.662,
+  "pair_id": "v5-p-0626",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of renewable energy storage in information systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "Google collects information from the blog’s visitors, which forces us to craft extensive privacy statements and cookie warnings — which also consume data, and annoy visitors. Ther",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2018/09/how-to-build-a-low-tech-website/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Build a Low-tech Website? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2018/09/how-to-build-a-low-tech-website/"
+      },
+      {
+        "category": "general",
+        "content": "on foreign intelligence information, which is a giant loophole that lets cops do whatever they want as long and they claim it’s related to national security (and we all know how t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-sep-dec.html"
+      },
+      {
+        "category": "general",
+        "content": "close by can exchange information, organise, cooperate in managing systems without offices or staff. Thus, sub-systems and operations are highly integrated . This includes social",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "thesimplerway.info",
+          "/THEALTSOCLong.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "TheAltSocLongNew.html",
+        "url": "http://thesimplerway.info/THEALTSOCLong.htm"
+      },
+      {
+        "category": "general",
+        "content": "article, have you any information, examples, and products that you could publish to update the article? bobby mobby Quick question, according to the [27] paper “with cylinde",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2018/05/ditch-the-batteries-off-grid-compressed-air-energy-storage",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ditch the Batteries: Off-Grid Compressed Air Energy Storage | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2018/05/ditch-the-batteries-off-grid-compressed-air-energy-storage"
+      },
+      {
+        "category": "general",
+        "content": "where there is little information given about childbirth, there is also huge concern that natural birth can make women sexually unattractive. In a similar vein Mexico has stopped",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/repcult/reproduction-and-culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Religion, Politics, Sexual Reproduction and the Future of Human Society",
+        "url": "http://www.dhushara.com/repcult/reproduction-and-culture.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "51ecfd6737027172ec5257fc9a877ef8ee9802b5efd128bf654994a2676bd9f9",
+  "provider": "SearXNG",
+  "query": "tell me about the function of renewable energy storage in information systems",
+  "query_id": "v5-p-0626-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:39.339936Z"
+}

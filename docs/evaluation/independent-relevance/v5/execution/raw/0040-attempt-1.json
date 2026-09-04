@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 346.939,
+  "pair_id": "v5-p-0821",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind battery chemistry in communication studies",
+    "results": [
+      {
+        "category": "general",
+        "content": "batteries advances in communication communication by neutrino personal communication frequency global communications (ala the Internet) modern communications brain communication d",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f69257117abf8d5cbbfe4a72603c6a65fa733f8d3a3cdb17450d1b13307b4fd2",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind battery chemistry in communication studies",
+  "query_id": "v5-p-0821-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:05:21.120152Z"
+}

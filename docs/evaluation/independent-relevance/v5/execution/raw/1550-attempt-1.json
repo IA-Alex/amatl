@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 230.725,
+  "pair_id": "v5-p-1035",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of probability distributions in architecture",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "04e212e0afa30a7d242eb35486d431641484d095ad6c19932a6c7c6047057560",
+  "provider": "SearXNG",
+  "query": "give an overview of probability distributions in architecture",
+  "query_id": "v5-p-1035-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:29.785397Z"
+}

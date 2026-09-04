@@ -1,0 +1,192 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 267.705,
+  "pair_id": "v5-p-0985",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is wastewater treatment in information systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "City&#39;s new director of information. City offices will be closed on the 24th and 25th. December 14, 2020 Update Maumelle has extended the voting deadline in our Very Merry Maumelle",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.thewildstars.com",
+          "/MaumelleCityCouncil2020.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Tierney for Maumelle City Council",
+        "url": "http://www.thewildstars.com/MaumelleCityCouncil2020.html"
+      },
+      {
+        "category": "general",
+        "content": "packed with eye-opening information. It looks for instance as though the small quantity of seaweed meal I regularly add to my potting composts may play a part not only in nutritio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "journeytoforever.org",
+          "/farm_library.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Small Farms Library - Journey to Forever",
+        "url": "http://journeytoforever.org/farm_library.html"
+      },
+      {
+        "category": "general",
+        "content": "Value of Shared Information for Competing Agents Science Probability Why Maximize Expected Value? Precautionary Principle vs. Expected Values Covariance in Wealth and Cost-Effecti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Essays on Reducing Suffering",
+        "url": "https://reducing-suffering.org/"
+      },
+      {
+        "category": "general",
+        "content": "and spreadsheets from Information is Beautiful. 2023.10.11 • US income distributions, education reform, Kia/Hyundai thefts, Michigan air permit violations, and dog genomes. 2023.0",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.data-is-plural.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Data Is Plural — Full Archive",
+        "url": "https://www.data-is-plural.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "to provide you with information about carbon fiber, a unique material, used in a wealth of applications, all over the world. The Carbon Atom Carbon fibers are derived from one of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "webarchive.me",
+          "/geocities/CapeCanaveral/1320/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Vince Kelly&#39;s Carbon Fiber Home Page",
+        "url": "http://webarchive.me/geocities/CapeCanaveral/1320/"
+      },
+      {
+        "category": "general",
+        "content": "Seat Belts Auto Recall Information Auto Repossession Auto Salvage Yard Appraiser Auto Security Auto Security System Auto Speed Control Devices Auto Steering Systems Auto Suspensio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "VFTonline.org",
+          "/VFTprayer/heaven/000list.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://VFTonline.org/VFTprayer/heaven/000list.txt",
+        "url": "http://VFTonline.org/VFTprayer/heaven/000list.txt"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "eb91195bf1551341618d36f3bb3b56974c6b71e8b028908a3db53c8bff5799af",
+  "provider": "SearXNG",
+  "query": "what is wastewater treatment in information systems",
+  "query_id": "v5-p-0985-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:55.738530Z"
+}

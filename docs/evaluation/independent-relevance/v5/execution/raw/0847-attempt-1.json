@@ -1,0 +1,300 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 311.011,
+  "pair_id": "v5-p-0962",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does cloud formation in agricultural science work",
+    "results": [
+      {
+        "category": "general",
+        "content": "the collapse of agricultural civilizations in Egypt, Greece, Syria, Palestine, Mesopotamia, the Indus Valley, and the Yangtze River Valley ( wattsupwiththat.com ). The general tre",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/climcat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Climate models and climate catastrophe: a reality check",
+        "url": "https://davidpratt.info/climcat.htm"
+      },
+      {
+        "category": "general",
+        "content": "disease would wipe out agricultural activity over a wide area in a matter of months. Many of the ministry’s facilities were installed in the centers of towns and cities, to keep t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.isegoria.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Isegoria",
+        "url": "http://www.isegoria.net/"
+      },
+      {
+        "category": "general",
+        "content": "patterns of fields, for agricultural purposes. The next slide shows us an area between Sacramento and San Francisco, which has a very clear geometric pattern. It is quite obvious",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.project1947.com",
+          "/shg/symposium/sagan.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SHG - UFO Symposium 1968: Sagan Statement",
+        "url": "http://www.project1947.com/shg/symposium/sagan.html"
+      },
+      {
+        "category": "general",
+        "content": "(1854-1925) on Agricultural Services, Economic Conditions of the Roman Empire in the 4th Century, The Foundations of Society (Origins of Feudalism), Feudalism and Villainage in En",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "changes that redirect agricultural subsidies from factory farms to sustainable, cruelty-free farming practices. Community Engagement: Local Events: Organize or support events that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.empathogens.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Empathogens as conceived by ChatGPT",
+        "url": "https://www.empathogens.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "local civil defense and agricultural authorities who measure concentrations of fallout consider the forage growing in your area is harmful. However, this advice might come too lat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ki4u.com",
+          "/transpacific.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Trans-Pacific Radioactive Fallout here from Japan, North Korea, Iran, Mid-East, etc.",
+        "url": "https://www.ki4u.com/transpacific.htm"
+      },
+      {
+        "category": "general",
+        "content": "storms, hurricanes, agricultural disasters, and disease. This alarmist message is constantly repeated by mainstream scientific publications, environmentalist organizations, and th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/warm.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The global warming scare",
+        "url": "https://davidpratt.info/warm.htm"
+      },
+      {
+        "category": "general",
+        "content": "struggle of the settled agricultural peoples, symbolised by Iran, against the predatory nomads (Turan), a conflict which had had its effect on Russia who had suffered throughout h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.regels.ru",
+          "/N-Fedorov-1/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WHAT WAS MAN CREATED FOR? FEDOROV N.F. Summary of his Teaching. Page 1.",
+        "url": "http://www.regels.ru/N-Fedorov-1/"
+      },
+      {
+        "category": "general",
+        "content": "Plastic bottles and agricultural waste can be converted into consumable cookies via genetically engineered yeast. The team members behind the initiative are currently awaiting ins",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "soylentnews.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SoylentNews: SoylentNews is people",
+        "url": "https://soylentnews.org/"
+      },
+      {
+        "category": "general",
+        "content": "to state before the Agricultural Society of Herault the same year that pebrine was a parasitic disease and that thin creosote vapour would prevent the attack of the parasite. Howe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/a/b/pearson.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dream &amp; Lie of Louis Pasteur by R. B. Pearson",
+        "url": "http://www.whale.to/a/b/pearson.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "49b9462a7dde7fb1f3c4458fc42ef126554791bc7bb4c23b9a98d1f460047633",
+  "provider": "SearXNG",
+  "query": "how does cloud formation in agricultural science work",
+  "query_id": "v5-p-0962-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:43.972985Z"
+}

@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 433.22,
+  "pair_id": "v5-p-0870",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of vaccination in computer security",
+    "results": [
+      {
+        "category": "general",
+        "content": "You Because The 1%, The Vaccination Effect, And Extra Funding Makes It Definitely Worth The Angels&#39; While. Don&#39;t Waste Any Money On OverPriced Shit Because Then You Won&#39;t Have Mon",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "You Because The 1%, The Vaccination Effect, And Extra Funding Makes It Definitely Worth The Angels&#39; While. Don&#39;t Waste Any Money On OverPriced Shit Because Then You Won&#39;t Have Mon",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/FountainOfYouth.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/FountainOfYouth.html"
+      },
+      {
+        "category": "general",
+        "content": "time of their child&#39;s vaccination if autism were never a regressive disorder and only CDD. Someone else tried to refute my arguments about the possibility of Gates having Jactatio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "jonathans-stories.com",
+          "/journal/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jonathan Mitchell&#39;s Story Page",
+        "url": "http://jonathans-stories.com/journal/"
+      },
+      {
+        "category": "general",
+        "content": "by means of a crude ``vaccination.&#39;&#39; Instead of deleting the virus that I had detected, I simply disabled its coded instructions, leaving the ``shell&#39;&#39; of the virus with its chara",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dankalia.com",
+          "/science/mnd146.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Viruses of the Mind",
+        "url": "https://www.dankalia.com/science/mnd146.htm"
+      },
+      {
+        "category": "general",
+        "content": "$500 for a hepatitis B vaccination series and other disease prophylaxis. Africa may today be more dangerous in this regard than it was in 1862, before antibiotics, when the explor",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7257562cc4db596d44a2e1cbce7cfcd9d6fa0f399cd68e8f1f770dcbc5940528",
+  "provider": "SearXNG",
+  "query": "tell me about the function of vaccination in computer security",
+  "query_id": "v5-p-0870-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:49.930266Z"
+}

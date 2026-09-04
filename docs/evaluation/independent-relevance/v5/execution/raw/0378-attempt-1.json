@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 377.091,
+  "pair_id": "v5-p-0766",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of coastal flooding in environmental science",
+    "results": [
+      {
+        "category": "general",
+        "content": "backtracking on environmental promises ) * Government backtracking on environmental promises is being driven by politicians and vested interests , not the public, the acting UN bi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2023-jul-oct.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2023: July - October Political Notes",
+        "url": "http://stallman.org/archives/2023-jul-oct.html"
+      },
+      {
+        "category": "general",
+        "content": "2017 ( Redefining environmentalism ) Saboteur Pruitt has redefined environmentalism to mean extracting as much as possible and ignoring effects on the environment. 30 December 201",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2017-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2017: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2017-sep-dec.html"
+      },
+      {
+        "category": "general",
+        "content": "worldwide demographic, environmental, and societal stress, in which criminal anarchy emerges as the real &#34;strategic&#34; danger. Disease, overpopulation, unprovoked crime, scarcity of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b163ec191f862007a31f42f13a8cf25dcc90ae9a32e96ad49fc3cb7fd8db7df6",
+  "provider": "SearXNG",
+  "query": "tell me about the function of coastal flooding in environmental science",
+  "query_id": "v5-p-0766-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:08.046749Z"
+}

@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 285.167,
+  "pair_id": "v5-p-0778",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does coastal flooding in physics work",
+    "results": [
+      {
+        "category": "general",
+        "content": "worse. This is true for flooding, meteorological/hydrological drought, hurricanes/tropical cyclones, winter storms, thunderstorms, tornadoes, hail, lightning, and extreme winds. H",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/climcat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Climate models and climate catastrophe: a reality check",
+        "url": "https://davidpratt.info/climcat.htm"
+      },
+      {
+        "category": "general",
+        "content": "heavy rains fall, and flooding begins. (6) Many people plants and animals perish. (7) Some survive to build and repopulate the world.&#34; (p. 154) Cataclysm! makes the most compellin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meditopia.org",
+          "/chap5.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Meditopia -- Chapter 5",
+        "url": "https://meditopia.org/chap5.htm"
+      },
+      {
+        "category": "general",
+        "content": "happened as a result flooding the area where the valves are with radiation. This prevented last ditch efforts (running and cutting the wires). One automatic valve jamming and mech",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_uranium64.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Did The Dimona Dozen Murder The Fukushima 50? - 3/11 Was Japan&#39;s 9/11",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_uranium64.htm"
+      },
+      {
+        "category": "general",
+        "content": "Service (River Flooding) , New England Radar Loop , Northeast Radar Loop , NWS Northeast Snow Info , Northeast Lightning Loop , Northeast Foliage Report , Eastern Mass. Storm Watc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "effect (e.g., risk of flooding) is most strongly felt when you&#39;re within 0.03 kilometers. And so on and so forth. Your experts help you work out all these rules. Note that for",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "gameofrent.com",
+          "/content/can-land-be-accurately-assessed",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Can Land Value Be Accurately Assessed Separately from Buildings? | Game of Rent",
+        "url": "http://gameofrent.com/content/can-land-be-accurately-assessed"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5201a554c0bca7a3b55aaf68bc67a7343e5cc959d14056b2b8d5a6b5e5df8a74",
+  "provider": "SearXNG",
+  "query": "how does coastal flooding in physics work",
+  "query_id": "v5-p-0778-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:59.300312Z"
+}

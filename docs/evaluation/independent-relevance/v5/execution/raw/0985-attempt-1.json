@@ -1,0 +1,300 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 350.124,
+  "pair_id": "v5-p-0115",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes database indexing in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "for perception management.&#39;   In his book, Future Wars , Col. John Alexander, then a senior officer in the US Army&#39;s Intelligence and Security Command (INSCOM), records that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/sociopol_internetgoogle47.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Google, CIA and the NSA - Inside the Secret Network behind Mass Surveillance, Endless War and Skynet",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_internetgoogle47.htm"
+      },
+      {
+        "category": "general",
+        "content": "for tag-based file management? ☶ ask linux authored by curiositry 2022-09-29 14:48:46 | 20 comments Tag-based file management seems like a great idea, and would address a l",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lobste.rs",
+          "/s/u5iyme/tools_for_tag_based_file_management",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Tools for tag-based file management? | Lobsters",
+        "url": "https://lobste.rs/s/u5iyme/tools_for_tag_based_file_management"
+      },
+      {
+        "category": "general",
+        "content": "Template tag for better management of group templates Restores AutoSync . AutoSync can sync any number of desktops/devices running Pimlical Calendar either on demand or automatica",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.pimlicosoftware.com",
+          "/PimlicalVersionAndSlipstreamHistory.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Pimlical Version and Slipstream History",
+        "url": "http://www.pimlicosoftware.com/PimlicalVersionAndSlipstreamHistory.htm"
+      },
+      {
+        "category": "general",
+        "content": "Conference On Management Of Data, 1994. [Kleinberg 98] Jon Kleinberg, Authoritative Sources in a Hyperlinked Environment , Proc. ACM-SIAM Symposium on Discrete Algorithms, 1998. [",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "infolab.stanford.edu",
+          "/~backrub/google.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Anatomy of a Search Engine",
+        "url": "http://infolab.stanford.edu/~backrub/google.html"
+      },
+      {
+        "category": "general",
+        "content": "Posts&#34; display) and management of your &#34;ignored posters&#34; list. Note carefully that there are several options you can choose to enable or disable under the Control Panel ; of parti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tickerforum.org",
+          "/faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Market Ticker Frequently Asked Questions",
+        "url": "http://tickerforum.org/faq.html"
+      },
+      {
+        "category": "general",
+        "content": "- Consulting &amp; Management offers consulting, installaton and adminstrative services for qmail, djbdns and other software including help with general server tasks to customers",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.usenix.org.uk",
+          "/mirrors/qmail/top.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "qmail: Second most popular MTA on the Internet",
+        "url": "http://www.usenix.org.uk/mirrors/qmail/top.html"
+      },
+      {
+        "category": "general",
+        "content": "The second is namespace management . One certainly cannot attribute their popularity to improved syntax. In the opinion of many, PERL and Ruby both suffer from terrible syntax. Tc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "skeeve.com",
+          "/awk-sys-prog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AWK As A Major Systems Programming Language — Revisited",
+        "url": "http://skeeve.com/awk-sys-prog.html"
+      },
+      {
+        "category": "general",
+        "content": "-  Persona Management Software    -  Team Themis - Corporate Information Reconnaissance Cell - November 3, 2010  -  Under Surveillance - Examin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/sociopol_internetfacebook.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Facebook and The Internet - Facebook y La Internet",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_internetfacebook.htm"
+      },
+      {
+        "category": "general",
+        "content": "common kind of memory management bug. […] Finally, in situations where capturing self strongly doesn’t actually lead to a retain cycle, we can silence the new warning",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mjtsai.com",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Tsai - Blog",
+        "url": "https://mjtsai.com/blog/"
+      },
+      {
+        "category": "general",
+        "content": "is a really important management task. In the final analysis I&#39;m convinced that this is the right business decision for SUSE. It will allow Collabora&#39;s Productivity division to fo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2013/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2013/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b424da2e02d0ab15afc66120ec3be08463d4dd06ceceb536c24bbd5f03080689",
+  "provider": "SearXNG",
+  "query": "what causes database indexing in data management",
+  "query_id": "v5-p-0115-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:27.194033Z"
+}

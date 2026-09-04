@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 380.212,
+  "pair_id": "v5-p-0434",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of supply chain logistics in biology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c36704c5b5b1922d3d1839e77d763c8fbb9ff65c40be3ce8915ba2f2c2466f40",
+  "provider": "SearXNG",
+  "query": "tell me about the function of supply chain logistics in biology",
+  "query_id": "v5-p-0434-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:26.025214Z"
+}

@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 332.284,
+  "pair_id": "v5-p-0474",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does encryption keys in computer security work",
+    "results": [
+      {
+        "category": "general",
+        "content": "Boot and Disk Encryption on Linux The Strange State of Authenticated Boot and Disk Encryption on Generic Linux Distributions TL;DR: Linux has been supporting Full Disk Encryption",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "0pointer.net",
+          "/blog/authenticated-boot-and-disk-encryption-on-linux.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Authenticated Boot and Disk Encryption on Linux",
+        "url": "http://0pointer.net/blog/authenticated-boot-and-disk-encryption-on-linux.html"
+      },
+      {
+        "category": "general",
+        "content": ", Crypto Key Generators, Encryption Equipment, and Scramblers SECURE COMMUNICATIONS SYSTEMS Granite Island Group provides a broad spectrum of information security protection protec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.tscm.com",
+          "/stu.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "STU-III Secure Telephone Units, Crypto Key Generators, Encryption Equipment and Scramblers",
+        "url": "http://www.tscm.com/stu.html"
+      },
+      {
+        "category": "general",
+        "content": "9180 Hybrid Public Key Encryption Abstract This document describes a scheme for hybrid public key encryption (HPKE). This scheme provides a variant of public key encryption of arb",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.rfc-editor.org",
+          "/rfc/rfc9180.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RFC 9180: Hybrid Public Key Encryption",
+        "url": "https://www.rfc-editor.org/rfc/rfc9180.html"
+      },
+      {
+        "category": "general",
+        "content": "log. Threshold-encryption, which is used to implement the quorum, prevents a deadlock from occurring if a minority of candidates or observers tries to sabotage the election. Candi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kirill.korins.ky",
+          "/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Electt: Running Auditable and Verifiable Elections in Untrusted Environments - Kirill&#39;s journal",
+        "url": "https://kirill.korins.ky/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/"
+      },
+      {
+        "category": "general",
+        "content": "plaintext, signing or encryption are turned off. sign - This will enable integrity checking. encrypt - This will enable integrity checks and force encryption for privacy. Default:",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.samba.org",
+          "/samba/docs/current/man-html/smb.conf.5.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "smb.conf",
+        "url": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+      },
+      {
+        "category": "general",
+        "content": "quantum computing and encryption; 7.3 merge window; Remind; Quickshell. Briefs : arrayref; RIP Steve French; Armbian 26.8; Vanilla OS 3; Emacs 31.1; KDE Gear 26.08; LibreOffice 26",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Welcome to LWN.net [LWN.net]",
+        "url": "https://lwn.net/"
+      },
+      {
+        "category": "general",
+        "content": "--disable-encryption ( info ) using an hacking method to bypass &#34;Secure Preferences&#34;. Google API keys By default, few Google services (Chrome Sync...) are not available on Chromiu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "chromium.woolyss.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Download latest stable Chromium binaries (64-bit and 32-bit)",
+        "url": "https://chromium.woolyss.com/"
+      },
+      {
+        "category": "general",
+        "content": "using only short encryption keys. Does anyone see why? Right: first use the PRG to stretch a short encryption key to a long one -- as long as the plaintext message itself. Then pr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scottaaronson.com",
+          "/democritus/lec8.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHYS771 Lecture 8: Crypto",
+        "url": "https://www.scottaaronson.com/democritus/lec8.html"
+      },
+      {
+        "category": "general",
+        "content": "General homomorphic encryption 07 Jun 2009 » Linux sandboxing with LSMSB 04 Jun 2009 » Chrome for Linux 21 May 2009 » W2SP and Seccomp 09 May 2009 » Moved",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.imperialviolet.org",
+          "/posts-index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ImperialViolet - Posts index - ImperialViolet.org",
+        "url": "https://www.imperialviolet.org/posts-index.html"
+      },
+      {
+        "category": "general",
+        "content": "Free Cultural Works Encryption and Privacy Schneier on Security Window Managers StumpWM File Managers ROX Filer Midnight Commander Latest pages The LLM Freedom Manifesto: Open-Wei",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "the MS-Windows password encryption work? Section B: Telephony U 01. What is a Red Box? 02. How do I build a Red Box? 03. Where can I get a 6.5536Mhz crystal? 04. Which payphones w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "webarchive.me",
+          "/geocities/SiliconValley/2072/2600faq.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "alt.2600 FAQ, Beta .013 - Part 1/1",
+        "url": "http://webarchive.me/geocities/SiliconValley/2072/2600faq.txt"
+      },
+      {
+        "category": "general",
+        "content": "hard Learn to use PGP encryption Start using the dark web De-Google your phone Encrypt your drives! TailsOS in your pocket right NOW! Obfuscating the money trail Non-technical goo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lurkbeforepost.win",
+          "/tutorials/privacy/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Privacy Tips || LurkBeforePost",
+        "url": "http://lurkbeforepost.win/tutorials/privacy/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "dbcc76e04faab7c62c2fbe7c1486f0c1fbcdbe23f7a149dc26ef29bf41f84dec",
+  "provider": "SearXNG",
+  "query": "how does encryption keys in computer security work",
+  "query_id": "v5-p-0474-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:42.544062Z"
+}

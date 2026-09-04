@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 357.234,
+  "pair_id": "v5-p-1065",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind microbial fermentation in physics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5a8d9ad64620b955faad53a2b3f771d6587ea2643c9a62beaaea45667460e450",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind microbial fermentation in physics",
+  "query_id": "v5-p-1065-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:14:58.510462Z"
+}

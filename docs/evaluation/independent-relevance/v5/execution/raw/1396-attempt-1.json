@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 360.32,
+  "pair_id": "v5-p-0509",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind neural networks in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "industrial spying networks, the development of nuclear, biological and chemical weapons, even the development of a genetic killer program by Israel to find an organism that will o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "random or chaotic, and networks of neurons that usually fire together become desynchronized. This may contribute to psilocybin&#39;s potential therapeutic effect. Researchers   g",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.andyross.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE ROSS BLOG",
+        "url": "https://www.andyross.net/"
+      },
+      {
+        "category": "general",
+        "content": ", Municipal Broadband Networks (Bob Rankin, 2015), A Primer on How to Work With the Usenet Community , Better than Cyber Utopia: How the Internet Helped Us Create the Sharing Econ",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "can be traced to neural networks in the brain with such mirror properties. Intriguing — but probably too simplistic — right brain / left brain conceptions gained popularity in the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "projectworldview.org",
+          "//worldviews.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Worldviews -- Introduction",
+        "url": "https://projectworldview.org//worldviews.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5402145131c02f72bbac7a8221aa4ccc42caa13ca04c04ea851e96ddedfb9d90",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind neural networks in climate science",
+  "query_id": "v5-p-0509-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:41.439922Z"
+}

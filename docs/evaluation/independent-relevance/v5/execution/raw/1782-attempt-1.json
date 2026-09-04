@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 256.817,
+  "pair_id": "v5-p-0443",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of supply chain logistics in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "licensed, open-source logistics platform serving companies around the world. The &#34;Fleetbase on Solid: A production-ready supply chain solution&#34; project seeks to make Fleetbase sol",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/news/2023/20231123-announcing-projects.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; 55 New Projects Awarded NGI0 Grants",
+        "url": "https://nlnet.nl/news/2023/20231123-announcing-projects.html"
+      },
+      {
+        "category": "general",
+        "content": "et al. “Last mile logistics life cycle assessment: a comparative analysis from diesel van to e-cargo bike.” Energies 15.20 (2022): 7817.. https://www.mdpi.com/1996-107",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2023/02/can-we-make-bicycles-sustainable-again",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Can We Make Bicycles Sustainable Again? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2023/02/can-we-make-bicycles-sustainable-again"
+      },
+      {
+        "category": "general",
+        "content": "other nations lacked: logistics (e.g. the US currently has over 230 strategic airlift transports and over 430 aerial refueling tankers - the rest of NATO has about 10 strategic ai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/USPolicy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "US Policy Choices",
+        "url": "https://www.billdietrich.me/USPolicy.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c0dd189970de2d440bd1fb4414f7dd8c23a388d279386c0660e2d39f427899aa",
+  "provider": "SearXNG",
+  "query": "give an overview of supply chain logistics in food science",
+  "query_id": "v5-p-0443-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:47.449961Z"
+}

@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 355.333,
+  "pair_id": "v5-p-0182",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does heat transfer in biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "grasping a specific transfer RNA, which in turn is chemically bonded by a specific enzyme to a specific amino acid), of grasping the growing polypeptide, and of causing the specif",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "about radiative energy transfer in stellar interiors and suggested I look for possible equations of entropy transfer. David Layzer had also read Eddington. Layzer used Eddington&#39;s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Information Philosopher - dedicated to the new information philosophy",
+        "url": "https://www.informationphilosopher.com/"
+      },
+      {
+        "category": "general",
+        "content": "some other major mass-transfer. It&#39;s totally unclear that bodies with gravity far less than Earth&#39;s gravity can be terraformed. Any atmosphere you create will just leak off into s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "how heat would transfer in a near-vacuum, or not understanding conservation of momentum, or how light works to form shadows; other times he misrepresented information like quotes",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "purplepriest.codeberg.page",
+          "/articles/refdd.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://purplepriest.codeberg.page/articles/refdd.html",
+        "url": "https://purplepriest.codeberg.page/articles/refdd.html"
+      },
+      {
+        "category": "general",
+        "content": "work. Oxygen-to-tissue transfer rate is often halved by age 70. Bone is typically 25% water, 30% soft tissue (cells &amp; blood vessels) and 45% mineral deposits (most",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "benbest.com",
+          "/lifeext/aging.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "MECHANISMS OF AGING",
+        "url": "https://benbest.com/lifeext/aging.html"
+      },
+      {
+        "category": "general",
+        "content": "economy, and the transfer of sin  [ 26 ] to the environment is closed out. The motif of destructivity, the death drive, thus loses much of its impetus in the individual. Be",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mats-winther.github.io",
+          "/thanatos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Thanatos - a contribution to the understanding of the collective shadow",
+        "url": "https://mats-winther.github.io/thanatos.htm"
+      },
+      {
+        "category": "general",
+        "content": "towards maximal sperm transfer (reproductive success) than minimal sperm transfer (reproductive failure) - Darwin. In polyandrous species, males compete with the sperm contributio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "philosophy.nekhbet.com",
+          "/book.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Last Book of Moron",
+        "url": "https://philosophy.nekhbet.com/book.shtml"
+      },
+      {
+        "category": "general",
+        "content": "In this scenario, weak transfer due to collision fragments escaping one star system and wandering into another could allow not only complex organics but primitive life forms to be",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "It is unclear how this transfer of a style and the associated cultural definitions could possibly have happened. (left) Chipped stone female figurine in the Lalinde/Gönnersdorf st",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.donsmaps.com",
+          "/venusfigurespurpose.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Palaeolithic Venus figures - their purpose",
+        "url": "https://www.donsmaps.com/venusfigurespurpose.html"
+      },
+      {
+        "category": "general",
+        "content": "blood and the water to transfer gases, high levels in the water will reduce the amount of CO 2 that can be transferred. Although different references have wildly varying values fo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.qsl.net",
+          "/w2wdx/aquaria/diyco2.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIY CO2 System for Planted Aquarium",
+        "url": "https://www.qsl.net/w2wdx/aquaria/diyco2.html"
+      },
+      {
+        "category": "general",
+        "content": "Verbs of motion or transfer are reversed by backing the vowel: pit come --&gt; put go; dâq enter --&gt; daq exit; bbêth speak --&gt; bbôth listen; Pluralizers [T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "zompist.com",
+          "/elkaril.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Elkarîl",
+        "url": "http://zompist.com/elkaril.htm"
+      },
+      {
+        "category": "general",
+        "content": "The ASTACon Transfer System involves sending neurotransmitters which once fully received deploy a fresh ASTACON where another may have fissed for punishment or fused for success a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.self-replicatingnanobot.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod &#43; Self-Replicating Nanobot Design",
+        "url": "http://www.self-replicatingnanobot.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f60a2f0fbfd6a3a82c8786910f9a72848905c9b88f4c9d3c950edd11abd1114f",
+  "provider": "SearXNG",
+  "query": "how does heat transfer in biology work",
+  "query_id": "v5-p-0182-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:34.693371Z"
+}

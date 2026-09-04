@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 275.348,
+  "pair_id": "v5-p-0715",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes language acquisition in forensic science",
+    "results": [
+      {
+        "category": "general",
+        "content": "so as to promote truth acquisition or error avoidance. Problems of institutional design typically demand inputs from empirical and formal disciplines outside philosophy. It is exp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.sydney.edu.au",
+          "/archives/fall2008/entries/epistemology-social/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Social Epistemology (Stanford Encyclopedia of Philosophy/Fall 2008 Edition)",
+        "url": "https://plato.sydney.edu.au/archives/fall2008/entries/epistemology-social/"
+      },
+      {
+        "category": "general",
+        "content": "most conducive to the acquisition of fame (for it is that which we dignify by the name of eloquence); yet it is hard to say to what a degree agreeableness and affability of conver",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "spiritualpilgrim.net",
+          "/08_Classics-Library/hellenist-roman/cicero/de-officiis/de-officiis-02.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "De Officiis - Book 2 - Cicero",
+        "url": "http://spiritualpilgrim.net/08_Classics-Library/hellenist-roman/cicero/de-officiis/de-officiis-02.htm"
+      },
+      {
+        "category": "general",
+        "content": "of resources and the acquisition of objects of desire for one’s self, and for those dependent on him, but much more in a position from which one can look down on these very",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "spiritualpilgrim.net",
+          "/08_Classics-Library/hellenist-roman/cicero/de-officiis/de-officiis-01.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "De Officiis - Book 1 - Cicero",
+        "url": "http://spiritualpilgrim.net/08_Classics-Library/hellenist-roman/cicero/de-officiis/de-officiis-01.htm"
+      },
+      {
+        "category": "general",
+        "content": "nobody, but unjust acquisition of it is always to be avoided. {26} The great majority of people, however, when they fall a prey to ambition for either military or civil authority,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "constitution.org",
+          "/1-History/rom/de_officiis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cicero: De Officiis",
+        "url": "https://constitution.org/1-History/rom/de_officiis.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6f332c955a131a5055911e3ad13256e52c45e17c2489a97f233302823c181c0c",
+  "provider": "SearXNG",
+  "query": "what causes language acquisition in forensic science",
+  "query_id": "v5-p-0715-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:24.775139Z"
+}

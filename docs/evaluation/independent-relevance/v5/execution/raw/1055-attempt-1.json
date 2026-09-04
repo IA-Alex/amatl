@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 263.382,
+  "pair_id": "v5-p-0631",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes renewable energy storage in oceanography",
+    "results": [
+      {
+        "category": "general",
+        "content": "Centre -  SX Oceanography - What&#39;s out there? Oceans and Seas - Technology Expo Offshore Banking Ohms Oi06 - Excel London Oceanology Forum Oil Rigs Oil - Spill 06 Exhibi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.solarnavigator.net",
+          "/solarnavigator_index.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SOLAR NAVIGATOR MARINE PORTAL WEBSITE INDEX EDUCATIONAL GEOGRAPHY HISTORY RESOURCE WORLD ATLAS A TO Z INDEX OF PLANET EARTH FREE ENCYCLOPEDIA&lt;",
+        "url": "https://www.solarnavigator.net/solarnavigator_index.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "38072a2149d20dcf11255545e69619e24bbe690629ea002b342c4aa5193842c2",
+  "provider": "SearXNG",
+  "query": "what causes renewable energy storage in oceanography",
+  "query_id": "v5-p-0631-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:10:49.325620Z"
+}

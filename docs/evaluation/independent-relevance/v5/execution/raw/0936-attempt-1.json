@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 307.53,
+  "pair_id": "v5-p-0912",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind bridge resonance in geology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4671b56129e268f2b012da85d5ba072e11c46f6ddbd40260b8a611e98b838d29",
+  "provider": "SearXNG",
+  "query": "describe the principle behind bridge resonance in geology",
+  "query_id": "v5-p-0912-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:10:11.784046Z"
+}

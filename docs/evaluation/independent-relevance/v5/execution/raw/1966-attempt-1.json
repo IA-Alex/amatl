@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 353.998,
+  "pair_id": "v5-p-0810",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of battery chemistry in neuroscience",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c22c59d2e7e2e24bfd63150753967bc32d1386fb275cf537f6fa8524cec1e684",
+  "provider": "SearXNG",
+  "query": "tell me about the function of battery chemistry in neuroscience",
+  "query_id": "v5-p-0810-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:44.747069Z"
+}

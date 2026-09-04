@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 316.829,
+  "pair_id": "v5-p-0984",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind wastewater treatment in health science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9edd76e355f267504ce637309a4c41cdb35466efdf93ced95adf7fc51c912d6a",
+  "provider": "SearXNG",
+  "query": "describe the principle behind wastewater treatment in health science",
+  "query_id": "v5-p-0984-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:26.660017Z"
+}

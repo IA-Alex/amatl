@@ -1,0 +1,300 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 286.189,
+  "pair_id": "v5-p-0475",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of encryption keys in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "log. Threshold-encryption, which is used to implement the quorum, prevents a deadlock from occurring if a minority of candidates or observers tries to sabotage the election. Candi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kirill.korins.ky",
+          "/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Electt: Running Auditable and Verifiable Elections in Untrusted Environments - Kirill&#39;s journal",
+        "url": "https://kirill.korins.ky/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/"
+      },
+      {
+        "category": "general",
+        "content": "Free Cultural Works Encryption and Privacy Schneier on Security Window Managers StumpWM File Managers ROX Filer Midnight Commander Latest pages The LLM Freedom Manifesto: Open-Wei",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "security mechanisms and encryption and more. Linux kernel map Linux kernel map Interactive map of Linux kernel sleeplessbeastie&#39;s &#34;How to display kernel release information&#34; Kerne",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/Linux.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Linux",
+        "url": "https://www.billdietrich.me/Linux.html"
+      },
+      {
+        "category": "general",
+        "content": "Passwords SSH / Encryption keys Contents of files you are working with Apps like Transmit, whose core purpose is to send and receive your documents over a network, will, of course",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "panic.com",
+          "/privacy/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Panic Privacy",
+        "url": "https://panic.com/privacy/"
+      },
+      {
+        "category": "general",
+        "content": "Authentication, encryption. Creating or reverse-engineering malware. Social engineering. Physical penetration. Wi-Fi, and the physical layer of Ethernet. Cloud services. What I&#39;ll",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/PenetrationTestingAndBugBountyHunting.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Penetration Testing and Bug-Bounty Hunting",
+        "url": "https://www.billdietrich.me/PenetrationTestingAndBugBountyHunting.html"
+      },
+      {
+        "category": "general",
+        "content": "8. Postponing Mail 9. Encryption and Signing 9.1. OpenPGP Configuration 9.2. S/MIME Configuration 3. Configuration 1. Location of Initialization Files 2. Starter Muttrc 3. Syntax",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mutt.org",
+          "/doc/manual/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Mutt E-Mail Client",
+        "url": "http://www.mutt.org/doc/manual/"
+      },
+      {
+        "category": "general",
+        "content": "DES), block cipher encryption modes (ECB, CBC, CFB, encrypt&#43;MAC modes, LRW), public-key encryption (RSA, DH, Elgamal, DSA), using PKCs, Public-Key Cryptography Standards (PKCS), e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cs.auckland.ac.nz",
+          "/~pgut001/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Gutmann&#39;s Home Page",
+        "url": "https://www.cs.auckland.ac.nz/~pgut001/"
+      },
+      {
+        "category": "general",
+        "content": "or even transport layer encryption. LTE does provide basic network authentication and encryption, but it&#39;s for the network itself. The intention of the LTE-only feature is only ha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "grapheneos.org",
+          "/usage",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Usage guide | GrapheneOS",
+        "url": "https://grapheneos.org/usage"
+      },
+      {
+        "category": "general",
+        "content": "And maybe I need an encryption key, too. [Eventually asked Support, they said yes need SSH, no key, they&#39;ll enable SSH on my account. Login details a bit different, but now SFTP w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/YourPersonalWebSite.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Your Personal Web Site",
+        "url": "https://www.billdietrich.me/YourPersonalWebSite.html"
+      },
+      {
+        "category": "general",
+        "content": "Good Privacy Public Key Encryption software Location/Filename: &lt;URL: http://www.goggle.westfalen.de/pgp/ &gt; &lt;URL: http://www.pgpi.org/products/pgp/versions/freeware/dos/ &amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dendarii.co.uk",
+          "/FAQs/dos-apps.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "FAQ: DOS Applications for Internet Use",
+        "url": "http://www.dendarii.co.uk/FAQs/dos-apps.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "dee33a421420b59d97b596c298ed645a73b21807c636bb26a9821b2b67db82fd",
+  "provider": "SearXNG",
+  "query": "give an overview of encryption keys in data management",
+  "query_id": "v5-p-0475-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:36.943456Z"
+}

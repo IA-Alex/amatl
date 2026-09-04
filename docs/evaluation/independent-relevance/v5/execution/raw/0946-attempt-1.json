@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 346.624,
+  "pair_id": "v5-p-0960",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind cloud formation in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "politicians. Weather engineering, freezing time, precursor robot wars, the nature of mind, artificial life, mind conversion, EM disease propagation - all are explained in this tou",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "of the US computer engineering : Donald Knuth : TAoCP and its Influence of Computer Science : Richard Stallman : Linus Torvalds   : Larry Wall  : John K. Ousterhout : CT",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "softpanorama.org",
+          "/Skeptics/Political_skeptic/Fighting_russophobia/multipolarity.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Russia fight for multipolarity",
+        "url": "https://softpanorama.org/Skeptics/Political_skeptic/Fighting_russophobia/multipolarity.shtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7671f0edefbc74984480285c0992aba81d2745a02eba043d3edc39bba123a387",
+  "provider": "SearXNG",
+  "query": "describe the principle behind cloud formation in software engineering",
+  "query_id": "v5-p-0960-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:10:14.796773Z"
+}

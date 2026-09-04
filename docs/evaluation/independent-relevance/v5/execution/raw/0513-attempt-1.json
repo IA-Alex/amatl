@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 256.096,
+  "pair_id": "v5-p-0004",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does photosynthesis in civil engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "Energy Harvested by Photosynthesis in a Controlled Environment Photovoltaic for Australia    The Feasibility of a 600 Kilowatt Windpower Installation Danish engineers&amp;nb",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dematerialism.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C:\\users\\waybu\\douments\\aaaaaindex",
+        "url": "https://www.dematerialism.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "73088ce8eddf96777c6cf276030b2d2119d6a48bb6c2008a137d40b842ce9b5f",
+  "provider": "SearXNG",
+  "query": "how does photosynthesis in civil engineering operate",
+  "query_id": "v5-p-0004-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:07:50.620400Z"
+}

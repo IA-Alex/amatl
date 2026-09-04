@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 378.343,
+  "pair_id": "v5-p-0866",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of vaccination in biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "deaths. Systematic vaccination started in 1905 and since its introduction case mortality increased alarmingly. Their own records comment that, &#34;The mortality is hardly explai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/w/kal.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Second Thought About Disease by Drs Kalokerinos &amp; Dettman 1977.",
+        "url": "http://www.whale.to/w/kal.html"
+      },
+      {
+        "category": "general",
+        "content": "to things like vaccination, or social distancing during COVID, on the basis that COVID is a harmful disease, as determined by scientific research, and that things like the COVID v",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "purplepriest.codeberg.page",
+          "/articles/refdd.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://purplepriest.codeberg.page/articles/refdd.html",
+        "url": "https://purplepriest.codeberg.page/articles/refdd.html"
+      },
+      {
+        "category": "general",
+        "content": "through universal vaccination, not universal infection, the case for soft lockdowns as a mitigation technique may be as strong as ever. It might help a bit, sure. I was a Covid ha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "textmirror.net",
+          "/mirror-graymirror-substack-com-p-2020-the-year-of-everything-fake-2025-06-01",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "graymirror-substack-com-p-2020-the-year-of-everything-fake-2025-06-01 - TextMirror",
+        "url": "http://textmirror.net/mirror-graymirror-substack-com-p-2020-the-year-of-everything-fake-2025-06-01"
+      },
+      {
+        "category": "general",
+        "content": "for attending school. Vaccination campaigns teach your kid that its body is property of the government and the pharmaceutical industry, which will now decide the kinds of substanc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/school.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The toxic schooling system",
+        "url": "http://digdeeper.love/articles/school.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "of the smallpox vaccination, or the development of steam power . . . How the cure for scurvy was found and lost and finally found again at an important juncture in the history of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meditopia.org",
+          "/chap4-3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Meditopia -- Chapter 4, Section 3",
+        "url": "https://meditopia.org/chap4-3.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a6c2c8247a671adea364109361bde9551a97c9c250739a8cac47480078594a52",
+  "provider": "SearXNG",
+  "query": "tell me about the function of vaccination in biology",
+  "query_id": "v5-p-0866-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:02.070385Z"
+}

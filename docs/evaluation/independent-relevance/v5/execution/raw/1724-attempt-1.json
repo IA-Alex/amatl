@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 344.21,
+  "pair_id": "v5-p-0268",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind binary search in mechanical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "science and electrical engineering there is application for the exclusive-or. In those contexts, often an exclusive-or connective, XOR, or ⊕, will be defined with the truth-",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/boolean.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Boolean logic (IEKO)",
+        "url": "https://www.isko.org/cyclo/boolean.htm"
+      },
+      {
+        "category": "general",
+        "content": "National Academy of Engineering (1991) PODC Influential Paper Award (2000) (for paper [27] ) Honorary Doctorate, University of Rennes (2003) Honorary Doctorate, Christian Albrecht",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lamport.azurewebsites.net",
+          "/pubs/pubs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Writings of Leslie Lamport",
+        "url": "https://lamport.azurewebsites.net/pubs/pubs.html"
+      },
+      {
+        "category": "general",
+        "content": "to permit every kind of engineering technique to be used in our machines. We also wish to allow the possibility than an engineer or team of engineers may construct a machine which",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.abelard.org",
+          "/turpap/turpap.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "computing machinery and intelligence - a.m. turing, 1950",
+        "url": "http://www.abelard.org/turpap/turpap.php"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "301e58c5307f6235674ca8ee09fd2fae0e87a232701654c68bea05121dbe2cd3",
+  "provider": "SearXNG",
+  "query": "describe the principle behind binary search in mechanical engineering",
+  "query_id": "v5-p-0268-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:22.169159Z"
+}

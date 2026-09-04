@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 319.344,
+  "pair_id": "v5-p-0768",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind coastal flooding in geology",
+    "results": [
+      {
+        "category": "general",
+        "content": "of wealth . In principle, returning to freedom and democracy requires escaping from the EU. However, the EU also regulates businesses and protects some human rights. Therefore, ex",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2017-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2017: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2017-sep-dec.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "20b1df132de4bca3b0cce8a186df903fa7189644f17c6dc65be7e88308eb96d8",
+  "provider": "SearXNG",
+  "query": "describe the principle behind coastal flooding in geology",
+  "query_id": "v5-p-0768-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:15:38.953445Z"
+}

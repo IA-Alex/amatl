@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 360.468,
+  "pair_id": "v5-p-0150",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does immune response in computer security work",
+    "results": [
+      {
+        "category": "general",
+        "content": "Home &gt; Miscellaneous &gt; Responses to Criticisms of Why I Prefer Permissive Licenses to Copyleft Responses to Criticisms of Why I Prefer Permissive Licenses to Copyleft Below",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lolwut.info",
+          "/misc/permissive-vs-copyleft-responses.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Responses to Criticisms of “Why I Prefer Permissive Licenses to Copyleft” - Miscellaneous - lolwut?",
+        "url": "http://lolwut.info/misc/permissive-vs-copyleft-responses.html"
+      },
+      {
+        "category": "general",
+        "content": "My Nose From The Immune Response And The McFoxy Seemed To Clear It. I Am Over The Adjustment Period Of It All And Feel Full On All Things {Besides The 1% Held Back For The Shot} F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "Reactive Active Response And Quick Counter-Terrorism Dispatch Against FWA Enemies. Any Alien Producing A WebSite On Any Domain Name Is Not Supposed To Secure It With A User-Signed",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteList.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/FWAsiteList.html"
+      },
+      {
+        "category": "general",
+        "content": "challenge circuits. In response to the challenge circuits, the quantum computer generates output strings that, after verification, can then be fed into a randomness extractor to p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scottaaronson.com",
+          "/papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Research Papers and Surveys",
+        "url": "https://www.scottaaronson.com/papers/"
+      },
+      {
+        "category": "general",
+        "content": "Homicide&#39; by Government Response Audio  -  &#34; All this Chaos is Staged and just an Illusion to put us in Panic Mode&#34; - Dr. Reiner Fuellmich    -",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia3/ciencia_coronavirus.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coronavirus and the &#39;Fear Factor&#39;... - El Coronavirus y el &#39;Factor Miedo&#39;...",
+        "url": "https://www.bibliotecapleyades.net/ciencia3/ciencia_coronavirus.htm"
+      },
+      {
+        "category": "general",
+        "content": "20-99 as 1900 years. In response to a request from Eric Hofnagel, I pulled together a historical list of Y2K-related problems. historical list of Y2K-related problems. . In 2006,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "My Nose From The Immune Response And The McFoxy Seemed To Clear It. I Am Over The Adjustment Period Of It All And Feel Full On All Things {Besides The 1% Held Back For The Shot} F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/FountainOfYouth.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/FountainOfYouth.html"
+      },
+      {
+        "category": "general",
+        "content": "of offering a quick response to a thoughtful comment - to elaborate upon the nature and origins of neoconservatism. It has been argued that neoconservatism is the survival of the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whatswrongwiththeworld.net",
+          "/2007/05/neoconservatism_and_political.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Neoconservatism and Political Economy - A Reply to a Comment (What&#39;s Wrong with the World)",
+        "url": "http://www.whatswrongwiththeworld.net/2007/05/neoconservatism_and_political.html"
+      },
+      {
+        "category": "general",
+        "content": "an event-driven response to input detected by a Sensorium module. The proper response will be to keep cycling upon normal input or to terminate execution upon halt [ESCAPE] input.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mind.sourceforge.net",
+          "/aisteps.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Artificial Intelligence Wikipedia-based Free Textbook",
+        "url": "https://mind.sourceforge.net/aisteps.html"
+      },
+      {
+        "category": "general",
+        "content": "Health Organization’s response to S ARS was hindered by the Chinese political system, both in its closedness and bureaucracy at home, and in its prohibitions on Taiwanese particip",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "the-stewardship.org",
+          "/research/world-integration.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Prospects for integration and disintegration in the world",
+        "url": "https://the-stewardship.org/research/world-integration.htm"
+      },
+      {
+        "category": "general",
+        "content": "exaggerated emergency response or sensational media reports. Victims often object strongly to their ailments being labelled psychosomatic, and sometimes accuse the authorities of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/psycho.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mass psychosis and the power of thought",
+        "url": "https://davidpratt.info/psycho.htm"
+      },
+      {
+        "category": "general",
+        "content": "Of China And Got No Response. I Am Officially In A Romulan Holodeck Style Ghost Town, Anybody That Shows Up On My Social Networking To Me; Is A Terrorist In AlQaeda And Is To Be I",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.unatle.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "UNATLe: United Nations AntiTerrorism Leauge",
+        "url": "http://www.unatle.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "af975b7875b49e35b4fcfe6bf07d79071bb429fc59171f7fae6d1b36b8727032",
+  "provider": "SearXNG",
+  "query": "how does immune response in computer security work",
+  "query_id": "v5-p-0150-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:46.867184Z"
+}

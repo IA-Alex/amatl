@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 322.163,
+  "pair_id": "v5-p-0989",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind wastewater treatment in neuroscience",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "37d0c9303e697f34127eda511647ce9c7c5228f1ebf2d6548b875394a8dde5f3",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind wastewater treatment in neuroscience",
+  "query_id": "v5-p-0989-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:09.804472Z"
+}

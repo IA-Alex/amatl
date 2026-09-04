@@ -1,0 +1,246 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 307.209,
+  "pair_id": "v5-p-0125",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is database indexing in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "of pages describing the technology used to create the server. Consensus Development Corporation is now offering an experimental WWW Front Page for access to information about coll",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "home.mcom.com",
+          "/home/whatsnew/whats_new_0194.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "What&#39;s New! January 1994",
+        "url": "http://home.mcom.com/home/whatsnew/whats_new_0194.html"
+      },
+      {
+        "category": "general",
+        "content": "at the cutting edge technology of the Third Reformation ! The Puritan Hard Drive will change the face of biblical (Puritan and Reformation) studies forever ... and change your lif",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.swrb.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Still Waters Revival Books, FREE and Discounted Reformation, Puritan,Reformed Baptist, Protestant, Calvinism, Presbyterian, Covenanter, Baptis",
+        "url": "https://www.swrb.com/"
+      },
+      {
+        "category": "general",
+        "content": "and parapolitical technology http://abovetopsecret.com * Guide to Britan&#39;s Nuclear Trains  http://www.kare-uk.org/coreguide/trainguide.htm *  Microwave phones and base s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "social, economics and technology, products of human activity, cultural area”. These, however, can only be divided by such categories as “theory”, “methods&amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/phenomenon.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Phenomenon-based classification (IEKO)",
+        "url": "https://www.isko.org/cyclo/phenomenon.htm"
+      },
+      {
+        "category": "general",
+        "content": "&#34;tek&#34; (as in &#34;technology&#34;, the &#34;x&#34; is a Greek chi, not a latin eks.) Both pronunciations are accepted by most people nowadays. Knuth also played around with capitalizing the last",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "math.vanderbilt.edu",
+          "/schectex/wincd/intro_to_tex.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Introduction to TeX",
+        "url": "https://math.vanderbilt.edu/schectex/wincd/intro_to_tex.htm"
+      },
+      {
+        "category": "general",
+        "content": "replace Video Recording Technology Helical scan video recording VHS video VHS audio Beta and 8 mm audio More information on video formats VCR servo systems Video special effects F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.repairfaq.org",
+          "/sam/vcrfaq.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notes on the Troubleshooting and Repair of Video Cassette Recorders",
+        "url": "http://www.repairfaq.org/sam/vcrfaq.htm"
+      },
+      {
+        "category": "general",
+        "content": "is a &#34;polled&#34; technology, there is no provision for the sort of &#34;redirected&#34; login that a regular web login can display. This is a problem, because some areas",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tickerforum.org",
+          "/faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Market Ticker Frequently Asked Questions",
+        "url": "http://tickerforum.org/faq.html"
+      },
+      {
+        "category": "general",
+        "content": "ways to employ such technology for Internet E-mail has been around now for two decades and, and that is PGP . Almost a decade ago the IETF published RFC 2440 documenting a modern",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.weird.com",
+          "/~woods/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Greg A. Woods",
+        "url": "http://www.weird.com/~woods/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "28c58dd452f0fb0e6d7f1a93a6c557dcbfa12af286a6d0c027ec76fa158763b2",
+  "provider": "SearXNG",
+  "query": "what is database indexing in music technology",
+  "query_id": "v5-p-0125-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:57.303083Z"
+}

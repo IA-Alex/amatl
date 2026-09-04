@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 260.767,
+  "pair_id": "v5-p-1073",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is microbial fermentation in energy systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "have been made through fermentation. Analysis of the phylogenetic trees constructed from the 355 protein families places Clostridia and methanogens as the earliest-diverging organ",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/unraveltree/unravel.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Unraveling the Tree of Life",
+        "url": "http://www.dhushara.com/book/unraveltree/unravel.htm"
+      },
+      {
+        "category": "general",
+        "content": "alcohol stove lpg lacto-fermentation sprouting growing food processing food manual food grinder storing food coffee our cooking blog carbonation The doctor of the future will give",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "100r.co",
+          "/site/cooking.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "100R — cooking",
+        "url": "http://100r.co/site/cooking.html"
+      },
+      {
+        "category": "general",
+        "content": "Liquid Fencing Law Fermentation Ferry Boat Design Fertilizer Fertilizing Fiber Analysis Fiber Optics Fiber Optics Fiberboard Containers Fiberglass Fiduciary Trust Accounts Filicid",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "VFTonline.org",
+          "/VFTprayer/heaven/000list.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://VFTonline.org/VFTprayer/heaven/000list.txt",
+        "url": "http://VFTonline.org/VFTprayer/heaven/000list.txt"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fe1c10d5c8b0f5310b62b3c6c58ee540bfe5854ba08aa1bad274278c626768ef",
+  "provider": "SearXNG",
+  "query": "what is microbial fermentation in energy systems",
+  "query_id": "v5-p-1073-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:13.074833Z"
+}

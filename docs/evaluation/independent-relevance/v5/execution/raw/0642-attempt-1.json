@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 331.215,
+  "pair_id": "v5-p-0372",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind solar eclipses in geology",
+    "results": [
+      {
+        "category": "general",
+        "content": "with the scientific principle of objectivity, which means that we must not assume beforehand as true the thing we are trying to prove, but we must temporarily suspend our beliefs,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.foundalis.com",
+          "/rlg/Quran_and_science.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Science in the Qur’an? Surely you’re joking, Mr. Muslim!",
+        "url": "https://www.foundalis.com/rlg/Quran_and_science.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "41274787cab37ca2f9c97920248dcfa8c3170305c1837a722bc7cdc524d6411f",
+  "provider": "SearXNG",
+  "query": "describe the principle behind solar eclipses in geology",
+  "query_id": "v5-p-0372-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:08:39.432580Z"
+}

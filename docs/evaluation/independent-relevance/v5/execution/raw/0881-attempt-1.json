@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 258.437,
+  "pair_id": "v5-p-0647",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes renewable energy storage in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "hiding the origins and operations of the corrupt banking plutocracy that owns and rules America, and is gradually and clandestinely imposing a worldwide tyranny on the rest of man",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "and move manufacturing operations to China, with it&#39;s labor force making a fraction of the wage that Americans had been making. Americans were told that we were now a management c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIDIK.com The original and official DIDIK site. Cutting edge and sometimes controversial thoughts, designs, proposals and projects conceiv",
+        "url": "http://www.didik.com/"
+      },
+      {
+        "category": "general",
+        "content": "greatly curtail their operations. It was estimated that these small companies and stores represented about 60% of the economy. As a result of the government imposed lockdowns, muc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.design1.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Recent designs, projects and thoughts by Frank X. Didik. Predictions for the future, where society is going. Can gravity by modulated? Wha",
+        "url": "http://www.design1.org/"
+      },
+      {
+        "category": "general",
+        "content": "greatly curtail their operations. It was estimated that these small companies and stores represented about 60% of the economy. As a result of the government imposed lockdowns, muc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/frankdidik_oped_bicycle_etiquette.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Thoughts by Frank X. Didik Bicycle Etiquette. Op-Ed Views. www",
+        "url": "http://www.didik.com/frankdidik_oped_bicycle_etiquette.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "eea4379e2f90bfc03f61dcc54eb8deee43793db5b3631bb70122a0d88c1c10be",
+  "provider": "SearXNG",
+  "query": "what causes renewable energy storage in operations research",
+  "query_id": "v5-p-0647-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:54.500118Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 260.184,
+  "pair_id": "v5-p-0232",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does plate tectonics in mechanical engineering operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8befdc41f04de75ce6cbfaf4a4e133612aaa06b89f44864a591dcf7b7c6d67a4",
+  "provider": "SearXNG",
+  "query": "how does plate tectonics in mechanical engineering operate",
+  "query_id": "v5-p-0232-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:10:09.926254Z"
+}

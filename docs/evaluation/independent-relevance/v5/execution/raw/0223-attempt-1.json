@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 272.98,
+  "pair_id": "v5-p-0264",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does binary search in geology operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "it. In your high school geology class you probably were taught that all life on earth exists in a paper-thin shell called the biosphere, which is trapped between thousands of mile",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "garote.bdmonkeys.net",
+          "/commandline/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Command Line In 2004",
+        "url": "https://garote.bdmonkeys.net/commandline/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4be105038b65f9dbba4f4cb29a6a1c26969a64012f94ba34532c71520f1c3df8",
+  "provider": "SearXNG",
+  "query": "how does binary search in geology operate",
+  "query_id": "v5-p-0264-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:06:19.308006Z"
+}

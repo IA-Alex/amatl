@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 278.355,
+  "pair_id": "v5-p-0089",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is ocean tides in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "and got no reply. The Technology Strategy Board rejected an application for funding in May of 2013. Bluebird Marine Systems has a published patent that covers a system for such a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.solarnavigator.net",
+          "/oceanography.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OCEANOGRAPHY",
+        "url": "https://www.solarnavigator.net/oceanography.htm"
+      },
+      {
+        "category": "general",
+        "content": "be reduced by advanced technology to people who are quadriplegic morons (assuming that won?t be solved by sufficient technology) and very young children who require constant atten",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.anarchism.net",
+          "/newlibertarianmanifesto.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ANARCHISM.net: The New Libertarian Manifesto, by Samuel Edward Konkin III",
+        "url": "https://www.anarchism.net/newlibertarianmanifesto.htm"
+      },
+      {
+        "category": "general",
+        "content": "-Bulletin of Science, Technology &amp; Society &#34;First rate... Among the best... Deserving of a place on the shelf of any neuropsychologist, neuropsychiatrist, or behavioral neurologis",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "BrainMind.com",
+          "/publications.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rhawn Joseph&#39;s Scientific Publications, Pictures, Biography",
+        "url": "http://BrainMind.com/publications.html"
+      },
+      {
+        "category": "general",
+        "content": "many more for despair. Technology proceeds apace, delivering the marvels that knit our world together-- the conquering of diseases that plagued every age but ours and the conseque",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "spirasolaris.ca",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Spirasolaris",
+        "url": "https://spirasolaris.ca/"
+      },
+      {
+        "category": "general",
+        "content": "microbiology robotics technology about himself religion and creationism women rationality intelligence politics speech television and film science fiction Isaac Asimov&#39;s Science F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "820d9dcc4ece160904e9e5b87f184165fc80156a7edf159faee91985dd3b0229",
+  "provider": "SearXNG",
+  "query": "what is ocean tides in music technology",
+  "query_id": "v5-p-0089-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:28.444298Z"
+}

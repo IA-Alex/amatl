@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 304.315,
+  "pair_id": "v5-p-0080",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind ocean tides in ecology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2ab67835d978bcd0c21e4359b94a0735d06e958ef189a81cb794180031e649d0",
+  "provider": "SearXNG",
+  "query": "describe the principle behind ocean tides in ecology",
+  "query_id": "v5-p-0080-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:14:18.340211Z"
+}

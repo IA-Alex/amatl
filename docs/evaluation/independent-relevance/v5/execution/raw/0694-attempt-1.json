@@ -1,0 +1,327 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 417.563,
+  "pair_id": "v5-p-0725",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind root systems in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "and human enhancement.” Explain the pioneering role in transhumanism of Max More and Natasha Vita-More and the Extropy Institute “Max More and Natasha Vita-More are influential fi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.transhumanist.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Transhumanism as conceived by ChatGPT-4",
+        "url": "https://www.transhumanist.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "viewpoint from which to explain the progress of strengthening of a man or of a race. Rather, two things must coincide: first of all, stable power must increase through minds bound",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.publicappeal.org",
+          "/library/nietzsche/Nietzsche_human_all_too_human/sect5_signs_of_higher_and_lower_culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SECTION FIVE , Signs of Higher and Lower Culture",
+        "url": "http://www.publicappeal.org/library/nietzsche/Nietzsche_human_all_too_human/sect5_signs_of_higher_and_lower_culture.htm"
+      },
+      {
+        "category": "general",
+        "content": "they might be able to explain how the New Age movement differs from the Christian faith. This study invites readers to take account of the way that New Age religiosity addresses t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.vatican.va",
+          "/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jesus Christ The Bearer Of The Water Of Life - A Christian reflection on the New Age",
+        "url": "https://www.vatican.va/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html"
+      },
+      {
+        "category": "general",
+        "content": "Stationary action explains coherent selection, but the open task is one conservative nonlinear \\(\\Phi\\)–\\(\\Gamma\\) action selecting radius, frequency, spherical hand, stabil",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/Philosophy-Hinduism-Hindu.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hinduism Hindu Religion: Discussion Metaphysics Philosophy of HinduismBeliefs, Hindu Gods",
+        "url": "https://www.spaceandmotion.com/Philosophy-Hinduism-Hindu.htm"
+      },
+      {
+        "category": "general",
+        "content": "today, with Techland explaining, &#34;No, it’s not a metaphor. You will be literally hacking through demonic hordes of Hell.&#34;. Sounds like it might be sizable too with a new dungeon m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "techrights.org",
+          "/o/2020/04/29/tde-10th-anniversary/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Links 29/4/2020: TDE 10th Anniversary, Sailfish OS 3.3",
+        "url": "http://techrights.org/o/2020/04/29/tde-10th-anniversary/"
+      },
+      {
+        "category": "general",
+        "content": "that in the present. I explain the main reasons below. Global stability In most cases, the conclusion of applied welfare ecology is that more habitat destruction is better, to ave",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Applied Welfare Biology and Why Wild-Animal Advocates Should Focus on Not Spreading Nature",
+        "url": "https://reducing-suffering.org/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/"
+      },
+      {
+        "category": "general",
+        "content": "matched up and explained. A clue, however, may be found in Dante&#39;s Divine Comedy . The levels of Purgatory in the Purgatorio are organized around the Seven Sins, while the levels",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/key.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Key Distinctions for Value Theories, and the Importance of Hume",
+        "url": "https://friesian.com/key.htm"
+      },
+      {
+        "category": "general",
+        "content": "its origin is to be explained from a disharmony which somehow enters in at the margin of the upper world.” Rudolph, like Jonas, remarks the eclecticism of the Gnostic system-build",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.brusselsjournal.com",
+          "/node/4461",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Gnosticism from a Non-Voegelinian Perspective, Part III (Gnosticism in Modern Scholarship) | The Brussels Journal",
+        "url": "https://www.brusselsjournal.com/node/4461"
+      },
+      {
+        "category": "general",
+        "content": "and Leaky Vessels We explain here that booster shots are uniquely dangerous, in a way that is unprecedented in the history of vaccines. That is because repeatedly boosting the imm",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "serendipity.li",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Serendipity",
+        "url": "https://serendipity.li/"
+      },
+      {
+        "category": "general",
+        "content": ") An infographic to explain what the increased IRS funding will be used for, and that non-rich Americans will not have an increased chance of being audited. 28 August 2022 ( Ghost",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2022-may-aug.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2022: May - August Political Notes",
+        "url": "http://stallman.org/archives/2022-may-aug.html"
+      },
+      {
+        "category": "general",
+        "content": "very different when you explain them to a neutral third party. Maybe this exercise helps you to remember why the problems matter to you. Maybe you realize that they don&#39;t matter s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "a3nm.net",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "a3nm&#39;s blog",
+        "url": "http://a3nm.net/blog/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1249221761ef1c12326ff1e6224688aec4289e54c1d261ba89d5f27b32826b8f",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind root systems in climate science",
+  "query_id": "v5-p-0725-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:55.363477Z"
+}

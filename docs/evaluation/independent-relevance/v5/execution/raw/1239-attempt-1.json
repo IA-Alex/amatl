@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 300.206,
+  "pair_id": "v5-p-0692",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does language acquisition in ecology operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "than to finance the acquisition of luxury goods which they cannot afford.   This is borne out by a recent study by the National   Consumer Council (1995) on financial se",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.alastairmcintosh.com",
+          "/articles/1998_usury.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "History of Usury Prohibition",
+        "url": "http://www.alastairmcintosh.com/articles/1998_usury.htm"
+      },
+      {
+        "category": "general",
+        "content": "smaller companies about acquisitions for larger companies (Pfizer, Merck, etc.) ask how a recent acquisition of a smaller company (there will be one, don&#39;t worry) affects your rol",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sciencecareergeneral.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Science Career General Paste",
+        "url": "https://sciencecareergeneral.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "to use. The IBM acquisition of Lotus can be understood only in this light. IBM paid $3.5B for Lotus Notes. Now Notes is an innovative and important product, and no competitor has",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www-users.cse.umn.edu",
+          "/~odlyzko/doc/decline.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://www-users.cse.umn.edu/~odlyzko/doc/decline.txt",
+        "url": "https://www-users.cse.umn.edu/~odlyzko/doc/decline.txt"
+      },
+      {
+        "category": "general",
+        "content": "on leveling and power acquisition often have very large power differentials between players. If two friendly players want to play together, they may not be able to because either",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.projecthorseshoe.com",
+          "/reports/featured/ph16r4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Project Horseshoe 2016 report section 4",
+        "url": "https://www.projecthorseshoe.com/reports/featured/ph16r4.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "02a50ef2b45c4d1784c2bfd324659ef08a75e704a21dcb37441a96af0df98aae",
+  "provider": "SearXNG",
+  "query": "how does language acquisition in ecology operate",
+  "query_id": "v5-p-0692-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:53.026963Z"
+}

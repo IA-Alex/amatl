@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 352.639,
+  "pair_id": "v5-p-0042",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does compiler operation in computer security work",
+    "results": [
+      {
+        "category": "general",
+        "content": "and the effect the operation has on the Security Descriptor flag &#34;DACL auto-inherited&#34; (DI). Generally, this flag is set on a file (or directory) upon creation if the parent direc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.samba.org",
+          "/samba/docs/current/man-html/smb.conf.5.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "smb.conf",
+        "url": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+      },
+      {
+        "category": "general",
+        "content": "for RDF. Update operations are performed on a collection of graphs in a Graph Store. Operations are provided to update, create, and remove RDF graphs in a Graph Store. Status of t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/sparql11-update/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SPARQL 1.1 Update",
+        "url": "https://www.w3.org/TR/sparql11-update/"
+      },
+      {
+        "category": "general",
+        "content": "for non-Intel x86 operation (since these would not be fully counted anyway). I did this by examining any specification (in /usr/src/redhat/SPECS) with &#34;compat&#34; or &#34;10&#34; or &#34;11&#34; in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "dwheeler.com",
+          "/sloc/redhat71-v1/redhat71sloc.1.00.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "More than a Gigabuck: Estimating GNU/Linux&#39;s Size",
+        "url": "https://dwheeler.com/sloc/redhat71-v1/redhat71sloc.1.00.html"
+      },
+      {
+        "category": "general",
+        "content": "also Unicode . All operations can be programmed for automatic unattended execution in a consistent way, regardless of platform or connection method, using the portable Kermit scri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kermitproject.org",
+          "/ckfaq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C-Kermit Frequently Asked Questions",
+        "url": "https://www.kermitproject.org/ckfaq.html"
+      },
+      {
+        "category": "general",
+        "content": "with an erase or write operation.  Uploading new programs fully erases the flash memory, destroying any saved files.  Future Teensyduino may provide a way to preserve the files ac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.pjrc.com",
+          "/2021/07/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SEGA ROM Reader",
+        "url": "https://www.pjrc.com/2021/07/"
+      },
+      {
+        "category": "general",
+        "content": "the search and replace operation seemed to hang, or at least took ages. I opened his file in &#34;vi&#34;, which performed the same operation in the blink of an eye. Didn&#39;t even have to r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/820829/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The state of the AWK [LWN.net]",
+        "url": "https://lwn.net/Articles/820829/"
+      },
+      {
+        "category": "general",
+        "content": "importance of system operations, education, and awareness as part of a balanced approach toward attaining survivability. I taught a course ENPM 808s as an Adjunct Professor at the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "2E/πh logical operations per second (a logical operation is, for example, performing the AND operation on two bits of input - think of it as single bit operations, roughly). Si",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/286233/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Kernel Hacker&#39;s Bookshelf: Ultimate Physical Limits of Computation [LWN.net]",
+        "url": "https://lwn.net/Articles/286233/"
+      },
+      {
+        "category": "general",
+        "content": "for RDF. Update operations are performed on a collection of graphs in a Graph Store. Operations are provided to update, create, and remove RDF graphs in a Graph Store. Status of t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/2013/REC-sparql11-update-20130321/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SPARQL 1.1 Update",
+        "url": "https://www.w3.org/TR/2013/REC-sparql11-update-20130321/"
+      },
+      {
+        "category": "general",
+        "content": "restored an IMSAI to operation and installed CP/M 2.2. While his system originally had an ancient (even by CP/M standards) iCOM floppy controller and FD 400 drives, he changed tho",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.retrotechnology.com",
+          "/dri/howto_cpm.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to start with CP/M",
+        "url": "http://www.retrotechnology.com/dri/howto_cpm.html"
+      },
+      {
+        "category": "general",
+        "content": "AGC?  The Apollo Operations Handbook for the Apollo 16 CM says this: &#34;[Toggling the LV Guidance switch to CMC] allows CMC automatic steering (polynomial guidance) for S-IC st",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ibiblio.org",
+          "/apollo/LVDC.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Launch Vehicle Digital Computer",
+        "url": "http://www.ibiblio.org/apollo/LVDC.html"
+      },
+      {
+        "category": "general",
+        "content": "a &#34;return and continue&#34; operation: return from the function, and next time it is called, resume control from just after the return statement. For example, we would like to be able",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chiark.greenend.org.uk",
+          "/~sgtatham/coroutines.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Coroutines in C",
+        "url": "https://www.chiark.greenend.org.uk/~sgtatham/coroutines.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f96797090b4cfcb376126ef95f3c182cb683999ca2fe2f88f8708ba8723603c0",
+  "provider": "SearXNG",
+  "query": "how does compiler operation in computer security work",
+  "query_id": "v5-p-0042-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:14.480517Z"
+}

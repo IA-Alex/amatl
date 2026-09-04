@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 231.954,
+  "pair_id": "v5-p-1075",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes microbial fermentation in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "deae8feb4a9a149ee37656b1495009c100914e4793815a122ad3d89e7d725df5",
+  "provider": "SearXNG",
+  "query": "what causes microbial fermentation in hydrology",
+  "query_id": "v5-p-1075-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:58.756464Z"
+}

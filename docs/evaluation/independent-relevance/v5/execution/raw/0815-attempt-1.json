@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 296.864,
+  "pair_id": "v5-p-0696",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does language acquisition in geology operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "smaller companies about acquisitions for larger companies (Pfizer, Merck, etc.) ask how a recent acquisition of a smaller company (there will be one, don&#39;t worry) affects your rol",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sciencecareergeneral.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Science Career General Paste",
+        "url": "https://sciencecareergeneral.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "3147 BC, but also the acquisition, over the next three millennia, of subjective consciousness. The response to catastrophic events determined how we became fully human. To say it",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "saturniancosmology.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Saturnian Cosmology: Chapter 1: Introduction",
+        "url": "https://saturniancosmology.org/"
+      },
+      {
+        "category": "general",
+        "content": "followed by a similar acquisition by heart of the texts of the works of Confucius and other classical writers. And so it remained until the abolition, in 1905, of the old competit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/15250/15250-h/15250-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Myths &amp; Legends of China",
+        "url": "https://www.gutenberg.org/files/15250/15250-h/15250-h.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "04fa3c8952e690ee33bb89732920b8896486cd576e30bae204c03f7fb2458c0f",
+  "provider": "SearXNG",
+  "query": "how does language acquisition in geology operate",
+  "query_id": "v5-p-0696-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:33.965978Z"
+}

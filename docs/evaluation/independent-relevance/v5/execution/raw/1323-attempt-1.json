@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 236.636,
+  "pair_id": "v5-p-1003",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes wastewater treatment in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "340e15aad281a47c6c5176420700a7bb6850ae38d44e3d68c7b777727154fbec",
+  "provider": "SearXNG",
+  "query": "what causes wastewater treatment in hydrology",
+  "query_id": "v5-p-1003-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:19.356086Z"
+}

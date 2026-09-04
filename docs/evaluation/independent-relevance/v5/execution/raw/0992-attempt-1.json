@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 364.751,
+  "pair_id": "v5-p-0334",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of soil erosion in environmental science",
+    "results": [
+      {
+        "category": "general",
+        "content": "This includes more environmentally efficient production: today illegal marijuana production uses grow-lamps that consume an enormous amount of electricity (and may lead to electri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonDrugs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about Drugs",
+        "url": "https://www.billdietrich.me/ReasonDrugs.html"
+      },
+      {
+        "category": "general",
+        "content": "the corruption in the environmental movement, was attacked by the leading environmentalists to viciously and so uniformly that the film was removed from major platforms and kind o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica2/sociopol_greatreset16.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Great Reset for Dummies - Where do we Go from Here?",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica2/sociopol_greatreset16.htm"
+      },
+      {
+        "category": "general",
+        "content": "worldwide demographic, environmental, and societal stress, in which criminal anarchy emerges as the real &#34;strategic&#34; danger. Disease, overpopulation, unprovoked crime, scarcity of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      },
+      {
+        "category": "general",
+        "content": "on NAISMA . ]] 311116 Environmental Conservation Starts with Managing Invasive Species https://naisma.org/2026/09/01/environmental-conservation-starts-with-managing-invasive-speci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "503e7a2898f28c5ad5682bae8cb3d2d7d04ad6f18495da712c2bcde0c8267b76",
+  "provider": "SearXNG",
+  "query": "tell me about the function of soil erosion in environmental science",
+  "query_id": "v5-p-0334-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:29.425916Z"
+}

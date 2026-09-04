@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 355.055,
+  "pair_id": "v5-p-0172",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind immune response in architecture",
+    "results": [
+      {
+        "category": "general",
+        "content": "complex trait. Genomic Architecture of Rapid Parallel Adaptation to Fresh Water in a Wild Fish by Shao-Bing Zong, Yu-Long Li and Jin-Xian Liu, doi:10.1093/molbev/msaa290, Molecula",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.panspermia.org",
+          "/neodarw.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Neo-Darwinism: The Current Paradigm. by Brig Klyce",
+        "url": "https://www.panspermia.org/neodarw.htm"
+      },
+      {
+        "category": "general",
+        "content": "spirit of imperialistic architecture; of colossal palaces and gilt-edged villas; of the oppressively sensuous, and  weaponized , sculpture of Bernini&#39;s Papal Rome, &#34;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wordgems.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Word Gems",
+        "url": "http://wordgems.net/"
+      },
+      {
+        "category": "general",
+        "content": "Maps of Meaning: The Architecture of Belief , where he presents his admittedly Jungian perspective on psychology and what it says about mankind as well as the threats facing socie",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stenudd.com",
+          "/myth/jungians_on_myth_and_religion/JordanBPeterson.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jordan B. Peterson - Jungians on myth and religion.",
+        "url": "https://www.stenudd.com/myth/jungians_on_myth_and_religion/JordanBPeterson.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8a5f0af8fb1dcbd620d470e75716ce48a8733930ad3022cd6e3f7df48c664e0b",
+  "provider": "SearXNG",
+  "query": "describe the principle behind immune response in architecture",
+  "query_id": "v5-p-0172-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:50.523163Z"
+}

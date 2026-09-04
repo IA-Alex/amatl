@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 241.198,
+  "pair_id": "v5-p-0603",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of air quality monitoring in agricultural science",
+    "results": [
+      {
+        "category": "general",
+        "content": "remove all agricultural subsidies and tariffs. See my Consumption and Energy page. Politics: have high taxes on paid political speech. See Campaign Finance section of this page. E",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/USPolicy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "US Policy Choices",
+        "url": "https://www.billdietrich.me/USPolicy.html"
+      },
+      {
+        "category": "general",
+        "content": "state subsidies on agricultural diesel The French government introduced a series of urgent measures on Friday that abandon its plan to reduce state subsidies on agricultural diese",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "techrights.org",
+          "/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Techrights — Links 30/01/2024: Many More Layoffs (Microsoft the Most Tech Layoffs This Year)",
+        "url": "http://techrights.org/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "97fde80da1ad1bfdee4145ab70d420e3bc2bde0b23f3f46187be84725af7f6e9",
+  "provider": "SearXNG",
+  "query": "give an overview of air quality monitoring in agricultural science",
+  "query_id": "v5-p-0603-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:10:42.429400Z"
+}

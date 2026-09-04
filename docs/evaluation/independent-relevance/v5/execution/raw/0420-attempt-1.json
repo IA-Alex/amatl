@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 305.079,
+  "pair_id": "v5-p-0356",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind soil erosion in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "90df6e26e134d3eca88b017f299d62cac49a7ff0116b2f4513bbd2a2135a1613",
+  "provider": "SearXNG",
+  "query": "describe the principle behind soil erosion in hydrology",
+  "query_id": "v5-p-0356-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:21.241682Z"
+}

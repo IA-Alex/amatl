@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 366.339,
+  "pair_id": "v5-p-0762",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of coastal flooding in computer security",
+    "results": [
+      {
+        "category": "general",
+        "content": "hospitals ceasing to function as water and fuel run out.* Israel could, and is morally obliged to, let them get the humanitarian supplies they need — and the rest of Gaza to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2023-jul-oct.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2023: July - October Political Notes",
+        "url": "http://stallman.org/archives/2023-jul-oct.html"
+      },
+      {
+        "category": "general",
+        "content": "the facility, and functional poorly disguised nuke cameras inside the facility. In addition to this, they install an unauthorized data connection to allow control of all the guts",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_uranium64.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Did The Dimona Dozen Murder The Fukushima 50? - 3/11 Was Japan&#39;s 9/11",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_uranium64.htm"
+      },
+      {
+        "category": "general",
+        "content": "diet can impair brain function. After a week on a high fat, high added sugar diet, volunteers scored worse on memory tests .* 19 February 2020 ( Beavers work ) *Beavers cut floodi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-nov-feb.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: November - February Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-nov-feb.html"
+      },
+      {
+        "category": "general",
+        "content": "a manner necessary for functional sovereignty. The Koranko ethnic group in northeastern Sierra Leone does all its trading in Guinea. Sierra Leonian diamonds are more likely to be",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1f7f99cb92d2c7bf2805961934e8eb405a5d8ce20bb01db4c76230743c6d91d9",
+  "provider": "SearXNG",
+  "query": "tell me about the function of coastal flooding in computer security",
+  "query_id": "v5-p-0762-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:21.635453Z"
+}

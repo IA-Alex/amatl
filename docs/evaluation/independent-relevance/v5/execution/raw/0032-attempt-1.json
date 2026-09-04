@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 316.339,
+  "pair_id": "v5-p-0140",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind database indexing in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "efd103262a5e7e97127847e2acfd67fa806af0fec5772ff3c09fd3e8c127f7de",
+  "provider": "SearXNG",
+  "query": "describe the principle behind database indexing in hydrology",
+  "query_id": "v5-p-0140-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:18.600162Z"
+}

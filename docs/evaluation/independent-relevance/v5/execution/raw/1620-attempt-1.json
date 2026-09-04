@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 336.357,
+  "pair_id": "v5-p-0825",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind battery chemistry in industrial design",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f8d8a5c4f3dfc98b255891aa026cbb8cbcb32e2effc21e7effb0e2882d25aa5f",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind battery chemistry in industrial design",
+  "query_id": "v5-p-0825-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:50.946563Z"
+}

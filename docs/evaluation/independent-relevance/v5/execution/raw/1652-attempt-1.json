@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 321.572,
+  "pair_id": "v5-p-0325",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind soil erosion in astronomy",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "eb2a8a641a6cf566370a6e125e0b20f690d61982b35cab60c7eccbe1ed882b8f",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind soil erosion in astronomy",
+  "query_id": "v5-p-0325-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:14:00.210577Z"
+}

@@ -1,0 +1,273 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 388.968,
+  "pair_id": "v5-p-0522",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of neural networks in neuroscience",
+    "results": [
+      {
+        "category": "general",
+        "content": "biotechnology and neuroscience are used to create intelligent and sentient organisms that are vastly more intelligent than humans, while the technological singularity often center",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biointelligence-explosion.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biointelligence Explosion as conceived by ChatGPT",
+        "url": "https://www.biointelligence-explosion.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "(2007) and Utopian Neuroscience (2008). Chapter Two of HI can safely be skipped or aggressively skimmed even by the analytic philosophers for whom it was primarily intended. It co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Hedonistic Imperative : Chapter Two",
+        "url": "https://www.hedweb.com/hedethic/hedon2.htm"
+      },
+      {
+        "category": "general",
+        "content": "Physics The Biology The Neuroscience Alternative Possibilities Adequate Determinism Moral Responsibility Self-Determination Separability of Free and Will Standard Argument Superde",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Information Philosopher - dedicated to the new information philosophy",
+        "url": "https://www.informationphilosopher.com/"
+      },
+      {
+        "category": "general",
+        "content": "genetics, and neuroscience to the human mind is bitterly resisted in modern intellectual life. But unlike other human divisions such as race and ethnicity, where any biological di",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "no fact of experimental neuroscience that positively contradicts this supposition. Rather, like their physicist counterparts, neuroscientists choose to interpret all observed fact",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "arcaneknowledge.org",
+          "/science/vitapsych3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Vitalism and Psychology",
+        "url": "https://arcaneknowledge.org/science/vitapsych3.htm"
+      },
+      {
+        "category": "general",
+        "content": "emphasizes the role of neuroscience in understanding consciousness, panpsychists do not necessarily dismiss the importance of brain science. They argue that understanding the brai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.panpsychism.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Panpsychism as conceived by ChatGPT",
+        "url": "https://www.panpsychism.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "a very debated topic in neuroscience and it&#39;s clear that we know very little about. Pointing to a metaphysical theory like Luke&#39;s is pretty useless. IMO, if you can&#39;t prove it and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/chinese_room",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Computation isn&#39;t Consciousness: The Chinese Room Experiment",
+        "url": "https://lukesmith.neocities.org/vids/chinese_room"
+      },
+      {
+        "category": "general",
+        "content": "insights from cognitive neuroscience (reverse engineering salient neural structure of the mammalian brain), to create silicon evolutionary spaces that will develop higher-level in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.accelerationwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acceleration Watch (Understanding Accelerating Change)",
+        "url": "https://www.accelerationwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "(15 Feb 2026 11:25) Neuroscience (15 Feb 2026 11:23) Biological Order, or Levels of Organization (15 Feb 2026 11:16) Scientific Method, and Philosophy of Science (15 Feb 2026 11:0",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bactra.org",
+          "/notebooks/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notebooks",
+        "url": "https://bactra.org/notebooks/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ebd8c919a59fc1789ee38e47ce4da25215f70f1e9ec895bc0eb6edccbe6401ee",
+  "provider": "SearXNG",
+  "query": "tell me about the function of neural networks in neuroscience",
+  "query_id": "v5-p-0522-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:52.637421Z"
+}

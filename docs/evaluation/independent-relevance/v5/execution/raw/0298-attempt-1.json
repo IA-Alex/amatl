@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 220.091,
+  "pair_id": "v5-p-1079",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of microbial fermentation in transportation engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3cc40e6d136f02b615ffae65052aa7bf74a8354bb7245ede9b6108e72bab9a6f",
+  "provider": "SearXNG",
+  "query": "give an overview of microbial fermentation in transportation engineering",
+  "query_id": "v5-p-1079-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:43.343332Z"
+}

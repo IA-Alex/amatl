@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 351.407,
+  "pair_id": "v5-p-0742",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does root systems in physics work",
+    "results": [
+      {
+        "category": "general",
+        "content": "Made By My 64 Bit Systems Incense From Frankincense Resin Developed Independently By The MicroMachina Effort Finalizing Custom Computer Circuit/Hardware Developability Making The",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "experts held up the systems-minded, logic-loving scientist as the ideal software worker. But over the years, this ideal had failed to take root. The programmers of the 1990s read",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "logicmag.io",
+          "/clouds/agile-and-the-long-crisis-of-software/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Agile and the Long Crisis of Software",
+        "url": "https://logicmag.io/clouds/agile-and-the-long-crisis-of-software/"
+      },
+      {
+        "category": "general",
+        "content": "it holds for all formal systems which are (i) consistent, (ii) adequate for simple arithmetic---i.e., contain the natural numbers and the operations of addition and multiplication",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/solutions/philosophers/lucas/Minds_Machines_and_Godel.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Minds, Machines and Gödel&lt;P&gt;",
+        "url": "https://www.informationphilosopher.com/solutions/philosophers/lucas/Minds_Machines_and_Godel.html"
+      },
+      {
+        "category": "general",
+        "content": "work regarding 3D/VR/AR systems. Most works provide extensions based on the VRML/X3D standards. Online resource: Chapter 2, Interactive 3D Content Standards . Digital Simulations",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.web3d.org",
+          "/x3d/content/examples/X3dResources.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "X3D Resources",
+        "url": "https://www.web3d.org/x3d/content/examples/X3dResources.html"
+      },
+      {
+        "category": "general",
+        "content": "Systems Devoid Of Any Monitoring As The Free World Alliance Send Encryption Keys Directly To End-User Computer Systems Without Monitor Proxies Which Add A Risky 3rd Wheel To All T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteList.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/FWAsiteList.html"
+      },
+      {
+        "category": "general",
+        "content": "The propulsion systems of jet aircraft are composed of three major parts; inlet, engine, and nozzle. Inlet : The inlet takes the air at the elevated ram pressure that results from",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.enginehistory.org",
+          "/Convention/2014/SR-71Inlts/SR-71Inlts.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SR-71 Inlets",
+        "url": "http://www.enginehistory.org/Convention/2014/SR-71Inlts/SR-71Inlts.shtml"
+      },
+      {
+        "category": "general",
+        "content": "control over quantum systems and are prerequisites for useful quantum computation. To date, quantum advantage has been demonstrated, for example, through violations of Bell inequa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scottaaronson.com",
+          "/papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Research Papers and Surveys",
+        "url": "https://www.scottaaronson.com/papers/"
+      },
+      {
+        "category": "general",
+        "content": "A couple more formal systems 07 Sep 2014 » A shallow survey of formal methods for C code 06 Jul 2014 » HSTS for new TLDs 27 Jun 2014 » Encrypting streams 20 Jun",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.imperialviolet.org",
+          "/posts-index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ImperialViolet - Posts index - ImperialViolet.org",
+        "url": "https://www.imperialviolet.org/posts-index.html"
+      },
+      {
+        "category": "general",
+        "content": "far less developed root systems than perennials. Annual roots are fibrous (thin and branched repeatedly). Often I find that annual roots are soft, flexible, light colored, and not",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.swcoloradowildflowers.com",
+          "/learning%20about%20plants.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Learning about plants",
+        "url": "https://www.swcoloradowildflowers.com/learning%20about%20plants.htm"
+      },
+      {
+        "category": "general",
+        "content": "nations, times, systems, enter and disappear, like threads in tapestry of large figure and many colors; dream delivers us to dream, and, while the drunkenness lasts, we will sell",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.lyriktheorie.uni-wuppertal.de",
+          "/lyriktheorie/texte/1844_emerson1.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "1844 Ralph Waldo Emerson: The Poet",
+        "url": "https://www.lyriktheorie.uni-wuppertal.de/lyriktheorie/texte/1844_emerson1.html"
+      },
+      {
+        "category": "general",
+        "content": "leaving all cognitive systems intact - a quite standard but entirely bogus feat of imagination - is like supposing that by an act of stipulative imagination, you can remove health",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "philosophy.nekhbet.com",
+          "/zombie.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The zombie satires",
+        "url": "https://philosophy.nekhbet.com/zombie.shtml"
+      },
+      {
+        "category": "general",
+        "content": "quickly such systems of thought and feeling, like impressions of a temple from some random remaining columns and pieces of wall. The immediate result is that we understand our fel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.publicappeal.org",
+          "/library/nietzsche/Nietzsche_human_all_too_human/sect5_signs_of_higher_and_lower_culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SECTION FIVE , Signs of Higher and Lower Culture",
+        "url": "http://www.publicappeal.org/library/nietzsche/Nietzsche_human_all_too_human/sect5_signs_of_higher_and_lower_culture.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fe4d4192e4af23ee87c6504d4436f67be83bd02d94cd29d58c5307767870d4ff",
+  "provider": "SearXNG",
+  "query": "how does root systems in physics work",
+  "query_id": "v5-p-0742-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:28.442462Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 243.212,
+  "pair_id": "v5-p-0512",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does neural networks in ecology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f0411a1105d7479dec2c2fbfa104fe9b00e94894ceaca93a365d0b4f576ab31d",
+  "provider": "SearXNG",
+  "query": "how does neural networks in ecology operate",
+  "query_id": "v5-p-0512-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:59.481802Z"
+}

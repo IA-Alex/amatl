@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 277.028,
+  "pair_id": "v5-p-0771",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes coastal flooding in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "on all campaign materials ) (satire) *New Law Requires Political Candidates To Disclose Fetishes On All Campaign Materials .* If an Onion page appears blank, try disabling Javascr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2023-jul-oct.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2023: July - October Political Notes",
+        "url": "http://stallman.org/archives/2023-jul-oct.html"
+      },
+      {
+        "category": "general",
+        "content": "It is one of the raw materials for photosynthesis, the process whereby plants and other organisms use energy from sunlight to convert carbon dioxide and water into carbohydrates t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/climcat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Climate models and climate catastrophe: a reality check",
+        "url": "https://davidpratt.info/climcat.htm"
+      },
+      {
+        "category": "general",
+        "content": "emergency mapping, materials and their properties, EU infringements, NYC council members, and counting fish. 2024.03.06 • Global military spending, fatal police pursuits, price-fi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.data-is-plural.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Data Is Plural — Full Archive",
+        "url": "https://www.data-is-plural.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "only source of enriched materials that the Japanese have access to. They have a many more reactor sources and lots of materials to play with. They can furnish enriched nuclear mat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_uranium64.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Did The Dimona Dozen Murder The Fukushima 50? - 3/11 Was Japan&#39;s 9/11",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_uranium64.htm"
+      },
+      {
+        "category": "general",
+        "content": "and shrinking raw materials. Democracy is problematic; scarcity is more certain. Indeed, the Saddam Husseins of the future will have more, not fewer, opportunities. In addition to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "542a0896cada126deaaa30e890797f5219b71d3b7939dd6e5c2c0d9703921069",
+  "provider": "SearXNG",
+  "query": "what causes coastal flooding in materials science",
+  "query_id": "v5-p-0771-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:27.150258Z"
+}

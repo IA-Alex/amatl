@@ -1,0 +1,219 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 402.018,
+  "pair_id": "v5-p-0830",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of data compression in biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "t “maims by compression, like a Chinese lady’s foot, every part of human nature which stands out prominently, and tends to make a person markedly different in outline”[34] from the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "theanarchistlibrary.org",
+          "/library/paul-feyerabend-against-method.muse",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse",
+        "url": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse"
+      },
+      {
+        "category": "general",
+        "content": "Trillion Backed By The Compression Of The Stex Quality Of The Mythril. 1-2 Sig Fig Purchases. Gil: GP Promises From Hand Shaken Arrangement Without Any Physical Transfer At The Ti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "this phenomenon STEM Compression of Information and Computation in the most adaptive complex systems. This was my original website exploring the STEM Compression hypothesis. Accel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.accelerationwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acceleration Watch (Understanding Accelerating Change)",
+        "url": "https://www.accelerationwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "ultimate level of data compression (how small can a message be, given the same amount of information to be encoded?) and the ultimate rate of data transmission (how fast can data",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.stanford.edu",
+          "/archIves/win2013/entries/information-semantic/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Semantic Conceptions of Information (Stanford Encyclopedia of Philosophy/Winter 2013 Edition)",
+        "url": "https://plato.stanford.edu/archIves/win2013/entries/information-semantic/"
+      },
+      {
+        "category": "general",
+        "content": "Example of Information Compression 4.6. More Examples of Information Compression 4.7. Examples of False Beliefs formed from Insufficient Knowledge of Reality 5. Other Theories of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/epistemology/representationalism",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Representationalism",
+        "url": "https://zerocontradictions.net/epistemology/representationalism"
+      },
+      {
+        "category": "general",
+        "content": "Trillion Backed By The Compression Of The Stex Quality Of The Mythril. 1-2 Sig Fig Purchases. Gil: GP Promises From Hand Shaken Arrangement Without Any Physical Transfer At The Ti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/GreenMagi.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/GreenMagi.html"
+      },
+      {
+        "category": "general",
+        "content": "emitters, explosive compression of huge solenoids and explosive breaking of energised superconducting toroids. One common factor here is that these weapons are single use only, af",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cyb-sec.neocities.org",
+          "/pages/alt-cyberpunk-faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "alt.cyberpunk FAQ – /cyb/&#43;/sec/ wiki",
+        "url": "https://cyb-sec.neocities.org/pages/alt-cyberpunk-faq/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "02b096a57ca43209bf4b53116861492faa3549d593a8d96256217b8f0c8db790",
+  "provider": "SearXNG",
+  "query": "tell me about the function of data compression in biology",
+  "query_id": "v5-p-0830-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:20.177419Z"
+}

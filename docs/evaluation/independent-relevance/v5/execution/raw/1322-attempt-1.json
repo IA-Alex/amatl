@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 324.581,
+  "pair_id": "v5-p-0492",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind encryption keys in robotics",
+    "results": [
+      {
+        "category": "general",
+        "content": "cipher for the Advanced Encryption Standard . Serpent got the second largest number of votes. Other papers on cryptography and cryptanalysis include the following. The Dancing Bea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2d81d810e986c09e135da4835bd95efd6782ee92a9390d928013cba3325fde64",
+  "provider": "SearXNG",
+  "query": "describe the principle behind encryption keys in robotics",
+  "query_id": "v5-p-0492-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:12:19.031067Z"
+}

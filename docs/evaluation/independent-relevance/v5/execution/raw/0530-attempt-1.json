@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 249.957,
+  "pair_id": "v5-p-0579",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of air quality monitoring in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "- measurement and monitoring of photopeak position stability. 2.11. Statistical variance and measurement errors S tochastic character of radioactive transformation (decay) and rad",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Fyzika-NuklMed.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nuclear physics and ionizing radiation physics",
+        "url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm"
+      },
+      {
+        "category": "general",
+        "content": "characterization and monitoring of the ionospheric state, but also an examination of what con-trolled local modification of the ionosphere, using ground HF transmitters, could do",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f1657eb0e1aff3f945705191dd2862f0ca556d8b58436e225b51636cd7b7e8c0",
+  "provider": "SearXNG",
+  "query": "give an overview of air quality monitoring in chemistry",
+  "query_id": "v5-p-0579-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:07:55.926217Z"
+}

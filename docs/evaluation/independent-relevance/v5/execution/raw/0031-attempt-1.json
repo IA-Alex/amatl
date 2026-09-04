@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 285.794,
+  "pair_id": "v5-p-0140",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does database indexing in hydrology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5c6353e6268bbf58df90c7b50aa77921d395e8ebecdb17a191399cec297f72ca",
+  "provider": "SearXNG",
+  "query": "how does database indexing in hydrology operate",
+  "query_id": "v5-p-0140-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:18.314062Z"
+}

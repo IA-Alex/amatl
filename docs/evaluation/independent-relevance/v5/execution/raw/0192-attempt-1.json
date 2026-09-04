@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 321.036,
+  "pair_id": "v5-p-0564",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind food preservation in robotics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a783304b7027a83095005002fbea1e9b24ddec7c4684e3b6b6d3aaf2a8e951f5",
+  "provider": "SearXNG",
+  "query": "describe the principle behind food preservation in robotics",
+  "query_id": "v5-p-0564-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:09.347277Z"
+}

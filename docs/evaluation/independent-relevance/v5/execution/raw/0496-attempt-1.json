@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 386.375,
+  "pair_id": "v5-p-0385",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind solar eclipses in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "to hire for military engineering projects; but that is the account (from Herodotus) that we have of Thales, who is supposed to have actually diverted a river around behind the Lyd",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/greek.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Myth, Philosophy, Why the Greeks?, Parmenides, Greek History",
+        "url": "https://friesian.com/greek.htm"
+      },
+      {
+        "category": "general",
+        "content": "on Cryptographic Engineering - and how the RSA pseudo-random number generator was compromised by NSA in 2006 (Matthew Green, 2013), How the FBI will lose its iPhone fight with App",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "036bb727dd586209c45ac8e1620acad9ce7a3ea433d24f5afe00635a42f601c9",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind solar eclipses in software engineering",
+  "query_id": "v5-p-0385-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:07:45.166410Z"
+}

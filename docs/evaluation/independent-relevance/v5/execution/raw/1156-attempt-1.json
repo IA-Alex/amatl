@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 303.031,
+  "pair_id": "v5-p-0812",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind battery chemistry in optics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c8f7554b5402776ed6b8ca85aceb76c54306183229e45482f9b9850729b4bd05",
+  "provider": "SearXNG",
+  "query": "describe the principle behind battery chemistry in optics",
+  "query_id": "v5-p-0812-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:20.970136Z"
+}

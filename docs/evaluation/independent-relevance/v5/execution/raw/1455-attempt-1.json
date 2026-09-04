@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 272.725,
+  "pair_id": "v5-p-0818",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does battery chemistry in urban planning work",
+    "results": [
+      {
+        "category": "general",
+        "content": "physics, mathematics, chemistry or the like—we&#39;re not talking about wormholes, for example. They&#39;re merely engineering problems, albeit challenging ones. That plenty of experts ar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "blueshifted.net",
+          "/faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "An Anarcho-Transhumanist FAQ",
+        "url": "https://blueshifted.net/faq/"
+      },
+      {
+        "category": "general",
+        "content": "even human &#34;brain chemistry.&#34; Agent X also speculates that an overheated upper atmosphere might affect weather patterns, giving the military the deity-like ability to smite its en",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d3dea3d89f856e8c176842f8db8ca9aca4e283f97291ebffb7bb216a03b19a46",
+  "provider": "SearXNG",
+  "query": "how does battery chemistry in urban planning work",
+  "query_id": "v5-p-0818-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:12:59.848763Z"
+}

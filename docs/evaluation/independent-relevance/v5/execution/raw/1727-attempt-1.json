@@ -1,0 +1,219 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 266.116,
+  "pair_id": "v5-p-0797",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is battery chemistry in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "The 2025 Nobel Prize in Chemistry: Metal Organic Frameworks, a lego block for precision chemicals Susumu Kitagawa, Richard Robson, and Omar Yaghi were awarded the Nobel Prize for",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "laughingmeme.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kellan Elliott-McCrea: Blog | A personal blog of Kellan Elliott-McCrea. I don’t really know what a “laughing meme” is. It sounded cool i",
+        "url": "https://laughingmeme.org/"
+      },
+      {
+        "category": "general",
+        "content": "– Practical Biology, Chemistry, and Earth Science Variable-Frequency Oscillator Using 74C14 / 74HC14 Misc. topics Macros, code examples, etc. Overview Vacuum Tube TV and Radio Par",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bristolwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Student-Hobbyist Electronics Projects Tutorials",
+        "url": "https://www.bristolwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "Biology Biopharma Chemistry Chemical Engineering Chemical Synthesis Computer Science Ecology Geology Mathematics Materials Science and Engineering Nuclear Engineering Pharma and L",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sciencecareergeneral.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Science Career General Paste",
+        "url": "https://sciencecareergeneral.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "even human &#34;brain chemistry.&#34; Agent X also speculates that an overheated upper atmosphere might affect weather patterns, giving the military the deity-like ability to smite its en",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "the Journal of Physical Chemistry (10 June 2021) Teachers: let your students read this! Decline of wind and solar electricity with increasing penetration. New important paper by M",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meteo.lcd.lu",
+          "/globalwarming/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Warming Sceptic",
+        "url": "https://meteo.lcd.lu/globalwarming/"
+      },
+      {
+        "category": "general",
+        "content": ", a former Professor of Chemistry at the University of North Carolina Charlotte, has produced an amazing video detailing the origins and development of his incredible 30-gal.-per-",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "hhogames.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE HHO GAMES &amp; EXPOSITION, BRADENTON, FL",
+        "url": "http://hhogames.com/"
+      },
+      {
+        "category": "general",
+        "content": "Addicted brains; the chemistry of pain and pleasure Pleasure Evoked by Electrical Stimulation of the Brain E-mail dave@bltc.com",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wireheading.com",
+          "/misc/neurostimulation.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Persistent vegetative states and neurostimulation",
+        "url": "https://www.wireheading.com/misc/neurostimulation.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c211e56ba4a4953b921bb875b3d3d6955c30c799ec7f8e21b7d5be027ea6cf1d",
+  "provider": "SearXNG",
+  "query": "what is battery chemistry in climate science",
+  "query_id": "v5-p-0797-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:23.197346Z"
+}

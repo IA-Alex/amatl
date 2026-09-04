@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 332.826,
+  "pair_id": "v5-p-0904",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind bridge resonance in civil engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d44c0c851be0043fa63b4f79bf2d1c1d1d70e6acf9d21c4183f1facad50333af",
+  "provider": "SearXNG",
+  "query": "describe the principle behind bridge resonance in civil engineering",
+  "query_id": "v5-p-0904-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:10.482618Z"
+}

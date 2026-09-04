@@ -1,0 +1,246 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 324.089,
+  "pair_id": "v5-p-0761",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is coastal flooding in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "25 October 2023 ( Flooding as the Antarctic ice shelf melts ) Oops, we just lost New York and dozens of other coastal cities. Their eventual flooding is inevitable as the West Ant",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2023-jul-oct.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2023: July - October Political Notes",
+        "url": "http://stallman.org/archives/2023-jul-oct.html"
+      },
+      {
+        "category": "general",
+        "content": "worse. This is true for flooding, meteorological/hydrological drought, hurricanes/tropical cyclones, winter storms, thunderstorms, tornadoes, hail, lightning, and extreme winds. H",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/climcat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Climate models and climate catastrophe: a reality check",
+        "url": "https://davidpratt.info/climcat.htm"
+      },
+      {
+        "category": "general",
+        "content": "heavy rains fall, and flooding begins. (6) Many people plants and animals perish. (7) Some survive to build and repopulate the world.&#34; (p. 154) Cataclysm! makes the most compellin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meditopia.org",
+          "/chap5.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Meditopia -- Chapter 5",
+        "url": "https://meditopia.org/chap5.htm"
+      },
+      {
+        "category": "general",
+        "content": "underground, to reduce flooding. 29 December 2017 ( Extremists in the US ) Extremists in the US killed 372 people in the 10-year period, 2007-2016. About 3/4 of the killings were",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2017-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2017: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2017-sep-dec.html"
+      },
+      {
+        "category": "general",
+        "content": "surveillance, flash flooding in urban England, and Dutch textile shipments. 2023.04.05 • Treasury transactions, more than 200 million European buildings, 911 service areas, lists",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.data-is-plural.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Data Is Plural — Full Archive",
+        "url": "https://www.data-is-plural.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "happened as a result flooding the area where the valves are with radiation. This prevented last ditch efforts (running and cutting the wires). One automatic valve jamming and mech",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_uranium64.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Did The Dimona Dozen Murder The Fukushima 50? - 3/11 Was Japan&#39;s 9/11",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_uranium64.htm"
+      },
+      {
+        "category": "general",
+        "content": "Service (River Flooding) , New England Radar Loop , Northeast Radar Loop , NWS Northeast Snow Info , Northeast Lightning Loop , Northeast Foliage Report , Eastern Mass. Storm Watc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "and destructive flooding from monsoonal rains; severe thunderstorms; earthquakes volcanism: Barren Island (354 m) in the Andaman Sea has been active in recent years Geography - no",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hellenicaworld.com",
+          "/India/en/India.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "India",
+        "url": "https://www.hellenicaworld.com/India/en/India.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ae969e56a485dd1b8e4066aa01cf6d29983d16e485692535ad68d7478cef12ed",
+  "provider": "SearXNG",
+  "query": "what is coastal flooding in climate science",
+  "query_id": "v5-p-0761-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:39.957765Z"
+}

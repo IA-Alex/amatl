@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 273.471,
+  "pair_id": "v5-p-0699",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of language acquisition in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "development as the acquisition of increasingly sophisticated rules would say that children run into problems if the rules they have built are not yet good enough. 19 But armed wit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "papert.org",
+          "/articles/EpistemologicalPluralism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Epistemological Pluralism and the Revaluation of the Concrete",
+        "url": "http://papert.org/articles/EpistemologicalPluralism.html"
+      },
+      {
+        "category": "general",
+        "content": "about the patterns of acquisition of knowledge and skills, and about the effectiveness of specific forms of teaching and learning.   1.3Products of Proposed Research The pivo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "papert.org",
+          "/articles/AnEvaluativeStudyofModernTechnology.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "An Evaluative Study of Modern Technology in Education",
+        "url": "http://papert.org/articles/AnEvaluativeStudyofModernTechnology.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "cb10d39cf43aa32a3b2a0b1cdbeddc4088946b18c0165dc48fc51c992df842b3",
+  "provider": "SearXNG",
+  "query": "give an overview of language acquisition in materials science",
+  "query_id": "v5-p-0699-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:16:42.420510Z"
+}

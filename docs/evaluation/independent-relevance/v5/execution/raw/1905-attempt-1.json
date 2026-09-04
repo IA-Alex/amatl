@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 257.705,
+  "pair_id": "v5-p-0998",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does wastewater treatment in agricultural science work",
+    "results": [
+      {
+        "category": "general",
+        "content": "area. (In comparison, agricultural crops cover &#34;10.9% of global land area&#34;.) Of course, cities are not devoid of primary productivity (they contain grass and trees), so the total",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Applied Welfare Biology and Why Wild-Animal Advocates Should Focus on Not Spreading Nature",
+        "url": "https://reducing-suffering.org/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e3785c2f751f7b7b2a0bd5c8e3ae52eeb2b56d42ab3983c796481bf53cc9b482",
+  "provider": "SearXNG",
+  "query": "how does wastewater treatment in agricultural science work",
+  "query_id": "v5-p-0998-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:15:25.688605Z"
+}

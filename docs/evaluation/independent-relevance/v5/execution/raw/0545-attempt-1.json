@@ -1,0 +1,246 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 307.338,
+  "pair_id": "v5-p-0403",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes carbon capture in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "wildlife and wildlands management? Am I, the reader, an interventionist? Fine, I’m an interventionist. Somehow, though, I’m still uncomfortable with intervening in Mic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lakesuperiorcaribou.ca",
+          "/archive/website%2018022203.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lake Superior Caribou News and Information",
+        "url": "http://lakesuperiorcaribou.ca/archive/website%2018022203.html"
+      },
+      {
+        "category": "general",
+        "content": "2002. 18/ Nutrient Management for Fruit &amp; Vegetable Crop Production Peter M. Bierman and Carl J. Rosen Department of Soil, Water, and Climate University of Minnesota 19/ Proto",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.microbeorganics.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Microbe Organics",
+        "url": "http://www.microbeorganics.com/"
+      },
+      {
+        "category": "general",
+        "content": "charity&#39;s transparency, management, and room for more funding. Make a decision: Based on the expected value calculations and any other relevant factors, choose the charitable oppo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.utilitarianism.com",
+          "/chatgpt/effective-altruism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utilitarianism and effective altruism as conceived by ChatGPT-4",
+        "url": "https://www.utilitarianism.com/chatgpt/effective-altruism.html"
+      },
+      {
+        "category": "general",
+        "content": "passengers&#39; safety, and management retaliated against him . One flaw is that 25% of the oxygen masks don&#39;t provide oxygen work when activated. Another flaw can cause fires, years",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-sep-dec.html"
+      },
+      {
+        "category": "general",
+        "content": "common kind of memory management bug. […] Finally, in situations where capturing self strongly doesn’t actually lead to a retain cycle, we can silence the new warning",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mjtsai.com",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Tsai - Blog",
+        "url": "https://mjtsai.com/blog/"
+      },
+      {
+        "category": "general",
+        "content": "vs the Bureau of Land Management, 2014 Obama vs Gibson Guitar The train derailment in East Palestine, Ohio The Copenhagen Climate Conference of 2009 The Fort Hood Terrorist Attack",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.akdart.com",
+          "/index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A K Dart dot com",
+        "url": "http://www.akdart.com/index.html"
+      },
+      {
+        "category": "general",
+        "content": "to live on, and that management is demanding that they work ever harder and faster, discarding safety precautions. For more reasons to refuse to buy from Amazon, see amazon.html .",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2022-may-aug.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2022: May - August Political Notes",
+        "url": "http://stallman.org/archives/2022-may-aug.html"
+      },
+      {
+        "category": "general",
+        "content": "Invasive Species Management Association Tue, 01 Sep 2026 12:07:12 &#43;0000 en-US hourly 1 https://naisma.org/wp-content/uploads/2024/04/cropped-Favicon-32x32.png NAISMA https://naism",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a3365b93a8c9a43f99b98830b5b665258ab1726fab0cc7690b2e365d22d73f0c",
+  "provider": "SearXNG",
+  "query": "what causes carbon capture in data management",
+  "query_id": "v5-p-0403-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:00.253925Z"
+}

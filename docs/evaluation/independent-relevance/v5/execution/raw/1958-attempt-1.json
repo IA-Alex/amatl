@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 323.976,
+  "pair_id": "v5-p-0732",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind root systems in geology",
+    "results": [
+      {
+        "category": "general",
+        "content": "truths,&#34; the principles &#34;that all men are created equal;&#34; that they are endowed with &#34;certain inalienable rights,&#34; among them &#34;life, liberty, and the pursuit of happiness;&#34; and th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/16542/16542-h/16542-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of &#34;Imperialism&#34; and &#34;The Tracks of Our Forefathers&#34;, by Charles Francis Adams.",
+        "url": "https://www.gutenberg.org/files/16542/16542-h/16542-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "formed before the same principle manifests itself again and gives rise to a further emigration; and so is it destined to go on until a physical barrier must finally obstruct its p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "monadnock.net",
+          "/turner/frontier.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Significance of the Frontier in American History, by Frederick Jackson Turner",
+        "url": "https://monadnock.net/turner/frontier.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8d0d6ba3c59496e552e42943a14e53df375dfe1575e4f7a57d5b23096386ae3f",
+  "provider": "SearXNG",
+  "query": "describe the principle behind root systems in geology",
+  "query_id": "v5-p-0732-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:15:42.219326Z"
+}

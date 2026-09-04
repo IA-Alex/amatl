@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 245.367,
+  "pair_id": "v5-p-0163",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes immune response in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "358b4b4f2f8f1d604286fd57e2a39a4a4ba83aeec43a4baa6f89d33183e89d8c",
+  "provider": "SearXNG",
+  "query": "what causes immune response in oceanography",
+  "query_id": "v5-p-0163-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:07.075014Z"
+}

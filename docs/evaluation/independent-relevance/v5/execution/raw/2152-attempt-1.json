@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 272.307,
+  "pair_id": "v5-p-0491",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of encryption keys in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "Free Cultural Works Encryption and Privacy Schneier on Security Window Managers StumpWM File Managers ROX Filer Midnight Commander Latest pages The LLM Freedom Manifesto: Open-Wei",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "And maybe I need an encryption key, too. [Eventually asked Support, they said yes need SSH, no key, they&#39;ll enable SSH on my account. Login details a bit different, but now SFTP w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/YourPersonalWebSite.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Your Personal Web Site",
+        "url": "https://www.billdietrich.me/YourPersonalWebSite.html"
+      },
+      {
+        "category": "general",
+        "content": "Security / Compliance / Encryption / Privacy - businesses like to not leak their critical customer data, relationship information, pricing, trade-secrets, and more. Easy to use au",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2012/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2012/"
+      },
+      {
+        "category": "general",
+        "content": "cipher for the Advanced Encryption Standard . Serpent got the second largest number of votes. Other papers on cryptography and cryptanalysis include the following. The Dancing Bea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f75d064704718070ea0ef919a73c1a54dc47fb71bb3b0d9c80b1574cbaa462c6",
+  "provider": "SearXNG",
+  "query": "give an overview of encryption keys in public health",
+  "query_id": "v5-p-0491-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:43.431853Z"
+}

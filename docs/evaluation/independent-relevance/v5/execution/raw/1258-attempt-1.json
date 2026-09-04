@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 251.442,
+  "pair_id": "v5-p-0371",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of solar eclipses in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "determined by the overview of omniscient authority. F.A. Hayek (1899-1992), The Fatal Conceit, The Errors of Socialism [University of Chicago Press, 1988, 1991, p.32] Had the Athe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/greek.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Myth, Philosophy, Why the Greeks?, Parmenides, Greek History",
+        "url": "https://friesian.com/greek.htm"
+      },
+      {
+        "category": "general",
+        "content": ", Linux Commands - Overview and Examples , Bash Scripting for Ubuntu Beginners , The Art of Command Line , 100 ways to master the command line , Mastering the Linux Shell , Evolut",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1b25f36205f0a91e7986dcd802e8868d516deda08d7664b165aa99ed30a19c36",
+  "provider": "SearXNG",
+  "query": "give an overview of solar eclipses in food science",
+  "query_id": "v5-p-0371-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:11:58.848108Z"
+}

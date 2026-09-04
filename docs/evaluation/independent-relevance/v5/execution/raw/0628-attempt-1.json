@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 341.217,
+  "pair_id": "v5-p-0712",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind language acquisition in architecture",
+    "results": [
+      {
+        "category": "general",
+        "content": "In Stone - Secret Architecture of Washington, D.C. (2h:55m - 2008) America. Why was this nation founded? How was the precise location of Washington, D.C., determined? What is the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/masons.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Freemasons - The silent destroyers. Deist religious cult based on the Knights Templar - Initiation rituals like those of witchcraft",
+        "url": "http://www.bilderberg.org/masons.htm"
+      },
+      {
+        "category": "general",
+        "content": "complex trait. Genomic Architecture of Rapid Parallel Adaptation to Fresh Water in a Wild Fish by Shao-Bing Zong, Yu-Long Li and Jin-Xian Liu, doi:10.1093/molbev/msaa290, Molecula",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.panspermia.org",
+          "/neodarw.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Neo-Darwinism: The Current Paradigm. by Brig Klyce",
+        "url": "https://www.panspermia.org/neodarw.htm"
+      },
+      {
+        "category": "general",
+        "content": "close association with architecture. It is, well, therefore, that besides dealing thoroughly, as it does, with the craftsmanship of wood-carving, it should also be concerned with",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book86/book86.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Wood-carving by George Jack",
+        "url": "https://www.ajhw.co.uk/books/book86/book86.html"
+      },
+      {
+        "category": "general",
+        "content": "An internal stack architecture was also used by Monroe on their EPIC-2000 and EPIC-3000 calculators, but it appears that Monroe&#39;s use of a stack architecture was never challenged.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/friden130.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Friden EC-130 Electronic Calculator",
+        "url": "https://www.oldcalculatormuseum.com/friden130.html"
+      },
+      {
+        "category": "general",
+        "content": "what constitutes good architecture and what the mission of the Trust really should be. It doesn&#39;t seem to me that there should be one standard for political involvement for the Bl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2007/03/politicized_rel.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: Politicized Religion, Retail Version",
+        "url": "http://www.2blowhards.com/archives/2007/03/politicized_rel.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "13a3735ffa29fcb84c43981984e45447fe916b0ff6b0103922a15325fee48119",
+  "provider": "SearXNG",
+  "query": "describe the principle behind language acquisition in architecture",
+  "query_id": "v5-p-0712-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:34.991941Z"
+}

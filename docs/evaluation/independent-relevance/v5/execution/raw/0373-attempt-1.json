@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 265.753,
+  "pair_id": "v5-p-0120",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does database indexing in geology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1184123c84603d6b5de64422f756656b1b3bd34790ce9db8d05b72fe70587ff8",
+  "provider": "SearXNG",
+  "query": "how does database indexing in geology operate",
+  "query_id": "v5-p-0120-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:06.471196Z"
+}

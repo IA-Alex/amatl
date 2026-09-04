@@ -1,0 +1,354 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 448.984,
+  "pair_id": "v5-p-0590",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of air quality monitoring in information systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "I listen primarily for information and not just to put a pin in the map. Yours is an entertaining program, packed with content. The name is Michael Lijewski (pronounced in various",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.worldofradio.com",
+          "/dxld3134.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.worldofradio.com/dxld3134.txt",
+        "url": "http://www.worldofradio.com/dxld3134.txt"
+      },
+      {
+        "category": "general",
+        "content": "Bigger Questions : Information related to why we have taken our positions; and Accountability : Questions related to what we have done so far to try to manifest change. Included h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lakesuperiorcaribou.ca",
+          "/archive/website%2018022203.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lake Superior Caribou News and Information",
+        "url": "http://lakesuperiorcaribou.ca/archive/website%2018022203.html"
+      },
+      {
+        "category": "general",
+        "content": "for Improved Information Retrieval in Software Engineering Maria Christakis, Peter Müller, and Valentin Wüstholz: Guiding Dynamic Symbolic Execution toward Unverified Pr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sigsoft.org",
+          "/awards/distinguishedPaperAward.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGSOFT - ACM Special Interest Group on Software Engineering",
+        "url": "http://www.sigsoft.org/awards/distinguishedPaperAward.html"
+      },
+      {
+        "category": "general",
+        "content": "a breadth of real-time information unavailable to the neural cartographers of a century ago. The latest research on brain-machine interfaces relies upon these new imaging technolo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wireheading.com",
+          "/brainstim/cyborgs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cyborgs, transhumans and neuroelectronics",
+        "url": "https://www.wireheading.com/brainstim/cyborgs.html"
+      },
+      {
+        "category": "general",
+        "content": "by 11 inch page of information. A new Authenticator Word List arrived in the mail every three months and the old list was almost always tossed in the trash.  Once in a while",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.akdart.com",
+          "/ebs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The EBS Authenticator Word List",
+        "url": "http://www.akdart.com/ebs.html"
+      },
+      {
+        "category": "general",
+        "content": "Gave recenter information to building destruction and toppling announcements. Stopped tantruming dwarves and others from targeting farm plots for destruction. Announcement and rep",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bay12games.com",
+          "/dwarves/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bay 12 Games: Dwarf Fortress",
+        "url": "http://www.bay12games.com/dwarves/"
+      },
+      {
+        "category": "general",
+        "content": "to gain more precise information about the proceedings during the tenth initiation stage. For example, in the Candamaharosana Tantra, once the master has left the room, the mudra",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.trimondi.de",
+          "/SDLE/Part-1-06.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Shadow of the Dalai Lama – Part I – 6",
+        "url": "http://www.trimondi.de/SDLE/Part-1-06.htm"
+      },
+      {
+        "category": "general",
+        "content": "to go beyond the information given, making sense of otherwise chaotic events. We often have to interpret events far beyond the information available, and our ability to do this ef",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pages.ucsd.edu",
+          "/~dnorman/DNMss/Being_Analog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Being Analog",
+        "url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html"
+      },
+      {
+        "category": "general",
+        "content": "on foreign intelligence information, which is a giant loophole that lets cops do whatever they want as long and they claim it’s related to national security (and we all know how t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-sep-dec.html"
+      },
+      {
+        "category": "general",
+        "content": "grid.   Additional Information (keep an open mind)   An updated version of this fact sheet will be issued as often as program changes warrant to keep interested parties",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "close by can exchange information, organise, cooperate in managing systems without offices or staff. Thus, sub-systems and operations are highly integrated . This includes social",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "thesimplerway.info",
+          "/THEALTSOCLong.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "TheAltSocLongNew.html",
+        "url": "http://thesimplerway.info/THEALTSOCLong.htm"
+      },
+      {
+        "category": "general",
+        "content": "experiment or to gather information until we ascertain the correct way forward. Looking back, as I&#39;m doing here, I can&#39;t help but be amazed at how often I was wrong in my technica",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ac3cc3050730953ab27b6c67f84621bb58705d309432e3590ff038602313388a",
+  "provider": "SearXNG",
+  "query": "tell me about the function of air quality monitoring in information systems",
+  "query_id": "v5-p-0590-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:28.623914Z"
+}

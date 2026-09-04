@@ -1,0 +1,300 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 324.557,
+  "pair_id": "v5-p-0833",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is data compression in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "for initiation of self-compression of a gas is the Jeans mass, which depends on the gas temperature. Similarly, stellar accretion and accretion disk relations involve temperature.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "else (efficient-compression-tool, brotli, xmllint, sd) is strictly optional. I build all these programs as statically-linked binaries and wrap them in a tarball, and fetch that ta",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "seirdy.one",
+          "/bookmarks/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "My bookmarks - Seirdy",
+        "url": "https://seirdy.one/bookmarks/"
+      },
+      {
+        "category": "general",
+        "content": "is 24 GB with mediocre compression. YouTube, Spotify, Facebook, Ex-Twitter, Instagram use machine learning-based recommendation systems designed to maximize engagement metrics (wa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "them]. The Work of compression of the magnetic field is produced by the potential energy of the surrounding ether. Similarly, the potential energy of the atmosphere is converted i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "antimatrix.org",
+          "/Convert/Books/Sall/Questions_and_Answers_En.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dr. Sall - Secret Knowledge, and Science: from prehistoric civilizations to our days",
+        "url": "http://antimatrix.org/Convert/Books/Sall/Questions_and_Answers_En.html"
+      },
+      {
+        "category": "general",
+        "content": "and apparatus for data compression for three-dimensional graphics.&#34;) The patent describes compressing 3D graphics by describing the scene in terms of a virtual machine tuned to di",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.highprogrammer.com",
+          "/alan/hypercosm/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hypercosm and Web 3D",
+        "url": "http://www.highprogrammer.com/alan/hypercosm/"
+      },
+      {
+        "category": "general",
+        "content": "Calculus Simplified. A compression of my long paper on the calculus. 13pp. 88. Trig &#34;Derivatives&#34; found without the old Calculus. Here I show that my simple exponent tab",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "milesmathis.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Homepage for Miles Mathis science site",
+        "url": "https://milesmathis.com/"
+      },
+      {
+        "category": "general",
+        "content": "this phenomenon STEM Compression of Information and Computation in the most adaptive complex systems. This was my original website exploring the STEM Compression hypothesis. Accel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.accelerationwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acceleration Watch (Understanding Accelerating Change)",
+        "url": "https://www.accelerationwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "&#34; the artificial compression of the infant head, by barbarous nations,&#34; in which he clearly establishes that the Carib and other Indian tribes flatten the forehead of th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.historyofphrenology.org.uk",
+          "/system/national_character.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "History of Phrenology on the Web",
+        "url": "http://www.historyofphrenology.org.uk/system/national_character.htm"
+      },
+      {
+        "category": "general",
+        "content": "of the walls, and compression and settling of the bales under the weight of the roof and potential snow loads must also be considered. All of these obstacles are overcome when usi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dirtcheapbuilder.com",
+          "/Home_Building/Strawbale_House_Building.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Strawbale House Building Books: Build an energy-efficient home of straw!",
+        "url": "http://www.dirtcheapbuilder.com/Home_Building/Strawbale_House_Building.htm"
+      },
+      {
+        "category": "general",
+        "content": "lithosphere is under compression and the lower mantle under tension. Since a contracting sphere tends to fracture along great circles, this would account for the fact that both th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/tierra_hueca/inner_earth/sunken.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sunken Continents versus Continental Drift",
+        "url": "https://www.bibliotecapleyades.net/tierra_hueca/inner_earth/sunken.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "81e2d156af18050e4166d65889e8929e3c88681afab4a7302e218cbb4b3fa58e",
+  "provider": "SearXNG",
+  "query": "what is data compression in climate science",
+  "query_id": "v5-p-0833-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:01.522878Z"
+}

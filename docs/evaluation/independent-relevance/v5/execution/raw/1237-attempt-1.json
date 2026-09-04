@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 326.999,
+  "pair_id": "v5-p-0522",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does neural networks in neuroscience work",
+    "results": [
+      {
+        "category": "general",
+        "content": "(2007) and Utopian Neuroscience (2008). Chapter Two of HI can safely be skipped or aggressively skimmed even by the analytic philosophers for whom it was primarily intended. It co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Hedonistic Imperative : Chapter Two",
+        "url": "https://www.hedweb.com/hedethic/hedon2.htm"
+      },
+      {
+        "category": "general",
+        "content": "Physics The Biology The Neuroscience Alternative Possibilities Adequate Determinism Moral Responsibility Self-Determination Separability of Free and Will Standard Argument Superde",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Information Philosopher - dedicated to the new information philosophy",
+        "url": "https://www.informationphilosopher.com/"
+      },
+      {
+        "category": "general",
+        "content": "genetics, and neuroscience to the human mind is bitterly resisted in modern intellectual life. But unlike other human divisions such as race and ethnicity, where any biological di",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "no fact of experimental neuroscience that positively contradicts this supposition. Rather, like their physicist counterparts, neuroscientists choose to interpret all observed fact",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "arcaneknowledge.org",
+          "/science/vitapsych3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Vitalism and Psychology",
+        "url": "https://arcaneknowledge.org/science/vitapsych3.htm"
+      },
+      {
+        "category": "general",
+        "content": "450, 26 May 2011): Neuroscience: What makes us laugh .",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.idsia.ch",
+          "/~juergen/interest.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WHAT&#39;S INTERESTING? ACTIVE EXPLORATION - CURIOSITY-DRIVEN REINFORCEMENT LEARNING - ARTIFICIAL CURIOSITY - INTRINSIC REWARD - INTRINSIC MOTIVA",
+        "url": "https://people.idsia.ch/~juergen/interest.html"
+      },
+      {
+        "category": "general",
+        "content": "emphasizes the role of neuroscience in understanding consciousness, panpsychists do not necessarily dismiss the importance of brain science. They argue that understanding the brai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.panpsychism.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Panpsychism as conceived by ChatGPT",
+        "url": "https://www.panpsychism.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "a very debated topic in neuroscience and it&#39;s clear that we know very little about. Pointing to a metaphysical theory like Luke&#39;s is pretty useless. IMO, if you can&#39;t prove it and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/chinese_room",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Computation isn&#39;t Consciousness: The Chinese Room Experiment",
+        "url": "https://lukesmith.neocities.org/vids/chinese_room"
+      },
+      {
+        "category": "general",
+        "content": "but the most utopian neuroscience. Such virtuoso feats won&#39;t be necessary. The physiological roots of affective states lie mostly deep within the phylogenetically primitive limbic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Hedonistic Imperative : Objections (Chapter 4)",
+        "url": "https://www.hedweb.com/hedethic/hedon4.htm"
+      },
+      {
+        "category": "general",
+        "content": "biotechnology and neuroscience are used to create intelligent and sentient organisms that are vastly more intelligent than humans, while the technological singularity often center",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biointelligence-explosion.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biointelligence Explosion as conceived by ChatGPT",
+        "url": "https://www.biointelligence-explosion.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "well a lot more work in neuroscience on how brains work than the silly problem of Boltzmann brains can hope to respect. For   a start, I&#39;d reverse his setting quantum mechani",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.andyross.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE ROSS BLOG",
+        "url": "https://www.andyross.net/"
+      },
+      {
+        "category": "general",
+        "content": "Viewpoint , The Neuroscience Perspective The Evolutionary Landscape of Symbiotic Existential Cosmology Evolutionary Origins of Conscious Experience Science, Religion and Gene Cult",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/cossym/SEC/SEC0.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Symbiotic Existential Cosmology Introduction",
+        "url": "http://www.dhushara.com/cossym/SEC/SEC0.htm"
+      },
+      {
+        "category": "general",
+        "content": "between religion and neuroscience ( Albright &amp; Ashbrook , 2001). adapted from Bear, Connors &amp; Paradis (2001) MacLean and other researchers have observed animals whose acti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/equiaeon/henotheism.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHY : On Henotheism : beyond Monotheism and Polytheism",
+        "url": "http://www.sofiatopia.org/equiaeon/henotheism.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4b3d260b5aa48e70b9a2f6e4e79475f43dd4f86284a6fabfc483b5e68440206b",
+  "provider": "SearXNG",
+  "query": "how does neural networks in neuroscience work",
+  "query_id": "v5-p-0522-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:52.309766Z"
+}

@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 332.052,
+  "pair_id": "v5-p-0151",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes immune response in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "is a subset of the management of the household and family, and of its goods, rather than to the notion that economy is a matter primarily of the maximization of efficiency and GDP",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whatswrongwiththeworld.net",
+          "/2007/05/neoconservatism_and_political.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Neoconservatism and Political Economy - A Reply to a Comment (What&#39;s Wrong with the World)",
+        "url": "http://www.whatswrongwiththeworld.net/2007/05/neoconservatism_and_political.html"
+      },
+      {
+        "category": "general",
+        "content": "and eases weight management. It also aids the digestion of other nutrients. 2.6. Olympic Athletes If the carnivore diet was really the best diet for athletic performance, then all",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/case-against-carnivore-diet",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Case Against The Carnivore Diet",
+        "url": "https://zerocontradictions.net/misc/case-against-carnivore-diet"
+      },
+      {
+        "category": "general",
+        "content": "chefs, servers, and management, need to be knowledgeable about what veganism entails to accurately communicate with and serve their customers. This has led to increased training a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.animal-rights.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Veganism as conceived by ChatGPT",
+        "url": "https://www.animal-rights.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "profits, and management control.&#34; A major post-war scandal is developing in India, as the United States, cynically capitalizing on India&#39;s current torture, applies its economic po",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ditext.com",
+          "/chomsky/ri.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Responsibility of Intellectuals, by Noam Chomsky",
+        "url": "https://www.ditext.com/chomsky/ri.html"
+      },
+      {
+        "category": "general",
+        "content": "Service, Community Management, Marketing, PR and Network Operations&#34;  - from her Linkedin Asteroids (1979, Arcade) Created using the vector graphics engine designed by Wendi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "dotmaetrix.neocities.org",
+          "/classictranslist",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A List Of Games By Trans People Before 2010",
+        "url": "https://dotmaetrix.neocities.org/classictranslist"
+      },
+      {
+        "category": "general",
+        "content": "Posts&#34; display) and management of your &#34;ignored posters&#34; list. Note carefully that there are several options you can choose to enable or disable under the Control Panel ; of parti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tickerforum.org",
+          "/faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Market Ticker Frequently Asked Questions",
+        "url": "http://tickerforum.org/faq.html"
+      },
+      {
+        "category": "general",
+        "content": "(re: Robust software management.) Epistasis and the Structure of Fitness Landscapes... by François Blanquart and Thomas Bataillon, doi:10.1534/genetics.115.182691, Genetics ,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.panspermia.org",
+          "/neodarw.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Neo-Darwinism: The Current Paradigm. by Brig Klyce",
+        "url": "https://www.panspermia.org/neodarw.htm"
+      },
+      {
+        "category": "general",
+        "content": "and COVID-19 Outpatient Management https://www.youtube.com/watch?v=W9YFXo84lCk Mobeen Syed (&#34;DrBeen&#34;) asks viewers of this video, to: &#34;Please read and agree to the disclaimer befo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "freerepublic.com",
+          "/~linmchlp/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "linMcHlp",
+        "url": "https://freerepublic.com/~linmchlp/"
+      },
+      {
+        "category": "general",
+        "content": "CRT. With modern power-management software, there&#39;s really no reason to be leaving a monitor up and running all the time. These won&#39;t guarantee long life, of course - nothing can",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.repairfaq.org",
+          "/sam/monfaq.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notes on the Troubleshooting and Repair of Computer and Video Monitors",
+        "url": "http://www.repairfaq.org/sam/monfaq.htm"
+      },
+      {
+        "category": "general",
+        "content": "heart health, weight management, and bone density. But it also has direct benefits for emotional and intellectual health. Exercise stimulates the production of endorphins (the bod",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biopsychiatry.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mood-brighteners and antidepressants as conceived by ChatGPT",
+        "url": "https://www.biopsychiatry.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "stimuli. Improved pain management: Gene drives could be employed to develop new pain management strategies, such as creating organisms that respond more effectively to analgesic d",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gene-drives.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reprogramming the biosphere with gene drives as conceived by ChatGPT",
+        "url": "https://www.gene-drives.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "Halting) Goldman( Gold Management Atrocities Network) Viacad = Spirit of Binah. London, England. From Chinese Parents. Help Developed and Code of E-Trade. SubCommander 48: Sarah(S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.orderofmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Order Of Magi",
+        "url": "http://www.orderofmagi.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "23f03bf26b73d3c9c72b5940e191f30513338ebee5564aecb6de4d23f3332b0e",
+  "provider": "SearXNG",
+  "query": "what causes immune response in data management",
+  "query_id": "v5-p-0151-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:05.194573Z"
+}

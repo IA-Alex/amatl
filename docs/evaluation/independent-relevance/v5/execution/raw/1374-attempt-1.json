@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 367.254,
+  "pair_id": "v5-p-0537",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind neural networks in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "and the rest of the industrialized world preferred to allow 50 to 100 thousand Chinese be slaughtered at Tiananmen Square and elsewhere, rather than lose lucrative trade deals wit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "follow-on papers, industrial adoption, an annual workshop, and a growing community. Selected September 2021 CACM Research Highlight Achieving high-performance the functional way:",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "illness etc), the urban-industrial Western elite scores poorly compared to the materially underprivileged masses of the Third World. So the relative good fortune of the inhabitant",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Hedonistic Imperative : Objections (Chapter 4)",
+        "url": "https://www.hedweb.com/hedethic/hedon4.htm"
+      },
+      {
+        "category": "general",
+        "content": "2016), The fourth industrial revolution: a primer on Artificial Intelligence (AI) , Artificial intelligence positioned to be a game-changer (60 Minutes, 2016), What is deep learni",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d39ef5ffa6c2bc6b324a754885a38171338f48c7d1b17898d1285b764a4b78ad",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind neural networks in industrial design",
+  "query_id": "v5-p-0537-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:34.428170Z"
+}

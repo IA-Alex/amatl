@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 331.587,
+  "pair_id": "v5-p-0753",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is root systems in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "talk about the “Agile-industrial complex,” the network of consultants, speakers, and coaches who charge large fees to fine-tune Agile processes. And almost everyone complains that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "logicmag.io",
+          "/clouds/agile-and-the-long-crisis-of-software/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Agile and the Long Crisis of Software",
+        "url": "https://logicmag.io/clouds/agile-and-the-long-crisis-of-software/"
+      },
+      {
+        "category": "general",
+        "content": "my network to build industrial and financial projects, eventually managing 70&#43; ICs. Nowadays, I focus on tooling for commodity companies and value investing. A professional dream&amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alexalejandre.com",
+          "/about/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "About",
+        "url": "https://alexalejandre.com/about/"
+      },
+      {
+        "category": "general",
+        "content": "Professional/Scientific/Industrial models: Many of these are still very much in use today (and some are still in production and available new) and have maintained their value well",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.landlist.ch",
+          "/landlist/landfaq.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Land List -- Frequently Asked Questions",
+        "url": "http://www.landlist.ch/landlist/landfaq.htm"
+      },
+      {
+        "category": "general",
+        "content": "graphic design and industrial design. Graphic design is the art of conveying a message on a two-dimensional surface. This is a broad field, because people have such a variety of m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "worrydream.com",
+          "/MagicInk/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Magic Ink: Information Software and the Graphical Interface",
+        "url": "https://worrydream.com/MagicInk/"
+      },
+      {
+        "category": "general",
+        "content": "security cameras and industrial control systems, i.e., certain proprietary embedded-Linux devices crafted, sold, and marketed in a way that misses essentially all of the benefits",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "linuxmafia.com",
+          "/~rick/faq/",
+          "",
+          "",
+          "willbethere"
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "But That&#39;s Just My Opinion. I Could Be Wrong.",
+        "url": "http://linuxmafia.com/~rick/faq/#willbethere"
+      },
+      {
+        "category": "general",
+        "content": "lurks the US military-industrial complex.   The inside story of Google&#39;s rise, revealed here for the first time, opens a can of worms that goes far beyond Google, unexpectedl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/sociopol_internetgoogle47.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Google, CIA and the NSA - Inside the Secret Network behind Mass Surveillance, Endless War and Skynet",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_internetgoogle47.htm"
+      },
+      {
+        "category": "general",
+        "content": "June 2011 Intl Congress Industrial &amp; Applied Mathematics ICIAM, Vancouver, Jul 2011 Intl. Conf. on Math/Numerical Aspects of Waves, Vancouver, Jul 2011 New Topical Sections in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "netlib.org",
+          "/na-digest-html/10/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NA-Digest index for 2010",
+        "url": "https://netlib.org/na-digest-html/10/"
+      },
+      {
+        "category": "general",
+        "content": "during and after the Industrial Revolution ( this won’t last ). Humans have been killing each other throughout all of human history because resources one’s own surviva",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/civilization/case-against-libertarianism",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Case Against Libertarianism And Ancapism",
+        "url": "https://zerocontradictions.net/civilization/case-against-libertarianism"
+      },
+      {
+        "category": "general",
+        "content": "goals: the military-industrial complex .  Eisenhower, also in the same speech, noticed the loss of moral sanity in the Universities as well, due to his observations of their",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/Culmination.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "the Culmination",
+        "url": "http://ipwebdev.com/hermit/Culmination.html"
+      },
+      {
+        "category": "general",
+        "content": "experiences; the industrial culture of unrestrained individualism, which teaches egoism and pays no attention to other people, the future and the environment”. ( 8 ) Any pr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.vatican.va",
+          "/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jesus Christ The Bearer Of The Water Of Life - A Christian reflection on the New Age",
+        "url": "https://www.vatican.va/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html"
+      },
+      {
+        "category": "general",
+        "content": "seem, in fact, that her industrial prosperity and political development have evoked so much interest in the minds of the politicians and journalists of the United States, that the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.electricscotland.com",
+          "/history/articles/canadausa.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Canada and the United States",
+        "url": "http://www.electricscotland.com/history/articles/canadausa.htm"
+      },
+      {
+        "category": "general",
+        "content": "is a fieldbus, an industrial computer networking protocol. Modbus RTU (Remote Terminal Unit) is the most common implementation for Modbus either as a 2-wire half-duplex over RS-48",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.iwriteiam.nl",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "I write, therefore I am",
+        "url": "http://www.iwriteiam.nl/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e5445f8e7aeb92fcf134f701094ac38114a0ef7fca5ee3411f43caac7cd77ea6",
+  "provider": "SearXNG",
+  "query": "what is root systems in industrial design",
+  "query_id": "v5-p-0753-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:06.178635Z"
+}

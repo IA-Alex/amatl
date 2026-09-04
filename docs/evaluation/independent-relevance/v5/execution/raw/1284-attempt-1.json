@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 325.127,
+  "pair_id": "v5-p-0461",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind supply chain logistics in communication studies",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8c026a16d9f301d03d7d71f292013ded68ed5bba13076f2aff7f9d59f3d0ad67",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind supply chain logistics in communication studies",
+  "query_id": "v5-p-0461-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:07.196097Z"
+}

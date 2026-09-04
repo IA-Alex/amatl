@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 327.763,
+  "pair_id": "v5-p-0176",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind immune response in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "767812413460a149588164ee94cac0ac5c99760d7f85a401a6deb77c224cd6a5",
+  "provider": "SearXNG",
+  "query": "describe the principle behind immune response in hydrology",
+  "query_id": "v5-p-0176-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:42.218880Z"
+}

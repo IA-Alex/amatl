@@ -1,0 +1,273 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 344.449,
+  "pair_id": "v5-p-0310",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does water purification in physics work",
+    "results": [
+      {
+        "category": "general",
+        "content": "in the sense of purification as punishment, but as a gradual ascent towards the perfect development of one&#39;s potential. Psychology is used to explain mind expansion as “mys",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.vatican.va",
+          "/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jesus Christ The Bearer Of The Water Of Life - A Christian reflection on the New Age",
+        "url": "https://www.vatican.va/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html"
+      },
+      {
+        "category": "general",
+        "content": "facility known as Water Purification Unit 731: The unit, commanded by Lieutenant General Shiro Ishii, experimented with anthrax, dysentery, cholera, and plague on U.S., British, a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.isegoria.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Isegoria",
+        "url": "http://www.isegoria.net/"
+      },
+      {
+        "category": "general",
+        "content": "accept? Sin &amp; Purification Offerings Is the sin offering eaten? Requirement for touching the flesh of the sin offering Blood not brought in - &amp; eating the offering (10:18)",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wylh.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Spreading The Good News of the Mashiach Yahushua, the Son of YHWH",
+        "url": "https://wylh.org/"
+      },
+      {
+        "category": "general",
+        "content": "that it all undergoes purification there. But, as a matter of fact, the whole of it does not go to them, but only so much as can be contained in the veins going to the kidneys; th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.earlychristianwritings.com",
+          "/text/galen.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Galen: On the Natural Faculties",
+        "url": "http://www.earlychristianwritings.com/text/galen.html"
+      },
+      {
+        "category": "general",
+        "content": "usually go onto the &#34;Purification Rundown&#34;, after a meeting with a Scientology salesperson, who convinces the recruit that the Rundown is well worth the high price demanded for it",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cs.cmu.edu",
+          "/~dst/Fishman/atack-freedom-trap.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Total Freedom Trap by Jon Atack",
+        "url": "http://www.cs.cmu.edu/~dst/Fishman/atack-freedom-trap.html"
+      },
+      {
+        "category": "general",
+        "content": "Kundalini Yoga is the purification of Nadis. When Sushumna is pure then only Kundalini will pass through it. Purification of Nadis is done by the practice of Pranayama. The Yogi o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dlshq.org",
+          "/download2/essence_yoga.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Essence of Yoga",
+        "url": "https://www.dlshq.org/download2/essence_yoga.htm"
+      },
+      {
+        "category": "general",
+        "content": "Repository for Affinity Purification, or the CRAPome for short. Tometomo Hamaguchi, a chemistry student at York University, emailed me to say that a standard technique in NMR spec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/sillymolecules/sillymols4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecules with Silly or Unusual Names - page 4",
+        "url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm"
+      },
+      {
+        "category": "general",
+        "content": "Tantra meditations are purification meditations so that we are actually revivifying, by getting to the centre where the seed is, we also come to the centre which is The Well, the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.luxlapis.co.za",
+          "/yan/bindu.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Bindu",
+        "url": "http://www.luxlapis.co.za/yan/bindu.htm"
+      },
+      {
+        "category": "general",
+        "content": "and reading rites of purification. he assisted at his father?s school for a pittance. one of his brothers was a pimp and lived with Leontium the courtesan. he claimed the doctrine",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "epicurism.github.io",
+          "/epicurism.info/etexts/Lives.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Epicurus.info : E-Texts : The Life of Epicurus",
+        "url": "http://epicurism.github.io/epicurism.info/etexts/Lives.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4bfcf06171f963d67ca76349134e52259ed0231d4659cc1e6312a3292a23768d",
+  "provider": "SearXNG",
+  "query": "how does water purification in physics work",
+  "query_id": "v5-p-0310-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:21.749120Z"
+}

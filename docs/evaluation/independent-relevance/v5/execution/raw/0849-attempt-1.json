@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 286.883,
+  "pair_id": "v5-p-0448",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does supply chain logistics in mechanical engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "era. Never the less the engineering and quality of the steel and parts has stood the test of time in a major way. I doubt we go back any time soon but never say never it may happe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2023/02/can-we-make-bicycles-sustainable-again",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Can We Make Bicycles Sustainable Again? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2023/02/can-we-make-bicycles-sustainable-again"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "023ea849c5bf3ba64f2e3f9baeea693ca9176ce184e4d10d506f5526239f7809",
+  "provider": "SearXNG",
+  "query": "how does supply chain logistics in mechanical engineering operate",
+  "query_id": "v5-p-0448-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:09:44.655829Z"
+}

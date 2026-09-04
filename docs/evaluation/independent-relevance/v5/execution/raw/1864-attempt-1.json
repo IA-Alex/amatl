@@ -1,0 +1,354 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 404.76,
+  "pair_id": "v5-p-0553",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind food preservation in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "self-interest and self-preservation and selfishness. Man never in his sane mind does anything without a reason. . . . Higher selfishness, or the good of the Higher Self, is the mo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "oaks.nvg.org",
+          "/selfishness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Yogananda and Sacred Selfishness – The Gold Scales",
+        "url": "http://oaks.nvg.org/selfishness.html"
+      },
+      {
+        "category": "general",
+        "content": "Government, is the Preservation of their Property . To which in the state of Nature there are many things wanting. [ ibid. , §124] Locke, of course, thinks that the ownership",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/locke.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John Locke (1632-1704)",
+        "url": "https://friesian.com/locke.htm"
+      },
+      {
+        "category": "general",
+        "content": "have led to frequent preservationÑ&#34; vel ad lupanar vel ad servitutem.&#34; (Lact., &#34; De Vero Cultu.,&#34; lib. vi.) Occasionally the luckless child falls into the hands of -unscrupulous m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/euvolution/ancient.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ancient Eugenics | Transhuman Cosmic Self-Directed Evolution | Transhumanism, Posthumanism, Futurism, Prometheism, Cosmotheism, Eugenics&lt;/titl",
+        "url": "https://www.euvolution.com/euvolution/ancient.htm"
+      },
+      {
+        "category": "general",
+        "content": "of other beings and the preservation of biodiversity. It also acknowledges the significant ethical and practical challenges that these ideas present. What implications does High-T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.abolitionist.com",
+          "/chatgpt/hitechjain.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "High-tech Jainism as conceived by ChatGPT-4",
+        "url": "https://www.abolitionist.com/chatgpt/hitechjain.html"
+      },
+      {
+        "category": "general",
+        "content": "cell division and the preservation of function in ways that are for the moment a mystery to doctors and to science. Only a complete understanding of these hidden substances will r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bookreadfree.com",
+          "/188298/4660591",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bronze Age Mindset Page 2 Read online free by Bronze Age Pervert",
+        "url": "https://bookreadfree.com/188298/4660591"
+      },
+      {
+        "category": "general",
+        "content": "could then learn self-preservation and pleasure-maximisation in harmony. At least as a stopgap, exploiting pleasure gradients is a much more civilised way to live. It&#39;s far more h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Hedonistic Imperative : Objections (Chapter 4)",
+        "url": "https://www.hedweb.com/hedethic/hedon4.htm"
+      },
+      {
+        "category": "general",
+        "content": "consistent with nature preservation. Research topics What&#39;s the net impact on wild-animal suffering of various human activities? Net impact of crop cultivation [high priority] See",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Applied Welfare Biology and Why Wild-Animal Advocates Should Focus on Not Spreading Nature",
+        "url": "https://reducing-suffering.org/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/"
+      },
+      {
+        "category": "general",
+        "content": "signed books for the Preservation of the Tech project - the bomb-proof shelters in the desert. ASI also contributes to dissemination of Dianetics, and operates the &#34;Writers of the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.xenu.net",
+          "/archive/dictionary/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Operation Clambake presents: ARS Acronym/Terminology FAQ",
+        "url": "https://www.xenu.net/archive/dictionary/"
+      },
+      {
+        "category": "general",
+        "content": "advancement and the preservation of womanhood and they were successful for just as long as they were in control and could arrange matters so that government was carried out by a l",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "antimatrix.org",
+          "/Convert/Coleman_The_Tavistock_Institute_of_Human_Relations_2005.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NWO - The Tavistock Institute For Human Relations",
+        "url": "http://antimatrix.org/Convert/Coleman_The_Tavistock_Institute_of_Human_Relations_2005.html"
+      },
+      {
+        "category": "general",
+        "content": "Sunnyside Gardens Preservation Alliance , Bliss Street Sunnyside - Stories from the 1940&#39;s and 1950&#39;s , Hunter College Elementary School and HCES Class of 1947 , T.V. State Of Mai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "testing, and habitat preservation. It can also inform environmental policies aimed at mitigating human-caused suffering, such as pollution control, climate change mitigation, and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.utilitarianism.com",
+          "/chatgpt/negative-utilitarianism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Negative utilitarianism as conceived by ChatGPT-4",
+        "url": "https://www.utilitarianism.com/chatgpt/negative-utilitarianism.html"
+      },
+      {
+        "category": "general",
+        "content": "insightful self‑preservation, that is, to the egoism of this consideration: &#34;Why should I uselessly injure myself and perhaps not reach my goal anyway?&#34; So much ab",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.publicappeal.org",
+          "/library/nietzsche/Nietzsche_human_all_too_human/sect2_on_the_History_of_Moral_Feelings.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SECTION TWO : On the History of Moral Feelings",
+        "url": "http://www.publicappeal.org/library/nietzsche/Nietzsche_human_all_too_human/sect2_on_the_History_of_Moral_Feelings.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "48aaf5ab3b04b2eb7f0ff5fada6864801a677c29259f0f8e2a0538fa5bac92e8",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind food preservation in health science",
+  "query_id": "v5-p-0553-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:13.212622Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 324.624,
+  "pair_id": "v5-p-0225",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind plate tectonics in electrical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "68c981979b5b9bbe18a7fae2580812a6a08e7d314d256bd0674f552958097803",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind plate tectonics in electrical engineering",
+  "query_id": "v5-p-0225-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:10:56.079538Z"
+}

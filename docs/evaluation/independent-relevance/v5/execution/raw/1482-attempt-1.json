@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 333.294,
+  "pair_id": "v5-p-0233",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind plate tectonics in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "microbiology robotics technology about himself religion and creationism women rationality intelligence politics speech television and film science fiction Isaac Asimov&#39;s Science F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "701a60ea3517f58c5e2599a97cddab226e2488fa7461f62e08ac9b8c33478e2c",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind plate tectonics in music technology",
+  "query_id": "v5-p-0233-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:13:08.121371Z"
+}

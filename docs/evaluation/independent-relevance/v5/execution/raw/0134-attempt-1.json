@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 330.606,
+  "pair_id": "v5-p-0900",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind vaccination in transportation engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bb693310185d1af7aeda4899f20ec1df7e223b6d88e9c323f5acd5b50aab6246",
+  "provider": "SearXNG",
+  "query": "describe the principle behind vaccination in transportation engineering",
+  "query_id": "v5-p-0900-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:50.676788Z"
+}

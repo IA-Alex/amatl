@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 326.781,
+  "pair_id": "v5-p-0025",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind photosynthesis in software engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c3b0fad2967a1ca78c757128162bc1f2395c967a80c6320619b15f607ca33cbf",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind photosynthesis in software engineering",
+  "query_id": "v5-p-0025-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:15.205779Z"
+}

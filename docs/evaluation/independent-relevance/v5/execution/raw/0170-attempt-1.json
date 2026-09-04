@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 357.66,
+  "pair_id": "v5-p-0322",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of water purification in marine biology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4e6665b9a2429adb774741ac25043a1444b4131fe646feafd52c12cd77176f23",
+  "provider": "SearXNG",
+  "query": "tell me about the function of water purification in marine biology",
+  "query_id": "v5-p-0322-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:02.403766Z"
+}

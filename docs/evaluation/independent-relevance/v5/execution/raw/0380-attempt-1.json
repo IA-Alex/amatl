@@ -1,0 +1,354 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 306.236,
+  "pair_id": "v5-p-0735",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of root systems in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "transport, land, raw materials, etc.)&#34; The anarchist conception of class incorporates not just the economic relationship but also the relationship to the means of hierarchica",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "anarchism.crd.co",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Anarchism: An Overview",
+        "url": "https://anarchism.crd.co/"
+      },
+      {
+        "category": "general",
+        "content": "combined with other materials can be powerful for learning. The Bibliographic Cross-Reference lets you compare informal proofs in math textbooks and see all the implicit missing d",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "us.metamath.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Home Page - Metamath",
+        "url": "https://us.metamath.org/"
+      },
+      {
+        "category": "general",
+        "content": "result is that the two materials undergo a phase change. Inside a spherical boundary, where conditions &#34;go critical&#34;, the stellar matter is converted to energy, and the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/quant.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quantum Reality and Cosmology",
+        "url": "http://www.dhushara.com/paradoxhtm/quant.htm"
+      },
+      {
+        "category": "general",
+        "content": "to that of the organic materials found in meteorites, as would be expected if the Solar System had inherited these organic materials from interstellar sources. In 2012 Glycoaldehy",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "highlight the different materials such as fur and leather. Although the function of these figurines are still unknown, it is clear from the study that the Venus/Mother Goddess con",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.donsmaps.com",
+          "/venusfigurespurpose.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Palaeolithic Venus figures - their purpose",
+        "url": "https://www.donsmaps.com/venusfigurespurpose.html"
+      },
+      {
+        "category": "general",
+        "content": "Required course materials : The Transfeminine Handbook , 3rd Edition (Pearson). Cosmetic supplies provided. Students will be required to purchase their own clothes for some course",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.alm.website",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Athena&#39;s blog - Athena&#39;s Site",
+        "url": "https://www.alm.website/blog/"
+      },
+      {
+        "category": "general",
+        "content": "user account, training materials, license keys ? Can you get a copy of the application to install locally, on your machine(s) ? Or at least get a demo or trial version ? If there",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/PenetrationTestingAndBugBountyHunting.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Penetration Testing and Bug-Bounty Hunting",
+        "url": "https://www.billdietrich.me/PenetrationTestingAndBugBountyHunting.html"
+      },
+      {
+        "category": "general",
+        "content": "Transitional Materials: Moving Beyond The Game Exploring Larger Reality And Experiential Context Welcome to current version of the Leading Edge International Research Group websit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "trufax.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Leading Edge International Research Group",
+        "url": "http://trufax.org/"
+      },
+      {
+        "category": "general",
+        "content": "foolish not to prepare materials for dissemination in parallel with conducting the experiments. Reasons for this include: The experiment itself will be more convincing if it uses",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "papert.org",
+          "/articles/AnEvaluativeStudyofModernTechnology.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "An Evaluative Study of Modern Technology in Education",
+        "url": "http://papert.org/articles/AnEvaluativeStudyofModernTechnology.html"
+      },
+      {
+        "category": "general",
+        "content": "a couple of people to give you a definition and although you don&#39;t get to know much about cybernetics from them, you find out a lot about the person supplying the definition, incl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "asc-cybernetics.org",
+          "/foundations/definitions.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ASC: Foundations: Defining &#39;Cybernetics&#39;",
+        "url": "https://asc-cybernetics.org/foundations/definitions.htm"
+      },
+      {
+        "category": "general",
+        "content": "the ownership of raw materials [mines, oil wells] remains in the hands of private individuals, but where the government intervenes to determine how many competitors will be allowe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/nazihydrainamerica.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "nazihydrainamerica",
+        "url": "http://www.combatreform.org/nazihydrainamerica.htm"
+      },
+      {
+        "category": "general",
+        "content": "and land management materials such as hay, forage, straw, mulch, gravel, and compost. NAISMA’s mission is to support, promote, and empower invasive species prevention and manageme",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "598710737f52a84334b15cc0417563a370088a3ac179ab6ea9b88d55fcf72675",
+  "provider": "SearXNG",
+  "query": "give an overview of root systems in materials science",
+  "query_id": "v5-p-0735-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:08.796490Z"
+}

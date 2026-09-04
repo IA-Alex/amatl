@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 315.513,
+  "pair_id": "v5-p-0400",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind carbon capture in civil engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9ed2bf35d211f7ac93487c46d7ba1f495abd7c585664645e2c59b17e672c2020",
+  "provider": "SearXNG",
+  "query": "describe the principle behind carbon capture in civil engineering",
+  "query_id": "v5-p-0400-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:23.791626Z"
+}

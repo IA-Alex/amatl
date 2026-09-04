@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 375.167,
+  "pair_id": "v5-p-0478",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of encryption keys in environmental science",
+    "results": [
+      {
+        "category": "general",
+        "content": "The Defacto For EPA{Environmental Protection Agency} Legal Weed. CBD Will Have An Equal High To THC Once Imbibed Enough To Get The High That Get&#39;s You High And Mighty Because Of H",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteList.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/FWAsiteList.html"
+      },
+      {
+        "category": "general",
+        "content": "professor in civil and environmental engineering, who has specialized in natural hazards modeling at the University of Michigan, to look elsewhere. His work focuses on how climate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alterslash.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alterslash, the unofficial Slashdot digest",
+        "url": "https://alterslash.org/"
+      },
+      {
+        "category": "general",
+        "content": "and John Deutch. Environmental Research Letters 16 ,10 (2021)         bib     url     pdf     link",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.csail.mit.edu",
+          "/rivest/pubs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ronald L. Rivest: Publications and Talks",
+        "url": "https://people.csail.mit.edu/rivest/pubs.html"
+      },
+      {
+        "category": "general",
+        "content": "The Defacto For EPA{Environmental Protection Agency} Legal Weed. CBD Will Have An Equal High To THC Once Imbibed Enough To Get The High That Get&#39;s You High And Mighty Because Of H",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3bde1a9b15496b56d2e289fd819e7fb21b32f59c7f894ebe691b449ab8d628f0",
+  "provider": "SearXNG",
+  "query": "tell me about the function of encryption keys in environmental science",
+  "query_id": "v5-p-0478-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:54.565241Z"
+}

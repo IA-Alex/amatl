@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 276.69,
+  "pair_id": "v5-p-0467",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of supply chain logistics in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "Iranian use of space operations during Epic Fury While the United States has made extensive use of space capabilities in its ongoing conflict with Iran, that country has also made",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.thespacereview.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Space Review: essays and commentary about the final frontier",
+        "url": "https://www.thespacereview.com/"
+      },
+      {
+        "category": "general",
+        "content": "manufacturing and operations the overhead for combustion engines is obviously much larger.” –&gt; No it isn’t so obvious because the lifetime mileage of the carg",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2023/02/can-we-make-bicycles-sustainable-again",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Can We Make Bicycles Sustainable Again? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2023/02/can-we-make-bicycles-sustainable-again"
+      },
+      {
+        "category": "general",
+        "content": "and counterterrorism operations that have defined American military deployments in recent years? Absolutely. Is it ready to fight multiple traditional wars against major powers at",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/USPolicy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "US Policy Choices",
+        "url": "https://www.billdietrich.me/USPolicy.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5ba4c1a3a2c53123c2a510641b9f98dd7b64bd2c4cbdef8085b8c73e8e49a237",
+  "provider": "SearXNG",
+  "query": "give an overview of supply chain logistics in operations research",
+  "query_id": "v5-p-0467-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:47.774452Z"
+}

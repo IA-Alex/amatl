@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 343.365,
+  "pair_id": "v5-p-1042",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of probability distributions in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "variable has different distributions: for example, looking inside the critters at their programs one might see RANDOM [red red red green] in a reddy and RANDOM [red green green gr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "papert.org",
+          "/articles/AnExplorationintheSpaceofMathematicsEducations.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "An Exploration in the Space of Mathematics Educations",
+        "url": "http://papert.org/articles/AnExplorationintheSpaceofMathematicsEducations.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bc2ed1ca0ac3858c0a42a3fac31406e29bcba42ff24d30a7ddded663080cbf07",
+  "provider": "SearXNG",
+  "query": "tell me about the function of probability distributions in operations research",
+  "query_id": "v5-p-1042-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:13:37.162676Z"
+}

@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 398.023,
+  "pair_id": "v5-p-0010",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of photosynthesis in environmental science",
+    "results": [
+      {
+        "category": "general",
+        "content": "role in the process of photosynthesis in plants and in the sense of smell in animals. These findings suggest that some quantum effects may be relevant for biological systems, incl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biointelligence-explosion.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biointelligence Explosion as conceived by ChatGPT",
+        "url": "https://www.biointelligence-explosion.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "the form of light. This photosynthesis results in the plant’s internal production of carbon. It utilizes this carbon to create and reinforce tissue as it grows, so it is a v",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.microbeorganics.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Microbe Organics",
+        "url": "http://www.microbeorganics.com/"
+      },
+      {
+        "category": "general",
+        "content": "capable of early photosynthesis (Redfern 2013). Meteorites of Martian origin have more recently come to the Earth. From magnetic studies, some reached temperatures no higher than",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "Energy Harvested by Photosynthesis in a Controlled Environment Photovoltaic for Australia    The Feasibility of a 600 Kilowatt Windpower Installation Danish engineers&amp;nb",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dematerialism.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C:\\users\\waybu\\douments\\aaaaaindex",
+        "url": "https://www.dematerialism.net/"
+      },
+      {
+        "category": "general",
+        "content": "development, reducing photosynthesis, and weakening trees over time (Carta et al., 2020; Reed et al., 2020). Although researchers continue to investigate the complete disease proc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "de85e09582022356d05003ab5414a699a46824ee596b69ad73e916e68e2ee89e",
+  "provider": "SearXNG",
+  "query": "tell me about the function of photosynthesis in environmental science",
+  "query_id": "v5-p-0010-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:07.395299Z"
+}

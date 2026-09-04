@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 262.818,
+  "pair_id": "v5-p-0788",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does coastal flooding in hydrology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "798b0dee44c7f3e2dc224204591c4da39e518c6a0556ef8e0be88aa8572c7c15",
+  "provider": "SearXNG",
+  "query": "how does coastal flooding in hydrology operate",
+  "query_id": "v5-p-0788-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:10.544705Z"
+}

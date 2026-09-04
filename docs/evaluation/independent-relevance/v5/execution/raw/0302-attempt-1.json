@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 228.513,
+  "pair_id": "v5-p-0739",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of root systems in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "22e99c1a57baf9cb4d4c103384c5af230b3064ad3f1002de537bfb343bb5e71a",
+  "provider": "SearXNG",
+  "query": "give an overview of root systems in oceanography",
+  "query_id": "v5-p-0739-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:44.533561Z"
+}

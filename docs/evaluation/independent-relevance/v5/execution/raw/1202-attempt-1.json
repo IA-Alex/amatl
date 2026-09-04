@@ -1,0 +1,192 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 332.843,
+  "pair_id": "v5-p-0676",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind traffic flow in architecture",
+    "results": [
+      {
+        "category": "general",
+        "content": "input smooth column architecture approximately monetary possession poll abuse slight silly nurse discovery childhood suit satisfaction appoint appointed climate isolate isolated i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "Sensation (2007). The Architecture of Thought 7 MODES OF THOUGHT 3 STAGES OF COGNITION I pre- nominal ante- rationality 1 Mythical libidinal ego the irrational 2 Pre-rational trib",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/equiaeon/behaviours.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHY : Behaviours : Formal Sketch of a Critical Ethics",
+        "url": "http://www.sofiatopia.org/equiaeon/behaviours.htm"
+      },
+      {
+        "category": "general",
+        "content": "input smooth column architecture approximately monetary possession poll abuse slight silly nurse discovery childhood suit satisfaction appoint [appointed] climate isolate [isolate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq-bnc.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.conlang.info/wordfreq-bnc.txt",
+        "url": "http://www.conlang.info/wordfreq-bnc.txt"
+      },
+      {
+        "category": "general",
+        "content": "on Building and Architecture &#34;Ancient Myths in Modern Movies&#34; Archived &#34;Quotations of the Month&#34; Write e-mail to Cora Angier Sowa Pantes anthropoi tou eidenai oregontai phusei. se",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "minervaclassics.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Minerva Systems",
+        "url": "http://minervaclassics.com/"
+      },
+      {
+        "category": "general",
+        "content": "An internal stack architecture was also used by Monroe on their EPIC-2000 and EPIC-3000 calculators, but it appears that Monroe&#39;s use of a stack architecture was never challenged.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/friden130.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Friden EC-130 Electronic Calculator",
+        "url": "https://www.oldcalculatormuseum.com/friden130.html"
+      },
+      {
+        "category": "general",
+        "content": "&#34;style&#34; in speaking of architecture and sculpture, painting and music, dancing, play-acting, and cricket, that we can apply it to the careful achievements of the housebreaker and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fullbooks.com",
+          "/Style.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Style by Walter Raleigh - Full Text Free Book",
+        "url": "http://www.fullbooks.com/Style.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "90af834bf7c4b3cc86c6bd0fc3a0d36b162d89abe84cf05f689bc4577079db6a",
+  "provider": "SearXNG",
+  "query": "describe the principle behind traffic flow in architecture",
+  "query_id": "v5-p-0676-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:40.973278Z"
+}

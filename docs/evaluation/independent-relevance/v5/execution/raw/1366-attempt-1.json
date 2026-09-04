@@ -1,0 +1,273 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 420.208,
+  "pair_id": "v5-p-0426",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of carbon capture in energy systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "to have any hope of functioning off of this planet. When considering the mass budget, if you think them&#39;s good economics then you&#39;re plain crazy. Fortunately, for every worthwhile",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "collapse of the wave function-were accepted, or, to put it more strongly, if it were true, there would be a sense in which consciousness fits perfectly into our scientific world-v",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.meta-religion.com",
+          "/Philosophy/Articles/Consciousness/post-physicalism.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Post-Physicalism",
+        "url": "https://www.meta-religion.com/Philosophy/Articles/Consciousness/post-physicalism.htm"
+      },
+      {
+        "category": "general",
+        "content": "of many of the terms, functions and observations surrounding this science. The reason I am able to do this is mostly due to my ‘I have to see it to believe it or comprehend",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.microbeorganics.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Microbe Organics",
+        "url": "http://www.microbeorganics.com/"
+      },
+      {
+        "category": "general",
+        "content": "through the wave function and quantum entanglement. And the very complex experience of the human or animal brain is somehow derived from the experience of the brain&#39;s most basic p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "that will perform these functions better. Says Bostrom: “ The roots of suffering are planted deep in your brain. Weeding them out and replacing them with nutritious crops of well-",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "jetpress.org",
+          "/v24/steinhoff.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Transhumanism and Marxism: Philosophical Connections",
+        "url": "http://jetpress.org/v24/steinhoff.htm"
+      },
+      {
+        "category": "general",
+        "content": "the info didn&#39;t function for me, due to nonfree Javascript code. 21 December 2019 ( Wealth taxes ) Some easy ways for the US to tax the rich more, that might be easier to enforce",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-sep-dec.html"
+      },
+      {
+        "category": "general",
+        "content": "I got to look at the functional layout drawings of the 604. It was a &#34;plug programmed&#34; calculator, but 3 years later when I got introduced to the 650, that very simply was a 604 w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ed-thelen.org",
+          "/comp-hist/stories.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stories",
+        "url": "https://www.ed-thelen.org/comp-hist/stories.html"
+      },
+      {
+        "category": "general",
+        "content": "the single interpreter function, and surely this is bread-and-butter for an optimizing compiler such as Cranelift. I tried pre-compilation in Wasmtime but it didn’t help. It could",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wingolog.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "wingolog",
+        "url": "http://wingolog.org/"
+      },
+      {
+        "category": "general",
+        "content": "Inverter (Has multiple functions including Net-metering option) = 3.5KW Deep Cycle Batteries= 04 (120Amp each) Average Energy consumption (Load) = 15KWH (60% of this is used at ni",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2018/05/ditch-the-batteries-off-grid-compressed-air-energy-storage",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ditch the Batteries: Off-Grid Compressed Air Energy Storage | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2018/05/ditch-the-batteries-off-grid-compressed-air-energy-storage"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2b3f149c90303c2f547e13207a23c9a9105ebbf1e2b6b8a60ddd331119061344",
+  "provider": "SearXNG",
+  "query": "tell me about the function of carbon capture in energy systems",
+  "query_id": "v5-p-0426-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:31.892015Z"
+}

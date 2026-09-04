@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 345.705,
+  "pair_id": "v5-p-0069",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is compiler operation in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "try starting with an industrial language, but the sheer size of a typical industrial language and library make it hard to discover and apply the ideas that make the language worth",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cs.tufts.edu",
+          "/~nr/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Norman Ramsey",
+        "url": "https://www.cs.tufts.edu/~nr/"
+      },
+      {
+        "category": "general",
+        "content": "is a fieldbus, an industrial computer networking protocol. Modbus RTU (Remote Terminal Unit) is the most common implementation for Modbus either as a 2-wire half-duplex over RS-48",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.iwriteiam.nl",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "I write, therefore I am",
+        "url": "http://www.iwriteiam.nl/"
+      },
+      {
+        "category": "general",
+        "content": "protocols in OCaml, an industrial, functional, memory safe programming language, used in sectors ranging from finance and research to social media and web application. The project",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/news/2023/20231123-announcing-projects.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; 55 New Projects Awarded NGI0 Grants",
+        "url": "https://nlnet.nl/news/2023/20231123-announcing-projects.html"
+      },
+      {
+        "category": "general",
+        "content": "and have seen important industrial adoption over the last years. Asynchronous applications - which are notoriously error-prone to implement and to maintain - greatly benefit from",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "programming-group.com",
+          "/members/salvaneschi",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Prof. Dr. Guido Salvaneschi | Programming Group",
+        "url": "https://programming-group.com/members/salvaneschi"
+      },
+      {
+        "category": "general",
+        "content": "follow-on papers, industrial adoption, an annual workshop, and a growing community. Selected September 2021 CACM Research Highlight Achieving high-performance the functional way:",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "microkernels, Linux and industrial Ethernet. He has worked for a number of smaller and larger companies in Germany, including Siemens AG. Andre is a co-founder of a startup compan",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "[PCC-CS503] - Intro. to Industrial Management (Humanities III) [HSMC-501] - Theory of Computation [PEC-IT501A] - Artificial Intelligence [PEC-IT501B] - Advanced Computer Architect",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "hdmtp.github.io",
+          "/blog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "hdmtp&#39;s archive (blog)",
+        "url": "https://hdmtp.github.io/blog.html"
+      },
+      {
+        "category": "general",
+        "content": "we used a large industrial variable speed electric drill, with a rubber lab cork chucked up as a friction clutch, and applied it to the 3&#34; shaft. After a little slippage (and smok",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ed-thelen.org",
+          "/comp-hist/stories.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stories",
+        "url": "https://www.ed-thelen.org/comp-hist/stories.html"
+      },
+      {
+        "category": "general",
+        "content": "commercial business industrial industry catalog / catalogue.   All with a single program, an all-in-one multimedia software . Also for beginners, non technicians, easy to use",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.hyperpublish.com",
+          "/create_a_catalog_00003b.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Frequently asked questions (FAQ) about HyperPublish",
+        "url": "http://www.hyperpublish.com/create_a_catalog_00003b.htm"
+      },
+      {
+        "category": "general",
+        "content": ". AT&amp;T Bell Labs. - the industrial research and development labs where C and C&#43;&#43; were invented, initially developed, and initially used. D&amp;E 2.14. auto - In C and C&#43;&#43;98 a largely",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stroustrup.com",
+          "/glossary.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stroustrup: C&#43;&#43; Glossary",
+        "url": "https://www.stroustrup.com/glossary.html"
+      },
+      {
+        "category": "general",
+        "content": "for the grid, unlike industrial producers who are paid wholesale rates that don’t include transmission. Also, he finds it less efficient overall to install solar panels on houses",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wingolog.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "wingolog",
+        "url": "http://wingolog.org/"
+      },
+      {
+        "category": "general",
+        "content": "and walk through the Industrial Museum to the CIB office. Met up with the crew; great to see the place - out for lunch with Ulrich, good to meet him. Back for a partner call, met",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2015/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2015/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bae63e126806690fd384aa6114f5d1fc7cf54ad2a9b81988835cf3cc0927fbaa",
+  "provider": "SearXNG",
+  "query": "what is compiler operation in industrial design",
+  "query_id": "v5-p-0069-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:06.389855Z"
+}

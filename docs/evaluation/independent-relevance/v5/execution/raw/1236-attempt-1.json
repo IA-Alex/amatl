@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 307.659,
+  "pair_id": "v5-p-0112",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind database indexing in civil engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "77a235374cb957874e77951f611c97624fb6a26cfd39b4b7f67cb0c318d5ba0a",
+  "provider": "SearXNG",
+  "query": "describe the principle behind database indexing in civil engineering",
+  "query_id": "v5-p-0112-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:52.001477Z"
+}

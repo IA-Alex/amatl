@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 302.417,
+  "pair_id": "v5-p-0172",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does immune response in architecture operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "use and simple architecture, we are still far from a full understanding of the signal-processing capabilities of phosphorelays. Papers Unlimited multistability and Boolean logic i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lucacardelli.name",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://lucacardelli.name/",
+        "url": "http://lucacardelli.name/"
+      },
+      {
+        "category": "general",
+        "content": "to form a quad-die architecture for the first time in an M-series system on a chip (SoC). The chip includes an up-to-36-core CPU and up-to-80-core GPU with a massive 1.2TB/s of un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "daringfireball.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Daring Fireball",
+        "url": "https://daringfireball.net/"
+      },
+      {
+        "category": "general",
+        "content": "culture 1933. Brain architecture 1932. Wikicide 1931. Cognitive density 1930. It&#39;s called projection 1929. What women want 1928. Dying with your species 1927. The great escape 192",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "orgyofthewill.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Orgy of the Will: A Philosophy of the Future",
+        "url": "http://orgyofthewill.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bab624205785a0b3a2b59bf3ae83201b2137c32ab2a597f5d237cf43acde3830",
+  "provider": "SearXNG",
+  "query": "how does immune response in architecture operate",
+  "query_id": "v5-p-0172-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:50.220239Z"
+}

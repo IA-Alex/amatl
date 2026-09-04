@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 338.347,
+  "pair_id": "v5-p-0834",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does data compression in computer security work",
+    "results": [
+      {
+        "category": "general",
+        "content": "using Huffman compression with unknown dictionaries . Understanding the inner workings of the obfuscated components blurs the line between software reverse-engineering and figurin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "seirdy.one",
+          "/posts/2022/02/02/floss-security/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The right thing for the wrong reasons: FLOSS doesn&#39;t imply security",
+        "url": "https://seirdy.one/posts/2022/02/02/floss-security/"
+      },
+      {
+        "category": "general",
+        "content": "it causes a certain compression along the lattice. The Nanotubular tendons are connected to a network of nanocoil launchers embedded in an even looser lattice of similarly lipid a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "query , .x3db compression , XML canonicalization (C14N) , and .png image ) The HelloWorld.x3d scene is a simple authoring example that illustrates the minimali",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.web3d.org",
+          "/x3d/content/examples/X3dResources.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "X3D Resources",
+        "url": "https://www.web3d.org/x3d/content/examples/X3dResources.html"
+      },
+      {
+        "category": "general",
+        "content": "Images with JPEG Compression Artifacts Vincent de Rouisers et al. — Redmond Series — July 2001 Format: Scanned PDF Language: English Category: Nonfiction - Digital For",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "suricrasia.online",
+          "/library/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Suricrasia Online&#39;s Online Library",
+        "url": "https://suricrasia.online/library/"
+      },
+      {
+        "category": "general",
+        "content": "apply an obsolete image compression technique called “dithering”. The number of colours in an image, combined with its file format and resolution, contributes to the size of an im",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2018/09/how-to-build-a-low-tech-website/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Build a Low-tech Website? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2018/09/how-to-build-a-low-tech-website/"
+      },
+      {
+        "category": "general",
+        "content": "directory-name : compression and archive tool available on all operating systems; generally not preferred on Linux since it doesn’t preserve metadata unzip directory-name.zi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/programming/linux-commands-notes",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Unix/Linux Commands, Syntax, And Notes",
+        "url": "https://zerocontradictions.net/programming/linux-commands-notes"
+      },
+      {
+        "category": "general",
+        "content": "or nasal congestion) Compression bandage (To treat sprains or strain, helps to reduce swelling) Reinforced sterile skin closures CPR pocket mask Details To protect both the caregi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "100r.co",
+          "/site/off_the_grid.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "100R — off the grid",
+        "url": "http://100r.co/site/off_the_grid.html"
+      },
+      {
+        "category": "general",
+        "content": "else (efficient-compression-tool, brotli, xmllint, sd) is strictly optional. I build all these programs as statically-linked binaries and wrap them in a tarball, and fetch that ta",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "seirdy.one",
+          "/bookmarks/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "My bookmarks - Seirdy",
+        "url": "https://seirdy.one/bookmarks/"
+      },
+      {
+        "category": "general",
+        "content": "were made by an image-compression algorithm developed by Technion-Israel researchers. The Israeli Space Agency is carrying on an innovative project, a space vehicle which would be",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.imninalu.net",
+          "/Israel-Arabs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Israel and the Arab World",
+        "url": "https://www.imninalu.net/Israel-Arabs.htm"
+      },
+      {
+        "category": "general",
+        "content": "to learn about compression, this is a small strange jpeg image, width=&#34;553&#34; height=&#34;700&#34;     apatt the motion picture (trailer) by a.P.A.t.T. &#34;file is a.P.A.t.T. it was",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "floppyswop.co.uk",
+          "/both.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A:// FLOPPYSWOP / MAGNETIC MEDIA / ___________________________________________________________________________________________________________",
+        "url": "https://floppyswop.co.uk/both.php"
+      },
+      {
+        "category": "general",
+        "content": "and apparatus for data compression for three-dimensional graphics.&#34;) The patent describes compressing 3D graphics by describing the scene in terms of a virtual machine tuned to di",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.highprogrammer.com",
+          "/alan/hypercosm/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hypercosm and Web 3D",
+        "url": "http://www.highprogrammer.com/alan/hypercosm/"
+      },
+      {
+        "category": "general",
+        "content": "supports memory compression, and it makes a big difference! Aesthetics . Mountain Lion borrows many visual elements from early iOS, such as its linen-clad Notification Center and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mavericksforever.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mavericks Forever",
+        "url": "http://mavericksforever.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d6fd3d05a7007f6ee7edc3bf4462578ab01442685cc62b0f6cb49309cd85e055",
+  "provider": "SearXNG",
+  "query": "how does data compression in computer security work",
+  "query_id": "v5-p-0834-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:51.067509Z"
+}

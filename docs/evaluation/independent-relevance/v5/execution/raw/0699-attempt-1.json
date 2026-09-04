@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 256.447,
+  "pair_id": "v5-p-0608",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does air quality monitoring in hydrology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "50c05dd6c02d16589923616c1d1333b5dd81a7984679be847f0c49150da0ac3a",
+  "provider": "SearXNG",
+  "query": "how does air quality monitoring in hydrology operate",
+  "query_id": "v5-p-0608-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:57.100996Z"
+}

@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 260.758,
+  "pair_id": "v5-p-0439",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes supply chain logistics in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "1994, the Government Management Reform Act required the Inspector General of each federal agency to audit and publish the financial statements of their agency. All Non-Defense age",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/USPolicy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "US Policy Choices",
+        "url": "https://www.billdietrich.me/USPolicy.html"
+      },
+      {
+        "category": "general",
+        "content": "Bug May 17, 2025 Management is the Near Future May 16, 2025 Staying in a Capsule Hotel May 15, 2025 Elastomeric Fitting Session May 14, 2025 Better Air Purifiers May 11, 2025 Some",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jefftk.com",
+          "/p/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog Posts",
+        "url": "https://www.jefftk.com/p/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "34d9b00493f6bc6a13989c1bc93ecc2d0088155aacddac3d30b265d97fa0fed5",
+  "provider": "SearXNG",
+  "query": "what causes supply chain logistics in data management",
+  "query_id": "v5-p-0439-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:06:28.478696Z"
+}

@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 376.515,
+  "pair_id": "v5-p-0862",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of data compression in marine biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "Trillion Backed By The Compression Of The Stex Quality Of The Mythril. 1-2 Sig Fig Purchases. Gil: GP Promises From Hand Shaken Arrangement Without Any Physical Transfer At The Ti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "Trillion Backed By The Compression Of The Stex Quality Of The Mythril. 1-2 Sig Fig Purchases. Gil: GP Promises From Hand Shaken Arrangement Without Any Physical Transfer At The Ti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/GreenMagi.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/GreenMagi.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d95e4496f67c5835650c815c65e8e223e0e8babfb85ca1a2697ad5f062be9ac3",
+  "provider": "SearXNG",
+  "query": "tell me about the function of data compression in marine biology",
+  "query_id": "v5-p-0862-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:12:26.790121Z"
+}

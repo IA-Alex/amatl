@@ -1,0 +1,246 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 283.366,
+  "pair_id": "v5-p-0507",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of neural networks in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "hysics and chemistry to biology and neuroscience—are dealing with systems that include some form of consciousness or proto-consciousness. This might encourage more interdisciplinar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.panpsychism.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Panpsychism as conceived by ChatGPT",
+        "url": "https://www.panpsychism.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "Programming Safe Chemistry on Laboratories-on-a-chip Authors: Jason Ott (UC Riverside), Tyson Loveless (UC Riverside), Chris Curtis (UC Riverside), Mohsen Lesani (UC Riverside), P",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "and philosophy , astrochemistry, astrobiology , and complexity science are slowly turning the tide. And now, AI is accelerating this turning . Soon we will realize that our univer",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.accelerationwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acceleration Watch (Understanding Accelerating Change)",
+        "url": "https://www.accelerationwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "depression. Neurochemistry: Certain chemicals in the brain, called neurotransmitters, play a key role in mood regulation. Imbalances in neurotransmitters like serotonin, norepinep",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biopsychiatry.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mood-brighteners and antidepressants as conceived by ChatGPT",
+        "url": "https://www.biopsychiatry.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "often have knowledge of chemistry or receive training from others in the network. Precursor chemicals necessary for the production of amphetamines, such as pseudoephedrine, are of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.amphetamines.org",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Amphetamines as conceived by ChatGPT",
+        "url": "https://www.amphetamines.org/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "class – organic chemistry is common – because it was “just a bunch of facts, and I wanted something involving more understanding”. I won&#39;t defend bad class",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "augmentingcognition.com",
+          "/ltm.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Augmenting Long-term Memory",
+        "url": "http://augmentingcognition.com/ltm.html"
+      },
+      {
+        "category": "general",
+        "content": "does basic and applied chemistry and microbiology research. We assume that supernatural agents, if they exist, have no effect on the outcome of our experiments. So when microorgan",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "sidneyrigdon.com",
+          "/criddle/rigdon1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sidney Rigdon: Creating the Book of Mormon",
+        "url": "http://sidneyrigdon.com/criddle/rigdon1.htm"
+      },
+      {
+        "category": "general",
+        "content": "a stationary object. In chemistry, the periodic table and the properties of elements can be used to derive the behavior and properties of chemical compounds, such as their reactiv",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.binding-problem.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Phenomenal binding, the binding problem and the combination problem as conceived by ChatGPT",
+        "url": "https://www.binding-problem.com/chatgpt/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "52b6e8c2ad7ec918f90d319cd0c189b82b7b7bac575b3fee4422912cdb0ba110",
+  "provider": "SearXNG",
+  "query": "give an overview of neural networks in chemistry",
+  "query_id": "v5-p-0507-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:37.049114Z"
+}

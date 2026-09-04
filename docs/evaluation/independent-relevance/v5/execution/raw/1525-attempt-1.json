@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 337.541,
+  "pair_id": "v5-p-0694",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does language acquisition in environmental science work",
+    "results": [
+      {
+        "category": "general",
+        "content": "and is subject to environmental influence. The brain develops in an eccentric way, entirely unlike the way that computer programs are developed: the infant brain has trillions of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.zompist.com",
+          "/langorg.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Proto-World and the Language Organ",
+        "url": "http://www.zompist.com/langorg.htm"
+      },
+      {
+        "category": "general",
+        "content": "are well-developed environmental and wilderness movements, we have written very little about environmental degradation or the destruction of wild nature, even though we consider t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unabomber.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society and Its Future",
+        "url": "https://unabomber.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "are well-developed environmental and wilderness movements, we have written very little about environmental degradation or the destruction of wild nature, even though we consider t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/industrial-society-and-its-future-manifesto",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society And Its Future",
+        "url": "https://zerocontradictions.net/misc/industrial-society-and-its-future-manifesto"
+      },
+      {
+        "category": "general",
+        "content": "a tribal member and Environmental Specialist, is one of three tribal natural resource staff, and the only one actively working on ocean and coastal projects. Despite the limited c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cowlitzcountry.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cowlitz Country News Home Page",
+        "url": "http://www.cowlitzcountry.com/"
+      },
+      {
+        "category": "general",
+        "content": "probably related to environmental and dietary factors. There is also a social class factor. Childhood would be a very different experience for working-class and middle-class child",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "histclo.com",
+          "/cih.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Children in History",
+        "url": "https://histclo.com/cih.html"
+      },
+      {
+        "category": "general",
+        "content": "to respond rapidly to environmental fluctuations while remaining within relatively constant bounds over longer periods. What sparked the Cambrian explosion? by Douglas Fox, doi:10",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.panspermia.org",
+          "/neodarw.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Neo-Darwinism: The Current Paradigm. by Brig Klyce",
+        "url": "https://www.panspermia.org/neodarw.htm"
+      },
+      {
+        "category": "general",
+        "content": "nature and scale of environmental issues), but is best exemplified by the party alliances, of which the Socialist International is clearly the most important. Significantly, while",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "the-stewardship.org",
+          "/research/world-integration.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Prospects for integration and disintegration in the world",
+        "url": "https://the-stewardship.org/research/world-integration.htm"
+      },
+      {
+        "category": "general",
+        "content": "with genes that are environmentally sound, that is  -  more intelligent. Ignoring any other trait for the near future, in deference to the one trait that stands out as b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/jewish_success.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jewish success has depended on the evolution of a highly intelligent people using eugenics",
+        "url": "https://www.euvolution.com/neoeugenics/jewish_success.htm"
+      },
+      {
+        "category": "general",
+        "content": "and which provides environmental support for the fragment&#39;s mobility, scheduling and data exchange. The programming model is embodied in a simulator that supports development, tes",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "groups.csail.mit.edu",
+          "/mac/projects/amorphous/paperlisting.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Amorphous Computing Paper Listing",
+        "url": "https://groups.csail.mit.edu/mac/projects/amorphous/paperlisting.html"
+      },
+      {
+        "category": "general",
+        "content": "I can work in corporate environmental and I feel like this will craft the perfect story. He also added the following advice: get your GIT and PG as soon as possible bachelors is e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sciencecareergeneral.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Science Career General Paste",
+        "url": "https://sciencecareergeneral.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "observations or similar environmental situations do not, as your theory [of our cognitive faculties] implied, produce similar explanations in different men. ( ibid. , 128) By this",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/samra.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Popper on the A Priori",
+        "url": "https://friesian.com/samra.htm"
+      },
+      {
+        "category": "general",
+        "content": "shaped and modified by environmental influences, and the DNA does not record these. For example, as we learn and experience the world, our brain structure changes through the grow",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "baharna.com",
+          "/philos/life.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Psychozoan: The Definition of Life",
+        "url": "https://baharna.com/philos/life.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "922744383bc2d12fd087b3589966d7078785e6bed6bc3727a5356c0a3e5582a4",
+  "provider": "SearXNG",
+  "query": "how does language acquisition in environmental science work",
+  "query_id": "v5-p-0694-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:22.002288Z"
+}

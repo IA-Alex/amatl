@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 346.526,
+  "pair_id": "v5-p-0525",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind neural networks in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f721e5fa9c2bf405fa37b0b3569d009ae810a5bcc103e8bdf3ae414704d26fc0",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind neural networks in pharmacology",
+  "query_id": "v5-p-0525-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:41.959131Z"
+}

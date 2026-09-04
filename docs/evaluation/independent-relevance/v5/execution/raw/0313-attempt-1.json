@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 245.045,
+  "pair_id": "v5-p-0819",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes battery chemistry in agricultural science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "448d4a2714a2954206573821e4f2a8de37a7e09e16e344fe2b97786c692dc37d",
+  "provider": "SearXNG",
+  "query": "what causes battery chemistry in agricultural science",
+  "query_id": "v5-p-0819-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:47.833748Z"
+}

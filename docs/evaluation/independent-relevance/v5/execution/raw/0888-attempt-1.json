@@ -1,0 +1,192 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 373.631,
+  "pair_id": "v5-p-0589",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind air quality monitoring in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "managing ecosystems and monitoring animal welfare. In all of these applications, High-Tech Jainism emphasizes the importance of careful, evidence-based approaches and the need to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.abolitionist.com",
+          "/chatgpt/hitechjain.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "High-tech Jainism as conceived by ChatGPT-4",
+        "url": "https://www.abolitionist.com/chatgpt/hitechjain.html"
+      },
+      {
+        "category": "general",
+        "content": "Road salt Satellite monitoring Invasive species Other How can we reduce plant populations? Should we eliminate predators? Hunting Humane insecticides What is it like to die as a 2",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Applied Welfare Biology and Why Wild-Animal Advocates Should Focus on Not Spreading Nature",
+        "url": "https://reducing-suffering.org/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/"
+      },
+      {
+        "category": "general",
+        "content": "care, increase health monitoring. These clinics would be a mixture of private-owned (attached to hospitals, doctor&#39;s offices, pharmacies) and public-owned (in schools, government",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/USPolicy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "US Policy Choices",
+        "url": "https://www.billdietrich.me/USPolicy.html"
+      },
+      {
+        "category": "general",
+        "content": "the fact that careful monitoring is very time-consuming. And most doctors have received virtually no training in medical school about managing pain: many hold the same misconcepti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.opioids.wiki",
+          "/legal/pain-treatment.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The war on painkillers",
+        "url": "https://www.opioids.wiki/legal/pain-treatment.html"
+      },
+      {
+        "category": "general",
+        "content": "Vlahos are closely monitoring religious cults. Vlahos says, &#34;An ideology that challenges us may not take familiar form, like the old Nazis or Commies. It may not even engage us in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      },
+      {
+        "category": "general",
+        "content": "☛ Stricter parental monitoring of social media isn&#39;t always better, says study In a new study published in the Journal of Child and Family Studies, researchers surveyed 248 U.S. p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "techrights.org",
+          "/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Techrights — Links 30/01/2024: Many More Layoffs (Microsoft the Most Tech Layoffs This Year)",
+        "url": "http://techrights.org/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a934bec201912e219acce03d09d71b18e166513e1d55447a86a4454fc284ed95",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind air quality monitoring in health science",
+  "query_id": "v5-p-0589-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:56.650656Z"
+}

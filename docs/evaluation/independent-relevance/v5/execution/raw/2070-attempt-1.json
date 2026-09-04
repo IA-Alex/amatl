@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 320.863,
+  "pair_id": "v5-p-0824",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind battery chemistry in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "98ef889cbf659b1d7df6813dd89ca454abe22ad5d0afe258eee6dc213558706e",
+  "provider": "SearXNG",
+  "query": "describe the principle behind battery chemistry in hydrology",
+  "query_id": "v5-p-0824-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:17.039843Z"
+}

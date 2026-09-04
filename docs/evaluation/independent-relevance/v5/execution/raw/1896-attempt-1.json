@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 352.71,
+  "pair_id": "v5-p-0925",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind bridge resonance in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "programming, software engineering, how to write a Windows app, computer graphics, like that. I used to be a pure mathematician, but when I came out here in 1986, I let the chip in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.rudyrucker.com",
+          "/saucerwisdom/html/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Saucer Wisdom",
+        "url": "https://www.rudyrucker.com/saucerwisdom/html/"
+      },
+      {
+        "category": "general",
+        "content": "the Jane Street Reverse Engineering Challenge [1h] [hn] The Raspberry Pi Interactive Timeline · 2006–2026 [2h] [hn] Carbon-aware electricity pricing, measured daily on 38 grids [3",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "brutalist.report",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Brutalist Report",
+        "url": "https://brutalist.report/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "40124dc2a610d16ac11efc7ad52ba9f7884420a16a614b63e962c79e60db12ef",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind bridge resonance in software engineering",
+  "query_id": "v5-p-0925-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:15:23.061011Z"
+}

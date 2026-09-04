@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 355.498,
+  "pair_id": "v5-p-0181",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind heat transfer in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "death,&#34; I asked my astronomy department professors, how is it today we can be having such intelligent conversations about cosmology? How is all our knowledge, all this information",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Information Philosopher - dedicated to the new information philosophy",
+        "url": "https://www.informationphilosopher.com/"
+      },
+      {
+        "category": "general",
+        "content": "of nonsense and dubious astronomy, a narrative emerges; the star that came to Earth was no bigger than would fit in the palm of your hand. It was found by a seafaring merchant in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-gig-economy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Gig Economy — Chadnet",
+        "url": "https://wiki.chadnet.org/the-gig-economy"
+      },
+      {
+        "category": "general",
+        "content": "modified gravity Nature Astronomy doi:10.1038/s41550-019-0823-y) and could be produced in the medial tachocline layers of the Sun through magnetic fields interacting with photons",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/quant.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quantum Reality and Cosmology",
+        "url": "http://www.dhushara.com/paradoxhtm/quant.htm"
+      },
+      {
+        "category": "general",
+        "content": "field on the border of astronomy, physics and philosophy. In antiquity and the Middle Ages, cosmology was based on mystical foundations . Due to her lack of knowledge of nature an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/AntropPrincip.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Anthropic Principle and Cosmic God",
+        "url": "https://www.astronuclphysics.info/AntropPrincip.htm"
+      },
+      {
+        "category": "general",
+        "content": "An Introduction to Astronomy , Macmillan (1906), p. 413. 9. L. Goldberg and E. Dyer, Jr., &#34;The Sun,&#34; in Science in Space , L. Berkner and H. Odishaw, eds., McGraw-Hill (1963), p.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kronos-press.com",
+          "/juergens/k0404-photosphere.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Photosphere: Is It the Top or the Bottom of the Phenomenon We Call the Sun?",
+        "url": "https://www.kronos-press.com/juergens/k0404-photosphere.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8fe2842333b911c6c371b6a7582ffcf11fec3eeebe28bfc08c098cd10874dab5",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind heat transfer in astronomy",
+  "query_id": "v5-p-0181-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:54.567387Z"
+}

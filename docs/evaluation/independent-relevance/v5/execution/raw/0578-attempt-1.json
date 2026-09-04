@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 356.722,
+  "pair_id": "v5-p-0169",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind immune response in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "as well as new roles in engineering, cloud computing and product development. This set of emerging professions also reflects the continuing importance of human interaction in the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/capitalism.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Capitalism will die - but will it take us with it?",
+        "url": "http://digdeeper.love/articles/capitalism.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "present or not. Social engineering to obtain security critical information such as SSH keys, or similar stuff that can render you vulnerable to start other attacks. The sandbox mu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "chef-koch.bearblog.dev",
+          "/windows-is-not-more-secure-than-linux-debunking-self-proclaimed-wannabe-researcher-madaidan/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Windows is not more secure than Linux - Debunking self-proclaimed wannabe researcher Madaidan – CHEF-KOCH&#39;s Microblog ✨",
+        "url": "https://chef-koch.bearblog.dev/windows-is-not-more-secure-than-linux-debunking-self-proclaimed-wannabe-researcher-madaidan/"
+      },
+      {
+        "category": "general",
+        "content": "The alien cantina 1242. Engineering happiness 1241. Countering Gandhi 1240. The stronger model 1239. A few sounds 1238. When Spinoza and Leibniz met 1237. A new stage of ugliness",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "orgyofthewill.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Orgy of the Will: A Philosophy of the Future",
+        "url": "http://orgyofthewill.net/"
+      },
+      {
+        "category": "general",
+        "content": "They Start Genetically Engineering Themselves Not GMOing Themselves It Must Not Happen To Pixies Or Else Only Space Pixies Will Be Able To Save You. If There Are Space Pixies You",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteListW-GeorgiaRunOffElection2021.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Free World Alliance Site List",
+        "url": "http://www.viacadempire.com/FWAsiteListW-GeorgiaRunOffElection2021.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e604a19c469a5c17e44699f9351f08095bba7b1c8a53d61fb769912782b18f9d",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind immune response in software engineering",
+  "query_id": "v5-p-0169-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:12.099093Z"
+}

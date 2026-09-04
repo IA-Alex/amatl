@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 363.89,
+  "pair_id": "v5-p-0926",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does bridge resonance in urban planning work",
+    "results": [
+      {
+        "category": "general",
+        "content": "acr. (Med.) Magnetic Resonance Imaging. Mr. Johnson: n. Any anonymous employer or corporate agent. Mr. Who: n. (Also &#34;The Who&#34;) label for an employer or person of higher authority",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.shoestring-graphics.com",
+          "/CP2020/slang/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Word on The Streets",
+        "url": "http://www.shoestring-graphics.com/CP2020/slang/"
+      },
+      {
+        "category": "general",
+        "content": "level, perhaps also resonance-related concerns embracing both the Moon and the annual/diurnal motions of Earth itself. BABYLONIAN CHARACTERISTIC SYNODIC PHENOMENA How were the pla",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "spirasolaris.ca",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Spirasolaris",
+        "url": "https://spirasolaris.ca/"
+      },
+      {
+        "category": "general",
+        "content": "caused by acoustic resonances of the modulated mercury plasma column within its tubular enclosure. One could certainly hear a faint acoustic radiation from the tube while it was i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1ed77aff732f3824cf647ade2382aac4235eab397bb8b497dfc75713639baf3a",
+  "provider": "SearXNG",
+  "query": "how does bridge resonance in urban planning work",
+  "query_id": "v5-p-0926-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:38.627261Z"
+}

@@ -1,0 +1,192 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 288.804,
+  "pair_id": "v5-p-0423",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes carbon capture in agricultural science",
+    "results": [
+      {
+        "category": "general",
+        "content": "the collapse of agricultural civilizations in Egypt, Greece, Syria, Palestine, Mesopotamia, the Indus Valley, and the Yangtze River Valley ( wattsupwiththat.com ). The general tre",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/climcat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Climate models and climate catastrophe: a reality check",
+        "url": "https://davidpratt.info/climcat.htm"
+      },
+      {
+        "category": "general",
+        "content": "Swedish University of Agricultural Sciences (SLU), Box 7026, S-750 07 Uppsala, Sweden Soil Biology &amp; Biochemistry 37 (2005) 811–817 SOIL BIOTA, SOIL SYSTEMS, AND PROCESS",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.microbeorganics.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Microbe Organics",
+        "url": "http://www.microbeorganics.com/"
+      },
+      {
+        "category": "general",
+        "content": "Emergency room visits, agricultural production, Wikipedia traffic, tree maps, and the emojiverse. 2015.12.16 • Policing the police, inventorying the glaciers, fact-checking the po",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.data-is-plural.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Data Is Plural — Full Archive",
+        "url": "https://www.data-is-plural.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "of voters in some agricultural states would favor candidates that will offer support for agricultural practices that protect the environment and the soil . 24 December 2019 ( Crac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-sep-dec.html"
+      },
+      {
+        "category": "general",
+        "content": "transitional phase to agricultural life. 10,000 BCE - 2000 BCE: Neolithic Age - New Stone Age. [Interglacial period]. Farming and herding become common. Neolithic life was achieve",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.peaceeducation101.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peace Education 101 - Peace curriculum, peace teaching program, peace education",
+        "url": "http://www.peaceeducation101.com/"
+      },
+      {
+        "category": "general",
+        "content": "erosion, harm agricultural crops, and weaken levees and other infrastructure. In heavily affected marshes, nutria can contribute to the conversion of vegetated wetlands into open",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "030a9c79cb8d2b5caa8def0fa905f82da6f9f5e7d033f2bc6ab535acab5e72d4",
+  "provider": "SearXNG",
+  "query": "what causes carbon capture in agricultural science",
+  "query_id": "v5-p-0423-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:20.795683Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 256.497,
+  "pair_id": "v5-p-0931",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes bridge resonance in forensic science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "283b924778673f1bbde36d558bb7b48c788d597f7dbb5f7780e0b6df38ca0ff9",
+  "provider": "SearXNG",
+  "query": "what causes bridge resonance in forensic science",
+  "query_id": "v5-p-0931-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:45.101560Z"
+}

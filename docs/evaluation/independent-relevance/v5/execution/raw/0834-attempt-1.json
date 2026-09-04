@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 314.675,
+  "pair_id": "v5-p-0296",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind water purification in ecology",
+    "results": [
+      {
+        "category": "general",
+        "content": "to the Aztec mind. The purification of the home, the street, the plaza, was performed daily by sweeping. The Florentine Codex states: “ Quetzalcoatl is “in ehecatl” (“the wind”),",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-metaphysics-of-aztec-violence",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Metaphysics of Aztec Violence — Chadnet",
+        "url": "https://wiki.chadnet.org/the-metaphysics-of-aztec-violence"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f78ce4e3ab8075b03b0bb4d46f1e927a0b910d7b63e01d1fd1f7ae140c95730a",
+  "provider": "SearXNG",
+  "query": "describe the principle behind water purification in ecology",
+  "query_id": "v5-p-0296-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:09:40.011827Z"
+}

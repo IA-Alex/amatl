@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 308.302,
+  "pair_id": "v5-p-0724",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does root systems in civil engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "the result of genetic engineering if anyone did that, but it is no proof that the virus was engineered because it could have randomly incorporated that sequence as RNA while adapt",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2021-nov-feb.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2021: November - February Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2021-nov-feb.html"
+      },
+      {
+        "category": "general",
+        "content": "also used for social engineering, political efforts to advatage one group at the expense of another. Since the Progressive Era in America, many tax rates have been progressive, me",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "histclo.com",
+          "/eco/eco.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "economics economies",
+        "url": "https://histclo.com/eco/eco.html"
+      },
+      {
+        "category": "general",
+        "content": "Those who think govt is engineering complex conspiracies or hiding aliens or something should see if those ideas square with the demonstrated incompetence related to 9/11. From Pa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonTerrorism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about Terrorism",
+        "url": "https://www.billdietrich.me/ReasonTerrorism.html"
+      },
+      {
+        "category": "general",
+        "content": "problem, but as an engineering problem. Any solution that solves the problem is acceptable. Any solution that does not solve the problem is not acceptable. For example, there is a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2007/04/_trial_version.html",
+          "",
+          "",
+          "004052"
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: The Mencius Vision",
+        "url": "http://www.2blowhards.com/archives/2007/04/_trial_version.html#004052"
+      },
+      {
+        "category": "general",
+        "content": "University School of Engineering. Liars: July 17, 2002, The San Diego Times-Union:  Phony ‘Hate Crime’ Witness Confesses that Morris Dees Bought Perjury:  Th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "goodnewsaboutgod.com",
+          "/studies/spiritual/revelations/mark_of_the_beast.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "What is the MARK of the Beast?",
+        "url": "https://goodnewsaboutgod.com/studies/spiritual/revelations/mark_of_the_beast.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0d050238076800c38c95940093ee9f7c8b9c1f6e6d4a4bda3686cb9b72ae93b6",
+  "provider": "SearXNG",
+  "query": "how does root systems in civil engineering operate",
+  "query_id": "v5-p-0724-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:37.914507Z"
+}

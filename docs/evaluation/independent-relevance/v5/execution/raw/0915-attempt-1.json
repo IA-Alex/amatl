@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 249.195,
+  "pair_id": "v5-p-1060",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does microbial fermentation in music technology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d3bcc4d6ed0bfed2539688b133e0b4523b95e2239f713c7b0625a61822ceec97",
+  "provider": "SearXNG",
+  "query": "how does microbial fermentation in music technology operate",
+  "query_id": "v5-p-1060-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:10:05.489731Z"
+}

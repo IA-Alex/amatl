@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 320.561,
+  "pair_id": "v5-p-1064",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind microbial fermentation in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7dcd2fdc0663c7d0540d0d47446547a97b6f33bbffdfae91b33db7ce63596451",
+  "provider": "SearXNG",
+  "query": "describe the principle behind microbial fermentation in pharmacology",
+  "query_id": "v5-p-1064-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:31.236543Z"
+}

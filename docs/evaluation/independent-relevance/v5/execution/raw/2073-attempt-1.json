@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 272.508,
+  "pair_id": "v5-p-0470",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does encryption keys in biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "attack has reopened the encryption debate and once again it is necessary to explain why public access to strong encryption is in our national interest. Many have pointed out the o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ciphersaber.gurus.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CipherSaber Home Page",
+        "url": "https://ciphersaber.gurus.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6a7ee8e9463d337708677c357294d77e02c9c59fa84d5adf796b480b4a48403b",
+  "provider": "SearXNG",
+  "query": "how does encryption keys in biology work",
+  "query_id": "v5-p-0470-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:16:18.145307Z"
+}

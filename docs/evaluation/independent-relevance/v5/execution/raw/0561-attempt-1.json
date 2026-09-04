@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 306.877,
+  "pair_id": "v5-p-0945",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is cloud formation in environmental science",
+    "results": [
+      {
+        "category": "general",
+        "content": "receivers are &#34;hearing&#34; environmental noise and not their own &#34;front-end&#34; noise, and should suggest some areas for individual and networked, or cooperative research. Figure 1, tak",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.vlf.it",
+          "/naturalnoisefloor/naturalnoisefloor.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WHERE AND WHAT IS THE NATURAL NOISE FLOOR",
+        "url": "http://www.vlf.it/naturalnoisefloor/naturalnoisefloor.htm"
+      },
+      {
+        "category": "general",
+        "content": "are plenty of genuine environmental problems that need fixing, but rising atmospheric CO 2 is not one of them – it is a diversion. Examples of highly uncertain sources of CO",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/climcat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Climate models and climate catastrophe: a reality check",
+        "url": "https://davidpratt.info/climcat.htm"
+      },
+      {
+        "category": "general",
+        "content": "operating. Whether the environmental phase of it summarized under (1) and (2) is actually causally important, and to what extent the environmental factors are related to the bloss",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.isegoria.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Isegoria",
+        "url": "http://www.isegoria.net/"
+      },
+      {
+        "category": "general",
+        "content": "* Environmentalists fitted up  http://www.judibari.org/ * Dice George&#39;s Stonehenge Campaign etc.   http://www.dicenews.com/ * Photographer Tash Lodge&#39;s site   http:",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "understanding of environmental, political, human rights, economic, democracy, scientific, and social justice issues, etc.. We believe this constitutes a &#34;fair use&#34; of any such cop",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "thebiggestsecretpict.online.fr",
+          "/nwo.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "New World Order, Conspiracy, UFOs photographs",
+        "url": "http://thebiggestsecretpict.online.fr/nwo.htm"
+      },
+      {
+        "category": "general",
+        "content": "economic, geopolitical, environmental, societal, technological. One an also find analyses such as the 2010 U.K. Ministry of Defence&#39;s Global Strategic Trends -- Out to 2040 or the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stat.berkeley.edu",
+          "/~aldous/Real_World/100_list.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Annotated list of contexts where we perceive chance",
+        "url": "https://www.stat.berkeley.edu/~aldous/Real_World/100_list.html"
+      },
+      {
+        "category": "general",
+        "content": "pattern was caused by environmental events in Hitler’s personal history.  It is too late to discover enough of these to make a convincing case (only historians and psychoanal",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "anthonyflood.com",
+          "/blanshardskinnerdebate.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Brand Blanshard &#34;The Problem of Consciousness: A Debate with B. F. Skinner&#34;",
+        "url": "http://anthonyflood.com/blanshardskinnerdebate.htm"
+      },
+      {
+        "category": "general",
+        "content": "involve the traditional environmental detours. They are too technical, diverse and futile to tackle here. If the quality of our lives is to be significantly enhanced in the long t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/gooddrug.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Good Drug Guide: The Responsible Parent&#39;s Guide To Healthy Mood-Boosters For All The Family",
+        "url": "https://www.hedweb.com/gooddrug.htm"
+      },
+      {
+        "category": "general",
+        "content": "be possible to handle environmental threats, such as drought, by a heightened responsibility towards the environment. We would learn to foresee complicated problems, and also to g",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mats-winther.github.io",
+          "/hillmcrit.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Critique of Archetypal Psychology",
+        "url": "https://mats-winther.github.io/hillmcrit.htm"
+      },
+      {
+        "category": "general",
+        "content": "be sustainable and environmentally friendly. Global Availability: Ethical distribution mechanisms should be in place to ensure global availability, avoiding a scenario where only",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.empathogens.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Empathogens as conceived by ChatGPT",
+        "url": "https://www.empathogens.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "kind would have neither environmental problems nor scarcity of energy. For if it were to use its mental power as a unified civilization, it would have control of the energies of i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "for people who are environmentalists. IP Address: 74.91.153.110 www.omniscientcomputers.org for people interested in Science. www.orderofwhiteknights.com For People Who Care A Ton",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.e-democracy.biz",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Judicially Arbitrated Imperial E-Democracy",
+        "url": "http://www.e-democracy.biz/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "36c1fd05ea4394d7b98f8f7f83d253e0792519cae37d63a54d1eed409e452b23",
+  "provider": "SearXNG",
+  "query": "what is cloud formation in environmental science",
+  "query_id": "v5-p-0945-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:05.551944Z"
+}

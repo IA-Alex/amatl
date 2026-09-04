@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 278.862,
+  "pair_id": "v5-p-0614",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does renewable energy storage in biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "etc. Depletion of Non-Renewable Resources: The lack of fertilizer and other resources needed for manufacturing will kill modern civilization. Resource Wars will be fought over sca",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/faqs/overpopulation",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Overpopulation FAQs",
+        "url": "https://zerocontradictions.net/faqs/overpopulation"
+      },
+      {
+        "category": "general",
+        "content": "advancements in renewable energy, carbon capture and storage, and other climate change mitigation strategies can play a crucial role in addressing one of the most pressing global",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.utilitarianism.com",
+          "/chatgpt/effective-altruism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utilitarianism and effective altruism as conceived by ChatGPT-4",
+        "url": "https://www.utilitarianism.com/chatgpt/effective-altruism.html"
+      },
+      {
+        "category": "general",
+        "content": "developments in renewable energy technologies, electric vehicles, and energy-efficient appliances can help mitigate climate change, a significant long-term risk. Communication and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.utilitarianism.com",
+          "/chatgpt/longtermism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utilitarianism and longtermism as conceived by ChatGPT-4",
+        "url": "https://www.utilitarianism.com/chatgpt/longtermism.html"
+      },
+      {
+        "category": "general",
+        "content": "– carbon removal, renewables, energy storage and transmission – is a dizzying array of options, with no way to sort or rank their importance. But it seems to me that climate is be",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "nadia.xyz",
+          "/climate-tribes",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nadia Asparouhova | Mapping out the tribes of climate",
+        "url": "http://nadia.xyz/climate-tribes"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c81007571e90caff322031c0b70ef319f178668caa3d7958fb3f11c99b61eec6",
+  "provider": "SearXNG",
+  "query": "how does renewable energy storage in biology work",
+  "query_id": "v5-p-0614-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:54.712754Z"
+}

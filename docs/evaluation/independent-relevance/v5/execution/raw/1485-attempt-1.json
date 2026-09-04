@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 267.833,
+  "pair_id": "v5-p-0142",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does database indexing in marine biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "The On-Line Music Database has gone through some changes in the last week. It is now searchable by: Track, Album, Artist, and Submitter. It now also allows editing of existing dat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "home.mcom.com",
+          "/home/whatsnew/whats_new_0194.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "What&#39;s New! January 1994",
+        "url": "http://home.mcom.com/home/whatsnew/whats_new_0194.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5aabb6228d0c6084ab49b0c6d05604cdec8833fbc69579c9b6e09b0dc18c5737",
+  "provider": "SearXNG",
+  "query": "how does database indexing in marine biology work",
+  "query_id": "v5-p-0142-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:13:09.246234Z"
+}

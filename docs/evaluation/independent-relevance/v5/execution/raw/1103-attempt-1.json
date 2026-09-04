@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 302.837,
+  "pair_id": "v5-p-0929",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is bridge resonance in communication studies",
+    "results": [
+      {
+        "category": "general",
+        "content": "which enable direct communication between the brain and external devices, could be crucial in modulating mood and happiness. BCIs could potentially be used to stimulate specific b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biohappiness.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biohappiness Revolution as conceived by ChatGPT",
+        "url": "https://www.biohappiness.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "Chapter Four: Notes On Communication The Lifebox Dragonfly Cameras Piezoplastic Radiotelepathy Chapter Five: Frank And Peggy Jahva House Audrey Peggy Sung Chapter Six: Notes On Al",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.rudyrucker.com",
+          "/saucerwisdom/html/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Saucer Wisdom",
+        "url": "https://www.rudyrucker.com/saucerwisdom/html/"
+      },
+      {
+        "category": "general",
+        "content": "and they are all in communication with each other, therefore parts of one organic whole ... The whole is in all its parts so beautiful, and is felt by me to be so intensely in ear",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/Theology-Pantheism-Spinoza.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theology, Pantheism Spinoza: Discussion Metaphysics of Pantheism, SpinozaQuotes All is One (Nature, God)",
+        "url": "https://www.spaceandmotion.com/Theology-Pantheism-Spinoza.htm"
+      },
+      {
+        "category": "general",
+        "content": "the techniques of communication per has invented. Friedrich Nietzsche ↖︎ Amusing Ourselves to Death Karl Marx from The German Ideology. “Is the Iliad possible,” he asks rhetorical",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "quotes.pouyakary.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quote Anthology",
+        "url": "https://quotes.pouyakary.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9635467c6dc8bfa019f5ad00a6db19eeb855d2a8b8027c35ec0e1b72fdcd8aa4",
+  "provider": "SearXNG",
+  "query": "what is bridge resonance in communication studies",
+  "query_id": "v5-p-0929-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:04.351336Z"
+}

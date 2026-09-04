@@ -1,0 +1,9 @@
+{
+  "alpha": 0.05,
+  "control_n": 225,
+  "primary_endpoint": "STRICT_RELEVANCE_YIELD",
+  "reason": "confirmatory sample unavailable",
+  "schema": "amatl.relevance.v5-statistical-result.v1",
+  "status": "NOT_APPLICABLE",
+  "treatment_n": 402
+}

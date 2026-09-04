@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 363.378,
+  "pair_id": "v5-p-0397",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind carbon capture in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "History, etc. Astronomy/Astrophysics Books - Includes Supernovae, the Big Bang, Black Holes, Stellar Evolution, etc. Space Achievements Books - Includes the Apollo Program, the Ru",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nuwen.net",
+          "/books.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Book Reviews - nuwen.net",
+        "url": "https://nuwen.net/books.html"
+      },
+      {
+        "category": "general",
+        "content": "Topics Archaeology Astronomy Esoterism Extremism Health Linguistics Mathematics Neurology New Religious Groups Paranormal Philosophy Physics Psychiatry Secret Societies Spirituali",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.meta-religion.com",
+          "/Philosophy/Articles/Consciousness/post-physicalism.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Post-Physicalism",
+        "url": "https://www.meta-religion.com/Philosophy/Articles/Consciousness/post-physicalism.htm"
+      },
+      {
+        "category": "general",
+        "content": "and especially loved astronomy, you will find that there aren&#39;t many areas of human knowledge that he ignored. The subject groupings here begin with the broad bibliographic catego",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "field on the border of astronomy, physics and philosophy. In antiquity and the Middle Ages, cosmology was based on mystical foundations . Due to her lack of knowledge of nature an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/AntropPrincip.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Anthropic Principle and Cosmic God",
+        "url": "https://www.astronuclphysics.info/AntropPrincip.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e8312074503844966bbda1506e6a7bbef3871c6c21cb674eea9c464623b5bf48",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind carbon capture in astronomy",
+  "query_id": "v5-p-0397-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:23.253674Z"
+}

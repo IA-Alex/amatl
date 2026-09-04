@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 346.465,
+  "pair_id": "v5-p-0284",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind binary search in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4dda055faac10ca682517fd2b2a19c958e59da82c2a133507650f6a20114ba88",
+  "provider": "SearXNG",
+  "query": "describe the principle behind binary search in hydrology",
+  "query_id": "v5-p-0284-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:21.792424Z"
+}

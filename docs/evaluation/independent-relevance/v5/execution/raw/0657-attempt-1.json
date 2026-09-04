@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 321.664,
+  "pair_id": "v5-p-0674",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does traffic flow in urban planning work",
+    "results": [
+      {
+        "category": "general",
+        "content": "council councils plan planning, plans though court courts already possible nothing hear heard yet water pay paid, paying effect effects whether idea ideas enough line lines study",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "13.15. Terrible Urban Planning 13.16. Cars And Roads Are Bad For Energy Independence 13.17. Unaffordable Housing And Homelessness 13.18. Georgism And Wealth Distribution 13.19. In",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/civilization/case-against-libertarianism",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Case Against Libertarianism And Ancapism",
+        "url": "https://zerocontradictions.net/civilization/case-against-libertarianism"
+      },
+      {
+        "category": "general",
+        "content": "Motornet Urban Planning Development Congestion End of Transit Definition Statistics Glossary Sidebars: Charging Speed Limits NHTSA Levels Valley of Danger Simulator Google Cars Th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.templetons.com",
+          "/brad/robocars/motornet.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Motornet -- Robocars and data",
+        "url": "https://www.templetons.com/brad/robocars/motornet.html"
+      },
+      {
+        "category": "general",
+        "content": "of Organized Crime in planning assassination, Schweiker was traumatically shaken.  &#34;That was so repugnant and shocking to me that I did a backflip on any number of things,&#34; h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cuban-exile.com",
+          "/doc_001-025/doc0019a.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Last Investigation by gaeton Fonzi",
+        "url": "http://cuban-exile.com/doc_001-025/doc0019a.html"
+      },
+      {
+        "category": "general",
+        "content": "the West Coast Marine Planning Tribal Partnership -- a group of 10 tribes working to draft marine plans for their individual tribal territories. Coquille: Proposed Medford casino:",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cowlitzcountry.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cowlitz Country News Home Page",
+        "url": "http://www.cowlitzcountry.com/"
+      },
+      {
+        "category": "general",
+        "content": "[councils] plan [planning, plans] though court [courts] already possible nothing hear [heard] yet water pay [paid, paying] effect [effects] whether idea [ideas] enough line [lines",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq-bnc.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.conlang.info/wordfreq-bnc.txt",
+        "url": "http://www.conlang.info/wordfreq-bnc.txt"
+      },
+      {
+        "category": "general",
+        "content": "that the Jews were &#34;planning to rule Spain, enslave the Christians, and establish a New Jerusalem in the West&#34; began acting on their suspicions by taking the law into their own ha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fisheaters.com",
+          "/jc-jones6.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Revolutionary Jew and His Impact on World History",
+        "url": "https://www.fisheaters.com/jc-jones6.html"
+      },
+      {
+        "category": "general",
+        "content": "Clever Design Features Planning around Traffic Priority Traffic How Conventional Railroads integrate with Traction The Railroad as its own Customer Track Plans: Modules built upon",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.3rail.link",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "3rail Model Railroading",
+        "url": "https://www.3rail.link/"
+      },
+      {
+        "category": "general",
+        "content": "affect-ing the planning and economics of space-based systems.   Why is the DoD Involved?   The Department of De-fense (DoD) conducts Arctic research to ensure the develo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "and project planning. The story of Wong Cho Lam is not just the story of one particular entertainer. It is about how to build a career in the entertainment industry. Unfortunately",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.zonaeuropa.com",
+          "/weblog.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "EastSouthWestNorth Blog",
+        "url": "http://www.zonaeuropa.com/weblog.htm"
+      },
+      {
+        "category": "general",
+        "content": "Motornet Urban Planning Development Congestion End of Transit Definition Statistics Glossary Sidebars: Charging Speed Limits NHTSA Levels Valley of Danger Simulator Google Cars Th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.templetons.com",
+          "/brad/robocars/robot-cars.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Implications of Robot Cars and Taxis",
+        "url": "https://www.templetons.com/brad/robocars/robot-cars.html"
+      },
+      {
+        "category": "general",
+        "content": "Dreams — Imagining and Planning Interstellar Exploration A deep dive on space exploration with an eye toward interstellar possibilities and life. Canadian Football History A fan&#39;s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "blogroll.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ye Olde Blogroll - Because blogs are the soul of the web",
+        "url": "https://blogroll.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "cd2da0740b7f0b47c8441f8434c5f43c7abace76311dfdfb5e066fce20baa695",
+  "provider": "SearXNG",
+  "query": "how does traffic flow in urban planning work",
+  "query_id": "v5-p-0674-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:44.070248Z"
+}

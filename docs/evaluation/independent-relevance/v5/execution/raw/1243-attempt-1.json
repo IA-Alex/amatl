@@ -1,0 +1,192 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 307.781,
+  "pair_id": "v5-p-0478",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does encryption keys in environmental science work",
+    "results": [
+      {
+        "category": "general",
+        "content": "The Defacto For EPA{Environmental Protection Agency} Legal Weed. CBD Will Have An Equal High To THC Once Imbibed Enough To Get The High That Get&#39;s You High And Mighty Because Of H",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteList.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/FWAsiteList.html"
+      },
+      {
+        "category": "general",
+        "content": "professor in civil and environmental engineering, who has specialized in natural hazards modeling at the University of Michigan, to look elsewhere. His work focuses on how climate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alterslash.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alterslash, the unofficial Slashdot digest",
+        "url": "https://alterslash.org/"
+      },
+      {
+        "category": "general",
+        "content": "files can be set in an environmental variable. Additionally, the placement and size of help windows can be set in a similar fashion. The program can be told to display all files f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jim.rees.org",
+          "/apollo-archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Apollo Archive",
+        "url": "https://jim.rees.org/apollo-archive/"
+      },
+      {
+        "category": "general",
+        "content": "prevention through environmental design (CPTED), PKI as Part of an Integrated Risk Management Strategy for Web Security , presented at EuroPKI 2011 , looks at how CPTED is applied",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cs.auckland.ac.nz",
+          "/~pgut001/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Gutmann&#39;s Home Page",
+        "url": "https://www.cs.auckland.ac.nz/~pgut001/"
+      },
+      {
+        "category": "general",
+        "content": "on this theme of environmental empathy, the E language is built from powerful capabilities concepts, and can thus be easily turned to Financial Cryptography [ 17 ] . Hardware-base",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "iang.org",
+          "/papers/fc7.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Financial Cryptography in 7 Layers",
+        "url": "http://iang.org/papers/fc7.html"
+      },
+      {
+        "category": "general",
+        "content": "The Defacto For EPA{Environmental Protection Agency} Legal Weed. CBD Will Have An Equal High To THC Once Imbibed Enough To Get The High That Get&#39;s You High And Mighty Because Of H",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6180c209f04994bf2aca7973eec5b3f215307f9697ef43befd75fd88ea78ad94",
+  "provider": "SearXNG",
+  "query": "how does encryption keys in environmental science work",
+  "query_id": "v5-p-0478-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:54.256955Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 248.219,
+  "pair_id": "v5-p-0252",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does plate tectonics in transportation engineering operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6c82c781758adfaf2e34e8b557acfc2631c1d609d8edb8e10ff100afeffd5c3c",
+  "provider": "SearXNG",
+  "query": "how does plate tectonics in transportation engineering operate",
+  "query_id": "v5-p-0252-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:00.455395Z"
+}

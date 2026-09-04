@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 358.494,
+  "pair_id": "v5-p-0128",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind database indexing in optics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d6658d9641c3f577a313389f90dd5f56701e23963502dfe0600aab1b44c19930",
+  "provider": "SearXNG",
+  "query": "describe the principle behind database indexing in optics",
+  "query_id": "v5-p-0128-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:15.195368Z"
+}

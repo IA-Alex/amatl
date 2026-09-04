@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 322.323,
+  "pair_id": "v5-p-1021",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is probability distributions in information systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "variables - 3: Joint distributions &amp; conditioning Joint probability distribution Linearity and product of expectation Conditional expectation AoS 2.5 - 2.8 MHB 3.10 - 3.13, 3.15 a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www3.cs.stonybrook.edu",
+          "/~anshul/courses/cse544_s20/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CSE 544, Spring 2020: Probability &amp; Statistics for Data Science",
+        "url": "http://www3.cs.stonybrook.edu/~anshul/courses/cse544_s20/"
+      },
+      {
+        "category": "general",
+        "content": "subjective probability distributions before and after an observation - the relative entropy between its prior and posterior [1995; ref 6]. Variant 4 (zero sum intrinsic reward gam",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.idsia.ch",
+          "/~juergen/interest.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WHAT&#39;S INTERESTING? ACTIVE EXPLORATION - CURIOSITY-DRIVEN REINFORCEMENT LEARNING - ARTIFICIAL CURIOSITY - INTRINSIC REWARD - INTRINSIC MOTIVA",
+        "url": "https://people.idsia.ch/~juergen/interest.html"
+      },
+      {
+        "category": "general",
+        "content": "on stellar population distributions can be recovered directly from galactic dynamics. Starting from observed rotation curves, we construct synthetic stellar population mixtures co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "to sample hard distributions has remained a key path to demonstrating quantum advantage. Yet a severe drawback remains: verification seems to require exponential classical computa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scottaaronson.com",
+          "/papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Research Papers and Surveys",
+        "url": "https://www.scottaaronson.com/papers/"
+      },
+      {
+        "category": "general",
+        "content": "computable probability distributions. This work represents the first mathematically sound theory of universal artificial intelligence - most previous work on AI was either heurist",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.idsia.ch",
+          "/~juergen/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Juergen Schmidhuber&#39;s home page -Universal Artificial Intelligence - AI - Deep Learning - Recurrent Neural Networks -Computer Vision - Object",
+        "url": "https://people.idsia.ch/~juergen/"
+      },
+      {
+        "category": "general",
+        "content": "Binomial vs. Poisson Distributions Using Information Theoretic Methods Vladimir Blinovsky: Large Deviations in the Commutative and Non-Commutative Case Viacheslav Prelov and Edwar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.math.uni-bielefeld.de",
+          "/ahlswede/zif/opening.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "General Theory of Information Transfer",
+        "url": "https://www.math.uni-bielefeld.de/ahlswede/zif/opening.html"
+      },
+      {
+        "category": "general",
+        "content": "and their geographical distributions vary as they adapt to changing conditions. Figure 12: Glacier shortening (4) and sea level rise (24,25). Gray area designates estimated range",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oism.org",
+          "/pproject/s33p36.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Environmental Effects of Increased Atmospheric Carbon Dioxide - Global Warming Petition Project",
+        "url": "https://www.oism.org/pproject/s33p36.htm"
+      },
+      {
+        "category": "general",
+        "content": "Using the empirical distributions of interstate war sizes and onset times from 1823 to 2003, we parameterized stationary models of conflict generation that can distinguish trends",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.socrethics.com",
+          "/Folder2/Culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cultural Evolution of Suffering",
+        "url": "http://www.socrethics.com/Folder2/Culture.htm"
+      },
+      {
+        "category": "general",
+        "content": "implies that if two distributions give rise to the same density matrix, then those distributions are empirically indistinguishable, or in other words are the same mixed state . As",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scottaaronson.com",
+          "/democritus/lec9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHYS771 Lecture 9: Quantum",
+        "url": "https://www.scottaaronson.com/democritus/lec9.html"
+      },
+      {
+        "category": "general",
+        "content": "of different Linux distributions, as well as for his &#34;Luke&#39;s Linux&#34; series in which he documents the process of building his own custom Linux distribution.&#34; &#43;9 @1337GigaChad - 202",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/mediocre_net",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AI Will Make (Has Made) the Internet Mediocre...",
+        "url": "https://lukesmith.neocities.org/vids/mediocre_net"
+      },
+      {
+        "category": "general",
+        "content": "geometries and mass distributions that satisfy them. In   1963, Roy Kerr found a solution for rotating massive black holes. This solution allows a path along a clos",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.andyross.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE ROSS BLOG",
+        "url": "https://www.andyross.net/"
+      },
+      {
+        "category": "general",
+        "content": "are many probability distributions that could lead to the same observed sequence of guesses, so Shannon could only estimate the entropy bounds to be between 0.6 and 1.3 bits per c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mattmahoney.net",
+          "/dc/rationale.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rationale for a Large Text Compression Benchmark",
+        "url": "http://www.mattmahoney.net/dc/rationale.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7257ef18c3deb6b7715af97196e5ae20b297e3651dd10a51e75bec3c6d795db9",
+  "provider": "SearXNG",
+  "query": "what is probability distributions in information systems",
+  "query_id": "v5-p-1021-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:26.459111Z"
+}

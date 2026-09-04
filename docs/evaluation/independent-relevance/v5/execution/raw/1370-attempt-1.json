@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 388.39,
+  "pair_id": "v5-p-0288",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind binary search in transportation engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "cure wounds Elevator Transportation from one floor of a tall building to another Flashlight Provides light in dark places Fountain Scenic highlight; provides communication to syst",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fudco.com",
+          "/chip/lessons.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Lessons of Lucasfilm&#39;s Habitat",
+        "url": "http://www.fudco.com/chip/lessons.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "44624c346a08e5bba880f83fd855b3df77dbfcd1262fc99ab3d7aca1b1d27a0d",
+  "provider": "SearXNG",
+  "query": "describe the principle behind binary search in transportation engineering",
+  "query_id": "v5-p-0288-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:12:33.291025Z"
+}

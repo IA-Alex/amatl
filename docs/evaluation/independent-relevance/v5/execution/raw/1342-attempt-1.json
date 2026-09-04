@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 227.459,
+  "pair_id": "v5-p-0715",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of language acquisition in forensic science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0f705f60ba114ed267b6b90f8b951b9452e8fc49b7c15e757c4d9a1e96a39b7b",
+  "provider": "SearXNG",
+  "query": "give an overview of language acquisition in forensic science",
+  "query_id": "v5-p-0715-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:25.051211Z"
+}

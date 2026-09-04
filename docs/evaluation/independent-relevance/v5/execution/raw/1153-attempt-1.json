@@ -1,0 +1,192 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 301.147,
+  "pair_id": "v5-p-0854",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does data compression in urban planning work",
+    "results": [
+      {
+        "category": "general",
+        "content": "were made by an image-compression algorithm developed by Technion-Israel researchers. The Israeli Space Agency is carrying on an innovative project, a space vehicle which would be",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.imninalu.net",
+          "/Israel-Arabs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Israel and the Arab World",
+        "url": "https://www.imninalu.net/Israel-Arabs.htm"
+      },
+      {
+        "category": "general",
+        "content": "them]. The Work of compression of the magnetic field is produced by the potential energy of the surrounding ether. Similarly, the potential energy of the atmosphere is converted i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "antimatrix.org",
+          "/Convert/Books/Sall/Questions_and_Answers_En.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dr. Sall - Secret Knowledge, and Science: from prehistoric civilizations to our days",
+        "url": "http://antimatrix.org/Convert/Books/Sall/Questions_and_Answers_En.html"
+      },
+      {
+        "category": "general",
+        "content": "local escalation. This compression changes the incentive structure if she is interested in a relationship rather than only the trip. A pleasant coffee followed by several days of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kirill.korins.ky",
+          "/articles/abliterated-large-language-models-treat-users-as-capable-adults/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Abliterated Large Language Models Treat Users as Capable Adults - Kirill&#39;s journal",
+        "url": "https://kirill.korins.ky/articles/abliterated-large-language-models-treat-users-as-capable-adults/"
+      },
+      {
+        "category": "general",
+        "content": "that will come from compression, packetizing, simple file encryption, etc.) &#43; Types of Arguments Against Such Bans - The &#34;Constitutional Rights&#34; Arguments &#43; The &#34;It&#39;s Too Late&#34; Ar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cdn.nakamotoinstitute.org",
+          "/docs/cyphernomicon.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://cdn.nakamotoinstitute.org/docs/cyphernomicon.txt",
+        "url": "https://cdn.nakamotoinstitute.org/docs/cyphernomicon.txt"
+      },
+      {
+        "category": "general",
+        "content": "their standard of audio compression served to convey the listener into the acoustic environment of their homes - an underestimated aspect of creating a realistic auditory illusion",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      },
+      {
+        "category": "general",
+        "content": "emitters, explosive compression of huge solenoids and explosive breaking of energised superconducting toroids. One common factor here is that these weapons are single use only, af",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cyb-sec.neocities.org",
+          "/pages/alt-cyberpunk-faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "alt.cyberpunk FAQ – /cyb/&#43;/sec/ wiki",
+        "url": "https://cyb-sec.neocities.org/pages/alt-cyberpunk-faq/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a3f9bf55e693ced9b62eb67fb0f5a1476164ad5071f6910c4a5ca40ef3a3b6f1",
+  "provider": "SearXNG",
+  "query": "how does data compression in urban planning work",
+  "query_id": "v5-p-0854-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:20.036276Z"
+}

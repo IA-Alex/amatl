@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 379.329,
+  "pair_id": "v5-p-0221",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind plate tectonics in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "critique of plate tectonics, see: Plate Tectonics: A Paradigm Under Threat Journal of Scientific Exploration, vol. 14, no. 3, 2000 Contents   Introduction Plate Tectonics --",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/tierra_hueca/inner_earth/sunken.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sunken Continents versus Continental Drift",
+        "url": "https://www.bibliotecapleyades.net/tierra_hueca/inner_earth/sunken.htm"
+      },
+      {
+        "category": "general",
+        "content": "Huntington&#39;s plate tectonics are too simple. Two months of recent travel throughout Turkey revealed to me that although the Turks are developing a deep distrust, bordering on hatr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "63783504c92d4ddd32e45a4d38c163e037a1fd03243bec092dc6d660661b0f7d",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind plate tectonics in climate science",
+  "query_id": "v5-p-0221-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:06:08.001477Z"
+}

@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 333.628,
+  "pair_id": "v5-p-0649",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind traffic flow in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "of nonsense and dubious astronomy, a narrative emerges; the star that came to Earth was no bigger than would fit in the palm of your hand. It was found by a seafaring merchant in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-gig-economy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Gig Economy — Chadnet",
+        "url": "https://wiki.chadnet.org/the-gig-economy"
+      },
+      {
+        "category": "general",
+        "content": "An Introduction to Astronomy , Macmillan (1906), p. 413. 9. L. Goldberg and E. Dyer, Jr., &#34;The Sun,&#34; in Science in Space , L. Berkner and H. Odishaw, eds., McGraw-Hill (1963), p.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kronos-press.com",
+          "/juergens/k0404-photosphere.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Photosphere: Is It the Top or the Bottom of the Phenomenon We Call the Sun?",
+        "url": "https://www.kronos-press.com/juergens/k0404-photosphere.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "312fec63f4f764398ceaaa5f0b19219c9682a55455002fe0327032817c0dba47",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind traffic flow in astronomy",
+  "query_id": "v5-p-0649-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:08:26.124981Z"
+}

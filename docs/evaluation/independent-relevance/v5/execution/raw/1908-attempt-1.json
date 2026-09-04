@@ -1,0 +1,354 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 451.912,
+  "pair_id": "v5-p-0050",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of compiler operation in information systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "the core dump has some information 28:07.73 that I could use, but it doesn&#39;t show me 28:08.99 the state of things while it&#39;s running. 28:11.21 Now here&#39;s some Common Lisp. Look, I",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jackrusher.com",
+          "/strange-loop-2022/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stop Writing Dead Programs, Strange Loop 2022",
+        "url": "https://jackrusher.com/strange-loop-2022/"
+      },
+      {
+        "category": "general",
+        "content": "runtime configuration information for the Samba programs. The complete description of the file format and possible parameters held within are here for reference purposes. HOW CONF",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.samba.org",
+          "/samba/docs/current/man-html/smb.conf.5.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "smb.conf",
+        "url": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+      },
+      {
+        "category": "general",
+        "content": "Click here for more information. Accis Dial Helper (78 KB) added 01/05/1999 (Communication) Version 1.0 by Gottfried Burckhardt Accis Dial Helper is a utility that allows you to c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mizj.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "S.U.P.E.R. - The Largest 200LX Software Archive",
+        "url": "http://mizj.com/"
+      },
+      {
+        "category": "general",
+        "content": "them. For further information, refer to &#34;ZAP: Z- language Assembly Program,&#34; by Joel M. Berez, or to the appropriate not- yet-written document. ZIP is the lowest level of Infocom&#39;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "frobnitz.co.uk",
+          "/zmachine/infocom/yzip.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://frobnitz.co.uk/zmachine/infocom/yzip.txt",
+        "url": "https://frobnitz.co.uk/zmachine/infocom/yzip.txt"
+      },
+      {
+        "category": "general",
+        "content": "the references for more information). The parser itself, however, is relatively simple, and understanding how it works, while not strictly necessary, will nevertheless make treatm",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cs.utexas.edu",
+          "/~novak/yaccpaper.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Yacc Yet Another Compiler Compiler by Stephen C. Johnson",
+        "url": "https://www.cs.utexas.edu/~novak/yaccpaper.htm"
+      },
+      {
+        "category": "general",
+        "content": "C-Kermit software and information is: /ckermit.html Any other source is likely to be either incomplete and out of date, or &#34;forked&#34; from the definitive version without the author&#39;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kermitproject.org",
+          "/ckfaq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C-Kermit Frequently Asked Questions",
+        "url": "https://www.kermitproject.org/ckfaq.html"
+      },
+      {
+        "category": "general",
+        "content": "problems and give you information to help diagnose what went wrong.  The new fault handler performs these actions. Log processor state &amp; other useful info to RAM Reduce CPU sp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.pjrc.com",
+          "/2021/07/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SEGA ROM Reader",
+        "url": "https://www.pjrc.com/2021/07/"
+      },
+      {
+        "category": "general",
+        "content": "or associates. All information on this site is provided as-is, with no warranties whatsoever.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.loper-os.org",
+          "/",
+          "",
+          "p=1913",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Loper OS » &#34;Finite Field Arithmetic.&#34; Chapter 1: Genesis.",
+        "url": "http://www.loper-os.org/?p=1913"
+      },
+      {
+        "category": "general",
+        "content": "here for some basic information .    I have used another editor and I can’t understand how to manage HTML files with HyperPublish...  With HyperPublish you edit a w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.visualvision.com",
+          "/create_catalogs_cdroms_web_sites/cd_dvd_builder_software-00002f.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Web CD DVD - Frequently asked questions / FAQ - HyperPublish create CD catalogue Web",
+        "url": "http://www.visualvision.com/create_catalogs_cdroms_web_sites/cd_dvd_builder_software-00002f.htm"
+      },
+      {
+        "category": "general",
+        "content": "of quantum physics, information theory, and the properties of black holes. The &#34;Ultimate Laptop&#34; In a paper published in Nature in 2000, Ultimate Physical Limits of Computation (f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/286233/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Kernel Hacker&#39;s Bookshelf: Ultimate Physical Limits of Computation [LWN.net]",
+        "url": "https://lwn.net/Articles/286233/"
+      },
+      {
+        "category": "general",
+        "content": "display kernel release information&#34; Kernel type : mainly a matter of config parameters ? Real-time, low-latency, clustering, stripped-down, more ? Could change the process schedul",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/Linux.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Linux",
+        "url": "https://www.billdietrich.me/Linux.html"
+      },
+      {
+        "category": "general",
+        "content": ".  More information about Ksplice,  including a technical paper describing how it works, is available from http://www.ksplice.com . Jeff Arnold started development on th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ce680a9f641639e6bf300a2edc6c8928501aa30d8d8c63e50993feedf324c4ef",
+  "provider": "SearXNG",
+  "query": "tell me about the function of compiler operation in information systems",
+  "query_id": "v5-p-0050-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:26.673935Z"
+}

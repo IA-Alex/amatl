@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 301.012,
+  "pair_id": "v5-p-0709",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is language acquisition in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "part of the ``Defense Acquisition Deskbook.&#39;&#39; http://portal.deskbook.osd.mil/reflib/DTNG/009CM/004/009CM004DOC.HTM . [FSF 2000] Free Software Foundation (FSF). What is Free Softwa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "dwheeler.com",
+          "/sloc/redhat71-v1/redhat71sloc.1.00.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "More than a Gigabuck: Estimating GNU/Linux&#39;s Size",
+        "url": "https://dwheeler.com/sloc/redhat71-v1/redhat71sloc.1.00.html"
+      },
+      {
+        "category": "general",
+        "content": "collections; and acquisition of digital data from physical media. My primary area of research is the long-term curation of digital collections. I&#39;m particularly interested in the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ils.unc.edu",
+          "/callee/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Christopher (Cal) Lee",
+        "url": "https://ils.unc.edu/callee/"
+      },
+      {
+        "category": "general",
+        "content": "His inverted &#34;customer acquisition cost&#34; economic theory is a satire that reveals an uncomfortable truth: he proposes that companies should acquire their own customers by paying t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "Because of Github&#39;s acquisition by Microsoft (business model: &#34;Uber for customer abuse&#34;), it turns out that what Github engineers are eating came out of the dog to begin with. Hac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "n-gate.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "n-gate.com. we can&#39;t both be right.",
+        "url": "http://n-gate.com/"
+      },
+      {
+        "category": "general",
+        "content": "before its acquisition by Rambus; Cigital (formerly Reliable Software Technologies, Gary McGraw, gem@cigital.com), prior to its acquisition by Synopsys. Other advisory boards that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "The $2.3 million acquisition had been in the works for 13 years, ever since the Capitol Land Trust and Squaxin Island Tribe started talking about it, said former Capitol Land Trus",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cowlitzcountry.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cowlitz Country News Home Page",
+        "url": "http://www.cowlitzcountry.com/"
+      },
+      {
+        "category": "general",
+        "content": "recovering from a post acquisition engineering fallout , but I hope that they can get these kinds of features back into reality sooner than later. Linter bots? There are bots out",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bret.io",
+          "/projects/package-automation/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fully Automated Luxury Space Age Package Maintenance | bret.io",
+        "url": "https://bret.io/projects/package-automation/"
+      },
+      {
+        "category": "general",
+        "content": "The Ferengi Rules of Acquisition—In Your Palm FIST GAU-8 Avenger Gnome-o-grams The Go-Getter Monkeying with the Mainstream Media The Internet Slum Global IQ: 1950–2050",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/nav/topics/map.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index Librorum Liberorum",
+        "url": "https://www.fourmilab.ch/nav/topics/map.html"
+      },
+      {
+        "category": "general",
+        "content": "the VIM science data acquisition requirements and available on-board sequence storage memory supports the use of pre-defined blocks of commands. Baseline Sequence The baseline seq",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.geonius.com",
+          "/writing/other/voyager.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Voyager Spacecraft and Fortran 5",
+        "url": "http://www.geonius.com/writing/other/voyager.html"
+      },
+      {
+        "category": "general",
+        "content": "LCD&#39;s, PCB layout, Data Acquisition, Motor control, MQTT Wi-Fi wireless, and systems. Prerequisite ECE319K, ECE316 and coregistration in ECE333T.  Spring 2008 Design Competit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "users.ece.utexas.edu",
+          "/~valvano/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jonathan W. Valvano",
+        "url": "https://users.ece.utexas.edu/~valvano/"
+      },
+      {
+        "category": "general",
+        "content": "stand for &#34;Digital Data Acquisition&#34;; the Saturn Flight Manual explains, among other things, that Telemetry system GP1 is a PCM/DDAS link that transmits realtime checkout data bef",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ibiblio.org",
+          "/apollo/LVDC.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Launch Vehicle Digital Computer",
+        "url": "http://www.ibiblio.org/apollo/LVDC.html"
+      },
+      {
+        "category": "general",
+        "content": "Chris Rorden Data Acquisition For Experiments Website Emulate a keyboard, to do studies with stroke patients that find standard small buttons clumsy. Chris Rorden StimSync Website",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.pjrc.com",
+          "/teensy/projects.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Projects using the Teensy USB development board",
+        "url": "https://www.pjrc.com/teensy/projects.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f66ebc5c5bc6b727c66bd99e5a65ca43d80e954ad1a3b3068be2da0eabb6fd4b",
+  "provider": "SearXNG",
+  "query": "what is language acquisition in software engineering",
+  "query_id": "v5-p-0709-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:50.395761Z"
+}

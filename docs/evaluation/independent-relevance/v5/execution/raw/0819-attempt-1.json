@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 328.182,
+  "pair_id": "v5-p-0749",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is root systems in communication studies",
+    "results": [
+      {
+        "category": "general",
+        "content": "for real-time 3D communication. X3D for Web Authors by Don Brutzman and Leonard Daly, Morgan Kaufmann Publishers, Elsevier, April 2007, 468 pages. Free book do",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.web3d.org",
+          "/x3d/content/examples/X3dResources.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "X3D Resources",
+        "url": "https://www.web3d.org/x3d/content/examples/X3dResources.html"
+      },
+      {
+        "category": "general",
+        "content": "and classical one-way communication complexities due to Bar-Yossef, Jayram, and Kerenidis. We discuss how this separation raises the prospect of near-term experiments to demonstra",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scottaaronson.com",
+          "/papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Research Papers and Surveys",
+        "url": "https://www.scottaaronson.com/papers/"
+      },
+      {
+        "category": "general",
+        "content": "discourse, fostering communication, research, and public engagement around the ethical and practical issues of human enhancement and the potential posthuman future. David Pearce&#39;s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.transhumanist.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Transhumanism as conceived by ChatGPT-4",
+        "url": "https://www.transhumanist.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "for Command, Control, Communications and Intelligence, before setting up Highlands.         The Club of Yoda   But Clippinger also referred to another mys",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/sociopol_internetgoogle47.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Google, CIA and the NSA - Inside the Secret Network behind Mass Surveillance, Endless War and Skynet",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_internetgoogle47.htm"
+      },
+      {
+        "category": "general",
+        "content": "other, so much so that communication is difficult and fleeting. Moreover, the past is a mystery too: very little of it can be permanently possessed. We have various devices —",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "thornwalker.com",
+          "/recoveries/sobran/pensees.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Pensees, by Joe Sobran",
+        "url": "https://thornwalker.com/recoveries/sobran/pensees.html"
+      },
+      {
+        "category": "general",
+        "content": "1.1. Why now? 1.2. Communications 1.3. Cultural background 1.4. The New Age and Catholic faith 1.5. A positive challenge 2. New Age spirituality: an overview   2.1. What is n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.vatican.va",
+          "/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jesus Christ The Bearer Of The Water Of Life - A Christian reflection on the New Age",
+        "url": "https://www.vatican.va/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html"
+      },
+      {
+        "category": "general",
+        "content": "exploiting the latest communication techniques to manipulate emotions and control reason.  Reliance on television—and hence the tendency to replace language with imagery, whi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "investigate911.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Urgent: Scientists Discover Nano-Thermite Explosives in 9/11 WTC Dust Used in Controlled Demolitions. investigate 911 Superthermite Nano-Therm",
+        "url": "http://investigate911.org/"
+      },
+      {
+        "category": "general",
+        "content": "their means of rapid communication with one another, the constant social and commercial intercourse that has been   going   on for years, especially for the past forty y",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.electricscotland.com",
+          "/history/articles/canadausa.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Canada and the United States",
+        "url": "http://www.electricscotland.com/history/articles/canadausa.htm"
+      },
+      {
+        "category": "general",
+        "content": "an ever open line of communication between India and the Empire of the successors of Alexander; and it is even permissible to speculate, that if we could recover a catalogue of th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hellenicaworld.com",
+          "/Greece/Literature/GeorgeRSMead/en/ApolloniusOfTyana.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Apollonius of Tyana, the Philosopher-Reformer of the first century AD, George Robert Stowe Mead, George Robert Stowe Mead",
+        "url": "https://www.hellenicaworld.com/Greece/Literature/GeorgeRSMead/en/ApolloniusOfTyana.html"
+      },
+      {
+        "category": "general",
+        "content": "Interdisciplinary communication was facilitated only if scholars shared an understanding of the meaning of particular concepts. Interdisciplinary researchers still strive to estab",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/phenomenon.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Phenomenon-based classification (IEKO)",
+        "url": "https://www.isko.org/cyclo/phenomenon.htm"
+      },
+      {
+        "category": "general",
+        "content": "of information and communication (including the printed press, radio, television, the Internet, and globally circulating styles of dress, self-definition, recreation and work), th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "quest-journal.net",
+          "/shikanda/general/ubuntu.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ubuntu and the globalisation of Southern African thought and society",
+        "url": "https://quest-journal.net/shikanda/general/ubuntu.htm"
+      },
+      {
+        "category": "general",
+        "content": "Habermas, Jurgen. Communication and the Evolution of Society.  Halliburton, David. Poetic Thinking: An Approach to Heidegger .  Hirsch, E.D. The Aims of Interpretation .",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "faculty.fiu.edu",
+          "/~harveyb/Modern%20Literary%20Theory.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Modern Literary Theory",
+        "url": "https://faculty.fiu.edu/~harveyb/Modern%20Literary%20Theory.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0d250b732928290d275b0f008b1a247ae87c1dc014c30eaf0a49ba6d0e53dee9",
+  "provider": "SearXNG",
+  "query": "what is root systems in communication studies",
+  "query_id": "v5-p-0749-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:35.240794Z"
+}

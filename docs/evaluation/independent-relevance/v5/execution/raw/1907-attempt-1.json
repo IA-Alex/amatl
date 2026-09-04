@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 376.298,
+  "pair_id": "v5-p-0050",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does compiler operation in information systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "it holds housekeeping information used for compilation, and isn&#39;t involved in threading.) Assume SQUARE is encountered while executing some other Forth word. Forth&#39;s Interpreter P",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "bradrodriguez.com",
+          "/papers/moving1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Moving Forth: Part 1",
+        "url": "http://bradrodriguez.com/papers/moving1.htm"
+      },
+      {
+        "category": "general",
+        "content": "integer , . For more information, see Section 3.4 and 3.5 of Computer Systems: A Programmer’s Perspective, 3rd edition by Randal E. Bryant and David R. O’Hallaron ASM Optimization",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mu.krj.st",
+          "/denormal/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "denormal",
+        "url": "https://mu.krj.st/denormal/"
+      },
+      {
+        "category": "general",
+        "content": "the core dump has some information 28:07.73 that I could use, but it doesn&#39;t show me 28:08.99 the state of things while it&#39;s running. 28:11.21 Now here&#39;s some Common Lisp. Look, I",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jackrusher.com",
+          "/strange-loop-2022/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stop Writing Dead Programs, Strange Loop 2022",
+        "url": "https://jackrusher.com/strange-loop-2022/"
+      },
+      {
+        "category": "general",
+        "content": "runtime configuration information for the Samba programs. The complete description of the file format and possible parameters held within are here for reference purposes. HOW CONF",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.samba.org",
+          "/samba/docs/current/man-html/smb.conf.5.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "smb.conf",
+        "url": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+      },
+      {
+        "category": "general",
+        "content": "or FTP site for this information? Lists available from books. Lists available on the Internet. Where can I download Asimov&#39;s fiction on the net? Where else can I find Asimov stuff",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "asimovonline.com",
+          "/asimov_FAQ.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Isaac Asimov FAQ",
+        "url": "http://asimovonline.com/asimov_FAQ.html"
+      },
+      {
+        "category": "general",
+        "content": "must disclose the information in accordance with section 6 of the W3C Patent Policy . Table of Contents 1 Introduction     1.1 Document Conventions         1.1.1 Language Form",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/sparql11-update/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SPARQL 1.1 Update",
+        "url": "https://www.w3.org/TR/sparql11-update/"
+      },
+      {
+        "category": "general",
+        "content": "one year. More information is available at http://www.dwheeler.com/sloc . 1. Introduction The GNU/Linux operating system (also called simply ``Linux&#39;&#39;) has gone from an unknown to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "dwheeler.com",
+          "/sloc/redhat71-v1/redhat71sloc.1.00.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "More than a Gigabuck: Estimating GNU/Linux&#39;s Size",
+        "url": "https://dwheeler.com/sloc/redhat71-v1/redhat71sloc.1.00.html"
+      },
+      {
+        "category": "general",
+        "content": "them. For further information, refer to &#34;ZAP: Z- language Assembly Program,&#34; by Joel M. Berez, or to the appropriate not- yet-written document. ZIP is the lowest level of Infocom&#39;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "frobnitz.co.uk",
+          "/zmachine/infocom/yzip.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://frobnitz.co.uk/zmachine/infocom/yzip.txt",
+        "url": "https://frobnitz.co.uk/zmachine/infocom/yzip.txt"
+      },
+      {
+        "category": "general",
+        "content": "C-Kermit software and information is: /ckermit.html Any other source is likely to be either incomplete and out of date, or &#34;forked&#34; from the definitive version without the author&#39;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kermitproject.org",
+          "/ckfaq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C-Kermit Frequently Asked Questions",
+        "url": "https://www.kermitproject.org/ckfaq.html"
+      },
+      {
+        "category": "general",
+        "content": "when it comes to information technology). Did you ever think about leaving your role as Linux coordinator or is it fun like it was in the beginning? If you would leave, what would",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.linux.it",
+          "/~rubini/docs/linus/linus.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Intervista a Linus Torvalds (EN)",
+        "url": "https://www.linux.it/~rubini/docs/linus/linus.html"
+      },
+      {
+        "category": "general",
+        "content": "hard to dig out all the information in this one! Author: John Draper (aka &#34;crunch&#34;) speechSample speech demo program. Stripped down version of &#34;speechtoy&#34;. Author: Rob Peck speech",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.amiga-stuff.com",
+          "/pd/fish.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fish disks 1 - 1120",
+        "url": "https://www.amiga-stuff.com/pd/fish.html"
+      },
+      {
+        "category": "general",
+        "content": "facility. Given this information, one could obfuscate Emacs Lisp code to hide something unusual going on: ( message &#34;Fire the %s!!!&#34; # @11 &#34;rockets&#34; ) \\037 ( reverse &#34;sekun&#34; )) A",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "emacsninja.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Emacs Ninja - Index",
+        "url": "http://emacsninja.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "181ea41160f8deb0820930c62567da5b03edd924654e269d618bbfbf55ebb226",
+  "provider": "SearXNG",
+  "query": "how does compiler operation in information systems work",
+  "query_id": "v5-p-0050-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:26.296678Z"
+}

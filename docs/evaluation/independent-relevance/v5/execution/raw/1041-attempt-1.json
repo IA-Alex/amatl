@@ -1,0 +1,327 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 322.978,
+  "pair_id": "v5-p-0289",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is water purification in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "the spiritual man, the purification of mind, will and thought, and the ennobling of all the faculties of the human soul. Bilderberg Group: a powerful global elite,Group together w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/masons.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Freemasons - The silent destroyers. Deist religious cult based on the Knights Templar - Initiation rituals like those of witchcraft",
+        "url": "http://www.bilderberg.org/masons.htm"
+      },
+      {
+        "category": "general",
+        "content": "asceticism, the purification of the soul and meditation about the hereafter ( Schimmel 2011 ). Sufism is an esoteric practice, with its own rules, rites, and secrets. Its adherent",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/islamic.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Classification of the sciences in Islamic cultures (IEKO)",
+        "url": "https://www.isko.org/cyclo/islamic.htm"
+      },
+      {
+        "category": "general",
+        "content": "a strict vigil and purification was maintained, and by the end of that time, from sheer concentration of thought, the mourner was able to see the spirits of the departed; and at t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fullbooks.com",
+          "/Religions-of-Ancient-China.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Religions of Ancient China by Herbert A. Giles - Full Text Free Book",
+        "url": "http://www.fullbooks.com/Religions-of-Ancient-China.html"
+      },
+      {
+        "category": "general",
+        "content": "Epiphany, the feast of Purification, and others, until the Catholic Church had some celebration for some saint and martyr for every day in the year. They contributed to create a c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/cache/epub/56650/pg56650-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of Paganism Surviving in Christianity, by Abram Herbert Lewis.",
+        "url": "https://www.gutenberg.org/cache/epub/56650/pg56650-images.html"
+      },
+      {
+        "category": "general",
+        "content": "also undergo a total purification by fire. The same is true for the twelve months and the zodiacal signs which correspond to them. They are likewise blemished with a special nidam",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.trimondi.de",
+          "/SDLE/Part-1-08.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Shadow of the Dalai Lama – Part I – 8",
+        "url": "http://www.trimondi.de/SDLE/Part-1-08.htm"
+      },
+      {
+        "category": "general",
+        "content": "were consecrated to the purification and removal of relics, to prayers and processions, and to all the solemn offices of religion, which served at least to heal the imagination, a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ourcivilisation.com",
+          "/smartboard/shop/gibbone/rome/volume2/chap52.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chapter 52 of The Decline And Fall Of The Roman Empire",
+        "url": "http://www.ourcivilisation.com/smartboard/shop/gibbone/rome/volume2/chap52.htm"
+      },
+      {
+        "category": "general",
+        "content": "which likewise concern purification. At the end of the first seven stages the Vajra master then dissolves the pupil into “emptiness” in his imagination, in order to then visualize",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.trimondi.de",
+          "/SDLE/Part-1-06.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Shadow of the Dalai Lama – Part I – 6",
+        "url": "http://www.trimondi.de/SDLE/Part-1-06.htm"
+      },
+      {
+        "category": "general",
+        "content": "fast as a mean of purification and a sort of baptism. For their meetings the followers of this belief built mithraea , some of which have been discovered under churches or other R",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.romeartlover.it",
+          "/Storia10.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Abridged History of Rome - PART I - X - A CENTURY OF TURMOIL",
+        "url": "http://www.romeartlover.it/Storia10.html"
+      },
+      {
+        "category": "general",
+        "content": "place in two stages: purification, and illumination of the noetic faculty. Without this, it is impossible for man&#39;s selfish love to be transformed into selfless love. This transfo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "romanity.org",
+          "/htm/rom.03.en.franks_romans_feudalism_and_doctrine.02.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "FRANKS, ROMANS, FEUDALISM, AND DOCTRINE Part 2",
+        "url": "http://romanity.org/htm/rom.03.en.franks_romans_feudalism_and_doctrine.02.htm"
+      },
+      {
+        "category": "general",
+        "content": "startled at their own purification and at the destruction of the lessened earth. The majority, according to the promptness of alternating feelings, waver poetically between both b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/35948/35948-h/35948-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Campaner Thal, and Other Writings.",
+        "url": "https://www.gutenberg.org/files/35948/35948-h/35948-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "expiatory process and purification of the mind. LXX. But experience is by far the best demonstration, provided it adhere to the experiment actually made, for if that experiment be",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/45988/45988-h/45988-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of Novum Organum, by Lord Bacon",
+        "url": "https://www.gutenberg.org/files/45988/45988-h/45988-h.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "14d22138788a18328bf79e12df6977233de53b029b920332e9b0bf1c7a600185",
+  "provider": "SearXNG",
+  "query": "what is water purification in astronomy",
+  "query_id": "v5-p-0289-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:44.524767Z"
+}

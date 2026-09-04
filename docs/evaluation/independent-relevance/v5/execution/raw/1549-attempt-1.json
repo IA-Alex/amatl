@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 250.767,
+  "pair_id": "v5-p-1035",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes probability distributions in architecture",
+    "results": [
+      {
+        "category": "general",
+        "content": "Using the empirical distributions of interstate war sizes and onset times from 1823 to 2003, we parameterized stationary models of conflict generation that can distinguish trends",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.socrethics.com",
+          "/Folder2/Culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cultural Evolution of Suffering",
+        "url": "http://www.socrethics.com/Folder2/Culture.htm"
+      },
+      {
+        "category": "general",
+        "content": "diagram shows you the distributions of electrons in an atom. GW: It should force AT to read it. The arrows are significant. DG: Rows 30-33 should have the orbital diagram property",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/Math/planet/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Planet MathML - W3C",
+        "url": "https://www.w3.org/Math/planet/"
+      },
+      {
+        "category": "general",
+        "content": "B.V. Gnedenko in Limit Distributions for the Sum of Independent Random Variables , 1954, noting the emergent order and constraint implicit in randomness, are more specific: &#34;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.accelerationwatch.com",
+          "/critiques.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notable Critiques",
+        "url": "https://www.accelerationwatch.com/critiques.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d06fba1108bd743f37e3c81a29a67af9f4f910c093769a07341073726e2b5c46",
+  "provider": "SearXNG",
+  "query": "what causes probability distributions in architecture",
+  "query_id": "v5-p-1035-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:29.534074Z"
+}

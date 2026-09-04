@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 360.7,
+  "pair_id": "v5-p-0173",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind immune response in communication studies",
+    "results": [
+      {
+        "category": "general",
+        "content": "1.1. Why now? 1.2. Communications 1.3. Cultural background 1.4. The New Age and Catholic faith 1.5. A positive challenge 2. New Age spirituality: an overview   2.1. What is n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.vatican.va",
+          "/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jesus Christ The Bearer Of The Water Of Life - A Christian reflection on the New Age",
+        "url": "https://www.vatican.va/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html"
+      },
+      {
+        "category": "general",
+        "content": "acquisition module, a communication-pragmatics module, a theory of mind module, and so on!&#34; (Mithen 1996)  However, ancient modules are not the same as differences in in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "A &#34;personal communication&#34; from a doctor in Pennsylvania. And there are various other case reports and testimonials, and the conclusion that cycloid vibration &#34;possesses that adva",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.howtospotapsychopath.com",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Spot a Psychopath",
+        "url": "http://www.howtospotapsychopath.com/feed/"
+      },
+      {
+        "category": "general",
+        "content": "less is more ? Regular communication between the school and the family is the best way to monitor how your child is coping at school and at home (academically, socially, physicall",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/school.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The toxic schooling system",
+        "url": "http://digdeeper.love/articles/school.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "explained animal communication, and that natural selection had created those structures. Chomsky, who said that our genes create an innate ï¿½Language Acquisition Device,ï¿½ dista",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "raypeat.com",
+          "/articles/articles/authoritarians.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Academic authoritarians, language, metaphor, animals, and science",
+        "url": "http://raypeat.com/articles/articles/authoritarians.shtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "feb5248a4bf52559ad89848cb66355e6f76ab89055b8932ebeef3f48864ad660",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind immune response in communication studies",
+  "query_id": "v5-p-0173-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:14.452806Z"
+}

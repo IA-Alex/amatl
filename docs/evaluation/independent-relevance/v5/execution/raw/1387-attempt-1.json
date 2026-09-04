@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 272.43,
+  "pair_id": "v5-p-0455",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes supply chain logistics in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "as Artyomovsk), a key logistics hub, turned into another slaughterhouse for the Ukrainian forces. Determined to hold on to it, the army kept pouring soldiers into the city, many o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/multipol.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Decline of the west &amp; rise of a multipolar world",
+        "url": "https://davidpratt.info/multipol.htm"
+      },
+      {
+        "category": "general",
+        "content": "training, maintenance, logistics, technical development, intelligence and full coordination with their land and surface forces, were limited in relation to the requirements that s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.anesi.com",
+          "/ussbs01.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "United States Strategic Bombing Survey: Summary Report (Pacific War)",
+        "url": "https://www.anesi.com/ussbs01.htm"
+      },
+      {
+        "category": "general",
+        "content": "world, semiconductor logistics, and “every Star Trek ever.” 2022.11.16 • Big emitters, disease outbreaks, permissively-licensed code, impact craters, and tinned fish. 2022.11.09 •",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.data-is-plural.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Data Is Plural — Full Archive",
+        "url": "https://www.data-is-plural.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "other nations lacked: logistics (e.g. the US currently has over 230 strategic airlift transports and over 430 aerial refueling tankers - the rest of NATO has about 10 strategic ai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/USPolicy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "US Policy Choices",
+        "url": "https://www.billdietrich.me/USPolicy.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "af7438c449538e99b6f8cbf2bdae5f20fc2ff674b497a64629c060d534623ade",
+  "provider": "SearXNG",
+  "query": "what causes supply chain logistics in public health",
+  "query_id": "v5-p-0455-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:38.798699Z"
+}

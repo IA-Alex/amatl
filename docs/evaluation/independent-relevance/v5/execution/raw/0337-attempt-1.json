@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 288.757,
+  "pair_id": "v5-p-0680",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does traffic flow in hydrology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a1aaf3359d80068c6efe989089192678c0a7840f8bfea95530b5947948fe07be",
+  "provider": "SearXNG",
+  "query": "how does traffic flow in hydrology operate",
+  "query_id": "v5-p-0680-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:55.290078Z"
+}

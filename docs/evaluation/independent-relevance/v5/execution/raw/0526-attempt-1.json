@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 316.028,
+  "pair_id": "v5-p-0440",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind supply chain logistics in ecology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5ef01a01fff0130ebbfee05bdd0343cc67354ae3c8fcf9baa3076cc469c42f3e",
+  "provider": "SearXNG",
+  "query": "describe the principle behind supply chain logistics in ecology",
+  "query_id": "v5-p-0440-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:54.741300Z"
+}

@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 257.052,
+  "pair_id": "v5-p-1027",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes probability distributions in optics",
+    "results": [
+      {
+        "category": "general",
+        "content": "relative spectral power distributions for daylight phases across the visible spectrum, normalized to equal power at 560 nm, with the correlated color temperature (CCT) of eac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.handprint.com",
+          "/HP/WCL/color1.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "handprint : light and the eye",
+        "url": "http://www.handprint.com/HP/WCL/color1.html"
+      },
+      {
+        "category": "general",
+        "content": "Martensite (different distributions of iron carbide in ferrite, produced by different heat treatments). When a steel has been heat-treated wrongly, the result is usually a complex",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/sillymolecules/sillymols4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecules with Silly or Unusual Names - page 4",
+        "url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm"
+      },
+      {
+        "category": "general",
+        "content": "Stars. I: Statistical Distributions and Temporal Properties (1997a) by D. Dravins, L. Lindegren, E. Mezey and A. Young. Atmospheric Intensity Scintillation of Stars. II: Dependenc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.handprint.com",
+          "/ASTRO/seeing1.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "astronomical seeing, part 1: the nature of turbulence",
+        "url": "http://www.handprint.com/ASTRO/seeing1.html"
+      },
+      {
+        "category": "general",
+        "content": "to occur for rotating distributions of matter in Einstein’s general theory of relativity.   Inertial frame dragging, for example, is a consequence of the weak gravitational f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/time_travel/esp_ciencia_timetravel34.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Time Control Technologies and Methods",
+        "url": "https://www.bibliotecapleyades.net/ciencia/time_travel/esp_ciencia_timetravel34.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "70aa49c8ac0efc730746cbfd627f570d91270e755f478bb37e718988de74931e",
+  "provider": "SearXNG",
+  "query": "what causes probability distributions in optics",
+  "query_id": "v5-p-1027-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:10.704088Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 304.712,
+  "pair_id": "v5-p-0328",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind soil erosion in civil engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5f2a00bfb13c4a34d6c61a695547f973fe465cf7834f79859028005c8cb8dcdf",
+  "provider": "SearXNG",
+  "query": "describe the principle behind soil erosion in civil engineering",
+  "query_id": "v5-p-0328-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:19.857509Z"
+}

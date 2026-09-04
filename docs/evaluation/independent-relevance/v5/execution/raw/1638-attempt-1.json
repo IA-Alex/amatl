@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 315.923,
+  "pair_id": "v5-p-0536",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind neural networks in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2123a08692244ed3b8e882d8d3013acf6a468ae7616c91271ca5815c3f2177a9",
+  "provider": "SearXNG",
+  "query": "describe the principle behind neural networks in hydrology",
+  "query_id": "v5-p-0536-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:56.104840Z"
+}

@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 316.659,
+  "pair_id": "v5-p-0949",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is cloud formation in information systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "- the basic source of information about space &#34;, passage &#34; Faraday rotation of the polarization planes&#34; ). ¨ Gravitational waves - &#34;standard siren&#34; This i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Gravitace4-1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The role of gravity in the formation and evolution of stars",
+        "url": "https://www.astronuclphysics.info/Gravitace4-1.htm"
+      },
+      {
+        "category": "general",
+        "content": "of fit, but the information criteria moderately favour the 2D model over PI (∆AIC ≃ 93) and provide only a modest preference over Burkert (∆AIC ≃ 13); the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "Learn Introduction to Information Retrieval Transaction Model - Jim Gray ✅ Toward a New Understanding of Data Modelling - Klein &amp; Lytinen metaphors for data modeling are negotiati",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alexalejandre.com",
+          "/about/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "About",
+        "url": "https://alexalejandre.com/about/"
+      },
+      {
+        "category": "general",
+        "content": "the IPCC presented the information in a way that made it difficult to understand and buried the graph in the supplementary material for chapter 10, where it would receive little a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/climcat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Climate models and climate catastrophe: a reality check",
+        "url": "https://davidpratt.info/climcat.htm"
+      },
+      {
+        "category": "general",
+        "content": "clear that very little information about the earth, much less possibility of life on it, is obtained by a picture at this resolution. The next large slide is a TIROS photograph of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.project1947.com",
+          "/shg/symposium/sagan.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SHG - UFO Symposium 1968: Sagan Statement",
+        "url": "http://www.project1947.com/shg/symposium/sagan.html"
+      },
+      {
+        "category": "general",
+        "content": "more balanced News and Information ALTERNATIVE NEWS NEWS http://www.alternet.org NEWS http://www.centrexnews.com NEWS http://www.link.no/IPS/eng/last.html NEWSLINKS http://www.tru",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "by the OIG (Orbital Information Group) at the NASA (National Aeronautics and Space Administration) Goddard Space Flight Center. Observations of various satellites can provide insi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.qsl.net",
+          "/kd4cga/satintro.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://www.qsl.net/kd4cga/satintro.htm",
+        "url": "https://www.qsl.net/kd4cga/satintro.htm"
+      },
+      {
+        "category": "general",
+        "content": "misleadingly called Information theory but more concretely (71) Data compression. English language is &#34;inefficient&#34; in the sense that most letter strings like JQTOMXDW KKYSC have",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stat.berkeley.edu",
+          "/~aldous/Real_World/100_list.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Annotated list of contexts where we perceive chance",
+        "url": "https://www.stat.berkeley.edu/~aldous/Real_World/100_list.html"
+      },
+      {
+        "category": "general",
+        "content": "an extensive archive of information, but the site is no longer maintained. 3.  Susan Michaels, &#39;Invader on the Range&#39; in &#39; Sightings: UFOs&#39; , Simon &amp; Schuster, New York (",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "aenigmatis.com",
+          "/nellis-ufo-video/part-one/nellis-1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Nellis UFO Video - Part One: Range Operations, Tracking Cameras and Location S-30",
+        "url": "https://aenigmatis.com/nellis-ufo-video/part-one/nellis-1.htm"
+      },
+      {
+        "category": "general",
+        "content": "misfits. For more information about Elsie Russell please visit her websites: Short Stories of Elsie Russell . Paintings of Elsie Russell . August 08, 2008 NetNewMusic iz Alive! Sa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "parnasse.com",
+          "/jh/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Music of Jeff Harrington",
+        "url": "https://parnasse.com/jh/blog/"
+      },
+      {
+        "category": "general",
+        "content": "3D image from wavefront information on a 2D photographic plate (Cowen 2015 ). The holographic principle can be used to generate dualities between higher dimensional string theorie",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/quant.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quantum Reality and Cosmology",
+        "url": "http://www.dhushara.com/paradoxhtm/quant.htm"
+      },
+      {
+        "category": "general",
+        "content": "Credit: Kauai Visitor Information Sleeping Ute Mountain lies on the &#34;Ute Mountain Ute Reservation&#34; in southwestern Colorado and northern New Mexico. The mountain&#39;s angular crests",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "astro.wsu.edu",
+          "/worthey/html/landformfaces/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Landform faces, Indian heads, and other humanoid rocks",
+        "url": "http://astro.wsu.edu/worthey/html/landformfaces/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "50681101963f3cb6f2ed1a53c21d9edbfdbbed8d3cfc0d54b22f99d0d6ddd477",
+  "provider": "SearXNG",
+  "query": "what is cloud formation in information systems",
+  "query_id": "v5-p-0949-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:58.493777Z"
+}

@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 455.063,
+  "pair_id": "v5-p-0100",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind ocean tides in architecture",
+    "results": [
+      {
+        "category": "general",
+        "content": "and domestic architecture, and form the subject of many allusions in heraldry. They are frequently used as supporters. Charles Boutell, M.A., “English Heraldry,” [Pg 4",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book337/book337.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fictitious and Symbolic Creatures in Art, by John Vinycom",
+        "url": "https://www.ajhw.co.uk/books/book337/book337.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b7978615b4c4da5d7528281a2d41b5e8b02cdde5f118d98e4cca6f6fd11b94ae",
+  "provider": "SearXNG",
+  "query": "describe the principle behind ocean tides in architecture",
+  "query_id": "v5-p-0100-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:06:13.682960Z"
+}

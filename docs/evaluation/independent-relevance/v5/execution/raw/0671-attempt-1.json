@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 340.682,
+  "pair_id": "v5-p-0146",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does immune response in biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "efficiency”. Pearce’s response is that euphoria and well-being are associated with dominance, assertiveness and enhanced motivation, whereas subordination and inactivity are assoc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/end-suffering.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The End of Suffering",
+        "url": "https://www.hedweb.com/hedethic/end-suffering.html"
+      },
+      {
+        "category": "general",
+        "content": "And Anatomy 3.1. Response To “Plants Are Trying To Kill You” 3.2. Debunking More Claims Made By Anthony Chaffee 3.3. Human Eyes 3.4. The Human Digestive System 3.5. Th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/case-against-carnivore-diet",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Case Against The Carnivore Diet",
+        "url": "https://zerocontradictions.net/misc/case-against-carnivore-diet"
+      },
+      {
+        "category": "general",
+        "content": "Homicide&#39; by Government Response Audio  -  &#34; All this Chaos is Staged and just an Illusion to put us in Panic Mode&#34; - Dr. Reiner Fuellmich    -",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia3/ciencia_coronavirus.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coronavirus and the &#39;Fear Factor&#39;... - El Coronavirus y el &#39;Factor Miedo&#39;...",
+        "url": "https://www.bibliotecapleyades.net/ciencia3/ciencia_coronavirus.htm"
+      },
+      {
+        "category": "general",
+        "content": "feedback-mechanisms. In response to a short-term increase of mood-mediating monoamines in the synapses, the genes and neuronal receptors re-regulate . So at best no real long-term",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/gooddrug.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Good Drug Guide: The Responsible Parent&#39;s Guide To Healthy Mood-Boosters For All The Family",
+        "url": "https://www.hedweb.com/gooddrug.htm"
+      },
+      {
+        "category": "general",
+        "content": "To Trip As Much The Response Trained Into Them From The Jungle Now Causes You To Get High And See Things In Dreams So If You Trip Only In Your Dreams It&#39;s From Such McSubstances S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "fight-or-flight response. Wilkinson, together with Martin Daly and Margo Wilson, have pointed to another measurable cost of economic inequality. Crime rates are much higher in reg",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "Fig. LB701-F3. Recorder response pattern from a GLC setup. From [3]. A typical recorder pattern from a GLC is as shown. In this setup, some components appeared at the outlet withi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "aoi.com.au",
+          "/LB/LB701/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "LB701: Insects Live in an Infrared World",
+        "url": "https://aoi.com.au/LB/LB701/"
+      },
+      {
+        "category": "general",
+        "content": "Michael Behe, “Response to Ian Musgrave’s “Open Letter to Dr. Michael Behe,” Part 3”; available from http://behe.uncommondescent.com/page/4/ ; Intern",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.onenesspentecostal.com",
+          "/DarwinianEvolution.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The (In)Adequacy of Darwinian Evolution",
+        "url": "http://www.onenesspentecostal.com/DarwinianEvolution.htm"
+      },
+      {
+        "category": "general",
+        "content": "evade the host immune response. ...The gene family is enormous with a virtually unlimited number of members. ...Control of var gene transcription and antigenic variation is associ",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.panspermia.org",
+          "/neodarw.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Neo-Darwinism: The Current Paradigm. by Brig Klyce",
+        "url": "https://www.panspermia.org/neodarw.htm"
+      },
+      {
+        "category": "general",
+        "content": "preexisting immune response to coronavirus infections and allows easier entry. However whether or not people have been exposed to a coronavirus infection before, once it&#39;s been ci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mailstar.net",
+          "/coronavirus.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Covid-19 was genetically engineered by virologists in a lab",
+        "url": "https://mailstar.net/coronavirus.html"
+      },
+      {
+        "category": "general",
+        "content": "Modifying the immune response: Chronic inflammation and autoimmune disorders can cause significant suffering. Genetic engineering techniques could be applied to modify the immune",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gene-drives.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reprogramming the biosphere with gene drives as conceived by ChatGPT",
+        "url": "https://www.gene-drives.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "cm cause physical response, but that is beyond the scope of my presentation. It also explains why viruses can be precipitated out of solution as a crystal, and the crystal stored",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/newenergy/defeatcancer/cancer.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Tom Bearden Website",
+        "url": "https://www.bibliotecapleyades.net/ciencia/newenergy/defeatcancer/cancer.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "187cccfef1967368b9408570bc554dcf07d86a47df35fd19bd6d95f102e01763",
+  "provider": "SearXNG",
+  "query": "how does immune response in biology work",
+  "query_id": "v5-p-0146-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:48.223598Z"
+}

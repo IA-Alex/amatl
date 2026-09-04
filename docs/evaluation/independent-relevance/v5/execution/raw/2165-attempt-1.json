@@ -1,0 +1,219 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 346.642,
+  "pair_id": "v5-p-0230",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does plate tectonics in information systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "not been able o find information about them, but this is information we are constantly seeking and our growing photographic archive is helping to illustrate he various subjects we",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "histclo.com",
+          "/cih.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Children in History",
+        "url": "https://histclo.com/cih.html"
+      },
+      {
+        "category": "general",
+        "content": "of man. Of course the information available on the stone age is limited, but with the development of civilization we begin to learn much more, especially about the civilizations o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "histclo.com",
+          "/chron/chronh.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "children and historical chronology",
+        "url": "https://histclo.com/chron/chronh.html"
+      },
+      {
+        "category": "general",
+        "content": "a lot of geographical information.   We have some idea of the rough location of several of the western hemisphere cities in relation to each other - distances and travel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.erbzine.com",
+          "/mag19/1933.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ERBzine 1333",
+        "url": "https://www.erbzine.com/mag19/1933.html"
+      },
+      {
+        "category": "general",
+        "content": "Fire People has more information for us, but unfortunately, it&#39;s not available. There are animals on Mercury, the Cold Country folk, as I noted, are wearing someone&#39;s furs. &amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.erbzine.com",
+          "/mag17/1743.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ERBzine 1743: Tama, Princess of Mercury - by Den Valdron",
+        "url": "https://www.erbzine.com/mag17/1743.html"
+      },
+      {
+        "category": "general",
+        "content": "are here for background information only and there is no claim as to the existence or non-existence of the auric field. ^ For at least seven years, Dean&#39;s Meta-Analysis was publis",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "astrology.co.uk",
+          "/tests/basisofastrology.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Why it is unacceptable to dismiss astrology as rubbish.",
+        "url": "https://astrology.co.uk/tests/basisofastrology.htm"
+      },
+      {
+        "category": "general",
+        "content": "an essay once new information became available, or simply revisit a topic that he had written about long ago. The essays within each subject area are arranged so that, to the exte",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "summitry and computer-information highways. Outside is the rest of mankind, going in a completely different direction.&#34; We are entering a bifurcated world. Part of the globe is in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1ca8c4b7c6030f10cc85656f8bcb47f146675e9ce7460354cbbe49c666bb49af",
+  "provider": "SearXNG",
+  "query": "how does plate tectonics in information systems work",
+  "query_id": "v5-p-0230-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:47.310103Z"
+}

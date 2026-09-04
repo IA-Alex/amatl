@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 345.039,
+  "pair_id": "v5-p-0964",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind cloud formation in communication studies",
+    "results": [
+      {
+        "category": "general",
+        "content": "as data storage and in communication. The Russian linguists found that the genetic code, especially in the apparently useless 90%, follows the same rules as all our human language",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "travel or communication. Other universes or dimensions and travel between them. (String Theory.) As a means of understanding the world through speculation, ie theories, and storyt",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.creationsermons.com",
+          "/BigBangIsScienceFiction.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Big Bang Theory Is Science Fiction",
+        "url": "http://www.creationsermons.com/BigBangIsScienceFiction.html"
+      },
+      {
+        "category": "general",
+        "content": "of meme theory and communications technology. Dedicated to my friend Doug Rushkoff. Thinking Small An article for FEED magazine on Nanotechnology. Summarizes recent work in the fi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "hyperreal.org",
+          "/~mpesce/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mark Pesce * Outside the Light-Cone",
+        "url": "http://hyperreal.org/~mpesce/"
+      },
+      {
+        "category": "general",
+        "content": "Indeed, the idea of communication by a disembodied spirit with the living in dreams was entrenched by the reflection that its very immateriality enabled it to hold communication w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.globalgreyebooks.com",
+          "/online-ebooks/george-william-gilmore_animism_complete-text.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Animism by George William Gilmore - Read Online for free at Global Grey ebooks",
+        "url": "https://www.globalgreyebooks.com/online-ebooks/george-william-gilmore_animism_complete-text.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "eea42442c3c0d3b5f863ef504a27bcb76549108f432f7a683a8baa59a2022333",
+  "provider": "SearXNG",
+  "query": "describe the principle behind cloud formation in communication studies",
+  "query_id": "v5-p-0964-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:12.372238Z"
+}

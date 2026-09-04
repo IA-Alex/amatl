@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 358.59,
+  "pair_id": "v5-p-0646",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of renewable energy storage in marine biology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d0475fefb506b2dbe836051b9d32ea2ff06290b786f337f3a83748bc35d66442",
+  "provider": "SearXNG",
+  "query": "tell me about the function of renewable energy storage in marine biology",
+  "query_id": "v5-p-0646-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:03.376482Z"
+}

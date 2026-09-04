@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 328.802,
+  "pair_id": "v5-p-0642",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does renewable energy storage in energy systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "energy consumption, renewable energy has been proposed as a means to lower emissions from powering data centers. For example, Greenpeace’s yearly ClickClean report ranks maj",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2018/09/how-to-build-a-low-tech-website/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Build a Low-tech Website? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2018/09/how-to-build-a-low-tech-website/"
+      },
+      {
+        "category": "general",
+        "content": "Who&#39;s who in renewable energy http://www.serve.com/commonpurpose/contacts.html Pesticides Action Network http://www.pan-uk.org/ Truthseekers Magazine, from Devizes, Wiltshire http",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "Solar and Renewable Energy Research section SOLAR and POWER PLANT TECHNOLOGY. This section provides an overview of solar energy research. Click here for the Main Power Tech",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIDIK.com The original and official DIDIK site. Cutting edge and sometimes controversial thoughts, designs, proposals and projects conceiv",
+        "url": "http://www.didik.com/"
+      },
+      {
+        "category": "general",
+        "content": "Hope Is Not Enough Renewable energy is growing at unprecedented rates, but isn’t slowing the much faster growth of fossil fuel burn. Green tech is not a solution . Orange: i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "stopfossilfuels.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stop Fossil Fuels: Why We Must, How We Can",
+        "url": "https://stopfossilfuels.org/"
+      },
+      {
+        "category": "general",
+        "content": "twice European renewable energy certificate led to double counting of the same electricity from Iceland. Certificate exports have now been suspended. But the problem is not restri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "industrydecarbonization.com",
+          "/news/how-iceland-sold-the-same-green-electricity-twice.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How Iceland sold the same Green Electricity twice | Industry Decarbonization Newsletter",
+        "url": "https://industrydecarbonization.com/news/how-iceland-sold-the-same-green-electricity-twice.html"
+      },
+      {
+        "category": "general",
+        "content": "advancements in renewable energy, carbon capture and storage, and other climate change mitigation strategies can play a crucial role in addressing one of the most pressing global",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.utilitarianism.com",
+          "/chatgpt/effective-altruism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utilitarianism and effective altruism as conceived by ChatGPT-4",
+        "url": "https://www.utilitarianism.com/chatgpt/effective-altruism.html"
+      },
+      {
+        "category": "general",
+        "content": "CLUB and for SOLAR and RENEWABLE ENERGY) Solar, Electric, Hybrid, Alternate Energy Vehicles SOLAR, ELECTRIC, HYBRID and HUMAN powered vehicles including all types of electric powe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.design1.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Recent designs, projects and thoughts by Frank X. Didik. Predictions for the future, where society is going. Can gravity by modulated? Wha",
+        "url": "http://www.design1.org/"
+      },
+      {
+        "category": "general",
+        "content": "and they are powered by renewable energy sources (but so is the actually private Posteo, reviewed later), which is the only really commendable thing about this &#34;service&#34;. But sinc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/email.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "E-mail providers - which one to choose?",
+        "url": "http://digdeeper.love/articles/email.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "futures, concluding renewables can’t drive modern civilization. AEI Press publishes him, a fossil fuel industry mouth piece He does believe in climate change, estimating 2.5",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alexalejandre.com",
+          "/finance/vaclav-smil/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "On Vaclav Smil",
+        "url": "https://alexalejandre.com/finance/vaclav-smil/"
+      },
+      {
+        "category": "general",
+        "content": "electricity from local renewable sources.     The crucial significance of integration and proximity. The fundamental reasons why only settlements of this kind can enable",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "thesimplerway.info",
+          "/THEALTSOCLong.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "TheAltSocLongNew.html",
+        "url": "http://thesimplerway.info/THEALTSOCLong.htm"
+      },
+      {
+        "category": "general",
+        "content": "trend towards cheaper renewable energy, electrifying process heat could be an interesting option. This would not only directly avoid around 30 percent of emissions but also make C",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "industrydecarbonization.com",
+          "/news/cements-future-could-be-a-combination-of-carbon-capture-and-electrification.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cement&#39;s future could be a combination of Carbon Capture and Electrification | Industry Decarbonization Newsletter",
+        "url": "https://industrydecarbonization.com/news/cements-future-could-be-a-combination-of-carbon-capture-and-electrification.html"
+      },
+      {
+        "category": "general",
+        "content": "We are depleting non-renewable resources that have taken hundreds of millions of years to accumulate in a matter of decades, precipitating climate change whose effects will exacer",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/repcult/reproduction-and-culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Religion, Politics, Sexual Reproduction and the Future of Human Society",
+        "url": "http://www.dhushara.com/repcult/reproduction-and-culture.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "82143fbc8d9f29c7113949251118ce6715b67feebc40a76f5361397265c7af7a",
+  "provider": "SearXNG",
+  "query": "how does renewable energy storage in energy systems work",
+  "query_id": "v5-p-0642-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:37.053482Z"
+}

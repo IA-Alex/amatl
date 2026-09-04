@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 243.511,
+  "pair_id": "v5-p-0483",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of encryption keys in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Authentication, encryption. Creating or reverse-engineering malware. Social engineering. Physical penetration. Wi-Fi, and the physical layer of Ethernet. Cloud services. What I&#39;ll",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/PenetrationTestingAndBugBountyHunting.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Penetration Testing and Bug-Bounty Hunting",
+        "url": "https://www.billdietrich.me/PenetrationTestingAndBugBountyHunting.html"
+      },
+      {
+        "category": "general",
+        "content": "other Gematria) G7 ENCRYPTION CODES Reflections in Time - The Great Pyramid By John Tatler The Great Pyramid David Pratt THE GREAT PYRAMID By Charles William Johnson Places of Pea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greatdreams.com",
+          "/gem1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE CODE OF CARL MUNCK, AND ANCIENT GEMATRIAN NUMBERS - PART ONE",
+        "url": "http://www.greatdreams.com/gem1.htm"
+      },
+      {
+        "category": "general",
+        "content": "cipher for the Advanced Encryption Standard . Serpent got the second largest number of votes. Other papers on cryptography and cryptanalysis include the following. The Dancing Bea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f8387761b46fa7a585d21394f3dba01d2641f1ceef9b6fdefa1080b8fb62ab87",
+  "provider": "SearXNG",
+  "query": "give an overview of encryption keys in materials science",
+  "query_id": "v5-p-0483-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:28.770109Z"
+}

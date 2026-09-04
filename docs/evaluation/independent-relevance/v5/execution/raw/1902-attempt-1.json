@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 327.214,
+  "pair_id": "v5-p-0641",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind renewable energy storage in communication studies",
+    "results": [
+      {
+        "category": "general",
+        "content": "29 August 2022 ( Communication with refugees in Rwanda ) Rwanda does not allow journalists to meet refugees: all communication with them is forbidden . All inquiries about their c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2022-may-aug.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2022: May - August Political Notes",
+        "url": "http://stallman.org/archives/2022-may-aug.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1e32d5eba50ef5142d33df52cb3d1217eca1091f4c70b6a4553847c4570cc1f0",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind renewable energy storage in communication studies",
+  "query_id": "v5-p-0641-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:15:24.718228Z"
+}

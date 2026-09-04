@@ -1,0 +1,192 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 323.002,
+  "pair_id": "v5-p-0278",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does binary search in urban planning work",
+    "results": [
+      {
+        "category": "general",
+        "content": "SCRAMBLE, UNION PLANNING, 1983 ?Of what really went on there, we only have this excerpt.? Union Planning made games for the PC-88 and PC-98 Japanese computer consoles in the early",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "harmonyzone.org",
+          "/A1REVIEWS.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "skull.txt",
+        "url": "https://harmonyzone.org/A1REVIEWS.html"
+      },
+      {
+        "category": "general",
+        "content": "Communities: Urban Planning and Design in Cyberspace . This is the home page for 4.207/11.955, a graduate seminar being offered by the Department of Urban Studies and Planning and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "tecfa.unige.ch",
+          "/edu-comp/WWW-VL/eduVR-page.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The WWW VL: Educational Technology - Educational VR (MUD) sub-page (05-Jan-2000)",
+        "url": "https://tecfa.unige.ch/edu-comp/WWW-VL/eduVR-page.html"
+      },
+      {
+        "category": "general",
+        "content": "all scenarios; in life, planning for multiple outcomes helps maintain control and adaptability in uncertain situations. On the whole &#34;Nordic countries are Socialist&#34; meme tl;dr: S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Luke Smith Fanclub &amp; Archive",
+        "url": "https://lukesmith.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "the idea that central planning might be able to beat the free market was still very much in the cultural air, so why shouldn&#39;t people have felt that way in the literary market, to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2007/04/michael_blowhar_3.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: The NYTBR Section and Fiction 5: Literary Fiction and Literature",
+        "url": "http://www.2blowhards.com/archives/2007/04/michael_blowhar_3.html"
+      },
+      {
+        "category": "general",
+        "content": "Airplane Flight Planning : Computer mapping program assists in planning all facets of a GA flight plan Aviation Flight Planning Software for various GPS Receivers GPS for the BLIN",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "gpsinformation.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GPS Receiver Information, Software, and Hardware Reviews of Garmin, Lowrance, Magellan and other GPS Receivers",
+        "url": "http://gpsinformation.net/"
+      },
+      {
+        "category": "general",
+        "content": "It&#39;s all about planning and record-keeping. Do what I do: Get a street map of the area, and block it out into sectors with a highlighter. Then, starting with one of the sec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.drivebywifiguide.com",
+          "/wardrivingfaq.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jeff Duntemann&#39;s Wardriving FAQ",
+        "url": "http://www.drivebywifiguide.com/wardrivingfaq.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e1219e25ef27cd656ec9438775b5a32e8c8713b92eedcb3f35b930423d1107c4",
+  "provider": "SearXNG",
+  "query": "how does binary search in urban planning work",
+  "query_id": "v5-p-0278-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:01.686269Z"
+}

@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 265.715,
+  "pair_id": "v5-p-0915",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes bridge resonance in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "due, probably, to the resonance of the air in the mouth, and the other to the resonance of the air contained in the cavity behind the tongue, comprehending the pharynx and larynx.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book48/book48.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Little Masterpieces Of Science, Invention and Discovery, Edited by George Iles.",
+        "url": "https://www.ajhw.co.uk/books/book48/book48.html"
+      },
+      {
+        "category": "general",
+        "content": "of beauty in full resonance around him, art was not difficult to the painter and sculptor of old as it is with us. No anatomical study will do for the modern artist what habitual",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book181/book181.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Mind of the Artist, by Mrs. Laurence Binyon",
+        "url": "https://www.ajhw.co.uk/books/book181/book181.html"
+      },
+      {
+        "category": "general",
+        "content": "... to suggest a cosmic resonance between sacred and profane, celestial and terrestrial, macrocosm and microcosm.&#34;[57] Mayfly in art Mayflies drawn by Augerius Clutius[a] in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scientificlib.com",
+          "/en/Biology/Animalia/Arthropoda/Insects/Ephemeroptera.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ephemeroptera",
+        "url": "https://www.scientificlib.com/en/Biology/Animalia/Arthropoda/Insects/Ephemeroptera.html"
+      },
+      {
+        "category": "general",
+        "content": "level, perhaps also resonance-related concerns embracing both the Moon and the annual/diurnal motions of Earth itself. BABYLONIAN CHARACTERISTIC SYNODIC PHENOMENA How were the pla",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "spirasolaris.ca",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Spirasolaris",
+        "url": "https://spirasolaris.ca/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9a5643affb298b4a878002843038d247eece141050e584192a0f593c49a4332f",
+  "provider": "SearXNG",
+  "query": "what causes bridge resonance in materials science",
+  "query_id": "v5-p-0915-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:25.887106Z"
+}

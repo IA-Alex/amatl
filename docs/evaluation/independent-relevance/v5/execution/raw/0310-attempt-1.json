@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 274.778,
+  "pair_id": "v5-p-0839",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of data compression in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "low resolution, photo compression artifacts, photo post-processing by modern smartphones (adding of non-existing details), dogs and cats with medical conditions etc. The problem s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "svedic.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Svedic.org",
+        "url": "https://svedic.org/"
+      },
+      {
+        "category": "general",
+        "content": "simulation and code compression. In the past he worked and had experience with embedded systems, with drivers for Linux and FreeBSD. He&#39;s also an active contributor to the open so",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "More modern brain compression techniques, many of them developed with direct reference to the MMAcevedo image, have compressed the image to 6.75TiB losslessly. In modern brain emu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "qntm.org",
+          "/mmacevedo",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lena @ Things Of Interest",
+        "url": "https://qntm.org/mmacevedo"
+      },
+      {
+        "category": "general",
+        "content": "&#34; the artificial compression of the infant head, by barbarous nations,&#34; in which he clearly establishes that the Carib and other Indian tribes flatten the forehead of th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.historyofphrenology.org.uk",
+          "/system/national_character.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "History of Phrenology on the Web",
+        "url": "http://www.historyofphrenology.org.uk/system/national_character.htm"
+      },
+      {
+        "category": "general",
+        "content": "some good impact on git compression. Read the page on git attributes which seems like it&#39;d be good for this. Filed an Easy Hack to add a &#39;ooffice --cat [foo.doc]&#39; to make this pre",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2013/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2013/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5f1021c3dbcfdb8a111d09a41c0813c30984148bce0c7c5abb417733f069e8e7",
+  "provider": "SearXNG",
+  "query": "give an overview of data compression in food science",
+  "query_id": "v5-p-0839-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:46.917717Z"
+}

@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 289.067,
+  "pair_id": "v5-p-0204",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does heat transfer in robotics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "The ASTACon Transfer System involves sending neurotransmitters which once fully received deploy a fresh ASTACON where another may have fissed for punishment or fused for success a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "The ASTACon Transfer System involves sending neurotransmitters which once fully received deploy a fresh ASTACON where another may have fissed for punishment or fused for success a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/FountainOfYouth.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/FountainOfYouth.html"
+      },
+      {
+        "category": "general",
+        "content": "low of blood, the transfer of heat, and electrical activity—and attempting to link those physical processes to mental work. Electrical measurement was of special interest to Berger",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wireheading.com",
+          "/brainstim/cyborgs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cyborgs, transhumans and neuroelectronics",
+        "url": "https://www.wireheading.com/brainstim/cyborgs.html"
+      },
+      {
+        "category": "general",
+        "content": "main page. * Air transfer solar collector on Jim&#39;s house. cooker * Solar cookers. steveharris * SUNSHINE TO DOLLARS By Steven Harris * Reel time temperature measurements of his so",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.redrok.com",
+          "/main.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Red Rock Energy Heliostats",
+        "url": "http://www.redrok.com/main.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "23c885d8d136630cced0538d4c4f19b6a075e5a852ae1b16b39819ede006e526",
+  "provider": "SearXNG",
+  "query": "how does heat transfer in robotics operate",
+  "query_id": "v5-p-0204-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:25.349455Z"
+}

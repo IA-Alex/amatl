@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 361.226,
+  "pair_id": "v5-p-0917",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind bridge resonance in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "of this identity technology: You cannot relate to celebrities in first-order observation, only in second-order observation, you never see them directly; you see them as being seen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "quotes.pouyakary.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quote Anthology",
+        "url": "https://quotes.pouyakary.org/"
+      },
+      {
+        "category": "general",
+        "content": "Apple&#39;s Face ID technology target of latest lawsuit from German company BASF [15h] Apple TV picks up sci-fi thriller &#39;Waffle House Index&#39; in seven-figure deal [16h] M4",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "brutalist.report",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Brutalist Report",
+        "url": "https://brutalist.report/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "067bf40b4c078fc97b08891e8c5a3ec7c9ba0d82c989f4d2c195c586415a858f",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind bridge resonance in music technology",
+  "query_id": "v5-p-0917-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:05:25.693359Z"
+}

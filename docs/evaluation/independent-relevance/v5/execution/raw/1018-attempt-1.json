@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 311.793,
+  "pair_id": "v5-p-0452",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind supply chain logistics in optics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "78bca71c83fef6d2be5b4f5304ac35f9daad7dec8cbc946fd0d28e294847442d",
+  "provider": "SearXNG",
+  "query": "describe the principle behind supply chain logistics in optics",
+  "query_id": "v5-p-0452-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:10:37.423806Z"
+}

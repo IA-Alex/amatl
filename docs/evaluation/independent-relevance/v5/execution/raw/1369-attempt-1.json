@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 289.938,
+  "pair_id": "v5-p-0288",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does binary search in transportation engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "bring tools with us. Transportation was via GSA vehicles Grass had to be mowed as well as the normal site maintenance work. To me, GF duty was easy and an excellent job. al dennis",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ed-thelen.org",
+          "/comp-hist/vs-ibm-sage.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "IBM SAGE",
+        "url": "https://ed-thelen.org/comp-hist/vs-ibm-sage.html"
+      },
+      {
+        "category": "general",
+        "content": "want to know. Transportation is the same. Vehicles don’t even have carburettors to be adjusted and the majority are pleased with that (until they have to bring their vehicle",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.vintagecomputing.com",
+          "/index.php/archives/3292/the-pc-is-dead-its-time-to-make-computing-personal-again",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "VC&amp;G | » The PC is Dead: It’s Time to Bring Back Personal Computing",
+        "url": "http://www.vintagecomputing.com/index.php/archives/3292/the-pc-is-dead-its-time-to-make-computing-personal-again"
+      },
+      {
+        "category": "general",
+        "content": "what&#39;s going on there. Transportation : The Los Angeles County Metropolitan Transportation Authority sponsors a highly useful site at http://www.mta.net with a Trip Planner for bu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wa8lmf.net",
+          "/links/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WA8LMF Useful Links Page",
+        "url": "http://wa8lmf.net/links/"
+      },
+      {
+        "category": "general",
+        "content": "Infrastructure, transportation, construction, energy transmission, climate adaptation, renewable energy Relevant people and orgs: Ezra Klein , Jesse Jenkins , Lyn Stoler , YIMBY ,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "nadia.xyz",
+          "/climate-tribes",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nadia Asparouhova | Mapping out the tribes of climate",
+        "url": "http://nadia.xyz/climate-tribes"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8cb8f237ae6ff56bc70b09e1931826cb88715509f29b48f43cf5ac408a4b8584",
+  "provider": "SearXNG",
+  "query": "how does binary search in transportation engineering operate",
+  "query_id": "v5-p-0288-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:33.000145Z"
+}

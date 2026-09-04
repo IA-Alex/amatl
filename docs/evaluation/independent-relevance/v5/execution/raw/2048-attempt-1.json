@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 321.041,
+  "pair_id": "v5-p-0304",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind water purification in mechanical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ccb54a23458d29861e6ddacf870bce2831c149db0b8f7178b97c74b032180a57",
+  "provider": "SearXNG",
+  "query": "describe the principle behind water purification in mechanical engineering",
+  "query_id": "v5-p-0304-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:10.223121Z"
+}

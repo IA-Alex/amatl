@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 253.26,
+  "pair_id": "v5-p-0559",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of food preservation in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b23d5792cc48170a2be08b0c9c201bb414430f747680451cdb277b80d97f796f",
+  "provider": "SearXNG",
+  "query": "give an overview of food preservation in oceanography",
+  "query_id": "v5-p-0559-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:32.767967Z"
+}

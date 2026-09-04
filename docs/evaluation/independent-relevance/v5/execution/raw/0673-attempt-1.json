@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 308.742,
+  "pair_id": "v5-p-0234",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does plate tectonics in neuroscience work",
+    "results": [
+      {
+        "category": "general",
+        "content": "clock , Nature Neuroscience Vol.14 pp.25-27 &#34; What is particularly striking about our results is the fact that the imprinting affects both the animal&#39;s behavior and the cycling of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "astrology.co.uk",
+          "/tests/basisofastrology.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Why it is unacceptable to dismiss astrology as rubbish.",
+        "url": "https://astrology.co.uk/tests/basisofastrology.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d60f45c1f5589449e79bbb9481616fad248d82190475c4561d6050fe1ee8305f",
+  "provider": "SearXNG",
+  "query": "how does plate tectonics in neuroscience work",
+  "query_id": "v5-p-0234-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:08:48.959073Z"
+}

@@ -1,0 +1,187 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 796.579,
+  "pair_id": "v5-p-0610",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does air quality monitoring in marine biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "season?&#34; Part of an old monitoring tag was found on the 40-year-old fish, suggesting it was being tracked by scientists at one time. The fish also had a small hole under its belly",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "theshadowlands.net",
+          "/serpent.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Shadowlands Sea Serpent page",
+        "url": "http://theshadowlands.net/serpent.htm"
+      },
+      {
+        "category": "general",
+        "content": "Home Environment Self-Monitoring Case Study Which Has Success In Virtually All Youth Maintenance To The Scientific Community. In The Study You Cannot Waste It Or You Will Lose Fwa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "to understanding and monitoring rural nonpoint source pollution from agriculture. Then my interest turned to remote sensing of the ocean from space using radars; i have spent 20 y",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.paddlewise.com",
+          "/whoswho/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PaddleWise - Who&#39;s Who A-B",
+        "url": "http://www.paddlewise.com/whoswho/"
+      },
+      {
+        "category": "general",
+        "content": "Road salt Satellite monitoring Invasive species Other How can we reduce plant populations? Should we eliminate predators? Hunting Humane insecticides What is it like to die as a 2",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Applied Welfare Biology and Why Wild-Animal Advocates Should Focus on Not Spreading Nature",
+        "url": "https://reducing-suffering.org/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/"
+      },
+      {
+        "category": "general",
+        "content": "I wore a radiation monitoring device at Diablo Canyon at all times, so I know exactly how much radiation I received during the years prior to getting cancer.  You might be su",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jimzim.net",
+          "/DiabloCanyon.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Pictures of the Diablo Canyon nuclear power plant",
+        "url": "https://jimzim.net/DiabloCanyon.html"
+      },
+      {
+        "category": "general",
+        "content": "Home Environment Self-Monitoring Case Study Which Has Success In Virtually All Youth Maintenance To The Scientific Community. In The Study You Cannot Waste It Or You Will Lose Fwa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/GreenMagi.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/GreenMagi.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "3861e6712667607eb0fb78f4b591a3f5258fbd98ce8649d2e72a4508af52c769",
+  "provider": "SearXNG",
+  "query": "how does air quality monitoring in marine biology work",
+  "query_id": "v5-p-0610-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:13.153873Z"
+}

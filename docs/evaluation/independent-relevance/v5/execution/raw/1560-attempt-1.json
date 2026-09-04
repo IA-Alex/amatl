@@ -1,0 +1,354 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 414.808,
+  "pair_id": "v5-p-0210",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of heat transfer in energy systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "to have any hope of functioning off of this planet. When considering the mass budget, if you think them&#39;s good economics then you&#39;re plain crazy. Fortunately, for every worthwhile",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "character characters function functions fund funds normal nor gon dog dogs green quickly behaviour garden gardens previous recently serious anyway couple worth energy current stat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "gradual lack of cell function and eventually cell death. In order to repair mutations the DNA of the body must first be scanned either by taking lots of somatic(normal cells) cell",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "Collapse of the Wave Function Conscious Observer Copenhagen Interpretation Decoherence Determinism Indeterminism Dirac&#39;s Principles Dirac&#39;s 3 Polarizers Foundations Interpretation",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Information Philosopher - dedicated to the new information philosophy",
+        "url": "https://www.informationphilosopher.com/"
+      },
+      {
+        "category": "general",
+        "content": "gas for the unit to function properly. Do not assume that if your existing gas line is the same size as the connection to your tankless heater that your pipe is large enough. In a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.plbg.com",
+          "/education-tankless-water-heaters.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Tankless Water Heaters 101 - Tankless101 at Plbg.com",
+        "url": "https://www.plbg.com/education-tankless-water-heaters.html"
+      },
+      {
+        "category": "general",
+        "content": "Universe, or its wave function, has no beginning - it simply has no initial boundaries in time nor space, rather like the south pole of the Earth in Euclidean space with imaginary",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/quant.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quantum Reality and Cosmology",
+        "url": "http://www.dhushara.com/paradoxhtm/quant.htm"
+      },
+      {
+        "category": "general",
+        "content": "than that, it will function normally. 08-03-23 Lightning-caused partial outage of the&#39;62 repeater During the day of Wednesday, August 2, 2023 there was a severe thunderstorm that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "user.xmission.com",
+          "/~uarc/rptrstat.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "UARC: Status of UARC Repeaters",
+        "url": "http://user.xmission.com/~uarc/rptrstat.html"
+      },
+      {
+        "category": "general",
+        "content": "gradual lack of cell function and eventually cell death. In order to repair mutations the DNA of the body must first be scanned either by taking lots of somatic(normal cells) cell",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/FountainOfYouth.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/FountainOfYouth.html"
+      },
+      {
+        "category": "general",
+        "content": "through the wave function and quantum entanglement. And the very complex experience of the human or animal brain is somehow derived from the experience of the brain&#39;s most basic p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "character [characters] function [functions] fund [funds] normal nor gon dog [dogs] green quickly behaviour garden [gardens] previous recently serious anyway couple worth energy cu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq-bnc.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.conlang.info/wordfreq-bnc.txt",
+        "url": "http://www.conlang.info/wordfreq-bnc.txt"
+      },
+      {
+        "category": "general",
+        "content": "because my only real function in the world is processing information and attending to the needs of five cats, I read everything again and will write anew about it here. In no part",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.howtospotapsychopath.com",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Spot a Psychopath",
+        "url": "http://www.howtospotapsychopath.com/feed/"
+      },
+      {
+        "category": "general",
+        "content": "positive component is a function of the increment of one animal. Since the herdsman receives all the proceeds from the sale of the additional animals, the positive utility is near",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.garretthardinsociety.org",
+          "/articles/art_ecolate_view_human_predicament.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "An Ecolate View of the Human Predicament by Garrett Hardin - The Garrett Hardin Society - Articles",
+        "url": "https://www.garretthardinsociety.org/articles/art_ecolate_view_human_predicament.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3b90eac14532d8132579655e38919be315ca0c270cffc48983594258f040c1f2",
+  "provider": "SearXNG",
+  "query": "tell me about the function of heat transfer in energy systems",
+  "query_id": "v5-p-0210-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:32.836464Z"
+}

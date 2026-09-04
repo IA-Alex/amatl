@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 280.672,
+  "pair_id": "v5-p-0782",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does coastal flooding in urban planning work",
+    "results": [
+      {
+        "category": "general",
+        "content": "predation, starvation, flooding, disease, and drought as natural mortality factors. Shooting, trapping, poisoning, electrocution, road kills, and suffocation have been recognized",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "esrp.csustan.edu",
+          "/publications/pubhtml.php",
+          "",
+          "doc=sjvrp&amp;file=chapter02L00.html",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "L. San Joaquin Kit Fox (Vulpes macrotis mutica)",
+        "url": "https://esrp.csustan.edu/publications/pubhtml.php?doc=sjvrp&amp;file=chapter02L00.html"
+      },
+      {
+        "category": "general",
+        "content": "up rain, thus reducing flooding . 21 February 2020 ( Eradicating tropical diseases ) &#34;Neglected&#34; tropical diseases have harmed hundreds of millions of people. We are on the verge",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-nov-feb.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: November - February Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-nov-feb.html"
+      },
+      {
+        "category": "general",
+        "content": "Service (River Flooding) , New England Radar Loop , Northeast Radar Loop , NWS Northeast Snow Info , Northeast Lightning Loop , Northeast Foliage Report , Eastern Mass. Storm Watc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6eccc25f8561da3aee3d9c0b1c2d587218a5bc11bfb76d079ccd188732ab719e",
+  "provider": "SearXNG",
+  "query": "how does coastal flooding in urban planning work",
+  "query_id": "v5-p-0782-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:35.384701Z"
+}

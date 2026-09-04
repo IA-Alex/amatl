@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 298.888,
+  "pair_id": "v5-p-0721",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is root systems in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "Astronomy, hardware, linux Paul Buchheit http://paulbuchheit.blogspot.com/ Technology Tom Looman https://tomlooman.com/ Unreal Engine 4 Kay&#39;s Blog https://www.singhkays.com/",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "collection.mataroa.blog",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mataroa Collection",
+        "url": "https://collection.mataroa.blog/"
+      },
+      {
+        "category": "general",
+        "content": "The poet alone knows astronomy, chemistry, vegetation, and animation, for he does not stop at these facts, but employs them as signs. He knows why the plain, or meadow of space, w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.lyriktheorie.uni-wuppertal.de",
+          "/lyriktheorie/texte/1844_emerson1.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "1844 Ralph Waldo Emerson: The Poet",
+        "url": "https://www.lyriktheorie.uni-wuppertal.de/lyriktheorie/texte/1844_emerson1.html"
+      },
+      {
+        "category": "general",
+        "content": "from this heritage that astronomy and astrology for which the Chaldeans became renowned developed. The name Sin is the Semitic form of Sumerian Enzu meaning lord of knowledge. The",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/orsin/origsin.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Origin of Sin and the Queen of Heaven: Part 1 The Moon God and Goddess",
+        "url": "http://www.dhushara.com/book/orsin/origsin.htm"
+      },
+      {
+        "category": "general",
+        "content": "inventor, a scholar of astronomy or history, a master tactician. All these activities are explained when one imagines men whose thinking is active in one particular direction; who",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.publicappeal.org",
+          "/library/nietzsche/Nietzsche_human_all_too_human/sect4_from_the_soul_of_artists.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SECTION FOUR From the Soul of Artists and Writers",
+        "url": "http://www.publicappeal.org/library/nietzsche/Nietzsche_human_all_too_human/sect4_from_the_soul_of_artists.htm"
+      },
+      {
+        "category": "general",
+        "content": "intervals, while astronomy was immensely enriched by the discoveries of Hipparchus, who was followed by the historically more celebrated Ptolemy. Anatomy had been made the basis o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "victorianweb.org",
+          "/science/science_texts/belfast.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Address Delivered Before the British Association Assembled at Belfast, With Additions (1874)",
+        "url": "https://victorianweb.org/science/science_texts/belfast.html"
+      },
+      {
+        "category": "general",
+        "content": "Any Moving Objects, Astronomy, And Thermodynamics. Understands CSRNs{Cubical Self-Replicating Nanobots} . Knows Of 12 Magical Powers And Has Learned Their Definitions. Class Struc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "of nonsense and dubious astronomy, a narrative emerges; the star that came to Earth was no bigger than would fit in the palm of your hand. It was found by a seafaring merchant in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-gig-economy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Gig Economy — Chadnet",
+        "url": "https://wiki.chadnet.org/the-gig-economy"
+      },
+      {
+        "category": "general",
+        "content": "The more we learn about astronomy, the less it seems that earth is special. It&#39;s a small part of the universe, and each human is a small part of the earth. We are all spinning thr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "triptico.com",
+          "/links/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Links",
+        "url": "https://triptico.com/links/"
+      },
+      {
+        "category": "general",
+        "content": "modified gravity Nature Astronomy doi:10.1038/s41550-019-0823-y) and could be produced in the medial tachocline layers of the Sun through magnetic fields interacting with photons",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/quant.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quantum Reality and Cosmology",
+        "url": "http://www.dhushara.com/paradoxhtm/quant.htm"
+      },
+      {
+        "category": "general",
+        "content": "from a number of astronomy, movies, comic books, and space related experiences from that same childhood and the outcomes thereof. Although it wasn&#39;t known to be so until years lat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "the-wanderling.com",
+          "/artist.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE ARTIST IN ME: Renaissance UFO&#39;s to Outer Space",
+        "url": "https://the-wanderling.com/artist.html"
+      },
+      {
+        "category": "general",
+        "content": "the study physics and astronomy that Augustine came to reject the Manichaean theory of matter: Science explained the character of the physical world better than theosophy did; sci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.brusselsjournal.com",
+          "/node/4440",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Gnosticism from a Non-Voegelinian Perspective, Part I | The Brussels Journal",
+        "url": "https://www.brusselsjournal.com/node/4440"
+      },
+      {
+        "category": "general",
+        "content": "includes treatises on astronomy and geography, and concerns itself with the history of the world, with prophecies and religious wars. The reports on the magic realm of Shambhala a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.trimondi.de",
+          "/SDLE/Part-1-06.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Shadow of the Dalai Lama – Part I – 6",
+        "url": "http://www.trimondi.de/SDLE/Part-1-06.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "832e3491b77d0a73977d117e75f0a2f8d66a26c0353d31f7b3010ed825c9d51d",
+  "provider": "SearXNG",
+  "query": "what is root systems in astronomy",
+  "query_id": "v5-p-0721-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:06.214096Z"
+}

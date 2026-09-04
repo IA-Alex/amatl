@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 361.746,
+  "pair_id": "v5-p-0873",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind vaccination in electrical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c5c7da8006b16bfb80559505af422cdac6bf6f4bed8133d053f08d9be40a430b",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind vaccination in electrical engineering",
+  "query_id": "v5-p-0873-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:52.257664Z"
+}

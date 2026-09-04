@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 362.471,
+  "pair_id": "v5-p-0894",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does vaccination in energy systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "You Because The 1%, The Vaccination Effect, And Extra Funding Makes It Definitely Worth The Angels&#39; While. Don&#39;t Waste Any Money On OverPriced Shit Because Then You Won&#39;t Have Mon",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "to be monitored post-vaccination.&#34; from the writ of petition submitted to the Supreme Court of India in 2012 by Kalpana Mehta, Nalini Bhanot and Dr. Rukmini Rao   &#34;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "globalkleptocracy.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GLOBAL KLEPTOCRACY - GLOBAL ELITE, RULING ELITE, GLOBAL OLIGARCHY, DEEP STATE, GLOBALISM, DYNASTIC ELITE, MONOPOLY CAPITALISM, CORPORATOCRACY,",
+        "url": "https://globalkleptocracy.net/"
+      },
+      {
+        "category": "general",
+        "content": "GAVI alliance to push vaccinations on the poorest parts of the developing world in the name of &#34;saving lives&#34; and stopping disease. ... In April 2012, the Indian medical",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "howtheworldreallyworks.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HOW THE WORLD REALLY WORKS - ROTHSCHILD, MONEY POWER, RULING ELITE, GLOBAL OLIGARCHY, FINANCIAL ELITE, DYNASTIC ELITE, POWER ELITE, GLOBALISM,",
+        "url": "https://howtheworldreallyworks.info/"
+      },
+      {
+        "category": "general",
+        "content": "developed Covid vaccination causes micro blood clots, but this has yet to be proven. Something however is causing a decline in rapid thinking and cognitive ability in the populati",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIDIK.com The original and official DIDIK site. Cutting edge and sometimes controversial thoughts, designs, proposals and projects conceiv",
+        "url": "http://www.didik.com/"
+      },
+      {
+        "category": "general",
+        "content": "You Because The 1%, The Vaccination Effect, And Extra Funding Makes It Definitely Worth The Angels&#39; While. Don&#39;t Waste Any Money On OverPriced Shit Because Then You Won&#39;t Have Mon",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/FountainOfYouth.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/FountainOfYouth.html"
+      },
+      {
+        "category": "general",
+        "content": "and potentially endless vaccinations, if they believe that such measures will protect them. Nationwide lockdowns had never been used before to deal with pandemics, and a long seri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/psycho.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mass psychosis and the power of thought",
+        "url": "https://davidpratt.info/psycho.htm"
+      },
+      {
+        "category": "general",
+        "content": "of the Blood by Harvey. Vaccination by Jenner. Use of Anæsthetics the Great Step of Medical Progress of the Century. Materia Medica. Instruments. Schools of Medicine. Dentis",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book389/book389.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Progress of Invention in the Nineteenth Century, by Edward W. Byrn.",
+        "url": "https://www.ajhw.co.uk/books/book389/book389.html"
+      },
+      {
+        "category": "general",
+        "content": "To eliminate mask and vaccination requirements for everyone else would force that fraction into permanent isolation, along with any family members who join them in isolation. 23 F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2021-nov-feb.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2021: November - February Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2021-nov-feb.html"
+      },
+      {
+        "category": "general",
+        "content": "pharmaceutical and vaccination industries. The fact that certain microbes are often present during a disease process does not prove that they cause the disease in question, just a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/reclaim.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reclaiming our health: germ theory exposed",
+        "url": "https://davidpratt.info/reclaim.htm"
+      },
+      {
+        "category": "general",
+        "content": "theosophical quotations Vaccination and homeopathy Malignant medical myths HIV=AIDS=Death: a killer myth Ozone, influenza and the causes of disease Homepage       &amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/modmed.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Modern medicine – people versus profits",
+        "url": "https://davidpratt.info/modmed.htm"
+      },
+      {
+        "category": "general",
+        "content": "introduced small pox vaccination, reducing the death rate. This ancient scourge had killed 10 to 20 percent of those infected — which was nearly everyone, for it is an extremely v",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.johntanton.org",
+          "/articles/art_end_migration_epoch_tanton.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "End of the Migration Epoch? by Dr. John H. Tanton - an ethical immigration paradigm",
+        "url": "https://www.johntanton.org/articles/art_end_migration_epoch_tanton.html"
+      },
+      {
+        "category": "general",
+        "content": "Sun) Urination blockage Vaccinations: Yes or No Vision &amp; eyes Zeolite &amp; detoxification 3D printing making body parts HEALTH CARE Antibiotics causing mutant bacteria Canadian model",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.freegrab.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "index",
+        "url": "http://www.freegrab.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6c108937f938edcb8af8b11aa0029cbfba03cd18802bc0ebcf618cff81cb45d9",
+  "provider": "SearXNG",
+  "query": "how does vaccination in energy systems work",
+  "query_id": "v5-p-0894-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:49.403157Z"
+}

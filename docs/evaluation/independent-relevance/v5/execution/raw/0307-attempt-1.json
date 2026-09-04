@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 354.707,
+  "pair_id": "v5-p-0941",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is cloud formation in computer security",
+    "results": [
+      {
+        "category": "general",
+        "content": "Learn Introduction to Information Retrieval Transaction Model - Jim Gray ✅ Toward a New Understanding of Data Modelling - Klein &amp; Lytinen metaphors for data modeling are negotiati",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alexalejandre.com",
+          "/about/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "About",
+        "url": "https://alexalejandre.com/about/"
+      },
+      {
+        "category": "general",
+        "content": "have recorded the information about the defective filter in the logbook for the next shift, but perhaps the importance of the technician’s note didn’t register in his mind, or per",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.isegoria.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Isegoria",
+        "url": "http://www.isegoria.net/"
+      },
+      {
+        "category": "general",
+        "content": "balanced News and Information ALTERNATIVE NEWS NEWS http://www.alternet.org NEWS http://www.centrexnews.com NEWS http://www.link.no/IPS/eng/last.html NEWSLINKS http://www.truthinm",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "Fidelity Investments. Information Awareness Office logo. Flagrant freemason symbolism, from the American KGB... CBS logo. Not only is the all seeing eye represented here, the whit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "thebiggestsecretpict.online.fr",
+          "/nwo.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "New World Order, Conspiracy, UFOs photographs",
+        "url": "http://thebiggestsecretpict.online.fr/nwo.htm"
+      },
+      {
+        "category": "general",
+        "content": "to think about information in terms of these products. Oftentimes when someone asks you about a person, the first thing that jumps to your mind is “Do I talk to them on SMS, or do",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "changelog.com",
+          "/podcast/455",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Building software for yourself with Linus Lee (Changelog Interviews #455)",
+        "url": "https://changelog.com/podcast/455"
+      },
+      {
+        "category": "general",
+        "content": "learning information classified to you), and religion. Freedom to experience any form of consciousness. Freedom to do any type of drugs regardless of the tendency to addiction (un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.e-democracy.biz",
+          "/E-Democracy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Judicially Arbitrated Imperial E-Democracy",
+        "url": "http://www.e-democracy.biz/E-Democracy.html"
+      },
+      {
+        "category": "general",
+        "content": "aircraft assault zone information from AFI 13-217 published inside...the manual covers helicopters airlanding, why not fixed-wing aircraft? noone is suggesting Army Pathfinders ta",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/assaultzone.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AFTER THE PARACHUTE DROP: THE ASSAULT ZONE",
+        "url": "http://www.combatreform.org/assaultzone.htm"
+      },
+      {
+        "category": "general",
+        "content": "learning information classified to you), and religion. Freedom to experience any form of consciousness. Freedom to do any type of drugs regardless of the tendency to addiction (un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.e-democracy.biz",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Judicially Arbitrated Imperial E-Democracy",
+        "url": "http://www.e-democracy.biz/"
+      },
+      {
+        "category": "general",
+        "content": "«loyalty» to the formation or an admiration to the individual, the practice attempts to convey the message that the manager will behave as the «supreme» commander would. The ant o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "asynchronousexchange.com",
+          "/documents/the-saint-petersburg-hive",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://asynchronousexchange.com/documents/the-saint-petersburg-hive",
+        "url": "http://asynchronousexchange.com/documents/the-saint-petersburg-hive"
+      },
+      {
+        "category": "general",
+        "content": "assumed a spherical formation around the Enterprise. A new voice came over the comm system. &#34;Attention Enterprise, this is Wedge Antilles, Rouge Squadron. Are you hyperdrive capab",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "geocities.ws",
+          "/Harrisonw_2000/stvsw.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Movie Talk",
+        "url": "http://geocities.ws/Harrisonw_2000/stvsw.html"
+      },
+      {
+        "category": "general",
+        "content": "(40 years after the formation of the State of Israel in 1948, minus 7 years of Tribulation) and then again in 1988 , the view is rapidly losing its most passionate supporters. Thi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "vftonline.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Vine &amp; Fig Tree Worldview",
+        "url": "http://vftonline.com/"
+      },
+      {
+        "category": "general",
+        "content": "combat modes, character formations and Wizardry 8&#39;s unique magic system with unique targeting characteristics that make for a combat experience exceeding anything previously seen.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.tawmis.com",
+          "/wizardry8faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Wizardry 8 FAQ Page",
+        "url": "http://www.tawmis.com/wizardry8faq/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e04cb06289b8fb69b5d8b059e20daf406cd8fb745f54c278bea52f0016188cd2",
+  "provider": "SearXNG",
+  "query": "what is cloud formation in computer security",
+  "query_id": "v5-p-0941-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:45.875747Z"
+}

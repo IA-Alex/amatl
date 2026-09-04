@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 231.895,
+  "pair_id": "v5-p-1007",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of wastewater treatment in transportation engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7514f307691e60bed20b600e3f936988d0cd097a08d9f9e61718b14498ecbbf4",
+  "provider": "SearXNG",
+  "query": "give an overview of wastewater treatment in transportation engineering",
+  "query_id": "v5-p-1007-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:58.851754Z"
+}

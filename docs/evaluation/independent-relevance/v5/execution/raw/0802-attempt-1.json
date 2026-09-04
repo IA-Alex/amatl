@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 323.039,
+  "pair_id": "v5-p-0528",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind neural networks in robotics",
+    "results": [
+      {
+        "category": "general",
+        "content": "(1994). the “principle of desirable difficulty”, the idea that memories are maximally strengthened if tested when we&#39;re on the verge of forgetting them. This suggests",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "augmentingcognition.com",
+          "/ltm.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Augmenting Long-term Memory",
+        "url": "http://augmentingcognition.com/ltm.html"
+      },
+      {
+        "category": "general",
+        "content": "Security – Nine Principles took this work further, and examines the problems with relying on cryptographic evidence. The recent introduction of EMV (&#39;chip and PIN&#39;) was supp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a43133e932b544df81b2dfabab1fabc7172d7214ad25310062cae520a70c26e7",
+  "provider": "SearXNG",
+  "query": "describe the principle behind neural networks in robotics",
+  "query_id": "v5-p-0528-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:09:29.737772Z"
+}

@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 224.694,
+  "pair_id": "v5-p-1015",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of probability distributions in ecology",
+    "results": [
+      {
+        "category": "general",
+        "content": "Martensite (different distributions of iron carbide in ferrite, produced by different heat treatments). When a steel has been heat-treated wrongly, the result is usually a complex",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/sillymolecules/sillymols4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecules with Silly or Unusual Names - page 4",
+        "url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8369df254edee097c12734bab25862151c69ff0388c0472072303ea806415006",
+  "provider": "SearXNG",
+  "query": "give an overview of probability distributions in ecology",
+  "query_id": "v5-p-1015-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:08:47.473190Z"
+}

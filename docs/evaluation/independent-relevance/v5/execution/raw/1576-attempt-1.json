@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 340.1,
+  "pair_id": "v5-p-0009",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind photosynthesis in electrical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b00658f4d531694421bd1f6176a8116e419a1f636d02f807f0eb62e8fc21cbb3",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind photosynthesis in electrical engineering",
+  "query_id": "v5-p-0009-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:37.761069Z"
+}

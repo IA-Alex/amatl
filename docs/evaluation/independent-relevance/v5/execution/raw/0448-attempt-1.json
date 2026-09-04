@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 329.222,
+  "pair_id": "v5-p-0777",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind coastal flooding in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b1ac116b73daa2d833591839ffe18cd8039c2b0261d58341cdb26d4626fc7c0d",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind coastal flooding in pharmacology",
+  "query_id": "v5-p-0777-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:30.751812Z"
+}

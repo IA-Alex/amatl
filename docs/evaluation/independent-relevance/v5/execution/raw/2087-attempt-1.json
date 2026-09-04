@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 265.531,
+  "pair_id": "v5-p-0849",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is data compression in pharmacology",
+    "results": [
+      {
+        "category": "general",
+        "content": "developmental biology, pharmacology, and many of the other related biomedical research disciplines. Among the most significant technical challenges for performing successful live-",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "micro.magnet.fsu.edu",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecular Expressions: Images from the Microscope",
+        "url": "https://micro.magnet.fsu.edu/"
+      },
+      {
+        "category": "general",
+        "content": "Pharmacologist Pharmacology &amp; Toxicology, General Pharmacy Security Philatelist Philippines Customs &amp; Practices Phlebotomy, Non-Physician Photo and Film Processing Equipment Photo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "VFTonline.org",
+          "/VFTprayer/heaven/000list.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://VFTonline.org/VFTprayer/heaven/000list.txt",
+        "url": "http://VFTonline.org/VFTprayer/heaven/000list.txt"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7b7e9fffd1da5fc57701450d0ff310aa7402cff6a8cc49b259c820353eb97873",
+  "provider": "SearXNG",
+  "query": "what is data compression in pharmacology",
+  "query_id": "v5-p-0849-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:16:23.117889Z"
+}

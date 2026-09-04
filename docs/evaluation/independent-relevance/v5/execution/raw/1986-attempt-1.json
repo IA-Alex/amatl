@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 325.37,
+  "pair_id": "v5-p-0633",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind renewable energy storage in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4b76f9200e553a30ac3339fb3ea7728a56376f3aea1b263fab1ed74a1b14f30b",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind renewable energy storage in pharmacology",
+  "query_id": "v5-p-0633-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:50.741403Z"
+}

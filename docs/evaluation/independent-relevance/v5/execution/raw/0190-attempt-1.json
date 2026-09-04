@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 371.949,
+  "pair_id": "v5-p-0593",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind air quality monitoring in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "used to have a way of monitoring RSS as a ‘live bookmark’ - which was REALLY WEIRD. This was removed in 2018. Kicks Condor 9 Jun 2021 • posted to /en/rss , &#43;1 •&amp;nbs",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kickscondor.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kicks Condor",
+        "url": "https://www.kickscondor.com/"
+      },
+      {
+        "category": "general",
+        "content": "with blood pressure monitoring and contactless payment [18h] ExpressVPN joins the short list of VPNs built for Amazon&#39;s Vega OS Fire TV Sticks [18h] Persona 4 Revival plays fa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "brutalist.report",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Brutalist Report",
+        "url": "https://brutalist.report/"
+      },
+      {
+        "category": "general",
+        "content": "☛ Stricter parental monitoring of social media isn&#39;t always better, says study In a new study published in the Journal of Child and Family Studies, researchers surveyed 248 U.S. p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "techrights.org",
+          "/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Techrights — Links 30/01/2024: Many More Layoffs (Microsoft the Most Tech Layoffs This Year)",
+        "url": "http://techrights.org/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3faf3faf184fda83ace1a03bfcea2fff0f5843e5f503e830c261407c27363490",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind air quality monitoring in music technology",
+  "query_id": "v5-p-0593-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:08.711801Z"
+}

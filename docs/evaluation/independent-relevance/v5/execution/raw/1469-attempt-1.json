@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 271.048,
+  "pair_id": "v5-p-1026",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does probability distributions in oceanography work",
+    "results": [
+      {
+        "category": "general",
+        "content": "and their geographical distributions vary as they adapt to changing conditions. Figure 12: Glacier shortening (4) and sea level rise (24,25). Gray area designates estimated range",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oism.org",
+          "/pproject/s33p36.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Environmental Effects of Increased Atmospheric Carbon Dioxide - Global Warming Petition Project",
+        "url": "https://www.oism.org/pproject/s33p36.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5a45a036a68228fba26550a8863850d5f2519a871e14b4b909d9563b2727f954",
+  "provider": "SearXNG",
+  "query": "how does probability distributions in oceanography work",
+  "query_id": "v5-p-1026-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:13:04.420703Z"
+}

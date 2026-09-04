@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 257.91,
+  "pair_id": "v5-p-0378",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does solar eclipses in neuroscience work",
+    "results": [
+      {
+        "category": "general",
+        "content": "End of the Trail (AMC), Neuroscience Says Listening to This Song (&#34;Weightless&#34;) Reduces Anxiety by Up to 65 Percen t, The Health Benefits of Knitting ; Concentrate on your food ;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fccfed50f625b1fcdde368d98169962a361e2f78115463b03a0b04dc08d88f83",
+  "provider": "SearXNG",
+  "query": "how does solar eclipses in neuroscience work",
+  "query_id": "v5-p-0378-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:08:04.212130Z"
+}

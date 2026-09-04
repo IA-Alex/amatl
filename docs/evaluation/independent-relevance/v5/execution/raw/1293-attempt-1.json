@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 265.628,
+  "pair_id": "v5-p-0904",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does bridge resonance in civil engineering operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bd2479c9a78c1cb3835b1f68a673659f4b46216bc6abe16e3017e64e48dbfba0",
+  "provider": "SearXNG",
+  "query": "how does bridge resonance in civil engineering operate",
+  "query_id": "v5-p-0904-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:10.216570Z"
+}

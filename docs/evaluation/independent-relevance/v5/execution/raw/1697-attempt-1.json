@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 251.107,
+  "pair_id": "v5-p-0384",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does solar eclipses in robotics operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d78c59b31037fb00fc7af44deb1724259efeaeb028ac85796d222553d7b2986c",
+  "provider": "SearXNG",
+  "query": "how does solar eclipses in robotics operate",
+  "query_id": "v5-p-0384-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:14:13.574059Z"
+}

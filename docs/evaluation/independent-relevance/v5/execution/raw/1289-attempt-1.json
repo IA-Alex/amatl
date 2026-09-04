@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 347.988,
+  "pair_id": "v5-p-0280",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does binary search in architecture operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "Structures for NUMA Architectures Authors: Irina Calciu (VMware Research, Palo Alto, CA, USA), Siddhartha Sen (Microsoft Research, New York, NY, USA), Mahesh Balakrishnan (Yale Un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "by the OpenGL Architecture Review Board, and we in no way challenge this. A single GLX extension is required; this extension has already been approved by the ARB. Use of 3D outsid",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "registry.khronos.org",
+          "/OpenGL/ABI/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OpenGL® Application Binary Interface for Linux - The Khronos Group Inc",
+        "url": "https://registry.khronos.org/OpenGL/ABI/"
+      },
+      {
+        "category": "general",
+        "content": "&#34;rethink computer architecture&#34;) and people who find &#34;one more use-after-free in the canvas 2D component&#34; repeatedly for money. The former is hacking, the latter is &#34;working for t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "heritage through art, architecture and stories of community and identity,&#34; DOI Secretary Sally Jewell said in a Nov. 2 press release announcing the landmarks.  &#34;Today&#39;s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "akdart.com",
+          "/obama95.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "President Obama Panders to Homosexuals",
+        "url": "http://akdart.com/obama95.html"
+      },
+      {
+        "category": "general",
+        "content": "to the underlying Git architecture. See gitworkflows(7) for an overview of recommended workflows. See also the howto documents for some useful examples. The internals are document",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mirrors.edge.kernel.org",
+          "/pub/software/scm/git/docs/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "git(1)",
+        "url": "http://mirrors.edge.kernel.org/pub/software/scm/git/docs/"
+      },
+      {
+        "category": "general",
+        "content": "are specific to an architecture, thus less portable. Blobs are quite often massively bloated. This release, like every OpenBSD release, contains OpenBSD and its source code. It ru",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.openbsd.org",
+          "/lyrics.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OpenBSD: Release Songs",
+        "url": "http://www.openbsd.org/lyrics.html"
+      },
+      {
+        "category": "general",
+        "content": "page: Photo Placard Architecture Special Features Historical Notes This Artifact Interesting Web Sites Other information , Other Software , Other Hardware , SAGE track &#34;D.B. Coope",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ed-thelen.org",
+          "/comp-hist/vs-ibm-sage.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "IBM SAGE",
+        "url": "https://ed-thelen.org/comp-hist/vs-ibm-sage.html"
+      },
+      {
+        "category": "general",
+        "content": "implementing the 2901 architecture.     The working title for BattleZone was First Person Tank and then Future Tank . At one time it was to be called Moon Tank . The BattleZo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.jmargolin.com",
+          "/vgens/vgens.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Secret Life of Vector Generators",
+        "url": "http://www.jmargolin.com/vgens/vgens.htm"
+      },
+      {
+        "category": "general",
+        "content": "Portable (PSP) Architecture A practical analysis by Rodrigo Copetti Using accessibility tools? Switch to the ‘classic’ edition . Got a vintage computer? Try the 90s-compatible ‘bl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/playstation-portable/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PlayStation Portable (PSP) Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/playstation-portable/"
+      },
+      {
+        "category": "general",
+        "content": "identifies the disk&#39;s architecture to IRIX, i.e. how many cylinders, tracks, sectors, etc. The disk label also includes a directory table of contents consisting of file names, siz",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "archive.irixnet.org",
+          "/thisoldsgi/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "This Old SGI",
+        "url": "http://archive.irixnet.org/thisoldsgi/"
+      },
+      {
+        "category": "general",
+        "content": "to the underlying Git architecture. See gitworkflows(7) for an overview of recommended workflows. See also the howto documents for some useful examples. The internals are document",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mirrors.edge.kernel.org",
+          "/pub/software/scm/git/docs/git.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "git(1)",
+        "url": "http://mirrors.edge.kernel.org/pub/software/scm/git/docs/git.html"
+      },
+      {
+        "category": "general",
+        "content": "Cerf sketches gateway architecture in March on back of envelope in a San Francisco hotel lobby (:vgc:) Cerf and Kahn present basic Internet ideas at INWG in September at Univ of S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zakon.org",
+          "/robert/internet/timeline/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hobbes&#39; Internet Timeline - the definitive ARPAnet &amp; Internet history",
+        "url": "https://www.zakon.org/robert/internet/timeline/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "168ae0ac55c9e337429f1ce4c3dd7abcce851236166cf86a585a65f4473b6ff0",
+  "provider": "SearXNG",
+  "query": "how does binary search in architecture operate",
+  "query_id": "v5-p-0280-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:08.991829Z"
+}

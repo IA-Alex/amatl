@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 249.985,
+  "pair_id": "v5-p-0959",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes cloud formation in robotics",
+    "results": [
+      {
+        "category": "general",
+        "content": "has been destroyed: 1 Information courtesy of the International Earth-Destruction Advisory Board Methods for destroying the Earth To be listed here, a method must actually work. T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "qntm.org",
+          "/destroy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to destroy the Earth @ Things Of Interest",
+        "url": "https://qntm.org/destroy"
+      },
+      {
+        "category": "general",
+        "content": "an essay once new information became available, or simply revisit a topic that he had written about long ago. The essays within each subject area are arranged so that, to the exte",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "450624c69eeed9ad93d4452cd8a60ae77f6afed47151c4b16516d01d9fd17bad",
+  "provider": "SearXNG",
+  "query": "what causes cloud formation in robotics",
+  "query_id": "v5-p-0959-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:09:32.805146Z"
+}

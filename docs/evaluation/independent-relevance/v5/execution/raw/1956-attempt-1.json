@@ -1,0 +1,354 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 438.896,
+  "pair_id": "v5-p-0734",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of root systems in information systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "Driver&#34; should I use? Information What is a good book on USB? What APIs are available to USB Device Drivers? Got any testing tips for Linux USB Device Drivers? Is it possible to b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.linux-usb.org",
+          "/FAQ.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Linux USB FAQ",
+        "url": "http://www.linux-usb.org/FAQ.html"
+      },
+      {
+        "category": "general",
+        "content": "a reported blind-information event in which honey was secretly added to a milk offering on April 27, 1994. Kash, allegedly unaware of the alteration, reported during meditation th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "adishakti.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Adi Shakti | Divine Feminine | Goddess | MahaDevi | Shri Mataji Nirmala Devi",
+        "url": "https://adishakti.org/"
+      },
+      {
+        "category": "general",
+        "content": "runtime configuration information for the Samba programs. The complete description of the file format and possible parameters held within are here for reference purposes. HOW CONF",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.samba.org",
+          "/samba/docs/current/man-html/smb.conf.5.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "smb.conf",
+        "url": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+      },
+      {
+        "category": "general",
+        "content": "always bring up the information whether the URL exists or not. When you access a gopher site without a proxy, it brings an error message, but not an error code . This seems to be",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "home.snafu.de",
+          "/tilman/xenulink.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Find broken links on your site with Xenu&#39;s Link Sleuth (TM)",
+        "url": "http://home.snafu.de/tilman/xenulink.html"
+      },
+      {
+        "category": "general",
+        "content": "Added. System Information and Benchmark for Linux Systems This application is the successor of and supersedes hardinfo latest-browsers-2-noarch-3slint.txz Edited the script latest",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "slackware.uk",
+          "/slint/x86_64/slint-15.0/ChangeLog.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://slackware.uk/slint/x86_64/slint-15.0/ChangeLog.txt",
+        "url": "http://slackware.uk/slint/x86_64/slint-15.0/ChangeLog.txt"
+      },
+      {
+        "category": "general",
+        "content": "the 1920&#39;s that an information-theoretically secure cryptosystem was devised: the one-time pad. The idea is simple: the plaintext message is represented by a binary string p, whic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scottaaronson.com",
+          "/democritus/lec8.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHYS771 Lecture 8: Crypto",
+        "url": "https://www.scottaaronson.com/democritus/lec8.html"
+      },
+      {
+        "category": "general",
+        "content": "Understand Much Arcane Information. If Not; Google Translate Browser Extension, Is Available For Free To Everybody On Earth Even Where There Is Supposedly Overt Censorship. Google",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteList.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/FWAsiteList.html"
+      },
+      {
+        "category": "general",
+        "content": "hard Most software is information software Graphic design Information software design is graphic design Demonstration: Showing the data Demonstration: Arranging the data Context-s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "worrydream.com",
+          "/MagicInk/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Magic Ink: Information Software and the Graphical Interface",
+        "url": "https://worrydream.com/MagicInk/"
+      },
+      {
+        "category": "general",
+        "content": "or modify the Cygwin information stored in the registry? 3. Further Resources 3.1. Where&#39;s the documentation? 3.2. What Cygwin mailing lists can I join? 3.3. What if I have a prob",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cygwin.com",
+          "/faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cygwin FAQ",
+        "url": "https://cygwin.com/faq/"
+      },
+      {
+        "category": "general",
+        "content": "for US.  For more information on this DVD, go here . The Handkerchief Phenomenon Addendum to “A Whole Lot Of Wishful Thinking These Days ” by Sandy Simpson This DVD is a mess",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.deceptioninthechurch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Apologetics Coordination Team - Vital Information On Deception In The Church!",
+        "url": "http://www.deceptioninthechurch.com/"
+      },
+      {
+        "category": "general",
+        "content": "© 2007 The Linux Information Project. All Rights Reserved.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.linfo.org",
+          "/dot_slash.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dot-slash explanation by The Linux Information Project (LINFO)",
+        "url": "https://www.linfo.org/dot_slash.html"
+      },
+      {
+        "category": "general",
+        "content": "treated in our page: Information about SilverFast Version 9 What is new in the SilverFast version 9? How much does an upgrade to version 9 cost? Is it worth upgrading to version 9",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.filmscanner.info",
+          "/en/FragenSilverFast.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "FAQ Questions Answers Help: LaserSoft Imaging SilverFast Ai Studio, Scan-Software Tips Tricks Information Problems Solution Support, Archive-S",
+        "url": "https://www.filmscanner.info/en/FragenSilverFast.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6c0b79b9fb01a28134cb0573248a15f75a1388d22b375953cbbc47bd7cae178c",
+  "provider": "SearXNG",
+  "query": "tell me about the function of root systems in information systems",
+  "query_id": "v5-p-0734-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:41.501477Z"
+}

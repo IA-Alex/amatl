@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 343.042,
+  "pair_id": "v5-p-0365",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind solar eclipses in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "must have records of eclipses for some centuries to understand the relationship of the moon&#39;s orbit to the ecliptic (the apparent path of the sun in the sky) -- the Greeks had no",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/greek.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Myth, Philosophy, Why the Greeks?, Parmenides, Greek History",
+        "url": "https://friesian.com/greek.htm"
+      },
+      {
+        "category": "general",
+        "content": "Be No More Total Solar Eclipses , Space Image of the Day , NASA&#39;s Year in Review 2016 , ScienceHeathen , Public Library of Science (PLOS), CRISPR . Health: Single-payer would dras",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "713199c71ae27925926108f2b786538644fa9645e314064d7b85a788b59eee0c",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind solar eclipses in climate science",
+  "query_id": "v5-p-0365-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:14:17.104372Z"
+}

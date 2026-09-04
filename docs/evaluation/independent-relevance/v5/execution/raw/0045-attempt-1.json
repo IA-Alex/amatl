@@ -1,0 +1,246 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 308.577,
+  "pair_id": "v5-p-0888",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does vaccination in robotics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "You Because The 1%, The Vaccination Effect, And Extra Funding Makes It Definitely Worth The Angels&#39; While. Don&#39;t Waste Any Money On OverPriced Shit Because Then You Won&#39;t Have Mon",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "developed Covid vaccination causes micro blood clots, but this has yet to be proven. Something however is causing a decline in rapid thinking and cognitive ability in the populati",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIDIK.com The original and official DIDIK site. Cutting edge and sometimes controversial thoughts, designs, proposals and projects conceiv",
+        "url": "http://www.didik.com/"
+      },
+      {
+        "category": "general",
+        "content": "You Because The 1%, The Vaccination Effect, And Extra Funding Makes It Definitely Worth The Angels&#39; While. Don&#39;t Waste Any Money On OverPriced Shit Because Then You Won&#39;t Have Mon",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/FountainOfYouth.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/FountainOfYouth.html"
+      },
+      {
+        "category": "general",
+        "content": "receiving the Covid-19 vaccination, as of this date. This is out of about 2 million people who have received the vaccination. Reporting to this federally funded site is optional a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.news1.net",
+          "/jan2021.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Breaking News, news commentary and news chronicle. News1.net - News and Photographic image archive. Global news with an emphasis on New Yo",
+        "url": "http://www.news1.net/jan2021.htm"
+      },
+      {
+        "category": "general",
+        "content": "cafe. ...and even store vaccination records (archive) (MozArchive) : People in Sweden are increasingly seeking to have microchips implanted that contain their COVID-19 vaccination",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/technological_slavery.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Technological slavery",
+        "url": "http://digdeeper.love/articles/technological_slavery.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "reactions to the Covid vaccinations, if they are forced to stop working. Details have not yet been announced. Ottawa Canada April 23, 2021 The Canadian government has introduced t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.news1.net",
+          "/april2021.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Breaking News, news commentary and news chronicle. News1.net - News and Photographic image archive. Global news with an emphasis on New Yo",
+        "url": "http://www.news1.net/april2021.htm"
+      },
+      {
+        "category": "general",
+        "content": "four months. If the vaccination works, why must people still wear masks and why the need for a &#34;Vaccination Passport&#34;? Obviously, if someone decides not to take the vacc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.news1.net",
+          "/march2021.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "News1.net Breaking News in New York City, United States and the World. March 2021",
+        "url": "http://www.news1.net/march2021.htm"
+      },
+      {
+        "category": "general",
+        "content": "to receive the Covid vaccination. The vaccination is controversial because health authorities still insist that even if a person has been vaccinated, that they should still wear m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.news1.net",
+          "/feb2021.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "News1.net Breaking news in New York, USA and from around the world. February 2021",
+        "url": "http://www.news1.net/feb2021.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fee4fd133a553c4c69328609a8a00c178673fc6647a84a004e60c4226786cd05",
+  "provider": "SearXNG",
+  "query": "how does vaccination in robotics operate",
+  "query_id": "v5-p-0888-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:22.525665Z"
+}

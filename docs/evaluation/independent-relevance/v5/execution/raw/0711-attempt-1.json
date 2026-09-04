@@ -1,0 +1,327 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 459.729,
+  "pair_id": "v5-p-0856",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does data compression in architecture operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "or little-endian architecture, and can I exchange compressed data between them? Will zlib work on a 64-bit machine? Will zlib decompress data from the PKWare Data Compression Libr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "zlib.net",
+          "/zlib_faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Frequently Asked Questions about zlib",
+        "url": "http://zlib.net/zlib_faq.html"
+      },
+      {
+        "category": "general",
+        "content": "&#34;rethink computer architecture&#34;) and people who find &#34;one more use-after-free in the canvas 2D component&#34; repeatedly for money. The former is hacking, the latter is &#34;working for t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "&#34;vertical markets&#34;: Architecture, Aerospace, and Industrial Applications. We looked at the architecture market by doing a prototype of the Overture Center in Madison and showing i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.highprogrammer.com",
+          "/alan/hypercosm/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hypercosm and Web 3D",
+        "url": "http://www.highprogrammer.com/alan/hypercosm/"
+      },
+      {
+        "category": "general",
+        "content": "parallelized, microarchitecture is likely to evolve towards simplicity and SBOPs per FLOP will probably stay roughly the same or even come down a bit. If nobody comes up with a wa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/286233/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Kernel Hacker&#39;s Bookshelf: Ultimate Physical Limits of Computation [LWN.net]",
+        "url": "https://lwn.net/Articles/286233/"
+      },
+      {
+        "category": "general",
+        "content": "a completely new ML architecture is an open question. Scaling laws for convolutional neural networks have been known for some time, and the new transformer architecture obeys a si",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "svedic.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Svedic.org",
+        "url": "https://svedic.org/"
+      },
+      {
+        "category": "general",
+        "content": "on the computer architecture.) About a month after I wrote the previous paragraph, a commenter in an online discussion (probably about the Voyager team&#39;s workaround for the Novemb",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.geonius.com",
+          "/writing/other/voyager.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Voyager Spacecraft and Fortran 5",
+        "url": "http://www.geonius.com/writing/other/voyager.html"
+      },
+      {
+        "category": "general",
+        "content": "up with the name? The architecture of grebedoc.dev was † the inverse of the architecture of codeberg.page ; &#34;Grebedoc&#34; is &#34;Codeberg&#34; backwards. † Codeberg eventually migrated Code",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "grebedoc.dev",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Grebedoc",
+        "url": "https://grebedoc.dev/"
+      },
+      {
+        "category": "general",
+        "content": "and new hardware architectures for which it is easier to write reliable, high performance drivers. Combined with ATI’s support for open standards and development of the devi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.flipcode.com",
+          "/misc/siggraph2002.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "flipCode - Game Development News &amp; Resources",
+        "url": "https://www.flipcode.com/misc/siggraph2002.shtml"
+      },
+      {
+        "category": "general",
+        "content": "OCS will negate other architectures such as nonradically modified CDA and most other exterior surface designs. By widening the conical angle of the ports of the OCS full 720 stera",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.self-replicatingnanobot.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod &#43; Self-Replicating Nanobot Design",
+        "url": "http://www.self-replicatingnanobot.com/"
+      },
+      {
+        "category": "general",
+        "content": "Defense Joint Technical Architecture (JTA), version 3.0, 15 Nov 1999, section 2.2.2.2.1.4.2. Register to download the cited document as a zipped PDF.   Don&#39;t flame Unisys Ple",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "burnallgifs.org",
+          "/archives/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Burn All GIFs",
+        "url": "https://burnallgifs.org/archives/"
+      },
+      {
+        "category": "general",
+        "content": "her important primary architecture into something as small a STEX. Afterwards the STEX could jack into an Alien computer and do anything from compromising our core AI structure an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bimavs.com",
+          "/CellularDiamondArmor.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BiMAVs; Bipedal Mechanized Assault Vehicles",
+        "url": "http://www.bimavs.com/CellularDiamondArmor.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "af25a83f83d77fbe6fc5b4d9aceee04f080d86fc19f07ad1c7879e0d8194117d",
+  "provider": "SearXNG",
+  "query": "how does data compression in architecture operate",
+  "query_id": "v5-p-0856-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:00.822044Z"
+}

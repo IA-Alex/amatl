@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 263.399,
+  "pair_id": "v5-p-0831",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of data compression in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "leaves are preserved as compression fossils, commonly retaining intact cellular tissue with considerable ultrastructural preservation, including cell walls, leaf phytoliths, and i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "X-ray, mammary gland compression, digital mastogram, mammographic stereotaxy. Dental X - ray - intraoral X-ray, panoramic X-ray OPG, dental CT. Alternative diagnostic imaging meth",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Fyzika-NuklMed.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nuclear physics and ionizing radiation physics",
+        "url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm"
+      },
+      {
+        "category": "general",
+        "content": "this phenomenon STEM Compression of Information and Computation in the most adaptive complex systems. This was my original website exploring the STEM Compression hypothesis. Accel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.accelerationwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acceleration Watch (Understanding Accelerating Change)",
+        "url": "https://www.accelerationwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "sound dynamics right). Compression and Expansion are a real bitch to learn, but the end payoff seems more than worth it. As far as brainwave entrainment goes, I find myself using",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.lunarsight.com",
+          "/son-alc.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mike&#39;s Sonic Alchemy Logbook",
+        "url": "http://www.lunarsight.com/son-alc.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "561cf60c63e42e5c6b9af2f0148b2a9044135b91980b4ec939537ade5d529eb5",
+  "provider": "SearXNG",
+  "query": "give an overview of data compression in chemistry",
+  "query_id": "v5-p-0831-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:24.116933Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 337.016,
+  "pair_id": "v5-p-0772",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind coastal flooding in mechanical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "24086bb751afaf72b752cf08527a499fb331e0f173c1bec82b80cc8f7062e768",
+  "provider": "SearXNG",
+  "query": "describe the principle behind coastal flooding in mechanical engineering",
+  "query_id": "v5-p-0772-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:52.185867Z"
+}

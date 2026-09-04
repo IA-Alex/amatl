@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 279.099,
+  "pair_id": "v5-p-0236",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does plate tectonics in optics operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "cb57de13aafd87c7bf49c17d09e7431d483c03ba7bb35674730dd911497767ff",
+  "provider": "SearXNG",
+  "query": "how does plate tectonics in optics operate",
+  "query_id": "v5-p-0236-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:48.980606Z"
+}

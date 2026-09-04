@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 334.816,
+  "pair_id": "v5-p-0037",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind compiler operation in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "the world, had left its operation to natural law; miracles, they held, were impossible; no prayer could change the behavior of the elements; and the origin of new species was due",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.andrsib.com",
+          "/durant/advr.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Will Durant: The Age Of Faith. CHAPTER XXXVI. The Adventure of Reason",
+        "url": "http://www.andrsib.com/durant/advr.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "cc6bebe4557da18ee8b8df76504c7f15a44bec293dc5ca2df403afccae6dc104",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind compiler operation in astronomy",
+  "query_id": "v5-p-0037-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:06:06.627394Z"
+}

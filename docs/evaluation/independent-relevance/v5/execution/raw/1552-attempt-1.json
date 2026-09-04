@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 256.525,
+  "pair_id": "v5-p-0527",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of neural networks in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "here&#39;s a general overview: Pros of Drug Therapy : Immediate Relief: Many drugs can provide immediate or relatively quick relief from symptoms of mental and physical pain. Tailored",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biopsychiatry.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mood-brighteners and antidepressants as conceived by ChatGPT",
+        "url": "https://www.biopsychiatry.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "Matter and Conceptual Overview: &#34;Joseph Smith was Intelligent Enough to Write The Book of Mormon and so No Other Theories Deserve Serious Consideration&#34; Twenty- four Pieces of Evi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "sidneyrigdon.com",
+          "/criddle/rigdon1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sidney Rigdon: Creating the Book of Mormon",
+        "url": "http://sidneyrigdon.com/criddle/rigdon1.htm"
+      },
+      {
+        "category": "general",
+        "content": ", Linux Commands - Overview and Examples , Bash Scripting for Ubuntu Beginners , The Art of Command Line , 100 ways to master the command line , Mastering the Linux Shell , Evolut",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "Kingdom provided an overview of the safety and privacy problems we encountered in UK healthcare computing in the mid-90s for readers of the Australian Medical Journal. The DeCODE",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "733a9ca066be6c605c0ea388f1cb1d280abb890410ca3f6fc3771f85deaac2f5",
+  "provider": "SearXNG",
+  "query": "give an overview of neural networks in public health",
+  "query_id": "v5-p-0527-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:30.324900Z"
+}

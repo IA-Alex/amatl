@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 252.424,
+  "pair_id": "v5-p-0331",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of soil erosion in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "farms Organics Soil management Sustainable farming General resources Food storage and preservation Useful databases Community-supported farms Farming with trees Agroforestry Bambo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "journeytoforever.org",
+          "/farm_library.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Small Farms Library - Journey to Forever",
+        "url": "http://journeytoforever.org/farm_library.html"
+      },
+      {
+        "category": "general",
+        "content": "Invasive Species Management Association Tue, 01 Sep 2026 12:07:12 &#43;0000 en-US hourly 1 https://naisma.org/wp-content/uploads/2024/04/cropped-Favicon-32x32.png NAISMA https://naism",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5627bb0df8db14cb785bbd8f1343609e565aa0721c500a1bf4bb1d907b5fb1b4",
+  "provider": "SearXNG",
+  "query": "give an overview of soil erosion in data management",
+  "query_id": "v5-p-0331-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:07:16.262113Z"
+}

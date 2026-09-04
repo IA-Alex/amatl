@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 269.425,
+  "pair_id": "v5-p-0249",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is plate tectonics in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "emerged with the Industrial Revolution, which separated us from nature. But nature is coming back with a vengeance, tied to population growth. It will have incredible security imp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1b9aed31b7ad0ee552c5aae6984c6294a4ae98b1cd51e41e4d7abc4e3f335adb",
+  "provider": "SearXNG",
+  "query": "what is plate tectonics in industrial design",
+  "query_id": "v5-p-0249-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:15:16.785046Z"
+}

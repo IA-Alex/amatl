@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 327.823,
+  "pair_id": "v5-p-0892",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind vaccination in architecture",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d00b51f419c947d0cd367e0ba60950c2aa36a58f76c53dc217311151f16aaa64",
+  "provider": "SearXNG",
+  "query": "describe the principle behind vaccination in architecture",
+  "query_id": "v5-p-0892-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:30.193340Z"
+}

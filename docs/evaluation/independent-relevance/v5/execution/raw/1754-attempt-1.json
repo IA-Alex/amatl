@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 346.935,
+  "pair_id": "v5-p-0422",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of carbon capture in urban planning",
+    "results": [
+      {
+        "category": "general",
+        "content": "every peasant has a function that is derived not from the mystery of life, and not from their inner calling - but from AI, the master of efficiency and the servant of the king. &amp;n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica2/sociopol_greatreset16.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Great Reset for Dummies - Where do we Go from Here?",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica2/sociopol_greatreset16.htm"
+      },
+      {
+        "category": "general",
+        "content": "Inverter (Has multiple functions including Net-metering option) = 3.5KW Deep Cycle Batteries= 04 (120Amp each) Average Energy consumption (Load) = 15KWH (60% of this is used at ni",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2018/05/ditch-the-batteries-off-grid-compressed-air-energy-storage",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ditch the Batteries: Off-Grid Compressed Air Energy Storage | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2018/05/ditch-the-batteries-off-grid-compressed-air-energy-storage"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "734693643ff2d7d82145f13731cd6c905b0ae807b74b2ec0ad3a615264e57174",
+  "provider": "SearXNG",
+  "query": "tell me about the function of carbon capture in urban planning",
+  "query_id": "v5-p-0422-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:14:31.714401Z"
+}

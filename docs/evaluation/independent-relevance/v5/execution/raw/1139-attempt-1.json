@@ -1,0 +1,273 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 270.049,
+  "pair_id": "v5-p-0505",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is neural networks in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "death,&#34; I asked my astronomy department professors, how is it today we can be having such intelligent conversations about cosmology? How is all our knowledge, all this information",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Information Philosopher - dedicated to the new information philosophy",
+        "url": "https://www.informationphilosopher.com/"
+      },
+      {
+        "category": "general",
+        "content": "modern physics and astronomy. Material is organized through extensive concept maps.&#34; Index Mechanics references   HyperPhysics",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "hyperphysics.phy-astr.gsu.edu",
+          "/hbase/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HyperPhysics Concepts",
+        "url": "http://hyperphysics.phy-astr.gsu.edu/hbase/"
+      },
+      {
+        "category": "general",
+        "content": "modern physics and astronomy. Material is organized through extensive concept maps.&#34; Index Mechanics references   HyperPhysics",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "hyperphysics.phy-astr.gsu.edu",
+          "/hbase/hph.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HyperPhysics Concepts",
+        "url": "http://hyperphysics.phy-astr.gsu.edu/hbase/hph.html"
+      },
+      {
+        "category": "general",
+        "content": "recognition networks in astronomy that seek out supernovas, to credit card fraud-detection algorithms which substantially outperform classical programs. These industries, while st",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.accelerationwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acceleration Watch (Understanding Accelerating Change)",
+        "url": "https://www.accelerationwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "be used for more of an astronomy type of calculating machine. It does calculate planet positions, after all. Uhg... A friend is considering selling his telescope. It&#39;s a 6 inch Ce",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "richfiles.solarbotics.net",
+          "/RichNews.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Richfiles RichNews Page",
+        "url": "http://richfiles.solarbotics.net/RichNews.html"
+      },
+      {
+        "category": "general",
+        "content": "and Linguistics Astronomy and Astrophotography Our books can be ordered through any bookseller.                       Books",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.covingtoninnovations.com",
+          "/books.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Books by Michael and Melody Covington",
+        "url": "https://www.covingtoninnovations.com/books.html"
+      },
+      {
+        "category": "general",
+        "content": "NEOWISE How does an astronomy app work? Using the magic of sensors. (2020-07-26) Segway Closes Its Doors How a Segway is similar to a walking robot. (2020-07-19) The Intelligence",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "robotsinplainenglish.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Robots In Plain English",
+        "url": "https://robotsinplainenglish.com/"
+      },
+      {
+        "category": "general",
+        "content": "ASP Assembly Language Astronomy AWS Atom AWK Azure Bash Bazaar BDB Berkeley DB Big O BIRT Blogger Blueprint BPEL BPM BPML Business Process Modeling C C# C&#43;&#43; Calculus Camera Cataly",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cheat-sheets.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cheat Sheet : All Cheat Sheets in one page",
+        "url": "http://www.cheat-sheets.org/"
+      },
+      {
+        "category": "general",
+        "content": "and Engineering - Astronomy - Biology - Computer Aided Design - Medicine and Health * Software Development - Automated Build Utilities - Debugging - Languages - Software Licensing",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "rocketaware.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "! Aware. Programmer&#39;s Webliography and Index",
+        "url": "http://rocketaware.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a72d636818fcc65eadb29b546fb9b365c4834331a0507931e5475489d49d3464",
+  "provider": "SearXNG",
+  "query": "what is neural networks in astronomy",
+  "query_id": "v5-p-0505-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:15.654475Z"
+}

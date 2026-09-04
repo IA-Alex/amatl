@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 270.571,
+  "pair_id": "v5-p-0920",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does bridge resonance in optics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "caused by acoustic resonances of the modulated mercury plasma column within its tubular enclosure. One could certainly hear a faint acoustic radiation from the tube while it was i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5f8e301695815e82a1e46e2d1f71204c43c7f88280af4b555a44072663300023",
+  "provider": "SearXNG",
+  "query": "how does bridge resonance in optics operate",
+  "query_id": "v5-p-0920-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:07:55.058091Z"
+}

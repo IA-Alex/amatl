@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 328.188,
+  "pair_id": "v5-p-0744",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind root systems in robotics",
+    "results": [
+      {
+        "category": "general",
+        "content": "the precautionary principle, ignored the fact that interventions may cause harm, suspended the importance of children’s education, suspended the safeguarding of children, suspende",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "techrights.org",
+          "/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Techrights — Links 30/01/2024: Many More Layoffs (Microsoft the Most Tech Layoffs This Year)",
+        "url": "http://techrights.org/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "90f9c41cc77a0d987bd00ec6ba2da87cea081fb4157fc9ab3ed620ccceb07fab",
+  "provider": "SearXNG",
+  "query": "describe the principle behind root systems in robotics",
+  "query_id": "v5-p-0744-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:09:13.359222Z"
+}

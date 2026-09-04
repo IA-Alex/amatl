@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 349.274,
+  "pair_id": "v5-p-0609",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind air quality monitoring in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "care, increase health monitoring. These clinics would be a mixture of private-owned (attached to hospitals, doctor&#39;s offices, pharmacies) and public-owned (in schools, government",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/USPolicy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "US Policy Choices",
+        "url": "https://www.billdietrich.me/USPolicy.html"
+      },
+      {
+        "category": "general",
+        "content": "Vlahos are closely monitoring religious cults. Vlahos says, &#34;An ideology that challenges us may not take familiar form, like the old Nazis or Commies. It may not even engage us in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9617d7f8166677aff5ecedcc8ce36238bf00aa0d301852b94d6f963cec920e84",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind air quality monitoring in industrial design",
+  "query_id": "v5-p-0609-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:05:59.297330Z"
+}

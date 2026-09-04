@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 268.861,
+  "pair_id": "v5-p-0168",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does immune response in robotics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "My Nose From The Immune Response And The McFoxy Seemed To Clear It. I Am Over The Adjustment Period Of It All And Feel Full On All Things {Besides The 1% Held Back For The Shot} F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "My Nose From The Immune Response And The McFoxy Seemed To Clear It. I Am Over The Adjustment Period Of It All And Feel Full On All Things {Besides The 1% Held Back For The Shot} F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/FountainOfYouth.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/FountainOfYouth.html"
+      },
+      {
+        "category": "general",
+        "content": "immune system response, in comparison with the natural infection. Thus a person who has had Covid-19 had superior resistance to getting the virus again. Merck stated that they wou",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.news1.net",
+          "/jan2021.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Breaking News, news commentary and news chronicle. News1.net - News and Photographic image archive. Global news with an emphasis on New Yo",
+        "url": "http://www.news1.net/jan2021.htm"
+      },
+      {
+        "category": "general",
+        "content": "the old ones? - - Response to ZeroHedge - - WEF&#39;s Future of Jobs 2020 exposed - - Is social media influencing the shiny post-robotics career? - - Why no unemployment crisis yet? -",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/capitalism.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Capitalism will die - but will it take us with it?",
+        "url": "http://digdeeper.love/articles/capitalism.xhtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "181f371fe0f8556e745131bc7c4f60e12c23f58cf7a3600efa6d26011d936916",
+  "provider": "SearXNG",
+  "query": "how does immune response in robotics operate",
+  "query_id": "v5-p-0168-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:18.723972Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 351.767,
+  "pair_id": "v5-p-1049",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind microbial fermentation in computer security",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "473c680e59495faee42afb0909592be1a58f1330f4060d145e261fd1588c97b7",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind microbial fermentation in computer security",
+  "query_id": "v5-p-1049-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:54.360539Z"
+}

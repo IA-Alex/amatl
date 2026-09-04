@@ -1,0 +1,327 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 322.092,
+  "pair_id": "v5-p-0866",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does vaccination in biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "in Germany it was three vaccinations, because if you sign it three times, the contract with the Devil is quite hard! &#34;So, the next step is to consciously [renounce] the contract..",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.philosophicalanthropology.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHICAL ANTHROPOLOGY",
+        "url": "https://www.philosophicalanthropology.net/"
+      },
+      {
+        "category": "general",
+        "content": "to things like vaccination, or social distancing during COVID, on the basis that COVID is a harmful disease, as determined by scientific research, and that things like the COVID v",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "purplepriest.codeberg.page",
+          "/articles/refdd.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://purplepriest.codeberg.page/articles/refdd.html",
+        "url": "https://purplepriest.codeberg.page/articles/refdd.html"
+      },
+      {
+        "category": "general",
+        "content": "of insect pests. Vaccination or Immunity Boosting : For disease-carrying pests, another approach might involve using gene-editing techniques to make pests immune to certain diseas",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.abolitionist.com",
+          "/chatgpt/hitechjain.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "High-tech Jainism as conceived by ChatGPT-4",
+        "url": "https://www.abolitionist.com/chatgpt/hitechjain.html"
+      },
+      {
+        "category": "general",
+        "content": "fits the smallpox vaccination project of the WHO -- AND NOTHING ELSE -- with the exception of the U.S., which we will examine subsequently.) The AIDS virus was created in a labora",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "textfiles.com",
+          "/sex/aidsplot.1",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://textfiles.com/sex/aidsplot.1",
+        "url": "http://textfiles.com/sex/aidsplot.1"
+      },
+      {
+        "category": "general",
+        "content": "the new Canadian vaccination requirements for cross-border travel. The convoy started from the west coast of Canada with many Canadians cheering them along the way. It ballooned t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.infidelnotions.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Infidel Notions",
+        "url": "https://www.infidelnotions.com/"
+      },
+      {
+        "category": "general",
+        "content": "through universal vaccination, not universal infection, the case for soft lockdowns as a mitigation technique may be as strong as ever. It might help a bit, sure. I was a Covid ha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "textmirror.net",
+          "/mirror-graymirror-substack-com-p-2020-the-year-of-everything-fake-2025-06-01",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "graymirror-substack-com-p-2020-the-year-of-everything-fake-2025-06-01 - TextMirror",
+        "url": "http://textmirror.net/mirror-graymirror-substack-com-p-2020-the-year-of-everything-fake-2025-06-01"
+      },
+      {
+        "category": "general",
+        "content": "Uyghurs Uzbekistan Vaccination Vaccines Valerie Jarrett Vdare Venezuela Veterans Victoria Nuland Video Games Video Type Vietnam Vietnam War Violence Virtual world Vladimir Putin V",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.unz.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Unz Review • An Alternative Media Selection - The Unz Review",
+        "url": "https://www.unz.com/"
+      },
+      {
+        "category": "general",
+        "content": "epidemic caused by vaccinations Prostate cancer pH balance PMMH for cancer--(pulse moderated microwave hyperthermia) Polio causes Polio vaccine Protein digesting enzymes for cance",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "truthquest2.com",
+          "/germtheory.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE FALSE GERM THEORY OF DISEASE",
+        "url": "http://truthquest2.com/germtheory.htm"
+      },
+      {
+        "category": "general",
+        "content": "Jesus Do ... About Vaccination? February Mercer Bay January Dehydration Tongariro Northern Circuit 2021 2020 December Rees-Dart Track Kepler Track 2020 Exploiting Precognition In",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "robert.ocallahan.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Eyes Above The Waves",
+        "url": "https://robert.ocallahan.org/"
+      },
+      {
+        "category": "general",
+        "content": "for attending school. Vaccination campaigns teach your kid that its body is property of the government and the pharmaceutical industry, which will now decide the kinds of substanc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/school.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The toxic schooling system",
+        "url": "http://digdeeper.love/articles/school.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "Gaming. AntiPsychotics Vaccination Not Good For You But Will In Genovia Be Something You Can Get The Sauce From If Desired Vectored Magical Insanity Causers Requiring Full Contain",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bimavs.com",
+          "/SINSSsexToyNanoBiology.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SINSS Sex Toys&#39; Jaiden",
+        "url": "http://www.bimavs.com/SINSSsexToyNanoBiology.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "32003a889122f205b59bd01d73a5b5c6ed0ff0b8d3e8a709cb72b8110b149e10",
+  "provider": "SearXNG",
+  "query": "how does vaccination in biology work",
+  "query_id": "v5-p-0866-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:01.740608Z"
+}

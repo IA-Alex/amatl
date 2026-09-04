@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 258.446,
+  "pair_id": "v5-p-0495",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes encryption keys in agricultural science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e196a55f62f06888b0751aaa1e90db3f9a556c4c58ac33edcf82f7853e58c4ef",
+  "provider": "SearXNG",
+  "query": "what causes encryption keys in agricultural science",
+  "query_id": "v5-p-0495-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:51.499577Z"
+}

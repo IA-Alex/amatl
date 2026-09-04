@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 252.83,
+  "pair_id": "v5-p-1074",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does microbial fermentation in forensic science work",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a943f288d09b7652957492c27822ed7a143a9c4fc6e11d2e14fa4ef202a0f9b3",
+  "provider": "SearXNG",
+  "query": "how does microbial fermentation in forensic science work",
+  "query_id": "v5-p-1074-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:14:11.042411Z"
+}

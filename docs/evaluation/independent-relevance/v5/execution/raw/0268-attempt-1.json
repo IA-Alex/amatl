@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 235.03,
+  "pair_id": "v5-p-0975",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of wastewater treatment in civil engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7d9b2d4a041c9a3d016e77671eef7847c8657b63df03ff4d2560f58ca1698142",
+  "provider": "SearXNG",
+  "query": "give an overview of wastewater treatment in civil engineering",
+  "query_id": "v5-p-0975-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:33.778201Z"
+}

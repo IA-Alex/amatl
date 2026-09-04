@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 272.934,
+  "pair_id": "v5-p-0660",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does traffic flow in geology operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "perfect a downwind Air Traffic Control and Airlanding technique and retrofit JATO mounts onto ALL C-130s now in use. Combat Controllers can extend the legs of a left hand ATC patt",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/assaultzone.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AFTER THE PARACHUTE DROP: THE ASSAULT ZONE",
+        "url": "http://www.combatreform.org/assaultzone.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "192be7acf6be8a984505a4a0dfd0d967187307ae562554e0ecf3407533be0b5a",
+  "provider": "SearXNG",
+  "query": "how does traffic flow in geology operate",
+  "query_id": "v5-p-0660-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:05:33.416826Z"
+}

@@ -1,0 +1,192 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 383.293,
+  "pair_id": "v5-p-0030",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of photosynthesis in energy systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "PAPER, added 7/21/23, Photosynthesis Proves again my Charge Field and Nuclear Channeling Theory. NEW PAPER, added 6/30/23, Light is not a Field Wave. A return to this important di",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "milesmathis.com",
+          "/updates.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "updates",
+        "url": "https://milesmathis.com/updates.html"
+      },
+      {
+        "category": "general",
+        "content": "at all (most likely by photosynthesis or chemosynthesis): they simply could not gather enough energy by such means to support their activity – a single human being requires",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.projectrho.com",
+          "/public_html/rocket/alienbody.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alien Bodies - Atomic Rockets",
+        "url": "https://www.projectrho.com/public_html/rocket/alienbody.php"
+      },
+      {
+        "category": "general",
+        "content": "the form of light. This photosynthesis results in the plant’s internal production of carbon. It utilizes this carbon to create and reinforce tissue as it grows, so it is a v",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.microbeorganics.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Microbe Organics",
+        "url": "http://www.microbeorganics.com/"
+      },
+      {
+        "category": "general",
+        "content": "capable of early photosynthesis (Redfern 2013). Meteorites of Martian origin have more recently come to the Earth. From magnetic studies, some reached temperatures no higher than",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "Energy Harvested by Photosynthesis in a Controlled Environment Photovoltaic for Australia    The Feasibility of a 600 Kilowatt Windpower Installation Danish engineers&amp;nb",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dematerialism.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C:\\users\\waybu\\douments\\aaaaaindex",
+        "url": "https://www.dematerialism.net/"
+      },
+      {
+        "category": "general",
+        "content": "Only the invention of photosynthesis -- using the energy of the sun to split down matter in order to get electrons -- allowed life to go on. Life is driven by the force of electro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/a/lanka4.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "INTERVIEW STEFAN LANKA",
+        "url": "http://www.whale.to/a/lanka4.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f96eb1057fbbaea2da9ca78097591eb0e80344e528fe01088e705dec1ed8fc96",
+  "provider": "SearXNG",
+  "query": "tell me about the function of photosynthesis in energy systems",
+  "query_id": "v5-p-0030-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:14.442906Z"
+}

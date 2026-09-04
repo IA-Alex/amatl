@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 417.655,
+  "pair_id": "v5-p-0734",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does root systems in information systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "Driver&#34; should I use? Information What is a good book on USB? What APIs are available to USB Device Drivers? Got any testing tips for Linux USB Device Drivers? Is it possible to b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.linux-usb.org",
+          "/FAQ.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Linux USB FAQ",
+        "url": "http://www.linux-usb.org/FAQ.html"
+      },
+      {
+        "category": "general",
+        "content": "a message based on information from only the public part of the ballot sheet and using the voter ID. The message is signed by the teller and contains: ballot sheet ID positions of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kirill.korins.ky",
+          "/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Electt: Running Auditable and Verifiable Elections in Untrusted Environments - Kirill&#39;s journal",
+        "url": "https://kirill.korins.ky/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/"
+      },
+      {
+        "category": "general",
+        "content": "runtime configuration information for the Samba programs. The complete description of the file format and possible parameters held within are here for reference purposes. HOW CONF",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.samba.org",
+          "/samba/docs/current/man-html/smb.conf.5.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "smb.conf",
+        "url": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+      },
+      {
+        "category": "general",
+        "content": "listed below: thegrugq, information security researcher: Tor and its Discontents Kenn White, security researcher: https://twitter.com/kennwhite/status/804142071133126656 PaXTeam,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "madaidans-insecurities.github.io",
+          "/firefox-chromium.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Firefox and Chromium | Madaidan&#39;s Insecurities",
+        "url": "https://madaidans-insecurities.github.io/firefox-chromium.html"
+      },
+      {
+        "category": "general",
+        "content": "needed both by our information processing industry and by an increasingly technological society,” warned the Association for Computing Machinery.  The industry’s dearth of qualifi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "logicmag.io",
+          "/clouds/agile-and-the-long-crisis-of-software/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Agile and the Long Crisis of Software",
+        "url": "https://logicmag.io/clouds/agile-and-the-long-crisis-of-software/"
+      },
+      {
+        "category": "general",
+        "content": "as a Professor of Information and Communications technologies (ICT) at Algonquin College in Ottawa from December 1996 through June 2019. I had to resign from teaching on June 30,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.idallen.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ian! D. Allen - Personal Home Page",
+        "url": "http://www.idallen.com/"
+      },
+      {
+        "category": "general",
+        "content": "Added. System Information and Benchmark for Linux Systems This application is the successor of and supersedes hardinfo latest-browsers-2-noarch-3slint.txz Edited the script latest",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "slackware.uk",
+          "/slint/x86_64/slint-15.0/ChangeLog.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://slackware.uk/slint/x86_64/slint-15.0/ChangeLog.txt",
+        "url": "http://slackware.uk/slint/x86_64/slint-15.0/ChangeLog.txt"
+      },
+      {
+        "category": "general",
+        "content": "bunch of links to more information about mkosi and related tooling: Github repository Building RHEL and RHEL UBI images with mkosi My presentation on systemd-repart at ASG 2023 mk",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "0pointer.net",
+          "/blog/category/projects.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Category: projects",
+        "url": "http://0pointer.net/blog/category/projects.html"
+      },
+      {
+        "category": "general",
+        "content": "hard Most software is information software Graphic design Information software design is graphic design Demonstration: Showing the data Demonstration: Arranging the data Context-s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "worrydream.com",
+          "/MagicInk/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Magic Ink: Information Software and the Graphical Interface",
+        "url": "https://worrydream.com/MagicInk/"
+      },
+      {
+        "category": "general",
+        "content": "for US.  For more information on this DVD, go here . The Handkerchief Phenomenon Addendum to “A Whole Lot Of Wishful Thinking These Days ” by Sandy Simpson This DVD is a mess",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.deceptioninthechurch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Apologetics Coordination Team - Vital Information On Deception In The Church!",
+        "url": "http://www.deceptioninthechurch.com/"
+      },
+      {
+        "category": "general",
+        "content": "MIR (Announcements and Information for collectors and researchers of historical calculating instruments) The MIR is sent to all registered Circle members two or three times a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.rekeninstrumenten.nl",
+          "/MIR/indexEN.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "MIR: Announcements and Information for collectors and researchers of historical calculating instruments",
+        "url": "http://www.rekeninstrumenten.nl/MIR/indexEN.htm"
+      },
+      {
+        "category": "general",
+        "content": "treated in our page: Information about SilverFast Version 9 What is new in the SilverFast version 9? How much does an upgrade to version 9 cost? Is it worth upgrading to version 9",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.filmscanner.info",
+          "/en/FragenSilverFast.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "FAQ Questions Answers Help: LaserSoft Imaging SilverFast Ai Studio, Scan-Software Tips Tricks Information Problems Solution Support, Archive-S",
+        "url": "https://www.filmscanner.info/en/FragenSilverFast.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5c90ff87ee4fa4a6a627f58fdf4bc481b402395ea99020cdf1766bba72d787a1",
+  "provider": "SearXNG",
+  "query": "how does root systems in information systems work",
+  "query_id": "v5-p-0734-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:41.083047Z"
+}

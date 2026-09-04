@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 347.129,
+  "pair_id": "v5-p-0118",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of database indexing in environmental science",
+    "results": [
+      {
+        "category": "general",
+        "content": "use of micros in environmental research is in the analysis of images from earth-orbiting spacecraft. Undercover consumer joins the club. Persistent and n-persistent numbers. Explo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.atarimagazines.com",
+          "/creative/index/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of Creative Computing articles",
+        "url": "https://www.atarimagazines.com/creative/index/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bbc2a72ceb4b3a450bd8322753e7f30b8336c127ac4bf3452747e905b2a94a99",
+  "provider": "SearXNG",
+  "query": "tell me about the function of database indexing in environmental science",
+  "query_id": "v5-p-0118-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:15:48.368881Z"
+}

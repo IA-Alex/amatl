@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 249.987,
+  "pair_id": "v5-p-0228",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does plate tectonics in geology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d0edbd707f45c864f4a355fb5d456443019eb91e136e2754bfc97969ea343eee",
+  "provider": "SearXNG",
+  "query": "how does plate tectonics in geology operate",
+  "query_id": "v5-p-0228-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:26.811225Z"
+}

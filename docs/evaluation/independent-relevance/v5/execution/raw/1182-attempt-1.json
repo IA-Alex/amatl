@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 386.167,
+  "pair_id": "v5-p-0338",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of soil erosion in information systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "chairman of the Islamic Information Foundation in Halifax, insists that a jihad is `permitted only in self-defense or against tyranny and oppression -- not as a tool to promote Is",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fatheralexander.org",
+          "/booklets/english/islam_e.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Islam",
+        "url": "https://www.fatheralexander.org/booklets/english/islam_e.htm"
+      },
+      {
+        "category": "general",
+        "content": "questions and general information concerning the collection, operation and repair of collectable model railroad equipment. For more info on this FAQ see part 1. Additions and corr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.spikesys.com",
+          "/Modelrr/faq4.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Tinplate FAQ Part 4",
+        "url": "http://www.spikesys.com/Modelrr/faq4.html"
+      },
+      {
+        "category": "general",
+        "content": "summitry and computer-information highways. Outside is the rest of mankind, going in a completely different direction.&#34; We are entering a bifurcated world. Part of the globe is in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      },
+      {
+        "category": "general",
+        "content": "current distribution information. Impacts of Nutria Nutria can affect natural ecosystems, agriculture, infrastructure, and, in some circumstances, human and animal health. Their g",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8ce0a9618d9a29bc40f5d5c186a5ab30c49e701458a76946dca8ac455054ac44",
+  "provider": "SearXNG",
+  "query": "tell me about the function of soil erosion in information systems",
+  "query_id": "v5-p-0338-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:34.826276Z"
+}

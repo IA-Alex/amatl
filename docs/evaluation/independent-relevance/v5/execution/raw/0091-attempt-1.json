@@ -1,0 +1,300 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 310.766,
+  "pair_id": "v5-p-0465",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is supply chain logistics in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "protocols in OCaml, an industrial, functional, memory safe programming language, used in sectors ranging from finance and research to social media and web application. The project",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/news/2023/20231123-announcing-projects.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; 55 New Projects Awarded NGI0 Grants",
+        "url": "https://nlnet.nl/news/2023/20231123-announcing-projects.html"
+      },
+      {
+        "category": "general",
+        "content": "entertainment,&#39; says [industrial designer Shinichi] Ogasawara...[The PSP uses] the same wide aspect ratio as a high-end HDTV unit...[and uses] Universal Media Disks (UMD), a brand",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cs.cmu.edu",
+          "/~bam/numbers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Computer Almanac - Numbers About Computers",
+        "url": "http://www.cs.cmu.edu/~bam/numbers/"
+      },
+      {
+        "category": "general",
+        "content": "Inc. 1200 W. Benedum Industrial Drive Bridgeport, WV 26330 United States of America Phone: (304) 624-8028 Fax: (304) 624-0170 E-mail Address: fmw@fmwcomposite.com Complaints about",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/heavytankshelicopters.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "U.S. Army Armor and Aviation branches without battlefield functions",
+        "url": "http://www.combatreform.org/heavytankshelicopters.htm"
+      },
+      {
+        "category": "general",
+        "content": "Government officials, industrialists, political leaders, and many hundreds of their subordinates throughout Japan. It was thus possible to reconstruct much of wartime Japanese mil",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.anesi.com",
+          "/ussbs01.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "United States Strategic Bombing Survey: Summary Report (Pacific War)",
+        "url": "https://www.anesi.com/ussbs01.htm"
+      },
+      {
+        "category": "general",
+        "content": "ew owners The space industrial base is undergoing major changes with new players and new investment. Bharath Gopalaswamy and Daniel Dant argue that those companies would also benef",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.thespacereview.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Space Review: essays and commentary about the final frontier",
+        "url": "https://www.thespacereview.com/"
+      },
+      {
+        "category": "general",
+        "content": "D.O. Immunology D.O. Industrial &amp; Occupational D.O. Infectious Diseases D.O. Intensivist D.O. Internist D.O. Liver Diseases D.O. Manipulative Medicine D.O. Medical Examiner D.O. M",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "VFTonline.org",
+          "/VFTprayer/heaven/000list.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://VFTonline.org/VFTprayer/heaven/000list.txt",
+        "url": "http://VFTonline.org/VFTprayer/heaven/000list.txt"
+      },
+      {
+        "category": "general",
+        "content": "from a time when most industrialized countries had long-established domestic bicycle industries serving their national market. 3 These industries collapsed in Europe and North Ame",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2023/02/can-we-make-bicycles-sustainable-again",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Can We Make Bicycles Sustainable Again? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2023/02/can-we-make-bicycles-sustainable-again"
+      },
+      {
+        "category": "general",
+        "content": "beings with even modest industrial means exist. What we need to do in the time and cash-strapped U.S. Army is BUILD ON THIS WINNER, the M113 Gavin which we have 13,000---stretch t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/mechinfantry.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HEAVY DIVISION: WOE for the 21st CENTURY?",
+        "url": "http://www.combatreform.org/mechinfantry.htm"
+      },
+      {
+        "category": "general",
+        "content": "in his famed &#39;military industrial complex&#39; speech - which gets taken out of context - actually prefaced that line with his passage : A vital element in keeping the peace is our mi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/USPolicy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "US Policy Choices",
+        "url": "https://www.billdietrich.me/USPolicy.html"
+      },
+      {
+        "category": "general",
+        "content": "facilities, light industrial, administration, commercial, recreational, and residential areas. The second main developed area, formerly used by NSGA, includes the northern part of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.navycthistory.com",
+          "/NSGStationsHistory.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://www.navycthistory.com/NSGStationsHistory.txt",
+        "url": "https://www.navycthistory.com/NSGStationsHistory.txt"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3847269d69138acfb0db2d2ec7f3195fe286ee2184f9676cbbb17d367ee3a25d",
+  "provider": "SearXNG",
+  "query": "what is supply chain logistics in industrial design",
+  "query_id": "v5-p-0465-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:37.368422Z"
+}

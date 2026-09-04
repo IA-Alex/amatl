@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 326.921,
+  "pair_id": "v5-p-0933",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind bridge resonance in industrial design",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c5b824681ab138a3cc9563c9c5eba623a2502de33def2bad37f4321c3627ebeb",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind bridge resonance in industrial design",
+  "query_id": "v5-p-0933-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:47.176714Z"
+}

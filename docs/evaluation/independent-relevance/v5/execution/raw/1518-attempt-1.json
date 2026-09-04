@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 302.287,
+  "pair_id": "v5-p-0312",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind water purification in robotics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7be2e72ce80ab63c4e25b0725e360487e20b68c3953d2a0bfd4f1341588f4668",
+  "provider": "SearXNG",
+  "query": "describe the principle behind water purification in robotics",
+  "query_id": "v5-p-0312-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:19.612156Z"
+}

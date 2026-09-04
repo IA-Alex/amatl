@@ -1,0 +1,192 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 260.988,
+  "pair_id": "v5-p-0159",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of immune response in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Christians indulge in materials or situations that obviously stoke lust? Can we not discern when fear is being stoked? As with lust, such dalliance can be thrilling at first; but",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.acts17-11.com",
+          "/conspire.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Christians and Conspiracy Theories: A Call to Repentance",
+        "url": "http://www.acts17-11.com/conspire.html"
+      },
+      {
+        "category": "general",
+        "content": "critical mass. Fissile materials (uranium-235, plutonium-239), preparation of fissile material, enrichment of 235-U. Generation of nuclear reactors and purposes of their use. Cons",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Fyzika-NuklMed.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nuclear physics and ionizing radiation physics",
+        "url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm"
+      },
+      {
+        "category": "general",
+        "content": "the processing of dead materials as their food. Bacteria proliferate because there is dead organic matter for them to feed on, not because they suddenly become malevolent. It is i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "truthquest2.com",
+          "/germtheory.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE FALSE GERM THEORY OF DISEASE",
+        "url": "http://truthquest2.com/germtheory.htm"
+      },
+      {
+        "category": "general",
+        "content": "name for new wonder materials for which poorly substantiated, purely theoretical or somewhat optimistic claims are made. For example: &#34;Of course all this will be superceded when n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/sillymolecules/sillymols4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecules with Silly or Unusual Names - page 4",
+        "url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm"
+      },
+      {
+        "category": "general",
+        "content": "tube assembly. Some materials like vacuum grease do not cause problems. However, a single finger print can represent a veritable reservoir of unwanted vaporous contamination! Cont",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.repairfaq.org",
+          "/sam/lasercva.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sam&#39;s Laser FAQ - Vacuum Technology for Home-Built Gas Lasers",
+        "url": "http://www.repairfaq.org/sam/lasercva.htm"
+      },
+      {
+        "category": "general",
+        "content": "are nonstructural materials produced and secreted to the cuticle surface to fight desiccation and pathogens. They also serve as pheromones.[110] Social behavior A cathedral mound",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scientificlib.com",
+          "/en/Biology/Animalia/Arthropoda/Insects/Insecta.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Insecta",
+        "url": "https://www.scientificlib.com/en/Biology/Animalia/Arthropoda/Insects/Insecta.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0624df5cf6b2e6d36a06ed66721418ea03ecead67ebe6f1afcd76dd3904d87e9",
+  "provider": "SearXNG",
+  "query": "give an overview of immune response in materials science",
+  "query_id": "v5-p-0159-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:18.901147Z"
+}

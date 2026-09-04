@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 334.732,
+  "pair_id": "v5-p-0723",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes root systems in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "variety of darkroom chemistry) to &#39;clear&#39; the negatives produced by this film. ...However, if you really get in a pinch, it is possible to do this with plain water, but doesn&#39;t wo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.landlist.ch",
+          "/landlist/landfaq.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Land List -- Frequently Asked Questions",
+        "url": "http://www.landlist.ch/landlist/landfaq.htm"
+      },
+      {
+        "category": "general",
+        "content": "&#34;Better Living Through Chemistry&#34; and the organization&#39;s fundamental aim is to explore how advances in neuroscience, biotechnology, and related fields could be used to improve liv",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.transhumanist.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Transhumanism as conceived by ChatGPT-4",
+        "url": "https://www.transhumanist.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "sciences as physics and chemistry, there is little to no standardization in botany: there is no national or international group that sets plant names and there are no standards fo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.swcoloradowildflowers.com",
+          "/learning%20about%20plants.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Learning about plants",
+        "url": "https://www.swcoloradowildflowers.com/learning%20about%20plants.htm"
+      },
+      {
+        "category": "general",
+        "content": "&#34;better living through chemistry&#34;, because it is chemistry and the chemical corporations which produce products and &#34;by-products&#34; that never before occurred in nature. These twice",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/sggfr.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Song of the Grandfathers",
+        "url": "http://ipwebdev.com/hermit/sggfr.html"
+      },
+      {
+        "category": "general",
+        "content": "a 37-year Professor of Chemistry at Copenhagen University in Denmark and an expert in Nano-chemistry, who says, &#34;The official account put forth by NIST violates the fundament",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "investigate911.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Urgent: Scientists Discover Nano-Thermite Explosives in 9/11 WTC Dust Used in Controlled Demolitions. investigate 911 Superthermite Nano-Therm",
+        "url": "http://investigate911.org/"
+      },
+      {
+        "category": "general",
+        "content": "is scaled in by brain chemistry.&#34; That is why individuals can vividly recall pornographic images from years past. She concludes: &#34;This is the first addictive substance f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "rense.com",
+          "//general86/porno.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Pornographic Conspiracy",
+        "url": "https://rense.com//general86/porno.htm"
+      },
+      {
+        "category": "general",
+        "content": "Will Learn Even Enough Chemistry To Draw The McFoxy Molecule(s) With The Previous Sentence. The Proof The Shit Is Good Is That By Doing Enough Foxy The Subjects Will Develop Gener",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "in the medicinal chemistry group he advised at San Francisco State University, the legendary Californian psychedelic chemist Alexander (&#34;Sasha&#34;) Shulgin (1925 - 2014) synthesized",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/ecstasy/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utopian Pharmacology. MDMA / Ecstasy and beyond",
+        "url": "https://www.hedweb.com/ecstasy/"
+      },
+      {
+        "category": "general",
+        "content": "CANDOCK . Frontiers in Chemistry 9: 775513, 2022. Schuler J, Falls Z, Mangione W, Hudson M, Bruggemann L, Samudrala R . Evaluating performance of drug repurposing technologies . D",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "compbio.buffalo.edu",
+          "/research.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Samudrala Computational Biology Research Group ongoing research",
+        "url": "http://compbio.buffalo.edu/research.html"
+      },
+      {
+        "category": "general",
+        "content": "coefficient to use. In chemistry it has generally been thought that, as most descriptor features are absent in most molecules, i.e. the bit string descriptors such as the Daylight",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.daylight.com",
+          "/dayhtml/doc/theory/theory.finger.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Daylight Theory: Fingerprints",
+        "url": "https://www.daylight.com/dayhtml/doc/theory/theory.finger.html"
+      },
+      {
+        "category": "general",
+        "content": "include changes in body chemistry, such as the release of endorphins (natural painkillers) and hormones. It can also affect neural networks, brainwaves and gene expression (and th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/psycho.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mass psychosis and the power of thought",
+        "url": "https://davidpratt.info/psycho.htm"
+      },
+      {
+        "category": "general",
+        "content": "10 and modern chemistry. But applied to human problems connected with exploiting the environment the concept of carrying capacity has been perceived as a threatening one. As regar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.garretthardinsociety.org",
+          "/articles/art_ethical_implications.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ethical Implications of Carrying Capacity by Garrett Hardin - The Garrett Hardin Society - Articles",
+        "url": "https://www.garretthardinsociety.org/articles/art_ethical_implications.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1879ab537881c54a5f7d5f4d0e3a4a4286da50cd52d3856830217df5777f4576",
+  "provider": "SearXNG",
+  "query": "what causes root systems in chemistry",
+  "query_id": "v5-p-0723-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:24.174579Z"
+}

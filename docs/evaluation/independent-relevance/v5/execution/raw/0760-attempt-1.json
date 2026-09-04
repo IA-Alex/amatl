@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 354.501,
+  "pair_id": "v5-p-0720",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind language acquisition in transportation engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "world without rapid transportation and instant communication. You can&#39;t achieve egalitarianism without social engineering. You can&#39;t have a managerial state without the technology",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kaliyugametal.neocities.org",
+          "/0050-kaczynski",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kali Yuga | Book Review: &#34;Industrial Society and its Future&#34; by Theodore Kaczynski",
+        "url": "https://kaliyugametal.neocities.org/0050-kaczynski"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d95777ed1dad822a91ae11f044607ab04cc6f763579408507508334ad5101786",
+  "provider": "SearXNG",
+  "query": "describe the principle behind language acquisition in transportation engineering",
+  "query_id": "v5-p-0720-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:09:16.756675Z"
+}

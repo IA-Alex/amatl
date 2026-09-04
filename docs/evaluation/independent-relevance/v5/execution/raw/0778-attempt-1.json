@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 310.521,
+  "pair_id": "v5-p-0096",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind ocean tides in robotics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1a5edbf97593b06b6965b31392e09b27c957831567a1168c645c697530e55b2b",
+  "provider": "SearXNG",
+  "query": "describe the principle behind ocean tides in robotics",
+  "query_id": "v5-p-0096-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:22.176683Z"
+}

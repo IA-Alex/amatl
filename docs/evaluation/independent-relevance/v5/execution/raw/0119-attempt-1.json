@@ -1,0 +1,219 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 301.601,
+  "pair_id": "v5-p-0102",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does ocean tides in energy systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "for monopoly detection systems such as State police forces, and their horrendous social cost.)     IF D does discover the goods, say in B?s possession, and B freely",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.anarchism.net",
+          "/newlibertarianmanifesto.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ANARCHISM.net: The New Libertarian Manifesto, by Samuel Edward Konkin III",
+        "url": "https://www.anarchism.net/newlibertarianmanifesto.htm"
+      },
+      {
+        "category": "general",
+        "content": "Cottage-and-Cow systems, Repression of Population, Vote by ballot. To such height has the dyspepsia of Society reached: as indeed the constant grinding internal pain, or from time",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.hetwebsite.net",
+          "/het/texts/carlyle/carlyle1831characteristics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "T. Carlyle, 1931, &#34;Characteristics&#34;, ER",
+        "url": "http://www.hetwebsite.net/het/texts/carlyle/carlyle1831characteristics.htm"
+      },
+      {
+        "category": "general",
+        "content": "Earth and many other systems that care to connect with us. Our aim is to bring Joy and to uplift the Souls of other’s who may be seeking assistance. Are you always together as a g",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "antimatrix.org",
+          "/Convert/Books/Chan/Blossom_Goodchild_En.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blossom Goodchild - Contacts with Federation of Light",
+        "url": "http://antimatrix.org/Convert/Books/Chan/Blossom_Goodchild_En.html"
+      },
+      {
+        "category": "general",
+        "content": "religion or clear value systems. When I talk about feminization and secularization and materialization of society I am talking about the same thing. And what of the male teachers?",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.theabsolute.net",
+          "/misogyny/zubaty.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bits of Zubaty – A compilation of writings from &#34;What Men Know That Women Don&#39;t&#34;",
+        "url": "http://www.theabsolute.net/misogyny/zubaty.html"
+      },
+      {
+        "category": "general",
+        "content": "leaving the great sand systems behind us, we made our way along plains covered with gravel which was coarser than what we had encountered earlier. These plains were also different",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.aramcoworld.com",
+          "/issue/198903/crossing.the.rub.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Saudi Aramco World : Crossing the Rub&#39;",
+        "url": "https://archive.aramcoworld.com/issue/198903/crossing.the.rub.htm"
+      },
+      {
+        "category": "general",
+        "content": "old measurement systems metric system an argument for the metric system Avogadro&#39;s number perturbations mass and the fabric of space mass of the Earth escape velocities/gravitatio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "as to command the water systems of the country, have grown into such cities as Albany, Pittsburgh, Detroit, Chicago, St. Louis, Council Bluffs, and Kansas City. Thus civilization",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "monadnock.net",
+          "/turner/frontier.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Significance of the Frontier in American History, by Frederick Jackson Turner",
+        "url": "https://monadnock.net/turner/frontier.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5f963951c87db62ffbe1fe960c4ccb22afd5ac1ab0317d1521e39fbf8c33710f",
+  "provider": "SearXNG",
+  "query": "how does ocean tides in energy systems work",
+  "query_id": "v5-p-0102-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:46.071685Z"
+}

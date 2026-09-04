@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 312.968,
+  "pair_id": "v5-p-0816",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind battery chemistry in robotics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5342bf555a418e0a9dcb6f7639624b13904a6b3da2a9dca5d6b88023152b8b2e",
+  "provider": "SearXNG",
+  "query": "describe the principle behind battery chemistry in robotics",
+  "query_id": "v5-p-0816-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:46.281396Z"
+}

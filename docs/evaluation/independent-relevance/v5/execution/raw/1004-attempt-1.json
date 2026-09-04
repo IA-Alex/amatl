@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 333.547,
+  "pair_id": "v5-p-0549",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind food preservation in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "Sunnyside Gardens Preservation Alliance , Bliss Street Sunnyside - Stories from the 1940&#39;s and 1950&#39;s , Hunter College Elementary School and HCES Class of 1947 , T.V. State Of Mai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fa2ce9728e453543c1c7392abce871b801d6038df6690ef8cad48b450a0589d8",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind food preservation in electrical engineering",
+  "query_id": "v5-p-0549-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:10:33.376111Z"
+}

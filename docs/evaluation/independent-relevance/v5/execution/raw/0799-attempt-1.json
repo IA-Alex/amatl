@@ -1,0 +1,246 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 313.28,
+  "pair_id": "v5-p-0246",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does plate tectonics in energy systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "oceanic crust [plate tectonics]. Even clouds exert a regulatory effect. ...&#34; From Crushnaut on reddit: Getting oxygen and CO2 into a Martian atmosphere, in the grand scheme of thi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "II, however, were plate tectonics understood which are the primary mechanism of geological change that are reponsible for geographic features. What originally attracted me to geog",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "histclo.com",
+          "/cih.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Children in History",
+        "url": "https://histclo.com/cih.html"
+      },
+      {
+        "category": "general",
+        "content": "as a result of plate tectonics. The earth&#39;s surface is constantly being recycled. Amazingly, life appears to have originated fairly quickly in the earth&#39;s existence. The earth as",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "histclo.com",
+          "/chron/chronh.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "children and historical chronology",
+        "url": "https://histclo.com/chron/chronh.html"
+      },
+      {
+        "category": "general",
+        "content": "too thick for plate tectonics.  Because of this, Venus’ internal core heat cannot dissipate.  Instead, it simply builds up over hundreds of millions of years, and eventu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.erbzine.com",
+          "/mag19/1933.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ERBzine 1333",
+        "url": "https://www.erbzine.com/mag19/1933.html"
+      },
+      {
+        "category": "general",
+        "content": "there was ever plate tectonics, and little sign of volcanism (although that is hotly debated and there are those who argue for recent active volcanism).  This is largely a de",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.erbzine.com",
+          "/mag17/1743.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ERBzine 1743: Tama, Princess of Mercury - by Den Valdron",
+        "url": "https://www.erbzine.com/mag17/1743.html"
+      },
+      {
+        "category": "general",
+        "content": "the Earth&#39;s plate tectonics (Continental drift). (Moore 1973) (Scoppola 2006) The tidal force is part of what some astrologers call natural astrology which also includes the study",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "astrology.co.uk",
+          "/tests/basisofastrology.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Why it is unacceptable to dismiss astrology as rubbish.",
+        "url": "https://astrology.co.uk/tests/basisofastrology.htm"
+      },
+      {
+        "category": "general",
+        "content": "recent ice ages plate tectonics is unique to Earth plate tectonics, continental drift, and the ocean floor Pangaea had temperature extremes volcanic eruptions devastated Crete ear",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "nature concerning plate tectonics or genetic reproduction ever be reduced to those of subatomic physics? The social scientist may also be forgiven for rebelling against this imper",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "naturalisms.org",
+          "/science.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Naturalism and Science",
+        "url": "http://naturalisms.org/science.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "473f20261728e96d0876c3153dd4a79e9beeed66202c9bb84df6fdd13bbe6cba",
+  "provider": "SearXNG",
+  "query": "how does plate tectonics in energy systems work",
+  "query_id": "v5-p-0246-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:28.795259Z"
+}

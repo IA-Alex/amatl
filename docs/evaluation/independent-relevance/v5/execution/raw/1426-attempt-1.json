@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 345.177,
+  "pair_id": "v5-p-0666",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of traffic flow in neuroscience",
+    "results": [
+      {
+        "category": "general",
+        "content": "but what &#39;IT&#39;  is? Neuroscience and Free Will - Does this mean we are pre-mapped and that we are under someone else&#39;s command? Does it raise the question of not who is God bu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "Finger’s Origins of Neuroscience tells of a little-known German professor named Julius R. Ewald “who put platinum ‘button’ electrodes on the cortex of [a] dog in 1896,” then walke",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wireheading.com",
+          "/brainstim/cyborgs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cyborgs, transhumans and neuroelectronics",
+        "url": "https://www.wireheading.com/brainstim/cyborgs.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e71e20c70c25dc5a245a27de6e2fe15e5c0a8ea3d9e0fbefeb7e09036b1cfb8e",
+  "provider": "SearXNG",
+  "query": "tell me about the function of traffic flow in neuroscience",
+  "query_id": "v5-p-0666-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:12:50.819361Z"
+}

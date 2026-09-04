@@ -1,0 +1,219 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 295.425,
+  "pair_id": "v5-p-0087",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes ocean tides in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "out of outside materials. But this will not do, for there are no materials outside of THE ALL with which it may create. Well, then, secondly, Man pro-creates or reproduces his kin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.phoenixmasonry.org",
+          "/kybalion.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Kybalion by Three Initiates",
+        "url": "https://www.phoenixmasonry.org/kybalion.htm"
+      },
+      {
+        "category": "general",
+        "content": "scanty and suspicious materials of ecclesiastical history seldom enable us to dispel the dark cloud that hangs over the first age of the church. The great law of impartiality too",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ourcivilisation.com",
+          "/smartboard/shop/gibbone/rome/volume1/chap15.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chapter 15 of &#39;The Decline &amp; Fall Of The Roman Empire&#39;",
+        "url": "http://www.ourcivilisation.com/smartboard/shop/gibbone/rome/volume1/chap15.htm"
+      },
+      {
+        "category": "general",
+        "content": "obtain rare or exotic materials and products that could serve to bolster the power base of the individuals or groups concerned.&#34; - Shaw , 2000, p.329. The &#34;golden&#34;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/maat/hermes2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ANCIENT EGYPT : The rise of Alexandro-Egyptian Hellenism and Hermetism",
+        "url": "http://www.sofiatopia.org/maat/hermes2.htm"
+      },
+      {
+        "category": "general",
+        "content": "nature of the mental materials on which it has to work: - in this state the Poem is designed. The second is that in representing the human characters of the Poem it transfigures t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.lyriktheorie.uni-wuppertal.de",
+          "/lyriktheorie/texte/1857_dobell1.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "1857 Sydney Dobell: Lecture on the &#39;Nature of Poetry&#39;",
+        "url": "https://www.lyriktheorie.uni-wuppertal.de/lyriktheorie/texte/1857_dobell1.html"
+      },
+      {
+        "category": "general",
+        "content": "on the nature of the materials upset than on that of the particular stimulus which joggles them down. Galvanic work, equal to unity, done on a frog&#39;s nerve will discharge from the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bactra.org",
+          "/James/great_men.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Great Men and their Environment",
+        "url": "https://bactra.org/James/great_men.html"
+      },
+      {
+        "category": "general",
+        "content": "origin the origin of materials falling onto the Earth meteorites from Mars in Antarctica observing starlight from outside the Solar system to avoid zodiacal light /clouds of gas i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "The following materials deal with the actual waging of war. Throughout, they deal with two broad considerations:     1) The law draws a distinction between combatan",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lawofwar.org",
+          "/Hostilities.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hostilities",
+        "url": "http://lawofwar.org/Hostilities.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5745397d0bb863af042c9d0603abc8238ccbc1e427736bd7468ad63579d1863b",
+  "provider": "SearXNG",
+  "query": "what causes ocean tides in materials science",
+  "query_id": "v5-p-0087-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:06.819624Z"
+}

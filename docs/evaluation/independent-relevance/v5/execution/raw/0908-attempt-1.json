@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 405.657,
+  "pair_id": "v5-p-0357",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind soil erosion in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "emerged with the Industrial Revolution, which separated us from nature. But nature is coming back with a vengeance, tied to population growth. It will have incredible security imp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d1b366ee81df46da411a55bfb62233b309e146eda4a1c3c9fcc31d9c603d439a",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind soil erosion in industrial design",
+  "query_id": "v5-p-0357-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:10:02.984787Z"
+}

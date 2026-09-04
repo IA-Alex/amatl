@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 320.911,
+  "pair_id": "v5-p-0719",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes language acquisition in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "To explain language acquisition, we must assume that learners have an innate knowledge of a universal grammar capturing the common deep structure of natural languages. It is impor",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.stanford.edu",
+          "/ARCHIVES/WIN2009/entries/rationalism-empiricism/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rationalism vs. Empiricism (Stanford Encyclopedia of Philosophy/Winter 2009 Edition)",
+        "url": "https://plato.stanford.edu/ARCHIVES/WIN2009/entries/rationalism-empiricism/"
+      },
+      {
+        "category": "general",
+        "content": "some generalized data acquisition and control systems. An example of a system using the LOCI-2 as the &#34;CPU&#34; is the Wang Model 2315 &#34;On Line Computing System&#34; , a general-purpose d",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/wangloci.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Wang LOCI-2",
+        "url": "https://www.oldcalculatormuseum.com/wangloci.html"
+      },
+      {
+        "category": "general",
+        "content": "that knowledge acquisition should conform to the education of the human race, and his English (immediately pre-Darwinian) evolutionism subtly supplanting Comte’s less formul",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/comte",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Comte&#39;s classification of the sciences (IEKO)",
+        "url": "https://www.isko.org/cyclo/comte"
+      },
+      {
+        "category": "general",
+        "content": "without evidence What can be asserted without evidence can be dismissed without evidence. Hume’s Guillotine Is / Ought Distinction What ought to be cannot be deduced from wh",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/epistemology/reasoning-skills",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning Skills",
+        "url": "https://zerocontradictions.net/epistemology/reasoning-skills"
+      },
+      {
+        "category": "general",
+        "content": "than transmitted the acquisition to future generations. Then came the civil wars, and the arms of our leaders were turned against their country, and even when there was peace, the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.earlychristianwritings.com",
+          "/text/agricola.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Agricola of Tacitus",
+        "url": "http://www.earlychristianwritings.com/text/agricola.html"
+      },
+      {
+        "category": "general",
+        "content": "the VIM science data acquisition requirements and available on-board sequence storage memory supports the use of pre-defined blocks of commands. Baseline Sequence The baseline seq",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.geonius.com",
+          "/writing/other/voyager.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Voyager Spacecraft and Fortran 5",
+        "url": "http://www.geonius.com/writing/other/voyager.html"
+      },
+      {
+        "category": "general",
+        "content": "individual aptitude for acquisition. I will put the resulting case in the most brutal, and consequently the clearest, shape of which I am capable. Working on the combined theories",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fullbooks.com",
+          "/Tis-Sixty-Years-Since.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "&#39;Tis Sixty Years Since by Charles Francis Adams - Full Text Free Book",
+        "url": "http://www.fullbooks.com/Tis-Sixty-Years-Since.html"
+      },
+      {
+        "category": "general",
+        "content": "ost important acquisition. His acquiescence with its demand that he keep on Bush’s secretary of “defence” and arch war-maker, Robert Gates, is unique in US history. He has proved h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "planetization.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Planetization.org:  The Invincibility of a Vision",
+        "url": "https://planetization.org/"
+      },
+      {
+        "category": "general",
+        "content": "books would be a great acquisition to his library. They constituted, in fact, the whole literature of a nation which was, in some respects, the most extraordinary that ever existe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book71/book71j/book71j.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cleopatra by Jacob Abbott",
+        "url": "https://www.ajhw.co.uk/books/book71/book71j/book71j.html"
+      },
+      {
+        "category": "general",
+        "content": "is in this life the acquisition of truth, and in the afterlife to see this Truth in God. For assuming, with Aristotle, that what man seeks is happiness, where shall he best find i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.andrsib.com",
+          "/durant/advr.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Will Durant: The Age Of Faith. CHAPTER XXXVI. The Adventure of Reason",
+        "url": "http://www.andrsib.com/durant/advr.htm"
+      },
+      {
+        "category": "general",
+        "content": "proud of their acquisition of speech, which must have been accompanied by a great facilitation of thought. They attributed magic power to the spoken word. This feature was later o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.marxists.org",
+          "/reference/subject/philosophy/works/at/freud.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A PHILOSOPHY OF LIFE by Sigmund Freud",
+        "url": "https://www.marxists.org/reference/subject/philosophy/works/at/freud.htm"
+      },
+      {
+        "category": "general",
+        "content": "(NPT). In order of acquisition of nuclear weapons these are: the United States of America , Russia (formerly the Soviet Union ), the United Kingdom , France , and the People&#39;s Rep",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greatdreams.com",
+          "/war/rule_2002.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RULE 2002",
+        "url": "http://www.greatdreams.com/war/rule_2002.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e67256911d30fa86b2fdfe84fd16989b080566e50e01c24fc44c7e5320c22916",
+  "provider": "SearXNG",
+  "query": "what causes language acquisition in operations research",
+  "query_id": "v5-p-0719-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:20.579949Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 218.076,
+  "pair_id": "v5-p-1063",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of microbial fermentation in optics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1ce3e6cb82495f50465aed6e07974d2a971fd8f694b308394c6cfbe5172b2b25",
+  "provider": "SearXNG",
+  "query": "give an overview of microbial fermentation in optics",
+  "query_id": "v5-p-1063-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:22.307290Z"
+}

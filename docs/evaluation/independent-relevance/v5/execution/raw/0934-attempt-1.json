@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 308.96,
+  "pair_id": "v5-p-0924",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind bridge resonance in robotics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a7c1beae9565f9dac30250e349d445b6515b0b2ef3f072643928eb943f8cd6ae",
+  "provider": "SearXNG",
+  "query": "describe the principle behind bridge resonance in robotics",
+  "query_id": "v5-p-0924-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:10:11.214246Z"
+}

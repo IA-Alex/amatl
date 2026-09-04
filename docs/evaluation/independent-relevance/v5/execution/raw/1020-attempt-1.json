@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 305.905,
+  "pair_id": "v5-p-0820",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind battery chemistry in architecture",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6ca51cbae2c6f41ca58a23bae86ee71d7116e73690191c184ae21d19ed10e002",
+  "provider": "SearXNG",
+  "query": "describe the principle behind battery chemistry in architecture",
+  "query_id": "v5-p-0820-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:10:38.003731Z"
+}

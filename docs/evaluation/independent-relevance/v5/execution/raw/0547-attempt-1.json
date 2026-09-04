@@ -1,0 +1,300 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 329.292,
+  "pair_id": "v5-p-0922",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does bridge resonance in physics work",
+    "results": [
+      {
+        "category": "general",
+        "content": "the conceptual resonance is genuine. The pneumatic vehicle is implicit rather than named, but the function is analogous: a formative rational principle descending from divine inte",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mats-winther.github.io",
+          "/pneumaticquantum.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Pneumatic Hylomorphism and Quantum Philosophy: Retrieving the Logoi in the Copenhagen Model",
+        "url": "https://mats-winther.github.io/pneumaticquantum.htm"
+      },
+      {
+        "category": "general",
+        "content": "Theory: Real Waves, Resonance and Completed Events https://www.spaceandmotion.com/2026/physics-quantum-theory-wave-mechanics.html Matter diffracts because matter is wave organisat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/Philosophy-Hinduism-Hindu.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hinduism Hindu Religion: Discussion Metaphysics Philosophy of HinduismBeliefs, Hindu Gods",
+        "url": "https://www.spaceandmotion.com/Philosophy-Hinduism-Hindu.htm"
+      },
+      {
+        "category": "general",
+        "content": "Theory: Real Waves, Resonance and Completed Events https://www.spaceandmotion.com/2026/physics-quantum-theory-wave-mechanics.html Matter diffracts because matter is wave organisat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WSM: One Substance (Space) &amp; One Law explains causal connection, Metaphysics: deduces Quantum Physics, Einstein Relativity, Cosmology&lt;/tit",
+        "url": "https://www.spaceandmotion.com/"
+      },
+      {
+        "category": "general",
+        "content": "at the party that have resonance later in the game started off as things I threw in to give things more flavor. I mean, I pretty much knew what purpose the painting of the desert",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.spagmag.org",
+          "/archives/backissues/spag39.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ISSUE #39 - January 7, 2005 - SPAG",
+        "url": "http://www.spagmag.org/archives/backissues/spag39.html"
+      },
+      {
+        "category": "general",
+        "content": "to submarines, Schumann resonances, geomagnetic pulsations caused by solar storms and, perhaps, the seismic radio precursors. An induction coil, also called search coil, is the pr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.vlf.it",
+          "/romero3/ics101.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ICS101 - Induction Coil",
+        "url": "http://www.vlf.it/romero3/ics101.html"
+      },
+      {
+        "category": "general",
+        "content": "(MIT, 1996-06-25). Resonance, Musical Instruments (1:20:24)  Walter Lewin   (8.03 #9, 2004-10-07). Clarinet-Flute hybrids (2:39)  by  Joe Wolfe   ( UNSW ,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "numericana.com",
+          "/answer/music.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "On the Mathematics of Music - Numericana",
+        "url": "http://numericana.com/answer/music.htm"
+      },
+      {
+        "category": "general",
+        "content": "Theory: Real Waves, Resonance and Completed Events https://www.spaceandmotion.com/2026/physics-quantum-theory-wave-mechanics.html Matter diffracts because matter is wave organisat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/sitemap/theology.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sitemap: Theology: Atheisism, Agnosticism, Mysticism, Monism, Pantheism, Hinduism, Buddhism, Confucianism, Taoism, Greek Gods, Goddess, Myths,",
+        "url": "https://www.spaceandmotion.com/sitemap/theology.htm"
+      },
+      {
+        "category": "general",
+        "content": "struck a deep cultural resonance. Many more examples of this nature are to be found in the hypnotically evoked case studies described in John Mack’s Abduction: Human Encounters Wi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.rudyrucker.com",
+          "/saucerwisdom/html/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Saucer Wisdom",
+        "url": "https://www.rudyrucker.com/saucerwisdom/html/"
+      },
+      {
+        "category": "general",
+        "content": "our energies in resonance and harmony with our New Earth and our galactic origins. ______________________________________ _________________________________________________________",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "joanocean.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Whales &amp; Dolphins : a Multidimensional Experience.",
+        "url": "http://joanocean.com/"
+      },
+      {
+        "category": "general",
+        "content": "caused by acoustic resonances of the modulated mercury plasma column within its tubular enclosure. One could certainly hear a faint acoustic radiation from the tube while it was i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5c21077cd862ea463a501e08c3491d5117eea704a93bb9d2a3b9788a946380d3",
+  "provider": "SearXNG",
+  "query": "how does bridge resonance in physics work",
+  "query_id": "v5-p-0922-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:00.829182Z"
+}

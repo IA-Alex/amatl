@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 300.158,
+  "pair_id": "v5-p-0600",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does air quality monitoring in robotics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "The best systems for monitoring voices and messages through telephone or e-mail existing today are based on Israeli technology. The Israeli company Wondernet has patented the Penf",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.imninalu.net",
+          "/Israel-Arabs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Israel and the Arab World",
+        "url": "https://www.imninalu.net/Israel-Arabs.htm"
+      },
+      {
+        "category": "general",
+        "content": "and aviators by closely monitoring them with sensors and adapting accordingly. This intriguing approach—given names like the “cognitive cockpit” and “augmented cognition” (augcog)",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wireheading.com",
+          "/brainstim/cyborgs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cyborgs, transhumans and neuroelectronics",
+        "url": "https://www.wireheading.com/brainstim/cyborgs.html"
+      },
+      {
+        "category": "general",
+        "content": "move between full audio monitoring, to Voice Alert , or to complete silence simply by changing channels. For the Voice Alert to always be functional and not miss a call, operators",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.aprs.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "APRS: Automatic Packet Reporting System",
+        "url": "https://www.aprs.org/"
+      },
+      {
+        "category": "general",
+        "content": "APRS Remote Weather Monitoring. Weather. Call-Signs   CASI   Radio   Update. formulae Mathamatical &amp; Physical Formulae Mathamatical &amp; Physical Formulae Thermal Formula",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.redrok.com",
+          "/main.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Red Rock Energy Heliostats",
+        "url": "http://www.redrok.com/main.htm"
+      },
+      {
+        "category": "general",
+        "content": "☛ Stricter parental monitoring of social media isn&#39;t always better, says study In a new study published in the Journal of Child and Family Studies, researchers surveyed 248 U.S. p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "techrights.org",
+          "/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Techrights — Links 30/01/2024: Many More Layoffs (Microsoft the Most Tech Layoffs This Year)",
+        "url": "http://techrights.org/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "467a1c442bef70ac2f7aa98be75305318c43d943dbcdd30f4190bf230eff06aa",
+  "provider": "SearXNG",
+  "query": "how does air quality monitoring in robotics operate",
+  "query_id": "v5-p-0600-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:41.800713Z"
+}

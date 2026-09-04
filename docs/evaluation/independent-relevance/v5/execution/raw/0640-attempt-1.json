@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 343.776,
+  "pair_id": "v5-p-1006",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of wastewater treatment in operations research",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "22677074a45f8a70b81a42fb98c34c72e8ecea66f5597c35bbb27ecb8472a2f1",
+  "provider": "SearXNG",
+  "query": "tell me about the function of wastewater treatment in operations research",
+  "query_id": "v5-p-1006-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:38.747902Z"
+}

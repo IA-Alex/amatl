@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 307.704,
+  "pair_id": "v5-p-0044",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does compiler operation in ecology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "81b3c9b971245d75fb287e7a06df7d16a839853461b834382c135de2cbd5bb85",
+  "provider": "SearXNG",
+  "query": "how does compiler operation in ecology operate",
+  "query_id": "v5-p-0044-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:53.183050Z"
+}

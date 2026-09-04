@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 305.846,
+  "pair_id": "v5-p-0493",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is encryption keys in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "that while context engineering is valuable, it should be supported by proper databases with foreign keys and version control rather than fragile markdown repositories, urging deve",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "software. The Release Engineering page tracks the release history and schedule. Two major branches see releases in parallel, and major branches tend to live for two years (four mi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cooltrainer.org",
+          "/a-freebsd-desktop-howto/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A FreeBSD 11 Desktop How-to » Cooltrainer.org",
+        "url": "https://cooltrainer.org/a-freebsd-desktop-howto/"
+      },
+      {
+        "category": "general",
+        "content": "for radare reverse-engineering framework . We welcome applications from students interested in Radare Summer of Code ideas . March 3, 2015 We&#39;re a mentoring organization for Googl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.openwall.com",
+          "/news",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Openwall Project news items (since 2001)",
+        "url": "https://www.openwall.com/news"
+      },
+      {
+        "category": "general",
+        "content": "to works; (iii) reverse engineering solely to achieve interoperability; (iv) encryption research and security testing; and (v) protection of privacy and minors. The foregoing exce",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cryptome.org",
+          "/wipo-imp99-3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Implementation Issues of the WIPO Copyright Treaty and the WIPO Permformances and Phonograms Treaty: Technical Protection Measures: the Inter",
+        "url": "https://cryptome.org/wipo-imp99-3.htm"
+      },
+      {
+        "category": "general",
+        "content": "in Electrical Engineering, and the academic year 1970-71 at U.C. Berkeley (teaching courses in hardware, operating systems, and coding theory, and co-leading two seminar courses).",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "written by professional engineering teams. Jonathan Corbet&#39;s &#34;Statistics from the 5.10 kernel development cycle&#34; (12/2020) Dawn Foster&#39;s &#34;Who Contributes to the Linux Kernel?&#34; (1/",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/Linux.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Linux",
+        "url": "https://www.billdietrich.me/Linux.html"
+      },
+      {
+        "category": "general",
+        "content": "Modern Chumpatronic Engineering. No Formats, no Format Wars. Non-Apple’s Mistake Of Lisp Macros and Washing Machines Practical Blockchain Telegraphy. Sage SmartProbe FAQ Seven Law",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.loper-os.org",
+          "/",
+          "",
+          "p=4003",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Loper OS » &#34;Pest&#34; v. 0xFB.",
+        "url": "http://www.loper-os.org/?p=4003"
+      },
+      {
+        "category": "general",
+        "content": "I will explore reverse engineering OP and removing these restrictions without paying. There are a few motivations: OpenProject is licensed under the GPL , which gives me the right",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "punkto.org",
+          "/blog/free_openproject_license",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PUNKTO | GPL Praxis: How To Get OpenProject 13 Enterprise Edition (For Free)",
+        "url": "https://punkto.org/blog/free_openproject_license"
+      },
+      {
+        "category": "general",
+        "content": "for cryptographic engineering in the Digital Security Group at Radboud University . I am also an adjunct professor (Außerplanmäßiger Professor, APL) in the Facult",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cryptojedi.org",
+          "/peter/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Schwabe",
+        "url": "https://cryptojedi.org/peter/"
+      },
+      {
+        "category": "general",
+        "content": "Learn IT Operations/Engineering. Pen testing is about using operations/dev tools in creative ways, about abusing trust relationships. Most people I know that are good/great have b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/PenetrationTestingAndBugBountyHunting.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Penetration Testing and Bug-Bounty Hunting",
+        "url": "https://www.billdietrich.me/PenetrationTestingAndBugBountyHunting.html"
+      },
+      {
+        "category": "general",
+        "content": "(generally excellent engineering) with Ubuntu preinstalled (hardware compatibility with Xubuntu basically guaranteed), I decided to take the risk. TUXEDO Pulse 14 – Gen1 I c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.electricmonk.nl",
+          "/log/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Electricmonk.nl weblog",
+        "url": "https://www.electricmonk.nl/log/"
+      },
+      {
+        "category": "general",
+        "content": "monitoring or reverse engineering) to be picked up by any other nearby device. Suddenly, some app on your phone &#34;knows&#34; you have watched some ad online or on a TV, or even were in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/technological_slavery.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Technological slavery",
+        "url": "http://digdeeper.love/articles/technological_slavery.xhtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "cad81b4ec37c047ad64e2242523d68f0ebad1cb560c357cc2d61242d8778f330",
+  "provider": "SearXNG",
+  "query": "what is encryption keys in software engineering",
+  "query_id": "v5-p-0493-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:59.485200Z"
+}

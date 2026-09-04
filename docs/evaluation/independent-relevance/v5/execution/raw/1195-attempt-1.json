@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 247.916,
+  "pair_id": "v5-p-0019",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes photosynthesis in oceanography",
+    "results": [
+      {
+        "category": "general",
+        "content": "Photon 2 - solar boat Photosynthesis Physics prize - NK Phillips, Team - catamaran Pilgrim Farthers - Mayflower voyage Pirates of the Caribbean - Awards Pirates of the Caribb",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.solarnavigator.net",
+          "/solarnavigator_index.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SOLAR NAVIGATOR MARINE PORTAL WEBSITE INDEX EDUCATIONAL GEOGRAPHY HISTORY RESOURCE WORLD ATLAS A TO Z INDEX OF PLANET EARTH FREE ENCYCLOPEDIA&lt;",
+        "url": "https://www.solarnavigator.net/solarnavigator_index.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "076960c20a651bf1fa5bbeb44f35efe3c47f0e002f489b10b2905e5690f26c84",
+  "provider": "SearXNG",
+  "query": "what causes photosynthesis in oceanography",
+  "query_id": "v5-p-0019-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:11:38.962836Z"
+}

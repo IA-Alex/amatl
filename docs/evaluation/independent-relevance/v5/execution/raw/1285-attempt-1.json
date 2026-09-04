@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 327.984,
+  "pair_id": "v5-p-0733",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is root systems in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Complexity Complex Systems Erogodicity Let Stillness Speak The Long Game Playing The Long Game Power Of Patience The Road Less Traveled Communication Persuasion &amp; Change Communica",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zen-tools.net",
+          "/how-to-change-your-life.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How To Change Your Life - The Variables And Dynamics Of Life Change",
+        "url": "https://www.zen-tools.net/how-to-change-your-life.html"
+      },
+      {
+        "category": "general",
+        "content": "Made By My 64 Bit Systems Incense From Frankincense Resin Developed Independently By The MicroMachina Effort Finalizing Custom Computer Circuit/Hardware Developability Making The",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "hemisphere): Complete systems, repair, parts for self repair, upgrades and extra&#39;s. Thaddeus - palmtoppaper.com (USA, western hemisphere): Complete systems, repair and extra&#39;s The",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mizj.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "S.U.P.E.R. - The Largest 200LX Software Archive",
+        "url": "http://mizj.com/"
+      },
+      {
+        "category": "general",
+        "content": "the world&#39;s computer systems and engineering the biggest peaceful economic boom in history, is more than just a thirst for knowledge about computers. It&#39;s the obsessive belief tha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.idallen.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ian! D. Allen - Personal Home Page",
+        "url": "http://www.idallen.com/"
+      },
+      {
+        "category": "general",
+        "content": "different operating systems. More questions? Praise? Abuse? Use the forum, Luke . Our comics : Darths &amp; Droids | Irregular Webcomic! | Eavesdropper | Planet of Hats | The Dino",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "darthsanddroids.net",
+          "/faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Darths &amp; Droids - FAQ",
+        "url": "https://darthsanddroids.net/faq.html"
+      },
+      {
+        "category": "general",
+        "content": "- USA BOEING - USA BAE SYSTEMS - BRITAIN GENERAL DYNAMICS - USA RAYTHEON - USA NORTHROP GRUMMAN - USA EADS - BRITAIN/FRANCE L-3 COMMUNICATIONS - USA FINMECCANICA - ITALY UNITED TE",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "globalkleptocracy.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GLOBAL KLEPTOCRACY - GLOBAL ELITE, RULING ELITE, GLOBAL OLIGARCHY, DEEP STATE, GLOBALISM, DYNASTIC ELITE, MONOPOLY CAPITALISM, CORPORATOCRACY,",
+        "url": "https://globalkleptocracy.net/"
+      },
+      {
+        "category": "general",
+        "content": "Systems Devoid Of Any Monitoring As The Free World Alliance Send Encryption Keys Directly To End-User Computer Systems Without Monitor Proxies Which Add A Risky 3rd Wheel To All T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteList.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/FWAsiteList.html"
+      },
+      {
+        "category": "general",
+        "content": "Redesign of Natural Ecosystems : Pearce suggests that, with the help of advanced technology, we could re-engineer predator-prey relationships, potentially replacing carnivorous sp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.transhumanist.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Transhumanism as conceived by ChatGPT-4",
+        "url": "https://www.transhumanist.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "lands. Yet these two systems, so different in principle, were in effect nearly identical. Both exhibited the spectacle of a subject possessed of unlimited power within his own ter",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.electricscotland.com",
+          "/webclans/kin.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Explanation of Clanship",
+        "url": "http://www.electricscotland.com/webclans/kin.htm"
+      },
+      {
+        "category": "general",
+        "content": "leaving all cognitive systems intact - a quite standard but entirely bogus feat of imagination - is like supposing that by an act of stipulative imagination, you can remove health",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "philosophy.nekhbet.com",
+          "/zombie.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The zombie satires",
+        "url": "https://philosophy.nekhbet.com/zombie.shtml"
+      },
+      {
+        "category": "general",
+        "content": "Different Legal Systems Have Different NAPs 2.6. The Problems With Deontological Ethics 3. Biological Realism 3.1. Why Libertarianism Is Incompatible With Human Nature 3.2. Inclin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/civilization/case-against-libertarianism",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Case Against Libertarianism And Ancapism",
+        "url": "https://zerocontradictions.net/civilization/case-against-libertarianism"
+      },
+      {
+        "category": "general",
+        "content": "23 Tau Self-Propagating Systems 19 Ari How To Square An Integer 16 Ari How To Adjust Your Sleep Schedule 12 Ari Equations Of Algebraic Curves 08 Ari Classification Is Just Classif",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "thricegreat.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Thricegreat&#39;s Webpage",
+        "url": "https://thricegreat.neocities.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "163816381f4b917bb8cd62246e3ef6a7b513e91bbfe0484ad4e48adcebea49c7",
+  "provider": "SearXNG",
+  "query": "what is root systems in health science",
+  "query_id": "v5-p-0733-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:07.521641Z"
+}

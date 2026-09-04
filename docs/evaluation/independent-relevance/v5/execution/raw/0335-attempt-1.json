@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 389.438,
+  "pair_id": "v5-p-0518",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does neural networks in information systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "Generalized Algorithmic Information COURSES Machine Learning 1 Machine Learning 2 Our Pybrain Machine Learning Library features source code of many new learning algorithms that ca",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.idsia.ch",
+          "/~juergen/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Juergen Schmidhuber&#39;s home page -Universal Artificial Intelligence - AI - Deep Learning - Recurrent Neural Networks -Computer Vision - Object",
+        "url": "https://people.idsia.ch/~juergen/"
+      },
+      {
+        "category": "general",
+        "content": "doesn&#39;t work, then the information superhighway isn&#39;t available. Try again later! Penis.moe So moe! Banana for scale Convert conventional length and mass units to bananas for univ",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cidoku.net",
+          "/links/all",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Todos los enlaces @ cidoku.net",
+        "url": "http://cidoku.net/links/all"
+      },
+      {
+        "category": "general",
+        "content": "Click here for more information. Accis Dial Helper (78 KB) added 01/05/1999 (Communication) Version 1.0 by Gottfried Burckhardt Accis Dial Helper is a utility that allows you to c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mizj.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "S.U.P.E.R. - The Largest 200LX Software Archive",
+        "url": "http://mizj.com/"
+      },
+      {
+        "category": "general",
+        "content": "competing alliances of information-bearing self-replicators - genes - manipulate their throwaway vehicles at one remove to promote their own inclusive fitness. Admittedly, genetic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Hedonistic Imperative : Chapter Two",
+        "url": "https://www.hedweb.com/hedethic/hedon2.htm"
+      },
+      {
+        "category": "general",
+        "content": "couldn’t find any information on the “Modern Toxin Theory of Disease” either. Maybe it’s a new theory, but in any case, it’s more likely that the res",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/case-against-carnivore-diet",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Case Against The Carnivore Diet",
+        "url": "https://zerocontradictions.net/misc/case-against-carnivore-diet"
+      },
+      {
+        "category": "general",
+        "content": "Russian Spanish The Information The Creation The Physics The Biology The Philosophy The Philosophers The Scientists The Problems The Solutions The Experiments Arrow of Time Consci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Information Philosopher - dedicated to the new information philosophy",
+        "url": "https://www.informationphilosopher.com/"
+      },
+      {
+        "category": "general",
+        "content": ", posted by KSUinformation (YouTube link) Nuclear radiation can make catchy music. Radiation Network shows current radiation levels in North America, updated every minute. Black G",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "reactor-core.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "In a Reactor Core, the Atomic Man finds his family",
+        "url": "http://reactor-core.org/"
+      },
+      {
+        "category": "general",
+        "content": "of the force. For more information on the history that was explained see: Jewlluminati History One day Fuad said, “The Evil Empire is going to pull you over to the dark side",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.unatle.net",
+          "/PeaceDeLaNanorenaissance.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peace De La Nanorenaissance",
+        "url": "http://www.unatle.net/PeaceDeLaNanorenaissance.html"
+      },
+      {
+        "category": "general",
+        "content": "of transformations of information stored in a hunk of matter ( such as brain tissue or silicon) mirrors a sequence of deductions that obey the laws of logic, probability, or cause",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "and Intelligent Information &amp; Engineering Systems KES 2008, Zagreb 2 Oct 2007: Joint invited lecture for Algorithmic Learning Theory (ALT 2007) and Discovery Science (DS 2007) , S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.idsia.ch",
+          "/~juergen/interest.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WHAT&#39;S INTERESTING? ACTIVE EXPLORATION - CURIOSITY-DRIVEN REINFORCEMENT LEARNING - ARTIFICIAL CURIOSITY - INTRINSIC REWARD - INTRINSIC MOTIVA",
+        "url": "https://people.idsia.ch/~juergen/interest.html"
+      },
+      {
+        "category": "general",
+        "content": "for Improved Information Retrieval in Software Engineering Maria Christakis, Peter Müller, and Valentin Wüstholz: Guiding Dynamic Symbolic Execution toward Unverified Pr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sigsoft.org",
+          "/awards/distinguishedPaperAward.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGSOFT - ACM Special Interest Group on Software Engineering",
+        "url": "http://www.sigsoft.org/awards/distinguishedPaperAward.html"
+      },
+      {
+        "category": "general",
+        "content": "learning information classified to you), and religion. Freedom to experience any form of consciousness. Freedom to do any type of drugs regardless of the tendency to addiction (un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.e-democracy.biz",
+          "/E-Democracy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Judicially Arbitrated Imperial E-Democracy",
+        "url": "http://www.e-democracy.biz/E-Democracy.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1d6ddaa03ad64a0a58b95cb2b1b75883ec941c6c06016273940d50a737f6c502",
+  "provider": "SearXNG",
+  "query": "how does neural networks in information systems work",
+  "query_id": "v5-p-0518-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:54.396367Z"
+}

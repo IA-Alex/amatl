@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 329.182,
+  "pair_id": "v5-p-0309",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind water purification in pharmacology",
+    "results": [
+      {
+        "category": "general",
+        "content": "made during the purification process led me to think that ergotoxine could be a mixture of several alkaloids, rather than one homogeneous alkaloid. I will speak later of the far-r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.luminist.org",
+          "/archives/hofmann_lsd.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Luminist Archives: Hymn to Pan by Aleister Crowley",
+        "url": "http://www.luminist.org/archives/hofmann_lsd.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "04ebeb1ce42cdef98f38fef6d2236b9d815a8bdff4ce49725ae875c8caed2d1b",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind water purification in pharmacology",
+  "query_id": "v5-p-0309-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:15:10.932786Z"
+}

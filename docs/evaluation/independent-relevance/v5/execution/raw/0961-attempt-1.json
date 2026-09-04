@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 265.066,
+  "pair_id": "v5-p-0245",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is plate tectonics in communication studies",
+    "results": [
+      {
+        "category": "general",
+        "content": "development of wireless communication in Thunderstruck , which tells the stories of the scientist Marconi and the murderer Dr. Crippen. (Larson has written other popular non-ficti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ljhammond.com",
+          "/classics/cl6.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Realms of Gold: A Sketch of Western Literature: Science",
+        "url": "https://ljhammond.com/classics/cl6.htm"
+      },
+      {
+        "category": "general",
+        "content": "for extracellular communication, and enzymes for deoxyribonucleotide synthesis, and in advanced evolutionary stages stored genetic information in RNA (not DNA) molecules. Others s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/unraveltree/unravel.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Unraveling the Tree of Life",
+        "url": "http://www.dhushara.com/book/unraveltree/unravel.htm"
+      },
+      {
+        "category": "general",
+        "content": "are based on personal communication or anecdotal evidence. Dean discounts the positive trend in favour of astrology as down to sampling error and bias. Yet, given the history of s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "astrology.co.uk",
+          "/tests/basisofastrology.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Why it is unacceptable to dismiss astrology as rubbish.",
+        "url": "https://astrology.co.uk/tests/basisofastrology.htm"
+      },
+      {
+        "category": "general",
+        "content": "batteries advances in communication communication by neutrino personal communication frequency global communications (ala the Internet) modern communications brain communication d",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2088a21d022b3b4f34628a607d9dd73ab43e2b571d141c6b86c4987982614205",
+  "provider": "SearXNG",
+  "query": "what is plate tectonics in communication studies",
+  "query_id": "v5-p-0245-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:19.584897Z"
+}

@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 284.612,
+  "pair_id": "v5-p-1009",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is probability distributions in biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "Monads of Probability Distributions (with Avi Pfeffer ). Proceedings of the 29th ACM Symposium on the Principles of Programming Languages, in SIGPLAN Notices , 37(1):154–165",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cs.tufts.edu",
+          "/~nr/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Norman Ramsey",
+        "url": "https://www.cs.tufts.edu/~nr/"
+      },
+      {
+        "category": "general",
+        "content": "studies of redshift distributions have been published which call the Hubble relation into question. As early as 1962 Hawkins ( 34 ) claimed that the redshift data indicated an app",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.halos.com",
+          "/reports/aaas-1984-perspective.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Radiohalos in a Radiochronological and Cosmological Perspective",
+        "url": "https://www.halos.com/reports/aaas-1984-perspective.htm"
+      },
+      {
+        "category": "general",
+        "content": "Binomial vs. Poisson Distributions Using Information Theoretic Methods Vladimir Blinovsky: Large Deviations in the Commutative and Non-Commutative Case Viacheslav Prelov and Edwar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.math.uni-bielefeld.de",
+          "/ahlswede/zif/opening.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "General Theory of Information Transfer",
+        "url": "https://www.math.uni-bielefeld.de/ahlswede/zif/opening.html"
+      },
+      {
+        "category": "general",
+        "content": "and their geographical distributions vary as they adapt to changing conditions. Figure 12: Glacier shortening (4) and sea level rise (24,25). Gray area designates estimated range",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oism.org",
+          "/pproject/s33p36.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Environmental Effects of Increased Atmospheric Carbon Dioxide - Global Warming Petition Project",
+        "url": "https://www.oism.org/pproject/s33p36.htm"
+      },
+      {
+        "category": "general",
+        "content": "Using the empirical distributions of interstate war sizes and onset times from 1823 to 2003, we parameterized stationary models of conflict generation that can distinguish trends",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.socrethics.com",
+          "/Folder2/Culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cultural Evolution of Suffering",
+        "url": "http://www.socrethics.com/Folder2/Culture.htm"
+      },
+      {
+        "category": "general",
+        "content": "implies that if two distributions give rise to the same density matrix, then those distributions are empirically indistinguishable, or in other words are the same mixed state . As",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scottaaronson.com",
+          "/democritus/lec9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHYS771 Lecture 9: Quantum",
+        "url": "https://www.scottaaronson.com/democritus/lec9.html"
+      },
+      {
+        "category": "general",
+        "content": "races do have different distributions of brain size and intelligence quotient (IQ). Blacks have a lower average IQ and smaller average brain size relative to bodily volume. The di",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mats-winther.github.io",
+          "/raceinsight.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Insights into the Race Issue",
+        "url": "https://mats-winther.github.io/raceinsight.htm"
+      },
+      {
+        "category": "general",
+        "content": "have very distinctive distributions in a population, i.e. they would be very far from the Hardy-Weinberg equilibrium. Is it plausible that recent human evolution has led to the sp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2009/01/a_week_with_gre_3.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: A Week with Gregory Cochran: Day Three",
+        "url": "http://www.2blowhards.com/archives/2009/01/a_week_with_gre_3.html"
+      },
+      {
+        "category": "general",
+        "content": "parameters, probability distributions, and model, I in practice wouldn&#39;t put the probability that future ETs will colonize in our place higher than, say, ~70%, since it does look",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/ranking-explanations-of-the-fermi-paradox/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ranking Explanations of the Fermi Paradox",
+        "url": "https://reducing-suffering.org/ranking-explanations-of-the-fermi-paradox/"
+      },
+      {
+        "category": "general",
+        "content": "along with continuous distributions. This theoretical vision is a major obstacle to a successful head start with statistical thinking. For instance, at a conference on teaching st",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "statlit.org",
+          "/Gigerenzer.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Gerd Gigerenzer",
+        "url": "http://statlit.org/Gigerenzer.htm"
+      },
+      {
+        "category": "general",
+        "content": "Martensite (different distributions of iron carbide in ferrite, produced by different heat treatments). When a steel has been heat-treated wrongly, the result is usually a complex",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/sillymolecules/sillymols4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecules with Silly or Unusual Names - page 4",
+        "url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm"
+      },
+      {
+        "category": "general",
+        "content": "on floral and faunal distributions, do not coincide with the partly computer-generated plate boundaries postulated by plate tectonics. The authors comment: &#39;What is puzzling is th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/tierra_hueca/inner_earth/sunken.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sunken Continents versus Continental Drift",
+        "url": "https://www.bibliotecapleyades.net/tierra_hueca/inner_earth/sunken.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5051af1b78484b38f2b4d9022d5d16c1c501c518bddf29aef6c5a43acf86c63d",
+  "provider": "SearXNG",
+  "query": "what is probability distributions in biology",
+  "query_id": "v5-p-1009-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:48.871676Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 329.083,
+  "pair_id": "v5-p-0368",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind solar eclipses in ecology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "27317a97047abfa10c9179cd2b76faaf155829d84dfd62a877809cfd2c0e24ca",
+  "provider": "SearXNG",
+  "query": "describe the principle behind solar eclipses in ecology",
+  "query_id": "v5-p-0368-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:00.139001Z"
+}

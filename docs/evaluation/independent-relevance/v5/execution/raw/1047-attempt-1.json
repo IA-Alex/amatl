@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 362.042,
+  "pair_id": "v5-p-0158",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does immune response in information systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "Understand Much Arcane Information. If Not; Google Translate Browser Extension, Is Available For Free To Everybody On Earth Even Where There Is Supposedly Overt Censorship. Google",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteList.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/FWAsiteList.html"
+      },
+      {
+        "category": "general",
+        "content": "quantum and classical information resources , submitted, 2025. arXiv:2509.07255 . A longstanding goal in quantum information science is to demonstrate quantum computations that ca",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scottaaronson.com",
+          "/papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Research Papers and Surveys",
+        "url": "https://www.scottaaronson.com/papers/"
+      },
+      {
+        "category": "general",
+        "content": "couldn’t find any information on the “Modern Toxin Theory of Disease” either. Maybe it’s a new theory, but in any case, it’s more likely that the res",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/case-against-carnivore-diet",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Case Against The Carnivore Diet",
+        "url": "https://zerocontradictions.net/misc/case-against-carnivore-diet"
+      },
+      {
+        "category": "general",
+        "content": "Additional Information      -  1,000 Lawyers and 10,000 Doctors have Filed a Lawsuit for Violations of &#39;The Nuremberg Code&#39; - Covid-19  -  6-m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia3/ciencia_coronavirus.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coronavirus and the &#39;Fear Factor&#39;... - El Coronavirus y el &#39;Factor Miedo&#39;...",
+        "url": "https://www.bibliotecapleyades.net/ciencia3/ciencia_coronavirus.htm"
+      },
+      {
+        "category": "general",
+        "content": "practical, detailed information that is critical for the successful healing of arthritis, but that has never before been collected in one place. But that description from the publ",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "paleodiet.com",
+          "/ra/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rheumatoid Arthritis and the Diet Alternative: Links &amp; Books",
+        "url": "https://paleodiet.com/ra/"
+      },
+      {
+        "category": "general",
+        "content": "way of acquiring information. But it is a volatile vehicle of misinformation on so many aspects of religion: not all that is labelled “Christian” or “Catholic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.vatican.va",
+          "/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jesus Christ The Bearer Of The Water Of Life - A Christian reflection on the New Age",
+        "url": "https://www.vatican.va/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html"
+      },
+      {
+        "category": "general",
+        "content": "Q211: I need information about powered paragliders. (or other non-fixed wing air vehicles) Q212: How do I contact the ultralight mailing list? Q213: How do I contact the hang-glid",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ultralighthomepage.com",
+          "/ultraFAQ.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dan Grunloh&#39;s Ultralight FAQ",
+        "url": "http://www.ultralighthomepage.com/ultraFAQ.html"
+      },
+      {
+        "category": "general",
+        "content": "a valuable source of information about the illness, and give an indication of what factors are important in recovery. Obviously caution needs to be exercised when analyzing anecdo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mind-body-health.net",
+          "/cfs.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mind-Body-Health.net Information on Chronic Fatigue Syndrome (ME/CFS)",
+        "url": "http://www.mind-body-health.net/cfs.shtml"
+      },
+      {
+        "category": "general",
+        "content": "groups, or even read information contrary to the &#34;official&#34;? Of course, I realize all of this is possible in other ways, but why make it harder? Maybe old people simply like tortu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/oppression.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Will the real oppressed group please stand up?",
+        "url": "http://digdeeper.love/articles/oppression.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "do not receive unbiased information in medical school or during their careers. In order for doctors to learn the full truth, they have to seek it and then deal with the resultant",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/humphries.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Disease, vaccines &amp; forgotten history",
+        "url": "https://davidpratt.info/humphries.htm"
+      },
+      {
+        "category": "general",
+        "content": "liberty, from access to information and freedom of expression. For a privileged minority, Western democracy provides the leisure, the facilities, and the training to seek the trut",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ditext.com",
+          "/chomsky/ri.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Responsibility of Intellectuals, by Noam Chomsky",
+        "url": "https://www.ditext.com/chomsky/ri.html"
+      },
+      {
+        "category": "general",
+        "content": "create new biological information and novel biological systems, and hence it cannot account for the proliferation of species as Darwin suggested.  Indeed, recent experimental",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.onenesspentecostal.com",
+          "/DarwinianEvolution.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The (In)Adequacy of Darwinian Evolution",
+        "url": "http://www.onenesspentecostal.com/DarwinianEvolution.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "635f8b786a2fdce699f67f5a58ac7e90055d52b2335aec55e74e8f3c7960ca98",
+  "provider": "SearXNG",
+  "query": "how does immune response in information systems work",
+  "query_id": "v5-p-0158-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:46.499189Z"
+}

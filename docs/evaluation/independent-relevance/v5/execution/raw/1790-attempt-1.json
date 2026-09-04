@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 382.283,
+  "pair_id": "v5-p-0756",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind root systems in transportation engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "The process of transportation to slaughterhouses and the slaughter itself can cause significant stress and fear. * Psychological Suffering : Stress: The conditions in factory farm",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.animal-rights.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Veganism as conceived by ChatGPT",
+        "url": "https://www.animal-rights.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "antenna) and of transportation (as a hub of rail transportation) it had the mana or spiritual power of the crossroads, the traditional meeting place watched over by the gods of tr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "minervaclassics.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Minerva Systems",
+        "url": "http://minervaclassics.com/"
+      },
+      {
+        "category": "general",
+        "content": "the best public transportation, and their ignorance of good urban planning practices is a major reason why they fail to understand Georgism. Alloidal Libertarians are clueless abo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/epistemology/difficult-to-change-minds",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Why It&#39;s So Difficult To Change People&#39;s Minds",
+        "url": "https://zerocontradictions.net/epistemology/difficult-to-change-minds"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2946ec056e2ebccfe6203bc52c1ba42e58113d4f949132cd334f0e6031627afc",
+  "provider": "SearXNG",
+  "query": "describe the principle behind root systems in transportation engineering",
+  "query_id": "v5-p-0756-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:49.929903Z"
+}

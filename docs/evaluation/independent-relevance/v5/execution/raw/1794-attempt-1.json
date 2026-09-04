@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 223.022,
+  "pair_id": "v5-p-0903",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of bridge resonance in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "the pyramid produced a resonance or frequency inside.&#34; So, I take it the Pyramid Frequency (inside) of 33.0 HZ is the resonance frequency inside the pyramid. As far as what t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.lunarsight.com",
+          "/son-alc.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mike&#39;s Sonic Alchemy Logbook",
+        "url": "http://www.lunarsight.com/son-alc.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8aee40a25753d6e9b3a5feff7baa345ecf5c92461af3dc653cf063faa3f7a1d5",
+  "provider": "SearXNG",
+  "query": "give an overview of bridge resonance in chemistry",
+  "query_id": "v5-p-0903-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:14:51.285902Z"
+}

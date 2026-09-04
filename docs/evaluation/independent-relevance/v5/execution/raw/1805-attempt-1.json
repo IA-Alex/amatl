@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 304.376,
+  "pair_id": "v5-p-0366",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does solar eclipses in computer security work",
+    "results": [
+      {
+        "category": "general",
+        "content": "go about calculating eclipses and the like. One of the priests shows you a complicated method involving written bars and dots and a complex set of rules for maniplating the bars a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nuwen.net",
+          "/books.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Book Reviews - nuwen.net",
+        "url": "https://nuwen.net/books.html"
+      },
+      {
+        "category": "general",
+        "content": "mention. Total solar eclipses are totally awesome. Here are two, from 2017 and 2024. The Blizzard of &#39;78 in Marlboro, MA The Exponential Rise (and Fall) of Covid-19 . The Year wit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wermenh.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Werme Family Home Page",
+        "url": "http://wermenh.com/"
+      },
+      {
+        "category": "general",
+        "content": "mention. Total solar eclipses are totally awesome. Here are two, from 2017 and 2024. The Blizzard of &#39;78 in Marlboro, MA The Exponential Rise (and Fall) of Covid-19 . The Year wit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wermenh.com",
+          "/index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Werme Family Home Page",
+        "url": "http://wermenh.com/index.html"
+      },
+      {
+        "category": "general",
+        "content": "Be No More Total Solar Eclipses , Space Image of the Day , NASA&#39;s Year in Review 2016 , ScienceHeathen , Public Library of Science (PLOS), CRISPR . Health: Single-payer would dras",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "and omens such as eclipses; etc. It is given in non-biblical sources, that an earthquake and darkness accompanied His death; re: Top Ten Historical References to Jesus Outside of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.academic-genealogy.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Family Genealogy and History Internet Education Directory™ - Wiki",
+        "url": "http://www.academic-genealogy.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "cdc266e8301238cb4f298f627a9c645f9d6e39143f25e314cd96cfb82670948d",
+  "provider": "SearXNG",
+  "query": "how does solar eclipses in computer security work",
+  "query_id": "v5-p-0366-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:54.602337Z"
+}

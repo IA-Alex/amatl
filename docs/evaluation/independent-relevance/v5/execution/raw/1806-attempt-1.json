@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 416.16,
+  "pair_id": "v5-p-0366",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of solar eclipses in computer security",
+    "results": [
+      {
+        "category": "general",
+        "content": "the hyperbolic cosine function cosh(x), which is really 1/2 (e^x &#43; e^(-x) ? More interestingly, any light flexible chain or string will naturally assume the shape of a catenary wh",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nuwen.net",
+          "/books.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Book Reviews - nuwen.net",
+        "url": "https://nuwen.net/books.html"
+      },
+      {
+        "category": "general",
+        "content": "The Purpose and Function of the Egyptian Hypocephalus was not to promote Melchizedek Priesthood objectives, but to establish the harsh rule of Pharaohs over their own people. Fait",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.academic-genealogy.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Family Genealogy and History Internet Education Directory™ - Wiki",
+        "url": "http://www.academic-genealogy.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bfc87e27bb6782c385b4d81833840ae86858248161b3ad596830eab1a4ccdb08",
+  "provider": "SearXNG",
+  "query": "tell me about the function of solar eclipses in computer security",
+  "query_id": "v5-p-0366-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:14:54.907237Z"
+}

@@ -1,0 +1,273 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 313.9,
+  "pair_id": "v5-p-0045",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is compiler operation in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "and professionals in engineering or mathematical sciences. AMP allows the user to edit and simplify numerous expressions or equations in a mathematical derivation quickly and accu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mizj.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "S.U.P.E.R. - The Largest 200LX Software Archive",
+        "url": "http://mizj.com/"
+      },
+      {
+        "category": "general",
+        "content": "degree in Electrical Engineering and Computer Science from MIT in 1972 and his Ph.D. from the University of Zagreb, Croatia in 2010. He died suddenly of natural causes on December",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "us.metamath.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Home Page - Metamath",
+        "url": "https://us.metamath.org/"
+      },
+      {
+        "category": "general",
+        "content": "in Electrical Engineering, and the academic year 1970-71 at U.C. Berkeley (teaching courses in hardware, operating systems, and coding theory, and co-leading two seminar courses).",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "almost no overlap in engineering technique, other than that both groups of necessity were generally constrained by the technology available at the time.  For example, both ne",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ibiblio.org",
+          "/apollo/LVDC.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Launch Vehicle Digital Computer",
+        "url": "http://www.ibiblio.org/apollo/LVDC.html"
+      },
+      {
+        "category": "general",
+        "content": "communications engineering professor. I got bored because they thought I needed to take undergraduate &#34;Electronics&#34; . Facing a boring and trivial lab report, I just submitted an i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ed-thelen.org",
+          "/comp-hist/stories.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stories",
+        "url": "https://www.ed-thelen.org/comp-hist/stories.html"
+      },
+      {
+        "category": "general",
+        "content": "Vectoring SOFTWARE ENGINEERING Transparency Reentrancy Succinctness Spurious Interrupts Edge- vs. Level-Sensitive Interrupts High Speed Interrupt Response ADVANCED SOFTWARE INTERR",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "6502.org",
+          "/tutorials/65c816interrupts.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "INVESTIGATING 65C816 INTERRUPTS — ©1994–2015 by BCS Technology Limited",
+        "url": "https://6502.org/tutorials/65c816interrupts.html"
+      },
+      {
+        "category": "general",
+        "content": "ARM Bare-Metal Reverse Engineering ARPA2 2017 Working towards a decentralised global internet that offers security and privacy by design. ARPA2 LDAP Middleware NGI0 PET 2019 2022",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/project/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; All projects",
+        "url": "https://nlnet.nl/project/"
+      },
+      {
+        "category": "general",
+        "content": "&#34;qui-binary&#34; IBM Field Engineering Maintenance Manual 1401 System, 225-6487-3 , PDF, 8 MB, resized from Paul Pierce&#39;s web site How to increase reliability Physical Layout with nom",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ibm-1401.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "1401Restoration-CHM",
+        "url": "https://ibm-1401.info/"
+      },
+      {
+        "category": "general",
+        "content": "refers to Electrical Engineering course &#34;No. 641&#34;, actually written &#34;6.41&#34; (at MIT, &#34;Course 6&#34; is Electrical Engineering, and all courses in that department start with a six follo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ljkrakauer.com",
+          "/LJK/60s/nerdpride.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nerd pride",
+        "url": "http://ljkrakauer.com/LJK/60s/nerdpride.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "808b3e14747b088be0b3bb55d4543edc52ddf0c7c9620efa512d1215d37a61a8",
+  "provider": "SearXNG",
+  "query": "what is compiler operation in electrical engineering",
+  "query_id": "v5-p-0045-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:21.933803Z"
+}

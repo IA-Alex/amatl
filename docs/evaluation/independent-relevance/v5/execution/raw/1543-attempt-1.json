@@ -1,0 +1,192 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 291.889,
+  "pair_id": "v5-p-0868",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does vaccination in civil engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "GAVI alliance to push vaccinations on the poorest parts of the developing world in the name of &#34;saving lives&#34; and stopping disease. ... In April 2012, the Indian medical",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "howtheworldreallyworks.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HOW THE WORLD REALLY WORKS - ROTHSCHILD, MONEY POWER, RULING ELITE, GLOBAL OLIGARCHY, FINANCIAL ELITE, DYNASTIC ELITE, POWER ELITE, GLOBALISM,",
+        "url": "https://howtheworldreallyworks.info/"
+      },
+      {
+        "category": "general",
+        "content": "of the Blood by Harvey. Vaccination by Jenner. Use of Anæsthetics the Great Step of Medical Progress of the Century. Materia Medica. Instruments. Schools of Medicine. Dentis",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book389/book389.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Progress of Invention in the Nineteenth Century, by Edward W. Byrn.",
+        "url": "https://www.ajhw.co.uk/books/book389/book389.html"
+      },
+      {
+        "category": "general",
+        "content": "To eliminate mask and vaccination requirements for everyone else would force that fraction into permanent isolation, along with any family members who join them in isolation. 23 F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2021-nov-feb.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2021: November - February Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2021-nov-feb.html"
+      },
+      {
+        "category": "general",
+        "content": "cafe. ...and even store vaccination records (archive) (MozArchive) : People in Sweden are increasingly seeking to have microchips implanted that contain their COVID-19 vaccination",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/technological_slavery.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Technological slavery",
+        "url": "http://digdeeper.love/articles/technological_slavery.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "1023. Ultimate vaccination theory 1022. The coming cataclysm 1021. The Antichrist and &#34;the worldwide web&#34; 1020. Misunderstandings of the &#34;red pill&#34; 1019. Why the left can&#39;t &#34;meme&#34;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "orgyofthewill.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Orgy of the Will: A Philosophy of the Future",
+        "url": "http://orgyofthewill.net/"
+      },
+      {
+        "category": "general",
+        "content": "so Desperate for 100% Vaccination Rates ?    -  Why are Most People Cowards? - Obedience and the Rise of Authoritarianism ...    -  Why are They Doin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/sociopol_globalelite.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Elite - The Transnational Capitalist Class / La Elite Global - La Clase Capitalista Transnacional",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_globalelite.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "779c1fe0e82ef7d49a2119aa4be8386775bcb83a6b60123ce0e70ad9960cf959",
+  "provider": "SearXNG",
+  "query": "how does vaccination in civil engineering operate",
+  "query_id": "v5-p-0868-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:27.910503Z"
+}

@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 324.341,
+  "pair_id": "v5-p-0180",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind immune response in transportation engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "The process of transportation to slaughterhouses and the slaughter itself can cause significant stress and fear. * Psychological Suffering : Stress: The conditions in factory farm",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.animal-rights.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Veganism as conceived by ChatGPT",
+        "url": "https://www.animal-rights.com/chatgpt/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "34aef221d9657fa05325741cef8365225560643deeb150c8df637b07b7e580d3",
+  "provider": "SearXNG",
+  "query": "describe the principle behind immune response in transportation engineering",
+  "query_id": "v5-p-0180-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:05:57.338626Z"
+}

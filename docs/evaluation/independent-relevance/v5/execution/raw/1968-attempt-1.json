@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 222.8,
+  "pair_id": "v5-p-0931",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of bridge resonance in forensic science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4670956c59cb1b4e7d590139787a456177e2bd181269897e13fbba9fd6a3d5c8",
+  "provider": "SearXNG",
+  "query": "give an overview of bridge resonance in forensic science",
+  "query_id": "v5-p-0931-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:45.358937Z"
+}

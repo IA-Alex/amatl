@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 285.69,
+  "pair_id": "v5-p-0668",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does traffic flow in optics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "such as distant traffic lights or the planet Mars, that are bright enough to stimulate the cones. • Rod signals do not transmit within separate nerve pathways: they feed",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.handprint.com",
+          "/HP/WCL/color1.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "handprint : light and the eye",
+        "url": "http://www.handprint.com/HP/WCL/color1.html"
+      },
+      {
+        "category": "general",
+        "content": "movement planning, and traffic-circulation control priorities. They plan multiple routes throughout the AO and closely control their use. The commander may allocate mobility resou",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.nuui.com",
+          "/Sections/Military/Field_Manuals/FM3-90/ch8.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "FM3-90 Chapter 8 Basics of Defensive Operations",
+        "url": "http://www.nuui.com/Sections/Military/Field_Manuals/FM3-90/ch8.htm"
+      },
+      {
+        "category": "general",
+        "content": "Cenis Tunnel opened for traffic. Phosphorus Bronze. Ingersoll Compressed Air Rock Drill. 1872—Stearns perfects Duplex Telegraph. Westinghouse Improved automatic Air Brake. L",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book389/book389.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Progress of Invention in the Nineteenth Century, by Edward W. Byrn.",
+        "url": "https://www.ajhw.co.uk/books/book389/book389.html"
+      },
+      {
+        "category": "general",
+        "content": "75% of all ARPANET traffic Christmas Day Lockup - Harvard IMP hardware problem leads it to broadcast zero-length hops to any ARPANET destination, causing all other IMPs to send th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zakon.org",
+          "/robert/internet/timeline/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hobbes&#39; Internet Timeline - the definitive ARPAnet &amp; Internet history",
+        "url": "https://www.zakon.org/robert/internet/timeline/"
+      },
+      {
+        "category": "general",
+        "content": "been used in a traffic signal. This optical transmitter was placed on Paul&#39;s balcony in Glenhuntly Road, on the corner of Clarke Avenue. The receiver was placed in the attic windo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2796ff3ee0fba7bbf08316bad6a910bfaa23216e8bbaaab9a3ae685ed76fb43a",
+  "provider": "SearXNG",
+  "query": "how does traffic flow in optics operate",
+  "query_id": "v5-p-0668-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:08.108334Z"
+}

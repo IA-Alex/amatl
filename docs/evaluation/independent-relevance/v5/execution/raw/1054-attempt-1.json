@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 404.85,
+  "pair_id": "v5-p-0530",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of neural networks in urban planning",
+    "results": [
+      {
+        "category": "general",
+        "content": "lines of the Ackermann function and declared it stops at ECM. Next we got radars with the same set of abbreviations, this time for locating targets, imaging and more. To distingui",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cyb-sec.neocities.org",
+          "/pages/alt-cyberpunk-faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "alt.cyberpunk FAQ – /cyb/&#43;/sec/ wiki",
+        "url": "https://cyb-sec.neocities.org/pages/alt-cyberpunk-faq/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b8bde2ecf6b69230d1ec10e91ba572c077fc01097f98a6c2af96058a23180ea3",
+  "provider": "SearXNG",
+  "query": "tell me about the function of neural networks in urban planning",
+  "query_id": "v5-p-0530-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:10:48.920136Z"
+}

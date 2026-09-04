@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 347.01,
+  "pair_id": "v5-p-0805",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind battery chemistry in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "astronomy physics chemistry geology biology zoology physiology microbiology robotics technology about himself religion and creationism women rationality intelligence politics spee",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "public school chemistry classes can change this unchangeable reality. It is likewise true that a person born with XX chromosomes is, and shall always be, female, while a person bo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cogwriter.com",
+          "/homosexual-education-assault.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cross-dressing and other assaults against your children. What should you do?",
+        "url": "https://www.cogwriter.com/homosexual-education-assault.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8cbcd57b676ef60d2cb984ae3679c5a6d5d6dfc64f16284420a9d3993f1d98a7",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind battery chemistry in health science",
+  "query_id": "v5-p-0805-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:07:59.906529Z"
+}

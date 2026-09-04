@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 242.756,
+  "pair_id": "v5-p-0639",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of renewable energy storage in agricultural science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "16ea552fa9edcc25c8189e9cb12248d435b4ae5dcf8393a442213106d3e2e3a3",
+  "provider": "SearXNG",
+  "query": "give an overview of renewable energy storage in agricultural science",
+  "query_id": "v5-p-0639-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:57.878474Z"
+}

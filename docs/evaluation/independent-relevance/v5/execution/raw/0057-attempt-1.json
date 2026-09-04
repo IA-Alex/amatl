@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 356.442,
+  "pair_id": "v5-p-0748",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does root systems in architecture operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "server process. %a The architecture of the remote machine. It currently recognizes Samba ( Samba ), the Linux CIFS file system ( CIFSFS ), OS/2, ( OS2 ), Mac OS X ( OSX ), Windows",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.samba.org",
+          "/samba/docs/current/man-html/smb.conf.5.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "smb.conf",
+        "url": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+      },
+      {
+        "category": "general",
+        "content": "Collaborative Filtering Architecture (2004). Amazon, iTunes, and an increasing number of other online retailers are currently incorporating similar schemes. However, with the exce",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "worrydream.com",
+          "/MagicInk/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Magic Ink: Information Software and the Graphical Interface",
+        "url": "https://worrydream.com/MagicInk/"
+      },
+      {
+        "category": "general",
+        "content": "aryan race, grand architecture in “Ceausescu style”, strange pagan rituals with elements from Norse mythology and freemasonry, et cetera. Animism Hillman’s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mats-winther.github.io",
+          "/hillmcrit.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Critique of Archetypal Psychology",
+        "url": "https://mats-winther.github.io/hillmcrit.htm"
+      },
+      {
+        "category": "general",
+        "content": "Sensation (2007). The Architecture of Thought 7 MODES OF THOUGHT 3 STAGES OF COGNITION I pre- nominal ante- rationality 1 Mythical libidinal ego the irrational 2 Pre-rational trib",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/equiaeon/behaviours.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHY : Behaviours : Formal Sketch of a Critical Ethics",
+        "url": "http://www.sofiatopia.org/equiaeon/behaviours.htm"
+      },
+      {
+        "category": "general",
+        "content": "painting, sculpture, architecture and music. Allexamples of religion-inspired creativity, especially in the late Middle Ages and the Renaissance. The beautiful Gothic cathedrals i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "histclo.com",
+          "/rel/rel.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "religion",
+        "url": "https://histclo.com/rel/rel.html"
+      },
+      {
+        "category": "general",
+        "content": "heritage through art, architecture and stories of community and identity,&#34; DOI Secretary Sally Jewell said in a Nov. 2 press release announcing the landmarks.  &#34;Today&#39;s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "akdart.com",
+          "/obama95.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "President Obama Panders to Homosexuals",
+        "url": "http://akdart.com/obama95.html"
+      },
+      {
+        "category": "general",
+        "content": "The Intel 80386 architecture, for example, featured four such modes, known as rings. Unix, however, utilizes only two of these rings: the highest ring (ring 0, also known as “supe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sysprog21.github.io",
+          "/lkmpg/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Linux Kernel Module Programming Guide",
+        "url": "https://sysprog21.github.io/lkmpg/"
+      },
+      {
+        "category": "general",
+        "content": "multiple. The processor architecture to start with. There ain&#39;t no native TrueCrypt builds for this family of chips. If you use VeraCrypt, there are, but the version that supports",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dedoimedo.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dedoimedo - A Place to Learn a Lot About a Lot",
+        "url": "https://www.dedoimedo.com/"
+      },
+      {
+        "category": "general",
+        "content": "a client-server architecture. The mainframe adherents were winning the debate initially, but the client-server advocates said they could develop a prototype much more quickly and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ils.unc.edu",
+          "/callee/gopherpaper.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Where Have all the Gophers Gone? Why the Web beat Gopher in the Battle for Protocol Mind Share",
+        "url": "https://ils.unc.edu/callee/gopherpaper.htm"
+      },
+      {
+        "category": "general",
+        "content": "The IOP had an unusual architecture: it was one of the first multi-threaded computers, implementing 25 virtual processors (with two completely different instruction sets) that ran",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.righto.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ken Shirriff&#39;s blog",
+        "url": "http://www.righto.com/"
+      },
+      {
+        "category": "general",
+        "content": "(PAST) Program Architecture of the LVDC References General Characteristics of the Computer Layout of Memory Words CPU Instructions I/O Ports (for LVDC/PTC PIO Instructions) I/O Po",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ibiblio.org",
+          "/apollo/LVDC.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Launch Vehicle Digital Computer",
+        "url": "http://www.ibiblio.org/apollo/LVDC.html"
+      },
+      {
+        "category": "general",
+        "content": "to form the quad-die architecture — a first for Apple silicon. UltraFusion increases the inter-die bandwidth to over 4.4TB/s and the connection density by over 6x. Together,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mjtsai.com",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Tsai - Blog",
+        "url": "https://mjtsai.com/blog/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6916443fce369cb6fb86b2c9df67a01c12160961d8459b214ba523ca928c813a",
+  "provider": "SearXNG",
+  "query": "how does root systems in architecture operate",
+  "query_id": "v5-p-0748-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:26.055106Z"
+}

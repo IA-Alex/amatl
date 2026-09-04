@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 228.009,
+  "pair_id": "v5-p-0227",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of plate tectonics in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "oceanic crust [plate tectonics]. Even clouds exert a regulatory effect. ...&#34; From Crushnaut on reddit: Getting oxygen and CO2 into a Martian atmosphere, in the grand scheme of thi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b368bdedd340b6edd20ffa44a9a4dd8cfdff3e38accb8b4c903d7d56548e0eb6",
+  "provider": "SearXNG",
+  "query": "give an overview of plate tectonics in food science",
+  "query_id": "v5-p-0227-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:11:22.894202Z"
+}

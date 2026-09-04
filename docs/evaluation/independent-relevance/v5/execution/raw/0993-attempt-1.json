@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 257.378,
+  "pair_id": "v5-p-0319",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes water purification in forensic science",
+    "results": [
+      {
+        "category": "general",
+        "content": "that is, during the purification from the passions, the winning of the virtues, and illumination.? (14) 19) In Orthodox Christian terminology, salvation is understood as a process",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "oodegr.com",
+          "/english/anatolikes/Orthodox_intro_new_age.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Introduction to Orthodox Christianity for ?New Age? and Eastern Inquirers",
+        "url": "https://oodegr.com/english/anatolikes/Orthodox_intro_new_age.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b76ee05bea395c49c270549dc18fa78a0bbd43d33c88665a7843d99e24db396d",
+  "provider": "SearXNG",
+  "query": "what causes water purification in forensic science",
+  "query_id": "v5-p-0319-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:10:29.791025Z"
+}

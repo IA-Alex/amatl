@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 327.14,
+  "pair_id": "v5-p-0024",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind photosynthesis in robotics",
+    "results": [
+      {
+        "category": "general",
+        "content": "read there the entry on photosynthesis,   we will find all manner of observations and categories of the processes by which the Sun acts on our World to create the food we eat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/electricityandthespiritinnature.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Electricity and the Spirit in Nature",
+        "url": "http://ipwebdev.com/hermit/electricityandthespiritinnature.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "dc6d804e733996bbe46ed9ca2b69bffde9cc53cd5abeeef6278df2104effb7a7",
+  "provider": "SearXNG",
+  "query": "describe the principle behind photosynthesis in robotics",
+  "query_id": "v5-p-0024-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:15:32.413635Z"
+}

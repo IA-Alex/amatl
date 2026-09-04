@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 221.519,
+  "pair_id": "v5-p-0811",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of battery chemistry in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d452a6df730598a7f3caf0987c4affcda3defd9d84e9cc8735445e63d5634b9e",
+  "provider": "SearXNG",
+  "query": "give an overview of battery chemistry in oceanography",
+  "query_id": "v5-p-0811-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:48.180305Z"
+}

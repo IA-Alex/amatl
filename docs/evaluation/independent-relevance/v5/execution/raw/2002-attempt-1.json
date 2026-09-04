@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 225.592,
+  "pair_id": "v5-p-1059",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of microbial fermentation in mechanical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7219ba3e353ace87888cf0128b1ee3c243de0d52fe9bd726c23449e793bef6d4",
+  "provider": "SearXNG",
+  "query": "give an overview of microbial fermentation in mechanical engineering",
+  "query_id": "v5-p-1059-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:56.002041Z"
+}

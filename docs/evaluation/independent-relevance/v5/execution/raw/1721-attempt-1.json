@@ -1,0 +1,300 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 351.119,
+  "pair_id": "v5-p-1010",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does probability distributions in chemistry work",
+    "results": [
+      {
+        "category": "general",
+        "content": "on stellar population distributions can be recovered directly from galactic dynamics. Starting from observed rotation curves, we construct synthetic stellar population mixtures co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "computable probability distributions. This work represents the first mathematically sound theory of universal artificial intelligence - most previous work on AI was either heurist",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.idsia.ch",
+          "/~juergen/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Juergen Schmidhuber&#39;s home page -Universal Artificial Intelligence - AI - Deep Learning - Recurrent Neural Networks -Computer Vision - Object",
+        "url": "https://people.idsia.ch/~juergen/"
+      },
+      {
+        "category": "general",
+        "content": "applications. (Discrete distributions.)] Izdat. Inostrannoj Literatury, Moscow, 1951. 427 pp. Feller, V.: Vvedenie v teoriyu veroyatnostej i ee prilozheniya. Tom 1. (Russian) [An",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.croatianhistory.net",
+          "/etf/russia.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Croatia - Russia",
+        "url": "https://www.croatianhistory.net/etf/russia.html"
+      },
+      {
+        "category": "general",
+        "content": "relative spectral power distributions for daylight phases across the visible spectrum, normalized to equal power at 560 nm, with the correlated color temperature (CCT) of eac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.handprint.com",
+          "/HP/WCL/color1.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "handprint : light and the eye",
+        "url": "http://www.handprint.com/HP/WCL/color1.html"
+      },
+      {
+        "category": "general",
+        "content": "implies that if two distributions give rise to the same density matrix, then those distributions are empirically indistinguishable, or in other words are the same mixed state . As",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scottaaronson.com",
+          "/democritus/lec9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHYS771 Lecture 9: Quantum",
+        "url": "https://www.scottaaronson.com/democritus/lec9.html"
+      },
+      {
+        "category": "general",
+        "content": "resolution maps of the distributions of HCN, and ionized H 2 CO and NH 3 in both the Perseus and Serpens molecular clouds (Storm et al. 2014). HCN is ubiquitous in the universe an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "by the linen fibrils distributions by G. Fazio, V. De Leo, F. Curciarello and G. Mandaglio This article was published in The Journal of The Textile Institute, June 2014. Compariso",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.shroud.com",
+          "/papers.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scientific Papers and Articles",
+        "url": "https://www.shroud.com/papers.htm"
+      },
+      {
+        "category": "general",
+        "content": "diagram shows you the distributions of electrons in an atom. GW: It should force AT to read it. The arrows are significant. DG: Rows 30-33 should have the orbital diagram property",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/Math/planet/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Planet MathML - W3C",
+        "url": "https://www.w3.org/Math/planet/"
+      },
+      {
+        "category": "general",
+        "content": "Martensite (different distributions of iron carbide in ferrite, produced by different heat treatments). When a steel has been heat-treated wrongly, the result is usually a complex",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/sillymolecules/sillymols4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecules with Silly or Unusual Names - page 4",
+        "url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm"
+      },
+      {
+        "category": "general",
+        "content": "relies on the skewed distributions of many real-world variables such as city population size—an aspect of environment structure that traditional statistical estimation techniques",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "home.dbio.uevora.pt",
+          "/~eje/simple%20heuristics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "‹Truth is ever to be found in simplicity, and not in the multiplicityand confusion of things. As the world, which to the naked eye exhibits th",
+        "url": "http://home.dbio.uevora.pt/~eje/simple%20heuristics.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d1b067169d15acd25b4c5b727dbf2dd16d52f6a1a91841498f4e429d03fbcd31",
+  "provider": "SearXNG",
+  "query": "how does probability distributions in chemistry work",
+  "query_id": "v5-p-1010-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:21.166198Z"
+}

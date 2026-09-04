@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 276.929,
+  "pair_id": "v5-p-0988",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does wastewater treatment in music technology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a1a9a97860bd206742453e1614adc9d70588c84b7e423d28287c3c30b76749e1",
+  "provider": "SearXNG",
+  "query": "how does wastewater treatment in music technology operate",
+  "query_id": "v5-p-0988-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:44.893508Z"
+}

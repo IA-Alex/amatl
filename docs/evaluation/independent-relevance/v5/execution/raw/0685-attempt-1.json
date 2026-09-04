@@ -1,0 +1,219 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 299.362,
+  "pair_id": "v5-p-0049",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is compiler operation in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "1983 triple-bypass operation. (The revelation that AIDS was the cause of his death was not made until It&#39;s Been a Good Life was published in 2002). His body was cremated and his a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "asimovonline.com",
+          "/asimov_FAQ.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Isaac Asimov FAQ",
+        "url": "http://asimovonline.com/asimov_FAQ.html"
+      },
+      {
+        "category": "general",
+        "content": "basic arithmetic operations- addition, subtraction, multiplication, division, and unary negation) as well as some operations useful to programmers (shift left,shift right, AND, OR",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mizj.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "S.U.P.E.R. - The Largest 200LX Software Archive",
+        "url": "http://mizj.com/"
+      },
+      {
+        "category": "general",
+        "content": "crasher-bug-riddled operation; not good. Back to bed, up late. Got back to gtk&#43;/OO.o work, Stefan and Philipp appeared on IRC today - wonderful, discussed the alphaart changes wit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2003/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2003/"
+      },
+      {
+        "category": "general",
+        "content": "importance of system operations, education, and awareness as part of a balanced approach toward attaining survivability. I taught a course ENPM 808s as an Adjunct Professor at the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "commands that perform operations on the spacecraft. Uplinked to the spacecraft by mission control, they are not CPU instructions. In a spacecraft without computers, the commands a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.geonius.com",
+          "/writing/other/voyager.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Voyager Spacecraft and Fortran 5",
+        "url": "http://www.geonius.com/writing/other/voyager.html"
+      },
+      {
+        "category": "general",
+        "content": "describe a religion in operation at the isthmus of Darien 600 years before Christ, which it styles the law of Moses, it estimates, contrary to that law and all law, the priesthood",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sidneyrigdon.com",
+          "/dbroadhu/OH/evan1832.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Uncle Dale&#39;s Old Mormon Articles: Rev. Walter Scott&#39;s The Evangelist",
+        "url": "http://www.sidneyrigdon.com/dbroadhu/OH/evan1832.htm"
+      },
+      {
+        "category": "general",
+        "content": "Software Stack For Co-operation NGI0 Discovery 2019 2020 Facilitating easy ad hoc cooperation A proof of concept of identity-based encryption NGI0 PET 2019 2019 Make encryption si",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/project/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; All projects",
+        "url": "https://nlnet.nl/project/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2a419ab02fc3a897a8ebca1bf6ed82d86f329ee7656b2325b95e1b74aeb60c0d",
+  "provider": "SearXNG",
+  "query": "what is compiler operation in health science",
+  "query_id": "v5-p-0049-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:52.619811Z"
+}

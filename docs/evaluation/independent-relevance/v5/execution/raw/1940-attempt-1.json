@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 312.922,
+  "pair_id": "v5-p-0016",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind photosynthesis in mechanical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ef3ae9585b3c370da35e9e9f4bb11c6c313d59406570830d5b92805a1c090986",
+  "provider": "SearXNG",
+  "query": "describe the principle behind photosynthesis in mechanical engineering",
+  "query_id": "v5-p-0016-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:36.620960Z"
+}

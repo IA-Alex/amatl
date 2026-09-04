@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 247.022,
+  "pair_id": "v5-p-0440",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does supply chain logistics in ecology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6c591fd3177082adec7835aaac8e0f599e8cbcf5e35f4e8304502e4c8dd107c3",
+  "provider": "SearXNG",
+  "query": "how does supply chain logistics in ecology operate",
+  "query_id": "v5-p-0440-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:54.493813Z"
+}

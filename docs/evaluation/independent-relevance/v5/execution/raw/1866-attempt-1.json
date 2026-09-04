@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 244.778,
+  "pair_id": "v5-p-0927",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of bridge resonance in agricultural science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "56f7a329619a3820bc0904d1c85e5def91ec5649b80e0e1c5720c2612d63e585",
+  "provider": "SearXNG",
+  "query": "give an overview of bridge resonance in agricultural science",
+  "query_id": "v5-p-0927-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:13.863334Z"
+}

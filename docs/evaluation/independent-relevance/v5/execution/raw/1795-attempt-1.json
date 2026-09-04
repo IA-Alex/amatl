@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 382.272,
+  "pair_id": "v5-p-0842",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does data compression in information systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "Rationale for a Large Text Compression Benchmark Matt Mahoney Last update: July 23, 2009. The Large Text Compression Benchmark and the Hutter Prize are designed to encourage resea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mattmahoney.net",
+          "/dc/rationale.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rationale for a Large Text Compression Benchmark",
+        "url": "http://www.mattmahoney.net/dc/rationale.html"
+      },
+      {
+        "category": "general",
+        "content": "for initiation of self-compression of a gas is the Jeans mass, which depends on the gas temperature. Similarly, stellar accretion and accretion disk relations involve temperature.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "be &#34;all frames (no compression)&#34; and the sound should be 8-bit monophonic. Copyrighted freeware. ABC/LX (99 KB) added 01/28/2002 (Power) Version - latest by D&amp;A Software (Andr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mizj.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "S.U.P.E.R. - The Largest 200LX Software Archive",
+        "url": "http://mizj.com/"
+      },
+      {
+        "category": "general",
+        "content": "Added Brotli compression format Migrated from Slackware Dependency of chawan python3-dasbus-1.7-x86_64-1slint.txz: Added. python3 DBus library based on glib New dependency of orca",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "slackware.uk",
+          "/slint/x86_64/slint-15.0/ChangeLog.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://slackware.uk/slint/x86_64/slint-15.0/ChangeLog.txt",
+        "url": "http://slackware.uk/slint/x86_64/slint-15.0/ChangeLog.txt"
+      },
+      {
+        "category": "general",
+        "content": "query , .x3db compression , XML canonicalization (C14N) , and .png image ) The HelloWorld.x3d scene is a simple authoring example that illustrates the minimali",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.web3d.org",
+          "/x3d/content/examples/X3dResources.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "X3D Resources",
+        "url": "https://www.web3d.org/x3d/content/examples/X3dResources.html"
+      },
+      {
+        "category": "general",
+        "content": "leaves are preserved as compression fossils, commonly retaining intact cellular tissue with considerable ultrastructural preservation, including cell walls, leaf phytoliths, and i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "of the SR-71 Mixed Compression Inlet Geometry and Operation By J. Thomas Anderson Technical Fellow Emeritus Lockheed Martin Skunk Works © Copyright Lockheed Martin Corporatio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.enginehistory.org",
+          "/Convention/2014/SR-71Inlts/SR-71Inlts.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SR-71 Inlets",
+        "url": "http://www.enginehistory.org/Convention/2014/SR-71Inlts/SR-71Inlts.shtml"
+      },
+      {
+        "category": "general",
+        "content": "from the PKWare Data Compression Library? Can I access data randomly in a compressed stream? Does zlib work on MVS, OS/390, CICS, etc.? Is there some simpler, easier to read versi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "zlib.net",
+          "/zlib_faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Frequently Asked Questions about zlib",
+        "url": "http://zlib.net/zlib_faq.html"
+      },
+      {
+        "category": "general",
+        "content": "to re-engineer the text compression routines in C (the text compression is based on Huffman variable bit-encoding) and I could list the various texts in the game. Only to find the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "nascomhomepage.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Nascom Home Page",
+        "url": "http://nascomhomepage.com/"
+      },
+      {
+        "category": "general",
+        "content": "S3TC/DXT/BC1-3 texture compression standard that Doom3 always supported, at the same size as DXT3-5. Useful for high-res retexturing packs. See the full changelog below for more d",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "dhewm3.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "dhewm3 - Doom3 Source Port",
+        "url": "https://dhewm3.org/"
+      },
+      {
+        "category": "general",
+        "content": "directory-name : compression and archive tool available on all operating systems; generally not preferred on Linux since it doesn’t preserve metadata unzip directory-name.zi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/programming/linux-commands-notes",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Unix/Linux Commands, Syntax, And Notes",
+        "url": "https://zerocontradictions.net/programming/linux-commands-notes"
+      },
+      {
+        "category": "general",
+        "content": "it to achieve better compression on some filetypes (works on files that are compressed with zLib or the Deflate compression method, and on GIF files). Precomp tries to decompress",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "schnaader.info",
+          "/precomp.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://schnaader.info/precomp.php",
+        "url": "http://schnaader.info/precomp.php"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fcb8327decc4fb75d8b2556ebb164473b1e20e9f72921cc83eb7c19c5b7c62ae",
+  "provider": "SearXNG",
+  "query": "how does data compression in information systems work",
+  "query_id": "v5-p-0842-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:51.509539Z"
+}

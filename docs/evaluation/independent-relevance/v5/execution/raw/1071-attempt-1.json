@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 268.932,
+  "pair_id": "v5-p-0276",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does binary search in robotics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "HR; it&#39;s a catastrophe Robotics Isn&#39;t &#34;Hey Hi&#34;, Robotics Isn&#39;t New Either Is the official Arduino blog becoming shilling platform for Qualcomm&#39;s &#34;hey hi&#34; [so-called &#39;intelligent&#39;]",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "techrights.org",
+          "/o/2008/10/29/msodf-sell-microsoft-office/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Does Microsoft Try to Conquer ODF to Sell Microsoft Office?",
+        "url": "http://techrights.org/o/2008/10/29/msodf-sell-microsoft-office/"
+      },
+      {
+        "category": "general",
+        "content": "with a grad student in robotics who seemed to be the cryptography wizard and that guy didn&#39;t seek to be the face of Signal or shill political causes to virtue signal. Moxie seemed",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "learnaifromscratch.github.io",
+          "/theabsolutestateofsoftware.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A 2026 Security Curriculum",
+        "url": "https://learnaifromscratch.github.io/theabsolutestateofsoftware.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b829dd60d7014422eacb1af8afd67523cfb2ccee2659bd3a089c88808e394512",
+  "provider": "SearXNG",
+  "query": "how does binary search in robotics operate",
+  "query_id": "v5-p-0276-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:10:53.978515Z"
+}

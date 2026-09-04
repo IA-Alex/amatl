@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 334.202,
+  "pair_id": "v5-p-0608",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind air quality monitoring in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "288296086e43279442153c2c6544c548b4f96510637a1cd7571c47732be77a1f",
+  "provider": "SearXNG",
+  "query": "describe the principle behind air quality monitoring in hydrology",
+  "query_id": "v5-p-0608-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:57.357831Z"
+}

@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 302.215,
+  "pair_id": "v5-p-1086",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does satellite orbits in data management work",
+    "results": [
+      {
+        "category": "general",
+        "content": "on Organizational and Management Structure for the National Security Space Components of the US Department of Defence, August 9, 2018 , for details, e.g: First, US DoD will establ",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "heiwaco.com",
+          "/moontravel.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Human travel in space is bullshit - 27 January 2025",
+        "url": "http://heiwaco.com/moontravel.htm"
+      },
+      {
+        "category": "general",
+        "content": "instead be a sign of management flaws. Monday, March 23, 2026 Zarya: the Super-Soyuz that only lived twice In the 1980s, the Soviet Union proposed a spacecraft that could be a suc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.thespacereview.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Space Review: essays and commentary about the final frontier",
+        "url": "https://www.thespacereview.com/"
+      },
+      {
+        "category": "general",
+        "content": "judicious energy-flow management. Evolution via natural selection usually favours those living systems which administer their limited resources most efficiently. In other words, t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.rfreitas.com",
+          "/Astro/InterstellarProbesJBIS1980.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "INTERSTELLAR PROBES: A NEW APPROACH TO SETI",
+        "url": "http://www.rfreitas.com/Astro/InterstellarProbesJBIS1980.htm"
+      },
+      {
+        "category": "general",
+        "content": "Aviation Data Base Management software for Garmin Units Aviation Data Base for Magellan 315/320 puts FAA data in Consumer GPS -by Brian Wade Cetus GPS software for Palm Computers",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "gpsinformation.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GPS Receiver Information, Software, and Hardware Reviews of Garmin, Lowrance, Magellan and other GPS Receivers",
+        "url": "http://gpsinformation.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e1ebd47a4c4d062a6b047e591c567873925176c7508e0d47af363814621e5a52",
+  "provider": "SearXNG",
+  "query": "how does satellite orbits in data management work",
+  "query_id": "v5-p-1086-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:52.436980Z"
+}

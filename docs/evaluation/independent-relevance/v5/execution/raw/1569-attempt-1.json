@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 285.802,
+  "pair_id": "v5-p-0592",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does air quality monitoring in mechanical engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "physics, and engineering calculations, and the fact that the LOCI calculators could generate logarithms and anti-logarithms in mere milliseconds was profound. Dr. Wang had invente",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/wangloci.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Wang LOCI-2",
+        "url": "https://www.oldcalculatormuseum.com/wangloci.html"
+      },
+      {
+        "category": "general",
+        "content": "Pool, R. (1997). Beyond engineering: How society shapes technology. New York: Oxford University Press. Pool, R. (1997). When failure is not an option. Technology Review, 100 (5),",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pages.ucsd.edu",
+          "/~dnorman/DNMss/Being_Analog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Being Analog",
+        "url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html"
+      },
+      {
+        "category": "general",
+        "content": "Anchorage based engineering firms Duane Miller &amp; Associates and USKH prepared the civil and pad design work and conducted the on-site testing and evaluation. Arctic Foundation",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "Teton Engineering   Thermal Energy Direct   Trak   Trough   up970331   up980301   Visible Human   Water   Wattsun   W",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.redrok.com",
+          "/main.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Red Rock Energy Heliostats",
+        "url": "http://www.redrok.com/main.htm"
+      },
+      {
+        "category": "general",
+        "content": "applies particularly to engineering types, who have to argue their ideas through to practical realisation in the workplace. Sometimes, just sometimes, the ability to say &#39;I was wr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "47cc06a2b5dcd32e65f6257ae6f6ebd6162641ca9135d6d7d3a0543433bc474f",
+  "provider": "SearXNG",
+  "query": "how does air quality monitoring in mechanical engineering operate",
+  "query_id": "v5-p-0592-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:35.680949Z"
+}

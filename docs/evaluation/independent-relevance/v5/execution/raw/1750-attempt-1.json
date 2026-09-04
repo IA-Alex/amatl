@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 248.32,
+  "pair_id": "v5-p-0871",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of vaccination in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "Vaccination and Homeopathy David Pratt May 2008, last updated Nov 2025 Contents   1. Introduction   2. Ingredients and side-effects   3. The decline",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/vaccin.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Vaccination and homeopathy",
+        "url": "https://davidpratt.info/vaccin.htm"
+      },
+      {
+        "category": "general",
+        "content": "developed Covid vaccination causes micro blood clots, but this has yet to be proven. Something however is causing a decline in rapid thinking and cognitive ability in the populati",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIDIK.com The original and official DIDIK site. Cutting edge and sometimes controversial thoughts, designs, proposals and projects conceiv",
+        "url": "http://www.didik.com/"
+      },
+      {
+        "category": "general",
+        "content": "2024 On Not Requiring Vaccination February 01, 2024 Sequencing Swabs January 31, 2024 Stacked Laptop Monitor January 26, 2024 Importing a Python File by Name January 25, 2024 Maki",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jefftk.com",
+          "/p/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog Posts",
+        "url": "https://www.jefftk.com/p/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "60c56e650f80d072591d358d1d13a62b1881a3fd886a154641f9f1f0be6fce85",
+  "provider": "SearXNG",
+  "query": "give an overview of vaccination in data management",
+  "query_id": "v5-p-0871-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:30.634452Z"
+}

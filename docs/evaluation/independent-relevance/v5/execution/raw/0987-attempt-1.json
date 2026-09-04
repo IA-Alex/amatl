@@ -1,0 +1,219 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 302.841,
+  "pair_id": "v5-p-0038",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does compiler operation in biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "credit, they are a tiny operation attempting to take on quite a massive responsibility. IRC Reviews IRC Client List - An impressive although still not entirely comprehensive list",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "koshka.love",
+          "/links.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dock",
+        "url": "http://koshka.love/links.html"
+      },
+      {
+        "category": "general",
+        "content": "images simulating the operation of a CT scanner, and a 16 year old achieving the second- writing the software to turn the captured images into a picture of what the &#34;CT scanner&#34; &#34;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "sheepdogguides.com",
+          "/lut/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lazarus Programming Tutorials Table of Contents",
+        "url": "http://sheepdogguides.com/lut/"
+      },
+      {
+        "category": "general",
+        "content": "the world, had left its operation to natural law; miracles, they held, were impossible; no prayer could change the behavior of the elements; and the origin of new species was due",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.andrsib.com",
+          "/durant/advr.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Will Durant: The Age Of Faith. CHAPTER XXXVI. The Adventure of Reason",
+        "url": "http://www.andrsib.com/durant/advr.htm"
+      },
+      {
+        "category": "general",
+        "content": "&#34;Special Military Operation&#34; : [Incomplete] Azov, Neo-Nazis, NLAW, Donetsk People&#39;s Republic (DPR), Luhansk People&#39;s Republic (LPR), Brave &amp; O group of RAF.. will explain in detai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "hdmtp.github.io",
+          "/blog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "hdmtp&#39;s archive (blog)",
+        "url": "https://hdmtp.github.io/blog.html"
+      },
+      {
+        "category": "general",
+        "content": "an Exercise in Cooperation A General Construction for Expressing Repetition A New Approach to Proving the Correctness of Multiprocess Programs How to Present a Paper How to Make a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lamport.azurewebsites.net",
+          "/pubs/pubs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Writings of Leslie Lamport",
+        "url": "https://lamport.azurewebsites.net/pubs/pubs.html"
+      },
+      {
+        "category": "general",
+        "content": "As before, continued operation requires using modular coordinates and having the grid data &#34;wrap around&#34; to continually re-use a fixed amount of memory. Here are the results I got",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mrob.com",
+          "/pub/comp/xmorphia/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reaction-Diffusion by the Gray-Scott Model: Pearson&#39;s Parameterization at MROB",
+        "url": "http://mrob.com/pub/comp/xmorphia/"
+      },
+      {
+        "category": "general",
+        "content": "The Santa Cruz Operation (SCO) has gone from a leading Unix vendor to an afterthought in the span of a couple of years. SCO, the company, will probably find a way to survive, but",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oreilly.com",
+          "/openbook/opensources/book/intro.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Open Sources: Voices from the Open Source Revolution",
+        "url": "https://www.oreilly.com/openbook/opensources/book/intro.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "56390b35a1f4492dc3c476cef9da3c6f85898f3bf9ea9e55e62f04f49476d974",
+  "provider": "SearXNG",
+  "query": "how does compiler operation in biology work",
+  "query_id": "v5-p-0038-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:27.848584Z"
+}

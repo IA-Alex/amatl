@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 295.288,
+  "pair_id": "v5-p-0764",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind coastal flooding in ecology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "48764cf3bb51c80a930236d4785ca960fbd8866483f1c298763e6ec588bb1726",
+  "provider": "SearXNG",
+  "query": "describe the principle behind coastal flooding in ecology",
+  "query_id": "v5-p-0764-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:39.620149Z"
+}

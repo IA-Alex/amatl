@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 276.914,
+  "pair_id": "v5-p-0239",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes plate tectonics in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "II, however, were plate tectonics understood which are the primary mechanism of geological change that are reponsible for geographic features. What originally attracted me to geog",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "histclo.com",
+          "/cih.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Children in History",
+        "url": "https://histclo.com/cih.html"
+      },
+      {
+        "category": "general",
+        "content": "the Earth&#39;s plate tectonics (Continental drift). (Moore 1973) (Scoppola 2006) The tidal force is part of what some astrologers call natural astrology which also includes the study",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "astrology.co.uk",
+          "/tests/basisofastrology.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Why it is unacceptable to dismiss astrology as rubbish.",
+        "url": "https://astrology.co.uk/tests/basisofastrology.htm"
+      },
+      {
+        "category": "general",
+        "content": "recent ice ages plate tectonics is unique to Earth plate tectonics, continental drift, and the ocean floor Pangaea had temperature extremes volcanic eruptions devastated Crete ear",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "Huntington&#39;s plate tectonics are too simple. Two months of recent travel throughout Turkey revealed to me that although the Turks are developing a deep distrust, bordering on hatr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3c519438fdefe7c1a73a7721c7757c5b7a486fb9e594608597362fb9652b438d",
+  "provider": "SearXNG",
+  "query": "what causes plate tectonics in public health",
+  "query_id": "v5-p-0239-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:32.741257Z"
+}

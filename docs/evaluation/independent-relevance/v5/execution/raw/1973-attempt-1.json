@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 261.622,
+  "pair_id": "v5-p-0758",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does coastal flooding in biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "heavy rains fall, and flooding begins. (6) Many people plants and animals perish. (7) Some survive to build and repopulate the world.&#34; (p. 154) Cataclysm! makes the most compellin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meditopia.org",
+          "/chap5.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Meditopia -- Chapter 5",
+        "url": "https://meditopia.org/chap5.htm"
+      },
+      {
+        "category": "general",
+        "content": "predation, starvation, flooding, disease, and drought as natural mortality factors. Shooting, trapping, poisoning, electrocution, road kills, and suffocation have been recognized",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "esrp.csustan.edu",
+          "/publications/pubhtml.php",
+          "",
+          "doc=sjvrp&amp;file=chapter02L00.html",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "L. San Joaquin Kit Fox (Vulpes macrotis mutica)",
+        "url": "https://esrp.csustan.edu/publications/pubhtml.php?doc=sjvrp&amp;file=chapter02L00.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c580bfa90da162c90e78f3061921e73c5e378617ffa7b04cef3935fd26ef5170",
+  "provider": "SearXNG",
+  "query": "how does coastal flooding in biology work",
+  "query_id": "v5-p-0758-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:15:46.907582Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 314.12,
+  "pair_id": "v5-p-0784",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind coastal flooding in architecture",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "59f959dafda3366ec366bdac6ad38404b3c502b69c6db58b786f5a5683afee8d",
+  "provider": "SearXNG",
+  "query": "describe the principle behind coastal flooding in architecture",
+  "query_id": "v5-p-0784-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:43.959796Z"
+}

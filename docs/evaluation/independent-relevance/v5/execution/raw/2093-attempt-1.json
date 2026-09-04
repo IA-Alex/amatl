@@ -1,0 +1,192 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 318.778,
+  "pair_id": "v5-p-0568",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does food preservation in architecture operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "new urgencies of reuse, preservation, and degrowth? Image: Vacant lot, Second Avenue and Second Street, New York City, July 2024. [David Gissen], Places Journal. Field Notes: Repa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.notechmagazine.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NO TECH MAGAZINE – Technology for Luddites",
+        "url": "https://www.notechmagazine.com/"
+      },
+      {
+        "category": "general",
+        "content": "for the sake of the preservation of creatures like ourselves; though they still might naturally be false judgments! Or, more plainly spoken, and roughly and readily—synthetic judg",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/cache/epub/4363/pg4363-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Beyond Good and Evil, by Friedrich Nietzsche",
+        "url": "https://www.gutenberg.org/cache/epub/4363/pg4363-images.html"
+      },
+      {
+        "category": "general",
+        "content": "working for the food preservation company that I had founded and sold to William Woodward in Lake Charles -- (in fact, I was given permission to fly to Las Vegas, not once, but tw",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.meditopia.org",
+          "/chap3-1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Meditopia -- Chapter 3",
+        "url": "https://www.meditopia.org/chap3-1.htm"
+      },
+      {
+        "category": "general",
+        "content": "and Privacy Safety Data Preservation Online Security Online Privacy Anticipate problems Miscellaneous      Threats        &amp;n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ComputerSecurityPrivacy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Computer Security and Privacy",
+        "url": "https://www.billdietrich.me/ComputerSecurityPrivacy.html"
+      },
+      {
+        "category": "general",
+        "content": "outweighs preservation of the force&#39;s integrity. It may require the force hold a given position until ordered to displace. Figure 11-4. Delay Forward of a Specified Line for a Spe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.nuui.com",
+          "/Sections/Military/Field_Manuals/FM3-90/ch11.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "FM3-90 Chapter 11 The Retrograde",
+        "url": "http://www.nuui.com/Sections/Military/Field_Manuals/FM3-90/ch11.htm"
+      },
+      {
+        "category": "general",
+        "content": "swarm of space-wildlife preservation drones escorting some space jellies is passing through the home sectors (or entire alpha quadrant) and everyone has to turtle up for decades a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "androidarts.com",
+          "/startrek/TrekEps.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Star Trek Project",
+        "url": "http://androidarts.com/startrek/TrekEps.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9188d825d4aa98e80e49f4b0b16ec969c0a76116739dccdaafb13af7c9ee1e14",
+  "provider": "SearXNG",
+  "query": "how does food preservation in architecture operate",
+  "query_id": "v5-p-0568-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:25.065568Z"
+}

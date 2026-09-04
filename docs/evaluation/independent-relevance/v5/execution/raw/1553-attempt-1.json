@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 309.392,
+  "pair_id": "v5-p-0421",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is carbon capture in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "Engineering Samuel Taylor https://www.samueltaylor.org/ Python, science Paul Khuong https://pvk.ca/ Lisp Wenyao https://www.shawenyao.com/ Data visualization, algorithm optimizati",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "collection.mataroa.blog",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mataroa Collection",
+        "url": "https://collection.mataroa.blog/"
+      },
+      {
+        "category": "general",
+        "content": "(also called molecular engineering, molecular manufacturing, molecular nanotechnology , etc.). There is widespread belief that such a capability will eventually be developed [1, 2",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "news. | What is prompt engineering? | Vibe coding. | Hand and writing skills are becoming rare. Edge cases: Four-day week means «I don’t waste holidays on chores». | Robots contro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.slowernews.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Slower News",
+        "url": "https://www.slowernews.com/"
+      },
+      {
+        "category": "general",
+        "content": "ever held. A miracle of engineering made mundane. Pass it on The next chapter will explore how it swallowed specialised devices to become the everything machine. Leave your email",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "everythingmachine.io",
+          "/phone/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Phone in Your Hand",
+        "url": "http://everythingmachine.io/phone/"
+      },
+      {
+        "category": "general",
+        "content": "to Joint Force Genetic Engineering Getting High off of Anything requires these life remedies: Extacy = Stevia Extract Blend snorted. Heroin = Sweet and Low snorted. Kokain = Mexan",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "marry up, and sports engineering is the basis of that union. Any technology is considered fair game - as long as it is within the rules of sport - and sport is quicker than almost",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mike-tanner.co.nz",
+          "/40sport.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mike Tanner Articles about Sport and Recreation",
+        "url": "http://mike-tanner.co.nz/40sport.html"
+      },
+      {
+        "category": "general",
+        "content": "in Kauai.&#34; Biochar Engineering (Golden, CO) They have a research unit, available for early adopters to test.  Input: 400 lbs./hr (200 kg/hr) wood-chips, at approx 20% mo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ahualoa.net",
+          "/ag/notes_biochar.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hawai&#39;i Biochar Notes",
+        "url": "http://ahualoa.net/ag/notes_biochar.html"
+      },
+      {
+        "category": "general",
+        "content": "On Connecting Women In Engineering - Ariana Thacker 25:50 • Jul 29, 2020 Stacey Book of Frequency Machine: Travel Content At A Premium Level: WeAreLATech Startup Spotlight Episode",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "castro.fm",
+          "/podcast/412cb86b-fb26-4e82-ba88-6d1a61a87a4e",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WeAreLATech Los Angeles Startups Podcast, hosted by Espree Devora",
+        "url": "https://castro.fm/podcast/412cb86b-fb26-4e82-ba88-6d1a61a87a4e"
+      },
+      {
+        "category": "general",
+        "content": "through genetic engineering, informs his conception of effective altruism. Pearce emphasizes causes like animal welfare, mental health, and the development of ethical biotechnolog",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.utilitarianism.com",
+          "/chatgpt/effective-altruism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utilitarianism and effective altruism as conceived by ChatGPT-4",
+        "url": "https://www.utilitarianism.com/chatgpt/effective-altruism.html"
+      },
+      {
+        "category": "general",
+        "content": "3 Security 3 Software Engineering 9 Spain 1 Spanish 1 Standards 4 Stocks 2 Swedish 2 Taxonomy 1 Usa 2 Web 1 Weltanschauung 5 Wip 4 Zig 2 Русская Поэзия 6 On Vaclav Smil Jan 2023 -",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alexalejandre.com",
+          "/finance/vaclav-smil/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "On Vaclav Smil",
+        "url": "https://alexalejandre.com/finance/vaclav-smil/"
+      },
+      {
+        "category": "general",
+        "content": "former hardware engineering chief John Ternus officially became CEO of the company today, with the change now reflected on Apple’s leadership page . […] Tim Cook is no",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mjtsai.com",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Tsai - Blog",
+        "url": "https://mjtsai.com/blog/"
+      },
+      {
+        "category": "general",
+        "content": "the Jane Street Reverse Engineering Challenge [1h] [hn] The Raspberry Pi Interactive Timeline · 2006–2026 [2h] [hn] Carbon-aware electricity pricing, measured daily on 38 grids [3",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "brutalist.report",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Brutalist Report",
+        "url": "https://brutalist.report/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "250fa71fbda2906034b5f408fd905cdda573b04cb3f7ce4d9cc8180cb122e8c9",
+  "provider": "SearXNG",
+  "query": "what is carbon capture in software engineering",
+  "query_id": "v5-p-0421-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:30.582011Z"
+}

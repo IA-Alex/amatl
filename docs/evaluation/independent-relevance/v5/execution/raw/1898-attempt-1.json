@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 244.704,
+  "pair_id": "v5-p-0935",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of bridge resonance in operations research",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4cbbf54f6acfc9079ee838d45fadda0d60099c4765d8ac1a23485c70bd61b41b",
+  "provider": "SearXNG",
+  "query": "give an overview of bridge resonance in operations research",
+  "query_id": "v5-p-0935-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:23.671694Z"
+}

@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 314.612,
+  "pair_id": "v5-p-0413",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is carbon capture in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "Technology, Programming Wherein The Chicken https://cushychicken.github.io/ Engineering Samuel Taylor https://www.samueltaylor.org/ Python, science Paul Khuong https://pvk.ca/ Lis",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "collection.mataroa.blog",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mataroa Collection",
+        "url": "https://collection.mataroa.blog/"
+      },
+      {
+        "category": "general",
+        "content": "nothing to do with the technology: Almost nobody actually wants a website that changes entirely on its own. Why “Just Make It Autonomous” Is The Wrong Goal The obvious move, once",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.smashingmagazine.com",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Articles on Smashing Magazine — For Web Designers And Developers",
+        "url": "https://www.smashingmagazine.com/feed/"
+      },
+      {
+        "category": "general",
+        "content": "friendly technology and substitution of old and polluting etc. industry towards more environmentally friendly industry. Via substitution towards green economy in demand, productio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.indeco.no",
+          "/archive/samgrep2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dialog med Miljødirektoratet",
+        "url": "http://www.indeco.no/archive/samgrep2.htm"
+      },
+      {
+        "category": "general",
+        "content": "as a communication technology that contains algorithmic curation. Maybe that thinking should change? Setting Discord status from physical GameCube console Have you ever seen one o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sethmlarson.dev",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Seth Larson",
+        "url": "https://sethmlarson.dev/"
+      },
+      {
+        "category": "general",
+        "content": "Reset is that thanks to technology, the planet has gotten small, and the infinite expansion economic model is bust - but obviously, the super wealthy want to continue staying supe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica2/sociopol_greatreset16.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Great Reset for Dummies - Where do we Go from Here?",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica2/sociopol_greatreset16.htm"
+      },
+      {
+        "category": "general",
+        "content": "Rules 12. The Future of Technology 13. Train By Drone 14. Stair Racing 15. Sports Stars Are Not Role Models 16. Michael Jordan 17. Your Attitude to Exercise 18. Jeremy Clarkson on",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mike-tanner.co.nz",
+          "/40sport.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mike Tanner Articles about Sport and Recreation",
+        "url": "http://mike-tanner.co.nz/40sport.html"
+      },
+      {
+        "category": "general",
+        "content": "I access this wonderful technology. New ways to produce videogames are great but it?s the distribution of them that?s always been close to my heart. Type-in paper programs, ziploc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "harmonyzone.org",
+          "/A1REVIEWS.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "skull.txt",
+        "url": "https://harmonyzone.org/A1REVIEWS.html"
+      },
+      {
+        "category": "general",
+        "content": "Business Technology Espree Devora, Espree Devora, spotlighting Silicon Beach tech companies WeAreLATech Los Angeles Startups Podcast, hosted by Espree Devora Open on Castro Listen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "castro.fm",
+          "/podcast/412cb86b-fb26-4e82-ba88-6d1a61a87a4e",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WeAreLATech Los Angeles Startups Podcast, hosted by Espree Devora",
+        "url": "https://castro.fm/podcast/412cb86b-fb26-4e82-ba88-6d1a61a87a4e"
+      },
+      {
+        "category": "general",
+        "content": "• Heat metrics, technology adoption, a pile of law, digital payments in India, and early movie theaters in Oregon. 2022.07.06 • Banned and challenged books, mass expulsions, Europ",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.data-is-plural.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Data Is Plural — Full Archive",
+        "url": "https://www.data-is-plural.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "that Alec Watson of Technology Connections had reservations about residential rooftop solar. I found a video in which he explains his perspective , which has a delightfully social",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wingolog.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "wingolog",
+        "url": "http://wingolog.org/"
+      },
+      {
+        "category": "general",
+        "content": "Apple&#39;s Face ID technology target of latest lawsuit from German company BASF [15h] Apple TV picks up sci-fi thriller &#39;Waffle House Index&#39; in seven-figure deal [16h] M4",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "brutalist.report",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Brutalist Report",
+        "url": "https://brutalist.report/"
+      },
+      {
+        "category": "general",
+        "content": "access to materials and technology. The Early Stone Age (Paleolithic / Glacial); 2.6 Million - 20,000 BCE [Hunting, Gathering] The Middle Stone Age (Mesolithic / Inter-Glacial): 2",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.peaceeducation101.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peace Education 101 - Peace curriculum, peace teaching program, peace education",
+        "url": "http://www.peaceeducation101.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c62203f3ffd33c992e77a682710cfa98c2a5d877e852aebae2742563543f0c91",
+  "provider": "SearXNG",
+  "query": "what is carbon capture in music technology",
+  "query_id": "v5-p-0413-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:50.312685Z"
+}

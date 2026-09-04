@@ -1,0 +1,327 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 413.569,
+  "pair_id": "v5-p-0122",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of database indexing in information systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "structuring, information loss, and a lack of provenance or security. By relying on unstructured folders and rigid JSON schemas instead of a proper database with foreign keys, audi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "not maintain historical information for changes in Timezones (only for DST rules), a dummy date of 1-jan-1970 is used for the DTSTART tag. Some iCalendar import routines insist on",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.pimlicosoftware.com",
+          "/PimlicalVersionAndSlipstreamHistory.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Pimlical Version and Slipstream History",
+        "url": "http://www.pimlicosoftware.com/PimlicalVersionAndSlipstreamHistory.htm"
+      },
+      {
+        "category": "general",
+        "content": "to think about information in terms of these products. Oftentimes when someone asks you about a person, the first thing that jumps to your mind is “Do I talk to them on SMS, or do",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "changelog.com",
+          "/podcast/455",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Building software for yourself with Linus Lee (Changelog Interviews #455)",
+        "url": "https://changelog.com/podcast/455"
+      },
+      {
+        "category": "general",
+        "content": "and additional information. CASL 4.3 is now available for Download -   Commercial, Corporate, Shareware and Freeware developers can deploy CASL applications on the PalmOS®",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.caslsoft.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CASL Home for Android and Windows",
+        "url": "https://www.caslsoft.com/"
+      },
+      {
+        "category": "general",
+        "content": "December 2019 Flanagan Informational [Page] Stream: Internet Architecture Board (IAB) RFC: 8700 Updates: 2555 , 5540 Category: Informational Published: December 2019 ISSN: 2070-17",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.rfc-editor.org",
+          "/rfc/rfc8700.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RFC 8700: Fifty Years of RFCs",
+        "url": "https://www.rfc-editor.org/rfc/rfc8700.html"
+      },
+      {
+        "category": "general",
+        "content": "a Program State Basic Information Using an Initialization File Running Programs Overview Interrupting the Execution of a Program Errors, Warnings and Informational Messages Undefi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "quintus.sics.se",
+          "/isl/quintus/html/quintus/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quintus Prolog",
+        "url": "https://quintus.sics.se/isl/quintus/html/quintus/"
+      },
+      {
+        "category": "general",
+        "content": "mawk maintenance. Basic information is available on the project’s web page . The download URL is https://invisible-island.net/datafiles/release/mawk.tar.gz . In 2017 Michael",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "skeeve.com",
+          "/awk-sys-prog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AWK As A Major Systems Programming Language — Revisited",
+        "url": "http://skeeve.com/awk-sys-prog.html"
+      },
+      {
+        "category": "general",
+        "content": "of Library and Information Science DOI: 10.1081/E-ELIS 120008970, 3:369–74. Marcel Dekker. Boole, George. 1847. The Mathematical Analysis of Logic, Being an Essay Towards a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/boolean.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Boolean logic (IEKO)",
+        "url": "https://www.isko.org/cyclo/boolean.htm"
+      },
+      {
+        "category": "general",
+        "content": "throws away all the information we need to do collaborative editing, but it gives us a sense of how fast javascript is capable of going. It turns out javascript running on V8 is f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "josephg.com",
+          "/blog/crdts-go-brrr/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CRDTs go brrr",
+        "url": "https://josephg.com/blog/crdts-go-brrr/"
+      },
+      {
+        "category": "general",
+        "content": "prefs page for more information about this) Fixed the missing files code to cope with foo.rsn\\bar.spc entries so it will check just the foo.rsn for validity Changed the guid repor",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "winampplugins.co.uk",
+          "/jtfe_dev.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jump to File Extra (JTFE) Development",
+        "url": "https://winampplugins.co.uk/jtfe_dev.html"
+      },
+      {
+        "category": "general",
+        "content": "scattered nature of the information and I hope I can organize it and gather it all into one place for easy and definitive reference some day. It&#39;s a big job so it depends on the d",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kermitproject.org",
+          "/ckermit90.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C-Kermit 9.0 Update Notes",
+        "url": "https://www.kermitproject.org/ckermit90.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1aede099e363b2a29365436e7a3e2e82c3f3e15a6210edefed768f1e4226a4ad",
+  "provider": "SearXNG",
+  "query": "tell me about the function of database indexing in information systems",
+  "query_id": "v5-p-0122-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:22.194903Z"
+}

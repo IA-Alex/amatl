@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 284.082,
+  "pair_id": "v5-p-0111",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of database indexing in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "for computational chemistry and biology. NBN slides available April 11, 2004 : Andrew Dalke of Dalke Scientific Software was asked by the National Bioinformatics Network of South",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dalkescientific.com",
+          "/news/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dalke Scientific: Corporate News",
+        "url": "http://www.dalkescientific.com/news/"
+      },
+      {
+        "category": "general",
+        "content": "in many other fields -- chemistry, linguistics, chess, music -- anything that requires precise spacing and/or unusual fonts and/or the convenience of automatic cross-referencing.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "math.vanderbilt.edu",
+          "/schectex/wincd/intro_to_tex.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Introduction to TeX",
+        "url": "https://math.vanderbilt.edu/schectex/wincd/intro_to_tex.htm"
+      },
+      {
+        "category": "general",
+        "content": "Community 2021-10-31 Chemistry in the city 2022-01-30 Show HN: Searchall – search all major indexes on one page (with iframes) | Hacker News 2022-01-31 Firefox Experiment is testi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "seirdy.one",
+          "/posts/2021/03/10/search-engines-with-own-indexes/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A look at search engines with their own indexes - Seirdy",
+        "url": "https://seirdy.one/posts/2021/03/10/search-engines-with-own-indexes/"
+      },
+      {
+        "category": "general",
+        "content": "introducing organic chemistry; evaluation Problem solving programs for older students. computer programs; evaluation The education game. computer program evaluation Six business m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.atarimagazines.com",
+          "/creative/index/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of Creative Computing articles",
+        "url": "https://www.atarimagazines.com/creative/index/"
+      },
+      {
+        "category": "general",
+        "content": "domains such as chemistry,electronics, or general business. Hence, XML is really a metalanguage (a language for describing languages). Because authors and providers can design the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.objs.com",
+          "/OSA/wom.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Towards a Web Object Model",
+        "url": "http://www.objs.com/OSA/wom.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b74258fbd7c7ce216d47cf85662fd242512d8d130abca28b9bbd5ad98e3331aa",
+  "provider": "SearXNG",
+  "query": "give an overview of database indexing in chemistry",
+  "query_id": "v5-p-0111-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:59.483408Z"
+}

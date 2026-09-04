@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 246.085,
+  "pair_id": "v5-p-0555",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of food preservation in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "of the State, for the preservation or the extension of its power, it is all transformed into duty and virtue. And this virtue, this duty, are obligatory for each patriotic citizen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.anarchistfaq.com",
+          "/B.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Anarchist FAQ - II. Why are anarchists against the State?",
+        "url": "http://www.anarchistfaq.com/B.html"
+      },
+      {
+        "category": "general",
+        "content": "is concern for the preservation of those original racial elements which bestow culture and create the beauty and dignity of a higher mankind. We, as Aryans, can conceive of the st",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/nazihydrainamerica.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "nazihydrainamerica",
+        "url": "http://www.combatreform.org/nazihydrainamerica.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9a522619de2efc515e871337a4d792ba3fd00b0f7502649e8d8580cec46635f4",
+  "provider": "SearXNG",
+  "query": "give an overview of food preservation in materials science",
+  "query_id": "v5-p-0555-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:12:27.486117Z"
+}

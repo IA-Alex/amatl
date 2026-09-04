@@ -1,0 +1,354 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 428.904,
+  "pair_id": "v5-p-0742",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of root systems in physics",
+    "results": [
+      {
+        "category": "general",
+        "content": "Photoshop for these functions if they are necessary. (My most common uses of Photoshop for my wildflower photos are cropping, brightening the picture, and sharpening the picture w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.swcoloradowildflowers.com",
+          "/learning%20about%20plants.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Learning about plants",
+        "url": "https://www.swcoloradowildflowers.com/learning%20about%20plants.htm"
+      },
+      {
+        "category": "general",
+        "content": "gradual lack of cell function and eventually cell death. In order to repair mutations the DNA of the body must first be scanned either by taking lots of somatic(normal cells) cell",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "In Elven Pixie Form And Function, Having Purity Of Mind, Body, Essences, &amp; Ways! Vixens Were Progenitor Aliens And Will Make Progenitors Out Of This Star System Most Certianal",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteList.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/FWAsiteList.html"
+      },
+      {
+        "category": "general",
+        "content": "[4/5] system, whose functions were then unknown. The atoms of Democritus are individually without sensation; they combine in obedience to mechanical laws; and not only organic for",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "victorianweb.org",
+          "/science/science_texts/belfast.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Address Delivered Before the British Association Assembled at Belfast, With Additions (1874)",
+        "url": "https://victorianweb.org/science/science_texts/belfast.html"
+      },
+      {
+        "category": "general",
+        "content": "he stresses are the function of New Age as an image of change and as an incarnation of the sacred, a movement in which most people are “very serious seekers after truth",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.vatican.va",
+          "/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jesus Christ The Bearer Of The Water Of Life - A Christian reflection on the New Age",
+        "url": "https://www.vatican.va/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html"
+      },
+      {
+        "category": "general",
+        "content": "Calculus, Interative Functions, Chemical Bond Theory/Electrodynamics, Half-Life Equation Manipulation, Exponential Growth Manipulation, Piecewise Functions, Fourier Transform Seri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "It fulfils some function or other. Certainly every object by itself cannot choose a function for itself. Their different functions ought to have been planned or designated by a si",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dlshq.org",
+          "/download2/god_exists.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "God Exists",
+        "url": "https://www.dlshq.org/download2/god_exists.htm"
+      },
+      {
+        "category": "general",
+        "content": "Universe, or its wave function, has no beginning - it simply has no initial boundaries in time nor space, rather like the south pole of the Earth in Euclidean space with imaginary",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/quant.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quantum Reality and Cosmology",
+        "url": "http://www.dhushara.com/paradoxhtm/quant.htm"
+      },
+      {
+        "category": "general",
+        "content": "gradual lack of cell function and eventually cell death. In order to repair mutations the DNA of the body must first be scanned either by taking lots of somatic(normal cells) cell",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/FountainOfYouth.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/FountainOfYouth.html"
+      },
+      {
+        "category": "general",
+        "content": "and somewhen. The whole function of philosophy ought to be to find out what definite difference it will make to you and me, at definite instants of our life, if this world-formula",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/5116/5116-h/5116-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Pragmatism, by William James",
+        "url": "https://www.gutenberg.org/files/5116/5116-h/5116-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "300 years ago - has not functioned like an innoculation against goof-ball ideas - such as those on constant-parade in this Myspace group.&#34; -- me To refresh: If you&#39;ll recall from",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "philosophy.nekhbet.com",
+          "/book.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Last Book of Moron",
+        "url": "https://philosophy.nekhbet.com/book.shtml"
+      },
+      {
+        "category": "general",
+        "content": "| calculus | functions analysis | sets &amp; logic | number theory | recreational | misc | nomenclature &amp; history | physics Final Answers © 2000-2023   Gérard",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "numericana.com",
+          "/answer/music.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "On the Mathematics of Music - Numericana",
+        "url": "http://numericana.com/answer/music.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f0ed912df9bef686b668d37e3dea4174c5da205c02e8b3650382476d6c88b42b",
+  "provider": "SearXNG",
+  "query": "tell me about the function of root systems in physics",
+  "query_id": "v5-p-0742-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:28.794665Z"
+}

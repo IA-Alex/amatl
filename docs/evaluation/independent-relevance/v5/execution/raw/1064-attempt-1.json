@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 331.012,
+  "pair_id": "v5-p-0388",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind solar eclipses in architecture",
+    "results": [
+      {
+        "category": "general",
+        "content": "for the &#34;von Neumann architecture&#34;, which is the concept that underlies almost all computers today. It&#39;s a very enjoyable book. Fundamentals of Number Theory by William J. LeVeque",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nuwen.net",
+          "/books.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Book Reviews - nuwen.net",
+        "url": "https://nuwen.net/books.html"
+      },
+      {
+        "category": "general",
+        "content": "and domestic architecture, and form the subject of many allusions in heraldry. They are frequently used as supporters. Charles Boutell, M.A., “English Heraldry,” [Pg 4",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book337/book337.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fictitious and Symbolic Creatures in Art, by John Vinycom",
+        "url": "https://www.ajhw.co.uk/books/book337/book337.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "72cd6e2475c6bac3200defb5855ee9840c01cfe18755a9c088aab99c9484786c",
+  "provider": "SearXNG",
+  "query": "describe the principle behind solar eclipses in architecture",
+  "query_id": "v5-p-0388-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:10:51.879601Z"
+}

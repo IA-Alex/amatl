@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 374.01,
+  "pair_id": "v5-p-0326",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of soil erosion in biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "or People can&#39;t &#34; function &#34; reasonably even when not using it, or It damages people&#39;s health severely, or It is so addictive that people quickly lose their ability to control the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonDrugs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about Drugs",
+        "url": "https://www.billdietrich.me/ReasonDrugs.html"
+      },
+      {
+        "category": "general",
+        "content": "healthy marshes and functioning water-control infrastructure are both important for communities, the ecological and economic impacts of nutria can therefore become closely connect",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4a9a7115b326318ce40bc72ca8de30886b228eec6da679997f071bfd868bb405",
+  "provider": "SearXNG",
+  "query": "tell me about the function of soil erosion in biology",
+  "query_id": "v5-p-0326-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:08:45.084969Z"
+}

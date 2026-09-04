@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 238.58,
+  "pair_id": "v5-p-0807",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of battery chemistry in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "even human &#34;brain chemistry.&#34; Agent X also speculates that an overheated upper atmosphere might affect weather patterns, giving the military the deity-like ability to smite its en",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "introducing organic chemistry; evaluation Problem solving programs for older students. computer programs; evaluation The education game. computer program evaluation Six business m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.atarimagazines.com",
+          "/creative/index/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of Creative Computing articles",
+        "url": "https://www.atarimagazines.com/creative/index/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "77e3dc5175fc0893e9badd4bd25d6de0e38adf04b6e459feb1ef0a0c709310dd",
+  "provider": "SearXNG",
+  "query": "give an overview of battery chemistry in materials science",
+  "query_id": "v5-p-0807-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:16:29.367535Z"
+}

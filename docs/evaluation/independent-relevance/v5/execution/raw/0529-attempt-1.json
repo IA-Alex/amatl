@@ -1,0 +1,219 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 288.484,
+  "pair_id": "v5-p-0579",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes air quality monitoring in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "start-ups; monitoring of employee Internet access, E-mail, and social media presence; a security detail of menacing-looking people in black suits and earpieces (which eventually r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/archives/Monthly/2018/2018-07.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason: July 2018 Archives",
+        "url": "https://www.fourmilab.ch/fourmilog/archives/Monthly/2018/2018-07.html"
+      },
+      {
+        "category": "general",
+        "content": "Home Environment Self-Monitoring Case Study Which Has Success In Virtually All Youth Maintenance To The Scientific Community. In The Study You Cannot Waste It Or You Will Lose Fwa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "characterization and monitoring of the ionospheric state, but also an examination of what con-trolled local modification of the ionosphere, using ground HF transmitters, could do",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "if it weren&#39;t for NSA monitoring and fast acting counter hacks which although are technically illegal protect every computer around the world. Basically when a very destructive vi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sonex.org",
+          "/SkyNet.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sky Net",
+        "url": "http://www.sonex.org/SkyNet.html"
+      },
+      {
+        "category": "general",
+        "content": "Home Environment Self-Monitoring Case Study Which Has Success In Virtually All Youth Maintenance To The Scientific Community. In The Study You Cannot Waste It Or You Will Lose Fwa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/GreenMagi.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/GreenMagi.html"
+      },
+      {
+        "category": "general",
+        "content": "and Spock have these monitoring devices inserted into them, but upon capture they use the crystals to generate a primitive laser. salskinum Origin unknown. Can alter molecular str",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.midwinter.com",
+          "/~koreth/particles/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Particles of Star Trek",
+        "url": "http://www.midwinter.com/~koreth/particles/"
+      },
+      {
+        "category": "general",
+        "content": "of information and the monitoring of various external and internal states. The consciousness of pain, for example, at least involves the monitoring and processing of information a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.sydney.edu.au",
+          "/archives/spr2010/entries/panpsychism/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Panpsychism (Stanford Encyclopedia of Philosophy/Spring 2010 Edition)",
+        "url": "https://plato.sydney.edu.au/archives/spr2010/entries/panpsychism/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "cf6cd395ea1a2b4700280cb9e8100c821e1075f01fbfd059f50a86183641f737",
+  "provider": "SearXNG",
+  "query": "what causes air quality monitoring in chemistry",
+  "query_id": "v5-p-0579-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:55.637277Z"
+}

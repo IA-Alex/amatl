@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 288.717,
+  "pair_id": "v5-p-0454",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does supply chain logistics in physics work",
+    "results": [
+      {
+        "category": "general",
+        "content": "of my career working in logistics, and it has been clear for decades that the USA has been mismanaging the supply chain for known strategic assets. It is time to end our reliance",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.lordofhosts.net",
+          "/Jesus/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lord of Hosts: www.Christ.com",
+        "url": "https://www.lordofhosts.net/Jesus/"
+      },
+      {
+        "category": "general",
+        "content": "Strategy is easy, but logistics is hard. Golden Dome proves it. The Golden Dome missile defense system will require major space-based capabilities, from sensors to interceptors. B",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.thespacereview.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Space Review: essays and commentary about the final frontier",
+        "url": "https://www.thespacereview.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a7c23a13b9ff3b3972f99580a7f7406b90c99884a640bcda889d233b124ae22b",
+  "provider": "SearXNG",
+  "query": "how does supply chain logistics in physics work",
+  "query_id": "v5-p-0454-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:10:28.500289Z"
+}

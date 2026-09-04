@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 315.105,
+  "pair_id": "v5-p-0129",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind database indexing in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8bc8cac2c8dfd1862213f82266a85ff7416529fa7216fa12e5226eb5ce88cfd0",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind database indexing in pharmacology",
+  "query_id": "v5-p-0129-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:10.700903Z"
+}

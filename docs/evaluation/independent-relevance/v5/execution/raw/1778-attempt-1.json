@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 346.806,
+  "pair_id": "v5-p-0520",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind neural networks in mechanical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "Tomorrow&#39;s paradise-engineering specialists will probably judge it prudent to keep these traditional forms of life. Such modes of old-style intentionality will be needed for the p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Hedonistic Imperative : Objections (Chapter 4)",
+        "url": "https://www.hedweb.com/hedethic/hedon4.htm"
+      },
+      {
+        "category": "general",
+        "content": "and hardware engineering, etc. You come to realize that displaying the screen saver and browsing the web are XYZ physical operations / algorithms by the computer. For your conscio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/dissolving-confusion-about-consciousness/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dissolving Confusion about Consciousness",
+        "url": "https://reducing-suffering.org/dissolving-confusion-about-consciousness/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "dacd7d871d5e681571bdd00b94355306a2eaea69cff854b8052067f5e554a22e",
+  "provider": "SearXNG",
+  "query": "describe the principle behind neural networks in mechanical engineering",
+  "query_id": "v5-p-0520-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:14:46.138632Z"
+}

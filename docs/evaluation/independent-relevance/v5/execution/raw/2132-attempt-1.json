@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 229.731,
+  "pair_id": "v5-p-1039",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of probability distributions in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3f80bd49710e62f859fc177e2673408c420d148eb162d9a6e01368e9f8a0dbb5",
+  "provider": "SearXNG",
+  "query": "give an overview of probability distributions in hydrology",
+  "query_id": "v5-p-1039-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:37.429493Z"
+}

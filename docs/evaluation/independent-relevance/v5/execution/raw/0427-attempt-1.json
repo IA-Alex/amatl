@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 252.578,
+  "pair_id": "v5-p-0859",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes data compression in forensic science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7846def7e8585cf0426a7a2e6df23c57eceed522c40aa7803263c671700a0a70",
+  "provider": "SearXNG",
+  "query": "what causes data compression in forensic science",
+  "query_id": "v5-p-0859-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:23.617481Z"
+}

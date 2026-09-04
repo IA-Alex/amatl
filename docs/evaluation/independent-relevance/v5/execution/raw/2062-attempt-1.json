@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 246.242,
+  "pair_id": "v5-p-0899",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of vaccination in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "developed Covid vaccination causes micro blood clots, but this has yet to be proven. Something however is causing a decline in rapid thinking and cognitive ability in the populati",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIDIK.com The original and official DIDIK site. Cutting edge and sometimes controversial thoughts, designs, proposals and projects conceiv",
+        "url": "http://www.didik.com/"
+      },
+      {
+        "category": "general",
+        "content": "anti-tumor immune vaccination (immature and mature dendritic cells, their activation by tumor antigens, effector T-lymphocytes). Alternative methods of cancer therapy - hypertherm",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Fyzika-NuklMed.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nuclear physics and ionizing radiation physics",
+        "url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm"
+      },
+      {
+        "category": "general",
+        "content": "Bill Gates pushes Vaccinations in Food Supply to &#39;Fight Climate Change&#39; Español  -  Bill Gates quiere Rociar Millones de Toneladas de Tiza en la Estratosfera para frenar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_globalwarmingpseudo.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Global Warming - An Official Pseudoscience...  -  Calentamiento Global - Una Pseudociencia Oficial...",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_globalwarmingpseudo.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "731066bdcbf9f6cb2a826e9e7fb0a9617c329c3937cf058669181f7787564fb5",
+  "provider": "SearXNG",
+  "query": "give an overview of vaccination in operations research",
+  "query_id": "v5-p-0899-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:14.684364Z"
+}

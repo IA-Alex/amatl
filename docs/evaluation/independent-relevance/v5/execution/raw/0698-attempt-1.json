@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 360.24,
+  "pair_id": "v5-p-0324",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind water purification in transportation engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "58344227f38574b840801b6107dd0290129fc5cc9100fbfd5c5a8cbd50997fed",
+  "provider": "SearXNG",
+  "query": "describe the principle behind water purification in transportation engineering",
+  "query_id": "v5-p-0324-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:56.740338Z"
+}

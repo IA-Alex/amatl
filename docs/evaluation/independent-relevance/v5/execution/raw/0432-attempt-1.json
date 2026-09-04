@@ -1,0 +1,219 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 415.595,
+  "pair_id": "v5-p-0490",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of encryption keys in physics",
+    "results": [
+      {
+        "category": "general",
+        "content": "World Alliance Send Encryption Keys Directly To End-User Computer Systems Without Monitor Proxies Which Add A Risky 3rd Wheel To All Transmissions. E-Mails Send New Encryption Key",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteList.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/FWAsiteList.html"
+      },
+      {
+        "category": "general",
+        "content": "Waters (Attribute-Based Encryption), Carl Gunter (Attribute-Based Messaging), and Chris Peikert (Lattice-Based Cryptography). In the early 2000s, DARPA funded thirteen projects un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "Public Key Encryption. 2023 ACM SIGSAC Conference on Computer and Communications Security, CCS&#39;23 , ACM (2023), pp 1108–11227. Date: 2022-08-12 [ pdf ] [ bibtex ] [ more ] J",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cryptojedi.org",
+          "/peter/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Schwabe",
+        "url": "https://cryptojedi.org/peter/"
+      },
+      {
+        "category": "general",
+        "content": "and dissemination of encryption (also known as cryptography, the science and art of secret writing). I originally hosted the mailing list (cypherpunks@toad.com) and provided space",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.toad.com",
+          "/gnu/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John Gilmore&#39;s home page",
+        "url": "http://www.toad.com/gnu/"
+      },
+      {
+        "category": "general",
+        "content": "to the plaintext before encryption to make the cryptanalysts job more difficult. So the question of whether or not we can revive a person who has been frozen can be transformed in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/cryptoCryo.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cryonics and Cryptography",
+        "url": "http://www.ralphmerkle.com/cryo/cryptoCryo.html"
+      },
+      {
+        "category": "general",
+        "content": "World Alliance Send Encryption Keys Directly To End-User Computer Systems Without Monitor Proxies Which Add A Risky 3rd Wheel To All Transmissions. E-Mails Send New Encryption Key",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/"
+      },
+      {
+        "category": "general",
+        "content": "that it can take my encryption keys and upload them somewhere else, cryptolocker my computer, etc etc etc. Linked data systems famously already follow the pattern, as TimBL says,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lists.w3.org",
+          "/Archives/Public/public-credentials/2020Dec/0028.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hygiene for a computing pandemic: separation of VCs and ocaps/zcaps from Christopher Lemmer Webber on 2020-12-05 (public-credentials@w3.org fr",
+        "url": "https://lists.w3.org/Archives/Public/public-credentials/2020Dec/0028.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fa59d22150eb22d580d888172ab0a72ef82dd019bbe24fffbc847d5a53da6519",
+  "provider": "SearXNG",
+  "query": "tell me about the function of encryption keys in physics",
+  "query_id": "v5-p-0490-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:25.096343Z"
+}

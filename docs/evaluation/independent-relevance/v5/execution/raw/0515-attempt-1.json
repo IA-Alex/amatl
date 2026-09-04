@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 294.28,
+  "pair_id": "v5-p-0412",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does carbon capture in mechanical engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "a communicationsu2011engineering approach combining coherent integration, superheterodyne frequency shifting, and iterative phaseu2011demodulation to isolate weak, structured osci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "CHAPTER XXVII . Civil Engineering. Great Bridges , Pneumatic Caissons , Tunnels. The Beach Tunnel Shield. Suez Canal. Dredges. The Lidgerwood Cable Ways. Canal Locks. Artesian Wel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book389/book389.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Progress of Invention in the Nineteenth Century, by Edward W. Byrn.",
+        "url": "https://www.ajhw.co.uk/books/book389/book389.html"
+      },
+      {
+        "category": "general",
+        "content": "former hardware engineering chief John Ternus officially became CEO of the company today, with the change now reflected on Apple’s leadership page . […] Tim Cook is no",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mjtsai.com",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Tsai - Blog",
+        "url": "https://mjtsai.com/blog/"
+      },
+      {
+        "category": "general",
+        "content": "advanced genetic engineering. From top to bottom, they are; A &#34;tagging&#34; weapon derived from a mamba-like snake, triggered by the long scales on its back. A &#34;sprayin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cmkosemen.com",
+          "/illustration.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C. M. Kosemen - Illustration",
+        "url": "http://www.cmkosemen.com/illustration.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6a8882cb87ad06a57368f985bb1b67d4db316b0dffd4644c322ec3cce8ba56d1",
+  "provider": "SearXNG",
+  "query": "how does carbon capture in mechanical engineering operate",
+  "query_id": "v5-p-0412-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:51.213985Z"
+}

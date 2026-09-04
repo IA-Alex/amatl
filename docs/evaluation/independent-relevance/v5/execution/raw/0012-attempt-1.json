@@ -1,0 +1,24 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 1465.109,
+  "pair_id": "v5-p-0247",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of plate tectonics in forensic science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "d0606224b8dac398a72e0e6906a8af4d5c8e9a71043ddafe3388ba6225560659",
+  "provider": "SearXNG",
+  "query": "give an overview of plate tectonics in forensic science",
+  "query_id": "v5-p-0247-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:10.991470Z"
+}

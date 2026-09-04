@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 309.724,
+  "pair_id": "v5-p-0829",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is data compression in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "for initiation of self-compression of a gas is the Jeans mass, which depends on the gas temperature. Similarly, stellar accretion and accretion disk relations involve temperature.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "in different forms of compression and text file formats. Download only one! transits.tar.bz2 :   bzip2 compressed Unix EOL, 12.3 Mb transits.tar.gz :   gzip compressed U",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/documents/canon_transits/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quarter Million Year Canon of Solar System Transits",
+        "url": "https://www.fourmilab.ch/documents/canon_transits/"
+      },
+      {
+        "category": "general",
+        "content": "t “maims by compression, like a Chinese lady’s foot, every part of human nature which stands out prominently, and tends to make a person markedly different in outline”[34] from the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "theanarchistlibrary.org",
+          "/library/paul-feyerabend-against-method.muse",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse",
+        "url": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse"
+      },
+      {
+        "category": "general",
+        "content": "converted by adiabatic compression into the kinetic energy of gas particles, ie into heat . Gravitational contraction is only a secondary , short-term and not very strong source o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Gravitace4-1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The role of gravity in the formation and evolution of stars",
+        "url": "https://www.astronuclphysics.info/Gravitace4-1.htm"
+      },
+      {
+        "category": "general",
+        "content": "amount of &#34;lossy&#34; audio compression causes those brief tones and background noises (such as those emanating from your optical receiver) to &#34;confuse&#34; the audio compression, often r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/optical_comms/using_laser_pointers.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Using laser pointers for voice communications",
+        "url": "http://www.modulatedlight.org/optical_comms/using_laser_pointers.html"
+      },
+      {
+        "category": "general",
+        "content": ", the most popular compression software -- actually the most popular non-Apple program of any kind -- on the Apple Macintosh. Interests and Conferences In my spare time outside th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.templetons.com",
+          "/brad/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Brad Templeton&#39;s Home Page",
+        "url": "https://www.templetons.com/brad/"
+      },
+      {
+        "category": "general",
+        "content": "Trillion Backed By The Compression Of The Stex Quality Of The Mythril. 1-2 Sig Fig Purchases. Gil: GP Promises From Hand Shaken Arrangement Without Any Physical Transfer At The Ti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "fast, lossless image compression » Interesting things: the overall simplicity and the chunk QOI_OP_LUMA, which implements diff compression from previous byte giving more weight to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "triptico.com",
+          "/links/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Links",
+        "url": "https://triptico.com/links/"
+      },
+      {
+        "category": "general",
+        "content": "them]. The Work of compression of the magnetic field is produced by the potential energy of the surrounding ether. Similarly, the potential energy of the atmosphere is converted i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "antimatrix.org",
+          "/Convert/Books/Sall/Questions_and_Answers_En.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dr. Sall - Secret Knowledge, and Science: from prehistoric civilizations to our days",
+        "url": "http://antimatrix.org/Convert/Books/Sall/Questions_and_Answers_En.html"
+      },
+      {
+        "category": "general",
+        "content": "Calculus Simplified. A compression of my long paper on the calculus. 13pp. 88. Trig &#34;Derivatives&#34; found without the old Calculus. Here I show that my simple exponent tab",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "milesmathis.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Homepage for Miles Mathis science site",
+        "url": "https://milesmathis.com/"
+      },
+      {
+        "category": "general",
+        "content": "using a lossless delta compression scheme similar to the method that would later be adopted as the standard in the Amiga&#39;s ANIM file format. Eric and his wife Cathryn actively pro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "etwright.org",
+          "/cghist/juggler.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Amiga Juggler Animation",
+        "url": "http://etwright.org/cghist/juggler.html"
+      },
+      {
+        "category": "general",
+        "content": "this phenomenon STEM Compression of Information and Computation in the most adaptive complex systems. This was my original website exploring the STEM Compression hypothesis. Accel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.accelerationwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acceleration Watch (Understanding Accelerating Change)",
+        "url": "https://www.accelerationwatch.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "514520f6908a0923b985a22e237220a8815ae2fcf6c02a2c721b5e1af4444099",
+  "provider": "SearXNG",
+  "query": "what is data compression in astronomy",
+  "query_id": "v5-p-0829-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:33.295856Z"
+}

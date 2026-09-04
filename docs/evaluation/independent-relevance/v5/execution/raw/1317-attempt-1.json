@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 244.353,
+  "pair_id": "v5-p-0420",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does carbon capture in robotics operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b9490ce1de57f55eb0cf7a10c5fff0bee803ddb50e359b5d93cb48b9695c5a3b",
+  "provider": "SearXNG",
+  "query": "how does carbon capture in robotics operate",
+  "query_id": "v5-p-0420-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:17.573201Z"
+}

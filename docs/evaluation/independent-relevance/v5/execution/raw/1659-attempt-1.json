@@ -1,0 +1,246 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 298.435,
+  "pair_id": "v5-p-0255",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes binary search in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "understood laws of chemistry and physics) and the kinds of damage caused by current methods of freezing. It then considers whether methods of repairing the kinds of damage caused",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "coefficient to use. In chemistry it has generally been thought that, as most descriptor features are absent in most molecules, i.e. the bit string descriptors such as the Daylight",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.daylight.com",
+          "/dayhtml/doc/theory/theory.finger.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Daylight Theory: Fingerprints",
+        "url": "https://www.daylight.com/dayhtml/doc/theory/theory.finger.html"
+      },
+      {
+        "category": "general",
+        "content": "Fecund Universe Quantum Chemistry as Non-Linear Complexity The Non-recurrent Table and the Elementary Bifurcation Tree Structural Dynamics of Core Polymerization Pathways Cosmolog",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "prep = processing = chemistry = unnatural ; natural ≠ healthy; it’s just marketing for gullible shoppers Why Modern Art Is So Awful tl;dr: art used to be beautiful, skilled, and m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Luke Smith Fanclub &amp; Archive",
+        "url": "https://lukesmith.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "made in physics, chemistry, biology etc., the methodology of physics is not necessarily applicable to the rest of science. Physics is about the laws governing the executive, trans",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/equiaeon/materialism.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHY : The End of Physicalism",
+        "url": "http://www.sofiatopia.org/equiaeon/materialism.htm"
+      },
+      {
+        "category": "general",
+        "content": "astronomy physics chemistry geology biology zoology physiology microbiology robotics technology about himself religion and creationism women rationality intelligence politics spee",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "by gradual 2^(1/3) chemistry advances, oh this must be the sought after reason, NOT, MILD ACID IS THE SAME EVEN ON AN ALIEN PLANET!!! The CDA processor spends all of its free time",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bimavs.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BiMAVs; Bipedal Mechanized Assault Vehicles",
+        "url": "http://www.bimavs.com/"
+      },
+      {
+        "category": "general",
+        "content": "in mechanics or chemistry. www.nanofirm.org/sexualgenesis.com For Actual Ler Girls Who are Like 2 Or Something. www.nanofirm.org/skynetarianism.net for people who are scared of ro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.nanofirm.org",
+          "/freeworldalliance.org/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Web-Index of the Free World Alliance",
+        "url": "http://www.nanofirm.org/freeworldalliance.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d86008954d9ecb472f47e535cd43792d328774900fe2f9a98614f8f5c5a69c66",
+  "provider": "SearXNG",
+  "query": "what causes binary search in chemistry",
+  "query_id": "v5-p-0255-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:02.363162Z"
+}

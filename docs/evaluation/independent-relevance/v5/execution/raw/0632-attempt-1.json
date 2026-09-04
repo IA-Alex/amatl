@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 370.337,
+  "pair_id": "v5-p-0786",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of coastal flooding in energy systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "hospitals ceasing to function as water and fuel run out.* Israel could, and is morally obliged to, let them get the humanitarian supplies they need — and the rest of Gaza to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2023-jul-oct.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2023: July - October Political Notes",
+        "url": "http://stallman.org/archives/2023-jul-oct.html"
+      },
+      {
+        "category": "general",
+        "content": "so even if it does function in some economic sense, it is a bad system. 28 December 2017 ( Damage of global heating ) Various levels of global heating , and the global damage they",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2017-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2017: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2017-sep-dec.html"
+      },
+      {
+        "category": "general",
+        "content": "the facility, and functional poorly disguised nuke cameras inside the facility. In addition to this, they install an unauthorized data connection to allow control of all the guts",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_uranium64.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Did The Dimona Dozen Murder The Fukushima 50? - 3/11 Was Japan&#39;s 9/11",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_uranium64.htm"
+      },
+      {
+        "category": "general",
+        "content": "diet can impair brain function. After a week on a high fat, high added sugar diet, volunteers scored worse on memory tests .* 19 February 2020 ( Beavers work ) *Beavers cut floodi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-nov-feb.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: November - February Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-nov-feb.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ff0bf751f703955053e4ebb59df105d5e7daf1a883b0c0ebd2f76ea865c5e0e1",
+  "provider": "SearXNG",
+  "query": "tell me about the function of coastal flooding in energy systems",
+  "query_id": "v5-p-0786-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:36.237524Z"
+}

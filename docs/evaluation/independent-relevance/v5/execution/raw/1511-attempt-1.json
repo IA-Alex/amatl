@@ -1,0 +1,273 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 340.208,
+  "pair_id": "v5-p-0806",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does battery chemistry in information systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "at the specific camera information listing for your camera. On the camera listings pages, there is a small rectangular icon located just to the left of each camera name. That icon",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.landlist.ch",
+          "/landlist/landfaq.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Land List -- Frequently Asked Questions",
+        "url": "http://www.landlist.ch/landlist/landfaq.htm"
+      },
+      {
+        "category": "general",
+        "content": "These are presented as information only - you assume all risk. Most voltages are under 24-volts. Read this safety warning. See my You Tube Videos page lists the over 206 videos on",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bristolwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Student-Hobbyist Electronics Projects Tutorials",
+        "url": "https://www.bristolwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "gets a veto. Similarly, information technologies unleash a positive feedback in sociocultural complexity. While early crude information technologies like radio or television were",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "blueshifted.net",
+          "/faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "An Anarcho-Transhumanist FAQ",
+        "url": "https://blueshifted.net/faq/"
+      },
+      {
+        "category": "general",
+        "content": "has a lot of useful information about motors, batteries, chargers and the Cycle Analyst. Local riding Wellington is known for its steep hills and strong winds. Typically, we ride",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "jepspectro.com",
+          "/htm/folding-ebike.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SmartMotion e20 Folding Electric Bike",
+        "url": "http://jepspectro.com/htm/folding-ebike.htm"
+      },
+      {
+        "category": "general",
+        "content": "is our ability to move information. There&#39;s no point in having an 8 TB hard drive if you&#39;re trying to fill it over an AT&amp;T network. Data constraints hit us on multiple levels. The",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "idlewords.com",
+          "/talks/web_design_first_100_years.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Web Design - The First 100 Years",
+        "url": "https://idlewords.com/talks/web_design_first_100_years.htm"
+      },
+      {
+        "category": "general",
+        "content": "problems I encounter. information Heliostat Information. definitions SOLAR DEFINITIONS: HELIOSTAT or CENTRAL RECEIVER SYSTEM: 1. A heliostat is, generally, a one or two axis solar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.redrok.com",
+          "/main.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Red Rock Energy Heliostats",
+        "url": "http://www.redrok.com/main.htm"
+      },
+      {
+        "category": "general",
+        "content": "unoriginal pieces of information into some arrangements that might not have been presented elsewhere before. Among these are a list of humanity&#39;s most important questions; a list",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "humanknowledge.net",
+          "/Thoughts.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Human Knowledge: Foundations and Limits",
+        "url": "http://humanknowledge.net/Thoughts.html"
+      },
+      {
+        "category": "general",
+        "content": "an essay once new information became available, or simply revisit a topic that he had written about long ago. The essays within each subject area are arranged so that, to the exte",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "contribute my quota of information to its support, knowing well, that however little it might be, it will be as kindly received as it is humbly offered. It is most unpleasing to m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.rexresearch.com",
+          "/crosse/crosse.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Andrew Crosse: Abiogenesis of Acari",
+        "url": "http://www.rexresearch.com/crosse/crosse.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8df18d576fc9d7363185f5d8feeb96a7e63f44ffdf7c56a150abdd16517563d9",
+  "provider": "SearXNG",
+  "query": "how does battery chemistry in information systems work",
+  "query_id": "v5-p-0806-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:17.293361Z"
+}

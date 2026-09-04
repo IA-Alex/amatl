@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 307.989,
+  "pair_id": "v5-p-0548",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind food preservation in ecology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "dc96bea2ec36813377e980c5da038e5a7e98722b1d937a5ce7de1de13fba9607",
+  "provider": "SearXNG",
+  "query": "describe the principle behind food preservation in ecology",
+  "query_id": "v5-p-0548-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:17.651463Z"
+}

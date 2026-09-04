@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 318.791,
+  "pair_id": "v5-p-0512",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind neural networks in ecology",
+    "results": [
+      {
+        "category": "general",
+        "content": "they do so. The grand principle of the heavens balances on the razor&#39;s edge of truth. Commissioner Pravin Lal &#34;A History of Science&#34; If you can discover a better way of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.generationterrorists.com",
+          "/quotes/smac.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sid Meier - Firaxis - Alpha Centauri",
+        "url": "https://www.generationterrorists.com/quotes/smac.html"
+      },
+      {
+        "category": "general",
+        "content": "relativity , is a principle suggesting that the structure of a language influences its speakers&#39; worldview or cognition, and thus people&#39;s perceptions are relative to their spoken",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "projectworldview.org",
+          "//worldviews.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Worldviews -- Introduction",
+        "url": "https://projectworldview.org//worldviews.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ce03c34468b03ec77f11737f3963a9c6abba5e0b2e5769bde14790951f1a535f",
+  "provider": "SearXNG",
+  "query": "describe the principle behind neural networks in ecology",
+  "query_id": "v5-p-0512-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:08:59.725232Z"
+}

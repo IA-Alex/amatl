@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 268.032,
+  "pair_id": "v5-p-0101",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is ocean tides in communication studies",
+    "results": [
+      {
+        "category": "general",
+        "content": "No more mass communication. Mobs of angry zombies running through the streets, like guerillas in Mogadishu, Somalia, looking for innocent American victims to prey upon. We see the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oodegr.com",
+          "/english/koinwnia/koinwnika/zombie_genre_modern_west.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "What Does the Zombie Genre Say about the Modern West?",
+        "url": "https://www.oodegr.com/english/koinwnia/koinwnika/zombie_genre_modern_west.htm"
+      },
+      {
+        "category": "general",
+        "content": "in science, technology, communication, transportation, production and distribution. A complementary case can be made for rapid innovation and development in the arts and humanitie",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.anarchism.net",
+          "/newlibertarianmanifesto.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ANARCHISM.net: The New Libertarian Manifesto, by Samuel Edward Konkin III",
+        "url": "https://www.anarchism.net/newlibertarianmanifesto.htm"
+      },
+      {
+        "category": "general",
+        "content": "out how to handle communications. When you&#39;re ready, go. Don&#39;t wait for everything to be perfect; it never will be. If you can&#39;t afford to retire, don&#39;t. There are lots of ways to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/GettingStarted.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Getting Started",
+        "url": "https://www.billdietrich.me/GettingStarted.html"
+      },
+      {
+        "category": "general",
+        "content": "reply, by our voluntary communication on this important scheme, (vide ante [Feb. 1818] p. 123.) But some men will manage the own affairs in their own way. The doctor is a worthy o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "olivercowdery.com",
+          "/texts/1818symm.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John C. Symmes&#39; Hollow Earth Writings",
+        "url": "http://olivercowdery.com/texts/1818symm.htm"
+      },
+      {
+        "category": "general",
+        "content": "batteries advances in communication communication by neutrino personal communication frequency global communications (ala the Internet) modern communications brain communication d",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "359937a913e5dd2770a94841a76813f6ba38c4393285be506642282611268472",
+  "provider": "SearXNG",
+  "query": "what is ocean tides in communication studies",
+  "query_id": "v5-p-0101-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:44.256898Z"
+}

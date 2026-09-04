@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 307.738,
+  "pair_id": "v5-p-0665",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is traffic flow in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "the hood at the actual technology that made the system run. The Apple delegation led by Jobs in December 1979 was one. In short, PARC&#39;s prominence, its large number of visitors, t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "web.stanford.edu",
+          "/dept/SUL/sites/mac/parc.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Xerox PARC Visit",
+        "url": "http://web.stanford.edu/dept/SUL/sites/mac/parc.html"
+      },
+      {
+        "category": "general",
+        "content": "successful aware technology attitude attitudes exactly beyond style goal goals october popular skill skills affair affairs science seat seats technique techniques attempt attempts",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "THE &#39;BAD&#39; PARTS OF TECHNOLOGY CANNOT BE SEPARATED FROM THE &#39;GOOD&#39; PARTS TECHNOLOGY IS A MORE POWERFUL SOCIAL FORCE THAN THE ASPIRATION FOR FREEDOM SIMPLER SOCIAL PROBLEMS HAVE PRO",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unabomber.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society and Its Future",
+        "url": "https://unabomber.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "Mr. President, the technology required is easily within the means of even the smallest nuclear power. It requires only the will to do so. Muffley: But, how is it possible for this",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.huppi.com",
+          "/t/strangelove_script.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Kubrick Site: The Strangelove Continuity Script",
+        "url": "http://www.huppi.com/t/strangelove_script.html"
+      },
+      {
+        "category": "general",
+        "content": "Parts Of Technology Cannot Be Separated From The ’Good’ Parts 17. Technology Is A More Powerful Social Force Than The Aspiration For Freedom 18. Simpler Social Problem",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/industrial-society-and-its-future-manifesto",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society And Its Future",
+        "url": "https://zerocontradictions.net/misc/industrial-society-and-its-future-manifesto"
+      },
+      {
+        "category": "general",
+        "content": "nothing to do with the technology: Almost nobody actually wants a website that changes entirely on its own. Why “Just Make It Autonomous” Is The Wrong Goal The obvious move, once",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.smashingmagazine.com",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Articles on Smashing Magazine — For Web Designers And Developers",
+        "url": "https://www.smashingmagazine.com/feed/"
+      },
+      {
+        "category": "general",
+        "content": "advent of computation technology. Phones are a mechanism by which the soul leaks from the body. All liminal spaces have been converted into soul spaces. Our minds nearly separate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-gig-economy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Gig Economy — Chadnet",
+        "url": "https://wiki.chadnet.org/the-gig-economy"
+      },
+      {
+        "category": "general",
+        "content": "hiring of a new Chief Technology Officer (CTO), Troy Anderson. Anderson is responsible for the company&#39;s technology strategy, software development, architecture, QA, and infrastru",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cowlitzcountry.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cowlitz Country News Home Page",
+        "url": "http://www.cowlitzcountry.com/"
+      },
+      {
+        "category": "general",
+        "content": "engineers, most in biotechnology .  See Work History below. One particularly successful project was the (now obsolete) ABI PRISM® 3700 Genetic Analyzer which significantl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.all8.com",
+          "/rich.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "About Richard Reel",
+        "url": "http://www.all8.com/rich.htm"
+      },
+      {
+        "category": "general",
+        "content": "Palmer Science and technology reporter, BBC News The team has published its work so other scientists can determine if the approach contains any mistakes. If it does not, one of th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "is a &#34;polled&#34; technology, there is no provision for the sort of &#34;redirected&#34; login that a regular web login can display. This is a problem, because some areas",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tickerforum.org",
+          "/faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Market Ticker Frequently Asked Questions",
+        "url": "http://tickerforum.org/faq.html"
+      },
+      {
+        "category": "general",
+        "content": "lie-detection technology. The P300 test relies on one of several electrical signals that the conscious mind generally cannot control. Yet one of the major applications of EEG has",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wireheading.com",
+          "/brainstim/cyborgs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cyborgs, transhumans and neuroelectronics",
+        "url": "https://www.wireheading.com/brainstim/cyborgs.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "593e84853ce85c75224815606223b0e64ea74cd2c0084b10f98a5674297ecd09",
+  "provider": "SearXNG",
+  "query": "what is traffic flow in music technology",
+  "query_id": "v5-p-0665-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:09.668634Z"
+}

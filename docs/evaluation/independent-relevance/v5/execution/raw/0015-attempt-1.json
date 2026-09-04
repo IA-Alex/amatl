@@ -1,0 +1,273 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 347.422,
+  "pair_id": "v5-p-0611",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes air quality monitoring in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "to groundwater monitoring reports... &#34; Actually, elsewhere in this report, it is shown that in only 2-1/2 years after plutonium processing began, by mid 1947, at least uranium sho",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cascadian.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Hanford Nuclear Report",
+        "url": "https://cascadian.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "Home Environment Self-Monitoring Case Study Which Has Success In Virtually All Youth Maintenance To The Scientific Community. In The Study You Cannot Waste It Or You Will Lose Fwa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "24 hour a say security monitoring. Consumer Reports does a review every so often, check back issues. I believe their conclusions were generally to buy name brands by price. Whethe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.repairfaq.org",
+          "/sam/vcrfaq.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notes on the Troubleshooting and Repair of Video Cassette Recorders",
+        "url": "http://www.repairfaq.org/sam/vcrfaq.htm"
+      },
+      {
+        "category": "general",
+        "content": "the desired bit, and monitoring the state of the sense wire, saving the read-out state in a flip-flop. The problem with this method that the act of sensing the state of a core req",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/wangloci.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Wang LOCI-2",
+        "url": "https://www.oldcalculatormuseum.com/wangloci.html"
+      },
+      {
+        "category": "general",
+        "content": "characterization and monitoring of the ionospheric state, but also an examination of what con-trolled local modification of the ionosphere, using ground HF transmitters, could do",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "in past off-site monitoring, will station representatives for the duration of the series in various communities east, northeast, and north of the site--the most frequent direction",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/etexts/www/atomic_tests_nevada/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Atomic Test Effects in the Nevada Test Site Region",
+        "url": "https://www.fourmilab.ch/etexts/www/atomic_tests_nevada/"
+      },
+      {
+        "category": "general",
+        "content": "Home Environment Self-Monitoring Case Study Which Has Success In Virtually All Youth Maintenance To The Scientific Community. In The Study You Cannot Waste It Or You Will Lose Fwa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/GreenMagi.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/GreenMagi.html"
+      },
+      {
+        "category": "general",
+        "content": "care, increase health monitoring. These clinics would be a mixture of private-owned (attached to hospitals, doctor&#39;s offices, pharmacies) and public-owned (in schools, government",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/USPolicy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "US Policy Choices",
+        "url": "https://www.billdietrich.me/USPolicy.html"
+      },
+      {
+        "category": "general",
+        "content": "by means of a suitable monitoring loud-speaker. Results of Tests At the time of writing it is too early to give full details as to the results of the thirty day test of this new h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stephen.shawweb.co.uk",
+          "/radio02.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Early broadcast radio stations",
+        "url": "http://stephen.shawweb.co.uk/radio02.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "586e9f4e9a0ba7691ccc9409e97402171d40052e3fb78996a6fe5e80697a023f",
+  "provider": "SearXNG",
+  "query": "what causes air quality monitoring in operations research",
+  "query_id": "v5-p-0611-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:13.416739Z"
+}

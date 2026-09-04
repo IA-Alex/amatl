@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 327.001,
+  "pair_id": "v5-p-0053",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is compiler operation in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "00:30.47 journey in technology. I&#39;m going to ask 00:31.66 you for some feedback at some different 00:34.13 places, so first off – by applause – how 00:36.97 many of yo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jackrusher.com",
+          "/strange-loop-2022/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stop Writing Dead Programs, Strange Loop 2022",
+        "url": "https://jackrusher.com/strange-loop-2022/"
+      },
+      {
+        "category": "general",
+        "content": "of my various essays on technology topics, comedy, my software, my popular amateur photography sub-site, and of course, an exercise in net.narcissism. Also found here are sites fo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.templetons.com",
+          "/brad/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Brad Templeton&#39;s Home Page",
+        "url": "https://www.templetons.com/brad/"
+      },
+      {
+        "category": "general",
+        "content": "of ways of using this technology on the Skintimacy project page , plus you can check out their website to find circuit diagrams, code, set up instructions and a way to request a S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.pjrc.com",
+          "/2021/07/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SEGA ROM Reader",
+        "url": "https://www.pjrc.com/2021/07/"
+      },
+      {
+        "category": "general",
+        "content": "Practice of Software Technology, D. Ferrari, M. Bolognani, and J. Goguen (editors), North-Holland, 1983, pp. 221--232. Trustworthiness: Security SRI&#39;s Computer Science Lab and the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "Software &amp; Technology Inc. BbsListA list of Bulletin Board Systems which support the Amiga. The list was compiled from a list on Delphi, Compuserve, bathroom walls, etc. Autho",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.amiga-stuff.com",
+          "/pd/fish.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fish disks 1 - 1120",
+        "url": "https://www.amiga-stuff.com/pd/fish.html"
+      },
+      {
+        "category": "general",
+        "content": "(DDS). Parametric Technology : CADDS5i is partly in C&#43;&#43;. Programming Research : QAC&#43;&#43;: Analysis product for C&#43;&#43;. Propellerhead Reason : Reason is a virtual studio rack with all th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stroustrup.com",
+          "/applications.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C&#43;&#43; Applications",
+        "url": "https://www.stroustrup.com/applications.html"
+      },
+      {
+        "category": "general",
+        "content": "to some neat old technology, and other cool stuff. - A very comfy Web 1.0 website featuring the author&#39;s musical work, Flash animations, writings, artwork, quirky original charact",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "koshka.love",
+          "/links.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dock",
+        "url": "http://koshka.love/links.html"
+      },
+      {
+        "category": "general",
+        "content": "of Information Technology, Hyderabad, India, 2023. Irina Artemeva Разработка транслятора из реляционного языка программирования в функциональный (Note: Russian. In English, &#34;Devel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "minikanren.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "miniKanren.org",
+        "url": "https://minikanren.org/"
+      },
+      {
+        "category": "general",
+        "content": "This tells you how fast technology has become! After the &#39;Slim&#39; model, Tachyon and &#39;NAND &#43; SDRAM&#39; became one. Motherboard with important parts labelled Diagram Main architecture d",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/playstation-portable/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PlayStation Portable (PSP) Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/playstation-portable/"
+      },
+      {
+        "category": "general",
+        "content": "this image enlargement technology. A simple and thorough system of interactive menus allows easy and unambiguous configuration of the browser with maximum possible security for se",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "links.twibright.com",
+          "/user_en.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Links user documentation",
+        "url": "http://links.twibright.com/user_en.html"
+      },
+      {
+        "category": "general",
+        "content": "is a speech on Privacy, Technology and the Open Society that I gave at the First Conference on Computers, Freedom and Privacy. I remained quite active in EFF, and served on its Bo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.toad.com",
+          "/gnu/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John Gilmore&#39;s home page",
+        "url": "http://www.toad.com/gnu/"
+      },
+      {
+        "category": "general",
+        "content": "most - a focus on the technology. Personally, I&#39;m attracted to places where free communication is allowed (even if it sadly ends up reading like an outraged trashy newspaper). As",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2015/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2015/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "70bc31d367c2e38700af46f54938d147897e030a8d55355be74079578885e983",
+  "provider": "SearXNG",
+  "query": "what is compiler operation in music technology",
+  "query_id": "v5-p-0053-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:38.186730Z"
+}

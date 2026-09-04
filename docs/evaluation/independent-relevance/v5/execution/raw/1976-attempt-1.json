@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 312.18,
+  "pair_id": "v5-p-0876",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind vaccination in geology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "19a3c97aa3ce3cb73f6d01563b1a163118c58007928aeba900a3448393258283",
+  "provider": "SearXNG",
+  "query": "describe the principle behind vaccination in geology",
+  "query_id": "v5-p-0876-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:47.759449Z"
+}

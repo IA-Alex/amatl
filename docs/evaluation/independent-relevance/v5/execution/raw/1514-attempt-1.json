@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 332.453,
+  "pair_id": "v5-p-0437",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind supply chain logistics in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "other nations lacked: logistics (e.g. the US currently has over 230 strategic airlift transports and over 430 aerial refueling tankers - the rest of NATO has about 10 strategic ai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/USPolicy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "US Policy Choices",
+        "url": "https://www.billdietrich.me/USPolicy.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9c6e95684f5a5d2465bc2ba167aa4c8301953d1236550feff3a24dcfb22eb9c5",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind supply chain logistics in climate science",
+  "query_id": "v5-p-0437-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:13:18.290439Z"
+}

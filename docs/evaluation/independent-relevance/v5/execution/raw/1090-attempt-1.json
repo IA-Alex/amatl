@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 239.151,
+  "pair_id": "v5-p-0223",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of plate tectonics in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "to the Office of Management and Budget and the Air Force Almanac, when measured in real terms (adjusted for inflation), the figure is $790.0 billion, or an average of $15.818 bill",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "14d68e593bddba3603ab2f2d1dc41b24b83ab916f6efdd2a3659e10264a38059",
+  "provider": "SearXNG",
+  "query": "give an overview of plate tectonics in data management",
+  "query_id": "v5-p-0223-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:11:00.215777Z"
+}

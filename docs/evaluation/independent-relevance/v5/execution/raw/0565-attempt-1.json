@@ -1,0 +1,273 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 325.333,
+  "pair_id": "v5-p-0567",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes food preservation in agricultural science",
+    "results": [
+      {
+        "category": "general",
+        "content": "a theory for the preservation of political power in the educated class, and ennobled a form of government which was generally founded on popular ignorance and on strong class inte",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "monadnock.net",
+          "/acton/antiquity.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The History of Freedom in Antiquity, by Lord Acton",
+        "url": "https://monadnock.net/acton/antiquity.html"
+      },
+      {
+        "category": "general",
+        "content": "But in what does this preservation of African American culture consist? It can hardly consist in anything more than eating black-style food, listening to black-style music, wearin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unabomber.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society and Its Future",
+        "url": "https://unabomber.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "But in what does this preservation of African American culture consist? It can hardly consist in anything more than eating black-style food, listening to black-style music, wearin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/industrial-society-and-its-future-manifesto",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society And Its Future",
+        "url": "https://zerocontradictions.net/misc/industrial-society-and-its-future-manifesto"
+      },
+      {
+        "category": "general",
+        "content": "a strong sense of self-preservation, caused me to join a local mycological society and begin my mushroom studies in earnest. Since then, I have become a proponent of the safe and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bayareamushrooms.org",
+          "/education/further_reflections_amanita_muscaria.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Further Reflections on Amanita muscaria as an Edible Species - Bay Area Mycological Society",
+        "url": "http://www.bayareamushrooms.org/education/further_reflections_amanita_muscaria.html"
+      },
+      {
+        "category": "general",
+        "content": "is extra care in the preservation of the fragile – as shown, for example, in the raising of children and small animals. When Taleb argues that post-Enlightenment civilization is f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.quebecoislibre.org",
+          "/13/130515-8.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fragile Reasoning in Nassim Taleb’s “Antifragile”: An Enlightenment Transhumanist Critique | QL | Gennady Stolyarov II",
+        "url": "http://www.quebecoislibre.org/13/130515-8.html"
+      },
+      {
+        "category": "general",
+        "content": "campaign for game preservation provides a pretty much perfect example of the folly of this strategy. By the way, I have nothing whatsoever against him or his endeavors; in fact I",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/enemylaw.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Enemy Who Surpasses The Law",
+        "url": "http://digdeeper.love/articles/enemylaw.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "of ecosystems and the preservation of biodiversity. Ethical principles: Compassionate biology is guided by an ethic of care and responsibility toward individual animals, while tra",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gene-drives.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reprogramming the biosphere with gene drives as conceived by ChatGPT",
+        "url": "https://www.gene-drives.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "of the State, for the preservation or the extension of its power, it is all transformed into duty and virtue. And this virtue, this duty, are obligatory for each patriotic citizen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.anarchistfaq.com",
+          "/B.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Anarchist FAQ - II. Why are anarchists against the State?",
+        "url": "http://www.anarchistfaq.com/B.html"
+      },
+      {
+        "category": "general",
+        "content": "Church, the preservation of the Church was assumed a higher moral value than the practice of the religion - the practice of the moral life.  A code of obedience to earthly fa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/SavingCatholicReligion.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Saving the Catholic Religion",
+        "url": "http://ipwebdev.com/hermit/SavingCatholicReligion.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "08c6f47a61494c5b402e1baff2f881f6079a61ddbe8e544c31e34a00f9bb7fc3",
+  "provider": "SearXNG",
+  "query": "what causes food preservation in agricultural science",
+  "query_id": "v5-p-0567-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:06.909905Z"
+}

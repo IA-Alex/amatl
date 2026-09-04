@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 338.25,
+  "pair_id": "v5-p-0752",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind root systems in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2583e38be8e540d67f3fbd47ad983fa4635281e0842745b7456baf7daf00de83",
+  "provider": "SearXNG",
+  "query": "describe the principle behind root systems in hydrology",
+  "query_id": "v5-p-0752-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:43.967303Z"
+}

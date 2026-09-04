@@ -1,0 +1,349 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 1415.539,
+  "pair_id": "v5-p-0659",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes traffic flow in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Up early, lots of traffic to Bracknell, bacon buttie breakfast. Hurridly knocked together some demos - various bits went well - should get a non-hacked-about machine / jail to dem",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2003/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2003/"
+      },
+      {
+        "category": "general",
+        "content": "thefts, they break traffic laws, they goof off at work, they hate someone, they say spiteful things or they use some underhanded trick to get ahead of the other guy. The oversocia",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unabomber.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society and Its Future",
+        "url": "https://unabomber.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "increase the number of traffic accidents and death. Even more confusingly, some of them point out how laws against drunk driving like security checkpoints can be abused to infring",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/civilization/case-against-libertarianism",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Case Against Libertarianism And Ancapism",
+        "url": "https://zerocontradictions.net/civilization/case-against-libertarianism"
+      },
+      {
+        "category": "general",
+        "content": "120 members and modest traffic. Looking at the log pointed the finger at Twitterbot, a Web crawler operated by the Californian socialist network called Twitter, which claims it&#39;s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/archives/Monthly/2018/2018-07.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason: July 2018 Archives",
+        "url": "https://www.fourmilab.ch/fourmilog/archives/Monthly/2018/2018-07.html"
+      },
+      {
+        "category": "general",
+        "content": "thefts, they break traffic laws, they goof off at work, they hate someone, they say spiteful things or they use some underhanded trick to get ahead of the other guy. The over-soci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/industrial-society-and-its-future-manifesto",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society And Its Future",
+        "url": "https://zerocontradictions.net/misc/industrial-society-and-its-future-manifesto"
+      },
+      {
+        "category": "general",
+        "content": "with a deluge of ML traffic. Prodded a yast2 / slab crasher. Pleased that sudo zypper si OpenOffice_org-calc at least fetches the source now. Lunch; SanMarie dropped in for it - b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2008/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2008/"
+      },
+      {
+        "category": "general",
+        "content": "Drove home, M25 grim traffic; lovely to be home. 2021-07-29 Thursday Swum with the babes and J. in the morning. Back to Alfred&#39;s Tower, walked to St Peter&#39;s Pump, through a hill f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2021/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2021/"
+      },
+      {
+        "category": "general",
+        "content": "are Losing their Jobs! Traffic Jams Waste My Time Half My Life is Taxed Away What About the Poor? Crime is UP! What About the Environment? Terrorism Threatens Everyone! Capitalism",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "KevinCraig.us",
+          "/about.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "About Kevin Craig",
+        "url": "https://KevinCraig.us/about.htm"
+      },
+      {
+        "category": "general",
+        "content": "Jose or SF including traffic and spilled drinks. -- Greg Bolcer&#34;, &#34;A stupid person can do anything but think. -- Bob Dobbs, Jr.&#34;, &#34;A successful American spends more supporting the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ifindkarma.com",
+          "/oneliners/oneliners-2000",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.ifindkarma.com/oneliners/oneliners-2000",
+        "url": "http://www.ifindkarma.com/oneliners/oneliners-2000"
+      },
+      {
+        "category": "general",
+        "content": "of heart attacks, in traffic accidents or from gunshot wounds. Nevertheless, even the official figures showed that the probability of dying from or with ‘Covid’ was ti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/reclaim.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reclaiming our health: germ theory exposed",
+        "url": "https://davidpratt.info/reclaim.htm"
+      },
+      {
+        "category": "general",
+        "content": "2024.03.20 • Human trafficking, real-world vehicle emissions, state legislators, Meta Oversight Board decisions, and aviation waypoints. 2024.03.13 • Humanitarian emergency mappin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.data-is-plural.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Data Is Plural — Full Archive",
+        "url": "https://www.data-is-plural.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "will not get caught in traffic. Karl Marx (1818-1883) did not have a theory of morality; he had a theory of history. Thus, Marxism was not about right or wrong but about what will",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/marx.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Marxist-Leninist Theory of History",
+        "url": "https://friesian.com/marx.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "cdb0316b8fa2fabca36bf682ec413a48ed6c8a8debd16e414e8ae17d35226d14",
+  "provider": "SearXNG",
+  "query": "what causes traffic flow in food science",
+  "query_id": "v5-p-0659-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:05.609254Z"
+}

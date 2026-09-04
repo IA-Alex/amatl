@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 279.081,
+  "pair_id": "v5-p-0969",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is cloud formation in marine biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "those with limited information. Artistic Interpretation: Show participants pieces of abstract art and ask them to interpret potential perspectives or emotions it might represent.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.empathogens.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Empathogens as conceived by ChatGPT",
+        "url": "https://www.empathogens.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "- Insurance - Information Casio - watches Castrol Catamaran Hull Catamaran - 1/20th model drive Catamaran - 120th model frame Catamaran - 1/20th model trials Catamaran - auxiliary",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.solarnavigator.net",
+          "/solarnavigator_index.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SOLAR NAVIGATOR MARINE PORTAL WEBSITE INDEX EDUCATIONAL GEOGRAPHY HISTORY RESOURCE WORLD ATLAS A TO Z INDEX OF PLANET EARTH FREE ENCYCLOPEDIA&lt;",
+        "url": "https://www.solarnavigator.net/solarnavigator_index.htm"
+      },
+      {
+        "category": "general",
+        "content": "getting the necessary information from Michael Mann, who put many obstacles in their path. He refused to release his computer code, saying that ‘giving them the algorithm wo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/warm.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The global warming scare",
+        "url": "https://davidpratt.info/warm.htm"
+      },
+      {
+        "category": "general",
+        "content": "it. Therefore the information on this site may not be current or accurate and should not be relied upon. For more information follow this link ( This Webpage Page in No Frames Mod",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lachlan.bluehaze.com.au",
+          "/nanoshite/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NanoShite: A nano-apostate webpage dedicated to the slimeycanceroushype flim-flam-barnum-and-bailey-charlatan delusional bollocks nanosleaze /",
+        "url": "http://lachlan.bluehaze.com.au/nanoshite/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "04f381663299dfb561edbceff6fb42f06c13181ace032ae6d8730524aa88a937",
+  "provider": "SearXNG",
+  "query": "what is cloud formation in marine biology",
+  "query_id": "v5-p-0969-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:22.282104Z"
+}

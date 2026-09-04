@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 246.924,
+  "pair_id": "v5-p-0486",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does encryption keys in neuroscience work",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d8b8cb0b86c0d0f4b4f394df46c4e473f1f9d7f40fc147dbf27df6157f8943d5",
+  "provider": "SearXNG",
+  "query": "how does encryption keys in neuroscience work",
+  "query_id": "v5-p-0486-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:38.566183Z"
+}

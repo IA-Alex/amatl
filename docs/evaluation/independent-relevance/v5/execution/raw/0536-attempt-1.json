@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 343.167,
+  "pair_id": "v5-p-0125",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind database indexing in music technology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fd372d6aa414c7c2322b7bbb59b77df08c083870f0f543173cd3b4c2eef9a52c",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind database indexing in music technology",
+  "query_id": "v5-p-0125-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:57.611026Z"
+}

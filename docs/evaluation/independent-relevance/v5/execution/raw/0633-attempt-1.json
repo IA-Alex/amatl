@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 334.414,
+  "pair_id": "v5-p-0475",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes encryption keys in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": ", Crypto Key Generators, Encryption Equipment, and Scramblers SECURE COMMUNICATIONS SYSTEMS Granite Island Group provides a broad spectrum of information security protection protec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.tscm.com",
+          "/stu.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "STU-III Secure Telephone Units, Crypto Key Generators, Encryption Equipment and Scramblers",
+        "url": "http://www.tscm.com/stu.html"
+      },
+      {
+        "category": "general",
+        "content": "9180 Hybrid Public Key Encryption Abstract This document describes a scheme for hybrid public key encryption (HPKE). This scheme provides a variant of public key encryption of arb",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.rfc-editor.org",
+          "/rfc/rfc9180.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RFC 9180: Hybrid Public Key Encryption",
+        "url": "https://www.rfc-editor.org/rfc/rfc9180.html"
+      },
+      {
+        "category": "general",
+        "content": "plaintext, signing or encryption are turned off. sign - This will enable integrity checking. encrypt - This will enable integrity checks and force encryption for privacy. Default:",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.samba.org",
+          "/samba/docs/current/man-html/smb.conf.5.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "smb.conf",
+        "url": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+      },
+      {
+        "category": "general",
+        "content": "at boot, i.e. I use encryption on my workstation but not on my FreeBSD router. Encrypting multiple physical devices with the same key will only require the passphrase once. You wi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cooltrainer.org",
+          "/a-freebsd-desktop-howto/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A FreeBSD 11 Desktop How-to » Cooltrainer.org",
+        "url": "https://cooltrainer.org/a-freebsd-desktop-howto/"
+      },
+      {
+        "category": "general",
+        "content": "If you used whole-disk encryption (WDE) or a logical volume for installation, you cannot install to the macOS root partition; you must install to the ESP or to a separate HFS&#43; par",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "rodsbooks.com",
+          "/refind/installing.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The rEFInd Boot Manager: Installing and Uninstalling rEFInd",
+        "url": "https://rodsbooks.com/refind/installing.html"
+      },
+      {
+        "category": "general",
+        "content": "authentication and encryption options. Unlike traditional Kermit use over Telnet, anonymous access is possible, and the considerable overhead of the intervening Telnet server and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kermitproject.org",
+          "/uiksd.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Internet Kermit Service",
+        "url": "https://www.kermitproject.org/uiksd.html"
+      },
+      {
+        "category": "general",
+        "content": "the MS-Windows password encryption work? Section B: Telephony U 01. What is a Red Box? 02. How do I build a Red Box? 03. Where can I get a 6.5536Mhz crystal? 04. Which payphones w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "webarchive.me",
+          "/geocities/SiliconValley/2072/2600faq.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "alt.2600 FAQ, Beta .013 - Part 1/1",
+        "url": "http://webarchive.me/geocities/SiliconValley/2072/2600faq.txt"
+      },
+      {
+        "category": "general",
+        "content": "country. It&#39;s not an encryption system, it&#39;s just one byte of information on the disc that the player checks. Some studios originally announced that only their new releases would",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "demystified.info",
+          "/dvdfaq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DVD FAQ",
+        "url": "https://demystified.info/dvdfaq.html"
+      },
+      {
+        "category": "general",
+        "content": "locations (e.g. encryption keys). To enforce this restriction, memory addresses are grouped into five segments with different privilege levels. Furthermore, Allegrex’s MPU contain",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/playstation-portable/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PlayStation Portable (PSP) Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/playstation-portable/"
+      },
+      {
+        "category": "general",
+        "content": "that uses an encryption based authentication algorithm. This means that breaking security on a single machine does not allow you to attack the registry database - you have to have",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "web.mit.edu",
+          "/kolya/www/csa-faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Apollo FAQ",
+        "url": "https://web.mit.edu/kolya/www/csa-faq.html"
+      },
+      {
+        "category": "general",
+        "content": "the keys to unlock encryption.     If you want the simplicity that comes with the cable receiver being integrated with the TV then you should buy a TV with a cable card",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "hdtvprimer.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HDTV Primer",
+        "url": "http://hdtvprimer.com/"
+      },
+      {
+        "category": "general",
+        "content": "is setting up basic encryption , counter measures are explained a bit below. Linux still follows this security model, and as such, there is no resemblance of a strong sandboxing a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "chef-koch.bearblog.dev",
+          "/windows-is-not-more-secure-than-linux-debunking-self-proclaimed-wannabe-researcher-madaidan/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Windows is not more secure than Linux - Debunking self-proclaimed wannabe researcher Madaidan – CHEF-KOCH&#39;s Microblog ✨",
+        "url": "https://chef-koch.bearblog.dev/windows-is-not-more-secure-than-linux-debunking-self-proclaimed-wannabe-researcher-madaidan/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4552fd1638213161ca075ab080e3b740e39f5f9f5cd57e4b08b6c05f8197a8ac",
+  "provider": "SearXNG",
+  "query": "what causes encryption keys in data management",
+  "query_id": "v5-p-0475-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:36.608492Z"
+}

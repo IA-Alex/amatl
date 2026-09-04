@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 271.506,
+  "pair_id": "v5-p-0223",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes plate tectonics in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "States Bureau of Land Management, and the California Department of Fish and Game. The objectives of this management include preservation of a representative sample of the historic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "activetectonics.asu.edu",
+          "/carrizo/cargeo_full.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quaternary Geologic Investigations, Carrizo Plain, CA",
+        "url": "http://activetectonics.asu.edu/carrizo/cargeo_full.html"
+      },
+      {
+        "category": "general",
+        "content": "as well as less management ability over people and resources.&#34; Rather than one bold line dividing the subcontinent into two parts, the future will likely see a lot of thinner line",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "83f32f63a8862f2312d9d9388cfa168dde77ee989fbf0428d0e5154c1eaa9b4a",
+  "provider": "SearXNG",
+  "query": "what causes plate tectonics in data management",
+  "query_id": "v5-p-0223-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:10:59.943795Z"
+}

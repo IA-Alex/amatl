@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 323.184,
+  "pair_id": "v5-p-0476",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind encryption keys in ecology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "99b46a8dfc6e61c2dbd7b525c55cc8668357d5ab8833240398bf9ec0ad2da747",
+  "provider": "SearXNG",
+  "query": "describe the principle behind encryption keys in ecology",
+  "query_id": "v5-p-0476-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:48.385190Z"
+}

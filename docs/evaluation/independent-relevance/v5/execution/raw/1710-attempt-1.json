@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 253.369,
+  "pair_id": "v5-p-0047",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of compiler operation in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "crasher-bug-riddled operation; not good. Back to bed, up late. Got back to gtk&#43;/OO.o work, Stefan and Philipp appeared on IRC today - wonderful, discussed the alphaart changes wit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2003/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2003/"
+      },
+      {
+        "category": "general",
+        "content": "full control over operation, data and privacy, while integrating existing FOSS projects. From displaying timetables to providing digital class records or person and group manageme",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/news/2023/20231123-announcing-projects.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; 55 New Projects Awarded NGI0 Grants",
+        "url": "https://nlnet.nl/news/2023/20231123-announcing-projects.html"
+      },
+      {
+        "category": "general",
+        "content": "including formal operational semantics and typing rules as well as design considerations that enable better code readability and automated program reasoning. The effort is a colla",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "disrupting a device&#39;s operations. The Ksplice software constructs rebootless kernel updates automatically based on traditional source code patches (e.g., patches taken directly fr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7bfb6a46d7ddd498452430b0de6b1dc1285e5b06336de88acc2d929b70be48c5",
+  "provider": "SearXNG",
+  "query": "give an overview of compiler operation in food science",
+  "query_id": "v5-p-0047-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:17.820502Z"
+}

@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 294.603,
+  "pair_id": "v5-p-0986",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does wastewater treatment in materials science work",
+    "results": [
+      {
+        "category": "general",
+        "content": "2-3, coolants/solvents/wastewater/misc liquid processing and extensive storage tanks on decks 36-37), life support, atmospheric processing, structural integrity, gravity generator",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.starfleet-museum.org",
+          "/notes-bluescale.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Starfleet Museum - Bluescale Plans Legend",
+        "url": "https://www.starfleet-museum.org/notes-bluescale.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5f0205575096cac5d00a6afa993968ae81c8fed40eb022ccb87eac8150b52d3d",
+  "provider": "SearXNG",
+  "query": "how does wastewater treatment in materials science work",
+  "query_id": "v5-p-0986-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:11:17.058464Z"
+}

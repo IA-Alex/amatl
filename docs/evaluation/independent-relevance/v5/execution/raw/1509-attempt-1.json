@@ -1,0 +1,327 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 301.081,
+  "pair_id": "v5-p-0121",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is database indexing in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "The On-Line Music Database has gone through some changes in the last week. It is now searchable by: Track, Album, Artist, and Submitter. It now also allows editing of existing dat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "home.mcom.com",
+          "/home/whatsnew/whats_new_0194.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "What&#39;s New! January 1994",
+        "url": "http://home.mcom.com/home/whatsnew/whats_new_0194.html"
+      },
+      {
+        "category": "general",
+        "content": "When electronic databases were new, long lists of terms were extracted in order to serve as descriptors in thesauri. Such empirical material is in itself confusing (as the classic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/facet_analysis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Facet analysis (IEKO)",
+        "url": "https://www.isko.org/cyclo/facet_analysis.htm"
+      },
+      {
+        "category": "general",
+        "content": "LLM Wiki with Critical Database Limitations Memex is a sophisticated LLM Wiki implementation that stands out for its thoughtful mitigations of common pitfalls, such as git-backed",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "tp://www.antenna.nl/wise-database/uranium/dhap99.html George Bush - The Unauthorised Biography http://www.padrak.com/alt/BUSHBOOK_INDEX.html Bohemian Club and other research http:/",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "and online searchable databases. This was a significant resource for worldwide genealogy and family history research. Melvyl® is a registered trademark of The Regents of the Unive",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.academic-genealogy.com",
+          "/melvyluniversityofcaliforniagenealogyfamilyhistory.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Melvyl® System - University of California: Worldwide Genealogy and Family History Research",
+        "url": "http://www.academic-genealogy.com/melvyluniversityofcaliforniagenealogyfamilyhistory.htm"
+      },
+      {
+        "category": "general",
+        "content": "on Principles of Database Systems, 2000. Spatial Embeddings of Information D. Crandall, L. Backstrom, D. Huttenlocher, J. Kleinberg. Mapping the World&#39;s Photos. Proc. 18th Interna",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cs.cornell.edu",
+          "/home/kleinber/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jon Kleinberg&#39;s Homepage",
+        "url": "https://www.cs.cornell.edu/home/kleinber/"
+      },
+      {
+        "category": "general",
+        "content": "6.4 Database queries and query languages      6.5 Propositional logic      6.6 Probability theory      6.7 Switching an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/boolean.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Boolean logic (IEKO)",
+        "url": "https://www.isko.org/cyclo/boolean.htm"
+      },
+      {
+        "category": "general",
+        "content": "— and adding database semantics and discourse analysis). Another important suggestion for an addition to the 11 points is knowledge about provenance, as suggested by Guimar&amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/domain_analysis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Domain analysis (IEKO)",
+        "url": "https://www.isko.org/cyclo/domain_analysis.htm"
+      },
+      {
+        "category": "general",
+        "content": "Assistant professor Database Theory and Engineering Lab Information Technology Building, Room 124 ( floor map ) Department of Computing and Software McMaster University 1280 Main",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jhellings.nl",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jelle Hellings",
+        "url": "https://jhellings.nl/"
+      },
+      {
+        "category": "general",
+        "content": "Distributed Database Kevin Scaldeferri Principal Engineer at New Relic Disaster Recovery Options running Apache Kafka in Kubernetes Geetha Anne Event Streaming Jedi An IPC Languag",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "thestrangeloop.com",
+          "/2022/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2022 - Strange Loop",
+        "url": "https://thestrangeloop.com/2022/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "Towards an explorable database of historical maps allowd NGI0 Commons Fund 2025 Memory-safe policy rules using D-Bus Alps Webmail NGI0 Commons Fund 2025 Minimalist open source web",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/project/index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; All projects",
+        "url": "https://nlnet.nl/project/index.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "761755b070ed3a21f498769c74d1b54469ffb2d46fb47fe02fef7b1c4033c314",
+  "provider": "SearXNG",
+  "query": "what is database indexing in health science",
+  "query_id": "v5-p-0121-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:16.626439Z"
+}

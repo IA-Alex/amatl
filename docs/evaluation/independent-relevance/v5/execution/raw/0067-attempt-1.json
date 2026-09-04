@@ -1,0 +1,219 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 547.877,
+  "pair_id": "v5-p-0809",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is battery chemistry in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "Electronics and Technology Built at Home Mainpage LM555 Timer Monostable AC Power Phase Control Demo Introduction to TC4420/TC4429 Drivers TC4420 Driver Circuit Variations YouTube",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bristolwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Student-Hobbyist Electronics Projects Tutorials",
+        "url": "https://www.bristolwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "using &amp; leveraging technology, and, also enjoying using insightful resources on the Web to enhance life! That was the purpose for the WebTop10 - to help you empower yourself to en",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.infostar.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Welcome to InfoStar.com - also visit WEBHITZ.com - our Web Menus!",
+        "url": "https://www.infostar.com/"
+      },
+      {
+        "category": "general",
+        "content": "orbit, testing the technology and procedures needed for getting to the Moon. The Space Race was in full swing. The Soviets and Europeans were both developing a giant supersonic ai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "idlewords.com",
+          "/talks/web_design_first_100_years.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Web Design - The First 100 Years",
+        "url": "https://idlewords.com/talks/web_design_first_100_years.htm"
+      },
+      {
+        "category": "general",
+        "content": "modification technology for DoD applications. While some of the diagnostic instruments would be collocated with the IRI at the research facility, others, due to geometrical consid",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "Exobiology   4. Technology   5. Social Science     5.1. Economics       5.1.1. Macroeconomics       5.1.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "humanknowledge.net",
+          "/Thoughts.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Human Knowledge: Foundations and Limits",
+        "url": "http://humanknowledge.net/Thoughts.html"
+      },
+      {
+        "category": "general",
+        "content": "microbiology robotics technology about himself religion and creationism women rationality intelligence politics speech television and film science fiction Isaac Asimov&#39;s Science F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "robots for home use technology Inventing the future. looking to year 2000 and beyond for innovations in electronic living Die Wahrheit (the truth). spoof on computer magazines Com",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.atarimagazines.com",
+          "/creative/index/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of Creative Computing articles",
+        "url": "https://www.atarimagazines.com/creative/index/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fc20cf4d4f184bdd5b85d3642aa9b4b31f6853b406714fe2121db670131ca632",
+  "provider": "SearXNG",
+  "query": "what is battery chemistry in music technology",
+  "query_id": "v5-p-0809-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:29.172793Z"
+}

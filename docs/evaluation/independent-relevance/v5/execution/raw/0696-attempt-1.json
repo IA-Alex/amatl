@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 375.492,
+  "pair_id": "v5-p-0710",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of language acquisition in urban planning",
+    "results": [
+      {
+        "category": "general",
+        "content": "rich people or the acquisition of wealth as long as it didn&#39;t interfere with the individual&#39;s following of the religious law or spiritual relationship with God. Jesus healed the s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2007/03/politicized_rel.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: Politicized Religion, Retail Version",
+        "url": "http://www.2blowhards.com/archives/2007/03/politicized_rel.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bb789750a1859a73bb490147f3d80292733a14611157f9588b06be8a18093af1",
+  "provider": "SearXNG",
+  "query": "tell me about the function of language acquisition in urban planning",
+  "query_id": "v5-p-0710-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:08:56.109328Z"
+}

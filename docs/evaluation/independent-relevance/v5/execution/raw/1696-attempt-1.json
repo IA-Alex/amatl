@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 385.764,
+  "pair_id": "v5-p-0602",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of air quality monitoring in urban planning",
+    "results": [
+      {
+        "category": "general",
+        "content": "propagation, remote monitoring and interactions with bodies such as the ABU-HFC, ITU, and the HFCC. Everything was set to go, and we had worked out a timetable for transfer of the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.worldofradio.com",
+          "/dxld3134.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.worldofradio.com/dxld3134.txt",
+        "url": "http://www.worldofradio.com/dxld3134.txt"
+      },
+      {
+        "category": "general",
+        "content": "E. Howard Hunt, monitoring the effect at CIA headquarters until the end, later noted:  &#34;I was sick of lying and deception, heartsick over political compromise and military de",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cuban-exile.com",
+          "/doc_001-025/doc0019a.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Last Investigation by gaeton Fonzi",
+        "url": "http://cuban-exile.com/doc_001-025/doc0019a.html"
+      },
+      {
+        "category": "general",
+        "content": "characterization and monitoring of the ionospheric state, but also an examination of what con-trolled local modification of the ionosphere, using ground HF transmitters, could do",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "not the problem. Local monitoring of my output with the old OCP71 receiver revealed no treble loss, so ionisation lag wasn&#39;t the cause. Could the loss have been occurring in the i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "48262a370d4b2695ba56edb0e21ecf8e10cf7a2e8d2ed172811715066d94f2da",
+  "provider": "SearXNG",
+  "query": "tell me about the function of air quality monitoring in urban planning",
+  "query_id": "v5-p-0602-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:13.187723Z"
+}

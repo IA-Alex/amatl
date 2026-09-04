@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 344.083,
+  "pair_id": "v5-p-0986",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of wastewater treatment in materials science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "13bf35a2cfb26526ef23ce645100b7b0c2b6457e311e5fd76d9ddab660dfdd57",
+  "provider": "SearXNG",
+  "query": "tell me about the function of wastewater treatment in materials science",
+  "query_id": "v5-p-0986-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:17.353828Z"
+}

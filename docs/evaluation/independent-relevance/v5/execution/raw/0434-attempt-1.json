@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 358.294,
+  "pair_id": "v5-p-1005",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind wastewater treatment in marine biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "&#34;zooplankton in aerated wastewater treatment lagoons&#34;. This would involve painfully killing huge numbers of zooplankton. It&#39;s much better to produce biofuel from plants before tha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Applied Welfare Biology and Why Wild-Animal Advocates Should Focus on Not Spreading Nature",
+        "url": "https://reducing-suffering.org/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "668fdd6dc65786c4978cf69df0d5a7f208a87563e8308095e91f90fd83bcf5f2",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind wastewater treatment in marine biology",
+  "query_id": "v5-p-1005-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:07:25.766232Z"
+}

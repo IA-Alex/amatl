@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 327.278,
+  "pair_id": "v5-p-0936",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind bridge resonance in transportation engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "81935ac293e64b25f84614921f94230d4d97b72b5797f613000f4fac97060fd9",
+  "provider": "SearXNG",
+  "query": "describe the principle behind bridge resonance in transportation engineering",
+  "query_id": "v5-p-0936-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:14:47.973808Z"
+}

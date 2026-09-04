@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 294.95,
+  "pair_id": "v5-p-0268",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does binary search in mechanical engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "made the Development Engineering Manager for Central Processor, Channels, and Operator&#39;s Console for the Sage II computer. I believe that this was the largest transistor computer",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ed-thelen.org",
+          "/comp-hist/vs-ibm-sage.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "IBM SAGE",
+        "url": "https://ed-thelen.org/comp-hist/vs-ibm-sage.html"
+      },
+      {
+        "category": "general",
+        "content": "business by reverse engineering the Missile Command program and coming out with a new and improved version. Unfortunately, their version still said &#39;Missile Command&#39; and they got",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.jmargolin.com",
+          "/vgens/vgens.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Secret Life of Vector Generators",
+        "url": "http://www.jmargolin.com/vgens/vgens.htm"
+      },
+      {
+        "category": "general",
+        "content": "as a somewhat naive engineering mistake.  Among them was Alan Kay : In Alan Kay&#39;s metaphor, the problem with bootstrapping in Douglas Engelbart&#39;s Augmentation Research Center was",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.loper-os.org",
+          "/",
+          "",
+          "p=861",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Loper OS » Engelbart&#39;s Violin",
+        "url": "http://www.loper-os.org/?p=861"
+      },
+      {
+        "category": "general",
+        "content": "a fantastically arcane engineering prodigy, like a breeder reactor or a U-2 spy plane, and not something that could ever be (in the parlance of high-tech) &#34;productized.&#34; Yet now t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "garote.bdmonkeys.net",
+          "/commandline/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Command Line In 2004",
+        "url": "https://garote.bdmonkeys.net/commandline/"
+      },
+      {
+        "category": "general",
+        "content": "(The old one was on the engineering department subdomain of MSU.edu.) Audio Equalizer APO   A parametric / graphic equalizer for Windows. It is implemented as an Audio Proces",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wa8lmf.net",
+          "/links/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WA8LMF Useful Links Page",
+        "url": "http://wa8lmf.net/links/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f0a29271b9270d81e0e374cb8b1a76fd31dd6f1777e403049c51a3ea63f3deee",
+  "provider": "SearXNG",
+  "query": "how does binary search in mechanical engineering operate",
+  "query_id": "v5-p-0268-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:21.873697Z"
+}

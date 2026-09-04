@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 248.568,
+  "pair_id": "v5-p-0531",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of neural networks in agricultural science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "226bbff7bcb0f0e112aaaa9062e44f9548f910fe9a1b425a01b7fa4fed1afca1",
+  "provider": "SearXNG",
+  "query": "give an overview of neural networks in agricultural science",
+  "query_id": "v5-p-0531-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:10.455110Z"
+}

@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 396.042,
+  "pair_id": "v5-p-0982",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does wastewater treatment in food science work",
+    "results": [
+      {
+        "category": "general",
+        "content": "&#34;zooplankton in aerated wastewater treatment lagoons&#34;. This would involve painfully killing huge numbers of zooplankton. It&#39;s much better to produce biofuel from plants before tha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Applied Welfare Biology and Why Wild-Animal Advocates Should Focus on Not Spreading Nature",
+        "url": "https://reducing-suffering.org/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/"
+      },
+      {
+        "category": "general",
+        "content": "change Food scraps Wastewater Consciousness Philosophy of consciousness Which beings are sentient? Small minds Sentience vs. animal size Ethics Suffering Moral theory Judgment as",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Essays on Reducing Suffering",
+        "url": "https://reducing-suffering.org/"
+      },
+      {
+        "category": "general",
+        "content": "2-3, coolants/solvents/wastewater/misc liquid processing and extensive storage tanks on decks 36-37), life support, atmospheric processing, structural integrity, gravity generator",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.starfleet-museum.org",
+          "/notes-bluescale.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Starfleet Museum - Bluescale Plans Legend",
+        "url": "https://www.starfleet-museum.org/notes-bluescale.htm"
+      },
+      {
+        "category": "general",
+        "content": "such chemicals i nclude wastewater dischar g e s , industrial releases, and consumer products . R esearch is being conducted t o i dentify the range of potential h ealth effects a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "congressionalresearch.com",
+          "/RL31267/document.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Environmental Exposure to Endocrine Disruptors: What Are the Human Health Risks?",
+        "url": "http://congressionalresearch.com/RL31267/document.php"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "38903160fc7f6040530acb1b55d1e35ca0050ea591e34db75f17803585379a37",
+  "provider": "SearXNG",
+  "query": "how does wastewater treatment in food science work",
+  "query_id": "v5-p-0982-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:01.221353Z"
+}

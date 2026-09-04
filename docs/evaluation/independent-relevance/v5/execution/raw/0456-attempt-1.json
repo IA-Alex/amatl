@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 335.98,
+  "pair_id": "v5-p-0273",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind binary search in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2235d432ee2f66dc9bd79c530279e2646bab575dfc078d34f6a38c8fd412d7b2",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind binary search in pharmacology",
+  "query_id": "v5-p-0273-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:33.088154Z"
+}

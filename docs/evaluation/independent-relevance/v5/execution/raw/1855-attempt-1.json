@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 264.315,
+  "pair_id": "v5-p-0084",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does ocean tides in geology operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "transport and the inlet geology on the nc coast. My primary studies were of ocean waves, which led to a thesis on sediment transport by waves and currents. As a post doc, i analyz",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.paddlewise.com",
+          "/whoswho/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PaddleWise - Who&#39;s Who A-B",
+        "url": "http://www.paddlewise.com/whoswho/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7d57d99d0881158a4255a1173e848aeb041c1e6820bb01f41f7887a1f6611f3e",
+  "provider": "SearXNG",
+  "query": "how does ocean tides in geology operate",
+  "query_id": "v5-p-0084-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:15:10.080846Z"
+}

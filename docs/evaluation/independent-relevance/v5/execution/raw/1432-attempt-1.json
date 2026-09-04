@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 324.453,
+  "pair_id": "v5-p-0596",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind air quality monitoring in optics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3e8b0a7ba587a41e077dfe31b8ec73196eaede731cb4a2a3b842aea8565394f0",
+  "provider": "SearXNG",
+  "query": "describe the principle behind air quality monitoring in optics",
+  "query_id": "v5-p-0596-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:52.861572Z"
+}

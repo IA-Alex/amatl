@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 308.998,
+  "pair_id": "v5-p-0868",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind vaccination in civil engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fa56a27b60b54fc24da4d361a839544f5e130346c8fef46027648235ff4e905f",
+  "provider": "SearXNG",
+  "query": "describe the principle behind vaccination in civil engineering",
+  "query_id": "v5-p-0868-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:28.202998Z"
+}

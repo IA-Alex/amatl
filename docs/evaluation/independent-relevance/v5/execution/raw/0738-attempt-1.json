@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 352.1,
+  "pair_id": "v5-p-0961",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind cloud formation in urban planning",
+    "results": [
+      {
+        "category": "general",
+        "content": "(Spartan). Use the information in the attached resume [ attach your resume to the prompt ]. Ensure that the summary sparks curiosity and aligns with professional standards suitabl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "freegptprompts.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Free GPT Prompts | A Curated Directory of 300&#43; AI Prompts For Free",
+        "url": "https://freegptprompts.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8d9f54145102505316cbe775e249413563ca508fa7f38cd2efd26b181bcd4cd2",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind cloud formation in urban planning",
+  "query_id": "v5-p-0961-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:09:10.395655Z"
+}

@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 367.872,
+  "pair_id": "v5-p-1030",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of probability distributions in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "2026 16:02) Predictive Distributions in Statistics (31 Jul 2026 16:00) Neural Nets, Connectionism, Perceptrons, etc. (31 Jul 2026 15:47) Denis Diderot (1713--1784) (30 Jul 2026 14",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bactra.org",
+          "/notebooks/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notebooks",
+        "url": "https://bactra.org/notebooks/"
+      },
+      {
+        "category": "general",
+        "content": "relies on the skewed distributions of many real-world variables such as city population size—an aspect of environment structure that traditional statistical estimation techniques",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "home.dbio.uevora.pt",
+          "/~eje/simple%20heuristics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "‹Truth is ever to be found in simplicity, and not in the multiplicityand confusion of things. As the world, which to the naked eye exhibits th",
+        "url": "http://home.dbio.uevora.pt/~eje/simple%20heuristics.htm"
+      },
+      {
+        "category": "general",
+        "content": "under unimodal distributions). So educated and uneducated traders use &#34;infinite&#34; as proxy for &#34;cannot find a bound for the payoff&#34;. We call this open-ended . When there are reason",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "fooledbyrandomness.com",
+          "/notebook.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Opacity",
+        "url": "https://fooledbyrandomness.com/notebook.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3611c9b8f1745aa3baab03840f7f528f4011e87af2fe5ada56101798c88d299c",
+  "provider": "SearXNG",
+  "query": "tell me about the function of probability distributions in public health",
+  "query_id": "v5-p-1030-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:12.314044Z"
+}

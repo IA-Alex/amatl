@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 325.687,
+  "pair_id": "v5-p-0481",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is encryption keys in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Sends Your Disk-Encryption Keys to Microsoft Español  -  &#39; Windows 10&#39; puede Recoger sus Datos para Agencias del Gobierno - Que se puede Hacer Italiano  -  &#39; W",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/sociopol_win-micro-gates.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Windows-Microsoft-Bill Gates",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_win-micro-gates.htm"
+      },
+      {
+        "category": "general",
+        "content": "World Alliance Send Encryption Keys Directly To End-User Computer Systems Without Monitor Proxies Which Add A Risky 3rd Wheel To All Transmissions. E-Mails Send New Encryption Key",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteList.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/FWAsiteList.html"
+      },
+      {
+        "category": "general",
+        "content": "Free Cultural Works Encryption and Privacy Schneier on Security Window Managers StumpWM File Managers ROX Filer Midnight Commander Latest pages The LLM Freedom Manifesto: Open-Wei",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "as Zoom’s current encryption, and it’s exactly as unacceptable, for exactly the same reasons. As it&#39;s said there, If Zoom is wrong for doing this, then so is Apple, and they shoul",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "triptico.com",
+          "/links/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Links",
+        "url": "https://triptico.com/links/"
+      },
+      {
+        "category": "general",
+        "content": "Waters (Attribute-Based Encryption), Carl Gunter (Attribute-Based Messaging), and Chris Peikert (Lattice-Based Cryptography). In the early 2000s, DARPA funded thirteen projects un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "gzip myfile encryption: auth/secstore -p myfile replication: tar xzf myfiles.tar.gz deduplication: &lt;buy a disk man&gt; self healing: tel mysysadmin/man gefs Package Management",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pspodcasting.net",
+          "/dan/blog/2019/plan9_desktop.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Plan 9 Desktop Guide",
+        "url": "https://pspodcasting.net/dan/blog/2019/plan9_desktop.html"
+      },
+      {
+        "category": "general",
+        "content": "in Emulator File Encryption &amp; Vault Tella Encrypt and hide files on your device AgePony: Encrypt &amp; Sign Post-quantum file &amp; message encryption with age. On-device, pri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "f-droid.org",
+          "/en/packages/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "F-Droid - Free and Open Source Android App Repository",
+        "url": "https://f-droid.org/en/packages/"
+      },
+      {
+        "category": "general",
+        "content": "technical expertise in encryption that helps toilluminate the practical aspects of the issues currently before theCourt. The American Civil Liberties Union (&#34;ACLU&#34;) is a nationwid",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.epic.org",
+          "/crypto/export_controls/bernstein_brief.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Amicus Brief",
+        "url": "https://archive.epic.org/crypto/export_controls/bernstein_brief.html"
+      },
+      {
+        "category": "general",
+        "content": "International Survey of Encryption Policy Electronic Privacy Information Center Washington, DC About the Electronic Privacy Information Center The Electronic Privacy Information C",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.epic.org",
+          "/reports/crypto2000.html/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cryptography and Liberty 2000",
+        "url": "https://archive.epic.org/reports/crypto2000.html/"
+      },
+      {
+        "category": "general",
+        "content": "to the plaintext before encryption to make the cryptanalysts job more difficult. So the question of whether or not we can revive a person who has been frozen can be transformed in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/cryptoCryo.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cryonics and Cryptography",
+        "url": "http://www.ralphmerkle.com/cryo/cryptoCryo.html"
+      },
+      {
+        "category": "general",
+        "content": "and Linux Combined) encryption ie every data location and every bus location is encrypted unique to each processor subcomponent and CDA cell. The interunit communications encrypti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sonex.org",
+          "/SkyNet.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sky Net",
+        "url": "http://www.sonex.org/SkyNet.html"
+      },
+      {
+        "category": "general",
+        "content": "and Linux Combined) encryption ie every data location and every bus location is encrypted unique to each processor subcomponent and CDA cell. The interunit communications encrypti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bimavs.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BiMAVs; Bipedal Mechanized Assault Vehicles",
+        "url": "http://www.bimavs.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f650aedbfd47ed1c713cdd135b89502076424f7ca8d49e2ad9f6d9baa96e4e2b",
+  "provider": "SearXNG",
+  "query": "what is encryption keys in health science",
+  "query_id": "v5-p-0481-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:00.532611Z"
+}

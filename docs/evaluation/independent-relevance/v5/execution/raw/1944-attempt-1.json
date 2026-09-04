@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 354.506,
+  "pair_id": "v5-p-0270",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of binary search in neuroscience",
+    "results": [
+      {
+        "category": "general",
+        "content": "a bunch of other common neuroscience techniques like connectomics, lesion studies, tuning curves, you get a bunch of obviously wrong results like “there are distinct transis",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/epistemology/representationalism",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Representationalism",
+        "url": "https://zerocontradictions.net/epistemology/representationalism"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "99fb471b994e8048735cbeb7c551f3af94561d110abfac6ffa24c5d480087fb4",
+  "provider": "SearXNG",
+  "query": "tell me about the function of binary search in neuroscience",
+  "query_id": "v5-p-0270-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:15:37.856342Z"
+}

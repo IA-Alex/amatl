@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 427.684,
+  "pair_id": "v5-p-0278",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of binary search in urban planning",
+    "results": [
+      {
+        "category": "general",
+        "content": "Following (Commercial) Function Two Humorous Items from the Financial Crisis Ken Auster of the Kute Kaptions What Might Representational Painters Paint? In The Times ... CultureBl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2007/04/michael_blowhar_3.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: The NYTBR Section and Fiction 5: Literary Fiction and Literature",
+        "url": "http://www.2blowhards.com/archives/2007/04/michael_blowhar_3.html"
+      },
+      {
+        "category": "general",
+        "content": "Following (Commercial) Function Two Humorous Items from the Financial Crisis Ken Auster of the Kute Kaptions What Might Representational Painters Paint? In The Times ... CultureBl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2006/03/decline_and_fall_of_the_classi.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: Decline and Fall of the Classical Face",
+        "url": "http://www.2blowhards.com/archives/2006/03/decline_and_fall_of_the_classi.html"
+      },
+      {
+        "category": "general",
+        "content": "( OCT 98) GPS&#39;s Clock Function and More Rollover Trivia (MAY 98) GPS &#34; Compass&#34; reads WRONG&#34; -Why is that? (OCT 98) GPS Future :  What improvements are coming our way in the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "gpsinformation.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GPS Receiver Information, Software, and Hardware Reviews of Garmin, Lowrance, Magellan and other GPS Receivers",
+        "url": "http://gpsinformation.net/"
+      },
+      {
+        "category": "general",
+        "content": "learn to use the Search function—before posting questions. Monitor Marius Milner&#39;s Stumbler.net blog. Marius is the author of NetStumbler, the most widely-used stumbling util",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.drivebywifiguide.com",
+          "/wardrivingfaq.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jeff Duntemann&#39;s Wardriving FAQ",
+        "url": "http://www.drivebywifiguide.com/wardrivingfaq.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "91c8c4de452fea0cbf1f3c054b60249525d5bf281a5c9a4149d5087f6407feb4",
+  "provider": "SearXNG",
+  "query": "tell me about the function of binary search in urban planning",
+  "query_id": "v5-p-0278-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:02.009974Z"
+}

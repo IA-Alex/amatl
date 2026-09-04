@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 271.148,
+  "pair_id": "v5-p-0070",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does compiler operation in marine biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "credit, they are a tiny operation attempting to take on quite a massive responsibility. IRC Reviews IRC Client List - An impressive although still not entirely comprehensive list",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "koshka.love",
+          "/links.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dock",
+        "url": "http://koshka.love/links.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "954cd86050ced7aa80fc38d4928903aa02949a3c7285467dd71bc39d3828b0f9",
+  "provider": "SearXNG",
+  "query": "how does compiler operation in marine biology work",
+  "query_id": "v5-p-0070-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:11:07.357504Z"
+}

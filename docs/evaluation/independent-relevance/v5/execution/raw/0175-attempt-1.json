@@ -1,0 +1,246 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 324.23,
+  "pair_id": "v5-p-0583",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes air quality monitoring in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "to groundwater monitoring reports... &#34; Actually, elsewhere in this report, it is shown that in only 2-1/2 years after plutonium processing began, by mid 1947, at least uranium sho",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cascadian.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Hanford Nuclear Report",
+        "url": "https://cascadian.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "propagation, remote monitoring and interactions with bodies such as the ABU-HFC, ITU, and the HFCC. Everything was set to go, and we had worked out a timetable for transfer of the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.worldofradio.com",
+          "/dxld3134.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.worldofradio.com/dxld3134.txt",
+        "url": "http://www.worldofradio.com/dxld3134.txt"
+      },
+      {
+        "category": "general",
+        "content": "start-ups; monitoring of employee Internet access, E-mail, and social media presence; a security detail of menacing-looking people in black suits and earpieces (which eventually r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/archives/Monthly/2018/2018-07.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason: July 2018 Archives",
+        "url": "https://www.fourmilab.ch/fourmilog/archives/Monthly/2018/2018-07.html"
+      },
+      {
+        "category": "general",
+        "content": "and alarm logs Remote monitoring from KEYNET TM MODEL OPTIONS Cipher X 850 PS X.25: X.25 protocol sensitive, data rates up to 64 Kbps, 254 simultaneous virtual circuits, KEYNET co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.tscm.com",
+          "/stu.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "STU-III Secure Telephone Units, Crypto Key Generators, Encryption Equipment and Scramblers",
+        "url": "http://www.tscm.com/stu.html"
+      },
+      {
+        "category": "general",
+        "content": "Wildlife Research and Monitoring Section, Peter Carter Zone Manager, Northwest Parks Zone, Kevin Leveque *If you contact only two people, contact these two people. Minister Des Ro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lakesuperiorcaribou.ca",
+          "/archive/website%2018022203.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lake Superior Caribou News and Information",
+        "url": "http://lakesuperiorcaribou.ca/archive/website%2018022203.html"
+      },
+      {
+        "category": "general",
+        "content": "the desired bit, and monitoring the state of the sense wire, saving the read-out state in a flip-flop. The problem with this method that the act of sensing the state of a core req",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/wangloci.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Wang LOCI-2",
+        "url": "https://www.oldcalculatormuseum.com/wangloci.html"
+      },
+      {
+        "category": "general",
+        "content": "managing ecosystems and monitoring animal welfare. In all of these applications, High-Tech Jainism emphasizes the importance of careful, evidence-based approaches and the need to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.abolitionist.com",
+          "/chatgpt/hitechjain.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "High-tech Jainism as conceived by ChatGPT-4",
+        "url": "https://www.abolitionist.com/chatgpt/hitechjain.html"
+      },
+      {
+        "category": "general",
+        "content": "Road salt Satellite monitoring Invasive species Other How can we reduce plant populations? Should we eliminate predators? Hunting Humane insecticides What is it like to die as a 2",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Applied Welfare Biology and Why Wild-Animal Advocates Should Focus on Not Spreading Nature",
+        "url": "https://reducing-suffering.org/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f86d7b384e69b8550298bd56bbc33fdfe100248f3669c9291ae5faa2152bf1fd",
+  "provider": "SearXNG",
+  "query": "what causes air quality monitoring in data management",
+  "query_id": "v5-p-0583-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:03.966085Z"
+}

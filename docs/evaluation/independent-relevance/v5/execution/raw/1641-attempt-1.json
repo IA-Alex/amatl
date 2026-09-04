@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 256.919,
+  "pair_id": "v5-p-0063",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes compiler operation in agricultural science",
+    "results": [
+      {
+        "category": "general",
+        "content": "of wealth through the agricultural conquest of the Continent, the expansion of commerce and industry, the services and accumulations of finance. This economic revival collaborated",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.andrsib.com",
+          "/durant/advr.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Will Durant: The Age Of Faith. CHAPTER XXXVI. The Adventure of Reason",
+        "url": "http://www.andrsib.com/durant/advr.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f935564011c57fa1a3fab7be00dc89b5b0593779b2e6b420d9949abb66a94727",
+  "provider": "SearXNG",
+  "query": "what causes compiler operation in agricultural science",
+  "query_id": "v5-p-0063-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:13:57.034123Z"
+}

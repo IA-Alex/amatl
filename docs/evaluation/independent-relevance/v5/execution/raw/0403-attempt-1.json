@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 290.427,
+  "pair_id": "v5-p-0331",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes soil erosion in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "says regarding &#34;Forest management and wood harvest&#34; that &#34;juvenilization can increase forest NPP, in particular NPP allocated to stemwood growth&#34;. And even though some of this NPP",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Applied Welfare Biology and Why Wild-Animal Advocates Should Focus on Not Spreading Nature",
+        "url": "https://reducing-suffering.org/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/"
+      },
+      {
+        "category": "general",
+        "content": "this new form of pest management. Several biotech companies are working in the new field of tissue culture research, with the goal of moving more agricultural production indoors i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.nytimes.com",
+          "/www.nytimes.com/books/first/r/rifkin-biotech.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biotech Century",
+        "url": "https://archive.nytimes.com/www.nytimes.com/books/first/r/rifkin-biotech.html"
+      },
+      {
+        "category": "general",
+        "content": "any labor in its use or management, and exclusive of any risk, except such as may be involved in the security.&#34; This is pretty close to what we want – something that expresse",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "gameofrent.com",
+          "/content/progress-and-poverty-review",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Book Review: Progress &amp; Poverty | Game of Rent",
+        "url": "http://gameofrent.com/content/progress-and-poverty-review"
+      },
+      {
+        "category": "general",
+        "content": "as well as less management ability over people and resources.&#34; Rather than one bold line dividing the subcontinent into two parts, the future will likely see a lot of thinner line",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      },
+      {
+        "category": "general",
+        "content": "Invasive Species Management Association Tue, 01 Sep 2026 12:07:12 &#43;0000 en-US hourly 1 https://naisma.org/wp-content/uploads/2024/04/cropped-Favicon-32x32.png NAISMA https://naism",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9e3888816b32cce52f23158ad16d3d87ee81a0c02a67acc92688b22edc2fc3d6",
+  "provider": "SearXNG",
+  "query": "what causes soil erosion in data management",
+  "query_id": "v5-p-0331-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:15.971125Z"
+}

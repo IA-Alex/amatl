@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 301.909,
+  "pair_id": "v5-p-0392",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind solar eclipses in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "da3eadd15ec559438d6c2139ba84e4220e404f3e8aeea1d1227a8b000204291a",
+  "provider": "SearXNG",
+  "query": "describe the principle behind solar eclipses in hydrology",
+  "query_id": "v5-p-0392-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:36.457334Z"
+}

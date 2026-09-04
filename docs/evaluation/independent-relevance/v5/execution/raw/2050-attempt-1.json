@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 327.887,
+  "pair_id": "v5-p-0788",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind coastal flooding in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d27d0fa5e72c696f465b548ad9007f8314ceae5fbc5c919c71656aa8212b6c81",
+  "provider": "SearXNG",
+  "query": "describe the principle behind coastal flooding in hydrology",
+  "query_id": "v5-p-0788-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:10.808038Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 360.426,
+  "pair_id": "v5-p-0718",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of language acquisition in marine biology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "149cd7a492714918042ea339880e0d22165843f39982dc412dc1f69267b1d0a9",
+  "provider": "SearXNG",
+  "query": "tell me about the function of language acquisition in marine biology",
+  "query_id": "v5-p-0718-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:34.940618Z"
+}

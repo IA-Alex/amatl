@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 254.592,
+  "pair_id": "v5-p-0975",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes wastewater treatment in civil engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f50b8bebf06d56bbc784c7c974e0b08f047e2fb448e601bfd2ff50275a37a1bb",
+  "provider": "SearXNG",
+  "query": "what causes wastewater treatment in civil engineering",
+  "query_id": "v5-p-0975-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:33.523256Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 346.225,
+  "pair_id": "v5-p-0250",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of plate tectonics in marine biology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "95c08791547915049ad0b8dc68d09132b1173439eb1641c14dcede550d5f95c1",
+  "provider": "SearXNG",
+  "query": "tell me about the function of plate tectonics in marine biology",
+  "query_id": "v5-p-0250-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:01.779226Z"
+}

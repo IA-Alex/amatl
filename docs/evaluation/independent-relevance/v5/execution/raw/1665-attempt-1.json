@@ -1,0 +1,246 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 290.446,
+  "pair_id": "v5-p-0196",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does heat transfer in mechanical engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "they are all reverse engineering at this moment and will have units ready sometime in the next 5 years. We&#39;ll have to wait and see on that one. At least for now, they are trying t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.plbg.com",
+          "/education-tankless-water-heaters.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Tankless Water Heaters 101 - Tankless101 at Plbg.com",
+        "url": "https://www.plbg.com/education-tankless-water-heaters.html"
+      },
+      {
+        "category": "general",
+        "content": "a communicationsu2011engineering approach combining coherent integration, superheterodyne frequency shifting, and iterative phaseu2011demodulation to isolate weak, structured osci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "made the Development Engineering Manager for Central Processor, Channels, and Operator&#39;s Console for the Sage II computer. I believe that this was the largest transistor computer",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ed-thelen.org",
+          "/comp-hist/vs-ibm-sage.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "IBM SAGE",
+        "url": "https://ed-thelen.org/comp-hist/vs-ibm-sage.html"
+      },
+      {
+        "category": "general",
+        "content": "a high degree of good engineering practice and efficient performance. Since yeast generators supply a limited and varied quantity of CO 2 gas, it is imperative that the designs us",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.qsl.net",
+          "/w2wdx/aquaria/diyco2.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIY CO2 System for Planted Aquarium",
+        "url": "https://www.qsl.net/w2wdx/aquaria/diyco2.html"
+      },
+      {
+        "category": "general",
+        "content": "Anchorage based engineering firms Duane Miller &amp; Associates and USKH prepared the civil and pad design work and conducted the on-site testing and evaluation. Arctic Foundation",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "Teton Engineering   Thermal Energy Direct   Trak   Trough   up970331   up980301   Visible Human   Water   Wattsun   W",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.redrok.com",
+          "/main.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Red Rock Energy Heliostats",
+        "url": "http://www.redrok.com/main.htm"
+      },
+      {
+        "category": "general",
+        "content": "malware on two engineering workstations critical to the operation of the control environment. Investigators did not find malware on 11 other workstations examined. ICS-CERT recomm",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.grc.com",
+          "/sn/sn-387.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Security Now! Transcript of Episode #387",
+        "url": "https://www.grc.com/sn/sn-387.htm"
+      },
+      {
+        "category": "general",
+        "content": "from the mechanical engineering faculty of the Technical University of Delft in Holland. Gerard&#39;s father Frederic Philips is a banker, he runs a tobacco trading company, a coffee",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dos4ever.com",
+          "/E1T/E1T.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The making of the E1T",
+        "url": "https://www.dos4ever.com/E1T/E1T.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bf012b86fa3685b686ef6228894df966f31df05ec352adfada37820754d2f9a2",
+  "provider": "SearXNG",
+  "query": "how does heat transfer in mechanical engineering operate",
+  "query_id": "v5-p-0196-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:04.098059Z"
+}

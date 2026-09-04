@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 278.296,
+  "pair_id": "v5-p-0389",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is solar eclipses in communication studies",
+    "results": [
+      {
+        "category": "general",
+        "content": "texts in three types of communication : ¨ True or credible descriptions of historical events, people&#39;s actions, their life and moral experiences. These aspects are largely similar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "astronuclphysics.info",
+          "/Veda-vira.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Science and Religion: Consistency or Contradiction?",
+        "url": "https://astronuclphysics.info/Veda-vira.htm"
+      },
+      {
+        "category": "general",
+        "content": "iconographic exchange, communication between Minoan high culture and Egypt (XIIIth Dynasty) ; ca.1530 : Hyksos ruins in Minoan style (Avaris) are used by Pharaoh Ahmose I ; ca. 67",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/maat/hermes2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ANCIENT EGYPT : The rise of Alexandro-Egyptian Hellenism and Hermetism",
+        "url": "http://www.sofiatopia.org/maat/hermes2.htm"
+      },
+      {
+        "category": "general",
+        "content": "batteries advances in communication communication by neutrino personal communication frequency global communications (ala the Internet) modern communications brain communication d",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "a candidate at one communication, without a regular dispensation from the Grand Lodge for the same. Furthermore, do I promise and swear that I will not be at the initiating, passi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.solomonspalding.com",
+          "/docs/howe1878.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Eber D. Howe&#39;s 1878 booklet",
+        "url": "http://www.solomonspalding.com/docs/howe1878.htm"
+      },
+      {
+        "category": "general",
+        "content": "Sites   Telecommunication &amp; Communication   Telephone Companies &amp; Directories Worldwide : History MEDICAL ↑ up Λ MEDICAL &amp; HEALTH : Genetics - Gen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.academic-genealogy.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Family Genealogy and History Internet Education Directory™ - Wiki",
+        "url": "http://www.academic-genealogy.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fdadaf63ff9f59ba5fc5524d44c377a4116155a2fe0f1e0c21b555b08049bd05",
+  "provider": "SearXNG",
+  "query": "what is solar eclipses in communication studies",
+  "query_id": "v5-p-0389-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:38.101661Z"
+}

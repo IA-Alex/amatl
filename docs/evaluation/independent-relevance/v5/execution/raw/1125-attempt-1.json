@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 248.106,
+  "pair_id": "v5-p-0057",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is compiler operation in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5af906ac069db7aec11e1d05f95214ab73b12e192fe2368fd3444bdbdb8ff3bf",
+  "provider": "SearXNG",
+  "query": "what is compiler operation in pharmacology",
+  "query_id": "v5-p-0057-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:11.194716Z"
+}

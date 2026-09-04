@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 308.206,
+  "pair_id": "v5-p-0340",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind soil erosion in mechanical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "abe66573888440348d9c10ca61a6c8b347bcc30cbd4ea8e41e194312e18955f8",
+  "provider": "SearXNG",
+  "query": "describe the principle behind soil erosion in mechanical engineering",
+  "query_id": "v5-p-0340-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:36.744826Z"
+}

@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 277.703,
+  "pair_id": "v5-p-0336",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does soil erosion in geology operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "stripped away through erosion. Finally all the material on top of the Morrison sandbar weathered away. Some 140 million years after burial the fossil bones were exposed by the age",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/49288/49288-h/49288-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dinosaur Quarry, Dinosaur National Monument, Colorado, Utah, by John M. Good, Theodore E. White and Gilbert F. Stucker",
+        "url": "https://www.gutenberg.org/files/49288/49288-h/49288-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "Formation Process: Erosion breaks down hard rock, and deposition concentrates heavy minerals (like gold) in sedimentary basins due to density differences. Characteristics: Alluvia",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.startyourowngoldmine.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Start Your Own Gold Mine in 45 days with less than US $100,000",
+        "url": "https://www.startyourowngoldmine.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "684bb2366a412cda60cfb5c9034d6214e31190a08e70da13dd4c1fbb1358e3e3",
+  "provider": "SearXNG",
+  "query": "how does soil erosion in geology operate",
+  "query_id": "v5-p-0336-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:16:40.136198Z"
+}

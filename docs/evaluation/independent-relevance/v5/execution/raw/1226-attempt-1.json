@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 340.78,
+  "pair_id": "v5-p-1017",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind probability distributions in environmental science",
+    "results": [
+      {
+        "category": "general",
+        "content": "resolution maps of the distributions of HCN, and ionized H 2 CO and NH 3 in both the Perseus and Serpens molecular clouds (Storm et al. 2014). HCN is ubiquitous in the universe an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "relies on the skewed distributions of many real-world variables such as city population size—an aspect of environment structure that traditional statistical estimation techniques",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "home.dbio.uevora.pt",
+          "/~eje/simple%20heuristics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "‹Truth is ever to be found in simplicity, and not in the multiplicityand confusion of things. As the world, which to the naked eye exhibits th",
+        "url": "http://home.dbio.uevora.pt/~eje/simple%20heuristics.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "dd955134b914d3c7fb9b6badb2d947fea8b89441216cc9acd363c00dae4fa8e4",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind probability distributions in environmental science",
+  "query_id": "v5-p-1017-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:11:48.580332Z"
+}

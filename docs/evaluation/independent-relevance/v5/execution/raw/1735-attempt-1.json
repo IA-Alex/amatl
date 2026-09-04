@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 326.496,
+  "pair_id": "v5-p-0550",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does food preservation in environmental science work",
+    "results": [
+      {
+        "category": "general",
+        "content": "charity dedicated to environmental awareness, habitat preservation, non-invasive wildlife studies, and third world health and education initiatives. If you feel inspired to donate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "darthsanddroids.net",
+          "/faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Darths &amp; Droids - FAQ",
+        "url": "https://darthsanddroids.net/faq.html"
+      },
+      {
+        "category": "general",
+        "content": "Let&#39;s call it crony environmentalism.&#34; Lew Rockwell   &#34;Al Gore stands to benefit to the tune of billions of dollars if the carbon tax proposals he is pushing come t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "globalkleptocracy.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GLOBAL KLEPTOCRACY - GLOBAL ELITE, RULING ELITE, GLOBAL OLIGARCHY, DEEP STATE, GLOBALISM, DYNASTIC ELITE, MONOPOLY CAPITALISM, CORPORATOCRACY,",
+        "url": "https://globalkleptocracy.net/"
+      },
+      {
+        "category": "general",
+        "content": "are well-developed environmental and wilderness movements, we have written very little about environmental degradation or the destruction of wild nature, even though we consider t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unabomber.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society and Its Future",
+        "url": "https://unabomber.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "leader in developing environmentally clean alternative energy sources, mainly solar energy, having the most advanced solar technology in the world. Besides high efficiency and cle",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.imninalu.net",
+          "/Israel-Arabs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Israel and the Arab World",
+        "url": "https://www.imninalu.net/Israel-Arabs.htm"
+      },
+      {
+        "category": "general",
+        "content": "are well-developed environmental and wilderness movements, we have written very little about environmental degradation or the destruction of wild nature, even though we consider t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/industrial-society-and-its-future-manifesto",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society And Its Future",
+        "url": "https://zerocontradictions.net/misc/industrial-society-and-its-future-manifesto"
+      },
+      {
+        "category": "general",
+        "content": "involve the traditional environmental detours. They are too technical, diverse and futile to tackle here. If the quality of our lives is to be significantly enhanced in the long t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/gooddrug.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Good Drug Guide: The Responsible Parent&#39;s Guide To Healthy Mood-Boosters For All The Family",
+        "url": "https://www.hedweb.com/gooddrug.htm"
+      },
+      {
+        "category": "general",
+        "content": "from Frederick Seitz Environmental Effects of Increased Atmospheric Carbon Dioxide  Signers of the Petition Information Signers A Signers B Signers C Signers D Signers E Sign",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oism.org",
+          "/pproject/s33p36.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Environmental Effects of Increased Atmospheric Carbon Dioxide - Global Warming Petition Project",
+        "url": "https://www.oism.org/pproject/s33p36.htm"
+      },
+      {
+        "category": "general",
+        "content": "a tribal member and Environmental Specialist, is one of three tribal natural resource staff, and the only one actively working on ocean and coastal projects. Despite the limited c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cowlitzcountry.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cowlitz Country News Home Page",
+        "url": "http://www.cowlitzcountry.com/"
+      },
+      {
+        "category": "general",
+        "content": "of negative karma. Environmental and resource considerations : Jains believe in living a life of moderation and simplicity to minimize harm to the environment. A vegetarian or veg",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.abolitionist.com",
+          "/chatgpt/hitechjain.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "High-tech Jainism as conceived by ChatGPT-4",
+        "url": "https://www.abolitionist.com/chatgpt/hitechjain.html"
+      },
+      {
+        "category": "general",
+        "content": "and resilient to environmental change. Flourishing economies can better protect current species, create new species, and possibly revive some currently extinct species. The rate o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "formspal.com",
+          "/libertarianstudies/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Libertarian Papers | Online Journal for Libertarian Scholarship | Legal PDF Forms",
+        "url": "http://formspal.com/libertarianstudies/"
+      },
+      {
+        "category": "general",
+        "content": "sensitive to environmental fluctuations. Subjective consciousness thus  spans the metazoa .   Scientific Evidence   King claims a multitude of scientific research s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "dhushara.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dhushara",
+        "url": "http://dhushara.com/"
+      },
+      {
+        "category": "general",
+        "content": "all Aside from the bad environmental news you may have heard about the items listed here and here , you may also have heard good things (from the government and from TV &#34;news&#34; pro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "akdart.com",
+          "/enviro9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Supposedly good ideas that may not be good at all",
+        "url": "http://akdart.com/enviro9.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d4af78745a1c17c91183b13dc125974311115970b313d9c85bf3864eca605714",
+  "provider": "SearXNG",
+  "query": "how does food preservation in environmental science work",
+  "query_id": "v5-p-0550-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:25.869504Z"
+}

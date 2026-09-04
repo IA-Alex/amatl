@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 359.039,
+  "pair_id": "v5-p-0640",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind renewable energy storage in architecture",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "87206afa2bd49196caa6b590938768a3a3574ec3751eeeed1a9a904415d2ef2a",
+  "provider": "SearXNG",
+  "query": "describe the principle behind renewable energy storage in architecture",
+  "query_id": "v5-p-0640-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:45.553815Z"
+}

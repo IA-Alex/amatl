@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 328.309,
+  "pair_id": "v5-p-0345",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind soil erosion in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ee138379b75a7d2cc108953df514a3acadbdab67216dc6ee8c9387ab8edbbb74",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind soil erosion in pharmacology",
+  "query_id": "v5-p-0345-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:05.202023Z"
+}

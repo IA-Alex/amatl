@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 239.06,
+  "pair_id": "v5-p-0279",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of binary search in agricultural science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "30b8d9cd27d4fad60ca1c0189b7e26730d2c11e9720fed9c85110557a9b487a0",
+  "provider": "SearXNG",
+  "query": "give an overview of binary search in agricultural science",
+  "query_id": "v5-p-0279-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:45.043145Z"
+}

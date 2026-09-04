@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 317.97,
+  "pair_id": "v5-p-0048",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind compiler operation in geology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f89087d869bf662bcd7c4c6f4cee078d4ec66a0a73dfa95575cdd181e58e8b7d",
+  "provider": "SearXNG",
+  "query": "describe the principle behind compiler operation in geology",
+  "query_id": "v5-p-0048-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:01.593483Z"
+}

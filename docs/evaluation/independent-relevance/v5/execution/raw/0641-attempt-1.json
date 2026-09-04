@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 340.131,
+  "pair_id": "v5-p-0372",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does solar eclipses in geology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "266b09843bd90f320a0e0001420fd7064d522298fc5200f76d4422196590ca57",
+  "provider": "SearXNG",
+  "query": "how does solar eclipses in geology operate",
+  "query_id": "v5-p-0372-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:39.092083Z"
+}

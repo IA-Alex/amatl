@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 333.658,
+  "pair_id": "v5-p-0376",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind solar eclipses in mechanical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "again, was an empirical engineering problem. Uranium hexafluoride, for use in gas separation, is corrosive and the problems were considerable. Even then, the theory of gases was w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "big-lies.org",
+          "/modern-physics-a-fraud/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "• Modern Physics a Fraud? - Superfluid helium? Speed of light a limit?, incredibility of quantum theory, Heisenberg&#39;s misunderstanding o",
+        "url": "http://big-lies.org/modern-physics-a-fraud/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c60c06332263c494664dc5569aaf14a578aed33539f0553f1f4307a53d844954",
+  "provider": "SearXNG",
+  "query": "describe the principle behind solar eclipses in mechanical engineering",
+  "query_id": "v5-p-0376-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:05:14.975444Z"
+}

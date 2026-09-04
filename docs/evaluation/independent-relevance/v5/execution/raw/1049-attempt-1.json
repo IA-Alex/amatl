@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 298.843,
+  "pair_id": "v5-p-0861",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is data compression in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "systems, because compression is comprehension. In software, this leads to DSLs and disruptive primitive sets (e.g. APL, Plan9, Elixir, Smalltalk) which unlock individual productiv",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alexalejandre.com",
+          "/about/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "About",
+        "url": "https://alexalejandre.com/about/"
+      },
+      {
+        "category": "general",
+        "content": "leaves are preserved as compression fossils, commonly retaining intact cellular tissue with considerable ultrastructural preservation, including cell walls, leaf phytoliths, and i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "Images with JPEG Compression Artifacts Vincent de Rouisers et al. — Redmond Series — July 2001 Format: Scanned PDF Language: English Category: Nonfiction - Digital For",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "suricrasia.online",
+          "/library/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Suricrasia Online&#39;s Online Library",
+        "url": "https://suricrasia.online/library/"
+      },
+      {
+        "category": "general",
+        "content": "techniques go beyond compression and can be employed to monitor, filter, convert, and repurpose information. Such automated techniques can serve to create personalized information",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www2005.org",
+          "/panels/index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WWW2005 Panel Program and Abstract",
+        "url": "http://www2005.org/panels/index.html"
+      },
+      {
+        "category": "general",
+        "content": "protection efforts. Compression: Audio and video works when converted to full-resolution digital form comprise vast amounts of data. Prior to digital compression technology, such",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cryptome.org",
+          "/wipo-imp99-3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Implementation Issues of the WIPO Copyright Treaty and the WIPO Permformances and Phonograms Treaty: Technical Protection Measures: the Inter",
+        "url": "https://cryptome.org/wipo-imp99-3.htm"
+      },
+      {
+        "category": "general",
+        "content": "else (efficient-compression-tool, brotli, xmllint, sd) is strictly optional. I build all these programs as statically-linked binaries and wrap them in a tarball, and fetch that ta",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "seirdy.one",
+          "/bookmarks/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "My bookmarks - Seirdy",
+        "url": "https://seirdy.one/bookmarks/"
+      },
+      {
+        "category": "general",
+        "content": "were made by an image-compression algorithm developed by Technion-Israel researchers. The Israeli Space Agency is carrying on an innovative project, a space vehicle which would be",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.imninalu.net",
+          "/Israel-Arabs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Israel and the Arab World",
+        "url": "https://www.imninalu.net/Israel-Arabs.htm"
+      },
+      {
+        "category": "general",
+        "content": "is 24 GB with mediocre compression. YouTube, Spotify, Facebook, Ex-Twitter, Instagram use machine learning-based recommendation systems designed to maximize engagement metrics (wa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "Unique coding and compression techniques eliminate the smearing that&#39;s common to many low bandwidth video-conferencing units. The inputs and outputs on the unit also allow connect",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.tscm.com",
+          "/stu.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "STU-III Secure Telephone Units, Crypto Key Generators, Encryption Equipment and Scramblers",
+        "url": "http://www.tscm.com/stu.html"
+      },
+      {
+        "category": "general",
+        "content": "support rudimentary compression options. 4.2.2 Repository    Figure 2. Repository Data Structure The repository contains the full HTML of every web page. Each page is co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "infolab.stanford.edu",
+          "/~backrub/google.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Anatomy of a Search Engine",
+        "url": "http://infolab.stanford.edu/~backrub/google.html"
+      },
+      {
+        "category": "general",
+        "content": "digital images, compression, noise reduction, and binary digital images. Full-Frame CCD Operation - Having the simplest architecture and being the easiest devices to build and ope",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "micro.magnet.fsu.edu",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecular Expressions: Images from the Microscope",
+        "url": "https://micro.magnet.fsu.edu/"
+      },
+      {
+        "category": "general",
+        "content": "stubbed security and compression service pairs. Others have developed what appear to be candidate IA services usually for dedicated purposes and minus a compositional service infr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.objs.com",
+          "/workshops/ws9801/papers/paper103.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Intermediary Architecture",
+        "url": "http://www.objs.com/workshops/ws9801/papers/paper103.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "896cd6b2e4005a3dd2285b9c390995385f6e659643dcd25d25395a860fb8cf75",
+  "provider": "SearXNG",
+  "query": "what is data compression in industrial design",
+  "query_id": "v5-p-0861-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:47.301818Z"
+}

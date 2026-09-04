@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 332.742,
+  "pair_id": "v5-p-0141",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind database indexing in industrial design",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "af98487b5cce9a0a9eb6635aec54a2b4a63edcc25798dc9e21181b1cb5190f21",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind database indexing in industrial design",
+  "query_id": "v5-p-0141-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:10:20.462472Z"
+}

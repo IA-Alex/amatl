@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 240.462,
+  "pair_id": "v5-p-0319",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of water purification in forensic science",
+    "results": [
+      {
+        "category": "general",
+        "content": "and during the purification of ET. Under anhydrous conditions, the reaction of acetone and ET would give the correponding enamine which could then undergo a Mannich condensation t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.designer-drug.com",
+          "/synth/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Designer Drugs",
+        "url": "https://www.designer-drug.com/synth/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bb1ab7ac72dfe024e71fa10b835a412ee42f0bfddb0aac1d0d29910798aa6620",
+  "provider": "SearXNG",
+  "query": "give an overview of water purification in forensic science",
+  "query_id": "v5-p-0319-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:10:30.048679Z"
+}

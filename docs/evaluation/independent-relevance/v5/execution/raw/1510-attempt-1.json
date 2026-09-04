@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 364.552,
+  "pair_id": "v5-p-0121",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind database indexing in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "When electronic databases were new, long lists of terms were extracted in order to serve as descriptors in thesauri. Such empirical material is in itself confusing (as the classic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/facet_analysis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Facet analysis (IEKO)",
+        "url": "https://www.isko.org/cyclo/facet_analysis.htm"
+      },
+      {
+        "category": "general",
+        "content": "LLM Wiki with Critical Database Limitations Memex is a sophisticated LLM Wiki implementation that stands out for its thoughtful mitigations of common pitfalls, such as git-backed",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "— and adding database semantics and discourse analysis). Another important suggestion for an addition to the 11 points is knowledge about provenance, as suggested by Guimar&amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/domain_analysis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Domain analysis (IEKO)",
+        "url": "https://www.isko.org/cyclo/domain_analysis.htm"
+      },
+      {
+        "category": "general",
+        "content": "Assistant professor Database Theory and Engineering Lab Information Technology Building, Room 124 ( floor map ) Department of Computing and Software McMaster University 1280 Main",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jhellings.nl",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jelle Hellings",
+        "url": "https://jhellings.nl/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "aa443f85fb449a968260fe6eb7973cf5f45bbef40aa10c5d9062cce57ea7aada",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind database indexing in health science",
+  "query_id": "v5-p-0121-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:16.928082Z"
+}

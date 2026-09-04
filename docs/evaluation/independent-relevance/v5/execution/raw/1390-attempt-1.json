@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 243.927,
+  "pair_id": "v5-p-0303",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of water purification in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "series of isolation and purification steps, such as filtration, washing, and recrystallization, to obtain the final amineptine product. Please note that the synthesis of amineptin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.amineptine.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Amineptine as conceived by ChatGPT",
+        "url": "https://www.amineptine.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "for water softening and purification, or relating to schemes for altering water in some way in order to make it more readily available or beneficial to the body. Over the years I",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.chem1.com",
+          "/CQ/faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AquaScams FAQ&#39;s",
+        "url": "http://www.chem1.com/CQ/faq.html"
+      },
+      {
+        "category": "general",
+        "content": "Repository for Affinity Purification, or the CRAPome for short. Tometomo Hamaguchi, a chemistry student at York University, emailed me to say that a standard technique in NMR spec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/sillymolecules/sillymols4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecules with Silly or Unusual Names - page 4",
+        "url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm"
+      },
+      {
+        "category": "general",
+        "content": "and during the purification of ET. Under anhydrous conditions, the reaction of acetone and ET would give the correponding enamine which could then undergo a Mannich condensation t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.designer-drug.com",
+          "/synth/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Designer Drugs",
+        "url": "https://www.designer-drug.com/synth/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1ed282eb40f6479842a483bb01d744bed910a776356602e7cf7d3ea881336643",
+  "provider": "SearXNG",
+  "query": "give an overview of water purification in materials science",
+  "query_id": "v5-p-0303-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:39.617335Z"
+}

@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 231.896,
+  "pair_id": "v5-p-0095",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of ocean tides in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "class is a general overview of sail repairs and simple covers. We have a discussion and slide show in the morning and in the afternoon we do hands on work with people using our se",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/GettingStarted.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Getting Started",
+        "url": "https://www.billdietrich.me/GettingStarted.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1e37b4af18914e3eb6cfc0612ed3422486bb6d8470878aa4ea168e9761fd7a1a",
+  "provider": "SearXNG",
+  "query": "give an overview of ocean tides in public health",
+  "query_id": "v5-p-0095-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:08:54.140817Z"
+}

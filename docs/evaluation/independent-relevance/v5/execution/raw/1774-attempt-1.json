@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 269.205,
+  "pair_id": "v5-p-0539",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of neural networks in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "instead. We will reduce operations of computational nodes and connections to their essentials, stripping them bare of all wetware-specific or hardware-specific features that are n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.idsia.ch",
+          "/~juergen/rnnbook.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BOOK ON RECURRENT NEURAL NETWORKS - SEQUENCE LEARNING -PROGRAM LEARNING - FEEDBACK NETWORKS - FEEDBACK NEURAL NETWORK - RECURRENT NETS - CAMBR",
+        "url": "https://people.idsia.ch/~juergen/rnnbook.html"
+      },
+      {
+        "category": "general",
+        "content": "the provided atomic operations were implementable on PowerPC, and at what cost. This allows those questions to be precisely answered, and finally allows a compiler writer to confi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "and to protect their operations from law enforcement and rival gangs. Money Laundering: The proceeds from amphetamine sales are often substantial, and criminal organizations need",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.amphetamines.org",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Amphetamines as conceived by ChatGPT",
+        "url": "https://www.amphetamines.org/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "companies say they run operations on open source (2015), Linux Laptops On The International Space Station (2015), Linux and IBM , Who&#39;s writing Linux today? Capitalists (2015), No",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "and perform operations based on predefined algorithms. While they can compute and store vast amounts of information and perform incredibly complex calculations, they don&#39;t experie",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.binding-problem.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Phenomenal binding, the binding problem and the combination problem as conceived by ChatGPT",
+        "url": "https://www.binding-problem.com/chatgpt/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2adb7c4668bca7e43690d59fb633bba8a5f58cbda30249be7b44e122de16c197",
+  "provider": "SearXNG",
+  "query": "give an overview of neural networks in operations research",
+  "query_id": "v5-p-0539-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:45.037094Z"
+}

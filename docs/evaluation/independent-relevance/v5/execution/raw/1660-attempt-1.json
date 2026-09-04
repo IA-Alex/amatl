@@ -1,0 +1,219 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 285.994,
+  "pair_id": "v5-p-0255",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of binary search in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "understood laws of chemistry and physics) and the kinds of damage caused by current methods of freezing. It then considers whether methods of repairing the kinds of damage caused",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "problems, like Chemistry or Game Theory, but this would go beyond the scope of the already very comprehensive project. After formulations of mathematical models in the above menti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.math.uni-bielefeld.de",
+          "/ahlswede/zif/opening.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "General Theory of Information Transfer",
+        "url": "https://www.math.uni-bielefeld.de/ahlswede/zif/opening.html"
+      },
+      {
+        "category": "general",
+        "content": "Fecund Universe Quantum Chemistry as Non-Linear Complexity The Non-recurrent Table and the Elementary Bifurcation Tree Structural Dynamics of Core Polymerization Pathways Cosmolog",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "sciences - physics, chemistry, biology. Mathematics. Philosophy. Reductionism, analytical and synthetic method of cognition. Methodical division of physics - experimental physics,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Fyzika-NuklMed.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nuclear physics and ionizing radiation physics",
+        "url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm"
+      },
+      {
+        "category": "general",
+        "content": "Programming Safe Chemistry on Laboratories-on-a-chip Authors: Jason Ott (UC Riverside), Tyson Loveless (UC Riverside), Chris Curtis (UC Riverside), Mohsen Lesani (UC Riverside), P",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "that profit from 3D (chemistry, cooperative castle design, teaching sculpture on-line....). ... got to hunt down pointers ! .. again, help me please. BioMOO&#39;s &#34;add-on&#34;: Quote from",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "tecfa.unige.ch",
+          "/edu-comp/WWW-VL/eduVR-page.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The WWW VL: Educational Technology - Educational VR (MUD) sub-page (05-Jan-2000)",
+        "url": "https://tecfa.unige.ch/edu-comp/WWW-VL/eduVR-page.html"
+      },
+      {
+        "category": "general",
+        "content": "domains such as chemistry,electronics, or general business. Hence, XML is really a metalanguage (a language for describing languages). Because authors and providers can design the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.objs.com",
+          "/OSA/wom.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Towards a Web Object Model",
+        "url": "http://www.objs.com/OSA/wom.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "79175f35340f71732f4a9a73a439389ccd23944804903a66ade4a57950ba2f26",
+  "provider": "SearXNG",
+  "query": "give an overview of binary search in chemistry",
+  "query_id": "v5-p-0255-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:02.662182Z"
+}

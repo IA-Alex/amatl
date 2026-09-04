@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 227.459,
+  "pair_id": "v5-p-0031",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of photosynthesis in forensic science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "46f857bd3786c40173a294b7b9c6ba15d6c9daf8e4a4aa8ab195030ed040ff87",
+  "provider": "SearXNG",
+  "query": "give an overview of photosynthesis in forensic science",
+  "query_id": "v5-p-0031-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:09.988672Z"
+}

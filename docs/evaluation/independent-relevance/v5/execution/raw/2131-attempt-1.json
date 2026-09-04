@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 250.956,
+  "pair_id": "v5-p-1039",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes probability distributions in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9e205618663d234a13efed08dcf9b4b5f11ed10ce02f293c402f09d458297905",
+  "provider": "SearXNG",
+  "query": "what causes probability distributions in hydrology",
+  "query_id": "v5-p-1039-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:37.178051Z"
+}

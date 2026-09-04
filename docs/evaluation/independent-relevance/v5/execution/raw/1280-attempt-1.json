@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 368.91,
+  "pair_id": "v5-p-0133",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind database indexing in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "that while context engineering is valuable, it should be supported by proper databases with foreign keys and version control rather than fragile markdown repositories, urging deve",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "the field of software engineering, provided a definition of &#34;domain analysis&#34; (DA). He is probably the first to connect the term with library and information science (&#34;DA/LIS&#34;), s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/domain_analysis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Domain analysis (IEKO)",
+        "url": "https://www.isko.org/cyclo/domain_analysis.htm"
+      },
+      {
+        "category": "general",
+        "content": "Database Theory and Engineering Lab Information Technology Building, Room 124 ( floor map ) Department of Computing and Software McMaster University 1280 Main Street West, Hamilto",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jhellings.nl",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jelle Hellings",
+        "url": "https://jhellings.nl/"
+      },
+      {
+        "category": "general",
+        "content": "Concrete outcome: more engineering time, less time chasing budget. Run infrastructure: from “like” to relay Tor’s heart is its relays (routing nodes) and bridges (stealth entry po",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "realdeepweb.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Real Deep Web | Hidden Wiki Access &amp; Deep Web Tools",
+        "url": "http://realdeepweb.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "937bae52602d4c78d2ce7dd3df478dd18481307c62096daddb54b8b755ada766",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind database indexing in software engineering",
+  "query_id": "v5-p-0133-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:05.844713Z"
+}

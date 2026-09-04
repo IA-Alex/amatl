@@ -1,0 +1,327 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 423.373,
+  "pair_id": "v5-p-0406",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of carbon capture in environmental science",
+    "results": [
+      {
+        "category": "general",
+        "content": "hunger), responsible environmental practices, peace. Blasting men into space is way down the list. We need to stop the Chinese from getting a monopoly on space . Hmmm, just like t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "Of Snorting It Like The Environmental Protection Agency Demands. The Government Is Usually Against Deceitful And Dangerous Media Coverage Claiming The &#34;Thing To Do&#34; Is W",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "Under Ontario’s Environmental Bill of Rights , and through the province’s Environmental Commissioner , citizens may request reviews of how issues related to the enviro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lakesuperiorcaribou.ca",
+          "/archive/website%2018022203.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lake Superior Caribou News and Information",
+        "url": "http://lakesuperiorcaribou.ca/archive/website%2018022203.html"
+      },
+      {
+        "category": "general",
+        "content": "Helmholz Centre for Environmental Research, Halle, Germany Modern Soil Microbiology; 2nd edition 2007 - Chapter 6 - Protozoa and Other Protista in Soil Marianne Clarholm, Michael",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.microbeorganics.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Microbe Organics",
+        "url": "http://www.microbeorganics.com/"
+      },
+      {
+        "category": "general",
+        "content": "the corruption in the environmental movement, was attacked by the leading environmentalists to viciously and so uniformly that the film was removed from major platforms and kind o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica2/sociopol_greatreset16.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Great Reset for Dummies - Where do we Go from Here?",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica2/sociopol_greatreset16.htm"
+      },
+      {
+        "category": "general",
+        "content": "extremization of environmental forcing. Kachman, Owen &amp; England (2017) likewise observed the emergence of an adaptive resonance in a system matched to a drive frequency, and s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "only under narrow environmental conditions … What you have made us is glorious, yet deeply flawed … We have decided that it is time to amend the human constitution. (More 1999) He",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "jetpress.org",
+          "/v24/steinhoff.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Transhumanism and Marxism: Philosophical Connections",
+        "url": "http://jetpress.org/v24/steinhoff.htm"
+      },
+      {
+        "category": "general",
+        "content": "workers&#39; rights, environmental protection, public health, privacy, and all other rights protected by the EU. 20 December 2019 ( Troll leads revolution ) Trump Is Leading a Revolut",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-sep-dec.html"
+      },
+      {
+        "category": "general",
+        "content": "was awful from both an environmental and a geopolitical perspective: environmental, as I would emit somewhere around 2.5 tons of CO2 equivalent per year to heat my home, which com",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wingolog.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "wingolog",
+        "url": "http://wingolog.org/"
+      },
+      {
+        "category": "general",
+        "content": "more sustainable and environmentally friendly. Over their lifetimes, chemical batteries store only two to ten times the energy needed to manufacture them . 4 Small-scale CAES syst",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2018/05/ditch-the-batteries-off-grid-compressed-air-energy-storage",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ditch the Batteries: Off-Grid Compressed Air Energy Storage | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2018/05/ditch-the-batteries-off-grid-compressed-air-energy-storage"
+      },
+      {
+        "category": "general",
+        "content": "Of Snorting It Like The Environmental Protection Agency Demands. The Government Is Usually Against Deceitful And Dangerous Media Coverage Claiming The &#34;Thing To Do&#34; Is W",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/GreenMagi.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/GreenMagi.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "47ada3801b483699ca7504bd3cd356679f95e5067a7f5164e3da7b72f4b7ce0a",
+  "provider": "SearXNG",
+  "query": "tell me about the function of carbon capture in environmental science",
+  "query_id": "v5-p-0406-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:49.971825Z"
+}

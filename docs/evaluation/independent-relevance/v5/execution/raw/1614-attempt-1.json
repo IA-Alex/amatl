@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 315.725,
+  "pair_id": "v5-p-0068",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind compiler operation in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "892a1d829f1e7a16839a3692d7b7bb562570832301f7f367cb0f71694bebd283",
+  "provider": "SearXNG",
+  "query": "describe the principle behind compiler operation in hydrology",
+  "query_id": "v5-p-0068-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:48.966821Z"
+}

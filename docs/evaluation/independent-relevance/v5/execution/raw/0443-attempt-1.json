@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 361.239,
+  "pair_id": "v5-p-0194",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does heat transfer in information systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "of fit, but the information criteria moderately favour the 2D model over PI (∆AIC ≃ 93) and provide only a modest preference over Burkert (∆AIC ≃ 13); the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "eye eyes young younger information help helped run running, ran away question questions basis, base based bank, demand banks, demands book books power powers development developme",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "the separate article on Information-Theoretic Death for a more recent treatment of this fundamental concept. This article was published in two parts in Cryonics magazine, Vol. 15",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "Russian Spanish The Information The Creation The Physics The Biology The Philosophy The Philosophers The Scientists The Problems The Solutions The Experiments Arrow of Time Consci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Information Philosopher - dedicated to the new information philosophy",
+        "url": "https://www.informationphilosopher.com/"
+      },
+      {
+        "category": "general",
+        "content": "- the basic source of information about space &#34;, passage &#34; Faraday rotation of the polarization planes&#34; ). ¨ Gravitational waves - &#34;standard siren&#34; This i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Gravitace4-1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The role of gravity in the formation and evolution of stars",
+        "url": "https://www.astronuclphysics.info/Gravitace4-1.htm"
+      },
+      {
+        "category": "general",
+        "content": "have changed the way information can be presented over the Internet. If a picture is worth a thousand words, a video is worth millions. Just a few video clips provide excellent ex",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/killerbees3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Off-the-Shelf Killer Bees: making do with what you got?",
+        "url": "http://www.combatreform.org/killerbees3.htm"
+      },
+      {
+        "category": "general",
+        "content": "Here, I present some information about the low-level operation of the Universal Asynchronous Receiver/Transmitters (UARTs) on the ESP32-S3 . I want to investigate how to use them",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.iwriteiam.nl",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "I write, therefore I am",
+        "url": "http://www.iwriteiam.nl/"
+      },
+      {
+        "category": "general",
+        "content": "jaws. And why not? The information-dense ecosystem of our internet could be a kind of primordial soup. The heat and light from our activities there could be a catalyst for virtual",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-gig-economy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Gig Economy — Chadnet",
+        "url": "https://wiki.chadnet.org/the-gig-economy"
+      },
+      {
+        "category": "general",
+        "content": "Club Bylaws History and information Club activities All activities ARRL Field Day Annual Steak Fry Field trips Homebrew night Winter Field Day Spring Potluck Dinner Fall Potluck D",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "user.xmission.com",
+          "/~uarc/rptrstat.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "UARC: Status of UARC Repeaters",
+        "url": "http://user.xmission.com/~uarc/rptrstat.html"
+      },
+      {
+        "category": "general",
+        "content": "this Archive Editorial Information • About the SEP • Special Characters © Metaphysics Research Lab , CSLI , Stanford University This is a file in the archives of th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.stanford.edu",
+          "/archIves/win2013/entries/information-semantic/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Semantic Conceptions of Information (Stanford Encyclopedia of Philosophy/Winter 2013 Edition)",
+        "url": "https://plato.stanford.edu/archIves/win2013/entries/information-semantic/"
+      },
+      {
+        "category": "general",
+        "content": "s Most Popular  GPS Information Resource &#34; Looking for GPS at a Discount ?       reviews FAQs geography tutorial instructions info PDA other   Links: gener",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "gpsinformation.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GPS Receiver Information, Software, and Hardware Reviews of Garmin, Lowrance, Magellan and other GPS Receivers",
+        "url": "http://gpsinformation.net/"
+      },
+      {
+        "category": "general",
+        "content": "Issues, Solutions, Information and Technical Support for 3dfx Cards Table of Contents Introduction Frequently Asked Questions Common Voodoo3/4/5 Misconceptions 3Dfx cards and Open",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "helppage.3dfx.sk",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The 3dfx Help Page: General Issues, Solutions and Information About 3dfx Cards",
+        "url": "http://helppage.3dfx.sk/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "657db24737d7fa83770c5fd4009fa48e12dcbb8b5b2d2144a3317e68f6a19995",
+  "provider": "SearXNG",
+  "query": "how does heat transfer in information systems work",
+  "query_id": "v5-p-0194-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:29.073562Z"
+}

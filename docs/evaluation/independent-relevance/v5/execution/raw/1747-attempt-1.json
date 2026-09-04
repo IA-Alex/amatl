@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 226.425,
+  "pair_id": "v5-p-0885",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is vaccination in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "94e456b260e97e275184fd457cbb03210ca6e9eced8e6f736d4d7fd7ae1b0ee8",
+  "provider": "SearXNG",
+  "query": "what is vaccination in pharmacology",
+  "query_id": "v5-p-0885-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:14:29.773116Z"
+}

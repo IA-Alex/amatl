@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 337.314,
+  "pair_id": "v5-p-0017",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind photosynthesis in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "/air, light, and photosynthesis can we duplicate photosynthesis? photosynthesis /chlorophyll and photosynthesis herbicides dogs have become one of humans&#39; best animal friends Essa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "read there the entry on photosynthesis,   we will find all manner of observations and categories of the processes by which the Sun acts on our World to create the food we eat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/electricityandthespiritinnature.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Electricity and the Spirit in Nature",
+        "url": "http://ipwebdev.com/hermit/electricityandthespiritinnature.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "89b6deef3d6ae3406bfbe57aab11e01e7c3585f08df98069459513c936ad6aed",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind photosynthesis in music technology",
+  "query_id": "v5-p-0017-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:14:08.962847Z"
+}

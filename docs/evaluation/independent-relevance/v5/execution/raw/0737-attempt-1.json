@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 267.96,
+  "pair_id": "v5-p-0961",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is cloud formation in urban planning",
+    "results": [
+      {
+        "category": "general",
+        "content": "balanced News and Information ALTERNATIVE NEWS NEWS http://www.alternet.org NEWS http://www.centrexnews.com NEWS http://www.link.no/IPS/eng/last.html NEWSLINKS http://www.truthinm",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "of opposing shield wall formations, and many of these battles supposedly went on for hours, far longer than many medieval battles.  Chroniclers tell us that the battle at Stamford",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.albion-swords.com",
+          "/articles/norman.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Normans: Their history, arms and tactics",
+        "url": "http://www.albion-swords.com/articles/norman.htm"
+      },
+      {
+        "category": "general",
+        "content": "(Spartan). Use the information in the attached resume [ attach your resume to the prompt ]. Ensure that the summary sparks curiosity and aligns with professional standards suitabl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "freegptprompts.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Free GPT Prompts | A Curated Directory of 300&#43; AI Prompts For Free",
+        "url": "https://freegptprompts.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f2fa063f219c95411bdeae31452ca3d4a5d486193db53d6107b9b32415344f45",
+  "provider": "SearXNG",
+  "query": "what is cloud formation in urban planning",
+  "query_id": "v5-p-0961-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:10.127156Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 247.29,
+  "pair_id": "v5-p-0220",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does plate tectonics in civil engineering operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5a573977cbf6202c5163b31aa01fb608b175771f03e5941fb72f4989bfb2c3f7",
+  "provider": "SearXNG",
+  "query": "how does plate tectonics in civil engineering operate",
+  "query_id": "v5-p-0220-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:10:43.945564Z"
+}

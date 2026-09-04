@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 353.138,
+  "pair_id": "v5-p-0613",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind renewable energy storage in astronomy",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "efb157ca393833c928d3ccbe4376d1acbfca6e183281bd234a364d63846484ad",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind renewable energy storage in astronomy",
+  "query_id": "v5-p-0613-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:17.514659Z"
+}

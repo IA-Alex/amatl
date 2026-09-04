@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 329.387,
+  "pair_id": "v5-p-0830",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does data compression in biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "Rationale for a Large Text Compression Benchmark Matt Mahoney Last update: July 23, 2009. The Large Text Compression Benchmark and the Hutter Prize are designed to encourage resea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mattmahoney.net",
+          "/dc/rationale.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rationale for a Large Text Compression Benchmark",
+        "url": "http://www.mattmahoney.net/dc/rationale.html"
+      },
+      {
+        "category": "general",
+        "content": "leaves are preserved as compression fossils, commonly retaining intact cellular tissue with considerable ultrastructural preservation, including cell walls, leaf phytoliths, and i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "t “maims by compression, like a Chinese lady’s foot, every part of human nature which stands out prominently, and tends to make a person markedly different in outline”[34] from the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "theanarchistlibrary.org",
+          "/library/paul-feyerabend-against-method.muse",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse",
+        "url": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse"
+      },
+      {
+        "category": "general",
+        "content": "concretely (71) Data compression. English language is &#34;inefficient&#34; in the sense that most letter strings like JQTOMXDW KKYSC have no meaning. But one can &#34;code&#34; (in this context",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stat.berkeley.edu",
+          "/~aldous/Real_World/100_list.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Annotated list of contexts where we perceive chance",
+        "url": "https://www.stat.berkeley.edu/~aldous/Real_World/100_list.html"
+      },
+      {
+        "category": "general",
+        "content": "as PDF with JBIG2 compression. You will need Acrobat Reader 5.0 or above (or its equivalent) to view these files. A small number of books provided below are in DjVu format. To rea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "library.sciencemadness.org",
+          "/library/index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scientific and technical books of yesteryear",
+        "url": "http://library.sciencemadness.org/library/index.html"
+      },
+      {
+        "category": "general",
+        "content": "Trillion Backed By The Compression Of The Stex Quality Of The Mythril. 1-2 Sig Fig Purchases. Gil: GP Promises From Hand Shaken Arrangement Without Any Physical Transfer At The Ti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "use a variety of file compression utilities such as gzip , bzip2 , and xz , automatically back up to removable media such as USB drives when inserted, and mirror backups on remote",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason",
+        "url": "https://www.fourmilab.ch/fourmilog/"
+      },
+      {
+        "category": "general",
+        "content": "this phenomenon STEM Compression of Information and Computation in the most adaptive complex systems. This was my original website exploring the STEM Compression hypothesis. Accel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.accelerationwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acceleration Watch (Understanding Accelerating Change)",
+        "url": "https://www.accelerationwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "as PDF with JBIG2 compression. You will need Acrobat Reader 5.0 or above (or its equivalent) to view these files. A small number of books provided below are in DjVu format. To rea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "sciencemadness.org",
+          "/library/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scientific and technical books of yesteryear",
+        "url": "http://sciencemadness.org/library/"
+      },
+      {
+        "category": "general",
+        "content": "Proto July Selecting A Compression Algorithm For rr Upstream Stable Kernels Work With rr Again Let&#39;s Never Create An Ad-Hoc Text Format Again Confession Of A C/C&#43;&#43; Programmer Usen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "robert.ocallahan.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Eyes Above The Waves",
+        "url": "https://robert.ocallahan.org/"
+      },
+      {
+        "category": "general",
+        "content": "it causes a certain compression along the lattice. The Nanotubular tendons are connected to a network of nanocoil launchers embedded in an even looser lattice of similarly lipid a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.self-replicatingnanobot.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod &#43; Self-Replicating Nanobot Design",
+        "url": "http://www.self-replicatingnanobot.com/"
+      },
+      {
+        "category": "general",
+        "content": "emitters, explosive compression of huge solenoids and explosive breaking of energised superconducting toroids. One common factor here is that these weapons are single use only, af",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cyb-sec.neocities.org",
+          "/pages/alt-cyberpunk-faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "alt.cyberpunk FAQ – /cyb/&#43;/sec/ wiki",
+        "url": "https://cyb-sec.neocities.org/pages/alt-cyberpunk-faq/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "26063ea5387f9d9216dcce405105bcd5565217700437d1a58708d742b54d6dcc",
+  "provider": "SearXNG",
+  "query": "how does data compression in biology work",
+  "query_id": "v5-p-0830-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:19.847430Z"
+}

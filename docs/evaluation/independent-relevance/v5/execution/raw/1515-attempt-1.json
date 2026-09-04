@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 313.755,
+  "pair_id": "v5-p-0745",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is root systems in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "to Joint Force Genetic Engineering Getting High off of Anything but psycadelics like Syrian Rue-MAOI(MUST SEE Food Restrictions ! Don&#39;t take SSRI AntiDepressants that day! Take ot",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "state of software engineering, the sense that it is not going well, that people are disillusioned and frustrated. In part 1 I talked a bit about the macro economic trend, namely t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "laughingmeme.org",
+          "/2023/01/23/software-and-its-discontents-part-2-complexity.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Software and its Discontents, Part 2: An Explosion of Complexity | Kellan Elliott-McCrea: Blog",
+        "url": "https://laughingmeme.org/2023/01/23/software-and-its-discontents-part-2-complexity.html"
+      },
+      {
+        "category": "general",
+        "content": "mysterious than other engineering fields. Where other fields could be expected to obey the laws of physics, the ground seemed to be constantly shifting under software’s feet. Hard",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "logicmag.io",
+          "/clouds/agile-and-the-long-crisis-of-software/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Agile and the Long Crisis of Software",
+        "url": "https://logicmag.io/clouds/agile-and-the-long-crisis-of-software/"
+      },
+      {
+        "category": "general",
+        "content": "Engineering Samuel Taylor https://www.samueltaylor.org/ Python, science Paul Khuong https://pvk.ca/ Lisp Wenyao https://www.shawenyao.com/ Data visualization, algorithm optimizati",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "collection.mataroa.blog",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mataroa Collection",
+        "url": "https://collection.mataroa.blog/"
+      },
+      {
+        "category": "general",
+        "content": "and professionals in engineering or mathematical sciences. AMP allows the user to edit and simplify numerous expressions or equations in a mathematical derivation quickly and accu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mizj.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "S.U.P.E.R. - The Largest 200LX Software Archive",
+        "url": "http://mizj.com/"
+      },
+      {
+        "category": "general",
+        "content": "3 Security 3 Software Engineering 9 Spain 1 Spanish 1 Standards 4 Stocks 2 Swedish 2 Taxonomy 1 Usa 2 Web 1 Weltanschauung 5 Wip 4 Zig 2 Русская Поэзия 6 About Jan 2024 - I’",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alexalejandre.com",
+          "/about/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "About",
+        "url": "https://alexalejandre.com/about/"
+      },
+      {
+        "category": "general",
+        "content": "computer systems and engineering the biggest peaceful economic boom in history, is more than just a thirst for knowledge about computers. It&#39;s the obsessive belief that knowledge",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.idallen.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ian! D. Allen - Personal Home Page",
+        "url": "http://www.idallen.com/"
+      },
+      {
+        "category": "general",
+        "content": "for Internet Engineering Task Force Standard Protocols . XML/HTML security resources relevant to X3D scenes: Open Web Application Security Project (OWASP) resources include a list",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.web3d.org",
+          "/x3d/content/examples/X3dResources.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "X3D Resources",
+        "url": "https://www.web3d.org/x3d/content/examples/X3dResources.html"
+      },
+      {
+        "category": "general",
+        "content": "Designing a design tool Engineering inference from history Engineering inference from the environment Information and the world of tomorrow Magic Ink Information Software and the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "worrydream.com",
+          "/MagicInk/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Magic Ink: Information Software and the Graphical Interface",
+        "url": "https://worrydream.com/MagicInk/"
+      },
+      {
+        "category": "general",
+        "content": "interfaces, and genetic engineering. While acknowledging the transformative potential, he underscores the existential risks if we fail to harmonize superintelligent agents&#39; object",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.transhumanist.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Transhumanism as conceived by ChatGPT-4",
+        "url": "https://www.transhumanist.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "Committeee on Data Engineering , they describe the automation of methods to extract information from the web via &#34;Dual Iterative Pattern Relation Extraction,&#34; the develo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/sociopol_internetgoogle47.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Google, CIA and the NSA - Inside the Secret Network behind Mass Surveillance, Endless War and Skynet",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_internetgoogle47.htm"
+      },
+      {
+        "category": "general",
+        "content": "degree in Electrical Engineering and Computer Science from MIT in 1972 and his Ph.D. from the University of Zagreb, Croatia in 2010. He died suddenly of natural causes on December",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "us.metamath.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Home Page - Metamath",
+        "url": "https://us.metamath.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "542a5298c5079840ef8b5bae6442fd62ae5a500824d25464f478f1c4f5dec656",
+  "provider": "SearXNG",
+  "query": "what is root systems in software engineering",
+  "query_id": "v5-p-0745-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:18.623411Z"
+}

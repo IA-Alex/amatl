@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 351.873,
+  "pair_id": "v5-p-0208",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind heat transfer in architecture",
+    "results": [
+      {
+        "category": "general",
+        "content": "input smooth column architecture approximately monetary possession poll abuse slight silly nurse discovery childhood suit satisfaction appoint appointed climate isolate isolated i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "input smooth column architecture approximately monetary possession poll abuse slight silly nurse discovery childhood suit satisfaction appoint [appointed] climate isolate [isolate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq-bnc.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.conlang.info/wordfreq-bnc.txt",
+        "url": "http://www.conlang.info/wordfreq-bnc.txt"
+      },
+      {
+        "category": "general",
+        "content": "antique order of its architecture, the extreme height of its buildings, the numerous shade trees with which it is beautified, and the great number of canals through almost every p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.centerplace.org",
+          "/history/ts/v2n24.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Times and Seasons Volume 2, Number 24",
+        "url": "http://www.centerplace.org/history/ts/v2n24.htm"
+      },
+      {
+        "category": "general",
+        "content": "us. Reversible Computer Architectures One problem is the need to develop novel &#34;reversible&#34; computer architectures. Such architectures have been discussed elsewhere[6, 7, 8, 11, 1",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zyvex.com",
+          "/nanotech/mechano.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Two Types Of Mechanical Reversible Logic",
+        "url": "https://www.zyvex.com/nanotech/mechano.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "91a6a317d9140b7c169a46b5ad1d67fe69bb82cab042fdf96304bb8000c20db9",
+  "provider": "SearXNG",
+  "query": "describe the principle behind heat transfer in architecture",
+  "query_id": "v5-p-0208-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:06.037371Z"
+}

@@ -1,0 +1,219 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 285.339,
+  "pair_id": "v5-p-0461",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is supply chain logistics in communication studies",
+    "results": [
+      {
+        "category": "general",
+        "content": "CTIA [Cellular Telecommunications &amp; Internet Association].  That&#39;s about 75 times greater than in 1991 and almost 50 hours for every man, woman and child in America...A r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cs.cmu.edu",
+          "/~bam/numbers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Computer Almanac - Numbers About Computers",
+        "url": "http://www.cs.cmu.edu/~bam/numbers/"
+      },
+      {
+        "category": "general",
+        "content": "overextend his lines of communication (LOCs), expose his flanks, and dissipate his combat power. Likewise, the commander must be able to move around and behind the enemy force he",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.nuui.com",
+          "/Sections/Military/Field_Manuals/FM3-90/ch8.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "FM3-90 Chapter 8 Basics of Defensive Operations",
+        "url": "http://www.nuui.com/Sections/Military/Field_Manuals/FM3-90/ch8.htm"
+      },
+      {
+        "category": "general",
+        "content": "cut off the line of communication between Australia and the United States, reduce the threat from Alaska, Page 4 and deny the United States all major staging areas more advanced t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.anesi.com",
+          "/ussbs01.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "United States Strategic Bombing Survey: Summary Report (Pacific War)",
+        "url": "https://www.anesi.com/ussbs01.htm"
+      },
+      {
+        "category": "general",
+        "content": "Integration and Communication NGI Zero Core 2025 SCIM, timetabes and other features for AlekSIS ALIAS 2003 analysis of legal and technical implications of the use of software agen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/project/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; All projects",
+        "url": "https://nlnet.nl/project/"
+      },
+      {
+        "category": "general",
+        "content": "Radiation Cellular Telecommunication Cemetery Appraiser Cemetery Operations Centrifuge Design &amp; Application Ceramic Powder Ceramic Tiles Ceramics Cereal Manufacturing Cerebrovascu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "VFTonline.org",
+          "/VFTprayer/heaven/000list.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://VFTonline.org/VFTprayer/heaven/000list.txt",
+        "url": "http://VFTonline.org/VFTprayer/heaven/000list.txt"
+      },
+      {
+        "category": "general",
+        "content": "emissions through communication networks. 19 10 Furthermore, dockless systems require more bicycles and involve more rebalancing. A life cycle analysis of Chinese bike-sharing ser",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2023/02/can-we-make-bicycles-sustainable-again",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Can We Make Bicycles Sustainable Again? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2023/02/can-we-make-bicycles-sustainable-again"
+      },
+      {
+        "category": "general",
+        "content": "Integration and Communication NGI Zero Core 2025 SCIM, timetabes and other features for AlekSIS ALIAS 2003 analysis of legal and technical implications of the use of software agen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/project/index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; All projects",
+        "url": "https://nlnet.nl/project/index.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b4f9d1d59f77e1f7d53d4eb12050f1f838733565f9d97926054d008e5d51cf9c",
+  "provider": "SearXNG",
+  "query": "what is supply chain logistics in communication studies",
+  "query_id": "v5-p-0461-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:06.910237Z"
+}

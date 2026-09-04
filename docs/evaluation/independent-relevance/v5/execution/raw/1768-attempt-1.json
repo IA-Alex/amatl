@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 310.851,
+  "pair_id": "v5-p-0344",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind soil erosion in optics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ac1204b59780e43202f784c451c59557f6cd4367f011e7d624fb816a75934444",
+  "provider": "SearXNG",
+  "query": "describe the principle behind soil erosion in optics",
+  "query_id": "v5-p-0344-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:14:43.109994Z"
+}

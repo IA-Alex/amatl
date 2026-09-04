@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 237.819,
+  "pair_id": "v5-p-0307",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of water purification in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "78302114699fef4d05f75981bbed15375b03c808a6f3d470b3a5770291e3ec70",
+  "provider": "SearXNG",
+  "query": "give an overview of water purification in oceanography",
+  "query_id": "v5-p-0307-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:08.518501Z"
+}

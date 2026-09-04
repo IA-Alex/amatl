@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 331.142,
+  "pair_id": "v5-p-0560",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind food preservation in optics",
+    "results": [
+      {
+        "category": "general",
+        "content": "6) &#34;The Preservation of Health.&#34; 7) &#34;On Charms.&#34; 8) &#34;On Phlebotomy.&#34; 9) &#34;On Diets.&#34;   AL-RĀZĪ (Rhazes) A",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.tertullian.org",
+          "/fathers/ibn_abi_usaibia_03.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ibn Abi Usaibia, History of Physicians (1971) pp.531-946",
+        "url": "https://www.tertullian.org/fathers/ibn_abi_usaibia_03.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9da93e86f2b0bed38625fa07c34b47ff1e57e36e49d2d942a6e3239fde5cb19c",
+  "provider": "SearXNG",
+  "query": "describe the principle behind food preservation in optics",
+  "query_id": "v5-p-0560-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:08:49.888549Z"
+}

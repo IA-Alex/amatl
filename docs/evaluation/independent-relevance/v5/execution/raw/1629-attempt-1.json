@@ -1,0 +1,327 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 319.111,
+  "pair_id": "v5-p-0575",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes food preservation in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "which &#39;acts by the preservation and accumulation of small inherited modifications, each profitable to the preserved being.&#39; With this idea he interpenetrates and leavens the vast",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "victorianweb.org",
+          "/science/science_texts/belfast.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Address Delivered Before the British Association Assembled at Belfast, With Additions (1874)",
+        "url": "https://victorianweb.org/science/science_texts/belfast.html"
+      },
+      {
+        "category": "general",
+        "content": "this act of his for the preservation of our laws, which some senseless assertors of the rights of men were then on the point of entirely erasing, as relics of feudality and barbar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gutenberg.org",
+          "/cache/epub/15700/pg15700-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of Burke&#39;s Writings and Speeches, Volume the Fourth, by Edmund Burke.",
+        "url": "https://gutenberg.org/cache/epub/15700/pg15700-images.html"
+      },
+      {
+        "category": "general",
+        "content": "of introspection in the preservation of life, as well as a means of achievement.   The pressure of occupation and the incessant stream of impressions pouring into our conscio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/tesla/esp_tesla_16a.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "My Inventions - The Autobiography of Nikola Tesla",
+        "url": "https://www.bibliotecapleyades.net/tesla/esp_tesla_16a.htm"
+      },
+      {
+        "category": "general",
+        "content": "its cultivation and preservation The date, description and uses of The orange The lemon The sweet lemon or bergamot The citron The lime The grape-fruit The pomegranate, its antiqu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book33/book33.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Science in the Kitchen., by Mrs. E. E. Kellogg",
+        "url": "https://www.ajhw.co.uk/books/book33/book33.html"
+      },
+      {
+        "category": "general",
+        "content": "to the assembly and preservation of the history of the totalisator, not to mention the huge effort put into making that history accessible through your website. And Paul Coghlan w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tote-history-atl.net.au",
+          "/george_julius_genealogy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "George Julius Genealogy",
+        "url": "http://tote-history-atl.net.au/george_julius_genealogy.htm"
+      },
+      {
+        "category": "general",
+        "content": "naked instinct of self-preservation.&#39; The Jew lacked completely, Hitler believed, the &#39;most essential requirement for a cultured people, the idealistic attitude.&#39; The Jew&#39;s &#39;absol",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/historical_eugenics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of three books on historical eugenics: &#34;War Against the Weak&#34;, &#34;The Unfit&#34;, and &#34;American Eugenics&#34;.",
+        "url": "https://www.euvolution.com/neoeugenics/historical_eugenics.htm"
+      },
+      {
+        "category": "general",
+        "content": "indeed. –  On the Preservation of Species Laws and morals should be congruent. Behavior that the community finds immoral, can be legal only in an incomplete legal system; whe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dematerialism.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C:\\users\\waybu\\douments\\aaaaaindex",
+        "url": "https://www.dematerialism.net/"
+      },
+      {
+        "category": "general",
+        "content": "made by the spirit of preservation to avert the storm that was even then hanging in the stars and ready to envelop me. Her victory was announced by an unusual tranquillity and gla",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book13.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Frankenstein, by Mary Shelley",
+        "url": "https://www.ajhw.co.uk/books/book13.html"
+      },
+      {
+        "category": "general",
+        "content": "of JFPO (Jews for the Preservation of Firearms Ownership) (1992) dictator.txt 8856 The Blueprint for U.S. Dictatorship Places Individual Rights at Risk by Mike Blair dicthere.txt",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "textfiles.com",
+          "/politics/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "T E X T F I L E S",
+        "url": "http://textfiles.com/politics/"
+      },
+      {
+        "category": "general",
+        "content": "imperial power the preservation of American military supremacy as its only major asset the universal destabilization of localized economic systems a worldwide extended boom-bust c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/nwo2007.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Psycopathic satanic SS rogue network Gehlen/Odessa/Stahlhelm/HIAG&#39;s plan for world domination - using war to create chaos and attempting to",
+        "url": "http://www.bilderberg.org/nwo2007.htm"
+      },
+      {
+        "category": "general",
+        "content": "for healing and health preservation. The World&#39;s Most Popular Diet &amp; Nutrition Message Board Reversing Heart Disease, Heart Attack, Coronary Artery Disease, Stent, HDL, and LD",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "biblelife.org",
+          "/eggs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bible Life Ministries - Eggs Do Not Cause Bad Cholesterol.",
+        "url": "https://biblelife.org/eggs.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "428ea3136aab493436772baa821eb844239205ae74ed7bd039018d48d7b5635e",
+  "provider": "SearXNG",
+  "query": "what causes food preservation in operations research",
+  "query_id": "v5-p-0575-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:53.502670Z"
+}

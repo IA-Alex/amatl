@@ -1,0 +1,192 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 312.447,
+  "pair_id": "v5-p-0900",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does vaccination in transportation engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "for inner cellular transportation. If you decide to will these CyberMods into being in your body be sure to choose what you body wants in regard to an ejecting Oxygen-Hydrogen Str",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "raw materials, transportation, factories, major retail groups, the stock and commodities markets, politicians and governments, media, intelligence agencies, drugs and organized cr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "howtheworldreallyworks.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HOW THE WORLD REALLY WORKS - ROTHSCHILD, MONEY POWER, RULING ELITE, GLOBAL OLIGARCHY, FINANCIAL ELITE, DYNASTIC ELITE, POWER ELITE, GLOBALISM,",
+        "url": "https://howtheworldreallyworks.info/"
+      },
+      {
+        "category": "general",
+        "content": "more 14. In the future, transportation networks will gradually be reduced .. read more 15. In the future, there will be a Loss of optimism for their future ... read more 16. In th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIDIK.com The original and official DIDIK site. Cutting edge and sometimes controversial thoughts, designs, proposals and projects conceiv",
+        "url": "http://www.didik.com/"
+      },
+      {
+        "category": "general",
+        "content": "for inner cellular transportation. If you decide to will these CyberMods into being in your body be sure to choose what you body wants in regard to an ejecting Oxygen-Hydrogen Str",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/FountainOfYouth.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/FountainOfYouth.html"
+      },
+      {
+        "category": "general",
+        "content": "Junk food ads ) Public transportation in London has banned ads for junk food , and it has had a macro effect. 20 February 2022 ( Urgent: Block enormous planned &#34;Willow&#34; oil field",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2021-nov-feb.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2021: November - February Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2021-nov-feb.html"
+      },
+      {
+        "category": "general",
+        "content": "3D Printers Airplane Transportation Improvements in Medical Care and Health Treatments Improvements in Building and Construction The Internet technological progress has slowed dow",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/civilization/technology",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Technology and Civilization",
+        "url": "https://zerocontradictions.net/civilization/technology"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0dd3c7cd3933ccca4cd7307c81e8c730565d1cb326efb3cc7e6ea068b4dcfb56",
+  "provider": "SearXNG",
+  "query": "how does vaccination in transportation engineering operate",
+  "query_id": "v5-p-0900-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:50.363962Z"
+}

@@ -1,0 +1,327 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 293.811,
+  "pair_id": "v5-p-0867",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes vaccination in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "injection during &#34;vaccination.&#34; This is yet another crucial reason not to have our children vaccinated . Here is the picture proof of just how small they are. It was tak",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/esp_sociopol_mindcon23.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Total Population Control",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/esp_sociopol_mindcon23.htm"
+      },
+      {
+        "category": "general",
+        "content": "in Los Angeles when a vaccination ordinance was submitted to a popular referendum is typical of what would happen anywhere under the same circumstances. The ordinance was 54 rejec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/73150/73150-h/73150-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notes on Democracy | Project Gutenberg",
+        "url": "https://www.gutenberg.org/files/73150/73150-h/73150-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "5. Get vaccinations for rabies annually and carry tags and certificates with you. States vary in their laws. If you&#39;re in a state that requires annual vaccination, or cross into o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cherryh.com",
+          "/www/panel_room.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C.J. Cherryh - The Panel Room",
+        "url": "https://www.cherryh.com/www/panel_room.htm"
+      },
+      {
+        "category": "general",
+        "content": "and potentially endless vaccinations, if they believe that such measures will protect them. Nationwide lockdowns had never been used before to deal with pandemics, and a long seri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/psycho.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mass psychosis and the power of thought",
+        "url": "https://davidpratt.info/psycho.htm"
+      },
+      {
+        "category": "general",
+        "content": "through universal vaccination, not universal infection, the case for soft lockdowns as a mitigation technique may be as strong as ever. It might help a bit, sure. I was a Covid ha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "textmirror.net",
+          "/mirror-graymirror-substack-com-p-2020-the-year-of-everything-fake-2025-06-01",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "graymirror-substack-com-p-2020-the-year-of-everything-fake-2025-06-01 - TextMirror",
+        "url": "http://textmirror.net/mirror-graymirror-substack-com-p-2020-the-year-of-everything-fake-2025-06-01"
+      },
+      {
+        "category": "general",
+        "content": "epidemic caused by vaccinations Prostate cancer pH balance PMMH for cancer--(pulse moderated microwave hyperthermia) Polio causes Polio vaccine Protein digesting enzymes for cance",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "truthquest2.com",
+          "/germtheory.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE FALSE GERM THEORY OF DISEASE",
+        "url": "http://truthquest2.com/germtheory.htm"
+      },
+      {
+        "category": "general",
+        "content": "of the Blood by Harvey. Vaccination by Jenner. Use of Anæsthetics the Great Step of Medical Progress of the Century. Materia Medica. Instruments. Schools of Medicine. Dentis",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book389/book389.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Progress of Invention in the Nineteenth Century, by Edward W. Byrn.",
+        "url": "https://www.ajhw.co.uk/books/book389/book389.html"
+      },
+      {
+        "category": "general",
+        "content": "Votes in Favor of A Flu Vaccination Assault on Americans&#39; Health    -  The Co-Evolution of Bees and Flowers - An Electric Symbiosis Not to Be Interrupted with Pesti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_industryweapons.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industry &#34;Weapons&#34; for Earth&#39;s Depopulation - &#34;Armas&#34; de La Industria Para Despoblación de La Tierra",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_industryweapons.htm"
+      },
+      {
+        "category": "general",
+        "content": "measures you can take, vaccination programs, drugs and stuff like that. Most importantly, here you will learn about the history of flu epidemics so you can put today&#39;s news into p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.synapses.co.uk",
+          "/science/flutwo.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Avian flu, (chicken flu), swine flu, viruses and influenza.",
+        "url": "http://www.synapses.co.uk/science/flutwo.html"
+      },
+      {
+        "category": "general",
+        "content": "Anti-Vaxxers, Anti-Vaccination Conspiracists, Trolls [reference] Herd Immunity [reference] Vaccine Hesitancy [reference] Selz Foundation [resource] Informed Consent Action_Network",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "buriedtruth.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BuriedTruth.com",
+        "url": "http://buriedtruth.com/"
+      },
+      {
+        "category": "general",
+        "content": "of the National Anti-Vaccination League of London, has also been very kind, responding to every request for information with more than could be used, some of it being especially c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/a/b/pearson.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dream &amp; Lie of Louis Pasteur by R. B. Pearson",
+        "url": "http://www.whale.to/a/b/pearson.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c3d9219bb9af4fcfef270f4cd44a2968751c26d090ab54a7cbdf0fefb176c7dc",
+  "provider": "SearXNG",
+  "query": "what causes vaccination in chemistry",
+  "query_id": "v5-p-0867-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:08.160285Z"
+}

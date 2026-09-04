@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 260.388,
+  "pair_id": "v5-p-1083",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes satellite orbits in civil engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "eeb1d8db6dbd239e50be721eb6866eda21910e1ce164e176ce4b73c76c7ba899",
+  "provider": "SearXNG",
+  "query": "what causes satellite orbits in civil engineering",
+  "query_id": "v5-p-1083-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:14:56.582052Z"
+}

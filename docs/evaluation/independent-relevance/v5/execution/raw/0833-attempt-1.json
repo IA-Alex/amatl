@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 266.98,
+  "pair_id": "v5-p-0296",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does water purification in ecology operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "facility known as Water Purification Unit 731: The unit, commanded by Lieutenant General Shiro Ishii, experimented with anthrax, dysentery, cholera, and plague on U.S., British, a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.isegoria.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Isegoria",
+        "url": "http://www.isegoria.net/"
+      },
+      {
+        "category": "general",
+        "content": "organization. A water purification system valued at $20,000 produced by the Netafim manufacturer, donated by Shari Arison Glazer and the Shira Hadasha Congregation , in Jerusalem.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.imninalu.net",
+          "/Israel-Arabs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Israel and the Arab World",
+        "url": "https://www.imninalu.net/Israel-Arabs.htm"
+      },
+      {
+        "category": "general",
+        "content": "Repository for Affinity Purification, or the CRAPome for short. Tometomo Hamaguchi, a chemistry student at York University, emailed me to say that a standard technique in NMR spec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/sillymolecules/sillymols4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecules with Silly or Unusual Names - page 4",
+        "url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "64cca649dd034c1247d75758e8c0967e10d906f53b4468bdd26070641b2983d3",
+  "provider": "SearXNG",
+  "query": "how does water purification in ecology operate",
+  "query_id": "v5-p-0296-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:39.744422Z"
+}

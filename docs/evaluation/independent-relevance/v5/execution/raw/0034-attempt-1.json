@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 355.013,
+  "pair_id": "v5-p-0065",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind compiler operation in communication studies",
+    "results": [
+      {
+        "category": "general",
+        "content": "with Insecure Communication TIMESETS--A New Method for Temporal Reasoning About Programs Byzantine Generals and Transaction Commit Protocols The Byzantine Generals Problem Proving",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lamport.azurewebsites.net",
+          "/pubs/pubs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Writings of Leslie Lamport",
+        "url": "https://lamport.azurewebsites.net/pubs/pubs.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d14111b1266b1f49c1401fd6611c2de191f670f2f16c6e3f42d7c2c6cffa39c3",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind compiler operation in communication studies",
+  "query_id": "v5-p-0065-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:05:19.236178Z"
+}

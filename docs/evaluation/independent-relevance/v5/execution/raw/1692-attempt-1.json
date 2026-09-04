@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 253.471,
+  "pair_id": "v5-p-0207",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of heat transfer in agricultural science",
+    "results": [
+      {
+        "category": "general",
+        "content": "in the Journal of Agricultural and Food Chemistry , (1997) 45 837-843, whose lead author is Ron G. Buttery ! On the subject of authors, Rob Towart emailed me to say that he&#39;d disc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/sillymolecules/sillymols4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecules with Silly or Unusual Names - page 4",
+        "url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm"
+      },
+      {
+        "category": "general",
+        "content": "remove all agricultural subsidies and tariffs. See my Consumption and Energy page. Politics: have high taxes on paid political speech. See Campaign Finance section of this page. E",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/USPolicy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "US Policy Choices",
+        "url": "https://www.billdietrich.me/USPolicy.html"
+      },
+      {
+        "category": "general",
+        "content": "to the desolate agricultural area of Dinteloord must have been a shock. It is therefore no surprise that in slightly more than a year, in September 1926 he returns to Den Haag for",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dos4ever.com",
+          "/E1T/E1T.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The making of the E1T",
+        "url": "https://www.dos4ever.com/E1T/E1T.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "34f66273a5568984695277ba491abd077c0739eb318d84c8babaf9e8fda962e0",
+  "provider": "SearXNG",
+  "query": "give an overview of heat transfer in agricultural science",
+  "query_id": "v5-p-0207-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:11.929888Z"
+}

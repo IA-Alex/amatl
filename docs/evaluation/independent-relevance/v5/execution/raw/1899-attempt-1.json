@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 279.801,
+  "pair_id": "v5-p-0947",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes cloud formation in geology",
+    "results": [
+      {
+        "category": "general",
+        "content": "of the discursive formation. Thus, for systematic Natural History and methodical Natural History, which were in constant opposition for a good part of the eighteenth century, one",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "web.maths.unsw.edu.au",
+          "/%7Ejim/wrongthoughts.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stove, What Is Wrong With Our Thoughts",
+        "url": "https://web.maths.unsw.edu.au/%7Ejim/wrongthoughts.html"
+      },
+      {
+        "category": "general",
+        "content": "T HE geological formations are comprised within the Devonian period, and include in the nomenclature of the State geological report, in descending order, Corry and Cussewago Sands",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "solomonspalding.com",
+          "/SRP/saga2/1884Eri1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "1884 History of Erie County, PA: Part 1",
+        "url": "http://solomonspalding.com/SRP/saga2/1884Eri1.htm"
+      },
+      {
+        "category": "general",
+        "content": "and solid. In the formation or modification of principles, and the practice of conduct, much help can be derived from printed books (issued at sixpence each and upwards). I mentio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fullbooks.com",
+          "/How-to-Live-on-24-Hours-a-Day.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Live on 24 Hours a Day by Arnold Bennett - Full Text Free Book",
+        "url": "http://www.fullbooks.com/How-to-Live-on-24-Hours-a-Day.html"
+      },
+      {
+        "category": "general",
+        "content": "to every request for information with more than could be used, some of it being especially compiled at the cost of considerable effort. R. B. Pearson January 15th, 1942 1. PRIOR H",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/a/b/pearson.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dream &amp; Lie of Louis Pasteur by R. B. Pearson",
+        "url": "http://www.whale.to/a/b/pearson.html"
+      },
+      {
+        "category": "general",
+        "content": "an essay once new information became available, or simply revisit a topic that he had written about long ago. The essays within each subject area are arranged so that, to the exte",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "114704b277bc6aeb25fe1419aae294b9284ae76378eca6b731e64a425cf26497",
+  "provider": "SearXNG",
+  "query": "what causes cloud formation in geology",
+  "query_id": "v5-p-0947-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:23.917001Z"
+}

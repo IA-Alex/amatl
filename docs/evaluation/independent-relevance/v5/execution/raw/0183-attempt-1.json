@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 260.097,
+  "pair_id": "v5-p-0037",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is compiler operation in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "define their own operations, special application libraries of FORTH words can be developed. The new routines are integrally part of the language, so they do not need any special c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "jupiter-ace.co.uk",
+          "/Forth_general_byte8008_100.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Byte August 1980 What is FORTH?",
+        "url": "http://jupiter-ace.co.uk/Forth_general_byte8008_100.html"
+      },
+      {
+        "category": "general",
+        "content": "the citizen spies in Operation TIPS. Larry Ellison&#39;s new National ID Card . No Award a lightly humourous science fiction and time travel story set in something analagous to an SF",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.templetons.com",
+          "/brad/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Brad Templeton&#39;s Home Page",
+        "url": "https://www.templetons.com/brad/"
+      },
+      {
+        "category": "general",
+        "content": "the world, had left its operation to natural law; miracles, they held, were impossible; no prayer could change the behavior of the elements; and the origin of new species was due",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.andrsib.com",
+          "/durant/advr.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Will Durant: The Age Of Faith. CHAPTER XXXVI. The Adventure of Reason",
+        "url": "http://www.andrsib.com/durant/advr.htm"
+      },
+      {
+        "category": "general",
+        "content": "it requires only 1 more operation: only an additional mod is performed at the end. The disadvantage of the lazy mod mapping method is that there is a bias against the larger value",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "isthe.com",
+          "/chongo/tech/comp/fnv/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "FNV Hash",
+        "url": "http://isthe.com/chongo/tech/comp/fnv/"
+      },
+      {
+        "category": "general",
+        "content": "nearly 30 years of operation the Monash ftp server has been closed down. This edrdg.org server will continue to operate, however addional files will be rarely be added. Dictionary",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "edrdg.org",
+          "/pub/Nihongo/00INDEX.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Monash Nihongo ftp Archive",
+        "url": "http://edrdg.org/pub/Nihongo/00INDEX.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "76c8e41a3e73f51651a0af08273a73971eccc71830127ddfc380e4c8603631f6",
+  "provider": "SearXNG",
+  "query": "what is compiler operation in astronomy",
+  "query_id": "v5-p-0037-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:06.366834Z"
+}

@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 347.694,
+  "pair_id": "v5-p-0561",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind food preservation in pharmacology",
+    "results": [
+      {
+        "category": "general",
+        "content": "Government, is the Preservation of their Property . To which in the state of Nature there are many things wanting. [ ibid. , §124] Locke, of course, thinks that the ownership",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/locke.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John Locke (1632-1704)",
+        "url": "https://friesian.com/locke.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1819d0bda5ac79afa245cc3b39b4acbc67c10c0ae03bda7ce0e99ccd000ce079",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind food preservation in pharmacology",
+  "query_id": "v5-p-0561-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:13:43.078366Z"
+}

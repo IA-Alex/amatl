@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 275.566,
+  "pair_id": "v5-p-0978",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does wastewater treatment in data management work",
+    "results": [
+      {
+        "category": "general",
+        "content": "on water diversions, wastewater discharges, channel dredging, levee maintenance, construction and other economic activities in and near the Estuary, with implications for the whol",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nas.er.usgs.gov",
+          "/Publications/SFBay/sfinvade.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "San Francisco Case Study",
+        "url": "https://nas.er.usgs.gov/Publications/SFBay/sfinvade.html"
+      },
+      {
+        "category": "general",
+        "content": "&#34;zooplankton in aerated wastewater treatment lagoons&#34;. This would involve painfully killing huge numbers of zooplankton. It&#39;s much better to produce biofuel from plants before tha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Applied Welfare Biology and Why Wild-Animal Advocates Should Focus on Not Spreading Nature",
+        "url": "https://reducing-suffering.org/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "77b2332a636faac68ddbf3ac2e21cf6e159ae42e78455f137bf8c228873d6a91",
+  "provider": "SearXNG",
+  "query": "how does wastewater treatment in data management work",
+  "query_id": "v5-p-0978-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:12:51.165103Z"
+}

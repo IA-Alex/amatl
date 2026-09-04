@@ -1,0 +1,219 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 403.276,
+  "pair_id": "v5-p-0746",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of root systems in urban planning",
+    "results": [
+      {
+        "category": "general",
+        "content": "Cryptographic Hashing Function Sees Experimental Vulkan Implementation BLAKE3, the cryptographic hash function that advertises itself as being &#34;much faster&#34; than the likes of SHA1",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "techrights.org",
+          "/o/2020/04/29/tde-10th-anniversary/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Links 29/4/2020: TDE 10th Anniversary, Sailfish OS 3.3",
+        "url": "http://techrights.org/o/2020/04/29/tde-10th-anniversary/"
+      },
+      {
+        "category": "general",
+        "content": "stalks serve the same function, allowing the creature to scan and focus in all directions, including directions independent of the head or the eyes.   Hence, a Green Man",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.erbzine.com",
+          "/mag15/1509.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ERBzine 1509: White Apes and Green Men",
+        "url": "https://www.erbzine.com/mag15/1509.html"
+      },
+      {
+        "category": "general",
+        "content": "types of logic, truth functions, and theories of truth. My only contention is that he concluded the video by arguing for the pragmatic theory of truth, which we don&#39;t endorse . St",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zero Contradictions Philosophy Home Page",
+        "url": "https://zerocontradictions.net/"
+      },
+      {
+        "category": "general",
+        "content": "as a whole continues to function. Once established, a strategy of KEEPING IT WORKING preserves a municipality’s vitality as it grows. Systems and their constituent elements e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.laputan.org",
+          "/mud/mud.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Big Ball of Mud",
+        "url": "https://www.laputan.org/mud/mud.html"
+      },
+      {
+        "category": "general",
+        "content": "d20 Combat: the Core Function TTRPG Blogpost Archive Sharing, Week 73 Programming d20 Combat: What Has Come Before TTRPG Blogpost Archive Sharing, Week 72 Where Are All The Battle",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.xenograg.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dojo Darelir, the School of Xenograg the Sorcerer",
+        "url": "https://www.xenograg.com/"
+      },
+      {
+        "category": "general",
+        "content": "Basic Browser Support Function And Keep Taking Out Advances Into Dreamweavers System To Force Users To Pay For Orwellain Software On Their Computer And Don&#39;t Let Them Have Functio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteListW-GeorgiaRunOffElection2021.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Free World Alliance Site List",
+        "url": "http://www.viacadempire.com/FWAsiteListW-GeorgiaRunOffElection2021.html"
+      },
+      {
+        "category": "general",
+        "content": "equipment to disable functions in the presence of a Broadcast Flag gives copyright holders a means to impose limitations from beyond the grave, effectively for ever. Because the e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cavebear.com",
+          "/old_cbblog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Old Cavebear Blog",
+        "url": "https://www.cavebear.com/old_cbblog/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "50e8cfacf3f3924e7952cd681a8aabe1ad30e86cf40c65b68fda595ac6a197a2",
+  "provider": "SearXNG",
+  "query": "tell me about the function of root systems in urban planning",
+  "query_id": "v5-p-0746-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:11.288375Z"
+}

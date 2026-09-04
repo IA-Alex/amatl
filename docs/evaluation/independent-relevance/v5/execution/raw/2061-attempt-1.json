@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 314.069,
+  "pair_id": "v5-p-0899",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes vaccination in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "You Because The 1%, The Vaccination Effect, And Extra Funding Makes It Definitely Worth The Angels&#39; While. Don&#39;t Waste Any Money On OverPriced Shit Because Then You Won&#39;t Have Mon",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "developed Covid vaccination causes micro blood clots, but this has yet to be proven. Something however is causing a decline in rapid thinking and cognitive ability in the populati",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIDIK.com The original and official DIDIK site. Cutting edge and sometimes controversial thoughts, designs, proposals and projects conceiv",
+        "url": "http://www.didik.com/"
+      },
+      {
+        "category": "general",
+        "content": "You Because The 1%, The Vaccination Effect, And Extra Funding Makes It Definitely Worth The Angels&#39; While. Don&#39;t Waste Any Money On OverPriced Shit Because Then You Won&#39;t Have Mon",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/FountainOfYouth.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/FountainOfYouth.html"
+      },
+      {
+        "category": "general",
+        "content": "receiving the Covid-19 vaccination, as of this date. This is out of about 2 million people who have received the vaccination. Reporting to this federally funded site is optional a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.news1.net",
+          "/jan2021.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Breaking News, news commentary and news chronicle. News1.net - News and Photographic image archive. Global news with an emphasis on New Yo",
+        "url": "http://www.news1.net/jan2021.htm"
+      },
+      {
+        "category": "general",
+        "content": "Bill Gates pushes Vaccinations in Food Supply to &#39;Fight Climate Change&#39; Español  -  Bill Gates quiere Rociar Millones de Toneladas de Tiza en la Estratosfera para frenar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_globalwarmingpseudo.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Global Warming - An Official Pseudoscience...  -  Calentamiento Global - Una Pseudociencia Oficial...",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_globalwarmingpseudo.htm"
+      },
+      {
+        "category": "general",
+        "content": "2021.06.09 • US vaccinations over time, weekly gas prices, COVID-19 and fiscal accountability, Swiss glacier thicknesses, and mathematical proofs. 2021.06.02 • Lynching victims, g",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.data-is-plural.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Data Is Plural — Full Archive",
+        "url": "https://www.data-is-plural.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "subsequent routine vaccination . Lancet 1997; 349 (9052): 599-603. Goldman, Ronald F . Circumcision: The Hidden Trauma . Vanguard Publications, 1997. (ISBN 0-9644895-3-8) Hill G.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cirp.org",
+          "/library/psych/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Psychological and neurological impacts of circumcision",
+        "url": "https://www.cirp.org/library/psych/"
+      },
+      {
+        "category": "general",
+        "content": "It is also about care, vaccination, and nutrition of girls, and ultimately survival.&#34; The report is the first to examine the number of avoidable deaths among girls under five",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/girlchild.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sexual Paradox: The Girl Child",
+        "url": "http://www.dhushara.com/paradoxhtm/girlchild.htm"
+      },
+      {
+        "category": "general",
+        "content": "sustains compulsory vaccination is broad enough to cover cutting the Fallopian tubes. Three generations of imbeciles are enough.&#39;&#34; Of course, many would like to make the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/historical_eugenics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of three books on historical eugenics: &#34;War Against the Weak&#34;, &#34;The Unfit&#34;, and &#34;American Eugenics&#34;.",
+        "url": "https://www.euvolution.com/neoeugenics/historical_eugenics.htm"
+      },
+      {
+        "category": "general",
+        "content": "with the start of mass vaccination, vaccines largely took the credit. On 16 March 2020 Czechia locked down early and hard with border controls and the first national mask mandate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/fear.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Covid-19: freedom, fear and mass delusion",
+        "url": "https://davidpratt.info/fear.htm"
+      },
+      {
+        "category": "general",
+        "content": "of the National Anti-Vaccination League of London, has also been very kind, responding to every request for information with more than could be used, some of it being especially c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/a/b/pearson.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dream &amp; Lie of Louis Pasteur by R. B. Pearson",
+        "url": "http://www.whale.to/a/b/pearson.html"
+      },
+      {
+        "category": "general",
+        "content": "four months. If the vaccination works, why must people still wear masks and why the need for a &#34;Vaccination Passport&#34;? Obviously, if someone decides not to take the vacc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.news1.net",
+          "/march2021.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "News1.net Breaking News in New York City, United States and the World. March 2021",
+        "url": "http://www.news1.net/march2021.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "934ddf5781e9e9c175916876297cb737265bcbc2db5171a5ebace57005573476",
+  "provider": "SearXNG",
+  "query": "what causes vaccination in operations research",
+  "query_id": "v5-p-0899-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:14.369659Z"
+}

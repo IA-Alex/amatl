@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 340.769,
+  "pair_id": "v5-p-0587",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes air quality monitoring in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "propagation, remote monitoring and interactions with bodies such as the ABU-HFC, ITU, and the HFCC. Everything was set to go, and we had worked out a timetable for transfer of the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.worldofradio.com",
+          "/dxld3134.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.worldofradio.com/dxld3134.txt",
+        "url": "http://www.worldofradio.com/dxld3134.txt"
+      },
+      {
+        "category": "general",
+        "content": "start-ups; monitoring of employee Internet access, E-mail, and social media presence; a security detail of menacing-looking people in black suits and earpieces (which eventually r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/archives/Monthly/2018/2018-07.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason: July 2018 Archives",
+        "url": "https://www.fourmilab.ch/fourmilog/archives/Monthly/2018/2018-07.html"
+      },
+      {
+        "category": "general",
+        "content": "Home Environment Self-Monitoring Case Study Which Has Success In Virtually All Youth Maintenance To The Scientific Community. In The Study You Cannot Waste It Or You Will Lose Fwa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "Wildlife Research and Monitoring Section, Peter Carter Zone Manager, Northwest Parks Zone, Kevin Leveque *If you contact only two people, contact these two people. Minister Des Ro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lakesuperiorcaribou.ca",
+          "/archive/website%2018022203.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lake Superior Caribou News and Information",
+        "url": "http://lakesuperiorcaribou.ca/archive/website%2018022203.html"
+      },
+      {
+        "category": "general",
+        "content": "managing ecosystems and monitoring animal welfare. In all of these applications, High-Tech Jainism emphasizes the importance of careful, evidence-based approaches and the need to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.abolitionist.com",
+          "/chatgpt/hitechjain.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "High-tech Jainism as conceived by ChatGPT-4",
+        "url": "https://www.abolitionist.com/chatgpt/hitechjain.html"
+      },
+      {
+        "category": "general",
+        "content": "signal sent by a damage-monitoring process to the central controller, fails to explain why pain is hurtful and not just informational [Kolodny, 5]. Consider the withdrawal reflex",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.socrethics.com",
+          "/Folder2/Biology.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biological Evolution of Pain",
+        "url": "http://www.socrethics.com/Folder2/Biology.htm"
+      },
+      {
+        "category": "general",
+        "content": "Road salt Satellite monitoring Invasive species Other How can we reduce plant populations? Should we eliminate predators? Hunting Humane insecticides What is it like to die as a 2",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Applied Welfare Biology and Why Wild-Animal Advocates Should Focus on Not Spreading Nature",
+        "url": "https://reducing-suffering.org/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/"
+      },
+      {
+        "category": "general",
+        "content": "where control, monitoring and authorization is absolute, is the root-metaphor of Tibetan Buddhism” (Bishop, 1993, p. 118).   The first seven initiations All together the Kala",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.trimondi.de",
+          "/SDLE/Part-1-06.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Shadow of the Dalai Lama – Part I – 6",
+        "url": "http://www.trimondi.de/SDLE/Part-1-06.htm"
+      },
+      {
+        "category": "general",
+        "content": ". 27 December 2019 ( Monitoring everyone ) Attorney General Barr has ordered federal agencies to design a system to monitor everyone in the US for possible murderous intentions (s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-sep-dec.html"
+      },
+      {
+        "category": "general",
+        "content": "characterization and monitoring of the ionospheric state, but also an examination of what con-trolled local modification of the ionosphere, using ground HF transmitters, could do",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "no labeling, no monitoring, no controls. Personal production: you&#39;re allowed to grow/brew/make it at home, for personal use. As is true of beer and wine, and maybe tobacco, today.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonDrugs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about Drugs",
+        "url": "https://www.billdietrich.me/ReasonDrugs.html"
+      },
+      {
+        "category": "general",
+        "content": "can be useful in the biomonitoring of water bodies.[3] Once they have emerged, large numbers are preyed on by birds, bats and by other insects, such as Rhamphomyia longicauda.[4]",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scientificlib.com",
+          "/en/Biology/Animalia/Arthropoda/Insects/Ephemeroptera.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ephemeroptera",
+        "url": "https://www.scientificlib.com/en/Biology/Animalia/Arthropoda/Insects/Ephemeroptera.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "abf375d6e78b13374f66ca616011920084aa34e2d10c42b8c94de81574e42986",
+  "provider": "SearXNG",
+  "query": "what causes air quality monitoring in food science",
+  "query_id": "v5-p-0587-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:34.491202Z"
+}

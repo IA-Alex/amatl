@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 317.043,
+  "pair_id": "v5-p-0124",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind database indexing in mechanical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "science and electrical engineering there is application for the exclusive-or. In those contexts, often an exclusive-or connective, XOR, or ⊕, will be defined with the truth-",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/boolean.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Boolean logic (IEKO)",
+        "url": "https://www.isko.org/cyclo/boolean.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d69aae0e11f1ff5c1337743acef9fa0b43687c3f54701e5aadce224d966f7420",
+  "provider": "SearXNG",
+  "query": "describe the principle behind database indexing in mechanical engineering",
+  "query_id": "v5-p-0124-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:11:34.182702Z"
+}

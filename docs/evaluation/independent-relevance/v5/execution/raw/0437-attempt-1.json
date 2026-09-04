@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 273.752,
+  "pair_id": "v5-p-0018",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does photosynthesis in neuroscience work",
+    "results": [
+      {
+        "category": "general",
+        "content": "role in the process of photosynthesis in plants and in the sense of smell in animals. These findings suggest that some quantum effects may be relevant for biological systems, incl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biointelligence-explosion.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biointelligence Explosion as conceived by ChatGPT",
+        "url": "https://www.biointelligence-explosion.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "(such as smell and photosynthesis) can only be modeled convincingly using quantum ideas. It would be surprising if a physical brain model didn&#39;t need any quantum ideas at all. Any",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.andyross.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE ROSS BLOG",
+        "url": "https://www.andyross.net/"
+      },
+      {
+        "category": "general",
+        "content": "the earliest forms of photosynthesis. To make serotonin from tryptophan, oxygen is needed. Thus, serotonin is made specifically in unicellular systems capable of photosynthesis an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/stc/ct.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Space, Time and Consciousness",
+        "url": "http://www.dhushara.com/stc/ct.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "728a1811238d0bba8772b45908a424b390053522ee481ac785c7317cf62bd3eb",
+  "provider": "SearXNG",
+  "query": "how does photosynthesis in neuroscience work",
+  "query_id": "v5-p-0018-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:26.809415Z"
+}

@@ -1,0 +1,273 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 325.487,
+  "pair_id": "v5-p-0338",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does soil erosion in information systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "the IPCC presented the information in a way that made it difficult to understand and buried the graph in the supplementary material for chapter 10, where it would receive little a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/climcat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Climate models and climate catastrophe: a reality check",
+        "url": "https://davidpratt.info/climcat.htm"
+      },
+      {
+        "category": "general",
+        "content": "previously published information on introduced fish, wildlife and plants of the Bay-Delta region (BDOC, 1994), and Orsi (1995) published a list of introduced estuarine copepods an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nas.er.usgs.gov",
+          "/Publications/SFBay/sfinvade.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "San Francisco Case Study",
+        "url": "https://nas.er.usgs.gov/Publications/SFBay/sfinvade.html"
+      },
+      {
+        "category": "general",
+        "content": "everywhere as the information age dissolves the barriers of time and geography that once separated individual cultures. This idea is disturbing only if we focus on the present, an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/sggfr.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Song of the Grandfathers",
+        "url": "http://ipwebdev.com/hermit/sggfr.html"
+      },
+      {
+        "category": "general",
+        "content": "and ethnicity Further information: Europeans in Oceania and Africans in Hawaii Mixed Hawaiian/white family in Honolulu, 1860s Historical population Census Pop. %± 1900 154,001 — 1",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hellenicaworld.com",
+          "/USA/Geo/en/Hawaii.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hawaii",
+        "url": "https://www.hellenicaworld.com/USA/Geo/en/Hawaii.html"
+      },
+      {
+        "category": "general",
+        "content": "chairman of the Islamic Information Foundation in Halifax, insists that a jihad is `permitted only in self-defense or against tyranny and oppression -- not as a tool to promote Is",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fatheralexander.org",
+          "/booklets/english/islam_e.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Islam",
+        "url": "https://www.fatheralexander.org/booklets/english/islam_e.htm"
+      },
+      {
+        "category": "general",
+        "content": "in computer science, information theory, and genetics. Throughout the history of science, the way in which we think of nature has been influenced by the tools we use to investigat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bactra.org",
+          "/Ferris/Library_of_the_Amazon/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Library of the Amazon",
+        "url": "https://bactra.org/Ferris/Library_of_the_Amazon/"
+      },
+      {
+        "category": "general",
+        "content": "reserves. All the information provided here remains accurate and straightforward: I can help you with your first gold mining activity; there is no need to worry about guidance or",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.startyourowngoldmine.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Start Your Own Gold Mine in 45 days with less than US $100,000",
+        "url": "https://www.startyourowngoldmine.com/"
+      },
+      {
+        "category": "general",
+        "content": "questions and general information concerning the collection, operation and repair of collectable model railroad equipment. For more info on this FAQ see part 1. Additions and corr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.spikesys.com",
+          "/Modelrr/faq4.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Tinplate FAQ Part 4",
+        "url": "http://www.spikesys.com/Modelrr/faq4.html"
+      },
+      {
+        "category": "general",
+        "content": "complete statistical information is available.[78] Further, but for his residence in California, Henry George may never have written Progress and Poverty . [79] In beginning this",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cooperative-individualism.org",
+          "/hagman-donald_land-value-taxation-1978.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Donald G. Hagman / Land-Value Taxation -- 1978",
+        "url": "https://cooperative-individualism.org/hagman-donald_land-value-taxation-1978.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5414d56e379e226e06198b7074ad113afada912a78297a5866feae6acfbc3fc0",
+  "provider": "SearXNG",
+  "query": "how does soil erosion in information systems work",
+  "query_id": "v5-p-0338-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:34.500193Z"
+}

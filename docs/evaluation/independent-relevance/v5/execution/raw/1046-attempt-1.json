@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 351.584,
+  "pair_id": "v5-p-0298",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of water purification in environmental science",
+    "results": [
+      {
+        "category": "general",
+        "content": "or by cultural and environmental osmosis, take to be bad, all those qualities will be the characteristics of your Evil Daimôn. Such might seem to be the last sort of Spirit one mi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "opsopaus.com",
+          "/OM/BA/ETP/V.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Summary of Pythagorean Theology V: Theurgy",
+        "url": "http://opsopaus.com/OM/BA/ETP/V.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "572459495213c4f36211d15570f41801ae8725e176663c6c0162e8bc53978684",
+  "provider": "SearXNG",
+  "query": "tell me about the function of water purification in environmental science",
+  "query_id": "v5-p-0298-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:10:46.147121Z"
+}

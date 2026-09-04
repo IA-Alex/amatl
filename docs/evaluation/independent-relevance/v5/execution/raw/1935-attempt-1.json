@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 251.194,
+  "pair_id": "v5-p-0075",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes ocean tides in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "has grown modern chemistry; from the mystic psychology has grown the modern psychology of the schools. But it must not be supposed that the ancients were ignorant of that which th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.phoenixmasonry.org",
+          "/kybalion.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Kybalion by Three Initiates",
+        "url": "https://www.phoenixmasonry.org/kybalion.htm"
+      },
+      {
+        "category": "general",
+        "content": "astronomy physics chemistry geology biology zoology physiology microbiology robotics technology about himself religion and creationism women rationality intelligence politics spee",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0bedee19da48eb9d06a1289668da5cbc42f2b0801e8f10d788b1a3a40afbd333",
+  "provider": "SearXNG",
+  "query": "what causes ocean tides in chemistry",
+  "query_id": "v5-p-0075-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:15:35.301532Z"
+}

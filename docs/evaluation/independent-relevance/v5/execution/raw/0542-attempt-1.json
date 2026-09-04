@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 231.396,
+  "pair_id": "v5-p-0939",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of cloud formation in civil engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "for Research and Engineering, William Perry did just that and Credible Sport was born. The program goal? To modify three C-130s to be able to land on a football sized field obstru",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/assaultzone.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AFTER THE PARACHUTE DROP: THE ASSAULT ZONE",
+        "url": "http://www.combatreform.org/assaultzone.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9ebcebfcc2de4cdbf43b9a56e62d1beb9ae421dc257d02b9aa50d680fe265827",
+  "provider": "SearXNG",
+  "query": "give an overview of cloud formation in civil engineering",
+  "query_id": "v5-p-0939-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:07:59.374108Z"
+}

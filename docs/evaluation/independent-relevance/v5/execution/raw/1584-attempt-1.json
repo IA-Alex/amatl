@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 312.178,
+  "pair_id": "v5-p-0192",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind heat transfer in geology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0b8d04038837e101f488b3fcca3c7a49d84d6d7c7484defbac285c4a1001a117",
+  "provider": "SearXNG",
+  "query": "describe the principle behind heat transfer in geology",
+  "query_id": "v5-p-0192-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:40.212735Z"
+}

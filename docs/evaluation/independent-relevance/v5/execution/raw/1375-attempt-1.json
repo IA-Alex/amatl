@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 275.27,
+  "pair_id": "v5-p-0588",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does air quality monitoring in geology operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "to understanding and monitoring rural nonpoint source pollution from agriculture. Then my interest turned to remote sensing of the ocean from space using radars; i have spent 20 y",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.paddlewise.com",
+          "/whoswho/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PaddleWise - Who&#39;s Who A-B",
+        "url": "http://www.paddlewise.com/whoswho/"
+      },
+      {
+        "category": "general",
+        "content": "CIA officers in Laos, monitoring the truce agreement. Tony grew restless in this assignment. A teetotaler, he began drinking heavily. Whereas Vint Lawrence got on well with VP, To",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "the-wanderling.com",
+          "/monastery.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DOING HARD TIME IN A ZEN MONASTERY",
+        "url": "https://the-wanderling.com/monastery.html"
+      },
+      {
+        "category": "general",
+        "content": "processes and self-monitoring requirements for sustainable operations. Gold Geology : This segment delves into the geological aspects of gold formation, distribution, and explorat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.startyourowngoldmine.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Start Your Own Gold Mine in 45 days with less than US $100,000",
+        "url": "https://www.startyourowngoldmine.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bb6f2c9018cc0f101057aeae2b57e88218189e4b85b6c5a24dbbf213623513ef",
+  "provider": "SearXNG",
+  "query": "how does air quality monitoring in geology operate",
+  "query_id": "v5-p-0588-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:34.795898Z"
+}

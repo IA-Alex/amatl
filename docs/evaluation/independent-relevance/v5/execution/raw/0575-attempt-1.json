@@ -1,0 +1,219 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 296.989,
+  "pair_id": "v5-p-0622",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does renewable energy storage in environmental science work",
+    "results": [
+      {
+        "category": "general",
+        "content": "the world&#39;s energy and environmental Problems. &lt;George@smallpowersystems.com&gt; One of my competitors. windsun * Wind &amp; Sun by Warren Lauzon. One of my competitors. led3 redro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.redrok.com",
+          "/main.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Red Rock Energy Heliostats",
+        "url": "http://www.redrok.com/main.htm"
+      },
+      {
+        "category": "general",
+        "content": "* Environmentalists fitted up  http://www.judibari.org/ * Dice George&#39;s Stonehenge Campaign etc.   http://www.dicenews.com/ * Photographer Tash Lodge&#39;s site   http:",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "workers&#39; rights, environmental protection, public health, privacy, and all other rights protected by the EU. 20 December 2019 ( Troll leads revolution ) Trump Is Leading a Revolut",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-sep-dec.html"
+      },
+      {
+        "category": "general",
+        "content": "launch and reentry environmental concerns are real, but can be mitigated The sharp increase in launches has led to warnings about the environmental impacts of emissions from those",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.thespacereview.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Space Review: essays and commentary about the final frontier",
+        "url": "https://www.thespacereview.com/"
+      },
+      {
+        "category": "general",
+        "content": "US, according to the US Environmental Protection Agency. About 165 billion packages are shipped in the US each year. That’s a billion trees worth of cardboard, according to data f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "gerrymcgovern.com",
+          "/books/world-wide-waste/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "World Wide Waste | Gerry McGovern",
+        "url": "http://gerrymcgovern.com/books/world-wide-waste/"
+      },
+      {
+        "category": "general",
+        "content": "emissions, and other environmental pollution. Furthermore, the need for capital-intensive technology and long supply lines prevents the local production of solar panels by less af",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2021/10/how-to-build-a-low-tech-solar-panel",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Build a Low-tech Solar Panel? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2021/10/how-to-build-a-low-tech-solar-panel"
+      },
+      {
+        "category": "general",
+        "content": "tech Eco-globalism Environmentalism Neopastoralism Doomerism Okay, but really - which is the best climate tribe? Addendum: ‘Doomer industries’ and the search for meaningful work S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "nadia.xyz",
+          "/climate-tribes",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nadia Asparouhova | Mapping out the tribes of climate",
+        "url": "http://nadia.xyz/climate-tribes"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "af171f77e258d7c05f1dce7cff2fe74411d1262150551bdc56a6726a6b4cd9b7",
+  "provider": "SearXNG",
+  "query": "how does renewable energy storage in environmental science work",
+  "query_id": "v5-p-0622-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:11.102238Z"
+}

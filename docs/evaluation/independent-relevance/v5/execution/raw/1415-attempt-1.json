@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 340.074,
+  "pair_id": "v5-p-0174",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does immune response in energy systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "My Nose From The Immune Response And The McFoxy Seemed To Clear It. I Am Over The Adjustment Period Of It All And Feel Full On All Things {Besides The 1% Held Back For The Shot} F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "challenge circuits. In response to the challenge circuits, the quantum computer generates output strings that, after verification, can then be fed into a randomness extractor to p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scottaaronson.com",
+          "/papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Research Papers and Surveys",
+        "url": "https://www.scottaaronson.com/papers/"
+      },
+      {
+        "category": "general",
+        "content": "efficiency”. Pearce’s response is that euphoria and well-being are associated with dominance, assertiveness and enhanced motivation, whereas subordination and inactivity are assoc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/end-suffering.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The End of Suffering",
+        "url": "https://www.hedweb.com/hedethic/end-suffering.html"
+      },
+      {
+        "category": "general",
+        "content": "And Anatomy 3.1. Response To “Plants Are Trying To Kill You” 3.2. Debunking More Claims Made By Anthony Chaffee 3.3. Human Eyes 3.4. The Human Digestive System 3.5. Th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/case-against-carnivore-diet",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Case Against The Carnivore Diet",
+        "url": "https://zerocontradictions.net/misc/case-against-carnivore-diet"
+      },
+      {
+        "category": "general",
+        "content": "2.3.1. A global response in a time of crisis 2.3.2. The essential matrix of New Age thinking 2.3.3. Central themes of the New Age 2.3.4. What does New Age say about... 2.3.4.1. ..",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.vatican.va",
+          "/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jesus Christ The Bearer Of The Water Of Life - A Christian reflection on the New Age",
+        "url": "https://www.vatican.va/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html"
+      },
+      {
+        "category": "general",
+        "content": "Abnormal immune response. Constant sore throat. Swollen lymph nodes. Autonomic dysfunction, including difficulty regulating heart rate, blood pressure and blood volume, and orthos",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mind-body-health.net",
+          "/cfs.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mind-Body-Health.net Information on Chronic Fatigue Syndrome (ME/CFS)",
+        "url": "http://www.mind-body-health.net/cfs.shtml"
+      },
+      {
+        "category": "general",
+        "content": "on discrimination with responses from over 400,000 young people . Oh, they want to register their births (making them slaves of the state), shove them into education AKA the tortu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/oppression.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Will the real oppressed group please stand up?",
+        "url": "http://digdeeper.love/articles/oppression.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "20-99 as 1900 years. In response to a request from Eric Hofnagel, I pulled together a historical list of Y2K-related problems. historical list of Y2K-related problems. . In 2006,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "to function in stress response, but its expression is less than 1% of UCP1. UCP3 is found in muscle and is regulated by thyroid hormone (T 3 ). UCP2 &amp; UCP3 may cause",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "benbest.com",
+          "/lifeext/aging.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "MECHANISMS OF AGING",
+        "url": "https://benbest.com/lifeext/aging.html"
+      },
+      {
+        "category": "general",
+        "content": "My Nose From The Immune Response And The McFoxy Seemed To Clear It. I Am Over The Adjustment Period Of It All And Feel Full On All Things {Besides The 1% Held Back For The Shot} F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/FountainOfYouth.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/FountainOfYouth.html"
+      },
+      {
+        "category": "general",
+        "content": "Michael Behe, “Response to Ian Musgrave’s “Open Letter to Dr. Michael Behe,” Part 3”; available from http://behe.uncommondescent.com/page/4/ ; Intern",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.onenesspentecostal.com",
+          "/DarwinianEvolution.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The (In)Adequacy of Darwinian Evolution",
+        "url": "http://www.onenesspentecostal.com/DarwinianEvolution.htm"
+      },
+      {
+        "category": "general",
+        "content": "exaggerated emergency response or sensational media reports. Victims often object strongly to their ailments being labelled psychosomatic, and sometimes accuse the authorities of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/psycho.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mass psychosis and the power of thought",
+        "url": "https://davidpratt.info/psycho.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fe70f701afbebba70e993fa349364836b857bc6b8bc522aa1d097fa0a6de14b4",
+  "provider": "SearXNG",
+  "query": "how does immune response in energy systems work",
+  "query_id": "v5-p-0174-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:47.671664Z"
+}

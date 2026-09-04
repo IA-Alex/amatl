@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 331.235,
+  "pair_id": "v5-p-0026",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of photosynthesis in urban planning",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8976b7722e2f1bccec14e3fd454690db3e0b0383bd3f91e8135c0101095a196d",
+  "provider": "SearXNG",
+  "query": "tell me about the function of photosynthesis in urban planning",
+  "query_id": "v5-p-0026-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:21.437459Z"
+}

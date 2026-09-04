@@ -1,0 +1,327 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 433.476,
+  "pair_id": "v5-p-0554",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of food preservation in information systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "goals, including the preservation of human life and autonomy, the promotion of well-being, and the avoidance of harm.&#34; In short, while ending suffering is an important value in ne",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biointelligence-explosion.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biointelligence Explosion as conceived by ChatGPT",
+        "url": "https://www.biointelligence-explosion.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "&#34;With the preservation and propagation of modern dynastic power has come the preservation and propagation of modern imperialism, no longer established as a formal colo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "globalkleptocracy.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GLOBAL KLEPTOCRACY - GLOBAL ELITE, RULING ELITE, GLOBAL OLIGARCHY, DEEP STATE, GLOBALISM, DYNASTIC ELITE, MONOPOLY CAPITALISM, CORPORATOCRACY,",
+        "url": "https://globalkleptocracy.net/"
+      },
+      {
+        "category": "general",
+        "content": "fighting is always the preservation of the majority principle. Perhaps the leading cause of war in the foreseeable future will be the struggle of peoples who constitute a minority",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.lewrockwell.com",
+          "/ostrowski/ostrowski72.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Myth of Democratic Peace: Why Democracy Cannot Deliver Peace in the 21st Century by James Ostrowski",
+        "url": "https://archive.lewrockwell.com/ostrowski/ostrowski72.html"
+      },
+      {
+        "category": "general",
+        "content": "refers either to the preservation of life and the means of life, or to wealth, or to some other of the good things which it is hard to get either always or at that particular plac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "oaks.nvg.org",
+          "/aristotle-rhetoric.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Aristotle Works: Rhetoric – The Gold Scales",
+        "url": "http://oaks.nvg.org/aristotle-rhetoric.html"
+      },
+      {
+        "category": "general",
+        "content": "such as Wildlife Preservation Canada or Kakapo Recovery manifest the philosophies of the highest degrees of interventionism. Using active and aggressive interventionist techniques",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lakesuperiorcaribou.ca",
+          "/archive/website%2018022203.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lake Superior Caribou News and Information",
+        "url": "http://lakesuperiorcaribou.ca/archive/website%2018022203.html"
+      },
+      {
+        "category": "general",
+        "content": "this act of his for the preservation of our laws, which some senseless assertors of the rights of men were then on the point of entirely erasing, as relics of feudality and barbar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gutenberg.org",
+          "/cache/epub/15700/pg15700-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of Burke&#39;s Writings and Speeches, Volume the Fourth, by Edmund Burke.",
+        "url": "https://gutenberg.org/cache/epub/15700/pg15700-images.html"
+      },
+      {
+        "category": "general",
+        "content": "campaign for game preservation provides a pretty much perfect example of the folly of this strategy. By the way, I have nothing whatsoever against him or his endeavors; in fact I",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/enemylaw.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Enemy Who Surpasses The Law",
+        "url": "http://digdeeper.love/articles/enemylaw.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "of the State, for the preservation or the extension of its power, it is all transformed into duty and virtue. And this virtue, this duty, are obligatory for each patriotic citizen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.anarchistfaq.com",
+          "/B.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Anarchist FAQ - II. Why are anarchists against the State?",
+        "url": "http://www.anarchistfaq.com/B.html"
+      },
+      {
+        "category": "general",
+        "content": "to the assembly and preservation of the history of the totalisator, not to mention the huge effort put into making that history accessible through your website. And Paul Coghlan w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tote-history-atl.net.au",
+          "/george_julius_genealogy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "George Julius Genealogy",
+        "url": "http://tote-history-atl.net.au/george_julius_genealogy.htm"
+      },
+      {
+        "category": "general",
+        "content": "of journalistic self-preservation. It happened that I was not at the gates of the lodge last evening when the news of the Queen’s death was announced by Mr. Fraser, nor was there",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.luminist.org",
+          "/archives/corelli_queen.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Luminist Archives: The Passing of the Great Queen by Marie Corelli",
+        "url": "http://www.luminist.org/archives/corelli_queen.htm"
+      },
+      {
+        "category": "general",
+        "content": "of. . . .   Preservation &amp; Historic Buildings : Houses   Social Studies &amp; Humanities   Timelines, Date Conversions &amp; Period Resources   United Stat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.academic-genealogy.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Family Genealogy and History Internet Education Directory™ - Wiki",
+        "url": "http://www.academic-genealogy.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "10be90a1aa0722ec309c4312049e9ba767b0b7730b380576546f91345495f0f6",
+  "provider": "SearXNG",
+  "query": "tell me about the function of food preservation in information systems",
+  "query_id": "v5-p-0554-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:20.292232Z"
+}

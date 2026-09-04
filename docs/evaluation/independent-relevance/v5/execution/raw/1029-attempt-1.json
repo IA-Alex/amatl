@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 308.546,
+  "pair_id": "v5-p-0837",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is data compression in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "for initiation of self-compression of a gas is the Jeans mass, which depends on the gas temperature. Similarly, stellar accretion and accretion disk relations involve temperature.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "be &#34;all frames (no compression)&#34; and the sound should be 8-bit monophonic. Copyrighted freeware. ABC/LX (99 KB) added 01/28/2002 (Power) Version - latest by D&amp;A Software (Andr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mizj.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "S.U.P.E.R. - The Largest 200LX Software Archive",
+        "url": "http://mizj.com/"
+      },
+      {
+        "category": "general",
+        "content": "leaves are preserved as compression fossils, commonly retaining intact cellular tissue with considerable ultrastructural preservation, including cell walls, leaf phytoliths, and i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "Here&#39;s the code. Data Compression - Transmission bandwidth is always limited (hey... if you&#39;re reading this over a 28.8kb link, you get the picture!). Data compression can help a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ganssle.com",
+          "/articles-subj.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Over 1000 articles about Embedded Systems",
+        "url": "https://www.ganssle.com/articles-subj.htm"
+      },
+      {
+        "category": "general",
+        "content": "is that I control the compression ratio; the satellite company doesn&#39;t decide if I see blur or motion artifacts to improve their bottom line; if the visuals are not the big thing,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "brander.ca",
+          "/cordcutcuug/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "&#34;My Cord-Cutting Adventure&#34;, a Presentation for the Calgary Unix Users Group",
+        "url": "http://brander.ca/cordcutcuug/"
+      },
+      {
+        "category": "general",
+        "content": "using a strain or compression insulator:           The standard strain insulator hangs from a branch. The beverage wire lays across the insulator webbing,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.w8ji.com",
+          "/beverages.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Beverage Antenna Construction",
+        "url": "http://www.w8ji.com/beverages.htm"
+      },
+      {
+        "category": "general",
+        "content": "newly uses an LZMA compression. This produce smaller files but it takes many times longer time for decompression than NRV method. So I suggest to decompress compiler&#39;s .EXE files",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "rayer.g6.cz",
+          "/programm/programe.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RayeR&#39;s homepage/Programming",
+        "url": "http://rayer.g6.cz/programm/programe.htm"
+      },
+      {
+        "category": "general",
+        "content": "Process. Direct Compression, and Can System. The Holden Ice Machine. Skating Rinks. Windhausen’s Apparatus for Cooling and Ventilating Ships. CHAPTER XXXIII . Liquid Air. Li",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book389/book389.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Progress of Invention in the Nineteenth Century, by Edward W. Byrn.",
+        "url": "https://www.ajhw.co.uk/books/book389/book389.html"
+      },
+      {
+        "category": "general",
+        "content": "it causes a certain compression along the lattice. The Nanotubular tendons are connected to a network of nanocoil launchers embedded in an even looser lattice of similarly lipid a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.self-replicatingnanobot.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod &#43; Self-Replicating Nanobot Design",
+        "url": "http://www.self-replicatingnanobot.com/"
+      },
+      {
+        "category": "general",
+        "content": "An over-compression of the image that makes the block edges slightly noticeable.   This “checkerboarding” often covers the whole screen.   It is subtl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "hdtvprimer.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HDTV Primer",
+        "url": "http://hdtvprimer.com/"
+      },
+      {
+        "category": "general",
+        "content": "together or held in compression. The exception has a characteristic element made of small pellets of one of the oxides of lead. It is appropriately known as the pellet arrester. A",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.myinsulators.com",
+          "/acw/bookref/overvoltage/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ACW&#39;s Insulator Info - Book Reference Info - Overvoltage and Flashovers",
+        "url": "https://www.myinsulators.com/acw/bookref/overvoltage/"
+      },
+      {
+        "category": "general",
+        "content": "phonon viscosity 7.5 Compression of potential wells 7.6 Transitions among time-dependent wells 7.7 Conclusions 8. Mechanosynthesis 8.1 Overview 8.2 Perspectives on solution-phase",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zyvex.com",
+          "/nanotech/nanosystems.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NANOSYSTEMS",
+        "url": "https://www.zyvex.com/nanotech/nanosystems.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f47f0af445186f0bb7114b2a1b3a49e09415561e437a9c6c373b2ec6a160f62d",
+  "provider": "SearXNG",
+  "query": "what is data compression in electrical engineering",
+  "query_id": "v5-p-0837-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:41.006894Z"
+}

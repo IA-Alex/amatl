@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 322.604,
+  "pair_id": "v5-p-0909",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind bridge resonance in electrical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "da92572fd4a74213018150984372ad2cad2ba2e7419c1b0a225befc6eb3b5965",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind bridge resonance in electrical engineering",
+  "query_id": "v5-p-0909-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:10:17.993913Z"
+}

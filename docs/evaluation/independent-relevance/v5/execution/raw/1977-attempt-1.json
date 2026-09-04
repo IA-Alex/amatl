@@ -1,0 +1,192 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 296.211,
+  "pair_id": "v5-p-0118",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does database indexing in environmental science work",
+    "results": [
+      {
+        "category": "general",
+        "content": "* Environmentalists fitted up  http://www.judibari.org/ * Dice George&#39;s Stonehenge Campaign etc.   http://www.dicenews.com/ * Photographer Tash Lodge&#39;s site   http:",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "cultural, linguistic, environmental and geographic             information for over 1400 human ‘societies’.   &amp;nbs",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.academic-genealogy.com",
+          "/melvyluniversityofcaliforniagenealogyfamilyhistory.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Melvyl® System - University of California: Worldwide Genealogy and Family History Research",
+        "url": "http://www.academic-genealogy.com/melvyluniversityofcaliforniagenealogyfamilyhistory.htm"
+      },
+      {
+        "category": "general",
+        "content": "on large-scale environmental events&#34; (28) [Bauer] On the positive side, i.e. not rejection of technologies but rather the adoption of ideas , the study of memetics can be very hel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ils.unc.edu",
+          "/callee/gopherpaper.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Where Have all the Gophers Gone? Why the Web beat Gopher in the Battle for Protocol Mind Share",
+        "url": "https://ils.unc.edu/callee/gopherpaper.htm"
+      },
+      {
+        "category": "general",
+        "content": "uses strict UTXO-based environmental requirements to enable powerful multi-shard transaction processing with an absolute minimum amount of coordination between shards. In the envi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jhellings.nl",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jelle Hellings",
+        "url": "https://jhellings.nl/"
+      },
+      {
+        "category": "general",
+        "content": "about NCDC&#39;s environmental Online Data Access and Services Information System (OASIS) and the Global Climate Perspectives System (GCPS) . NCDC&#39;s WWW server also contains informati",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "home.mcom.com",
+          "/home/whatsnew/whats_new_0194.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "What&#39;s New! January 1994",
+        "url": "http://home.mcom.com/home/whatsnew/whats_new_0194.html"
+      },
+      {
+        "category": "general",
+        "content": "use of micros in environmental research is in the analysis of images from earth-orbiting spacecraft. Undercover consumer joins the club. Persistent and n-persistent numbers. Explo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.atarimagazines.com",
+          "/creative/index/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of Creative Computing articles",
+        "url": "https://www.atarimagazines.com/creative/index/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1bfb66dbe254856704e380e9b88bd6505a6223ebdb394a21d3bfcdbf2e7416c0",
+  "provider": "SearXNG",
+  "query": "how does database indexing in environmental science work",
+  "query_id": "v5-p-0118-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:48.072071Z"
+}

@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 310.995,
+  "pair_id": "v5-p-0224",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind plate tectonics in ecology",
+    "results": [
+      {
+        "category": "general",
+        "content": "shielding works on the principle of putting a lot of nuclei between you and the radiation source. The obvious thing to use is stuff up the periodic table like lead, but unfortunat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e9a26f02dd16dcfc689843e5b95a1e73cdbc872d7b8d31e64a330986de1503af",
+  "provider": "SearXNG",
+  "query": "describe the principle behind plate tectonics in ecology",
+  "query_id": "v5-p-0224-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:05:23.397655Z"
+}

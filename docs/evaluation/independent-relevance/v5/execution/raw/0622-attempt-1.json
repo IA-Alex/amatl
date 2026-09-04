@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 329.648,
+  "pair_id": "v5-p-0716",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind language acquisition in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "801af1b8a5eb27358f8cbf1fdd9ed185450f104363d682884c4044e25ab03ca8",
+  "provider": "SearXNG",
+  "query": "describe the principle behind language acquisition in hydrology",
+  "query_id": "v5-p-0716-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:32.954350Z"
+}

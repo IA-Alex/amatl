@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 245.752,
+  "pair_id": "v5-p-0023",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of photosynthesis in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "development, reducing photosynthesis, and weakening trees over time (Carta et al., 2020; Reed et al., 2020). Although researchers continue to investigate the complete disease proc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9f2735416d97a26aa2b75f688ded7dcbe28c43752ff6270c5b43ea2a5d3081ee",
+  "provider": "SearXNG",
+  "query": "give an overview of photosynthesis in public health",
+  "query_id": "v5-p-0023-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:09:13.994236Z"
+}

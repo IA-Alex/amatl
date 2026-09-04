@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 380.371,
+  "pair_id": "v5-p-0642",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of renewable energy storage in energy systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "energy consumption, renewable energy has been proposed as a means to lower emissions from powering data centers. For example, Greenpeace’s yearly ClickClean report ranks maj",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2018/09/how-to-build-a-low-tech-website/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Build a Low-tech Website? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2018/09/how-to-build-a-low-tech-website/"
+      },
+      {
+        "category": "general",
+        "content": "would be to build up renewable electricity generation rapidly and shut that power plant down soon. 26 December 2019 ( Business supremacy treaties ) People in Romania stopped a for",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-sep-dec.html"
+      },
+      {
+        "category": "general",
+        "content": "electricity from local renewable sources.     The crucial significance of integration and proximity. The fundamental reasons why only settlements of this kind can enable",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "thesimplerway.info",
+          "/THEALTSOCLong.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "TheAltSocLongNew.html",
+        "url": "http://thesimplerway.info/THEALTSOCLong.htm"
+      },
+      {
+        "category": "general",
+        "content": "efficiency and makes renewable energy storage dependent on fossil fuels. Why Small-scale CAES? In the previous article, we outlined several ideas — inspired by historical systems",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2018/05/ditch-the-batteries-off-grid-compressed-air-energy-storage",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ditch the Batteries: Off-Grid Compressed Air Energy Storage | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2018/05/ditch-the-batteries-off-grid-compressed-air-energy-storage"
+      },
+      {
+        "category": "general",
+        "content": "We are depleting non-renewable resources that have taken hundreds of millions of years to accumulate in a matter of decades, precipitating climate change whose effects will exacer",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/repcult/reproduction-and-culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Religion, Politics, Sexual Reproduction and the Future of Human Society",
+        "url": "http://www.dhushara.com/repcult/reproduction-and-culture.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "efcbd8af4f27585845e0609963874caceb3b1acf305f11b12f4f091824b82772",
+  "provider": "SearXNG",
+  "query": "tell me about the function of renewable energy storage in energy systems",
+  "query_id": "v5-p-0642-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:37.382838Z"
+}

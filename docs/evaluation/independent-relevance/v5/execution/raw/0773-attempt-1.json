@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 260.959,
+  "pair_id": "v5-p-0090",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does ocean tides in neuroscience work",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6bfd4d0bbb99aa8805e7091d0d12636a7556ae440b1976f84f8a95a7c90fd123",
+  "provider": "SearXNG",
+  "query": "how does ocean tides in neuroscience work",
+  "query_id": "v5-p-0090-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:20.551650Z"
+}

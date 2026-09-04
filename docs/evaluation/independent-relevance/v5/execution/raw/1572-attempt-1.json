@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 276.517,
+  "pair_id": "v5-p-0635",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of renewable energy storage in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "advancements in renewable energy, carbon capture and storage, and other climate change mitigation strategies can play a crucial role in addressing one of the most pressing global",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.utilitarianism.com",
+          "/chatgpt/effective-altruism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utilitarianism and effective altruism as conceived by ChatGPT-4",
+        "url": "https://www.utilitarianism.com/chatgpt/effective-altruism.html"
+      },
+      {
+        "category": "general",
+        "content": "electricity from local renewable sources.     The crucial significance of integration and proximity. The fundamental reasons why only settlements of this kind can enable",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "thesimplerway.info",
+          "/THEALTSOCLong.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "TheAltSocLongNew.html",
+        "url": "http://thesimplerway.info/THEALTSOCLong.htm"
+      },
+      {
+        "category": "general",
+        "content": "CLUB and for SOLAR and RENEWABLE ENERGY) Solar, Electric, Hybrid, Alternate Energy Vehicles SOLAR, ELECTRIC, HYBRID and HUMAN powered vehicles including all types of electric powe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/frankdidik_oped_bicycle_etiquette.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Thoughts by Frank X. Didik Bicycle Etiquette. Op-Ed Views. www",
+        "url": "http://www.didik.com/frankdidik_oped_bicycle_etiquette.htm"
+      },
+      {
+        "category": "general",
+        "content": ", NREL (U.S. National Renewable Energy Laboratory), FRED (FRee Energy Data tool, Levelized Cost of Energy Calculator , Carbon-Footprint Calculators , Noise Pollution (Boston Scien",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f9291086c1afd8d8341c0a40ec36ce026c8625c9f335ed33581a0a0f87d62971",
+  "provider": "SearXNG",
+  "query": "give an overview of renewable energy storage in public health",
+  "query_id": "v5-p-0635-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:36.584099Z"
+}

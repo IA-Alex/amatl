@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 325.112,
+  "pair_id": "v5-p-0592",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind air quality monitoring in mechanical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "249ff6ec5e2ee9cbe6e9b44cc598a5f9b9f716e6038f3aa676462980dbeade9a",
+  "provider": "SearXNG",
+  "query": "describe the principle behind air quality monitoring in mechanical engineering",
+  "query_id": "v5-p-0592-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:35.967298Z"
+}

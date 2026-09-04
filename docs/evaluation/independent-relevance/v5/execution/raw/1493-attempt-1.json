@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 234.529,
+  "pair_id": "v5-p-0921",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is bridge resonance in pharmacology",
+    "results": [
+      {
+        "category": "general",
+        "content": "BRITISH JOURNAL OF PHARMACOLOGY; Negre-Salvayre,A; 153(1):6-20 (2008) ]. 4−HNE inactivates glucose−6−phosphate dehydrogenase, an enzyme required for the formatio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "benbest.com",
+          "/lifeext/aging.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "MECHANISMS OF AGING",
+        "url": "https://benbest.com/lifeext/aging.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "709ad5dd8c639af9fed8b065094dff057fbefec2b510e76e6b4205072f2d9fda",
+  "provider": "SearXNG",
+  "query": "what is bridge resonance in pharmacology",
+  "query_id": "v5-p-0921-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:13:11.692451Z"
+}

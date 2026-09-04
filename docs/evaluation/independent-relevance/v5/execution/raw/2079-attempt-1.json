@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 238.488,
+  "pair_id": "v5-p-0780",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does coastal flooding in robotics operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "783d23c291767562ceeb05998963d5d587f9315ce133fa466dd2cb127c4c1f08",
+  "provider": "SearXNG",
+  "query": "how does coastal flooding in robotics operate",
+  "query_id": "v5-p-0780-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:20.360113Z"
+}

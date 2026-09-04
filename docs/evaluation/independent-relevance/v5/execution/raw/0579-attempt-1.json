@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 296.663,
+  "pair_id": "v5-p-0869",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is vaccination in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "to be monitored post-vaccination.&#34; from the writ of petition submitted to the Supreme Court of India in 2012 by Kalpana Mehta, Nalini Bhanot and Dr. Rukmini Rao   &#34;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "globalkleptocracy.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GLOBAL KLEPTOCRACY - GLOBAL ELITE, RULING ELITE, GLOBAL OLIGARCHY, DEEP STATE, GLOBALISM, DYNASTIC ELITE, MONOPOLY CAPITALISM, CORPORATOCRACY,",
+        "url": "https://globalkleptocracy.net/"
+      },
+      {
+        "category": "general",
+        "content": "Bill Gates Says Global Vaccination Program is &#34;God&#39;s Work &#34;    -  Bill Gates Says Vaccines Can Help Reduce World Population    -  Bill Gate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/sociopol_win-micro-gates.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Windows-Microsoft-Bill Gates",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_win-micro-gates.htm"
+      },
+      {
+        "category": "general",
+        "content": "laboratories.   Vaccinations – to purposely infect the population with these deadly diseases.   Famines by design – deliberately contrived by the government: t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "goodnewsaboutgod.com",
+          "/studies/political/population_control/population_control.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Population Control",
+        "url": "https://goodnewsaboutgod.com/studies/political/population_control/population_control.htm"
+      },
+      {
+        "category": "general",
+        "content": "developed Covid vaccination causes micro blood clots, but this has yet to be proven. Something however is causing a decline in rapid thinking and cognitive ability in the populati",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIDIK.com The original and official DIDIK site. Cutting edge and sometimes controversial thoughts, designs, proposals and projects conceiv",
+        "url": "http://www.didik.com/"
+      },
+      {
+        "category": "general",
+        "content": "M. Higgins - Horrors of Vaccination Exposed and Illustrated.pdf 2026-06-30 13:28 8.6M   Charles Mackay - Extraordinary Popular Delusions And The Madness Of Crowds (1841).pdf",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "avalonlibrary.net",
+          "/ebooks/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of /ebooks",
+        "url": "https://avalonlibrary.net/ebooks/"
+      },
+      {
+        "category": "general",
+        "content": "to things like vaccination, or social distancing during COVID, on the basis that COVID is a harmful disease, as determined by scientific research, and that things like the COVID v",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "purplepriest.codeberg.page",
+          "/articles/refdd.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://purplepriest.codeberg.page/articles/refdd.html",
+        "url": "https://purplepriest.codeberg.page/articles/refdd.html"
+      },
+      {
+        "category": "general",
+        "content": "the new Canadian vaccination requirements for cross-border travel. The convoy started from the west coast of Canada with many Canadians cheering them along the way. It ballooned t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.infidelnotions.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Infidel Notions",
+        "url": "https://www.infidelnotions.com/"
+      },
+      {
+        "category": "general",
+        "content": "and potentially endless vaccinations, if they believe that such measures will protect them. Nationwide lockdowns had never been used before to deal with pandemics, and a long seri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/psycho.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mass psychosis and the power of thought",
+        "url": "https://davidpratt.info/psycho.htm"
+      },
+      {
+        "category": "general",
+        "content": "(06 July 2021) Second vaccination shot (05 July 2021) Julian Opie soundtracking his shows (23 June 2021) Double-grepping to solve a crossword puzzle (23 June 2021) Analyzing the s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.miskatonic.org",
+          "/posts/all/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "List of all blog posts | William Denton",
+        "url": "https://www.miskatonic.org/posts/all/"
+      },
+      {
+        "category": "general",
+        "content": "Bill Gates pushes Vaccinations in Food Supply to &#39;Fight Climate Change&#39; Español  -  Bill Gates quiere Rociar Millones de Toneladas de Tiza en la Estratosfera para frenar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_globalwarmingpseudo.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Global Warming - An Official Pseudoscience...  -  Calentamiento Global - Una Pseudociencia Oficial...",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_globalwarmingpseudo.htm"
+      },
+      {
+        "category": "general",
+        "content": "Can Take Against Forced Vaccinations - Opinion Español  -  Los Dioses del Dinero y Su Proyecto de un Nuevo Orden Mundial - El JuegoFinal Ha Empezado    -",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/esp_sociopol_un.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Ultimate Delusion - The United Nations / El Ultimo Engaño - Las Naciones Unidas",
+        "url": "https://www.bibliotecapleyades.net/esp_sociopol_un.htm"
+      },
+      {
+        "category": "general",
+        "content": "Votes in Favor of A Flu Vaccination Assault on Americans&#39; Health    -  The Co-Evolution of Bees and Flowers - An Electric Symbiosis Not to Be Interrupted with Pesti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_industryweapons.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industry &#34;Weapons&#34; for Earth&#39;s Depopulation - &#34;Armas&#34; de La Industria Para Despoblación de La Tierra",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_industryweapons.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3b7ad8f0e760046afbd11d6ef531e9a5b8f0b4992118b910cc084c35822e8b95",
+  "provider": "SearXNG",
+  "query": "what is vaccination in climate science",
+  "query_id": "v5-p-0869-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:12.456299Z"
+}

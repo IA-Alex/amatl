@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 307.796,
+  "pair_id": "v5-p-0920",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind bridge resonance in optics",
+    "results": [
+      {
+        "category": "general",
+        "content": "their work, and on the principles which guide them in it; and in bringing together these sayings of artists Mrs. Binyon has done a very useful thing. A great number of opinions ar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book181/book181.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Mind of the Artist, by Mrs. Laurence Binyon",
+        "url": "https://www.ajhw.co.uk/books/book181/book181.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "86b820cd03536c6eb6503c5f9d6f3f9e9a2c9a5df5036d237a6032ae1e59944f",
+  "provider": "SearXNG",
+  "query": "describe the principle behind bridge resonance in optics",
+  "query_id": "v5-p-0920-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:07:55.329089Z"
+}

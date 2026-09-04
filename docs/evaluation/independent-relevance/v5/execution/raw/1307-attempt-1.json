@@ -1,0 +1,219 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 266.474,
+  "pair_id": "v5-p-1025",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is probability distributions in neuroscience",
+    "results": [
+      {
+        "category": "general",
+        "content": "subjective probability distributions before and after an observation - the relative entropy between its prior and posterior [1995; ref 6]. Variant 4 (zero sum intrinsic reward gam",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.idsia.ch",
+          "/~juergen/interest.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WHAT&#39;S INTERESTING? ACTIVE EXPLORATION - CURIOSITY-DRIVEN REINFORCEMENT LEARNING - ARTIFICIAL CURIOSITY - INTRINSIC REWARD - INTRINSIC MOTIVA",
+        "url": "https://people.idsia.ch/~juergen/interest.html"
+      },
+      {
+        "category": "general",
+        "content": "creates unequal distributions within all dimensions of life, in particular unequal distributions of pain. With the degree of pain, the degree of injustice increases as well: Certa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.socrethics.com",
+          "/Folder2/Biology.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biological Evolution of Pain",
+        "url": "http://www.socrethics.com/Folder2/Biology.htm"
+      },
+      {
+        "category": "general",
+        "content": "geometries and mass distributions that satisfy them. In   1963, Roy Kerr found a solution for rotating massive black holes. This solution allows a path along a clos",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.andyross.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE ROSS BLOG",
+        "url": "https://www.andyross.net/"
+      },
+      {
+        "category": "general",
+        "content": "interdomain orientation distributions reveal components of binding thermodynamics (with Y. Qi , J. Martin , A. Barb, F. Thelot , Anthony Yan , and T. Oas). Journal of Molecular Bi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "users.cs.duke.edu",
+          "/~brd/papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bruce R. Donald -- Publications",
+        "url": "https://users.cs.duke.edu/~brd/papers/"
+      },
+      {
+        "category": "general",
+        "content": "Martensite (different distributions of iron carbide in ferrite, produced by different heat treatments). When a steel has been heat-treated wrongly, the result is usually a complex",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/sillymolecules/sillymols4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecules with Silly or Unusual Names - page 4",
+        "url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm"
+      },
+      {
+        "category": "general",
+        "content": "as probability distributions of photons on the photographic plate only when a significant number have passed through the apparatus in the same configuration. The same is true for",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/stc/ct.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Space, Time and Consciousness",
+        "url": "http://www.dhushara.com/stc/ct.htm"
+      },
+      {
+        "category": "general",
+        "content": "2026 16:02) Predictive Distributions in Statistics (31 Jul 2026 16:00) Neural Nets, Connectionism, Perceptrons, etc. (31 Jul 2026 15:47) Denis Diderot (1713--1784) (30 Jul 2026 14",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bactra.org",
+          "/notebooks/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notebooks",
+        "url": "https://bactra.org/notebooks/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a1e1917224cc5cabfa1a7b446a162dfff0b073f264ef4af879435d07e682bf95",
+  "provider": "SearXNG",
+  "query": "what is probability distributions in neuroscience",
+  "query_id": "v5-p-1025-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:14.702890Z"
+}

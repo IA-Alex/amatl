@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 251.841,
+  "pair_id": "v5-p-0976",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does wastewater treatment in climate science operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fbeb742858e58123264b08d985ebbf0f882a066bdbd842b85dba65202683e06a",
+  "provider": "SearXNG",
+  "query": "how does wastewater treatment in climate science operate",
+  "query_id": "v5-p-0976-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:14.553810Z"
+}

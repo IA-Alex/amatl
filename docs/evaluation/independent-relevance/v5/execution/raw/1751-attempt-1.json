@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 289.795,
+  "pair_id": "v5-p-0907",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes bridge resonance in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "the EMI (enhanced management implant), which is like a small photonic computer that connects us to the great consciousness. You might be interested to know that a rudimentary vers",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wiredplay.space",
+          "/read",
+          "",
+          "server=layer_1",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WiredPlay Reader",
+        "url": "http://wiredplay.space/read?server=layer_1"
+      },
+      {
+        "category": "general",
+        "content": "skilled ones. A popular management philosophy and the very embodiment of Brook&#39;s Law (&#34;Adding manpower to a late project makes it later.&#34;) Monkey: n. The business term for an expe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.shoestring-graphics.com",
+          "/CP2020/slang/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Word on The Streets",
+        "url": "http://www.shoestring-graphics.com/CP2020/slang/"
+      },
+      {
+        "category": "general",
+        "content": "in terms of pain management, mental well-being, and overall quality of life. FAAH (Fatty Acid Amide Hydrolase) is an enzyme involved in the breakdown of anandamide, an endocannabi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biohappiness.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biohappiness Revolution as conceived by ChatGPT",
+        "url": "https://www.biohappiness.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "are the central risk management property of natural systems. Redundancy is opportunistic, so such extra strength can be used to some benefit even in the absence of the hazard. Wha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sive.rs",
+          "/book/Antifragile",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Antifragile - by Nassim Nicholas Taleb | Derek Sivers",
+        "url": "https://sive.rs/book/Antifragile"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "483b2592d4984a531c39c74db58f970bb47b7e79a4b8693ae46c6944e937b7a4",
+  "provider": "SearXNG",
+  "query": "what causes bridge resonance in data management",
+  "query_id": "v5-p-0907-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:30.883260Z"
+}

@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 367.101,
+  "pair_id": "v5-p-0542",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does food preservation in biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "But in what does this preservation of African American culture consist? It can hardly consist in anything more than eating black-style food, listening to black-style music, wearin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unabomber.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society and Its Future",
+        "url": "https://unabomber.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "which &#39;acts by the preservation and accumulation of small inherited modifications, each profitable to the preserved being.&#39; With this idea he interpenetrates and leavens the vast",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "victorianweb.org",
+          "/science/science_texts/belfast.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Address Delivered Before the British Association Assembled at Belfast, With Additions (1874)",
+        "url": "https://victorianweb.org/science/science_texts/belfast.html"
+      },
+      {
+        "category": "general",
+        "content": "But in what does this preservation of African American culture consist? It can hardly consist in anything more than eating black-style food, listening to black-style music, wearin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/industrial-society-and-its-future-manifesto",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society And Its Future",
+        "url": "https://zerocontradictions.net/misc/industrial-society-and-its-future-manifesto"
+      },
+      {
+        "category": "general",
+        "content": "a strong sense of self-preservation, caused me to join a local mycological society and begin my mushroom studies in earnest. Since then, I have become a proponent of the safe and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bayareamushrooms.org",
+          "/education/further_reflections_amanita_muscaria.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Further Reflections on Amanita muscaria as an Edible Species - Bay Area Mycological Society",
+        "url": "http://www.bayareamushrooms.org/education/further_reflections_amanita_muscaria.html"
+      },
+      {
+        "category": "general",
+        "content": "Disinfectants, wood preservation, and sewage disposal. Bread-making, corn products, food preservation, canning, cane and beet sugar, meat products, marine products, tomato product",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "library.sciencemadness.org",
+          "/library/index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scientific and technical books of yesteryear",
+        "url": "http://library.sciencemadness.org/library/index.html"
+      },
+      {
+        "category": "general",
+        "content": "New York City Landmarks Preservation Commission to designate Brooklyn Heights as the city&#39;s first &#34;Historic District.&#34; (Greenwich Village was second.) This designation saved the p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/001671.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: Gentrification: Good or Evil?",
+        "url": "http://www.2blowhards.com/archives/001671.html"
+      },
+      {
+        "category": "general",
+        "content": "human component in the preservation of the Earth&#39;s environment is energy. Industrial conversion of energy into forms that are useful for human activities is the most important asp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oism.org",
+          "/pproject/s33p36.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Environmental Effects of Increased Atmospheric Carbon Dioxide - Global Warming Petition Project",
+        "url": "https://www.oism.org/pproject/s33p36.htm"
+      },
+      {
+        "category": "general",
+        "content": "always vote for self-preservation, and the Germans were no exception. The fact that this is not going on means that we really don&#39;t have a democracy in this country. That&#39;s anothe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2007/03/steven_on_leni.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: Steven on Leni",
+        "url": "http://www.2blowhards.com/archives/2007/03/steven_on_leni.html"
+      },
+      {
+        "category": "general",
+        "content": "have led to frequent preservationÑ&#34; vel ad lupanar vel ad servitutem.&#34; (Lact., &#34; De Vero Cultu.,&#34; lib. vi.) Occasionally the luckless child falls into the hands of -unscrupulous m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/euvolution/ancient.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ancient Eugenics | Transhuman Cosmic Self-Directed Evolution | Transhumanism, Posthumanism, Futurism, Prometheism, Cosmotheism, Eugenics&lt;/titl",
+        "url": "https://www.euvolution.com/euvolution/ancient.htm"
+      },
+      {
+        "category": "general",
+        "content": "of other beings and the preservation of biodiversity. It also acknowledges the significant ethical and practical challenges that these ideas present. What implications does High-T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.abolitionist.com",
+          "/chatgpt/hitechjain.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "High-tech Jainism as conceived by ChatGPT-4",
+        "url": "https://www.abolitionist.com/chatgpt/hitechjain.html"
+      },
+      {
+        "category": "general",
+        "content": "the appearance and preservation of the above &#34;male ornaments&#34; in nature - because they do not convey obvious survival advantages on male&#39;s carrying them, but SS does explain them",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "philosophy.nekhbet.com",
+          "/book.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Last Book of Moron",
+        "url": "https://philosophy.nekhbet.com/book.shtml"
+      },
+      {
+        "category": "general",
+        "content": "responsibility for the preservation of life and a root confusion between subjective and objective manifestations, in which personality, moral judgment and legislative manufacture,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "dhushara.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dhushara",
+        "url": "http://dhushara.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "60aefc8794cccb28e2cfa13f39ea4fea087a482286c2bfbb8fd014cbf51fc7a6",
+  "provider": "SearXNG",
+  "query": "how does food preservation in biology work",
+  "query_id": "v5-p-0542-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:19.543929Z"
+}

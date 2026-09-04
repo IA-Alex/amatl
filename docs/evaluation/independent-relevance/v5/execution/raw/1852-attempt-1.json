@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 342.892,
+  "pair_id": "v5-p-0708",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind language acquisition in robotics",
+    "results": [
+      {
+        "category": "general",
+        "content": "methods of skills acquisition. As I said, the robot revolution means more pressure put on the worker. The challenges facing labour markets today are significant but not insurmount",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/capitalism.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Capitalism will die - but will it take us with it?",
+        "url": "http://digdeeper.love/articles/capitalism.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "as Anki will speed up acquisition of such chunks. It&#39;s merely an argument that long-term memory plays a crucial role in the acquisition of some types of expertise. Still, it seems",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "augmentingcognition.com",
+          "/ltm.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Augmenting Long-term Memory",
+        "url": "http://augmentingcognition.com/ltm.html"
+      },
+      {
+        "category": "general",
+        "content": "forward with a planned acquisition of vacuum-maker iRobot , with the two companies saying in a release there was “no path to regulatory approval for the deal.” The Roomba maker al",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "techrights.org",
+          "/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Techrights — Links 30/01/2024: Many More Layoffs (Microsoft the Most Tech Layoffs This Year)",
+        "url": "http://techrights.org/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2208e7dcd4da5b240e26283c022c8102dd63bf5be7d34422f58db3ba143f7231",
+  "provider": "SearXNG",
+  "query": "describe the principle behind language acquisition in robotics",
+  "query_id": "v5-p-0708-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:08.975387Z"
+}

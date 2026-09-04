@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 268.34,
+  "pair_id": "v5-p-0400",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does carbon capture in civil engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "CHAPTER XXVII . Civil Engineering. Great Bridges , Pneumatic Caissons , Tunnels. The Beach Tunnel Shield. Suez Canal. Dredges. The Lidgerwood Cable Ways. Canal Locks. Artesian Wel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book389/book389.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Progress of Invention in the Nineteenth Century, by Edward W. Byrn.",
+        "url": "https://www.ajhw.co.uk/books/book389/book389.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "84fc7409393bde29eee647bc3e143d6e15ef2da1d5ab18a4a501bc3a40766155",
+  "provider": "SearXNG",
+  "query": "how does carbon capture in civil engineering operate",
+  "query_id": "v5-p-0400-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:12:23.522751Z"
+}

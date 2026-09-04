@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 270.357,
+  "pair_id": "v5-p-0812",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does battery chemistry in optics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "variety of darkroom chemistry) to &#39;clear&#39; the negatives produced by this film. ...However, if you really get in a pinch, it is possible to do this with plain water, but doesn&#39;t wo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.landlist.ch",
+          "/landlist/landfaq.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Land List -- Frequently Asked Questions",
+        "url": "http://www.landlist.ch/landlist/landfaq.htm"
+      },
+      {
+        "category": "general",
+        "content": "CHAPTER XVIII . Chemistry. Its Evolution as a Science. The Coal Tar Products. Fermenting and Brewing. Glucose, Gun Cotton, and Nitro-Glycerine. Electro-Chemistry. Fertilizers and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book389/book389.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Progress of Invention in the Nineteenth Century, by Edward W. Byrn.",
+        "url": "https://www.ajhw.co.uk/books/book389/book389.html"
+      },
+      {
+        "category": "general",
+        "content": "Black Crystal   Chemistry   Complaint   Concepts   Costs   Cover   Efficiency   Emissivity   Fridge   Future   Greenhouse   Heliostat &amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.redrok.com",
+          "/main.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Red Rock Energy Heliostats",
+        "url": "http://www.redrok.com/main.htm"
+      },
+      {
+        "category": "general",
+        "content": "3.3. Chemistry     3.4. Geoscience     3.5. Biology       3.5.1. Molecular Biology    &amp;nbs",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "humanknowledge.net",
+          "/Thoughts.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Human Knowledge: Foundations and Limits",
+        "url": "http://humanknowledge.net/Thoughts.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1e324ea263dc890cd0c8f8807232a2e6be0cea04073f5b35b5cd1b7bdf613542",
+  "provider": "SearXNG",
+  "query": "how does battery chemistry in optics operate",
+  "query_id": "v5-p-0812-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:20.699174Z"
+}

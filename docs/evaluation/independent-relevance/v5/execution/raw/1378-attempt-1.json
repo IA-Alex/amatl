@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 347.278,
+  "pair_id": "v5-p-0782",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of coastal flooding in urban planning",
+    "results": [
+      {
+        "category": "general",
+        "content": "diet can impair brain function. After a week on a high fat, high added sugar diet, volunteers scored worse on memory tests .* 19 February 2020 ( Beavers work ) *Beavers cut floodi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-nov-feb.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: November - February Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-nov-feb.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f2a18856a5e4e64f95d71ba80349e389a2e4b708a004e1190d88826ec8ec9321",
+  "provider": "SearXNG",
+  "query": "tell me about the function of coastal flooding in urban planning",
+  "query_id": "v5-p-0782-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:12:35.665912Z"
+}

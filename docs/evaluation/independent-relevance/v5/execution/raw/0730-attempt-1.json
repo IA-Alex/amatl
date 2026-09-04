@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 308.964,
+  "pair_id": "v5-p-0072",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind compiler operation in transportation engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "39450aa1b11f94e1ea831ed07ab0e6165e67dccb427f496986a8ab9240e75a0f",
+  "provider": "SearXNG",
+  "query": "describe the principle behind compiler operation in transportation engineering",
+  "query_id": "v5-p-0072-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:08.058988Z"
+}

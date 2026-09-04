@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 324.088,
+  "pair_id": "v5-p-0409",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is carbon capture in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "description which captures all the essential information? While many minor details of neural structure are irrelevant, our memories clearly matter. Any method of describing the hu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "The dream of carbon air capture is becoming reality. | Anyone can make a difference. | 350 million trees planted in one day and could use wastewater. Fauna &amp; flora: Insect and bir",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.slowernews.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Slower News",
+        "url": "https://www.slowernews.com/"
+      },
+      {
+        "category": "general",
+        "content": "rhythm. The goal was to capture that cozy, enveloping feeling of the changing seasons through a simple illustration, the way a woodland canopy naturally forms an archway, framing",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.smashingmagazine.com",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Articles on Smashing Magazine — For Web Designers And Developers",
+        "url": "https://www.smashingmagazine.com/feed/"
+      },
+      {
+        "category": "general",
+        "content": "to calculate how to capture an asteroid; need help NASA&#39;s &#34;NEO Earth Close Approaches&#34; shows a few asteroids come by Earth with relative velocity of &#34;only&#34; 3 KM/second or so; aver",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "USG Rank. For Any Ns Capture Always If There Is Even A Hint Of Disloyalty OR A Single Lacking In Magical Ranking OR Any Subsequent Failures In Real Ranking. Only Higher Ranking Of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "would capture what dualists believe is true about the mind: it is not reducible to anything else and thus has a rather special place in the world. What is more, being nonspatial o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.meta-religion.com",
+          "/Philosophy/Articles/Consciousness/post-physicalism.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Post-Physicalism",
+        "url": "https://www.meta-religion.com/Philosophy/Articles/Consciousness/post-physicalism.htm"
+      },
+      {
+        "category": "general",
+        "content": "thus allowing me to capture real time video which has culminated thus far in the production of my first DVD. Like the science which this growing (pun intended) phenomenon is based",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.microbeorganics.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Microbe Organics",
+        "url": "http://www.microbeorganics.com/"
+      },
+      {
+        "category": "general",
+        "content": "And finally, carbon capture and storage is incredibly energy intensive , and the energy comes from... fossil fuels?   Nuclear?   Wind turbines that then have to take up",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica2/sociopol_greatreset16.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Great Reset for Dummies - Where do we Go from Here?",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica2/sociopol_greatreset16.htm"
+      },
+      {
+        "category": "general",
+        "content": "hands. The same motion-capture system was used in movies such as The Lord of the Rings to track actors and turn them into realistic avatars. The results can be impressive, with im",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mike-tanner.co.nz",
+          "/40sport.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mike Tanner Articles about Sport and Recreation",
+        "url": "http://mike-tanner.co.nz/40sport.html"
+      },
+      {
+        "category": "general",
+        "content": "May 22, 2017 Lookabout, Capture &amp; Share VR Experiences From Your Phone: LA Startup Spotlight - Jack O&#39;Grady &amp; Quinn Ellis Episode 85 • 34:04 • May 19, 2017 Big Data Da",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "castro.fm",
+          "/podcast/412cb86b-fb26-4e82-ba88-6d1a61a87a4e",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WeAreLATech Los Angeles Startups Podcast, hosted by Espree Devora",
+        "url": "https://castro.fm/podcast/412cb86b-fb26-4e82-ba88-6d1a61a87a4e"
+      },
+      {
+        "category": "general",
+        "content": "Kremlin posts, carbon capture projects, and Milan drinking fountains. 2023.03.22 • Civilian harm in Ukraine, aid for Ukraine, municipal incorporations, political podcasts, and sto",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.data-is-plural.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Data Is Plural — Full Archive",
+        "url": "https://www.data-is-plural.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "(Paul). Cependant une capture d&#39;écran de la question et de la réponse a été liké par @oyagaaayuyisaa, voir le le like 168 Voici ce qu&#39;explique Paul, concernant l&#39;effacement de sa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ummo-sciences.org",
+          "/fr/W2-2021.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "W2-2021",
+        "url": "http://ummo-sciences.org/fr/W2-2021.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9026c58deaf11bfb15ea838ad912ef18c2c0a2ada7e907b959925b9e4ac66593",
+  "provider": "SearXNG",
+  "query": "what is carbon capture in health science",
+  "query_id": "v5-p-0409-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:34.013630Z"
+}

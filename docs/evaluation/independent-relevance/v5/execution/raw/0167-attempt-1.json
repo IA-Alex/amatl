@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 270.053,
+  "pair_id": "v5-p-0250",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does plate tectonics in marine biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "in the context of time. Tectonics and paleoclimate The Cambrian follows the Ediacaran Period, during which time the continents had been joined in a single supercontinent called Ro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ucmp.berkeley.edu",
+          "/cambrian/cambrian.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cambrian Period",
+        "url": "https://ucmp.berkeley.edu/cambrian/cambrian.php"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7695e917336d563f0fe637c31f3e9c07c33d48d25fefef61810591fd4107a9bf",
+  "provider": "SearXNG",
+  "query": "how does plate tectonics in marine biology work",
+  "query_id": "v5-p-0250-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:06:01.508773Z"
+}

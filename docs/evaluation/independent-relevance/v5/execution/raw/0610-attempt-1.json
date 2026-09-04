@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 331.594,
+  "pair_id": "v5-p-0669",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind traffic flow in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ac46a0131187554498f55089b48c5afe8745a35940b93c5cdc80023dafee8892",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind traffic flow in pharmacology",
+  "query_id": "v5-p-0669-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:29.140418Z"
+}

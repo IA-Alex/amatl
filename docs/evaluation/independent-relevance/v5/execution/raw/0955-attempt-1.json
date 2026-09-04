@@ -1,0 +1,192 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 260.971,
+  "pair_id": "v5-p-0909",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is bridge resonance in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "testing of experimental engineering designs for large, high power electrical resonators to be used at his Wardenclyffe (Shoreham), Long Island plant. The discoveries and experimen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.tfcbooks.com",
+          "/mall/more/371tcbg.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Tesla Coil Builder&#39;s Guide to the Colorado Springs Notes of Nikola Tesla | ISBN: 1-893817-00-8",
+        "url": "http://www.tfcbooks.com/mall/more/371tcbg.htm"
+      },
+      {
+        "category": "general",
+        "content": "programming to the engineering of a fly-by satellite designed to gather data about a planet. The engineering is focused on ensuring that the satellite reaches its destination and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "benbest.com",
+          "/lifeext/aging.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "MECHANISMS OF AGING",
+        "url": "https://benbest.com/lifeext/aging.html"
+      },
+      {
+        "category": "general",
+        "content": "process of genetically engineering crops to protect them or their consumers from disease. For example, researchers at Texas A&amp;M and Tulane University have genetically altered pota",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.shoestring-graphics.com",
+          "/CP2020/slang/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Word on The Streets",
+        "url": "http://www.shoestring-graphics.com/CP2020/slang/"
+      },
+      {
+        "category": "general",
+        "content": "the university (civil engineering in physics) I also got back into prime numbers by writing a Lucas-Lehmer program for Mersenne primes. When I later learned about Prime95 I jumped",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fermatsearch.org",
+          "/researchers.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": ":: F E R M A T S E A R C H . O R G :: Researchers",
+        "url": "https://www.fermatsearch.org/researchers.html"
+      },
+      {
+        "category": "general",
+        "content": "reprinted from Optical Engineering, vol. 27, #4, pp.289-294 (1988). 4. M.A. El-Sharkawi, R.J. Marks II and S. Weerasooriya, &#34; Neural networks and their application to power e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "marksmannet.com",
+          "/RobertMarks/REPRINTS/Marks-Pubs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Robert J. Marks II",
+        "url": "https://marksmannet.com/RobertMarks/REPRINTS/Marks-Pubs.htm"
+      },
+      {
+        "category": "general",
+        "content": "applies particularly to engineering types, who have to argue their ideas through to practical realisation in the workplace. Sometimes, just sometimes, the ability to say &#39;I was wr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "80b5a3aab3790d5b5f68fe301c75f0b938f5ba8415c20af6d99d41544175e010",
+  "provider": "SearXNG",
+  "query": "what is bridge resonance in electrical engineering",
+  "query_id": "v5-p-0909-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:17.732368Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 305.43,
+  "pair_id": "v5-p-0244",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind plate tectonics in architecture",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "936884ea775866e89a65e4c6c7e3088724dfd4daa6bd94dec8498cdf9c1a9d36",
+  "provider": "SearXNG",
+  "query": "describe the principle behind plate tectonics in architecture",
+  "query_id": "v5-p-0244-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:59.666687Z"
+}

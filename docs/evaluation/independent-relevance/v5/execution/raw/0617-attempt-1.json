@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 350.525,
+  "pair_id": "v5-p-0946",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does cloud formation in food science work",
+    "results": [
+      {
+        "category": "general",
+        "content": "have recorded the information about the defective filter in the logbook for the next shift, but perhaps the importance of the technician’s note didn’t register in his mind, or per",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.isegoria.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Isegoria",
+        "url": "http://www.isegoria.net/"
+      },
+      {
+        "category": "general",
+        "content": "balanced News and Information ALTERNATIVE NEWS NEWS http://www.alternet.org NEWS http://www.centrexnews.com NEWS http://www.link.no/IPS/eng/last.html NEWSLINKS http://www.truthinm",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "and concept formation, as well as for other kinds of changes in behavior said to show cognitive processes.  To the extent that they do so adequately, no explanatory role surv",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "anthonyflood.com",
+          "/blanshardskinnerdebate.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Brand Blanshard &#34;The Problem of Consciousness: A Debate with B. F. Skinner&#34;",
+        "url": "http://anthonyflood.com/blanshardskinnerdebate.htm"
+      },
+      {
+        "category": "general",
+        "content": "reliable information on this topic is extraordinarily difficult for laity and professionals alike. The layman is more likely to be given heavily slanted propaganda. Unvarnished fa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/gooddrug.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Good Drug Guide: The Responsible Parent&#39;s Guide To Healthy Mood-Boosters For All The Family",
+        "url": "https://www.hedweb.com/gooddrug.htm"
+      },
+      {
+        "category": "general",
+        "content": "to “ego-formation” (Edinger, 1985, p.218). His notion of “incarnation” implies that the individual, like an actor, should go through the different stages (",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mats-winther.github.io",
+          "/hillmcrit.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Critique of Archetypal Psychology",
+        "url": "https://mats-winther.github.io/hillmcrit.htm"
+      },
+      {
+        "category": "general",
+        "content": "&#34;divine transformation,&#34; a &#34;state of Samadhi&#34; and many other names in other cultures. It is not connected to the &#43;1, &#43;2 and &#43;3 of the measuring of a drug&#39;s intensity. It is a stat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/ecstasy/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utopian Pharmacology. MDMA / Ecstasy and beyond",
+        "url": "https://www.hedweb.com/ecstasy/"
+      },
+      {
+        "category": "general",
+        "content": "to think about information in terms of these products. Oftentimes when someone asks you about a person, the first thing that jumps to your mind is “Do I talk to them on SMS, or do",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "changelog.com",
+          "/podcast/455",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Building software for yourself with Linus Lee (Changelog Interviews #455)",
+        "url": "https://changelog.com/podcast/455"
+      },
+      {
+        "category": "general",
+        "content": "evaporation, cloud formation, precipitation (rain/snow/hail). When you have permanent overcast, something is wrong energetically. Orgonite is a potent cure against this, especiall",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "exo-science.com",
+          "/orgonite.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Protect Yourself From EMF With Orgonite — Exo-Science… Beyond Mainstream Academia",
+        "url": "http://exo-science.com/orgonite.html"
+      },
+      {
+        "category": "general",
+        "content": "learning information classified to you), and religion. Freedom to experience any form of consciousness. Freedom to do any type of drugs regardless of the tendency to addiction (un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.e-democracy.biz",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Judicially Arbitrated Imperial E-Democracy",
+        "url": "http://www.e-democracy.biz/"
+      },
+      {
+        "category": "general",
+        "content": "assumed a spherical formation around the Enterprise. A new voice came over the comm system. &#34;Attention Enterprise, this is Wedge Antilles, Rouge Squadron. Are you hyperdrive capab",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "geocities.ws",
+          "/Harrisonw_2000/stvsw.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Movie Talk",
+        "url": "http://geocities.ws/Harrisonw_2000/stvsw.html"
+      },
+      {
+        "category": "general",
+        "content": "dynamically varying conformations — and the dynamics of variation, the balance among subtly or dramatically metamorphosing, plastic forms, is often pivotal for protein function. T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bwo.life",
+          "/org/comm/ar/2014/machines_18.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biology’s Shameful Refusal to Disown the Machine-Organism",
+        "url": "https://bwo.life/org/comm/ar/2014/machines_18.htm"
+      },
+      {
+        "category": "general",
+        "content": "access to users&#39; information while preventing those companies from revealing the order. A third said the government shouldn&#39;t have that power at all, while another 41 percent",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "soylentnews.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SoylentNews: SoylentNews is people",
+        "url": "https://soylentnews.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "26f1885bd73a9718255dc955fe414a930eacd86b1fd9158821af4c83f905006e",
+  "provider": "SearXNG",
+  "query": "how does cloud formation in food science work",
+  "query_id": "v5-p-0946-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:31.265446Z"
+}

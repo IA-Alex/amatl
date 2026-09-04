@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 336.377,
+  "pair_id": "v5-p-0428",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind carbon capture in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fe3ca217ff889298dea0b55dbf1755ccd539c5b668a7b763b4e858b428dea4fc",
+  "provider": "SearXNG",
+  "query": "describe the principle behind carbon capture in hydrology",
+  "query_id": "v5-p-0428-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:05.250569Z"
+}

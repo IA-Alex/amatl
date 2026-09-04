@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 222.502,
+  "pair_id": "v5-p-0343",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of soil erosion in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0f628a03f0df80d1d581b1930e4ca003cdc10018f84dde2260ea0c82421b5aa4",
+  "provider": "SearXNG",
+  "query": "give an overview of soil erosion in oceanography",
+  "query_id": "v5-p-0343-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:48.965076Z"
+}

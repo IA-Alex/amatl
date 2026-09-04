@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 322.386,
+  "pair_id": "v5-p-0673",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is traffic flow in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "flight engineer engineering farmer farmers significance rare via least somewhat museum phase terrible metal motion unfortunately severe factory wild strongly laugh laughed bloody",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "year as a chemical engineering major at Stanford. Holmes had decided on a career in entrepreneurship from an early age and, after her first semester told her father, “No, Da",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/archives/Monthly/2018/2018-07.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason: July 2018 Archives",
+        "url": "https://www.fourmilab.ch/fourmilog/archives/Monthly/2018/2018-07.html"
+      },
+      {
+        "category": "general",
+        "content": "an impressive feat of engineering that its growth is making parts of the US government nervous: Michael Wessel, a commissioner of the United States–China Economic and Security Rev",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "logicmag.io",
+          "/pivot/ghost-ships/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ghost Ships",
+        "url": "https://logicmag.io/pivot/ghost-ships/"
+      },
+      {
+        "category": "general",
+        "content": "in the Navy: I had an engineering degree and poor eyesight. If I had been lacking either of those I couldn?t have qualified, but this somehow got me into the Aeronautical Computer",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ed-thelen.org",
+          "/Sage-Talk.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://ed-thelen.org/Sage-Talk.html",
+        "url": "https://ed-thelen.org/Sage-Talk.html"
+      },
+      {
+        "category": "general",
+        "content": "“organs”. To me, the engineering seems too modern, but Ehrhart says that the methods and the design of the machine occured to the singers each night in their dreams, which they du",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-gig-economy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Gig Economy — Chadnet",
+        "url": "https://wiki.chadnet.org/the-gig-economy"
+      },
+      {
+        "category": "general",
+        "content": "I started reverse engineering the emulator itself. The very first thing I looked at was the memory read/write callbacks; you can see on ps2tek that some addresses control various",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cturt.github.io",
+          "/mast1c0re.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "mast1c0re: Hacking the PS4 / PS5 through the PS2 Emulator - Part 1 - Escape",
+        "url": "http://cturt.github.io/mast1c0re.html"
+      },
+      {
+        "category": "general",
+        "content": "Indian Science and Engineering Society), and the Supersonic Challenge. The competition was held on Saturday, April 5 on a relatively sunny day. Education: Native spirit, Walla Wal",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cowlitzcountry.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cowlitz Country News Home Page",
+        "url": "http://www.cowlitzcountry.com/"
+      },
+      {
+        "category": "general",
+        "content": "and fast.  My engineering lab and machine shop support doing much of it at home.  (See Prototype Shop below.)  Systems Engineer - Innovator for 20&#43; years with key r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.all8.com",
+          "/rich.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "About Richard Reel",
+        "url": "http://www.all8.com/rich.htm"
+      },
+      {
+        "category": "general",
+        "content": "Innovations in Software Engineering Conference (ISEC), which is sponsored by SIGSE , the Special Interest Group on Software Engineering of the Computer Society of India (CSI). Rul",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sigsoft.org",
+          "/awards/distinguishedPaperAward.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGSOFT - ACM Special Interest Group on Software Engineering",
+        "url": "http://www.sigsoft.org/awards/distinguishedPaperAward.html"
+      },
+      {
+        "category": "general",
+        "content": "of creative and careful engineering, not the limits of the human body. The manned land speed record set on the Big Run would stand until October 1983, when Richard Noble&#39;s jet pow",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason",
+        "url": "https://www.fourmilab.ch/fourmilog/"
+      },
+      {
+        "category": "general",
+        "content": "working for Red Hat&#39;s engineering services division, doing board ports, drivers and other work. That&#39;s when JFFS2 was written, as part of a customer contract. After some 8 years a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "snapshot of the engineering endeavour - uncluttered by marketing guesses &amp; bullet-points. Did some ooo-build cruft cleaning, worked on various things. Lunch. Reviewed Shilpa&#39;s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2004/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2004/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fc10d980cc2c27a5bc8d7660bdbb8badd17871c1b8278602255abc8d405fea27",
+  "provider": "SearXNG",
+  "query": "what is traffic flow in software engineering",
+  "query_id": "v5-p-0673-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:42.671055Z"
+}

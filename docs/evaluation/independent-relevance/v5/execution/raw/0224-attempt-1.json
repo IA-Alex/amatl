@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 341.145,
+  "pair_id": "v5-p-0264",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind binary search in geology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d135d27ac04a66f9fe8a216780fbbc6f6ed69e220597b788bd66ed7d57fb3e05",
+  "provider": "SearXNG",
+  "query": "describe the principle behind binary search in geology",
+  "query_id": "v5-p-0264-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:19.581417Z"
+}

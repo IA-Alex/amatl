@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 360.637,
+  "pair_id": "v5-p-1024",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind probability distributions in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "of different Linux distributions, as well as for his &#34;Luke&#39;s Linux&#34; series in which he documents the process of building his own custom Linux distribution.&#34; &#43;9 @1337GigaChad - 202",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/mediocre_net",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AI Will Make (Has Made) the Internet Mediocre...",
+        "url": "https://lukesmith.neocities.org/vids/mediocre_net"
+      },
+      {
+        "category": "general",
+        "content": "under unimodal distributions). So educated and uneducated traders use &#34;infinite&#34; as proxy for &#34;cannot find a bound for the payoff&#34;. We call this open-ended . When there are reason",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "fooledbyrandomness.com",
+          "/notebook.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Opacity",
+        "url": "https://fooledbyrandomness.com/notebook.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8169ec0627a8d5b07c025a7d17346774e0d6e3e54df43fa8989a86759b507c9b",
+  "provider": "SearXNG",
+  "query": "describe the principle behind probability distributions in music technology",
+  "query_id": "v5-p-1024-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:08:37.524202Z"
+}

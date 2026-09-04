@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 303.041,
+  "pair_id": "v5-p-0613",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is renewable energy storage in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "Midwest Renewable Energy Asso.   Misc1   Moshier   Mr. Solar   MTM Scientific   Mug   My Interests   Mylar   Th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.redrok.com",
+          "/main.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Red Rock Energy Heliostats",
+        "url": "http://www.redrok.com/main.htm"
+      },
+      {
+        "category": "general",
+        "content": "imperative Demand for renewable energy sources will continue to grow as both overall energy demand increases and non-renewable supplies decline. Mike Snead lays out the case that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.thespacereview.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Space Review: essays and commentary about the final frontier",
+        "url": "https://www.thespacereview.com/"
+      },
+      {
+        "category": "general",
+        "content": "interesting paper in Renewable and Sustainable Energy Reviews (Elsevier) discussing the very hard problems of undersea cable technology and robustness. The cost of cable failures",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meteo.lcd.lu",
+          "/globalwarming/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Warming Sceptic",
+        "url": "https://meteo.lcd.lu/globalwarming/"
+      },
+      {
+        "category": "general",
+        "content": "developments in renewable energy technologies, electric vehicles, and energy-efficient appliances can help mitigate climate change, a significant long-term risk. Communication and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.utilitarianism.com",
+          "/chatgpt/longtermism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utilitarianism and longtermism as conceived by ChatGPT-4",
+        "url": "https://www.utilitarianism.com/chatgpt/longtermism.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "44e699c21aea1f32d9f8d818970baddd541d2d2a539e8387f32087ff21469754",
+  "provider": "SearXNG",
+  "query": "what is renewable energy storage in astronomy",
+  "query_id": "v5-p-0613-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:17.211202Z"
+}

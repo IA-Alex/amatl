@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 246.884,
+  "pair_id": "v5-p-0392",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does solar eclipses in hydrology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "dd9272d1354d7b748354730109fbaa98c8b4a9f60031dc14f3174aedd898f667",
+  "provider": "SearXNG",
+  "query": "how does solar eclipses in hydrology operate",
+  "query_id": "v5-p-0392-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:36.209975Z"
+}

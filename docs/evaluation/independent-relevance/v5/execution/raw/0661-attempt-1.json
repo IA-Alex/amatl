@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 296.863,
+  "pair_id": "v5-p-0571",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes food preservation in forensic science",
+    "results": [
+      {
+        "category": "general",
+        "content": "refers either to the preservation of life and the means of life, or to wealth, or to some other of the good things which it is hard to get either always or at that particular plac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "oaks.nvg.org",
+          "/aristotle-rhetoric.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Aristotle Works: Rhetoric – The Gold Scales",
+        "url": "http://oaks.nvg.org/aristotle-rhetoric.html"
+      },
+      {
+        "category": "general",
+        "content": "soil, or harvesting and preservation of grain and other products of the ground. Nor could there be the exportation of our superfluous commodities, nor the importation of those in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "spiritualpilgrim.net",
+          "/08_Classics-Library/hellenist-roman/cicero/de-officiis/de-officiis-02.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "De Officiis - Book 2 - Cicero",
+        "url": "http://spiritualpilgrim.net/08_Classics-Library/hellenist-roman/cicero/de-officiis/de-officiis-02.htm"
+      },
+      {
+        "category": "general",
+        "content": "makes the long-term preservation of bones unlikely. The traits of most of these ancient artifacts differ from those of the artifacts we find in &#34;Native American&#34; cultures. Scienti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.harbornet.com",
+          "/folks/theedrich/hive/Kennewic.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kennewick Man",
+        "url": "http://www.harbornet.com/folks/theedrich/hive/Kennewic.htm"
+      },
+      {
+        "category": "general",
+        "content": "the instinct of self-preservation, of avoiding what seems likely to cause injury to life or limb, and of procuring and providing everything needful for life — food, shelter,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "constitution.org",
+          "/1-History/rom/de_officiis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cicero: De Officiis",
+        "url": "https://constitution.org/1-History/rom/de_officiis.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a88b31ec834a3c547ea10eb0fe09d2b004f86e3bb2cc40ec735c7a588fc6a571",
+  "provider": "SearXNG",
+  "query": "what causes food preservation in forensic science",
+  "query_id": "v5-p-0571-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:45.459423Z"
+}

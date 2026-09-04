@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 238.291,
+  "pair_id": "v5-p-0055",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes compiler operation in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b3b5bec1edd013aa8722a97b85190c616dd9d660c4fea9284ff53f59644d5471",
+  "provider": "SearXNG",
+  "query": "what causes compiler operation in oceanography",
+  "query_id": "v5-p-0055-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:33.953581Z"
+}

@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 378.483,
+  "pair_id": "v5-p-1020",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind probability distributions in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "relies on the skewed distributions of many real-world variables such as city population size—an aspect of environment structure that traditional statistical estimation techniques",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "home.dbio.uevora.pt",
+          "/~eje/simple%20heuristics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "‹Truth is ever to be found in simplicity, and not in the multiplicityand confusion of things. As the world, which to the naked eye exhibits th",
+        "url": "http://home.dbio.uevora.pt/~eje/simple%20heuristics.htm"
+      },
+      {
+        "category": "general",
+        "content": "under unimodal distributions). So educated and uneducated traders use &#34;infinite&#34; as proxy for &#34;cannot find a bound for the payoff&#34;. We call this open-ended . When there are reason",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "fooledbyrandomness.com",
+          "/notebook.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Opacity",
+        "url": "https://fooledbyrandomness.com/notebook.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "907187c09bb5216f3b7a710303b22d1488e65eeeff7e13bc44a12a9a11e2157d",
+  "provider": "SearXNG",
+  "query": "describe the principle behind probability distributions in health science",
+  "query_id": "v5-p-1020-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:16:00.842346Z"
+}

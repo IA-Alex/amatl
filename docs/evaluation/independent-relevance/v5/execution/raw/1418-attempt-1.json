@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 204.634,
+  "pair_id": "v5-p-0199",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of heat transfer in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e794560e7310f8c37a32325d740f2f8e499587e7017243257e1ce3c92592609b",
+  "provider": "SearXNG",
+  "query": "give an overview of heat transfer in oceanography",
+  "query_id": "v5-p-0199-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:48.683692Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 239.221,
+  "pair_id": "v5-p-1064",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does microbial fermentation in pharmacology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "51389023454e65cc1d0d1a974281ed6cd376c1609a95d48c01b85c416f3148ba",
+  "provider": "SearXNG",
+  "query": "how does microbial fermentation in pharmacology operate",
+  "query_id": "v5-p-1064-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:30.996904Z"
+}

@@ -1,0 +1,246 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 283.202,
+  "pair_id": "v5-p-0303",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes water purification in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Probably this was a purification ritual, and rituals associated with fire which exist in some parts of Europe may be remeniscant of Celtic rituals. (Like the burning wheels who ar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "campus.murraystate.edu",
+          "/academic/faculty/tsaintpaul/celtreli.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Celtic Religion - what information do we really have",
+        "url": "http://campus.murraystate.edu/academic/faculty/tsaintpaul/celtreli.html"
+      },
+      {
+        "category": "general",
+        "content": "The 7 Mental Purifications The 8 Deliverances (Attha Vimokkha) The 9 Supreme Persons The 9 Supreme Persons  Explained The 10 Perfections The 10 Perfections Explained The 18 P",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhammatalks.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dhamma Talks (((((0))))) Attaining PEACE with KNOWING &amp; SEEING a Handful of Leaves",
+        "url": "http://www.dhammatalks.net/"
+      },
+      {
+        "category": "general",
+        "content": "which likewise concern purification. At the end of the first seven stages the Vajra master then dissolves the pupil into “emptiness” in his imagination, in order to then visualize",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.trimondi.de",
+          "/SDLE/Part-1-06.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Shadow of the Dalai Lama – Part I – 6",
+        "url": "http://www.trimondi.de/SDLE/Part-1-06.htm"
+      },
+      {
+        "category": "general",
+        "content": "record of ‘SARS-COV-2’ purification, by anyone, anywhere, ever , September 2024; Sam Bailey, The truth about virus isolation , April 2021; Andrew Kaufman, The rooster in the river",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/reclaim.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reclaiming our health: germ theory exposed",
+        "url": "https://davidpratt.info/reclaim.htm"
+      },
+      {
+        "category": "general",
+        "content": "Repository for Affinity Purification, or the CRAPome for short. Tometomo Hamaguchi, a chemistry student at York University, emailed me to say that a standard technique in NMR spec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/sillymolecules/sillymols4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecules with Silly or Unusual Names - page 4",
+        "url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm"
+      },
+      {
+        "category": "general",
+        "content": "a small impact on water purification but an even larger impact on the convergence of small particulate matter into matter of a more complex form that goes on to benefit consumers",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scientificlib.com",
+          "/en/Biology/Animalia/Arthropoda/Insects/Ephemeroptera.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ephemeroptera",
+        "url": "https://www.scientificlib.com/en/Biology/Animalia/Arthropoda/Insects/Ephemeroptera.html"
+      },
+      {
+        "category": "general",
+        "content": "WATER-PURIFICATION       TIMBERLINE WATER FILTER.  This is a low-cost water filter that is easy to use, and easy to carry.   It will purify wa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.christophernyerges.com",
+          "/store.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Christopher Nyerges",
+        "url": "https://www.christophernyerges.com/store.htm"
+      },
+      {
+        "category": "general",
+        "content": "fairly easily by purification of the Anglo-American common law), whereas Friedman focuses more intently on the possibility of plural legal systems co-existing and responding to th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ozarkia.net",
+          "/bill/anarchism/anarchistFAQ/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Anarchist Theory FAQ Version 5.2",
+        "url": "http://www.ozarkia.net/bill/anarchism/anarchistFAQ/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5d3d7f50e22fa67984c93633ff2eee93c453fe3efb81e409b211b987a8398457",
+  "provider": "SearXNG",
+  "query": "what causes water purification in materials science",
+  "query_id": "v5-p-0303-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:39.333568Z"
+}

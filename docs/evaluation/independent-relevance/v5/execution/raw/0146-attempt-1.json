@@ -1,0 +1,354 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 431.566,
+  "pair_id": "v5-p-0274",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of binary search in physics",
+    "results": [
+      {
+        "category": "general",
+        "content": "-fdata-sections -ffunction-sections ffa_demo.adb gcc -c -O2 -fdump-scos -gnata -fstack-check -fdata-sections -ffunction-sections -gnatec=/home/you/ffa/libffa/restrict.adc word_ops",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.loper-os.org",
+          "/",
+          "",
+          "p=1913",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Loper OS » &#34;Finite Field Arithmetic.&#34; Chapter 1: Genesis.",
+        "url": "http://www.loper-os.org/?p=1913"
+      },
+      {
+        "category": "general",
+        "content": "try rewriting every C function in Assembly. That&#39;s where the real programming begins. How to get views: Stop using everything channel (scam): http://web.archive.org/web/2026081304",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "Universe, or its wave function, has no beginning - it simply has no initial boundaries in time nor space, rather like the south pole of the Earth in Euclidean space with imaginary",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/quant.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quantum Reality and Cosmology",
+        "url": "http://www.dhushara.com/paradoxhtm/quant.htm"
+      },
+      {
+        "category": "general",
+        "content": "Symmetric Green&#39;s Function Approach for Modeling the Crystal Growth Morphology of Ice,&#34; K. G. Libbrecht, Phys. Rev. E 60 , 1967 (1999). &#34;Absolute and Differential Measurement of W",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.its.caltech.edu",
+          "/%7Eatomic/publist/kglpub.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ken Libbrecht Pub List",
+        "url": "http://www.its.caltech.edu/%7Eatomic/publist/kglpub.htm"
+      },
+      {
+        "category": "general",
+        "content": "through the wave function and quantum entanglement. And the very complex experience of the human or animal brain is somehow derived from the experience of the brain&#39;s most basic p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "ultrametric on E , any function f(d) such that: (1)    f (0) = 0 (2)    f(λd) &gt; f(d) if λ &gt; 1 and d ≠ 0 is also an ultrametric on E . A",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/mathematical_theory_of_classification.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mathematical theory of classification (IEKO)",
+        "url": "https://www.isko.org/cyclo/mathematical_theory_of_classification.htm"
+      },
+      {
+        "category": "general",
+        "content": "one point Kontact was functional for me but Akonadi has somehow managed to degrade over time (it&#39;s now a roll of the dice whether I can successfully check or send email) and it ha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.alm.website",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Athena&#39;s blog - Athena&#39;s Site",
+        "url": "https://www.alm.website/blog/"
+      },
+      {
+        "category": "general",
+        "content": "you can build functions that run through a set of points and also have vertical asymptotes whenever you want. With this capability, you can now model functions like logarithms bet",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wordsandbuttons.online",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Words and buttons online",
+        "url": "https://wordsandbuttons.online/"
+      },
+      {
+        "category": "general",
+        "content": "perhaps even which function to fit. This information might be built into the program; if it is not, it must be supplied as input. The measured data itself, the object of the entir",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colorforth.github.io",
+          "/POL.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://colorforth.github.io/POL.htm",
+        "url": "https://colorforth.github.io/POL.htm"
+      },
+      {
+        "category": "general",
+        "content": "work? Also, what is the function of &#34;UpdateSaveGameInfo&#34; and how does it actually relate back to the game code?&#34; When the Load/Save menu comes up, the engine scans the &#39;savegames&#39;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "iddevnet.dhewm3.org",
+          "/doom3/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "id.sdk [Introduction]",
+        "url": "https://iddevnet.dhewm3.org/doom3/"
+      },
+      {
+        "category": "general",
+        "content": "no one has a fully functional toy legal system to play with as a child, and as a result goes into law.  On the other hand, &#34;adult&#34; programming, seen from afar, is enough like chil",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.loper-os.org",
+          "/",
+          "",
+          "p=861",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Loper OS » Engelbart&#39;s Violin",
+        "url": "http://www.loper-os.org/?p=861"
+      },
+      {
+        "category": "general",
+        "content": "260. Fake Utility Functions 261. Detached Lever Fallacy 262. Dreams of AI Design 263. The Design Space of Minds-in-General V. Value Theory 264. Where Recursive Justification Hits",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "elizier.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rationality: From AI to Zombies",
+        "url": "https://elizier.neocities.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b599970d0989567f2219406f79778ca963e755d12fdd8438663e1eb2a06de8a6",
+  "provider": "SearXNG",
+  "query": "tell me about the function of binary search in physics",
+  "query_id": "v5-p-0274-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:54.605032Z"
+}

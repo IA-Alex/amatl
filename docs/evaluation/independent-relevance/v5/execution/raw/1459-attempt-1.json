@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 368.33,
+  "pair_id": "v5-p-0698",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does language acquisition in information systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "magic and the acquisition of initiatory knowledge . Higher Self: that part of us which connects our corporeal minds to the Collective Unconscious and with the divine knowledge of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/masons.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Freemasons - The silent destroyers. Deist religious cult based on the Knights Templar - Initiation rituals like those of witchcraft",
+        "url": "http://www.bilderberg.org/masons.htm"
+      },
+      {
+        "category": "general",
+        "content": "the corporate ladder, acquisition of money and material goods far beyond the point at which they cease to give any additional physical satisfaction, and social activism when it ad",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unabomber.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society and Its Future",
+        "url": "https://unabomber.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "part of the ``Defense Acquisition Deskbook.&#39;&#39; http://portal.deskbook.osd.mil/reflib/DTNG/009CM/004/009CM004DOC.HTM . [FSF 2000] Free Software Foundation (FSF). What is Free Softwa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "dwheeler.com",
+          "/sloc/redhat71-v1/redhat71sloc.1.00.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "More than a Gigabuck: Estimating GNU/Linux&#39;s Size",
+        "url": "https://dwheeler.com/sloc/redhat71-v1/redhat71sloc.1.00.html"
+      },
+      {
+        "category": "general",
+        "content": "differences Language acquisition is different in autism. Autistics lag behind in using the correct language syntax. Low-level &#34;impairments&#34; are suggested by psychiatry 1",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "rdos.net",
+          "/eng/asperger.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Neanderthal theory of autism",
+        "url": "http://rdos.net/eng/asperger.htm"
+      },
+      {
+        "category": "general",
+        "content": "collections; and acquisition of digital data from physical media. My primary area of research is the long-term curation of digital collections. I&#39;m particularly interested in the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ils.unc.edu",
+          "/callee/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Christopher (Cal) Lee",
+        "url": "https://ils.unc.edu/callee/"
+      },
+      {
+        "category": "general",
+        "content": "so as to promote truth acquisition or error avoidance. Problems of institutional design typically demand inputs from empirical and formal disciplines outside philosophy. It is exp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.sydney.edu.au",
+          "/archives/fall2008/entries/epistemology-social/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Social Epistemology (Stanford Encyclopedia of Philosophy/Fall 2008 Edition)",
+        "url": "https://plato.sydney.edu.au/archives/fall2008/entries/epistemology-social/"
+      },
+      {
+        "category": "general",
+        "content": "to wisdom is not the acquisition of knowledge but the cultivation of humility? Not often enough it seems, when our culture wanders socially backward, entranced with pundits, colum",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/sggfr.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Song of the Grandfathers",
+        "url": "http://ipwebdev.com/hermit/sggfr.html"
+      },
+      {
+        "category": "general",
+        "content": "is obssessed with the acquisition of &#34;wares&#34;. He will do anything in his power to increase his library. That usually includes sucking download areas dry, hence giving the term &#34;le",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "rmitz.org",
+          "/bbsloser.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Documentary: The LoserUsers",
+        "url": "http://rmitz.org/bbsloser.html"
+      },
+      {
+        "category": "general",
+        "content": "the corporate ladder, acquisition of money and material goods far beyond the point at which they cease to give any additional physical satisfaction, and social activism when it ad",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/industrial-society-and-its-future-manifesto",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society And Its Future",
+        "url": "https://zerocontradictions.net/misc/industrial-society-and-its-future-manifesto"
+      },
+      {
+        "category": "general",
+        "content": "His inverted &#34;customer acquisition cost&#34; economic theory is a satire that reveals an uncomfortable truth: he proposes that companies should acquire their own customers by paying t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "before its acquisition by Rambus; Cigital (formerly Reliable Software Technologies, Gary McGraw, gem@cigital.com), prior to its acquisition by Synopsys. Other advisory boards that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "some level. In terms of acquisition, our best bet at the time was Adobe . From a technical perspective, we figured that Hypercosm could integrate with their current 3D product off",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.highprogrammer.com",
+          "/alan/hypercosm/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hypercosm and Web 3D",
+        "url": "http://www.highprogrammer.com/alan/hypercosm/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3f76d882e77f43952e7424c8af32144c8c6ca8997965f22e403038183a8d9b2c",
+  "provider": "SearXNG",
+  "query": "how does language acquisition in information systems work",
+  "query_id": "v5-p-0698-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:00.957344Z"
+}

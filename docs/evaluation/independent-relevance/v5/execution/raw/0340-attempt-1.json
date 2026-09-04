@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 331.295,
+  "pair_id": "v5-p-1069",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind microbial fermentation in urban planning",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4f0f89b5e6967f84967ec7474e691135519f985c7eaf667e6f91312232804470",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind microbial fermentation in urban planning",
+  "query_id": "v5-p-1069-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:56.160752Z"
+}

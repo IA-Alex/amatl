@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 273.043,
+  "pair_id": "v5-p-0143",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of database indexing in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "For Google, the major operations are Crawling, Indexing, and Sorting. It is difficult to measure how long crawling took overall because disks filled up, name servers crashed, or a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "infolab.stanford.edu",
+          "/~backrub/google.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Anatomy of a Search Engine",
+        "url": "http://infolab.stanford.edu/~backrub/google.html"
+      },
+      {
+        "category": "general",
+        "content": "oversee its day-to-day operations. Mr. Macintosh : Phil Schiller was right there with Steve Jobs and Tim Cook at the start of Apple’s comeback in 1997-1998. He is officially",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mjtsai.com",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Tsai - Blog",
+        "url": "https://mjtsai.com/blog/"
+      },
+      {
+        "category": "general",
+        "content": "heavily on costly join operations to combine tuples from multiple tables into a single resulting tuple. In many cases, the cost of query evaluation can be reduced by manually opti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jhellings.nl",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jelle Hellings",
+        "url": "https://jhellings.nl/"
+      },
+      {
+        "category": "general",
+        "content": "content by reference. Operations on these structure lists do almost everything. This is the opposite of the prevailing, and extremely limited, embedded approach [Nelson 1997c] . W",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cs.brown.edu",
+          "/memex/ACM_HypertextTestbed/papers/60.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Xanalogical Structure, Needed Now More than Ever",
+        "url": "https://cs.brown.edu/memex/ACM_HypertextTestbed/papers/60.html"
+      },
+      {
+        "category": "general",
+        "content": "or continuous content operations. Their value is concentrated in the document itself, not in the commercial machinery around it. This distinction matters because SEO is not one th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kirill.korins.ky",
+          "/articles/the-walled-garden-of-the-surveilled-web/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Walled Garden of the Surveilled Web - Kirill&#39;s journal",
+        "url": "https://kirill.korins.ky/articles/the-walled-garden-of-the-surveilled-web/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8119570a2cf03e7c008e9961c541e49c8c8f02154471195d6e2381db913835c0",
+  "provider": "SearXNG",
+  "query": "give an overview of database indexing in operations research",
+  "query_id": "v5-p-0143-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:53.545499Z"
+}

@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 339.729,
+  "pair_id": "v5-p-0534",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does neural networks in energy systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "easy it is for belief networks to use intuition for forming coherence , while rejecting scientific consensuses. For the most part, the videos were a waste of time, aside from the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/case-against-carnivore-diet",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Case Against The Carnivore Diet",
+        "url": "https://zerocontradictions.net/misc/case-against-carnivore-diet"
+      },
+      {
+        "category": "general",
+        "content": "in communicating networks that allow the system to &#34;self-organize&#34; and adapt to changes in its environment. Some relatively simple chemical processes are auto-catalytic . More com",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Information Philosopher - dedicated to the new information philosophy",
+        "url": "https://www.informationphilosopher.com/"
+      },
+      {
+        "category": "general",
+        "content": "for artificial neural networks, using them to recognise the patterns of speech, faces, objects, and somehow power the black magic of generative AI. Memory Memory is groups of tran",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "everythingmachine.io",
+          "/phone/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Phone in Your Hand",
+        "url": "http://everythingmachine.io/phone/"
+      },
+      {
+        "category": "general",
+        "content": "game of Go using neural networks, Google has made breakthroughs in algorithms that are solving the issues with stability and heat loss in fusion reactions. Nuclear fusion is very",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "reactor-core.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "In a Reactor Core, the Atomic Man finds his family",
+        "url": "http://reactor-core.org/"
+      },
+      {
+        "category": "general",
+        "content": "using Graph Neural Networks Majid Babaei and Juergen Dingel: Efficient Replay-based Regression Testing for Distributed Reactive Systems in the Context of Model-driven Development",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sigsoft.org",
+          "/awards/distinguishedPaperAward.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGSOFT - ACM Special Interest Group on Software Engineering",
+        "url": "http://www.sigsoft.org/awards/distinguishedPaperAward.html"
+      },
+      {
+        "category": "general",
+        "content": "process extends social networks and, in turn, induces an extension of empathy [Rifkin]. Possibly the world community passes thru a learning process which leads to a global consens",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.socrethics.com",
+          "/Folder2/Culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cultural Evolution of Suffering",
+        "url": "http://www.socrethics.com/Folder2/Culture.htm"
+      },
+      {
+        "category": "general",
+        "content": "for certain regulatory networks and biochemical activity like aligning transposons, but they are not ancillary nonetheless. For example, studies with mice(iirc) have shown that ch",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/chinese_room",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Computation isn&#39;t Consciousness: The Chinese Room Experiment",
+        "url": "https://lukesmith.neocities.org/vids/chinese_room"
+      },
+      {
+        "category": "general",
+        "content": "convolutional neural networks have been known for some time, and the new transformer architecture obeys a similar scaling law.  AI’s Product vs Feature Rule When is an AI system a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "svedic.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Svedic.org",
+        "url": "https://svedic.org/"
+      },
+      {
+        "category": "general",
+        "content": "hacking of FNCVR networks at all costs, manage capture of, search, interrogate for, seize, and enforce punishment for black replicators, and black weapons. Black SINSS.   &amp;nb",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.e-democracy.biz",
+          "/E-Democracy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Judicially Arbitrated Imperial E-Democracy",
+        "url": "http://www.e-democracy.biz/E-Democracy.html"
+      },
+      {
+        "category": "general",
+        "content": "the advent of social networks and always-online cell phones. &#43;9 @mono-ub4vc - 2023-06-24 15:34:33 It&#39;s also worth mentioning that social media is filling up with bots with generat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/mediocre_net",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AI Will Make (Has Made) the Internet Mediocre...",
+        "url": "https://lukesmith.neocities.org/vids/mediocre_net"
+      },
+      {
+        "category": "general",
+        "content": "artificial neural networks. These toy robots can learn to negotiate simple environments. They are capable of avoiding noxious stimuli via their responses to functional isomorphs o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Hedonistic Imperative : Objections (Chapter 4)",
+        "url": "https://www.hedweb.com/hedethic/hedon4.htm"
+      },
+      {
+        "category": "general",
+        "content": "on Sensor/Actuator Networks , Jacob Beal and Jonathan Bachrach, IEEE Intelligent Systems, (Vol. 21, No. 2) pp. 10-19, March/April 2006. (pdf preprint of article and sidebar ) Amor",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "groups.csail.mit.edu",
+          "/mac/projects/amorphous/paperlisting.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Amorphous Computing Paper Listing",
+        "url": "https://groups.csail.mit.edu/mac/projects/amorphous/paperlisting.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e3e30d66fbfcf0d147b9fc5b89eabb0f30d699b0eb29324bfedbfe2413d1de21",
+  "provider": "SearXNG",
+  "query": "how does neural networks in energy systems work",
+  "query_id": "v5-p-0534-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:03.572455Z"
+}

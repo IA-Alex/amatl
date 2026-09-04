@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 257.533,
+  "pair_id": "v5-p-1058",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does microbial fermentation in materials science work",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "751348b1a4ca345ac6f3dfa65f66475cbf8f8217bb3bca971f44d8a22e92b37f",
+  "provider": "SearXNG",
+  "query": "how does microbial fermentation in materials science work",
+  "query_id": "v5-p-1058-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:19.162661Z"
+}

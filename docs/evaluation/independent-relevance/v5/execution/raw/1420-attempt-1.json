@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 338.467,
+  "pair_id": "v5-p-0394",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of solar eclipses in marine biology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "af8d5acd0e86d3ee9b6f89b3376dfc8996bade68105b7b0816f876a582e869ee",
+  "provider": "SearXNG",
+  "query": "tell me about the function of solar eclipses in marine biology",
+  "query_id": "v5-p-0394-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:49.143356Z"
+}

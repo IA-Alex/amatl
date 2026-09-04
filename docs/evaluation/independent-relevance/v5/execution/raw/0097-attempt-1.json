@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 262.153,
+  "pair_id": "v5-p-0764",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does coastal flooding in ecology operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "predation, starvation, flooding, disease, and drought as natural mortality factors. Shooting, trapping, poisoning, electrocution, road kills, and suffocation have been recognized",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "esrp.csustan.edu",
+          "/publications/pubhtml.php",
+          "",
+          "doc=sjvrp&amp;file=chapter02L00.html",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "L. San Joaquin Kit Fox (Vulpes macrotis mutica)",
+        "url": "https://esrp.csustan.edu/publications/pubhtml.php?doc=sjvrp&amp;file=chapter02L00.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6ddbfe7d0975469050cc1eab405ae2b8cf41ba47ad5a1543a79bf1871f3a23da",
+  "provider": "SearXNG",
+  "query": "how does coastal flooding in ecology operate",
+  "query_id": "v5-p-0764-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:05:39.357601Z"
+}

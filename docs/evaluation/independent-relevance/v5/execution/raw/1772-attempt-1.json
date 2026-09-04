@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 336.023,
+  "pair_id": "v5-p-0889",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind vaccination in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "1023. Ultimate vaccination theory 1022. The coming cataclysm 1021. The Antichrist and &#34;the worldwide web&#34; 1020. Misunderstandings of the &#34;red pill&#34; 1019. Why the left can&#39;t &#34;meme&#34;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "orgyofthewill.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Orgy of the Will: A Philosophy of the Future",
+        "url": "http://orgyofthewill.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8dc5df99fa0a4dbf9cc5ba686616b193ddb2552abff97eb409f86707519efe71",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind vaccination in software engineering",
+  "query_id": "v5-p-0889-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:14:44.408846Z"
+}

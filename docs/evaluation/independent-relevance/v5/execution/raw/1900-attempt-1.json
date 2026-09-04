@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 236.333,
+  "pair_id": "v5-p-0947",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of cloud formation in geology",
+    "results": [
+      {
+        "category": "general",
+        "content": "aircraft assault zone information from AFI 13-217 published inside...the manual covers helicopters airlanding, why not fixed-wing aircraft? noone is suggesting Army Pathfinders ta",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/assaultzone.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AFTER THE PARACHUTE DROP: THE ASSAULT ZONE",
+        "url": "http://www.combatreform.org/assaultzone.htm"
+      },
+      {
+        "category": "general",
+        "content": "of the Green River Formation higher up the mountain above the pass. My stepson and his friend had been fossil hunting there a couple of months earlier. They told me how to get to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mdpub.com",
+          "/newphotos/index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Vacation Photos",
+        "url": "http://mdpub.com/newphotos/index.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c06a95763bc67572eeaa4cfd5b6b84885e2b78a773702e7fdecfc2e6865f4825",
+  "provider": "SearXNG",
+  "query": "give an overview of cloud formation in geology",
+  "query_id": "v5-p-0947-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:15:24.197584Z"
+}

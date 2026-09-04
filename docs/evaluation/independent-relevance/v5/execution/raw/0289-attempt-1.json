@@ -1,0 +1,219 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 285.083,
+  "pair_id": "v5-p-0803",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes battery chemistry in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "a PhD in inorganic chemistry - 1/2 of them are girls it seems. Back to VCL, some re-factoring to dung some mess out. Out to Louise&#39; for dinner, had a pleasant time but very tired,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2003/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2003/"
+      },
+      {
+        "category": "general",
+        "content": "Web Home — Biology — Chemistry Geology — Mathematics — Physics — Psychology — Science Texts on this site ] The address before the annual meeting of the British Association for the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "victorianweb.org",
+          "/science/science_texts/belfast.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Address Delivered Before the British Association Assembled at Belfast, With Additions (1874)",
+        "url": "https://victorianweb.org/science/science_texts/belfast.html"
+      },
+      {
+        "category": "general",
+        "content": "CHAPTER XVIII . Chemistry. Its Evolution as a Science. The Coal Tar Products. Fermenting and Brewing. Glucose, Gun Cotton, and Nitro-Glycerine. Electro-Chemistry. Fertilizers and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book389/book389.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Progress of Invention in the Nineteenth Century, by Edward W. Byrn.",
+        "url": "https://www.ajhw.co.uk/books/book389/book389.html"
+      },
+      {
+        "category": "general",
+        "content": "these awards for chemistry in 1954 and for peace in 1962. His recent death has stimulated many tributes to his scientific accomplishments. His impact on the health marketplace [si",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_industrybigpharma42.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The War Between Orthodox Medicine and Alternative Medicine",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_industrybigpharma42.htm"
+      },
+      {
+        "category": "general",
+        "content": "3.3. Chemistry     3.4. Geoscience     3.5. Biology       3.5.1. Molecular Biology    &amp;nbs",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "humanknowledge.net",
+          "/Thoughts.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Human Knowledge: Foundations and Limits",
+        "url": "http://humanknowledge.net/Thoughts.html"
+      },
+      {
+        "category": "general",
+        "content": "astronomy physics chemistry geology biology zoology physiology microbiology robotics technology about himself religion and creationism women rationality intelligence politics spee",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "Magnetism, &amp; Chemistry , vol. 2: 246-257 (January-June 1838) (2) M. Roberton: Annals of Electricity, Magnetism &amp; Chemistry , Vol. 2: 355-360 (January-June 1838) ~ Reprint",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.rexresearch.com",
+          "/crosse/crosse.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Andrew Crosse: Abiogenesis of Acari",
+        "url": "http://www.rexresearch.com/crosse/crosse.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9b15d96ff54388d4d179670ee1ff4f5f3d064362ebaf7d740e54a5b4e939fad2",
+  "provider": "SearXNG",
+  "query": "what causes battery chemistry in food science",
+  "query_id": "v5-p-0803-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:40.648282Z"
+}

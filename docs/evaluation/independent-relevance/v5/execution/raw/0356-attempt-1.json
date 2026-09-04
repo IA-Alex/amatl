@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 233.155,
+  "pair_id": "v5-p-0079",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of ocean tides in data management",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4296e47a3420790dcec73a04b52a0687309c944ade66837ee44c948b718d505f",
+  "provider": "SearXNG",
+  "query": "give an overview of ocean tides in data management",
+  "query_id": "v5-p-0079-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:01.108707Z"
+}

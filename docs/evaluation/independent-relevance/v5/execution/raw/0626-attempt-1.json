@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 350.311,
+  "pair_id": "v5-p-0414",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of carbon capture in neuroscience",
+    "results": [
+      {
+        "category": "general",
+        "content": "science here is neuroscience) since, for all we know, certain aspects of mentality might fail the test and go the way of phlogiston. Yet as different as their views may be, both S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.meta-religion.com",
+          "/Philosophy/Articles/Consciousness/post-physicalism.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Post-Physicalism",
+        "url": "https://www.meta-religion.com/Philosophy/Articles/Consciousness/post-physicalism.htm"
+      },
+      {
+        "category": "general",
+        "content": "achievement in neuroscience, with the Uplift researchers receiving numerous accolades and Acevedo himself briefly becoming an acclaimed celebrity. Acevedo and MMAcevedo were joint",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "qntm.org",
+          "/mmacevedo",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lena @ Things Of Interest",
+        "url": "https://qntm.org/mmacevedo"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "510f31210823921cdf585e114c70eb0ecc397f96d321358d5eba4b2d2f331b2a",
+  "provider": "SearXNG",
+  "query": "tell me about the function of carbon capture in neuroscience",
+  "query_id": "v5-p-0414-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:08:34.324552Z"
+}

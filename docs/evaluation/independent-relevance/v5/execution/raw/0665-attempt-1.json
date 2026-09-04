@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 274.446,
+  "pair_id": "v5-p-0473",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is encryption keys in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Sends Your Disk-Encryption Keys to Microsoft Español  -  &#39; Windows 10&#39; puede Recoger sus Datos para Agencias del Gobierno - Que se puede Hacer Italiano  -  &#39; W",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/sociopol_win-micro-gates.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Windows-Microsoft-Bill Gates",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_win-micro-gates.htm"
+      },
+      {
+        "category": "general",
+        "content": "Ring Says New Encryption Limits What It Can Give Police Alterslash picks up to the best 5 comments from each of the day’s Slashdot stories, and presents them on a single page",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alterslash.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alterslash, the unofficial Slashdot digest",
+        "url": "https://alterslash.org/"
+      },
+      {
+        "category": "general",
+        "content": "[EWG19b] Moving the Encryption Policy Conversation Forward . Encryption Working Group. (2019-09-10) The Encryption Working Group (of which I am member) studies issues relating to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.csail.mit.edu",
+          "/rivest/pubs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ronald L. Rivest: Publications and Talks",
+        "url": "https://people.csail.mit.edu/rivest/pubs.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8a98be606a137998d302e49529ff743b29c2b68fefa013020463f7348567ff04",
+  "provider": "SearXNG",
+  "query": "what is encryption keys in climate science",
+  "query_id": "v5-p-0473-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:46.603921Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 257.929,
+  "pair_id": "v5-p-0810",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does battery chemistry in neuroscience work",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "34ae226f84d87f724162d8165b0319736860ca8a6a63c6dcb9ebf5a4e5211773",
+  "provider": "SearXNG",
+  "query": "how does battery chemistry in neuroscience work",
+  "query_id": "v5-p-0810-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:44.488526Z"
+}

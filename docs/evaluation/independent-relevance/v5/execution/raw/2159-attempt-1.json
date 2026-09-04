@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 234.844,
+  "pair_id": "v5-p-0355",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes soil erosion in forensic science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d3ab7aafd8b92b1a79c7265a64303fb88fb55042df224181a37e429d9b862768",
+  "provider": "SearXNG",
+  "query": "what causes soil erosion in forensic science",
+  "query_id": "v5-p-0355-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:45.508892Z"
+}

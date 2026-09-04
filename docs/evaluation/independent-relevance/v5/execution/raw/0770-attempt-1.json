@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 334.178,
+  "pair_id": "v5-p-0097",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind ocean tides in software engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a4be5f9be5f3831b9688c2f4d9fc01b0f687615c137ab827ac08372932ad938a",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind ocean tides in software engineering",
+  "query_id": "v5-p-0097-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:19.640584Z"
+}

@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 260.374,
+  "pair_id": "v5-p-0132",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does database indexing in robotics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "to success. keyword databases evaluation Record players. file managing program evaluation Form fiddling. data base management program evaluation Database management for the IBM PC",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.atarimagazines.com",
+          "/creative/index/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of Creative Computing articles",
+        "url": "https://www.atarimagazines.com/creative/index/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e167eba255aeff3b6bd70bee50bab3c745d59b84064326bc7dc56aeb7be28915",
+  "provider": "SearXNG",
+  "query": "how does database indexing in robotics operate",
+  "query_id": "v5-p-0132-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:10:26.604155Z"
+}

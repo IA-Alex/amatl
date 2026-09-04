@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 314.179,
+  "pair_id": "v5-p-0168",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind immune response in robotics",
+    "results": [
+      {
+        "category": "general",
+        "content": "As an overarching principle, business leaders need to place equity and diversity at the heart of their talent ecosystem, ensuring that employees believe in their capacity to prosp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/capitalism.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Capitalism will die - but will it take us with it?",
+        "url": "http://digdeeper.love/articles/capitalism.xhtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "657248cb5c5d1410f9b123962dbd93136f8d8b5366ce051bc18003a2aec0fd3b",
+  "provider": "SearXNG",
+  "query": "describe the principle behind immune response in robotics",
+  "query_id": "v5-p-0168-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:06:18.993270Z"
+}

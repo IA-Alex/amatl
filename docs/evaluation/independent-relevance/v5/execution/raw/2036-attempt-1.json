@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 338.279,
+  "pair_id": "v5-p-0069",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind compiler operation in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "follow-on papers, industrial adoption, an annual workshop, and a growing community. Selected September 2021 CACM Research Highlight Achieving high-performance the functional way:",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "revolution, this second industrial revolution, has changed our life styles and allowed the growth of countless new application areas. And all this change and growth not only has c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "larch-www.lcs.mit.edu:8001",
+          "/~corbato/turing91/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "untitled1.html",
+        "url": "http://larch-www.lcs.mit.edu:8001/~corbato/turing91/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bf95f9b5fbce77477445d4484b8033cb90b51b648ccb19e79115967bf61157f3",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind compiler operation in industrial design",
+  "query_id": "v5-p-0069-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:16:06.736160Z"
+}

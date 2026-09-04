@@ -1,0 +1,327 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 420.577,
+  "pair_id": "v5-p-0269",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind binary search in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "to work on coordination technology. Advertising is a psyop. Companies have zero integrity. They make promises, never follow through, and face no consequences. Every self-driving c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "advent of computation technology. Phones are a mechanism by which the soul leaks from the body. All liminal spaces have been converted into soul spaces. Our minds nearly separate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-gig-economy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Gig Economy — Chadnet",
+        "url": "https://wiki.chadnet.org/the-gig-economy"
+      },
+      {
+        "category": "general",
+        "content": "fundamental piece of technology that I never really knew about. Just the build up of the subject is a great way to approach any kind of technical writing. I&#39;ll definitely keep thi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.linusakesson.net",
+          "/programming/tty/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The TTY demystified",
+        "url": "http://www.linusakesson.net/programming/tty/"
+      },
+      {
+        "category": "general",
+        "content": "blame on the entire technology than on particular people behind it causing particular problems. Because no, of course they won’t go against their true masters: they can&amp;rsqu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lynx.luxferre.top",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lynx thoughts",
+        "url": "https://lynx.luxferre.top/"
+      },
+      {
+        "category": "general",
+        "content": "relationship to technology. One was that romance and image go a long way towards shaping their opinions. If you doubt it (and if you have a lot of spare time on your hands) just a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "garote.bdmonkeys.net",
+          "/commandline/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Command Line In 2004",
+        "url": "https://garote.bdmonkeys.net/commandline/"
+      },
+      {
+        "category": "general",
+        "content": "academia, turned to technology and rural life. Rejected institutional science, embraced Orthodox Christianity, runs a YouTube channel. Focus on cybernetics, technology&#39;s societal",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Luke Smith Fanclub &amp; Archive",
+        "url": "https://lukesmith.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "on to human beings and technology, up to powered flight. But these events are told in reverse, which adds an interesting perpective to all of this history. This makes for a very g",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "david.tribble.com",
+          "/text/biblio.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "David Tribble&#39;s Bibliography of Good Books",
+        "url": "http://david.tribble.com/text/biblio.html"
+      },
+      {
+        "category": "general",
+        "content": "but with modern technology men were equally subjected to shock and trauma and hence, responded with hysteria. Male hysteria and masochism are further explored in books on male sub",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.feministezine.com",
+          "/feminist/film/Feminist-Film-Theory.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Feminist Film Theory - The Feminist eZine",
+        "url": "http://www.feministezine.com/feminist/film/Feminist-Film-Theory.html"
+      },
+      {
+        "category": "general",
+        "content": "Source Computing and Technology, Science, and Nature. Fri, 07 Aug 2026 How Many Photos Have I Taken? I was visiting relatives, and we were looking through some photos when someone",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "shallowsky.com",
+          "/blog/tags/cmdline/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Shallow Thoughts : tags : cmdline",
+        "url": "https://shallowsky.com/blog/tags/cmdline/"
+      },
+      {
+        "category": "general",
+        "content": "do this, and if your technology can&#39;t emulate typography produced on a daily basis – often in a hurry – 150 years ago then your tech is rather limited. These protocols keep shooti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lobste.rs",
+          "/s/ivryqt/what_is_this_gemini_thing_anyway_why_am_i",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "What is this Gemini thing anyway, and why am I excited about it? | Lobsters",
+        "url": "https://lobste.rs/s/ivryqt/what_is_this_gemini_thing_anyway_why_am_i"
+      },
+      {
+        "category": "general",
+        "content": "microbiology robotics technology about himself religion and creationism women rationality intelligence politics speech television and film science fiction Isaac Asimov&#39;s Science F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "556ee3f6719303a7301a8e825f881d63d84dfecca70f15ed1da7d4871b58298c",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind binary search in music technology",
+  "query_id": "v5-p-0269-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:16.090586Z"
+}

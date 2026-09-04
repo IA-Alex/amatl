@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 328.098,
+  "pair_id": "v5-p-0860",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind data compression in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0754a60681093d4b497ee89d56d23731a3bd51dcc65f1a7d0309a31209cfde9e",
+  "provider": "SearXNG",
+  "query": "describe the principle behind data compression in hydrology",
+  "query_id": "v5-p-0860-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:43.325133Z"
+}

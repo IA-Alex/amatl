@@ -1,0 +1,300 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 328.855,
+  "pair_id": "v5-p-0563",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of food preservation in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "a strong sense of self-preservation, caused me to join a local mycological society and begin my mushroom studies in earnest. Since then, I have become a proponent of the safe and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bayareamushrooms.org",
+          "/education/further_reflections_amanita_muscaria.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Further Reflections on Amanita muscaria as an Edible Species - Bay Area Mycological Society",
+        "url": "http://www.bayareamushrooms.org/education/further_reflections_amanita_muscaria.html"
+      },
+      {
+        "category": "general",
+        "content": "Field to Freezer and Preservation of Game Meats . Home Drying of Food is 25 detailed pages from the Utah State University Cooperative Extension. The National Food Safety Database",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "paleodiet.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Paleo Diet (Paleolithic, Primal, Caveman, Stone Age, Hunter-Gatherer Diet)",
+        "url": "https://paleodiet.com/"
+      },
+      {
+        "category": "general",
+        "content": "Lewarch, historic preservation officer for the Suquamish Tribe, said elders from the Tribes will get together &#34;and determine what is best for the ancestor.&#34; Suquamish: Woman embez",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cowlitzcountry.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cowlitz Country News Home Page",
+        "url": "http://www.cowlitzcountry.com/"
+      },
+      {
+        "category": "general",
+        "content": "sense, is that cryopreservation is an encryption algorithm, in a very literal sense.&#34; Cryostasis Revival , by Robert A. Freitas Jr. If you&#39;ve got a friend who&#39;s been thinking",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cryonics",
+        "url": "http://www.ralphmerkle.com/cryo/"
+      },
+      {
+        "category": "general",
+        "content": "Food storage and preservation Useful databases Community-supported farms Farming with trees Agroforestry Bamboo Resources Farming with animals Introduction Livestock resources Cat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "journeytoforever.org",
+          "/farm_library.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Small Farms Library - Journey to Forever",
+        "url": "http://journeytoforever.org/farm_library.html"
+      },
+      {
+        "category": "general",
+        "content": "for the exceptional preservation of the soft parts of its fossils. At 508 million years old (middle Cambrian), it is one of the earliest fossil beds containing soft-part imprints.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.donsmaps.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Don&#39;s Maps - Palaeolithic / Paleolithic European, Russian, Ukrainian and Australian Archaeology / Archeology",
+        "url": "https://www.donsmaps.com/"
+      },
+      {
+        "category": "general",
+        "content": "views on environmental preservation for human pleasure). Overall, hedonism&#39;s assertion that pleasure is the highest good or that moral agents should seek pleasure and avoid pain h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedonism.org",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hedonism as conceived by a digial zombie",
+        "url": "https://www.hedonism.org/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "and that too though the preservation of the army was due to themselves; for, as every one must admit, to the Arcadians and Achaeans the credit of that achievement was due, and the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.heritageinstitute.com",
+          "/zoroastrianism/reference/xenophon/anabasis/anabasis6.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Xenophon Anabasis Book 6",
+        "url": "http://www.heritageinstitute.com/zoroastrianism/reference/xenophon/anabasis/anabasis6.htm"
+      },
+      {
+        "category": "general",
+        "content": "toward the preservation of this form of government that we have.  Patriotism, nationalism, and sovereignty, all that proves that children are sick because a truly well indivi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "goodnewsaboutgod.com",
+          "/studies/political/world_order.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming “New World Order”",
+        "url": "https://goodnewsaboutgod.com/studies/political/world_order.htm"
+      },
+      {
+        "category": "general",
+        "content": "is concern for the preservation of those original racial elements which bestow culture and create the beauty and dignity of a higher mankind. We, as Aryans, can conceive of the st",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/nazihydrainamerica.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "nazihydrainamerica",
+        "url": "http://www.combatreform.org/nazihydrainamerica.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b2615a9572f5477fe4f58f72db762af780254bf91854be99f60b5eb68829a256",
+  "provider": "SearXNG",
+  "query": "give an overview of food preservation in public health",
+  "query_id": "v5-p-0563-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:16.846063Z"
+}

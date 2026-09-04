@@ -1,0 +1,219 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 292.204,
+  "pair_id": "v5-p-1014",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does probability distributions in data management work",
+    "results": [
+      {
+        "category": "general",
+        "content": "and their geographical distributions vary as they adapt to changing conditions. Figure 12: Glacier shortening (4) and sea level rise (24,25). Gray area designates estimated range",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oism.org",
+          "/pproject/s33p36.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Environmental Effects of Increased Atmospheric Carbon Dioxide - Global Warming Petition Project",
+        "url": "https://www.oism.org/pproject/s33p36.htm"
+      },
+      {
+        "category": "general",
+        "content": "Using the empirical distributions of interstate war sizes and onset times from 1823 to 2003, we parameterized stationary models of conflict generation that can distinguish trends",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.socrethics.com",
+          "/Folder2/Culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cultural Evolution of Suffering",
+        "url": "http://www.socrethics.com/Folder2/Culture.htm"
+      },
+      {
+        "category": "general",
+        "content": "are many probability distributions that could lead to the same observed sequence of guesses, so Shannon could only estimate the entropy bounds to be between 0.6 and 1.3 bits per c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mattmahoney.net",
+          "/dc/rationale.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rationale for a Large Text Compression Benchmark",
+        "url": "http://www.mattmahoney.net/dc/rationale.html"
+      },
+      {
+        "category": "general",
+        "content": "diagram shows you the distributions of electrons in an atom. GW: It should force AT to read it. The arrows are significant. DG: Rows 30-33 should have the orbital diagram property",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/Math/planet/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Planet MathML - W3C",
+        "url": "https://www.w3.org/Math/planet/"
+      },
+      {
+        "category": "general",
+        "content": "factors for the above distributions. Leverage boosts the mean expected final portfolio size at the possible expense of median portfolio size. When you use leverage you are more li",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gordoni.com",
+          "/effective-altruism/leveraged-etfs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Leveraged ETFs",
+        "url": "https://www.gordoni.com/effective-altruism/leveraged-etfs.html"
+      },
+      {
+        "category": "general",
+        "content": "dependent probability distributions on the finite or infinite search space of possible program prefixes. In the simplest case we start with a maximum entropy distribution on the t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.idsia.ch",
+          "/~juergen/newai1/node9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Optimal Ordered Problem Solver (OOPS)",
+        "url": "https://people.idsia.ch/~juergen/newai1/node9.html"
+      },
+      {
+        "category": "general",
+        "content": "information between distributions of sensor types, overt foraging behaviors, and internal foraging preferences on the one hand and environmental states on the other was assessed a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.sydney.edu.au",
+          "/archives/fall2008/entries/epistemology-evolutionary/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Evolutionary Epistemology (Stanford Encyclopedia of Philosophy/Fall 2008 Edition)",
+        "url": "https://plato.sydney.edu.au/archives/fall2008/entries/epistemology-evolutionary/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "275968bc61bbb105acaee18dcf1175055db32ddedd19460fd07b8476acc9aca4",
+  "provider": "SearXNG",
+  "query": "how does probability distributions in data management work",
+  "query_id": "v5-p-1014-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:40.006492Z"
+}

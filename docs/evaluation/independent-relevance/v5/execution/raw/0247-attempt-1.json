@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 360.699,
+  "pair_id": "v5-p-0858",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does data compression in energy systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "for initiation of self-compression of a gas is the Jeans mass, which depends on the gas temperature. Similarly, stellar accretion and accretion disk relations involve temperature.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "it causes a certain compression along the lattice. The Nanotubular tendons are connected to a network of nanocoil launchers embedded in an even looser lattice of similarly lipid a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "leaves are preserved as compression fossils, commonly retaining intact cellular tissue with considerable ultrastructural preservation, including cell walls, leaf phytoliths, and i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "of the SR-71 Mixed Compression Inlet Geometry and Operation By J. Thomas Anderson Technical Fellow Emeritus Lockheed Martin Skunk Works © Copyright Lockheed Martin Corporatio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.enginehistory.org",
+          "/Convention/2014/SR-71Inlts/SR-71Inlts.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SR-71 Inlets",
+        "url": "http://www.enginehistory.org/Convention/2014/SR-71Inlts/SR-71Inlts.shtml"
+      },
+      {
+        "category": "general",
+        "content": "rate varies based on compression ratio. NextFli will also (likely) never hit 50hz, while TileCine can. The tile data size is 16384 bytes, tile map is 40x32x2=2560 bytes, plus pale",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solhsa.com",
+          "/oldernews2022.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "solhsa.com - blog",
+        "url": "https://solhsa.com/oldernews2022.html"
+      },
+      {
+        "category": "general",
+        "content": "apply an obsolete image compression technique called “dithering”. The number of colours in an image, combined with its file format and resolution, contributes to the size of an im",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2018/09/how-to-build-a-low-tech-website/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Build a Low-tech Website? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2018/09/how-to-build-a-low-tech-website/"
+      },
+      {
+        "category": "general",
+        "content": "converted by adiabatic compression into the kinetic energy of gas particles, ie into heat . Gravitational contraction is only a secondary , short-term and not very strong source o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Gravitace4-1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The role of gravity in the formation and evolution of stars",
+        "url": "https://www.astronuclphysics.info/Gravitace4-1.htm"
+      },
+      {
+        "category": "general",
+        "content": "amount of &#34;lossy&#34; audio compression causes those brief tones and background noises (such as those emanating from your optical receiver) to &#34;confuse&#34; the audio compression, often r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/optical_comms/using_laser_pointers.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Using laser pointers for voice communications",
+        "url": "http://www.modulatedlight.org/optical_comms/using_laser_pointers.html"
+      },
+      {
+        "category": "general",
+        "content": "or nasal congestion) Compression bandage (To treat sprains or strain, helps to reduce swelling) Reinforced sterile skin closures CPR pocket mask Details To protect both the caregi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "100r.co",
+          "/site/off_the_grid.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "100R — off the grid",
+        "url": "http://100r.co/site/off_the_grid.html"
+      },
+      {
+        "category": "general",
+        "content": "just from PKZIP, the compression program. It also says &#34;XMSXXXX0Copyright(C)1992,1996 Caldera,Inc.&#34; That is also recognizable, and I think it means this may be from &#34;FreeDOS&#34;, the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.toad.com",
+          "/gnu/sysadmin/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "System Administration Bits of Knowledge",
+        "url": "http://www.toad.com/gnu/sysadmin/"
+      },
+      {
+        "category": "general",
+        "content": "various types of audio compression schemes will have on the absolute frequencies of these components, so un-compressed PCM (e.g. &#34;.WAV&#34;) files are recommended. My personal prefere",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/optical_comms/comb_filter.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "KA7OEI - Audio comb filter for hum removal",
+        "url": "http://www.modulatedlight.org/optical_comms/comb_filter.html"
+      },
+      {
+        "category": "general",
+        "content": "something about image compression. The insight doesn&#39;t even have to come from the thing itself, just the change of frame. People famously get breakthroughs from walking, meditatin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jodie.website",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jodie&#39;s Website",
+        "url": "https://jodie.website/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e35e24da343e38d6fef875cc54c840650c7f8d3dfcdf70a3160e3bf0e6005d86",
+  "provider": "SearXNG",
+  "query": "how does data compression in energy systems work",
+  "query_id": "v5-p-0858-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:27.114051Z"
+}

@@ -1,0 +1,327 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 375.827,
+  "pair_id": "v5-p-0957",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind cloud formation in physics",
+    "results": [
+      {
+        "category": "general",
+        "content": "saw black dots in vee-formation against cirrus clouds to the south, and dared not glance toward the east, lest Denebola blind. Then abovehead they glided. Something made me tense.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "paulburgess.org",
+          "/light.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bearing Light",
+        "url": "http://paulburgess.org/light.html"
+      },
+      {
+        "category": "general",
+        "content": "under the Lorenz transformations of special relativity, or equivalently (right) in terms of imaginary time in ordinary Euclidean 4-D space. These two are generalized in higher spa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/quant.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quantum Reality and Cosmology",
+        "url": "http://www.dhushara.com/paradoxhtm/quant.htm"
+      },
+      {
+        "category": "general",
+        "content": "are shifting, and transformation is at hand as new frequencies stimulate an expansion of consciousness. If advances in quantum physics are indicators, the new paradigm is the real",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "of black holes, galaxy formation and the big-bang. Its tiny entropy-reducing photosynthetic energy budget and fragile chemical bonds are insignificant on the cosmic scale. Biologi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "or in whole, with information or events that are not real, but rather, imaginary and theoretical—that is, invented by the author. Science fiction elements include: A time setting",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.creationsermons.com",
+          "/BigBangIsScienceFiction.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Big Bang Theory Is Science Fiction",
+        "url": "http://www.creationsermons.com/BigBangIsScienceFiction.html"
+      },
+      {
+        "category": "general",
+        "content": "getting the necessary information from Michael Mann, who put many obstacles in their path. He refused to release his computer code, saying that ‘giving them the algorithm wo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/warm.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The global warming scare",
+        "url": "https://davidpratt.info/warm.htm"
+      },
+      {
+        "category": "general",
+        "content": "it. Therefore the information on this site may not be current or accurate and should not be relied upon. For more information follow this link ( This Webpage Page in No Frames Mod",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lachlan.bluehaze.com.au",
+          "/nanoshite/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NanoShite: A nano-apostate webpage dedicated to the slimeycanceroushype flim-flam-barnum-and-bailey-charlatan delusional bollocks nanosleaze /",
+        "url": "http://lachlan.bluehaze.com.au/nanoshite/"
+      },
+      {
+        "category": "general",
+        "content": "June 15th: A rare cloud formation March 17th:   Confirmation that my spooky sandstone really is native to my area March 6th: Some truth about the possibilities for extraterrestria",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.erasmatazz.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Home | Interactive Storytelling Tools for Writers | Chris Crawford",
+        "url": "https://www.erasmatazz.com/"
+      },
+      {
+        "category": "general",
+        "content": "an essay once new information became available, or simply revisit a topic that he had written about long ago. The essays within each subject area are arranged so that, to the exte",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "designate strictly informational notes; scholiast commentaries are consigned to endnotes     Index: Introduction Dubious and Slanderous Accounts His Genuine Character Ep",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "epicurism.github.io",
+          "/epicurism.info/etexts/Lives.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Epicurus.info : E-Texts : The Life of Epicurus",
+        "url": "http://epicurism.github.io/epicurism.info/etexts/Lives.html"
+      },
+      {
+        "category": "general",
+        "content": "shit about the information overload caused by using sophisticated new Wiki technology. One doesn&#39;t like that he can&#39;t read it on his Lunix box, another moans that there&#39;s too much",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tomforsyth1000.github.io",
+          "/blog.wiki.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "TomF&#39;s Tech Blog - It&#39;s only pretending to be a wiki.",
+        "url": "http://tomforsyth1000.github.io/blog.wiki.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "01cf73bc3fa43b667610f709cc7b990d6a816a0a0c76fc2a1bb917c2dc27bd64",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind cloud formation in physics",
+  "query_id": "v5-p-0957-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:49.662331Z"
+}

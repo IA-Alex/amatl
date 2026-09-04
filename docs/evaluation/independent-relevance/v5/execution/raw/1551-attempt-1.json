@@ -1,0 +1,327 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 307.547,
+  "pair_id": "v5-p-0527",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes neural networks in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "easy it is for belief networks to use intuition for forming coherence , while rejecting scientific consensuses. For the most part, the videos were a waste of time, aside from the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/case-against-carnivore-diet",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Case Against The Carnivore Diet",
+        "url": "https://zerocontradictions.net/misc/case-against-carnivore-diet"
+      },
+      {
+        "category": "general",
+        "content": "industrial spying networks, the development of nuclear, biological and chemical weapons, even the development of a genetic killer program by Israel to find an organism that will o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "chemistry and neural networks in the brain grows, but often at a cost to genuine human understanding (I say this from direct experience, as one who has worked in a neuropsychiatri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/tidom.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Idea of Mind",
+        "url": "http://ipwebdev.com/hermit/tidom.html"
+      },
+      {
+        "category": "general",
+        "content": "process extends social networks and, in turn, induces an extension of empathy [Rifkin]. Possibly the world community passes thru a learning process which leads to a global consens",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.socrethics.com",
+          "/Folder2/Culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cultural Evolution of Suffering",
+        "url": "http://www.socrethics.com/Folder2/Culture.htm"
+      },
+      {
+        "category": "general",
+        "content": "can also affect neural networks, brainwaves and gene expression (and therefore the proteins our bodies make). The placebo effect is stronger in people with a positive, optimistic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/psycho.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mass psychosis and the power of thought",
+        "url": "https://davidpratt.info/psycho.htm"
+      },
+      {
+        "category": "general",
+        "content": "or family and community networks rather than mental health professionals. Additionally, cultural attitudes can influence adherence to prescribed treatments, such as medication or",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biopsychiatry.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mood-brighteners and antidepressants as conceived by ChatGPT",
+        "url": "https://www.biopsychiatry.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "(neurons) that form networks to manage our thinking, learning, and remembering. By the mid-1990s, studies were indicating a link between Alzheimer’s and aluminum. But just as the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bibliotecapleyades.net",
+          "/sociopolitica/esp_sociopol_mindcon52.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nazi Mind Control",
+        "url": "https://bibliotecapleyades.net/sociopolitica/esp_sociopol_mindcon52.htm"
+      },
+      {
+        "category": "general",
+        "content": "of neural networks, how much the clinical triage triggered by the virus is figurative of the long-term algorithmic distribution of life chances. One early warning sign was the way",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "logicmag.io",
+          "/home/deep-learning-and-human-disposability/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Deep Learning and Human Disposability",
+        "url": "https://logicmag.io/home/deep-learning-and-human-disposability/"
+      },
+      {
+        "category": "general",
+        "content": "resource distribution networks would be widely adopted to minimize waste and environmental impact. Exploration and expansion: With the elimination of suffering and the focus on bl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biohappiness.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biohappiness Revolution as conceived by ChatGPT",
+        "url": "https://www.biohappiness.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "to him: &#39;causal networks are not simple schemas that are used to provide single causes for effects, but they instead describe complex mechanisms of multiple interacting factors&#39;,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "philosophos.sdf.org",
+          "/feature_articles/philosophy_article_146.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Article from PHILOSOPHY PATHWAYS Issue 129",
+        "url": "http://philosophos.sdf.org/feature_articles/philosophy_article_146.html"
+      },
+      {
+        "category": "general",
+        "content": "forth a crop of neural networks that were respectable models for a variety of psychological phenomena, but whose inner workings remained mysterious even to their creators. Only wi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "home.dbio.uevora.pt",
+          "/~eje/simple%20heuristics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "‹Truth is ever to be found in simplicity, and not in the multiplicityand confusion of things. As the world, which to the naked eye exhibits th",
+        "url": "http://home.dbio.uevora.pt/~eje/simple%20heuristics.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4df9852c5bf804d924fe21b91bd70d3ab00b437869a7cd34ce417c802e879077",
+  "provider": "SearXNG",
+  "query": "what causes neural networks in public health",
+  "query_id": "v5-p-0527-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:30.016538Z"
+}

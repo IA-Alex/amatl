@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 328.149,
+  "pair_id": "v5-p-0021",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind photosynthesis in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9f36fc3e931c4f9c64f6a09051c02367f0cc24cb815635c55c5e742c958978ef",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind photosynthesis in pharmacology",
+  "query_id": "v5-p-0021-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:05.850039Z"
+}

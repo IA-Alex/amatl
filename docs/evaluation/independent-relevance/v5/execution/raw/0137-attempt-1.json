@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 272.422,
+  "pair_id": "v5-p-0201",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is heat transfer in pharmacology",
+    "results": [
+      {
+        "category": "general",
+        "content": "BRITISH JOURNAL OF PHARMACOLOGY; Negre-Salvayre,A; 153(1):6-20 (2008) ]. 4−HNE inactivates glucose−6−phosphate dehydrogenase, an enzyme required for the formatio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "benbest.com",
+          "/lifeext/aging.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "MECHANISMS OF AGING",
+        "url": "https://benbest.com/lifeext/aging.html"
+      },
+      {
+        "category": "general",
+        "content": "me the following: &#34;In Pharmacology all drugs have two names - a trade name and a generic name. For example, the trade name of Tylenol has a generic name of acetaminophen (or parac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/sillymolecules/sillymols4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecules with Silly or Unusual Names - page 4",
+        "url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "97d0d083efec587105a6ee06e6f4fb0c638394834f7f7109a720a71c66e46edd",
+  "provider": "SearXNG",
+  "query": "what is heat transfer in pharmacology",
+  "query_id": "v5-p-0201-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:05:51.627655Z"
+}

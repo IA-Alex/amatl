@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 312.413,
+  "pair_id": "v5-p-0845",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is data compression in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "Rationale for a Large Text Compression Benchmark Matt Mahoney Last update: July 23, 2009. The Large Text Compression Benchmark and the Hutter Prize are designed to encourage resea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mattmahoney.net",
+          "/dc/rationale.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rationale for a Large Text Compression Benchmark",
+        "url": "http://www.mattmahoney.net/dc/rationale.html"
+      },
+      {
+        "category": "general",
+        "content": "is a lossless audio compression program. Its main goal is to reduce at maximum the size of audio files, while permitting bit identical restoration for all input. It is similar wit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "losslessaudio.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OptimFROG - Main",
+        "url": "http://losslessaudio.org/"
+      },
+      {
+        "category": "general",
+        "content": ", the most popular compression software -- actually the most popular non-Apple program of any kind -- on the Apple Macintosh. Interests and Conferences In my spare time outside th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.templetons.com",
+          "/brad/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Brad Templeton&#39;s Home Page",
+        "url": "https://www.templetons.com/brad/"
+      },
+      {
+        "category": "general",
+        "content": "to learn about compression, this is a small strange jpeg image, width=&#34;553&#34; height=&#34;700&#34;     apatt the motion picture (trailer) by a.P.A.t.T. &#34;file is a.P.A.t.T. it was",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "floppyswop.co.uk",
+          "/both.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A:// FLOPPYSWOP / MAGNETIC MEDIA / ___________________________________________________________________________________________________________",
+        "url": "https://floppyswop.co.uk/both.php"
+      },
+      {
+        "category": "general",
+        "content": "fast, lossless image compression » Interesting things: the overall simplicity and the chunk QOI_OP_LUMA, which implements diff compression from previous byte giving more weight to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "triptico.com",
+          "/links/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Links",
+        "url": "https://triptico.com/links/"
+      },
+      {
+        "category": "general",
+        "content": "for urllib3 HTTP Header Compression Designing for Real-World HTTPS Sponsored Work on urllib3",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sethmlarson.dev",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Seth Larson",
+        "url": "https://sethmlarson.dev/"
+      },
+      {
+        "category": "general",
+        "content": "coding. The amount of compression obtained depends on the size of the input, the number of bits per code, and the distribution of common substrings. Typically, text such as source",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.amiga-stuff.com",
+          "/pd/fish.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fish disks 1 - 1120",
+        "url": "https://www.amiga-stuff.com/pd/fish.html"
+      },
+      {
+        "category": "general",
+        "content": "that alternative compression formats (such as EXI) referred to in section 3.4.1 Use Transfer Compression may not share some of the impediments of common compression formats. A dif",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/mwabp/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mobile Web Application Best Practices",
+        "url": "https://www.w3.org/TR/mwabp/"
+      },
+      {
+        "category": "general",
+        "content": "31st, 2006 - Time compression (over 2 notes a month for 4 months!) Related Topics : Pocket computers     There&#39;s no such thing as a free lunch, as they say, but to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cdecas.free.fr",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Welcome to Caz&#39; Website",
+        "url": "http://cdecas.free.fr/"
+      },
+      {
+        "category": "general",
+        "content": "production factors. As compression experience and technology improves we see increasing quality, but as production costs decrease and DVD authoring software becomes widely availab",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "demystified.info",
+          "/dvdfaq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DVD FAQ",
+        "url": "https://demystified.info/dvdfaq.html"
+      },
+      {
+        "category": "general",
+        "content": "Size Before Quantum Compression That Causes Hit Compression Before Impact It Would Only Work With All Raptor Riffles On &lt;1 Inch Out Tity From A Theoretically Flat Chested Ler G",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.unatle.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "UNATLe: United Nations AntiTerrorism Leauge",
+        "url": "http://www.unatle.net/"
+      },
+      {
+        "category": "general",
+        "content": "been refined with EQ, compression, and reverb. This resulted in something slightly more pop-like than the average chiptune, but the raw 8-bit sounds are still quite prominent in t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "linusakesson.net",
+          "/music/partita-prelude/index.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Partita Prelude for 8-Bit Ensemble",
+        "url": "http://linusakesson.net/music/partita-prelude/index.php"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "927e03cfedeb5acfd27ab0ae432b7b175d0ebfe1590f5e15e8427b32c86d26f0",
+  "provider": "SearXNG",
+  "query": "what is data compression in music technology",
+  "query_id": "v5-p-0845-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:43.653585Z"
+}

@@ -1,0 +1,246 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 265.572,
+  "pair_id": "v5-p-0887",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of vaccination in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "Vaccination and Homeopathy David Pratt May 2008, last updated Nov 2025 Contents   1. Introduction   2. Ingredients and side-effects   3. The decline",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/vaccin.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Vaccination and homeopathy",
+        "url": "https://davidpratt.info/vaccin.htm"
+      },
+      {
+        "category": "general",
+        "content": "See: Vaccination and Infant Circumcision are Not Comparable back to FAQ list   8. Don&#39;t most people prefer circumcised partners? Infant circumcision is not a question of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.noharmm.org",
+          "/FAQ.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Frequently Asked Questions about NOHARMM &amp; Circumcision",
+        "url": "http://www.noharmm.org/FAQ.htm"
+      },
+      {
+        "category": "general",
+        "content": "the new Canadian vaccination requirements for cross-border travel. The convoy started from the west coast of Canada with many Canadians cheering them along the way. It ballooned t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.infidelnotions.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Infidel Notions",
+        "url": "https://www.infidelnotions.com/"
+      },
+      {
+        "category": "general",
+        "content": "Bill Gates pushes Vaccinations in Food Supply to &#39;Fight Climate Change&#39; Español  -  Bill Gates quiere Rociar Millones de Toneladas de Tiza en la Estratosfera para frenar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_globalwarmingpseudo.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Global Warming - An Official Pseudoscience...  -  Calentamiento Global - Una Pseudociencia Oficial...",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_globalwarmingpseudo.htm"
+      },
+      {
+        "category": "general",
+        "content": "epidemic caused by vaccinations Prostate cancer pH balance PMMH for cancer--(pulse moderated microwave hyperthermia) Polio causes Polio vaccine Protein digesting enzymes for cance",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "truthquest2.com",
+          "/germtheory.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE FALSE GERM THEORY OF DISEASE",
+        "url": "http://truthquest2.com/germtheory.htm"
+      },
+      {
+        "category": "general",
+        "content": "The History of Vaccination - video Is the Wall Street &#34;Protest&#34; a Drill?  A Hoax? - video Bolshevik Jews Killed MILLIONS - videos Arizona Sheriff Explains &amp;qu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "goodnewsaboutgod.com",
+          "/topics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Political Truth, Spiritual Life and Health, Physical Life and Health",
+        "url": "https://goodnewsaboutgod.com/topics.htm"
+      },
+      {
+        "category": "general",
+        "content": "with medications, vaccinations up to date, a current physical and labs to rule out communicable disease. This will include a STD screen. ... I must see you, get a history, do an a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/MovingToSpain.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Moving from USA to Spain",
+        "url": "https://www.billdietrich.me/MovingToSpain.html"
+      },
+      {
+        "category": "general",
+        "content": "Welfare States Vaccination and Herd Immunity Overpopulation The free rider problem partially explains why content creators and service providers that rely on donations are less li",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/civilization/political-philosophy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Political Philosophy",
+        "url": "https://zerocontradictions.net/civilization/political-philosophy"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "98fa9e418f332531e6dac718ff152bd414f49a8573f7ee8227f78cb375d34f00",
+  "provider": "SearXNG",
+  "query": "give an overview of vaccination in public health",
+  "query_id": "v5-p-0887-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:45.805547Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 247.932,
+  "pair_id": "v5-p-0103",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes ocean tides in forensic science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "015be622c8dc06e7584780d986cd412544b0d2a0de3ee7f19f8b6a676d3105ad",
+  "provider": "SearXNG",
+  "query": "what causes ocean tides in forensic science",
+  "query_id": "v5-p-0103-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:12.688142Z"
+}

@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 263.698,
+  "pair_id": "v5-p-0314",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does water purification in urban planning work",
+    "results": [
+      {
+        "category": "general",
+        "content": "organization. A water purification system valued at $20,000 produced by the Netafim manufacturer, donated by Shari Arison Glazer and the Shira Hadasha Congregation , in Jerusalem.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.imninalu.net",
+          "/Israel-Arabs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Israel and the Arab World",
+        "url": "https://www.imninalu.net/Israel-Arabs.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "461a2df42c7c1f13695b0a55f2bc1ccd8c442577fc54ba2847da3295ca7be4bb",
+  "provider": "SearXNG",
+  "query": "how does water purification in urban planning work",
+  "query_id": "v5-p-0314-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:09:17.724629Z"
+}

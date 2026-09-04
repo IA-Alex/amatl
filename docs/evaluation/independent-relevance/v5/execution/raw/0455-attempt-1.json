@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 262.117,
+  "pair_id": "v5-p-0273",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is binary search in pharmacology",
+    "results": [
+      {
+        "category": "general",
+        "content": "developmental biology, pharmacology, and many of the other related biomedical research disciplines. Among the most significant technical challenges for performing successful live-",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "micro.magnet.fsu.edu",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecular Expressions: Images from the Microscope",
+        "url": "https://micro.magnet.fsu.edu/"
+      },
+      {
+        "category": "general",
+        "content": "behavior.  Pharmacology, Biochemistry and Behavior 8 :243‑249, 1978. J.M. Fuster ‑ Sustained activation of cortical neurons in stimulus- recognition tasks.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.joaquinfuster.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Joaquin Fuster",
+        "url": "http://www.joaquinfuster.com/"
+      },
+      {
+        "category": "general",
+        "content": "was interested in pharmacology but not interested in hidden causes. Comme indices plaidant en faveur de cette orientation empirique chez Scribonius, on peut noter la place de choi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "fooledbyrandomness.com",
+          "/notebook.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Opacity",
+        "url": "https://fooledbyrandomness.com/notebook.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d47d161b0c8fc8ec1e5bd56b49b1e5ea74f2335d913c356f1283a22b8c9eeecb",
+  "provider": "SearXNG",
+  "query": "what is binary search in pharmacology",
+  "query_id": "v5-p-0273-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:32.825460Z"
+}

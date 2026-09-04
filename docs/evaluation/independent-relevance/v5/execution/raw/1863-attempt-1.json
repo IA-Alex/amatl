@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 335.242,
+  "pair_id": "v5-p-0553",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is food preservation in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "awareness, habitat preservation, non-invasive wildlife studies, and third world health and education initiatives. If you feel inspired to donate, please consider giving to the JGI",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "darthsanddroids.net",
+          "/faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Darths &amp; Droids - FAQ",
+        "url": "https://darthsanddroids.net/faq.html"
+      },
+      {
+        "category": "general",
+        "content": "&#34;With the preservation and propagation of modern dynastic power has come the preservation and propagation of modern imperialism, no longer established as a formal colo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "globalkleptocracy.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GLOBAL KLEPTOCRACY - GLOBAL ELITE, RULING ELITE, GLOBAL OLIGARCHY, DEEP STATE, GLOBALISM, DYNASTIC ELITE, MONOPOLY CAPITALISM, CORPORATOCRACY,",
+        "url": "https://globalkleptocracy.net/"
+      },
+      {
+        "category": "general",
+        "content": "But in what does this preservation of African American culture consist? It can hardly consist in anything more than eating black-style food, listening to black-style music, wearin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unabomber.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society and Its Future",
+        "url": "https://unabomber.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "self-interest and self-preservation and selfishness. Man never in his sane mind does anything without a reason. . . . Higher selfishness, or the good of the Higher Self, is the mo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "oaks.nvg.org",
+          "/selfishness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Yogananda and Sacred Selfishness – The Gold Scales",
+        "url": "http://oaks.nvg.org/selfishness.html"
+      },
+      {
+        "category": "general",
+        "content": "Government, is the Preservation of their Property . To which in the state of Nature there are many things wanting. [ ibid. , §124] Locke, of course, thinks that the ownership",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/locke.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John Locke (1632-1704)",
+        "url": "https://friesian.com/locke.htm"
+      },
+      {
+        "category": "general",
+        "content": "in our efforts for his preservation. He must be protected against the ills of youth before he reaches them: for if the value of life increases until the child reaches an age when",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "hksh.site",
+          "/wclassic/rousseau-emile.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rousseau-Emile",
+        "url": "http://hksh.site/wclassic/rousseau-emile.htm"
+      },
+      {
+        "category": "general",
+        "content": "and necessary means of preservation of life; [43] sinful anger , [44] hatred , [45] envy , [46] desire of revenge ; [47] all excessive passions, [48] distracting cares; [49] immod",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kevincraig.us",
+          "/pacifist.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Pacifist for Congress -- KEVIN CRAIG - &#34;Liberty Under God&#34; Beginning in Missouri&#39;s 7th Congressional District",
+        "url": "https://kevincraig.us/pacifist.htm"
+      },
+      {
+        "category": "general",
+        "content": "for the sake of the preservation of creatures like ourselves; though they still might naturally be false judgments! Or, more plainly spoken, and roughly and readily—synthetic judg",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/cache/epub/4363/pg4363-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Beyond Good and Evil, by Friedrich Nietzsche",
+        "url": "https://www.gutenberg.org/cache/epub/4363/pg4363-images.html"
+      },
+      {
+        "category": "general",
+        "content": "a strong sense of self-preservation, caused me to join a local mycological society and begin my mushroom studies in earnest. Since then, I have become a proponent of the safe and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bayareamushrooms.org",
+          "/education/further_reflections_amanita_muscaria.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Further Reflections on Amanita muscaria as an Edible Species - Bay Area Mycological Society",
+        "url": "http://www.bayareamushrooms.org/education/further_reflections_amanita_muscaria.html"
+      },
+      {
+        "category": "general",
+        "content": "refers either to the preservation of life and the means of life, or to wealth, or to some other of the good things which it is hard to get either always or at that particular plac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "oaks.nvg.org",
+          "/aristotle-rhetoric.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Aristotle Works: Rhetoric – The Gold Scales",
+        "url": "http://oaks.nvg.org/aristotle-rhetoric.html"
+      },
+      {
+        "category": "general",
+        "content": "was aiming at the preservation of the Christian religion and the continuance of Christian theologists, 18 who were to gain a new anchor, and above all a new occupation, in the psy",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.publicappeal.org",
+          "/library/nietzsche/Nietzsche_human_all_too_human/sect3_Religious_Life.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SECTION THREE ; Religious Life",
+        "url": "http://www.publicappeal.org/library/nietzsche/Nietzsche_human_all_too_human/sect3_Religious_Life.htm"
+      },
+      {
+        "category": "general",
+        "content": "Lewarch, historic preservation officer for the Suquamish Tribe, said elders from the Tribes will get together &#34;and determine what is best for the ancestor.&#34; Suquamish: Woman embez",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cowlitzcountry.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cowlitz Country News Home Page",
+        "url": "http://www.cowlitzcountry.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9fac570636303ef49f50289d8597d8f8c7c8805fc1b0d12b1ee9e4f23dd9133e",
+  "provider": "SearXNG",
+  "query": "what is food preservation in health science",
+  "query_id": "v5-p-0553-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:12.876568Z"
+}

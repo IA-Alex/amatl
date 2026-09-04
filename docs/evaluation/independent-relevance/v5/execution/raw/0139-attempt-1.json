@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 307.903,
+  "pair_id": "v5-p-0651",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes traffic flow in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "a PhD in inorganic chemistry - 1/2 of them are girls it seems. Back to VCL, some re-factoring to dung some mess out. Out to Louise&#39; for dinner, had a pleasant time but very tired,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2003/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2003/"
+      },
+      {
+        "category": "general",
+        "content": "about it only because chemistry is his surrogate activity. Is the chemist curious about the appropriate classification of a new species of beetle? No. That question is of interest",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unabomber.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society and Its Future",
+        "url": "https://unabomber.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "knew something about chemistry, quickly realised that Elizabeth&#39;s concept, while appealing to the uninformed, was science fiction, not science, and no amount of arm-waving about n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/archives/Monthly/2018/2018-07.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason: July 2018 Archives",
+        "url": "https://www.fourmilab.ch/fourmilog/archives/Monthly/2018/2018-07.html"
+      },
+      {
+        "category": "general",
+        "content": "about it only because chemistry is his surrogate activity. Is the chemist curious about the appropriate classification of a new species of beetle? No. That question is of interest",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/industrial-society-and-its-future-manifesto",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society And Its Future",
+        "url": "https://zerocontradictions.net/misc/industrial-society-and-its-future-manifesto"
+      },
+      {
+        "category": "general",
+        "content": "different structure and chemistry, yet extensively interconnected. 41.3.3 The human brain computes all higher functions. Its prefrontal lobe processes identity, whereas (in the ri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/equiaeon/behaviours.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHY : Behaviours : Formal Sketch of a Critical Ethics",
+        "url": "http://www.sofiatopia.org/equiaeon/behaviours.htm"
+      },
+      {
+        "category": "general",
+        "content": "between photopigment chemistry and light sensitivity was anticipated by 19th century visual researchers, and was demonstrated when the rod photopigment (then called visual purple",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.handprint.com",
+          "/HP/WCL/color1.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "handprint : light and the eye",
+        "url": "http://www.handprint.com/HP/WCL/color1.html"
+      },
+      {
+        "category": "general",
+        "content": "on light. Life does chemistry in water as the universal solvent while we tend to use very toxic solvents like Sulphuric acid. Life depends on local. Life depends on diversity and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "as alchemy stood to chemistry. Certainly the alchemist&#39;s appeal to magic renders him more ridiculous to modern eyes than the cognitive scientist&#39;s appeal to a well-established mat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.arn.org",
+          "/docs/dembski/wd_convmtr.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Converting Matter into Mind: Dembski, William A.",
+        "url": "http://www.arn.org/docs/dembski/wd_convmtr.htm"
+      },
+      {
+        "category": "general",
+        "content": "whereby changes in body chemistry, the influences of drugs, and the effects of health can all lead to changes in social functioning (Charlton, 2000). The psychological mechanism l",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/bgcharlton/delusions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theory of Mind Delusions and Bizarre Delusions in an Evolutionary Perspective",
+        "url": "https://www.hedweb.com/bgcharlton/delusions.html"
+      },
+      {
+        "category": "general",
+        "content": "about it only because chemistry is his surrogate activity. Is the chemist curious about the appropriate classification of a new species of beetle? No. That question is of interest",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meaculpa.neocities.org",
+          "/teddy/ISAF",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://meaculpa.neocities.org/teddy/ISAF",
+        "url": "https://meaculpa.neocities.org/teddy/ISAF"
+      },
+      {
+        "category": "general",
+        "content": "hippie with an organic chemistry background wanders into their hippo enclave and (after they take him prisoner) falls in love with their (middle, apparently-16-years-old-but-actua",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.lord-enki.net",
+          "/stories.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stories I Will Not Write",
+        "url": "https://www.lord-enki.net/stories.html"
+      },
+      {
+        "category": "general",
+        "content": "hard sciences - mainly chemistry and physics.  And I spent some of my undergraduate years doing research on high input-power chemical lasers.  I also spent time in the s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cavebear.com",
+          "/old_cbblog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Old Cavebear Blog",
+        "url": "https://www.cavebear.com/old_cbblog/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2a4f2617d1ea9ce86e2e62d766813980b16dc2a626d6fcad39300d9b308ec3e3",
+  "provider": "SearXNG",
+  "query": "what causes traffic flow in chemistry",
+  "query_id": "v5-p-0651-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:52.232443Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 248.762,
+  "pair_id": "v5-p-0391",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes solar eclipses in forensic science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "873bd231b4eefcb4845fc70078f1518dbb1c1514d19d0a7ab96428bcb6e13e49",
+  "provider": "SearXNG",
+  "query": "what causes solar eclipses in forensic science",
+  "query_id": "v5-p-0391-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:07.558041Z"
+}

@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 257.848,
+  "pair_id": "v5-p-0663",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of traffic flow in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "propulsion or fuels or materials to change the basics of space exploration. Maybe we should work on something like a space fountain , or a space elevator , or a launch loop . As f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "for all the training materials he shared with the Free Software Community under a free documentation license (see http://free-electrons.com/training/). This represents more than 1",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "together to gather the materials which eventually found their way into the book never held formal meeting, never formed a formal organization. Each person acted like a node on a p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "the properties of all materials be re-tested using modern technology and certify the results. Melting and boiling points, conductivity, hardness, and all physical properties of ma",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/frankdidik_oped_bicycle_etiquette.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Thoughts by Frank X. Didik Bicycle Etiquette. Op-Ed Views. www",
+        "url": "http://www.didik.com/frankdidik_oped_bicycle_etiquette.htm"
+      },
+      {
+        "category": "general",
+        "content": "without permission. Materials taken from Arctic or originating from Olle Alm and not having a commercial copyright are exempt from all restrictions of noncommercial, noncopyrighte",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.worldofradio.com",
+          "/dxld3137.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.worldofradio.com/dxld3137.txt",
+        "url": "http://www.worldofradio.com/dxld3137.txt"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4c85b9a2cbffd109e267bb6d2eed20aadcf654baea8f68633b60db8404e7f294",
+  "provider": "SearXNG",
+  "query": "give an overview of traffic flow in materials science",
+  "query_id": "v5-p-0663-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:25.470992Z"
+}

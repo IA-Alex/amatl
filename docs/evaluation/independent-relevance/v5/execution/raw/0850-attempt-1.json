@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 333.291,
+  "pair_id": "v5-p-0448",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind supply chain logistics in mechanical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bafb4feb0f06c6b5ce3353ad84b7da64b77c9441ad7350aeeefd9708e026ba51",
+  "provider": "SearXNG",
+  "query": "describe the principle behind supply chain logistics in mechanical engineering",
+  "query_id": "v5-p-0448-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:44.943132Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 321.321,
+  "pair_id": "v5-p-0320",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind water purification in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "285e411465d6ff90acd5a2692e6bee4f0f5e865bf94420e3b21d93f30f906b81",
+  "provider": "SearXNG",
+  "query": "describe the principle behind water purification in hydrology",
+  "query_id": "v5-p-0320-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:09.361611Z"
+}

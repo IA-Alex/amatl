@@ -1,0 +1,354 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 463.183,
+  "pair_id": "v5-p-0842",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of data compression in information systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "from the PKWare Data Compression Library? Can I access data randomly in a compressed stream? Does zlib work on MVS, OS/390, CICS, etc.? Is there some simpler, easier to read versi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "zlib.net",
+          "/zlib_faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Frequently Asked Questions about zlib",
+        "url": "http://zlib.net/zlib_faq.html"
+      },
+      {
+        "category": "general",
+        "content": "be &#34;all frames (no compression)&#34; and the sound should be 8-bit monophonic. Copyrighted freeware. ABC/LX (99 KB) added 01/28/2002 (Power) Version - latest by D&amp;A Software (Andr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mizj.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "S.U.P.E.R. - The Largest 200LX Software Archive",
+        "url": "http://mizj.com/"
+      },
+      {
+        "category": "general",
+        "content": "Added Brotli compression format Migrated from Slackware Dependency of chawan python3-dasbus-1.7-x86_64-1slint.txz: Added. python3 DBus library based on glib New dependency of orca",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "slackware.uk",
+          "/slint/x86_64/slint-15.0/ChangeLog.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://slackware.uk/slint/x86_64/slint-15.0/ChangeLog.txt",
+        "url": "http://slackware.uk/slint/x86_64/slint-15.0/ChangeLog.txt"
+      },
+      {
+        "category": "general",
+        "content": "apply an obsolete image compression technique called “dithering”. The number of colours in an image, combined with its file format and resolution, contributes to the size of an im",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2018/09/how-to-build-a-low-tech-website/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Build a Low-tech Website? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2018/09/how-to-build-a-low-tech-website/"
+      },
+      {
+        "category": "general",
+        "content": "directory-name : compression and archive tool available on all operating systems; generally not preferred on Linux since it doesn’t preserve metadata unzip directory-name.zi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/programming/linux-commands-notes",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Unix/Linux Commands, Syntax, And Notes",
+        "url": "https://zerocontradictions.net/programming/linux-commands-notes"
+      },
+      {
+        "category": "general",
+        "content": "approach is to allow no compression or expansion of the intercharacter and interword spaces and consider the longest line that fits. More complex formatting algorithms often take",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.unicode.org",
+          "/reports/tr14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "UAX #14: Unicode Line Breaking Algorithm",
+        "url": "http://www.unicode.org/reports/tr14/"
+      },
+      {
+        "category": "general",
+        "content": "is 24 GB with mediocre compression. YouTube, Spotify, Facebook, Ex-Twitter, Instagram use machine learning-based recommendation systems designed to maximize engagement metrics (wa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "somewhat overkill. Data compression, not to mention deduplication, is even less relevant. With Terabyte harddisks on commodity hardware nowadays we have infinite disk space, infin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pspodcasting.net",
+          "/dan/blog/2019/plan9_desktop.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Plan 9 Desktop Guide",
+        "url": "https://pspodcasting.net/dan/blog/2019/plan9_desktop.html"
+      },
+      {
+        "category": "general",
+        "content": "and apparatus for data compression for three-dimensional graphics.&#34;) The patent describes compressing 3D graphics by describing the scene in terms of a virtual machine tuned to di",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.highprogrammer.com",
+          "/alan/hypercosm/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hypercosm and Web 3D",
+        "url": "http://www.highprogrammer.com/alan/hypercosm/"
+      },
+      {
+        "category": "general",
+        "content": "video resizing during compression or conversion - many times faster than old resizer. Updated Japanese and Korean documentation, added Chinese. Mechanically translated, let us kno",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.radgametools.com",
+          "/bnkhist.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bink Development History",
+        "url": "https://www.radgametools.com/bnkhist.htm"
+      },
+      {
+        "category": "general",
+        "content": "developing better compression algorithms - or advanced theoretical physics research. Once Moore&#39;s Law comes to a halt, the only way to increase computing power will be to increase",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/286233/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Kernel Hacker&#39;s Bookshelf: Ultimate Physical Limits of Computation [LWN.net]",
+        "url": "https://lwn.net/Articles/286233/"
+      },
+      {
+        "category": "general",
+        "content": "production factors. As compression experience and technology improves we see increasing quality, but as production costs decrease and DVD authoring software becomes widely availab",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "demystified.info",
+          "/dvdfaq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DVD FAQ",
+        "url": "https://demystified.info/dvdfaq.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d2dbc0fd137385992af6d7e535afb9d9b2e393aa8ec4eb482871e875ef7a1570",
+  "provider": "SearXNG",
+  "query": "tell me about the function of data compression in information systems",
+  "query_id": "v5-p-0842-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:51.892477Z"
+}

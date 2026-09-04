@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 255.389,
+  "pair_id": "v5-p-0785",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is coastal flooding in communication studies",
+    "results": [
+      {
+        "category": "general",
+        "content": "out how to handle communications. When you&#39;re ready, go. Don&#39;t wait for everything to be perfect; it never will be. If you can&#39;t afford to retire, don&#39;t. There are lots of ways to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/GettingStarted.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Getting Started",
+        "url": "https://www.billdietrich.me/GettingStarted.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b9f080123c43314f58b9c5bfec8adfb08b3a395a412c34117b321517c7c8e944",
+  "provider": "SearXNG",
+  "query": "what is coastal flooding in communication studies",
+  "query_id": "v5-p-0785-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:05:21.467688Z"
+}

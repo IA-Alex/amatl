@@ -1,0 +1,246 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 291.465,
+  "pair_id": "v5-p-0497",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is encryption keys in communication studies",
+    "results": [
+      {
+        "category": "general",
+        "content": "extended to each new communicationstechnology -- telephone, radio, television, cable, and now on-linecommunications. The ACLU has appeared before the Supreme Court andthe Courts o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.epic.org",
+          "/crypto/export_controls/bernstein_brief.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Amicus Brief",
+        "url": "https://archive.epic.org/crypto/export_controls/bernstein_brief.html"
+      },
+      {
+        "category": "general",
+        "content": "Flow in Large Communication Nets &#34; (May 31) First paper on packet-switching (PS) theory 1962 J.C.R. Licklider &amp; W. Clark, MIT: &#34; On-Line Man Computer Communication &#34; (August) Gala",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zakon.org",
+          "/robert/internet/timeline/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hobbes&#39; Internet Timeline - the definitive ARPAnet &amp; Internet history",
+        "url": "https://www.zakon.org/robert/internet/timeline/"
+      },
+      {
+        "category": "general",
+        "content": "- - Social networks - - Communication and encryption - - Electronic banking - - CCTV cameras - - Robotic cleaners - - Visual Positioning System (augmented reality) - - Proctoring",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/technological_slavery.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Technological slavery",
+        "url": "http://digdeeper.love/articles/technological_slavery.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "Integration and Communication NGI Zero Core 2025 SCIM, timetabes and other features for AlekSIS ALIAS 2003 analysis of legal and technical implications of the use of software agen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/project/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; All projects",
+        "url": "https://nlnet.nl/project/"
+      },
+      {
+        "category": "general",
+        "content": "power to intercept communications, or is likely to do so; (c) has come into the possession of any person by means of the exercise of any power conferred by an authorisation under",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyber-rights.org",
+          "/reports/part-iii.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Comments on Part III of the Regulation of Investigatory Powers Bill, 11 July, 2000",
+        "url": "https://www.cyber-rights.org/reports/part-iii.htm"
+      },
+      {
+        "category": "general",
+        "content": "Integration and Communication NGI Zero Core 2025 SCIM, timetabes and other features for AlekSIS ALIAS 2003 analysis of legal and technical implications of the use of software agen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/project/index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; All projects",
+        "url": "https://nlnet.nl/project/index.html"
+      },
+      {
+        "category": "general",
+        "content": "for secure email communication. Security in a Box – A digital privacy toolkit. Surveillance Self-Defense – A guide to protecting your online activity from surveillance. Wikis &amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "realdeepweb.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Real Deep Web | Hidden Wiki Access &amp; Deep Web Tools",
+        "url": "http://realdeepweb.net/"
+      },
+      {
+        "category": "general",
+        "content": "Our computers and communications use several percent of global energy, and have secondary costs too – particularly if you have to throw things away for lack of software upda",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9dd7b32b4040767a09f85110e8222634b327345a591a812d69da1f9ef736a73b",
+  "provider": "SearXNG",
+  "query": "what is encryption keys in communication studies",
+  "query_id": "v5-p-0497-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:24.357068Z"
+}

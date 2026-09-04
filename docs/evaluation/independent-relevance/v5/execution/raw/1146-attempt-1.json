@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 326.851,
+  "pair_id": "v5-p-0052",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind compiler operation in mechanical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "National Academy of Engineering (1991) PODC Influential Paper Award (2000) (for paper [27] ) Honorary Doctorate, University of Rennes (2003) Honorary Doctorate, Christian Albrecht",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lamport.azurewebsites.net",
+          "/pubs/pubs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Writings of Leslie Lamport",
+        "url": "https://lamport.azurewebsites.net/pubs/pubs.html"
+      },
+      {
+        "category": "general",
+        "content": "years, and so Microsoft engineering will essentially come back and say that a nice, tightly-written kernel without any pollution in the executive level of execution is the best wa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oreilly.com",
+          "/openbook/opensources/book/intro.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Open Sources: Voices from the Open Source Revolution",
+        "url": "https://www.oreilly.com/openbook/opensources/book/intro.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d4217403a990b17e0a38109b8e9928eb55a2497bbe3e2fb2034c5f9f5164670b",
+  "provider": "SearXNG",
+  "query": "describe the principle behind compiler operation in mechanical engineering",
+  "query_id": "v5-p-0052-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:11:17.976063Z"
+}

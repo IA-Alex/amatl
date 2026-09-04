@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 369.291,
+  "pair_id": "v5-p-0738",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of root systems in neuroscience",
+    "results": [
+      {
+        "category": "general",
+        "content": "a very debated topic in neuroscience and it&#39;s clear that we know very little about. Pointing to a metaphysical theory like Luke&#39;s is pretty useless. IMO, if you can&#39;t prove it and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/chinese_room",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Computation isn&#39;t Consciousness: The Chinese Room Experiment",
+        "url": "https://lukesmith.neocities.org/vids/chinese_room"
+      },
+      {
+        "category": "general",
+        "content": "Artem Kirsanov (Neuroscience) Knowledge Map Playlist - Domain of Science History Matters Politics with Paint Luke Smith Other Philosophy Understanding SLA by Lourdes Ortega Introd",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zero Contradictions Philosophy Home Page",
+        "url": "https://zerocontradictions.net/"
+      },
+      {
+        "category": "general",
+        "content": "at the Society for Neuroscience Congress, the Dalai Lama observed: &#34;If it was possible to become free of negative emotions by a riskless implementation of an electrode - without i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/sd2009.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "David Pearce as Guest Blogger on Sentient Developments (2009)",
+        "url": "https://www.hedweb.com/hedethic/sd2009.html"
+      },
+      {
+        "category": "general",
+        "content": "drawing upon modern neuroscience and evolutionary theory. Psychiatric signs and symptoms - such as anxiety, insomnia, malaise, fatigue - are part of life for most people, for much",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/bgcharlton/psychhuman.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Psychiatry and the Human Condition",
+        "url": "https://www.hedweb.com/bgcharlton/psychhuman.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b19a782b1030cbfe341d9b967668d5341493e1de3e211a98555240aeb5b482c4",
+  "provider": "SearXNG",
+  "query": "tell me about the function of root systems in neuroscience",
+  "query_id": "v5-p-0738-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:27.874324Z"
+}

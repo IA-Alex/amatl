@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 379.078,
+  "pair_id": "v5-p-0578",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of air quality monitoring in biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "no labeling, no monitoring, no controls. Personal production: you&#39;re allowed to grow/brew/make it at home, for personal use. As is true of beer and wine, and maybe tobacco, today.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonDrugs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about Drugs",
+        "url": "https://www.billdietrich.me/ReasonDrugs.html"
+      },
+      {
+        "category": "general",
+        "content": "Home Environment Self-Monitoring Case Study Which Has Success In Virtually All Youth Maintenance To The Scientific Community. In The Study You Cannot Waste It Or You Will Lose Fwa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "Mind you, this monitoring and classification is completely subconscious. The conscious mind is usually unaware of the process. Indeed, the whole point is to reserve the conscious",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pages.ucsd.edu",
+          "/~dnorman/DNMss/Being_Analog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Being Analog",
+        "url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html"
+      },
+      {
+        "category": "general",
+        "content": "Home Environment Self-Monitoring Case Study Which Has Success In Virtually All Youth Maintenance To The Scientific Community. In The Study You Cannot Waste It Or You Will Lose Fwa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/GreenMagi.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/GreenMagi.html"
+      },
+      {
+        "category": "general",
+        "content": "sit, quietly monitoring and tallying key-presses and mouse movements. At the end of a year, the customer would be asked to send in the disk file containing all the tallyings of th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dankalia.com",
+          "/science/mnd146.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Viruses of the Mind",
+        "url": "https://www.dankalia.com/science/mnd146.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8a0437c21b2c5aff4eb30d20ef9333b2b986a212be85ccb60229ec30b21112a6",
+  "provider": "SearXNG",
+  "query": "tell me about the function of air quality monitoring in biology",
+  "query_id": "v5-p-0578-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:40.242630Z"
+}

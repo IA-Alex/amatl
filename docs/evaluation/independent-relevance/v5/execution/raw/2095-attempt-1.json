@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 280.338,
+  "pair_id": "v5-p-0434",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does supply chain logistics in biology work",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f4a6fd4d55e0185cc84f93fc3c1025770d2ba9bf298c717fe7bfae098bbe1d05",
+  "provider": "SearXNG",
+  "query": "how does supply chain logistics in biology work",
+  "query_id": "v5-p-0434-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:25.744281Z"
+}

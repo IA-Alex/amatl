@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 312.924,
+  "pair_id": "v5-p-0628",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind renewable energy storage in mechanical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "35abaffd192590ef1a0a41f648ffd4aa2aa21c0aeb69cb20c19196de2808a97f",
+  "provider": "SearXNG",
+  "query": "describe the principle behind renewable energy storage in mechanical engineering",
+  "query_id": "v5-p-0628-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:57.997523Z"
+}

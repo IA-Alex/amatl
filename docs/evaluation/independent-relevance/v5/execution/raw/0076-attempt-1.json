@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 313.055,
+  "pair_id": "v5-p-0884",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind vaccination in optics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4e2b2c0dc9166fc014038a2de8e4a79d50dd3be4c3a01afec8259f5a20d042f8",
+  "provider": "SearXNG",
+  "query": "describe the principle behind vaccination in optics",
+  "query_id": "v5-p-0884-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:32.504237Z"
+}

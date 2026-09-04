@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 339.03,
+  "pair_id": "v5-p-0974",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of wastewater treatment in chemistry",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b8e6622ccd5c1eb8a1fe8934e190c091189a1fc56b234a248b0f25fbe2dafcfd",
+  "provider": "SearXNG",
+  "query": "tell me about the function of wastewater treatment in chemistry",
+  "query_id": "v5-p-0974-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:06.131793Z"
+}

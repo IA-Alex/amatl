@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 280.747,
+  "pair_id": "v5-p-0308",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does water purification in optics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "Repository for Affinity Purification, or the CRAPome for short. Tometomo Hamaguchi, a chemistry student at York University, emailed me to say that a standard technique in NMR spec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/sillymolecules/sillymols4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecules with Silly or Unusual Names - page 4",
+        "url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm"
+      },
+      {
+        "category": "general",
+        "content": "expiatory process and purification of the mind. LXX. But experience is by far the best demonstration, provided it adhere to the experiment actually made, for if that experiment be",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/45988/45988-h/45988-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of Novum Organum, by Lord Bacon",
+        "url": "https://www.gutenberg.org/files/45988/45988-h/45988-h.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "eb5566f2f5944df346f7c463f6fa02845b7352e72adfb236bc70897351adc3f9",
+  "provider": "SearXNG",
+  "query": "how does water purification in optics operate",
+  "query_id": "v5-p-0308-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:07:32.202394Z"
+}

@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 278.875,
+  "pair_id": "v5-p-0708",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does language acquisition in robotics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "pocket computers, no acquisition at all in 2009 for my collection... There are still a few items that i&#39;m after, but they&#39;re either rare, or expensive. Some of these items would b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cdecas.free.fr",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Welcome to Caz&#39; Website",
+        "url": "http://cdecas.free.fr/"
+      },
+      {
+        "category": "general",
+        "content": "methods of skills acquisition. As I said, the robot revolution means more pressure put on the worker. The challenges facing labour markets today are significant but not insurmount",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/capitalism.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Capitalism will die - but will it take us with it?",
+        "url": "http://digdeeper.love/articles/capitalism.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "forward with a planned acquisition of vacuum-maker iRobot , with the two companies saying in a release there was “no path to regulatory approval for the deal.” The Roomba maker al",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "techrights.org",
+          "/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Techrights — Links 30/01/2024: Many More Layoffs (Microsoft the Most Tech Layoffs This Year)",
+        "url": "http://techrights.org/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "97ab4fa1640e4d2035d4a6f8dd440c940f9a0b00483da226df63df679fc73229",
+  "provider": "SearXNG",
+  "query": "how does language acquisition in robotics operate",
+  "query_id": "v5-p-0708-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:08.695931Z"
+}

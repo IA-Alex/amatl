@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 257.519,
+  "pair_id": "v5-p-0179",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of immune response in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "animal feeding operations (CAFOs)—have been a cause of significant concern from both an animal welfare and an ethical perspective. Here is an overview of the types of suffering th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.animal-rights.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Veganism as conceived by ChatGPT",
+        "url": "https://www.animal-rights.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "and arithmetic operations with images, marking areas of interest (ROI) on the image and determining the ratios of local activities, correction for visual homogeneity camera field.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Fyzika-NuklMed.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nuclear physics and ionizing radiation physics",
+        "url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm"
+      },
+      {
+        "category": "general",
+        "content": "revenue to fund their operations. This dynamic has contributed to the persistence of conflict and instability in the country. Corruption : The opium trade has exacerbated corrupti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.opioids.wiki",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Opioids as conceived by ChatGPT",
+        "url": "https://www.opioids.wiki/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "Kiev to resume military operations against the eastern regions seeking independence   Unquote   Do you support military operations against regions seeking independence?",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/legal.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Legal attacks on www.bilderberg.org - defamation, hatchet jobs &amp; bullying attacks on me - Tony Gosling",
+        "url": "http://www.bilderberg.org/legal.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f568c95a8e66b2344e099abcfea65849cfb4018ffd8178a421077583365d365d",
+  "provider": "SearXNG",
+  "query": "give an overview of immune response in operations research",
+  "query_id": "v5-p-0179-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:18.273107Z"
+}

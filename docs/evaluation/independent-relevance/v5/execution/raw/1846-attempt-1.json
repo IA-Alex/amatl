@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 367.977,
+  "pair_id": "v5-p-0504",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind encryption keys in transportation engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "51669fe0bb1398704a89f3d7b214cf392e6f7445adf3c55ad142495aee5a2592",
+  "provider": "SearXNG",
+  "query": "describe the principle behind encryption keys in transportation engineering",
+  "query_id": "v5-p-0504-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:07.186528Z"
+}

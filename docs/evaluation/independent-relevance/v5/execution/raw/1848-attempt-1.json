@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 309.8,
+  "pair_id": "v5-p-0760",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind coastal flooding in civil engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": ". 24 December 2017 ( Engineering corals ) Scientists are working on genetically engineering corals and their symbiotic bacteria to help them survive the heating of the ocean. This",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2017-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2017: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2017-sep-dec.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a84f2c0778258f172327fb3d94adcbf1bdfddfe97d6b3f63bd113ad9cfd01139",
+  "provider": "SearXNG",
+  "query": "describe the principle behind coastal flooding in civil engineering",
+  "query_id": "v5-p-0760-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:15:07.815306Z"
+}

@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 345.922,
+  "pair_id": "v5-p-0510",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does neural networks in computer security work",
+    "results": [
+      {
+        "category": "general",
+        "content": "upscaler using neural networks. iptv-org A collection of publicly available IPTV channels from all over the world. Malware vx-undergound The largest collection of malware source c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cidoku.net",
+          "/links/all",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Todos los enlaces @ cidoku.net",
+        "url": "http://cidoku.net/links/all"
+      },
+      {
+        "category": "general",
+        "content": "using Graph Neural Networks Majid Babaei and Juergen Dingel: Efficient Replay-based Regression Testing for Distributed Reactive Systems in the Context of Model-driven Development",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sigsoft.org",
+          "/awards/distinguishedPaperAward.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGSOFT - ACM Special Interest Group on Software Engineering",
+        "url": "http://www.sigsoft.org/awards/distinguishedPaperAward.html"
+      },
+      {
+        "category": "general",
+        "content": "process extends social networks and, in turn, induces an extension of empathy [Rifkin]. Possibly the world community passes thru a learning process which leads to a global consens",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.socrethics.com",
+          "/Folder2/Culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cultural Evolution of Suffering",
+        "url": "http://www.socrethics.com/Folder2/Culture.htm"
+      },
+      {
+        "category": "general",
+        "content": "convolutional neural networks have been known for some time, and the new transformer architecture obeys a similar scaling law.  AI’s Product vs Feature Rule When is an AI system a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "svedic.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Svedic.org",
+        "url": "https://svedic.org/"
+      },
+      {
+        "category": "general",
+        "content": "hacking of FNCVR networks at all costs, manage capture of, search, interrogate for, seize, and enforce punishment for black replicators, and black weapons. Black SINSS.   &amp;nb",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.e-democracy.biz",
+          "/E-Democracy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Judicially Arbitrated Imperial E-Democracy",
+        "url": "http://www.e-democracy.biz/E-Democracy.html"
+      },
+      {
+        "category": "general",
+        "content": "can also affect neural networks, brainwaves and gene expression (and therefore the proteins our bodies make). The placebo effect is stronger in people with a positive, optimistic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/psycho.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mass psychosis and the power of thought",
+        "url": "https://davidpratt.info/psycho.htm"
+      },
+      {
+        "category": "general",
+        "content": "such as deep neural networks. Overall, an excellent paper of broad interest, which demonstrates for the first time that one can obtain deterministic certificates on properties of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "codified in neural networks (repeatedly counting the number of lines in an in-lined, C, double linked list manipulation method to check it used to be some sort of fun); so I tend",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2021/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2021/"
+      },
+      {
+        "category": "general",
+        "content": "by political networks (government agents), apolitical gang stalking perpetrated by apolitical networks (Mafia). Apolitical gang stalking is organized by the Mafia. Their goal is r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gangstalkingworld.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Gang stalking - Kiwipedia, the free encyclopedia",
+        "url": "https://gangstalkingworld.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "and informational networks to regulate their dynamics in service to adaptiveness. Each involves new inheritance systems , new communication, computation, and regulatory networks ,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.accelerationwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acceleration Watch (Understanding Accelerating Change)",
+        "url": "https://www.accelerationwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "hacking of FNCVR networks at all costs, manage capture of, search, interrogate for, seize, and enforce punishment for black replicators, and black weapons. Black SINSS.   &amp;nb",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.e-democracy.biz",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Judicially Arbitrated Imperial E-Democracy",
+        "url": "http://www.e-democracy.biz/"
+      },
+      {
+        "category": "general",
+        "content": "together to form small networks that may or may not perform more complex functions. They would be great experimental tools (a.k.a. hobbyist toys)! I haven&#39;t done much of anything",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "richfiles.solarbotics.net",
+          "/RichNews.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Richfiles RichNews Page",
+        "url": "http://richfiles.solarbotics.net/RichNews.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "58bf03cf345fd19a8dd594f70772bd1536213551caa774916390ccdd58831fe6",
+  "provider": "SearXNG",
+  "query": "how does neural networks in computer security work",
+  "query_id": "v5-p-0510-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:55.037124Z"
+}

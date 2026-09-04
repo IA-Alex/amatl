@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 314.611,
+  "pair_id": "v5-p-0185",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is heat transfer in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "attention on energy transfer in the energy channel of the Coriolis effect as a looped (implicit) coupling mechanism between the active and reactive energy channels. Category: Astr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "search massive pool transfer youth unique objective objectives author interpretation sample vote assistance file parliamentary unknown grey badly moreover crowd subsequent finish",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "Spanish control until a transfer of power to France on November 30, 1803, just three weeks before the cession to the United States. Part of the 1803 Louisiana Purchase by the Unit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hellenicaworld.com",
+          "/USA/Geo/en/Missouri.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Missouri",
+        "url": "https://www.hellenicaworld.com/USA/Geo/en/Missouri.html"
+      },
+      {
+        "category": "general",
+        "content": "be found, if this transfer is not easy, if none of my advice can be followed, you will say to me, &#34;What shall I do instead?&#34; I have told you already--&#34;Do what you a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "hksh.site",
+          "/wclassic/rousseau-emile.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rousseau-Emile",
+        "url": "http://hksh.site/wclassic/rousseau-emile.htm"
+      },
+      {
+        "category": "general",
+        "content": "Thermodynamics, Mass Transfer and Thermokinetics, Radiation and Plasma, and Heat Transfer. It is interesting that his textbook Technische Thermodynamik , published already in 1935",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.croatianhistory.net",
+          "/etf/russia.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Croatia - Russia",
+        "url": "https://www.croatianhistory.net/etf/russia.html"
+      },
+      {
+        "category": "general",
+        "content": "in front of you. Transfer your consciousness to that figure, so that you look down upon your physical body in the chair. (This is usually the one difficulty.) Feeling perfectly at",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.luminist.org",
+          "/archives/psychology_of_hashish.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Luminist Archives: Aleister Crowley: The Psychology of Hashish",
+        "url": "http://www.luminist.org/archives/psychology_of_hashish.htm"
+      },
+      {
+        "category": "general",
+        "content": "search massive pool transfer youth unique objective [objectives] author interpretation sample vote assistance file parliamentary unknown grey badly moreover crowd subsequent finis",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq-bnc.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.conlang.info/wordfreq-bnc.txt",
+        "url": "http://www.conlang.info/wordfreq-bnc.txt"
+      },
+      {
+        "category": "general",
+        "content": "cooking a bit faster.) Transfer spuds to stove. Cook until when you poke a chunk with a knife or skewer there is no longer any perceptible crunch. Drain spuds and mash, with ordin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.howtospotapsychopath.com",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Spot a Psychopath",
+        "url": "http://www.howtospotapsychopath.com/feed/"
+      },
+      {
+        "category": "general",
+        "content": "Grafting is used to transfer &#34;good apples&#34; to more &#34;crappy trees&#34;. 2016-03: How to dye easter eggs with normal food coloring Just use a few drops of food coloring. 2016-02: Tips f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tuxgraphics.org",
+          "/npa/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "tuxgraphics blog",
+        "url": "http://tuxgraphics.org/npa/"
+      },
+      {
+        "category": "general",
+        "content": "they’d also like to transfer because of the situation and that the school did nothing to keep the star. Now, the coach can expect the basketball program to deteriorate because wor",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alterslash.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alterslash, the unofficial Slashdot digest",
+        "url": "https://alterslash.org/"
+      },
+      {
+        "category": "general",
+        "content": "couple of cottages, and transfer two families from their old cabins, which could then be pulled down, so that new ones could be built on the old sites. Sir James said &#34;Exactly,&#34; a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book41.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Middlemarch by George Eliot",
+        "url": "https://www.ajhw.co.uk/books/book41.html"
+      },
+      {
+        "category": "general",
+        "content": "-  Bank Transfer Day - Successful !      -  Barclays&#39;s Agius Is Stepping Down      -  BCCI - The Dirtiest Bank of All   &amp;nb",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/sociopol_globalbanking.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Banking System - El Sistema Bancario Global",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_globalbanking.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4e6fe2149eb8ff2c39eb593f91ba9ca6eb23f4f43baf73fd0620c712f2fa7b13",
+  "provider": "SearXNG",
+  "query": "what is heat transfer in climate science",
+  "query_id": "v5-p-0185-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:49.826022Z"
+}

@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 305.402,
+  "pair_id": "v5-p-0214",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does heat transfer in marine biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "It is unclear how this transfer of a style and the associated cultural definitions could possibly have happened. (left) Chipped stone female figurine in the Lalinde/Gönnersdorf st",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.donsmaps.com",
+          "/venusfigurespurpose.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Palaeolithic Venus figures - their purpose",
+        "url": "https://www.donsmaps.com/venusfigurespurpose.html"
+      },
+      {
+        "category": "general",
+        "content": "airbases by B-17s transferred from the European theatre). But none of these strategic considerations were on the mind of Sledge and his fellow Marines. They were glad to have surv",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/archives/Monthly/2018/2018-09.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason: September 2018 Archives",
+        "url": "https://www.fourmilab.ch/fourmilog/archives/Monthly/2018/2018-09.html"
+      },
+      {
+        "category": "general",
+        "content": "Institute Antigen Transfer Factor for infection Arterial disease (vascular disease) Arterial disease 2 Arthritis Autism-food intolerance connection Bad medicine Bad science Be Set",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "truthquest2.com",
+          "/germtheory.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE FALSE GERM THEORY OF DISEASE",
+        "url": "http://truthquest2.com/germtheory.htm"
+      },
+      {
+        "category": "general",
+        "content": "higher rates of heat transfer to the deep ocean than observed, and tend to over-predict the warming of the surface layer by a factor of up to three. Moreover, the heat content of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/warm.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The global warming scare",
+        "url": "https://davidpratt.info/warm.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ed3494e7422bf013f5cb3dd9af573df68142743bc6922e7a32697b73f0e9c709",
+  "provider": "SearXNG",
+  "query": "how does heat transfer in marine biology work",
+  "query_id": "v5-p-0214-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:14.827109Z"
+}

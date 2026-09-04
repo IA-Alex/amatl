@@ -1,0 +1,354 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 424.817,
+  "pair_id": "v5-p-0654",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of traffic flow in computer security",
+    "results": [
+      {
+        "category": "general",
+        "content": "to have any hope of functioning off of this planet. When considering the mass budget, if you think them&#39;s good economics then you&#39;re plain crazy. Fortunately, for every worthwhile",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "character characters function functions fund funds normal nor gon dog dogs green quickly behaviour garden gardens previous recently serious anyway couple worth energy current stat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "be used if first malfunctions. Otherwise proceed to secondary target, missile complex seven miles east of Barshaw. Target reference November Bravo X-Ray One Zero Eight. Fused airb",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.huppi.com",
+          "/t/strangelove_script.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Kubrick Site: The Strangelove Continuity Script",
+        "url": "http://www.huppi.com/t/strangelove_script.html"
+      },
+      {
+        "category": "general",
+        "content": "pick up the programming function, transfer it from Lincoln to RAND Corporation, and then move it out here to the west coast in Santa Monica. So that was the key. The original comm",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ed-thelen.org",
+          "/Sage-Talk.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://ed-thelen.org/Sage-Talk.html",
+        "url": "https://ed-thelen.org/Sage-Talk.html"
+      },
+      {
+        "category": "general",
+        "content": "attention. Its utility function is satisfied by clicks and views, dissatisfied if the user clicks away. The project was too successful; the testers were unable to detach from the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-gig-economy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Gig Economy — Chadnet",
+        "url": "https://wiki.chadnet.org/the-gig-economy"
+      },
+      {
+        "category": "general",
+        "content": "Framework for Function Name Reassignment Based on Large-Scale Stripped Binaries Automated Software Engineering (ASE 2020) September 21 -25, 2020, Melbourne, Australia Zhongxin Liu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sigsoft.org",
+          "/awards/distinguishedPaperAward.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGSOFT - ACM Special Interest Group on Software Engineering",
+        "url": "http://www.sigsoft.org/awards/distinguishedPaperAward.html"
+      },
+      {
+        "category": "general",
+        "content": "character [characters] function [functions] fund [funds] normal nor gon dog [dogs] green quickly behaviour garden [gardens] previous recently serious anyway couple worth energy cu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq-bnc.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.conlang.info/wordfreq-bnc.txt",
+        "url": "http://www.conlang.info/wordfreq-bnc.txt"
+      },
+      {
+        "category": "general",
+        "content": "including Kprobes and Function Tracer support. More importantly for the embedded community, creation of trace clocks for specific embedded architectures, which is the most archite",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "parts of a single function. -- Unix-Haters Handbook&#34;, &#34;A nuclear bomb can really ruin your day.&#34;, &#34;A one track mind is about as good as an 8-track. -- Cindy Parker&#34;, &#34;A painter sh",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ifindkarma.com",
+          "/oneliners/oneliners-2000",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.ifindkarma.com/oneliners/oneliners-2000",
+        "url": "http://www.ifindkarma.com/oneliners/oneliners-2000"
+      },
+      {
+        "category": "general",
+        "content": "minister The main function of the second beast or false prophet is to cause the world to worship the first beast, who represents secular political power. Thus, he is something of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greatdreams.com",
+          "/war/rule_2002.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RULE 2002",
+        "url": "http://www.greatdreams.com/war/rule_2002.htm"
+      },
+      {
+        "category": "general",
+        "content": "to restore normal lung function and reduce the pain. To do so would require an insertion in side of my ribs. He said waiting for it to get better could take months or it could get",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "the-wanderling.com",
+          "/getting_letters.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GETTING LETTERS AND EMAILS: the Wanderling",
+        "url": "https://the-wanderling.com/getting_letters.html"
+      },
+      {
+        "category": "general",
+        "content": "lamp filament. Its work function as a photodetector was very low, which meant that it was inherently subject to large amounts of thermal noise, much more than silicon and very muc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0818f3d6668161a4e18cf9a1c7b35ae9487a3f090b3a026dc5462b56a10b0327",
+  "provider": "SearXNG",
+  "query": "tell me about the function of traffic flow in computer security",
+  "query_id": "v5-p-0654-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:24.152646Z"
+}

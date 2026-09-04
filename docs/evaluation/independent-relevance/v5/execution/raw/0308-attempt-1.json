@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 356.193,
+  "pair_id": "v5-p-0941",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind cloud formation in computer security",
+    "results": [
+      {
+        "category": "general",
+        "content": "«loyalty» to the formation or an admiration to the individual, the practice attempts to convey the message that the manager will behave as the «supreme» commander would. The ant o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "asynchronousexchange.com",
+          "/documents/the-saint-petersburg-hive",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://asynchronousexchange.com/documents/the-saint-petersburg-hive",
+        "url": "http://asynchronousexchange.com/documents/the-saint-petersburg-hive"
+      },
+      {
+        "category": "general",
+        "content": "indirect or encoded information (traditions), while immediate awareness remains the true touchstone of spirituality. The outstanding conflict in the theologies of humanity is betw",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/equiaeon/henotheism.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHY : On Henotheism : beyond Monotheism and Polytheism",
+        "url": "http://www.sofiatopia.org/equiaeon/henotheism.htm"
+      },
+      {
+        "category": "general",
+        "content": "shit about the information overload caused by using sophisticated new Wiki technology. One doesn&#39;t like that he can&#39;t read it on his Lunix box, another moans that there&#39;s too much",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tomforsyth1000.github.io",
+          "/blog.wiki.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "TomF&#39;s Tech Blog - It&#39;s only pretending to be a wiki.",
+        "url": "http://tomforsyth1000.github.io/blog.wiki.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "222ad2f0780e50f3c1fb9cb94a4a0fc9b7de6c6da5f2f349488e9225cbd699cf",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind cloud formation in computer security",
+  "query_id": "v5-p-0941-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:46.230983Z"
+}

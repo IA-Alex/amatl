@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 255.16,
+  "pair_id": "v5-p-1051",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes microbial fermentation in ecology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "63c3cc243efb88681a004acdf74618de1010671d0ef401c778485c29d64182e4",
+  "provider": "SearXNG",
+  "query": "what causes microbial fermentation in ecology",
+  "query_id": "v5-p-1051-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:27.732945Z"
+}

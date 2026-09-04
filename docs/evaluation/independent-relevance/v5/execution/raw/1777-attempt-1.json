@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 256.076,
+  "pair_id": "v5-p-0520",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does neural networks in mechanical engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "to discord Reverse Engineering discord Koshka&#39;s Kingdom - &#34;Make the Web Great Again&#34; List of what the FSF uses for chat. [Archive] Shadow Wiki Basic comparison of IM systems, thou",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "shystudios.us",
+          "/blog/discord/discord.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Discord of Discord",
+        "url": "http://shystudios.us/blog/discord/discord.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f52d489c6c89aef8e0556af0b798912a8d80599ec1cb5f336af396844e19c90b",
+  "provider": "SearXNG",
+  "query": "how does neural networks in mechanical engineering operate",
+  "query_id": "v5-p-0520-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:14:45.881999Z"
+}

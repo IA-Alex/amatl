@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 347.398,
+  "pair_id": "v5-p-0670",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does traffic flow in physics work",
+    "results": [
+      {
+        "category": "general",
+        "content": "maps the drop against traffic sources and campaign launches — instantly revealing that while app performance and core user conversion are perfectly stable, the sitewide rate was a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.smashingmagazine.com",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Articles on Smashing Magazine — For Web Designers And Developers",
+        "url": "https://www.smashingmagazine.com/feed/"
+      },
+      {
+        "category": "general",
+        "content": "into the view of air-traffic control. Paraphrased from interview of Lawrence Krauss on Skeptics&#39; Guide to the Universe 12/2011, episode number 334: There is no reason to &#34;mourn&#34; t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "to organize the traffic. 8.2 The fundamental fact of ethics is the irreducible difference between all moral actors hand in hand with their interrelatedness. 8.2.1 Difference does",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/equiaeon/behaviours.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHY : Behaviours : Formal Sketch of a Critical Ethics",
+        "url": "http://www.sofiatopia.org/equiaeon/behaviours.htm"
+      },
+      {
+        "category": "general",
+        "content": "radio to yell at air traffic controllers, later switched off the radio, and told the co-pilot “we need to take a leap of faith” and “we are not going to Vegas.&amp;#",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "miles. There was no air traffic on radar within 100 miles. Quoting from the observer&#39;s statement, &#34;receiving a call concerning a strange light in the sky, I went out and scanned t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.project1947.com",
+          "/shg/symposium/hynek.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SHG - UFO Symposium 1968: Hynek Statement",
+        "url": "http://www.project1947.com/shg/symposium/hynek.html"
+      },
+      {
+        "category": "general",
+        "content": "two bills, the National Traffic and Motor Vehicle Safety Act and the Highway Safety Act, creating federal agencies to research vehicle safety and mandate standards. Standing behin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason",
+        "url": "https://www.fourmilab.ch/fourmilog/"
+      },
+      {
+        "category": "general",
+        "content": "22nd How and Why 21st Traffic Jam 20th Order and Chaos 18th All Work and No Play 17th More Massive Evidence 10th Massive Evidence 10th Meeting of the Minds 9th You’re Hot 6t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "briankoberlein.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Archive | by Brian Koberlein",
+        "url": "https://briankoberlein.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "server can&#39;t handle the traffic of the ExifTool web pages, and because of this the unsupportive DreamHost team has disabled the ExifTool web site. This page is a temporary stop-ga",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "exiftool.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ExifTool by Phil Harvey",
+        "url": "https://exiftool.org/"
+      },
+      {
+        "category": "general",
+        "content": "Drove home, M25 grim traffic; lovely to be home. 2021-07-29 Thursday Swum with the babes and J. in the morning. Back to Alfred&#39;s Tower, walked to St Peter&#39;s Pump, through a hill f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2021/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2021/"
+      },
+      {
+        "category": "general",
+        "content": "voice, video and data traffic. Commercial technologies can be used to build these networks, but regular off the shelf equipment usually isn&#39;t able to survive the harsh environment",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "Kumar. Optimizing Web traffic via the Media Scheduling Problem. Proc. 15th ACM SIGKDD Intl. Conf. on Knowledge Discovery and Data Mining, 2009. J. Kleinberg. Temporal Dynamics of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cs.cornell.edu",
+          "/home/kleinber/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jon Kleinberg&#39;s Homepage",
+        "url": "https://www.cs.cornell.edu/home/kleinber/"
+      },
+      {
+        "category": "general",
+        "content": "&#34;dirty bombs&#34; on their traffic lights.  These already exist in Canadian airports and in Ottawa.  Who says we are not in the middle of World War III?  Why are we not",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greatdreams.com",
+          "/war/rule_2002.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RULE 2002",
+        "url": "http://www.greatdreams.com/war/rule_2002.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4fbbc3b4e8eda7bc12f5c8d554d29529a590198798021b4c4c9cdf009f8e621f",
+  "provider": "SearXNG",
+  "query": "how does traffic flow in physics work",
+  "query_id": "v5-p-0670-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:30.741417Z"
+}

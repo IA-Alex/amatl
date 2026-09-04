@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 365.855,
+  "pair_id": "v5-p-0853",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind data compression in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "is 24 GB with mediocre compression. YouTube, Spotify, Facebook, Ex-Twitter, Instagram use machine learning-based recommendation systems designed to maximize engagement metrics (wa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "is that I control the compression ratio; the satellite company doesn&#39;t decide if I see blur or motion artifacts to improve their bottom line; if the visuals are not the big thing,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "brander.ca",
+          "/cordcutcuug/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "&#34;My Cord-Cutting Adventure&#34;, a Presentation for the Calgary Unix Users Group",
+        "url": "http://brander.ca/cordcutcuug/"
+      },
+      {
+        "category": "general",
+        "content": "ultimate level of data compression (how small can a message be, given the same amount of information to be encoded?) and the ultimate rate of data transmission (how fast can data",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.stanford.edu",
+          "/archIves/win2013/entries/information-semantic/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Semantic Conceptions of Information (Stanford Encyclopedia of Philosophy/Winter 2013 Edition)",
+        "url": "https://plato.stanford.edu/archIves/win2013/entries/information-semantic/"
+      },
+      {
+        "category": "general",
+        "content": "has good dynamic range compression — necessary when listening to chiptunes so, that’s the good.  now, here’s the bad (and a lot of this has to do with audacious&amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "nenolod.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "nenolod.net",
+        "url": "http://nenolod.net/"
+      },
+      {
+        "category": "general",
+        "content": "work on neural network compression , which appeared at SysML . The Taboo Trap work also led to further papers on transferability and adversarial reinforcement learning . Hey Alexa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6c83d41825639725cd15cf9dcabf47761141d3da768f040300a872f38daef12c",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind data compression in software engineering",
+  "query_id": "v5-p-0853-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:06.198274Z"
+}

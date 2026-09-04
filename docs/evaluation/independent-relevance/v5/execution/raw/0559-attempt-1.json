@@ -1,0 +1,246 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 317.452,
+  "pair_id": "v5-p-0354",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does soil erosion in energy systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "and soil erosion, and storms deposit large amounts of dust on the ice sheets. This reduces their albedo, allowing them to absorb considerably more insolation and undergo rapid mel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/climcat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Climate models and climate catastrophe: a reality check",
+        "url": "https://davidpratt.info/climcat.htm"
+      },
+      {
+        "category": "general",
+        "content": "not the chief, role in erosion of intertidal soft rock terraces along the shore of San Pablo Bay, due to their boring activity that weakens the rock and facilitates its removal by",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nas.er.usgs.gov",
+          "/Publications/SFBay/sfinvade.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "San Francisco Case Study",
+        "url": "https://nas.er.usgs.gov/Publications/SFBay/sfinvade.html"
+      },
+      {
+        "category": "general",
+        "content": "areas where habitat, erosion and soil compaction are a concern Wildlife conservation and research Transportation or &#34;island-hopping&#34; Fishing anywhere ... including ice f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.discoverhover.org",
+          "/abouthovercraft/faq.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DiscoverHover: Hovercraft FAQ",
+        "url": "https://www.discoverhover.org/abouthovercraft/faq.htm"
+      },
+      {
+        "category": "general",
+        "content": "renewed impetus; the erosion and final collapse of East Roman power opened the eastern door to Europe in the 14th century, and the Ottomans were turned back only at the gates of V",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fatheralexander.org",
+          "/booklets/english/islam_e.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Islam",
+        "url": "https://www.fatheralexander.org/booklets/english/islam_e.htm"
+      },
+      {
+        "category": "general",
+        "content": "against the forces of erosion, which, unchecked, can transform fertile areas into barren and sterile desert. FINE ARTS A purely materialistic art would be like a tree which is exp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ista.thelema.host",
+          "/afr/rasta/wisdom.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Wisdom of Rastafari",
+        "url": "http://ista.thelema.host/afr/rasta/wisdom.htm"
+      },
+      {
+        "category": "general",
+        "content": "as appears for topsoil erosion or biodiversity loss. There&#39;s also a risk that others who take up the mantle of applied welfare biology will ignore considerations of global stabili",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Applied Welfare Biology and Why Wild-Animal Advocates Should Focus on Not Spreading Nature",
+        "url": "https://reducing-suffering.org/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/"
+      },
+      {
+        "category": "general",
+        "content": "water pollution, soil erosion, malaria epidemics, the release of carbon dioxide into the atmosphere, and the eviction of indigenous Indian tribes - but most serious, in the long r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bactra.org",
+          "/Ferris/Library_of_the_Amazon/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Library of the Amazon",
+        "url": "https://bactra.org/Ferris/Library_of_the_Amazon/"
+      },
+      {
+        "category": "general",
+        "content": "on security, and the erosion of America&#39;s moral authority - are responsible for such strength as al-Qaeda now maintains.&#34; &#34;Documents captured after 9/11 showed that bin Laden hope",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonTerrorism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about Terrorism",
+        "url": "https://www.billdietrich.me/ReasonTerrorism.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "cd9b77b350cc1d3eca05dcbe360d8cfc206ea6e7f0a026e92f6142af329af72e",
+  "provider": "SearXNG",
+  "query": "how does soil erosion in energy systems work",
+  "query_id": "v5-p-0354-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:04.844321Z"
+}

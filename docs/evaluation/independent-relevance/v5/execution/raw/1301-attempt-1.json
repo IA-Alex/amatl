@@ -1,0 +1,300 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 318.729,
+  "pair_id": "v5-p-0817",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is battery chemistry in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "Model 01 Jun 15 &#34;Engineering capacity for an economic revolution&#34; Apr 19 A little bit on the technical track Jan 11 2014 2014 End of Year Booklist Dec 29 Annoyed by &amp;quo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "laughingmeme.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kellan Elliott-McCrea: Blog | A personal blog of Kellan Elliott-McCrea. I don’t really know what a “laughing meme” is. It sounded cool i",
+        "url": "https://laughingmeme.org/"
+      },
+      {
+        "category": "general",
+        "content": "Biomedical Engineering Cancer Biology Biopharma Chemistry Chemical Engineering Chemical Synthesis Computer Science Ecology Geology Mathematics Materials Science and Engineering Nu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sciencecareergeneral.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Science Career General Paste",
+        "url": "https://sciencecareergeneral.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "Based Software Engineering book comes to my notice again. Pre-order a million copies and I might get a few pounds out of it, go on, you know you want to. Started trying to work ou",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2000/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2000/"
+      },
+      {
+        "category": "general",
+        "content": "Anchorage based engineering firms Duane Miller &amp; Associates and USKH prepared the civil and pad design work and conducted the on-site testing and evaluation. Arctic Foundation",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "Teton Engineering   Thermal Energy Direct   Trak   Trough   up970331   up980301   Visible Human   Water   Wattsun   W",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.redrok.com",
+          "/main.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Red Rock Energy Heliostats",
+        "url": "http://www.redrok.com/main.htm"
+      },
+      {
+        "category": "general",
+        "content": "Earth Science and Engineering List &lt; https://gist.github.com/dginev/cec6eb44f8c3fdffbffe546448049981 &gt; Minutes: MathML Full meeting, 14 March, 2024 Source: www-math Mail Arc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/Math/planet/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Planet MathML - W3C",
+        "url": "https://www.w3.org/Math/planet/"
+      },
+      {
+        "category": "general",
+        "content": "object of study, or an engineering problem. Sit down and write an essay about it. Name the arguments, number the bullet points, refer back to things. Make the thoughts into real,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "borretti.me",
+          "/article/notes-on-managing-adhd",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notes on Managing ADHD",
+        "url": "https://borretti.me/article/notes-on-managing-adhd"
+      },
+      {
+        "category": "general",
+        "content": "cry so much? Technology Engineering How does a computer work? How fast and small can computers get? How does a plane fly? How does a satellite stay up in the sky? How does a batte",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "humanknowledge.net",
+          "/Thoughts.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Human Knowledge: Foundations and Limits",
+        "url": "http://humanknowledge.net/Thoughts.html"
+      },
+      {
+        "category": "general",
+        "content": "161-167. Simulated engineering of nanostructures Budavari, S.; et al. (1996) The Merck Index, Twelfth Edition, Merck, New Jersey. Dahl, J.E.; Moldowan, J.M.; Peters, K.E.; Claypoo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zyvex.com",
+          "/nanotech/mbb/mbb.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecular Building blocks",
+        "url": "https://www.zyvex.com/nanotech/mbb/mbb.html"
+      },
+      {
+        "category": "general",
+        "content": "May 1985 Computers and engineering: a winning combination. Modem magic; more baud for the buck: a buyer&#39;s guide to understanding, choosing, and using modems. Compaq Deskpro versus",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.atarimagazines.com",
+          "/creative/index/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of Creative Computing articles",
+        "url": "https://www.atarimagazines.com/creative/index/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e7bfd2ef5c11e0a22685af2e2c941f089e0454450a809caffabdd57f41305644",
+  "provider": "SearXNG",
+  "query": "what is battery chemistry in software engineering",
+  "query_id": "v5-p-0817-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:12.682427Z"
+}

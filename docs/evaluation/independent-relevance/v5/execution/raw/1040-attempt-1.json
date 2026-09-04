@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 330.788,
+  "pair_id": "v5-p-0220",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind plate tectonics in civil engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9f27f4d7b1027a3ec19308c22b853f92c8bb1bed0ce636a01dd0a22daf15aace",
+  "provider": "SearXNG",
+  "query": "describe the principle behind plate tectonics in civil engineering",
+  "query_id": "v5-p-0220-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:10:44.193262Z"
+}

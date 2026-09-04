@@ -1,0 +1,192 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 269.042,
+  "pair_id": "v5-p-0233",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is plate tectonics in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "with the advance of technology and the movemnnt out of Africa. Every civilization that followed had clothing and adornrent as features of their desctincive cultures. And clothing",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "histclo.com",
+          "/cih.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Children in History",
+        "url": "https://histclo.com/cih.html"
+      },
+      {
+        "category": "general",
+        "content": "Beverages Mathematics Technology Communication Electronics Computers and Internet Energy and fuels Materials Transportation Philosophy and psychology Philosophy Psychology Religio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kids.kiddle.co",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kids encyclopedia facts",
+        "url": "https://kids.kiddle.co/"
+      },
+      {
+        "category": "general",
+        "content": "microbiology robotics technology about himself religion and creationism women rationality intelligence politics speech television and film science fiction Isaac Asimov&#39;s Science F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "(Creating Balance) Technology Telekinesis - Psychokinesis Telepathy Teleportation Telescope Temple of Artemis at Ephesus Teotihuacan, Pyramids Terelya, Josyp Terracotta Army Tesla",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.crystalinks.com",
+          "/directory.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Crystalinks Search Engine &amp; Alphabetical Directory",
+        "url": "http://www.crystalinks.com/directory.html"
+      },
+      {
+        "category": "general",
+        "content": "and got no reply. The Technology Strategy Board rejected an application for funding in May of 2013. Bluebird Marine Systems has a published patent that covers a system for such a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.solarnavigator.net",
+          "/oceanography.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OCEANOGRAPHY",
+        "url": "https://www.solarnavigator.net/oceanography.htm"
+      },
+      {
+        "category": "general",
+        "content": "glow-in-the-dark art Technology in the News Artificial Intelligence ~ ~ Technology Personality pairing improves human-AI collaboration A new kind of AI that does its thinking chea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.crystalinks.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Crystalinks Home Page",
+        "url": "http://www.crystalinks.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "18b595d756094c0099f37d7ba20b76e10c20992745c9e40b31e1898bddd3abf2",
+  "provider": "SearXNG",
+  "query": "what is plate tectonics in music technology",
+  "query_id": "v5-p-0233-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:07.851683Z"
+}

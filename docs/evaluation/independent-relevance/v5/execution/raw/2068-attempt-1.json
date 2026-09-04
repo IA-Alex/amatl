@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 322.86,
+  "pair_id": "v5-p-0085",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind ocean tides in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "as one of the great explainers of science. His essays exemplified his skill at making complex subjects understandable, and were written in an unformal style, liberally sprinkled w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "10c0fe18c378af35bfd723409b9f994aa3be6f279d25f9d6e9934e01908a004c",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind ocean tides in health science",
+  "query_id": "v5-p-0085-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:16:16.471071Z"
+}

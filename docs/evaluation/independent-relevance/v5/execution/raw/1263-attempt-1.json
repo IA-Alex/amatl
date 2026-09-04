@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 271.022,
+  "pair_id": "v5-p-1050",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does microbial fermentation in data management work",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4f7d474042954f5759a7f04cdcafc61349579c4182bb21515aff80ae7ef87113",
+  "provider": "SearXNG",
+  "query": "how does microbial fermentation in data management work",
+  "query_id": "v5-p-1050-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:00.468539Z"
+}

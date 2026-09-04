@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 274.566,
+  "pair_id": "v5-p-0504",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does encryption keys in transportation engineering operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "cfa54285f6047d280cf4ab238697811ab503180234914571cfa38e398b56dcf6",
+  "provider": "SearXNG",
+  "query": "how does encryption keys in transportation engineering operate",
+  "query_id": "v5-p-0504-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:06.911463Z"
+}

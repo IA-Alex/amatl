@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 265.676,
+  "pair_id": "v5-p-0062",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does compiler operation in urban planning work",
+    "results": [
+      {
+        "category": "general",
+        "content": "&#34;Special Military Operation&#34; : [Incomplete] Azov, Neo-Nazis, NLAW, Donetsk People&#39;s Republic (DPR), Luhansk People&#39;s Republic (LPR), Brave &amp; O group of RAF.. will explain in detai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "hdmtp.github.io",
+          "/blog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "hdmtp&#39;s archive (blog)",
+        "url": "https://hdmtp.github.io/blog.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "075d1a59a2dff8101449494343ee655d2f41c86468aa3399718f2e2a27fcb59c",
+  "provider": "SearXNG",
+  "query": "how does compiler operation in urban planning work",
+  "query_id": "v5-p-0062-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:15:11.262476Z"
+}

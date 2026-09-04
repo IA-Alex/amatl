@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 249.167,
+  "pair_id": "v5-p-0244",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does plate tectonics in architecture operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "and monumental architecture. But the Sea Peoples alone could not have caused such widespread breakdown. How did it happen?&#34; It is not well explained. There is not even agreement o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "histclo.com",
+          "/chron/chronh.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "children and historical chronology",
+        "url": "https://histclo.com/chron/chronh.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "20caa876019f56097c298af490950d4431eee2dd4aaf4ebadd9d6c3a894d0e30",
+  "provider": "SearXNG",
+  "query": "how does plate tectonics in architecture operate",
+  "query_id": "v5-p-0244-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:13:59.417042Z"
+}

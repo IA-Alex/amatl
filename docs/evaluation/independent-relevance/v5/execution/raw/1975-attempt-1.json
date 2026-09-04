@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 241.508,
+  "pair_id": "v5-p-0876",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does vaccination in geology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d9651ea0f912e3e9ed2851f412ba4dd1e09518fa99b76d87560353e46e10b0ca",
+  "provider": "SearXNG",
+  "query": "how does vaccination in geology operate",
+  "query_id": "v5-p-0876-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:47.517388Z"
+}

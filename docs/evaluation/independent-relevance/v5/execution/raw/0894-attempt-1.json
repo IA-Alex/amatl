@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 329.769,
+  "pair_id": "v5-p-0165",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind immune response in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a87e009e33ba83dc97bf326c74384a0c1d37d906370cc0856acee5619a150a67",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind immune response in pharmacology",
+  "query_id": "v5-p-0165-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:58.426109Z"
+}

@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 392.47,
+  "pair_id": "v5-p-0001",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind photosynthesis in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "/air, light, and photosynthesis can we duplicate photosynthesis? photosynthesis /chlorophyll and photosynthesis herbicides dogs have become one of humans&#39; best animal friends Essa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "were capable of photosynthesis *). Over the course of billions of years, they have gradually metabolized methane and carbon dioxide and enriched the atmosphere with oxygen ; it ha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/AntropPrincip.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Anthropic Principle and Cosmic God",
+        "url": "https://www.astronuclphysics.info/AntropPrincip.htm"
+      },
+      {
+        "category": "general",
+        "content": "read there the entry on photosynthesis,   we will find all manner of observations and categories of the processes by which the Sun acts on our World to create the food we eat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/electricityandthespiritinnature.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Electricity and the Spirit in Nature",
+        "url": "http://ipwebdev.com/hermit/electricityandthespiritinnature.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4ce2a842abf8bb04080e9a2f0c00626d8f9d758a302b2ec78f2e88e9db973acf",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind photosynthesis in astronomy",
+  "query_id": "v5-p-0001-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:06.516953Z"
+}

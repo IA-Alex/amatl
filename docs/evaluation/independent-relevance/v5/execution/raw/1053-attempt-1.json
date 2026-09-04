@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 284.278,
+  "pair_id": "v5-p-0530",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does neural networks in urban planning work",
+    "results": [
+      {
+        "category": "general",
+        "content": "artificial neural networks. These toy robots can learn to negotiate simple environments. They are capable of avoiding noxious stimuli via their responses to functional isomorphs o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Hedonistic Imperative : Objections (Chapter 4)",
+        "url": "https://www.hedweb.com/hedethic/hedon4.htm"
+      },
+      {
+        "category": "general",
+        "content": "far larger and richer networks. Such cosmopolitanism enables and encourages the empathy necessary to transcend tribal or national othering. It expands our horizons, enabling mutua",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "blueshifted.net",
+          "/faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "An Anarcho-Transhumanist FAQ",
+        "url": "https://blueshifted.net/faq/"
+      },
+      {
+        "category": "general",
+        "content": ", Municipal Broadband Networks (Bob Rankin, 2015), A Primer on How to Work With the Usenet Community , Better than Cyber Utopia: How the Internet Helped Us Create the Sharing Econ",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "convolutional neural networks, in particular those created with a tool named &#34;Deep Learning&#34; which seems to mimic many of the capabilities of biological brains. Many think this is",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.templetons.com",
+          "/brad/robocars/cameras-lasers.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cameras or Lasers?",
+        "url": "https://www.templetons.com/brad/robocars/cameras-lasers.html"
+      },
+      {
+        "category": "general",
+        "content": "world-wide computer networks, especially the Internet. Also, some researchers in the virtual reality arena of computer science are trying to implement something like Gibson’",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cyb-sec.neocities.org",
+          "/pages/alt-cyberpunk-faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "alt.cyberpunk FAQ – /cyb/&#43;/sec/ wiki",
+        "url": "https://cyb-sec.neocities.org/pages/alt-cyberpunk-faq/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1d2b2bcb8afdbd3d171da3a6f9b837dfb89086db845a46d9ec09a458b8a15929",
+  "provider": "SearXNG",
+  "query": "how does neural networks in urban planning work",
+  "query_id": "v5-p-0530-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:48.635324Z"
+}

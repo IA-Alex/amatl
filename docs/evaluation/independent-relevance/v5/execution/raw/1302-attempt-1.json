@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 348.997,
+  "pair_id": "v5-p-0817",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind battery chemistry in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "voltage. The received engineering wisdom is that it is meaningless to measure the unloaded voltage to determine the remaining battery capacity. Most discharge-graphs in battery sp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "jepspectro.com",
+          "/htm/folding-ebike.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SmartMotion e20 Folding Electric Bike",
+        "url": "http://jepspectro.com/htm/folding-ebike.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b9b36d423f3f78a2df6fd65a2a183016deb9535fcd27facc8510d55bb69c9d95",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind battery chemistry in software engineering",
+  "query_id": "v5-p-0817-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:12:13.001817Z"
+}

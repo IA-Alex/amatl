@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 255.443,
+  "pair_id": "v5-p-0859",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of data compression in forensic science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "dffa1a6d7fb01810a12a59d102b295f1b24563284a3749f9213d371bbdc3be58",
+  "provider": "SearXNG",
+  "query": "give an overview of data compression in forensic science",
+  "query_id": "v5-p-0859-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:23.870420Z"
+}

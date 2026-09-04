@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 282.462,
+  "pair_id": "v5-p-0304",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does water purification in mechanical engineering operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b9db9e582d5f7c5d51a51b27a9fd61dd67cec8de8ff771dc9b5b02923eac8f62",
+  "provider": "SearXNG",
+  "query": "how does water purification in mechanical engineering operate",
+  "query_id": "v5-p-0304-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:09.940208Z"
+}

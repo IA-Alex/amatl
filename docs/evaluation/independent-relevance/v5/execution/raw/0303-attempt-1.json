@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 280.213,
+  "pair_id": "v5-p-0279",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes binary search in agricultural science",
+    "results": [
+      {
+        "category": "general",
+        "content": "surely, for our less agricultural age), that&#39;s what Americans are - serfs. Corporate serfs, to be exact, because the US is nothing but a corporation. That is, it is a formal struc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2007/04/_trial_version.html",
+          "",
+          "",
+          "004052"
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: The Mencius Vision",
+        "url": "http://www.2blowhards.com/archives/2007/04/_trial_version.html#004052"
+      },
+      {
+        "category": "general",
+        "content": "transitional phase to agricultural life. 10,000 BCE - 2000 BCE: Neolithic Age - New Stone Age. [Interglacial period]. Farming and herding become common. Neolithic life was achieve",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.peaceeducation101.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peace Education 101 - Peace curriculum, peace teaching program, peace education",
+        "url": "http://www.peaceeducation101.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ddad545f24d4f23966783b4382152500de7eaa57a4b484a0de8383d1d372ef00",
+  "provider": "SearXNG",
+  "query": "what causes binary search in agricultural science",
+  "query_id": "v5-p-0279-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:06:44.762450Z"
+}

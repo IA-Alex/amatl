@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 282.334,
+  "pair_id": "v5-p-0054",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does compiler operation in neuroscience work",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "54b531e5d66d0a1af7daa4138791b8c9400491da90ef3538997a6fd0cf5fefd3",
+  "provider": "SearXNG",
+  "query": "how does compiler operation in neuroscience work",
+  "query_id": "v5-p-0054-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:56.492453Z"
+}

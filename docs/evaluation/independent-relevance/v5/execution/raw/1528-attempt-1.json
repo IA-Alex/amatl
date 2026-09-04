@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 323.557,
+  "pair_id": "v5-p-0073",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind ocean tides in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "and especially loved astronomy, you will find that there aren&#39;t many areas of human knowledge that he ignored. The subject groupings here begin with the broad bibliographic catego",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d32ad3ed3afcfa333f411a5b6c805f604dc55df63fa625dc7ba17b2b3339ecb2",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind ocean tides in astronomy",
+  "query_id": "v5-p-0073-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:13:23.042292Z"
+}

@@ -1,0 +1,219 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 311.465,
+  "pair_id": "v5-p-0664",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does traffic flow in mechanical engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "Modern Chumpatronic Engineering. No Formats, no Format Wars. Non-Apple’s Mistake Of Lisp Macros and Washing Machines Practical Blockchain Telegraphy. Sage SmartProbe FAQ Seven Law",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.loper-os.org",
+          "/",
+          "",
+          "p=4003",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Loper OS » &#34;Pest&#34; v. 0xFB.",
+        "url": "http://www.loper-os.org/?p=4003"
+      },
+      {
+        "category": "general",
+        "content": "made the Development Engineering Manager for Central Processor, Channels, and Operator&#39;s Console for the Sage II computer. I believe that this was the largest transistor computer",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ed-thelen.org",
+          "/comp-hist/vs-ibm-sage.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "IBM SAGE",
+        "url": "https://ed-thelen.org/comp-hist/vs-ibm-sage.html"
+      },
+      {
+        "category": "general",
+        "content": "CHAPTER XXVII . Civil Engineering. Great Bridges , Pneumatic Caissons , Tunnels. The Beach Tunnel Shield. Suez Canal. Dredges. The Lidgerwood Cable Ways. Canal Locks. Artesian Wel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book389/book389.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Progress of Invention in the Nineteenth Century, by Edward W. Byrn.",
+        "url": "https://www.ajhw.co.uk/books/book389/book389.html"
+      },
+      {
+        "category": "general",
+        "content": "Pool, R. (1997). Beyond engineering: How society shapes technology. New York: Oxford University Press. Pool, R. (1997). When failure is not an option. Technology Review, 100 (5),",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pages.ucsd.edu",
+          "/~dnorman/DNMss/Being_Analog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Being Analog",
+        "url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html"
+      },
+      {
+        "category": "general",
+        "content": "Anchorage based engineering firms Duane Miller &amp; Associates and USKH prepared the civil and pad design work and conducted the on-site testing and evaluation. Arctic Foundation",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "way of the electronic engineering talent needed to design a practical electronic calculator. Most of the electronics engineers were working in military, space, aviation, computer,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/friden130.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Friden EC-130 Electronic Calculator",
+        "url": "https://www.oldcalculatormuseum.com/friden130.html"
+      },
+      {
+        "category": "general",
+        "content": "applies particularly to engineering types, who have to argue their ideas through to practical realisation in the workplace. Sometimes, just sometimes, the ability to say &#39;I was wr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "aa8aa4a756b91241cb9183f3df57df595ef3a70d2c99d4ab15cb977ee5939995",
+  "provider": "SearXNG",
+  "query": "how does traffic flow in mechanical engineering operate",
+  "query_id": "v5-p-0664-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:23.987080Z"
+}

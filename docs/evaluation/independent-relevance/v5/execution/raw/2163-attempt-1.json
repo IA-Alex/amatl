@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 301.393,
+  "pair_id": "v5-p-0529",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is neural networks in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "and professionals in engineering or mathematical sciences. AMP allows the user to edit and simplify numerous expressions or equations in a mathematical derivation quickly and accu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mizj.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "S.U.P.E.R. - The Largest 200LX Software Archive",
+        "url": "http://mizj.com/"
+      },
+      {
+        "category": "general",
+        "content": "3 Security 3 Software Engineering 9 Spain 1 Spanish 1 Standards 4 Stocks 2 Swedish 2 Taxonomy 1 Usa 2 Web 1 Weltanschauung 5 Wip 4 Zig 2 Русская Поэзия 6 About Jan 2024 - I’",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alexalejandre.com",
+          "/about/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "About",
+        "url": "https://alexalejandre.com/about/"
+      },
+      {
+        "category": "general",
+        "content": "ever held. A miracle of engineering made mundane. Pass it on The next chapter will explore how it swallowed specialised devices to become the everything machine. Leave your email",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "everythingmachine.io",
+          "/phone/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Phone in Your Hand",
+        "url": "http://everythingmachine.io/phone/"
+      },
+      {
+        "category": "general",
+        "content": "the LFTR has some major engineering obstacles that have been be able to be addressed yet. The liquid medium has to undergo re-processing on a fairly frequent basis. This is non-tr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "reactor-core.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "In a Reactor Core, the Atomic Man finds his family",
+        "url": "http://reactor-core.org/"
+      },
+      {
+        "category": "general",
+        "content": "to Autonomous Systems Engineering Michaela Klauck (Robert Bosch GmbH), Christian Heinzemann and Ralph Lange 11:40 [11:40] Invited talk: European R&amp;D Projects: Participation an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "etaps.org",
+          "/2024/programme/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Programme",
+        "url": "https://etaps.org/2024/programme/"
+      },
+      {
+        "category": "general",
+        "content": "on Neuromorphic Engineering (NE) (July 1-21, Telluride, CO) 6. Computer Science — Software Computer Science and Artificial Intelligence (Artificial Life, Agents, Evolutionary",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.accelerationwatch.com",
+          "/conferences.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acceleration-Relevant Conferences",
+        "url": "https://www.accelerationwatch.com/conferences.html"
+      },
+      {
+        "category": "general",
+        "content": "Innovations in Software Engineering Conference (ISEC), which is sponsored by SIGSE , the Special Interest Group on Software Engineering of the Computer Society of India (CSI). Rul",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sigsoft.org",
+          "/awards/distinguishedPaperAward.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGSOFT - ACM Special Interest Group on Software Engineering",
+        "url": "http://www.sigsoft.org/awards/distinguishedPaperAward.html"
+      },
+      {
+        "category": "general",
+        "content": "required solving many engineering challenges and there are already several radars operating around the world. I have given a talk describing the project. Then, there is a blogpost",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jenda.hrach.eu",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "░▒▓▌ ⁂ ᵛᵉʳʸ ᵗᵉᶜʰⁿᵒˡᵒᵍʸ ҉̵ ̌̍ ˢᵒ ᵘⁿⁱᶜᵒᵈᵉ ❂ ʰᵒʷ ᵖᵃᵍᵉ ♒★",
+        "url": "https://jenda.hrach.eu/"
+      },
+      {
+        "category": "general",
+        "content": "idea, works out the engineering and correctness details thoroughly, and presents the result with clarity and good taste. Implementation and Synthesis of Math Library Functions Aut",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "to show why software engineering tasks are often impossible to estimate. #mathematics #programming Static typing isn’t free. Where do you think the C&#43;&#43; angry mob comes from? Type",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wordsandbuttons.online",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Words and buttons online",
+        "url": "https://wordsandbuttons.online/"
+      },
+      {
+        "category": "general",
+        "content": "the Laboratory for Neuroengineering at Georgia Tech, calls his creation a Hybrot, short for hybrid robot. &#34;It&#39;s very much a symbiosis,&#34; he said, &#34;a digital computer and a living n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wireheading.com",
+          "/roborats/hybrots.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hybrots, roborats and ratbots",
+        "url": "https://www.wireheading.com/roborats/hybrots.html"
+      },
+      {
+        "category": "general",
+        "content": "most trenchant software engineering interview question is, &#34;What is your favorite piece of software that you happily use every day  —  that you wrote yourse",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.xed.ch",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chris X Edwards",
+        "url": "https://www.xed.ch/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1d94f9666963c7c9d4562771b1ae09d953bc63d86c9b254417a5852bead01f7f",
+  "provider": "SearXNG",
+  "query": "what is neural networks in software engineering",
+  "query_id": "v5-p-0529-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:46.594865Z"
+}

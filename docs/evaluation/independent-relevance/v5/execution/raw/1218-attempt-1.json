@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 319.327,
+  "pair_id": "v5-p-0908",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind bridge resonance in ecology",
+    "results": [
+      {
+        "category": "general",
+        "content": "symbols of the greater principle and according to the understanding of the worshipper, the concept or entity is sometimes presumed to be present in them (in monotheistic doctrines",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/Philosophy-Hinduism-Hindu.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hinduism Hindu Religion: Discussion Metaphysics Philosophy of HinduismBeliefs, Hindu Gods",
+        "url": "https://www.spaceandmotion.com/Philosophy-Hinduism-Hindu.htm"
+      },
+      {
+        "category": "general",
+        "content": "forms (Huygens principle) and space vibrates in and out around its &#39;particle&#39; like wave center. This is what we observe as matter and its opposite phase standing wave, anti-matter",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WSM: One Substance (Space) &amp; One Law explains causal connection, Metaphysics: deduces Quantum Physics, Einstein Relativity, Cosmology&lt;/tit",
+        "url": "https://www.spaceandmotion.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b0dcc838e71e21a8c5e66dfb752da881064acc05743441486fdae57d9cab46ad",
+  "provider": "SearXNG",
+  "query": "describe the principle behind bridge resonance in ecology",
+  "query_id": "v5-p-0908-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:11:46.181446Z"
+}

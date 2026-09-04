@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 362.247,
+  "pair_id": "v5-p-0421",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind carbon capture in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "marry up, and sports engineering is the basis of that union. Any technology is considered fair game - as long as it is within the rules of sport - and sport is quicker than almost",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mike-tanner.co.nz",
+          "/40sport.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mike Tanner Articles about Sport and Recreation",
+        "url": "http://mike-tanner.co.nz/40sport.html"
+      },
+      {
+        "category": "general",
+        "content": "the Jane Street Reverse Engineering Challenge [1h] [hn] The Raspberry Pi Interactive Timeline · 2006–2026 [2h] [hn] Carbon-aware electricity pricing, measured daily on 38 grids [3",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "brutalist.report",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Brutalist Report",
+        "url": "https://brutalist.report/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fc4065cd1532ed1220036957dd41f10d0f5f9a691b6f57a130601f6655085f5b",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind carbon capture in software engineering",
+  "query_id": "v5-p-0421-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:13:30.892655Z"
+}

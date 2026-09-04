@@ -1,0 +1,24 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 571.309,
+  "pair_id": "v5-p-0056",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind compiler operation in optics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "b9f2837b7c3b4b98cd9274eb83052aa7c55d962a49c8e528d7230cbf59ae63fd",
+  "provider": "SearXNG",
+  "query": "describe the principle behind compiler operation in optics",
+  "query_id": "v5-p-0056-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:15.691549Z"
+}

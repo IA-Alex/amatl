@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 237.044,
+  "pair_id": "v5-p-0907",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of bridge resonance in data management",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "109e1f845c9548534f3da9243519727b94604a6f79a658083f78929489b90e96",
+  "provider": "SearXNG",
+  "query": "give an overview of bridge resonance in data management",
+  "query_id": "v5-p-0907-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:14:31.173553Z"
+}

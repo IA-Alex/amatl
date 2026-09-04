@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 257.905,
+  "pair_id": "v5-p-0460",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does supply chain logistics in architecture operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "its current Artemis architecture. Ernesto Gabriel Arias discusses an alternative approach better suited for lunar permanence. Monday, August 3, 2026 Price it like a Tomahawk, not",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.thespacereview.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Space Review: essays and commentary about the final frontier",
+        "url": "https://www.thespacereview.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fe54a7ec5e9686380ad8f9ec416b310c9501b42a6607a981c633cf9622702288",
+  "provider": "SearXNG",
+  "query": "how does supply chain logistics in architecture operate",
+  "query_id": "v5-p-0460-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:09:51.000081Z"
+}

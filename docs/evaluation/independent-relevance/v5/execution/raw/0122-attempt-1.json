@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 328.522,
+  "pair_id": "v5-p-0216",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind heat transfer in transportation engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "fuel. Need energy for transportation, living, manufacturing. Platform to grow food. Soil, nitrogen, other elements ? Raw materials for manufacturing. Reasonable temperatures. We c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3ebf01b57bb7ccaa73ccf9099ccf4c7191aa5d2087874e6a14bde9d17145b788",
+  "provider": "SearXNG",
+  "query": "describe the principle behind heat transfer in transportation engineering",
+  "query_id": "v5-p-0216-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:05:47.106109Z"
+}

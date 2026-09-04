@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 340.097,
+  "pair_id": "v5-p-1073",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind microbial fermentation in energy systems",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "16af02f0d5f66e761785baf8b2e2900c43d2f7379a39b109568f7e8f3042e24a",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind microbial fermentation in energy systems",
+  "query_id": "v5-p-1073-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:13.336127Z"
+}

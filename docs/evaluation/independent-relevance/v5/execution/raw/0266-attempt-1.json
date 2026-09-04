@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 229.855,
+  "pair_id": "v5-p-0327",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of soil erosion in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "School of Biology, Chemistry and Ecology, State University of New York College of Environmental Science and Forestry, Syracuse, New York, 1983. The use of houseflies in treating s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "journeytoforever.org",
+          "/farm_library.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Small Farms Library - Journey to Forever",
+        "url": "http://journeytoforever.org/farm_library.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "66eaff04cdae4c6a8d20ed02bebdebf7dfeeb7d01d26b80a0b1533cc2c84bcb3",
+  "provider": "SearXNG",
+  "query": "give an overview of soil erosion in chemistry",
+  "query_id": "v5-p-0327-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:06:33.292913Z"
+}

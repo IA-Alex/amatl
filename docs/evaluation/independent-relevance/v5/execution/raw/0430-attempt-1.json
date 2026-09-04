@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 336.048,
+  "pair_id": "v5-p-1013",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind probability distributions in computer security",
+    "results": [
+      {
+        "category": "general",
+        "content": "geometries and mass distributions that satisfy them. In   1963, Roy Kerr found a solution for rotating massive black holes. This solution allows a path along a clos",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.andyross.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE ROSS BLOG",
+        "url": "https://www.andyross.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9608d684f115af3c10a8f7b603a70d4ce553d3613c109685f46b9f9f7d715291",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind probability distributions in computer security",
+  "query_id": "v5-p-1013-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:07:24.433477Z"
+}

@@ -1,0 +1,219 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 376.529,
+  "pair_id": "v5-p-0205",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind heat transfer in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "flight engineer engineering farmer farmers significance rare via least somewhat museum phase terrible metal motion unfortunately severe factory wild strongly laugh laughed bloody",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "“organs”. To me, the engineering seems too modern, but Ehrhart says that the methods and the design of the machine occured to the singers each night in their dreams, which they du",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-gig-economy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Gig Economy — Chadnet",
+        "url": "https://wiki.chadnet.org/the-gig-economy"
+      },
+      {
+        "category": "general",
+        "content": "After a bit of reverse-engineering and probing with an oscilloscope and voltmeter some tell-tale invalid logic level signals that did not follow the input of the related chip were",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "user.xmission.com",
+          "/~uarc/rptrstat.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "UARC: Status of UARC Repeaters",
+        "url": "http://user.xmission.com/~uarc/rptrstat.html"
+      },
+      {
+        "category": "general",
+        "content": "flight engineer [engineering] farmer [farmers] significance rare via least somewhat museum phase terrible metal motion unfortunately severe factory wild strongly laugh [laughed] b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq-bnc.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.conlang.info/wordfreq-bnc.txt",
+        "url": "http://www.conlang.info/wordfreq-bnc.txt"
+      },
+      {
+        "category": "general",
+        "content": "the field of electrical engineering, as the study of communication limits. It develops a quantitative approach to information as a means to answer two fundamental problems: the ul",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.stanford.edu",
+          "/archIves/win2013/entries/information-semantic/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Semantic Conceptions of Information (Stanford Encyclopedia of Philosophy/Winter 2013 Edition)",
+        "url": "https://plato.stanford.edu/archIves/win2013/entries/information-semantic/"
+      },
+      {
+        "category": "general",
+        "content": "the Jane Street Reverse Engineering Challenge [1h] [hn] The Raspberry Pi Interactive Timeline · 2006–2026 [2h] [hn] Carbon-aware electricity pricing, measured daily on 38 grids [3",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "brutalist.report",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Brutalist Report",
+        "url": "https://brutalist.report/"
+      },
+      {
+        "category": "general",
+        "content": "Concrete outcome: more engineering time, less time chasing budget. Run infrastructure: from “like” to relay Tor’s heart is its relays (routing nodes) and bridges (stealth entry po",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "realdeepweb.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Real Deep Web | Hidden Wiki Access &amp; Deep Web Tools",
+        "url": "http://realdeepweb.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d264a02a09643af9024516cbafc1a4696dab1bcf1f29ddef41c8c4869c106296",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind heat transfer in software engineering",
+  "query_id": "v5-p-0205-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:35.527955Z"
+}

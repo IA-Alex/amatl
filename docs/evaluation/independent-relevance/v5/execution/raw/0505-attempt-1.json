@@ -1,0 +1,219 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 325.92,
+  "pair_id": "v5-p-0532",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does neural networks in architecture operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "interconnected neural architecture is a necessary apparatus for learning, which may occur within this network by other means. To take a hardware-software analogy; I need to build",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "arcaneknowledge.org",
+          "/science/vitapsych3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Vitalism and Psychology",
+        "url": "https://arcaneknowledge.org/science/vitapsych3.htm"
+      },
+      {
+        "category": "general",
+        "content": "a completely new ML architecture is an open question. Scaling laws for convolutional neural networks have been known for some time, and the new transformer architecture obeys a si",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "svedic.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Svedic.org",
+        "url": "https://svedic.org/"
+      },
+      {
+        "category": "general",
+        "content": "Structures for NUMA Architectures Authors: Irina Calciu (VMware Research, Palo Alto, CA, USA), Siddhartha Sen (Microsoft Research, New York, NY, USA), Mahesh Balakrishnan (Yale Un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "OCS will negate other architectures such as nonradically modified CDA and most other exterior surface designs. By widening the conical angle of the ports of the OCS full 720 stera",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.self-replicatingnanobot.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod &#43; Self-Replicating Nanobot Design",
+        "url": "http://www.self-replicatingnanobot.com/"
+      },
+      {
+        "category": "general",
+        "content": "to form a quad-die architecture for the first time in an M-series system on a chip (SoC). The chip includes an up-to-36-core CPU and up-to-80-core GPU with a massive 1.2TB/s of un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "daringfireball.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Daring Fireball",
+        "url": "https://daringfireball.net/"
+      },
+      {
+        "category": "general",
+        "content": "OCS will negate other architectures such as nonradically modified CDA and most other exterior surface designs. By widening the conical angle of the ports of the OCS full 720 stera",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.self-replicatingnanobot.com",
+          "/Cyberology.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod &#43; Self-Replicating Nanobot Design",
+        "url": "http://www.self-replicatingnanobot.com/Cyberology.html"
+      },
+      {
+        "category": "general",
+        "content": "different computational architecture from biological minds navigate their environment if robots don&#39;t possess phenomenally bound consciousness? &#34;Robots and artificial systems can",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.binding-problem.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Phenomenal binding, the binding problem and the combination problem as conceived by ChatGPT",
+        "url": "https://www.binding-problem.com/chatgpt/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f1028910832f8cf1444c84fd3afe2827ac56ef242676f7a67bd49b3f17df1225",
+  "provider": "SearXNG",
+  "query": "how does neural networks in architecture operate",
+  "query_id": "v5-p-0532-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:48.051579Z"
+}

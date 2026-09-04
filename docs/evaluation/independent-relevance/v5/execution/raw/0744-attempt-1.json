@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 208.659,
+  "pair_id": "v5-p-0451",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of supply chain logistics in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e27b44ad06a6a6ddbed881e095ac6a0e1f3da305b0ece185658bf5e7110a1120",
+  "provider": "SearXNG",
+  "query": "give an overview of supply chain logistics in oceanography",
+  "query_id": "v5-p-0451-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:12.260759Z"
+}

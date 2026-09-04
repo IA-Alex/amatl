@@ -1,0 +1,273 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 258.596,
+  "pair_id": "v5-p-0801",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is battery chemistry in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "because none of my engineering or chemistry college textbooks explained it. (They only presented equations describing it. They obviously didn&#39;t understand it themselves, since the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "amasci.com",
+          "/elect/battvolt.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How do batteries determine their output voltage?",
+        "url": "http://amasci.com/elect/battvolt.html"
+      },
+      {
+        "category": "general",
+        "content": "CHAPTER XXVII . Civil Engineering. Great Bridges , Pneumatic Caissons , Tunnels. The Beach Tunnel Shield. Suez Canal. Dredges. The Lidgerwood Cable Ways. Canal Locks. Artesian Wel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book389/book389.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Progress of Invention in the Nineteenth Century, by Edward W. Byrn.",
+        "url": "https://www.ajhw.co.uk/books/book389/book389.html"
+      },
+      {
+        "category": "general",
+        "content": "Anchorage based engineering firms Duane Miller &amp; Associates and USKH prepared the civil and pad design work and conducted the on-site testing and evaluation. Arctic Foundation",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "Teton Engineering   Thermal Energy Direct   Trak   Trough   up970331   up980301   Visible Human   Water   Wattsun   W",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.redrok.com",
+          "/main.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Red Rock Energy Heliostats",
+        "url": "http://www.redrok.com/main.htm"
+      },
+      {
+        "category": "general",
+        "content": "Drug Guide Paradise-Engineering The Hedonistic Imperative MDMA: Utopian Pharmacology When Is It Best To Take Crack Cocaine?",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sensualism.com",
+          "/love/elixir.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Elixir of Love ?",
+        "url": "https://www.sensualism.com/love/elixir.html"
+      },
+      {
+        "category": "general",
+        "content": "potential and lack of engineering standards to prevent thermal runaway may put control of battery fires beyond control, experience and capabilities of local Fire and Rescue Servic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meteo.lcd.lu",
+          "/globalwarming/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Warming Sceptic",
+        "url": "https://meteo.lcd.lu/globalwarming/"
+      },
+      {
+        "category": "general",
+        "content": "Professor of Electrical Engineering at the University of North Carolina (Charlotte) took numerous questions from the audience, mostly about the practical applications of the devic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "hhogames.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE HHO GAMES &amp; EXPOSITION, BRADENTON, FL",
+        "url": "http://hhogames.com/"
+      },
+      {
+        "category": "general",
+        "content": "in fact did not study engineering at all. He did attend Indiana University, Columbia, and the University of Chicago at one point or another, studying psychology, journalism, histo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.copperwood.com",
+          "/carlandjerry.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John T. Frye&#39;s Carl and Jerry, from Popular Electronics",
+        "url": "http://www.copperwood.com/carlandjerry.htm"
+      },
+      {
+        "category": "general",
+        "content": "crystals: dispersion engineering and applications, filters, nonlinear optics, photonic devices * Metamaterials: nanocomposites, chirality, biomimetics * Sources and detector Nanof",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "delmarphotonics.com",
+          "/index.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Femtosecond laser products from Del Mar Photonics",
+        "url": "http://delmarphotonics.com/index.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3dc6f1bf477ee8ac035c3d11fef5536a79bfccbcd230a626a80860d1bafbd6da",
+  "provider": "SearXNG",
+  "query": "what is battery chemistry in electrical engineering",
+  "query_id": "v5-p-0801-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:30.184230Z"
+}

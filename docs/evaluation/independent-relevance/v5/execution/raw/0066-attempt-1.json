@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 349.161,
+  "pair_id": "v5-p-0500",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind encryption keys in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b58708a61d98576cc5271cdba38738172c3722fe51d0e56a7392fc2570220ab2",
+  "provider": "SearXNG",
+  "query": "describe the principle behind encryption keys in hydrology",
+  "query_id": "v5-p-0500-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:28.823321Z"
+}

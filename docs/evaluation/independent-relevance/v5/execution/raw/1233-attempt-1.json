@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 294.438,
+  "pair_id": "v5-p-0213",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is heat transfer in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "defence red, redd industrial stay stayed brother brothers floor generally nearly surprise surprising, surprised sorry association forward army summer specific bear born husband po",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "device resembling an industrial robot which would be capable of holding and positioning reactive compounds in order to control the precise location at which chemical reactions tak",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "is a fieldbus, an industrial computer networking protocol. Modbus RTU (Remote Terminal Unit) is the most common implementation for Modbus either as a 2-wire half-duplex over RS-48",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.iwriteiam.nl",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "I write, therefore I am",
+        "url": "http://www.iwriteiam.nl/"
+      },
+      {
+        "category": "general",
+        "content": "commercial or industrial buildings where they can work, rest or recreate. The player may zone the unzoned (gray) city blocks to attract sims of a given type. Zoned buildings also",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.spore.com",
+          "/comm/prototypes",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Community",
+        "url": "http://www.spore.com/comm/prototypes"
+      },
+      {
+        "category": "general",
+        "content": "blast shelter for industrial workers, was flooded when the water table rose. The poorly sealed opening of this shelter&#39;s emergency exit was below ground level, and after heavy rai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ki4u.com",
+          "/free_book/s73p928.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Family Fallout Shelters - Nuclear War Survival Skills FREE BOOK online (280 pages). Also, Potassium Iodide (Iodine) Radiation Protection FAQ,",
+        "url": "https://www.ki4u.com/free_book/s73p928.htm"
+      },
+      {
+        "category": "general",
+        "content": "then around here the industrial revolution happens and all of a sudden the population increases again. This is a logarithmic scale so it’s not linear. Each of these jumps is by a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.donsmaps.com",
+          "/venusfigurespurpose.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Palaeolithic Venus figures - their purpose",
+        "url": "https://www.donsmaps.com/venusfigurespurpose.html"
+      },
+      {
+        "category": "general",
+        "content": "defence red, redd industrial stay [stayed] brother [brothers] floor generally nearly surprise [surprising, surprised] sorry association forward army summer specific bear [born] hu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq-bnc.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.conlang.info/wordfreq-bnc.txt",
+        "url": "http://www.conlang.info/wordfreq-bnc.txt"
+      },
+      {
+        "category": "general",
+        "content": "The so-called Military Industrial Complex is really a euphemism. Is ChatGPT Changing How You’re Writing? Posted by BeauHD • 2026-Aug-27 23:30 • View on SlashDot • Skip An anonymou",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alterslash.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alterslash, the unofficial Slashdot digest",
+        "url": "https://alterslash.org/"
+      },
+      {
+        "category": "general",
+        "content": "energy, inaugurated the industrial era with the consideration of the work of steam engines. Steam engineering influenced thermodynamics. In his book on the correlation of figures",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dogma.lu",
+          "/txt/AKM-ConstructalPrinciple.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The constructal principle [Angèle Kremer Marietti]",
+        "url": "https://www.dogma.lu/txt/AKM-ConstructalPrinciple.htm"
+      },
+      {
+        "category": "general",
+        "content": "commercial business industrial industry catalog / catalogue.   All with a single program, an all-in-one multimedia software . Also for beginners, non technicians, easy to use",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.hyperpublish.com",
+          "/create_a_catalog_00003b.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Frequently asked questions (FAQ) about HyperPublish",
+        "url": "http://www.hyperpublish.com/create_a_catalog_00003b.htm"
+      },
+      {
+        "category": "general",
+        "content": "locomotives and industrial machines. See our article on jet engines for more details. Photo: A prototype gas turbine produced for a high-efficiency power plant. Each of the metal",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.explainthatstuff.com",
+          "/turbines.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How turbines work | Impulse and reaction turbines",
+        "url": "https://www.explainthatstuff.com/turbines.html"
+      },
+      {
+        "category": "general",
+        "content": "only!), Wild At Heart, Industrial Symphony #1 (new to this set only!), Blue Velvet (with new Lynch approved sound mix), Dumbland and a Mystery Disc which contains deleted and exte",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.lynchnet.com",
+          "/index2.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "LynchNet: The David Lynch Resource",
+        "url": "http://www.lynchnet.com/index2.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "064caf5660758ed70b44fc4a5f661eca0ebe7a2af49e3dc7e7f36337f6b031b3",
+  "provider": "SearXNG",
+  "query": "what is heat transfer in industrial design",
+  "query_id": "v5-p-0213-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:51.063333Z"
+}

@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 302.576,
+  "pair_id": "v5-p-0106",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does ocean tides in marine biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "of the cellular biology at the University of New York, prepared samples for histological analysis. he looked at the samples through a microscope and immediately found out that thi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "theshadowlands.net",
+          "/serpent.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Shadowlands Sea Serpent page",
+        "url": "http://theshadowlands.net/serpent.htm"
+      },
+      {
+        "category": "general",
+        "content": "a background of marine biology &amp; 10&#43; years of being an EMT, &amp; kite flyer/builder/seller. Currently working for NOAA NMFS in Gloucester Mass as a biological sampler of the commerci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.paddlewise.com",
+          "/whoswho/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PaddleWise - Who&#39;s Who A-B",
+        "url": "http://www.paddlewise.com/whoswho/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f1227294d8add36665880ad0e28896f259db037648d70c71989327e185ec11db",
+  "provider": "SearXNG",
+  "query": "how does ocean tides in marine biology work",
+  "query_id": "v5-p-0106-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:09:01.641200Z"
+}

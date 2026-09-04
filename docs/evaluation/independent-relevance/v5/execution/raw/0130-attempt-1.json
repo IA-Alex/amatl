@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 312.939,
+  "pair_id": "v5-p-0236",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind plate tectonics in optics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9913d5aa54cb99b330e9e55e1302171eb1322ae07ecf8b8a69e65e51c332bee2",
+  "provider": "SearXNG",
+  "query": "describe the principle behind plate tectonics in optics",
+  "query_id": "v5-p-0236-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:49.260020Z"
+}

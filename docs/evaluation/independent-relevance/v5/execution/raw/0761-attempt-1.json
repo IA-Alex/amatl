@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 268.845,
+  "pair_id": "v5-p-0316",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does water purification in architecture operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "the spiritual man, the purification of mind, will and thought, and the ennobling of all the faculties of the human soul. Bilderberg Group: a powerful global elite,Group together w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/masons.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Freemasons - The silent destroyers. Deist religious cult based on the Knights Templar - Initiation rituals like those of witchcraft",
+        "url": "http://www.bilderberg.org/masons.htm"
+      },
+      {
+        "category": "general",
+        "content": "startled at their own purification and at the destruction of the lessened earth. The majority, according to the promptness of alternating feelings, waver poetically between both b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/35948/35948-h/35948-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Campaner Thal, and Other Writings.",
+        "url": "https://www.gutenberg.org/files/35948/35948-h/35948-h.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bcb557b631d9b46a4a8ac9872a9ad60480ff9bb45057bba3e6d18950b0b165d8",
+  "provider": "SearXNG",
+  "query": "how does water purification in architecture operate",
+  "query_id": "v5-p-0316-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:09:17.111666Z"
+}

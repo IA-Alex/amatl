@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 343.508,
+  "pair_id": "v5-p-0429",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind carbon capture in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "Britain and the industrial revolution. Societal changes had as much to do with the rise of sport as the technological advances taking place at the time. Sport profited from the in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mike-tanner.co.nz",
+          "/40sport.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mike Tanner Articles about Sport and Recreation",
+        "url": "http://mike-tanner.co.nz/40sport.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f1e4df7e3c057439f713cdc0c46a4d739faeab3234ab88bfb1b288703ea916be",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind carbon capture in industrial design",
+  "query_id": "v5-p-0429-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:13:53.158699Z"
+}

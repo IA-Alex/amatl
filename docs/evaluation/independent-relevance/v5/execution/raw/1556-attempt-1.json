@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 323.036,
+  "pair_id": "v5-p-0992",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind wastewater treatment in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f901f31b2a2779b29b872ebd51721fead162666e3df613a32c0df964e7bd4f46",
+  "provider": "SearXNG",
+  "query": "describe the principle behind wastewater treatment in pharmacology",
+  "query_id": "v5-p-0992-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:31.500129Z"
+}

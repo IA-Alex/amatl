@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 268.652,
+  "pair_id": "v5-p-0955",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes cloud formation in optics",
+    "results": [
+      {
+        "category": "general",
+        "content": "1) To provide some information about the behavior of the ELF/VLF natural noise density with respect to frequency, time of day, season of the year, and geographic/geomagnetic locat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.vlf.it",
+          "/naturalnoisefloor/naturalnoisefloor.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WHERE AND WHAT IS THE NATURAL NOISE FLOOR",
+        "url": "http://www.vlf.it/naturalnoisefloor/naturalnoisefloor.htm"
+      },
+      {
+        "category": "general",
+        "content": "Kleinrock, MIT: &#34; Information Flow in Large Communication Nets &#34; (May 31) First paper on packet-switching (PS) theory 1962 J.C.R. Licklider &amp; W. Clark, MIT: &#34; On-Line Man Computer",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zakon.org",
+          "/robert/internet/timeline/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hobbes&#39; Internet Timeline - the definitive ARPAnet &amp; Internet history",
+        "url": "https://www.zakon.org/robert/internet/timeline/"
+      },
+      {
+        "category": "general",
+        "content": "texts relating to cloud formation that, even though they are heavier than air, these small droplets do not fall to the ground because of upward convection currents. I flatly do no",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.physicsmyths.org.uk",
+          "/discussions/classical.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Classical and Applied Physics Discussion Forum",
+        "url": "https://www.physicsmyths.org.uk/discussions/classical.htm"
+      },
+      {
+        "category": "general",
+        "content": "shit about the information overload caused by using sophisticated new Wiki technology. One doesn&#39;t like that he can&#39;t read it on his Lunix box, another moans that there&#39;s too much",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tomforsyth1000.github.io",
+          "/blog.wiki.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "TomF&#39;s Tech Blog - It&#39;s only pretending to be a wiki.",
+        "url": "http://tomforsyth1000.github.io/blog.wiki.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d1d740a2f8a4226ce9d684a9d95039a7fb6167a384949a9de27d6f4a7e77115c",
+  "provider": "SearXNG",
+  "query": "what causes cloud formation in optics",
+  "query_id": "v5-p-0955-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:59.211866Z"
+}

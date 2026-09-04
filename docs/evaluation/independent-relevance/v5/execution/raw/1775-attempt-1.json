@@ -1,0 +1,327 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 329.986,
+  "pair_id": "v5-p-0711",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes language acquisition in agricultural science",
+    "results": [
+      {
+        "category": "general",
+        "content": "in them, and modern agricultural technology has made it possible for the Earth to support a far denser population than it ever did before. (Also, technology exacerbates the effect",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unabomber.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society and Its Future",
+        "url": "https://unabomber.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "the leaders of a small agricultural tribal village in central America become disatisfied with their own shaman&#39;s failure to end the drought they are experiencing. They keep giving",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/sggfr.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Song of the Grandfathers",
+        "url": "http://ipwebdev.com/hermit/sggfr.html"
+      },
+      {
+        "category": "general",
+        "content": "in them, and modern agricultural technology has made it possible for the Earth to support a far denser population than it ever did before. (Also, technology exacerbates the effect",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/industrial-society-and-its-future-manifesto",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society And Its Future",
+        "url": "https://zerocontradictions.net/misc/industrial-society-and-its-future-manifesto"
+      },
+      {
+        "category": "general",
+        "content": "humans started the agricultural revolution and starting forming large societies about 12,000 years ago, there is still no reason to believe that we would become &#34;birds of a f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "development since the Agricultural Revolution thst created civilization. Environmental Issues Environmental issues have assumed increasing atention around the world in recent year",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "histclo.com",
+          "/cih.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Children in History",
+        "url": "https://histclo.com/cih.html"
+      },
+      {
+        "category": "general",
+        "content": "(or Organic) (including Agricultural Art) iv. Animal (Zoological) (including Pathology) [“The Study of Humanity” or “Social Philosophy” hereafter] v. Cereb",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/comte",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Comte&#39;s classification of the sciences (IEKO)",
+        "url": "https://www.isko.org/cyclo/comte"
+      },
+      {
+        "category": "general",
+        "content": "thereby. So far as agricultural products are concerned, Massachusetts is to-day reduced to what is known as dairy products and garden truck; and it is well! Summer vegetables manu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fullbooks.com",
+          "/Tis-Sixty-Years-Since.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "&#39;Tis Sixty Years Since by Charles Francis Adams - Full Text Free Book",
+        "url": "http://www.fullbooks.com/Tis-Sixty-Years-Since.html"
+      },
+      {
+        "category": "general",
+        "content": "surplus grain and other agricultural produce which was raised in such abundance along the Egyptian valley. This produce was brought down in boats to the upper point of the Delta,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book71/book71j/book71j.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cleopatra by Jacob Abbott",
+        "url": "https://www.ajhw.co.uk/books/book71/book71j/book71j.html"
+      },
+      {
+        "category": "general",
+        "content": "of wealth through the agricultural conquest of the Continent, the expansion of commerce and industry, the services and accumulations of finance. This economic revival collaborated",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.andrsib.com",
+          "/durant/advr.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Will Durant: The Age Of Faith. CHAPTER XXXVI. The Adventure of Reason",
+        "url": "http://www.andrsib.com/durant/advr.htm"
+      },
+      {
+        "category": "general",
+        "content": "same time, advances in agricultural technology meant that fewer people were required to farm the land. Many enjoyed the material benefits, but they failed to realize that the natu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kaliyugametal.neocities.org",
+          "/0050-kaczynski",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kali Yuga | Book Review: &#34;Industrial Society and its Future&#34; by Theodore Kaczynski",
+        "url": "https://kaliyugametal.neocities.org/0050-kaczynski"
+      },
+      {
+        "category": "general",
+        "content": "to this tax on all the agricultural produce of the kingdom, there was another on its manufactures. The nature and the variety of the tributes will be best shown by an enumeration",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.globalgreyebooks.com",
+          "/online-ebooks/william-h-prescott_history-of-the-conquest-of-mexico_complete-text.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The History of the Conquest of Mexico by William Hickling Prescott - Read Online for free at Global Grey ebooks",
+        "url": "https://www.globalgreyebooks.com/online-ebooks/william-h-prescott_history-of-the-conquest-of-mexico_complete-text.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "43f93957dea6f9f48ab858c0d0490a901b429af648081865fd15d68f3bd742cc",
+  "provider": "SearXNG",
+  "query": "what causes language acquisition in agricultural science",
+  "query_id": "v5-p-0711-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:45.306835Z"
+}

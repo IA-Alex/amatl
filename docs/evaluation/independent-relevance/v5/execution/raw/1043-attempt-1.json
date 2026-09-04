@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 306.258,
+  "pair_id": "v5-p-0485",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is encryption keys in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "(i.e. circumvent encryption access control) or to strip out copy protection measures are devices that should clearly be illegal. General personal computers, at the other extreme,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cryptome.org",
+          "/wipo-imp99-3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Implementation Issues of the WIPO Copyright Treaty and the WIPO Permformances and Phonograms Treaty: Technical Protection Measures: the Inter",
+        "url": "https://cryptome.org/wipo-imp99-3.htm"
+      },
+      {
+        "category": "general",
+        "content": "as Zoom’s current encryption, and it’s exactly as unacceptable, for exactly the same reasons. As it&#39;s said there, If Zoom is wrong for doing this, then so is Apple, and they shoul",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "triptico.com",
+          "/links/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Links",
+        "url": "https://triptico.com/links/"
+      },
+      {
+        "category": "general",
+        "content": "Waters (Attribute-Based Encryption), Carl Gunter (Attribute-Based Messaging), and Chris Peikert (Lattice-Based Cryptography). In the early 2000s, DARPA funded thirteen projects un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "or VeraCrypt for your encryption needs, then, typically, what you do is: you open the relevant application, point to the desired device or container, mount it (with a password), a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dedoimedo.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dedoimedo - A Place to Learn a Lot About a Lot",
+        "url": "https://www.dedoimedo.com/"
+      },
+      {
+        "category": "general",
+        "content": "technical expertise in encryption that helps toilluminate the practical aspects of the issues currently before theCourt. The American Civil Liberties Union (&#34;ACLU&#34;) is a nationwid",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.epic.org",
+          "/crypto/export_controls/bernstein_brief.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Amicus Brief",
+        "url": "https://archive.epic.org/crypto/export_controls/bernstein_brief.html"
+      },
+      {
+        "category": "general",
+        "content": "country. It&#39;s not an encryption system, it&#39;s just one byte of information on the disc that the player checks. Some studios originally announced that only their new releases would",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "demystified.info",
+          "/dvdfaq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DVD FAQ",
+        "url": "https://demystified.info/dvdfaq.html"
+      },
+      {
+        "category": "general",
+        "content": "Public Key Encryption. 2023 ACM SIGSAC Conference on Computer and Communications Security, CCS&#39;23 , ACM (2023), pp 1108–11227. Date: 2022-08-12 [ pdf ] [ bibtex ] [ more ] J",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cryptojedi.org",
+          "/peter/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Schwabe",
+        "url": "https://cryptojedi.org/peter/"
+      },
+      {
+        "category": "general",
+        "content": "that need the extra encryption. 8/6/2025 Politics(?) Is It Even Possible To Avoid Consumerism I&#39;d like to think I avoid consumerism slightly more than the average person. I pirate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lakesnet.nekoweb.org",
+          "/blog-2025.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lakes&#39; Blog",
+        "url": "https://lakesnet.nekoweb.org/blog-2025.html"
+      },
+      {
+        "category": "general",
+        "content": "locations (e.g. encryption keys). To enforce this restriction, memory addresses are grouped into five segments with different privilege levels. Furthermore, Allegrex’s MPU contain",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/playstation-portable/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PlayStation Portable (PSP) Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/playstation-portable/"
+      },
+      {
+        "category": "general",
+        "content": "log-on and file encryption. Who needs flying cars? Lifeview LifeTV - A spiffy looking USB TV tuner for PC and Mac - but is it any good? Mini MP3 player comparison - Creative&#39;s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dansdata.com",
+          "/altindex.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dan&#39;s Data - Full Index",
+        "url": "http://www.dansdata.com/altindex.html"
+      },
+      {
+        "category": "general",
+        "content": "- - Communication and encryption - - Electronic banking - - CCTV cameras - - Robotic cleaners - - Visual Positioning System (augmented reality) - - Proctoring software: the spies&#39;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/technological_slavery.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Technological slavery",
+        "url": "http://digdeeper.love/articles/technological_slavery.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "keys, signatures, and encryption. One of the best ways to employ such technology for Internet E-mail has been around now for two decades and, and that is PGP . Almost a decade ago",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.weird.com",
+          "/~woods/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Greg A. Woods",
+        "url": "http://www.weird.com/~woods/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e08a7debb22f41c4013bfa58dced32b965ce664a8f9d049943dfee50c9f78fa2",
+  "provider": "SearXNG",
+  "query": "what is encryption keys in music technology",
+  "query_id": "v5-p-0485-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:45.166429Z"
+}

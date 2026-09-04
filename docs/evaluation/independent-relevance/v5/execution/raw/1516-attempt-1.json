@@ -1,0 +1,327 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 414.265,
+  "pair_id": "v5-p-0745",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind root systems in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "interfaces, and genetic engineering. While acknowledging the transformative potential, he underscores the existential risks if we fail to harmonize superintelligent agents&#39; object",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.transhumanist.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Transhumanism as conceived by ChatGPT-4",
+        "url": "https://www.transhumanist.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "“organs”. To me, the engineering seems too modern, but Ehrhart says that the methods and the design of the machine occured to the singers each night in their dreams, which they du",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-gig-economy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Gig Economy — Chadnet",
+        "url": "https://wiki.chadnet.org/the-gig-economy"
+      },
+      {
+        "category": "general",
+        "content": "marry up, and sports engineering is the basis of that union. Any technology is considered fair game - as long as it is within the rules of sport - and sport is quicker than almost",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mike-tanner.co.nz",
+          "/40sport.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mike Tanner Articles about Sport and Recreation",
+        "url": "http://mike-tanner.co.nz/40sport.html"
+      },
+      {
+        "category": "general",
+        "content": "computers, IC reverse engineering, and whatever Energizing a vacuum-tube flip-flop module from a 1948 IBM system In 1948, IBM introduced the 604 Electronic Calculating Punch. This",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.righto.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ken Shirriff&#39;s blog",
+        "url": "http://www.righto.com/"
+      },
+      {
+        "category": "general",
+        "content": "idea, works out the engineering and correctness details thoroughly, and presents the result with clarity and good taste. Implementation and Synthesis of Math Library Functions Aut",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "claim in software engineering circles nowadays, and this to me is where the previously mentioned meme (or at least one variation of it) comes into play. The idea behind this claim",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "blarg.ca",
+          "/rss/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Gered&#39;s Ramblings",
+        "url": "http://blarg.ca/rss/"
+      },
+      {
+        "category": "general",
+        "content": "of tech companies or engineering meant that I would&#39;ve personally written something different. For more opinions, see the section at the end . REPORT TO THE BOARDS OF DIRECTORS OF",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "danluu.com",
+          "/cruise-report/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notes on Cruise&#39;s pedestrian accident",
+        "url": "http://danluu.com/cruise-report/"
+      },
+      {
+        "category": "general",
+        "content": "Nuclear Science and Engineering - sci Fandom Wiki Mathematics - sci Fandom Wiki Physics Textbook Recommendations - sci Fandom Wiki Chemistry Textbook Recommendations - sci Fandom",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zero Contradictions Philosophy Home Page",
+        "url": "https://zerocontradictions.net/"
+      },
+      {
+        "category": "general",
+        "content": "present or not. Social engineering to obtain security critical information such as SSH keys, or similar stuff that can render you vulnerable to start other attacks. The sandbox mu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "chef-koch.bearblog.dev",
+          "/windows-is-not-more-secure-than-linux-debunking-self-proclaimed-wannabe-researcher-madaidan/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Windows is not more secure than Linux - Debunking self-proclaimed wannabe researcher Madaidan – CHEF-KOCH&#39;s Microblog ✨",
+        "url": "https://chef-koch.bearblog.dev/windows-is-not-more-secure-than-linux-debunking-self-proclaimed-wannabe-researcher-madaidan/"
+      },
+      {
+        "category": "general",
+        "content": "problem, but as an engineering problem. Any solution that solves the problem is acceptable. Any solution that does not solve the problem is not acceptable. For example, there is a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2007/04/_trial_version.html",
+          "",
+          "",
+          "004052"
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: The Mencius Vision",
+        "url": "http://www.2blowhards.com/archives/2007/04/_trial_version.html#004052"
+      },
+      {
+        "category": "general",
+        "content": "in more mature engineering and manufacturing disciplines. Today&#39;s designers are confronted with a broad onslaught of changing requirements. It arises in part from the rapid growth",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.laputan.org",
+          "/mud/mud.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Big Ball of Mud",
+        "url": "https://www.laputan.org/mud/mud.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "41518ef488c53df96d65acd5704e7f1b4c8ea31705d50f0d912d7cb6af376e86",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind root systems in software engineering",
+  "query_id": "v5-p-0745-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:18.937820Z"
+}

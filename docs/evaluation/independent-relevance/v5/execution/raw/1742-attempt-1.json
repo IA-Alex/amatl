@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 369.246,
+  "pair_id": "v5-p-0558",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of food preservation in neuroscience",
+    "results": [
+      {
+        "category": "general",
+        "content": "goals, including the preservation of human life and autonomy, the promotion of well-being, and the avoidance of harm.&#34; In short, while ending suffering is an important value in ne",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biointelligence-explosion.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biointelligence Explosion as conceived by ChatGPT",
+        "url": "https://www.biointelligence-explosion.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "of the figure with some preservation of left sided details. DRAWING AND CONSTRUCTIONAL DEFICITS The left hemisphere also contributes to visual-spatial processing and expression su",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "BrainMind.com",
+          "/RightParietalLobe.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BrainMind.com",
+        "url": "http://BrainMind.com/RightParietalLobe.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "58db6b0d15579e07189917e5a3afc5e9acafe44a08d2fd149e49a87e2dc41b09",
+  "provider": "SearXNG",
+  "query": "tell me about the function of food preservation in neuroscience",
+  "query_id": "v5-p-0558-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:14:28.258309Z"
+}

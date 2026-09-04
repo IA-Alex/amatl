@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 270.788,
+  "pair_id": "v5-p-0327",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes soil erosion in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "&#34;better living through chemistry&#34;, because it is chemistry and the chemical corporations which produce products and &#34;by-products&#34; that never before occurred in nature. These twice",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/sggfr.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Song of the Grandfathers",
+        "url": "http://ipwebdev.com/hermit/sggfr.html"
+      },
+      {
+        "category": "general",
+        "content": "10 and modern chemistry. But applied to human problems connected with exploiting the environment the concept of carrying capacity has been perceived as a threatening one. As regar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.garretthardinsociety.org",
+          "/articles/art_ethical_implications.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ethical Implications of Carrying Capacity by Garrett Hardin - The Garrett Hardin Society - Articles",
+        "url": "https://www.garretthardinsociety.org/articles/art_ethical_implications.html"
+      },
+      {
+        "category": "general",
+        "content": "century of physics and chemistry. We peered into the micro world of atoms and electrons and rewrote the book of nature with the discoveries of quantum mechanics and relativity the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.nytimes.com",
+          "/www.nytimes.com/books/first/r/rifkin-biotech.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biotech Century",
+        "url": "https://archive.nytimes.com/www.nytimes.com/books/first/r/rifkin-biotech.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "80568330d0534b7b5a64be23632b9d4c9a12300adfd828c1a5d86b5f606df8cf",
+  "provider": "SearXNG",
+  "query": "what causes soil erosion in chemistry",
+  "query_id": "v5-p-0327-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:33.021682Z"
+}
