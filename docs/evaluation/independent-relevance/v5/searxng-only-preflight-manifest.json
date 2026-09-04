@@ -1,0 +1,12 @@
+{
+  "artifact_sha256_basis": "preflight hash covers canonical JSON before artifact_sha256 field",
+  "artifacts": {
+    "searxng-only-attainability-preflight.json": "f7cfc0c83f803c48116e175b8993e586d2ba6b3925f515faa63d4a118658872e",
+    "searxng-only-canary-raw.json": "c16658bd235431fbfeb6fd6051591bb228f2fa94c3e4e3c27592a4fabaf4aa85",
+    "searxng-only-canary-run-report.json": "de7cd30500bcffe1015cb35e78372b461dc771be072209fb7beb60c4ffde1351"
+  },
+  "experiment_id": "independent-relevance-confirmatory-v5",
+  "network_requests": 10,
+  "provider": "SearXNG",
+  "schema": "amatl.relevance.v5-searxng-only-preflight-manifest.v1"
+}
