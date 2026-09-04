@@ -31,6 +31,11 @@ def sha_bytes(data: bytes) -> str:
 def sha_file(path: Path) -> str:
     return sha_bytes(path.read_bytes())
 
+def canonical_payload_sha256(obj: dict[str, object]) -> str:
+    payload = dict(obj)
+    payload.pop("artifact_sha256", None)
+    return sha_bytes((json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n").encode())
+
 def dump(path: Path, obj: object) -> None:
     path.write_text(json.dumps(obj, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
@@ -91,9 +96,9 @@ def main() -> int:
     decision = "PASS_SEARXNG_ONLY" if http_failure == 0 and conservative_query_rate > 0 and expected >= TARGET and margin > 0 else "FAIL_ATTAINABILITY"
     base = {"schema": "amatl.relevance.v5-searxng-only-attainability-preflight.v1", "experiment_id": raw_obj["experiment_id"], "provider": "SearXNG", "marginalia_included": False, "target_valid_per_arm": TARGET, "evidence_sources": [{"path": str(historical_report.relative_to(ROOT)), "sha256": sha_file(historical_report), "role": "V4 run report"}, {"path": str(historical_raw.relative_to(ROOT)), "sha256": sha_file(historical_raw), "role": "V4 raw evidence"}, {"path": str(raw_path.relative_to(ROOT)), "sha256": sha_file(raw_path), "role": "fresh fixed canary raw capture"}, {"path": str(run_path.relative_to(ROOT)), "sha256": sha_file(run_path), "role": "fresh canary run report"}], "canary_definition": raw_obj["canary_definition"], "canary_measurements": run_obj, "historical_measurements": {"query_count": historical_queries, "result_slots": historical_slots, "valid_results": historical_valid, "valid_per_query": historical_per_query, "valid_per_result_slot": historical_per_slot, "source_report_sha256": sha_file(historical_report), "source_raw_sha256": sha_file(historical_raw)}, "attainability_denominator": "valid results per query; result-slot rate is retained separately and never substituted", "conservative_method": "one-sided 95% Wilson lower bound on historical valid/result-slot rate, converted to query units using observed historical slots/query; bounded by fresh canary valid/query", "conservative_valid_yield": conservative_query_rate, "formula": "min(HISTORICAL_VALID_PER_QUERY, CANARY_VALID_PER_QUERY) * WilsonLower95(HISTORICAL_VALID_RESULTS, HISTORICAL_RESULT_SLOTS) / HISTORICAL_VALID_PER_RESULT_SLOT", "minimum_required_queries_per_arm": min_queries, "recommended_queries_per_arm": recommended, "expected_valid_per_arm_conservative": expected, "safety_margin": margin, "decision": decision, "ready_to_freeze": decision == "PASS_SEARXNG_ONLY", "generated_at": started, "provenance": {"base_head": "0c0ea729ad70c08627a63323076dbcabe6c06c28", "generator": "tools/create_v5_searxng_preflight.py", "network_requests": len(attempts)}}
     artifact_path = OUT / "searxng-only-attainability-preflight.json"
-    base["artifact_sha256"] = sha_bytes((json.dumps(base, ensure_ascii=False, indent=2, sort_keys=True) + "\n").encode())
+    base["artifact_sha256"] = canonical_payload_sha256(base)
     dump(artifact_path, base)
-    manifest = {"schema": "amatl.relevance.v5-searxng-only-preflight-manifest.v1", "experiment_id": raw_obj["experiment_id"], "provider": "SearXNG", "artifacts": {p.name: sha_file(p) for p in (raw_path, run_path, artifact_path)}, "network_requests": len(attempts), "artifact_sha256_basis": "preflight hash covers canonical JSON before artifact_sha256 field"}
+    manifest = {"schema": "amatl.relevance.v5-searxng-only-preflight-manifest.v1", "experiment_id": raw_obj["experiment_id"], "provider": "SearXNG", "artifacts": {p.name: sha_file(p) for p in (raw_path, run_path, artifact_path)}, "network_requests": len(attempts), "artifact_sha256_basis": "preflight hash covers canonical JSON before artifact_sha256 field", "preflight_payload_sha256": base["artifact_sha256"], "preflight_file_sha256": sha_file(artifact_path)}
     dump(OUT / "searxng-only-preflight-manifest.json", manifest)
     print(json.dumps({"decision": decision, "canary": run_obj, "historical": base["historical_measurements"], "conservative_valid_yield": conservative_query_rate, "minimum_required_queries_per_arm": min_queries, "recommended_queries_per_arm": recommended, "expected": expected, "margin": margin}, indent=2, sort_keys=True))
     return 0

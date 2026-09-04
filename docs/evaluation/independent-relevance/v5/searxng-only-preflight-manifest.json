@@ -6,6 +6,8 @@
     "searxng-only-canary-run-report.json": "de7cd30500bcffe1015cb35e78372b461dc771be072209fb7beb60c4ffde1351"
   },
   "experiment_id": "independent-relevance-confirmatory-v5",
+  "preflight_file_sha256": "f7cfc0c83f803c48116e175b8993e586d2ba6b3925f515faa63d4a118658872e",
+  "preflight_payload_sha256": "6e152b3c3d386282afb63b44b7b3d4320fcbdadf1783d88eaa7832db4645cb0a",
   "network_requests": 10,
   "provider": "SearXNG",
   "schema": "amatl.relevance.v5-searxng-only-preflight-manifest.v1"

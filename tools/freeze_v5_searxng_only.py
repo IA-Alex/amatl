@@ -52,6 +52,14 @@ def sha_bytes(b: bytes) -> str:
 def sha_file(p: Path) -> str:
     return sha_bytes(p.read_bytes())
 
+def canonical_payload_sha256(p: Path) -> str:
+    obj = json.loads(p.read_text(encoding="utf-8"))
+    stored = obj.get("artifact_sha256")
+    obj.pop("artifact_sha256", None)
+    actual = sha_bytes((json.dumps(obj, ensure_ascii=False, indent=2, sort_keys=True) + "\n").encode())
+    assert stored == actual
+    return actual
+
 def write_json(p: Path, obj: object) -> None:
     p.write_text(json.dumps(obj, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
@@ -152,17 +160,22 @@ def main() -> None:
         "candidate_queries_checked": N * 2, "candidate_query_collisions": 0,
         "provenance": provenance(),
     })
+    preflight_path = OUT / "searxng-only-attainability-preflight.json"
+    preflight_payload_sha = canonical_payload_sha256(preflight_path)
+    preflight_file_sha = sha_file(preflight_path)
     write_json(OUT / "attainability-attestation.json", {
         "schema": "amatl.relevance.v5-attainability-attestation.v1", "experiment_id": "independent-relevance-confirmatory-v5",
         "preflight_path": "docs/evaluation/independent-relevance/v5/searxng-only-attainability-preflight.json",
-        "preflight_payload_sha256": "6e152b3c3d386282afb63b44b7b3d4320fcbdadf1783d88eaa7832db4645cb0a",
-        "preflight_file_sha256": sha_file(OUT / "searxng-only-attainability-preflight.json"), "conservative_valid_yield": 0.48072578744411276,
+        "preflight_payload_sha256": preflight_payload_sha,
+        "preflight_file_sha256": preflight_file_sha,
+        "hash_policy": "authoritative preflight hash is canonical JSON excluding artifact_sha256; file SHA-256 is tracked separately",
+        "conservative_valid_yield": 0.48072578744411276,
         "frozen_queries_per_arm": N, "expected_valid_per_arm_conservative": 522.0682051643065,
         "target_valid_per_arm": 474, "safety_margin": 48.068205164306505, "attainability_gate": "PASS",
         "calculation": "0.48072578744411276 * 1086 = 522.0682051643065; 522.0682051643065 - 474 = 48.068205164306505",
         "provenance": provenance(),
     })
-    manifest = {"schema": "amatl.relevance.v5-sha256-manifest.v1", "experiment_id": "independent-relevance-confirmatory-v5", "base_head": "c85aaefb20cf0a505285a6d81836eb49f639eb8a", "artifacts": {}, "provenance": provenance()}
+    manifest = {"schema": "amatl.relevance.v5-sha256-manifest.v1", "experiment_id": "independent-relevance-confirmatory-v5", "base_head": "c85aaefb20cf0a505285a6d81836eb49f639eb8a", "hash_policy": "full-file SHA-256 for artifacts; preflight artifact_sha256 is canonical payload SHA-256 excluding that field", "preflight_payload_sha256": preflight_payload_sha, "preflight_file_sha256": preflight_file_sha, "artifacts": {}, "provenance": provenance()}
     for f in sorted(OUT.glob("*.json")):
         if f.name != "sha256-manifest.json": manifest["artifacts"][f.name] = sha_file(f)
     write_json(OUT / "sha256-manifest.json", manifest)

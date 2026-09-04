@@ -5,6 +5,7 @@
   "expected_valid_per_arm_conservative": 522.0682051643065,
   "experiment_id": "independent-relevance-confirmatory-v5",
   "frozen_queries_per_arm": 1086,
+  "hash_policy": "authoritative preflight hash is canonical JSON excluding artifact_sha256; file SHA-256 is tracked separately",
   "preflight_file_sha256": "f7cfc0c83f803c48116e175b8993e586d2ba6b3925f515faa63d4a118658872e",
   "preflight_path": "docs/evaluation/independent-relevance/v5/searxng-only-attainability-preflight.json",
   "preflight_payload_sha256": "6e152b3c3d386282afb63b44b7b3d4320fcbdadf1783d88eaa7832db4645cb0a",
