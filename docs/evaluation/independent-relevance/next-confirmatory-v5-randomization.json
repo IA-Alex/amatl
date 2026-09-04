@@ -1,0 +1,12 @@
+{
+  "schema": "amatl.relevance.next-confirmatory-v5-randomization.v1",
+  "experiment_id": "independent-relevance-confirmatory-v5",
+  "status": "SPECIFIED_NOT_EXECUTED",
+  "method": "seeded deterministic Fisher-Yates shuffle of pre-matched pair IDs, then deterministic provider-order shuffle within every pair",
+  "seed": "independent-relevance-confirmatory-v5-randomization-v1",
+  "allocation": "1600 matched pairs; each pair has exactly one Treatment and one Control; every pair is queried once against SearXNG and once against Marginalia",
+  "provider_balance": "exactly 800 pairs start with SearXNG and 800 with Marginalia; identical provider order schedule for Treatment and Control within each pair",
+  "analysis_strata": "provider is a prespecified blocking/stratification variable, never an arm-specific route",
+  "reproducibility": "sort by pair_id before hashing; no runtime entropy; record seed and manifest hash",
+  "network_requests": 0
+}

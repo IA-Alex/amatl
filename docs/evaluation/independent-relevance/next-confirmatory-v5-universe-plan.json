@@ -1,0 +1,17 @@
+{
+  "schema": "amatl.relevance.next-confirmatory-v5-universe-plan.v1",
+  "experiment_id": "independent-relevance-confirmatory-v5",
+  "status": "PLAN_ONLY_NOT_GENERATED",
+  "query_count": 3200,
+  "treatment_query_count": 1600,
+  "control_query_count": 1600,
+  "matched_pair_count": 1600,
+  "provider_exposure": "both providers receive every query; no provider fallback",
+  "query_generation": "pre-authored informational topics; compact Treatment and non-compact Control paraphrase; NFC, lowercase, trimmed, no labels/features/providers/temporal or commercial intent",
+  "pair_rule": "same topic, one Treatment and one Control query, generated before randomization",
+  "exclusion_sets": ["V1", "Supplemental V1", "V2", "V3", "V4", "historical evaluation corpus", "duplicate within current experiment", "duplicate across providers within current pair"],
+  "depth": 3,
+  "dynamic_expansion": "DISABLED",
+  "universe_freeze_gate": "do not generate or freeze this universe until attainability preflight passes for both providers and both arms",
+  "network_requests": 0
+}
