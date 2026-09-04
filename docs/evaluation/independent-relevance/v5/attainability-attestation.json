@@ -1,0 +1,19 @@
+{
+  "attainability_gate": "PASS",
+  "calculation": "0.48072578744411276 * 1086 = 522.0682051643065; 522.0682051643065 - 474 = 48.068205164306505",
+  "conservative_valid_yield": 0.48072578744411276,
+  "expected_valid_per_arm_conservative": 522.0682051643065,
+  "experiment_id": "independent-relevance-confirmatory-v5",
+  "frozen_queries_per_arm": 1086,
+  "preflight_file_sha256": "f7cfc0c83f803c48116e175b8993e586d2ba6b3925f515faa63d4a118658872e",
+  "preflight_path": "docs/evaluation/independent-relevance/v5/searxng-only-attainability-preflight.json",
+  "preflight_payload_sha256": "6e152b3c3d386282afb63b44b7b3d4320fcbdadf1783d88eaa7832db4645cb0a",
+  "provenance": {
+    "base_head": "c85aaefb20cf0a505285a6d81836eb49f639eb8a",
+    "generator": "tools/freeze_v5_searxng_only.py",
+    "network_requests": 0
+  },
+  "safety_margin": 48.068205164306505,
+  "schema": "amatl.relevance.v5-attainability-attestation.v1",
+  "target_valid_per_arm": 474
+}

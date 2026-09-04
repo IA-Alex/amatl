@@ -1,0 +1,26 @@
+{
+  "allocation_ratio": "1:1",
+  "alpha": 0.05,
+  "base_head": "c85aaefb20cf0a505285a6d81836eb49f639eb8a",
+  "design_status": "FROZEN",
+  "experiment_id": "independent-relevance-confirmatory-v5",
+  "experiment_type": "CONFIRMATORY",
+  "frozen_queries_per_arm": 1086,
+  "marginalia_included": false,
+  "network_requests": 0,
+  "power_target": 0.9,
+  "primary_endpoint": "STRICT_RELEVANCE_YIELD",
+  "primary_hypothesis": "P(Relevant | Treatment) > P(Relevant | Control)",
+  "provenance": {
+    "base_head": "c85aaefb20cf0a505285a6d81836eb49f639eb8a",
+    "generator": "tools/freeze_v5_searxng_only.py",
+    "network_requests": 0
+  },
+  "provider": "SearXNG",
+  "result_depth": 3,
+  "schema": "amatl.relevance.v5-frozen-design.v1",
+  "target_valid_per_arm": 474,
+  "target_valid_total": 948,
+  "total_frozen_queries": 2172,
+  "total_frozen_query_pairs": 1086
+}
