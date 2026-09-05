@@ -6,7 +6,10 @@ import argparse
 import json
 from pathlib import Path
 
-GENERATOR_VERSION = "offline-catalog-v1.0.0"
+from pre_execution_novelty_diversity_gate import DEFAULT_THRESHOLDS
+from query_similarity import jaccard, tokens
+
+GENERATOR_VERSION = "offline-catalog-v1.1.0"
 TARGET_PAIRS = 2300
 
 CONCEPTS = (
@@ -59,6 +62,33 @@ CONTROL_FORMS = (
     "essential context for {topic}",
 )
 
+MAX_ALTERNATIVES_PER_PAIR = len(TREATMENT_FORMS)
+
+
+def _cross_pair_conflict(candidate_tokens, accepted_pairs, threshold, comparison_counter=None):
+    """Return whether either query conflicts with any previously accepted pair."""
+    for candidate_token_set in candidate_tokens:
+        for accepted_pair in accepted_pairs:
+            for accepted_token_set in accepted_pair:
+                if comparison_counter is not None:
+                    comparison_counter["comparisons"] += 1
+                if jaccard(candidate_token_set, accepted_token_set) > threshold:
+                    return True
+    return False
+
+
+def _select_strategy_index(topic, base_index, accepted_pairs, comparison_counter=None):
+    threshold = DEFAULT_THRESHOLDS["max_cross_pair_similarity"]
+    for alternative in range(MAX_ALTERNATIVES_PER_PAIR):
+        strategy_index = (base_index + alternative) % len(TREATMENT_FORMS)
+        candidate_queries = (
+            TREATMENT_FORMS[strategy_index].format(topic=topic),
+            CONTROL_FORMS[strategy_index].format(topic=topic),
+        )
+        if not _cross_pair_conflict(tuple(tokens(query) for query in candidate_queries), accepted_pairs, threshold, comparison_counter):
+            return strategy_index, candidate_queries
+    raise RuntimeError("INSUFFICIENT_DISTINCT_QUERY_SPACE")
+
 
 def canonical(value: object) -> bytes:
     return (json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n").encode()
@@ -67,6 +97,8 @@ def canonical(value: object) -> bytes:
 def build_candidate() -> dict:
     rows = []
     assignments = []
+    accepted_pairs = []
+    separation_stats = {"comparisons": 0, "generation_failures": 0}
     pair_number = 0
     for concept_index, concept in enumerate(CONCEPTS):
         for context_index, context in enumerate(CONTEXTS):
@@ -75,10 +107,18 @@ def build_candidate() -> dict:
             pair_number += 1
             topic = f"{concept} within {context}"
             pair_id = f"candidate-p-{pair_number:04d}"
-            strategy_index = (concept_index * len(CONTEXTS) + context_index) % len(TREATMENT_FORMS)
+            base_index = (concept_index * len(CONTEXTS) + context_index) % len(TREATMENT_FORMS)
+            try:
+                strategy_index, candidate_queries = _select_strategy_index(
+                    topic, base_index, accepted_pairs, separation_stats
+                )
+            except RuntimeError:
+                separation_stats["generation_failures"] += 1
+                raise
+            accepted_pairs.append(tuple(tokens(query) for query in candidate_queries))
             for arm, forms in (("treatment", TREATMENT_FORMS), ("control", CONTROL_FORMS)):
                 query_id = f"candidate-{arm[0]}-{pair_number:04d}"
-                query = forms[strategy_index].format(topic=topic)
+                query = candidate_queries[0 if arm == "treatment" else 1]
                 row = {
                     "query_id": query_id,
                     "query_text": query,
@@ -109,6 +149,14 @@ def build_candidate() -> dict:
         "treatment_query_count": TARGET_PAIRS,
         "control_query_count": TARGET_PAIRS,
         "network_requests": 0,
+        "separation_contract": {
+            "algorithm": "EXHAUSTIVE_DETERMINISTIC_JACCARD_AGAINST_ACCEPTED_PAIRS",
+            "threshold": DEFAULT_THRESHOLDS["max_cross_pair_similarity"],
+            "max_alternatives_per_pair": MAX_ALTERNATIVES_PER_PAIR,
+            "actual_comparisons": separation_stats["comparisons"],
+            "generation_failures": separation_stats["generation_failures"],
+            "worst_case_complexity": "O(P^2 * A^2)"
+        },
         "queries": rows,
         "assignments": assignments,
     }

@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """Deterministic, offline ADR-012 gate and future freeze boundary."""
 from __future__ import annotations
-import argparse, hashlib, json, re, unicodedata, math
+import argparse, hashlib, json, math
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable
+
+from query_similarity import jaccard, normalize_query, tokens
 
 GATE_NAME = "PRE_EXECUTION_NOVELTY_DIVERSITY_GATE"
 GATE_VERSION = "1.1.0"
@@ -18,12 +20,6 @@ THRESHOLD_CLASSIFICATION = {k: "POLICY_DEFAULT" for k in DEFAULT_THRESHOLDS}
 def canonical_json(value: Any) -> bytes: return (json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n").encode()
 def sha256_bytes(value: bytes) -> str: return hashlib.sha256(value).hexdigest()
 def sha256_file(path: Path) -> str: return sha256_bytes(path.read_bytes())
-def normalize_query(value: str) -> str: return " ".join(unicodedata.normalize("NFC", value).casefold().strip().split())
-def tokens(value: str) -> frozenset[str]: return frozenset(re.findall(r"[\w]+", normalize_query(value), flags=re.UNICODE))
-def jaccard(left: frozenset[str], right: frozenset[str]) -> float:
-    union = left | right
-    return len(left & right) / len(union) if union else 1.0
-
 def _queries(universe: Any) -> list[dict[str, Any]]:
     if isinstance(universe, dict):
         if isinstance(universe.get("queries"), list): return universe["queries"]
