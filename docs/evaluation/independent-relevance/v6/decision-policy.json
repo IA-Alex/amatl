@@ -1,0 +1,12 @@
+{
+  "alpha": 0.05,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "failure": "REJECT_ACQUISITION_STRATEGY iff target and integrity pass but any success condition fails",
+  "inconclusive": "INCONCLUSIVE on target shortfall, universe exhaustion, provider/execution integrity failure, or invalid primary test",
+  "multiplicity_adjustment": "NOT_REQUIRED",
+  "network_requests": 0,
+  "primary_endpoint": "STRICT_RELEVANCE_YIELD",
+  "schema": "amatl.relevance.v6-decision-policy.v1",
+  "secondary_non_rescue": true,
+  "success": "VALIDATE_ACQUISITION_STRATEGY iff frozen target/integrity, strict Treatment yield > Control yield, absolute delta >= 0.05 and one-sided Fisher p <= 0.05"
+}

@@ -1,0 +1,13 @@
+{
+  "allocation_ratio": "1:1",
+  "assignment_order": "randomized pair order; treatment/control adjacent by pair",
+  "assignment_sha256": "b074dbcaf75e210ad815a13649b19eb089bf12b5aac4f78a93deb242cbf48de3",
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "input_order": "pair_id ascending candidate-p-0001..candidate-p-2300",
+  "method": "Seeded deterministic Fisher-Yates shuffle of pre-matched pair IDs; arm assignment within each pair preserved",
+  "network_requests": 0,
+  "pair_count": 2300,
+  "reproducibility": "same frozen universe and seed produce byte-identical order and assignment hash",
+  "schema": "amatl.relevance.v6-randomization-manifest.v1",
+  "seed": "independent-relevance-confirmatory-v6-randomization-v1"
+}

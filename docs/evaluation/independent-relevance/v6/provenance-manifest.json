@@ -1,0 +1,22 @@
+{
+  "artifacts": {
+    "decision-policy.json": "ea6da8a7ff84187b5392f394afb81d28b2a35b80a630c30382aa6b6af482c3aa",
+    "design.json": "d5f21546a625a55a57aef7afd9e746a4a6cb8f694f38d56369406fa04a916a60",
+    "execution-policy.json": "53d8313d7484d604136d8d66dac3ed138d731dccdedbc58a5fa360c63b623b23",
+    "frozen-query-universe.json": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "historical-exclusion-manifest.json": "083362d14d9a0ac029cb89065e185cc996cce702193ab4cce9355b166f69faf5",
+    "pair-assignments.json": "dd419637ffd1c2ead36c1d7f2ab216793834af5356bc89e775b2ab52d5a173d4",
+    "query-universe-manifest.json": "7cabfef93a687751e0eeb5b4f8fca38b8383d487e86dee301077a96c138d7874",
+    "randomization-manifest.json": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "freeze_status": "FROZEN",
+  "hash_policy": "full-file SHA-256 for every listed artifact; this root manifest is excluded from its own artifact set",
+  "network_requests": 0,
+  "schema": "amatl.relevance.v6-provenance-manifest.v1",
+  "source_candidate": "candidate-v2",
+  "source_candidate_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+  "source_commit": "c0d5e49ae9eb89a9a26a620e8c0d97fbe3b50a8f",
+  "source_gate_decision": "PASS",
+  "source_generator_version": "offline-catalog-v1.1.0"
+}

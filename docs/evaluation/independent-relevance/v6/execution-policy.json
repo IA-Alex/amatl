@@ -1,0 +1,31 @@
+{
+  "capture_order": "randomization-manifest pair order; treatment then control within pair",
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "failure_handling": "Record every attempt and reason; after bounded retry mark query unavailable. Never replace a failed query with a new query, reallocate arms, switch provider, or increase depth.",
+  "network_execution_policy": "Future execution only; no network requests in design work package. SearXNG-only; Marginalia excluded; no preflight here.",
+  "network_requests": 0,
+  "no_rescue_sampling": true,
+  "no_retry_for": [
+    "valid empty response",
+    "malformed response",
+    "invalid result",
+    "duplicate",
+    "historical overlap"
+  ],
+  "provenance": "Every request/attempt must carry experiment_id, query_id, pair_id, arm, provider, capture ordinal, and frozen universe hash.",
+  "provider_set": [
+    "SearXNG"
+  ],
+  "request_accounting": "One request per frozen query plus at most one same-query retry; count and hash each raw response or failure record.",
+  "result_depth": 3,
+  "retry_max_per_query": 1,
+  "retry_only_for": [
+    "timeout",
+    "transport failure",
+    "HTTP 429",
+    "HTTP 5xx"
+  ],
+  "schema": "amatl.relevance.v6-execution-policy.v1",
+  "success_stop": "TREATMENT_VALID_RESULTS >= 474 AND CONTROL_VALID_RESULTS >= 474",
+  "universe_exhaustion_stop": "Any arm exhausted before target => INCONCLUSIVE"
+}
