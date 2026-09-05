@@ -241,27 +241,34 @@ reemplaza. Fecha base trazable: commit `51c6d34`, 2026-08-12.
   contiene 2,172 queries y 3,870 filas raw. La reconciliación es:
   `3,870 - 1,354 DUPLICATE_CURRENT - (911 OVERLAP_V1 + 167 OVERLAP_V3 +
   811 OVERLAP_V4) = 627 VALID_RESULTS`; `REJECTED_TOTAL=3,243` y
-  `627 + 3,243 = 3,870`. Por tanto, `RAW_RESULTS_PER_QUERY=1.7831`,
+  `627 + 3,243 = 3,870`. Por tanto, `RAW_RESULTS_PER_QUERY=1.7818`,
   `VALID_RESULTS_PER_QUERY=0.2887`, `VALID_RATE_RAW=16.20%` y
   `REJECTION_RATE_RAW=83.80%`. Participación de rechazo: duplicación 41.75%,
   V1 28.09%, V3 5.15% y V4 25.01%. `CANONICAL_RESULTS=2,516` después de
   deduplicación actual; `FINAL_ACCEPTED_RESULTS=627`.
 - **Saturación y duplicación:** El V5 raw tiene 916 URLs canónicas únicas
   (23.67% de 3,870); los 1,354 duplicados proceden de
-  `CROSS_QUERY_DUPLICATION=1,354`, incluyendo 1,320 cruces de pares y 34
-  cruces de brazos; no se observó duplicación dentro de una misma query.
-  Hay 322 URLs distintas entre las filas duplicadas. Las más repetidas son
+  `CROSS_QUERY_DUPLICATION=1,354`: 1,320 cruces entre pares y 34 repeticiones
+  dentro del mismo par; 339 de esas filas cruzan brazos. No se observó
+  duplicación dentro de una misma query.
+  Hay 322 URLs distintas entre las filas rechazadas específicamente por
+  `DUPLICATE_CURRENT`. Las más repetidas son
   `vixra.org/astro` (46), `millermicro.com` (44), `unabomber.neocities.org`
   (34), `greenmagi.com` (34) y `billdietrich.me` (39 en duplicados).
   Los cuatro motivos históricos suman 1,889 filas (48.81% de raw); los
   conteos por versión son V1=911 (23.54%), V2=0 (0%), V3=167 (4.32%) y
   V4=811 (20.96%). Esto demuestra saturación histórica severa del espacio
-  recuperado bajo el universo V5, aunque no permite atribuir una tasa de
-  unión URL-a-URL histórica adicional sin reinterpretar el ledger.
+  recuperado bajo el universo V5. La reconstrucción de los conjuntos
+  canónicos históricos usados por el capturador da V1=555, V2=10, V3=82,
+  V4=382 y unión histórica=923 URLs; las intersecciones por versión son
+  V1∩V2=9, V1∩V3=23, V1∩V4=62, V2∩V3=1, V2∩V4=2 y V3∩V4=18. V5 comparte
+  289 de sus 916 URLs únicas con esa unión (31.55%); a nivel de filas raw,
+  la contaminación histórica observada es 48.81%. Las 627 URLs aceptadas
+  son nuevas respecto de esa unión.
 - **Diversidad efectiva:** Las 2,172 cadenas son únicas literalmente y tras
   normalización de espacios/case (`QUERY_UNIQUENESS=100%`), pero representan
-  1,086 pares y sólo 217 temas de sujeto, 36 contextos y plantillas
-  lingüísticas repetidas por brazo. La similitud Jaccard media de los
+  1,086 pares/temas, 31 conceptos base seleccionados, 36 contextos y 8
+  formas lingüísticas repetidas por brazo. La similitud Jaccard media de los
   conjuntos de resultados de los pares fue 27.18%; 844 queries tuvieron un
   conjunto idéntico a uno previo y el mayor grupo idéntico tuvo 629 filas.
   La diversidad nominal, por ello, sobrestima la diversidad documental.
@@ -283,8 +290,8 @@ reemplaza. Fecha base trazable: commit `51c6d34`, 2026-08-12.
   8 fragmentos, 27 hosts con cambio de case y 1,389 slash finales. No hay
   false collapse demostrado: `CANONICALIZATION_FALSE_COLLAPSE_RISK=LOW`.
 - **Hipótesis:**
-  `H1_QUERY_UNIVERSE_LOW_EFFECTIVE_DIVERSITY=SUPPORTED` (217 temas/contextos
-  y plantillas repetidas); `H2_SEARXNG_RESULT_CONCENTRATION=SUPPORTED`
+  `H1_QUERY_UNIVERSE_LOW_EFFECTIVE_DIVERSITY=SUPPORTED` (31 conceptos, 36
+  contextos y 8 plantillas repetidas); `H2_SEARXNG_RESULT_CONCENTRATION=SUPPORTED`
   (916 URLs únicas, conjuntos idénticos y concentración documental);
   `H3_HISTORICAL_CORPUS_SATURATION=SUPPORTED` (48.81% de raw rechazado por
   V1/V3/V4); `H4_INTERNAL_DUPLICATION=SUPPORTED` (1,354/3,870=34.99% de
@@ -342,7 +349,7 @@ reemplaza. Fecha base trazable: commit `51c6d34`, 2026-08-12.
 
 ```text
 POST_V5_ANALYSIS_STATUS=COMPLETE_WITH_ARCHITECTURAL_DECISION
-STARTING_HEAD=a4d0fb1c4fd619e6810a665732acb510a78b2cde
+STARTING_HEAD=ed88aa1b2f29d465669f0cba956f125aa1a3b252
 WORKTREE_INITIAL=CLEAN
 FROZEN_QUERIES=2172 (1086 pares)
 EXECUTED_QUERIES=2172
@@ -358,14 +365,14 @@ DUPLICATE_CURRENT_RATE=34.99%
 HISTORICAL_OVERLAP_RATE=48.81%
 UNIQUE_URLS_V5_RAW=916
 V5_NEW_UNIQUE_URLS=627
-UNIQUE_URLS_V1=INSUFFICIENT_EVIDENCE_AS_VERSION_UNION
-UNIQUE_URLS_V2=INSUFFICIENT_EVIDENCE_AS_VERSION_UNION
-UNIQUE_URLS_V3=INSUFFICIENT_EVIDENCE_AS_VERSION_UNION
-UNIQUE_URLS_V4=INSUFFICIENT_EVIDENCE_AS_VERSION_UNION
-UNION_HISTORICAL_URLS=INSUFFICIENT_EVIDENCE_AS_VERSION_UNION
+UNIQUE_URLS_V1=555 (reconstrucción por el clasificador histórico congelado)
+UNIQUE_URLS_V2=10 (reconstrucción por el clasificador histórico congelado)
+UNIQUE_URLS_V3=82 (reconstrucción por el clasificador histórico congelado)
+UNIQUE_URLS_V4=382 (reconstrucción por el clasificador histórico congelado)
+UNION_HISTORICAL_URLS=923
 CORPUS_SATURATION=SEVERE
 QUERY_UNIQUENESS=100% exact y normalizada
-QUERY_FAMILY_COUNT=217 sujetos; 36 contextos; 8 formas lingüísticas observadas
+QUERY_FAMILY_COUNT=31 conceptos base; 36 contextos; 8 formas lingüísticas observadas
 EFFECTIVE_QUERY_DIVERSITY=LOW relative to nominal count
 RESULT_SET_OVERLAP=27.18% mean paired Jaccard; 844 identical-to-prior sets
 DOMAIN_CONCENTRATION=HIGH; top 15 domains=25.89% of raw rows
@@ -383,7 +390,7 @@ FILES_CREATED=0
 FILES_MODIFIED=decisiones_amatl.md
 TESTS_RUN=offline JSON/ledger reconciliation and canonicalization collision audit
 TESTS_STATUS=PASS; no network requests
-COMMIT_CREATED=PENDING
+COMMIT_CREATED=YES (hash reported at handoff)
 BLOCKERS=none for decision; implementation intentionally deferred
 FINAL_DECISION=ACCEPT ADR-012; do not execute V6 or reopen V5
 NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any request
