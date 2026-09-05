@@ -1,0 +1,144 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 1029,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 346.682,
+  "pair_id": "candidate-p-1410",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how can researchers measure image compression within energy policy",
+    "results": [
+      {
+        "category": "general",
+        "content": "vendors, projects, and researchers. The purpose of the oss-security group is to encourage public discussion of security flaws, concepts, and practices in the Open Source community",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.openwall.com",
+          "/news",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Openwall Project news items (since 2001)",
+        "url": "https://www.openwall.com/news"
+      },
+      {
+        "category": "general",
+        "content": "you, like &#39;scientific&#39; researchers who do it for the sake of &#39;science&#39; and society, and even less if they are politicians. Finding your passion is a scam, nobody finds their passi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "is a popular one. Many researchers are now involved in assessing the capability of U.S. government agencies to successfully repel or survive a comprehensive attack from foreign po",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "single-honeypot.sourceforge.net",
+          "/libros/maxsecurity/ch08/ch08.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Maximum Security -- Ch 8 -- Internet Warfare",
+        "url": "https://single-honeypot.sourceforge.net/libros/maxsecurity/ch08/ch08.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e18c5ce3f5d8bf72c3523cd90bbb384d93e519bf0f4683089f660e5aa50b27c2",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how can researchers measure image compression within energy policy",
+  "query_id": "candidate-t-1410",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.openwall.com/news",
+      "original_url": "https://www.openwall.com/news",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "vendors, projects, and researchers. The purpose of the oss-security group is to encourage public discussion of security flaws, concepts, and practices in the Open Source community",
+      "title": "Openwall Project news items (since 2001)"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://imlauer.github.io/",
+      "original_url": "https://imlauer.github.io/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "you, like &#39;scientific&#39; researchers who do it for the sake of &#39;science&#39; and society, and even less if they are politicians. Finding your passion is a scam, nobody finds their passi",
+      "title": "esotericwarfare"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "https://single-honeypot.sourceforge.net/libros/maxsecurity/ch08/ch08.htm",
+      "original_url": "https://single-honeypot.sourceforge.net/libros/maxsecurity/ch08/ch08.htm",
+      "rank": 3,
+      "rejection_reason": null,
+      "snippet": "is a popular one. Many researchers are now involved in assessing the capability of U.S. government agencies to successfully repel or survive a comprehensive attack from foreign po",
+      "title": "Maximum Security -- Ch 8 -- Internet Warfare"
+    }
+  ],
+  "timestamp": "2026-09-05T17:25:57.325943Z"
+}

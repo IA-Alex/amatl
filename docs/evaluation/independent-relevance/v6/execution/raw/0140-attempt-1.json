@@ -1,0 +1,171 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 140,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 288.777,
+  "pair_id": "candidate-p-0506",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of bridge vibration within industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "early 1800&#39;s with the industrial revolution. High end weaving jobs were lost after the introduction of high speed looms. Another example is the computer revolution from the late 1",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.design1.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Recent designs, projects and thoughts by Frank X. Didik. Predictions for the future, where society is going. Can gravity by modulated? Wha",
+        "url": "http://www.design1.org/"
+      },
+      {
+        "category": "general",
+        "content": "explains: &#34;I am an Industrial design graduate from the University of Tehran, where I mainly focused on product development during my studies. I am currently pursuing a Masters in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conceptlab.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Garnet Hertz - conceptlab.com",
+        "url": "http://www.conceptlab.com/"
+      },
+      {
+        "category": "general",
+        "content": "early 1800&#39;s with the industrial revolution. High end weaving jobs were lost after the introduction of high speed looms. Another example is the computer revolution from the late 1",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/frankdidik_oped_bicycle_etiquette.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Thoughts by Frank X. Didik Bicycle Etiquette. Op-Ed Views. www",
+        "url": "http://www.didik.com/frankdidik_oped_bicycle_etiquette.htm"
+      },
+      {
+        "category": "general",
+        "content": "early 1800&#39;s with the industrial revolution. High end weaving jobs were lost after the introduction of high speed looms. Another example is the computer revolution from the late 1",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/frankdidik_oped_cell_phone_etiquette.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cell Phone Etiquette. Thoughts by Frank X. Didik.",
+        "url": "http://www.didik.com/frankdidik_oped_cell_phone_etiquette.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "42bf5fa16051f3ea6100216f6e2ef764d11c8e6cd232b4552dbcae93c1c93c9e",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of bridge vibration within industrial design",
+  "query_id": "candidate-c-0506",
+  "raw_result_count": 4,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.design1.org/",
+      "original_url": "http://www.design1.org/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "early 1800&#39;s with the industrial revolution. High end weaving jobs were lost after the introduction of high speed looms. Another example is the computer revolution from the late 1",
+      "title": "Recent designs, projects and thoughts by Frank X. Didik. Predictions for the future, where society is going. Can gravity by modulated? Wha"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "http://www.conceptlab.com/",
+      "original_url": "http://www.conceptlab.com/",
+      "rank": 2,
+      "rejection_reason": null,
+      "snippet": "explains: &#34;I am an Industrial design graduate from the University of Tehran, where I mainly focused on product development during my studies. I am currently pursuing a Masters in",
+      "title": "Garnet Hertz - conceptlab.com"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.didik.com/frankdidik_oped_bicycle_etiquette.htm",
+      "original_url": "http://www.didik.com/frankdidik_oped_bicycle_etiquette.htm",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "early 1800&#39;s with the industrial revolution. High end weaving jobs were lost after the introduction of high speed looms. Another example is the computer revolution from the late 1",
+      "title": "Thoughts by Frank X. Didik Bicycle Etiquette. Op-Ed Views. www"
+    }
+  ],
+  "timestamp": "2026-09-05T17:21:14.706406Z"
+}

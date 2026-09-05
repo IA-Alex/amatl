@@ -1,0 +1,67 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1794,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 446.31,
+  "pair_id": "candidate-p-0727",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of data provenance within clinical research",
+    "results": [
+      {
+        "category": "general",
+        "content": "of the Zodiac. [Explanation of Precession] Why time of birth and not time of conception? Both critics and the curious frequently ask &#34;Why do astrologers work from the moment of bi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "astrology.co.uk",
+          "/tests/basisofastrology.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Why it is unacceptable to dismiss astrology as rubbish.",
+        "url": "https://astrology.co.uk/tests/basisofastrology.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "e80d89372c1cb500220cdfc7be494df05be34276b6cb7721cb1490333b18a13c",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of data provenance within clinical research",
+  "query_id": "candidate-c-0727",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://astrology.co.uk/tests/basisofastrology.htm",
+      "original_url": "https://astrology.co.uk/tests/basisofastrology.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "of the Zodiac. [Explanation of Precession] Why time of birth and not time of conception? Both critics and the curious frequently ask &#34;Why do astrologers work from the moment of bi",
+      "title": "Why it is unacceptable to dismiss astrology as rubbish."
+    }
+  ],
+  "timestamp": "2026-09-05T17:29:59.931072Z"
+}

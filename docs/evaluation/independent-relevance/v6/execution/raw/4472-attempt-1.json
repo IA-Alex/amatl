@@ -1,0 +1,34 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 4472,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 292.169,
+  "pair_id": "candidate-p-0702",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "key concepts associated with cryogenic cooling within microbiology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "094f39a5157810fcb52972329d4795edcb6435b1f4c2ac38c20081922a23f87d",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "key concepts associated with cryogenic cooling within microbiology",
+  "query_id": "candidate-c-0702",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:44:07.990601Z"
+}

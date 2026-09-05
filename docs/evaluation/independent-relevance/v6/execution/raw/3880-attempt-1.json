@@ -1,0 +1,171 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 3880,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 318.237,
+  "pair_id": "candidate-p-2127",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of space weather forecasting within education",
+    "results": [
+      {
+        "category": "general",
+        "content": "24-hr: C3 0120 UT Aug30 explanation | more data Updated: Today at: 0856 UT Daily Sun: 30 Aug 26 Expand: labels | no labels All of these sunspots have quiet, stable magnetic fields",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceweather.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SpaceWeather.com -- News and information about meteor showers, solar flares, auroras, and near-Earth asteroids",
+        "url": "https://www.spaceweather.com/"
+      },
+      {
+        "category": "general",
+        "content": "new index and a better explanation of solar activity. The steady increase in the intensity of the line C 5380 Å over 12 years, observed by Livingston, is independent of the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.john-daly.com",
+          "/solar/solar.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Solar Activity: A Dominant Factor in Climate Dynamics",
+        "url": "http://www.john-daly.com/solar/solar.htm"
+      },
+      {
+        "category": "general",
+        "content": "Outline and Brief Explanation of Probable Truth.         2.2 Deconstruction of the Concept: an Open University Programme Dissected 2.1 Historical Outline and B",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "big-lies.org",
+          "/modern-physics-a-fraud/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "• Modern Physics a Fraud? - Superfluid helium? Speed of light a limit?, incredibility of quantum theory, Heisenberg&#39;s misunderstanding o",
+        "url": "http://big-lies.org/modern-physics-a-fraud/"
+      },
+      {
+        "category": "general",
+        "content": "Introduction and explanation. The graph paper, part 1; computer graphics Art and the computer. Half-toning digital images. A graphics package for the Apple II. Cyrillic anyone? pr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.atarimagazines.com",
+          "/creative/index/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of Creative Computing articles",
+        "url": "https://www.atarimagazines.com/creative/index/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d1b60d2bf2f873d26a55816d9b7ba92061ffb63588800e949c745c35f3189ce0",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of space weather forecasting within education",
+  "query_id": "candidate-c-2127",
+  "raw_result_count": 4,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.spaceweather.com/",
+      "original_url": "https://www.spaceweather.com/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "24-hr: C3 0120 UT Aug30 explanation | more data Updated: Today at: 0856 UT Daily Sun: 30 Aug 26 Expand: labels | no labels All of these sunspots have quiet, stable magnetic fields",
+      "title": "SpaceWeather.com -- News and information about meteor showers, solar flares, auroras, and near-Earth asteroids"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.john-daly.com/solar/solar.htm",
+      "original_url": "http://www.john-daly.com/solar/solar.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "new index and a better explanation of solar activity. The steady increase in the intensity of the line C 5380 Å over 12 years, observed by Livingston, is independent of the",
+      "title": "Solar Activity: A Dominant Factor in Climate Dynamics"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://big-lies.org/modern-physics-a-fraud/",
+      "original_url": "http://big-lies.org/modern-physics-a-fraud/",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Outline and Brief Explanation of Probable Truth.         2.2 Deconstruction of the Concept: an Open University Programme Dissected 2.1 Historical Outline and B",
+      "title": "• Modern Physics a Fraud? - Superfluid helium? Speed of light a limit?, incredibility of quantum theory, Heisenberg&#39;s misunderstanding o"
+    }
+  ],
+  "timestamp": "2026-09-05T17:40:58.745008Z"
+}

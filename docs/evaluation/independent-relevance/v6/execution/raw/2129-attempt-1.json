@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2129,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 299.321,
+  "pair_id": "candidate-p-1486",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how do models represent indoor air chemistry within veterinary science",
+    "results": [
+      {
+        "category": "general",
+        "content": "doctors; there are veterinary surgeons, musicians (chiefly belonging to the poorest classes and often blind), actors, teachers, attorneys, diviners, artists, letter-writers, and m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/15250/15250-h/15250-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Myths &amp; Legends of China",
+        "url": "https://www.gutenberg.org/files/15250/15250-h/15250-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "of Pennsylvania Veterinary School inserted human growth hormone genes into mouse embryos. The mice expressed the human genes and grew twice as fast and nearly twice as big as any",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.nytimes.com",
+          "/www.nytimes.com/books/first/r/rifkin-biotech.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biotech Century",
+        "url": "https://archive.nytimes.com/www.nytimes.com/books/first/r/rifkin-biotech.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e542d1eff69557565535cb4f272dece27697672f027743808d897010a7f96b46",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how do models represent indoor air chemistry within veterinary science",
+  "query_id": "candidate-t-1486",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.gutenberg.org/files/15250/15250-h/15250-h.htm",
+      "original_url": "https://www.gutenberg.org/files/15250/15250-h/15250-h.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "doctors; there are veterinary surgeons, musicians (chiefly belonging to the poorest classes and often blind), actors, teachers, attorneys, diviners, artists, letter-writers, and m",
+      "title": "Myths &amp; Legends of China"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://archive.nytimes.com/www.nytimes.com/books/first/r/rifkin-biotech.html",
+      "original_url": "https://archive.nytimes.com/www.nytimes.com/books/first/r/rifkin-biotech.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "of Pennsylvania Veterinary School inserted human growth hormone genes into mouse embryos. The mice expressed the human genes and grew twice as fast and nearly twice as big as any",
+      "title": "The Biotech Century"
+    }
+  ],
+  "timestamp": "2026-09-05T17:31:46.741019Z"
+}

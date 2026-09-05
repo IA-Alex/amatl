@@ -1,0 +1,67 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1802,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 486.003,
+  "pair_id": "candidate-p-1027",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about fermentation control within environmental chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "only true if specific environmental conditions exist. Under other conditions evolution into other viruses and bacteria can take place. In the same way an infection can be exogenou",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/w/kal.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Second Thought About Disease by Drs Kalokerinos &amp; Dettman 1977.",
+        "url": "http://www.whale.to/w/kal.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "a8aa9c5362e4004aaaf93b33bf7631ef55c6a99d2cb4e22e4e3b0790ad22c78f",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about fermentation control within environmental chemistry",
+  "query_id": "candidate-c-1027",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.whale.to/w/kal.html",
+      "original_url": "http://www.whale.to/w/kal.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "only true if specific environmental conditions exist. Under other conditions evolution into other viruses and bacteria can take place. In the same way an infection can be exogenou",
+      "title": "Second Thought About Disease by Drs Kalokerinos &amp; Dettman 1977."
+    }
+  ],
+  "timestamp": "2026-09-05T17:30:04.939979Z"
+}

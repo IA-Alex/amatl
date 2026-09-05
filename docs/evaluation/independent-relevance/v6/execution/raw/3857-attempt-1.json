@@ -1,0 +1,279 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 3857,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 348.154,
+  "pair_id": "candidate-p-0907",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains ecosystem services within supply networks",
+    "results": [
+      {
+        "category": "general",
+        "content": "decentralized, the ecosystem of the World Wide Web is not. A few giant companies have near-monopolistic control of traffic, personal data, commerce, and the flow of information. .",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "disinformationnation.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DISINFORMATION NATION - MAINSTREAM MEDIA, CORPORATE MEDIA, ESTABLISHMENT MEDIA, PROPAGANDA, DISINFORMATION, MEDIA MONOPOLY, GLOBAL ELITE, GLOB",
+        "url": "https://disinformationnation.net/"
+      },
+      {
+        "category": "general",
+        "content": "of Nature | PDF Version Ecosystems and organisms always tend towards evolutionary stable states selective equilibria. Selective equilibrium can only be achieve when life forms are",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zero Contradictions Philosophy Home Page",
+        "url": "https://zerocontradictions.net/"
+      },
+      {
+        "category": "general",
+        "content": "complex ecosystems (not monocultures), multiple cropping and overlapping functions e.g., poultry provide meat, eggs, feathers, pest control, cultivation, fertilizer and leisure re",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "thesimplerway.info",
+          "/THEALTSOCLong.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "TheAltSocLongNew.html",
+        "url": "http://thesimplerway.info/THEALTSOCLong.htm"
+      },
+      {
+        "category": "general",
+        "content": "Ugreen&#39;s new smart home ecosystem is built around local AI hubs SpaceXAI apologizes for outage that affected Grok and other &#39;compute partners&#39; The Apple Vision Pro was used for a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "readspike.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Readspike - Simple news aggregator",
+        "url": "https://readspike.com/"
+      },
+      {
+        "category": "general",
+        "content": "major investmnet in AI ecosystem? : Nvidia has agreed to acquire Hugging Face for $12.9 billion, according to The Information , citing a person familiar with the deal. If the repo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "soylentnews.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SoylentNews: SoylentNews is people",
+        "url": "https://soylentnews.org/"
+      },
+      {
+        "category": "general",
+        "content": "and an entire ecosystem of innovation at risk. Pannetrat says these new regulations will require even one-person hobbyists to spend hundreds of euros per year (and file paperwork)",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "daringfireball.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Daring Fireball",
+        "url": "https://daringfireball.net/"
+      },
+      {
+        "category": "general",
+        "content": "does a species, an ecosystem, or a ship … or a corporation, for that matter. Although many countries treat a corporation as a &#34;person&#34; and accord it rights, that policy is",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2023-nov-feb.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2023: November - February Political Notes",
+        "url": "http://stallman.org/archives/2023-nov-feb.html"
+      },
+      {
+        "category": "general",
+        "content": "parts of the disclosure ecosystem work, and which are broken? ( blog ) When Vision Fails then showed that the &#34;obvious&#34; defence to the Bad Characters attack, namely rendering text",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5400f651f63a98230752d9574dd7610697aac441fdea89a94b9ee3f93e96f311",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains ecosystem services within supply networks",
+  "query_id": "candidate-t-0907",
+  "raw_result_count": 8,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://disinformationnation.net/",
+      "original_url": "https://disinformationnation.net/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "decentralized, the ecosystem of the World Wide Web is not. A few giant companies have near-monopolistic control of traffic, personal data, commerce, and the flow of information. .",
+      "title": "DISINFORMATION NATION - MAINSTREAM MEDIA, CORPORATE MEDIA, ESTABLISHMENT MEDIA, PROPAGANDA, DISINFORMATION, MEDIA MONOPOLY, GLOBAL ELITE, GLOB"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://zerocontradictions.net/",
+      "original_url": "https://zerocontradictions.net/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "of Nature | PDF Version Ecosystems and organisms always tend towards evolutionary stable states selective equilibria. Selective equilibrium can only be achieve when life forms are",
+      "title": "Zero Contradictions Philosophy Home Page"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://thesimplerway.info/THEALTSOCLong.htm",
+      "original_url": "http://thesimplerway.info/THEALTSOCLong.htm",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "complex ecosystems (not monocultures), multiple cropping and overlapping functions e.g., poultry provide meat, eggs, feathers, pest control, cultivation, fertilizer and leisure re",
+      "title": "TheAltSocLongNew.html"
+    }
+  ],
+  "timestamp": "2026-09-05T17:40:51.529917Z"
+}

@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 1609,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 311.671,
+  "pair_id": "candidate-p-0731",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains data provenance within cultural heritage",
+    "results": [
+      {
+        "category": "general",
+        "content": "to determine the actual provenance of any particles found in the dusts aspirated from between the Shroud and the Holland Cloth in 1978 (are they from the Shroud, the backing cloth",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.shroud.com",
+          "/papers.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scientific Papers and Articles",
+        "url": "https://www.shroud.com/papers.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "52c3fafd1d22ff92b98d4303932137dc64de20b3cbf33ee6a46f6b75825a224b",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains data provenance within cultural heritage",
+  "query_id": "candidate-t-0731",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.shroud.com/papers.htm",
+      "original_url": "https://www.shroud.com/papers.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "to determine the actual provenance of any particles found in the dusts aspirated from between the Shroud and the Holland Cloth in 1978 (are they from the Shroud, the backing cloth",
+      "title": "Scientific Papers and Articles"
+    }
+  ],
+  "timestamp": "2026-09-05T17:29:02.650996Z"
+}

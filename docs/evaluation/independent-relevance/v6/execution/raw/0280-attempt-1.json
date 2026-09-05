@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 280,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 308.256,
+  "pair_id": "candidate-p-1413",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a plain language guide to image compression within food systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "content, because of how compression works). I hope with my 📑 table of contents approach it&#39;ll be easy to navigate around a single large page with unnaturally fast speed ⚡. Other T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "chriskoehnke.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chris Koehnke&#39;s Webpage",
+        "url": "http://chriskoehnke.com/"
+      },
+      {
+        "category": "general",
+        "content": "emitters, explosive compression of huge solenoids and explosive breaking of energised superconducting toroids. One common factor here is that these weapons are single use only, af",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cyb-sec.neocities.org",
+          "/pages/alt-cyberpunk-faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "alt.cyberpunk FAQ – /cyb/&#43;/sec/ wiki",
+        "url": "https://cyb-sec.neocities.org/pages/alt-cyberpunk-faq/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4bc3c2ecb7917b08652a65a1040df25185a4b216a295d7735bef0b43b4206cbc",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a plain language guide to image compression within food systems",
+  "query_id": "candidate-c-1413",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://chriskoehnke.com/",
+      "original_url": "http://chriskoehnke.com/",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "content, because of how compression works). I hope with my 📑 table of contents approach it&#39;ll be easy to navigate around a single large page with unnaturally fast speed ⚡. Other T",
+      "title": "Chris Koehnke&#39;s Webpage"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://cyb-sec.neocities.org/pages/alt-cyberpunk-faq/",
+      "original_url": "https://cyb-sec.neocities.org/pages/alt-cyberpunk-faq/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "emitters, explosive compression of huge solenoids and explosive breaking of energised superconducting toroids. One common factor here is that these weapons are single use only, af",
+      "title": "alt.cyberpunk FAQ – /cyb/&#43;/sec/ wiki"
+    }
+  ],
+  "timestamp": "2026-09-05T17:21:57.820577Z"
+}

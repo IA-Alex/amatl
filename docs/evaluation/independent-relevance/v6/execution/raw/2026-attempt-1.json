@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2026,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 313.766,
+  "pair_id": "candidate-p-1586",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of low power computing within anthropology",
+    "results": [
+      {
+        "category": "general",
+        "content": "science and technology, anthropology, policy and law, business, social entrepreneurship, art, design, and information science, the group delved into the theories contributing to (",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conceptlab.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Garnet Hertz - conceptlab.com",
+        "url": "http://www.conceptlab.com/"
+      },
+      {
+        "category": "general",
+        "content": "slides ). It&#39;s the Anthropology, Stupid! discusses how we might put context and emotion back into security decisions. The Economics of Online Crime appeared in the Journal of Econ",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8a915d1f78f5c165d08384c42fef8a3266ece584184f0c4dca5d66ea42262fcc",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of low power computing within anthropology",
+  "query_id": "candidate-c-1586",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.conceptlab.com/",
+      "original_url": "http://www.conceptlab.com/",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "science and technology, anthropology, policy and law, business, social entrepreneurship, art, design, and information science, the group delved into the theories contributing to (",
+      "title": "Garnet Hertz - conceptlab.com"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.cl.cam.ac.uk/archive/rja14/",
+      "original_url": "https://www.cl.cam.ac.uk/archive/rja14/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "slides ). It&#39;s the Anthropology, Stupid! discusses how we might put context and emotion back into security decisions. The Economics of Online Crime appeared in the Journal of Econ",
+      "title": "Ross Anderson&#39;s Home Page"
+    }
+  ],
+  "timestamp": "2026-09-05T17:31:15.187064Z"
+}

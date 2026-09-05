@@ -1,0 +1,144 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 3825,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 348.924,
+  "pair_id": "candidate-p-0890",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how can researchers measure ecosystem services within industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "you, like &#39;scientific&#39; researchers who do it for the sake of &#39;science&#39; and society, and even less if they are politicians. Finding your passion is a scam, nobody finds their passi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "unpubl. data). Some researchers have suggested that as San Joaquin Valley natural lands were cultivated or otherwise developed, displaced kit foxes colonized nearby valleys and fo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "esrp.csustan.edu",
+          "/publications/pubhtml.php",
+          "",
+          "doc=sjvrp&amp;file=chapter02L00.html",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "L. San Joaquin Kit Fox (Vulpes macrotis mutica)",
+        "url": "https://esrp.csustan.edu/publications/pubhtml.php?doc=sjvrp&amp;file=chapter02L00.html"
+      },
+      {
+        "category": "general",
+        "content": "to the philosophers and researchers exploring deep questions about them Welcome To The Resistance: Meet The Workers Dodging (And Sabotaging) Their Employer&#39;s AI Mandates The Forgo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "readspike.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Readspike - Simple news aggregator",
+        "url": "https://readspike.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "735ac37b491d895f281f2ce2fc847db52982a3f56c41e2dd569765433f8800ca",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how can researchers measure ecosystem services within industrial design",
+  "query_id": "candidate-t-0890",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://imlauer.github.io/",
+      "original_url": "https://imlauer.github.io/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "you, like &#39;scientific&#39; researchers who do it for the sake of &#39;science&#39; and society, and even less if they are politicians. Finding your passion is a scam, nobody finds their passi",
+      "title": "esotericwarfare"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://esrp.csustan.edu/publications/pubhtml.php?doc=sjvrp&amp;file=chapter02L00.html",
+      "original_url": "https://esrp.csustan.edu/publications/pubhtml.php?doc=sjvrp&amp;file=chapter02L00.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "unpubl. data). Some researchers have suggested that as San Joaquin Valley natural lands were cultivated or otherwise developed, displaced kit foxes colonized nearby valleys and fo",
+      "title": "L. San Joaquin Kit Fox (Vulpes macrotis mutica)"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://readspike.com/",
+      "original_url": "https://readspike.com/",
+      "rank": 3,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "to the philosophers and researchers exploring deep questions about them Welcome To The Resistance: Meet The Workers Dodging (And Sabotaging) Their Employer&#39;s AI Mandates The Forgo",
+      "title": "Readspike - Simple news aggregator"
+    }
+  ],
+  "timestamp": "2026-09-05T17:40:41.770419Z"
+}

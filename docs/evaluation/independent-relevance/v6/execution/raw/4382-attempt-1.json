@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 4382,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 277.185,
+  "pair_id": "candidate-p-1383",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of hydrogen storage within robotics",
+    "results": [
+      {
+        "category": "general",
+        "content": "Just Read Above To The Explanation In Buddhism Instead Of Thinking I Am Going To Declare That When I Already Declared I Was The Reincarnation Of The King Pixie Which Was Done Long",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "Just Read Above To The Explanation In Buddhism Instead Of Thinking I Am Going To Declare That When I Already Declared I Was The Reincarnation Of The King Pixie Which Was Done Long",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/FountainOfYouth.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/FountainOfYouth.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a9124571914c23138ae0aee3129b08ce70579fb19bc4e00c98444488e3f6adf3",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of hydrogen storage within robotics",
+  "query_id": "candidate-c-1383",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.fountainofyouth.info/",
+      "original_url": "http://www.fountainofyouth.info/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Just Read Above To The Explanation In Buddhism Instead Of Thinking I Am Going To Declare That When I Already Declared I Was The Reincarnation Of The King Pixie Which Was Done Long",
+      "title": "Fountain of Youth Biomod"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.fountainofyouth.info/FountainOfYouth.html",
+      "original_url": "http://www.fountainofyouth.info/FountainOfYouth.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Just Read Above To The Explanation In Buddhism Instead Of Thinking I Am Going To Declare That When I Already Declared I Was The Reincarnation Of The King Pixie Which Was Done Long",
+      "title": "Fountain of Youth Biomod"
+    }
+  ],
+  "timestamp": "2026-09-05T17:43:41.375576Z"
+}

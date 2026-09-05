@@ -1,0 +1,144 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 381,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 466.633,
+  "pair_id": "candidate-p-1365",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what are the main constraints on hydrogen storage within food systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "and planning. In the constraints of expensive cell phone data, uploading large files can be made possible by offloading heavy-lifting onto remote servers; having your server build",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "100r.co",
+          "/site/off_the_grid.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "100R — off the grid",
+        "url": "http://100r.co/site/off_the_grid.html"
+      },
+      {
+        "category": "general",
+        "content": "related to media budget constraints .) . Consider the above image. Of the twenty visible species, only five are visibly not hominid. That’s right, I count the prawn, xenomor",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.projectrho.com",
+          "/public_html/rocket/alienbody.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alien Bodies - Atomic Rockets",
+        "url": "https://www.projectrho.com/public_html/rocket/alienbody.php"
+      },
+      {
+        "category": "general",
+        "content": "due to budgetary constraints. Grey sector is infamous for the Babylon 5 Triangle -- an area around Grey 17 that leads an active imagination to believe the place is haunted. Mainte",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.midwinter.com",
+          "/lurk/ftp/b5.tech.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.midwinter.com/lurk/ftp/b5.tech.htm",
+        "url": "http://www.midwinter.com/lurk/ftp/b5.tech.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e1032336f3e455e8ecb284c13f3274854cf3e74e42143e07758443c57ff71f12",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what are the main constraints on hydrogen storage within food systems",
+  "query_id": "candidate-t-1365",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://100r.co/site/off_the_grid.html",
+      "original_url": "http://100r.co/site/off_the_grid.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "and planning. In the constraints of expensive cell phone data, uploading large files can be made possible by offloading heavy-lifting onto remote servers; having your server build",
+      "title": "100R — off the grid"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.projectrho.com/public_html/rocket/alienbody.php",
+      "original_url": "https://www.projectrho.com/public_html/rocket/alienbody.php",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "related to media budget constraints .) . Consider the above image. Of the twenty visible species, only five are visibly not hominid. That’s right, I count the prawn, xenomor",
+      "title": "Alien Bodies - Atomic Rockets"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "http://www.midwinter.com/lurk/ftp/b5.tech.htm",
+      "original_url": "http://www.midwinter.com/lurk/ftp/b5.tech.htm",
+      "rank": 3,
+      "rejection_reason": null,
+      "snippet": "due to budgetary constraints. Grey sector is infamous for the Babylon 5 Triangle -- an area around Grey 17 that leads an active imagination to believe the place is haunted. Mainte",
+      "title": "http://www.midwinter.com/lurk/ftp/b5.tech.htm"
+    }
+  ],
+  "timestamp": "2026-09-05T17:22:28.545713Z"
+}

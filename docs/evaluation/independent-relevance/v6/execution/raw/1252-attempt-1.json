@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1252,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 359.398,
+  "pair_id": "candidate-p-0952",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "essential context for electric aviation within science education",
+    "results": [
+      {
+        "category": "general",
+        "content": "is, as Hubble thought, essentially static, ageless and infinite. The miraculous big bang never occurred. Despite all the hubris and ballyhoo, we are ignorant of how the universe c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.david-sadler.org",
+          "/pages/bigQuestions/discIsOurs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "(SFC) David Sadler For Congress - If the Disc Is Ours",
+        "url": "https://www.david-sadler.org/pages/bigQuestions/discIsOurs.htm"
+      },
+      {
+        "category": "general",
+        "content": "that some deception is essential for the smooth pursuit of social interaction: the &#34;white lie&#34; smoothes over many otherwise discomforting social clashes. It is not always best to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pages.ucsd.edu",
+          "/~dnorman/DNMss/Being_Analog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Being Analog",
+        "url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "08f9d942b3f4674a974611e7d7222f1493a5a609756c4adc0e5d9d81bd163874",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "essential context for electric aviation within science education",
+  "query_id": "candidate-c-0952",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.david-sadler.org/pages/bigQuestions/discIsOurs.htm",
+      "original_url": "https://www.david-sadler.org/pages/bigQuestions/discIsOurs.htm",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "is, as Hubble thought, essentially static, ageless and infinite. The miraculous big bang never occurred. Despite all the hubris and ballyhoo, we are ignorant of how the universe c",
+      "title": "(SFC) David Sadler For Congress - If the Disc Is Ours"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html",
+      "original_url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "that some deception is essential for the smooth pursuit of social interaction: the &#34;white lie&#34; smoothes over many otherwise discomforting social clashes. It is not always best to",
+      "title": "Being Analog"
+    }
+  ],
+  "timestamp": "2026-09-05T17:27:13.754941Z"
+}

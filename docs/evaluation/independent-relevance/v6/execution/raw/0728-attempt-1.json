@@ -1,0 +1,279 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 728,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 354.985,
+  "pair_id": "candidate-p-1627",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about low power computing within supply networks",
+    "results": [
+      {
+        "category": "general",
+        "content": "first-principles background. The paper is accessible yet not incremental. Published as And Then There Were None: A Stall-Free Real-Time Garbage Collector for Reconfigurable Hardwa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "of the Bee Girls&#34;, the background is a panel containing switches and controls of SAGE incoming phone and data lines. from Bill Newman ?World&#39;s first computer art? Source Placard -",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ed-thelen.org",
+          "/comp-hist/vs-ibm-sage.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "IBM SAGE",
+        "url": "https://ed-thelen.org/comp-hist/vs-ibm-sage.html"
+      },
+      {
+        "category": "general",
+        "content": "departments, to background material, educational material, news, experts etc.) WORK | apprentices | re-training | job-creation | employers | unions | health and work | self-help |",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gotze.dk",
+          "/phd/it.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Participation in the information age",
+        "url": "https://gotze.dk/phd/it.html"
+      },
+      {
+        "category": "general",
+        "content": "gave me some networking background. Image Computer Systems did a lot of work with text processing and communications -- I was a director before coming to CERN. IW: What elements i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/People/Berners-Lee/FAQ.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Frequently asked questions by the Press - Tim BL",
+        "url": "https://www.w3.org/People/Berners-Lee/FAQ.html"
+      },
+      {
+        "category": "general",
+        "content": "a feature. First, some background. Avatars were hatched with 2000 Tokens in their bank account, and each day that they logged in the received another 100T. Avatars could acquire a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fudco.com",
+          "/chip/lessons.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Lessons of Lucasfilm&#39;s Habitat",
+        "url": "http://www.fudco.com/chip/lessons.html"
+      },
+      {
+        "category": "general",
+        "content": "trying to build up my background understanding. At all times, if something wasn&#39;t easy to understand, I didn&#39;t worry about it, I just keep going. But as I made repeat passes, the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "augmentingcognition.com",
+          "/ltm.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Augmenting Long-term Memory",
+        "url": "http://augmentingcognition.com/ltm.html"
+      },
+      {
+        "category": "general",
+        "content": "to sleep and drown out background noise. 🔗 📑 Site Inspiration mf-ingwebsite.com Simplicity is fine. Actually it is the best. Focus on content , not fluffy presentation. This is ta",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "chriskoehnke.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chris Koehnke&#39;s Webpage",
+        "url": "http://chriskoehnke.com/"
+      },
+      {
+        "category": "general",
+        "content": "to some extent my own background, but I believe it also reflects the reality that those areas are the ones that drive technological, economic, and social change today. The 21-st c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www-users.cse.umn.edu",
+          "/~odlyzko/doc/decline.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://www-users.cse.umn.edu/~odlyzko/doc/decline.txt",
+        "url": "https://www-users.cse.umn.edu/~odlyzko/doc/decline.txt"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "49b1e559948138b653045b5f64a28c183e1ff305023d2cd7a2e9b691d5e2f7e0",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about low power computing within supply networks",
+  "query_id": "candidate-c-1627",
+  "raw_result_count": 8,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.sigplan.org/Highlights/Papers/",
+      "original_url": "https://www.sigplan.org/Highlights/Papers/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "first-principles background. The paper is accessible yet not incremental. Published as And Then There Were None: A Stall-Free Real-Time Garbage Collector for Reconfigurable Hardwa",
+      "title": "SIGPLAN Research Highlights Papers"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://ed-thelen.org/comp-hist/vs-ibm-sage.html",
+      "original_url": "https://ed-thelen.org/comp-hist/vs-ibm-sage.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "of the Bee Girls&#34;, the background is a panel containing switches and controls of SAGE incoming phone and data lines. from Bill Newman ?World&#39;s first computer art? Source Placard -",
+      "title": "IBM SAGE"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://gotze.dk/phd/it.html",
+      "original_url": "https://gotze.dk/phd/it.html",
+      "rank": 3,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "departments, to background material, educational material, news, experts etc.) WORK | apprentices | re-training | job-creation | employers | unions | health and work | self-help |",
+      "title": "Participation in the information age"
+    }
+  ],
+  "timestamp": "2026-09-05T17:24:23.621876Z"
+}

@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2925,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 309.408,
+  "pair_id": "candidate-p-1615",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what tradeoffs shape low power computing within music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "social phenomenon as a technology. Backward compatibility of any new client is essential for acceptance. It will be impossible to change all of gopherspace overnight, so any new c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.pliant.org",
+          "/personal/Tom_Erickson/GopherVR.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "3D Gopher, by McCahill and Erickson",
+        "url": "http://www.pliant.org/personal/Tom_Erickson/GopherVR.html"
+      },
+      {
+        "category": "general",
+        "content": "academia, turned to technology and rural life. Rejected institutional science, embraced Orthodox Christianity, runs a YouTube channel. Focus on cybernetics, technology&#39;s societal",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Luke Smith Fanclub &amp; Archive",
+        "url": "https://lukesmith.neocities.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "605742b10bc00a8c5be6f521c28bccc41b4475addb4d505b5ef8fa2367d74bcb",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what tradeoffs shape low power computing within music technology",
+  "query_id": "candidate-t-1615",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "http://www.pliant.org/personal/Tom_Erickson/GopherVR.html",
+      "original_url": "http://www.pliant.org/personal/Tom_Erickson/GopherVR.html",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "social phenomenon as a technology. Backward compatibility of any new client is essential for acceptance. It will be impossible to change all of gopherspace overnight, so any new c",
+      "title": "3D Gopher, by McCahill and Erickson"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://lukesmith.neocities.org/",
+      "original_url": "https://lukesmith.neocities.org/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "academia, turned to technology and rural life. Rejected institutional science, embraced Orthodox Christianity, runs a YouTube channel. Focus on cybernetics, technology&#39;s societal",
+      "title": "Luke Smith Fanclub &amp; Archive"
+    }
+  ],
+  "timestamp": "2026-09-05T17:35:53.883312Z"
+}

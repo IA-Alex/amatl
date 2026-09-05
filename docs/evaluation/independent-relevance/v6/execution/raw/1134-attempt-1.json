@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1134,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 265.74,
+  "pair_id": "candidate-p-2266",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of wildlife telemetry within conservation",
+    "results": [
+      {
+        "category": "general",
+        "content": "periodically replaced. CONSERVATION. As already mentioned, the biggest cause of decline for Acanthophis in Australia is habitat destruction. Acanthophis don&#39;t appear to be compati",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.smuggled.com",
+          "/adder1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DEATH ADDERS - DEATH ADDER - DEATH ADDERS",
+        "url": "http://www.smuggled.com/adder1.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "38935cf5407f125bac3d9b1fb4fcc2f2df3c1cc9229e60a3bc935004f5e6b64d",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of wildlife telemetry within conservation",
+  "query_id": "candidate-c-2266",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.smuggled.com/adder1.htm",
+      "original_url": "http://www.smuggled.com/adder1.htm",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "periodically replaced. CONSERVATION. As already mentioned, the biggest cause of decline for Acanthophis in Australia is habitat destruction. Acanthophis don&#39;t appear to be compati",
+      "title": "DEATH ADDERS - DEATH ADDER - DEATH ADDERS"
+    }
+  ],
+  "timestamp": "2026-09-05T17:26:29.258321Z"
+}

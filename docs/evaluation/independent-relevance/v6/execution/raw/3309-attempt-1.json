@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 3309,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 440.858,
+  "pair_id": "candidate-p-1317",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what are the main constraints on habitat corridors within food systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "related to media budget constraints .) . Consider the above image. Of the twenty visible species, only five are visibly not hominid. That’s right, I count the prawn, xenomor",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.projectrho.com",
+          "/public_html/rocket/alienbody.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alien Bodies - Atomic Rockets",
+        "url": "https://www.projectrho.com/public_html/rocket/alienbody.php"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "618a9ded807cc934ac8d1fa2e1f55626a0969dfb40fe39a87932261d4ee0e99a",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what are the main constraints on habitat corridors within food systems",
+  "query_id": "candidate-t-1317",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.projectrho.com/public_html/rocket/alienbody.php",
+      "original_url": "https://www.projectrho.com/public_html/rocket/alienbody.php",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "related to media budget constraints .) . Consider the above image. Of the twenty visible species, only five are visibly not hominid. That’s right, I count the prawn, xenomor",
+      "title": "Alien Bodies - Atomic Rockets"
+    }
+  ],
+  "timestamp": "2026-09-05T17:37:57.076613Z"
+}

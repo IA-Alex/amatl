@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 3729,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 490.307,
+  "pair_id": "candidate-p-1349",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what are the main constraints on hydrogen storage within behavioral science",
+    "results": [
+      {
+        "category": "general",
+        "content": "schemes introduce more constraints than verbal indexes but have fewer search facilities than more structured codes. This conclusion may indicate that Vickery failed to anticipate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/facet_analysis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Facet analysis (IEKO)",
+        "url": "https://www.isko.org/cyclo/facet_analysis.htm"
+      },
+      {
+        "category": "general",
+        "content": "the philosophical constraints we have imposed might well be adopted in practice. In this paper we will eschew the more exotic possibilities (without, however, adopting any positio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "85790d5d6bc58ec12c62415128e5ba090948a5af40b044437d177249ae2de36c",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what are the main constraints on hydrogen storage within behavioral science",
+  "query_id": "candidate-t-1349",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.isko.org/cyclo/facet_analysis.htm",
+      "original_url": "https://www.isko.org/cyclo/facet_analysis.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "schemes introduce more constraints than verbal indexes but have fewer search facilities than more structured codes. This conclusion may indicate that Vickery failed to anticipate",
+      "title": "Facet analysis (IEKO)"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.ralphmerkle.com/cryo/techFeas.html",
+      "original_url": "http://www.ralphmerkle.com/cryo/techFeas.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "the philosophical constraints we have imposed might well be adopted in practice. In this paper we will eschew the more exotic possibilities (without, however, adopting any positio",
+      "title": "The Molecular Repair of the Brain"
+    }
+  ],
+  "timestamp": "2026-09-05T17:40:12.369128Z"
+}

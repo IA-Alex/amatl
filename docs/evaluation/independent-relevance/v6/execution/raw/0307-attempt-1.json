@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 307,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 313.995,
+  "pair_id": "candidate-p-2102",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how do models represent soil carbon accounting within risk analysis",
+    "results": [
+      {
+        "category": "general",
+        "content": "Support Services Accounting &amp; Compliance – Managed by our in-house team and certified public accountants. Full Business Setup – From licensing to operational launch under your",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.startyourowngoldmine.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Start Your Own Gold Mine in 45 days with less than US $100,000",
+        "url": "https://www.startyourowngoldmine.com/"
+      },
+      {
+        "category": "general",
+        "content": "variability accounting for about half of all the recorded warming in the last hundred years, only 0.3°C is left over for everything else, including urbanization and land use.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/warm.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The global warming scare",
+        "url": "https://davidpratt.info/warm.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4fd5cf4b67299e70ec3f99adb250550fb526521bca04c25606964be959144487",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how do models represent soil carbon accounting within risk analysis",
+  "query_id": "candidate-t-2102",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.startyourowngoldmine.com/",
+      "original_url": "https://www.startyourowngoldmine.com/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Support Services Accounting &amp; Compliance – Managed by our in-house team and certified public accountants. Full Business Setup – From licensing to operational launch under your",
+      "title": "Start Your Own Gold Mine in 45 days with less than US $100,000"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://davidpratt.info/warm.htm",
+      "original_url": "https://davidpratt.info/warm.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "variability accounting for about half of all the recorded warming in the last hundred years, only 0.3°C is left over for everything else, including urbanization and land use.",
+      "title": "The global warming scare"
+    }
+  ],
+  "timestamp": "2026-09-05T17:22:06.503572Z"
+}

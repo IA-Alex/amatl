@@ -1,0 +1,144 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 4051,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 367.573,
+  "pair_id": "candidate-p-1430",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how do models represent image compression within risk analysis",
+    "results": [
+      {
+        "category": "general",
+        "content": "169. Fallacies of Compression 170. Categorizing Has Consequences 171. Sneaking in Connotations 172. Arguing “By Definition” 173. Where to Draw the Boundary? 174. Entropy, and Shor",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "elizier.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rationality: From AI to Zombies",
+        "url": "https://elizier.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "the experience of the compression of time. The drama of trying to outrun the odds is the psychic lock on the Gambler within a person&#39;s psyche. The positive aspect of this archetyp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.meta-religion.com",
+          "/Psychiatry/Analytical_psychology/a_gallery_of_archetypes.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Gallery Of Archetypes",
+        "url": "https://www.meta-religion.com/Psychiatry/Analytical_psychology/a_gallery_of_archetypes.htm"
+      },
+      {
+        "category": "general",
+        "content": "a daily basis, due to compression of the soft parts of the spine during the day. The ears and nose continue gradually growing during adulthood. Bones seem permanent, but the calci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "baharna.com",
+          "/philos/life.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Psychozoan: The Definition of Life",
+        "url": "https://baharna.com/philos/life.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c8be059232379984da643bb24616c17c48539339461346ca417c8082cc827bd1",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how do models represent image compression within risk analysis",
+  "query_id": "candidate-t-1430",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://elizier.neocities.org/",
+      "original_url": "https://elizier.neocities.org/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "169. Fallacies of Compression 170. Categorizing Has Consequences 171. Sneaking in Connotations 172. Arguing “By Definition” 173. Where to Draw the Boundary? 174. Entropy, and Shor",
+      "title": "Rationality: From AI to Zombies"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "https://www.meta-religion.com/Psychiatry/Analytical_psychology/a_gallery_of_archetypes.htm",
+      "original_url": "https://www.meta-religion.com/Psychiatry/Analytical_psychology/a_gallery_of_archetypes.htm",
+      "rank": 2,
+      "rejection_reason": null,
+      "snippet": "the experience of the compression of time. The drama of trying to outrun the odds is the psychic lock on the Gambler within a person&#39;s psyche. The positive aspect of this archetyp",
+      "title": "A Gallery Of Archetypes"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://baharna.com/philos/life.htm",
+      "original_url": "https://baharna.com/philos/life.htm",
+      "rank": 3,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "a daily basis, due to compression of the soft parts of the spine during the day. The ears and nose continue gradually growing during adulthood. Bones seem permanent, but the calci",
+      "title": "Psychozoan: The Definition of Life"
+    }
+  ],
+  "timestamp": "2026-09-05T17:41:51.533107Z"
+}

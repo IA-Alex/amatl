@@ -1,0 +1,144 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 3658,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 316.472,
+  "pair_id": "candidate-p-0874",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of ecosystem services within conservation",
+    "results": [
+      {
+        "category": "general",
+        "content": "savings and resource conservation provided by a cross platform test system utilizing Distributed Ruby. The system performs automated testing of AXFS on User-Mode Linux and ARM bas",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "chemical pesticides. Conservation: Gene drives could be employed to eradicate invasive species that threaten native ecosystems or to reverse detrimental genetic traits in endanger",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gene-drives.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reprogramming the biosphere with gene drives as conceived by ChatGPT",
+        "url": "https://www.gene-drives.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "outdoor enthusiast, or conservation professional, you can play an important role in detecting nutria, particularly in places where populations are new or expanding. Learn to ident",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fb7c3e449d08b5397a0a54ee7888be459145fcee7eb4d2105c6e16424d3a2004",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of ecosystem services within conservation",
+  "query_id": "candidate-c-0874",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html",
+      "original_url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "savings and resource conservation provided by a cross platform test system utilizing Distributed Ruby. The system performs automated testing of AXFS on User-Mode Linux and ARM bas",
+      "title": "CELF Embedded Linux Conference"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.gene-drives.com/chatgpt/",
+      "original_url": "https://www.gene-drives.com/chatgpt/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "chemical pesticides. Conservation: Gene drives could be employed to eradicate invasive species that threaten native ecosystems or to reverse detrimental genetic traits in endanger",
+      "title": "Reprogramming the biosphere with gene drives as conceived by ChatGPT"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://naisma.org/feed/",
+      "original_url": "https://naisma.org/feed/",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "outdoor enthusiast, or conservation professional, you can play an important role in detecting nutria, particularly in places where populations are new or expanding. Learn to ident",
+      "title": "NAISMA"
+    }
+  ],
+  "timestamp": "2026-09-05T17:39:50.386299Z"
+}

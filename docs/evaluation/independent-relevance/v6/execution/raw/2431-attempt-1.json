@@ -1,0 +1,144 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2431,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 308.086,
+  "pair_id": "candidate-p-0723",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains data provenance within archaeology",
+    "results": [
+      {
+        "category": "general",
+        "content": "Journal of Archaeology . Volume 11, Issue 1, June 2023, pp. 1-8. doi: 10.11648/j.ija.20231101.11 - Published January 30, 2023 [6 JULY 2023] Here is an excerpt from the abstract: &#34;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.shroud.com",
+          "/papers.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scientific Papers and Articles",
+        "url": "https://www.shroud.com/papers.htm"
+      },
+      {
+        "category": "general",
+        "content": "Press, 1988], p. 15) Archaeology And The NT Independent archaeological research has solidified the authenticity and the historical reliability of the New Testament. Some of the di",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "answering-islam.org",
+          "/Shamoun/documents.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The New Testament Documents and the Historicity of the Resurrection",
+        "url": "https://answering-islam.org/Shamoun/documents.htm"
+      },
+      {
+        "category": "general",
+        "content": "The new &#34;molecular DNA archaeology&#34; proves it beyond question. We are all related - literally . The high incidence of Y chromosomes from the haplogroup N1c1 suggest long term rela",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.suduva.com",
+          "/virdainas/proto.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Baltic in Vedic | Embrace The Chaos |",
+        "url": "http://www.suduva.com/virdainas/proto.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6c697302023c85568f7e2379fcba651f2a388cba4ee0f9e2673fd3fa913157d7",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains data provenance within archaeology",
+  "query_id": "candidate-t-0723",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.shroud.com/papers.htm",
+      "original_url": "https://www.shroud.com/papers.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Journal of Archaeology . Volume 11, Issue 1, June 2023, pp. 1-8. doi: 10.11648/j.ija.20231101.11 - Published January 30, 2023 [6 JULY 2023] Here is an excerpt from the abstract: &#34;",
+      "title": "Scientific Papers and Articles"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "https://answering-islam.org/Shamoun/documents.htm",
+      "original_url": "https://answering-islam.org/Shamoun/documents.htm",
+      "rank": 2,
+      "rejection_reason": null,
+      "snippet": "Press, 1988], p. 15) Archaeology And The NT Independent archaeological research has solidified the authenticity and the historical reliability of the New Testament. Some of the di",
+      "title": "The New Testament Documents and the Historicity of the Resurrection"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "http://www.suduva.com/virdainas/proto.htm",
+      "original_url": "http://www.suduva.com/virdainas/proto.htm",
+      "rank": 3,
+      "rejection_reason": null,
+      "snippet": "The new &#34;molecular DNA archaeology&#34; proves it beyond question. We are all related - literally . The high incidence of Y chromosomes from the haplogroup N1c1 suggest long term rela",
+      "title": "The Baltic in Vedic | Embrace The Chaos |"
+    }
+  ],
+  "timestamp": "2026-09-05T17:33:25.410518Z"
+}

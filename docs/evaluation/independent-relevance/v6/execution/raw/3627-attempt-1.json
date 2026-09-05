@@ -1,0 +1,144 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 3627,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 350.213,
+  "pair_id": "candidate-p-0508",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "under what conditions does bridge vibration within materials engineering change",
+    "results": [
+      {
+        "category": "general",
+        "content": "a communicationsu2011engineering approach combining coherent integration, superheterodyne frequency shifting, and iterative phaseu2011demodulation to isolate weak, structured osci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "Vehicle design and engineering or to compete in races, or to have a guest lecturer, please send an email to: inquiry@design1.org Current Book Projects • Prior Business Books",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.design1.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Recent designs, projects and thoughts by Frank X. Didik. Predictions for the future, where society is going. Can gravity by modulated? Wha",
+        "url": "http://www.design1.org/"
+      },
+      {
+        "category": "general",
+        "content": "of mechanical and civil engineering, United States National Museum, Smithsonian Institution.   The 1,000-foot tower that formed the focal point and central feature of the Uni",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book246/book246.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Elevator Systems of the Eiffel Tower, 1889, by Robert M. Vogel",
+        "url": "https://www.ajhw.co.uk/books/book246/book246.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5c1df1148370dbbf886c86de8edcaed99e6900274263ae28d88dc32a60422967",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "under what conditions does bridge vibration within materials engineering change",
+  "query_id": "candidate-t-0508",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://vixra.org/astro/",
+      "original_url": "https://vixra.org/astro/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "a communicationsu2011engineering approach combining coherent integration, superheterodyne frequency shifting, and iterative phaseu2011demodulation to isolate weak, structured osci",
+      "title": "viXra.org e-Print archive, Astrophysics"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.design1.org/",
+      "original_url": "http://www.design1.org/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Vehicle design and engineering or to compete in races, or to have a guest lecturer, please send an email to: inquiry@design1.org Current Book Projects • Prior Business Books",
+      "title": "Recent designs, projects and thoughts by Frank X. Didik. Predictions for the future, where society is going. Can gravity by modulated? Wha"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.ajhw.co.uk/books/book246/book246.html",
+      "original_url": "https://www.ajhw.co.uk/books/book246/book246.html",
+      "rank": 3,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "of mechanical and civil engineering, United States National Museum, Smithsonian Institution.   The 1,000-foot tower that formed the focal point and central feature of the Uni",
+      "title": "Elevator Systems of the Eiffel Tower, 1889, by Robert M. Vogel"
+    }
+  ],
+  "timestamp": "2026-09-05T17:39:40.992779Z"
+}

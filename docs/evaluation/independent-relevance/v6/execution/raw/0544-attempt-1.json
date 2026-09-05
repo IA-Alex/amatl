@@ -1,0 +1,144 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 544,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 331.935,
+  "pair_id": "candidate-p-0902",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "key concepts associated with ecosystem services within risk analysis",
+    "results": [
+      {
+        "category": "general",
+        "content": "Manual of Style, Associated Press Style, Modern Language Association, so here we are using Chigago Manual of Style for capitalization. ALL COMPUTER PROGRAMS EMBODY ASPECTS OF ARTI",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "Veganism is also associated with various environmental benefits, such as reduced greenhouse gas emissions, lower water usage, and decreased deforestation. By adopting a vegan life",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.antispeciesism.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Speciesism and Antispeciesism as conceived as conceived by ChatGPT",
+        "url": "https://www.antispeciesism.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "and any material associated with them must be discarded (without exception) as being fraudulent. Some years ago it was Richard Doty and others of his ilk; more recently it&#39;s Rober",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "buriedtruth.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BuriedTruth.com",
+        "url": "http://buriedtruth.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "613b0cfbff93c1324d8fd82a14ebd4266e6322b6a7fdfebd48462f16c08c04cf",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "key concepts associated with ecosystem services within risk analysis",
+  "query_id": "candidate-c-0902",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://gnu.support/",
+      "original_url": "https://gnu.support/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Manual of Style, Associated Press Style, Modern Language Association, so here we are using Chigago Manual of Style for capitalization. ALL COMPUTER PROGRAMS EMBODY ASPECTS OF ARTI",
+      "title": "GNU.Support website about GNU Operating Systems"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.antispeciesism.com/chatgpt/",
+      "original_url": "https://www.antispeciesism.com/chatgpt/",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "Veganism is also associated with various environmental benefits, such as reduced greenhouse gas emissions, lower water usage, and decreased deforestation. By adopting a vegan life",
+      "title": "Speciesism and Antispeciesism as conceived as conceived by ChatGPT"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "http://buriedtruth.com/",
+      "original_url": "http://buriedtruth.com/",
+      "rank": 3,
+      "rejection_reason": null,
+      "snippet": "and any material associated with them must be discarded (without exception) as being fraudulent. Some years ago it was Richard Doty and others of his ilk; more recently it&#39;s Rober",
+      "title": "BuriedTruth.com"
+    }
+  ],
+  "timestamp": "2026-09-05T17:23:17.363887Z"
+}

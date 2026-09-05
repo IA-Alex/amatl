@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 229,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 351.365,
+  "pair_id": "candidate-p-1624",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how is low power computing within science education evaluated in practice",
+    "results": [
+      {
+        "category": "general",
+        "content": "use state-of-the-art computing equipment and the physical limitations of time and space are overcome&#34; Computerization movements cover a wide spectre of ideas and ideals, but",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gotze.dk",
+          "/phd/it.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Participation in the information age",
+        "url": "https://gotze.dk/phd/it.html"
+      },
+      {
+        "category": "general",
+        "content": "in 1927 refers to computing and indicating of totals. If this is the first use of the word computing to refer to a machine, as previously people performed computing, then by deduc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tote-history-atl.net.au",
+          "/george_julius_genealogy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "George Julius Genealogy",
+        "url": "http://tote-history-atl.net.au/george_julius_genealogy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6545f8e72564aefb92895c7a06127a9445434ed58dd64a01a7263a2bdc95a623",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how is low power computing within science education evaluated in practice",
+  "query_id": "candidate-t-1624",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "https://gotze.dk/phd/it.html",
+      "original_url": "https://gotze.dk/phd/it.html",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "use state-of-the-art computing equipment and the physical limitations of time and space are overcome&#34; Computerization movements cover a wide spectre of ideas and ideals, but",
+      "title": "Participation in the information age"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://tote-history-atl.net.au/george_julius_genealogy.htm",
+      "original_url": "http://tote-history-atl.net.au/george_julius_genealogy.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "in 1927 refers to computing and indicating of totals. If this is the first use of the word computing to refer to a machine, as previously people performed computing, then by deduc",
+      "title": "George Julius Genealogy"
+    }
+  ],
+  "timestamp": "2026-09-05T17:21:41.936200Z"
+}

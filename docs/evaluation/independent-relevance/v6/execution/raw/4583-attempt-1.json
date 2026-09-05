@@ -1,0 +1,144 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 4583,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 332.348,
+  "pair_id": "candidate-p-1600",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how is low power computing within electrical systems evaluated in practice",
+    "results": [
+      {
+        "category": "general",
+        "content": "Assembly provides both electrical and mechanical interfaces to accommodate 2, 4, or 8 KIV-7 units. The 19-inch rack assembly is designed for installation into any standard 19-inch",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.tscm.com",
+          "/stu.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "STU-III Secure Telephone Units, Crypto Key Generators, Encryption Equipment and Scramblers",
+        "url": "http://www.tscm.com/stu.html"
+      },
+      {
+        "category": "general",
+        "content": "standing next to an electrical plug. But this time dreams failed because of people, not because of technology.   UPDATE: check discussions on Hacker News, r/TrueReddit , and r/Ele",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "svedic.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Svedic.org",
+        "url": "https://svedic.org/"
+      },
+      {
+        "category": "general",
+        "content": "to the Mechanical and Electrical Engineers present. Tony Shellshear, Sir George Julius&#39; great grandson, who has a segment below on this page, attended this function on the 19th an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tote-history-atl.net.au",
+          "/george_julius_genealogy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "George Julius Genealogy",
+        "url": "http://tote-history-atl.net.au/george_julius_genealogy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b15ac9dde8884c75b2625b1d6575f8b97a958f38b74777d16c5d8a55da150748",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how is low power computing within electrical systems evaluated in practice",
+  "query_id": "candidate-t-1600",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.tscm.com/stu.html",
+      "original_url": "http://www.tscm.com/stu.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Assembly provides both electrical and mechanical interfaces to accommodate 2, 4, or 8 KIV-7 units. The 19-inch rack assembly is designed for installation into any standard 19-inch",
+      "title": "STU-III Secure Telephone Units, Crypto Key Generators, Encryption Equipment and Scramblers"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://svedic.org/",
+      "original_url": "https://svedic.org/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "standing next to an electrical plug. But this time dreams failed because of people, not because of technology.   UPDATE: check discussions on Hacker News, r/TrueReddit , and r/Ele",
+      "title": "Svedic.org"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://tote-history-atl.net.au/george_julius_genealogy.htm",
+      "original_url": "http://tote-history-atl.net.au/george_julius_genealogy.htm",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "to the Mechanical and Electrical Engineers present. Tony Shellshear, Sir George Julius&#39; great grandson, who has a segment below on this page, attended this function on the 19th an",
+      "title": "George Julius Genealogy"
+    }
+  ],
+  "timestamp": "2026-09-05T17:44:40.708259Z"
+}

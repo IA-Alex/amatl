@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2472,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 295.604,
+  "pair_id": "candidate-p-0363",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about biometric privacy within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Clipper, the Net, the Information Superhighway, cyber terrorists, and crypto anarchy. We have found ourselves (or _placed_ ourselves) at the center of the storm. - This FAQ may he",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cdn.nakamotoinstitute.org",
+          "/docs/cyphernomicon.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://cdn.nakamotoinstitute.org/docs/cyphernomicon.txt",
+        "url": "https://cdn.nakamotoinstitute.org/docs/cyphernomicon.txt"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ade61a64cad3b7ca6d6445085e2d852fcf0b3e770c9db3e49b7650831c6d9bc8",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about biometric privacy within information science",
+  "query_id": "candidate-c-0363",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://cdn.nakamotoinstitute.org/docs/cyphernomicon.txt",
+      "original_url": "https://cdn.nakamotoinstitute.org/docs/cyphernomicon.txt",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Clipper, the Net, the Information Superhighway, cyber terrorists, and crypto anarchy. We have found ourselves (or _placed_ ourselves) at the center of the storm. - This FAQ may he",
+      "title": "https://cdn.nakamotoinstitute.org/docs/cyphernomicon.txt"
+    }
+  ],
+  "timestamp": "2026-09-05T17:33:37.822849Z"
+}

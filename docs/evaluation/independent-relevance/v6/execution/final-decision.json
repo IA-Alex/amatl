@@ -1,0 +1,11 @@
+{
+  "decision": "INCONCLUSIVE",
+  "execution_status": "COMPLETE_INCONCLUSIVE",
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "labeling": "NOT_STARTED_TARGET_NOT_REACHED",
+  "next_single_action": "NONE_V6_CLOSED",
+  "primary_endpoint": "NOT_CALCULATED_TARGET_NOT_REACHED",
+  "reason": "FROZEN_UNIVERSE_EXHAUSTED_BEFORE_VALID_TARGET",
+  "schema": "amatl.relevance.v6-final-decision.v1",
+  "target_reached": false
+}

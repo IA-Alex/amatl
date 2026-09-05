@@ -1,0 +1,387 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2926,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 1392.941,
+  "pair_id": "candidate-p-1615",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of low power computing within music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "at something | a brief explanation of the cathedral | retiring the university by Curtis Yarvin. | The Case Against Education | book review seeing like a state | The toxic schoolin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "op-eds. I find this explanation unsatisfying for two reasons; first, the volume of seemingly meaningless contracts is far too high to handwave behind couriers and trolls, and seco",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-gig-economy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Gig Economy — Chadnet",
+        "url": "https://wiki.chadnet.org/the-gig-economy"
+      },
+      {
+        "category": "general",
+        "content": "execution (a detailed explanation can be found in a previous article ). 24 KB of L1 cache : Partitioned into 16 KB for instructions and 8 KB for data. The package also includes an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/nintendo-64/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nintendo 64 Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/nintendo-64/"
+      },
+      {
+        "category": "general",
+        "content": "execution (a detailed explanation can be found in a previous article ). 24 KB of L1 cache : Partitioned into 16 KB for instructions and 8 KB for data. The package also includes an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "classic.copetti.org",
+          "/writings/consoles/nintendo-64/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nintendo 64 Architecture | A Practical Analysis",
+        "url": "https://classic.copetti.org/writings/consoles/nintendo-64/"
+      },
+      {
+        "category": "general",
+        "content": "(That&#39;s literally the explanation for PowerShell. Many of us wanted to improve cmd.exe, but couldn&#39;t.) More examples: We can&#39;t touch named pipes. Let&#39;s add %INTERNAL_NOTIFICATION_",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "blog.zorinaq.com",
+          "/i-contribute-to-the-windows-kernel-we-are-slower-than-other-oper/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "&#34;I Contribute to the Windows Kernel. We Are Slower Than Other Operating Systems. Here Is Why.&#34;",
+        "url": "http://blog.zorinaq.com/i-contribute-to-the-windows-kernel-we-are-slower-than-other-oper/"
+      },
+      {
+        "category": "general",
+        "content": "a rational, informative explanation of why Internet Explorer is Evil exists. Also, now that Geocitties has closed... well the IQ of the web suddenly went up. So time to drop those",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "toastytech.com",
+          "/evil/rants.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rants",
+        "url": "http://toastytech.com/evil/rants.html"
+      },
+      {
+        "category": "general",
+        "content": "6.61 infinity - an explanation . ↩︎ Audio PPSSPP Project,  SasAudio.cpp . Github. ↩︎ PPSSPP Project,  SimpleAudioDec.cpp . Github. ↩︎ CPU groepaz/hitmen,  Yet anoth",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/playstation-portable/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PlayStation Portable (PSP) Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/playstation-portable/"
+      },
+      {
+        "category": "general",
+        "content": "invented supernatural explanations for: the daily cycle of the Sun; the motions of the Moon and planets; the seasons; rivers, currents, winds, thunder, lightning, precipitation an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "humanknowledge.net",
+          "/Thoughts.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Human Knowledge: Foundations and Limits",
+        "url": "http://humanknowledge.net/Thoughts.html"
+      },
+      {
+        "category": "general",
+        "content": "going to be a technical explanation of how things work. So I&#39;m skipping many pre-election and post-election processes. I&#39;m going from candidate loading until vote counting",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wf.lavatech.top",
+          "/lun-4/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "luna&#39;s up on her bullshit again — LavaTech WriteFreely",
+        "url": "https://wf.lavatech.top/lun-4/"
+      },
+      {
+        "category": "general",
+        "content": ", There Needs To Be Explanation Of Specialized Functions To The Human Body Like Tendons, Veins, Hair, Nails, Blades, Eyes, Sinuses, Liver, Spleen , Other Organs/Tissues, And Parts",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bimavs.com",
+          "/SINSSsexToyNanoBiology.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SINSS Sex Toys&#39; Jaiden",
+        "url": "http://www.bimavs.com/SINSSsexToyNanoBiology.html"
+      },
+      {
+        "category": "general",
+        "content": "Introduction and explanation. The graph paper, part 1; computer graphics Art and the computer. Half-toning digital images. A graphics package for the Apple II. Cyrillic anyone? pr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.atarimagazines.com",
+          "/creative/index/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of Creative Computing articles",
+        "url": "https://www.atarimagazines.com/creative/index/"
+      },
+      {
+        "category": "general",
+        "content": "at the reader without explanation, much like new developments are thrown at us in our everyday lives. There is often a sense of moral ambiguity; simply fighting “system&amp;rdqu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cyb-sec.neocities.org",
+          "/pages/alt-cyberpunk-faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "alt.cyberpunk FAQ – /cyb/&#43;/sec/ wiki",
+        "url": "https://cyb-sec.neocities.org/pages/alt-cyberpunk-faq/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e35d35df92a4da563e57fe23420f91fa452d5ab7dee792608db768943abf9738",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of low power computing within music technology",
+  "query_id": "candidate-c-1615",
+  "raw_result_count": 12,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://imlauer.github.io/",
+      "original_url": "https://imlauer.github.io/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "at something | a brief explanation of the cathedral | retiring the university by Curtis Yarvin. | The Case Against Education | book review seeing like a state | The toxic schoolin",
+      "title": "esotericwarfare"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://wiki.chadnet.org/the-gig-economy",
+      "original_url": "https://wiki.chadnet.org/the-gig-economy",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "op-eds. I find this explanation unsatisfying for two reasons; first, the volume of seemingly meaningless contracts is far too high to handwave behind couriers and trolls, and seco",
+      "title": "The Gig Economy — Chadnet"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.copetti.org/writings/consoles/nintendo-64/",
+      "original_url": "https://www.copetti.org/writings/consoles/nintendo-64/",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "execution (a detailed explanation can be found in a previous article ). 24 KB of L1 cache : Partitioned into 16 KB for instructions and 8 KB for data. The package also includes an",
+      "title": "Nintendo 64 Architecture | A Practical Analysis"
+    }
+  ],
+  "timestamp": "2026-09-05T17:35:54.195245Z"
+}

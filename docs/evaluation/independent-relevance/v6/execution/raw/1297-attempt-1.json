@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 1297,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 316.757,
+  "pair_id": "candidate-p-0563",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains coastal mapping within public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "of Hyppo; we have much evidence of diglossia in the Levant, of the use of a language at home and for oral communication that is different from the language of writing, and doing s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "fooledbyrandomness.com",
+          "/notebook.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Opacity",
+        "url": "https://fooledbyrandomness.com/notebook.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "740a7b727ec7c8fc5b2e362bf0f8af690b2002dc9a21fca96df92560ee52e9f1",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains coastal mapping within public health",
+  "query_id": "candidate-t-0563",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://fooledbyrandomness.com/notebook.htm",
+      "original_url": "https://fooledbyrandomness.com/notebook.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "of Hyppo; we have much evidence of diglossia in the Levant, of the use of a language at home and for oral communication that is different from the language of writing, and doing s",
+      "title": "Opacity"
+    }
+  ],
+  "timestamp": "2026-09-05T17:27:27.743990Z"
+}

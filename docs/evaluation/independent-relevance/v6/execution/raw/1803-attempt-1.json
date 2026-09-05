@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 1803,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 605.783,
+  "pair_id": "candidate-p-2067",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains soil carbon accounting within archaeology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "ba3f84055e1406cc0684b4179cb9fecd09fa9a38b016aa4b16805b2c5a24eb56",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains soil carbon accounting within archaeology",
+  "query_id": "candidate-t-2067",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:30:05.428368Z"
+}

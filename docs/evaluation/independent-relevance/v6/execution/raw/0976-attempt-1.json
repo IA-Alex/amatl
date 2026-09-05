@@ -1,0 +1,171 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 976,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 333.379,
+  "pair_id": "candidate-p-0515",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about bridge vibration within public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "in Barcelona in 2008. Background    The Belgian diplomat Myrianne Coen (pronounce Koon) used to work in the Belgian embassy in Bulgaria. In 1995 she noticed that the Bel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gangstalkingworld.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Gang stalking - Kiwipedia, the free encyclopedia",
+        "url": "https://gangstalkingworld.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "from various backgrounds and disciplines such as artistic research, experimental publishing, visual art, business and performance. These practitioners will share their work in whi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conceptlab.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Garnet Hertz - conceptlab.com",
+        "url": "http://www.conceptlab.com/"
+      },
+      {
+        "category": "general",
+        "content": "not have any German background, he enjoys the inginuety and drive of the German people. Subway Safety-Subway Gate Subway Safety Barriers: Every year hundreds of people are killed",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/frankdidik_oped_bicycle_etiquette.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Thoughts by Frank X. Didik Bicycle Etiquette. Op-Ed Views. www",
+        "url": "http://www.didik.com/frankdidik_oped_bicycle_etiquette.htm"
+      },
+      {
+        "category": "general",
+        "content": "by the Huygens sum of background plane waves from every direction. Each has radial vibration—the candidate physical basis of charge—and axis-free spherical phase circu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/Philosophy-Politics-Globalisation.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Famous Philosophers on Politics, Political Science, Globalisation, Oligarchy,Democracy",
+        "url": "https://www.spaceandmotion.com/Philosophy-Politics-Globalisation.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2c020066b4a6fd795e55ae24759534c3d869391ab2f97b24a852ada0ebb2f734",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about bridge vibration within public health",
+  "query_id": "candidate-c-0515",
+  "raw_result_count": 4,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://gangstalkingworld.neocities.org/",
+      "original_url": "https://gangstalkingworld.neocities.org/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "in Barcelona in 2008. Background    The Belgian diplomat Myrianne Coen (pronounce Koon) used to work in the Belgian embassy in Bulgaria. In 1995 she noticed that the Bel",
+      "title": "Gang stalking - Kiwipedia, the free encyclopedia"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.conceptlab.com/",
+      "original_url": "http://www.conceptlab.com/",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "from various backgrounds and disciplines such as artistic research, experimental publishing, visual art, business and performance. These practitioners will share their work in whi",
+      "title": "Garnet Hertz - conceptlab.com"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.didik.com/frankdidik_oped_bicycle_etiquette.htm",
+      "original_url": "http://www.didik.com/frankdidik_oped_bicycle_etiquette.htm",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "not have any German background, he enjoys the inginuety and drive of the German people. Subway Safety-Subway Gate Subway Safety Barriers: Every year hundreds of people are killed",
+      "title": "Thoughts by Frank X. Didik Bicycle Etiquette. Op-Ed Views. www"
+    }
+  ],
+  "timestamp": "2026-09-05T17:25:38.420435Z"
+}

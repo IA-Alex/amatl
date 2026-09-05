@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2543,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 318.156,
+  "pair_id": "candidate-p-1599",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what tradeoffs shape low power computing within education",
+    "results": [
+      {
+        "category": "general",
+        "content": "over tcsh. Some of the tradeoffs: tcsh wins Totally reliable history: commands never disappear. History tab completion: typing !a &lt;TAB&gt; expands to the last command that star",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "shallowsky.com",
+          "/blog/tags/shell/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Shallow Thoughts : tags : shell",
+        "url": "https://shallowsky.com/blog/tags/shell/"
+      },
+      {
+        "category": "general",
+        "content": "= stacked models with tradeoffs; higher up = fuzzier; social sciences often overgeneralize from lower levels; models work even if false The Leninist Narrative of Imperialism tl;dr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Luke Smith Fanclub &amp; Archive",
+        "url": "https://lukesmith.neocities.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "88aa35b80d112309a5a1da484644c5a513cba7ed155fd0187b3b536ef6641c5d",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what tradeoffs shape low power computing within education",
+  "query_id": "candidate-t-1599",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "https://shallowsky.com/blog/tags/shell/",
+      "original_url": "https://shallowsky.com/blog/tags/shell/",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "over tcsh. Some of the tradeoffs: tcsh wins Totally reliable history: commands never disappear. History tab completion: typing !a &lt;TAB&gt; expands to the last command that star",
+      "title": "Shallow Thoughts : tags : shell"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://lukesmith.neocities.org/",
+      "original_url": "https://lukesmith.neocities.org/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "= stacked models with tradeoffs; higher up = fuzzier; social sciences often overgeneralize from lower levels; models work even if false The Leninist Narrative of Imperialism tl;dr",
+      "title": "Luke Smith Fanclub &amp; Archive"
+    }
+  ],
+  "timestamp": "2026-09-05T17:33:58.746684Z"
+}

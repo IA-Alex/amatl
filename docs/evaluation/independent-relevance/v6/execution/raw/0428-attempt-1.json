@@ -1,0 +1,252 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 428,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 364.778,
+  "pair_id": "candidate-p-0904",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "essential context for ecosystem services within science education",
+    "results": [
+      {
+        "category": "general",
+        "content": "Models Meet Four Essential Freedoms Requirements This text discusses the ongoing search for free Large Language Models (LLMs) that meet the four essential freedoms required by the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "individual biases are essential, ensuring that the test remains as objective as possible and can be applicable across diverse populations. Moreover, combining &#34;autistic&#34; cognitive",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.empathogens.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Empathogens as conceived by ChatGPT",
+        "url": "https://www.empathogens.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "benefits, it is essential to recognize the possible risks and unintended consequences associated with genetic engineering, as well as the ethical concerns surrounding the manipula",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gene-drives.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reprogramming the biosphere with gene drives as conceived by ChatGPT",
+        "url": "https://www.gene-drives.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "non-human animals is essential for the success of the Antispeciesist Revolution. By fostering a culture of compassion, we can help shift societal attitudes and values towards a mo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.antispeciesism.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Speciesism and Antispeciesism as conceived as conceived by ChatGPT",
+        "url": "https://www.antispeciesism.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "before, what are the essential skills that workers will require now and into the future? By investing in reskilling, governments and businesses can create more inclusive opportuni",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/capitalism.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Capitalism will die - but will it take us with it?",
+        "url": "http://digdeeper.love/articles/capitalism.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "as I contend, essential to the very nature of a well-functioning human personality? A strong case for this position is to be found in the writings of George Herbert Mead and John",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gadfly.igc.org",
+          "/papers/wcaf.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Why Care About the Future?",
+        "url": "https://gadfly.igc.org/papers/wcaf.htm"
+      },
+      {
+        "category": "general",
+        "content": "Terence Tao explains 6 essential mathematical concepts [video] | Hacker News Movie Scene Map — The Filming Locations Map for Film &amp; TV [138] Artificial Deadlines (Part 1): Evidenc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "readspike.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Readspike - Simple news aggregator",
+        "url": "https://readspike.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4aca5405b019458e92fcb3513986c1a3113b4c55702488bd52e3be0fdbdf7cc6",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "essential context for ecosystem services within science education",
+  "query_id": "candidate-c-0904",
+  "raw_result_count": 7,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://gnu.support/",
+      "original_url": "https://gnu.support/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Models Meet Four Essential Freedoms Requirements This text discusses the ongoing search for free Large Language Models (LLMs) that meet the four essential freedoms required by the",
+      "title": "GNU.Support website about GNU Operating Systems"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.empathogens.com/chatgpt/",
+      "original_url": "https://www.empathogens.com/chatgpt/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "individual biases are essential, ensuring that the test remains as objective as possible and can be applicable across diverse populations. Moreover, combining &#34;autistic&#34; cognitive",
+      "title": "Empathogens as conceived by ChatGPT"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.gene-drives.com/chatgpt/",
+      "original_url": "https://www.gene-drives.com/chatgpt/",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "benefits, it is essential to recognize the possible risks and unintended consequences associated with genetic engineering, as well as the ethical concerns surrounding the manipula",
+      "title": "Reprogramming the biosphere with gene drives as conceived by ChatGPT"
+    }
+  ],
+  "timestamp": "2026-09-05T17:22:42.423627Z"
+}

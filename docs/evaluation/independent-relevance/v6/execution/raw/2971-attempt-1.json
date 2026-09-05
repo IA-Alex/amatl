@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2971,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 313.439,
+  "pair_id": "candidate-p-0865",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "which mechanisms govern ecosystem services within agricultural engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "changes that redirect agricultural subsidies from factory farms to sustainable, cruelty-free farming practices. Community Engagement: Local Events: Organize or support events that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.empathogens.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Empathogens as conceived by ChatGPT",
+        "url": "https://www.empathogens.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "to destroy a country&#39;s agricultural production; modify the host range, transmissibility and virulence of pathogens; make vaccines ineffective and confer resistance to antibiotics,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gene-drives.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reprogramming the biosphere with gene drives as conceived by ChatGPT",
+        "url": "https://www.gene-drives.com/chatgpt/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7a18f41bff4ea06157ea3bd723515b641be7e9fd720b18586c0f3c24d61ce68c",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "which mechanisms govern ecosystem services within agricultural engineering",
+  "query_id": "candidate-t-0865",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.empathogens.com/chatgpt/",
+      "original_url": "https://www.empathogens.com/chatgpt/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "changes that redirect agricultural subsidies from factory farms to sustainable, cruelty-free farming practices. Community Engagement: Local Events: Organize or support events that",
+      "title": "Empathogens as conceived by ChatGPT"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.gene-drives.com/chatgpt/",
+      "original_url": "https://www.gene-drives.com/chatgpt/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "to destroy a country&#39;s agricultural production; modify the host range, transmissibility and virulence of pathogens; make vaccines ineffective and confer resistance to antibiotics,",
+      "title": "Reprogramming the biosphere with gene drives as conceived by ChatGPT"
+    }
+  ],
+  "timestamp": "2026-09-05T17:36:08.602674Z"
+}

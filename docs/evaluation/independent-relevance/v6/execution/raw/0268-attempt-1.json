@@ -1,0 +1,144 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 268,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 289.094,
+  "pair_id": "candidate-p-0527",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of bridge vibration within water management",
+    "results": [
+      {
+        "category": "general",
+        "content": "is is the explanation of the name which is given by Dampier. CHAPTER III. The tropics—Passengers on board—Account of the Darien Canal—Planters&#39; complaints—West Indian history—The S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/cache/epub/32728/pg32728-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of The English in the West Indies, by James Anthony Froude.",
+        "url": "https://www.gutenberg.org/cache/epub/32728/pg32728-images.html"
+      },
+      {
+        "category": "general",
+        "content": "without any obvious explanation other than the gesture that causes frequencies vibrating together without needing words, logic, or understanding. At least, that&#39;s how I feel t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wiredplay.space",
+          "/read",
+          "",
+          "server=layer_1",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WiredPlay Reader",
+        "url": "http://wiredplay.space/read?server=layer_1"
+      },
+      {
+        "category": "general",
+        "content": "by others. There is no explanation of how the original diagnosis was determined or what may have caused the failure in the first place. Nor is there likely to be any list of other",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.repairfaq.org",
+          "/sam/monfaq.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notes on the Troubleshooting and Repair of Computer and Video Monitors",
+        "url": "http://www.repairfaq.org/sam/monfaq.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "939351edaaaa93dd427162c98b0ebb1888ac3a0648ade4aebfb217bb085ddee3",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of bridge vibration within water management",
+  "query_id": "candidate-c-0527",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "https://www.gutenberg.org/cache/epub/32728/pg32728-images.html",
+      "original_url": "https://www.gutenberg.org/cache/epub/32728/pg32728-images.html",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "is is the explanation of the name which is given by Dampier. CHAPTER III. The tropics—Passengers on board—Account of the Darien Canal—Planters&#39; complaints—West Indian history—The S",
+      "title": "The Project Gutenberg eBook of The English in the West Indies, by James Anthony Froude."
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://wiredplay.space/read?server=layer_1",
+      "original_url": "http://wiredplay.space/read?server=layer_1",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "without any obvious explanation other than the gesture that causes frequencies vibrating together without needing words, logic, or understanding. At least, that&#39;s how I feel t",
+      "title": "WiredPlay Reader"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "http://www.repairfaq.org/sam/monfaq.htm",
+      "original_url": "http://www.repairfaq.org/sam/monfaq.htm",
+      "rank": 3,
+      "rejection_reason": null,
+      "snippet": "by others. There is no explanation of how the original diagnosis was determined or what may have caused the failure in the first place. Nor is there likely to be any list of other",
+      "title": "Notes on the Troubleshooting and Repair of Computer and Video Monitors"
+    }
+  ],
+  "timestamp": "2026-09-05T17:21:54.127009Z"
+}

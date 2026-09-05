@@ -1,0 +1,144 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 3901,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 326.676,
+  "pair_id": "candidate-p-0052",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "under what conditions does adaptive optics within astronomy change",
+    "results": [
+      {
+        "category": "general",
+        "content": "heading &#34;Atmospheric Conditions&#34; in the first edition (1910, p.17): When the stars twinkle much it is an indication that the air is unsteady and not altogether satisfactory for ob",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.handprint.com",
+          "/ASTRO/seeing1.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "astronomical seeing, part 1: the nature of turbulence",
+        "url": "http://www.handprint.com/ASTRO/seeing1.html"
+      },
+      {
+        "category": "general",
+        "content": "made under familiar conditions. The observational aims of the astronomer and his experience of what was relatively good or bad seeing at his habitual observing site significantly",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.handprint.com",
+          "/ASTRO/seeing2.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "astronomical seeing, part 2: seeing measurement methods",
+        "url": "http://www.handprint.com/ASTRO/seeing2.html"
+      },
+      {
+        "category": "general",
+        "content": "slaves.  These adverse conditions impoverished Europe and militarized it.  Continual Islamic piracy caused the rise of local warlords to protect the local populations, which weake",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "3lotus.com",
+          "/en/Islam/Islamic-civilization.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Islamic civilization?",
+        "url": "https://3lotus.com/en/Islam/Islamic-civilization.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "85dd8c1c8da37c688ba844413f6b9abf05177a9e4938d7ee6ce4324bf1c9d671",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "under what conditions does adaptive optics within astronomy change",
+  "query_id": "candidate-t-0052",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.handprint.com/ASTRO/seeing1.html",
+      "original_url": "http://www.handprint.com/ASTRO/seeing1.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "heading &#34;Atmospheric Conditions&#34; in the first edition (1910, p.17): When the stars twinkle much it is an indication that the air is unsteady and not altogether satisfactory for ob",
+      "title": "astronomical seeing, part 1: the nature of turbulence"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "http://www.handprint.com/ASTRO/seeing2.html",
+      "original_url": "http://www.handprint.com/ASTRO/seeing2.html",
+      "rank": 2,
+      "rejection_reason": null,
+      "snippet": "made under familiar conditions. The observational aims of the astronomer and his experience of what was relatively good or bad seeing at his habitual observing site significantly",
+      "title": "astronomical seeing, part 2: seeing measurement methods"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "https://3lotus.com/en/Islam/Islamic-civilization.htm",
+      "original_url": "https://3lotus.com/en/Islam/Islamic-civilization.htm",
+      "rank": 3,
+      "rejection_reason": null,
+      "snippet": "slaves.  These adverse conditions impoverished Europe and militarized it.  Continual Islamic piracy caused the rise of local warlords to protect the local populations, which weake",
+      "title": "Islamic civilization?"
+    }
+  ],
+  "timestamp": "2026-09-05T17:41:05.136288Z"
+}

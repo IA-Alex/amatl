@@ -1,0 +1,225 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 1929,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 337.211,
+  "pair_id": "candidate-p-0507",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains bridge vibration within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "of fit, but the information criteria moderately favour the 2D model over PI (∆AIC ≃ 93) and provide only a modest preference over Burkert (∆AIC ≃ 13); the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "preserve and transform information about real causes. Sensation changes an organism; memory retains traces; imagination recombines possible futures; valuation ranks them; action r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/Philosophy-Hinduism-Hindu.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hinduism Hindu Religion: Discussion Metaphysics Philosophy of HinduismBeliefs, Hindu Gods",
+        "url": "https://www.spaceandmotion.com/Philosophy-Hinduism-Hindu.htm"
+      },
+      {
+        "category": "general",
+        "content": "network that collects information. This can be stimulated with quota and bonuses for writing reports. Where it goes from here depends on the circumstances: Normally it goes on for",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gangstalkingworld.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Gang stalking - Kiwipedia, the free encyclopedia",
+        "url": "https://gangstalkingworld.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "memory, faulty information, and other factors, but when used properly, foresight (intuition/precognition) and hindsight (knowledge/rationality) are very effective tools in the adv",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.intuition2020.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Intuition2020.com",
+        "url": "http://www.intuition2020.com/"
+      },
+      {
+        "category": "general",
+        "content": "1977, p.4 This field of Information, the subject of this study, is what Ajit Mookerjee terms &#34;VISUAL METAPHYSICS&#34;. In the most profound sense, the phenomena that we coll",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.luxlapis.co.za",
+          "/yan/main.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "main text",
+        "url": "http://www.luxlapis.co.za/yan/main.htm"
+      },
+      {
+        "category": "general",
+        "content": "preserve and transform information about real causes. Sensation changes an organism; memory retains traces; imagination recombines possible futures; valuation ranks them; action r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/Philosophy-Politics-Globalisation.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Famous Philosophers on Politics, Political Science, Globalisation, Oligarchy,Democracy",
+        "url": "https://www.spaceandmotion.com/Philosophy-Politics-Globalisation.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "cf5509eb96330882d197016aa37c39fe80f3f3cc85e9148f51fbc83c2ebc6d23",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains bridge vibration within information science",
+  "query_id": "candidate-t-0507",
+  "raw_result_count": 6,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://vixra.org/astro/",
+      "original_url": "https://vixra.org/astro/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "of fit, but the information criteria moderately favour the 2D model over PI (∆AIC ≃ 93) and provide only a modest preference over Burkert (∆AIC ≃ 13); the",
+      "title": "viXra.org e-Print archive, Astrophysics"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.spaceandmotion.com/Philosophy-Hinduism-Hindu.htm",
+      "original_url": "https://www.spaceandmotion.com/Philosophy-Hinduism-Hindu.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "preserve and transform information about real causes. Sensation changes an organism; memory retains traces; imagination recombines possible futures; valuation ranks them; action r",
+      "title": "Hinduism Hindu Religion: Discussion Metaphysics Philosophy of HinduismBeliefs, Hindu Gods"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://gangstalkingworld.neocities.org/",
+      "original_url": "https://gangstalkingworld.neocities.org/",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "network that collects information. This can be stimulated with quota and bonuses for writing reports. Where it goes from here depends on the circumstances: Normally it goes on for",
+      "title": "Gang stalking - Kiwipedia, the free encyclopedia"
+    }
+  ],
+  "timestamp": "2026-09-05T17:30:44.622649Z"
+}

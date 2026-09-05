@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 986,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 305.503,
+  "pair_id": "candidate-p-2235",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about urban heat mapping within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "and spreadsheets from Information is Beautiful. 2023.10.11 • US income distributions, education reform, Kia/Hyundai thefts, Michigan air permit violations, and dog genomes. 2023.0",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.data-is-plural.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Data Is Plural — Full Archive",
+        "url": "https://www.data-is-plural.com/archive/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b1ec2551c74f7dac41dc374b048d35a6403ce9add53c2b9e586ec2012fdbe987",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about urban heat mapping within information science",
+  "query_id": "candidate-c-2235",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.data-is-plural.com/archive/",
+      "original_url": "https://www.data-is-plural.com/archive/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "and spreadsheets from Information is Beautiful. 2023.10.11 • US income distributions, education reform, Kia/Hyundai thefts, Michigan air permit violations, and dog genomes. 2023.0",
+      "title": "Data Is Plural — Full Archive"
+    }
+  ],
+  "timestamp": "2026-09-05T17:25:41.413734Z"
+}

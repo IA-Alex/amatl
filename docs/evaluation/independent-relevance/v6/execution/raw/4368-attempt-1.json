@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 4368,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 275.626,
+  "pair_id": "candidate-p-2124",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a plain language guide to space weather forecasting within cybersecurity",
+    "results": [
+      {
+        "category": "general",
+        "content": "agentic workflows and cybersecurity. Building on the momentum of 3.7 Flash from three weeks ago and marking our third Flash release in only six weeks, today we’re introduci&amp;hellip",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "readspike.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Readspike - Simple news aggregator",
+        "url": "https://readspike.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f499d1af19a72f7bdff8dc31d630186e2ca342c8747ba968fbb7600d55dbf1d8",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a plain language guide to space weather forecasting within cybersecurity",
+  "query_id": "candidate-c-2124",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://readspike.com/",
+      "original_url": "https://readspike.com/",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "agentic workflows and cybersecurity. Building on the momentum of 3.7 Flash from three weeks ago and marking our third Flash release in only six weeks, today we’re introduci&amp;hellip",
+      "title": "Readspike - Simple news aggregator"
+    }
+  ],
+  "timestamp": "2026-09-05T17:43:37.318484Z"
+}

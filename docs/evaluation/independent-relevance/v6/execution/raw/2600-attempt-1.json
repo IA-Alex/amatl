@@ -1,0 +1,252 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2600,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 320.122,
+  "pair_id": "candidate-p-0927",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of electric aviation within education",
+    "results": [
+      {
+        "category": "general",
+        "content": "A common Hawaiian explanation of the name of Hawaiʻi is that was named for Hawaiʻiloa, a legendary figure from Hawaiian folklore who is alleged to have discovered the islands when",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hellenicaworld.com",
+          "/USA/Geo/en/Hawaii.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hawaii",
+        "url": "https://www.hellenicaworld.com/USA/Geo/en/Hawaii.html"
+      },
+      {
+        "category": "general",
+        "content": "provide other, simpler explanations for observed phenomena.&#34; • &#34; Opticks or, a Treatise of the Reflections, Refractions, Inflections, and Colours of Light &#34; by Sir Isaac Newton &amp;n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.david-sadler.org",
+          "/pages/bigQuestions/discIsOurs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "(SFC) David Sadler For Congress - If the Disc Is Ours",
+        "url": "https://www.david-sadler.org/pages/bigQuestions/discIsOurs.htm"
+      },
+      {
+        "category": "general",
+        "content": "Committee, demanded an explanation from Secretary of War Henry Stimson. The latter, as well as the Chief of Staff, seemed puzzled. Lieutenant General McNarney, Marshall&#39;s deputy,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jrbooksonline.com",
+          "/fdr-scandal-page/yaltabet.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Yalta Betrayal - Best Resource on FDR",
+        "url": "https://www.jrbooksonline.com/fdr-scandal-page/yaltabet.html"
+      },
+      {
+        "category": "general",
+        "content": "to understand and give explanations for the things we encounter. We are social animals, seeking company, working well in small groups. Sometimes this is for emotional support, som",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pages.ucsd.edu",
+          "/~dnorman/DNMss/Being_Analog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Being Analog",
+        "url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html"
+      },
+      {
+        "category": "general",
+        "content": "need a little longer explanation &#43;1 @Yasmine91646 - 2025-05-21 10:59:37 Well said! &#43;2 @AKIMOTONIMAS - 2025-05-21 10:59:37 Oh, you mean like the people in this thread? &#43;2 @Yasmine9",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/nothingburger",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AI is a Nothingburger. You&#39;re wrong.",
+        "url": "https://lukesmith.neocities.org/vids/nothingburger"
+      },
+      {
+        "category": "general",
+        "content": "Movement of Discussion, Explanation, and Propaganda Chapter XV. Early Constructive Work of the Open Conspiracy Chapter XVI. Existing and Developing Movements Which Are Contributor",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "gutenberg.net.au",
+          "/ebooks13/1303661h.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Open Conspiracy",
+        "url": "http://gutenberg.net.au/ebooks13/1303661h.html"
+      },
+      {
+        "category": "general",
+        "content": "&#34;There is only one explanation for this lapse from the Americanism of former days: we are being brainwashed into the belief that we can safely do business with communism–bra",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/20224/20224-h/20224-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Invisible Government, by Dan Smoot",
+        "url": "https://www.gutenberg.org/files/20224/20224-h/20224-h.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7bca6efde94e3b5e4648b6e32360c7e6c11bc296aa06bac20ba78d676f88c468",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of electric aviation within education",
+  "query_id": "candidate-c-0927",
+  "raw_result_count": 7,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.hellenicaworld.com/USA/Geo/en/Hawaii.html",
+      "original_url": "https://www.hellenicaworld.com/USA/Geo/en/Hawaii.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "A common Hawaiian explanation of the name of Hawaiʻi is that was named for Hawaiʻiloa, a legendary figure from Hawaiian folklore who is alleged to have discovered the islands when",
+      "title": "Hawaii"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.david-sadler.org/pages/bigQuestions/discIsOurs.htm",
+      "original_url": "https://www.david-sadler.org/pages/bigQuestions/discIsOurs.htm",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "provide other, simpler explanations for observed phenomena.&#34; • &#34; Opticks or, a Treatise of the Reflections, Refractions, Inflections, and Colours of Light &#34; by Sir Isaac Newton &amp;n",
+      "title": "(SFC) David Sadler For Congress - If the Disc Is Ours"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.jrbooksonline.com/fdr-scandal-page/yaltabet.html",
+      "original_url": "https://www.jrbooksonline.com/fdr-scandal-page/yaltabet.html",
+      "rank": 3,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "Committee, demanded an explanation from Secretary of War Henry Stimson. The latter, as well as the Chief of Staff, seemed puzzled. Lieutenant General McNarney, Marshall&#39;s deputy,",
+      "title": "The Yalta Betrayal - Best Resource on FDR"
+    }
+  ],
+  "timestamp": "2026-09-05T17:34:16.901675Z"
+}

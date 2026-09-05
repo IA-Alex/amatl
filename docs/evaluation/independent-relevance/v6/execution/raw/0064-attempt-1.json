@@ -1,0 +1,360 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 64,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 374.069,
+  "pair_id": "candidate-p-1407",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of image compression within education",
+    "results": [
+      {
+        "category": "general",
+        "content": "based upon a mechanical explanation of all phenomena,” writes Kropotkin.[35] “Its method of investigation is that of the exact natural sciences … the method of induction and deduc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "theanarchistlibrary.org",
+          "/library/paul-feyerabend-against-method.muse",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse",
+        "url": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse"
+      },
+      {
+        "category": "general",
+        "content": "at something | a brief explanation of the cathedral | retiring the university by Curtis Yarvin. | The Case Against Education | book review seeing like a state | The toxic schoolin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "Or else where is the explanation? WHy should I do good to my fellow men?.. It is sympathy, the feeling of sameness everywhere. I do good to others because they are myself. (Collin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/Philosophy-Hinduism-Hindu.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hinduism Hindu Religion: Discussion Metaphysics Philosophy of HinduismBeliefs, Hindu Gods",
+        "url": "https://www.spaceandmotion.com/Philosophy-Hinduism-Hindu.htm"
+      },
+      {
+        "category": "general",
+        "content": "over image for detailed explanation. Subjects Truth Reality Home Simple Sensible Science Metaphysics Substance Space Maths Physics Logic Einstein Theory Relativity Quantum Wave Ph",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WSM: One Substance (Space) &amp; One Law explains causal connection, Metaphysics: deduces Quantum Physics, Einstein Relativity, Cosmology&lt;/tit",
+        "url": "https://www.spaceandmotion.com/"
+      },
+      {
+        "category": "general",
+        "content": "works, with an overall explanation about its many parts, with a more detailed approach in the backend scenario. Bruno Cardoso Lopes is a PhD student at University of Campinas, Bra",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "to understand and give explanations for the things we encounter. We are social animals, seeking company, working well in small groups. Sometimes this is for emotional support, som",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pages.ucsd.edu",
+          "/~dnorman/DNMss/Being_Analog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Being Analog",
+        "url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html"
+      },
+      {
+        "category": "general",
+        "content": "for an idea. The same explanation may underlie one of the most noticeable features of Marcus’s prose—namely, his tendency to string together pairs of near-synonymous words a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vreeman.com",
+          "/meditations/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "📘 Meditations by Marcus Aurelius. Translation by Gregory Hays.",
+        "url": "https://vreeman.com/meditations/"
+      },
+      {
+        "category": "general",
+        "content": "1882). On a rational explanation of God, religion as our true connection to the Universe, morality and the hypocrisy of the Church. &#39;What am I? A part of the infinite. It is indee",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/sitemap/theology.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sitemap: Theology: Atheisism, Agnosticism, Mysticism, Monism, Pantheism, Hinduism, Buddhism, Confucianism, Taoism, Greek Gods, Goddess, Myths,",
+        "url": "https://www.spaceandmotion.com/sitemap/theology.htm"
+      },
+      {
+        "category": "general",
+        "content": "Outline and Brief Explanation of Probable Truth.         2.2 Deconstruction of the Concept: an Open University Programme Dissected 2.1 Historical Outline and B",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "big-lies.org",
+          "/modern-physics-a-fraud/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "• Modern Physics a Fraud? - Superfluid helium? Speed of light a limit?, incredibility of quantum theory, Heisenberg&#39;s misunderstanding o",
+        "url": "http://big-lies.org/modern-physics-a-fraud/"
+      },
+      {
+        "category": "general",
+        "content": "even now, I have no explanation, except that it obviously had something to do with the impedance of the phototransistor source rising as the light input fell. The audio tape of th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      },
+      {
+        "category": "general",
+        "content": ", occasionally with an explanation that the postings had been &#34;canceled because of copyright infringement.&#34; To this day, it is not known who was behind the deployment of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "single-honeypot.sourceforge.net",
+          "/libros/maxsecurity/ch08/ch08.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Maximum Security -- Ch 8 -- Internet Warfare",
+        "url": "https://single-honeypot.sourceforge.net/libros/maxsecurity/ch08/ch08.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "677c7afc7bbf938f74b67c9a54e949d2339e0f6713ab41787b01c1cad3b67f76",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of image compression within education",
+  "query_id": "candidate-c-1407",
+  "raw_result_count": 11,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse",
+      "original_url": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "based upon a mechanical explanation of all phenomena,” writes Kropotkin.[35] “Its method of investigation is that of the exact natural sciences … the method of induction and deduc",
+      "title": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://imlauer.github.io/",
+      "original_url": "https://imlauer.github.io/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "at something | a brief explanation of the cathedral | retiring the university by Curtis Yarvin. | The Case Against Education | book review seeing like a state | The toxic schoolin",
+      "title": "esotericwarfare"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.spaceandmotion.com/Philosophy-Hinduism-Hindu.htm",
+      "original_url": "https://www.spaceandmotion.com/Philosophy-Hinduism-Hindu.htm",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Or else where is the explanation? WHy should I do good to my fellow men?.. It is sympathy, the feeling of sameness everywhere. I do good to others because they are myself. (Collin",
+      "title": "Hinduism Hindu Religion: Discussion Metaphysics Philosophy of HinduismBeliefs, Hindu Gods"
+    }
+  ],
+  "timestamp": "2026-09-05T17:20:50.642770Z"
+}

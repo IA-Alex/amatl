@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 3485,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 314.636,
+  "pair_id": "candidate-p-2082",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how can researchers measure soil carbon accounting within energy policy",
+    "results": [
+      {
+        "category": "general",
+        "content": "2005, p. 2166) Many researchers believe that about a thousand years ago, during the Medieval Warm Period, much of the earth was substantially warmer than today. The standard view,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/warm.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The global warming scare",
+        "url": "https://davidpratt.info/warm.htm"
+      },
+      {
+        "category": "general",
+        "content": "by nanomedical nano-researchers - including nano-robot-red-blood-cells (making it possible to survive for hours without breathing), nano-robot-white blood cells (also called nano-",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lachlan.bluehaze.com.au",
+          "/nanoshite/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NanoShite: A nano-apostate webpage dedicated to the slimeycanceroushype flim-flam-barnum-and-bailey-charlatan delusional bollocks nanosleaze /",
+        "url": "http://lachlan.bluehaze.com.au/nanoshite/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f2efe70ea65236600c28fd2220fb00238c5f49cc8aa8f1aad53f8bab742254be",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how can researchers measure soil carbon accounting within energy policy",
+  "query_id": "candidate-t-2082",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://davidpratt.info/warm.htm",
+      "original_url": "https://davidpratt.info/warm.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "2005, p. 2166) Many researchers believe that about a thousand years ago, during the Medieval Warm Period, much of the earth was substantially warmer than today. The standard view,",
+      "title": "The global warming scare"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://lachlan.bluehaze.com.au/nanoshite/",
+      "original_url": "http://lachlan.bluehaze.com.au/nanoshite/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "by nanomedical nano-researchers - including nano-robot-red-blood-cells (making it possible to survive for hours without breathing), nano-robot-white blood cells (also called nano-",
+      "title": "NanoShite: A nano-apostate webpage dedicated to the slimeycanceroushype flim-flam-barnum-and-bailey-charlatan delusional bollocks nanosleaze /"
+    }
+  ],
+  "timestamp": "2026-09-05T17:38:53.452199Z"
+}

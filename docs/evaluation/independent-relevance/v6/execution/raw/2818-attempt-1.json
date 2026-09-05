@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2818,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 300.828,
+  "pair_id": "candidate-p-0763",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about data provenance within supply networks",
+    "results": [
+      {
+        "category": "general",
+        "content": "to conduct exhaustive background research. In ufology, that includes identifying the key persons, corporations and agencies, and critically assessing the truthfulness of that mate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "buriedtruth.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BuriedTruth.com",
+        "url": "http://buriedtruth.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "40b5522c79ff37d7ab7e66125749f49754299199b51b93df0a9d2591dde65c0c",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about data provenance within supply networks",
+  "query_id": "candidate-c-0763",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://buriedtruth.com/",
+      "original_url": "http://buriedtruth.com/",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "to conduct exhaustive background research. In ufology, that includes identifying the key persons, corporations and agencies, and critically assessing the truthfulness of that mate",
+      "title": "BuriedTruth.com"
+    }
+  ],
+  "timestamp": "2026-09-05T17:35:21.220611Z"
+}

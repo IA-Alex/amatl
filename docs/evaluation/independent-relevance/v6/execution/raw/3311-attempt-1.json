@@ -1,0 +1,34 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 3311,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 280.083,
+  "pair_id": "candidate-p-0545",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "which mechanisms govern coastal mapping within emergency medicine",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "22a82d91b9de9295b277ece8ddf5c1aee9064e9b75c5cd40aab975bd7bdf8ad4",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "which mechanisms govern coastal mapping within emergency medicine",
+  "query_id": "candidate-t-0545",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:37:57.790016Z"
+}

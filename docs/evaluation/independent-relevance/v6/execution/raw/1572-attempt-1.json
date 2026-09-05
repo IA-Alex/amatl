@@ -1,0 +1,144 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1572,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 343.258,
+  "pair_id": "candidate-p-0758",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "key concepts associated with data provenance within risk analysis",
+    "results": [
+      {
+        "category": "general",
+        "content": "Manual of Style, Associated Press Style, Modern Language Association, so here we are using Chigago Manual of Style for capitalization. ALL COMPUTER PROGRAMS EMBODY ASPECTS OF ARTI",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "and any material associated with them must be discarded (without exception) as being fraudulent. Some years ago it was Richard Doty and others of his ilk; more recently it&#39;s Rober",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "buriedtruth.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BuriedTruth.com",
+        "url": "http://buriedtruth.com/"
+      },
+      {
+        "category": "general",
+        "content": "of occultists associated with occult orders and free occultists. Deutsche Version:  Ekstatische Erzeugung von Kultur   [overdubbed version] — Die kommerzielle Pl&amp;u",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.parareligion.ch",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Ordo Templi Orientis Phenomenon — Peter-R. Koenig",
+        "url": "https://www.parareligion.ch/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "30f9400c46e13248d1f07616a42bc298fbca355fb923a3b0b6db42809f29d4a1",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "key concepts associated with data provenance within risk analysis",
+  "query_id": "candidate-c-0758",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://gnu.support/",
+      "original_url": "https://gnu.support/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Manual of Style, Associated Press Style, Modern Language Association, so here we are using Chigago Manual of Style for capitalization. ALL COMPUTER PROGRAMS EMBODY ASPECTS OF ARTI",
+      "title": "GNU.Support website about GNU Operating Systems"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://buriedtruth.com/",
+      "original_url": "http://buriedtruth.com/",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "and any material associated with them must be discarded (without exception) as being fraudulent. Some years ago it was Richard Doty and others of his ilk; more recently it&#39;s Rober",
+      "title": "BuriedTruth.com"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "https://www.parareligion.ch/",
+      "original_url": "https://www.parareligion.ch/",
+      "rank": 3,
+      "rejection_reason": null,
+      "snippet": "of occultists associated with occult orders and free occultists. Deutsche Version:  Ekstatische Erzeugung von Kultur   [overdubbed version] — Die kommerzielle Pl&amp;u",
+      "title": "The Ordo Templi Orientis Phenomenon — Peter-R. Koenig"
+    }
+  ],
+  "timestamp": "2026-09-05T17:28:51.390251Z"
+}

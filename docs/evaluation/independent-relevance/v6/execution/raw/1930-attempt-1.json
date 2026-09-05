@@ -1,0 +1,387 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1930,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 364.137,
+  "pair_id": "candidate-p-0507",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about bridge vibration within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "of fit, but the information criteria moderately favour the 2D model over PI (∆AIC ≃ 93) and provide only a modest preference over Burkert (∆AIC ≃ 13); the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "way of acquiring information. But it is a volatile vehicle of misinformation on so many aspects of religion: not all that is labelled “Christian” or “Catholic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.vatican.va",
+          "/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jesus Christ The Bearer Of The Water Of Life - A Christian reflection on the New Age",
+        "url": "https://www.vatican.va/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html"
+      },
+      {
+        "category": "general",
+        "content": "preserve and transform information about real causes. Sensation changes an organism; memory retains traces; imagination recombines possible futures; valuation ranks them; action r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/Philosophy-Hinduism-Hindu.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hinduism Hindu Religion: Discussion Metaphysics Philosophy of HinduismBeliefs, Hindu Gods",
+        "url": "https://www.spaceandmotion.com/Philosophy-Hinduism-Hindu.htm"
+      },
+      {
+        "category": "general",
+        "content": "from the integrated information bearing on the design of very high-voltage, high-power, high-frequency resonators (i.e., Tesla coils and magnifiers). The Guide is organized in the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.tfcbooks.com",
+          "/mall/more/371tcbg.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Tesla Coil Builder&#39;s Guide to the Colorado Springs Notes of Nikola Tesla | ISBN: 1-893817-00-8",
+        "url": "http://www.tfcbooks.com/mall/more/371tcbg.htm"
+      },
+      {
+        "category": "general",
+        "content": "Important Information! Mouse over image for detailed explanation. Subjects Truth Reality Home Simple Sensible Science Metaphysics Substance Space Maths Physics Logic Einstein Theo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WSM: One Substance (Space) &amp; One Law explains causal connection, Metaphysics: deduces Quantum Physics, Einstein Relativity, Cosmology&lt;/tit",
+        "url": "https://www.spaceandmotion.com/"
+      },
+      {
+        "category": "general",
+        "content": "network that collects information. This can be stimulated with quota and bonuses for writing reports. Where it goes from here depends on the circumstances: Normally it goes on for",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gangstalkingworld.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Gang stalking - Kiwipedia, the free encyclopedia",
+        "url": "https://gangstalkingworld.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "and would like more information starting a program on Electric Vehicle design and engineering or to compete in races, or to have a guest lecturer, please send an email to: inquiry",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.design1.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Recent designs, projects and thoughts by Frank X. Didik. Predictions for the future, where society is going. Can gravity by modulated? Wha",
+        "url": "http://www.design1.org/"
+      },
+      {
+        "category": "general",
+        "content": "Communication and Information for a few different events, including Garnet Hertz: Media Archaeology &#43; Feminism Mini-lecture Series: Bending the Future: The Alternate Present of Me",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conceptlab.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Garnet Hertz - conceptlab.com",
+        "url": "http://www.conceptlab.com/"
+      },
+      {
+        "category": "general",
+        "content": "preserve and transform information about real causes. Sensation changes an organism; memory retains traces; imagination recombines possible futures; valuation ranks them; action r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/sitemap/theology.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sitemap: Theology: Atheisism, Agnosticism, Mysticism, Monism, Pantheism, Hinduism, Buddhism, Confucianism, Taoism, Greek Gods, Goddess, Myths,",
+        "url": "https://www.spaceandmotion.com/sitemap/theology.htm"
+      },
+      {
+        "category": "general",
+        "content": "1977, p.4 This field of Information, the subject of this study, is what Ajit Mookerjee terms &#34;VISUAL METAPHYSICS&#34;. In the most profound sense, the phenomena that we coll",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.luxlapis.co.za",
+          "/yan/main.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "main text",
+        "url": "http://www.luxlapis.co.za/yan/main.htm"
+      },
+      {
+        "category": "general",
+        "content": "preserve and transform information about real causes. Sensation changes an organism; memory retains traces; imagination recombines possible futures; valuation ranks them; action r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/Theology-Pantheism-Spinoza.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theology, Pantheism Spinoza: Discussion Metaphysics of Pantheism, SpinozaQuotes All is One (Nature, God)",
+        "url": "https://www.spaceandmotion.com/Theology-Pantheism-Spinoza.htm"
+      },
+      {
+        "category": "general",
+        "content": "technology. More information can be found at www.DIDIK.com  The Didik quest for the worlds lightest bicycle . Nine pounds (4kg). Rear and front wheel turns. Epoxy coated foam",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/frankdidik_oped_bicycle_etiquette.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Thoughts by Frank X. Didik Bicycle Etiquette. Op-Ed Views. www",
+        "url": "http://www.didik.com/frankdidik_oped_bicycle_etiquette.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c434f8fcf541be46cdad92afe96fa3061739b20fcc07e7390db4bc3c5368bed7",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about bridge vibration within information science",
+  "query_id": "candidate-c-0507",
+  "raw_result_count": 12,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://vixra.org/astro/",
+      "original_url": "https://vixra.org/astro/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "of fit, but the information criteria moderately favour the 2D model over PI (∆AIC ≃ 93) and provide only a modest preference over Burkert (∆AIC ≃ 13); the",
+      "title": "viXra.org e-Print archive, Astrophysics"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.vatican.va/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html",
+      "original_url": "https://www.vatican.va/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "way of acquiring information. But it is a volatile vehicle of misinformation on so many aspects of religion: not all that is labelled “Christian” or “Catholic",
+      "title": "Jesus Christ The Bearer Of The Water Of Life - A Christian reflection on the New Age"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.spaceandmotion.com/Philosophy-Hinduism-Hindu.htm",
+      "original_url": "https://www.spaceandmotion.com/Philosophy-Hinduism-Hindu.htm",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "preserve and transform information about real causes. Sensation changes an organism; memory retains traces; imagination recombines possible futures; valuation ranks them; action r",
+      "title": "Hinduism Hindu Religion: Discussion Metaphysics Philosophy of HinduismBeliefs, Hindu Gods"
+    }
+  ],
+  "timestamp": "2026-09-05T17:30:44.962343Z"
+}

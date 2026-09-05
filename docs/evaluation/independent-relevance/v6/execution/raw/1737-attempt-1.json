@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 1737,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 292.632,
+  "pair_id": "candidate-p-0923",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains electric aviation within cultural heritage",
+    "results": [
+      {
+        "category": "general",
+        "content": "by archaeological evidence dates to around 300 CE, probably by Polynesian settlers from the Marquesas Islands, followed by a second wave of migration from Raiatea and Bora Bora in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hellenicaworld.com",
+          "/USA/Geo/en/Hawaii.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hawaii",
+        "url": "https://www.hellenicaworld.com/USA/Geo/en/Hawaii.html"
+      },
+      {
+        "category": "general",
+        "content": "in the face of limited evidence allows us to anticipate and predict events, the better to cope with an ambiguous, ever-changing world. Here&#39;s a simple test of your memory: How man",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pages.ucsd.edu",
+          "/~dnorman/DNMss/Being_Analog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Being Analog",
+        "url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "37711f81482975c066e09d061031075b8a0d2edb5d8e6ed17a88529365ced25d",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains electric aviation within cultural heritage",
+  "query_id": "candidate-t-0923",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.hellenicaworld.com/USA/Geo/en/Hawaii.html",
+      "original_url": "https://www.hellenicaworld.com/USA/Geo/en/Hawaii.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "by archaeological evidence dates to around 300 CE, probably by Polynesian settlers from the Marquesas Islands, followed by a second wave of migration from Raiatea and Bora Bora in",
+      "title": "Hawaii"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html",
+      "original_url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "in the face of limited evidence allows us to anticipate and predict events, the better to cope with an ambiguous, ever-changing world. Here&#39;s a simple test of your memory: How man",
+      "title": "Being Analog"
+    }
+  ],
+  "timestamp": "2026-09-05T17:29:42.120427Z"
+}

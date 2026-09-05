@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 4270,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 288.242,
+  "pair_id": "candidate-p-2111",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of soil carbon accounting within water management",
+    "results": [
+      {
+        "category": "general",
+        "content": "understanding of this explanation. My English may not be the best, and we may make errors in writing. You should make your questions and clarify any misunderstandings. Our clients",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.startyourowngoldmine.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Start Your Own Gold Mine in 45 days with less than US $100,000",
+        "url": "https://www.startyourowngoldmine.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8c1a19ac21c4963adb34593434bd4383657d9b3e0711ebf720dd778b030faa84",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of soil carbon accounting within water management",
+  "query_id": "candidate-c-2111",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.startyourowngoldmine.com/",
+      "original_url": "https://www.startyourowngoldmine.com/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "understanding of this explanation. My English may not be the best, and we may make errors in writing. You should make your questions and clarify any misunderstandings. Our clients",
+      "title": "Start Your Own Gold Mine in 45 days with less than US $100,000"
+    }
+  ],
+  "timestamp": "2026-09-05T17:43:06.112525Z"
+}

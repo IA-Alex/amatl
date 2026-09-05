@@ -1,0 +1,171 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 3356,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 341.079,
+  "pair_id": "candidate-p-0943",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of electric aviation within music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "offered a reasonable explanation for it. When asked, “What are you doing?” the answers were, “I am looking for my slippers,” “I heard a noise,” “I am restless,” and “I was looking",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wireheading.com",
+          "/brainstim/cyborgs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cyborgs, transhumans and neuroelectronics",
+        "url": "https://www.wireheading.com/brainstim/cyborgs.html"
+      },
+      {
+        "category": "general",
+        "content": "to understand and give explanations for the things we encounter. We are social animals, seeking company, working well in small groups. Sometimes this is for emotional support, som",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pages.ucsd.edu",
+          "/~dnorman/DNMss/Being_Analog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Being Analog",
+        "url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html"
+      },
+      {
+        "category": "general",
+        "content": "need a little longer explanation &#43;1 @Yasmine91646 - 2025-05-21 10:59:37 Well said! &#43;2 @AKIMOTONIMAS - 2025-05-21 10:59:37 Oh, you mean like the people in this thread? &#43;2 @Yasmine9",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/nothingburger",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AI is a Nothingburger. You&#39;re wrong.",
+        "url": "https://lukesmith.neocities.org/vids/nothingburger"
+      },
+      {
+        "category": "general",
+        "content": "That, anyway, was the explanation given when the project began during the last act of the Cold War. Now, however, locals are worried that the little-publicized experiment has take",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4fcd4b3ba46896b63d5c7a6db00027ad05b535191868c394acd13988b44890d0",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of electric aviation within music technology",
+  "query_id": "candidate-c-0943",
+  "raw_result_count": 4,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.wireheading.com/brainstim/cyborgs.html",
+      "original_url": "https://www.wireheading.com/brainstim/cyborgs.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "offered a reasonable explanation for it. When asked, “What are you doing?” the answers were, “I am looking for my slippers,” “I heard a noise,” “I am restless,” and “I was looking",
+      "title": "Cyborgs, transhumans and neuroelectronics"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html",
+      "original_url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "to understand and give explanations for the things we encounter. We are social animals, seeking company, working well in small groups. Sometimes this is for emotional support, som",
+      "title": "Being Analog"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://lukesmith.neocities.org/vids/nothingburger",
+      "original_url": "https://lukesmith.neocities.org/vids/nothingburger",
+      "rank": 3,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "need a little longer explanation &#43;1 @Yasmine91646 - 2025-05-21 10:59:37 Well said! &#43;2 @AKIMOTONIMAS - 2025-05-21 10:59:37 Oh, you mean like the people in this thread? &#43;2 @Yasmine9",
+      "title": "AI is a Nothingburger. You&#39;re wrong."
+    }
+  ],
+  "timestamp": "2026-09-05T17:38:12.055114Z"
+}

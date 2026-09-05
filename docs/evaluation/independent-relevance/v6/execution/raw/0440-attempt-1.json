@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 440,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 291.52,
+  "pair_id": "candidate-p-0213",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a plain language guide to arctic navigation within food systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "System (GPS) navigation system (the others are on Ascension (Saint Helena, Ascension, and Tistan da Cunha), Diego Garcia (British Indian Ocean Territory), and at Kwajalein (Marsha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hellenicaworld.com",
+          "/USA/USA.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "USA",
+        "url": "https://www.hellenicaworld.com/USA/USA.html"
+      },
+      {
+        "category": "general",
+        "content": "updates to Don&#39;s Maps Navigation Abel Tasman Track in New Zealand Aboriginal Art of the Kimberleys Aboriginal art on the Northern Tablelands of NSW Aborigines of Australia Abri Pa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.donsmaps.com",
+          "/venusfigurespurpose.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Palaeolithic Venus figures - their purpose",
+        "url": "https://www.donsmaps.com/venusfigurespurpose.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "49911118b557cd67c6ca436ad2eeaff46f60d44f6782d769e319d0d7769647c5",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a plain language guide to arctic navigation within food systems",
+  "query_id": "candidate-c-0213",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.hellenicaworld.com/USA/USA.html",
+      "original_url": "https://www.hellenicaworld.com/USA/USA.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "System (GPS) navigation system (the others are on Ascension (Saint Helena, Ascension, and Tistan da Cunha), Diego Garcia (British Indian Ocean Territory), and at Kwajalein (Marsha",
+      "title": "USA"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.donsmaps.com/venusfigurespurpose.html",
+      "original_url": "https://www.donsmaps.com/venusfigurespurpose.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "updates to Don&#39;s Maps Navigation Abel Tasman Track in New Zealand Aboriginal Art of the Kimberleys Aboriginal art on the Northern Tablelands of NSW Aborigines of Australia Abri Pa",
+      "title": "Palaeolithic Venus figures - their purpose"
+    }
+  ],
+  "timestamp": "2026-09-05T17:22:46.206244Z"
+}

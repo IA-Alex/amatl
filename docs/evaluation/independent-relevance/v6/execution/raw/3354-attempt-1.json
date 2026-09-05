@@ -1,0 +1,225 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 3354,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 346.772,
+  "pair_id": "candidate-p-1379",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about hydrogen storage within public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "and a solid reading background in general can lead to preconceptions and expectations that have to be dispelled over the course of the trip. On the other hand, going in ‘col",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.jawest.net",
+          "/tours2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Magical Egypt Tours with John Anthony West. Dates, Itinerary and Reservations.",
+        "url": "http://www.jawest.net/tours2.htm"
+      },
+      {
+        "category": "general",
+        "content": "CoVid-19 -- A little background is needed here. MMS (Miracle Mineral Solution) goes back to the work of Jim Humble, to whom I was introduced in the early 2000&#39;s by a mutual friend",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.altcancer.net",
+          "/biodox.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biodox",
+        "url": "https://www.altcancer.net/biodox.htm"
+      },
+      {
+        "category": "general",
+        "content": "forms part of the background for a scene. An extra. Flatline: n. A state of death (ref. flat EEG traces upon brain-death) which may refer to either a machine (usually a deck or ot",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.shoestring-graphics.com",
+          "/CP2020/slang/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Word on The Streets",
+        "url": "http://www.shoestring-graphics.com/CP2020/slang/"
+      },
+      {
+        "category": "general",
+        "content": "Considering the blue background color never shifts, I&#39;m having to assume we&#39;re talking about repairs at Mr. Drydock&#39;s, who&#39;s never hearing the last of the cheeky snickers. I see o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "speeddemosarchive.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Speed Demos Archive",
+        "url": "https://speeddemosarchive.com/"
+      },
+      {
+        "category": "general",
+        "content": "with a scientific background, and has received many compliments from distinguished scientists and professors. He cites the professors Happer and Lindzen “ reliable scientific theo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meteo.lcd.lu",
+          "/globalwarming/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Warming Sceptic",
+        "url": "https://meteo.lcd.lu/globalwarming/"
+      },
+      {
+        "category": "general",
+        "content": "and holograms the background of and the workings of the transistor hypothetical changes Asimov would make if he designed a woman radioactivity, isotopes, bombs protein needs and f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f2625327e160be51a789351722481821b8af4dff7f3909f727946b3d4af96210",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about hydrogen storage within public health",
+  "query_id": "candidate-c-1379",
+  "raw_result_count": 6,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.jawest.net/tours2.htm",
+      "original_url": "http://www.jawest.net/tours2.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "and a solid reading background in general can lead to preconceptions and expectations that have to be dispelled over the course of the trip. On the other hand, going in ‘col",
+      "title": "Magical Egypt Tours with John Anthony West. Dates, Itinerary and Reservations."
+    },
+    {
+      "accepted": true,
+      "canonical_url": "https://www.altcancer.net/biodox.htm",
+      "original_url": "https://www.altcancer.net/biodox.htm",
+      "rank": 2,
+      "rejection_reason": null,
+      "snippet": "CoVid-19 -- A little background is needed here. MMS (Miracle Mineral Solution) goes back to the work of Jim Humble, to whom I was introduced in the early 2000&#39;s by a mutual friend",
+      "title": "Biodox"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.shoestring-graphics.com/CP2020/slang/",
+      "original_url": "http://www.shoestring-graphics.com/CP2020/slang/",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "forms part of the background for a scene. An extra. Flatline: n. A state of death (ref. flat EEG traces upon brain-death) which may refer to either a machine (usually a deck or ot",
+      "title": "The Word on The Streets"
+    }
+  ],
+  "timestamp": "2026-09-05T17:38:11.398548Z"
+}

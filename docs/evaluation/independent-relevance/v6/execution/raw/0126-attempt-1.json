@@ -1,0 +1,387 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 126,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 393.064,
+  "pair_id": "candidate-p-1419",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about image compression within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "digital images, compression, noise reduction, and binary digital images. Full-Frame CCD Operation - Having the simplest architecture and being the easiest devices to build and ope",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "micro.magnet.fsu.edu",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecular Expressions: Images from the Microscope",
+        "url": "https://micro.magnet.fsu.edu/"
+      },
+      {
+        "category": "general",
+        "content": "Inputs and Explanatory Compression https://www.spaceandmotion.com/2026/wsm-simplicity-inputs-vs-mainstream-physics&#43;25.html “One substance, one law” cannot hide complex",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/Philosophy-Hinduism-Hindu.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hinduism Hindu Religion: Discussion Metaphysics Philosophy of HinduismBeliefs, Hindu Gods",
+        "url": "https://www.spaceandmotion.com/Philosophy-Hinduism-Hindu.htm"
+      },
+      {
+        "category": "general",
+        "content": "coding. The amount of compression obtained depends on the size of the input, the number of bits per code, and the distribution of common substrings. Typically, text such as source",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.amiga-stuff.com",
+          "/pd/fish.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fish disks 1 - 1120",
+        "url": "https://www.amiga-stuff.com/pd/fish.html"
+      },
+      {
+        "category": "general",
+        "content": "Inputs and Explanatory Compression https://www.spaceandmotion.com/2026/wsm-simplicity-inputs-vs-mainstream-physics&#43;25.html “One substance, one law” cannot hide complex",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WSM: One Substance (Space) &amp; One Law explains causal connection, Metaphysics: deduces Quantum Physics, Einstein Relativity, Cosmology&lt;/tit",
+        "url": "https://www.spaceandmotion.com/"
+      },
+      {
+        "category": "general",
+        "content": "different expansions, compressions, rotations or bends *), provided that there are no tears or joints of the different parts; &#34;near&#34; points are transformed again into &amp;q",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Gravitace3-1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Geometric-topological properties of spacetime",
+        "url": "https://www.astronuclphysics.info/Gravitace3-1.htm"
+      },
+      {
+        "category": "general",
+        "content": "simulation and code compression. In the past he worked and had experience with embedded systems, with drivers for Linux and FreeBSD. He&#39;s also an active contributor to the open so",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "units, Intel IAA compression accelerators, Intel QAT_420xx crypto accelerators, and Lantiq PEF2256 (FALC56) pin controllers. Networking : Lantiq PEF2256 (FALC56) framers and Texas",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/958030/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "LWN.net Weekly Edition for January 18, 2024 [LWN.net]",
+        "url": "https://lwn.net/Articles/958030/"
+      },
+      {
+        "category": "general",
+        "content": "anes, Michael, Compression Breakthrough, Extra quotes. Saturn entered Aries just now at 11:36 pm EDT on May 24th. We have ended the 29 year Saturn cycle which lasted",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.exopoliticsindia.in",
+          "/2025/06/victory-of-surface-command-surfacom-555.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "EXOPOLITICS INDIA: Victory of Surface Command (SURFACOM) 555",
+        "url": "https://www.exopoliticsindia.in/2025/06/victory-of-surface-command-surfacom-555.html"
+      },
+      {
+        "category": "general",
+        "content": "24th, the process of Compression Breakthrough has started and is accelerating: https://www.youtube.com/watch?v=Ksq2Fl3WTJ0&amp;t=3s The Ashtar Command is getting very busy activat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.exopoliticsindia.in",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "EXOPOLITICS INDIA",
+        "url": "https://www.exopoliticsindia.in/"
+      },
+      {
+        "category": "general",
+        "content": "first evidence of solid compression from implosion was observed (5%). April, 1945: April 3 - Preparations began at Tinian Island to support the 509th Composite Group, and to assem",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nuclearweaponarchive.org",
+          "/Usa/Med/Med.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Manhattan Project",
+        "url": "https://nuclearweaponarchive.org/Usa/Med/Med.html"
+      },
+      {
+        "category": "general",
+        "content": "more sophisticated data compression techniques will still be a hot research area (though what we are compressing may at that point be high-resolution volumetric time-series or som",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fudco.com",
+          "/chip/lessons.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Lessons of Lucasfilm&#39;s Habitat",
+        "url": "http://www.fudco.com/chip/lessons.html"
+      },
+      {
+        "category": "general",
+        "content": "units, Intel IAA compression accelerators, Intel QAT_420xx crypto accelerators, and Lantiq PEF2256 (FALC56) pin controllers. Networking : Lantiq PEF2256 (FALC56) framers and Texas",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/958030/bigpage",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "LWN.net Weekly Edition for January 18, 2024 [LWN.net]",
+        "url": "https://lwn.net/Articles/958030/bigpage"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "19cc9af647ee8d23bd7bdb37f6c1aa5c1f447fb9ec63b5ffd3bd8f82b6c7ee55",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about image compression within information science",
+  "query_id": "candidate-c-1419",
+  "raw_result_count": 12,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://micro.magnet.fsu.edu/",
+      "original_url": "https://micro.magnet.fsu.edu/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "digital images, compression, noise reduction, and binary digital images. Full-Frame CCD Operation - Having the simplest architecture and being the easiest devices to build and ope",
+      "title": "Molecular Expressions: Images from the Microscope"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.spaceandmotion.com/Philosophy-Hinduism-Hindu.htm",
+      "original_url": "https://www.spaceandmotion.com/Philosophy-Hinduism-Hindu.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Inputs and Explanatory Compression https://www.spaceandmotion.com/2026/wsm-simplicity-inputs-vs-mainstream-physics&#43;25.html “One substance, one law” cannot hide complex",
+      "title": "Hinduism Hindu Religion: Discussion Metaphysics Philosophy of HinduismBeliefs, Hindu Gods"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "https://www.amiga-stuff.com/pd/fish.html",
+      "original_url": "https://www.amiga-stuff.com/pd/fish.html",
+      "rank": 3,
+      "rejection_reason": null,
+      "snippet": "coding. The amount of compression obtained depends on the size of the input, the number of bits per code, and the distribution of common substrings. Typically, text such as source",
+      "title": "Fish disks 1 - 1120"
+    }
+  ],
+  "timestamp": "2026-09-05T17:21:10.466539Z"
+}

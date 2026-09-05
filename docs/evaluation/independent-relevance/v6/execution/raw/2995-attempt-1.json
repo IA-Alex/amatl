@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2995,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 305.129,
+  "pair_id": "candidate-p-0903",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what tradeoffs shape ecosystem services within robotics",
+    "results": [
+      {
+        "category": "general",
+        "content": "ereader, with some tradeoffs How to edit Claude&#39;s memory I flossed fake teeth with Dyson&#39;s tech-riddled CameraJet toothbrush Volkswagen confirms cutting 50,000 jobs as part of its",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "readspike.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Readspike - Simple news aggregator",
+        "url": "https://readspike.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "435559270237c1005ce7ca9a8ffda48be835e93b844d6c59b0d0926a594c419e",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what tradeoffs shape ecosystem services within robotics",
+  "query_id": "candidate-t-0903",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://readspike.com/",
+      "original_url": "https://readspike.com/",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "ereader, with some tradeoffs How to edit Claude&#39;s memory I flossed fake teeth with Dyson&#39;s tech-riddled CameraJet toothbrush Volkswagen confirms cutting 50,000 jobs as part of its",
+      "title": "Readspike - Simple news aggregator"
+    }
+  ],
+  "timestamp": "2026-09-05T17:36:15.485492Z"
+}

@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1738,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 320.823,
+  "pair_id": "candidate-p-0923",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about electric aviation within cultural heritage",
+    "results": [
+      {
+        "category": "general",
+        "content": "Read a summary of the background of New Philadelphia and its remarkable character in American history, a related article by the UIUC News Bureau, and an overview by the NPS . Past",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "faculty.las.illinois.edu",
+          "/cfennell/NP/updates.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Updates on New Philadelphia Archaeology Project",
+        "url": "http://faculty.las.illinois.edu/cfennell/NP/updates.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5474a128dba4ea2e42c7dbcee499cd0dd10746114c05927fbe14622baa1825bb",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about electric aviation within cultural heritage",
+  "query_id": "candidate-c-0923",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://faculty.las.illinois.edu/cfennell/NP/updates.html",
+      "original_url": "http://faculty.las.illinois.edu/cfennell/NP/updates.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Read a summary of the background of New Philadelphia and its remarkable character in American history, a related article by the UIUC News Bureau, and an overview by the NPS . Past",
+      "title": "Updates on New Philadelphia Archaeology Project"
+    }
+  ],
+  "timestamp": "2026-09-05T17:29:42.415460Z"
+}

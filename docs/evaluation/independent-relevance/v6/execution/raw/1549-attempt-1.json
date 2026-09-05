@@ -1,0 +1,144 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 1549,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 344.876,
+  "pair_id": "candidate-p-1594",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how can researchers measure low power computing within conservation",
+    "results": [
+      {
+        "category": "general",
+        "content": "the violation of the conservation of energy and momentum, it can set the value of the cosmological constant. Dark energy thus keeps track of how much energy and momentum has been",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/quant.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quantum Reality and Cosmology",
+        "url": "http://www.dhushara.com/paradoxhtm/quant.htm"
+      },
+      {
+        "category": "general",
+        "content": "rotation and other soil conservation measures if there is a high expectation that a flood will carry all the topsoil away next year. However, that farmer will also not invest in i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www-users.cse.umn.edu",
+          "/~odlyzko/doc/decline.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://www-users.cse.umn.edu/~odlyzko/doc/decline.txt",
+        "url": "https://www-users.cse.umn.edu/~odlyzko/doc/decline.txt"
+      },
+      {
+        "category": "general",
+        "content": "conservation of social patterns modulated only by gradual changes at the genetic level through mutation and natural selection over many generations.   Fig 3: Latest high accu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/repcult/reproduction-and-culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Religion, Politics, Sexual Reproduction and the Future of Human Society",
+        "url": "http://www.dhushara.com/repcult/reproduction-and-culture.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "da10c7a35018c23205695f0ecdc547d3c0573ef5e42cec0de4b303c6eca1d096",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how can researchers measure low power computing within conservation",
+  "query_id": "candidate-t-1594",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.dhushara.com/paradoxhtm/quant.htm",
+      "original_url": "http://www.dhushara.com/paradoxhtm/quant.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "the violation of the conservation of energy and momentum, it can set the value of the cosmological constant. Dark energy thus keeps track of how much energy and momentum has been",
+      "title": "Quantum Reality and Cosmology"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www-users.cse.umn.edu/~odlyzko/doc/decline.txt",
+      "original_url": "https://www-users.cse.umn.edu/~odlyzko/doc/decline.txt",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "rotation and other soil conservation measures if there is a high expectation that a flood will carry all the topsoil away next year. However, that farmer will also not invest in i",
+      "title": "https://www-users.cse.umn.edu/~odlyzko/doc/decline.txt"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "http://www.dhushara.com/repcult/reproduction-and-culture.htm",
+      "original_url": "http://www.dhushara.com/repcult/reproduction-and-culture.htm",
+      "rank": 3,
+      "rejection_reason": null,
+      "snippet": "conservation of social patterns modulated only by gradual changes at the genetic level through mutation and natural selection over many generations.   Fig 3: Latest high accu",
+      "title": "Religion, Politics, Sexual Reproduction and the Future of Human Society"
+    }
+  ],
+  "timestamp": "2026-09-05T17:28:43.190831Z"
+}

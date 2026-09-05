@@ -1,0 +1,144 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1130,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 300.541,
+  "pair_id": "candidate-p-1426",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of image compression within optical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "X-ray, mammary gland compression, digital mastogram, mammographic stereotaxy. Dental X - ray - intraoral X-ray, panoramic X-ray OPG, dental CT. Alternative diagnostic imaging meth",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Fyzika-NuklMed.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nuclear physics and ionizing radiation physics",
+        "url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm"
+      },
+      {
+        "category": "general",
+        "content": "tripcode generator Data compression sites: encode.su/forum - Encode&#39;s Forum (one of the best websites to talk about data compression) krinkels.org - Krinkels (where game repackers",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "basedsites.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "/g/&#39;s Based Sites",
+        "url": "https://basedsites.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "fs pulses stretching/compression Compressor grating for Spectra Physics Spitfire TSA Fiber Coupled Image Sensor NIR analyzer THz Spectrometer kit with Antenna THz time domain spec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "delmarphotonics.com",
+          "/index.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Femtosecond laser products from Del Mar Photonics",
+        "url": "http://delmarphotonics.com/index.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "dc600bd3d6803b310112be7ce15ea499227d9eda6d46da16d2a06e13fec72ea9",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of image compression within optical engineering",
+  "query_id": "candidate-c-1426",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm",
+      "original_url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "X-ray, mammary gland compression, digital mastogram, mammographic stereotaxy. Dental X - ray - intraoral X-ray, panoramic X-ray OPG, dental CT. Alternative diagnostic imaging meth",
+      "title": "Nuclear physics and ionizing radiation physics"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://basedsites.neocities.org/",
+      "original_url": "https://basedsites.neocities.org/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "tripcode generator Data compression sites: encode.su/forum - Encode&#39;s Forum (one of the best websites to talk about data compression) krinkels.org - Krinkels (where game repackers",
+      "title": "/g/&#39;s Based Sites"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://delmarphotonics.com/index.htm",
+      "original_url": "http://delmarphotonics.com/index.htm",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "fs pulses stretching/compression Compressor grating for Spectra Physics Spitfire TSA Fiber Coupled Image Sensor NIR analyzer THz Spectrometer kit with Antenna THz time domain spec",
+      "title": "Femtosecond laser products from Del Mar Photonics"
+    }
+  ],
+  "timestamp": "2026-09-05T17:26:27.826461Z"
+}

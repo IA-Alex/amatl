@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1936,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 297.423,
+  "pair_id": "candidate-p-0795",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about distributed ledgers within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "of this poster were distributed to educational and heritage organizations throughout the State (click on the poster image below to learn more.) View Archaeology Project Reports Se",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "faculty.las.illinois.edu",
+          "/cfennell/NP/updates.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Updates on New Philadelphia Archaeology Project",
+        "url": "http://faculty.las.illinois.edu/cfennell/NP/updates.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f2ccef0b3dd92f669bcd420ec84bb0126f84a0737caff455d052c92bf6b85fe7",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about distributed ledgers within information science",
+  "query_id": "candidate-c-0795",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://faculty.las.illinois.edu/cfennell/NP/updates.html",
+      "original_url": "http://faculty.las.illinois.edu/cfennell/NP/updates.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "of this poster were distributed to educational and heritage organizations throughout the State (click on the poster image below to learn more.) View Archaeology Project Reports Se",
+      "title": "Updates on New Philadelphia Archaeology Project"
+    }
+  ],
+  "timestamp": "2026-09-05T17:30:46.791124Z"
+}

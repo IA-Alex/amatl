@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2148,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 311.365,
+  "pair_id": "candidate-p-1939",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about quantum sensing within environmental chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "kind would have neither environmental problems nor scarcity of energy. For if it were to use its mental power as a unified civilization, it would have control of the energies of i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "edbe313964d9ce0b96655e9da549a7899f38e52fbe029909509fb780a7d3d424",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about quantum sensing within environmental chemistry",
+  "query_id": "candidate-c-1939",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://colinandrews.net/Consciousness.html",
+      "original_url": "https://colinandrews.net/Consciousness.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "kind would have neither environmental problems nor scarcity of energy. For if it were to use its mental power as a unified civilization, it would have control of the energies of i",
+      "title": "The Study of Human Consciousness - Is ET already part of our lives?"
+    }
+  ],
+  "timestamp": "2026-09-05T17:31:52.296182Z"
+}

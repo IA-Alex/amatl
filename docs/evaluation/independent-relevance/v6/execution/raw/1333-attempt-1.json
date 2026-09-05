@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 1333,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 308.764,
+  "pair_id": "candidate-p-0700",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "under what conditions does cryogenic cooling within materials engineering change",
+    "results": [
+      {
+        "category": "general",
+        "content": "&#34;trad&#34; engineering fields. An example I enjoyed was this Twitter thread where Hillel Wayne discussed how programmers without knowledge of trad engineering often have inc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "danluu.com",
+          "/cocktail-ideas/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cocktail party ideas",
+        "url": "http://danluu.com/cocktail-ideas/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "50e79837b070ec751e83164f3c9ca2f9087b4fb2f1629709386d03c08f4c336d",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "under what conditions does cryogenic cooling within materials engineering change",
+  "query_id": "candidate-t-0700",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "http://danluu.com/cocktail-ideas/",
+      "original_url": "http://danluu.com/cocktail-ideas/",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "&#34;trad&#34; engineering fields. An example I enjoyed was this Twitter thread where Hillel Wayne discussed how programmers without knowledge of trad engineering often have inc",
+      "title": "Cocktail party ideas"
+    }
+  ],
+  "timestamp": "2026-09-05T17:27:38.601528Z"
+}

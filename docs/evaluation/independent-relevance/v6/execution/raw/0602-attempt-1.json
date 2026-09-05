@@ -1,0 +1,220 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 602,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 905.21,
+  "pair_id": "candidate-p-2187",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about thermal energy storage within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "the separate article on Information-Theoretic Death for a more recent treatment of this fundamental concept. This article was published in two parts in Cryonics magazine, Vol. 15",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "we could not find other information where similar effects are be mentioned. In this paper we present the experimental device the results we have obtained. The Description of the E",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.rexresearch.com",
+          "/roschin/roschin.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Roschin &amp; Godin: Magneto-Gravity Effects; Verification of the Searl Effect",
+        "url": "http://www.rexresearch.com/roschin/roschin.htm"
+      },
+      {
+        "category": "general",
+        "content": "probably not much more information would be gained over existing 1415 MHz maps. The only survey spanning the tritium line, by Kardashev and Gindilis in 1972 covering various frequ",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.rfreitas.com",
+          "/Astro/ObservableETC1985.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Observable Characteristics of Extraterrestrial Technological Civilizations",
+        "url": "http://www.rfreitas.com/Astro/ObservableETC1985.htm"
+      },
+      {
+        "category": "general",
+        "content": "the hypothesis. Here is information in Archimedes&#39; possession which might have suggested the universality of gravitation. The Earth is a sphere. The shape of its shadow on the Moo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/gravitation/foobar/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bending Spacetime in the Basement",
+        "url": "https://www.fourmilab.ch/gravitation/foobar/"
+      },
+      {
+        "category": "general",
+        "content": "&#34;. Supplementary information here . TerraPower TerraPower ( a Bill Gates company) and GE Hitachi Nuclear Energy will build a fast neutron reactor called &#34; NATRIUM &#34;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meteo.lcd.lu",
+          "/globalwarming/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Warming Sceptic",
+        "url": "https://meteo.lcd.lu/globalwarming/"
+      },
+      {
+        "category": "general",
+        "content": "in 2014 . Adding type information to functions has always been—and will remain—optional, but typing still remains somewhat contentious. There are multiple kinds of consumers of th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/958030/bigpage",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "LWN.net Weekly Edition for January 18, 2024 [LWN.net]",
+        "url": "https://lwn.net/Articles/958030/bigpage"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "26b7e007b2c26922a5f19399a5ed559a96067e0ff90c8e7472ae313fb3587a61",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about thermal energy storage within information science",
+  "query_id": "candidate-c-2187",
+  "raw_result_count": 6,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.ralphmerkle.com/cryo/techFeas.html",
+      "original_url": "http://www.ralphmerkle.com/cryo/techFeas.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "the separate article on Information-Theoretic Death for a more recent treatment of this fundamental concept. This article was published in two parts in Cryonics magazine, Vol. 15",
+      "title": "The Molecular Repair of the Brain"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.rexresearch.com/roschin/roschin.htm",
+      "original_url": "http://www.rexresearch.com/roschin/roschin.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "we could not find other information where similar effects are be mentioned. In this paper we present the experimental device the results we have obtained. The Description of the E",
+      "title": "Roschin &amp; Godin: Magneto-Gravity Effects; Verification of the Searl Effect"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "http://www.rfreitas.com/Astro/ObservableETC1985.htm",
+      "original_url": "http://www.rfreitas.com/Astro/ObservableETC1985.htm",
+      "rank": 3,
+      "rejection_reason": null,
+      "snippet": "probably not much more information would be gained over existing 1415 MHz maps. The only survey spanning the tritium line, by Kardashev and Gindilis in 1972 covering various frequ",
+      "title": "Observable Characteristics of Extraterrestrial Technological Civilizations"
+    }
+  ],
+  "timestamp": "2026-09-05T17:23:38.176844Z"
+}

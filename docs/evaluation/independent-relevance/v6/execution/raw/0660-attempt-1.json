@@ -1,0 +1,171 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 660,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 364.51,
+  "pair_id": "candidate-p-1408",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "essential context for image compression within electrical systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "different expansions, compressions, rotations or bends *), provided that there are no tears or joints of the different parts; &#34;near&#34; points are transformed again into &amp;q",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Gravitace3-1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Geometric-topological properties of spacetime",
+        "url": "https://www.astronuclphysics.info/Gravitace3-1.htm"
+      },
+      {
+        "category": "general",
+        "content": "digital encodings use compression technologies that eliminate redundancy. Digital television signals are almost always compressed to save space and bandwidth, the most common sche",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pages.ucsd.edu",
+          "/~dnorman/DNMss/Being_Analog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Being Analog",
+        "url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html"
+      },
+      {
+        "category": "general",
+        "content": "24th, the process of Compression Breakthrough has started and is accelerating: https://www.youtube.com/watch?v=Ksq2Fl3WTJ0&amp;t=3s The Ashtar Command is getting very busy activat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.exopoliticsindia.in",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "EXOPOLITICS INDIA",
+        "url": "https://www.exopoliticsindia.in/"
+      },
+      {
+        "category": "general",
+        "content": "their standard of audio compression served to convey the listener into the acoustic environment of their homes - an underestimated aspect of creating a realistic auditory illusion",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "49c5fc6ec5e6173463869ccecffa4c4acfaec4f19d9c85b0306dc75e26fc1fec",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "essential context for image compression within electrical systems",
+  "query_id": "candidate-c-1408",
+  "raw_result_count": 4,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "https://www.astronuclphysics.info/Gravitace3-1.htm",
+      "original_url": "https://www.astronuclphysics.info/Gravitace3-1.htm",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "different expansions, compressions, rotations or bends *), provided that there are no tears or joints of the different parts; &#34;near&#34; points are transformed again into &amp;q",
+      "title": "Geometric-topological properties of spacetime"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html",
+      "original_url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "digital encodings use compression technologies that eliminate redundancy. Digital television signals are almost always compressed to save space and bandwidth, the most common sche",
+      "title": "Being Analog"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.exopoliticsindia.in/",
+      "original_url": "https://www.exopoliticsindia.in/",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "24th, the process of Compression Breakthrough has started and is accelerating: https://www.youtube.com/watch?v=Ksq2Fl3WTJ0&amp;t=3s The Ashtar Command is getting very busy activat",
+      "title": "EXOPOLITICS INDIA"
+    }
+  ],
+  "timestamp": "2026-09-05T17:24:02.834395Z"
+}

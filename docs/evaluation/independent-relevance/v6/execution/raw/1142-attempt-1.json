@@ -1,0 +1,144 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1142,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 294.542,
+  "pair_id": "candidate-p-0885",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a plain language guide to ecosystem services within food systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "for massive tech ecosystems. They don&#39;t serve users, but corporations. AI features, VPNs, crypto wallets, and countless of other nonsense. Markdown, on the other hand, is a public",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unstory.eu",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "unstory",
+        "url": "https://unstory.eu/"
+      },
+      {
+        "category": "general",
+        "content": "Ugreen&#39;s new smart home ecosystem is built around local AI hubs SpaceXAI apologizes for outage that affected Grok and other &#39;compute partners&#39; The Apple Vision Pro was used for a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "readspike.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Readspike - Simple news aggregator",
+        "url": "https://readspike.com/"
+      },
+      {
+        "category": "general",
+        "content": "to lock you into their ecosystem to milk money out of consumers. It is for idiots, don&#39;t buy into it! 🔗 📑 Chromebooks Suck My mom bought a ChromeOS laptop and maybe like 2 years l",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "chriskoehnke.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chris Koehnke&#39;s Webpage",
+        "url": "http://chriskoehnke.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "01b1093c4794e89681d202c2e5bbfd5238d329996971c6b421248aba0e3a6358",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a plain language guide to ecosystem services within food systems",
+  "query_id": "candidate-c-0885",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "https://unstory.eu/",
+      "original_url": "https://unstory.eu/",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "for massive tech ecosystems. They don&#39;t serve users, but corporations. AI features, VPNs, crypto wallets, and countless of other nonsense. Markdown, on the other hand, is a public",
+      "title": "unstory"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://readspike.com/",
+      "original_url": "https://readspike.com/",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "Ugreen&#39;s new smart home ecosystem is built around local AI hubs SpaceXAI apologizes for outage that affected Grok and other &#39;compute partners&#39; The Apple Vision Pro was used for a",
+      "title": "Readspike - Simple news aggregator"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://chriskoehnke.com/",
+      "original_url": "http://chriskoehnke.com/",
+      "rank": 3,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "to lock you into their ecosystem to milk money out of consumers. It is for idiots, don&#39;t buy into it! 🔗 📑 Chromebooks Suck My mom bought a ChromeOS laptop and maybe like 2 years l",
+      "title": "Chris Koehnke&#39;s Webpage"
+    }
+  ],
+  "timestamp": "2026-09-05T17:26:31.869543Z"
+}

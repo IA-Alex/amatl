@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2873,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 294.9,
+  "pair_id": "candidate-p-1401",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "which mechanisms govern image compression within computer graphics",
+    "results": [
+      {
+        "category": "general",
+        "content": "more sophisticated data compression techniques will still be a hot research area (though what we are compressing may at that point be high-resolution volumetric time-series or som",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fudco.com",
+          "/chip/lessons.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Lessons of Lucasfilm&#39;s Habitat",
+        "url": "http://www.fudco.com/chip/lessons.html"
+      },
+      {
+        "category": "general",
+        "content": "units, Intel IAA compression accelerators, Intel QAT_420xx crypto accelerators, and Lantiq PEF2256 (FALC56) pin controllers. Networking : Lantiq PEF2256 (FALC56) framers and Texas",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/958030/bigpage",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "LWN.net Weekly Edition for January 18, 2024 [LWN.net]",
+        "url": "https://lwn.net/Articles/958030/bigpage"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4c7bafb1d6d42e89b59e34222b5751e9f598c31a2c295ecd4d5e55a6ae2a1906",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "which mechanisms govern image compression within computer graphics",
+  "query_id": "candidate-t-1401",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.fudco.com/chip/lessons.html",
+      "original_url": "http://www.fudco.com/chip/lessons.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "more sophisticated data compression techniques will still be a hot research area (though what we are compressing may at that point be high-resolution volumetric time-series or som",
+      "title": "The Lessons of Lucasfilm&#39;s Habitat"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://lwn.net/Articles/958030/bigpage",
+      "original_url": "https://lwn.net/Articles/958030/bigpage",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "units, Intel IAA compression accelerators, Intel QAT_420xx crypto accelerators, and Lantiq PEF2256 (FALC56) pin controllers. Networking : Lantiq PEF2256 (FALC56) framers and Texas",
+      "title": "LWN.net Weekly Edition for January 18, 2024 [LWN.net]"
+    }
+  ],
+  "timestamp": "2026-09-05T17:35:38.378290Z"
+}

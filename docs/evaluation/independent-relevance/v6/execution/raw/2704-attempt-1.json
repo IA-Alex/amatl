@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2704,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 259.618,
+  "pair_id": "candidate-p-1834",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of permafrost monitoring within conservation",
+    "results": [
+      {
+        "category": "general",
+        "content": "Compounds, Marine Life Conservation Climate varies from temperate in south to subarctic and arctic in north Land use agricultural land: 6.8% (2018 est.) arable land: 4.7% (2018 es",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hellenicaworld.com",
+          "/Canada/en/Canada.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Canada",
+        "url": "https://www.hellenicaworld.com/Canada/en/Canada.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f96362cea0de34363930d6213d552a13bf2589c2b2d80583d85989e74c9d8631",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of permafrost monitoring within conservation",
+  "query_id": "candidate-c-1834",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.hellenicaworld.com/Canada/en/Canada.html",
+      "original_url": "https://www.hellenicaworld.com/Canada/en/Canada.html",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "Compounds, Marine Life Conservation Climate varies from temperate in south to subarctic and arctic in north Land use agricultural land: 6.8% (2018 est.) arable land: 4.7% (2018 es",
+      "title": "Canada"
+    }
+  ],
+  "timestamp": "2026-09-05T17:34:47.441453Z"
+}

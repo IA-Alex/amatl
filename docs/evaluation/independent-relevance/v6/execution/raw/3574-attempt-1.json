@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 3574,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 285.661,
+  "pair_id": "candidate-p-1589",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a plain language guide to low power computing within behavioral science",
+    "results": [
+      {
+        "category": "general",
+        "content": "and Prevention, &#34;Behavioral Risk Factor Surveillance System – Adults who are current smokers&#34;, September 19, 2008&#34;. Apps.nccd.cdc.gov. May 15, 2009. Retrieved 2010-",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hellenicaworld.com",
+          "/USA/Geo/en/Missouri.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Missouri",
+        "url": "https://www.hellenicaworld.com/USA/Geo/en/Missouri.html"
+      },
+      {
+        "category": "general",
+        "content": "of Educational and Behavioral Statistics from 2002 until 2004 and is a former Associate Editor of the Journal of the American Statistical Association, and Applied Psychological Me",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "statlit.org",
+          "/Wainer.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Howard Wainer",
+        "url": "http://statlit.org/Wainer.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "14120acaac0148e29b5301a80bbf539438fbf6e473f013c0a5f57bc3f1a68107",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a plain language guide to low power computing within behavioral science",
+  "query_id": "candidate-c-1589",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.hellenicaworld.com/USA/Geo/en/Missouri.html",
+      "original_url": "https://www.hellenicaworld.com/USA/Geo/en/Missouri.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "and Prevention, &#34;Behavioral Risk Factor Surveillance System – Adults who are current smokers&#34;, September 19, 2008&#34;. Apps.nccd.cdc.gov. May 15, 2009. Retrieved 2010-",
+      "title": "Missouri"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://statlit.org/Wainer.htm",
+      "original_url": "http://statlit.org/Wainer.htm",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "of Educational and Behavioral Statistics from 2002 until 2004 and is a former Associate Editor of the Journal of the American Statistical Association, and Applied Psychological Me",
+      "title": "Howard Wainer"
+    }
+  ],
+  "timestamp": "2026-09-05T17:39:19.759375Z"
+}

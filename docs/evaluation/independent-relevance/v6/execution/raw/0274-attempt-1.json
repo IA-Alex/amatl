@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 274,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 322.115,
+  "pair_id": "candidate-p-1096",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "essential context for fire weather modeling within science education",
+    "results": [
+      {
+        "category": "general",
+        "content": "sacrifice to the sun, essentially to bring the sun back after prolonged rainy weather. The original title character appears to be a pictograph of the sun emerging from behind rain",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biroco.com",
+          "/yijing/links.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Yijing Dao - Annotated links to other Yijing sites, and journal articles",
+        "url": "https://www.biroco.com/yijing/links.htm"
+      },
+      {
+        "category": "general",
+        "content": "regarded such events as essential to their political education, who took them to be an integral part of their social lives, and who were quite accustomed to extended oratorical pe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "quotes.pouyakary.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quote Anthology",
+        "url": "https://quotes.pouyakary.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7707adbb6405fa0f492626c4ebc52b39644b713ff252b39be5604fd87f2ccb8d",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "essential context for fire weather modeling within science education",
+  "query_id": "candidate-c-1096",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.biroco.com/yijing/links.htm",
+      "original_url": "https://www.biroco.com/yijing/links.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "sacrifice to the sun, essentially to bring the sun back after prolonged rainy weather. The original title character appears to be a pictograph of the sun emerging from behind rain",
+      "title": "Yijing Dao - Annotated links to other Yijing sites, and journal articles"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://quotes.pouyakary.org/",
+      "original_url": "https://quotes.pouyakary.org/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "regarded such events as essential to their political education, who took them to be an integral part of their social lives, and who were quite accustomed to extended oratorical pe",
+      "title": "Quote Anthology"
+    }
+  ],
+  "timestamp": "2026-09-05T17:21:55.842083Z"
+}

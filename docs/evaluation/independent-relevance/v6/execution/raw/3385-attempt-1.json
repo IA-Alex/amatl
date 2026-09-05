@@ -1,0 +1,333 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 3385,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 365.29,
+  "pair_id": "candidate-p-0891",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains ecosystem services within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "speed. We know that the information came from the Mexican Department of Defense. They say there&#39;s no national security impact. I think if there were bombers flying over their coun",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "etfriends.com",
+          "/ETVreports.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NEW ETV REPORTS",
+        "url": "http://etfriends.com/ETVreports.html"
+      },
+      {
+        "category": "general",
+        "content": "DIS INFORMATION NATION   THE MAINSTREAM CORPORATE MEDIA LEAD US AWAY FROM THE TRUTH.     &#34;WE&#39;LL KNOW OUR DISINFORMATION PROGRAM IS COMPLETE WHEN EVERYTHING THE",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "disinformationnation.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DISINFORMATION NATION - MAINSTREAM MEDIA, CORPORATE MEDIA, ESTABLISHMENT MEDIA, PROPAGANDA, DISINFORMATION, MEDIA MONOPOLY, GLOBAL ELITE, GLOB",
+        "url": "https://disinformationnation.net/"
+      },
+      {
+        "category": "general",
+        "content": "on foreign intelligence information, which is a giant loophole that lets cops do whatever they want as long and they claim it’s related to national security (and we all know how t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-sep-dec.html"
+      },
+      {
+        "category": "general",
+        "content": "interesting history and information in Parts I and II. However, I recommend skipping the flawed blank slatist theory that Rudyard Lynch presents in Part III of this video. Blogrol",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zero Contradictions Philosophy Home Page",
+        "url": "https://zerocontradictions.net/"
+      },
+      {
+        "category": "general",
+        "content": "For years, most of the information about the Soviet Union’s N1 rocket came from satellite images. Dwayne Day discusses how new images of the N1 are emerging to provide new insight",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.thespacereview.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Space Review: essays and commentary about the final frontier",
+        "url": "https://www.thespacereview.com/"
+      },
+      {
+        "category": "general",
+        "content": "with as much relevant information available to the agent as possible. Your AI agents should start with memories. Why existing agent memory systems don&#39;t seem to work The trouble i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "readspike.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Readspike - Simple news aggregator",
+        "url": "https://readspike.com/"
+      },
+      {
+        "category": "general",
+        "content": "can extract a morsel of information like a restaurant address. The designers of pointless wank like that Facebook page deserve the ultimate penalty. They should be forced to use t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "idlewords.com",
+          "/talks/website_obesity.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Website Obesity Crisis",
+        "url": "https://idlewords.com/talks/website_obesity.htm"
+      },
+      {
+        "category": "general",
+        "content": "with support for them. InformationWeek’s David DeJean astutely observes, “Is Open-Source A Business Model? $500 Million Says It Is” - noting that Citrix paid $50",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "dwheeler.com",
+          "/essays/commercial-floss.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Free-Libre / Open Source Software (FLOSS) is Commercial Software",
+        "url": "https://dwheeler.com/essays/commercial-floss.html"
+      },
+      {
+        "category": "general",
+        "content": "access to users&#39; information while preventing those companies from revealing the order. A third said the government shouldn&#39;t have that power at all, while another 41 percent",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "soylentnews.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SoylentNews: SoylentNews is people",
+        "url": "https://soylentnews.org/"
+      },
+      {
+        "category": "general",
+        "content": "and criminology of information security – from dependability to deception detection Peer-to-Peer and social network systems – including the Eternity Service, cocaine a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8c241f92ebb6a1c904d3dac602560a9a8ab70950e63ed43e0439f13e9c21c4d3",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains ecosystem services within information science",
+  "query_id": "candidate-t-0891",
+  "raw_result_count": 10,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "http://etfriends.com/ETVreports.html",
+      "original_url": "http://etfriends.com/ETVreports.html",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "speed. We know that the information came from the Mexican Department of Defense. They say there&#39;s no national security impact. I think if there were bombers flying over their coun",
+      "title": "NEW ETV REPORTS"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://disinformationnation.net/",
+      "original_url": "https://disinformationnation.net/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "DIS INFORMATION NATION   THE MAINSTREAM CORPORATE MEDIA LEAD US AWAY FROM THE TRUTH.     &#34;WE&#39;LL KNOW OUR DISINFORMATION PROGRAM IS COMPLETE WHEN EVERYTHING THE",
+      "title": "DISINFORMATION NATION - MAINSTREAM MEDIA, CORPORATE MEDIA, ESTABLISHMENT MEDIA, PROPAGANDA, DISINFORMATION, MEDIA MONOPOLY, GLOBAL ELITE, GLOB"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://stallman.org/archives/2019-sep-dec.html",
+      "original_url": "http://stallman.org/archives/2019-sep-dec.html",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "on foreign intelligence information, which is a giant loophole that lets cops do whatever they want as long and they claim it’s related to national security (and we all know how t",
+      "title": "2019: September - December Political Notes - Richard Stallman"
+    }
+  ],
+  "timestamp": "2026-09-05T17:38:20.866647Z"
+}

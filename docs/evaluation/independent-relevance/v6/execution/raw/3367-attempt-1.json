@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 3367,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 302.289,
+  "pair_id": "candidate-p-2176",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how is thermal energy storage within electrical systems evaluated in practice",
+    "results": [
+      {
+        "category": "general",
+        "content": "Interference from electrical wiring Interference from power lines Interference from cross-connected buildings Interference from other equipment My monitor is possessed! Shimmering",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.repairfaq.org",
+          "/sam/monfaq.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notes on the Troubleshooting and Repair of Computer and Video Monitors",
+        "url": "http://www.repairfaq.org/sam/monfaq.htm"
+      },
+      {
+        "category": "general",
+        "content": "during operation as the electrical discharge buries gas molecules under sputtered electrode material or chemical reactions affect the proportion of each type of gas. By the standa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.repairfaq.org",
+          "/sam/lasercva.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sam&#39;s Laser FAQ - Vacuum Technology for Home-Built Gas Lasers",
+        "url": "http://www.repairfaq.org/sam/lasercva.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "48c9c2b4bf8c9e4cca8dee2d09619ec0d4513c99bc0f17fecdccb40df2b43160",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how is thermal energy storage within electrical systems evaluated in practice",
+  "query_id": "candidate-t-2176",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.repairfaq.org/sam/monfaq.htm",
+      "original_url": "http://www.repairfaq.org/sam/monfaq.htm",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "Interference from electrical wiring Interference from power lines Interference from cross-connected buildings Interference from other equipment My monitor is possessed! Shimmering",
+      "title": "Notes on the Troubleshooting and Repair of Computer and Video Monitors"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.repairfaq.org/sam/lasercva.htm",
+      "original_url": "http://www.repairfaq.org/sam/lasercva.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "during operation as the electrical discharge buries gas molecules under sputtered electrode material or chemical reactions affect the proportion of each type of gas. By the standa",
+      "title": "Sam&#39;s Laser FAQ - Vacuum Technology for Home-Built Gas Lasers"
+    }
+  ],
+  "timestamp": "2026-09-05T17:38:15.584272Z"
+}

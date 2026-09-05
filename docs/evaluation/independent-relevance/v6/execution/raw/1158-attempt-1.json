@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1158,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 313.481,
+  "pair_id": "candidate-p-0371",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about biometric privacy within public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "your customer (&#34;KYC&#34;), background checking (see further below) and other compliance requirements. Legal obligation. For example, AML and KYC compliance requirements are governed b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "squareup.com",
+          "/us/en/legal/general/privacy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Privacy Notice for Users Who Apply or Sign Up for a Square Account or Other Services",
+        "url": "https://squareup.com/us/en/legal/general/privacy"
+      },
+      {
+        "category": "general",
+        "content": "ight-claim-birds-singing-background.shtml (archive) (MozArchive) Some corporation even put advertisements on someone else&#39;s song, and earned money from it: https://www.techdirt.com",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/technological_slavery.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Technological slavery",
+        "url": "http://digdeeper.love/articles/technological_slavery.xhtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fc374642fc894c02ac158c5daad71a526e1dc1bc9a1d944f14a5c7fb9349038b",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about biometric privacy within public health",
+  "query_id": "candidate-c-0371",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "https://squareup.com/us/en/legal/general/privacy",
+      "original_url": "https://squareup.com/us/en/legal/general/privacy",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "your customer (&#34;KYC&#34;), background checking (see further below) and other compliance requirements. Legal obligation. For example, AML and KYC compliance requirements are governed b",
+      "title": "Privacy Notice for Users Who Apply or Sign Up for a Square Account or Other Services"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://digdeeper.love/articles/technological_slavery.xhtml",
+      "original_url": "http://digdeeper.love/articles/technological_slavery.xhtml",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "ight-claim-birds-singing-background.shtml (archive) (MozArchive) Some corporation even put advertisements on someone else&#39;s song, and earned money from it: https://www.techdirt.com",
+      "title": "Technological slavery"
+    }
+  ],
+  "timestamp": "2026-09-05T17:26:36.899645Z"
+}

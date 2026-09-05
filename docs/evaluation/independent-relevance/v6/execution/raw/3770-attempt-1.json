@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 3770,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 311.731,
+  "pair_id": "candidate-p-0040",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "essential context for acoustic ecology within science education",
+    "results": [
+      {
+        "category": "general",
+        "content": "among them SOCAN. Essential works: Musical Theatre and Multi-media: &#34;Body Weather&#34; (1994-1996); &#34;Powerlines&#34; (1993-1996); Chamber: &#34;Fluvial&#34; (1988); &#34;Interra&#34; (1986); &#34;Rites of De",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.amazings.com",
+          "/ingles.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Amazing Sounds magazine",
+        "url": "http://www.amazings.com/ingles.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6493499e6c0fe8b83bb1c2c93e16c5483253b076f45187d6eef4900eb04e27fe",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "essential context for acoustic ecology within science education",
+  "query_id": "candidate-c-0040",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.amazings.com/ingles.html",
+      "original_url": "http://www.amazings.com/ingles.html",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "among them SOCAN. Essential works: Musical Theatre and Multi-media: &#34;Body Weather&#34; (1994-1996); &#34;Powerlines&#34; (1993-1996); Chamber: &#34;Fluvial&#34; (1988); &#34;Interra&#34; (1986); &#34;Rites of De",
+      "title": "Amazing Sounds magazine"
+    }
+  ],
+  "timestamp": "2026-09-05T17:40:25.033932Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 4194,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 1026.846,
+  "pair_id": "candidate-p-1850",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of permafrost monitoring within industrial design",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "ce809a688e4ce1acf7afd75734df9484a3407963101d251bad133b1abedbc868",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of permafrost monitoring within industrial design",
+  "query_id": "candidate-c-1850",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:42:36.719472Z"
+}

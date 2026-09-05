@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 3623,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 290.492,
+  "pair_id": "candidate-p-0518",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how do models represent bridge vibration within risk analysis",
+    "results": [
+      {
+        "category": "general",
+        "content": "voltage which can represent a continuous range of intensities for each color. In principle, an analog monitor is capable of an unlimited number of possible colors and intensities.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.repairfaq.org",
+          "/sam/monfaq.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notes on the Troubleshooting and Repair of Computer and Video Monitors",
+        "url": "http://www.repairfaq.org/sam/monfaq.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ec276e0069ec1887e6fec9f1fd3b3f051630d31bcf4db2dd97c79203f23a297a",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how do models represent bridge vibration within risk analysis",
+  "query_id": "candidate-t-0518",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.repairfaq.org/sam/monfaq.htm",
+      "original_url": "http://www.repairfaq.org/sam/monfaq.htm",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "voltage which can represent a continuous range of intensities for each color. In principle, an analog monitor is capable of an unlimited number of possible colors and intensities.",
+      "title": "Notes on the Troubleshooting and Repair of Computer and Video Monitors"
+    }
+  ],
+  "timestamp": "2026-09-05T17:39:39.859821Z"
+}

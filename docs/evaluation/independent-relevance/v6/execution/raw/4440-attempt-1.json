@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 4440,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 319.611,
+  "pair_id": "candidate-p-1420",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "an introductory account of image compression within materials engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "Adoption page lists an introductory tutorial and chapter classes as X3D instruction. The VRML 2 Sourcebook also includes a comprehensive set of online examples and slide",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.web3d.org",
+          "/x3d/content/examples/X3dResources.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "X3D Resources",
+        "url": "https://www.web3d.org/x3d/content/examples/X3dResources.html"
+      },
+      {
+        "category": "general",
+        "content": "and easily-understood introductory works on the subject of recursive semiotics, and finds use in many an undergraduate classroom here on the University of Iapetus. Although RS is",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "suricrasia.online",
+          "/library/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Suricrasia Online&#39;s Online Library",
+        "url": "https://suricrasia.online/library/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6c02a32a47737cb0a8287b499528ecfd48d83eb5678d9e6512f15c34c8215319",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "an introductory account of image compression within materials engineering",
+  "query_id": "candidate-c-1420",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.web3d.org/x3d/content/examples/X3dResources.html",
+      "original_url": "https://www.web3d.org/x3d/content/examples/X3dResources.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Adoption page lists an introductory tutorial and chapter classes as X3D instruction. The VRML 2 Sourcebook also includes a comprehensive set of online examples and slide",
+      "title": "X3D Resources"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://suricrasia.online/library/",
+      "original_url": "https://suricrasia.online/library/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "and easily-understood introductory works on the subject of recursive semiotics, and finds use in many an undergraduate classroom here on the University of Iapetus. Although RS is",
+      "title": "Suricrasia Online&#39;s Online Library"
+    }
+  ],
+  "timestamp": "2026-09-05T17:43:58.331367Z"
+}

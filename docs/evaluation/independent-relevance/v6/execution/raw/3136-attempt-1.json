@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 3136,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 306.663,
+  "pair_id": "candidate-p-0915",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about electric aviation within archaeology",
+    "results": [
+      {
+        "category": "general",
+        "content": "2018.09.26 • Urban archaeology, local lobbying, family life, social assistance programs, and avocados. 2018.09.19 • Parties and parliaments, residential energy use, open-access sc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.data-is-plural.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Data Is Plural — Full Archive",
+        "url": "https://www.data-is-plural.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "?? New Philadelphia Archaeology Project Updates on Project Progress April 2024 New Philadelphia National Historic Site is America&#39;s 424th National Park! Follow news and updates on",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "faculty.las.illinois.edu",
+          "/cfennell/NP/updates.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Updates on New Philadelphia Archaeology Project",
+        "url": "http://faculty.las.illinois.edu/cfennell/NP/updates.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "79007ab5b48f27f299957901770fb3130a13ee41bf2cb93e91c55344575df735",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about electric aviation within archaeology",
+  "query_id": "candidate-c-0915",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.data-is-plural.com/archive/",
+      "original_url": "https://www.data-is-plural.com/archive/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "2018.09.26 • Urban archaeology, local lobbying, family life, social assistance programs, and avocados. 2018.09.19 • Parties and parliaments, residential energy use, open-access sc",
+      "title": "Data Is Plural — Full Archive"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://faculty.las.illinois.edu/cfennell/NP/updates.html",
+      "original_url": "http://faculty.las.illinois.edu/cfennell/NP/updates.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "?? New Philadelphia Archaeology Project Updates on Project Progress April 2024 New Philadelphia National Historic Site is America&#39;s 424th National Park! Follow news and updates on",
+      "title": "Updates on New Philadelphia Archaeology Project"
+    }
+  ],
+  "timestamp": "2026-09-05T17:37:04.402306Z"
+}

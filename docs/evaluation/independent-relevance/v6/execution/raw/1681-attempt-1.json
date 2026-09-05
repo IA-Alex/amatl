@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 1681,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 287.968,
+  "pair_id": "candidate-p-0782",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how do models represent distributed ledgers within ecological economics",
+    "results": [
+      {
+        "category": "general",
+        "content": "the world of bits and distributed ledgers, immutability is high technology bordering on magic, an asymptote you can kiss but never rest upon, but in the world of atoms and artifac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-gig-economy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Gig Economy — Chadnet",
+        "url": "https://wiki.chadnet.org/the-gig-economy"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "851d08eb088041ce441c42c2e38cc96d27b512b11367b36d25c21457558b8b4d",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how do models represent distributed ledgers within ecological economics",
+  "query_id": "candidate-t-0782",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://wiki.chadnet.org/the-gig-economy",
+      "original_url": "https://wiki.chadnet.org/the-gig-economy",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "the world of bits and distributed ledgers, immutability is high technology bordering on magic, an asymptote you can kiss but never rest upon, but in the world of atoms and artifac",
+      "title": "The Gig Economy — Chadnet"
+    }
+  ],
+  "timestamp": "2026-09-05T17:29:24.712483Z"
+}

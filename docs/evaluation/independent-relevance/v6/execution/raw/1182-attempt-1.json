@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1182,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 322.594,
+  "pair_id": "candidate-p-2226",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of urban heat mapping within energy policy",
+    "results": [
+      {
+        "category": "general",
+        "content": "the head . {...} German researchers name the androgen receptor gene as the cardinal prerequisite for balding[7]. They conclude that a certain variant of the androgen receptor is n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2009/01/a_week_with_gre_2.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: A Week with Gregory Cochran: Day Five",
+        "url": "http://www.2blowhards.com/archives/2009/01/a_week_with_gre_2.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f7e5291fcd5a41371ac256f8921523739789ef925053728ee077fb5dd5fca4af",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of urban heat mapping within energy policy",
+  "query_id": "candidate-c-2226",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.2blowhards.com/archives/2009/01/a_week_with_gre_2.html",
+      "original_url": "http://www.2blowhards.com/archives/2009/01/a_week_with_gre_2.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "the head . {...} German researchers name the androgen receptor gene as the cardinal prerequisite for balding[7]. They conclude that a certain variant of the androgen receptor is n",
+      "title": "2blowhards.com: A Week with Gregory Cochran: Day Five"
+    }
+  ],
+  "timestamp": "2026-09-05T17:26:44.372731Z"
+}

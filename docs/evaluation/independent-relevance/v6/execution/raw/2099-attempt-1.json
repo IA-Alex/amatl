@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2099,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 330.697,
+  "pair_id": "candidate-p-0210",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how can researchers measure arctic navigation within energy policy",
+    "results": [
+      {
+        "category": "general",
+        "content": "the campaigns the researchers would depend on the local economy for subsistence and other necessities. Both on and off-site diagnostic instruments are providing data on the natura",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "might suggest) because researchers have consistantly treated the subject from a non-fictive, non-model viewpoint. Given the limitations posed by partial recovery and lack of histo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "spirasolaris.ca",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Spirasolaris",
+        "url": "https://spirasolaris.ca/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "dbb42432a6689c52066e3a8fdb7e17403ecd4b9e178e0dbeb729ca4af408995b",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how can researchers measure arctic navigation within energy policy",
+  "query_id": "candidate-t-0210",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.cyberspaceorbit.com/WEATHER.html",
+      "original_url": "https://www.cyberspaceorbit.com/WEATHER.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "the campaigns the researchers would depend on the local economy for subsistence and other necessities. Both on and off-site diagnostic instruments are providing data on the natura",
+      "title": "HAARP"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://spirasolaris.ca/",
+      "original_url": "https://spirasolaris.ca/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "might suggest) because researchers have consistantly treated the subject from a non-fictive, non-model viewpoint. Given the limitations posed by partial recovery and lack of histo",
+      "title": "Spirasolaris"
+    }
+  ],
+  "timestamp": "2026-09-05T17:31:37.105089Z"
+}

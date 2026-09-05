@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2366,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 300.751,
+  "pair_id": "candidate-p-1591",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of low power computing within clinical research",
+    "results": [
+      {
+        "category": "general",
+        "content": "me a pointer to a good explanation of X? ” is usually a smarter question than “ Would you explain X, please? ” . If you have some malfunctioning code, it is usually smarter to ask",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.catb.org",
+          "/esr/faqs/smart-questions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How To Ask Questions The Smart Way",
+        "url": "http://www.catb.org/esr/faqs/smart-questions.html"
+      },
+      {
+        "category": "general",
+        "content": "long-range order. One explanation, advocated by Nobel prizewinner Gerard &#39;t Hooft, is the cellular automaton interpretation of quantum mechanics; see his keynote talk at EMQM 2015",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8dd2586b403498d6c2995de5e016db352cd8f6365b42be9c879610460c5d362b",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of low power computing within clinical research",
+  "query_id": "candidate-c-1591",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "http://www.catb.org/esr/faqs/smart-questions.html",
+      "original_url": "http://www.catb.org/esr/faqs/smart-questions.html",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "me a pointer to a good explanation of X? ” is usually a smarter question than “ Would you explain X, please? ” . If you have some malfunctioning code, it is usually smarter to ask",
+      "title": "How To Ask Questions The Smart Way"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.cl.cam.ac.uk/archive/rja14/",
+      "original_url": "https://www.cl.cam.ac.uk/archive/rja14/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "long-range order. One explanation, advocated by Nobel prizewinner Gerard &#39;t Hooft, is the cellular automaton interpretation of quantum mechanics; see his keynote talk at EMQM 2015",
+      "title": "Ross Anderson&#39;s Home Page"
+    }
+  ],
+  "timestamp": "2026-09-05T17:32:58.996680Z"
+}

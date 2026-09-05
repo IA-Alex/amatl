@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 752,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 271.565,
+  "pair_id": "candidate-p-1394",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of image compression within anthropology",
+    "results": [
+      {
+        "category": "general",
+        "content": "| skip to sidebar ALIEN ANTHROPOLOGY STUDY OF ANTHROPOLOGICAL IMPLICATIONS OF THE EXTRATERRESTRIAL PRESENCE ON EARTH &#34;And to this day, [those] who...know the self as I am Brahman",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.alienanthropology.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ALIEN ANTHROPOLOGY",
+        "url": "https://www.alienanthropology.info/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1d2f22df2cd936842bcfc9ea8c138b3b2034d58ad7498d18397dfe91a49c5a6f",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of image compression within anthropology",
+  "query_id": "candidate-c-1394",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "https://www.alienanthropology.info/",
+      "original_url": "https://www.alienanthropology.info/",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "| skip to sidebar ALIEN ANTHROPOLOGY STUDY OF ANTHROPOLOGICAL IMPLICATIONS OF THE EXTRATERRESTRIAL PRESENCE ON EARTH &#34;And to this day, [those] who...know the self as I am Brahman",
+      "title": "ALIEN ANTHROPOLOGY"
+    }
+  ],
+  "timestamp": "2026-09-05T17:24:30.916457Z"
+}

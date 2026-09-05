@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 1157,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 318.842,
+  "pair_id": "candidate-p-0371",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains biometric privacy within public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "to give their official biometric ID linkage . Being used by Facebook was harmful already. This makes it more harmful because it enables Facebook&#39;s data about people to be linked e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2017-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2017: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2017-sep-dec.html"
+      },
+      {
+        "category": "general",
+        "content": "-  Biometrics - The Prison Within - TripWires, Totalitarianism, and Technoids Español  -  Biopoder en la Era del &#39;Gran Reinicio&#39;    -  B",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/sociopol_bigbrother.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Big Brother Loves You... - El Gran Hermano Te Ama...",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_bigbrother.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "65cee73fdf35eee020a6279b683f08cb2d72daf2361aaf523ba6f3eab6e391de",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains biometric privacy within public health",
+  "query_id": "candidate-t-0371",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://stallman.org/archives/2017-sep-dec.html",
+      "original_url": "http://stallman.org/archives/2017-sep-dec.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "to give their official biometric ID linkage . Being used by Facebook was harmful already. This makes it more harmful because it enables Facebook&#39;s data about people to be linked e",
+      "title": "2017: September - December Political Notes - Richard Stallman"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_bigbrother.htm",
+      "original_url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_bigbrother.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "-  Biometrics - The Prison Within - TripWires, Totalitarianism, and Technoids Español  -  Biopoder en la Era del &#39;Gran Reinicio&#39;    -  B",
+      "title": "Big Brother Loves You... - El Gran Hermano Te Ama..."
+    }
+  ],
+  "timestamp": "2026-09-05T17:26:36.578423Z"
+}

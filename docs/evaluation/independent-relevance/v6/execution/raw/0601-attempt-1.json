@@ -1,0 +1,103 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 601,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 1817.723,
+  "pair_id": "candidate-p-2187",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains thermal energy storage within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "animal integrates the information from its sensory organs into a single experience. 4.      Temporality: The capability to use information from the past and to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.socrethics.com",
+          "/Folder2/Biology.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biological Evolution of Pain",
+        "url": "http://www.socrethics.com/Folder2/Biology.htm"
+      },
+      {
+        "category": "general",
+        "content": "on foreign intelligence information, which is a giant loophole that lets cops do whatever they want as long and they claim it’s related to national security (and we all know how t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-sep-dec.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "4bb556a9b99d8521351ad5ba4024e2a744df13b36c0754d0e8d50029e7b22279",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains thermal energy storage within information science",
+  "query_id": "candidate-t-2187",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.socrethics.com/Folder2/Biology.htm",
+      "original_url": "http://www.socrethics.com/Folder2/Biology.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "animal integrates the information from its sensory organs into a single experience. 4.      Temporality: The capability to use information from the past and to",
+      "title": "The Biological Evolution of Pain"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://stallman.org/archives/2019-sep-dec.html",
+      "original_url": "http://stallman.org/archives/2019-sep-dec.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "on foreign intelligence information, which is a giant loophole that lets cops do whatever they want as long and they claim it’s related to national security (and we all know how t",
+      "title": "2019: September - December Political Notes - Richard Stallman"
+    }
+  ],
+  "timestamp": "2026-09-05T17:23:36.356790Z"
+}

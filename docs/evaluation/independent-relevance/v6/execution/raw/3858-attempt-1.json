@@ -1,0 +1,198 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 3858,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 345.396,
+  "pair_id": "candidate-p-0907",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about ecosystem services within supply networks",
+    "results": [
+      {
+        "category": "general",
+        "content": "This webpage gives a background on human taxonomy and explains how human races can be defined with K-Cluster Analysis with graphs and pictures. EthnoGuessr Online Game | HumanPhen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zero Contradictions Philosophy Home Page",
+        "url": "https://zerocontradictions.net/"
+      },
+      {
+        "category": "general",
+        "content": "space for the speakers&#39; backgrounds to be explained; I hope I have succeeded in this task. And lastly, any factual errors or mistranslations are entirely my own fault. 2. A (VERY)",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ditext.com",
+          "/nachie/bidder.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Civil War in Venezuela: Socialism to the Highest Bidder",
+        "url": "https://www.ditext.com/nachie/bidder.html"
+      },
+      {
+        "category": "general",
+        "content": "to sleep and drown out background noise. 🔗 📑 Site Inspiration mf-ingwebsite.com Simplicity is fine. Actually it is the best. Focus on content , not fluffy presentation. This is ta",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "chriskoehnke.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chris Koehnke&#39;s Webpage",
+        "url": "http://chriskoehnke.com/"
+      },
+      {
+        "category": "general",
+        "content": "to conduct exhaustive background research. In ufology, that includes identifying the key persons, corporations and agencies, and critically assessing the truthfulness of that mate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "buriedtruth.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BuriedTruth.com",
+        "url": "http://buriedtruth.com/"
+      },
+      {
+        "category": "general",
+        "content": "running applications in background when a profile is not used, using the SIM...). This is really effective for privacy or security reasons (or both), you can have a different VPN",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "dataswamp.org",
+          "/~solene/index-full.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Solene&#39;%",
+        "url": "https://dataswamp.org/~solene/index-full.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2f6132e607749e22162fc78faa735d2955bac399b927f8231cb6f613adc55ce0",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about ecosystem services within supply networks",
+  "query_id": "candidate-c-0907",
+  "raw_result_count": 5,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://zerocontradictions.net/",
+      "original_url": "https://zerocontradictions.net/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "This webpage gives a background on human taxonomy and explains how human races can be defined with K-Cluster Analysis with graphs and pictures. EthnoGuessr Online Game | HumanPhen",
+      "title": "Zero Contradictions Philosophy Home Page"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.ditext.com/nachie/bidder.html",
+      "original_url": "https://www.ditext.com/nachie/bidder.html",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "space for the speakers&#39; backgrounds to be explained; I hope I have succeeded in this task. And lastly, any factual errors or mistranslations are entirely my own fault. 2. A (VERY)",
+      "title": "The Civil War in Venezuela: Socialism to the Highest Bidder"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://chriskoehnke.com/",
+      "original_url": "http://chriskoehnke.com/",
+      "rank": 3,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "to sleep and drown out background noise. 🔗 📑 Site Inspiration mf-ingwebsite.com Simplicity is fine. Actually it is the best. Focus on content , not fluffy presentation. This is ta",
+      "title": "Chris Koehnke&#39;s Webpage"
+    }
+  ],
+  "timestamp": "2026-09-05T17:40:51.880574Z"
+}

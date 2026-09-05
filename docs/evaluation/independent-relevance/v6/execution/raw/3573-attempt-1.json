@@ -1,0 +1,144 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 3573,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 466.49,
+  "pair_id": "candidate-p-1589",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what are the main constraints on low power computing within behavioral science",
+    "results": [
+      {
+        "category": "general",
+        "content": "were supplied by &#34;constraints,&#34; also in graphical form, that could be applied to the masters to shape an inter-related parts. Its data structures were hard to understand—the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "worrydream.com",
+          "/EarlyHistoryOfSmalltalk/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Early History Of Smalltalk",
+        "url": "https://worrydream.com/EarlyHistoryOfSmalltalk/"
+      },
+      {
+        "category": "general",
+        "content": "adhere to application constraints for correctness. Ensuring such application-level invariants poses a challenge, as developers must reason about the replicated program state and r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "programming-group.com",
+          "/members/salvaneschi",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Prof. Dr. Guido Salvaneschi | Programming Group",
+        "url": "https://programming-group.com/members/salvaneschi"
+      },
+      {
+        "category": "general",
+        "content": "imposed design, constraints, namely that it provide a satisfactory experience to the player over a 300 baud serial telephone connection (one routed, moreover, through commercial p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fudco.com",
+          "/chip/lessons.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Lessons of Lucasfilm&#39;s Habitat",
+        "url": "http://www.fudco.com/chip/lessons.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7c62d9f801f30b2cd76bb8e946808cc2abf371f67fbb09de82eb1c1ab6b6bffb",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what are the main constraints on low power computing within behavioral science",
+  "query_id": "candidate-t-1589",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://worrydream.com/EarlyHistoryOfSmalltalk/",
+      "original_url": "https://worrydream.com/EarlyHistoryOfSmalltalk/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "were supplied by &#34;constraints,&#34; also in graphical form, that could be applied to the masters to shape an inter-related parts. Its data structures were hard to understand—the",
+      "title": "The Early History Of Smalltalk"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://programming-group.com/members/salvaneschi",
+      "original_url": "https://programming-group.com/members/salvaneschi",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "adhere to application constraints for correctness. Ensuring such application-level invariants poses a challenge, as developers must reason about the replicated program state and r",
+      "title": "Prof. Dr. Guido Salvaneschi | Programming Group"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.fudco.com/chip/lessons.html",
+      "original_url": "http://www.fudco.com/chip/lessons.html",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "imposed design, constraints, namely that it provide a satisfactory experience to the player over a 300 baud serial telephone connection (one routed, moreover, through commercial p",
+      "title": "The Lessons of Lucasfilm&#39;s Habitat"
+    }
+  ],
+  "timestamp": "2026-09-05T17:39:19.290293Z"
+}

@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2182,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 329.861,
+  "pair_id": "candidate-p-0230",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "key concepts associated with arctic navigation within risk analysis",
+    "results": [
+      {
+        "category": "general",
+        "content": "and each spell has an associated tradeoff. A healing spell might accidentally heal your opponent, or a fire spell might light the room on fire and trap you. This adds a lot of dep",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.roguetemple.com",
+          "/7drl/2013/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Temple of The Roguelike: 7DRL Shrine : 2013 7DRL Challenge Evaluation",
+        "url": "https://www.roguetemple.com/7drl/2013/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "374e07b95b30f67f8ef0ac5357beb2e4206704fa3b8b72560e6c54ffd45f0a1d",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "key concepts associated with arctic navigation within risk analysis",
+  "query_id": "candidate-c-0230",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.roguetemple.com/7drl/2013/",
+      "original_url": "https://www.roguetemple.com/7drl/2013/",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "and each spell has an associated tradeoff. A healing spell might accidentally heal your opponent, or a fire spell might light the room on fire and trap you. This adds a lot of dep",
+      "title": "Temple of The Roguelike: 7DRL Shrine : 2013 7DRL Challenge Evaluation"
+    }
+  ],
+  "timestamp": "2026-09-05T17:32:02.658213Z"
+}

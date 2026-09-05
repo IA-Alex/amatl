@@ -1,0 +1,306 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 3386,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 392.747,
+  "pair_id": "candidate-p-0891",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about ecosystem services within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "structuring, information loss, and a lack of provenance or security. By relying on unstructured folders and rigid JSON schemas instead of a proper database with foreign keys, audi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "willing to store their information in the cloud. For no obvious reason, I sort of forgot about this software, until quite recently. Having tested Pages in macOS and the Murena Wor",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dedoimedo.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dedoimedo - A Place to Learn a Lot About a Lot",
+        "url": "https://www.dedoimedo.com/"
+      },
+      {
+        "category": "general",
+        "content": "not be answered without information from such complexes of space-based scientific observatories. As physical science progresses, what was accepted as the best physics yesterday se",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "larouchepub.com",
+          "/lar/2019/4616-the_science_and_technology_nee.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Science and Technology Needed To Colonize Mars",
+        "url": "https://larouchepub.com/lar/2019/4616-the_science_and_technology_nee.html"
+      },
+      {
+        "category": "general",
+        "content": ".  More information about Ksplice,  including a technical paper describing how it works, is available from http://www.ksplice.com . Jeff Arnold started development on th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "Jeff is a Technical information Specialist at the National Center for Biotechnology Information at the US National Library of Medicine. He has been involved in the PubMed Central",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.balisage.net",
+          "/2018/Bios.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Balisage 2018 - Participant Bios",
+        "url": "https://www.balisage.net/2018/Bios.html"
+      },
+      {
+        "category": "general",
+        "content": "Automation Specialists, Information Security Analysts and Internet of Things Specialists are newly emerging among a cohort of roles which are seeing growing demand from employers.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/capitalism.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Capitalism will die - but will it take us with it?",
+        "url": "http://digdeeper.love/articles/capitalism.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "interesting history and information in Parts I and II. However, I recommend skipping the flawed blank slatist theory that Rudyard Lynch presents in Part III of this video. Blogrol",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zero Contradictions Philosophy Home Page",
+        "url": "https://zerocontradictions.net/"
+      },
+      {
+        "category": "general",
+        "content": "degree in computer and information science from the University of Pennsylvania and a bachelor&#39;s degree in computer science from Penn State. Cyril Crassin Postoctoral researcher, N",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "openglinsights.com",
+          "/contributors.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OpenGL Insights",
+        "url": "https://openglinsights.com/contributors.html"
+      },
+      {
+        "category": "general",
+        "content": "Contact Documenting disinformation, corruption, malfeasance ... @BuriedTruth1      mail @t BuriedTruth d0t com Welcome to the BuriedTruth.com Date: 2020-03-06",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "buriedtruth.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BuriedTruth.com",
+        "url": "http://buriedtruth.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f40ea70a49cb822a8a0c18507484ff7b54c5bfb051f0db8111bd3f60e721e5da",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about ecosystem services within information science",
+  "query_id": "candidate-c-0891",
+  "raw_result_count": 9,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://gnu.support/",
+      "original_url": "https://gnu.support/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "structuring, information loss, and a lack of provenance or security. By relying on unstructured folders and rigid JSON schemas instead of a proper database with foreign keys, audi",
+      "title": "GNU.Support website about GNU Operating Systems"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.dedoimedo.com/",
+      "original_url": "https://www.dedoimedo.com/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "willing to store their information in the cloud. For no obvious reason, I sort of forgot about this software, until quite recently. Having tested Pages in macOS and the Murena Wor",
+      "title": "Dedoimedo - A Place to Learn a Lot About a Lot"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://larouchepub.com/lar/2019/4616-the_science_and_technology_nee.html",
+      "original_url": "https://larouchepub.com/lar/2019/4616-the_science_and_technology_nee.html",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "not be answered without information from such complexes of space-based scientific observatories. As physical science progresses, what was accepted as the best physics yesterday se",
+      "title": "The Science and Technology Needed To Colonize Mars"
+    }
+  ],
+  "timestamp": "2026-09-05T17:38:21.234504Z"
+}

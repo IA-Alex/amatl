@@ -1,0 +1,198 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 36,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 360.428,
+  "pair_id": "candidate-p-1427",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about image compression within public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "anes, Michael, Compression Breakthrough, Extra quotes. Saturn entered Aries just now at 11:36 pm EDT on May 24th. We have ended the 29 year Saturn cycle which lasted",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.exopoliticsindia.in",
+          "/2025/06/victory-of-surface-command-surfacom-555.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "EXOPOLITICS INDIA: Victory of Surface Command (SURFACOM) 555",
+        "url": "https://www.exopoliticsindia.in/2025/06/victory-of-surface-command-surfacom-555.html"
+      },
+      {
+        "category": "general",
+        "content": "24th, the process of Compression Breakthrough has started and is accelerating: https://www.youtube.com/watch?v=Ksq2Fl3WTJ0&amp;t=3s The Ashtar Command is getting very busy activat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.exopoliticsindia.in",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "EXOPOLITICS INDIA",
+        "url": "https://www.exopoliticsindia.in/"
+      },
+      {
+        "category": "general",
+        "content": "and the paradoxical compression of Heraclitus : Does the sun try to do the rain’s work? Or Asclepius Demeter’s ? ( 6.43 ) Evil: the same old thing. ( 7.1 ) Not a dancer but a wres",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vreeman.com",
+          "/meditations/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "📘 Meditations by Marcus Aurelius. Translation by Gregory Hays.",
+        "url": "https://vreeman.com/meditations/"
+      },
+      {
+        "category": "general",
+        "content": "emitters, explosive compression of huge solenoids and explosive breaking of energised superconducting toroids. One common factor here is that these weapons are single use only, af",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cyb-sec.neocities.org",
+          "/pages/alt-cyberpunk-faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "alt.cyberpunk FAQ – /cyb/&#43;/sec/ wiki",
+        "url": "https://cyb-sec.neocities.org/pages/alt-cyberpunk-faq/"
+      },
+      {
+        "category": "general",
+        "content": "Inputs and Explanatory Compression https://www.spaceandmotion.com/2026/wsm-simplicity-inputs-vs-mainstream-physics&#43;25.html “One substance, one law” cannot hide complex",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/Philosophy-Politics-Globalisation.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Famous Philosophers on Politics, Political Science, Globalisation, Oligarchy,Democracy",
+        "url": "https://www.spaceandmotion.com/Philosophy-Politics-Globalisation.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5c5d9f4938e65df2314c450f47bf8cd6e171e91604de63e78fb31ed683b28a68",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about image compression within public health",
+  "query_id": "candidate-c-1427",
+  "raw_result_count": 5,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "https://www.exopoliticsindia.in/2025/06/victory-of-surface-command-surfacom-555.html",
+      "original_url": "https://www.exopoliticsindia.in/2025/06/victory-of-surface-command-surfacom-555.html",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "anes, Michael, Compression Breakthrough, Extra quotes. Saturn entered Aries just now at 11:36 pm EDT on May 24th. We have ended the 29 year Saturn cycle which lasted",
+      "title": "EXOPOLITICS INDIA: Victory of Surface Command (SURFACOM) 555"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.exopoliticsindia.in/",
+      "original_url": "https://www.exopoliticsindia.in/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "24th, the process of Compression Breakthrough has started and is accelerating: https://www.youtube.com/watch?v=Ksq2Fl3WTJ0&amp;t=3s The Ashtar Command is getting very busy activat",
+      "title": "EXOPOLITICS INDIA"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://vreeman.com/meditations/",
+      "original_url": "https://vreeman.com/meditations/",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "and the paradoxical compression of Heraclitus : Does the sun try to do the rain’s work? Or Asclepius Demeter’s ? ( 6.43 ) Evil: the same old thing. ( 7.1 ) Not a dancer but a wres",
+      "title": "📘 Meditations by Marcus Aurelius. Translation by Gregory Hays."
+    }
+  ],
+  "timestamp": "2026-09-05T17:20:41.045049Z"
+}

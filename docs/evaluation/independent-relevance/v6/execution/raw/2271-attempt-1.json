@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2271,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 309.543,
+  "pair_id": "candidate-p-0760",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how is data provenance within science education evaluated in practice",
+    "results": [
+      {
+        "category": "general",
+        "content": "to determine the actual provenance of any particles found in the dusts aspirated from between the Shroud and the Holland Cloth in 1978 (are they from the Shroud, the backing cloth",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.shroud.com",
+          "/papers.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scientific Papers and Articles",
+        "url": "https://www.shroud.com/papers.htm"
+      },
+      {
+        "category": "general",
+        "content": "one has a wonderful provenance, imagine how many ATL and CSIR projects were evaluated by Sir George Julius with it? Warwick Halcrow wrote on 12/12/2015 to Neville Mitchell and oth",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tote-history-atl.net.au",
+          "/george_julius_genealogy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "George Julius Genealogy",
+        "url": "http://tote-history-atl.net.au/george_julius_genealogy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b0b342dfe3d841ed610e6e7849441d68ac484590323ddb4b83063e8223a25827",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how is data provenance within science education evaluated in practice",
+  "query_id": "candidate-t-0760",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.shroud.com/papers.htm",
+      "original_url": "https://www.shroud.com/papers.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "to determine the actual provenance of any particles found in the dusts aspirated from between the Shroud and the Holland Cloth in 1978 (are they from the Shroud, the backing cloth",
+      "title": "Scientific Papers and Articles"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://tote-history-atl.net.au/george_julius_genealogy.htm",
+      "original_url": "http://tote-history-atl.net.au/george_julius_genealogy.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "one has a wonderful provenance, imagine how many ATL and CSIR projects were evaluated by Sir George Julius with it? Warwick Halcrow wrote on 12/12/2015 to Neville Mitchell and oth",
+      "title": "George Julius Genealogy"
+    }
+  ],
+  "timestamp": "2026-09-05T17:32:30.051001Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1796,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 569.9,
+  "pair_id": "candidate-p-1468",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "an introductory account of indoor air chemistry within materials engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "60d31f3e8b1c1120f7db6e98e6aba5e7d5ba7f94ff4d377edac1027457877952",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "an introductory account of indoor air chemistry within materials engineering",
+  "query_id": "candidate-c-1468",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:30:01.180464Z"
+}

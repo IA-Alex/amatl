@@ -1,0 +1,252 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 1979,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 367.851,
+  "pair_id": "candidate-p-0876",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "under what conditions does ecosystem services within cybersecurity change",
+    "results": [
+      {
+        "category": "general",
+        "content": "dismisses anthropics cybersecurity/ Public Universities are taxpayer-funded ponzi scams: how not to be a noob by george hotz | How to become good at something | a brief explanatio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "that its most powerful cybersecurity capabilities would remain limited to a small group of trusted testers. Astra is the first model OpenAI has designated as reaching its “critica",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alterslash.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alterslash, the unofficial Slashdot digest",
+        "url": "https://alterslash.org/"
+      },
+      {
+        "category": "general",
+        "content": "devices saying it&#39;s a cybersecurity threat .* It is, and that is a wise choice, However, lots of apps are threats to your personal data security ‐ and so are Android and iOS",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-sep-dec.html"
+      },
+      {
+        "category": "general",
+        "content": "as the resurgence of cybersecurity risks. Is that it? Most of those aren&#39;t new. Can they fill the millions of lost spots? Even if they could, can the average restaurant server be",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/capitalism.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Capitalism will die - but will it take us with it?",
+        "url": "http://digdeeper.love/articles/capitalism.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "the inadequate level of cybersecurity in many products, and the lack of timely security updates. It also tackles the challenges consumers and businesses currently face when trying",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mjtsai.com",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Tsai - Blog",
+        "url": "https://mjtsai.com/blog/"
+      },
+      {
+        "category": "general",
+        "content": "Viakoo, an OT and IoT cybersecurity provider, told us that while 100 systems represent a small fraction - only about 0.5 percent - of water utilities in the US, the &#34;real threat i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "soylentnews.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SoylentNews: SoylentNews is people",
+        "url": "https://soylentnews.org/"
+      },
+      {
+        "category": "general",
+        "content": "Martin, worked in cybersecurity, contributed to visual effects projects, and even helped create CT scans of fossils, allowing researchers to study ancient specimens in new ways. D",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0a95d8e96037a4f30bce8c6938c8c6c38d7e2ccb52dd53cb99727c5b9338532d",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "under what conditions does ecosystem services within cybersecurity change",
+  "query_id": "candidate-t-0876",
+  "raw_result_count": 7,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://imlauer.github.io/",
+      "original_url": "https://imlauer.github.io/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "dismisses anthropics cybersecurity/ Public Universities are taxpayer-funded ponzi scams: how not to be a noob by george hotz | How to become good at something | a brief explanatio",
+      "title": "esotericwarfare"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://alterslash.org/",
+      "original_url": "https://alterslash.org/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "that its most powerful cybersecurity capabilities would remain limited to a small group of trusted testers. Astra is the first model OpenAI has designated as reaching its “critica",
+      "title": "Alterslash, the unofficial Slashdot digest"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://stallman.org/archives/2019-sep-dec.html",
+      "original_url": "http://stallman.org/archives/2019-sep-dec.html",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "devices saying it&#39;s a cybersecurity threat .* It is, and that is a wise choice, However, lots of apps are threats to your personal data security ‐ and so are Android and iOS",
+      "title": "2019: September - December Political Notes - Richard Stallman"
+    }
+  ],
+  "timestamp": "2026-09-05T17:31:00.145647Z"
+}

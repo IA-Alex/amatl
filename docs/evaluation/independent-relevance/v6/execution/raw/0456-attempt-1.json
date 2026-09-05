@@ -1,0 +1,279 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 456,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 322.938,
+  "pair_id": "candidate-p-0879",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of ecosystem services within education",
+    "results": [
+      {
+        "category": "general",
+        "content": "at something | a brief explanation of the cathedral | retiring the university by Curtis Yarvin. | The Case Against Education | book review seeing like a state | The toxic schoolin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "/Volumes/PLAYSTATION Explanation of the command: hdiutil makehybrid : The macOS utility for creating disc images -iso : Creates a standard ISO9660 filesystem (required for PS1 gam",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "blog.greggant.com",
+          "/posts/2025/03/18/the-definitive-guide-to-ios-emulation.html",
+          "",
+          "",
+          "legal-considerations"
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Definitive Guide to iOS/iPadOS emulation",
+        "url": "http://blog.greggant.com/posts/2025/03/18/the-definitive-guide-to-ios-emulation.html#legal-considerations"
+      },
+      {
+        "category": "general",
+        "content": "has given no formal explanation to RFPI for the eviction. RFPI believes the eviction is being done for political reasons, and is a form of censorship. UPaz has told the press that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.worldofradio.com",
+          "/dxld3136.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.worldofradio.com/dxld3136.txt",
+        "url": "http://www.worldofradio.com/dxld3136.txt"
+      },
+      {
+        "category": "general",
+        "content": "works, with an overall explanation about its many parts, with a more detailed approach in the backend scenario. Bruno Cardoso Lopes is a PhD student at University of Campinas, Bra",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "(That&#39;s literally the explanation for PowerShell. Many of us wanted to improve cmd.exe, but couldn&#39;t.) More examples: We can&#39;t touch named pipes. Let&#39;s add %INTERNAL_NOTIFICATION_",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "blog.zorinaq.com",
+          "/i-contribute-to-the-windows-kernel-we-are-slower-than-other-oper/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "&#34;I Contribute to the Windows Kernel. We Are Slower Than Other Operating Systems. Here Is Why.&#34;",
+        "url": "http://blog.zorinaq.com/i-contribute-to-the-windows-kernel-we-are-slower-than-other-oper/"
+      },
+      {
+        "category": "general",
+        "content": "starts with a great explanation of propositions, truth values, different types of logic, truth functions, and theories of truth. My only contention is that he concluded the video",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zero Contradictions Philosophy Home Page",
+        "url": "https://zerocontradictions.net/"
+      },
+      {
+        "category": "general",
+        "content": "elements of a tentative explanation: The Democratic Party is still run by moderate liberals; but the more radical wing is louder and gets more press-- especially in the rightist m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.zompist.com",
+          "/predic.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The last century-- what went wrong",
+        "url": "http://www.zompist.com/predic.htm"
+      },
+      {
+        "category": "general",
+        "content": "/Volumes/PLAYSTATION Explanation of the command: hdiutil makehybrid : The macOS utility for creating disc images -iso : Creates a standard ISO9660 filesystem (required for PS1 gam",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "blog.greggant.com",
+          "/posts/2025/03/18/the-definitive-guide-to-ios-emulation.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Definitive Guide to iOS/iPadOS emulation",
+        "url": "http://blog.greggant.com/posts/2025/03/18/the-definitive-guide-to-ios-emulation.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "56680d6ea1e46cf95f766ec51e1117b1442b96c207f4ccdd001f71c2466c1335",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of ecosystem services within education",
+  "query_id": "candidate-c-0879",
+  "raw_result_count": 8,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://imlauer.github.io/",
+      "original_url": "https://imlauer.github.io/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "at something | a brief explanation of the cathedral | retiring the university by Curtis Yarvin. | The Case Against Education | book review seeing like a state | The toxic schoolin",
+      "title": "esotericwarfare"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "http://blog.greggant.com/posts/2025/03/18/the-definitive-guide-to-ios-emulation.html",
+      "original_url": "http://blog.greggant.com/posts/2025/03/18/the-definitive-guide-to-ios-emulation.html#legal-considerations",
+      "rank": 2,
+      "rejection_reason": null,
+      "snippet": "/Volumes/PLAYSTATION Explanation of the command: hdiutil makehybrid : The macOS utility for creating disc images -iso : Creates a standard ISO9660 filesystem (required for PS1 gam",
+      "title": "The Definitive Guide to iOS/iPadOS emulation"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "http://www.worldofradio.com/dxld3136.txt",
+      "original_url": "http://www.worldofradio.com/dxld3136.txt",
+      "rank": 3,
+      "rejection_reason": null,
+      "snippet": "has given no formal explanation to RFPI for the eviction. RFPI believes the eviction is being done for political reasons, and is a form of censorship. UPaz has told the press that",
+      "title": "http://www.worldofradio.com/dxld3136.txt"
+    }
+  ],
+  "timestamp": "2026-09-05T17:22:50.869530Z"
+}

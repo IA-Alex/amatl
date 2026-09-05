@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1120,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 331.501,
+  "pair_id": "candidate-p-1590",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "key concepts associated with low power computing within civil infrastructure",
+    "results": [
+      {
+        "category": "general",
+        "content": "safety, critical infrastructure protection, homeland security, national security, long-term research, sound science, free and open source software, and the development of predicta",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "treated as warfighting infrastructure Unlike other military services, the Space Force largely operates from permanent bases in the United States and allied nations rather than hav",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.thespacereview.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Space Review: essays and commentary about the final frontier",
+        "url": "https://www.thespacereview.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6fbf981816e987c5231cf6e725bad2435b78c2fc67fdfdd6fc50bb8d02555721",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "key concepts associated with low power computing within civil infrastructure",
+  "query_id": "candidate-c-1590",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.csl.sri.com/users/neumann/",
+      "original_url": "https://www.csl.sri.com/users/neumann/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "safety, critical infrastructure protection, homeland security, national security, long-term research, sound science, free and open source software, and the development of predicta",
+      "title": "Peter Neumann&#39;s Home Page"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.thespacereview.com/",
+      "original_url": "https://www.thespacereview.com/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "treated as warfighting infrastructure Unlike other military services, the Space Force largely operates from permanent bases in the United States and allied nations rather than hav",
+      "title": "The Space Review: essays and commentary about the final frontier"
+    }
+  ],
+  "timestamp": "2026-09-05T17:26:24.854150Z"
+}

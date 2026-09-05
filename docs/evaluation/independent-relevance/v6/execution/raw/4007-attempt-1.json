@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 4007,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 301.634,
+  "pair_id": "candidate-p-0897",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "which mechanisms govern ecosystem services within operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "pleasure and reward mechanisms. Oxytocin Release: Social Bonding: Oxytocin, often referred to as the &#34;love hormone,&#34; is also released. Oxytocin is heavily involved in social bondi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.empathogens.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Empathogens as conceived by ChatGPT",
+        "url": "https://www.empathogens.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "similar classes of mechanisms, although at smaller global scale or within narrower linguistic, national, or commercial markets. The argument keeps this Googlecentrismus because Go",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kirill.korins.ky",
+          "/articles/the-walled-garden-of-the-surveilled-web/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Walled Garden of the Surveilled Web - Kirill&#39;s journal",
+        "url": "https://kirill.korins.ky/articles/the-walled-garden-of-the-surveilled-web/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e284600e4a95ca012cd3a9241bf54417226e78e8ed80281b4a0405cc5e7b6159",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "which mechanisms govern ecosystem services within operations research",
+  "query_id": "candidate-t-0897",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.empathogens.com/chatgpt/",
+      "original_url": "https://www.empathogens.com/chatgpt/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "pleasure and reward mechanisms. Oxytocin Release: Social Bonding: Oxytocin, often referred to as the &#34;love hormone,&#34; is also released. Oxytocin is heavily involved in social bondi",
+      "title": "Empathogens as conceived by ChatGPT"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://kirill.korins.ky/articles/the-walled-garden-of-the-surveilled-web/",
+      "original_url": "https://kirill.korins.ky/articles/the-walled-garden-of-the-surveilled-web/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "similar classes of mechanisms, although at smaller global scale or within narrower linguistic, national, or commercial markets. The argument keeps this Googlecentrismus because Go",
+      "title": "The Walled Garden of the Surveilled Web - Kirill&#39;s journal"
+    }
+  ],
+  "timestamp": "2026-09-05T17:41:38.601356Z"
+}

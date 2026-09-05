@@ -1,0 +1,171 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2734,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 290.696,
+  "pair_id": "candidate-p-1359",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of hydrogen storage within education",
+    "results": [
+      {
+        "category": "general",
+        "content": "States without a good explanation. I told her not to tell anyone. I wanted a high-impact, crash dose. If it didn’t work, I’d have to check myself into the hospital. Self-treatment",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.isegoria.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Isegoria",
+        "url": "http://www.isegoria.net/"
+      },
+      {
+        "category": "general",
+        "content": "(2016), and a causal explanation of quantum entanglement without faster-than-light “spooky action at a distance” (2020). If you want to learn about my overall career, please see m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Information Philosopher - dedicated to the new information philosophy",
+        "url": "https://www.informationphilosopher.com/"
+      },
+      {
+        "category": "general",
+        "content": "and Fragrances. The explanation is that this ester has a fresh, green odor, and that the market abounds with green-smelling chemicals, each with a &#39;green&#39; tradename. So how to giv",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/sillymolecules/sillymols4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecules with Silly or Unusual Names - page 4",
+        "url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm"
+      },
+      {
+        "category": "general",
+        "content": "most straightforward explanation for this phenomenon is that much of the warming is caused by solar insolation, but there may well be several supplementary reasons, such as change",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meteo.lcd.lu",
+          "/globalwarming/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Warming Sceptic",
+        "url": "https://meteo.lcd.lu/globalwarming/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f17b33a3461d0763c8547016fddf1580b959a481986b96ee39dbba001b663be0",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of hydrogen storage within education",
+  "query_id": "candidate-c-1359",
+  "raw_result_count": 4,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.isegoria.net/",
+      "original_url": "http://www.isegoria.net/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "States without a good explanation. I told her not to tell anyone. I wanted a high-impact, crash dose. If it didn’t work, I’d have to check myself into the hospital. Self-treatment",
+      "title": "Isegoria"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.informationphilosopher.com/",
+      "original_url": "https://www.informationphilosopher.com/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "(2016), and a causal explanation of quantum entanglement without faster-than-light “spooky action at a distance” (2020). If you want to learn about my overall career, please see m",
+      "title": "The Information Philosopher - dedicated to the new information philosophy"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm",
+      "original_url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "and Fragrances. The explanation is that this ester has a fresh, green odor, and that the market abounds with green-smelling chemicals, each with a &#39;green&#39; tradename. So how to giv",
+      "title": "Molecules with Silly or Unusual Names - page 4"
+    }
+  ],
+  "timestamp": "2026-09-05T17:34:56.392232Z"
+}

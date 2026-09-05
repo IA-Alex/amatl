@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2729,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 342.064,
+  "pair_id": "candidate-p-1034",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how can researchers measure fermentation control within industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "used as a food until fermentation techniques had been developed around 700 AD. (50) Did the Chinese know soy was toxic? Like all seeds, soybeans have phytic acid in their hulls, b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.second-opinions.co.uk",
+          "/vegetarian.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Naive Vegetarian",
+        "url": "http://www.second-opinions.co.uk/vegetarian.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8e32b3b6137b51e30290182cf69a58855a94aa8d1fad485453b1d4f4b32e0066",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how can researchers measure fermentation control within industrial design",
+  "query_id": "candidate-t-1034",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.second-opinions.co.uk/vegetarian.html",
+      "original_url": "http://www.second-opinions.co.uk/vegetarian.html",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "used as a food until fermentation techniques had been developed around 700 AD. (50) Did the Chinese know soy was toxic? Like all seeds, soybeans have phytic acid in their hulls, b",
+      "title": "The Naive Vegetarian"
+    }
+  ],
+  "timestamp": "2026-09-05T17:34:54.928908Z"
+}

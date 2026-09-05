@@ -1,0 +1,34 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 1139,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 272.638,
+  "pair_id": "candidate-p-1000",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how is enzymatic catalysis within science education evaluated in practice",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1373fd843d68b7e78ff160a38b3f21f9b90f2f22298a9f235cf5255fc9b89200",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how is enzymatic catalysis within science education evaluated in practice",
+  "query_id": "candidate-t-1000",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:26:30.809445Z"
+}

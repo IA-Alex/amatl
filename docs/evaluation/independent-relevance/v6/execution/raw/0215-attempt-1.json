@@ -1,0 +1,225 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 215,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 353.367,
+  "pair_id": "candidate-p-0892",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "under what conditions does ecosystem services within materials engineering change",
+    "results": [
+      {
+        "category": "general",
+        "content": "do for humans. Genetic engineering: Utilizing advanced biotechnologies to eliminate suffering, predation, and other forms of harm experienced by non-human animals in the wild. Com",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.antispeciesism.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Speciesism and Antispeciesism as conceived as conceived by ChatGPT",
+        "url": "https://www.antispeciesism.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "former hardware engineering chief John Ternus officially became CEO of the company today, with the change now reflected on Apple’s leadership page . […] Tim Cook is no",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mjtsai.com",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Tsai - Blog",
+        "url": "https://mjtsai.com/blog/"
+      },
+      {
+        "category": "general",
+        "content": "synthetic meat, genetic engineering, renewable energy, and so on. And this is a big part of the reason they have captured attention. This kind of speculation serves to illustrate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "communism.org",
+          "/community/BenSeattle/2019/Proyect-FALC-Roche.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "action guided by humility",
+        "url": "http://communism.org/community/BenSeattle/2019/Proyect-FALC-Roche.htm"
+      },
+      {
+        "category": "general",
+        "content": "access from known engineering laptops or other critical OT assets. Original Submission Read More... 594 words in story 4 comments 26/09/02/0022223 story California Lawmakers Unani",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "soylentnews.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SoylentNews: SoylentNews is people",
+        "url": "https://soylentnews.org/"
+      },
+      {
+        "category": "general",
+        "content": "cloning and genetic engineering. But maybe you have a more positive take on these issues. What is your opinion of nanarchy, for example? The fact that I translated documents defen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bopsecrets.org",
+          "/CF/primitivism.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Poverty of Primitivism",
+        "url": "https://bopsecrets.org/CF/primitivism.htm"
+      },
+      {
+        "category": "general",
+        "content": "in science, technology, engineering, and mathematics. From there, her career took some remarkable turns. Tokii became the youngest engineer at Lockheed Martin, worked in cybersecu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ad79fcb294780c87cb6941116523e8148acc9a5636e918fc3ba76031791c1f8d",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "under what conditions does ecosystem services within materials engineering change",
+  "query_id": "candidate-t-0892",
+  "raw_result_count": 6,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "https://www.antispeciesism.com/chatgpt/",
+      "original_url": "https://www.antispeciesism.com/chatgpt/",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "do for humans. Genetic engineering: Utilizing advanced biotechnologies to eliminate suffering, predation, and other forms of harm experienced by non-human animals in the wild. Com",
+      "title": "Speciesism and Antispeciesism as conceived as conceived by ChatGPT"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://mjtsai.com/blog/",
+      "original_url": "https://mjtsai.com/blog/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "former hardware engineering chief John Ternus officially became CEO of the company today, with the change now reflected on Apple’s leadership page . […] Tim Cook is no",
+      "title": "Michael Tsai - Blog"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "http://communism.org/community/BenSeattle/2019/Proyect-FALC-Roche.htm",
+      "original_url": "http://communism.org/community/BenSeattle/2019/Proyect-FALC-Roche.htm",
+      "rank": 3,
+      "rejection_reason": null,
+      "snippet": "synthetic meat, genetic engineering, renewable energy, and so on. And this is a big part of the reason they have captured attention. This kind of speculation serves to illustrate",
+      "title": "action guided by humility"
+    }
+  ],
+  "timestamp": "2026-09-05T17:21:37.803967Z"
+}

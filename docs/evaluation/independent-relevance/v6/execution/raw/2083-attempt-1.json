@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2083,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 336.221,
+  "pair_id": "candidate-p-2204",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "under what conditions does thermal energy storage within sustainable finance change",
+    "results": [
+      {
+        "category": "general",
+        "content": "their power system unsustainable), or that they are relying on grid power when there is a shortage of solar power (which means that they do not really run on 100% solar power). Th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2018/09/how-to-build-a-low-tech-website/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Build a Low-tech Website? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2018/09/how-to-build-a-low-tech-website/"
+      },
+      {
+        "category": "general",
+        "content": "the government allows unsustainable foreign farms to undercut sustainable local farms. To prevent that, New Zealand need only put a suitable import duty on food, and abrogate any",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-sep-dec.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9bd66df41cfee84315da5a1451c5acab62afd3289b587f30cd102cffe5776c60",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "under what conditions does thermal energy storage within sustainable finance change",
+  "query_id": "candidate-t-2204",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://solar.lowtechmagazine.com/2018/09/how-to-build-a-low-tech-website/",
+      "original_url": "https://solar.lowtechmagazine.com/2018/09/how-to-build-a-low-tech-website/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "their power system unsustainable), or that they are relying on grid power when there is a shortage of solar power (which means that they do not really run on 100% solar power). Th",
+      "title": "How to Build a Low-tech Website? | LOW←TECH MAGAZINE"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://stallman.org/archives/2019-sep-dec.html",
+      "original_url": "http://stallman.org/archives/2019-sep-dec.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "the government allows unsustainable foreign farms to undercut sustainable local farms. To prevent that, New Zealand need only put a suitable import duty on food, and abrogate any",
+      "title": "2019: September - December Political Notes - Richard Stallman"
+    }
+  ],
+  "timestamp": "2026-09-05T17:31:32.194297Z"
+}

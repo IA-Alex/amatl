@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2840,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 300.982,
+  "pair_id": "candidate-p-0123",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about algorithmic auditing within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "interesting that algorithmic schemes designed to be optimal relative to this theory actually work well on real English. (72) Signal noise most familiarly radio &#34;static&#34;, refers to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stat.berkeley.edu",
+          "/~aldous/Real_World/100_list.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Annotated list of contexts where we perceive chance",
+        "url": "https://www.stat.berkeley.edu/~aldous/Real_World/100_list.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "10eb0bb593d35b5ffe9b49674d368add5fd6ed15d400c53d78417118cf708b96",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about algorithmic auditing within information science",
+  "query_id": "candidate-c-0123",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.stat.berkeley.edu/~aldous/Real_World/100_list.html",
+      "original_url": "https://www.stat.berkeley.edu/~aldous/Real_World/100_list.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "interesting that algorithmic schemes designed to be optimal relative to this theory actually work well on real English. (72) Signal noise most familiarly radio &#34;static&#34;, refers to",
+      "title": "Annotated list of contexts where we perceive chance"
+    }
+  ],
+  "timestamp": "2026-09-05T17:35:27.545873Z"
+}

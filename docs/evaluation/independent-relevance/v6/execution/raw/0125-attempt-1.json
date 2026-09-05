@@ -1,0 +1,279 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 125,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 384.996,
+  "pair_id": "candidate-p-1419",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains image compression within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "non-linear ICA; history compression. Pattern recognition works better on non-redundant data with independent components. Schmidhuber&#39;s Predictability Minimization (1992) was the f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.idsia.ch",
+          "/~juergen/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Juergen Schmidhuber&#39;s home page -Universal Artificial Intelligence - AI - Deep Learning - Recurrent Neural Networks -Computer Vision - Object",
+        "url": "https://people.idsia.ch/~juergen/"
+      },
+      {
+        "category": "general",
+        "content": "Inputs and Explanatory Compression https://www.spaceandmotion.com/2026/wsm-simplicity-inputs-vs-mainstream-physics&#43;25.html “One substance, one law” cannot hide complex",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/Philosophy-Hinduism-Hindu.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hinduism Hindu Religion: Discussion Metaphysics Philosophy of HinduismBeliefs, Hindu Gods",
+        "url": "https://www.spaceandmotion.com/Philosophy-Hinduism-Hindu.htm"
+      },
+      {
+        "category": "general",
+        "content": "them]. The Work of compression of the magnetic field is produced by the potential energy of the surrounding ether. Similarly, the potential energy of the atmosphere is converted i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "antimatrix.org",
+          "/Convert/Books/Sall/Questions_and_Answers_En.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dr. Sall - Secret Knowledge, and Science: from prehistoric civilizations to our days",
+        "url": "http://antimatrix.org/Convert/Books/Sall/Questions_and_Answers_En.html"
+      },
+      {
+        "category": "general",
+        "content": "digital encodings use compression technologies that eliminate redundancy. Digital television signals are almost always compressed to save space and bandwidth, the most common sche",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pages.ucsd.edu",
+          "/~dnorman/DNMss/Being_Analog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Being Analog",
+        "url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html"
+      },
+      {
+        "category": "general",
+        "content": "Example of Information Compression 4.6. More Examples of Information Compression 4.7. Examples of False Beliefs formed from Insufficient Knowledge of Reality 5. Other Theories of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/epistemology/representationalism",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Representationalism",
+        "url": "https://zerocontradictions.net/epistemology/representationalism"
+      },
+      {
+        "category": "general",
+        "content": "technical, involving compression, asynchronous loading, sequencing assets, batching HTTP requests, pipelining, and minification. All of it obscures a simpler solution. If you&#39;re o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "idlewords.com",
+          "/talks/website_obesity.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Website Obesity Crisis",
+        "url": "https://idlewords.com/talks/website_obesity.htm"
+      },
+      {
+        "category": "general",
+        "content": "The technology of compression and evacuation was available towards the end of the nineteenth century. So in the twentieth century ordinary atmospheric gases were liquefied and som",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "big-lies.org",
+          "/modern-physics-a-fraud/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "• Modern Physics a Fraud? - Superfluid helium? Speed of light a limit?, incredibility of quantum theory, Heisenberg&#39;s misunderstanding o",
+        "url": "http://big-lies.org/modern-physics-a-fraud/"
+      },
+      {
+        "category": "general",
+        "content": "Inputs and Explanatory Compression https://www.spaceandmotion.com/2026/wsm-simplicity-inputs-vs-mainstream-physics&#43;25.html “One substance, one law” cannot hide complex",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/Philosophy-Politics-Globalisation.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Famous Philosophers on Politics, Political Science, Globalisation, Oligarchy,Democracy",
+        "url": "https://www.spaceandmotion.com/Philosophy-Politics-Globalisation.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "65a3c1954993616dd3215578beb3c31fae16557ee18c91420e388266f604fc37",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains image compression within information science",
+  "query_id": "candidate-t-1419",
+  "raw_result_count": 8,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://people.idsia.ch/~juergen/",
+      "original_url": "https://people.idsia.ch/~juergen/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "non-linear ICA; history compression. Pattern recognition works better on non-redundant data with independent components. Schmidhuber&#39;s Predictability Minimization (1992) was the f",
+      "title": "Juergen Schmidhuber&#39;s home page -Universal Artificial Intelligence - AI - Deep Learning - Recurrent Neural Networks -Computer Vision - Object"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.spaceandmotion.com/Philosophy-Hinduism-Hindu.htm",
+      "original_url": "https://www.spaceandmotion.com/Philosophy-Hinduism-Hindu.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Inputs and Explanatory Compression https://www.spaceandmotion.com/2026/wsm-simplicity-inputs-vs-mainstream-physics&#43;25.html “One substance, one law” cannot hide complex",
+      "title": "Hinduism Hindu Religion: Discussion Metaphysics Philosophy of HinduismBeliefs, Hindu Gods"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://antimatrix.org/Convert/Books/Sall/Questions_and_Answers_En.html",
+      "original_url": "http://antimatrix.org/Convert/Books/Sall/Questions_and_Answers_En.html",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "them]. The Work of compression of the magnetic field is produced by the potential energy of the surrounding ether. Similarly, the potential energy of the atmosphere is converted i",
+      "title": "Dr. Sall - Secret Knowledge, and Science: from prehistoric civilizations to our days"
+    }
+  ],
+  "timestamp": "2026-09-05T17:21:10.078863Z"
+}
