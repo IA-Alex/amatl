@@ -6,7 +6,7 @@ import pytest
 
 from pre_execution_novelty_diversity_gate import (
     DEFAULT_THRESHOLDS, PreExecutionNoveltyDiversityGate, canonical_json,
-    freeze_candidate_universe, sha256_bytes, write_manifest,
+    NEW_CANDIDATE_MODE, freeze_candidate_universe, sha256_bytes, write_manifest,
 )
 
 
@@ -90,3 +90,37 @@ def test_v5_negative_replay_and_positive_control():
     assert PreExecutionNoveltyDiversityGate().evaluate(
         passing_candidate(), target_valid_per_arm=1, conservative_valid_per_query=.5
     ).decision == "PASS"
+
+
+def test_new_candidate_assignments_and_provenance_contract():
+    c = {"queries": [{**r, "generation_strategy": "catalog", "generation_provenance": {"source": "fixture"}}
+                     for r in rows(["new treatment"], "treatment") + rows(["new control"], "control")]}
+    assignments = c["queries"][:]
+    d = PreExecutionNoveltyDiversityGate({"min_effective_query_diversity": .1}).evaluate(
+        c, arm_assignments=assignments, mode=NEW_CANDIDATE_MODE,
+        target_valid_per_arm=1, conservative_valid_per_query=2)
+    assert d.metrics["PROVENANCE_INTEGRITY"] == "PASS"
+    assert d.metrics["ASSIGNMENT_QUERY_COUNT"] == 2
+
+
+@pytest.mark.parametrize("mutation,metric", [
+    (lambda a: a.pop(), "ASSIGNMENT_MISSING_QUERIES"),
+    (lambda a: a.append(a[0].copy()), "ASSIGNMENT_DUPLICATES"),
+    (lambda a: a[0].update(arm="control"), "ASSIGNMENT_ARM_MISMATCHES"),
+])
+def test_assignment_integrity_failures(mutation, metric):
+    c = candidate(["new treatment"], ["new control"])
+    assignments = [dict(r) for r in c["queries"]]
+    mutation(assignments)
+    d = PreExecutionNoveltyDiversityGate({"min_effective_query_diversity": .1}).evaluate(
+        c, arm_assignments=assignments, mode=NEW_CANDIDATE_MODE)
+    assert d.decision == "FAIL_INTEGRITY"
+    assert d.metrics[metric] > 0
+
+
+def test_historical_near_duplicate_is_not_double_counted():
+    d = evaluate(candidate(["solar energy storage today now"], ["unrelated topic"]),
+                 [{"query": "solar energy storage today"}])
+    assert d.metrics["NEAR_DUPLICATE_HISTORICAL_COUNT"] == 1
+    assert d.metrics["HISTORICAL_OVERLAP_CATEGORIES"]["NEAR_DUPLICATE"] == 1
+    assert d.metrics["HISTORICAL_OVERLAP_CATEGORIES"].get("NORMALIZED", 0) == 0

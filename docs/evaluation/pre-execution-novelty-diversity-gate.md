@@ -6,7 +6,7 @@ normal freeze helper raises `FREEZE_BLOCKED...` for every other decision.
 It does not predict relevance and does not use labels, providers, network
 requests, productive URL canonicalization, ranking, or routing.
 
-`tools/pre_execution_novelty_diversity_gate.py` preserves original query text
+`tools/pre_execution_novelty_diversity_gate.py` (gate version `1.1.0`) preserves original query text
 and derives a minimal normalized form (Unicode NFC, casefold, trim and
 whitespace collapse). Internal diversity uses token sets, deterministic
 Jaccard similarity, and explicit family/topic fields where supplied. It emits
@@ -33,3 +33,19 @@ Each evaluation can write a canonical JSON manifest containing the candidate
 hash, historical source hashes, thresholds, metrics, decision, reasons,
 provenance, and `artifact_sha256`. The V5 replay and positive-control tests
 are network-free and do not rewrite V5 artifacts.
+
+New universes must call the gate with `mode=NEW_CANDIDATE_MODE` and provide
+one assignment per query plus query-level generation provenance. Historical
+replays use `LEGACY_REPLAY_MODE` explicitly and are exempt from retroactive
+provenance requirements. Assignment failures are never silently ignored.
+
+Historical query overlap has deterministic precedence `EXACT`, `NORMALIZED`,
+`NEAR_DUPLICATE`, `NOVEL`; near duplicates use the local token-Jaccard method.
+Similarity distributions use exhaustive deterministic Jaccard and report
+mean, median, P90, P95 and max. The manifest's `artifact_sha256` is the
+canonical JSON hash of the manifest excluding its own hash field.
+
+`freeze_candidate_universe` is the authoritative future boundary:
+`candidate -> integrity -> gate PASS -> FROZEN artifact`. Existing V1–V5
+writers remain historical/reproduction-only and are not treated as future
+candidate pipelines.
