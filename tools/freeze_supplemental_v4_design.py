@@ -6,8 +6,11 @@ import hashlib
 import json
 import math
 import re
+import tempfile
 import unicodedata
 from pathlib import Path
+
+from pre_execution_novelty_diversity_gate import PreExecutionNoveltyDiversityGate, write_manifest
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "docs/evaluation/independent-relevance/new-corpus-v1/v4"
@@ -113,6 +116,29 @@ def main() -> None:
         "query_exclusion_contract": ["no V1", "no Supplemental V1/V2", "no V3", "no historical evaluation corpus",
                                       "no labels or result-derived fields used", "no within-V4 duplicate query text"],
     }
+    # ADR-012 boundary: do not emit a new FROZEN universe without an offline PASS.
+    historical_paths = [
+        ROOT / "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-query-universe-v1.json",
+        ROOT / "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-query-universe-v2.json",
+        ROOT / "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-query-universe.json",
+    ]
+    historical = [json.loads(path.read_text(encoding="utf-8")) for path in historical_paths if path.exists()]
+    gate = PreExecutionNoveltyDiversityGate().evaluate(
+        universe, historical_query_universes=historical, target_valid_per_arm=N_PER_ARM,
+        conservative_valid_per_query=0.5,
+        provenance={"timestamp": "OFFLINE_DETERMINISTIC", "source": "ADR-012", "network_requests": 0},
+    )
+    gate_path = OUT / "pre-execution-novelty-diversity-gate.json"
+    with tempfile.NamedTemporaryFile(dir=OUT, suffix=".candidate.json", delete=False) as candidate_file:
+        candidate_file.write(json.dumps(universe, ensure_ascii=False, indent=2, sort_keys=True).encode() + b"\n")
+        candidate_path = Path(candidate_file.name)
+    try:
+        write_manifest(gate_path, gate, candidate_path, historical_paths)
+    finally:
+        candidate_path.unlink(missing_ok=True)
+    if gate.decision != "PASS":
+        raise RuntimeError(f"FREEZE_BLOCKED_BY_PRE_EXECUTION_NOVELTY_DIVERSITY_GATE:{gate.decision}")
+    universe["pre_execution_gate"] = gate.as_dict()
     write(universe_path, universe)
     manifest = {
         "schema": "amatl.relevance.supplemental-v4-query-universe-manifest.v1",
