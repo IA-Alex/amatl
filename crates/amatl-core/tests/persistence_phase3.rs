@@ -178,6 +178,14 @@ async fn corrupt_database_is_quarantined_without_overwrite() {
 /// it. It holds a clone of the storage handle, so a leaked task keeps both the
 /// connection pool and the advisory file lock alive; under
 /// `locking_mode = "exclusive"` no other process could then open the database.
+///
+/// Unix only: the guard relies on a whole-file `flock(2)` on a sibling `.lock`.
+/// On Windows the `fs2` 0.4.3 advisory lock does not take effect the same way,
+/// so `SqliteStorage::open` never actually holds it and this probe would see no
+/// contention. SQLite's own `PRAGMA locking_mode = EXCLUSIVE` still enforces a
+/// single writer there; the `flock` is defence in depth. Tracked in the
+/// cross-platform locking follow-up.
+#[cfg(unix)]
 #[tokio::test]
 async fn dropping_the_service_releases_the_exclusive_database_lock() {
     use amatl_core::config::SqliteLockingMode;
