@@ -700,3 +700,73 @@ DEEP_BUDGET_EXPANSION_OBSERVED=YES
 Próxima fase: revisar las integraciones grandes restantes sin cambiar los
 límites, providers, routing, ranking, relevancia ni comportamiento Evidence
 congelados en este baseline.
+
+## Cierre de "próxima fase": Deep targets seleccionados y tope de fetch por request (2026-09-07)
+
+Este append cierra la fase declarada al final del baseline del 2026-08-31
+("revisar las integraciones grandes restantes sin cambiar límites, providers,
+routing, ranking, relevancia ni Evidence"). No reescribe el baseline anterior;
+lo continúa. Autoridad de arquitectura y Evidence v2 sin cambios.
+
+### Estado de partida verificado
+
+`amatl doctor` y `amatl providers` antes de tocar nada: `data_policy.profile =
+standard`, `egress = governed`, `inference = remote_explicit`; `marginalia` y
+`searxng` `available`; `brave`/`mojeek` `provider_disabled`; SQLite
+`migration=7`. Sin deriva respecto del baseline.
+
+### Hallazgo
+
+Los dos `KNOWN_NON_BLOCKING_LIMITATION` de mayor impacto funcional en Deep
+(`DEEP_SELECTED_RESULT_IDS_SUPPORTED=NO`,
+`PER_REQUEST_FETCH_CAP_SUPPORTED=NO`) ya estaban implementados en el commit
+`fdfac71` ("feat(deep): support selected targets and request fetch cap"),
+fechado el 2026-08-31 a las 11:36 — posterior al HEAD del baseline
+(`37d157d`, 08:23). Ese commit actualizó núcleo, superficie HTTP, MCP,
+OpenAPI (`docs/api/openapi.yaml`) y tests, pero no dejó entrada en
+`decisiones_amatl.md` pese a tocar API pública (ADR-001).
+
+### Trabajo de este cierre
+
+1. **ADR-013** en `decisiones_amatl.md` — documenta el cambio de comportamiento
+   ya enviado: `deep_with_fetch_cap` (el tope sólo estrecha el presupuesto de
+   superficie; `0` y `> deep_max_fetches` se rechazan como `InvalidInput`) y
+   `deep_selected` (Deep desde identidades de `SearchResult` sin re-ejecutar
+   Search; `DeepTarget` sólo lleva `url`/`title`/`provider`, nunca contenido;
+   canonicalización + dedup antes del `DeepBudget`; router/providers/ranking no
+   se invocan — `RoutingRecommendation` vacía con
+   `debug_reasons=["selected_search_targets"]`).
+2. **Simetría CLI**: `amatl deep --max-fetches N` (delegando en
+   `deep_with_fetch_cap`, un solo core). Sin flag, `amatl deep` se comporta
+   exactamente como en el baseline.
+
+No se tocó routing, ranking, relevancia, providers, límites configurados ni
+comportamiento Evidence. El default de `/deep` y `amatl deep` es idéntico al
+baseline. WP-1 no se reabrió.
+
+### Verificación
+
+- Compuertas: `cargo fmt --check` PASS, `cargo clippy --workspace -- -D
+  warnings` PASS, `cargo test --workspace` PASS (incl. `deep_phase5.rs`,
+  `amatl-server` tests de `max_fetches` 0/11 y `targets`).
+- Smoke real CLI: `amatl deep "SQLite WAL documentation" --max-fetches 2`
+  adquirió exactamente 2 documentos (`Enriched`) y reportó
+  `Deep resource budget exhausted (fetch_limit)` — vs. 10 en el baseline.
+  `amatl deep "rust" --max-fetches 999` (por encima del configurado 10)
+  rechazado como `invalid_request`.
+
+```
+DEEP_SELECTED_RESULT_IDS_SUPPORTED=YES
+PER_REQUEST_FETCH_CAP_SUPPORTED=YES
+PER_REQUEST_FETCH_CAP_CAN_ONLY_NARROW=YES
+DEEP_DEFAULT_BEHAVIOR_UNCHANGED_FROM_BASELINE=YES
+CLI_DEEP_MAX_FETCHES_EXPOSED=YES
+ADR_013_RECORDED=YES
+ROUTING_RANKING_RELEVANCE_PROVIDERS_EVIDENCE_UNCHANGED=YES
+WP1_REOPENED=NO
+CODE_GATES=PASS
+CONTRACT_GATES=PASS
+```
+
+Límites 3, 4, 5, 6, 7 del baseline permanecen como
+`KNOWN_NON_BLOCKING_LIMITATION` sin cambios.

@@ -298,6 +298,10 @@ enum Command {
         query: String,
         #[arg(long)]
         json: bool,
+        /// Optional per-request fetch cap. May narrow but never exceed the
+        /// configured Deep fetch limit.
+        #[arg(long)]
+        max_fetches: Option<u32>,
         #[arg(long, hide = true)]
         mock: bool,
     },
@@ -504,7 +508,12 @@ async fn run() -> anyhow::Result<()> {
     let config = Config::load_optional(&cli.config_file).context("configuration failed")?;
     match cli.command {
         Command::Search { query, json, mock } => search(query, json, mock, &config).await,
-        Command::Deep { query, json, mock } => deep(query, json, mock, &config).await,
+        Command::Deep {
+            query,
+            json,
+            max_fetches,
+            mock,
+        } => deep(query, json, max_fetches, mock, &config).await,
         Command::Ingest { path, query, json } => ingest(path, query, json, &config).await,
         Command::Providers => {
             print_providers(&config).await?;
@@ -1155,10 +1164,16 @@ fn print_search(response: SearchResponse, json: bool) -> anyhow::Result<()> {
     Ok(())
 }
 
-async fn deep(raw_query: String, json: bool, mock: bool, config: &Config) -> anyhow::Result<()> {
+async fn deep(
+    raw_query: String,
+    json: bool,
+    max_fetches: Option<u32>,
+    mock: bool,
+    config: &Config,
+) -> anyhow::Result<()> {
     let deep = AmatlService::new(config.clone(), mock)
         .await
-        .deep(raw_query, ServiceSurface::cli())
+        .deep_with_fetch_cap(raw_query, max_fetches, ServiceSurface::cli())
         .await?;
     if json {
         println!("{}", serde_json::to_string_pretty(&deep)?);

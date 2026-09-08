@@ -395,3 +395,63 @@ BLOCKERS=none for decision; implementation intentionally deferred
 FINAL_DECISION=ACCEPT ADR-012; do not execute V6 or reopen V5
 NEXT_SINGLE_ACTION=Implement offline novelty/diversity manifest gate before any request
 ```
+
+## ADR-013 — Deep acepta targets de Search seleccionados y un tope de fetch por request
+
+- **Fecha:** 2026-09-07
+- **Estado:** Aceptada
+- **Contexto:** El baseline operacional E2E del 2026-08-31 (`CONTINUIDAD.md`)
+  registró dos `KNOWN_NON_BLOCKING_LIMITATION` sobre Deep:
+  `DEEP_SELECTED_RESULT_IDS_SUPPORTED=NO` y
+  `PER_REQUEST_FETCH_CAP_SUPPORTED=NO`. El único camino de Deep era volver a
+  ejecutar Search internamente y adquirir hasta `deep_max_fetches` documentos
+  del conjunto resultante, sin que el llamante pudiera acotar ni seleccionar.
+  El commit `fdfac71` implementó ambas capacidades y actualizó la superficie
+  HTTP y el contrato OpenAPI (`docs/api/openapi.yaml`), pero no dejó entrada
+  en este registro; ADR-001 exige una decisión dedicada cuando cambia una API
+  pública. Esta ADR cierra ese hueco y no reabre WP-1 ni toca routing,
+  ranking, relevancia, providers ni comportamiento Evidence congelados.
+- **Decisión:** `AmatlService` gana dos métodos, manteniendo un solo core y la
+  invariante «Search no hace fetch; Deep es dueño de toda adquisición de red»:
+  - `deep_with_fetch_cap(q, max_fetches, surface)` — camino Search-backed
+    existente con un tope opcional por request. El tope **sólo puede
+    estrechar** el presupuesto de superficie: `validate_deep_fetch_cap`
+    rechaza `0` y cualquier valor `> deep_max_fetches` configurado como
+    `InvalidInput`. `deep()` queda como `deep_with_fetch_cap(q, None, surface)`.
+  - `deep_selected(q, targets, max_fetches, surface)` — Deep desde identidades
+    de `SearchResult` ya mostradas, sin re-ejecutar Search. `DeepTarget` sólo
+    transporta `url`, `title` opcional y `provider`; nunca contenido de
+    documento. Cada target se valida (`validate_search_url`, provider
+    declarado y presente en el registro), se canonicaliza y se deduplica
+    contra la URL canónica antes de llegar al `DeepBudget` compartido. El
+    número de targets se acota a `[1, deep.top_k]`. La `RoutingRecommendation`
+    sintética va vacía con `debug_reasons = ["selected_search_targets"]`: no
+    se invoca router, providers ni ranking.
+  Superficie: `POST /deep` acepta `DeepInput` (`q`, `targets?`,
+  `max_fetches?`) — `GET /deep` sin cambios; MCP `deep` expone `max_fetches`;
+  CLI `amatl deep --max-fetches N` usa `deep_with_fetch_cap`. `data_policy`
+  sigue gobernando todo egress: el tope reduce fetches, nunca los habilita, y
+  la ruta de adquisición (Fetcher/Budget/robots) es la misma. Los secretos
+  siguen sólo por variable de entorno.
+- **Consecuencias:** El llamante puede pedir una adquisición más barata y
+  dirigida sin cambiar la configuración del operador. No cambia el
+  comportamiento por defecto: sin `targets` y sin `max_fetches`, `/deep` y
+  `amatl deep` se comportan exactamente como en el baseline. `Document` gana
+  metadato `search_providers` (procedencia del `SearchResult` que autorizó la
+  adquisición); Evidence v2 no lo interpreta y sigue document-grounded. La
+  expansión de presupuesto observada en el baseline (`max_fetches=10` desde
+  tres resultados) ahora es acotable con `max_fetches` sin tocar el límite
+  congelado.
+- **Alternativas descartadas:** permitir que el request suba el tope por
+  encima del configurado (rompería el control del operador sobre egress);
+  aceptar contenido de documento en `DeepTarget` (Deep dejaría de ser el
+  único adquiriente y Evidence perdería grounding verificable); re-ejecutar
+  Search en `deep_selected` para «confirmar» los targets (gasto de provider
+  innecesario y acoplamiento a disponibilidad de fuente).
+- **Trazabilidad:** `service.rs::{deep_with_fetch_cap,deep_selected,
+  validate_deep_fetch_cap,deep_from_search,DeepTarget}`;
+  `deep.rs` (metadato `search_providers`); `amatl-server/src/lib.rs::{deep_post,
+  DeepParams}`; `amatl-server/src/mcp.rs`; `amatl-cli/src/main.rs::deep`;
+  `docs/api/openapi.yaml` (`DeepInput`, `DeepTarget`);
+  `crates/amatl-core/tests/deep_phase5.rs`;
+  `crates/amatl-server/src/tests.rs`.
