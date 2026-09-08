@@ -3829,13 +3829,22 @@ mod tests {
         // selecting the documented `local_model_v1` failed to load and the
         // backend was unreachable end to end. Constructing `InferenceConfig`
         // directly (as the inference tests do) never exercised this path.
-        let accepted = Config::from_toml(
+        //
+        // `validate()` checks `Path::is_absolute()`, which is platform-specific:
+        // `/opt/amatl/vectors.txt` is absolute on Unix but not on Windows (no
+        // drive letter / UNC prefix), so the accepted path must be chosen per
+        // platform to keep this test portable.
+        #[cfg(windows)]
+        let absolute_model_path = r#"local_model_path = 'C:\amatl\vectors.txt'"#;
+        #[cfg(not(windows))]
+        let absolute_model_path = r#"local_model_path = "/opt/amatl/vectors.txt""#;
+        let accepted = Config::from_toml(&format!(
             r#"
             [inference]
             backend = "local_model_v1"
-            local_model_path = "/opt/amatl/vectors.txt"
+            {absolute_model_path}
             "#,
-        )
+        ))
         .unwrap();
         assert!(accepted.validate().is_ok(), "{:?}", accepted.validate());
 
