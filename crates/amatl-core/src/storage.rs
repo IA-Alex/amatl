@@ -213,9 +213,15 @@ fn acquire_file_lock(db_path: &Path) -> Result<std::fs::File, StorageError> {
         value.push(".lock");
         PathBuf::from(value)
     };
+    // Never truncate. When another process already holds the byte-range lock,
+    // opening with `truncate(true)` fails on Windows with ERROR_LOCK_VIOLATION
+    // *before* try_lock_exclusive runs, so contention surfaces as a generic
+    // Filesystem error instead of LockContention. Open without truncation and
+    // only seed the file when it is still empty.
     let mut file = std::fs::OpenOptions::new()
         .create(true)
-        .truncate(true)
+        .truncate(false)
+        .read(true)
         .write(true)
         .open(&lock_path)
         .map_err(|e| StorageError::Filesystem {
@@ -226,11 +232,19 @@ fn acquire_file_lock(db_path: &Path) -> Result<std::fs::File, StorageError> {
     // documented as a no-op on some implementations, so the advisory lock
     // silently never takes effect. Seed one byte so the locked range is
     // never empty -- content is irrelevant, this file is never read.
-    use std::io::Write as _;
-    file.write_all(b"\0")
-        .map_err(|e| StorageError::Filesystem {
-            message: format!("cannot seed lock file: {e}"),
-        })?;
+    let already_seeded =
+        file.metadata()
+            .map(|m| m.len() > 0)
+            .map_err(|e| StorageError::Filesystem {
+                message: format!("cannot stat lock file: {e}"),
+            })?;
+    if !already_seeded {
+        use std::io::Write as _;
+        file.write_all(b"\0")
+            .map_err(|e| StorageError::Filesystem {
+                message: format!("cannot seed lock file: {e}"),
+            })?;
+    }
     // Try non-blocking exclusive lock.
     file.try_lock_exclusive().map_err(|e| {
         if e.kind() == std::io::ErrorKind::WouldBlock {
