@@ -47,6 +47,29 @@ jobs:
           sudo install --directory --mode 0755 /opt/amatl-chromium
           sudo unzip -q "$archive" -d /opt/amatl-chromium
           echo 'AMATL_CHROMIUM_BIN=/opt/amatl-chromium/chrome-headless-shell-linux64/chrome-headless-shell' >> "$GITHUB_ENV"
+      - name: Bring up a user systemd instance for systemd-run --user
+        # The sandbox wraps Chromium in `systemd-run --user`, which needs a
+        # per-user manager and session bus. GitHub runners do not start one for
+        # the job user by default, which makes the isolation steps fail
+        # intermittently ("Failed to connect to the bus"). Enable lingering so
+        # the manager comes up and export the runtime dir the rest of the job
+        # (and the sandbox script) rely on.
+        run: |
+          uid="$(id -u)"
+          sudo loginctl enable-linger "$USER"
+          for _ in $(seq 1 30); do
+            if systemctl --user is-system-running >/dev/null 2>&1 \
+              || [ -S "/run/user/$uid/bus" ]; then
+              break
+            fi
+            sleep 1
+          done
+          [ -S "/run/user/$uid/bus" ]
+          {
+            echo "XDG_RUNTIME_DIR=/run/user/$uid"
+            echo "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$uid/bus"
+          } >> "$GITHUB_ENV"
+          systemd-run --user --wait --collect --pipe --quiet --unit amatl-userbus-probe -- true
       - name: Verify runner Chromium baseline
         run: |
           chromium="$AMATL_CHROMIUM_BIN"
