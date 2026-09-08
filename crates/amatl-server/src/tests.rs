@@ -4309,3 +4309,21 @@ fn openapi_covers_every_router_operation() {
         }
     }
 }
+
+#[test]
+fn server_error_io_preserves_the_source() {
+    let source = std::io::Error::new(std::io::ErrorKind::AddrInUse, "address in use");
+    let wrapped = ServerError::Io(source);
+    let message = wrapped.to_string();
+    assert!(message.contains("address in use"), "message was: {message}");
+    assert!(std::error::Error::source(&wrapped).is_some());
+}
+
+#[test]
+fn server_error_tls_preserves_the_source() {
+    let source = std::io::Error::new(std::io::ErrorKind::InvalidData, "bad pem");
+    let wrapped = ServerError::Tls(source);
+    let message = wrapped.to_string();
+    assert!(message.contains("bad pem"), "message was: {message}");
+    assert!(std::error::Error::source(&wrapped).is_some());
+}

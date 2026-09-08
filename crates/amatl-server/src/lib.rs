@@ -497,10 +497,10 @@ pub enum ServerError {
     Configuration,
     #[error("server token is missing or too short")]
     MissingToken,
-    #[error("TLS configuration failed")]
-    Tls,
-    #[error("server failed")]
-    Io,
+    #[error("TLS configuration failed: {0}")]
+    Tls(#[source] std::io::Error),
+    #[error("server failed: {0}")]
+    Io(#[source] std::io::Error),
 }
 
 impl From<ConfigError> for ServerError {
@@ -684,7 +684,7 @@ pub async fn serve_with_config_path(
         (Some(cert), Some(key)) => {
             let config = axum_server::tls_rustls::RustlsConfig::from_pem_file(cert, key)
                 .await
-                .map_err(|_| ServerError::Tls)?;
+                .map_err(ServerError::Tls)?;
             let mut server = axum_server::bind_rustls(address, config);
             server
                 .http_builder()
@@ -698,10 +698,7 @@ pub async fn serve_with_config_path(
                 .timer(hyper_util::rt::TokioTimer::new())
                 .keep_alive_interval(Some(idle / 2))
                 .keep_alive_timeout(idle);
-            server
-                .serve(make_service)
-                .await
-                .map_err(|_| ServerError::Io)
+            server.serve(make_service).await.map_err(ServerError::Io)
         }
         (None, None) => {
             let mut server = axum_server::bind(address);
@@ -717,10 +714,7 @@ pub async fn serve_with_config_path(
                 .timer(hyper_util::rt::TokioTimer::new())
                 .keep_alive_interval(Some(idle / 2))
                 .keep_alive_timeout(idle);
-            server
-                .serve(make_service)
-                .await
-                .map_err(|_| ServerError::Io)
+            server.serve(make_service).await.map_err(ServerError::Io)
         }
         _ => Err(ServerError::Configuration),
     }
