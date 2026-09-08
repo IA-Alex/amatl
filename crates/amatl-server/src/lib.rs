@@ -493,8 +493,8 @@ struct RateLimiter {
 
 #[derive(Debug, Error)]
 pub enum ServerError {
-    #[error("invalid server configuration")]
-    Configuration,
+    #[error("invalid server configuration: {0}")]
+    Configuration(#[source] Box<dyn std::error::Error + Send + Sync>),
     #[error("server token is missing or too short")]
     MissingToken,
     #[error("TLS configuration failed: {0}")]
@@ -504,8 +504,8 @@ pub enum ServerError {
 }
 
 impl From<ConfigError> for ServerError {
-    fn from(_: ConfigError) -> Self {
-        Self::Configuration
+    fn from(error: ConfigError) -> Self {
+        Self::Configuration(Box::new(error))
     }
 }
 
@@ -557,7 +557,7 @@ impl ReloadHandle {
             .reload()
             .await
             .map(|_| ())
-            .map_err(|_| ServerError::Configuration)
+            .map_err(|e| ServerError::Configuration(Box::new(e)))
     }
 }
 
@@ -661,7 +661,7 @@ pub async fn serve_with_config_path(
             .server
             .bind
             .parse::<IpAddr>()
-            .map_err(|_| ServerError::Configuration)?,
+            .map_err(|e| ServerError::Configuration(Box::new(e)))?,
         service.config().server.port,
     );
     let idle = Duration::from_millis(service.config().server.idle_timeout_ms);
@@ -716,7 +716,10 @@ pub async fn serve_with_config_path(
                 .keep_alive_timeout(idle);
             server.serve(make_service).await.map_err(ServerError::Io)
         }
-        _ => Err(ServerError::Configuration),
+        _ => Err(ServerError::Configuration(Box::new(std::io::Error::new(
+            std::io::ErrorKind::InvalidInput,
+            "TLS requires both cert_path and key_path, or neither",
+        )))),
     }
 }
 
@@ -2920,7 +2923,9 @@ fn effective_origins(config: &amatl_core::Config, https: bool) -> Vec<String> {
 fn cors_layer(origins: &[String]) -> Result<CorsLayer, ServerError> {
     let origins = origins
         .iter()
-        .map(|value| HeaderValue::from_str(value).map_err(|_| ServerError::Configuration))
+        .map(|value| {
+            HeaderValue::from_str(value).map_err(|e| ServerError::Configuration(Box::new(e)))
+        })
         .collect::<Result<Vec<_>, _>>()?;
     Ok(CorsLayer::new()
         .allow_origin(origins)

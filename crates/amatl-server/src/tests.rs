@@ -4327,3 +4327,12 @@ fn server_error_tls_preserves_the_source() {
     assert!(message.contains("bad pem"), "message was: {message}");
     assert!(std::error::Error::source(&wrapped).is_some());
 }
+
+#[test]
+fn server_error_configuration_preserves_the_source() {
+    let source = std::io::Error::new(std::io::ErrorKind::InvalidInput, "bad config");
+    let wrapped = ServerError::Configuration(Box::new(source));
+    let message = wrapped.to_string();
+    assert!(message.contains("bad config"), "message was: {message}");
+    assert!(std::error::Error::source(&wrapped).is_some());
+}
