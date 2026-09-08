@@ -884,3 +884,23 @@ Pendiente tras esto: re-ejecutar la CI de la PR #1 y confirmar los tres checks
 en verde; decisión del propietario sobre si la PR de 78 commits se mergea
 entera (re-titulando/re-describiendo) o se parte. Los `KNOWN_NON_BLOCKING`
 y los ítems de «Pendientes que requieren decisión externa» siguen sin cambios.
+
+## Corrección — ef90b5e descansaba en una premisa falsa (2026-09-08)
+
+`ef90b5e` gateó `dropping_the_service_releases_the_exclusive_database_lock`
+a `#[cfg(unix)]` afirmando que `PRAGMA locking_mode = EXCLUSIVE` de SQLite
+protege en Windows. Es falso: `SqliteLockingMode` (`config.rs`) documenta
+explícitamente que el modo `Exclusive` de AMATL es un `flock` advisorio
+propio sobre un `.lock` sibling, no ese PRAGMA -- que además está
+deshabilitado a propósito porque bloquearía lectores legítimos
+(`amatl db health`, `sqlite3` CLI) e es incompatible con WAL. Gatear el
+test dejaba Windows sin ninguna protección real bajo `locking_mode =
+"exclusive"`, sin que quedara registrado en ningún lado.
+
+Corregido: `acquire_file_lock` (`storage.rs`) ahora escribe un byte en el
+lock file antes de `try_lock_exclusive()` -- hipótesis: `LockFileEx` de
+Win32 (que usa `fs2` 0.4.x en Windows) trata un rango de longitud cero
+como no-operativo en algunas implementaciones. El test vuelve a correr en
+todas las plataformas. No verificable localmente (sin toolchain Windows
+en este entorno) -- pendiente de confirmación en `cross-platform
+(windows-latest)`.
