@@ -15,6 +15,20 @@
 
 use std::io::{Read, Write};
 
+/// Does this `StorageError::Filesystem` message describe a contended file lock
+/// rather than a real filesystem fault? `fs2::lock_contended_error()` is the
+/// exact error a `try_lock_*` call returns on a contended file for this
+/// platform; `SqliteStorage::open` formats it into the message with `{e}` and
+/// `{e:?}` after the `flock failed:` prefix, so match on both its `Display`
+/// and `Debug` renderings.
+fn is_lock_contention_message(message: &str) -> bool {
+    let contended = fs2::lock_contended_error();
+    if !message.contains("flock failed") {
+        return false;
+    }
+    message.contains(&contended.to_string()) || message.contains(&format!("{contended:?}"))
+}
+
 #[tokio::main(flavor = "current_thread")]
 async fn main() {
     let path = std::env::args()
@@ -38,6 +52,17 @@ async fn main() {
             std::process::exit(0);
         }
         Err(amatl_core::StorageError::LockContention) => std::process::exit(42),
+        Err(amatl_core::StorageError::Filesystem { message })
+            if is_lock_contention_message(&message) =>
+        {
+            // On Windows `try_lock_exclusive` reports a contended byte-range
+            // lock as ERROR_LOCK_VIOLATION (os error 33), whose `io::ErrorKind`
+            // is not `WouldBlock`, so `SqliteStorage::open` classifies it as a
+            // generic `Filesystem` error rather than `LockContention`. It is
+            // still contention -- recognise it here so the guarantee reads the
+            // same on every platform.
+            std::process::exit(42)
+        }
         Err(e) => {
             let _ = writeln!(std::io::stderr(), "unexpected error: {e:?}");
             std::process::exit(1);
