@@ -904,3 +904,81 @@ como no-operativo en algunas implementaciones. El test vuelve a correr en
 todas las plataformas. No verificable localmente (sin toolchain Windows
 en este entorno) -- pendiente de confirmación en `cross-platform
 (windows-latest)`.
+
+## Diagnóstico — Marginalia 429 `provider_rate_limit`: cuota externa compartida agotada, sin fix de código (2026-09-08)
+
+**Premisa a verificar:** una llamada HTTP directa (curl, misma key) devolvía
+200 mientras el cliente interno recibía 429/`provider_rate_limit` segundos
+después.
+
+**Resultado real:** la premisa NO se sostiene. Al reproducir hoy, el curl
+directo también devuelve 429 — no 200. Ambos caminos están bloqueados por la
+misma cuota externa.
+
+### Evidencia (PASO 3)
+
+`MARGINALIA_API_KEY=public` — es literalmente la clave pública compartida de
+Marginalia (documentado en `amatl.toml`:
+`rate_limit = "shared with all public-key users; 503 when saturated"`,
+`plan_or_contract = "non-commercial, public key"`).
+
+curl directo, mismo endpoint que arma el adapter
+(`https://api2.marginalia-search.com/search?query=rust&count=20`), header
+`api-key: public`:
+
+```
+HTTP/1.1 429 Too Many Requests
+Server: nginx/1.26.3
+API-Remaining-Daily-Capacity: 0
+API-Event-Type: OverLimitBlock
+Content-Length: 20    -> cuerpo: "QPM Limit Exceeded"
+time_total: 0.83s
+```
+
+Tres curls espaciados 20 s, misma key:
+```
+07:06:19  "QPM Limit Exceeded"   [429]
+07:06:40  "Daily Limit Exceeded" [429]
+07:07:00  "QPM Limit Exceeded"   [429]
+```
+
+Probado con `API-Key:` (capitalizado) y `api-key:` (como lo manda el adapter):
+idéntico 429 en ambos. El casing del header no cambia nada.
+
+Adapter (`amatl search "rust" --json`, `RUST_LOG=...=trace`): dos intentos
+(`max_retries = 1`), ambos `outcome":"provider_error"` (NO `timeout`),
+latencias 1000 ms y 1320 ms — consistente con el ~831 ms de respuesta del
+servidor + red, no con un timeout enmascarado. Error final:
+`code":"provider_rate_limit"`, `message":"Marginalia: provider rate limit
+exceeded"`, `recoverable":true`. `degradations":[]` — el circuit breaker NO
+intervino (habría emitido `provider_circuit_open`, no `provider_rate_limit`).
+
+### Hipótesis (PASO 4)
+
+| # | Hipótesis | Veredicto | Evidencia |
+|---|-----------|-----------|-----------|
+| a | Circuit breaker local seguía abierto de una corrida anterior → el cliente no intentó la llamada real | **DESCARTADA** | `provider_circuit` en `amatl.sqlite3` tenía `marginalia` con `open_until = 1788854488` (2026-09-08 14:01:28 UTC), ~6 h en el pasado respecto a la corrida (≈14:04 UTC) → estado `HalfOpen`, `allows_call() == true`. La corrida no produjo ninguna degradación `provider_circuit_open`; los logs muestran dos llamadas HTTP reales salientes (`provider call finished`, `attempt 0` y `attempt 1`). El breaker se abrió *después* de la corrida (13→14 fallos) como consecuencia de los 429, no como causa. |
+| b | El adapter arma headers/URL distintos al curl que funcionó | **DESCARTADA** | El adapter (`providers/marginalia.rs::request`) manda `GET api2.marginalia-search.com/search?query=<q>&count=20`, headers `accept: application/json`, `cache-control: no-cache`, `api-key: <key>`. Reproduje ese request exacto con curl (incluido `count=20` y el casing `api-key:`): 429 idéntico. El único delta con el "curl de prueba" original era `count=20` y dos headers benignos — ninguno cambia el resultado. |
+| c | Rate limit de Marginalia es por ventana corta / diario, la key pública compartida está agotada | **CONFIRMADA** | Cuerpos `"QPM Limit Exceeded"` y `"Daily Limit Exceeded"` del propio servidor; header `API-Remaining-Daily-Capacity: 0`, `API-Event-Type: OverLimitBlock`. `MARGINALIA_API_KEY=public` = key pública compartida entre todos sus usuarios. curl directo hoy = 429, igual que el adapter. |
+| d | El adapter interpreta un código que NO es rate-limit real (403, timeout, 200-con-error) como `provider_rate_limit` | **DESCARTADA** | El servidor devuelve HTTP `429` genuino con cuerpo explícito de rate-limit. `status_error` (`marginalia.rs`) mapea `429 → ProviderErrorKind::RateLimit → "provider_rate_limit"` — clasificación correcta. Los logs marcan `provider_error`, no `timeout`. No hubo 200 con cuerpo de error (el parser exige `status == 200` antes de leer JSON). |
+| e | Otra causa | — | Ninguna otra apareció. SearXNG (127.0.0.1:8888, sin cuota) respondió normal en la misma corrida y la búsqueda global terminó en éxito con 12 resultados. |
+
+### Acción (PASO 5)
+
+**NO hay fix de código.** El adapter arma el request correctamente, clasifica
+el 429 correctamente y el circuit breaker se comporta como debe. La causa es
+100% externa: cuota diaria + por-minuto de la clave pública compartida de
+Marginalia, agotada por el conjunto de todos sus usuarios.
+
+Esto depende de una **key privada propia de Marginalia** (BLOQUE 1, ya
+documentado en rondas anteriores). Sin ella, `marginalia` seguirá degradando
+a `provider_rate_limit` de forma intermitente según el uso global de la key
+pública; SearXNG cubre el hueco y la búsqueda no falla entera (verificado en
+esta corrida).
+
+No se aplica ningún workaround (retry agresivo, cache de resultados falsos,
+subir umbrales del breaker para "tolerar" más 429): ninguno arregla la causa.
+
+Gates: no se corrieron `fmt`/`clippy`/`test` porque no hubo cambio de código.
+`git status` limpio en `ef16261`. El `amatl.sqlite3` local (gitignored) se
+restauró a su estado pre-reproducción.
