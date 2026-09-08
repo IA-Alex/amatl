@@ -99,9 +99,10 @@ fn deep_command_is_exposed_without_running_network_on_help() {
         .output()
         .expect("deep help should run");
     assert!(output.status.success());
-    assert!(String::from_utf8(output.stdout)
-        .unwrap()
-        .contains("Usage: amatl deep"));
+    let stdout = String::from_utf8(output.stdout).unwrap();
+    // The binary name is `amatl` on Unix and `amatl.exe` on Windows, so match
+    // the subcommand and its argument rather than the full usage prefix.
+    assert!(stdout.contains("deep [OPTIONS] <QUERY>"), "{stdout}");
 }
 
 #[test]
@@ -271,11 +272,13 @@ fn persistent_config() -> (std::path::PathBuf, std::path::PathBuf) {
     std::fs::create_dir_all(&base).unwrap();
     let database = base.join("amatl.sqlite3");
     let config = base.join("amatl.toml");
+    // TOML basic strings treat a backslash as an escape lead-in, so a Windows
+    // path like `C:\Users\...` must be escaped before it is interpolated.
+    let database_toml = database.display().to_string().replace('\\', "\\\\");
     std::fs::write(
         &config,
         format!(
-            "schema_version = \"1\"\n\n[persistence]\nenabled = true\npath = \"{}\"\n",
-            database.display()
+            "schema_version = \"1\"\n\n[persistence]\nenabled = true\npath = \"{database_toml}\"\n"
         ),
     )
     .unwrap();
