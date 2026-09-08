@@ -982,3 +982,38 @@ subir umbrales del breaker para "tolerar" más 429): ninguno arregla la causa.
 Gates: no se corrieron `fmt`/`clippy`/`test` porque no hubo cambio de código.
 `git status` limpio en `ef16261`. El `amatl.sqlite3` local (gitignored) se
 restauró a su estado pre-reproducción.
+
+## Marginalia — key privada operativa, ficha de aprobación completada (2026-09-08)
+
+Confirmado con evidencia real: `curl` directo a `api2.marginalia-search.com/search`
+con la key privada del operador (cargada desde `~/amatl/.env`, gitignored) devuelve
+**HTTP 200** con `results` no vacío y headers `API-Remaining-Daily-Capacity: 1998` /
+`API-Event-Type: UnderLimit` (antes: 429 / "Daily Limit Exceeded" con la key pública
+compartida). La key vive sólo en `~/amatl/.env`; nunca en TOML, Git ni logs.
+
+Búsqueda real end-to-end vía `amatl search "rust programming language" --json`:
+`providers_used = ["marginalia", "searxng"]`, `providers_failed = []`, `errors = []`,
+`degradations = []`. 32 resultados: **20 de marginalia**, 12 de searxng, en 828 ms.
+AMATL ahora combina ambas fuentes en producción, no sólo en teoría de
+router/dedupe/ranking.
+
+No hizo falta resetear el circuit breaker: `provider_circuit` para marginalia estaba
+en `consecutive_failures = 0`, `open_until` vacío — la primera búsqueda con la key
+válida lo dejó cerrado.
+
+Ficha de gobernanza completada en `amatl.toml` (`[providers.marginalia]`, no
+versionado) según `docs/gobernanza-providers.md:141-159`:
+`approval_status = "approved"`, `reviewer = "Alexis Hernandez"` (convención ya usada
+en el resto del archivo), `reviewed_at = "2026-09-08"`,
+`plan_or_contract = "private key, individual account"`,
+`rate_limit = "2000 requests/day per private key (header API-Remaining-Daily-Capacity,
+verificado 2026-09-08)"` — datos reales extraídos del header, no placeholders.
+
+Puerta de activación (`ProviderRuntimeConfig::approved_on`, `config.rs:922`):
+`reviewed_at` dentro de la ventana `[day, day+90]` → vigencia hasta **2026-12-07**.
+`amatl doctor` y `amatl providers` reportan `marginalia	available`.
+
+Con esto, de los 4 pendientes originales de la sesión (Marginalia, Chromium,
+WebDriver persistente, decisión de merge), sólo quedan Chromium (decisión de
+operador, sin urgencia) y la decisión de merge de la PR #1 — que ya no tiene
+bloqueos técnicos: todos los checks de CI están en verde.
