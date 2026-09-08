@@ -701,6 +701,19 @@ Próxima fase: revisar las integraciones grandes restantes sin cambiar los
 límites, providers, routing, ranking, relevancia ni comportamiento Evidence
 congelados en este baseline.
 
+### Nota de continuidad — límite 2 (SearXNG/Wiby) superado (2026-09-07)
+
+El límite 2 de la lista de arriba registra el estado del 2026-08-31: la ruta
+de resultados web generales de SearXNG se validó entonces usando únicamente el
+motor `wiby` (`SEARXNG_WORKING_ENGINE=wiby`). La configuración actual del
+contenedor SearXNG tiene habilitados motores de propósito general adicionales
+(`duckduckgo images`, `brave.news`, `startpage news`, `google news`,
+`stackoverflow`, `arxiv`, `pubmed`, entre otros; ~80 engines `enabled` según
+`GET /config`). La dependencia operativa de `wiby` como único motor funcional
+ya no aplica. Esto es una nota de continuidad, no una reescritura del baseline:
+no cambia código, providers, routing ni ranking; el ítem 2 se mantiene como
+registro histórico de lo validado el 2026-08-31.
+
 ## Fix de routing — salud de telemetría ya no excluye de forma dura (2026-09-07)
 
 Hallazgo sobre el mecanismo de combinación de providers (`router.rs`,
