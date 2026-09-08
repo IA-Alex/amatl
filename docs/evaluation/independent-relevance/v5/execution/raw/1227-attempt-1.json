@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 345.694,
+  "pair_id": "v5-p-0681",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is traffic flow in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "defence red, redd industrial stay stayed brother brothers floor generally nearly surprise surprising, surprised sorry association forward army summer specific bear born husband po",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "a jungle. An urban or industrial &#39;landscape&#39;. An indoor setting, like a room with furniture. Boring, I know. To be honest I haven&#39;t done this yet. Fetch an animal book - ...and dr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "androidarts.com",
+          "/art_tut.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PSG Art tutorial",
+        "url": "http://androidarts.com/art_tut.htm"
+      },
+      {
+        "category": "general",
+        "content": "during and after the Industrial Revolution ( this won’t last ). Humans have been killing each other throughout all of human history because resources one’s own surviva",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/civilization/case-against-libertarianism",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Case Against Libertarianism And Ancapism",
+        "url": "https://zerocontradictions.net/civilization/case-against-libertarianism"
+      },
+      {
+        "category": "general",
+        "content": "is a fieldbus, an industrial computer networking protocol. Modbus RTU (Remote Terminal Unit) is the most common implementation for Modbus either as a 2-wire half-duplex over RS-48",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.iwriteiam.nl",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "I write, therefore I am",
+        "url": "http://www.iwriteiam.nl/"
+      },
+      {
+        "category": "general",
+        "content": "nations and the industrial revolution, the upper classes turned Plutocratic and invested their money &amp; power in international corporate business, escaping the controls of indi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/equiaeon/behaviours.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHY : Behaviours : Formal Sketch of a Critical Ethics",
+        "url": "http://www.sofiatopia.org/equiaeon/behaviours.htm"
+      },
+      {
+        "category": "general",
+        "content": "century, fuelled by the industrial revolution, nations began to make widespread use of iron plating to give added protection to their large warships, and steam power began to repl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ww2ships.com",
+          "/documents/doc0002-ship_types.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "World War Two Ships: Ship Types",
+        "url": "http://www.ww2ships.com/documents/doc0002-ship_types.shtml"
+      },
+      {
+        "category": "general",
+        "content": "Instrument R&amp;D, industrial control, product development, electronics, PCB layout 2011-2022/07   Genapsys   Principal Engineer   Instrument R&amp;D: DNA sequenci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.all8.com",
+          "/rich.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "About Richard Reel",
+        "url": "http://www.all8.com/rich.htm"
+      },
+      {
+        "category": "general",
+        "content": "need to replace our old industrial chemistry book with nature’s recipe book. Life uses safe elements. CO2 and Methane are now being used to produce biodegradable plastics an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "of Scientific and Industrial Research. As such Tizard was very much aware of the length of time which must elapse between initiating something at a research level and its practica",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dos4ever.com",
+          "/EF50/EF50.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The EF50, the tube that helped to win the War",
+        "url": "https://www.dos4ever.com/EF50/EF50.html"
+      },
+      {
+        "category": "general",
+        "content": "Software Projects: An Industrial Case Study International Conference on Software and Systems Process (ICSSP 2019) May 25 - 26, 2019, Montreal, Canada Paolo Tell, Jil Klünder,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sigsoft.org",
+          "/awards/distinguishedPaperAward.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGSOFT - ACM Special Interest Group on Software Engineering",
+        "url": "http://www.sigsoft.org/awards/distinguishedPaperAward.html"
+      },
+      {
+        "category": "general",
+        "content": "and largest broad-based industrial trade association.Its more than 14,000 member companies and subsidiaries, including10,000 small manufacturers, employ approximately 85 percent o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.epic.org",
+          "/crypto/export_controls/bernstein_brief.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Amicus Brief",
+        "url": "https://archive.epic.org/crypto/export_controls/bernstein_brief.html"
+      },
+      {
+        "category": "general",
+        "content": "and equipping of an industrial facility to be located within the city. This a project that has been in developement some time. The company is not yet ready to disclose their ident",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.thewildstars.com",
+          "/MaumelleCityCouncil2021.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Tierney for Maumelle City Council",
+        "url": "http://www.thewildstars.com/MaumelleCityCouncil2021.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3d0f2f778680471e5784fd316b574fe8e4cfb2f0b03b10166382219d92c27d08",
+  "provider": "SearXNG",
+  "query": "what is traffic flow in industrial design",
+  "query_id": "v5-p-0681-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:48.921566Z"
+}

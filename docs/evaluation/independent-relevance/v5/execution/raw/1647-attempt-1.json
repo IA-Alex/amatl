@@ -1,0 +1,192 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 310.319,
+  "pair_id": "v5-p-0501",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is encryption keys in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": ", Crypto Key Generators, Encryption Equipment, and Scramblers SECURE COMMUNICATIONS SYSTEMS Granite Island Group provides a broad spectrum of information security protection protec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.tscm.com",
+          "/stu.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "STU-III Secure Telephone Units, Crypto Key Generators, Encryption Equipment and Scramblers",
+        "url": "http://www.tscm.com/stu.html"
+      },
+      {
+        "category": "general",
+        "content": "Sends Your Disk-Encryption Keys to Microsoft Español  -  &#39; Windows 10&#39; puede Recoger sus Datos para Agencias del Gobierno - Que se puede Hacer Italiano  -  &#39; W",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/sociopol_win-micro-gates.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Windows-Microsoft-Bill Gates",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_win-micro-gates.htm"
+      },
+      {
+        "category": "general",
+        "content": "(i.e. circumvent encryption access control) or to strip out copy protection measures are devices that should clearly be illegal. General personal computers, at the other extreme,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cryptome.org",
+          "/wipo-imp99-3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Implementation Issues of the WIPO Copyright Treaty and the WIPO Permformances and Phonograms Treaty: Technical Protection Measures: the Inter",
+        "url": "https://cryptome.org/wipo-imp99-3.htm"
+      },
+      {
+        "category": "general",
+        "content": "technical expertise in encryption that helps toilluminate the practical aspects of the issues currently before theCourt. The American Civil Liberties Union (&#34;ACLU&#34;) is a nationwid",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.epic.org",
+          "/crypto/export_controls/bernstein_brief.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Amicus Brief",
+        "url": "https://archive.epic.org/crypto/export_controls/bernstein_brief.html"
+      },
+      {
+        "category": "general",
+        "content": "Ring Says New Encryption Limits What It Can Give Police Alterslash picks up to the best 5 comments from each of the day’s Slashdot stories, and presents them on a single page",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alterslash.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alterslash, the unofficial Slashdot digest",
+        "url": "https://alterslash.org/"
+      },
+      {
+        "category": "general",
+        "content": "DATA PROTECTED BY ENCRYPTION ETC. BY CYBER-RIGHTS &amp; CYBER-LIBERTIES (UK) 11 JULY, 2000 This document is an annotated version of Part III of the Regulation of Investigatory Pow",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyber-rights.org",
+          "/reports/part-iii.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Comments on Part III of the Regulation of Investigatory Powers Bill, 11 July, 2000",
+        "url": "https://www.cyber-rights.org/reports/part-iii.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "56d5187c13b952d896bbec895c5fcf08c89ef3c1f704d7c273e9af32b9612054",
+  "provider": "SearXNG",
+  "query": "what is encryption keys in industrial design",
+  "query_id": "v5-p-0501-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:58.750436Z"
+}

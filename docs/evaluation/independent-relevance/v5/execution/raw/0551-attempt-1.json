@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 258.51,
+  "pair_id": "v5-p-0020",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does photosynthesis in optics operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "600d588c19b1495b3f3dd93b256f6388e651756cc3a6d1a2b54c38a34c609164",
+  "provider": "SearXNG",
+  "query": "how does photosynthesis in optics operate",
+  "query_id": "v5-p-0020-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:02.249995Z"
+}

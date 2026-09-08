@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 349.991,
+  "pair_id": "v5-p-0740",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind root systems in optics",
+    "results": [
+      {
+        "category": "general",
+        "content": "science calls the Principle of Least Action, and which mathematicians refer to as the isoperimetric theorem (see Appendix). Cusa proved that geometry, as then taught, contained a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "larouchepub.com",
+          "/lar/2019/4616-the_science_and_technology_nee.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Science and Technology Needed To Colonize Mars",
+        "url": "https://larouchepub.com/lar/2019/4616-the_science_and_technology_nee.html"
+      },
+      {
+        "category": "general",
+        "content": "be called the “Principle of Relativity”) to the status of a postulate, and also introduce another postulate, which is only apparently irreconcilable with the former, n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/etexts/einstein/specrel/www/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "On the Electrodynamics of Moving Bodies",
+        "url": "https://www.fourmilab.ch/etexts/einstein/specrel/www/"
+      },
+      {
+        "category": "general",
+        "content": "to their ethical principles and to a lifestyle of austerity and self-sacrifice. A Han dynasty text collected in the Zhuangzi claims that many Mohists believed it was their duty to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.sydney.edu.au",
+          "/archives/sum2008/entries/mohism/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mohism (Stanford Encyclopedia of Philosophy/Summer 2008 Edition)",
+        "url": "https://plato.sydney.edu.au/archives/sum2008/entries/mohism/"
+      },
+      {
+        "category": "general",
+        "content": "Summary For Less Wrong Principles of Science - Thierry Dugnolle Intellectual Mathematics - Viktor Blåsjö Wait But Why - Tim Urban ZSA Keyboards Blog - Erez Zukerman Mastering Emac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zero Contradictions Philosophy Home Page",
+        "url": "https://zerocontradictions.net/"
+      },
+      {
+        "category": "general",
+        "content": "impossible in principle to solve the equation exactly in terms of the usual functions of mathematical physics, or in any other simple way.   Mathematicians and mathematical p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/time_travel/esp_ciencia_timetravel34.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Time Control Technologies and Methods",
+        "url": "https://www.bibliotecapleyades.net/ciencia/time_travel/esp_ciencia_timetravel34.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1fe053cb4f09518db04ee2ec51a7f4c87a17cc2bf109ae8f764215f66f88a6f3",
+  "provider": "SearXNG",
+  "query": "describe the principle behind root systems in optics",
+  "query_id": "v5-p-0740-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:36.827306Z"
+}

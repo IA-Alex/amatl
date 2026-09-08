@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 375.258,
+  "pair_id": "v5-p-0430",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of carbon capture in marine biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "Calculus, Interative Functions, Chemical Bond Theory/Electrodynamics, Half-Life Equation Manipulation, Exponential Growth Manipulation, Piecewise Functions, Fourier Transform Seri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "Calculus, Interative Functions, Chemical Bond Theory/Electrodynamics, Half-Life Equation Manipulation, Exponential Growth Manipulation, Piecewise Functions, Fourier Transform Seri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/GreenMagi.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/GreenMagi.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a234792089b4cffdb0b0a7d0d56e2b81edccf75620a763dc8527db48fd7d9c35",
+  "provider": "SearXNG",
+  "query": "tell me about the function of carbon capture in marine biology",
+  "query_id": "v5-p-0430-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:12:24.399151Z"
+}

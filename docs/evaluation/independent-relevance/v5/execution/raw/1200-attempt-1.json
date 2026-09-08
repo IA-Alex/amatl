@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 372.963,
+  "pair_id": "v5-p-1014",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of probability distributions in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "diagram shows you the distributions of electrons in an atom. GW: It should force AT to read it. The arrows are significant. DG: Rows 30-33 should have the orbital diagram property",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/Math/planet/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Planet MathML - W3C",
+        "url": "https://www.w3.org/Math/planet/"
+      },
+      {
+        "category": "general",
+        "content": "2026 16:02) Predictive Distributions in Statistics (31 Jul 2026 16:00) Neural Nets, Connectionism, Perceptrons, etc. (31 Jul 2026 15:47) Denis Diderot (1713--1784) (30 Jul 2026 14",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bactra.org",
+          "/notebooks/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notebooks",
+        "url": "https://bactra.org/notebooks/"
+      },
+      {
+        "category": "general",
+        "content": ". Even in 2010, Unix distributions continue to change their UUCP lockfile conventions. C-Kermit 9.0 contains support from Joop Boonen for OpenSuSE ≥ 11.3 and rece",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kermitproject.org",
+          "/ckermit90.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C-Kermit 9.0 Update Notes",
+        "url": "https://www.kermitproject.org/ckermit90.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "de7c2b8576dd6e0308585d19e56341edad0672f2474a9c6bd261016bc798de01",
+  "provider": "SearXNG",
+  "query": "tell me about the function of probability distributions in data management",
+  "query_id": "v5-p-1014-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:40.299237Z"
+}

@@ -1,0 +1,171 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2272,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 337.748,
+  "pair_id": "candidate-p-0760",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "essential context for data provenance within science education",
+    "results": [
+      {
+        "category": "general",
+        "content": "regarding verifiable provenance for AI-generated contributions. Using Cherry Studio with an Emacs Lisp Knowledge Base To use Cherry Studio with an Emacs Lisp knowledge base, first",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "documents by → provenance (i.e., who produced them and when) to also classify by subject. Though archives often provide broad advice on the range of subjects addressed in par",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/phenomenon.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Phenomenon-based classification (IEKO)",
+        "url": "https://www.isko.org/cyclo/phenomenon.htm"
+      },
+      {
+        "category": "general",
+        "content": "not matter what the provenance is of the propositions that we examine. We may reflect on our own beliefs or actions. We may examine the propositions elicited by Socratic inquiry f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/ross/platonis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Why I am a Platonist",
+        "url": "https://friesian.com/ross/platonis.htm"
+      },
+      {
+        "category": "general",
+        "content": "variously quoted, provenance uncertain. A similar and related issue also arises over prescriptive grammar , i.e. teaching people that certain usages are wrong (e.g. &#34;between you a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/upan.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Classical Languages, Earliest Civilizations, the Steppe, Vedas, and the Upanishads",
+        "url": "https://friesian.com/upan.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8315b02c67a0661d6fadf72bc7c3b54fed54e68ac7fec21070ee383e8d543238",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "essential context for data provenance within science education",
+  "query_id": "candidate-c-0760",
+  "raw_result_count": 4,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://gnu.support/",
+      "original_url": "https://gnu.support/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "regarding verifiable provenance for AI-generated contributions. Using Cherry Studio with an Emacs Lisp Knowledge Base To use Cherry Studio with an Emacs Lisp knowledge base, first",
+      "title": "GNU.Support website about GNU Operating Systems"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.isko.org/cyclo/phenomenon.htm",
+      "original_url": "https://www.isko.org/cyclo/phenomenon.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "documents by → provenance (i.e., who produced them and when) to also classify by subject. Though archives often provide broad advice on the range of subjects addressed in par",
+      "title": "Phenomenon-based classification (IEKO)"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://friesian.com/ross/platonis.htm",
+      "original_url": "https://friesian.com/ross/platonis.htm",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "not matter what the provenance is of the propositions that we examine. We may reflect on our own beliefs or actions. We may examine the propositions elicited by Socratic inquiry f",
+      "title": "Why I am a Platonist"
+    }
+  ],
+  "timestamp": "2026-09-05T17:32:30.362970Z"
+}

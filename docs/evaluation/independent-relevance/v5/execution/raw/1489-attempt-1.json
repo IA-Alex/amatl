@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 253.124,
+  "pair_id": "v5-p-0093",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is ocean tides in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1f8b9b29d1c92d15459f9636f8d8420bed4430b0d705d356adcbd2cac1d9bec1",
+  "provider": "SearXNG",
+  "query": "what is ocean tides in pharmacology",
+  "query_id": "v5-p-0093-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:10.397861Z"
+}

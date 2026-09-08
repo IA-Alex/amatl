@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 265.4801190001308,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes load bearing walls in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "into people&#39;s eyeballs. Technology is for fixing things. Faster. Cheaper. For more people. I want new drugs discovered in weeks, not years, because the patient doesn’t have years.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jodie.website",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jodie&#39;s Website",
+        "url": "https://jodie.website/"
+      },
+      {
+        "category": "general",
+        "content": "and His Obsolete Technology June 20, 2016 Handling CD Money June 19, 2016 Effective Marginal Tax Rates June 16, 2016 Reading about guns June 15, 2016 Food Poll Summary June 14, 20",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jefftk.com",
+          "/p/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog Posts",
+        "url": "https://www.jefftk.com/p/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0263",
+  "query_text": "what causes load bearing walls in music technology",
+  "requested_at": "2026-09-03T01:42:40.541643Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

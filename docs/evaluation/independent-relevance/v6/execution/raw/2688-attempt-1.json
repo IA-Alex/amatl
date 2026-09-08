@@ -1,0 +1,144 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2688,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 299.231,
+  "pair_id": "candidate-p-1439",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of image compression within water management",
+    "results": [
+      {
+        "category": "general",
+        "content": "My explanation was stopped by “What is the serial number written on the station?” As I dictated the serial, I could hear fast typing. A few seconds later charging stat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "svedic.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Svedic.org",
+        "url": "https://svedic.org/"
+      },
+      {
+        "category": "general",
+        "content": "for O2 (205K PDF) An explanation of the advantages afforded by QED RM5200 and MIPS R12000 CPUs in O2 (495K PDF) Silicon Graphics O2&#43; (covers R7K/350) (308K PDF) [ later version wi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sgidepot.co.uk",
+          "/sgi.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SGI Technical Advice and Information...",
+        "url": "http://www.sgidepot.co.uk/sgi.html"
+      },
+      {
+        "category": "general",
+        "content": "video for a very clear explanation: What is the Fediverse? First off, &#34;fediverse&#34; is a combination of the words &#34;federation&#34; and &#34;universe&#34;. To sum it up it&#39;s a decentralized soci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "chriskoehnke.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chris Koehnke&#39;s Webpage",
+        "url": "http://chriskoehnke.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "cd379233ebbe59c0401ddc50d51f70966d0c9bad87e04dfbbb468a955cedbc89",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of image compression within water management",
+  "query_id": "candidate-c-1439",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://svedic.org/",
+      "original_url": "https://svedic.org/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "My explanation was stopped by “What is the serial number written on the station?” As I dictated the serial, I could hear fast typing. A few seconds later charging stat",
+      "title": "Svedic.org"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "http://www.sgidepot.co.uk/sgi.html",
+      "original_url": "http://www.sgidepot.co.uk/sgi.html",
+      "rank": 2,
+      "rejection_reason": null,
+      "snippet": "for O2 (205K PDF) An explanation of the advantages afforded by QED RM5200 and MIPS R12000 CPUs in O2 (495K PDF) Silicon Graphics O2&#43; (covers R7K/350) (308K PDF) [ later version wi",
+      "title": "SGI Technical Advice and Information..."
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://chriskoehnke.com/",
+      "original_url": "http://chriskoehnke.com/",
+      "rank": 3,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "video for a very clear explanation: What is the Fediverse? First off, &#34;fediverse&#34; is a combination of the words &#34;federation&#34; and &#34;universe&#34;. To sum it up it&#39;s a decentralized soci",
+      "title": "Chris Koehnke&#39;s Webpage"
+    }
+  ],
+  "timestamp": "2026-09-05T17:34:42.763875Z"
+}

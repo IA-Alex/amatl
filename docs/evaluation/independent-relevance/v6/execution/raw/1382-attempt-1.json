@@ -1,0 +1,34 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1382,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 252.294,
+  "pair_id": "candidate-p-1727",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of microgrid resilience within water management",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "139b2de6a397dfa8aadd964348dc07c1d712fbebb29b77d5f8478ea433a24e84",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of microgrid resilience within water management",
+  "query_id": "candidate-c-1727",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:27:52.883135Z"
+}

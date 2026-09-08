@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 325.682,
+  "pair_id": "v5-p-0259",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes binary search in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "Conference On Management Of Data, 1994. [Kleinberg 98] Jon Kleinberg, Authoritative Sources in a Hyperlinked Environment , Proc. ACM-SIAM Symposium on Discrete Algorithms, 1998. [",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "infolab.stanford.edu",
+          "/~backrub/google.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Anatomy of a Search Engine",
+        "url": "http://infolab.stanford.edu/~backrub/google.html"
+      },
+      {
+        "category": "general",
+        "content": "effective scrutiny and management via simple, well-understood tools (including ps, netstat, lsof, lslk, fuser, etc.). For details, please see Petreley, Raymond, and Self&#39;s more-co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "linuxmafia.com",
+          "/~rick/faq/",
+          "",
+          "",
+          "willbethere"
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "But That&#39;s Just My Opinion. I Could Be Wrong.",
+        "url": "http://linuxmafia.com/~rick/faq/#willbethere"
+      },
+      {
+        "category": "general",
+        "content": "for tag-based file management? ☶ ask linux authored by curiositry 2022-09-29 14:48:46 | 20 comments Tag-based file management seems like a great idea, and would address a l",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lobste.rs",
+          "/s/u5iyme/tools_for_tag_based_file_management",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Tools for tag-based file management? | Lobsters",
+        "url": "https://lobste.rs/s/u5iyme/tools_for_tag_based_file_management"
+      },
+      {
+        "category": "general",
+        "content": "about Windows EFI management tools; however, I do know that at least three relevant tools exist: the standard bcdedit , the open source text-mode efibootwin , and the third-party",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "rodsbooks.com",
+          "/refind/installing.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The rEFInd Boot Manager: Installing and Uninstalling rEFInd",
+        "url": "https://rodsbooks.com/refind/installing.html"
+      },
+      {
+        "category": "general",
+        "content": "White House&#39;s Office of Management and Budget website.  VA&#39;s effort to cover the transition-related surgeries comes as the military prepares to allow transgender troops to se",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "akdart.com",
+          "/obama95.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "President Obama Panders to Homosexuals",
+        "url": "http://akdart.com/obama95.html"
+      },
+      {
+        "category": "general",
+        "content": "pops up the States management window, as seen in the screen shot on the right. The calculator&#39;s state includes all programs and variables, the automatic stack, the flags, CUSTOM m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "thomasokken.com",
+          "/free42/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Free42 : An HP-42S Calculator Simulator",
+        "url": "https://thomasokken.com/free42/"
+      },
+      {
+        "category": "general",
+        "content": "Anonymous Users 5.6. Management Information 6. Open Issues 6.1. Connection Establishment 6.2. Shell Access 6.3. External and/or non-Kermit Protocols 6.4. Additional Administrative",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kermitproject.org",
+          "/uiksd.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Internet Kermit Service",
+        "url": "https://www.kermitproject.org/uiksd.html"
+      },
+      {
+        "category": "general",
+        "content": "disk caching and memory management. Additionally, most hardware needs special driver support in order to provide its full functionality. Under DOS there are usually only basic fun",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.deinmeister.de",
+          "/wasmfaq_e.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Win32 Assembler FAQ [deinmeister.de]",
+        "url": "http://www.deinmeister.de/wasmfaq_e.htm"
+      },
+      {
+        "category": "general",
+        "content": "there was no RAID management support. Apparently most of these bugs are because the Adaptec controllers have numerous buggy firmware issues which require careful workarounds; with",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.openbsd.org",
+          "/lyrics.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OpenBSD: Release Songs",
+        "url": "http://www.openbsd.org/lyrics.html"
+      },
+      {
+        "category": "general",
+        "content": "memory block (UMB) management routines. To change: Use Notepad to edit the SYSTEM.INI file. (You should never need to change this setting.) This file was last changed: August 20 2",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "conradshome.com",
+          "/win31/83435-6.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Windows 3.1 | SYSTEM.INI [386ENH] Section",
+        "url": "http://conradshome.com/win31/83435-6.php"
+      },
+      {
+        "category": "general",
+        "content": "made the case to their management, lawyers, and release manager, that: They don&#39;t need a EULA, trademark law applies anyway It&#39;s free software so people can go in and remove the E",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.toad.com",
+          "/gnu/sysadmin/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "System Administration Bits of Knowledge",
+        "url": "http://www.toad.com/gnu/sysadmin/"
+      },
+      {
+        "category": "general",
+        "content": "Erik Braun (upload management and system administration), Vincent Goulet (upload management), Manfred Lotz (upload management, programming, system administration), Gerd Neugebauer",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ctan.org",
+          "/file/help/ctan/CTAN-upload-addendum",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CTAN: help/ctan/CTAN-upload-addendum",
+        "url": "https://www.ctan.org/file/help/ctan/CTAN-upload-addendum"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e6ffa249a0e78b59daf8b10018a7d71206a50f6a76a1bc46b5b36381b6e96d9b",
+  "provider": "SearXNG",
+  "query": "what causes binary search in data management",
+  "query_id": "v5-p-0259-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:21.901928Z"
+}

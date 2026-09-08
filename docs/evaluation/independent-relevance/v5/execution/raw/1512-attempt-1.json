@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 380.278,
+  "pair_id": "v5-p-0806",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of battery chemistry in information systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "I&#39;ll post technical information if I have it available. I&#39;m uncertain as to what kind of space I have available, and I don&#39;t want to take advantage of TOO much of it for non-robot",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "richfiles.solarbotics.net",
+          "/RichNews.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Richfiles RichNews Page",
+        "url": "http://richfiles.solarbotics.net/RichNews.html"
+      },
+      {
+        "category": "general",
+        "content": "helping me with this information). The K2-W Operational Amplifier entered the commercial market in 1952, and was last manufactured in 1971 (see P rof. Tom Lee in SSCS News ). It p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "philbrickarchive.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Philbrick Archive",
+        "url": "http://philbrickarchive.org/"
+      },
+      {
+        "category": "general",
+        "content": "has a lot of useful information about motors, batteries, chargers and the Cycle Analyst. Local riding Wellington is known for its steep hills and strong winds. Typically, we ride",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "jepspectro.com",
+          "/htm/folding-ebike.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SmartMotion e20 Folding Electric Bike",
+        "url": "http://jepspectro.com/htm/folding-ebike.htm"
+      },
+      {
+        "category": "general",
+        "content": "grid.   Additional Information (keep an open mind)   An updated version of this fact sheet will be issued as often as program changes warrant to keep interested parties",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "factors in computer and information systems. book reviews Beyond games: systems software for your 6502 personal computer. book reviews Basic programs for home financial management",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.atarimagazines.com",
+          "/creative/index/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of Creative Computing articles",
+        "url": "https://www.atarimagazines.com/creative/index/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5e3b57b4c2a4203e19ed0c09ea0c152eeddf830abc2b42a84f24a4c9f5a7ad9f",
+  "provider": "SearXNG",
+  "query": "tell me about the function of battery chemistry in information systems",
+  "query_id": "v5-p-0806-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:17.634133Z"
+}

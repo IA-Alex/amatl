@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 227.414,
+  "pair_id": "v5-p-0775",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of coastal flooding in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "982bfba377db96d241b8f762a50aa2fe8d0d5f00d6db802680f01cabd59b2303",
+  "provider": "SearXNG",
+  "query": "give an overview of coastal flooding in oceanography",
+  "query_id": "v5-p-0775-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:23.568415Z"
+}

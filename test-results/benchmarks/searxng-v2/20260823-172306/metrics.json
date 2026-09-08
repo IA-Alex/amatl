@@ -1,0 +1,16 @@
+{
+  "artifact_notice": "Generated benchmark artifact — AMATL SearXNG Baseline v2 post-change — do not treat as project documentation.",
+  "status": "ABORTED_PRECHECK",
+  "planned_runs": 30,
+  "completed_runs": 0,
+  "metrics": "NOT_CALCULATED",
+  "comparison": "NOT_GENERATED",
+  "reason": "POST_CHANGE_CONFIGURATION_UNVERIFIABLE",
+  "precheck": {
+    "dataset_v1_readable": true,
+    "dataset_contains_q01_through_q10": true,
+    "provider_isolation_available_via_existing_fixture": true,
+    "post_change_engine_flags_currently_confirmed": false,
+    "searxng_listener_observed": false
+  }
+}

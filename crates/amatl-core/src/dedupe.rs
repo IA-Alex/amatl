@@ -1,7 +1,7 @@
 use crate::model::{
     CanonicalResult, CanonicalUrl, DeduplicatedResult, DuplicateStatus, MergeReason, SCHEMA_VERSION,
 };
-use crate::text::tokens;
+use crate::text::normalized_confusable_text;
 use std::cmp::Reverse;
 use std::collections::{BTreeMap, BTreeSet};
 
@@ -145,14 +145,24 @@ fn title_similarity(left: &DeduplicatedResult, right: &DeduplicatedResult) -> Op
     if left_title.chars().count() < 20 || right_title.chars().count() < 20 {
         return None;
     }
-    let left_tokens = tokens(left_title);
-    let right_tokens = tokens(right_title);
+    let left_tokens = title_tokens(left_title);
+    let right_tokens = title_tokens(right_title);
     if left_tokens.len() < 4 || right_tokens.len() < 4 {
         return None;
     }
     let intersection = left_tokens.intersection(&right_tokens).count();
     let union = left_tokens.union(&right_tokens).count();
     Some(intersection as f64 / union as f64)
+}
+
+/// Tokenize a title after NFKC + case folding + confusable folding, so that
+/// multilingual titles differing only in script compare equal.
+fn title_tokens(title: &str) -> BTreeSet<String> {
+    normalized_confusable_text(title)
+        .split(|character: char| !character.is_alphanumeric())
+        .filter(|token| !token.is_empty())
+        .map(str::to_string)
+        .collect()
 }
 
 #[cfg(test)]
@@ -226,5 +236,71 @@ mod tests {
         assert!(results
             .iter()
             .all(|result| result.duplicate_status == DuplicateStatus::Distinct));
+    }
+
+    #[test]
+    fn confusable_titles_are_marked_possible_duplicates() {
+        // The two titles differ only in script: Cyrillic `а`/`е`/`о`/`р`/`с`
+        // vs Latin `a`/`e`/`o`/`p`/`c`. After confusable folding they compare
+        // equal, so they are flagged as possible duplicates across hosts.
+        let cyrillic = "Полное руководство по асинхронному программированию на Rust";
+        let latin = "Полное руководство по асинхронному программированию на Rust"
+            .replace('о', "o")
+            .replace('а', "a")
+            .replace('е', "e")
+            .replace('р', "p")
+            .replace('с', "c");
+        assert_ne!(cyrillic, latin);
+        let results = deduplicate(vec![
+            item("a", "https://one.example/a", cyrillic),
+            item("b", "https://two.example/b", &latin),
+        ]);
+        assert_eq!(results.len(), 2);
+        assert!(results
+            .iter()
+            .all(|result| result.duplicate_status == DuplicateStatus::PossibleDuplicate));
+        assert_eq!(results[0].possible_duplicate_with.len(), 1);
+        assert_eq!(results[1].possible_duplicate_with.len(), 1);
+    }
+
+    #[test]
+    fn greek_and_latin_confusable_titles_are_marked_possible_duplicates() {
+        // Greek omicron `ο` vs Latin `o`, and Greek `ρ` vs Latin `p`.
+        let greek = "Οδηγός για ασύγχρονο προγραμματισμό σε Rust";
+        let latin = "Οδηγός για ασύγχρονο προγραμματισμό σε Rust"
+            .replace('ο', "o")
+            .replace('ρ', "p");
+        assert_ne!(greek, latin, "the two titles must differ byte-wise");
+        let results = deduplicate(vec![
+            item("a", "https://one.example/a", greek),
+            item("b", "https://two.example/b", &latin),
+        ]);
+        assert!(results
+            .iter()
+            .all(|result| result.duplicate_status == DuplicateStatus::PossibleDuplicate));
+    }
+
+    #[test]
+    fn distinct_greek_titles_are_not_confused_with_each_other() {
+        // Guards against folding Greek phonetically instead of visually: θ, φ,
+        // γ, ψ, π and λ were all collapsed onto Latin letters they do not
+        // resemble, which made unrelated Greek titles compare equal.
+        let first = "Θεωρία γραφημάτων και πολυπλοκότητα αλγορίθμων";
+        let second = "Φεωρία δραφημάτων και ξολυξλοκότητα αλψορίθμων";
+        assert_ne!(first, second);
+        let results = deduplicate(vec![
+            item("a", "https://one.example/a", first),
+            item("b", "https://two.example/b", second),
+        ]);
+        assert!(
+            results
+                .iter()
+                .all(|result| result.duplicate_status == DuplicateStatus::Distinct),
+            "distinct Greek titles must not be flagged: {:?}",
+            results
+                .iter()
+                .map(|result| &result.duplicate_status)
+                .collect::<Vec<_>>()
+        );
     }
 }

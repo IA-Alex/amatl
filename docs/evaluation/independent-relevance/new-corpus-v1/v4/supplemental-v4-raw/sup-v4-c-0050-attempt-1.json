@@ -1,0 +1,243 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 435.4695889996947,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of access tokens in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "to use. Each identity management module is documented in a separate manual page. The standard idmap backends are tdb ( idmap_tdb (8) ), tdb2 ( idmap_tdb2 (8) ), ldap ( idmap_ldap",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.samba.org",
+          "/samba/docs/current/man-html/smb.conf.5.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "smb.conf",
+        "url": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+      },
+      {
+        "category": "general",
+        "content": "of, I don’t know, Intel Management Engine. I don’t want to live in a world where we have that, right? And we might not be able to live right now today in a world without that. But",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/too_popular",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Linux, Bitcoin: When Tech Projects Become &#34;Too Popular...&#34; Don&#39;t forget the goal.",
+        "url": "https://lukesmith.neocities.org/vids/too_popular"
+      },
+      {
+        "category": "general",
+        "content": "to repeat index management, the setindex action now behaves more like setvalue , which means it now sets the flags for automatic recalculation, revalidation and user interface ref",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/xforms/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "XForms 1.1",
+        "url": "https://www.w3.org/TR/xforms/"
+      },
+      {
+        "category": "general",
+        "content": "memory management for armies/army controllers. Optimized a particularly slow army loop. Fixed crash associated to transformed creatures with fewer body parts than their untransfor",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bay12games.com",
+          "/dwarves/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bay 12 Games: Dwarf Fortress",
+        "url": "http://www.bay12games.com/dwarves/"
+      },
+      {
+        "category": "general",
+        "content": "mode for Racket package management. The list of packages is equivalent to “raco pkg show -all” on the active back end – that is, all packages installed manually",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.racket-mode.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Racket Mode",
+        "url": "https://www.racket-mode.com/"
+      },
+      {
+        "category": "general",
+        "content": "Functions for Memory Management The Embedding Functions For Input/Output Summary of Functions Prolog Calling Foreign Code Introduction Summary of steps Using Shared Object Files a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "quintus.sics.se",
+          "/isl/quintus/html/quintus/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quintus Prolog",
+        "url": "https://quintus.sics.se/isl/quintus/html/quintus/"
+      },
+      {
+        "category": "general",
+        "content": "kernel handles memory management, display generation, disk I/O, telecommunications, and other &#34;operating system&#34; functions. The objects implement the semantics of the world itself",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fudco.com",
+          "/chip/lessons.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Lessons of Lucasfilm&#39;s Habitat",
+        "url": "http://www.fudco.com/chip/lessons.html"
+      },
+      {
+        "category": "general",
+        "content": "blog entry), vs. legacy management of existing built Windows-based software (help existing msapps run on Linux). The FOSS dotnet &#34;clones&#34; market will develop automatically as one",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "techrights.org",
+          "/o/2008/11/25/jose-on-mono/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jose Explains Why Not Mono",
+        "url": "http://techrights.org/o/2008/11/25/jose-on-mono/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0050",
+  "query_text": "tell me about the function of access tokens in data management",
+  "requested_at": "2026-09-03T01:42:31.763079Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 338.855,
+  "pair_id": "v5-p-1085",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind satellite orbits in computer security",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "25e06bf0453ad19ddeaa0a49a59e7b2c4b42216d805c5617dc8259d4d102d7fd",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind satellite orbits in computer security",
+  "query_id": "v5-p-1085-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:08.325207Z"
+}

@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 281.797,
+  "pair_id": "v5-p-0188",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does heat transfer in ecology operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "gas through bed heat transfer. Temperature, residence time, and ramp rate are similarly controlled by the user, with instruments ports and thermocouples provided to monitor the re",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ahualoa.net",
+          "/ag/notes_biochar.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hawai&#39;i Biochar Notes",
+        "url": "http://ahualoa.net/ag/notes_biochar.html"
+      },
+      {
+        "category": "general",
+        "content": "it has two phosphate-transferring domains. Some biochemists also say that JAK stands for &#34;just another kinase&#34;. Thomas Schneider from the National Cancer Institute in Maryland tol",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/sillymolecules/sillymols4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecules with Silly or Unusual Names - page 4",
+        "url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm"
+      },
+      {
+        "category": "general",
+        "content": "which is being used to transfer materials, form older non-standard containers, to the newer, standardized types. The shed can be seen, towards the bottom right of the photo above,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.notpurfect.com",
+          "/travel/nuke/nevada.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "mmlinks",
+        "url": "http://www.notpurfect.com/travel/nuke/nevada.html"
+      },
+      {
+        "category": "general",
+        "content": "an effective money transfer service and does it without the intimidation that the US employs, it&#39;s predictable that other countries would flock to the new system, in preference to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "serendipity.li",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Serendipity",
+        "url": "https://serendipity.li/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "11e5bd53d889e7b501d8c7fef632b88530a36a5826a2845b50b4b77969f3fcd9",
+  "provider": "SearXNG",
+  "query": "how does heat transfer in ecology operate",
+  "query_id": "v5-p-0188-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:39.160576Z"
+}

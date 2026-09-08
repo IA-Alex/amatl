@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 253.674,
+  "pair_id": "v5-p-0472",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does encryption keys in civil engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "monitoring or reverse engineering) to be picked up by any other nearby device. Suddenly, some app on your phone &#34;knows&#34; you have watched some ad online or on a TV, or even were in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/technological_slavery.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Technological slavery",
+        "url": "http://digdeeper.love/articles/technological_slavery.xhtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "46a010a86270695791c0e612c11660f524c4d339d44873de846fb6706a0b9fa1",
+  "provider": "SearXNG",
+  "query": "how does encryption keys in civil engineering operate",
+  "query_id": "v5-p-0472-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:12:25.935376Z"
+}

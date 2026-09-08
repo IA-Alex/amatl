@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 246.944,
+  "pair_id": "v5-p-1011",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes probability distributions in civil engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "Using the empirical distributions of interstate war sizes and onset times from 1823 to 2003, we parameterized stationary models of conflict generation that can distinguish trends",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.socrethics.com",
+          "/Folder2/Culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cultural Evolution of Suffering",
+        "url": "http://www.socrethics.com/Folder2/Culture.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7c074047af54d8c164f5a7dd320f28bb3edea002822d314472f27e70d6838617",
+  "provider": "SearXNG",
+  "query": "what causes probability distributions in civil engineering",
+  "query_id": "v5-p-1011-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:09:16.019180Z"
+}

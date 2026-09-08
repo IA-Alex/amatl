@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 342.557420997764,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does version control in electrical engineering work",
+    "results": [
+      {
+        "category": "general",
+        "content": "Processor Board Reverse Engineering 2026 AUG 10 in identicon After hacking on the Identicon 8080 board and getting it running some test programs, I wanted to reverse engineer the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "users.glitchwrks.com",
+          "/~glitch/updates.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Site News and Updates",
+        "url": "http://users.glitchwrks.com/~glitch/updates.html"
+      },
+      {
+        "category": "general",
+        "content": "and professionals in engineering or mathematical sciences. AMP allows the user to edit and simplify numerous expressions or equations in a mathematical derivation quickly and accu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mizj.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "S.U.P.E.R. - The Largest 200LX Software Archive",
+        "url": "http://mizj.com/"
+      },
+      {
+        "category": "general",
+        "content": "(also called molecular engineering, molecular manufacturing, molecular nanotechnology , etc.). There is widespread belief that such a capability will eventually be developed [1, 2",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "Dunn at the Princeton Engineering Anomalies Research labs (PEAR) using random generator machines to measure subjects’ PK influence on them, obtained positive consistent resul",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "victorzammit.com",
+          "/skeptics/winston.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Winston Wu Debunks the Skeptics",
+        "url": "https://victorzammit.com/skeptics/winston.html"
+      },
+      {
+        "category": "general",
+        "content": "by which macro-social engineering might fix things don&#39;t exist.  Education on the needed scale will not get better. Nor farming, or medicine.  Those fresh impulses, in s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/Culmination.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "the Culmination",
+        "url": "http://ipwebdev.com/hermit/Culmination.html"
+      },
+      {
+        "category": "general",
+        "content": "a B.S. in Electrical Engineering. Still, as I read your book, I felt like I was experiencing math in a whole new way. I felt like there was truths in the book that were mind-blowi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mathman.biz",
+          "/home.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The MATHMAN",
+        "url": "http://mathman.biz/home.html"
+      },
+      {
+        "category": "general",
+        "content": "(see source) ET REVERSE ENGINEERING, FACT OR FANCY the Wanderling &#34;(J)ust out of high school, I got a job with a company that designed and built the breathing equipment for the U-",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "the-wanderling.com",
+          "/area_51.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AREA 51, GROOM LAKE, ROSWELL: ET Reverse Engineering, Fact or Fancy",
+        "url": "https://the-wanderling.com/area_51.html"
+      },
+      {
+        "category": "general",
+        "content": "Miller Engineering has released an all brand new Santa Fe Billboard . The new Santa Fe sign replaces the older #5781 Santa Fe sign. This new Santa Fe sign has a second set of cont",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.qstation.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Welcome to the QStation Web Site",
+        "url": "http://www.qstation.org/"
+      },
+      {
+        "category": "general",
+        "content": "degree in Electrical Engineering and Computer Science from the University of California at Berkeley. Scanning his email messages one day, he noticed a new class, STS145. “Hmm",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "xenon.stanford.edu",
+          "/~geksiong/papers/sts145/Squaresoft%20and%20FF7.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Coming to America: The Story of Final Fantasy VII and how Squaresoft conquered the RPG market",
+        "url": "http://xenon.stanford.edu/~geksiong/papers/sts145/Squaresoft%20and%20FF7.htm"
+      },
+      {
+        "category": "general",
+        "content": "that most of my fellow engineering classmates naturally absorbed. Mises’s dualistic epistemology and criticism of monism-positivism-empiricism, which I studied much later, also he",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "xenisa.github.io",
+          "/kinsella/lffs/legal-foundations-of-a-free-society.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Legal Foundations of a Free Society",
+        "url": "https://xenisa.github.io/kinsella/lffs/legal-foundations-of-a-free-society.html"
+      },
+      {
+        "category": "general",
+        "content": "and the Genetic Engineering of a World Without Pain L. S. MANCINI 25 Nottingham Terrace, Buffalo, New York 14276, USA Abstract - Riley-Day Syndrome, a genetic disorder in which th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wireheading.com",
+          "/painless.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Brain stimulation and the genetic engineering of a world without pain",
+        "url": "https://www.wireheading.com/painless.html"
+      },
+      {
+        "category": "general",
+        "content": "ill Electrical Engineering Series  ] [  Richard Florac - First Pager, Early Portable FM Radios  ] [  Type",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.smecc.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Southwest Museum Of Engineering, Communications and Computation -Arizona&#39;s Radio and Television Museum - Also History Of Computers andComputa",
+        "url": "http://www.smecc.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0078",
+  "query_text": "how does version control in electrical engineering work",
+  "requested_at": "2026-09-03T01:43:53.837799Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

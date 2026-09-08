@@ -1,0 +1,219 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 411.866,
+  "pair_id": "v5-p-0514",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of neural networks in environmental science",
+    "results": [
+      {
+        "category": "general",
+        "content": "disease, poverty, and environmental degradation, and could lead to a more compassionate and just society. The biointelligence explosion is distinct from the development of artific",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biointelligence-explosion.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biointelligence Explosion as conceived by ChatGPT",
+        "url": "https://www.biointelligence-explosion.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "always wittingly after. Environmental reformism of any conceivable kind fails, and will invariably fail, to overturn the hedonic treadmill. We&#39;ve tried it for ages, and it doesn&#39;t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Hedonistic Imperative : Chapter Two",
+        "url": "https://www.hedweb.com/hedethic/hedon2.htm"
+      },
+      {
+        "category": "general",
+        "content": "how we think about environmental ethics if we consider that all matter has some form of consciousness. That said, these implications are largely speculative, and it&#39;s worth noting",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.panpsychism.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Panpsychism as conceived by ChatGPT",
+        "url": "https://www.panpsychism.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "inheritance we must add environmental inheritances like the laws of our universe, the nature of the local niche, and the physical and informational regulatory networks of each sys",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.accelerationwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acceleration Watch (Understanding Accelerating Change)",
+        "url": "https://www.accelerationwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "argues that other environmental disturbances - ranging from solar flares and meteor showers to oil drilling - probably correlate with visionary claims, including mass religious co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wireheading.com",
+          "/brainstim/godbrain.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "God and the temporal lobes",
+        "url": "https://www.wireheading.com/brainstim/godbrain.html"
+      },
+      {
+        "category": "general",
+        "content": "of bounded rationality, environmental structure, is of crucial importance because it can explain when and why simple heuristics perform well: if the structure of the heuristic is",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "home.dbio.uevora.pt",
+          "/~eje/simple%20heuristics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "‹Truth is ever to be found in simplicity, and not in the multiplicityand confusion of things. As the world, which to the naked eye exhibits th",
+        "url": "http://home.dbio.uevora.pt/~eje/simple%20heuristics.htm"
+      },
+      {
+        "category": "general",
+        "content": "technology assessment, environmental or quality of life issues, etc. Finding common ground, identifying bridge values , etc. is an essential part of working to resolve intractable",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "projectworldview.org",
+          "//worldviews.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Worldviews -- Introduction",
+        "url": "https://projectworldview.org//worldviews.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f524265b7bf8fd9b0c80878030283853e77a388c76e53c264e6c1133655b8035",
+  "provider": "SearXNG",
+  "query": "tell me about the function of neural networks in environmental science",
+  "query_id": "v5-p-0514-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:19.131468Z"
+}

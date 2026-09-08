@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 323.14,
+  "pair_id": "v5-p-0117",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind database indexing in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "the field of software engineering, provided a definition of &#34;domain analysis&#34; (DA). He is probably the first to connect the term with library and information science (&#34;DA/LIS&#34;), s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/domain_analysis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Domain analysis (IEKO)",
+        "url": "https://www.isko.org/cyclo/domain_analysis.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d658dee520d94d2c9b3d5a18f9b2c0998e63d33ee8cc4a5ac8012579acf5d185",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind database indexing in electrical engineering",
+  "query_id": "v5-p-0117-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:13:21.006031Z"
+}

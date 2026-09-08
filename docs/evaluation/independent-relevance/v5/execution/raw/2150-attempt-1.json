@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 222.489,
+  "pair_id": "v5-p-0243",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of plate tectonics in agricultural science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6d94c2694497a64ed5f4ed381ebb50d811311938e1af06af3afc7b6b2301a997",
+  "provider": "SearXNG",
+  "query": "give an overview of plate tectonics in agricultural science",
+  "query_id": "v5-p-0243-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:42.956038Z"
+}

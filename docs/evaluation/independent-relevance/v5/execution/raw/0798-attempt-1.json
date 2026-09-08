@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 264.981,
+  "pair_id": "v5-p-0335",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of soil erosion in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "269 pages. Thorough overview. Acrobat pdf (21.7 Mb). Humus: Origin, Chemical Composition, and Importance in Nature by Selman A. Waksman, Williams &amp; Wilkins, 1936, 508 pages. A",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "journeytoforever.org",
+          "/farm_library.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Small Farms Library - Journey to Forever",
+        "url": "http://journeytoforever.org/farm_library.html"
+      },
+      {
+        "category": "general",
+        "content": "by providing a detailed overview of the influence of fascism within the United States. The intent and motivation for such a project was twofold: to sound an ominous warning as to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/nazihydrainamerica.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "nazihydrainamerica",
+        "url": "http://www.combatreform.org/nazihydrainamerica.htm"
+      },
+      {
+        "category": "general",
+        "content": "map provides an overview of where beech leaf disease has been confirmed in the United States and Canada through 2024. County BLD Map by Year (2024, U.S. Department of Agriculture",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7d1eac78497e39503e5c08a49185bb446caa271be66fdfebabb889bc94babea7",
+  "provider": "SearXNG",
+  "query": "give an overview of soil erosion in food science",
+  "query_id": "v5-p-0335-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:28.529759Z"
+}

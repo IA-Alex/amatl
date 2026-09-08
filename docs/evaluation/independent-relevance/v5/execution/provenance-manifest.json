@@ -1,0 +1,20 @@
+{
+  "artifacts": {
+    "annotation-packet-A.json": "d896c640ab59af814b6544ed85fb5888e30d5cadde06f68ebf94cb8e0279bdca",
+    "annotation-packet-B.json": "b9748e3bcc588fa52ff930cc9e3a7665dc4db5e593a08da9f1ac7478a68c068d",
+    "attempt-ledger.json": "015b9ad2c51fe0a40e78fe69d3560ce297ab8e63c35c5bccdd28f4757b98eef4",
+    "execution-report.json": "dbba75229acc1383ddf0754d155bc7dcdc90be94545e753e8a6af2fcae803022",
+    "final-closure-report.json": "4bc17f95201912070996541d8513301acec4d74cf611188f506b2459cb85f117",
+    "final-decision.json": "c3a41821cb1dafb005413f2a4ebb05527c3c349ae86dadc45faef6a522baed06",
+    "final-ground-truth.json": "67687c7f24dafaf8f1b4f9f20b835e7f6ce7810df9bcd7962952eb8d4650eb52",
+    "labels-manifest.json": "0232280c97cef942c50445bcf02fc172fe26495e7142e596648d1ed97a05b841",
+    "prelabel-freeze.json": "59acd79a84f1c79010b5629064d947a600d7b6d8beaa859ef1a615a036576a7a",
+    "raw-capture.json": "2a9b4287514f3c9741e07b8001b629d69ad67d00e400ae93652e4616d9a576fc",
+    "statistical-result.json": "efc3884823f3dd13027172f7ca325d0a57f3f197342267a7c7280498149031a1"
+  },
+  "base_head": "be8db26a50712e930d1fc64147135e1d554110f4",
+  "decision": "INCONCLUSIVE",
+  "decision_sha256": "c3a41821cb1dafb005413f2a4ebb05527c3c349ae86dadc45faef6a522baed06",
+  "experiment_id": "independent-relevance-confirmatory-v5",
+  "schema": "amatl.relevance.v5-provenance-manifest.v1"
+}

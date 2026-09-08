@@ -1,0 +1,354 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 296.203,
+  "pair_id": "v5-p-0835",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of data compression in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "and adjust a medium compression in the format options so that the files get small. Our action is now finished and after a click on OK appears in the action group standard. In orde",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.filmscanner.info",
+          "/en/FotoStationPro.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Software Test FotoStation Pro: organizing images, data base, archive, indexing, image administration, test report, experience report, applicat",
+        "url": "https://www.filmscanner.info/en/FotoStationPro.html"
+      },
+      {
+        "category": "general",
+        "content": "support rudimentary compression options. 4.2.2 Repository    Figure 2. Repository Data Structure The repository contains the full HTML of every web page. Each page is co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "infolab.stanford.edu",
+          "/~backrub/google.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Anatomy of a Search Engine",
+        "url": "http://infolab.stanford.edu/~backrub/google.html"
+      },
+      {
+        "category": "general",
+        "content": "low resolution, photo compression artifacts, photo post-processing by modern smartphones (adding of non-existing details), dogs and cats with medical conditions etc. The problem s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "svedic.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Svedic.org",
+        "url": "https://svedic.org/"
+      },
+      {
+        "category": "general",
+        "content": "simulation and code compression. In the past he worked and had experience with embedded systems, with drivers for Linux and FreeBSD. He&#39;s also an active contributor to the open so",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "this phenomenon STEM Compression of Information and Computation in the most adaptive complex systems. This was my original website exploring the STEM Compression hypothesis. Accel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.accelerationwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acceleration Watch (Understanding Accelerating Change)",
+        "url": "https://www.accelerationwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "for lossless compression on the CPC Lesson P69 - ChibiSound PRO on the CPC, MSX and Spectrum (128 - AY) Useful Documents! CPC464_Firmware_1984_AMSOFT - The official breakdown of t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chibiakumas.com",
+          "/z80/AmstradCPC.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Z80 Assembly programming for the Amstrad CPC",
+        "url": "https://www.chibiakumas.com/z80/AmstradCPC.php"
+      },
+      {
+        "category": "general",
+        "content": "use of standard texture compression, MIP mapping, and manipulation algorithms on geometric data. Most game 3D animation is currently performed by fitting a skeleton inside a 3D me",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.flipcode.com",
+          "/misc/siggraph2002.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "flipCode - Game Development News &amp; Resources",
+        "url": "https://www.flipcode.com/misc/siggraph2002.shtml"
+      },
+      {
+        "category": "general",
+        "content": "2.3. Compression ................................................7 2.4. Conversion to Radix-64 .....................................8 2.5. Signature-Only Applications ............",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.rfc-editor.org",
+          "/rfc/rfc4880.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://www.rfc-editor.org/rfc/rfc4880.txt",
+        "url": "https://www.rfc-editor.org/rfc/rfc4880.txt"
+      },
+      {
+        "category": "general",
+        "content": "streams and header compression and server push, SPDY) is enabled: &#34;sudo curl -v --http2 https://YOURDOMAIN&#34; See if HTTP/3 (UDP, QUIC) is enabled: &#34;sudo curl -v --http3 https://YOU",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/YourPersonalWebSite.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Your Personal Web Site",
+        "url": "https://www.billdietrich.me/YourPersonalWebSite.html"
+      },
+      {
+        "category": "general",
+        "content": "may implement data compression. When negotiated START_TLS replaces the ENCRYPTION option. SUPPRESS GO AHEAD (Suppress Go Ahead commands) [ RFC858 ] When a telnet session is initia",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kermitproject.org",
+          "/telnet.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C-Kermit 9.0 and Kermit 95 2.0 Telnet Protocol",
+        "url": "https://www.kermitproject.org/telnet.html"
+      },
+      {
+        "category": "general",
+        "content": "with VJ TCP/IP header compression Name of Program: DOSPPP: PPPD Packet Driver for DOS Location/Filename: &lt;URL: ftp://ftp.simtel.net/pub/simtelnet/msdos/pktdrvr/dosppp06.zip &gt;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dendarii.co.uk",
+          "/FAQs/dos-apps.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "FAQ: DOS Applications for Internet Use",
+        "url": "http://www.dendarii.co.uk/FAQs/dos-apps.html"
+      },
+      {
+        "category": "general",
+        "content": "speed (incoming only) Compression of repeated bytes Per-file and batch cancellation Features selectable on command line: Text or binary mode transfer Filename conversion on/off Fi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kermitproject.org",
+          "/gkermit.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "G-Kermit 2.01",
+        "url": "https://www.kermitproject.org/gkermit.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d537d4ca6eefe58d6ae290886e3dfa87ccd5af1076e79827b47b957ec1d49eed",
+  "provider": "SearXNG",
+  "query": "give an overview of data compression in data management",
+  "query_id": "v5-p-0835-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:35.034166Z"
+}

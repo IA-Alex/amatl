@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 367.838,
+  "pair_id": "v5-p-0282",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does binary search in energy systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "as compilers, build systems, debuggers, and source-code control—making it into an IDE for some. An Emacs minor mode for Beancount is available and there are also customization pac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/751874/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Counting beans—and more—with Beancount [LWN.net]",
+        "url": "https://lwn.net/Articles/751874/"
+      },
+      {
+        "category": "general",
+        "content": "Self Replicating Systems It is also interesting to compare Drexler&#39;s architecture for an assembler with the von Neumann architecture for a self replicating device. Von Neumann&#39;s &#34;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "asking how you&#39;d build systems capable of independently fighting entropy, suggesting it might be roughly as hard as self-driving cars, maybe 10 years behind it, so the throughline",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "displace C as a systems-programming language. There is a possible future in which that happens over much of C&#39;s traditional range. If you get into serious programming, you will ev",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.catb.org",
+          "/%7Eesr/faqs/hacker-howto.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How To Become A Hacker",
+        "url": "http://www.catb.org/%7Eesr/faqs/hacker-howto.html"
+      },
+      {
+        "category": "general",
+        "content": "confused in dualistic systems where a pure divine or moral state exists in opposition to an impure and immoral natural state. The pagan faiths were banished by the Abrahamic relig",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.o9a.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "o 9 a",
+        "url": "http://www.o9a.org/"
+      },
+      {
+        "category": "general",
+        "content": "Eden Self-replicating Systems and Thermodynamics Diverse Horizons of the RNA Epoch Universal Stability Structures in Molecular Biology LUCA - the Last Universal Common Ancestor Tr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "in more efficient systems, as a Wasm implementation can more easily use concurrency and parallelism in the GC implementation than a guest WebAssembly module could do. So, the crit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wingolog.org",
+          "/archives/2023/10/19/requiem-for-a-stringref",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "requiem for a stringref — wingolog",
+        "url": "http://wingolog.org/archives/2023/10/19/requiem-for-a-stringref"
+      },
+      {
+        "category": "general",
+        "content": "ECC memory in these systems. The AMD chip set they&#39;re using supports it. I should&#39;ve been daring enough to buy a little ECC DRAM just to see if they&#39;re snowing me again, to protec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.toad.com",
+          "/gnu/sysadmin/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "System Administration Bits of Knowledge",
+        "url": "http://www.toad.com/gnu/sysadmin/"
+      },
+      {
+        "category": "general",
+        "content": "or something. Desktop systems have some fundamental differences; menu bars let you give the user lots of options in a consistent way, and there are many cases where using multiple",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.alm.website",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Athena&#39;s blog - Athena&#39;s Site",
+        "url": "https://www.alm.website/blog/"
+      },
+      {
+        "category": "general",
+        "content": "Circuits for Control Systems Non-Inverting Tri-State Buffer-Switch Demo Circuit Connecting Digital Logic to Power Transistors SR Latch and Microcontroller I/O Pin Tutorial Tri-Sta",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bristolwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Student-Hobbyist Electronics Projects Tutorials",
+        "url": "https://www.bristolwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "each bit. Most modern systems for lossless compression, e.g. ZIP, depend on identification of repeated patterns, and are thus not useful for very short messages. Systems such as M",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.qsl.net",
+          "/dl4yhf/wolf/wolf_info.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WOLF - a proposed new signal format for LFweak-signal work",
+        "url": "https://www.qsl.net/dl4yhf/wolf/wolf_info.html"
+      },
+      {
+        "category": "general",
+        "content": "engaging with these systems isn&#39;t really necessary to win the game - as all the enemies move randomly it&#39;s easier to dodge them all and simply escape to the exit. INNOVATION Games",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.roguetemple.com",
+          "/7drl/2018/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Temple of The Roguelike: 7DRL Shrine : 2018 7DRL Challenge Evaluation",
+        "url": "https://www.roguetemple.com/7drl/2018/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "21e2ec5dc42f468bcd3b3dba9fbb89cc10711ca577e90ba472657179dcf43653",
+  "provider": "SearXNG",
+  "query": "how does binary search in energy systems work",
+  "query_id": "v5-p-0282-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:55.461964Z"
+}

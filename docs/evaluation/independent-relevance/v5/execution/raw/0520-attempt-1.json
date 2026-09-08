@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 243.959,
+  "pair_id": "v5-p-0767",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of coastal flooding in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": ", Linux Commands - Overview and Examples , Bash Scripting for Ubuntu Beginners , The Art of Command Line , 100 ways to master the command line , Mastering the Linux Shell , Evolut",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "48bf58249b4e57687fef8008694bd8c1e53d6367cfc5a4e88471d8c46c3ad34a",
+  "provider": "SearXNG",
+  "query": "give an overview of coastal flooding in food science",
+  "query_id": "v5-p-0767-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:07:52.720642Z"
+}

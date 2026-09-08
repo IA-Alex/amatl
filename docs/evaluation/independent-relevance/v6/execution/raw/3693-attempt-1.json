@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 3693,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 323.027,
+  "pair_id": "candidate-p-1626",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains low power computing within structural engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "on the Software Engineering Radio Podcast Software Engineering Radio is a podcast for people in IT/development with over 700 episodes across many topics over 20 years. They haven&#39;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "planet.kernel.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kernel Planet",
+        "url": "https://planet.kernel.org/"
+      },
+      {
+        "category": "general",
+        "content": "of hack-and-try genetic engineering (which is all we&#39;re capable of right now) can actually produce results in months rather than decades. Furthermore, bacteria have only a few mov",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.duntemann.com",
+          "/may2002.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jeff Duntemann&#39;s ContraPositive Diary",
+        "url": "http://www.duntemann.com/may2002.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6e37442172c88b3fcd2ceee944bdc75fc22f59e45c4955390a63fde7816e5dc0",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains low power computing within structural engineering",
+  "query_id": "candidate-t-1626",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "https://planet.kernel.org/",
+      "original_url": "https://planet.kernel.org/",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "on the Software Engineering Radio Podcast Software Engineering Radio is a podcast for people in IT/development with over 700 episodes across many topics over 20 years. They haven&#39;",
+      "title": "Kernel Planet"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.duntemann.com/may2002.htm",
+      "original_url": "http://www.duntemann.com/may2002.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "of hack-and-try genetic engineering (which is all we&#39;re capable of right now) can actually produce results in months rather than decades. Furthermore, bacteria have only a few mov",
+      "title": "Jeff Duntemann&#39;s ContraPositive Diary"
+    }
+  ],
+  "timestamp": "2026-09-05T17:40:00.748863Z"
+}

@@ -1,0 +1,162 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 273.9368080001441,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does cell membranes in chemistry operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "at cell walls (i.e., at membranes), relative reaction rates that are atypical of those observed in condensation reactions, a rapid removal of reaction flow products, and a trimole",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ldolphin.org",
+          "/mystery/chapt9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Specifying How Work Is To Be Done",
+        "url": "https://www.ldolphin.org/mystery/chapt9.html"
+      },
+      {
+        "category": "general",
+        "content": "to genes, proteins, and membranes. To understand the functioning of a cell, one must understand (at least) how the various machines interact. This involves considerable difficulti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lucacardelli.name",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://lucacardelli.name/",
+        "url": "http://lucacardelli.name/"
+      },
+      {
+        "category": "general",
+        "content": "of the various membranes. There are, in fact, no fixed parts to adjust. A small clump of cells here or there metamorphoses into a forelimb or heart or liver. Actually, this descri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bwo.life",
+          "/org/comm/ar/2014/machines_18.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biology’s Shameful Refusal to Disown the Machine-Organism",
+        "url": "https://bwo.life/org/comm/ar/2014/machines_18.htm"
+      },
+      {
+        "category": "general",
+        "content": "nano-mechanical membranes functionalized nano-robot end effector giant aurothiol nanoclusters gimballed nanogyroscopes gold nanodots graphite nanocraters graphite nanofibers green",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lachlan.bluehaze.com.au",
+          "/nanoshite/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NanoShite: A nano-apostate webpage dedicated to the slimeycanceroushype flim-flam-barnum-and-bailey-charlatan delusional bollocks nanosleaze /",
+        "url": "http://lachlan.bluehaze.com.au/nanoshite/"
+      },
+      {
+        "category": "general",
+        "content": "to salt: their cell membranes don’t work properly, and so salt has much the same effect upon them as it does on slugs. Coastal cities (and land-locked salt lakes) become cen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.lord-enki.net",
+          "/stories.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stories I Will Not Write",
+        "url": "https://www.lord-enki.net/stories.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0192",
+  "query_text": "how does cell membranes in chemistry operate",
+  "requested_at": "2026-09-03T01:42:58.179481Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

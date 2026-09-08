@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2648,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 296.66,
+  "pair_id": "candidate-p-0091",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about adaptive optics within supply networks",
+    "results": [
+      {
+        "category": "general",
+        "content": "This webpage gives a background on human taxonomy and explains how human races can be defined with K-Cluster Analysis with graphs and pictures. EthnoGuessr Online Game | HumanPhen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zero Contradictions Philosophy Home Page",
+        "url": "https://zerocontradictions.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1818735e5b3cd736ef0fb30c82bcd1013c17c71d615afee9a0b26796d1ba3fd1",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about adaptive optics within supply networks",
+  "query_id": "candidate-c-0091",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://zerocontradictions.net/",
+      "original_url": "https://zerocontradictions.net/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "This webpage gives a background on human taxonomy and explains how human races can be defined with K-Cluster Analysis with graphs and pictures. EthnoGuessr Online Game | HumanPhen",
+      "title": "Zero Contradictions Philosophy Home Page"
+    }
+  ],
+  "timestamp": "2026-09-05T17:34:30.877453Z"
+}

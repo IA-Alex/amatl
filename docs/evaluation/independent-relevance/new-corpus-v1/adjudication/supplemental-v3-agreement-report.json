@@ -1,0 +1,126 @@
+{
+  "schema": "amatl.relevance.supplemental-v3-agreement-report.v1",
+  "version": "v1",
+  "corpus": {
+    "id": "independent-relevance-supplemental-v3-final-20260902",
+    "sha256": "d539bb4aae3eddc7b2c53166d558873bd5fc9fc6c18a8ea6b4c7c75ef89e5727",
+    "rows": 60
+  },
+  "labelers": {
+    "a": {
+      "id": "INDEPENDENT_RELEVANCE_LABELER_A_V3",
+      "sha256": "77024ec9dd2bc3bfe0ae755b2703b407a783d5bf7a7d271acdd1d7feb73f48a8",
+      "distribution": {
+        "Relevant": 6,
+        "PossiblyRelevant": 26,
+        "NotRelevant": 28,
+        "Unknown": 0
+      }
+    },
+    "b": {
+      "id": "INDEPENDENT_RELEVANCE_LABELER_B_V3",
+      "sha256": "53c748a59e33e48c53d22d6dc1abbacb770c511ce99750935340488ee73b5eba",
+      "distribution": {
+        "Relevant": 6,
+        "PossiblyRelevant": 19,
+        "NotRelevant": 33,
+        "Unknown": 2
+      }
+    }
+  },
+  "agreement": {
+    "total_comparable_rows": 60,
+    "agreement_count": 46,
+    "disagreement_count": 14,
+    "agreement_rate": 0.7666666666666667,
+    "cohen_kappa": 0.6085740913327121,
+    "po": 0.7666666666666667,
+    "pe": 0.4038888888888889
+  },
+  "confusion_matrix": {
+    "labels_a": [
+      "Relevant",
+      "PossiblyRelevant",
+      "NotRelevant",
+      "Unknown"
+    ],
+    "labels_b": [
+      "Relevant",
+      "PossiblyRelevant",
+      "NotRelevant",
+      "Unknown"
+    ],
+    "cells": [
+      [
+        5,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        16,
+        8,
+        1
+      ],
+      [
+        0,
+        2,
+        25,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "sum_all_cells": 60,
+    "row_marginals": [
+      6,
+      26,
+      28,
+      0
+    ],
+    "column_marginals": [
+      6,
+      19,
+      33,
+      2
+    ]
+  },
+  "agreement_by_designation": {
+    "treatment": {
+      "rows": 39,
+      "agreements": 29,
+      "disagreements": 10,
+      "agreement_rate": 0.7435897435897436,
+      "cohen_kappa": 0.5685840707964602,
+      "cohen_kappa_po": 0.7435897435897436,
+      "cohen_kappa_pe": 0.4056541748849441
+    },
+    "control": {
+      "rows": 21,
+      "agreements": 17,
+      "disagreements": 4,
+      "agreement_rate": 0.8095238095238095,
+      "cohen_kappa": 0.676923076923077,
+      "cohen_kappa_po": 0.8095238095238095,
+      "cohen_kappa_pe": 0.4104308390022675
+    }
+  },
+  "disagreement_types": {
+    "Relevant_vs_PossiblyRelevant": 2,
+    "Relevant_vs_NotRelevant": 0,
+    "Relevant_vs_Unknown": 0,
+    "PossiblyRelevant_vs_NotRelevant": 10,
+    "PossiblyRelevant_vs_Unknown": 1,
+    "NotRelevant_vs_Unknown": 1
+  },
+  "adjudication_packet": {
+    "required": true,
+    "rows": 14,
+    "sha256": "b1851a7c3b1f87569329ce5fb33540d8e68df3c495aaa06e4743aa0ca1bb8a7f"
+  }
+}

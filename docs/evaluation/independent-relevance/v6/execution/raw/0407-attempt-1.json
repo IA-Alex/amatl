@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 407,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 280.683,
+  "pair_id": "candidate-p-0502",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how do models represent bridge vibration within forest management",
+    "results": [
+      {
+        "category": "general",
+        "content": "in their internal management has removed the only cause which could possibly have created a desire for independence. We cannot, even if we wish it ourselves, shake off connections",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/cache/epub/32728/pg32728-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of The English in the West Indies, by James Anthony Froude.",
+        "url": "https://www.gutenberg.org/cache/epub/32728/pg32728-images.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "81369285cad1e817032594107bccdf031541b52e11341ce76ab1d25d369ac721",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how do models represent bridge vibration within forest management",
+  "query_id": "candidate-t-0502",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.gutenberg.org/cache/epub/32728/pg32728-images.html",
+      "original_url": "https://www.gutenberg.org/cache/epub/32728/pg32728-images.html",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "in their internal management has removed the only cause which could possibly have created a desire for independence. We cannot, even if we wish it ourselves, shake off connections",
+      "title": "The Project Gutenberg eBook of The English in the West Indies, by James Anthony Froude."
+    }
+  ],
+  "timestamp": "2026-09-05T17:22:36.323421Z"
+}

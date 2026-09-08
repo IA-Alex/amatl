@@ -1,0 +1,354 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 434.603,
+  "pair_id": "v5-p-0698",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of language acquisition in information systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "magic and the acquisition of initiatory knowledge . Higher Self: that part of us which connects our corporeal minds to the Collective Unconscious and with the divine knowledge of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/masons.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Freemasons - The silent destroyers. Deist religious cult based on the Knights Templar - Initiation rituals like those of witchcraft",
+        "url": "http://www.bilderberg.org/masons.htm"
+      },
+      {
+        "category": "general",
+        "content": "collections; and acquisition of digital data from physical media. My primary area of research is the long-term curation of digital collections. I&#39;m particularly interested in the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ils.unc.edu",
+          "/callee/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Christopher (Cal) Lee",
+        "url": "https://ils.unc.edu/callee/"
+      },
+      {
+        "category": "general",
+        "content": "so as to promote truth acquisition or error avoidance. Problems of institutional design typically demand inputs from empirical and formal disciplines outside philosophy. It is exp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.sydney.edu.au",
+          "/archives/fall2008/entries/epistemology-social/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Social Epistemology (Stanford Encyclopedia of Philosophy/Fall 2008 Edition)",
+        "url": "https://plato.sydney.edu.au/archives/fall2008/entries/epistemology-social/"
+      },
+      {
+        "category": "general",
+        "content": "His inverted &#34;customer acquisition cost&#34; economic theory is a satire that reveals an uncomfortable truth: he proposes that companies should acquire their own customers by paying t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "before its acquisition by Rambus; Cigital (formerly Reliable Software Technologies, Gary McGraw, gem@cigital.com), prior to its acquisition by Synopsys. Other advisory boards that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "module, a grammar acquisition module, a communication-pragmatics module, a theory of mind module, and so on!&#34; (Mithen 1996)  However, ancient modules are not the same as",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "exact reverse order of acquisition. Always return a proper negative error code defined in include/linux/errno.h (e.g.  -ENOMEM , -ENODEV ) so that insmod can report a meaningful e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sysprog21.github.io",
+          "/lkmpg/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Linux Kernel Module Programming Guide",
+        "url": "https://sysprog21.github.io/lkmpg/"
+      },
+      {
+        "category": "general",
+        "content": "and its re-acquisition depends on neurological means. Still, it is not clear how purely mechanistic signal processing could know that it should initiate a re-mapping, unless perha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "arcaneknowledge.org",
+          "/science/vitapsych3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Vitalism and Psychology",
+        "url": "https://arcaneknowledge.org/science/vitapsych3.htm"
+      },
+      {
+        "category": "general",
+        "content": "some level. In terms of acquisition, our best bet at the time was Adobe . From a technical perspective, we figured that Hypercosm could integrate with their current 3D product off",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.highprogrammer.com",
+          "/alan/hypercosm/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hypercosm and Web 3D",
+        "url": "http://www.highprogrammer.com/alan/hypercosm/"
+      },
+      {
+        "category": "general",
+        "content": "pocket computers, no acquisition at all in 2009 for my collection... There are still a few items that i&#39;m after, but they&#39;re either rare, or expensive. Some of these items would b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cdecas.free.fr",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Welcome to Caz&#39; Website",
+        "url": "http://cdecas.free.fr/"
+      },
+      {
+        "category": "general",
+        "content": "stand for &#34;Digital Data Acquisition&#34;; the Saturn Flight Manual explains, among other things, that Telemetry system GP1 is a PCM/DDAS link that transmits realtime checkout data bef",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ibiblio.org",
+          "/apollo/LVDC.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Launch Vehicle Digital Computer",
+        "url": "http://www.ibiblio.org/apollo/LVDC.html"
+      },
+      {
+        "category": "general",
+        "content": "the largest fintech acquisition ever . “Stripe last week agreed to pay $8 billion for AI model marketplace OpenRouter, but a source said that the OpenRouter and PayPal deals were",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alterslash.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alterslash, the unofficial Slashdot digest",
+        "url": "https://alterslash.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "55c5b1085332e2f5c738f7b4338f70b9d5102e466aa55867026023b4900d386f",
+  "provider": "SearXNG",
+  "query": "tell me about the function of language acquisition in information systems",
+  "query_id": "v5-p-0698-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:01.326268Z"
+}

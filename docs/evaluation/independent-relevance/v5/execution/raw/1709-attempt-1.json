@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 372.22,
+  "pair_id": "v5-p-0047",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes compiler operation in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "crasher-bug-riddled operation; not good. Back to bed, up late. Got back to gtk&#43;/OO.o work, Stefan and Philipp appeared on IRC today - wonderful, discussed the alphaart changes wit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2003/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2003/"
+      },
+      {
+        "category": "general",
+        "content": "Dec. 16. A more arduous operation was still behind — to extract the spirit of jurisprudence from the decisions and conjectures, the questions and disputes, of the Roman civi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ourcivilisation.com",
+          "/smartboard/shop/gibbone/rome/volume2/chap44.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chapter 44 of The Decline And Fall Of The Roman Empire",
+        "url": "http://www.ourcivilisation.com/smartboard/shop/gibbone/rome/volume2/chap44.htm"
+      },
+      {
+        "category": "general",
+        "content": "credit, they are a tiny operation attempting to take on quite a massive responsibility. IRC Reviews IRC Client List - An impressive although still not entirely comprehensive list",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "koshka.love",
+          "/links.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dock",
+        "url": "http://koshka.love/links.html"
+      },
+      {
+        "category": "general",
+        "content": "the world, had left its operation to natural law; miracles, they held, were impossible; no prayer could change the behavior of the elements; and the origin of new species was due",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.andrsib.com",
+          "/durant/advr.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Will Durant: The Age Of Faith. CHAPTER XXXVI. The Adventure of Reason",
+        "url": "http://www.andrsib.com/durant/advr.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "14be7e4f532392ff4186f12a0a6a74f41f934bd8174f521ccf254b1d323d9151",
+  "provider": "SearXNG",
+  "query": "what causes compiler operation in food science",
+  "query_id": "v5-p-0047-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:17.447794Z"
+}

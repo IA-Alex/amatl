@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1760,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 323.462,
+  "pair_id": "candidate-p-1016",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "essential context for fermentation control within coastal planning",
+    "results": [
+      {
+        "category": "general",
+        "content": "dishes. This includes fermentation, smoking, and other techniques to mimic the flavors and textures often associated with animal-based foods. Supply Chain: Suppliers and producers",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.animal-rights.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Veganism as conceived by ChatGPT",
+        "url": "https://www.animal-rights.com/chatgpt/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "81a8b28bf9eae4b6b439d14c13f3d77356a33a539a0bdf41d30e0a769e23a3ae",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "essential context for fermentation control within coastal planning",
+  "query_id": "candidate-c-1016",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.animal-rights.com/chatgpt/",
+      "original_url": "https://www.animal-rights.com/chatgpt/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "dishes. This includes fermentation, smoking, and other techniques to mimic the flavors and textures often associated with animal-based foods. Supply Chain: Suppliers and producers",
+      "title": "Veganism as conceived by ChatGPT"
+    }
+  ],
+  "timestamp": "2026-09-05T17:29:48.899962Z"
+}

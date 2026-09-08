@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 297.778,
+  "pair_id": "v5-p-0569",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is food preservation in communication studies",
+    "results": [
+      {
+        "category": "general",
+        "content": "Israeli company Silent Communications has created TalkinSilent   , a special system for cell phones that allows conversations without speaking, which may enable also deaf peo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.imninalu.net",
+          "/Israel-Arabs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Israel and the Arab World",
+        "url": "https://www.imninalu.net/Israel-Arabs.htm"
+      },
+      {
+        "category": "general",
+        "content": "D. 2009. Personal communication. August 10, 2009. Benjamin, D. 2011. “Amanita muscaria – an entrepreneurial opportunity (A modern satire).” FUNGI Magazine , Vol. 4:1, Winter, 2011",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bayareamushrooms.org",
+          "/education/further_reflections_amanita_muscaria.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Further Reflections on Amanita muscaria as an Edible Species - Bay Area Mycological Society",
+        "url": "http://www.bayareamushrooms.org/education/further_reflections_amanita_muscaria.html"
+      },
+      {
+        "category": "general",
+        "content": "Art as a Means of Communication in Pre-Literate Societies. // Eban, Dan // (ed.). // IsraelMuseum:1990. [HI:AMH] Adam in Myth and History: Ancient Israelite Perspectives on the Pr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.christian-thinktank.com",
+          "/bookabs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Book Abbreviations",
+        "url": "https://www.christian-thinktank.com/bookabs.html"
+      },
+      {
+        "category": "general",
+        "content": "Soon, W. (2007) private communication. 20. U.S. National Climatic Data Center, U.S. Department of Commerce 2006 Climate Review. http://lwf.ncdc.noaa.gov/oa /climate/research/cag3/",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oism.org",
+          "/pproject/s33p36.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Environmental Effects of Increased Atmospheric Carbon Dioxide - Global Warming Petition Project",
+        "url": "https://www.oism.org/pproject/s33p36.htm"
+      },
+      {
+        "category": "general",
+        "content": "Muckleshoot: Poor communication, tribal damage plague Bertha&#39;s restart - Hundreds of emails, schematics, and documents obtained by a public records request detail confusion and fi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cowlitzcountry.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cowlitz Country News Home Page",
+        "url": "http://www.cowlitzcountry.com/"
+      },
+      {
+        "category": "general",
+        "content": "leaving an unbroken communication all round. Each side of the pentagon has a postern, opening into the passage between it and the circle; but the circle itself has only one grand",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.solomonspalding.com",
+          "/docs1/1808Ash.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Thomas Ashe&#39;s 1808 Book",
+        "url": "http://www.solomonspalding.com/docs1/1808Ash.htm"
+      },
+      {
+        "category": "general",
+        "content": "a role in intraspecific communication for mate choice in B. anynana. In addition, we found that both signals are equally important in the process of sexual selection by female cho",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "philosophy.nekhbet.com",
+          "/book.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Last Book of Moron",
+        "url": "https://philosophy.nekhbet.com/book.shtml"
+      },
+      {
+        "category": "general",
+        "content": "providing a record of communication between the customer and company or two companies. Request forms can be used for different purposes, including product inquiries, proposals, an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "formspal.com",
+          "/libertarianstudies/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Libertarian Papers | Online Journal for Libertarian Scholarship | Legal PDF Forms",
+        "url": "http://formspal.com/libertarianstudies/"
+      },
+      {
+        "category": "general",
+        "content": "and wireless communication; at one point creating an earthquake which shook the ground for several miles around his New York laboratory. He also devised a system which anticipated",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/tesla/esp_tesla_16a.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "My Inventions - The Autobiography of Nikola Tesla",
+        "url": "https://www.bibliotecapleyades.net/tesla/esp_tesla_16a.htm"
+      },
+      {
+        "category": "general",
+        "content": "industry and crafts, communication and transportation, energy, food processing, health and nutrition, stoves, ovens and kilns, water supply, natural resources, conservation. VITA",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "journeytoforever.org",
+          "/farm_library.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Small Farms Library - Journey to Forever",
+        "url": "http://journeytoforever.org/farm_library.html"
+      },
+      {
+        "category": "general",
+        "content": "very frequently into communication with the emperor. He was a man of great personal bravery, too, and was on this account held in high consideration by the army. He had performed",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book71/book71k/book71k.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nero, Makers of History, by Jacob Abbott.",
+        "url": "https://www.ajhw.co.uk/books/book71/book71k/book71k.html"
+      },
+      {
+        "category": "general",
+        "content": "in Sydney (personal communication, J. Ekman, Applied Horticultural Research, 12 August 2013). Sun exposure to a single layer of small button mushrooms was sufficient to generate 1",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/nutrition.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nutrition tidbits",
+        "url": "http://digdeeper.love/articles/nutrition.xhtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e3767af12d526870b24a2e77f52b7425c0d7eac13b9e3e8dc2e8d78d7a09c2fa",
+  "provider": "SearXNG",
+  "query": "what is food preservation in communication studies",
+  "query_id": "v5-p-0569-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:13.052220Z"
+}

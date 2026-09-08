@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 320.02876800106606,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is process scheduling in operating systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "reworking of how group scheduling works on multiprocessor systems. Full Story ( comments: 16 ) LWN.net Weekly Edition for August 20, 2026 Posted Aug 20, 2026 0:05 UTC (Thu) The LW",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Welcome to LWN.net [LWN.net]",
+        "url": "https://lwn.net/"
+      },
+      {
+        "category": "general",
+        "content": "to Precognant Scheduling Dr. Shelley T.C. Lovelace — World Scientific — September 1992 Format: Scanned PDF Language: English Category: Nonfiction - Unix Scheduling (00",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "suricrasia.online",
+          "/library/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Suricrasia Online&#39;s Online Library",
+        "url": "https://suricrasia.online/library/"
+      },
+      {
+        "category": "general",
+        "content": "to facilitate the scheduling of other meetings related to copy protection during the week in which the CPTWG meets. Participants in CPTWG come from all around the world, and inclu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cryptome.org",
+          "/wipo-imp99-3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Implementation Issues of the WIPO Copyright Treaty and the WIPO Permformances and Phonograms Treaty: Technical Protection Measures: the Inter",
+        "url": "https://cryptome.org/wipo-imp99-3.htm"
+      },
+      {
+        "category": "general",
+        "content": "and closing. Window scheduling used a simple &#34;loopless&#34; control scheme that threaded all of the windows together. One of the next classes to be implemented on the Interim Dynabook",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "worrydream.com",
+          "/EarlyHistoryOfSmalltalk/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Early History Of Smalltalk",
+        "url": "https://worrydream.com/EarlyHistoryOfSmalltalk/"
+      },
+      {
+        "category": "general",
+        "content": "known as round-robin scheduling) switched on; this means that a task can be moved from RUN state to READY state at any time, in order that one of its peers may run. This is not st",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lobste.rs",
+          "/s/lsumm4/i_quit_my_job_focus_on_serenityos_full_time",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "I quit my job to focus on SerenityOS full time | Lobsters",
+        "url": "https://lobste.rs/s/lsumm4/i_quit_my_job_focus_on_serenityos_full_time"
+      },
+      {
+        "category": "general",
+        "content": "21.3 DHT11 sensor   22 Scheduling Tasks    22.1 Tasklets    22.2 Work queues   23 Interrupt Handlers    23.1 Interrupt Handlers    23.2 Detecting button presses    23.3 Bottom Half",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sysprog21.github.io",
+          "/lkmpg/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Linux Kernel Module Programming Guide",
+        "url": "https://sysprog21.github.io/lkmpg/"
+      },
+      {
+        "category": "general",
+        "content": "Calendaring and Scheduling Core Object Specification (iCalendar)&#34;, RFC 2445, November 1998. [RFC2518] Goland, Y., Whitehead, E., Faizi, A., Carter, S. and D. Jensen, &#34;HTTP Extensi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.rfc-editor.org",
+          "/rfc/rfc3023.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://www.rfc-editor.org/rfc/rfc3023.txt",
+        "url": "https://www.rfc-editor.org/rfc/rfc3023.txt"
+      },
+      {
+        "category": "general",
+        "content": "using message passing. Scheduling and preemption. Simplified register and I/O access. All in all, these functions are critical for coordinating audio, video, and game logic tasks",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/nintendo-64/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nintendo 64 Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/nintendo-64/"
+      },
+      {
+        "category": "general",
+        "content": "change the process scheduling algorithm or other things. There are various named configurations (AKA &#34;spins&#34;): Zen , Liquorix , GNU Linux-libre , XanMod . Modules and Drivers : &#34;l",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/Linux.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Linux",
+        "url": "https://www.billdietrich.me/Linux.html"
+      },
+      {
+        "category": "general",
+        "content": "Constraint-Centric Scheduling Framework for Spatial Architectures Authors: Tony Nowatzki, Michael Sartin-Tarm, Lorenzo De Carli, Karthikeyan Sankaralingam, Cristian Estan, Behnam",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "cache misses. Such OS scheduling practices are questionable unless the caches are sufficiently large. Unless the workload for the machine consists of processes which, through thei",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/252125/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Memory part 2: CPU caches [LWN.net]",
+        "url": "https://lwn.net/Articles/252125/"
+      },
+      {
+        "category": "general",
+        "content": "been changes in the scheduling order or timing at boot time. The bug is a race condition, so it can rear its ugly head whenever it wants. The affected code was old and deployed in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mental-reverb.com",
+          "/blog.php",
+          "",
+          "id=29",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog - The weirdest bug I&#39;ve ever encountered",
+        "url": "https://mental-reverb.com/blog.php?id=29"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0017",
+  "query_text": "what is process scheduling in operating systems",
+  "requested_at": "2026-09-03T01:44:27.773512Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 335.003,
+  "pair_id": "v5-p-0077",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind ocean tides in climate science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "92b13f3244258b6b3fade1aac0d82d7e692a3594678a7f4512668b86ab697243",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind ocean tides in climate science",
+  "query_id": "v5-p-0077-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:15.318976Z"
+}

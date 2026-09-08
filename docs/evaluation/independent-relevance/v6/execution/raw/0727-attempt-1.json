@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 727,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 324.381,
+  "pair_id": "candidate-p-1627",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains low power computing within supply networks",
+    "results": [
+      {
+        "category": "general",
+        "content": "for both the parallel computing and for the property testing communities, as it shows an application of property testing in a practical setting, and the work’s primary contributio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "perplexing. My `Trusted Computing&#39; FAQ undermined the Trusted Computing Group&#39;s initiative to install DRM hardware in every computer, PDA and mobile phone. `TC&#39; was sold to Hollyw",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9bef371ff04e3ac75865a45523feccf6eca57481047b96eeb672918bb92eb57b",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains low power computing within supply networks",
+  "query_id": "candidate-t-1627",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.sigplan.org/Highlights/Papers/",
+      "original_url": "https://www.sigplan.org/Highlights/Papers/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "for both the parallel computing and for the property testing communities, as it shows an application of property testing in a practical setting, and the work’s primary contributio",
+      "title": "SIGPLAN Research Highlights Papers"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.cl.cam.ac.uk/archive/rja14/",
+      "original_url": "https://www.cl.cam.ac.uk/archive/rja14/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "perplexing. My `Trusted Computing&#39; FAQ undermined the Trusted Computing Group&#39;s initiative to install DRM hardware in every computer, PDA and mobile phone. `TC&#39; was sold to Hollyw",
+      "title": "Ross Anderson&#39;s Home Page"
+    }
+  ],
+  "timestamp": "2026-09-05T17:24:23.295071Z"
+}

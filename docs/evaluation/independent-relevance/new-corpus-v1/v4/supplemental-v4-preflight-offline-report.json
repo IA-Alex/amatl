@@ -1,0 +1,38 @@
+{
+  "schema": "amatl.relevance.supplemental-v4-preflight-offline.v1",
+  "preflight": "PASS",
+  "network_requests": 0,
+  "checks": {
+    "experiment_type": "PASS",
+    "primary_endpoint": "PASS",
+    "effect_size": "PASS",
+    "sample_size": "PASS",
+    "treatment_rule": "PASS",
+    "control_rule": "PASS",
+    "randomization": "PASS",
+    "stopping_rule": "PASS",
+    "analysis_plan": "PASS",
+    "decision_rule": "PASS",
+    "query_id_integrity": "PASS",
+    "query_text_integrity": "PASS",
+    "query_uniqueness": "PASS",
+    "known_query_overlap": 0,
+    "arm_balance": "PASS",
+    "network_requests": 0
+  },
+  "known_query_overlap": [],
+  "capacity": {
+    "query_count": 600,
+    "per_arm": 300,
+    "depth": 3,
+    "structural_slots_total": 1800,
+    "valid_target_total": 948
+  },
+  "hash_chain": {
+    "universe_sha256": "c6729fad0f79d0cdbf94e64884e083ab51c59a8cc935fb30efe33a7f7de19bb7",
+    "manifest_sha256": "6ef0c6aa6bd06df68d05ba304f2d892519b4b4cfddcb9f01a10bdfdaa1ddc52f",
+    "attestation_sha256": "ea2ada51b84b1be6d9cb2aaff963cb040f83d03e2cd44b28c9aa0856c0fc09d3",
+    "design_sha256": "66e7b5808607a452ab898f882c8dd457830b574bac33d631ec54ef3e476c6817"
+  },
+  "work_package_status": "COMPLETE_READY_FOR_CONTROLLED_CAPTURE"
+}

@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 351.732,
+  "pair_id": "v5-p-0064",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does compiler operation in architecture operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "server process. %a The architecture of the remote machine. It currently recognizes Samba ( Samba ), the Linux CIFS file system ( CIFSFS ), OS/2, ( OS2 ), Mac OS X ( OSX ), Windows",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.samba.org",
+          "/samba/docs/current/man-html/smb.conf.5.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "smb.conf",
+        "url": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+      },
+      {
+        "category": "general",
+        "content": "according to its own architecture. In particular, using the SERVICE keyword in the WHERE clause of operations in an Update request will usually result in a loss of atomicity. In t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/sparql11-update/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SPARQL 1.1 Update",
+        "url": "https://www.w3.org/TR/sparql11-update/"
+      },
+      {
+        "category": "general",
+        "content": "discipline and method architecture [Vo 2000] by decoupling the synchronisation strategies from the library code. Traditional Approach It is common practice for MT-Safe library imp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "raf.org",
+          "/papers/mt-disciplined.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "MT-Disciplined - decoupling thread safety",
+        "url": "https://raf.org/papers/mt-disciplined.html"
+      },
+      {
+        "category": "general",
+        "content": "parallelized, microarchitecture is likely to evolve towards simplicity and SBOPs per FLOP will probably stay roughly the same or even come down a bit. If nobody comes up with a wa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/286233/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Kernel Hacker&#39;s Bookshelf: Ultimate Physical Limits of Computation [LWN.net]",
+        "url": "https://lwn.net/Articles/286233/"
+      },
+      {
+        "category": "general",
+        "content": "according to its own architecture. In particular, using the SERVICE keyword in the WHERE clause of operations in an Update request will usually result in a loss of atomicity. In t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/2013/REC-sparql11-update-20130321/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SPARQL 1.1 Update",
+        "url": "https://www.w3.org/TR/2013/REC-sparql11-update-20130321/"
+      },
+      {
+        "category": "general",
+        "content": "- European Open Compute Architecture for Powerful Edge Martin Kaiser, Lennart Tigges, Jens Hagemeyer, Christian Klarhorst, Björn Voß, Fred Buining, Bola Fakhoury, János Lazányi, R",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "programming-group.com",
+          "/members/salvaneschi",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Prof. Dr. Guido Salvaneschi | Programming Group",
+        "url": "https://programming-group.com/members/salvaneschi"
+      },
+      {
+        "category": "general",
+        "content": "on the computer architecture.) About a month after I wrote the previous paragraph, a commenter in an online discussion (probably about the Voyager team&#39;s workaround for the Novemb",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.geonius.com",
+          "/writing/other/voyager.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Voyager Spacecraft and Fortran 5",
+        "url": "http://www.geonius.com/writing/other/voyager.html"
+      },
+      {
+        "category": "general",
+        "content": "to be ported to a new architecture. The original DRI manuals with it tell you how to do this. The tools provided with it are sufficient to aid you in doing this. It is not impossi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.retrotechnology.com",
+          "/dri/howto_cpm.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to start with CP/M",
+        "url": "http://www.retrotechnology.com/dri/howto_cpm.html"
+      },
+      {
+        "category": "general",
+        "content": "(PAST) Program Architecture of the LVDC References General Characteristics of the Computer Layout of Memory Words CPU Instructions I/O Ports (for LVDC/PTC PIO Instructions) I/O Po",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ibiblio.org",
+          "/apollo/LVDC.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Launch Vehicle Digital Computer",
+        "url": "http://www.ibiblio.org/apollo/LVDC.html"
+      },
+      {
+        "category": "general",
+        "content": "Support Nintendo 3DS Architecture A practical analysis by Rodrigo Copetti Using accessibility tools? Switch to the ‘classic’ edition . Got a vintage computer? Try the 90s-compatib",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/nintendo-3ds/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nintendo 3DS Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/nintendo-3ds/"
+      },
+      {
+        "category": "general",
+        "content": "Portable (PSP) Architecture A practical analysis by Rodrigo Copetti Using accessibility tools? Switch to the ‘classic’ edition . Got a vintage computer? Try the 90s-compatible ‘bl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/playstation-portable/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PlayStation Portable (PSP) Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/playstation-portable/"
+      },
+      {
+        "category": "general",
+        "content": "Zig compiler for any architecture. It achieves this via four large compile steps (with the relevant names I will use for them throughout this blogpost): – Compiling LLVM for the h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wf.lavatech.top",
+          "/lun-4/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "luna&#39;s up on her bullshit again — LavaTech WriteFreely",
+        "url": "https://wf.lavatech.top/lun-4/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8d232c1baec55b7f3c040ce7ae3bb331457e0b20e8b00126ff715be9c3897f0d",
+  "provider": "SearXNG",
+  "query": "how does compiler operation in architecture operate",
+  "query_id": "v5-p-0064-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:35.789585Z"
+}

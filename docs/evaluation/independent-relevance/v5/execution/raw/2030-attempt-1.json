@@ -1,0 +1,246 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 390.295,
+  "pair_id": "v5-p-0877",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind vaccination in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "in Los Angeles when a vaccination ordinance was submitted to a popular referendum is typical of what would happen anywhere under the same circumstances. The ordinance was 54 rejec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/73150/73150-h/73150-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notes on Democracy | Project Gutenberg",
+        "url": "https://www.gutenberg.org/files/73150/73150-h/73150-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "to things like vaccination, or social distancing during COVID, on the basis that COVID is a harmful disease, as determined by scientific research, and that things like the COVID v",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "purplepriest.codeberg.page",
+          "/articles/refdd.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://purplepriest.codeberg.page/articles/refdd.html",
+        "url": "https://purplepriest.codeberg.page/articles/refdd.html"
+      },
+      {
+        "category": "general",
+        "content": "of insect pests. Vaccination or Immunity Boosting : For disease-carrying pests, another approach might involve using gene-editing techniques to make pests immune to certain diseas",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.abolitionist.com",
+          "/chatgpt/hitechjain.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "High-tech Jainism as conceived by ChatGPT-4",
+        "url": "https://www.abolitionist.com/chatgpt/hitechjain.html"
+      },
+      {
+        "category": "general",
+        "content": "flu/tetanus/hepatitus B vaccination, interferon therapy, many antibodies, blood transfusions, autoimmune diseases, haemophilia, hepatitis, herpes simplex, leprosy, malaria, certai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/aids.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HIV=AIDS=Death: a killer myth",
+        "url": "https://davidpratt.info/aids.htm"
+      },
+      {
+        "category": "general",
+        "content": "for attending school. Vaccination campaigns teach your kid that its body is property of the government and the pharmaceutical industry, which will now decide the kinds of substanc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/school.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The toxic schooling system",
+        "url": "http://digdeeper.love/articles/school.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "Lockdown until Vaccination (May 2024) Here are extracts from the beginning of this article which reveals what has been obscure since March 2020: Four years later, many people",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "serendipity.li",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Serendipity",
+        "url": "https://serendipity.li/"
+      },
+      {
+        "category": "general",
+        "content": "for discouraging vaccination of young people owing to the threat of heart damage. And here’s an article acknowledging that such a threat exists — from the very same orga",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "thornwalker.com",
+          "/ditch/home.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Last Ditch--a newsletter on issues of Liberty and Civility",
+        "url": "https://thornwalker.com/ditch/home.htm"
+      },
+      {
+        "category": "general",
+        "content": "1023. Ultimate vaccination theory 1022. The coming cataclysm 1021. The Antichrist and &#34;the worldwide web&#34; 1020. Misunderstandings of the &#34;red pill&#34; 1019. Why the left can&#39;t &#34;meme&#34;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "orgyofthewill.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Orgy of the Will: A Philosophy of the Future",
+        "url": "http://orgyofthewill.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b0f8e70485c26ee3a61d8c48ddf6e70d759c4aaf7b468992e3f712130f180f2f",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind vaccination in health science",
+  "query_id": "v5-p-0877-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:04.622016Z"
+}

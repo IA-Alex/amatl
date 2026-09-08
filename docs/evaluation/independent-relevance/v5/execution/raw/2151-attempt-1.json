@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 252.122,
+  "pair_id": "v5-p-0491",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes encryption keys in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "Security / Compliance / Encryption / Privacy - businesses like to not leak their critical customer data, relationship information, pricing, trade-secrets, and more. Easy to use au",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2012/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2012/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "edafd21d55c821ec64b730e42ae272d1a8023bb143e46f3b7186eaa64f9d83ac",
+  "provider": "SearXNG",
+  "query": "what causes encryption keys in public health",
+  "query_id": "v5-p-0491-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:16:43.178990Z"
+}

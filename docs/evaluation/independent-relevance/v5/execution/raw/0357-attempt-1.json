@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 250.805,
+  "pair_id": "v5-p-0048",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does compiler operation in geology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e1d5337e7e3c464b8efa258aae982f65810e830dbc5d9caf9f92ab81a132bfdb",
+  "provider": "SearXNG",
+  "query": "how does compiler operation in geology operate",
+  "query_id": "v5-p-0048-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:01.342299Z"
+}

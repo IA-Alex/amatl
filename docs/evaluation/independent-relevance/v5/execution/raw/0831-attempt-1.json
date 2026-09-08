@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 251.775,
+  "pair_id": "v5-p-0283",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes binary search in forensic science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9216065282aa7240a85bd668126e54ba4865d2592c23885c89f63006ef718252",
+  "provider": "SearXNG",
+  "query": "what causes binary search in forensic science",
+  "query_id": "v5-p-0283-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:39.241184Z"
+}

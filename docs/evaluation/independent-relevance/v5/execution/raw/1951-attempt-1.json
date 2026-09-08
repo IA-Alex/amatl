@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 261.784,
+  "pair_id": "v5-p-0508",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does neural networks in civil engineering operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "800037000fa30e1b9a602021091419a26f221407d35e5385454e2c25a993f5a7",
+  "provider": "SearXNG",
+  "query": "how does neural networks in civil engineering operate",
+  "query_id": "v5-p-0508-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:39.865304Z"
+}

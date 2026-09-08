@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 246.958,
+  "pair_id": "v5-p-0643",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes renewable energy storage in forensic science",
+    "results": [
+      {
+        "category": "general",
+        "content": "would be to build up renewable electricity generation rapidly and shut that power plant down soon. 26 December 2019 ( Business supremacy treaties ) People in Romania stopped a for",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-sep-dec.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8f9b9b7719dc1c930b5f42c99e890ecb4590bccc8c5c13127b14f02a123958d2",
+  "provider": "SearXNG",
+  "query": "what causes renewable energy storage in forensic science",
+  "query_id": "v5-p-0643-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:14:07.677169Z"
+}

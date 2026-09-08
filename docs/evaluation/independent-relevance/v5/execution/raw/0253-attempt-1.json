@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 343.884,
+  "pair_id": "v5-p-0543",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes food preservation in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "But in what does this preservation of African American culture consist? It can hardly consist in anything more than eating black-style food, listening to black-style music, wearin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unabomber.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society and Its Future",
+        "url": "https://unabomber.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "which &#39;acts by the preservation and accumulation of small inherited modifications, each profitable to the preserved being.&#39; With this idea he interpenetrates and leavens the vast",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "victorianweb.org",
+          "/science/science_texts/belfast.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Address Delivered Before the British Association Assembled at Belfast, With Additions (1874)",
+        "url": "https://victorianweb.org/science/science_texts/belfast.html"
+      },
+      {
+        "category": "general",
+        "content": "But in what does this preservation of African American culture consist? It can hardly consist in anything more than eating black-style food, listening to black-style music, wearin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/industrial-society-and-its-future-manifesto",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society And Its Future",
+        "url": "https://zerocontradictions.net/misc/industrial-society-and-its-future-manifesto"
+      },
+      {
+        "category": "general",
+        "content": "Field to Freezer and Preservation of Game Meats . Home Drying of Food is 25 detailed pages from the Utah State University Cooperative Extension. The National Food Safety Database",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "paleodiet.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Paleo Diet (Paleolithic, Primal, Caveman, Stone Age, Hunter-Gatherer Diet)",
+        "url": "https://paleodiet.com/"
+      },
+      {
+        "category": "general",
+        "content": "Names in the Holy Land--Preservation and History. // Elitzur, Yoel // HebrewUnivJerusalme-Eisenbrauns:2004. [HI:APOESO] Apocryphal and Esoteric Sources in the Development of Chris",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.christian-thinktank.com",
+          "/bookabs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Book Abbreviations",
+        "url": "https://www.christian-thinktank.com/bookabs.html"
+      },
+      {
+        "category": "general",
+        "content": "responsibility for the preservation of life and a root confusion between subjective and objective manifestations, in which personality, moral judgment and legislative manufacture,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "dhushara.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dhushara",
+        "url": "http://dhushara.com/"
+      },
+      {
+        "category": "general",
+        "content": "religion, or self-preservation. The medium for take-over is here. By the age of 16, children have spent 10,000 to 15,000 hours watching television--that is more time than they spe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dankalia.com",
+          "/science/psc133.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Battle For Your Mind",
+        "url": "https://www.dankalia.com/science/psc133.htm"
+      },
+      {
+        "category": "general",
+        "content": "its cultivation and preservation The date, description and uses of The orange The lemon The sweet lemon or bergamot The citron The lime The grape-fruit The pomegranate, its antiqu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book33/book33.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Science in the Kitchen., by Mrs. E. E. Kellogg",
+        "url": "https://www.ajhw.co.uk/books/book33/book33.html"
+      },
+      {
+        "category": "general",
+        "content": "that they result in the preservation of an organism&#39;s life.&#34; The footnote may have been added later to answer an objection someone raised. The problem is that once Rand makes that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "spot.colorado.edu",
+          "/~huemer/papers/rand5.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Critique of Objectivist Ethics",
+        "url": "https://spot.colorado.edu/~huemer/papers/rand5.htm"
+      },
+      {
+        "category": "general",
+        "content": "of families and the preservation of properties. The romantic revolution of the Courts of Love in France was at first extramatrimonial, and the combination of romance and marriage",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.n7nz.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "I Kissed Joshua Harris&#39; Dating Critique Goodbye",
+        "url": "http://www.n7nz.org/"
+      },
+      {
+        "category": "general",
+        "content": "Church, the preservation of the Church was assumed a higher moral value than the practice of the religion - the practice of the moral life.  A code of obedience to earthly fa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/SavingCatholicReligion.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Saving the Catholic Religion",
+        "url": "http://ipwebdev.com/hermit/SavingCatholicReligion.html"
+      },
+      {
+        "category": "general",
+        "content": "the various methods of preservation of oils and fats by the use of antiseptic preparations. It cannot, however, be accepted as a certainty that bacteria cause the rancidity of fat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book431/book431.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Soap-making Manual, by E. G. Thomssen, Ph. D.",
+        "url": "https://www.ajhw.co.uk/books/book431/book431.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ea45bbf16060a4e761974df4e1269292b15f87df281fa5944a3394a2ad0a5fd9",
+  "provider": "SearXNG",
+  "query": "what causes food preservation in chemistry",
+  "query_id": "v5-p-0543-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:29.000655Z"
+}

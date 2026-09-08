@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 276.533,
+  "pair_id": "v5-p-0916",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does bridge resonance in mechanical engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "process of genetically engineering crops to protect them or their consumers from disease. For example, researchers at Texas A&amp;M and Tulane University have genetically altered pota",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.shoestring-graphics.com",
+          "/CP2020/slang/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Word on The Streets",
+        "url": "http://www.shoestring-graphics.com/CP2020/slang/"
+      },
+      {
+        "category": "general",
+        "content": "applies particularly to engineering types, who have to argue their ideas through to practical realisation in the workplace. Sometimes, just sometimes, the ability to say &#39;I was wr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      },
+      {
+        "category": "general",
+        "content": "in the scientific, engineering or patent literature. While others have previously noted the need for a handle structure to manipulate the active mechanosynthetic tooltip [ 32 , 33",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.MolecularAssembler.com",
+          "/Papers/DMSToolbuildProvPat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DMS Toolbuilding Patent",
+        "url": "http://www.MolecularAssembler.com/Papers/DMSToolbuildProvPat.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b0bba906e4886487f0e0152d811bb8dc9d829bb16a87d49c809cc1549cb545b9",
+  "provider": "SearXNG",
+  "query": "how does bridge resonance in mechanical engineering operate",
+  "query_id": "v5-p-0916-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:45.913266Z"
+}

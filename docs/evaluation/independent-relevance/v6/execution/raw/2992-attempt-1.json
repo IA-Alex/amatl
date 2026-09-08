@@ -1,0 +1,144 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2992,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 290.912,
+  "pair_id": "candidate-p-0906",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of ecosystem services within structural engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "that while context engineering is valuable, it should be supported by proper databases with foreign keys and version control rather than fragile markdown repositories, urging deve",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "fairly large reverse-engineering and porting effort coming up. Spoiler: Antigravity CLI did not succeed with this task because Gemini prefers spitting out the results that “",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lynx.luxferre.top",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lynx thoughts",
+        "url": "https://lynx.luxferre.top/"
+      },
+      {
+        "category": "general",
+        "content": "sound as performance engineering; the political consequence is that speed optimization normalizes dependence on shared infrastructure whose operators can observe traffic patterns.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kirill.korins.ky",
+          "/articles/the-walled-garden-of-the-surveilled-web/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Walled Garden of the Surveilled Web - Kirill&#39;s journal",
+        "url": "https://kirill.korins.ky/articles/the-walled-garden-of-the-surveilled-web/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "cc052ba3791b7bbace2bfa07344ee7512344790863ac7c64f2a89e6986262a82",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of ecosystem services within structural engineering",
+  "query_id": "candidate-c-0906",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://gnu.support/",
+      "original_url": "https://gnu.support/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "that while context engineering is valuable, it should be supported by proper databases with foreign keys and version control rather than fragile markdown repositories, urging deve",
+      "title": "GNU.Support website about GNU Operating Systems"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://lynx.luxferre.top/",
+      "original_url": "https://lynx.luxferre.top/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "fairly large reverse-engineering and porting effort coming up. Spoiler: Antigravity CLI did not succeed with this task because Gemini prefers spitting out the results that “",
+      "title": "Lynx thoughts"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://kirill.korins.ky/articles/the-walled-garden-of-the-surveilled-web/",
+      "original_url": "https://kirill.korins.ky/articles/the-walled-garden-of-the-surveilled-web/",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "sound as performance engineering; the political consequence is that speed optimization normalizes dependence on shared infrastructure whose operators can observe traffic patterns.",
+      "title": "The Walled Garden of the Surveilled Web - Kirill&#39;s journal"
+    }
+  ],
+  "timestamp": "2026-09-05T17:36:14.590629Z"
+}

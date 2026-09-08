@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 258.961,
+  "pair_id": "v5-p-0987",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes wastewater treatment in mechanical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e8d4761371fa1b1a10d5b83db44f62cdeee2654baa5a0677b3cae4346ba91b83",
+  "provider": "SearXNG",
+  "query": "what causes wastewater treatment in mechanical engineering",
+  "query_id": "v5-p-0987-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:57.692408Z"
+}

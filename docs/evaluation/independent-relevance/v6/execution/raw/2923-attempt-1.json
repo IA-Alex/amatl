@@ -1,0 +1,279 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2923,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 499.997,
+  "pair_id": "candidate-p-1605",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what are the main constraints on low power computing within food systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "were supplied by &#34;constraints,&#34; also in graphical form, that could be applied to the masters to shape an inter-related parts. Its data structures were hard to understand—the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "worrydream.com",
+          "/EarlyHistoryOfSmalltalk/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Early History Of Smalltalk",
+        "url": "https://worrydream.com/EarlyHistoryOfSmalltalk/"
+      },
+      {
+        "category": "general",
+        "content": "in order to satisfy the constraints imposed by these systems while producing a language that is fit for its purpose. This includes designing a type systems that helps prevent scie",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "order to meet platform constraints. This will include a review of JIT and VM options used with Linux platforms and how they can benefit/exploit architectural features and be used",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "and bandwidth constraints rather than by accessibility and land values, largely asynchronous in its operation, and inhabited by disembodied and fragmented subjects who exist as co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gotze.dk",
+          "/phd/it.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Participation in the information age",
+        "url": "https://gotze.dk/phd/it.html"
+      },
+      {
+        "category": "general",
+        "content": "he said. In fact, those constraints are significant. In theory, at least, designing our own offspring could make those constraints disappear. Before speaking about that, however,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.abolitionist.com",
+          "/resource/synthetic-biology.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Abolitionist.com : synthetic life",
+        "url": "https://www.abolitionist.com/resource/synthetic-biology.html"
+      },
+      {
+        "category": "general",
+        "content": "graph query languages, constraints on graph data, graph query evaluation algorithms). Finally, I did my Bachelor and Master in computer science and engineering at the Eindhoven Un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jhellings.nl",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jelle Hellings",
+        "url": "https://jhellings.nl/"
+      },
+      {
+        "category": "general",
+        "content": "make decisions under constraints of limited time and knowledge. From an engineering standpoint, these heuristics suggest ways to build artificially intelligent systems—artificial",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "home.dbio.uevora.pt",
+          "/~eje/simple%20heuristics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "‹Truth is ever to be found in simplicity, and not in the multiplicityand confusion of things. As the world, which to the naked eye exhibits th",
+        "url": "http://home.dbio.uevora.pt/~eje/simple%20heuristics.htm"
+      },
+      {
+        "category": "general",
+        "content": "because we have less constraints than in Europe, timing-wise.” On the same call, an executive said Nestle was instituting “higher pricing in the U.S. market than comparatively in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "techrights.org",
+          "/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Techrights — Links 30/01/2024: Many More Layoffs (Microsoft the Most Tech Layoffs This Year)",
+        "url": "http://techrights.org/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "01deda320d5e3a4a5f04bd27d7e35459c48bdd5facdb59aa2b3aa7eb3c744c2b",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what are the main constraints on low power computing within food systems",
+  "query_id": "candidate-t-1605",
+  "raw_result_count": 8,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://worrydream.com/EarlyHistoryOfSmalltalk/",
+      "original_url": "https://worrydream.com/EarlyHistoryOfSmalltalk/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "were supplied by &#34;constraints,&#34; also in graphical form, that could be applied to the masters to shape an inter-related parts. Its data structures were hard to understand—the",
+      "title": "The Early History Of Smalltalk"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.sigplan.org/Highlights/Papers/",
+      "original_url": "https://www.sigplan.org/Highlights/Papers/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "in order to satisfy the constraints imposed by these systems while producing a language that is fit for its purpose. This includes designing a type systems that helps prevent scie",
+      "title": "SIGPLAN Research Highlights Papers"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html",
+      "original_url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "order to meet platform constraints. This will include a review of JIT and VM options used with Linux platforms and how they can benefit/exploit architectural features and be used",
+      "title": "CELF Embedded Linux Conference"
+    }
+  ],
+  "timestamp": "2026-09-05T17:35:53.056174Z"
+}

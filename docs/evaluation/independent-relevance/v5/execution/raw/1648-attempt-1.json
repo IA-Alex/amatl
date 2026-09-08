@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 355.153,
+  "pair_id": "v5-p-0501",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind encryption keys in industrial design",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "994b176be5e5dcb788e756e370da785226d1683fe87f3fb93b6ff11a04f5f842",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind encryption keys in industrial design",
+  "query_id": "v5-p-0501-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:59.061430Z"
+}

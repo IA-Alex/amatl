@@ -1,0 +1,327 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 414.305,
+  "pair_id": "v5-p-0714",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of language acquisition in energy systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "magic and the acquisition of initiatory knowledge . Higher Self: that part of us which connects our corporeal minds to the Collective Unconscious and with the divine knowledge of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/masons.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Freemasons - The silent destroyers. Deist religious cult based on the Knights Templar - Initiation rituals like those of witchcraft",
+        "url": "http://www.bilderberg.org/masons.htm"
+      },
+      {
+        "category": "general",
+        "content": "His inverted &#34;customer acquisition cost&#34; economic theory is a satire that reveals an uncomfortable truth: he proposes that companies should acquire their own customers by paying t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "before its acquisition by Rambus; Cigital (formerly Reliable Software Technologies, Gary McGraw, gem@cigital.com), prior to its acquisition by Synopsys. Other advisory boards that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "will be a great acquisition, if it does no more than impart grace to manners; but its function does not stop here. For propriety, springing as it does from motives of benevolence",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "shibuiswords.com",
+          "/soulofjapan.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bushido, the Soul of Japan",
+        "url": "https://shibuiswords.com/soulofjapan.htm"
+      },
+      {
+        "category": "general",
+        "content": "social standing, the acquisition of money or material goods, and social activism for causes that are not important for the activist personally. The most prominent contemporary exa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kaliyugametal.neocities.org",
+          "/0050-kaczynski",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kali Yuga | Book Review: &#34;Industrial Society and its Future&#34; by Theodore Kaczynski",
+        "url": "https://kaliyugametal.neocities.org/0050-kaczynski"
+      },
+      {
+        "category": "general",
+        "content": "proud of their acquisition of speech, which must have been accompanied by a great facilitation of thought. They attributed magic power to the spoken word. This feature was later o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.marxists.org",
+          "/reference/subject/philosophy/works/at/freud.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A PHILOSOPHY OF LIFE by Sigmund Freud",
+        "url": "https://www.marxists.org/reference/subject/philosophy/works/at/freud.htm"
+      },
+      {
+        "category": "general",
+        "content": "regarded as an acquisition at the kingly courts by their powers of repartee, and the reputation of their bons mots . Their jests at the orthodox beliefs and their unblushing disre",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "epicurism.github.io",
+          "/epicurism.info/etexts/wallace_epicureanism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Epicurus.info : E-Texts : Epicureanism, by William Wallace",
+        "url": "http://epicurism.github.io/epicurism.info/etexts/wallace_epicureanism.html"
+      },
+      {
+        "category": "general",
+        "content": "(NPT). In order of acquisition of nuclear weapons these are: the United States of America , Russia (formerly the Soviet Union ), the United Kingdom , France , and the People&#39;s Rep",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greatdreams.com",
+          "/war/rule_2002.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RULE 2002",
+        "url": "http://www.greatdreams.com/war/rule_2002.htm"
+      },
+      {
+        "category": "general",
+        "content": "and Twitter (pre-acquisition)—regularly shared information, including specific indicators of compromise tied to particular campaigns, with other companies in the ecosystem in furt",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "erinkissane.com",
+          "/meta-in-myanmar-part-iv-only-connect",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Meta in Myanmar, Part IV: Only Connect - Erin Kissane&#39;s small internet website",
+        "url": "https://erinkissane.com/meta-in-myanmar-part-iv-only-connect"
+      },
+      {
+        "category": "general",
+        "content": "article about their acquisition of the Lunatic. The manager of the Caltech computer center wanted me to stay for the summer of 1968 and continue work on the 1800, but I needed to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ed-thelen.org",
+          "/comp-hist/stories.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stories",
+        "url": "https://www.ed-thelen.org/comp-hist/stories.html"
+      },
+      {
+        "category": "general",
+        "content": "believe in the Rules of Acquisition. Aliens who spend a lot of time with humans (example: Nog) sometimes acquire the human capacity to break stereotype. (Editor&#39;s note: cultural c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.stardestroyer.net",
+          "/Empire/Essays/Philosophy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Star Wars vs Star Trek Essays: The Philosophy of Star Trek",
+        "url": "http://www.stardestroyer.net/Empire/Essays/Philosophy.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bd3bf174f4c111ef68c7822ab2cdca4edea2f5ac814a284c4c9ea4e0b314fad1",
+  "provider": "SearXNG",
+  "query": "tell me about the function of language acquisition in energy systems",
+  "query_id": "v5-p-0714-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:24.766795Z"
+}

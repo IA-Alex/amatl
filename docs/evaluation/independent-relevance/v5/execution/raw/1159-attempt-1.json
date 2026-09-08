@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 349.853,
+  "pair_id": "v5-p-0122",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does database indexing in information systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "(KO) within Library and Information Science, and in many ways it has dominated what has be termed “modern classification theory”. It was mainly developed by S. R. Rang",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/facet_analysis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Facet analysis (IEKO)",
+        "url": "https://www.isko.org/cyclo/facet_analysis.htm"
+      },
+      {
+        "category": "general",
+        "content": "WebGL. Visualizing Information Using SVG and X3D by Vladimir Geroimenko and Chaomei Chen , editors, Springer, 2008. Computer Graphics: From a Small Formula to Cyberworlds by Alexe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.web3d.org",
+          "/x3d/content/examples/X3dResources.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "X3D Resources",
+        "url": "https://www.web3d.org/x3d/content/examples/X3dResources.html"
+      },
+      {
+        "category": "general",
+        "content": "structuring, information loss, and a lack of provenance or security. By relying on unstructured folders and rigid JSON schemas instead of a proper database with foreign keys, audi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "through control of information.   Seed-funded by the NSA and CIA , Google was merely the first among a plethora of private sector start-ups co-opted by US intelligence to ret",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/sociopol_internetgoogle47.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Google, CIA and the NSA - Inside the Secret Network behind Mass Surveillance, Endless War and Skynet",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_internetgoogle47.htm"
+      },
+      {
+        "category": "general",
+        "content": "more balanced News and Information ALTERNATIVE NEWS NEWS http://www.alternet.org NEWS http://www.centrexnews.com NEWS http://www.link.no/IPS/eng/last.html NEWSLINKS http://www.tru",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "of sophisticated → information retrieval systems and artificial intelligence (e.g., Broughton 2006 ; Glushko 2013 ; Hjørland 2012; 2021 among others urges a rapprochem",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/phenomenon.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Phenomenon-based classification (IEKO)",
+        "url": "https://www.isko.org/cyclo/phenomenon.htm"
+      },
+      {
+        "category": "general",
+        "content": "&amp; Libraries GENERAL INFORMATION : * California State Information : California Education   California state general information, including archives, databases,   educ",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.academic-genealogy.com",
+          "/melvyluniversityofcaliforniagenealogyfamilyhistory.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Melvyl® System - University of California: Worldwide Genealogy and Family History Research",
+        "url": "http://www.academic-genealogy.com/melvyluniversityofcaliforniagenealogyfamilyhistory.htm"
+      },
+      {
+        "category": "general",
+        "content": "using the additional information present in hypertext to produce better search results. This paper addresses this question of how to build a practical large-scale system which can",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "infolab.stanford.edu",
+          "/~backrub/google.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Anatomy of a Search Engine",
+        "url": "http://infolab.stanford.edu/~backrub/google.html"
+      },
+      {
+        "category": "general",
+        "content": "and 8 mm audio More information on video formats VCR servo systems Video special effects For more information on VCR and related technology On-line tech-tips databases A site to r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.repairfaq.org",
+          "/sam/vcrfaq.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notes on the Troubleshooting and Repair of Video Cassette Recorders",
+        "url": "http://www.repairfaq.org/sam/vcrfaq.htm"
+      },
+      {
+        "category": "general",
+        "content": "of Michigan School of Information Introduction Brief Chronology Potential Explanations Conclusion References Revision History Introduction In this paper, I explore the rise and fa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ils.unc.edu",
+          "/callee/gopherpaper.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Where Have all the Gophers Gone? Why the Web beat Gopher in the Battle for Protocol Mind Share",
+        "url": "https://ils.unc.edu/callee/gopherpaper.htm"
+      },
+      {
+        "category": "general",
+        "content": "to the keywords bring information. Entries in dictionaries and encyclopedias can be arranged according to headwords (in addition, indexes can be arranged according to derived or a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/alphabetization.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alphabetization (IEKO)",
+        "url": "https://www.isko.org/cyclo/alphabetization.htm"
+      },
+      {
+        "category": "general",
+        "content": "privacy of keeping the information of who is your friend secret from companies and other complete strangers. You only want your friends to know, and maybe isolate some groups of f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "secushare.org",
+          "/comparison",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Capability Comparison",
+        "url": "https://secushare.org/comparison"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d861a151b1fbf7d85e06a05d74eecde4fb8daadb43e1cd3a798af9d9fdf911cf",
+  "provider": "SearXNG",
+  "query": "how does database indexing in information systems work",
+  "query_id": "v5-p-0122-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:21.844405Z"
+}

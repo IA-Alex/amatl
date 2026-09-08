@@ -1,0 +1,300 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 406.416,
+  "pair_id": "v5-p-0318",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of water purification in energy systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "the spiritual man, the purification of mind, will and thought, and the ennobling of all the faculties of the human soul. Bilderberg Group: a powerful global elite,Group together w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/masons.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Freemasons - The silent destroyers. Deist religious cult based on the Knights Templar - Initiation rituals like those of witchcraft",
+        "url": "http://www.bilderberg.org/masons.htm"
+      },
+      {
+        "category": "general",
+        "content": "in the sense of purification as punishment, but as a gradual ascent towards the perfect development of one&#39;s potential. Psychology is used to explain mind expansion as “mys",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.vatican.va",
+          "/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jesus Christ The Bearer Of The Water Of Life - A Christian reflection on the New Age",
+        "url": "https://www.vatican.va/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html"
+      },
+      {
+        "category": "general",
+        "content": "means of inner mental purification and spiritual salvation, devoid of any personal effort. 4) Kama-raga: This is sensuous lust or desire and attachment to the sense objects which",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "scriptures.ru",
+          "/trans_tr.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE TRANSCENDENTAL TRUTH",
+        "url": "https://scriptures.ru/trans_tr.htm"
+      },
+      {
+        "category": "general",
+        "content": "up his body during the purification the very same procedure reduces the whole universe to rubble and ash.   Chakravala or the iron wheel Just as the androgynous body of the A",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.trimondi.de",
+          "/SDLE/Part-1-09.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Shadow of the Dalai Lama – Part I – 9",
+        "url": "http://www.trimondi.de/SDLE/Part-1-09.htm"
+      },
+      {
+        "category": "general",
+        "content": "hands, adaptation, purification, thyroid gland 4 (heart): love, compassion, relationship, balance and harmony, inner guidance, authentic self, thymus gland 3 (solar plexus/navel):",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "philosopherswheel.com",
+          "/toccata.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bach, Chakras, Tarot: J.S. Bach&#39;s Toccata in F Major (S. 540) is an image of the kundalini!",
+        "url": "https://philosopherswheel.com/toccata.htm"
+      },
+      {
+        "category": "general",
+        "content": "which likewise concern purification. At the end of the first seven stages the Vajra master then dissolves the pupil into “emptiness” in his imagination, in order to then visualize",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.trimondi.de",
+          "/SDLE/Part-1-06.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Shadow of the Dalai Lama – Part I – 6",
+        "url": "http://www.trimondi.de/SDLE/Part-1-06.htm"
+      },
+      {
+        "category": "general",
+        "content": "r Theurgic Ascent Purification and Protection Symbolic Death and Dissolution Ascent through the Spheres Unification, or Henôsis Redescent The Pythagorean Succession In ancient time",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "opsopaus.com",
+          "/OM/BA/ETP/V.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Summary of Pythagorean Theology V: Theurgy",
+        "url": "http://opsopaus.com/OM/BA/ETP/V.html"
+      },
+      {
+        "category": "general",
+        "content": "for water softening and purification, or relating to schemes for altering water in some way in order to make it more readily available or beneficial to the body. Over the years I",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.chem1.com",
+          "/CQ/faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AquaScams FAQ&#39;s",
+        "url": "http://www.chem1.com/CQ/faq.html"
+      },
+      {
+        "category": "general",
+        "content": "man,’ that is, the purification of the spiritual being and at the same time knowledge of the Whole.” Referring to The Gospel of Truth, with its explanation of “the call from above",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.brusselsjournal.com",
+          "/node/4461",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Gnosticism from a Non-Voegelinian Perspective, Part III (Gnosticism in Modern Scholarship) | The Brussels Journal",
+        "url": "https://www.brusselsjournal.com/node/4461"
+      },
+      {
+        "category": "general",
+        "content": ", 1651, No 8. In Purificationem, pp. 154-157.   &#34;The Damsel of the Sanct Grael,&#34; by Dante Gabriel Rossetti .   &#34; Eva Prima Pandora, &#34; by Jean Cousin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "thelostword.dk",
+          "/index3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE LOST WORD",
+        "url": "http://thelostword.dk/index3.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "84033cbf6e567294263ffb2499132d4ce75d2371c1a22825cf81ec31389ba1c4",
+  "provider": "SearXNG",
+  "query": "tell me about the function of water purification in energy systems",
+  "query_id": "v5-p-0318-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:26.953360Z"
+}

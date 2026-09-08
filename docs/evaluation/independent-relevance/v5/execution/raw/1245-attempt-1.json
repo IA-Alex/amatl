@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 312.054,
+  "pair_id": "v5-p-0444",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does supply chain logistics in geology operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "office, organizing site logistics (kitchen, housing, tools), and planning your extraction infrastructure (jackhammers, generators, winches) to scale production. Alternative Opport",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.startyourowngoldmine.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Start Your Own Gold Mine in 45 days with less than US $100,000",
+        "url": "https://www.startyourowngoldmine.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "927ec2f8824319bb3bb378e6d54523d196e8c53506ba3bd6d7437efea2f331c1",
+  "provider": "SearXNG",
+  "query": "how does supply chain logistics in geology operate",
+  "query_id": "v5-p-0444-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:11:54.940950Z"
+}

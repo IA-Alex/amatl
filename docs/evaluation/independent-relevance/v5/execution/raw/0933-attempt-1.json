@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 248.754,
+  "pair_id": "v5-p-0924",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does bridge resonance in robotics operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "77c91e5585185d5538712581579b7f9e9b55ea6dc5c0c88f8c0bc3bae97fa13b",
+  "provider": "SearXNG",
+  "query": "how does bridge resonance in robotics operate",
+  "query_id": "v5-p-0924-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:10:10.965111Z"
+}

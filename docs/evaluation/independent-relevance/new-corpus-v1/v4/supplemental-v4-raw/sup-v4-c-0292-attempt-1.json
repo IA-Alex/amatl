@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 322.51893999637105,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind gear trains in transportation",
+    "results": [
+      {
+        "category": "general",
+        "content": "Leonard P. Liggio, The Transportation of Criminals: A Brief Political-Economic History, in Randy E. Barnett and John Hagel III, eds., Assessing The Criminal: Restitution, Retribut",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ozarkia.net",
+          "/bill/anarchism/library/PolycentricLaw-TomBell.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Polycentric Law",
+        "url": "http://www.ozarkia.net/bill/anarchism/library/PolycentricLaw-TomBell.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0292",
+  "query_text": "describe the principle behind gear trains in transportation",
+  "requested_at": "2026-09-03T01:42:49.122150Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

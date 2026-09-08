@@ -1,0 +1,354 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 305.364,
+  "pair_id": "v5-p-0043",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of compiler operation in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "timid, or inexperienced management to test the &#39;Open Source&#39; water. This in turn may lead them (eventually) into a full embrace of Free Software. It is also possible that assignme",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2009/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2009/"
+      },
+      {
+        "category": "general",
+        "content": "it appears some session management cockup makes all of Gnome extraordinarily unresponsive, bother. Managed to get SLED10-SP1 booting again, and back to work in a chroot. Lunch, ca",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/archive/activity-to-2007-10.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks did",
+        "url": "https://apple-tree.life/~michael/blog/archive/activity-to-2007-10.html"
+      },
+      {
+        "category": "general",
+        "content": "gateway, enhancing file management for attachments, transforming mailing list threads into interactive, forum-style discussions with modern elements such as tags and mentions, and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/news/2023/20231123-announcing-projects.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; 55 New Projects Awarded NGI0 Grants",
+        "url": "https://nlnet.nl/news/2023/20231123-announcing-projects.html"
+      },
+      {
+        "category": "general",
+        "content": "standard for system management software is written in C&#43;&#43; (www.openwbem.com). This uses more new C&#43;&#43; 98 features than almost any source base I&#39;ve seen outside of those done by the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stroustrup.com",
+          "/applications.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C&#43;&#43; Applications",
+        "url": "https://www.stroustrup.com/applications.html"
+      },
+      {
+        "category": "general",
+        "content": ": Network management (DNS, DHCP, VPN, more), printing (CUPS), network services (FTP, SSH, more). Fairly standard facilities : Authentication (PAM, certificates, more), access cont",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/Linux.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Linux",
+        "url": "https://www.billdietrich.me/Linux.html"
+      },
+      {
+        "category": "general",
+        "content": "and memory management, to a tool that millions of people use daily. Snapshottable Stores Authors: Clément Allain (Inria), Basile Clément (OCamlPro), Alexandre Moine (Inria), Gabri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "require manual memory management. The easiest way of doing this would be to enforce a specific memory management strategy on all languages, but this would alter their semantics an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jot.fm",
+          "/issues/issue_2009_01/article4/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://www.jot.fm/issues/issue_2009_01/article4/",
+        "url": "https://www.jot.fm/issues/issue_2009_01/article4/"
+      },
+      {
+        "category": "general",
+        "content": "Title: Runtime Power Management on SuperH Mobile Description: The presentation gives an overview of the SuperH Mobile runtime power management implementation in the upstream Linux",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "it provides Memory-Management (MMU functions) and register memory that output information about the MPCore cluster. Now, there’s no more Tightly-Coupled Memory (TCM). There are ho",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/nintendo-3ds/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nintendo 3DS Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/nintendo-3ds/"
+      },
+      {
+        "category": "general",
+        "content": "Macintosh Memory Management - An Introduction Using Assembly Language QuickDraw Color QuickDraw Graphics Devices TextEdit The Apple Desktop Bus The AppleTalk Manager The Binary-De",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "spinsidemacintosh.neocities.org",
+          "/im202",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://spinsidemacintosh.neocities.org/im202",
+        "url": "https://spinsidemacintosh.neocities.org/im202"
+      },
+      {
+        "category": "general",
+        "content": "the more levels of management there will be. We can see the problem even if we use simplistic calculations. Thus if we assume a fixed supervision ratio, for example six, the level",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "larch-www.lcs.mit.edu:8001",
+          "/~corbato/turing91/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "untitled1.html",
+        "url": "http://larch-www.lcs.mit.edu:8001/~corbato/turing91/"
+      },
+      {
+        "category": "general",
+        "content": "of an instance. Memory management: How can the kernel know whether it is safe to delete an object? Straightforward garbage collection techniques don&#39;t work because the central tab",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mumble.net",
+          "/~jar/pubs/secureos/secureos.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Emergent Technologies Inc. -- Security Kernel&lt;/TITLE",
+        "url": "http://mumble.net/~jar/pubs/secureos/secureos.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c9a15985a9c5da862e945d60d14c8ad62b65f77d612b47106ec560549aae0afc",
+  "provider": "SearXNG",
+  "query": "give an overview of compiler operation in data management",
+  "query_id": "v5-p-0043-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:14.403780Z"
+}

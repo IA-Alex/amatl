@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 356.981,
+  "pair_id": "v5-p-0557",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is food preservation in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "But in what does this preservation of African American culture consist? It can hardly consist in anything more than eating black-style food, listening to black-style music, wearin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unabomber.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society and Its Future",
+        "url": "https://unabomber.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "new urgencies of reuse, preservation, and degrowth? Image: Vacant lot, Second Avenue and Second Street, New York City, July 2024. [David Gissen], Places Journal. Field Notes: Repa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.notechmagazine.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NO TECH MAGAZINE – Technology for Luddites",
+        "url": "https://www.notechmagazine.com/"
+      },
+      {
+        "category": "general",
+        "content": "Flashpoint: The webgame preservation project Twitter Website The games and stories in this article are only a small part of the Flash games era. Flash shaped a whole generation of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.flashgamehistory.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How Flash games shaped the video game industry",
+        "url": "https://www.flashgamehistory.com/"
+      },
+      {
+        "category": "general",
+        "content": "the answer? Is self-preservation hate? Please, Omnipotent. Is it true that happiness is you? Is it true that you reside in us? 07_prayer A virus has me thinking. The peak of the d",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sftn.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SFTN",
+        "url": "https://sftn.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "But in what does this preservation of African American culture consist? It can hardly consist in anything more than eating black-style food, listening to black-style music, wearin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/industrial-society-and-its-future-manifesto",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society And Its Future",
+        "url": "https://zerocontradictions.net/misc/industrial-society-and-its-future-manifesto"
+      },
+      {
+        "category": "general",
+        "content": "Lewarch, historic preservation officer for the Suquamish Tribe, said elders from the Tribes will get together &#34;and determine what is best for the ancestor.&#34; Suquamish: Woman embez",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cowlitzcountry.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cowlitz Country News Home Page",
+        "url": "http://www.cowlitzcountry.com/"
+      },
+      {
+        "category": "general",
+        "content": "in the first place: the preservation of substantive personal liberty. “Quality Check: A Contextual Analysis of the Lockean Proviso” Abstract: Libertarians have long been divided o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "formspal.com",
+          "/libertarianstudies/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Libertarian Papers | Online Journal for Libertarian Scholarship | Legal PDF Forms",
+        "url": "http://formspal.com/libertarianstudies/"
+      },
+      {
+        "category": "general",
+        "content": "a lot of the Flash preservation projects out there were just starting out - like Flashpoint and Ruffle . I decided to take an hour this week and see if anything had improved and…",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kickscondor.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kicks Condor",
+        "url": "https://www.kickscondor.com/"
+      },
+      {
+        "category": "general",
+        "content": "religion, or self-preservation. The medium for take-over is here. By the age of 16, children have spent 10,000 to 15,000 hours watching television--that is more time than they spe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dankalia.com",
+          "/science/psc133.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Battle For Your Mind",
+        "url": "https://www.dankalia.com/science/psc133.htm"
+      },
+      {
+        "category": "general",
+        "content": "to work hard for the preservation of world peace. We have always been religious, ever since childhood, ever since the day our father, Ras Makonnen, taught us the commandment of Ou",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ista.thelema.host",
+          "/afr/rasta/wisdom.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Wisdom of Rastafari",
+        "url": "http://ista.thelema.host/afr/rasta/wisdom.htm"
+      },
+      {
+        "category": "general",
+        "content": "to the assembly and preservation of the history of the totalisator, not to mention the huge effort put into making that history accessible through your website. And Paul Coghlan w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tote-history-atl.net.au",
+          "/george_julius_genealogy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "George Julius Genealogy",
+        "url": "http://tote-history-atl.net.au/george_julius_genealogy.htm"
+      },
+      {
+        "category": "general",
+        "content": "the Task Force on the Preservation of the Artifact, 1999). The Council on Library and Information Resources issued The Evidence in Hand: The Report of the Task Force on the Artifa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sas.upenn.edu",
+          "/~traister/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Daniel Traister&#39;s Home Page",
+        "url": "https://www.sas.upenn.edu/~traister/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0e0c3ad25d10967d6130b31b6381f9dd474331694394f2e1b55f2492d58d3cd1",
+  "provider": "SearXNG",
+  "query": "what is food preservation in music technology",
+  "query_id": "v5-p-0557-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:30.273435Z"
+}

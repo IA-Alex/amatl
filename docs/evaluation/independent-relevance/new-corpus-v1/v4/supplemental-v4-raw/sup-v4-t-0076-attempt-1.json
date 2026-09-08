@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 264.98222300142515,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does routing tables in electrical engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "by far the most visible engineering error on my Apple and I&#39;d like to see some Cupertino beard-stroker homeless over this oversight. But it still works (for the moment), and takin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "galexander.org",
+          "/laptops/mac/impressions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "My impressions",
+        "url": "http://galexander.org/laptops/mac/impressions.html"
+      },
+      {
+        "category": "general",
+        "content": "malware on two engineering workstations critical to the operation of the control environment. Investigators did not find malware on 11 other workstations examined. ICS-CERT recomm",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.grc.com",
+          "/sn/sn-387.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Security Now! Transcript of Episode #387",
+        "url": "https://www.grc.com/sn/sn-387.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0076",
+  "query_text": "how does routing tables in electrical engineering operate",
+  "requested_at": "2026-09-03T01:44:22.621173Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

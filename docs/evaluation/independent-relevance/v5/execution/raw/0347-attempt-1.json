@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 248.31,
+  "pair_id": "v5-p-0108",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does ocean tides in transportation engineering operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "dd6b033a997d09da61218d81459b4eb85523f8768c25940def7949d5b61fc8cf",
+  "provider": "SearXNG",
+  "query": "how does ocean tides in transportation engineering operate",
+  "query_id": "v5-p-0108-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:58.310838Z"
+}

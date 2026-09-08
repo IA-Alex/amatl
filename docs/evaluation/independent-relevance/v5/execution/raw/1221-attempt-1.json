@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 276.908,
+  "pair_id": "v5-p-0852",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does data compression in robotics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "it causes a certain compression along the lattice. The Nanotubular tendons are connected to a network of nanocoil launchers embedded in an even looser lattice of similarly lipid a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "were made by an image-compression algorithm developed by Technion-Israel researchers. The Israeli Space Agency is carrying on an innovative project, a space vehicle which would be",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.imninalu.net",
+          "/Israel-Arabs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Israel and the Arab World",
+        "url": "https://www.imninalu.net/Israel-Arabs.htm"
+      },
+      {
+        "category": "general",
+        "content": "it causes a certain compression along the lattice. The Nanotubular tendons are connected to a network of nanocoil launchers embedded in an even looser lattice of similarly lipid a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/FountainOfYouth.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/FountainOfYouth.html"
+      },
+      {
+        "category": "general",
+        "content": "31st, 2006 - Time compression (over 2 notes a month for 4 months!) Related Topics : Pocket computers     There&#39;s no such thing as a free lunch, as they say, but to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cdecas.free.fr",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Welcome to Caz&#39; Website",
+        "url": "http://cdecas.free.fr/"
+      },
+      {
+        "category": "general",
+        "content": "of most digital speech compression algorithms, including for digital cell phones.) General Instruments also produced some LPC-based synthesis chips.  (And one chip that suppo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "redcedar.com",
+          "/sc01.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SC-01A",
+        "url": "http://redcedar.com/sc01.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d18d9378b04c22829d5c0edf13470e1bd1371e3e19804969b3484e602d80ba24",
+  "provider": "SearXNG",
+  "query": "how does data compression in robotics operate",
+  "query_id": "v5-p-0852-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:47.056241Z"
+}

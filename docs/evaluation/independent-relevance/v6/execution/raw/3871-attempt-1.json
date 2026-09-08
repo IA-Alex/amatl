@@ -1,0 +1,34 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 3871,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 572.526,
+  "pair_id": "candidate-p-0636",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what are the main constraints on crop disease forecasting within cybersecurity",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2fbdf9778e485601ee4a5214431faaf436aac00da3e9b869173659c4cc5e22bb",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what are the main constraints on crop disease forecasting within cybersecurity",
+  "query_id": "candidate-t-0636",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:40:55.837133Z"
+}

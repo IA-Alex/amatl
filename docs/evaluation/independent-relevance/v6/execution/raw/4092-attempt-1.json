@@ -1,0 +1,252 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 4092,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 353.947,
+  "pair_id": "candidate-p-0755",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about data provenance within public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "religion, cultural background, and any other demographic characteristics, as well as personal political views. People are sometimes discouraged from participating in GNU developme",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "mass shootings, firearm background checks, food poisoning, and licensed barbers. 2015.12.02 • Historical climate data, mass shootings, faster open-data downloads, college sports f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.data-is-plural.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Data Is Plural — Full Archive",
+        "url": "https://www.data-is-plural.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "is no metaphysical background to it. We have simply made another giant step towards understanding our reality. Official science also knows of gravity anomalies on Earth (that cont",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "correctly. Section 2 Background on network protocols skimming this, OpenVPN is demonized as being the target of NSA weakening but OpenVPN code is so ridiculously bad and convolute",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "learnaifromscratch.github.io",
+          "/theabsolutestateofsoftware.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A 2026 Security Curriculum",
+        "url": "https://learnaifromscratch.github.io/theabsolutestateofsoftware.html"
+      },
+      {
+        "category": "general",
+        "content": "contents: 1. Historical background      1.1 Definition and main characteristics      1.2. Subject knowledge and specialization",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/domain_analysis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Domain analysis (IEKO)",
+        "url": "https://www.isko.org/cyclo/domain_analysis.htm"
+      },
+      {
+        "category": "general",
+        "content": "to conduct exhaustive background research. In ufology, that includes identifying the key persons, corporations and agencies, and critically assessing the truthfulness of that mate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "buriedtruth.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BuriedTruth.com",
+        "url": "http://buriedtruth.com/"
+      },
+      {
+        "category": "general",
+        "content": "murmurings, become mere background noise the moment we present ourselves to the cardiologist for an examination. We can scarcely imagine that the ignored voices might be relevant",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bwo.life",
+          "/heart.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Between Discordant Eras",
+        "url": "https://bwo.life/heart.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2ca3ac58288f54fde124d70ccd5bfd6116771706dba14f892595cd3ec9395c41",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about data provenance within public health",
+  "query_id": "candidate-c-0755",
+  "raw_result_count": 7,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://gnu.support/",
+      "original_url": "https://gnu.support/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "religion, cultural background, and any other demographic characteristics, as well as personal political views. People are sometimes discouraged from participating in GNU developme",
+      "title": "GNU.Support website about GNU Operating Systems"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.data-is-plural.com/archive/",
+      "original_url": "https://www.data-is-plural.com/archive/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "mass shootings, firearm background checks, food poisoning, and licensed barbers. 2015.12.02 • Historical climate data, mass shootings, faster open-data downloads, college sports f",
+      "title": "Data Is Plural — Full Archive"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://colinandrews.net/Consciousness.html",
+      "original_url": "https://colinandrews.net/Consciousness.html",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "is no metaphysical background to it. We have simply made another giant step towards understanding our reality. Official science also knows of gravity anomalies on Earth (that cont",
+      "title": "The Study of Human Consciousness - Is ET already part of our lives?"
+    }
+  ],
+  "timestamp": "2026-09-05T17:42:04.298935Z"
+}

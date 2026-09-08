@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 311.423,
+  "pair_id": "v5-p-0200",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind heat transfer in optics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b2dff968017a2d25e7fc9d66247ef43f41c10368732346dbb799bc30bbe03bf0",
+  "provider": "SearXNG",
+  "query": "describe the principle behind heat transfer in optics",
+  "query_id": "v5-p-0200-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:14:59.173315Z"
+}

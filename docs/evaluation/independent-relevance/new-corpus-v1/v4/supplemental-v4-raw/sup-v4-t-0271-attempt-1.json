@@ -1,0 +1,26 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 252.5629689989728,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes routing tables in photography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0271",
+  "query_text": "what causes routing tables in photography",
+  "requested_at": "2026-09-03T01:42:18.229086Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

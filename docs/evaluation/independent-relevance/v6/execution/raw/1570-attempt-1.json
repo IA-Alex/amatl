@@ -1,0 +1,34 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1570,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 255.085,
+  "pair_id": "candidate-p-0713",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a practical briefing on cryogenic cooling within software reliability",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "918b70bfb105feb278c86c8e7f451ff3e28335ad3771432730fa87d30ea5f494",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a practical briefing on cryogenic cooling within software reliability",
+  "query_id": "candidate-c-0713",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:28:50.824870Z"
+}

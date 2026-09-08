@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 317.99740999849746,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is routing tables in computer networks",
+    "results": [
+      {
+        "category": "general",
+        "content": "but it can protect your computers and devices on the inside of the network, and it can help you monitor and control the traffic that comes and goes to and from your local network.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unixdigest.com",
+          "/openbsd-router-guide/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OpenBSD Router Guide",
+        "url": "https://unixdigest.com/openbsd-router-guide/"
+      },
+      {
+        "category": "general",
+        "content": "guidosalva School of Computer Science Office 64-114 Torstrasse 25 9000 St. Gallen, Switzerland I’m a Full Professor at the University of St.Gallen. Until 2020, I was an assistant",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "programming-group.com",
+          "/members/salvaneschi",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Prof. Dr. Guido Salvaneschi | Programming Group",
+        "url": "https://programming-group.com/members/salvaneschi"
+      },
+      {
+        "category": "general",
+        "content": "When you tell a computer to do something, the computer should either do it, or it should tell you why it did not do it. If what happens is neither of these, there has been an engi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.alm.website",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Athena&#39;s blog - Athena&#39;s Site",
+        "url": "https://www.alm.website/blog/"
+      },
+      {
+        "category": "general",
+        "content": "to some Hills Road Computer Science students on the skills needed for a career in Software Engineering, something of an unusual talk for me: 2021-06-29 Tuesday Call with Kendy, th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2021/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2021/"
+      },
+      {
+        "category": "general",
+        "content": "company offering computer system , network , and security consulting and systems integration. Based in Boston, MA, Saffron Solutions provides qmail and other open source software",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.usenix.org.uk",
+          "/mirrors/qmail/top.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "qmail: Second most popular MTA on the Internet",
+        "url": "http://www.usenix.org.uk/mirrors/qmail/top.html"
+      },
+      {
+        "category": "general",
+        "content": "intrusion. Distributed: Computer-scientific term to describe how a computational challenge, in our case the communication of data, is spread over many relay nodes in a redundant,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "secushare.org",
+          "/comparison",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Capability Comparison",
+        "url": "https://secushare.org/comparison"
+      },
+      {
+        "category": "general",
+        "content": "Computer work is requiring more and more electronical interaction between people and services. People need to talk. Sometimes it is just one small question, t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "psyc.eu",
+          "/synconf",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "functionality provided by systems for synchronous conferencing",
+        "url": "https://psyc.eu/synconf"
+      },
+      {
+        "category": "general",
+        "content": "Play Rail Baron® on computer with RBP . START To begin the game, choose a player to act as banker. The banker gives each player $20,000, a pawn the color of the player&#39;s choosi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.railgamefans.com",
+          "/rbp/rb21rules.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rail Baron New Century Rules",
+        "url": "http://www.railgamefans.com/rbp/rb21rules.htm"
+      },
+      {
+        "category": "general",
+        "content": "ARM-based single board computers ARMify NGI0 Entrust 2023 2025 Auto-Identification of MCU Models to Simplify ARM Bare-Metal Reverse Engineering ARPA2 2017 Working towards a decent",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/project/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; All projects",
+        "url": "https://nlnet.nl/project/"
+      },
+      {
+        "category": "general",
+        "content": "as was done on ancient computers. Today only base 2 (i.e. bits) is used, and this is what is crucially needed for all bit operations. If signed numbers are present, it is assumed",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "programming.sirrida.de",
+          "/bit_perm.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bit permutations",
+        "url": "http://programming.sirrida.de/bit_perm.html"
+      },
+      {
+        "category": "general",
+        "content": "Things We Do With Our Computers , by Mike &#34;Iron&#34; Orr Simple Package Management With Stow , by Allan Peda Why I wrote Install Kernel (ik) and How It Works , by Justin Piszcz Writin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.linuxdoc.org",
+          "/LDP/LG/lg_index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Linux Gazette Index",
+        "url": "https://www.linuxdoc.org/LDP/LG/lg_index.html"
+      },
+      {
+        "category": "general",
+        "content": "sitting in front of a computer and working for 12 hours straight makes it a lot worse. I&#39;ve stretched this way further than I should have, but all in all, it was probably worth it",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unsigned.io",
+          "/articles/2025_05_09_The_End_Is_Nigh_For_The_Beta_Days.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The End Is Nigh, For The Beta Days | unsigned.io",
+        "url": "https://unsigned.io/articles/2025_05_09_The_End_Is_Nigh_For_The_Beta_Days.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0001",
+  "query_text": "what is routing tables in computer networks",
+  "requested_at": "2026-09-03T01:44:20.165753Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

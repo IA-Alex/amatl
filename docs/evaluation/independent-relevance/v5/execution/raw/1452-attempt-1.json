@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 243.231,
+  "pair_id": "v5-p-0687",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of language acquisition in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "that knowledge acquisition should conform to the education of the human race, and his English (immediately pre-Darwinian) evolutionism subtly supplanting Comte’s less formul",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/comte",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Comte&#39;s classification of the sciences (IEKO)",
+        "url": "https://www.isko.org/cyclo/comte"
+      },
+      {
+        "category": "general",
+        "content": "as Anki will speed up acquisition of such chunks. It&#39;s merely an argument that long-term memory plays a crucial role in the acquisition of some types of expertise. Still, it seems",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "augmentingcognition.com",
+          "/ltm.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Augmenting Long-term Memory",
+        "url": "http://augmentingcognition.com/ltm.html"
+      },
+      {
+        "category": "general",
+        "content": "Mechanisms and Their Acquisition,” J. de Kleer and J.S. Brown in J.R. Anderson (Ed.), Cognitive Skills and Their Acquisition , Hillsdale, NJ: Lawrence Erlbaum Associates, In",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.johnseelybrown.com",
+          "/pubs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John Seely Brown: Publications",
+        "url": "https://www.johnseelybrown.com/pubs.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "385fc2aa1399f942b0e013b367e9e8a448212e186cf0c8171de85d7730f4d6d3",
+  "provider": "SearXNG",
+  "query": "give an overview of language acquisition in chemistry",
+  "query_id": "v5-p-0687-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:59.026836Z"
+}

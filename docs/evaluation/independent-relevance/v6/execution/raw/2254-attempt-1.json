@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2254,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 330.861,
+  "pair_id": "candidate-p-1055",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of fermentation control within water management",
+    "results": [
+      {
+        "category": "general",
+        "content": "of lysergic acid by fermentation procedures. Since the last patent on LSD expired in 1963, it is not surprising to find that an increasing number of dealers in fine chemicals are",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hallucinogens.org",
+          "/hofmann/child5.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Albert Hofmann&#39;s My Problem Child",
+        "url": "https://www.hallucinogens.org/hofmann/child5.htm"
+      },
+      {
+        "category": "general",
+        "content": "2 BECHAMP, PASTEUR, AND FERMENTATION 3 VINOUS FERMENTATION 4 BECHAMP&#39;S MICROZYMAS OR `LITTLE BODIES&#39; 5 SILK WORM DISEASE: ANOTHER STEAL! 6 PASTEUR ALSO A FAKER: ANTISEPSIS 7 ARE B",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/a/b/pearson.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dream &amp; Lie of Louis Pasteur by R. B. Pearson",
+        "url": "http://www.whale.to/a/b/pearson.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9839193c2b1e432d1163ff05503ff7d70dcf3d0d42d6dfd51a32b07330ffbe7d",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of fermentation control within water management",
+  "query_id": "candidate-c-1055",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.hallucinogens.org/hofmann/child5.htm",
+      "original_url": "https://www.hallucinogens.org/hofmann/child5.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "of lysergic acid by fermentation procedures. Since the last patent on LSD expired in 1963, it is not surprising to find that an increasing number of dealers in fine chemicals are",
+      "title": "Albert Hofmann&#39;s My Problem Child"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.whale.to/a/b/pearson.html",
+      "original_url": "http://www.whale.to/a/b/pearson.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "2 BECHAMP, PASTEUR, AND FERMENTATION 3 VINOUS FERMENTATION 4 BECHAMP&#39;S MICROZYMAS OR `LITTLE BODIES&#39; 5 SILK WORM DISEASE: ANOTHER STEAL! 6 PASTEUR ALSO A FAKER: ANTISEPSIS 7 ARE B",
+      "title": "The Dream &amp; Lie of Louis Pasteur by R. B. Pearson"
+    }
+  ],
+  "timestamp": "2026-09-05T17:32:24.612029Z"
+}

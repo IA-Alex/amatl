@@ -1,0 +1,8 @@
+{
+  "schema": "amatl.relevance.pass-fail-policy.v1",
+  "baseline": {"candidate_id":"ARM_A","accuracy":0.2267,"macro_f1":0.2601,"recall_relevant":0.3},
+  "minimum_acceptable": {"macro_f1_at_least":0.2601,"recall_relevant_at_least":0.3,"relevant_to_not_relevant_max":0,"not_relevant_to_relevant_max":0},
+  "material_improvement": {"macro_f1_delta_at_least":0.03,"recall_relevant_delta_at_least":0.05,"accuracy_delta_at_least":0.03},
+  "regression_guard": {"no_extreme_direction_increase":true,"per_class_recall_must_be_reported":true,"same_frozen_evaluator_and_dataset_required":true},
+  "decision_rule":"ACCEPT only if every minimum and regression guard passes and at least two of the three material-improvement metrics pass; otherwise REJECT. This policy must be hashed and frozen before opening a blind holdout."
+}

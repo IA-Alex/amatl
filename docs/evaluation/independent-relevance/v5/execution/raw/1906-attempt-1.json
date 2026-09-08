@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 349.39,
+  "pair_id": "v5-p-0998",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of wastewater treatment in agricultural science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5df77b8f984ec8aaa36098016a0d3a6d73fe0f4c051debd3362dd9e885624b2d",
+  "provider": "SearXNG",
+  "query": "tell me about the function of wastewater treatment in agricultural science",
+  "query_id": "v5-p-0998-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:25.946839Z"
+}

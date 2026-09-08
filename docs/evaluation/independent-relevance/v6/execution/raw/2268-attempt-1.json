@@ -1,0 +1,144 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2268,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 318.015,
+  "pair_id": "candidate-p-1083",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about fire weather modeling within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Here, I present some information about the low-level operation of the Universal Asynchronous Receiver/Transmitters (UARTs) on the ESP32-S3 . I want to investigate how to use them",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.iwriteiam.nl",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "I write, therefore I am",
+        "url": "http://www.iwriteiam.nl/"
+      },
+      {
+        "category": "general",
+        "content": "website. (For further information on hexagram arrangements, see my article on Yijing hexagram sequences and archive of Chinese diagrams .) I Ching Cosmos Notes on a few indiv",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biroco.com",
+          "/yijing/links.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Yijing Dao - Annotated links to other Yijing sites, and journal articles",
+        "url": "https://www.biroco.com/yijing/links.htm"
+      },
+      {
+        "category": "general",
+        "content": "sensible source of information about the world around us. These are the HTML slides used in the talk. If this idea intrigues you, participate in the ongoing discussion at Cafe Utn",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "hyperreal.org",
+          "/~mpesce/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mark Pesce * Outside the Light-Cone",
+        "url": "http://hyperreal.org/~mpesce/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7ee115a183c06a830ab81b18180182b56ad6e882d0adafc50f029ebd1193de92",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about fire weather modeling within information science",
+  "query_id": "candidate-c-1083",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.iwriteiam.nl/",
+      "original_url": "http://www.iwriteiam.nl/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Here, I present some information about the low-level operation of the Universal Asynchronous Receiver/Transmitters (UARTs) on the ESP32-S3 . I want to investigate how to use them",
+      "title": "I write, therefore I am"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.biroco.com/yijing/links.htm",
+      "original_url": "https://www.biroco.com/yijing/links.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "website. (For further information on hexagram arrangements, see my article on Yijing hexagram sequences and archive of Chinese diagrams .) I Ching Cosmos Notes on a few indiv",
+      "title": "Yijing Dao - Annotated links to other Yijing sites, and journal articles"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://hyperreal.org/~mpesce/",
+      "original_url": "http://hyperreal.org/~mpesce/",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "sensible source of information about the world around us. These are the HTML slides used in the talk. If this idea intrigues you, participate in the ongoing discussion at Cafe Utn",
+      "title": "Mark Pesce * Outside the Light-Cone"
+    }
+  ],
+  "timestamp": "2026-09-05T17:32:29.167707Z"
+}

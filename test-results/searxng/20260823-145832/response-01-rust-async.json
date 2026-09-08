@@ -1,0 +1,26 @@
+{
+  "artifact_notice": "Generated test artifact — SearXNG characterization — do not treat as project documentation.",
+  "schema_version": "1",
+  "query": "rust async",
+  "status": "failure",
+  "results": [],
+  "providers_used": [
+    "searxng"
+  ],
+  "providers_failed": [],
+  "providers_partial": [
+    "searxng"
+  ],
+  "errors": [
+    {
+      "code": "no_usable_results",
+      "message": "providers returned no result that satisfied the Search contract",
+      "providers": [
+        "searxng"
+      ],
+      "recoverable": false
+    }
+  ],
+  "degradations": [],
+  "elapsed_ms": 816
+}

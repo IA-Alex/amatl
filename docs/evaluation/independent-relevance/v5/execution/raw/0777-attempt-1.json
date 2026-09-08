@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 247.881,
+  "pair_id": "v5-p-0096",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does ocean tides in robotics operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "00424525431b48d46c764013852b76a584beae2420baa34c4acd2cc7e08a330d",
+  "provider": "SearXNG",
+  "query": "how does ocean tides in robotics operate",
+  "query_id": "v5-p-0096-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:21.928334Z"
+}

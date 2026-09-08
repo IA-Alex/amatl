@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 334.44003199838335,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind process scheduling in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "To Hyper-Energetic Engineering Stalenhag — Riksenergi Publications — 12.53.0 RCE Format: Theta disk archive Language: Common Semiotic Encoding Category: Reference (anomalous physi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "suricrasia.online",
+          "/library/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Suricrasia Online&#39;s Online Library",
+        "url": "https://suricrasia.online/library/"
+      },
+      {
+        "category": "general",
+        "content": "Modern Chumpatronic Engineering. No Formats, no Format Wars. Non-Apple’s Mistake Of Lisp Macros and Washing Machines Practical Blockchain Telegraphy. Sage SmartProbe FAQ Seven Law",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.loper-os.org",
+          "/",
+          "",
+          "p=284",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Loper OS » Seven Laws of Sane Personal Computing",
+        "url": "http://www.loper-os.org/?p=284"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0032",
+  "query_text": "describe the principle behind process scheduling in software engineering",
+  "requested_at": "2026-09-03T01:44:46.529898Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 290.896,
+  "pair_id": "v5-p-1084",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does satellite orbits in climate science operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "(LEO). As the number of satellites continues to increase, so does the likelihood of collisions capable of generating large quantities of debris, potentially triggering a self-sust",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "from tidal stations or satellites are used (the former being much lower). The &#34;natural&#34; cycles can explain practically the history of sea-level change, without resorting",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meteo.lcd.lu",
+          "/globalwarming/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Warming Sceptic",
+        "url": "https://meteo.lcd.lu/globalwarming/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "903e3881f4ae1bb912c56654ce28b36b9af3b0f39bafcff3a3a8c690bcc76fe1",
+  "provider": "SearXNG",
+  "query": "how does satellite orbits in climate science operate",
+  "query_id": "v5-p-1084-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:07:43.622870Z"
+}

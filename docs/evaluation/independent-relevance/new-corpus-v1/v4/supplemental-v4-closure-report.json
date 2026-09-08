@@ -1,0 +1,78 @@
+{
+  "schema": "amatl.relevance.supplemental-v4-closure-report.v1",
+  "closure_status": "CLOSED",
+  "starting_head": "074ecaefe3977541d22fdd5c8bff15c3517e112a",
+  "design": {
+    "experiment_type": "CONFIRMATORY",
+    "provider": "SearXNG",
+    "depth": 3,
+    "queries_total": 600,
+    "queries_per_arm": 300,
+    "target_per_arm": 474,
+    "target_total": 948
+  },
+  "capture": {
+    "queries_executed": 600,
+    "network_requests": 600,
+    "http_success": 600,
+    "universe_exhausted": true,
+    "valid_rows": 312,
+    "treatment_valid_rows": 205,
+    "control_valid_rows": 107,
+    "raw_results": 1000,
+    "technical_retries": 0,
+    "http_failures": 0,
+    "parser_failures": 0,
+    "timeouts": 0,
+    "rejected_total": 688,
+    "rejection_counts": {
+      "DUPLICATE_CURRENT": 414,
+      "OVERLAP_V1": 146,
+      "OVERLAP_SUPPLEMENTAL": 72,
+      "OVERLAP_V3": 56
+    }
+  },
+  "integrity": {
+    "design_sha256": "66e7b5808607a452ab898f882c8dd457830b574bac33d631ec54ef3e476c6817",
+    "universe_sha256": "c6729fad0f79d0cdbf94e64884e083ab51c59a8cc935fb30efe33a7f7de19bb7",
+    "universe_manifest_sha256": "6ef0c6aa6bd06df68d05ba304f2d892519b4b4cfddcb9f01a10bdfdaa1ddc52f",
+    "universe_attestation_sha256": "ea2ada51b84b1be6d9cb2aaff963cb040f83d03e2cd44b28c9aa0856c0fc09d3",
+    "raw_evidence_sha256": "4f757656ced6677d95fa7e0f5d0aa5468a20cd33cc6a102efdaa0fed69d044cc",
+    "prelabel_corpus_sha256": "e234e28a9fcb21fd27ac7b3c5b2791a6392c02de3976c534d9b7969f000a0303",
+    "prelabel_manifest_sha256": "3eb498cd7c34926c6089dc72394c0bf87469efb31a7b43c9a8b20befb7e8175a",
+    "prelabel_attestation_sha256": "03b1d1c3cb90ea4c4e2726b86e4258adb9020276deb75ef7d268a74a7e76327b",
+    "raw_capture_files": 600,
+    "status": "PASS"
+  },
+  "diagnosis": {
+    "acceptance_rate_total_raw_results": 0.312,
+    "acceptance_rate_treatment_raw_results": 0.3228346456692913,
+    "acceptance_rate_control_raw_results": 0.29315068493150687,
+    "arm_imbalance": "205 versus 107 valid rows; 98-row difference, 1.916x Treatment/Control",
+    "cause": "duplication and contamination, not infrastructure failure",
+    "replacements_remaining": 0,
+    "target_attainable_under_frozen_v4": false,
+    "primary_endpoint_computable": false,
+    "partial_sample_is_confirmatory_valid": false
+  },
+  "decision": {
+    "v4_final_decision": "INCONCLUSIVE",
+    "v4_final_reason": "FROZEN_UNIVERSE_EXHAUSTED_BEFORE_VALID_TARGET",
+    "not_validate_acquisition_strategy": true,
+    "not_reject_acquisition_strategy": true,
+    "confirmatory_power_contracted": false,
+    "post_hoc_expansion_allowed": false,
+    "labels_created": 0
+  },
+  "next_experiment": {
+    "status": "DESIGN_RECOMMENDED_NOT_CREATED",
+    "single_recommendation": "Diseñar un nuevo confirmatorio multi-provider, con SearXNG y Marginalia como estratos explícitos, 1500 queries Treatment y 1500 Control emparejadas 1:1, depth 3 y hasta un retry por query; congelar solo después de que un piloto de attainability estime un límite inferior conservador >=474 resultados válidos por brazo, tras excluir duplicados internos y toda contaminación V1/V2/V3.",
+    "rationale": "V4 fijó 300 queries por brazo y depth 3, pero la aceptación observada fue 0.683 y 0.357 filas válidas por query en Treatment y Control; el brazo Control quedó limitado por contaminación/duplicación. El nuevo margen de 1500 queries por brazo supera la capacidad observada y el segundo provider diversifica la fuente sin ocultar su efecto.",
+    "required_preflight": [
+      "probar capacidad por provider y por brazo con consultas emparejadas",
+      "recalcular exclusiones contra V1, Supplemental V1/V2 y V3, además de duplicados internos",
+      "exigir balance 1:1 y una cota inferior conservadora de >=474 válidos por brazo antes de congelar",
+      "congelar universo, provider-strata, depth, randomización, reglas y budget; abortar si el gate no pasa"
+    ]
+  }
+}

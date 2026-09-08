@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 330.884,
+  "pair_id": "v5-p-0580",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind air quality monitoring in civil engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4a9c3e74ed90eab4e7268b8681bd0b55629a8e247f17034c267ffccb124653cc",
+  "provider": "SearXNG",
+  "query": "describe the principle behind air quality monitoring in civil engineering",
+  "query_id": "v5-p-0580-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:12.720929Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 369.013,
+  "pair_id": "v5-p-0081",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind ocean tides in electrical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8ef34ce24a0b0e2b33d14eae043aa060d656d5d473f98517104ac37a93c59b16",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind ocean tides in electrical engineering",
+  "query_id": "v5-p-0081-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:52.813657Z"
+}

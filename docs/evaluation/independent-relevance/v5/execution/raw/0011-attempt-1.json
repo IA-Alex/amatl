@@ -1,0 +1,24 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 952.594,
+  "pair_id": "v5-p-0247",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes plate tectonics in forensic science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "8221d8236b1bb40b242d0a6e873011189e3ee6e7a7f1afcd1574998b2928f7e2",
+  "provider": "SearXNG",
+  "query": "what causes plate tectonics in forensic science",
+  "query_id": "v5-p-0247-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:10.038593Z"
+}

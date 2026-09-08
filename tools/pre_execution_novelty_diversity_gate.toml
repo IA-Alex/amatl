@@ -1,0 +1,18 @@
+# ADR-012 policy defaults. These are explicit policy defaults, not statistical validation.
+max_normalized_query_overlap_rate = 0.20
+max_query_duplicate_rate = 0.20
+max_query_near_duplicate_rate = 0.20
+min_effective_query_diversity = 0.50
+max_arm_novelty_delta = 0.10
+max_arm_diversity_delta = 0.10
+max_pair_family_concentration = 0.20
+max_cross_pair_similarity = 0.80
+min_capacity_margin = 0.0
+min_arm_capacity_ratio = 0.90
+
+# Risk classification policy defaults (not statistically derived).
+max_historical_result_overlap_risk = 0.50
+max_domain_concentration_risk = 0.50
+max_query_family_saturation_risk = 0.50
+# Similarity strategy: exhaustive deterministic local token-Jaccard.
+similarity_strategy = "EXHAUSTIVE_DETERMINISTIC_JACCARD"

@@ -1,0 +1,192 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 258.965,
+  "pair_id": "v5-p-0525",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is neural networks in pharmacology",
+    "results": [
+      {
+        "category": "general",
+        "content": "Good Drug Guide Utopian Pharmacology The Hedonistic Imperative Critique of Huxley&#39;s Brave New World",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oxytocin.wiki",
+          "/cuddle-hormone/antifear.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Oxytoci reduces activity and weakens connections in fear-processing circuitry of the amygdala",
+        "url": "https://www.oxytocin.wiki/cuddle-hormone/antifear.html"
+      },
+      {
+        "category": "general",
+        "content": "the role of psychopharmacology (biopsychiatry.com) in the wider abolitionist project of ending suffering. What are the pros and cons of using drugs to eradicate mental and physica",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biopsychiatry.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mood-brighteners and antidepressants as conceived by ChatGPT",
+        "url": "https://www.biopsychiatry.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "Prosthesis? Utopian Pharmacology Utilitarianism On The Net The Hedonistic Imperative Critique of Brave New World The Orgasm Command-Center Electrodes in Brain to Switch Off Pain R",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wireheading.com",
+          "/brainstim/godbrain.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "God and the temporal lobes",
+        "url": "https://www.wireheading.com/brainstim/godbrain.html"
+      },
+      {
+        "category": "general",
+        "content": "behavior.  Pharmacology, Biochemistry and Behavior 8 :243‑249, 1978. J.M. Fuster ‑ Sustained activation of cortical neurons in stimulus- recognition tasks.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.joaquinfuster.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Joaquin Fuster",
+        "url": "http://www.joaquinfuster.com/"
+      },
+      {
+        "category": "general",
+        "content": "MDMA/Ecstasy: Utopian Pharmacology Neural Correlates of Empathy in Congenital Insensitivity to Pain (pdf)",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.empathogens.com",
+          "/empathy/feelgood.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "If it feels good....",
+        "url": "https://www.empathogens.com/empathy/feelgood.html"
+      },
+      {
+        "category": "general",
+        "content": "MDMA: Utopian Pharmacology ChatGPT on the Binding Problem Full-Spectrum Superintelligence (pdf) Critique of Huxley&#39;s Brave New World Interview of DP by Immortalists Magazine Inter",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/binding-interview.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mindless Intelligence and Smart Sentience",
+        "url": "https://www.hedweb.com/hedethic/binding-interview.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "cdf6de472d3eedd7671542363ec97f4ba8dc6fdc07aed392442e566711b53883",
+  "provider": "SearXNG",
+  "query": "what is neural networks in pharmacology",
+  "query_id": "v5-p-0525-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:41.699607Z"
+}

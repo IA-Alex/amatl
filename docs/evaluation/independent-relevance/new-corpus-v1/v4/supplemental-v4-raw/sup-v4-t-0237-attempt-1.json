@@ -1,0 +1,135 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 258.27742899855366,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is cell membranes in agriculture",
+    "results": [
+      {
+        "category": "general",
+        "content": "by the Ministry of Agriculture: A special division was established to research and manufacture anti-livestock and anti-crop weapons. The division was given the uninspired title of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.isegoria.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Isegoria",
+        "url": "http://www.isegoria.net/"
+      },
+      {
+        "category": "general",
+        "content": "the Science of Food and Agriculture Volume 80, Issue 7, 2000. Pages: 1094-1117 Proanthocyanidins and tannin-like compounds - nature, occurrence, dietary intake and effects on nutr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "soopergrape.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SooperGrape",
+        "url": "http://soopergrape.com/"
+      },
+      {
+        "category": "general",
+        "content": "College (Faculty of Agriculture, McGill University), Quebec, Canada, wrote an Historical Review of Microbiology, published in Microbiology, a text book, in which he says in part:",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/a/b/pearson.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dream &amp; Lie of Louis Pasteur by R. B. Pearson",
+        "url": "http://www.whale.to/a/b/pearson.html"
+      },
+      {
+        "category": "general",
+        "content": "insects are critical to agriculture. This European honey bee is gathering nectar while pollen collects on its body. A robberfly with its prey, a hoverfly. Insectivorous relationsh",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scientificlib.com",
+          "/en/Biology/Animalia/Arthropoda/Insects/Insecta.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Insecta",
+        "url": "https://www.scientificlib.com/en/Biology/Animalia/Arthropoda/Insects/Insecta.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0237",
+  "query_text": "what is cell membranes in agriculture",
+  "requested_at": "2026-09-03T01:44:40.558155Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

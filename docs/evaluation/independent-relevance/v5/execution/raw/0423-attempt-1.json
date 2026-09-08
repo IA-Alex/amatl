@@ -1,0 +1,246 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 323.643,
+  "pair_id": "v5-p-0290",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does water purification in biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "facility known as Water Purification Unit 731: The unit, commanded by Lieutenant General Shiro Ishii, experimented with anthrax, dysentery, cholera, and plague on U.S., British, a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.isegoria.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Isegoria",
+        "url": "http://www.isegoria.net/"
+      },
+      {
+        "category": "general",
+        "content": "series of isolation and purification steps, such as filtration, washing, and recrystallization, to obtain the final amineptine product. Please note that the synthesis of amineptin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.amineptine.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Amineptine as conceived by ChatGPT",
+        "url": "https://www.amineptine.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "services, such as water purification, pollination, and climate regulation. Encouraging ethical stewardship: De-wilding challenges the notion of &#34;letting nature take its course&#34; an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gene-drives.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reprogramming the biosphere with gene drives as conceived by ChatGPT",
+        "url": "https://www.gene-drives.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "made during the purification process led me to think that ergotoxine could be a mixture of several alkaloids, rather than one homogeneous alkaloid. I will speak later of the far-r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.luminist.org",
+          "/archives/hofmann_lsd.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Luminist Archives: Hymn to Pan by Aleister Crowley",
+        "url": "http://www.luminist.org/archives/hofmann_lsd.htm"
+      },
+      {
+        "category": "general",
+        "content": "exercise, herbs, and purification procedures. B Baba, Sai: Indian guru , Hinduism , meditation , Kundalini yoga . Bahá&#39;í Faith,The, Bahá‘u&#39;lláh: A",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.watchman.org",
+          "/index-of-cults-and-religions/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of Cults and Religions | Watchman Fellowship, Inc.",
+        "url": "https://www.watchman.org/index-of-cults-and-religions/"
+      },
+      {
+        "category": "general",
+        "content": "to vaporization; purification). As both Father and Son long to reunite, he decides to return (condensation). Upon arrival, the Son willingly lets the Father devour him, which is h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mats-winther.github.io",
+          "/peterson.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Critique of Jordan B. Peterson&#39;s Neo-Hegelian philosophy",
+        "url": "https://mats-winther.github.io/peterson.htm"
+      },
+      {
+        "category": "general",
+        "content": "a small impact on water purification but an even larger impact on the convergence of small particulate matter into matter of a more complex form that goes on to benefit consumers",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scientificlib.com",
+          "/en/Biology/Animalia/Arthropoda/Insects/Ephemeroptera.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ephemeroptera",
+        "url": "https://www.scientificlib.com/en/Biology/Animalia/Arthropoda/Insects/Ephemeroptera.html"
+      },
+      {
+        "category": "general",
+        "content": "evil, of suffering and purification, of a tragic heroism, of atonement. DREAMS ABOUT THE REALITY. It was not until the decline of the glorious Byzantine Empire that the Slavs embr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fullbooks.com",
+          "/The-Religious-Spirit-of-the-Slavs-1916.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Religious Spirit of the Slavs (1916) by Nikolai Velimirovic - Full Text Free Book",
+        "url": "http://www.fullbooks.com/The-Religious-Spirit-of-the-Slavs-1916.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3da61c8835ce46504d68481321641fa1fc5867cedc6faf98c92f9132c24bad72",
+  "provider": "SearXNG",
+  "query": "how does water purification in biology work",
+  "query_id": "v5-p-0290-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:22.172235Z"
+}

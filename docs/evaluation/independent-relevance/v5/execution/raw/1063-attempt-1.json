@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 283.924,
+  "pair_id": "v5-p-0388",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does solar eclipses in architecture operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "its current Artemis architecture. Ernesto Gabriel Arias discusses an alternative approach better suited for lunar permanence. Monday, August 3, 2026 Price it like a Tomahawk, not",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.thespacereview.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Space Review: essays and commentary about the final frontier",
+        "url": "https://www.thespacereview.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4204f650fe258496b82045a8984b90792d892fea213ae1599df8a8319995ee6a",
+  "provider": "SearXNG",
+  "query": "how does solar eclipses in architecture operate",
+  "query_id": "v5-p-0388-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:10:51.595249Z"
+}

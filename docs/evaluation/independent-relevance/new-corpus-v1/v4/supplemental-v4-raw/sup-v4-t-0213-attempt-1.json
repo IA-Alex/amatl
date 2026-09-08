@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 323.264578000817,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is version control in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "derived forms. A text version is also available . Note that sometimes, two principle entries cannot be separated because they share forms, e.g. &#39;to live&#39; and &#39;the life&#39; both have",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "frequency of the mutant version evolves to respond to the severity of the disease in the region. Among African-Americans in the U.S., where falciparum malaria is not common, it ap",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hope-of-israel.org",
+          "/thegreatreplacement.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Great Replacement of Israel",
+        "url": "https://www.hope-of-israel.org/thegreatreplacement.html"
+      },
+      {
+        "category": "general",
+        "content": "to 2013. The latest version of the GISTEMP dataset shows only about 0.13°C of cooling in the northern hemisphere from 1940 to 1970 ( climexp.knmi.nl ) – far lower than t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/climcat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Climate models and climate catastrophe: a reality check",
+        "url": "https://davidpratt.info/climcat.htm"
+      },
+      {
+        "category": "general",
+        "content": "official support for conversions was toned down after the Mutiny (1857-1858). It was not many decades, however, before a Western educated and alarmingly Anglicized Indian elite ca",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/british.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Sun Never Set on the British Empire",
+        "url": "https://friesian.com/british.htm"
+      },
+      {
+        "category": "general",
+        "content": "Fascist and Communist versions in the 20th century. The political moralism of a totalitarian regime can leave virtually nothing to the private choice and preference of individuals",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/corrupt.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Corruption of Civil Rights and Civil Law",
+        "url": "https://friesian.com/corrupt.htm"
+      },
+      {
+        "category": "general",
+        "content": "In the biblical version, the debate remains, but now all the lines have been attributed to one God, leaving the Judaic God to schizophrenically argue with himself. So, getting bac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.erbzine.com",
+          "/mag14/1416.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ERBzine 1416: Religions of Barsoom by Den Valdron",
+        "url": "https://www.erbzine.com/mag14/1416.html"
+      },
+      {
+        "category": "general",
+        "content": "*** | Forked PDF Version (2025) The Case Against Efilism: Why Efilism Will Never Win * Efilism is self-defeating and unlikely to succeed. The Efilist mindset is based on ignorance",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/directory",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zero Contradictions - Directory",
+        "url": "https://zerocontradictions.net/directory"
+      },
+      {
+        "category": "general",
+        "content": "difference in the child version version and .35 in the adult version. Trying to optimize the RMET in an iterative process by using the same images but optimal emotions that discri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "rdos.net",
+          "/eng/asperger.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Neanderthal theory of autism",
+        "url": "http://rdos.net/eng/asperger.htm"
+      },
+      {
+        "category": "general",
+        "content": "that run on multiple versions of Linux is a massive pain; this is primarily down to glibc&#39;s hyper-unhelpful symbol versioning (stubbify doesn&#39;t handle that yet). This means that y",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2011/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2011/"
+      },
+      {
+        "category": "general",
+        "content": "best http://www.oldversion.com * Find old &amp; censored web pages http://www.archive.org * Cartography of Contemporary Control Systems http://utangente.free.fr/index2.html *",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "the content of the two versions of the meaning of the Culmination just quoted above: Usher’s interpretation/paraphrases and Steiner’s actual words (in translation), - i.e. more st",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/Culmination.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "the Culmination",
+        "url": "http://ipwebdev.com/hermit/Culmination.html"
+      },
+      {
+        "category": "general",
+        "content": "Szostak (This article, version 1.0, is a version of an article published in 2024, see colophon .) Table of contents: 1. Introduction 2. Defining phenomenon 3. Phenomenon-based bib",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/phenomenon.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Phenomenon-based classification (IEKO)",
+        "url": "https://www.isko.org/cyclo/phenomenon.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0213",
+  "query_text": "what is version control in climate science",
+  "requested_at": "2026-09-03T01:44:23.229243Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

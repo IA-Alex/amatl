@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 291.39391900389455,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is cloud formation in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "role of gravity in the formation and evolution of stars 4.2. The final stages of stellar evolution. Gravitational collapse 4.3. Schwarzschild static black holes 4.4. Rotating and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Gravitace4-1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The role of gravity in the formation and evolution of stars",
+        "url": "https://www.astronuclphysics.info/Gravitace4-1.htm"
+      },
+      {
+        "category": "general",
+        "content": "the wonder of their formation,&#34; there is an innermost group that is &#34;charged with divine influences.&#34; Since the days of the Chinese Deluge (B.C. 2205-2197) holy men",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ibiblio.org",
+          "/eldritch/kim/cloud9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cloud Dream of the Nine, [Kuunmong], by Kim Man-Choong [Man-jung]; 1689, Korean novel in English, 1922",
+        "url": "http://www.ibiblio.org/eldritch/kim/cloud9.html"
+      },
+      {
+        "category": "general",
+        "content": "that very little information about the earth, much less possibility of life on it, is obtained by a picture at this resolution. The next large slide is a TIROS photograph of the e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.project1947.com",
+          "/shg/symposium/sagan.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SHG - UFO Symposium 1968: Sagan Statement",
+        "url": "http://www.project1947.com/shg/symposium/sagan.html"
+      },
+      {
+        "category": "general",
+        "content": "by the OIG (Orbital Information Group) at the NASA (National Aeronautics and Space Administration) Goddard Space Flight Center. Observations of various satellites can provide insi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.qsl.net",
+          "/kd4cga/satintro.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://www.qsl.net/kd4cga/satintro.htm",
+        "url": "https://www.qsl.net/kd4cga/satintro.htm"
+      },
+      {
+        "category": "general",
+        "content": "of time, result in the formation of huge charged atmospheres, so that masses beyond a certain size thus become the centres of extensive and mainly radial electric fields. These fi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.catastrophism.com",
+          "/texts/bruce/astro.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A New Approach in Astrophysics and Cosmogony by C. E. R. Bruce (1944)",
+        "url": "https://www.catastrophism.com/texts/bruce/astro.htm"
+      },
+      {
+        "category": "general",
+        "content": "under the Lorenz transformations of special relativity, or equivalently (right) in terms of imaginary time in ordinary Euclidean 4-D space. These two are generalized in higher spa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/quant.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quantum Reality and Cosmology",
+        "url": "http://www.dhushara.com/paradoxhtm/quant.htm"
+      },
+      {
+        "category": "general",
+        "content": "stage in coronae formation. Coronae are roughly circular, volcanic features believed to form over hot upwellings of magma within the Venusian mantle. Also, we found that surface h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astrocappella.com",
+          "/background/habzone_background.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Habitable Zone - Background Info",
+        "url": "https://www.astrocappella.com/background/habzone_background.shtml"
+      },
+      {
+        "category": "general",
+        "content": "large amounts of information which are made by several witnesses, if possible, who as far as I can ascertain, have unimpeachable reputations and are competent. For example, I migh",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.project1947.com",
+          "/shg/symposium/hynek.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SHG - UFO Symposium 1968: Hynek Statement",
+        "url": "http://www.project1947.com/shg/symposium/hynek.html"
+      },
+      {
+        "category": "general",
+        "content": "Holes Can Trigger Star Formation 3rd Hello, Rock! 2nd Black Holes And Dark Matter 1st March ALMA Sees Hydrogen Super-Halos Around Young Spiral Galaxies 29th Nitrogen Powered 23rd",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "briankoberlein.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Archive | by Brian Koberlein",
+        "url": "https://briankoberlein.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "and a point of transformation in what was possible. So long as history is taught the time which brought about our first steps on another world will attract attention. If the bulk",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.donaldedavis.com",
+          "/2021NEW/Apollo1152.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Apollo will begin a new era if space migration ever takes place, or shine like a beacon of times when miracles were possible if space travel i",
+        "url": "http://www.donaldedavis.com/2021NEW/Apollo1152.html"
+      },
+      {
+        "category": "general",
+        "content": "not much more information would be gained over existing 1415 MHz maps. The only survey spanning the tritium line, by Kardashev and Gindilis in 1972 covering various frequencies be",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.rfreitas.com",
+          "/Astro/ObservableETC1985.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Observable Characteristics of Extraterrestrial Technological Civilizations",
+        "url": "http://www.rfreitas.com/Astro/ObservableETC1985.htm"
+      },
+      {
+        "category": "general",
+        "content": "they call pre-party formation to kind of prepare the way and get coalitions and get groups together to agree on something before they actually say we are the radical, Communist Li",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.lewrockwell.com",
+          "/rothbard/rothbard330.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Six Stages of the Libertarian Movement by Murray N. Rothbard",
+        "url": "https://archive.lewrockwell.com/rothbard/rothbard330.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0165",
+  "query_text": "what is cloud formation in astronomy",
+  "requested_at": "2026-09-03T01:43:22.578171Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 323.569,
+  "pair_id": "v5-p-0648",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind renewable energy storage in transportation engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "06f6b1835bf2e04c4178b80bb644bf874770853f0de5083713f62a9c6dec187d",
+  "provider": "SearXNG",
+  "query": "describe the principle behind renewable energy storage in transportation engineering",
+  "query_id": "v5-p-0648-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:02.099589Z"
+}

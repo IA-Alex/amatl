@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 269.451,
+  "pair_id": "v5-p-0350",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does soil erosion in urban planning work",
+    "results": [
+      {
+        "category": "general",
+        "content": "medicine, jobs, urban planning, real estate, law enforcement, and human interactions - and it starts with changing the way we think of ourselves and our relationship with the worl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica2/sociopol_greatreset16.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Great Reset for Dummies - Where do we Go from Here?",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica2/sociopol_greatreset16.htm"
+      },
+      {
+        "category": "general",
+        "content": "DC: American Planning Association), 1978] INTRODUCTION This chapter is nondefinitive, as distinguished from some other chapters in this book which are intended to be exhaustive. T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cooperative-individualism.org",
+          "/hagman-donald_land-value-taxation-1978.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Donald G. Hagman / Land-Value Taxation -- 1978",
+        "url": "https://cooperative-individualism.org/hagman-donald_land-value-taxation-1978.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7c8574aa9119f6a6633d7ff3099a79307218004f78c2de2807acb744abc3fead",
+  "provider": "SearXNG",
+  "query": "how does soil erosion in urban planning work",
+  "query_id": "v5-p-0350-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:06:14.138450Z"
+}

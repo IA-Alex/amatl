@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2052,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 298.036,
+  "pair_id": "candidate-p-0011",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about acoustic ecology within cultural heritage",
+    "results": [
+      {
+        "category": "general",
+        "content": "such an eclectic background, so that in her compositions the listener can appreciate the integration of such diverse stylistic elements and media as she feels necessary, often ign",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.amazings.com",
+          "/ingles.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Amazing Sounds magazine",
+        "url": "http://www.amazings.com/ingles.html"
+      },
+      {
+        "category": "general",
+        "content": "James Barker 1974  Background to Prehistory of the Yuha Desert Region [BLM - PDF]. Wilke, Philip J., Thomas W. Whitaker and Eugene Hattori 1977  Prehistoric Squash ( Cuc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.californiaprehistory.com",
+          "/contcounty.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CaliforniaPrehistory.com -- Articles on Prehistory, By County",
+        "url": "https://www.californiaprehistory.com/contcounty.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "84819db7bb76ba04433bbeb27631093ffa3eafd98d7612ab516f6b73c56bdd7e",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about acoustic ecology within cultural heritage",
+  "query_id": "candidate-c-0011",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "http://www.amazings.com/ingles.html",
+      "original_url": "http://www.amazings.com/ingles.html",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "such an eclectic background, so that in her compositions the listener can appreciate the integration of such diverse stylistic elements and media as she feels necessary, often ign",
+      "title": "Amazing Sounds magazine"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.californiaprehistory.com/contcounty.html",
+      "original_url": "https://www.californiaprehistory.com/contcounty.html",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "James Barker 1974  Background to Prehistory of the Yuha Desert Region [BLM - PDF]. Wilke, Philip J., Thomas W. Whitaker and Eugene Hattori 1977  Prehistoric Squash ( Cuc",
+      "title": "CaliforniaPrehistory.com -- Articles on Prehistory, By County"
+    }
+  ],
+  "timestamp": "2026-09-05T17:31:22.960991Z"
+}

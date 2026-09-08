@@ -1,0 +1,21 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 967.7345159943798,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind voltage regulators in operating systems",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0021",
+  "query_text": "explain the basic idea behind voltage regulators in operating systems",
+  "requested_at": "2026-09-03T01:44:01.789929Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

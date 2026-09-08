@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 274.056,
+  "pair_id": "v5-p-0851",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of data compression in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "More modern brain compression techniques, many of them developed with direct reference to the MMAcevedo image, have compressed the image to 6.75TiB losslessly. In modern brain emu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "qntm.org",
+          "/mmacevedo",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lena @ Things Of Interest",
+        "url": "https://qntm.org/mmacevedo"
+      },
+      {
+        "category": "general",
+        "content": "Store Chromium-Zlib Compression Statusz Monitoring Statistics POSIX API for Linux &#43; Mac &#43; Windows &#43; FreeBSD &#43; NetBSD &#43; OpenBSD installation redbean is designed to not need to be i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "redbean.dev",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "redbean",
+        "url": "http://redbean.dev/"
+      },
+      {
+        "category": "general",
+        "content": "and the paradoxical compression of Heraclitus : Does the sun try to do the rain’s work? Or Asclepius Demeter’s ? ( 6.43 ) Evil: the same old thing. ( 7.1 ) Not a dancer but a wres",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vreeman.com",
+          "/meditations/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "📘 Meditations by Marcus Aurelius. Translation by Gregory Hays.",
+        "url": "https://vreeman.com/meditations/"
+      },
+      {
+        "category": "general",
+        "content": "streams and header compression and server push, SPDY) is enabled: &#34;sudo curl -v --http2 https://YOURDOMAIN&#34; See if HTTP/3 (UDP, QUIC) is enabled: &#34;sudo curl -v --http3 https://YOU",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/YourPersonalWebSite.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Your Personal Web Site",
+        "url": "https://www.billdietrich.me/YourPersonalWebSite.html"
+      },
+      {
+        "category": "general",
+        "content": "work on neural network compression , which appeared at SysML . The Taboo Trap work also led to further papers on transferability and adversarial reinforcement learning . Hey Alexa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ff9bc4a7caa8fa24137204565bd229255a9690c3cbc0a3a999cbf235fc37c8c2",
+  "provider": "SearXNG",
+  "query": "give an overview of data compression in public health",
+  "query_id": "v5-p-0851-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:23.534509Z"
+}

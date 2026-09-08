@@ -1,0 +1,34 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2127,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 499.486,
+  "pair_id": "candidate-p-1461",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what are the main constraints on indoor air chemistry within food systems",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "50375452bba52a197bf4a64dc1f4332e1b11ca95406a9712588b4667e7c06905",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what are the main constraints on indoor air chemistry within food systems",
+  "query_id": "candidate-t-1461",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:31:45.949722Z"
+}

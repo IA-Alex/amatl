@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 341.739,
+  "pair_id": "v5-p-0217",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind plate tectonics in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "recent ice ages plate tectonics is unique to Earth plate tectonics, continental drift, and the ocean floor Pangaea had temperature extremes volcanic eruptions devastated Crete ear",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b788d437575c93c21bf04bc27667307970b537a3bcb104633ac1d06cff5a00f3",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind plate tectonics in astronomy",
+  "query_id": "v5-p-0217-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:09:30.359852Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 250.296,
+  "pair_id": "v5-p-0995",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes wastewater treatment in robotics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "dcedb575b57869218ac9022d30bdfb4feed1dc75c2580e17ba1fd4dfd8a0a90f",
+  "provider": "SearXNG",
+  "query": "what causes wastewater treatment in robotics",
+  "query_id": "v5-p-0995-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:01.195785Z"
+}

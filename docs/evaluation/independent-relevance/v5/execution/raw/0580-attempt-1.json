@@ -1,0 +1,192 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 399.766,
+  "pair_id": "v5-p-0869",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind vaccination in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "to things like vaccination, or social distancing during COVID, on the basis that COVID is a harmful disease, as determined by scientific research, and that things like the COVID v",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "purplepriest.codeberg.page",
+          "/articles/refdd.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://purplepriest.codeberg.page/articles/refdd.html",
+        "url": "https://purplepriest.codeberg.page/articles/refdd.html"
+      },
+      {
+        "category": "general",
+        "content": "for attending school. Vaccination campaigns teach your kid that its body is property of the government and the pharmaceutical industry, which will now decide the kinds of substanc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/school.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The toxic schooling system",
+        "url": "http://digdeeper.love/articles/school.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "Lockdown until Vaccination (May 2024) Here are extracts from the beginning of this article which reveals what has been obscure since March 2020: Four years later, many people",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "serendipity.li",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Serendipity",
+        "url": "https://serendipity.li/"
+      },
+      {
+        "category": "general",
+        "content": "2022 ( Obstacles to vaccination and treatment of Covid-19 ) In poor countries, many practical obstacles impede vaccination and treatment of Covid-19. Six of these obstacles are no",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2022-may-aug.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2022: May - August Political Notes",
+        "url": "http://stallman.org/archives/2022-may-aug.html"
+      },
+      {
+        "category": "general",
+        "content": "for discouraging vaccination of young people owing to the threat of heart damage. And here’s an article acknowledging that such a threat exists — from the very same orga",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "thornwalker.com",
+          "/ditch/home.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Last Ditch--a newsletter on issues of Liberty and Civility",
+        "url": "https://thornwalker.com/ditch/home.htm"
+      },
+      {
+        "category": "general",
+        "content": "$500 for a hepatitis B vaccination series and other disease prophylaxis. Africa may today be more dangerous in this regard than it was in 1862, before antibiotics, when the explor",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0c619d342c6cbc0445210a8135884822c083a1376fd6d706da4ddce4fcb2ef7a",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind vaccination in climate science",
+  "query_id": "v5-p-0869-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:12.753589Z"
+}

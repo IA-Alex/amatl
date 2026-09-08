@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 359.112,
+  "pair_id": "v5-p-0585",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind air quality monitoring in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "physics, and engineering calculations, and the fact that the LOCI calculators could generate logarithms and anti-logarithms in mere milliseconds was profound. Dr. Wang had invente",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/wangloci.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Wang LOCI-2",
+        "url": "https://www.oldcalculatormuseum.com/wangloci.html"
+      },
+      {
+        "category": "general",
+        "content": "computers, IC reverse engineering, and whatever Energizing a vacuum-tube flip-flop module from a 1948 IBM system In 1948, IBM introduced the 604 Electronic Calculating Punch. This",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.righto.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ken Shirriff&#39;s blog",
+        "url": "http://www.righto.com/"
+      },
+      {
+        "category": "general",
+        "content": "in fact did not study engineering at all. He did attend Indiana University, Columbia, and the University of Chicago at one point or another, studying psychology, journalism, histo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.copperwood.com",
+          "/carlandjerry.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John T. Frye&#39;s Carl and Jerry, from Popular Electronics",
+        "url": "http://www.copperwood.com/carlandjerry.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "02297033ec705777caebf9e8f914b0c41abfb0ee47791e8e011355c205d97fa5",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind air quality monitoring in electrical engineering",
+  "query_id": "v5-p-0585-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:38.603192Z"
+}

@@ -1,0 +1,12 @@
+{
+  "durable_after": 30,
+  "durable_before": 30,
+  "executor_invocations": 0,
+  "results": {
+    "duplicate_execution": "PASS",
+    "execution_limit_31": "PASS",
+    "foreign_position": "PASS",
+    "output_already_exists": "PASS",
+    "unvalidated_plan": "PASS"
+  }
+}

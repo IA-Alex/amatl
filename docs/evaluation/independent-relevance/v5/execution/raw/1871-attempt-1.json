@@ -1,0 +1,192 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 286.926,
+  "pair_id": "v5-p-0218",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does plate tectonics in biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "in the context of time. Tectonics and paleoclimate The Cambrian follows the Ediacaran Period, during which time the continents had been joined in a single supercontinent called Ro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ucmp.berkeley.edu",
+          "/cambrian/cambrian.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cambrian Period",
+        "url": "https://ucmp.berkeley.edu/cambrian/cambrian.php"
+      },
+      {
+        "category": "general",
+        "content": "oceanic crust [plate tectonics]. Even clouds exert a regulatory effect. ...&#34; From Crushnaut on reddit: Getting oxygen and CO2 into a Martian atmosphere, in the grand scheme of thi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "• Mineral • Plate tectonics • Rock • Natural disaster • Flood • Tsunami • Volcano • Weather • Cloud • Rain • Snow • Tornado • Tropical cyclone • Wind Physics Physics • Acceleratio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kids.kiddle.co",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kids encyclopedia facts",
+        "url": "https://kids.kiddle.co/"
+      },
+      {
+        "category": "general",
+        "content": "the Earth&#39;s plate tectonics (Continental drift). (Moore 1973) (Scoppola 2006) The tidal force is part of what some astrologers call natural astrology which also includes the study",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "astrology.co.uk",
+          "/tests/basisofastrology.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Why it is unacceptable to dismiss astrology as rubbish.",
+        "url": "https://astrology.co.uk/tests/basisofastrology.htm"
+      },
+      {
+        "category": "general",
+        "content": "recent ice ages plate tectonics is unique to Earth plate tectonics, continental drift, and the ocean floor Pangaea had temperature extremes volcanic eruptions devastated Crete ear",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "nature concerning plate tectonics or genetic reproduction ever be reduced to those of subatomic physics? The social scientist may also be forgiven for rebelling against this imper",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "naturalisms.org",
+          "/science.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Naturalism and Science",
+        "url": "http://naturalisms.org/science.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b749130d82a52f06ecf788d849080e8069c25747bf8cdc9a310ff0d9f77ef654",
+  "provider": "SearXNG",
+  "query": "how does plate tectonics in biology work",
+  "query_id": "v5-p-0218-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:15.476915Z"
+}

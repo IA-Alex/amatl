@@ -1,0 +1,192 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 302.481,
+  "pair_id": "v5-p-0602",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does air quality monitoring in urban planning work",
+    "results": [
+      {
+        "category": "general",
+        "content": "propagation, remote monitoring and interactions with bodies such as the ABU-HFC, ITU, and the HFCC. Everything was set to go, and we had worked out a timetable for transfer of the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.worldofradio.com",
+          "/dxld3134.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.worldofradio.com/dxld3134.txt",
+        "url": "http://www.worldofradio.com/dxld3134.txt"
+      },
+      {
+        "category": "general",
+        "content": "The best systems for monitoring voices and messages through telephone or e-mail existing today are based on Israeli technology. The Israeli company Wondernet has patented the Penf",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.imninalu.net",
+          "/Israel-Arabs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Israel and the Arab World",
+        "url": "https://www.imninalu.net/Israel-Arabs.htm"
+      },
+      {
+        "category": "general",
+        "content": "E. Howard Hunt, monitoring the effect at CIA headquarters until the end, later noted:  &#34;I was sick of lying and deception, heartsick over political compromise and military de",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cuban-exile.com",
+          "/doc_001-025/doc0019a.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Last Investigation by gaeton Fonzi",
+        "url": "http://cuban-exile.com/doc_001-025/doc0019a.html"
+      },
+      {
+        "category": "general",
+        "content": "projects. Though monitoring has not been continuous in the central and northern portions of the range, populations were recorded in the late 1980s at San Luis Reservoir, Merced Co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "esrp.csustan.edu",
+          "/publications/pubhtml.php",
+          "",
+          "doc=sjvrp&amp;file=chapter02L00.html",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "L. San Joaquin Kit Fox (Vulpes macrotis mutica)",
+        "url": "https://esrp.csustan.edu/publications/pubhtml.php?doc=sjvrp&amp;file=chapter02L00.html"
+      },
+      {
+        "category": "general",
+        "content": "characterization and monitoring of the ionospheric state, but also an examination of what con-trolled local modification of the ionosphere, using ground HF transmitters, could do",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "not the problem. Local monitoring of my output with the old OCP71 receiver revealed no treble loss, so ionisation lag wasn&#39;t the cause. Could the loss have been occurring in the i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "17c55b550fc727b910929c911cc951eecb1c30a892684a3e8622f5ad2572e170",
+  "provider": "SearXNG",
+  "query": "how does air quality monitoring in urban planning work",
+  "query_id": "v5-p-0602-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:12.884726Z"
+}

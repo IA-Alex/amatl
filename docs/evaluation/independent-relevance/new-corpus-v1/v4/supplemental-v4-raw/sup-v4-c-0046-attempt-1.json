@@ -1,0 +1,297 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 453.3025409982656,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of routing tables in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "dynamic resource management for the shifter &amp; timer resources within each FlexIO port.  The goal is for libraries using FlexIO, such as TMM-HM01B0-Camera and TriantaduoWS2811",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.pjrc.com",
+          "/2021/07/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SEGA ROM Reader",
+        "url": "https://www.pjrc.com/2021/07/"
+      },
+      {
+        "category": "general",
+        "content": "there was no RAID management support. Apparently most of these bugs are because the Adaptec controllers have numerous buggy firmware issues which require careful workarounds; with",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.openbsd.org",
+          "/lyrics.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OpenBSD: Release Songs",
+        "url": "http://www.openbsd.org/lyrics.html"
+      },
+      {
+        "category": "general",
+        "content": "There&#39;s manual memory management ( malloc() ), and then there&#39;s manual memory management ( sbrk() ). Note 2 from 2025-09-04 Published on 2025-09-04 I&#39;ve made many false promises o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.alm.website",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Athena&#39;s blog - Athena&#39;s Site",
+        "url": "https://www.alm.website/blog/"
+      },
+      {
+        "category": "general",
+        "content": "the VCPU is in system management mode. /* in (pre_kvm_run), out (post_kvm_run) */ __u64 cr8; The value of the cr8 register. Only valid if in-kernel local APIC is not used. Both in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kernel.org",
+          "/doc/Documentation/virtual/kvm/api.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://kernel.org/doc/Documentation/virtual/kvm/api.txt",
+        "url": "https://kernel.org/doc/Documentation/virtual/kvm/api.txt"
+      },
+      {
+        "category": "general",
+        "content": "much time. Your alarm-management software can of course keep, install, delete, and sort (by due times) many alarms, and any given alarm&#39;s routine might also set an alarm for the n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wilsonminesco.com",
+          "/multitask/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "simple multitask",
+        "url": "http://wilsonminesco.com/multitask/"
+      },
+      {
+        "category": "general",
+        "content": "AAM (Automatic Acoustic Management), APM, drive motor spin-down, sector read/write, change drive configuration and more... In principle you can execute every ATA command, the para",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "rayer.g6.cz",
+          "/programm/programe.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RayeR&#39;s homepage/Programming",
+        "url": "http://rayer.g6.cz/programm/programe.htm"
+      },
+      {
+        "category": "general",
+        "content": "libraries for state management, routing, and interaction with an API.&#34; Shedrack Akintayo&#39;s &#34;A beginner&#39;s guide to developing with React&#34; Nick Parsons&#39; &#34;Takeaways on Building a Rea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/DevelopApplication.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Develop an Application",
+        "url": "https://www.billdietrich.me/DevelopApplication.html"
+      },
+      {
+        "category": "general",
+        "content": "there is no package management. I was rm -rfing .app files and hoping that&#39;s the approved deletion technique. Monolingual is a huge hack that is essentially ``rm `find / -name Spa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "galexander.org",
+          "/laptops/mac/impressions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "My impressions",
+        "url": "http://galexander.org/laptops/mac/impressions.html"
+      },
+      {
+        "category": "general",
+        "content": "APMAdvanced Power Management support is enabled. APPARMOR AppArmor support is enabled. ARMARM architecture is enabled. ARM64ARM64 architecture is enabled. CLKCommon clock infrastr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kernel.org",
+          "/doc/Documentation/admin-guide/kernel-parameters.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://www.kernel.org/doc/Documentation/admin-guide/kernel-parameters.txt",
+        "url": "https://www.kernel.org/doc/Documentation/admin-guide/kernel-parameters.txt"
+      },
+      {
+        "category": "general",
+        "content": "switching and memory management functions, other processors have similar schemes. The functional areas covered by each hardware and software overlap, the intersection set in set t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.forth.org",
+          "/svfig/osf.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OS/Forth",
+        "url": "https://www.forth.org/svfig/osf.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0046",
+  "query_text": "tell me about the function of routing tables in data management",
+  "requested_at": "2026-09-03T01:42:08.231917Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

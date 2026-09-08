@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2029,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 298.2,
+  "pair_id": "candidate-p-0875",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains ecosystem services within cultural heritage",
+    "results": [
+      {
+        "category": "general",
+        "content": "does a species, an ecosystem, or a ship … or a corporation, for that matter. Although many countries treat a corporation as a &#34;person&#34; and accord it rights, that policy is",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2023-nov-feb.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2023: November - February Political Notes",
+        "url": "http://stallman.org/archives/2023-nov-feb.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "847aad90c04d2d6b3ff0fbf77397d2794a9e611633a5d99471129763f879fe95",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains ecosystem services within cultural heritage",
+  "query_id": "candidate-t-0875",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "http://stallman.org/archives/2023-nov-feb.html",
+      "original_url": "http://stallman.org/archives/2023-nov-feb.html",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "does a species, an ecosystem, or a ship … or a corporation, for that matter. Although many countries treat a corporation as a &#34;person&#34; and accord it rights, that policy is",
+      "title": "2023: November - February Political Notes"
+    }
+  ],
+  "timestamp": "2026-09-05T17:31:16.092818Z"
+}

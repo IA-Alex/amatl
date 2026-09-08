@@ -1,0 +1,192 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 275.346,
+  "pair_id": "v5-p-0627",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes renewable energy storage in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "YOURSELF AND OTHERS ON RENEWABLE ENERGY AND CLEAN /  GREEN - HELP US SAVE WHAT WE CAN - BE AN AWARE GLOBAL CITIZEN OF PLANET EARTH - REMEMBER MARVIN GAYE - SING SONGS - DON&#39;T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.robertschoch.net",
+          "/Nuclear%20Energy%20Radiation%20Toxicology%20Human%20Chromosomes%20Helen%20Caldicott%20Circular%20Times.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nuclear Energy Toxicology Human Chromosomes Helen Caldicott",
+        "url": "http://www.robertschoch.net/Nuclear%20Energy%20Radiation%20Toxicology%20Human%20Chromosomes%20Helen%20Caldicott%20Circular%20Times.htm"
+      },
+      {
+        "category": "general",
+        "content": "Solar and Renewable Energy Research section SOLAR and POWER PLANT TECHNOLOGY. This section provides an overview of solar energy research. Click here for the Main Power Tech",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIDIK.com The original and official DIDIK site. Cutting edge and sometimes controversial thoughts, designs, proposals and projects conceiv",
+        "url": "http://www.didik.com/"
+      },
+      {
+        "category": "general",
+        "content": "CLUB and for SOLAR and RENEWABLE ENERGY) Solar, Electric, Hybrid, Alternate Energy Vehicles SOLAR, ELECTRIC, HYBRID and HUMAN powered vehicles including all types of electric powe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.design1.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Recent designs, projects and thoughts by Frank X. Didik. Predictions for the future, where society is going. Can gravity by modulated? Wha",
+        "url": "http://www.design1.org/"
+      },
+      {
+        "category": "general",
+        "content": "CLUB and for SOLAR and RENEWABLE ENERGY) Solar, Electric, Hybrid, Alternate Energy Vehicles SOLAR, ELECTRIC, HYBRID and HUMAN powered vehicles including all types of electric powe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/frankdidik_oped_bicycle_etiquette.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Thoughts by Frank X. Didik Bicycle Etiquette. Op-Ed Views. www",
+        "url": "http://www.didik.com/frankdidik_oped_bicycle_etiquette.htm"
+      },
+      {
+        "category": "general",
+        "content": "CLUB and for SOLAR and RENEWABLE ENERGY) Solar, Electric, Hybrid, Alternate Energy Vehicles SOLAR, ELECTRIC, HYBRID and HUMAN powered vehicles including all types of electric powe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/frankdidik_oped_cell_phone_etiquette.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cell Phone Etiquette. Thoughts by Frank X. Didik.",
+        "url": "http://www.didik.com/frankdidik_oped_cell_phone_etiquette.htm"
+      },
+      {
+        "category": "general",
+        "content": "quantities of renewable energy will be needed to support human life.  But, money is an inappropriate measure to determine which sustainable energy technologies will be feasib",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "dematerialism.net",
+          "/On%20My%20Philosophy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "On My Philosophy",
+        "url": "https://dematerialism.net/On%20My%20Philosophy.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3ffdc173d06647fb0b863f975880f2593db7563cade28c31fc1224dcb994a4c8",
+  "provider": "SearXNG",
+  "query": "what causes renewable energy storage in materials science",
+  "query_id": "v5-p-0627-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:19.782260Z"
+}

@@ -1,0 +1,144 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 3895,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 537.401,
+  "pair_id": "candidate-p-2181",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what are the main constraints on thermal energy storage within food systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "and planning. In the constraints of expensive cell phone data, uploading large files can be made possible by offloading heavy-lifting onto remote servers; having your server build",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "100r.co",
+          "/site/off_the_grid.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "100R — off the grid",
+        "url": "http://100r.co/site/off_the_grid.html"
+      },
+      {
+        "category": "general",
+        "content": "Randomness        5.2   Constraints 6.      Conclusion   References           Abstract     Starting point Pain increase",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.socrethics.com",
+          "/Folder2/Biology.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biological Evolution of Pain",
+        "url": "http://www.socrethics.com/Folder2/Biology.htm"
+      },
+      {
+        "category": "general",
+        "content": "What are the material constraints of this approach particularly around the supplies of zinc and antimony? Lars R Knudsen A very interesting article. I have two questions: Has no o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2021/10/how-to-build-a-low-tech-solar-panel",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Build a Low-tech Solar Panel? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2021/10/how-to-build-a-low-tech-solar-panel"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "19964301a8c785092f0be1d1d4928e4927c93a717d2743adaca6f503294cc0f6",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what are the main constraints on thermal energy storage within food systems",
+  "query_id": "candidate-t-2181",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://100r.co/site/off_the_grid.html",
+      "original_url": "http://100r.co/site/off_the_grid.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "and planning. In the constraints of expensive cell phone data, uploading large files can be made possible by offloading heavy-lifting onto remote servers; having your server build",
+      "title": "100R — off the grid"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.socrethics.com/Folder2/Biology.htm",
+      "original_url": "http://www.socrethics.com/Folder2/Biology.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Randomness        5.2   Constraints 6.      Conclusion   References           Abstract     Starting point Pain increase",
+      "title": "The Biological Evolution of Pain"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://solar.lowtechmagazine.com/2021/10/how-to-build-a-low-tech-solar-panel",
+      "original_url": "https://solar.lowtechmagazine.com/2021/10/how-to-build-a-low-tech-solar-panel",
+      "rank": 3,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "What are the material constraints of this approach particularly around the supplies of zinc and antimony? Lars R Knudsen A very interesting article. I have two questions: Has no o",
+      "title": "How to Build a Low-tech Solar Panel? | LOW←TECH MAGAZINE"
+    }
+  ],
+  "timestamp": "2026-09-05T17:41:03.182787Z"
+}

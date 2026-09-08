@@ -1,0 +1,189 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 260.66643100057263,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is gear trains in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "1949 found in &#34;Popular Astronomy&#34; Volume 57, Page 23, Watson wrote, referring to the northern hemisphere and more specifically the U.S. at 40 degrees latitude, that at the beginni",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "the-wanderling.com",
+          "/davinci.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "LEONARDO DA VINCI: 500 Years Too Soon",
+        "url": "https://the-wanderling.com/davinci.html"
+      },
+      {
+        "category": "general",
+        "content": "Ed Nather, professor of astronomy at UT Austin&#34;, &#34;A William and Mary Intramural Basketball Team: Dick and the Four Skins&#34;, &#34;A Wise Man can see more from the bottom of a well than",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ifindkarma.com",
+          "/oneliners/oneliners-2000",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.ifindkarma.com/oneliners/oneliners-2000",
+        "url": "http://www.ifindkarma.com/oneliners/oneliners-2000"
+      },
+      {
+        "category": "general",
+        "content": "(such as amateur astronomy, home machining or car mechanics), is that amateur radio requires allocation of a portion of a large but finite (for our purposes), publically owned res",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wm7d.net",
+          "/az_proj/az_html/arrl_restructuring.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Letter to ARRL - Restructing of Ham Radio Licensing",
+        "url": "https://www.wm7d.net/az_proj/az_html/arrl_restructuring.html"
+      },
+      {
+        "category": "general",
+        "content": "Websites (astronomy, physics, biology, etc.) SHOPPING Websites (general product categories)   &lt; Go to Top of page &gt; SPORTS - BICYCLING Websites SPORTS - HIKING , CAMPIN",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "subdude-site.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Home page of Blaze the Maintainer (Son of a Series of Dudes, thus a SubDude)",
+        "url": "http://subdude-site.com/"
+      },
+      {
+        "category": "general",
+        "content": "software development; astronomy; physical sciences; drama. 1971-80: Classroom teacher, Black Pine Circle School, grades 3-5; Math Specialist, grades K-5. (Berkeley, CA) Self-conta",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.mathed.page",
+          "/resume/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Henri Picciotto&#39;s Résumé | MathEd.page",
+        "url": "https://www.mathed.page/resume/"
+      },
+      {
+        "category": "general",
+        "content": "the fun part about astronomy. You never know what&#39;s going to happen. Is Delta about to blow up? Probably not. Is the new brightness permanent? We have no way to know except to wat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.duntemann.com",
+          "/may2002.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jeff Duntemann&#39;s ContraPositive Diary",
+        "url": "http://www.duntemann.com/may2002.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0157",
+  "query_text": "what is gear trains in astronomy",
+  "requested_at": "2026-09-03T01:43:36.843618Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

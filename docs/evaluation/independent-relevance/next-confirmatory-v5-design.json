@@ -1,0 +1,50 @@
+{
+  "schema": "amatl.relevance.next-confirmatory-v5-design.v1",
+  "experiment_id": "independent-relevance-confirmatory-v5",
+  "design_status": "RECOMMENDED_NOT_FROZEN",
+  "base_head": "af5548a13e409006ddabad491b598ddb5446326b",
+  "v4_status": "INCONCLUSIVE_FROZEN_UNIVERSE_EXHAUSTED",
+  "experiment_type": "CONFIRMATORY",
+  "primary_endpoint": "STRICT_RELEVANCE_YIELD",
+  "target_valid_per_arm": 474,
+  "target_valid_total": 948,
+  "providers": ["searxng", "marginalia"],
+  "provider_contracts": {
+    "searxng": {
+      "adapter_version": "searxng-v1",
+      "access": "self_hosted",
+      "request": "GET /search?q=<query>&format=json&pageno=1",
+      "authentication": false,
+      "depth_contract": "positions 1..3"
+    },
+    "marginalia": {
+      "adapter_version": "marginalia-v1",
+      "endpoint": "https://api2.marginalia-search.com/search",
+      "request": "GET ?query=<query>&count=20",
+      "authentication": "API-Key header from MARGINALIA_API_KEY",
+      "approval_required": true,
+      "depth_contract": "positions 1..3"
+    }
+  },
+  "query_plan": {
+    "planned_queries_per_arm": 1600,
+    "planned_queries_total": 3200,
+    "matched_pairs": 1600,
+    "depth": 3,
+    "randomization": "see v5-randomization.json"
+  },
+  "historical_attainability": {
+    "v4_control_valid_per_query": 0.3566666666666667,
+    "v4_treatment_valid_per_query": 0.6833333333333333,
+    "conservative_rate_basis": "one-sided 95% Wilson lower bound of V4 Control valid rows/query",
+    "conservative_acceptance_rate": 0.31263962236634996,
+    "minimum_queries_per_arm": 1517,
+    "candidate_1500_sufficient": false,
+    "planned_margin_queries_per_arm": 83,
+    "planned_margin_percent": 5.471324983519446,
+    "marginalia_historical_evidence": "10/10 rate-limited, 0 usable results in WP-1",
+    "attainability_conclusion": "BLOCKED_UNTIL_PROVIDER_PREFLIGHT"
+  },
+  "confound_control": "Each matched pair is sent to both providers in randomized provider order; provider is crossed equally across both arms, retained as a prespecified stratum, and is never used as treatment/control fallback.",
+  "network_requests": 0
+}

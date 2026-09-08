@@ -1,0 +1,300 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 413.631,
+  "pair_id": "v5-p-0562",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of food preservation in physics",
+    "results": [
+      {
+        "category": "general",
+        "content": "Government, is the Preservation of their Property . To which in the state of Nature there are many things wanting. [ ibid. , §124] Locke, of course, thinks that the ownership",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/locke.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John Locke (1632-1704)",
+        "url": "https://friesian.com/locke.htm"
+      },
+      {
+        "category": "general",
+        "content": "which &#39;acts by the preservation and accumulation of small inherited modifications, each profitable to the preserved being.&#39; With this idea he interpenetrates and leavens the vast",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "victorianweb.org",
+          "/science/science_texts/belfast.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Address Delivered Before the British Association Assembled at Belfast, With Additions (1874)",
+        "url": "https://victorianweb.org/science/science_texts/belfast.html"
+      },
+      {
+        "category": "general",
+        "content": "(creation), Sthiti (preservation), Samhara (destruction), Tirodhana or Tirobhava (veiling), and Anugraha (grace) are the five kinds of activities of God. God is the exquisite tast",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dlshq.org",
+          "/download2/god_exists.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "God Exists",
+        "url": "https://www.dlshq.org/download2/god_exists.htm"
+      },
+      {
+        "category": "general",
+        "content": "the appearance and preservation of the above &#34;male ornaments&#34; in nature - because they do not convey obvious survival advantages on male&#39;s carrying them, but SS does explain them",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "philosophy.nekhbet.com",
+          "/book.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Last Book of Moron",
+        "url": "https://philosophy.nekhbet.com/book.shtml"
+      },
+      {
+        "category": "general",
+        "content": "sense, is that cryopreservation is an encryption algorithm, in a very literal sense.&#34; Cryostasis Revival , by Robert A. Freitas Jr. If you&#39;ve got a friend who&#39;s been thinking",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cryonics",
+        "url": "http://www.ralphmerkle.com/cryo/"
+      },
+      {
+        "category": "general",
+        "content": "nothing for the preservation of the animal. For his constant aim is to follow out logical consequences and to upset obvious fact, in this respect being opposed to Epicurus; for th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.earlychristianwritings.com",
+          "/text/galen.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Galen: On the Natural Faculties",
+        "url": "http://www.earlychristianwritings.com/text/galen.html"
+      },
+      {
+        "category": "general",
+        "content": "that they result in the preservation of an organism&#39;s life.&#34; The footnote may have been added later to answer an objection someone raised. The problem is that once Rand makes that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "spot.colorado.edu",
+          "/~huemer/papers/rand5.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Critique of Objectivist Ethics",
+        "url": "https://spot.colorado.edu/~huemer/papers/rand5.htm"
+      },
+      {
+        "category": "general",
+        "content": "tendency toward self-preservation. By looking at reproduction in this way, we avoid the problems with the reproductively-based definitions of life that we examined earlier. Let us",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "baharna.com",
+          "/philos/life.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Psychozoan: The Definition of Life",
+        "url": "https://baharna.com/philos/life.htm"
+      },
+      {
+        "category": "general",
+        "content": "For The Eternal Preservation And Expansion Of Infinite Happiness Through Enforcement Of Inalienable Freedoms That All Space Marines Must Fight To Protect Always .   Would Pau",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteListW-GeorgiaRunOffElection2021.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Free World Alliance Site List",
+        "url": "http://www.viacadempire.com/FWAsiteListW-GeorgiaRunOffElection2021.html"
+      },
+      {
+        "category": "general",
+        "content": "all who profit by the preservation of the old system and only lukewarm defenders by those who would gain by the new system. ( Machiavelli , 1513) Nonetheless, I have a great belie",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/Philosophy-Politics-Globalisation.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Famous Philosophers on Politics, Political Science, Globalisation, Oligarchy,Democracy",
+        "url": "https://www.spaceandmotion.com/Philosophy-Politics-Globalisation.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "99f1499704f1a8caa693522e61ad9b3f6d1daff98d98549e99133c5c36905d88",
+  "provider": "SearXNG",
+  "query": "tell me about the function of food preservation in physics",
+  "query_id": "v5-p-0562-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:58.079535Z"
+}

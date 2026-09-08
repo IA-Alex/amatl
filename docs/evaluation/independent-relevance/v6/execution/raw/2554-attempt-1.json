@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2554,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 336.599,
+  "pair_id": "candidate-p-0214",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "key concepts associated with arctic navigation within forest management",
+    "results": [
+      {
+        "category": "general",
+        "content": "some design peculiarity associated with the arrangement of technical equipment and landing. Were studied versions PL with the different power plants: - diesel- battery version wit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/submarineaircraftcarriers.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Never Say Never Again: Aircraft/Amphibious carriers must submerge to avoid SSC destruction",
+        "url": "http://www.combatreform.org/submarineaircraftcarriers.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2caf1d84f0189a6034a901d88f02a41a96c598c259ece91e410eacaa08627b39",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "key concepts associated with arctic navigation within forest management",
+  "query_id": "candidate-c-0214",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.combatreform.org/submarineaircraftcarriers.htm",
+      "original_url": "http://www.combatreform.org/submarineaircraftcarriers.htm",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "some design peculiarity associated with the arrangement of technical equipment and landing. Were studied versions PL with the different power plants: - diesel- battery version wit",
+      "title": "Never Say Never Again: Aircraft/Amphibious carriers must submerge to avoid SSC destruction"
+    }
+  ],
+  "timestamp": "2026-09-05T17:34:02.057173Z"
+}

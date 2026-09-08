@@ -1,0 +1,219 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 302.32,
+  "pair_id": "v5-p-0326",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does soil erosion in biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "sediments, rate of soil erosion, disintegration of radioactive materials, and Libby&#39;s Carbon 14 experiment. Problems can be found with all of these methods, but the biggest proble",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biblebelievers.com",
+          "/jmelton/mevolu1.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Evolution: Fact or Fiction? by James Melton",
+        "url": "https://www.biblebelievers.com/jmelton/mevolu1.html"
+      },
+      {
+        "category": "general",
+        "content": "as appears for topsoil erosion or biodiversity loss. There&#39;s also a risk that others who take up the mantle of applied welfare biology will ignore considerations of global stabili",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Applied Welfare Biology and Why Wild-Animal Advocates Should Focus on Not Spreading Nature",
+        "url": "https://reducing-suffering.org/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/"
+      },
+      {
+        "category": "general",
+        "content": "bare, producing soil erosion followed by less plant growth in subsequent &#34;years. Always, by eating the grasses that appeal to them, herbivores selectively favor the weed grasses t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.garretthardinsociety.org",
+          "/articles/art_ethical_implications.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ethical Implications of Carrying Capacity by Garrett Hardin - The Garrett Hardin Society - Articles",
+        "url": "https://www.garretthardinsociety.org/articles/art_ethical_implications.html"
+      },
+      {
+        "category": "general",
+        "content": "on security, and the erosion of America&#39;s moral authority - are responsible for such strength as al-Qaeda now maintains.&#34; &#34;Documents captured after 9/11 showed that bin Laden hope",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonTerrorism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about Terrorism",
+        "url": "https://www.billdietrich.me/ReasonTerrorism.html"
+      },
+      {
+        "category": "general",
+        "content": "Pandemic and Erosion of Freedoms&#39; have been Decades in the Making - A Timeline    -  Pathocracy - Tyranny at The Hand of Psychopaths   Español  -  Pa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/sociopol_bigbrother.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Big Brother Loves You... - El Gran Hermano Te Ama...",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_bigbrother.htm"
+      },
+      {
+        "category": "general",
+        "content": "per Ha. Prevents soil erosion. We got about 14 tonnes to the acre last year. It grows in many soils. Bad points: Harvesting. There are several ways to harvest: Desiccation, tradit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonDrugs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about Drugs",
+        "url": "https://www.billdietrich.me/ReasonDrugs.html"
+      },
+      {
+        "category": "general",
+        "content": "is subject to decay and erosion. Only Jesus Christ can bring about transformation and redemption. Christianity distinguishes between the profane and the spiritual, emphasizing the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mats-winther.github.io",
+          "/nietzscheen.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Anti-Nietzsche : A Critique of Friedrich Nietzsche",
+        "url": "https://mats-winther.github.io/nietzscheen.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4f6d2e59b925eac1351b2c3cba8f9e2f95486cd82bb1f1930e8c8e15ec1efead",
+  "provider": "SearXNG",
+  "query": "how does soil erosion in biology work",
+  "query_id": "v5-p-0326-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:44.782096Z"
+}

@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 272.549,
+  "pair_id": "v5-p-0827",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes battery chemistry in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "be, satisfied with the operations and products of the Understanding alone; hence physical science cannot [6/7] cover all the demands of his nature. But the history of the efforts",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "victorianweb.org",
+          "/science/science_texts/belfast.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Address Delivered Before the British Association Assembled at Belfast, With Additions (1874)",
+        "url": "https://victorianweb.org/science/science_texts/belfast.html"
+      },
+      {
+        "category": "general",
+        "content": "control room within the Operations Center the trans-missions from each dipole are adjusted in amplitude and phase so as to form a narrow beam directed upward toward the ionosphere",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "connected in all operations in chemistry, with magnetism, with light and caloric; apparently a property belonging to all matter, perhaps ranging through all space, from sun to sun",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.rexresearch.com",
+          "/crosse/crosse.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Andrew Crosse: Abiogenesis of Acari",
+        "url": "http://www.rexresearch.com/crosse/crosse.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c0ad9fc5896fb06a87a40c1a1c05649dced00bb5c97f8a662afca3f11811a72d",
+  "provider": "SearXNG",
+  "query": "what causes battery chemistry in operations research",
+  "query_id": "v5-p-0827-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:17.175386Z"
+}

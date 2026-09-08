@@ -1,0 +1,306 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1508,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 381.807,
+  "pair_id": "candidate-p-0747",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about data provenance within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "structuring, information loss, and a lack of provenance or security. By relying on unstructured folders and rigid JSON schemas instead of a proper database with foreign keys, audi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "and spreadsheets from Information is Beautiful. 2023.10.11 • US income distributions, education reform, Kia/Hyundai thefts, Michigan air permit violations, and dog genomes. 2023.0",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.data-is-plural.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Data Is Plural — Full Archive",
+        "url": "https://www.data-is-plural.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "to see if some new information or perspective will introduce contradictions and problematize the whole, just as Popper thought that we must always be thinking of new ways to serio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/ross/platonis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Why I am a Platonist",
+        "url": "https://friesian.com/ross/platonis.htm"
+      },
+      {
+        "category": "general",
+        "content": "and thus the genetic information itself. Since the basic structure of DNA-alkaline pairs and of language (as explained earlier) are of the same structure, no DNA decoding is neces",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "during the crime. This information always strengthens and verifies the statement of witness and also narrow down the number of suspects. Currently there are many techniques availa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.shroud.com",
+          "/papers.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scientific Papers and Articles",
+        "url": "https://www.shroud.com/papers.htm"
+      },
+      {
+        "category": "general",
+        "content": "field of library and information science, LIS) is outlined. The article reviews the discussions and proposals on the definition of domains, and provides an example of a domain-ana",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/domain_analysis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Domain analysis (IEKO)",
+        "url": "https://www.isko.org/cyclo/domain_analysis.htm"
+      },
+      {
+        "category": "general",
+        "content": "Contact Documenting disinformation, corruption, malfeasance ... @BuriedTruth1      mail @t BuriedTruth d0t com Welcome to the BuriedTruth.com Date: 2020-03-06",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "buriedtruth.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BuriedTruth.com",
+        "url": "http://buriedtruth.com/"
+      },
+      {
+        "category": "general",
+        "content": "National Earthquake Information Center, Open File Report 88-286 , 1988. Graff, L. B., Exploration drilling in the Carrizo Plain, in Guidebook: geology of Carrizo Plains and San An",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "activetectonics.asu.edu",
+          "/carrizo/cargeo_full.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quaternary Geologic Investigations, Carrizo Plain, CA",
+        "url": "http://activetectonics.asu.edu/carrizo/cargeo_full.html"
+      },
+      {
+        "category": "general",
+        "content": "Biobibliographical information , selected articles and books on Aleister Crowley. Lo Yoga in Aleister Crowley . Aleister Crowley und die Versuchung der Politik . Aleister Crowley",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.parareligion.ch",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Ordo Templi Orientis Phenomenon — Peter-R. Koenig",
+        "url": "https://www.parareligion.ch/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "34bea74269b90d70c0b2fa605cf7784e3091afa0b9a95c269b213d9429342e29",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about data provenance within information science",
+  "query_id": "candidate-c-0747",
+  "raw_result_count": 9,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://gnu.support/",
+      "original_url": "https://gnu.support/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "structuring, information loss, and a lack of provenance or security. By relying on unstructured folders and rigid JSON schemas instead of a proper database with foreign keys, audi",
+      "title": "GNU.Support website about GNU Operating Systems"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.data-is-plural.com/archive/",
+      "original_url": "https://www.data-is-plural.com/archive/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "and spreadsheets from Information is Beautiful. 2023.10.11 • US income distributions, education reform, Kia/Hyundai thefts, Michigan air permit violations, and dog genomes. 2023.0",
+      "title": "Data Is Plural — Full Archive"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://friesian.com/ross/platonis.htm",
+      "original_url": "https://friesian.com/ross/platonis.htm",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "to see if some new information or perspective will introduce contradictions and problematize the whole, just as Popper thought that we must always be thinking of new ways to serio",
+      "title": "Why I am a Platonist"
+    }
+  ],
+  "timestamp": "2026-09-05T17:28:30.739015Z"
+}

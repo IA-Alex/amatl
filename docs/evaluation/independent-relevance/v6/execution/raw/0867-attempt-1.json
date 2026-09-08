@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 867,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 325.149,
+  "pair_id": "candidate-p-0516",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "under what conditions does bridge vibration within rail transportation change",
+    "results": [
+      {
+        "category": "general",
+        "content": "conditions of vertical transportation found in the just emerging skyscraper. The Author : Robert M. Vogel is associate curator of mechanical and civil engineering, United States N",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book246/book246.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Elevator Systems of the Eiffel Tower, 1889, by Robert M. Vogel",
+        "url": "https://www.ajhw.co.uk/books/book246/book246.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1726c256b67e4b515fb27b479da231ba30738acbd9f3673d55828747272fbec3",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "under what conditions does bridge vibration within rail transportation change",
+  "query_id": "candidate-t-0516",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "https://www.ajhw.co.uk/books/book246/book246.html",
+      "original_url": "https://www.ajhw.co.uk/books/book246/book246.html",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "conditions of vertical transportation found in the just emerging skyscraper. The Author : Robert M. Vogel is associate curator of mechanical and civil engineering, United States N",
+      "title": "Elevator Systems of the Eiffel Tower, 1889, by Robert M. Vogel"
+    }
+  ],
+  "timestamp": "2026-09-05T17:25:05.216697Z"
+}

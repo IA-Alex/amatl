@@ -1,0 +1,63 @@
+{
+  "schema_version": "1",
+  "query": "how to insulate an attic",
+  "status": "partial_success",
+  "results": [
+    {
+      "schema_version": "1",
+      "rank": 1,
+      "title": "Stuff Michael Meeks is doing",
+      "original_url": "https://apple-tree.life/~michael/blog/2022/",
+      "canonical_url": "https://apple-tree.life/~michael/blog/2022/",
+      "domain": "apple-tree.life",
+      "snippet": "Add a brush to insulate the back-door which has an inexplicable draft coming from (whom knows where) in the sealed room beyond it, perhaps it helps. 2022-11-28 Monday Early mornin",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 2,
+      "title": "What's Wrong With Multi-Level Marketing?",
+      "original_url": "http://www.vandruff.com/mlm.html",
+      "canonical_url": "http://www.vandruff.com/mlm.html",
+      "domain": "www.vandruff.com",
+      "snippet": "to protect, lobby, and insulate themselves. But the same could be said for any organized crime. It is difficult to stop once it becomes so large. And MLMs look so legitimate to th",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 3,
+      "title": "Notes on the Troubleshooting and Repair of Audio Equipment and Other Miscellaneous Stuff",
+      "original_url": "http://www.repairfaq.org/sam/audiofaq.htm",
+      "canonical_url": "http://www.repairfaq.org/sam/audiofaq.htm",
+      "domain": "www.repairfaq.org",
+      "snippet": "line connected to an uninsulated chassis.) However, a short circuit somewhere inside can produce such a fault - a very hazardous situation. For the slight tingle case: Check outle",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    }
+  ],
+  "providers_used": [
+    "searxng"
+  ],
+  "providers_failed": [],
+  "providers_partial": [],
+  "errors": [],
+  "degradations": [
+    {
+      "code": "provider_circuit_open",
+      "component": "marginalia",
+      "message": "marginalia is in circuit cooldown after consecutive failures; the source was skipped"
+    }
+  ],
+  "elapsed_ms": 627
+}

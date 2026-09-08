@@ -1,0 +1,77 @@
+{
+  "attempts": [
+    {
+      "SOURCE_RUN": "supplemental-v2",
+      "canonical_url": "https://guitarimp.com/",
+      "query_id": "sup-v2-s1-001",
+      "reason_code": "ACCEPTED",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "SOURCE_RUN": "supplemental-v2",
+      "canonical_url": "http://abelincolntrombone.com/articles.htm",
+      "query_id": "sup-v2-s1-001",
+      "reason_code": "ACCEPTED",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "SOURCE_RUN": "supplemental-v2",
+      "canonical_url": "http://www.worldofradio.com/dxld3134.txt",
+      "query_id": "sup-v2-s1-001",
+      "reason_code": "ACCEPTED",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "SOURCE_RUN": "supplemental-v2",
+      "canonical_url": "http://danluu.com/hn-comments",
+      "query_id": "sup-v2-s1-002",
+      "reason_code": "ACCEPTED",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "SOURCE_RUN": "supplemental-v2",
+      "canonical_url": "http://www.junkyardjet.com/",
+      "query_id": "sup-v2-s1-003",
+      "reason_code": "ACCEPTED",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "SOURCE_RUN": "supplemental-v2",
+      "canonical_url": "http://www.duntemann.com/october2008.htm",
+      "query_id": "sup-v2-s1-003",
+      "reason_code": "ACCEPTED",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "SOURCE_RUN": "supplemental-v2",
+      "canonical_url": "http://www.benchtest.com/wcooler6.html",
+      "query_id": "sup-v2-s1-003",
+      "reason_code": "ACCEPTED",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "SOURCE_RUN": "supplemental-v2",
+      "canonical_url": "https://bearwindows.zcm.com.au/vbe9x.htm",
+      "query_id": "sup-v2-s1-004",
+      "reason_code": "ACCEPTED",
+      "stratum": "S1_PROCEDURAL_SHALLOW"
+    },
+    {
+      "query_id": "sup-v2-s1-004",
+      "reason_code": "OVERLAP_SUPPLEMENTAL_V1"
+    },
+    {
+      "query_id": "sup-v2-s1-004",
+      "reason_code": "S1_NEW_VALID_TARGET_FILLED"
+    }
+  ],
+  "experiment_id": "independent-relevance-supplemental-v2",
+  "network_requests": 4,
+  "schema": "amatl.relevance.supplemental-v2-attempt.v1",
+  "source": "authorized S1-only v2 SearXNG execution; contract applied by V2Accumulator",
+  "status": "COMPLETE",
+  "total_valid": 8,
+  "valid_counts": {
+    "S1_PROCEDURAL_SHALLOW": 8
+  }
+}

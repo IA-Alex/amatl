@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 275.527,
+  "pair_id": "v5-p-0466",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does supply chain logistics in marine biology work",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c36f4871bcb0852389491a14f5e18d17d14a44701ddb351b586123768f206654",
+  "provider": "SearXNG",
+  "query": "how does supply chain logistics in marine biology work",
+  "query_id": "v5-p-0466-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:36.747926Z"
+}

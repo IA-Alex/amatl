@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 238.461,
+  "pair_id": "v5-p-1061",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is microbial fermentation in neuroscience",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "81853303b0088a55879dff709cda0806b2685df4df97a702658cd111827e5887",
+  "provider": "SearXNG",
+  "query": "what is microbial fermentation in neuroscience",
+  "query_id": "v5-p-1061-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:06.161291Z"
+}

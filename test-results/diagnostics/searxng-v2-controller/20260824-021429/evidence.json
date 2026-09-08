@@ -1,0 +1,19 @@
+{
+  "notice": "Generated static controller/persistence diagnostic — no AMATL or provider execution performed.",
+  "runner_sha256": "28e4b64c68533b65c55ab180a063254387f7b99d7985887a2a899f3152ae02c7",
+  "historical_modified": false,
+  "known_state": {"planned": 30, "reported": 9, "durable": 0, "unique_durable": 0},
+  "local_artifact_observation": {"runs_jsonl_lines": 30, "metrics_completed_runs": 30, "execution_plan_expected": 30, "execution_plan_generated": 30},
+  "classification": {"controller_termination": "UNKNOWN", "persistence_loss": "LIKELY_CAUSE", "reported_positions": "REPORTED_EXECUTED"},
+  "artifacts_sha256": {
+    "README.md": "b6a322f80545269d974c9846a3465c29ff8f21ce9994cb133a0b36f07deb9631",
+    "comparison-v1-v2.md": "79ff793cd3956c06eeeb56f3ee90691ad76acaa77688d5ef265a26058ed3ff5d",
+    "dataset.json": "92ce0225bfde9f55d7a4abce156d9fc4f4bdab885c1eedf30bfa8b1cc6899b3a",
+    "execution-plan.json": "dac880e83424a98df044ab75cbbebfcb66084506223bea82265d110177a2027e",
+    "findings.md": "935dfbde5c5a1c28a3821ef7c6a8e39c9b3131555c9cc160ec4804ca6b439494",
+    "metrics.json": "1a52af28c7dc325aa9ecf85ac44f642821ed02bf78a189b2cdef378158692fed",
+    "runs.jsonl": "8795500d11d94904729de7b0d06dd01ab87c60522d21d1f5d7b77f07d6a4e8b8",
+    "stability.md": "c1f951a6cd69dd6fd14e52b01197c325bf9944790e809c0d55a77ec66b057882"
+  },
+  "git_status_before": [" M CODE_OF_CONDUCT.md", " M SECURITY.md", " M docs/codigo-de-conducta.md", "?? 0:", "?? AMATL_documentado.docx", "?? docs/testing/", "?? docs/ux-ui-spec.md", "?? docs/ux-wireframe.svg", "?? test-results/", "?? teyolia.png", "?? teyolia_1.png", "?? tools/"]
+}

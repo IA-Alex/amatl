@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 331.252,
+  "pair_id": "v5-p-1004",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind wastewater treatment in industrial design",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "17411fef1840b8e1fc479eb5b94c4779bb2cf12ff1a584e2a44363e55dc78fbd",
+  "provider": "SearXNG",
+  "query": "describe the principle behind wastewater treatment in industrial design",
+  "query_id": "v5-p-1004-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:36.035873Z"
+}

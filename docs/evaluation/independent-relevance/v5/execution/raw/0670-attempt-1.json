@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 234.433,
+  "pair_id": "v5-p-0679",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of traffic flow in forensic science",
+    "results": [
+      {
+        "category": "general",
+        "content": "tedium; some overview of what an exciting project it is etc. an introduction to IRC. Knocked off late; back to the hotel very tired, eat at the Jockey Club - home of kitz music, b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2003/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2003/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c6a5b10c1b1c958b5d486d7712b13618aae7313377fa94f0c78c54b4b589ed44",
+  "provider": "SearXNG",
+  "query": "give an overview of traffic flow in forensic science",
+  "query_id": "v5-p-0679-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:08:47.988711Z"
+}

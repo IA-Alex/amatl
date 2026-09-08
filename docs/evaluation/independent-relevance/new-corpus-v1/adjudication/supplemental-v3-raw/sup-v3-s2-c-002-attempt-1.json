@@ -1,0 +1,324 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 456.2085930010653,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind photosynthesis",
+    "results": [
+      {
+        "category": "general",
+        "content": "Origins of C4 Photosynthesis&#34; [ html ], doi:10.1371/journal.pgen.1004365, 10(6): e1004365, PLoS Genet , online 5 Jun 2014. Joe Parker et al., &#34;Genome-wide signatures of convergent",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.panspermia.org",
+          "/neodarw.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Neo-Darwinism: The Current Paradigm. by Brig Klyce",
+        "url": "https://www.panspermia.org/neodarw.htm"
+      },
+      {
+        "category": "general",
+        "content": "capable of early photosynthesis (Redfern 2013). Meteorites of Martian origin have more recently come to the Earth. From magnetic studies, some reached temperatures no higher than",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "a small amount of photosynthesis by blocking light, but the effect is probably not huge; harm to the animals killed directly and side effects on the marine food chain seem more im",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Applied Welfare Biology and Why Wild-Animal Advocates Should Focus on Not Spreading Nature",
+        "url": "https://reducing-suffering.org/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/"
+      },
+      {
+        "category": "general",
+        "content": "animals. The process of photosynthesis in plants appears to depend upon the efficiency of plants at the cellular level to try out all possible paths when absorbing and harvesting",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "realityshifters.com",
+          "/pages/quantumjumps.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quantum Jumps",
+        "url": "https://realityshifters.com/pages/quantumjumps.html"
+      },
+      {
+        "category": "general",
+        "content": "(such as smell and photosynthesis) can only be modeled convincingly using quantum ideas. It would be surprising if a physical brain model didn&#39;t need any quantum ideas at all. Any",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.andyross.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE ROSS BLOG",
+        "url": "https://www.andyross.net/"
+      },
+      {
+        "category": "general",
+        "content": "whether green leaves do photosynthesis were settled as matters of fact. There is no room for logic chopping or conceptual analysis, since we are talking about matters of hard scie",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "newdualism.org",
+          "/papers/J.Searle/searle.comp.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Is the Brain a Digital Computer?",
+        "url": "http://newdualism.org/papers/J.Searle/searle.comp.html"
+      },
+      {
+        "category": "general",
+        "content": "the earliest forms of photosynthesis. To make serotonin from tryptophan, oxygen is needed. Thus, serotonin is made specifically in unicellular systems capable of photosynthesis an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/stc/ct.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Space, Time and Consciousness",
+        "url": "http://www.dhushara.com/stc/ct.htm"
+      },
+      {
+        "category": "general",
+        "content": "/air, light, and photosynthesis can we duplicate photosynthesis? photosynthesis /chlorophyll and photosynthesis herbicides dogs have become one of humans&#39; best animal friends Essa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "were capable of photosynthesis *). Over the course of billions of years, they have gradually metabolized methane and carbon dioxide and enriched the atmosphere with oxygen ; it ha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/AntropPrincip.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Anthropic Principle and Cosmic God",
+        "url": "https://www.astronuclphysics.info/AntropPrincip.htm"
+      },
+      {
+        "category": "general",
+        "content": "read there the entry on photosynthesis,   we will find all manner of observations and categories of the processes by which the Sun acts on our World to create the food we eat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/electricityandthespiritinnature.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Electricity and the Spirit in Nature",
+        "url": "http://ipwebdev.com/hermit/electricityandthespiritinnature.html"
+      },
+      {
+        "category": "general",
+        "content": "Only the invention of photosynthesis -- using the energy of the sun to split down matter in order to get electrons -- allowed life to go on. Life is driven by the force of electro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/a/lanka4.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "INTERVIEW STEFAN LANKA",
+        "url": "http://www.whale.to/a/lanka4.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-c-002",
+  "query_text": "explain the basic idea behind photosynthesis",
+  "requested_at": "2026-09-02T22:59:02.197545Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

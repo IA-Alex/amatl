@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 232.889,
+  "pair_id": "v5-p-0035",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of photosynthesis in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "development, reducing photosynthesis, and weakening trees over time (Carta et al., 2020; Reed et al., 2020). Although researchers continue to investigate the complete disease proc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a133373deb8f5d19855ef9a602a066fae0fe89a7f07325994af7581facfbfcb9",
+  "provider": "SearXNG",
+  "query": "give an overview of photosynthesis in operations research",
+  "query_id": "v5-p-0035-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:09:42.377954Z"
+}

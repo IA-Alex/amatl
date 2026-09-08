@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 355.755,
+  "pair_id": "v5-p-0409",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind carbon capture in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "on physicalists to explain mentality then the explanation, it is thought, must make reference exclusively to physical phenomena; if one thinks supervenience suffices for physicali",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.meta-religion.com",
+          "/Philosophy/Articles/Consciousness/post-physicalism.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Post-Physicalism",
+        "url": "https://www.meta-religion.com/Philosophy/Articles/Consciousness/post-physicalism.htm"
+      },
+      {
+        "category": "general",
+        "content": "hip and lower back,&#34; explains Hilmar Janusson, executive vice president of research and development at Ossur. The Cheetah&#39;s carbon-fiber layers then rebound off the ground in resp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mike-tanner.co.nz",
+          "/40sport.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mike Tanner Articles about Sport and Recreation",
+        "url": "http://mike-tanner.co.nz/40sport.html"
+      },
+      {
+        "category": "general",
+        "content": ") An infographic to explain what the increased IRS funding will be used for, and that non-rich Americans will not have an increased chance of being audited. 28 August 2022 ( Ghost",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2022-may-aug.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2022: May - August Political Notes",
+        "url": "http://stallman.org/archives/2022-may-aug.html"
+      },
+      {
+        "category": "general",
+        "content": "as one of the great explainers of science. His essays exemplified his skill at making complex subjects understandable, and were written in an unformal style, liberally sprinkled w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b860469ad12765e2b0763220ca28bdcdfb4eb0f5edd098423855d542b01d77bf",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind carbon capture in health science",
+  "query_id": "v5-p-0409-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:34.338283Z"
+}

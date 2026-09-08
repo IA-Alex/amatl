@@ -1,0 +1,49 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 654.262928001117,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind load bearing walls in transportation",
+    "results": [
+      {
+        "category": "general",
+        "content": "or lumber, access to transportation, or empty land. As time goes on, certain settlements achieve a critical mass, and a positive feedback cycle ensues. The city’s success dra",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.laputan.org",
+          "/mud/mud.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Big Ball of Mud",
+        "url": "https://www.laputan.org/mud/mud.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0293",
+  "query_text": "explain the basic idea behind load bearing walls in transportation",
+  "requested_at": "2026-09-03T01:44:00.208069Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

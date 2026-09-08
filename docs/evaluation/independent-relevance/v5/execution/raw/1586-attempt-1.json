@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 218.385,
+  "pair_id": "v5-p-1047",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of microbial fermentation in civil engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ab2f54d211be18f371c00a3ac306496c2ab66a2a48bcc748d8e8f1943d67a515",
+  "provider": "SearXNG",
+  "query": "give an overview of microbial fermentation in civil engineering",
+  "query_id": "v5-p-1047-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:40.763711Z"
+}

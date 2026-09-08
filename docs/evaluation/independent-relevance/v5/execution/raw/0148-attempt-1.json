@@ -1,0 +1,300 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 458.782,
+  "pair_id": "v5-p-0510",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of neural networks in computer security",
+    "results": [
+      {
+        "category": "general",
+        "content": "after the structure and function of the human brain. AI is used in a wide range of applications, from chatbots and virtual assistants to self-driving cars and medical diagnosis. T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biointelligence-explosion.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biointelligence Explosion as conceived by ChatGPT",
+        "url": "https://www.biointelligence-explosion.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "Framework for Function Name Reassignment Based on Large-Scale Stripped Binaries Automated Software Engineering (ASE 2020) September 21 -25, 2020, Melbourne, Australia Zhongxin Liu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sigsoft.org",
+          "/awards/distinguishedPaperAward.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGSOFT - ACM Special Interest Group on Software Engineering",
+        "url": "http://www.sigsoft.org/awards/distinguishedPaperAward.html"
+      },
+      {
+        "category": "general",
+        "content": "like that. Utility function is always simple, ignores a lot of model details, and is often wrong. It is an irrational component of the system. But why would anybody put such a sil",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "svedic.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Svedic.org",
+        "url": "https://svedic.org/"
+      },
+      {
+        "category": "general",
+        "content": "times it just makes up functions that dont exist or tries to force a function to work a specific way when it doesn&#39;t work like that and in all of these cases it responds in the sa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/mediocre_net",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AI Will Make (Has Made) the Internet Mediocre...",
+        "url": "https://lukesmith.neocities.org/vids/mediocre_net"
+      },
+      {
+        "category": "general",
+        "content": "shocks. Controlled body functions: very fast heartbeat while being relaxed (not having exercised recently), very high body heat, no fever, relaxed, cool surroundings, vibration of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gangstalkingworld.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Gang stalking - Kiwipedia, the free encyclopedia",
+        "url": "https://gangstalkingworld.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "(morphological and functional diversity) right after each great extinction. Networks, in other words, are &#34; hormetic &#34; (strengthened by stress and catastrophe ) . Indivi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.accelerationwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acceleration Watch (Understanding Accelerating Change)",
+        "url": "https://www.accelerationwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "travel keys, and more functions than I can name. The display is LED based, and the manual fills a 2 inch thick, 3 ring binder. My goodness! The money that must have gone into this",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "richfiles.solarbotics.net",
+          "/RichNews.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Richfiles RichNews Page",
+        "url": "http://richfiles.solarbotics.net/RichNews.html"
+      },
+      {
+        "category": "general",
+        "content": "verification Carrier functionality Carrier settings overrides Cross-SIM calling RCS System navigation By default, GrapheneOS uses gesture-based navigation. We recommend reading ou",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "grapheneos.org",
+          "/usage",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Usage guide | GrapheneOS",
+        "url": "https://grapheneos.org/usage"
+      },
+      {
+        "category": "general",
+        "content": "entire literature. But functionally it&#39;s close. I start to identify open problems, questions that I&#39;d personally like answered, but which don&#39;t yet seem to have been answered. I i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "augmentingcognition.com",
+          "/ltm.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Augmenting Long-term Memory",
+        "url": "http://augmentingcognition.com/ltm.html"
+      },
+      {
+        "category": "general",
+        "content": "lines of the Ackermann function and declared it stops at ECM. Next we got radars with the same set of abbreviations, this time for locating targets, imaging and more. To distingui",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cyb-sec.neocities.org",
+          "/pages/alt-cyberpunk-faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "alt.cyberpunk FAQ – /cyb/&#43;/sec/ wiki",
+        "url": "https://cyb-sec.neocities.org/pages/alt-cyberpunk-faq/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "57ca1cf6c2668ed13e3ff762a840e5278e19a78d8ab1c6a73d20a2d5e4af8065",
+  "provider": "SearXNG",
+  "query": "tell me about the function of neural networks in computer security",
+  "query_id": "v5-p-0510-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:55.383503Z"
+}

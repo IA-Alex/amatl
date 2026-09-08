@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 241.213,
+  "pair_id": "v5-p-0087",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of ocean tides in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "the primary source, the materials and the methodology provided by Galileo in the following condensed paper published in 1989 in the Journal of the Royal Astronomical Society of Ca",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "spirasolaris.ca",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Spirasolaris",
+        "url": "https://spirasolaris.ca/"
+      },
+      {
+        "category": "general",
+        "content": "The following materials deal with the actual waging of war. Throughout, they deal with two broad considerations:     1) The law draws a distinction between combatan",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lawofwar.org",
+          "/Hostilities.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hostilities",
+        "url": "http://lawofwar.org/Hostilities.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "92c755f0444c8e8ec3c65ed2b3eb5ac4abafe2dd96b30836fcbd5808cf6c8f1c",
+  "provider": "SearXNG",
+  "query": "give an overview of ocean tides in materials science",
+  "query_id": "v5-p-0087-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:11:07.115641Z"
+}

@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 340.767,
+  "pair_id": "v5-p-0897",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind vaccination in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "Lockdown until Vaccination (May 2024) Here are extracts from the beginning of this article which reveals what has been obscure since March 2020: Four years later, many people",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "serendipity.li",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Serendipity",
+        "url": "https://serendipity.li/"
+      },
+      {
+        "category": "general",
+        "content": "$500 for a hepatitis B vaccination series and other disease prophylaxis. Africa may today be more dangerous in this regard than it was in 1862, before antibiotics, when the explor",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fd06d2b9d19590dfe40db8dc05c2e6f16b0969071ab0ecd17a50fb7a7fcb2d77",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind vaccination in industrial design",
+  "query_id": "v5-p-0897-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:06:41.524296Z"
+}

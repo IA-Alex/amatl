@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 389.234,
+  "pair_id": "v5-p-0446",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of supply chain logistics in information systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "anywhere in it. The information warfare piece can much more readily be overlayed onto the existing division structure without any significant redesign needed. The &#39;innovation&#39; of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/mechinfantry.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HEAVY DIVISION: WOE for the 21st CENTURY?",
+        "url": "http://www.combatreform.org/mechinfantry.htm"
+      },
+      {
+        "category": "general",
+        "content": "we also fill additional information in the roadinfo annotation. Please see details below . Rate/Usage Limits The OpenCage geocoding API uses rate limits to ensure that the service",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "opencagedata.com",
+          "/api",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OpenCage Geocoding API Documentation",
+        "url": "https://opencagedata.com/api"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7d8a53a6678f65f4eaf70de26d4f020bfdc380d16972e0e28fbdde41f9013512",
+  "provider": "SearXNG",
+  "query": "tell me about the function of supply chain logistics in information systems",
+  "query_id": "v5-p-0446-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:07:10.059715Z"
+}

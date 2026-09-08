@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 315.068,
+  "pair_id": "v5-p-0384",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind solar eclipses in robotics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ee292defa83fac8545d9e7d7d85e8551ad648bd322ce4914ed31d0c89a445f8e",
+  "provider": "SearXNG",
+  "query": "describe the principle behind solar eclipses in robotics",
+  "query_id": "v5-p-0384-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:14:13.825690Z"
+}

@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 370.311,
+  "pair_id": "v5-p-0841",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind data compression in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "somewhat overkill. Data compression, not to mention deduplication, is even less relevant. With Terabyte harddisks on commodity hardware nowadays we have infinite disk space, infin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pspodcasting.net",
+          "/dan/blog/2019/plan9_desktop.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Plan 9 Desktop Guide",
+        "url": "https://pspodcasting.net/dan/blog/2019/plan9_desktop.html"
+      },
+      {
+        "category": "general",
+        "content": "via highly lossy compression) into a table of floating point numbers is philosophically much more complicated than binary software and its Corresponding Source. So, having studied",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ebb.org",
+          "/bkuhn/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog - Bradley Kühn ( bkuhn )",
+        "url": "https://ebb.org/bkuhn/blog/"
+      },
+      {
+        "category": "general",
+        "content": "motion.  Excessive compression. Clouds are burst open by the winds, causing the expulsion of atoms that cause fire, which take the form of lightning. It is easy to see other",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "epicurism.github.io",
+          "/epicurism.info/etexts/Lives.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Epicurus.info : E-Texts : The Life of Epicurus",
+        "url": "http://epicurism.github.io/epicurism.info/etexts/Lives.html"
+      },
+      {
+        "category": "general",
+        "content": "formats for faster compression]] [[Knowing which mipmap levels are needed]] [[SSE]] [[Patently evil]] [[Trilights]] [[Bitangents]] [[More vertex cache optimisation]] [[Reinventing",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tomforsyth1000.github.io",
+          "/blog.wiki.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "TomF&#39;s Tech Blog - It&#39;s only pretending to be a wiki.",
+        "url": "http://tomforsyth1000.github.io/blog.wiki.html"
+      },
+      {
+        "category": "general",
+        "content": "work on neural network compression , which appeared at SysML . The Taboo Trap work also led to further papers on transferability and adversarial reinforcement learning . Hey Alexa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bd694324dfdc02897654267733d68d30ac7e800dbd105f60429c17750cf883f0",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind data compression in health science",
+  "query_id": "v5-p-0841-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:42.876492Z"
+}

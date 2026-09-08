@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 124.4739510002546,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does version control in data management operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "to use. Each identity management module is documented in a separate manual page. The standard idmap backends are tdb ( idmap_tdb (8) ), tdb2 ( idmap_tdb2 (8) ), ldap ( idmap_ldap",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.samba.org",
+          "/samba/docs/current/man-html/smb.conf.5.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "smb.conf",
+        "url": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+      },
+      {
+        "category": "general",
+        "content": "CLEAR     3.2 Graph Management         3.2.1 CREATE         3.2.2 DROP         3.2.3 COPY         3.2.4 MOVE         3.2.5 ADD 4 SPARQL Update Formal Model     4.1 General Definit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/sparql11-update/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SPARQL 1.1 Update",
+        "url": "https://www.w3.org/TR/sparql11-update/"
+      },
+      {
+        "category": "general",
+        "content": "forcing prison management to stop playing Metro FM radio, which broadcasts a mixture of urban contemporary music. Pistorius said prison authorities had ignored Jordaan&#39;s earlier r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.w4uvh.net",
+          "/dxldtd3h.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DX LISTENING DIGEST AUGUST 2003 ARCHIVE",
+        "url": "http://www.w4uvh.net/dxldtd3h.html"
+      },
+      {
+        "category": "general",
+        "content": "and active knowledge management environment that supports diverse user classes, precision browsing, and seamless workflow integration across personal, collaborative, and organizat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "Ken Buckler, Enterprise Management Associates &#34;Although Google&#39;s claim is that this is for &#39;security&#39;, it does not prevent the regular practice of scammers buying up e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "keepandroidopen.org",
+          "/tr/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Android Açık Kalsın",
+        "url": "https://keepandroidopen.org/tr/"
+      },
+      {
+        "category": "general",
+        "content": "and in fact proper management of congested zones involves making sure they are never used beyond capacity. Better to let the zone decide how many cars to allow to enter for smooth",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.templetons.com",
+          "/brad/robocars/motornet.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Motornet -- Robocars and data",
+        "url": "https://www.templetons.com/brad/robocars/motornet.html"
+      },
+      {
+        "category": "general",
+        "content": "Ken Buckler, Enterprise Management Associates &#34;Google isn&#39;t certifying apps, they&#39;re certifying developers. This implies that the company can somehow predict whether a dev",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "keepandroidopen.org",
+          "/de/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Keep Android Open",
+        "url": "https://keepandroidopen.org/de/"
+      },
+      {
+        "category": "general",
+        "content": "the Americans, whose management of Kabul seems befuddled. For one thing, to protect their embassy in Kabul, the Americans have declared the whole city center off-limits to Afghani",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/killerbees3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Off-the-Shelf Killer Bees: making do with what you got?",
+        "url": "http://www.combatreform.org/killerbees3.htm"
+      },
+      {
+        "category": "general",
+        "content": "told that we were now a management county of white collar workers and the dirty work will be performed overseas. Today it is only a matter of time before the majority of white col",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIDIK.com The original and official DIDIK site. Cutting edge and sometimes controversial thoughts, designs, proposals and projects conceiv",
+        "url": "http://www.didik.com/"
+      },
+      {
+        "category": "general",
+        "content": "real-time database management, distributed processing, time sharing, interactive displays, networking? they were all there in SAGE. That concludes my talk. Thank you. [Applause.]",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ed-thelen.org",
+          "/Sage-Talk.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://ed-thelen.org/Sage-Talk.html",
+        "url": "https://ed-thelen.org/Sage-Talk.html"
+      },
+      {
+        "category": "general",
+        "content": "Secret or Certified Key Management Modes Secret Key Mode: Stores up to 1,020 192-bit Secret Keys Family Key ROM (over 10507 Combinations) Secure Automatic Control System (SACS) KC",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.tscm.com",
+          "/stu.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "STU-III Secure Telephone Units, Crypto Key Generators, Encryption Equipment and Scramblers",
+        "url": "http://www.tscm.com/stu.html"
+      },
+      {
+        "category": "general",
+        "content": "The Cult of Scientific Management by John Taylor Gatto Chapter 9 of The Underground History of American Public Education On the night of June 9, 1834, a group of prominent men &amp;qu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.lewrockwell.com",
+          "/gatto/gatto-uhae-9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cult of Scientific Management by John Taylor Gatto",
+        "url": "https://archive.lewrockwell.com/gatto/gatto-uhae-9.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0048",
+  "query_text": "how does version control in data management operate",
+  "requested_at": "2026-09-03T01:42:07.161646Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

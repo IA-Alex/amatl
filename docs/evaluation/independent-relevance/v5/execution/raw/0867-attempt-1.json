@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 253.233,
+  "pair_id": "v5-p-0993",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is wastewater treatment in physics",
+    "results": [
+      {
+        "category": "general",
+        "content": "one course book for all wastewater engineers this would be it.&#34; Not just wastewater engineers -- Lem Putt&#39;s fine points should be everybody&#39;s fine points. Full-text online. M",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "journeytoforever.org",
+          "/farm_library.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Small Farms Library - Journey to Forever",
+        "url": "http://journeytoforever.org/farm_library.html"
+      },
+      {
+        "category": "general",
+        "content": "change Food scraps Wastewater Consciousness Philosophy of consciousness Which beings are sentient? Small minds Sentience vs. animal size Ethics Suffering Moral theory Judgment as",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Essays on Reducing Suffering",
+        "url": "https://reducing-suffering.org/"
+      },
+      {
+        "category": "general",
+        "content": "in Italy, toxic wastewater spills, and coffee tasting. 2023.11.01 • Opioid settlements, financial offshoring, minority-serving colleges, childcare inspections, and two Zurich buse",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.data-is-plural.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Data Is Plural — Full Archive",
+        "url": "https://www.data-is-plural.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "of Nuclear Wastewater William Buchanan Chinese Nuclear Weapons Testing at Lop Nur Zwentendorf and the Austrian Anti-Nuclear Movement Frank Buncom IV Nuclear Waste Storage: Wh",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "large.stanford.edu",
+          "/courses/2018/ph241/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PH241 - Stanford University - Winter 2018 - R. B. Laughlin - Introduction to Nuclear Energy",
+        "url": "http://large.stanford.edu/courses/2018/ph241/"
+      },
+      {
+        "category": "general",
+        "content": "Disposal Waste, Medical Wastewater Disposal, Industrial Laundry Watch Appraiser Water Conditioning Equipment Water Conservation, Recycling, Reuse Water Contamination, Bottled Wate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "VFTonline.org",
+          "/VFTprayer/heaven/000list.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://VFTonline.org/VFTprayer/heaven/000list.txt",
+        "url": "http://VFTonline.org/VFTprayer/heaven/000list.txt"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "54150e51814b89fdd8a8cfd0f40ce32f753f7449620feab7db8564c3627a702a",
+  "provider": "SearXNG",
+  "query": "what is wastewater treatment in physics",
+  "query_id": "v5-p-0993-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:50.427776Z"
+}

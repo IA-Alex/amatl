@@ -1,0 +1,24 @@
+{
+  "schema": "amatl.relevance.ground-truth-manifest.v1",
+  "GROUND_TRUTH_ID": "independent-relevance-ground-truth-v1",
+  "V1_ROLE": "KNOWN_INDEPENDENT_GROUND_TRUTH",
+  "TOTAL_ROWS": 368,
+  "CLASS_DISTRIBUTION": {
+    "NotRelevant": 308,
+    "PossiblyRelevant": 51,
+    "Relevant": 9
+  },
+  "SOURCE_PRELABEL_HASH": "acd93a349e88568d4a14054a2c3a44179cca62f7374361777db20d6ca94cdb06",
+  "LABELER_A_HASH": "cdb32ee4ec6d9e31eef56eb331a7c21b77320cd38ddbf7b080bea081786c09e7",
+  "LABELER_B_HASH": "03688971b6f16c1d1a3fc1bd662d6535d21022405b479bc8108ed667e68bd90d",
+  "AGREEMENT_REPORT_HASH": "01fb14b6524710ebcf63c32c4ba3087ae25600584c8a21888aeac90de7866776",
+  "ADJUDICATION_PACKET_HASH": "7313dde9d0cca357926851a92aa732662686c70cb40fe0e3d91212245e755e34",
+  "GROUND_TRUTH_HASH": "966ffafbe8e4a48ed635bcee93773c034039129927fe87aaebdccf316d7af567",
+  "GROUND_TRUTH_CANONICAL_HASH": "ee13d0810300603f00d850716414b51479b3e1925b57e95a5621dab482e95c29",
+  "YIELD_ANALYSIS_HASH": "ca8d93f5f502e15c598fe90a939974cb0e75415ad5666a6af4dc79c2610cee77",
+  "SUPPLEMENTAL_PILOT_DESIGN_HASH": "22e16c8983162585e4c03c265aaa71f29f07da6d9b2ea21105a42f121a8112da",
+  "CREATED_AT": "2026-09-02T00:00:00Z",
+  "PROTOCOL_VERSION": "v1",
+  "SOURCE_COMMIT": "b0efd57af5291c1fb2e030ab938b9377957084e7",
+  "hash_scope": "The canonical ground-truth document includes every original field, A/B labels, final label, and final-label provenance."
+}

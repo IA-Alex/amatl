@@ -1,0 +1,24 @@
+{
+  "schema": "amatl.relevance.supplemental-v3-preflight.v1",
+  "network_requests": 0,
+  "query_ids_unique": true,
+  "query_text_duplicates": 0,
+  "prior_query_overlap": 0,
+  "provider_contract": "PASS: SEARXNG_ONLY; fallback none; dynamic expansion disabled",
+  "depth_contract": "PASS: every query depth=3",
+  "capacity": {
+    "query_count": 30,
+    "result_depth": 3,
+    "theoretical_capacity": 90,
+    "expected_valid_capacity": 67,
+    "target": 60,
+    "margin": 7
+  },
+  "dedup_contract": "PASS: prior frozen corpus hashes bound; accepted overlap must be zero",
+  "overlap_contract": "PASS",
+  "stop_rule": "PASS",
+  "provenance": "PASS",
+  "freeze_hashes": "PASS",
+  "preflight": "PASS",
+  "work_package_status": "COMPLETE_READY_FOR_CONTROLLED_CAPTURE"
+}

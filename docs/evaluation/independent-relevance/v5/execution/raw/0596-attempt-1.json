@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 348.727,
+  "pair_id": "v5-p-0497",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind encryption keys in communication studies",
+    "results": [
+      {
+        "category": "general",
+        "content": "for secure email communication. Security in a Box – A digital privacy toolkit. Surveillance Self-Defense – A guide to protecting your online activity from surveillance. Wikis &amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "realdeepweb.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Real Deep Web | Hidden Wiki Access &amp; Deep Web Tools",
+        "url": "http://realdeepweb.net/"
+      },
+      {
+        "category": "general",
+        "content": "Our computers and communications use several percent of global energy, and have secondary costs too – particularly if you have to throw things away for lack of software upda",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9111c0c36a3193771404c02c7710c7417669cd802087f5df186e6c142bbb0690",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind encryption keys in communication studies",
+  "query_id": "v5-p-0497-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:08:24.649067Z"
+}

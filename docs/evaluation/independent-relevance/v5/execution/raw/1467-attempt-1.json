@@ -1,0 +1,327 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 305.865,
+  "pair_id": "v5-p-0693",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is language acquisition in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "collections; and acquisition of digital data from physical media. My primary area of research is the long-term curation of digital collections. I&#39;m particularly interested in the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ils.unc.edu",
+          "/callee/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Christopher (Cal) Lee",
+        "url": "https://ils.unc.edu/callee/"
+      },
+      {
+        "category": "general",
+        "content": "before its acquisition by Rambus; Cigital (formerly Reliable Software Technologies, Gary McGraw, gem@cigital.com), prior to its acquisition by Synopsys. Other advisory boards that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "some generalized data acquisition and control systems. An example of a system using the LOCI-2 as the &#34;CPU&#34; is the Wang Model 2315 &#34;On Line Computing System&#34; , a general-purpose d",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/wangloci.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Wang LOCI-2",
+        "url": "https://www.oldcalculatormuseum.com/wangloci.html"
+      },
+      {
+        "category": "general",
+        "content": "LCD&#39;s, PCB layout, Data Acquisition, Motor control, MQTT Wi-Fi wireless, and systems. Prerequisite ECE319K, ECE316 and coregistration in ECE333T.  Spring 2008 Design Competit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "users.ece.utexas.edu",
+          "/~valvano/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jonathan W. Valvano",
+        "url": "https://users.ece.utexas.edu/~valvano/"
+      },
+      {
+        "category": "general",
+        "content": "property transfers. Any acquisition of property other than through original appropriation or voluntary or contractual exchange and transfer from a previous to a later owner is unj",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "xenisa.github.io",
+          "/kinsella/lffs/legal-foundations-of-a-free-society.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Legal Foundations of a Free Society",
+        "url": "https://xenisa.github.io/kinsella/lffs/legal-foundations-of-a-free-society.html"
+      },
+      {
+        "category": "general",
+        "content": "stand for &#34;Digital Data Acquisition&#34;; the Saturn Flight Manual explains, among other things, that Telemetry system GP1 is a PCM/DDAS link that transmits realtime checkout data bef",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ibiblio.org",
+          "/apollo/LVDC.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Launch Vehicle Digital Computer",
+        "url": "http://www.ibiblio.org/apollo/LVDC.html"
+      },
+      {
+        "category": "general",
+        "content": "as the result of Wang&#39;s acquisition of a company called Philip Hankins, Inc., or PHI for short. PHI was a programming and computer service bureau with it&#39;s own IBM System 360/65.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/wang720.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Wang 720C Advanced Programming Calculator",
+        "url": "https://www.oldcalculatormuseum.com/wang720.html"
+      },
+      {
+        "category": "general",
+        "content": "nuclear weapons. The acquisition of nuclear weapons by North Korea, Iraq or Iran could force neighboring countries to seek nuclear arms of their own. That could lead to another es",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zyvex.com",
+          "/nanotech/nano4/jeremiahPaper.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NANOTECHNOLOGY AND GLOBAL SECURITY",
+        "url": "https://www.zyvex.com/nanotech/nano4/jeremiahPaper.html"
+      },
+      {
+        "category": "general",
+        "content": "(NPT). In order of acquisition of nuclear weapons these are: the United States of America , Russia (formerly the Soviet Union ), the United Kingdom , France , and the People&#39;s Rep",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greatdreams.com",
+          "/war/rule_2002.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RULE 2002",
+        "url": "http://www.greatdreams.com/war/rule_2002.htm"
+      },
+      {
+        "category": "general",
+        "content": "(HTML)      24.2.3   Acquisition and Artificiality Criteria ..... Local Copy (HTML)      24.2.4   Alien Message Contents ..... Local Copy (HTML)      24.2.5   SETI:   Yesterday an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.xenology.info",
+          "/Xeno.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Xenology Table of Contents",
+        "url": "http://www.xenology.info/Xeno.htm"
+      },
+      {
+        "category": "general",
+        "content": "article about their acquisition of the Lunatic. The manager of the Caltech computer center wanted me to stay for the summer of 1968 and continue work on the 1800, but I needed to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ed-thelen.org",
+          "/comp-hist/stories.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stories",
+        "url": "https://www.ed-thelen.org/comp-hist/stories.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9dfa5b7931dcb947e06c3827942c63069e6e39c4f847cb9e9e9b332f78065ac4",
+  "provider": "SearXNG",
+  "query": "what is language acquisition in electrical engineering",
+  "query_id": "v5-p-0693-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:03.766344Z"
+}

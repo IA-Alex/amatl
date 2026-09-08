@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 1571,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 305.645,
+  "pair_id": "candidate-p-0758",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how do models represent data provenance within risk analysis",
+    "results": [
+      {
+        "category": "general",
+        "content": "regarding verifiable provenance for AI-generated contributions. Using Cherry Studio with an Emacs Lisp Knowledge Base To use Cherry Studio with an Emacs Lisp knowledge base, first",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "13:46:36 -0800 (PST) Provenance and Transparency I purchased this domain ( BuriedTruth.com ) in 2020-02. It was apparently a spyware software vendor ~2003-2007 (a practice that is",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "buriedtruth.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BuriedTruth.com",
+        "url": "http://buriedtruth.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b96fc604e5cb5a2ee9f9b1336b1ab26f55aa94c5adb6ca22e2ab46a2eed387ba",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how do models represent data provenance within risk analysis",
+  "query_id": "candidate-t-0758",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://gnu.support/",
+      "original_url": "https://gnu.support/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "regarding verifiable provenance for AI-generated contributions. Using Cherry Studio with an Emacs Lisp Knowledge Base To use Cherry Studio with an Emacs Lisp knowledge base, first",
+      "title": "GNU.Support website about GNU Operating Systems"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://buriedtruth.com/",
+      "original_url": "http://buriedtruth.com/",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "13:46:36 -0800 (PST) Provenance and Transparency I purchased this domain ( BuriedTruth.com ) in 2020-02. It was apparently a spyware software vendor ~2003-2007 (a practice that is",
+      "title": "BuriedTruth.com"
+    }
+  ],
+  "timestamp": "2026-09-05T17:28:51.082235Z"
+}

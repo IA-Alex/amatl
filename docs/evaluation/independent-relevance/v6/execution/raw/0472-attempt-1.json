@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 472,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 312.717,
+  "pair_id": "candidate-p-1103",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of fire weather modeling within water management",
+    "results": [
+      {
+        "category": "general",
+        "content": "My explanation was stopped by “What is the serial number written on the station?” As I dictated the serial, I could hear fast typing. A few seconds later charging stat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "svedic.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Svedic.org",
+        "url": "https://svedic.org/"
+      },
+      {
+        "category": "general",
+        "content": "known for his brief &#39;Explanation of the Diagram of the Supreme Polarity&#39; or Taijitu shuo. The Tongshu is conventionally translated as &#39;Penetrating the Classic of Change&#39; after Zhu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biroco.com",
+          "/yijing/links.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Yijing Dao - Annotated links to other Yijing sites, and journal articles",
+        "url": "https://www.biroco.com/yijing/links.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d0a77b8f669f96df2ec7997c1852a4f31c0beada412a3f0a416b581d23d2b744",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of fire weather modeling within water management",
+  "query_id": "candidate-c-1103",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://svedic.org/",
+      "original_url": "https://svedic.org/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "My explanation was stopped by “What is the serial number written on the station?” As I dictated the serial, I could hear fast typing. A few seconds later charging stat",
+      "title": "Svedic.org"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.biroco.com/yijing/links.htm",
+      "original_url": "https://www.biroco.com/yijing/links.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "known for his brief &#39;Explanation of the Diagram of the Supreme Polarity&#39; or Taijitu shuo. The Tongshu is conventionally translated as &#39;Penetrating the Classic of Change&#39; after Zhu",
+      "title": "Yijing Dao - Annotated links to other Yijing sites, and journal articles"
+    }
+  ],
+  "timestamp": "2026-09-05T17:22:55.360132Z"
+}

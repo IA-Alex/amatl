@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 280.142,
+  "pair_id": "v5-p-0256",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does binary search in civil engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "they’ve been reverse-engineering is actually just replaceable software rather than the true hardware—questioning if they’ve been looking at the right layer all this time. Prompt e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "problem, but as an engineering problem. Any solution that solves the problem is acceptable. Any solution that does not solve the problem is not acceptable. For example, there is a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2007/04/_trial_version.html",
+          "",
+          "",
+          "004052"
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: The Mencius Vision",
+        "url": "http://www.2blowhards.com/archives/2007/04/_trial_version.html#004052"
+      },
+      {
+        "category": "general",
+        "content": "&#34;Top-down cultural engineering is losing its grip.&#34; Fans Accuse Orioles of &#39;Grooming&#39; Young Fans with Drag Queen &#39;Guest Splasher&#39; for Pride Night .  The Baltimore Oriole",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "akdart.com",
+          "/culture9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Same-Sex Marriage and Homosexuality in General",
+        "url": "http://akdart.com/culture9.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "395113a2333ab5a758d7391966f6f52ee8251f84f7717fe5ee31362df6557609",
+  "provider": "SearXNG",
+  "query": "how does binary search in civil engineering operate",
+  "query_id": "v5-p-0256-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:26.926508Z"
+}

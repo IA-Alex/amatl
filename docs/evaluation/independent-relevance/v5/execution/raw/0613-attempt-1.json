@@ -1,0 +1,300 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 329.106,
+  "pair_id": "v5-p-0374",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does solar eclipses in information systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "- the basic source of information about space &#34;, passage &#34; Faraday rotation of the polarization planes&#34; ). ¨ Gravitational waves - &#34;standard siren&#34; This i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Gravitace4-1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The role of gravity in the formation and evolution of stars",
+        "url": "https://www.astronuclphysics.info/Gravitace4-1.htm"
+      },
+      {
+        "category": "general",
+        "content": "SOME of the required information WAS transmitted (though not necessarily in written form). Since these references were oblique to (or at least isolated from) the actual biblical a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.christian-thinktank.com",
+          "/5felled.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "What about &#34;The Fivefold Challenge&#34;",
+        "url": "https://www.christian-thinktank.com/5felled.html"
+      },
+      {
+        "category": "general",
+        "content": "Display of Quantitative Information.&#34; I brought a couple of things I did to one of his one day classes. He liked my baseball runnings enough so I converted it to experiment with h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wermenh.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Werme Family Home Page",
+        "url": "http://wermenh.com/"
+      },
+      {
+        "category": "general",
+        "content": "below. [For more information on the precise relation of the three motions, see my paper on a = v 2 /r] What this shows us in addition is that the earth always retains its initial",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "milesmathis.com",
+          "/cm.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Embedded Problems in Celestial Mechanics",
+        "url": "https://milesmathis.com/cm.html"
+      },
+      {
+        "category": "general",
+        "content": "and will give you the information needed to place a special order through any bookstore. Feel free to browse. Clicking on a link does not commit you to purchase a book. Thinking a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.covingtoninnovations.com",
+          "/books.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Books by Michael and Melody Covington",
+        "url": "https://www.covingtoninnovations.com/books.html"
+      },
+      {
+        "category": "general",
+        "content": "For years, most of the information about the Soviet Union’s N1 rocket came from satellite images. Dwayne Day discusses how new images of the N1 are emerging to provide new insight",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.thespacereview.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Space Review: essays and commentary about the final frontier",
+        "url": "https://www.thespacereview.com/"
+      },
+      {
+        "category": "general",
+        "content": "Display of Quantitative Information.&#34; I brought a couple of things I did to one of his one day classes. He liked my baseball runnings enough so I converted it to experiment with h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wermenh.com",
+          "/index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Werme Family Home Page",
+        "url": "http://wermenh.com/index.html"
+      },
+      {
+        "category": "general",
+        "content": "and URL change information, Web-site corrections, etc. Our Favorite FOSS Software (and our Web hosting) Or just browse our stacks Techie links from Miller Microcomputer Services:",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "ephemeral particles.. information goes to a computer.. which turns them into visible trails..&#34; 6.2 Universal Assumption that Detectors Show Exact Paths of Particles This assumptio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "big-lies.org",
+          "/modern-physics-a-fraud/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "• Modern Physics a Fraud? - Superfluid helium? Speed of light a limit?, incredibility of quantum theory, Heisenberg&#39;s misunderstanding o",
+        "url": "http://big-lies.org/modern-physics-a-fraud/"
+      },
+      {
+        "category": "general",
+        "content": "the Synergy of Art and Information Anyone interested in Vinod Khosla&#39;s Microlending in India, please click here We invite you to visit a gallery of artists: ePaintings.com hawttem",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "indiancentury.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Indian Century - Dedicated to Indian Culture, Religion, and Philosophy",
+        "url": "http://indiancentury.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "96a130e97f87c94963fa93e141885cd55559e5927ac9bef048203000fa693fe7",
+  "provider": "SearXNG",
+  "query": "how does solar eclipses in information systems work",
+  "query_id": "v5-p-0374-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:30.051231Z"
+}

@@ -1,0 +1,300 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 449.329,
+  "pair_id": "v5-p-0254",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of binary search in biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "through the wave function and quantum entanglement. And the very complex experience of the human or animal brain is somehow derived from the experience of the brain&#39;s most basic p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "ultrametric on E , any function f(d) such that: (1)    f (0) = 0 (2)    f(λd) &gt; f(d) if λ &gt; 1 and d ≠ 0 is also an ultrametric on E . A",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/mathematical_theory_of_classification.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mathematical theory of classification (IEKO)",
+        "url": "https://www.isko.org/cyclo/mathematical_theory_of_classification.htm"
+      },
+      {
+        "category": "general",
+        "content": "one point Kontact was functional for me but Akonadi has somehow managed to degrade over time (it&#39;s now a roll of the dice whether I can successfully check or send email) and it ha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.alm.website",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Athena&#39;s blog - Athena&#39;s Site",
+        "url": "https://www.alm.website/blog/"
+      },
+      {
+        "category": "general",
+        "content": "not be able to function as a skin cell. There are some indications out there that it is possible to ‘breed’ cells ‘upwards’ into the hierarchy, making them",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "berthub.eu",
+          "/articles/posts/amazing-dna/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DNA seen through the eyes of a coder (or, If you are a hammer, everything looks like a nail) - Bert Hubert&#39;s writings",
+        "url": "https://berthub.eu/articles/posts/amazing-dna/"
+      },
+      {
+        "category": "general",
+        "content": "in a correct way to function: this is still syntax, in terms of correct physical architecture of the system (thus a disconnected battery is a syntactic problem). And of course the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.stanford.edu",
+          "/archIves/win2013/entries/information-semantic/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Semantic Conceptions of Information (Stanford Encyclopedia of Philosophy/Winter 2013 Edition)",
+        "url": "https://plato.stanford.edu/archIves/win2013/entries/information-semantic/"
+      },
+      {
+        "category": "general",
+        "content": "for executive function’ how do we know this? put people in huge metal detectors and see which parts of their brains get more oxygen during certain tasks you can try to do th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/epistemology/representationalism",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Representationalism",
+        "url": "https://zerocontradictions.net/epistemology/representationalism"
+      },
+      {
+        "category": "general",
+        "content": "Following (Commercial) Function Two Humorous Items from the Financial Crisis Ken Auster of the Kute Kaptions What Might Representational Painters Paint? In The Times ... CultureBl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2007/04/michael_blowhar_3.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: The NYTBR Section and Fiction 5: Literary Fiction and Literature",
+        "url": "http://www.2blowhards.com/archives/2007/04/michael_blowhar_3.html"
+      },
+      {
+        "category": "general",
+        "content": "Following (Commercial) Function Two Humorous Items from the Financial Crisis Ken Auster of the Kute Kaptions What Might Representational Painters Paint? In The Times ... CultureBl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2007/04/_trial_version.html",
+          "",
+          "",
+          "004052"
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: The Mencius Vision",
+        "url": "http://www.2blowhards.com/archives/2007/04/_trial_version.html#004052"
+      },
+      {
+        "category": "general",
+        "content": "Following (Commercial) Function Two Humorous Items from the Financial Crisis Ken Auster of the Kute Kaptions What Might Representational Painters Paint? In The Times ... CultureBl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2009/01/a_week_with_gre_1.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: A Week With Gregory Cochran: Day Two",
+        "url": "http://www.2blowhards.com/archives/2009/01/a_week_with_gre_1.html"
+      },
+      {
+        "category": "general",
+        "content": "Following (Commercial) Function Two Humorous Items from the Financial Crisis Ken Auster of the Kute Kaptions What Might Representational Painters Paint? In The Times ... CultureBl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2006/03/decline_and_fall_of_the_classi.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: Decline and Fall of the Classical Face",
+        "url": "http://www.2blowhards.com/archives/2006/03/decline_and_fall_of_the_classi.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b878800dcfa29b00bbe9b32f0c1538e854147f93ff3b7f2a191ece2338d3a17f",
+  "provider": "SearXNG",
+  "query": "tell me about the function of binary search in biology",
+  "query_id": "v5-p-0254-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:05.165775Z"
+}

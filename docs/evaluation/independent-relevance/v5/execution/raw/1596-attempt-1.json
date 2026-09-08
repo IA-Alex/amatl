@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 352.692,
+  "pair_id": "v5-p-0442",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of supply chain logistics in environmental science",
+    "results": [
+      {
+        "category": "general",
+        "content": "it sucks. (And for the environmentalists, jet fuel is kerosene-based - it&#39;s nothing like gasoline) Inefficient Spending Often Comes from Political Sources One of the big issues wi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/USPolicy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "US Policy Choices",
+        "url": "https://www.billdietrich.me/USPolicy.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2d83a8209525728565c45b3ca093ea77e706b767706de463351bbb0469f31a53",
+  "provider": "SearXNG",
+  "query": "tell me about the function of supply chain logistics in environmental science",
+  "query_id": "v5-p-0442-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:13:43.724991Z"
+}

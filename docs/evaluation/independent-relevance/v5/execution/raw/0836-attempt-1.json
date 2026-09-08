@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 322.188,
+  "pair_id": "v5-p-0577",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind air quality monitoring in astronomy",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3fc894a4ba7d5f5a8e8442b6f399e3596d5d818888806f3cab7da1d5b309458d",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind air quality monitoring in astronomy",
+  "query_id": "v5-p-0577-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:40.625948Z"
+}

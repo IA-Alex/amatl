@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 4321,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 307.766,
+  "pair_id": "candidate-p-1617",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "which mechanisms govern low power computing within operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "(e.g., an amoeba) and mechanisms (e.g., a photocell) are certainly capable of making practical use of environmental information even in the absence of any (semantic processing of)",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.stanford.edu",
+          "/archIves/win2013/entries/information-semantic/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Semantic Conceptions of Information (Stanford Encyclopedia of Philosophy/Winter 2013 Edition)",
+        "url": "https://plato.stanford.edu/archIves/win2013/entries/information-semantic/"
+      },
+      {
+        "category": "general",
+        "content": "being transported. The mechanisms required for reliably getting bits from point A to point B are not terribly interesting to us. This is not because these mechanisms are not essen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fudco.com",
+          "/chip/lessons.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Lessons of Lucasfilm&#39;s Habitat",
+        "url": "http://www.fudco.com/chip/lessons.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "473ad1037d18cec90800826b2e73d9f0b96a595b3b2d2b0a3311ea82ec17cb67",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "which mechanisms govern low power computing within operations research",
+  "query_id": "candidate-t-1617",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://plato.stanford.edu/archIves/win2013/entries/information-semantic/",
+      "original_url": "https://plato.stanford.edu/archIves/win2013/entries/information-semantic/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "(e.g., an amoeba) and mechanisms (e.g., a photocell) are certainly capable of making practical use of environmental information even in the absence of any (semantic processing of)",
+      "title": "Semantic Conceptions of Information (Stanford Encyclopedia of Philosophy/Winter 2013 Edition)"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.fudco.com/chip/lessons.html",
+      "original_url": "http://www.fudco.com/chip/lessons.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "being transported. The mechanisms required for reliably getting bits from point A to point B are not terribly interesting to us. This is not because these mechanisms are not essen",
+      "title": "The Lessons of Lucasfilm&#39;s Habitat"
+    }
+  ],
+  "timestamp": "2026-09-05T17:43:22.960458Z"
+}

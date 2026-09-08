@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 122.57532999501564,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does database indexes in chemistry operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "Community 2021-10-31 Chemistry in the city 2022-01-30 Show HN: Searchall – search all major indexes on one page (with iframes) | Hacker News 2022-01-31 Firefox Experiment is testi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "seirdy.one",
+          "/posts/2021/03/10/search-engines-with-own-indexes/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A look at search engines with their own indexes - Seirdy",
+        "url": "https://seirdy.one/posts/2021/03/10/search-engines-with-own-indexes/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0184",
+  "query_text": "how does database indexes in chemistry operate",
+  "requested_at": "2026-09-03T01:41:59.489254Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

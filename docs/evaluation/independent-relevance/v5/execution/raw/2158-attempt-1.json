@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 325.111,
+  "pair_id": "v5-p-0612",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind air quality monitoring in transportation engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c60837f782e651a5342c1742debe5b69e6f2cafe305e22c4758e6692281e6a93",
+  "provider": "SearXNG",
+  "query": "describe the principle behind air quality monitoring in transportation engineering",
+  "query_id": "v5-p-0612-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:45.183293Z"
+}

@@ -1,0 +1,246 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 289.168,
+  "pair_id": "v5-p-0151",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of immune response in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "chefs, servers, and management, need to be knowledgeable about what veganism entails to accurately communicate with and serve their customers. This has led to increased training a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.animal-rights.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Veganism as conceived by ChatGPT",
+        "url": "https://www.animal-rights.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "and proper wound management. The UK health department says that five doses of the vaccine will provide good long-term protection, while other experts say more are required. But th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/vaccin.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Vaccination and homeopathy",
+        "url": "https://davidpratt.info/vaccin.htm"
+      },
+      {
+        "category": "general",
+        "content": "our understanding and management of accelerating change. The phenomenon of accelerating change has a long and important intellectual history , but little formal academic study. To",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.accelerationwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acceleration Watch (Understanding Accelerating Change)",
+        "url": "https://www.accelerationwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "heart health, weight management, and bone density. But it also has direct benefits for emotional and intellectual health. Exercise stimulates the production of endorphins (the bod",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biopsychiatry.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mood-brighteners and antidepressants as conceived by ChatGPT",
+        "url": "https://www.biopsychiatry.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "under security patch management , it that does not fall in the requirements it will not be patched at all. It yet again depends on specific variables, how hard it is to exploit, i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "chef-koch.bearblog.dev",
+          "/windows-is-not-more-secure-than-linux-debunking-self-proclaimed-wannabe-researcher-madaidan/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Windows is not more secure than Linux - Debunking self-proclaimed wannabe researcher Madaidan – CHEF-KOCH&#39;s Microblog ✨",
+        "url": "https://chef-koch.bearblog.dev/windows-is-not-more-secure-than-linux-debunking-self-proclaimed-wannabe-researcher-madaidan/"
+      },
+      {
+        "category": "general",
+        "content": "to engage in earnings management.” To explain entrepreneurial optimism, cognitive biases play an important role. We focus on our goal, anchor on our plan, and neglect relevant bas",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sive.rs",
+          "/book/ThinkingFastAndSlow",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Thinking, Fast and Slow - by Daniel Kahneman | Derek Sivers",
+        "url": "https://sive.rs/book/ThinkingFastAndSlow"
+      },
+      {
+        "category": "general",
+        "content": "Maharishi University of Management and the University of Kentucky said that the use of double blinding, which is required by the Jadad scale, is not appropriate to meditation rese",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "oaks.nvg.org",
+          "/tm-.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Transcendental Meditation, TM – The Gold Scales",
+        "url": "http://oaks.nvg.org/tm-.html"
+      },
+      {
+        "category": "general",
+        "content": "of integrated pest management.[137][138] Despite the large amount of effort focused at controlling insects, human attempts to kill pests with insecticides can backfire. If used ca",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scientificlib.com",
+          "/en/Biology/Animalia/Arthropoda/Insects/Insecta.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Insecta",
+        "url": "https://www.scientificlib.com/en/Biology/Animalia/Arthropoda/Insects/Insecta.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8f002d32001be622988316cba9ea69455f6e3879dad3341e67adbd5df07a4655",
+  "provider": "SearXNG",
+  "query": "give an overview of immune response in data management",
+  "query_id": "v5-p-0151-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:05.527226Z"
+}

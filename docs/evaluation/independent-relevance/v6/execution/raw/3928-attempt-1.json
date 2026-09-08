@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 3928,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 298.819,
+  "pair_id": "candidate-p-0871",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of ecosystem services within clinical research",
+    "results": [
+      {
+        "category": "general",
+        "content": "long-range order. One explanation, advocated by Nobel prizewinner Gerard &#39;t Hooft, is the cellular automaton interpretation of quantum mechanics; see his keynote talk at EMQM 2015",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "dde954129560f9b1db8428890c98ebd23d95c34fb05bd39afcc51b3f09b358c0",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of ecosystem services within clinical research",
+  "query_id": "candidate-c-0871",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.cl.cam.ac.uk/archive/rja14/",
+      "original_url": "https://www.cl.cam.ac.uk/archive/rja14/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "long-range order. One explanation, advocated by Nobel prizewinner Gerard &#39;t Hooft, is the cellular automaton interpretation of quantum mechanics; see his keynote talk at EMQM 2015",
+      "title": "Ross Anderson&#39;s Home Page"
+    }
+  ],
+  "timestamp": "2026-09-05T17:41:13.579662Z"
+}

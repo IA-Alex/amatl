@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 327.714,
+  "pair_id": "v5-p-0254",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does binary search in biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "science of biology; but, the implications for human history, modern society, economics, etc. we are not facing up to: the fact that they are all deeply rooted in our primitive, an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.idallen.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ian! D. Allen - Personal Home Page",
+        "url": "http://www.idallen.com/"
+      },
+      {
+        "category": "general",
+        "content": "of chemistry and biology can be greatly helped if our ability to see what we are doing, and to do things on an atomic level, is ultimately developed -- a development which I think",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "of your world: Maybe a biology project could use support for a new measurement device or a friend studying history could use an improved database interface. Many of the best proje",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stroustrup.com",
+          "/bs_faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stroustrup: FAQ",
+        "url": "https://www.stroustrup.com/bs_faq.html"
+      },
+      {
+        "category": "general",
+        "content": "the physics, astrology, biology, semiotics, linguistics, technologies, weaponry, divinity, and more — salvation through gnosis alone is hopeless. The starting place is",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.philosophicalanthropology.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHICAL ANTHROPOLOGY",
+        "url": "https://www.philosophicalanthropology.net/"
+      },
+      {
+        "category": "general",
+        "content": "if agencies must follow biology when they describe the legal sex of American women and girls, men and boys, according to a document leaked to the New York Times.  The policy",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "akdart.com",
+          "/obama95.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "President Obama Panders to Homosexuals",
+        "url": "http://akdart.com/obama95.html"
+      },
+      {
+        "category": "general",
+        "content": "question is found in biology. We need to adapt to our environment and then improve our lot qualitatively, aiming for what Plato called the best life . Instead of living sane lives",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.o9a.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "o 9 a",
+        "url": "http://www.o9a.org/"
+      },
+      {
+        "category": "general",
+        "content": "Structures in Molecular Biology LUCA - the Last Universal Common Ancestor Tree of Life: Tangled Roots and Sexy Shoots Evolutionary radiation from LUCA to Homo sapiens . Space, Tim",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "27th The Physics of Biology 26th Astronomy at the Edge of the Sky 26th Brightly Burning Galaxies 25th Super Duper Lunar Eclipse 24th Why Does Autumn Begin On Different Days of the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "briankoberlein.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Archive | by Brian Koberlein",
+        "url": "https://briankoberlein.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "methods derived from biology (neural networks, genetic algorithms) or physics (super-paramagnetic clustering) have emerged, as well as methods for comparing these classifications",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/mathematical_theory_of_classification.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mathematical theory of classification (IEKO)",
+        "url": "https://www.isko.org/cyclo/mathematical_theory_of_classification.htm"
+      },
+      {
+        "category": "general",
+        "content": "justified Sociobiology and Progressivism tl;dr: sociobiology challenges blank-slate progressive ideals by grounding human behavior in biology; critics fear explanation = justifica",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Luke Smith Fanclub &amp; Archive",
+        "url": "https://lukesmith.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "especially in biology and cognitive science). Ontological levellism has come under increasing attack. Heil [2003] and Schaffer [2003] have seriously and convincingly questioned it",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.stanford.edu",
+          "/archIves/win2013/entries/information-semantic/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Semantic Conceptions of Information (Stanford Encyclopedia of Philosophy/Winter 2013 Edition)",
+        "url": "https://plato.stanford.edu/archIves/win2013/entries/information-semantic/"
+      },
+      {
+        "category": "general",
+        "content": "in its physiology and biology. The difficulty, Haraway notes, is ‘to see from both perspectives at once’ because they might seem, and probably are, contradictory to one another. T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "intertheory.org",
+          "/mills.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "From Cyclops to Cyborg: Nietzsche, Posthumanism and ‘EmbodiedPerspectivism’ by Philip Mills, Kritikos - Vol. 18, Spring 2021",
+        "url": "https://intertheory.org/mills.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4922ea96d251ca389cdbe894723eb7c02966d76d820bb2f58bf4db1b8ec49479",
+  "provider": "SearXNG",
+  "query": "how does binary search in biology work",
+  "query_id": "v5-p-0254-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:04.837430Z"
+}

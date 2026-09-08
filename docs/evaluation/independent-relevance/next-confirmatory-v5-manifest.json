@@ -1,0 +1,21 @@
+{
+  "schema": "amatl.relevance.next-confirmatory-v5-manifest.v1",
+  "experiment_id": "independent-relevance-confirmatory-v5",
+  "design_status": "RECOMMENDED_NOT_FROZEN",
+  "base_head": "af5548a13e409006ddabad491b598ddb5446326b",
+  "artifacts": {
+    "design": "next-confirmatory-v5-design.json",
+    "universe_plan": "next-confirmatory-v5-universe-plan.json",
+    "randomization": "next-confirmatory-v5-randomization.json",
+    "attainability_preflight": "next-confirmatory-v5-attainability-preflight.json",
+    "stopping_replacement_policy": "next-confirmatory-v5-stopping-replacement-policy.json"
+  },
+  "artifact_sha256": {
+    "design": "a8d8a3317507078c25280faa5bb2b0e2164e9b0311bdfe34a0f31c854b943359",
+    "universe_plan": "14a8d0f7eff86bae0a51ac4fe2a1ad8286c5da966a66e9d8d06ac6163290bbe6",
+    "randomization": "57bdc7320b55e4251c023df0e75916c0045e1de2faec3b3de73f78ae40d10b6d",
+    "attainability_preflight": "186f6973a5371b20ef5ef693a23f8eecb3f07530dfb7d037dd947a591aefa713",
+    "stopping_replacement_policy": "531a85b67537a5a1e0cd7dc1cfd7e36b6256e782bfd4e74318e11c98d4d53eaf"
+  },
+  "network_requests": 0
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 592.128,
+  "pair_id": "v5-p-1059",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes microbial fermentation in mechanical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fea5b340b019a85f273072d858085417316afaccc381963c997fdb4aa865efe6",
+  "provider": "SearXNG",
+  "query": "what causes microbial fermentation in mechanical engineering",
+  "query_id": "v5-p-1059-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:55.409404Z"
+}

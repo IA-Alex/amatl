@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 4470,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 323.699,
+  "pair_id": "candidate-p-0568",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "essential context for coastal mapping within science education",
+    "results": [
+      {
+        "category": "general",
+        "content": "to provide or ensure essential food, water, medicine, fuel, shelter and other humanitarian assistance for the besieged and blockaded Palestinian people, which has pushed them to t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.icj-cij.org",
+          "/node/203394",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Application instituting proceedings and request for the indication of provisional measures | INTERNATIONAL COURT OF JUSTICE",
+        "url": "https://www.icj-cij.org/node/203394"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7dbb6bf41a626b1a7f3fad26224013329b63f3fdb4e47f03d2bf05cb5c14eccc",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "essential context for coastal mapping within science education",
+  "query_id": "candidate-c-0568",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.icj-cij.org/node/203394",
+      "original_url": "https://www.icj-cij.org/node/203394",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "to provide or ensure essential food, water, medicine, fuel, shelter and other humanitarian assistance for the besieged and blockaded Palestinian people, which has pushed them to t",
+      "title": "Application instituting proceedings and request for the indication of provisional measures | INTERNATIONAL COURT OF JUSTICE"
+    }
+  ],
+  "timestamp": "2026-09-05T17:44:07.357171Z"
+}

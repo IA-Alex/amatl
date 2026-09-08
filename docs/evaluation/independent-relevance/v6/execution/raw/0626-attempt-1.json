@@ -1,0 +1,225 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 626,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 313.509,
+  "pair_id": "candidate-p-0911",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of ecosystem services within water management",
+    "results": [
+      {
+        "category": "general",
+        "content": "has given no formal explanation to RFPI for the eviction. RFPI believes the eviction is being done for political reasons, and is a form of censorship. UPaz has told the press that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.worldofradio.com",
+          "/dxld3136.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.worldofradio.com/dxld3136.txt",
+        "url": "http://www.worldofradio.com/dxld3136.txt"
+      },
+      {
+        "category": "general",
+        "content": "(That&#39;s literally the explanation for PowerShell. Many of us wanted to improve cmd.exe, but couldn&#39;t.) More examples: We can&#39;t touch named pipes. Let&#39;s add %INTERNAL_NOTIFICATION_",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "blog.zorinaq.com",
+          "/i-contribute-to-the-windows-kernel-we-are-slower-than-other-oper/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "&#34;I Contribute to the Windows Kernel. We Are Slower Than Other Operating Systems. Here Is Why.&#34;",
+        "url": "http://blog.zorinaq.com/i-contribute-to-the-windows-kernel-we-are-slower-than-other-oper/"
+      },
+      {
+        "category": "general",
+        "content": "elements of a tentative explanation: The Democratic Party is still run by moderate liberals; but the more radical wing is louder and gets more press-- especially in the rightist m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.zompist.com",
+          "/predic.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The last century-- what went wrong",
+        "url": "http://www.zompist.com/predic.htm"
+      },
+      {
+        "category": "general",
+        "content": "video for a very clear explanation: What is the Fediverse? First off, &#34;fediverse&#34; is a combination of the words &#34;federation&#34; and &#34;universe&#34;. To sum it up it&#39;s a decentralized soci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "chriskoehnke.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chris Koehnke&#39;s Webpage",
+        "url": "http://chriskoehnke.com/"
+      },
+      {
+        "category": "general",
+        "content": "incidents. OpenAI&#39;s explanation addresses what happened, but its call for keeping a closer watch on AI activities won&#39;t elicit much enthusiasm. &#34;The incident occurred during cyber",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "soylentnews.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SoylentNews: SoylentNews is people",
+        "url": "https://soylentnews.org/"
+      },
+      {
+        "category": "general",
+        "content": "and that the only explanation for my being opposed to this is that I must be using AI to produce my own writing and I’m upset that my scheme will soon be detectable. Read the repl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "daringfireball.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Daring Fireball",
+        "url": "https://daringfireball.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "12f73fd5cac67a318a98d8c74ec8b0b881536eb7f8b0b7b4abc1854a6219be3b",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of ecosystem services within water management",
+  "query_id": "candidate-c-0911",
+  "raw_result_count": 6,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.worldofradio.com/dxld3136.txt",
+      "original_url": "http://www.worldofradio.com/dxld3136.txt",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "has given no formal explanation to RFPI for the eviction. RFPI believes the eviction is being done for political reasons, and is a form of censorship. UPaz has told the press that",
+      "title": "http://www.worldofradio.com/dxld3136.txt"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "http://blog.zorinaq.com/i-contribute-to-the-windows-kernel-we-are-slower-than-other-oper/",
+      "original_url": "http://blog.zorinaq.com/i-contribute-to-the-windows-kernel-we-are-slower-than-other-oper/",
+      "rank": 2,
+      "rejection_reason": null,
+      "snippet": "(That&#39;s literally the explanation for PowerShell. Many of us wanted to improve cmd.exe, but couldn&#39;t.) More examples: We can&#39;t touch named pipes. Let&#39;s add %INTERNAL_NOTIFICATION_",
+      "title": "&#34;I Contribute to the Windows Kernel. We Are Slower Than Other Operating Systems. Here Is Why.&#34;"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.zompist.com/predic.htm",
+      "original_url": "http://www.zompist.com/predic.htm",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "elements of a tentative explanation: The Democratic Party is still run by moderate liberals; but the more radical wing is louder and gets more press-- especially in the rightist m",
+      "title": "The last century-- what went wrong"
+    }
+  ],
+  "timestamp": "2026-09-05T17:23:52.571615Z"
+}

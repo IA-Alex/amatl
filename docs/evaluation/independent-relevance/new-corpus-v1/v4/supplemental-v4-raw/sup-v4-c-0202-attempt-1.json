@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 380.9689810004784,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of gear trains in physics",
+    "results": [
+      {
+        "category": "general",
+        "content": "and have a computer as functional (albeit slower) as anyone else&#39;s. To be a ham you need a good location. This means buying a house, having a stable enough job that you are willin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wm7d.net",
+          "/az_proj/az_html/arrl_restructuring.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Letter to ARRL - Restructing of Ham Radio Licensing",
+        "url": "https://www.wm7d.net/az_proj/az_html/arrl_restructuring.html"
+      },
+      {
+        "category": "general",
+        "content": "the facility, and functional poorly disguised nuke cameras inside the facility. In addition to this, they install an unauthorized data connection to allow control of all the guts",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_uranium64.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Did The Dimona Dozen Murder The Fukushima 50? - 3/11 Was Japan&#39;s 9/11",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_uranium64.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0202",
+  "query_text": "tell me about the function of gear trains in physics",
+  "requested_at": "2026-09-03T01:43:41.492845Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

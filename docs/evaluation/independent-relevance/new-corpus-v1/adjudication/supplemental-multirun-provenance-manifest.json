@@ -1,0 +1,30 @@
+{
+  "SUPPLEMENTAL_V1_PRESERVED_ROWS": 172,
+  "SUPPLEMENTAL_V2_NEW_ROWS": 8,
+  "dedup_boundaries": [
+    "v1-ground-truth",
+    "historical-canonical-urls",
+    "supplemental-v1-valid",
+    "accepted-supplemental-v2"
+  ],
+  "lineage": {
+    "supplemental-v1": {
+      "evidence_sha256": "4cde11462fe4bed8a1793adbe808a834510a80217d4cc928c22a72fb37ec6ff9",
+      "ledger": "supplemental-pilot-attempts.json",
+      "raw_evidence": "supplemental-pilot-raw-evidence.json",
+      "rows": 172,
+      "universe": "independent-relevance-supplemental-v1"
+    },
+    "supplemental-v2": {
+      "evidence_sha256": "79def9bc46265057131e354a97447198552c7aceb4f607f30eb423b4b1f1d6e2",
+      "ledger": "supplemental-v2-attempts.json",
+      "raw_evidence": "supplemental-v2-raw-evidence.json",
+      "rows": 8,
+      "universe": "independent-relevance-supplemental-v2"
+    }
+  },
+  "new_source_run": "supplemental-v2",
+  "preserved_source_run": "supplemental-v1",
+  "row_identity_rule": "Preserve existing supplemental-v1 row IDs exactly; assign SOURCE_RUN without regenerating them. Supplemental-v1 row identity is the deterministic {query_id}-{rank:03d} derived from the frozen acquisition ledger and raw evidence; it is preserved byte-for-byte in the final corpus.",
+  "schema": "amatl.relevance.supplemental-multirun-provenance-manifest.v1"
+}

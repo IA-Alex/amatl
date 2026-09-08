@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 279.272,
+  "pair_id": "v5-p-0458",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does supply chain logistics in urban planning work",
+    "results": [
+      {
+        "category": "general",
+        "content": "C2 facilities and logistics sites in depth to contribute to isolating the attacking enemy. The commander takes advantage of the range and flexibility of his fire support weapons t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.nuui.com",
+          "/Sections/Military/Field_Manuals/FM3-90/ch8.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "FM3-90 Chapter 8 Basics of Defensive Operations",
+        "url": "http://www.nuui.com/Sections/Military/Field_Manuals/FM3-90/ch8.htm"
+      },
+      {
+        "category": "general",
+        "content": "et al. “Last mile logistics life cycle assessment: a comparative analysis from diesel van to e-cargo bike.” Energies 15.20 (2022): 7817.. https://www.mdpi.com/1996-107",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2023/02/can-we-make-bicycles-sustainable-again",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Can We Make Bicycles Sustainable Again? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2023/02/can-we-make-bicycles-sustainable-again"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c30aca417ccf391b6d4ef42731e74fdd64f5321e2fc69397096577644210d86d",
+  "provider": "SearXNG",
+  "query": "how does supply chain logistics in urban planning work",
+  "query_id": "v5-p-0458-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:09:00.044380Z"
+}

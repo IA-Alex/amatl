@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 312.22829400212504,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of version control in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "catalysis, and materials. The scientific rewards should be just as great, as researchers approach an ultimate level of control -- assembling matter one atom at a time.&#34; &#34;Within th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "inexpensively as simple materials. Reduce manufacturing costs to little more than the cost of the required raw materials and energy. While technologies that lack one or more of th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zyvex.com",
+          "/nano/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nanotechnology",
+        "url": "https://www.zyvex.com/nano/"
+      },
+      {
+        "category": "general",
+        "content": "and developing new materials. Can you charge a cell phone with an orange?!! Proposal for the   Trans-Global Highway . Positive pressure filtration tents.  Virtual realit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIDIK.com The original and official DIDIK site. Cutting edge and sometimes controversial thoughts, designs, proposals and projects conceiv",
+        "url": "http://www.didik.com/"
+      },
+      {
+        "category": "general",
+        "content": "propulsion or fuels or materials to change the basics of space exploration. Maybe we should work on something like a space fountain , or a space elevator , or a launch loop . As f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "Tait’s original materials for his 16F84 programmer. The cool thing about the 16F84 was that it had an EEPROM in it and could be reprogramed without erasing via a UV light. N",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "robotics.mcmanis.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chuck&#39;s Robotics Notebook -- Chuck&#39;s Robotics Notebook",
+        "url": "http://robotics.mcmanis.com/"
+      },
+      {
+        "category": "general",
+        "content": "highlight the different materials such as fur and leather. Although the function of these figurines are still unknown, it is clear from the study that the Venus/Mother Goddess con",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.donsmaps.com",
+          "/venusfigurespurpose.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Palaeolithic Venus figures - their purpose",
+        "url": "https://www.donsmaps.com/venusfigurespurpose.html"
+      },
+      {
+        "category": "general",
+        "content": "to get the approval and materials from the marketing team. Then they needed to get approval from the legal team. Then they need to write support documents and instruct support age",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "svedic.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Svedic.org",
+        "url": "https://svedic.org/"
+      },
+      {
+        "category": "general",
+        "content": "Required course materials : The Transfeminine Handbook , 3rd Edition (Pearson). Cosmetic supplies provided. Students will be required to purchase their own clothes for some course",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.alm.website",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Athena&#39;s blog - Athena&#39;s Site",
+        "url": "https://www.alm.website/blog/"
+      },
+      {
+        "category": "general",
+        "content": "APECKS WWW-MOO Online Materials by Jeni Tennison. Covers a larger area of MOO Programming. Step by Step MOO Programming by J.C. Ireland (1995). Basics Canton Becker&#39;s tutorial (ba",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "tecfa.unige.ch",
+          "/edu-comp/WWW-VL/eduVR-page.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The WWW VL: Educational Technology - Educational VR (MUD) sub-page (05-Jan-2000)",
+        "url": "https://tecfa.unige.ch/edu-comp/WWW-VL/eduVR-page.html"
+      },
+      {
+        "category": "general",
+        "content": "to durable writing materials [which were often controlled in antiquity by ruling elites, see HI:LPAW]; (3) will decide to expend personal funds on durable (i.e., expensive) writin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.christian-thinktank.com",
+          "/5felled.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "What about &#34;The Fivefold Challenge&#34;",
+        "url": "https://www.christian-thinktank.com/5felled.html"
+      },
+      {
+        "category": "general",
+        "content": "for all the training materials he shared with the Free Software Community under a free documentation license (see http://free-electrons.com/training/). This represents more than 1",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": ", transport, materials and energy supply. The specification and comparison of these is a major focus of the study of political economy . Political or other decision-making units t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "connexions.org",
+          "/CxLibrary/Docs/CxP-Decentralization.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Decentralization - Connexipedia article",
+        "url": "https://connexions.org/CxLibrary/Docs/CxP-Decentralization.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0123",
+  "query_text": "give an overview of version control in materials science",
+  "requested_at": "2026-09-03T01:44:35.781330Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

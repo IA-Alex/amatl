@@ -1,0 +1,300 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 334.048,
+  "pair_id": "v5-p-0263",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes binary search in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "face, Pfizer!  Science can dress up in its sexiest minidress and strut confidently down the dark alley of ignorance and prejudice, unafraid and unmolested because it is prote",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "thelastpsychiatrist.com",
+          "/2010/04/study_finds_chocolate_causes_d.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Last Psychiatrist: Study Finds Chocolate Causes Depression. In Other News, These Kinds Of Studies Cause Insanity",
+        "url": "https://thelastpsychiatrist.com/2010/04/study_finds_chocolate_causes_d.html"
+      },
+      {
+        "category": "general",
+        "content": "on. Tram both ways. Mad science experiment : Downloaded a Blag Linux 140000 live iso from 2011ish and dd&#39;ed it to a USB stick. Boots fine and reveals a stunningly responsive Gnome",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.k58.uk",
+          "/pages/stuff/old-computer-challenge-v3.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Old Computer Challenge Version 3 July 2023",
+        "url": "http://www.k58.uk/pages/stuff/old-computer-challenge-v3.html"
+      },
+      {
+        "category": "general",
+        "content": "a mixture of Art and Science, not Magic.          Referring to Figure 12a, we&#39;ll start by generating a number of clock phases by using a Counter which is Decod",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.jmargolin.com",
+          "/vgens/vgens.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Secret Life of Vector Generators",
+        "url": "http://www.jmargolin.com/vgens/vgens.htm"
+      },
+      {
+        "category": "general",
+        "content": "obscurity). Computer science ( CS ) academics are too closely tied to the Big Tech gravy train even in mundane times. But when the VCs stand on their disruptor soap-boxes and make",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ebb.org",
+          "/bkuhn/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog - Bradley Kühn ( bkuhn )",
+        "url": "https://ebb.org/bkuhn/blog/"
+      },
+      {
+        "category": "general",
+        "content": "far fetched any) Sonnet(Science of Nuclear Nanotech Electromagnetic Transmissions) Viacad. Massachusetts, Boston. Helped Design and Coded Maple Mathematical Modeling Software. Sup",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.orderofmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Order Of Magi",
+        "url": "http://www.orderofmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "Rejected institutional science, embraced Orthodox Christianity, runs a YouTube channel. Focus on cybernetics, technology&#39;s societal impact, and self-improvement. Luke Smith&#39;s Blog",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Luke Smith Fanclub &amp; Archive",
+        "url": "https://lukesmith.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "that refers to the science of describing the kinds of entities in the world and how they are related. An OWL ontology may include descriptions of classes , properties and their in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/owl-guide/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OWL Web Ontology Language Guide",
+        "url": "https://www.w3.org/TR/owl-guide/"
+      },
+      {
+        "category": "general",
+        "content": "evening of music and science at All Saints Church raising money for run by a fine couple - Marloes &amp; Cedric Ghevaert who attend All Saints; interesting stuff. 2015-09-04 Frida",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2015/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2015/"
+      },
+      {
+        "category": "general",
+        "content": "the world for his science fiction, Isaac Asimov was also regarded as one of the great explainers of science. His essays exemplified his skill at making complex subjects understand",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "far fetched any) Sonnet(Science of Nuclear Nanotech Electromagnetic Transmissions) Viacad. Massachusetts, Boston. Helped Design and Coded Maple Mathematical Modeling Software. Sup",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.orderofmagi.com",
+          "/Magi.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Order Of Magi",
+        "url": "http://www.orderofmagi.com/Magi.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9ca6554b2800c8de76f9841aa4e511fcd5e318a314c7ffde38f6d335944a6076",
+  "provider": "SearXNG",
+  "query": "what causes binary search in food science",
+  "query_id": "v5-p-0263-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:39.327653Z"
+}

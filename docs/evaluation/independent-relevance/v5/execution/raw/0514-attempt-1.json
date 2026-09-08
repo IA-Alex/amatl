@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 336.689,
+  "pair_id": "v5-p-0004",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind photosynthesis in civil engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "06e688b272a014cc6dd315a07acd776d1d826af6cbab972237577ac6e0fb27f8",
+  "provider": "SearXNG",
+  "query": "describe the principle behind photosynthesis in civil engineering",
+  "query_id": "v5-p-0004-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:50.876931Z"
+}

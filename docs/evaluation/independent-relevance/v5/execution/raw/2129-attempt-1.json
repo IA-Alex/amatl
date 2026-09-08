@@ -1,0 +1,219 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 325.406,
+  "pair_id": "v5-p-0740",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does root systems in optics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "all of them have flash systems designed for Flashcubes only. Personally, I greatly prefer the &#39;classic&#39; folding pack cameras over the &#39;new-style&#39; ones. However, in some instances,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.landlist.ch",
+          "/landlist/landfaq.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Land List -- Frequently Asked Questions",
+        "url": "http://www.landlist.ch/landlist/landfaq.htm"
+      },
+      {
+        "category": "general",
+        "content": "control over quantum systems and are prerequisites for useful quantum computation. To date, quantum advantage has been demonstrated, for example, through violations of Bell inequa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scottaaronson.com",
+          "/papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Research Papers and Surveys",
+        "url": "https://www.scottaaronson.com/papers/"
+      },
+      {
+        "category": "general",
+        "content": "more compact computer systems to assist us in handling these new physics technologies. During the past dozen years, we have made some spectacularly promising breakthroughs in the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "larouchepub.com",
+          "/lar/2019/4616-the_science_and_technology_nee.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Science and Technology Needed To Colonize Mars",
+        "url": "https://larouchepub.com/lar/2019/4616-the_science_and_technology_nee.html"
+      },
+      {
+        "category": "general",
+        "content": "poorly designed file systems, a topic which belongs in the &#34;10yrs ago&#34; section of a retro-computer magazine. An article (QST, Sep 98, p91) on constructing a web page usi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wm7d.net",
+          "/az_proj/az_html/arrl_restructuring.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Letter to ARRL - Restructing of Ham Radio Licensing",
+        "url": "https://www.wm7d.net/az_proj/az_html/arrl_restructuring.html"
+      },
+      {
+        "category": "general",
+        "content": "Symposium on Operating Systems Principles in Gatlinburg, Tennessee (October) First design paper on ARPANET published by Larry Roberts: &#34; Multiple Computer Networks and Intercomput",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zakon.org",
+          "/robert/internet/timeline/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hobbes&#39; Internet Timeline - the definitive ARPAnet &amp; Internet history",
+        "url": "https://www.zakon.org/robert/internet/timeline/"
+      },
+      {
+        "category": "general",
+        "content": "dogmas of peculiar systems of philosophy, and also from the perverted rules of demonstration, and these we denominate idols of the theatre: for we regard all the systems of philos",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/45988/45988-h/45988-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of Novum Organum, by Lord Bacon",
+        "url": "https://www.gutenberg.org/files/45988/45988-h/45988-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "displays for Hi-Fi systems produce other colours such as white, red, yellow. Between the anode and cathode is an open grid. Applying a negative voltage to the grid switches the di",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.vintagecalculators.com",
+          "/html/calculator_displays.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Calculator Displays",
+        "url": "http://www.vintagecalculators.com/html/calculator_displays.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a901919d4405a6a9027a59d5d3357abb2d38aad5065ee8d726fe262941a31b7e",
+  "provider": "SearXNG",
+  "query": "how does root systems in optics operate",
+  "query_id": "v5-p-0740-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:36.501162Z"
+}

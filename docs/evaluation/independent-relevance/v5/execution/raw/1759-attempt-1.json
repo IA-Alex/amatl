@@ -1,0 +1,349 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 358.475,
+  "pair_id": "v5-p-0727",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes root systems in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "to use. Each identity management module is documented in a separate manual page. The standard idmap backends are tdb ( idmap_tdb (8) ), tdb2 ( idmap_tdb2 (8) ), ldap ( idmap_ldap",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.samba.org",
+          "/samba/docs/current/man-html/smb.conf.5.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "smb.conf",
+        "url": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+      },
+      {
+        "category": "general",
+        "content": "Meanwhile state management has become so complex that it is the primary job we adopt heavy frontend frameworks, like React, to help us address. This complexity has driven the need",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "laughingmeme.org",
+          "/2023/01/23/software-and-its-discontents-part-2-complexity.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Software and its Discontents, Part 2: An Explosion of Complexity | Kellan Elliott-McCrea: Blog",
+        "url": "https://laughingmeme.org/2023/01/23/software-and-its-discontents-part-2-complexity.html"
+      },
+      {
+        "category": "general",
+        "content": "effective scrutiny and management via simple, well-understood tools (including ps, netstat, lsof, lslk, fuser, etc.). For details, please see Petreley, Raymond, and Self&#39;s more-co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "linuxmafia.com",
+          "/~rick/faq/",
+          "",
+          "",
+          "willbethere"
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "But That&#39;s Just My Opinion. I Could Be Wrong.",
+        "url": "http://linuxmafia.com/~rick/faq/#willbethere"
+      },
+      {
+        "category": "general",
+        "content": "for perception management.&#39;   In his book, Future Wars , Col. John Alexander, then a senior officer in the US Army&#39;s Intelligence and Security Command (INSCOM), records that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/sociopol_internetgoogle47.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Google, CIA and the NSA - Inside the Secret Network behind Mass Surveillance, Endless War and Skynet",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_internetgoogle47.htm"
+      },
+      {
+        "category": "general",
+        "content": "Wobbly Windows Window Management: Application Switcher, Move Window, Place Windows, Resize Window Open the “Run” box with Alt&#43;F2 and execute compiz-manager . compiz-manager is a s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cooltrainer.org",
+          "/a-freebsd-desktop-howto/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A FreeBSD 11 Desktop How-to » Cooltrainer.org",
+        "url": "https://cooltrainer.org/a-freebsd-desktop-howto/"
+      },
+      {
+        "category": "general",
+        "content": "about Windows EFI management tools; however, I do know that at least three relevant tools exist: the standard bcdedit , the open source text-mode efibootwin , and the third-party",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "rodsbooks.com",
+          "/refind/installing.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The rEFInd Boot Manager: Installing and Uninstalling rEFInd",
+        "url": "https://rodsbooks.com/refind/installing.html"
+      },
+      {
+        "category": "general",
+        "content": "White House&#39;s Office of Management and Budget website.  VA&#39;s effort to cover the transition-related surgeries comes as the military prepares to allow transgender troops to se",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "akdart.com",
+          "/obama95.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "President Obama Panders to Homosexuals",
+        "url": "http://akdart.com/obama95.html"
+      },
+      {
+        "category": "general",
+        "content": "Maharishi University of Management Press, 2013. Schnorrenberger, Claus C., und Kiang Ching-Lien, Ü,bersetzer. Klassische Akupunktur Chinas, Ling Kü King (Ling-Shu Ching):",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "oaks.nvg.org",
+          "/yoga-sex.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Yoga Coping, Health and Sex – The Gold Scales",
+        "url": "http://oaks.nvg.org/yoga-sex.html"
+      },
+      {
+        "category": "general",
+        "content": "Anonymous Users 5.6. Management Information 6. Open Issues 6.1. Connection Establishment 6.2. Shell Access 6.3. External and/or non-Kermit Protocols 6.4. Additional Administrative",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kermitproject.org",
+          "/uiksd.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Internet Kermit Service",
+        "url": "https://www.kermitproject.org/uiksd.html"
+      },
+      {
+        "category": "general",
+        "content": "access to adequate pain management [ Sharkey]. Also see Health care systems by country , Wikipedia. 3.      Information technology has the potential to improve",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.socrethics.com",
+          "/Folder2/Culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cultural Evolution of Suffering",
+        "url": "http://www.socrethics.com/Folder2/Culture.htm"
+      },
+      {
+        "category": "general",
+        "content": "Posts&#34; display) and management of your &#34;ignored posters&#34; list. Note carefully that there are several options you can choose to enable or disable under the Control Panel ; of parti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tickerforum.org",
+          "/faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Market Ticker Frequently Asked Questions",
+        "url": "http://tickerforum.org/faq.html"
+      },
+      {
+        "category": "general",
+        "content": "Configuration Management Refactored Solution Type:   Process Root Causes:   Avarice, Greed, Sloth Unbalanced Forces:   Management of Functionality, Performance, Com",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "antipatterns.com",
+          "/lavaflow.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lava Flow",
+        "url": "http://antipatterns.com/lavaflow.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "6a65546c40a1c112afc8e26eae920b7458b8c8fd458c1ca424267c6f1deaf1c7",
+  "provider": "SearXNG",
+  "query": "what causes root systems in data management",
+  "query_id": "v5-p-0727-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:34.813417Z"
+}

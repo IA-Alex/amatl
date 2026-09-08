@@ -1,0 +1,225 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2408,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 319.72,
+  "pair_id": "candidate-p-1618",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of low power computing within optical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "tampering and reverse engineering. With the 7th generation, IBM presented a new range of PowerPC CPUs that embedded a hidden mask ROM within the silicon. This enabled the PlayStat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/wiiu/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Wii U Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/wiiu/"
+      },
+      {
+        "category": "general",
+        "content": "optical systems engineering TouchUp Enhance the GNOME Shell User Experience on Touch Devices TrailBase Backend-as-a-Service for building networked applications TrenchBoot - DRTM l",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/project/current.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; Current projects",
+        "url": "https://nlnet.nl/project/current.html"
+      },
+      {
+        "category": "general",
+        "content": "Anchorage based engineering firms Duane Miller &amp; Associates and USKH prepared the civil and pad design work and conducted the on-site testing and evaluation. Arctic Foundation",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "for proper software engineering and security principles, culminating in the discolsure that any user could freely access the entire database 3 AI Dungeon Public Disclosure Vulnera",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "smolthots.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Small Thoughts",
+        "url": "https://smolthots.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "London in a mechanical engineering firm which produced the models required by the Patent Office in those days, before issuing a patent. He told me they had many people come to him",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lachlan.bluehaze.com.au",
+          "/nanoshite/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NanoShite: A nano-apostate webpage dedicated to the slimeycanceroushype flim-flam-barnum-and-bailey-charlatan delusional bollocks nanosleaze /",
+        "url": "http://lachlan.bluehaze.com.au/nanoshite/"
+      },
+      {
+        "category": "general",
+        "content": "crystals: dispersion engineering and applications, filters, nonlinear optics, photonic devices * Metamaterials: nanocomposites, chirality, biomimetics * Sources and detector Nanof",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "delmarphotonics.com",
+          "/index.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Femtosecond laser products from Del Mar Photonics",
+        "url": "http://delmarphotonics.com/index.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fec01c07d2da56ae36be0678199f0d3112812fdcd166a8c3819ce3313c7d43f6",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of low power computing within optical engineering",
+  "query_id": "candidate-c-1618",
+  "raw_result_count": 6,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "https://www.copetti.org/writings/consoles/wiiu/",
+      "original_url": "https://www.copetti.org/writings/consoles/wiiu/",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "tampering and reverse engineering. With the 7th generation, IBM presented a new range of PowerPC CPUs that embedded a hidden mask ROM within the silicon. This enabled the PlayStat",
+      "title": "Wii U Architecture | A Practical Analysis"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://nlnet.nl/project/current.html",
+      "original_url": "https://nlnet.nl/project/current.html",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "optical systems engineering TouchUp Enhance the GNOME Shell User Experience on Touch Devices TrailBase Backend-as-a-Service for building networked applications TrenchBoot - DRTM l",
+      "title": "NLnet; Current projects"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.cyberspaceorbit.com/WEATHER.html",
+      "original_url": "https://www.cyberspaceorbit.com/WEATHER.html",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Anchorage based engineering firms Duane Miller &amp; Associates and USKH prepared the civil and pad design work and conducted the on-site testing and evaluation. Arctic Foundation",
+      "title": "HAARP"
+    }
+  ],
+  "timestamp": "2026-09-05T17:33:18.574338Z"
+}

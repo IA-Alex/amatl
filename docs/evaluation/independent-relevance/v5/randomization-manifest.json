@@ -1,0 +1,15 @@
+{
+  "experiment_id": "independent-relevance-confirmatory-v5",
+  "input_order": "pair_id ascending v5-p-0001..v5-p-1086",
+  "method": "Seeded deterministic Fisher-Yates shuffle of matched pairs",
+  "network_requests": 0,
+  "pair_count": 1086,
+  "provenance": {
+    "base_head": "c85aaefb20cf0a505285a6d81836eb49f639eb8a",
+    "generator": "tools/freeze_v5_searxng_only.py",
+    "network_requests": 0
+  },
+  "reproducibility": "re-running the generator produces byte-identical pair order and assignments",
+  "schema": "amatl.relevance.v5-randomization-manifest.v1",
+  "seed": "independent-relevance-confirmatory-v5-randomization-v1"
+}

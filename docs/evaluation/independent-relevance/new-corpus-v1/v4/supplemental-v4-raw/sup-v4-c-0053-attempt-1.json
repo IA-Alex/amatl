@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 352.3241570001119,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind load bearing walls in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "(re: Robust software management.) Epistasis and the Structure of Fitness Landscapes... by François Blanquart and Thomas Bataillon, doi:10.1534/genetics.115.182691, Genetics ,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.panspermia.org",
+          "/neodarw.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Neo-Darwinism: The Current Paradigm. by Brig Klyce",
+        "url": "https://www.panspermia.org/neodarw.htm"
+      },
+      {
+        "category": "general",
+        "content": "code quality may strike management as frills that have only an indirect impact on their bottom lines. Therefore , focus first on features and functionality, then focus on architec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.laputan.org",
+          "/mud/mud.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Big Ball of Mud",
+        "url": "https://www.laputan.org/mud/mud.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0053",
+  "query_text": "explain the basic idea behind load bearing walls in data management",
+  "requested_at": "2026-09-03T01:44:50.711143Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 266.02434999949764,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does database indexes in photography work",
+    "results": [
+      {
+        "category": "general",
+        "content": "a glance at “Ruskin and Photography” by Michael Harvey ( Oxford Art Journal vol. 7 no. 2, 1984) ( JSTOR link ) and “Topographies of Tourism: ‘Documentary’ Photography and ‘The Sto",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.miskatonic.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miskatonic University Press | William Denton",
+        "url": "https://www.miskatonic.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0274",
+  "query_text": "how does database indexes in photography work",
+  "requested_at": "2026-09-03T01:43:35.495411Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

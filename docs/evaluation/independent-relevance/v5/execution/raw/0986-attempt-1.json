@@ -1,0 +1,300 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 303.216,
+  "pair_id": "v5-p-0115",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of database indexing in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "and active knowledge management environment that supports diverse user classes, precision browsing, and seamless workflow integration across personal, collaborative, and organizat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "Conference On Management Of Data, 1994. [Kleinberg 98] Jon Kleinberg, Authoritative Sources in a Hyperlinked Environment , Proc. ACM-SIAM Symposium on Discrete Algorithms, 1998. [",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "infolab.stanford.edu",
+          "/~backrub/google.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Anatomy of a Search Engine",
+        "url": "http://infolab.stanford.edu/~backrub/google.html"
+      },
+      {
+        "category": "general",
+        "content": "gateway, enhancing file management for attachments, transforming mailing list threads into interactive, forum-style discussions with modern elements such as tags and mentions, and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/news/2023/20231123-announcing-projects.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; 55 New Projects Awarded NGI0 Grants",
+        "url": "https://nlnet.nl/news/2023/20231123-announcing-projects.html"
+      },
+      {
+        "category": "general",
+        "content": "records and information management ARMA International publishes a set of guidelines ( ARMA and ANSI 2005 ). These guidelines advise a unit-by-unit approach for alphabetical filing",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/alphabetization.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alphabetization (IEKO)",
+        "url": "https://www.isko.org/cyclo/alphabetization.htm"
+      },
+      {
+        "category": "general",
+        "content": "The second is namespace management . One certainly cannot attribute their popularity to improved syntax. In the opinion of many, PERL and Ruby both suffer from terrible syntax. Tc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "skeeve.com",
+          "/awk-sys-prog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AWK As A Major Systems Programming Language — Revisited",
+        "url": "http://skeeve.com/awk-sys-prog.html"
+      },
+      {
+        "category": "general",
+        "content": "common kind of memory management bug. […] Finally, in situations where capturing self strongly doesn’t actually lead to a retain cycle, we can silence the new warning",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mjtsai.com",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Tsai - Blog",
+        "url": "https://mjtsai.com/blog/"
+      },
+      {
+        "category": "general",
+        "content": "as part of their Bot Management service. Its purpose is to distinguish legitimate human traffic from automated bots, protecting the Chatbase API endpoints. It has a storage durati",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/YourPersonalWebSite.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Your Personal Web Site",
+        "url": "https://www.billdietrich.me/YourPersonalWebSite.html"
+      },
+      {
+        "category": "general",
+        "content": "is a really important management task. In the final analysis I&#39;m convinced that this is the right business decision for SUSE. It will allow Collabora&#39;s Productivity division to fo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2013/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2013/"
+      },
+      {
+        "category": "general",
+        "content": "Lectures on Data Management . Morgan &amp; Claypool . DOI: 10.2200/S01068ED1V01Y202012DTM065 . Slides Chapter 1 , Slides Chapter 2 , Slides Chapter 3 , Slides Chapter 4 . Abstract Sin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jhellings.nl",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jelle Hellings",
+        "url": "https://jhellings.nl/"
+      },
+      {
+        "category": "general",
+        "content": "such as the Object ManagementGroup&#39;s (OMG&#39;s) Common Object Request Broker Architecture (CORBA) [OMG95],as a basic infrastructure. The use of objects in such architectures reflects",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.objs.com",
+          "/OSA/wom.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Towards a Web Object Model",
+        "url": "http://www.objs.com/OSA/wom.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "cd013312e00807d19003a9243ea4372ccc39365b7ec574bf1556ea077720b22f",
+  "provider": "SearXNG",
+  "query": "give an overview of database indexing in data management",
+  "query_id": "v5-p-0115-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:27.544792Z"
+}

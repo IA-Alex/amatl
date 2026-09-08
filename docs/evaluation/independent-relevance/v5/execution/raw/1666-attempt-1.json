@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 318.203,
+  "pair_id": "v5-p-0196",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind heat transfer in mechanical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f361885a52803f32a94d408b3fd4c39c2aaeccce1038c9b09125906a079e6c8d",
+  "provider": "SearXNG",
+  "query": "describe the principle behind heat transfer in mechanical engineering",
+  "query_id": "v5-p-0196-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:14:04.389064Z"
+}

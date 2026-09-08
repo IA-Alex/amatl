@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 332.404,
+  "pair_id": "v5-p-0285",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is binary search in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "Research, and the industrial partners of the Stanford Digital Libraries Project. References Best of the Web 1994 -- Navigators http://botw.org/1994/awards/navigators.html Bill Cli",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "infolab.stanford.edu",
+          "/~backrub/google.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Anatomy of a Search Engine",
+        "url": "http://infolab.stanford.edu/~backrub/google.html"
+      },
+      {
+        "category": "general",
+        "content": "device resembling an industrial robot which would be capable of holding and positioning reactive compounds in order to control the precise location at which chemical reactions tak",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "security cameras and industrial control systems, i.e., certain proprietary embedded-Linux devices crafted, sold, and marketed in a way that misses essentially all of the benefits",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "linuxmafia.com",
+          "/~rick/faq/",
+          "",
+          "",
+          "willbethere"
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "But That&#39;s Just My Opinion. I Could Be Wrong.",
+        "url": "http://linuxmafia.com/~rick/faq/#willbethere"
+      },
+      {
+        "category": "general",
+        "content": "computing system for industrial, commercial and scientific applications. One of the main features of the 9831A is its programming language, the powerful BASIC (Beginner&#39;s All-purp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.hp9831.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HP 9831A",
+        "url": "http://www.hp9831.com/"
+      },
+      {
+        "category": "general",
+        "content": "try starting with an industrial language, but the sheer size of a typical industrial language and library make it hard to discover and apply the ideas that make the language worth",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cs.tufts.edu",
+          "/~nr/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Norman Ramsey",
+        "url": "https://www.cs.tufts.edu/~nr/"
+      },
+      {
+        "category": "general",
+        "content": "Corsha, Anusha Iyer on Industrial Tech: Women in Tech Washington DC Episode 737 • 47:29 • Jun 1, 2026 From Engineer to VP of R&amp;D at NI: Priya Ramachandran on Innovation, AI, a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "castro.fm",
+          "/podcast/fe906303-b128-429f-b23a-f8c53dd76e62",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Women in Tech Podcast, hosted by Espree Devora",
+        "url": "https://castro.fm/podcast/fe906303-b128-429f-b23a-f8c53dd76e62"
+      },
+      {
+        "category": "general",
+        "content": "me that is a mix of industrial infrastructure and nature preserve. Read more… Published 13 / 12 / 2020 SSB Log Entry 1234 This article about the Macintosh Quadra 700 looks to be a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tilde.town",
+          "/~netscape_navigator/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Netscape Blog",
+        "url": "http://tilde.town/~netscape_navigator/"
+      },
+      {
+        "category": "general",
+        "content": "to reduce reliance on industrial resource consumption. I’m no anarcho-primitivist, but I like the idea of being able to do the “same thing with less”. IndieMark Bookmarked 2022-03",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "seirdy.one",
+          "/bookmarks/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "My bookmarks - Seirdy",
+        "url": "https://seirdy.one/bookmarks/"
+      },
+      {
+        "category": "general",
+        "content": "is a fieldbus, an industrial computer networking protocol. Modbus RTU (Remote Terminal Unit) is the most common implementation for Modbus either as a 2-wire half-duplex over RS-48",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.iwriteiam.nl",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "I write, therefore I am",
+        "url": "http://www.iwriteiam.nl/"
+      },
+      {
+        "category": "general",
+        "content": "wave ended with the Industrial Revolution, the second will end with automation. Hotz shows a graph of employment in agriculture over time, which fell from 90% to 2% of the populat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "vehicle intended for industrial users (Windows NT) which was no more beautiful than the station wagon, and only a little more reliable. Since then there has been a lot of noise an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "garote.bdmonkeys.net",
+          "/commandline/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Command Line In 2004",
+        "url": "https://garote.bdmonkeys.net/commandline/"
+      },
+      {
+        "category": "general",
+        "content": "security cameras and industrial control systems, i.e., certain proprietary embedded-Linux devices crafted, sold, and marketed in a way that misses essentially all of the benefits",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "linuxmafia.com",
+          "/~rick/faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "But That&#39;s Just My Opinion. I Could Be Wrong.",
+        "url": "http://linuxmafia.com/~rick/faq/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "650f58a32a5a2aeff1ba1e348f6b295cd1946c1e52db547bf0cc933aa6e05476",
+  "provider": "SearXNG",
+  "query": "what is binary search in industrial design",
+  "query_id": "v5-p-0285-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:00.244720Z"
+}

@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 350.031,
+  "pair_id": "v5-p-0655",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes traffic flow in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "of Theranos&#39; senior management. By the end of 2009, the company had burned through the US$ 47 million raised in its first three rounds of funding and, without a viable product or",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/archives/Monthly/2018/2018-07.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason: July 2018 Archives",
+        "url": "https://www.fourmilab.ch/fourmilog/archives/Monthly/2018/2018-07.html"
+      },
+      {
+        "category": "general",
+        "content": "Posts&#34; display) and management of your &#34;ignored posters&#34; list. Note carefully that there are several options you can choose to enable or disable under the Control Panel ; of parti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tickerforum.org",
+          "/faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Market Ticker Frequently Asked Questions",
+        "url": "http://tickerforum.org/faq.html"
+      },
+      {
+        "category": "general",
+        "content": "the internal objectives management tool. Lots of misc. admin, status reporting, bug tweaking and other paperwork. 2008-11-13: Thursday. Poked at mail, and bugs. Is it a co-inciden",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2008/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2008/"
+      },
+      {
+        "category": "general",
+        "content": "Adobe CM R Adobe Color Management APP14 - Adobe R/W/C Adobe DCT filter APP15 - GraphicConverter R GraphicConverter quality COM R/W/C JPEG Comment (multi-segment) DQT R (used to ca",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "exiftool.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ExifTool by Phil Harvey",
+        "url": "https://exiftool.org/"
+      },
+      {
+        "category": "general",
+        "content": "thankfully). Monthly management meeting. 2021-11-15 Monday Planning call, lunch with Isaac, call with an old acquaintance. Out for a run with J. 2021-11-14 Sunday All Saints; reme",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2021/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2021/"
+      },
+      {
+        "category": "general",
+        "content": "management style on what had already been an excellent enterprise, and in doing so he destroyed it to the tune of many tens of billions of dollars worth of value. The strength of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zen-tools.net",
+          "/complex-systems.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Understanding Complex Systems Thinking - It&#39;s Not Complicated",
+        "url": "https://www.zen-tools.net/complex-systems.html"
+      },
+      {
+        "category": "general",
+        "content": "Packard&#39;s Account Management Support, Response Center Support, Software Materials Subscription, and Software Notification Service. &#34;Not all SRs submitted to HP are listed in the S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "web.mit.edu",
+          "/kolya/www/csa-faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Apollo FAQ",
+        "url": "https://web.mit.edu/kolya/www/csa-faq.html"
+      },
+      {
+        "category": "general",
+        "content": "Menu 13.4. Account Management 13.5. Alternative Key and Keyring Strategies 7. Security Considerations 1. Passwords 2. Temporary Files 3. Information Leaks 3.1. mailto: -style Link",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mutt.org",
+          "/doc/manual/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Mutt E-Mail Client",
+        "url": "http://www.mutt.org/doc/manual/"
+      },
+      {
+        "category": "general",
+        "content": "naturally, hired management, so that managerial decisions wouldn&#39;t take up the time of the workers and could be made by experts. But then some of the workers seemed to think that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/marx.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Marxist-Leninist Theory of History",
+        "url": "https://friesian.com/marx.htm"
+      },
+      {
+        "category": "general",
+        "content": "passengers&#39; safety, and management retaliated against him . One flaw is that 25% of the oxygen masks don&#39;t provide oxygen work when activated. Another flaw can cause fires, years",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-sep-dec.html"
+      },
+      {
+        "category": "general",
+        "content": "journalism, the nascent management team panicked and decided that Gerstmann was unreliable . There&#39;s one big thorn into the manipulators&#39; sides, and that is user reviews . Clearly",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/capitalismcancer.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How money and the profit motive destroy everything",
+        "url": "http://digdeeper.love/articles/capitalismcancer.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "of delirium, then management directed primarily at securing deep and restorative sleep would be expected to produce significant clinical improvement. The clinical benefit of neuro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/bgcharlton/delusions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theory of Mind Delusions and Bizarre Delusions in an Evolutionary Perspective",
+        "url": "https://www.hedweb.com/bgcharlton/delusions.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "441164f22b692404417dea5309059d175443402e64ab49b88b67c858a2afad6f",
+  "provider": "SearXNG",
+  "query": "what causes traffic flow in data management",
+  "query_id": "v5-p-0655-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:15.117416Z"
+}

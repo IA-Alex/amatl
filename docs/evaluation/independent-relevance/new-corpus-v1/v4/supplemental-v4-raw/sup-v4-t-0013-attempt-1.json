@@ -1,0 +1,135 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 271.1372699995991,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is acid base reactions in computer networks",
+    "results": [
+      {
+        "category": "general",
+        "content": "&amp; Super-human Reactions on Motorway - TV frequency to blame? No hint of pilot&#39;s mid-air meltdown, says JetBlue Date: Wed, 28 Mar 2012 15:51:15 -0500 Posted on this website Apr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "and body are autonomic reactions to certain natural sounds that trigger powerful responses. These sounds can be looked upon as analogs to the visual archetypes or collectively rec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greatdreams.com",
+          "/war/rule_2002.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RULE 2002",
+        "url": "http://www.greatdreams.com/war/rule_2002.htm"
+      },
+      {
+        "category": "general",
+        "content": "of LSD and record their reactions; the patients were drugged into weeks of sleep and then given electric shock treatments. One victim, the wife of a member of the Canadian Parliam",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "thirdworldtraveler.com",
+          "/New_World_Order/Tavistock_Institute.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Tavistock Institute - the best kept secret in America Dr. Byron T. Weeks, MD, Col. AFUS, MC, Ret.",
+        "url": "https://thirdworldtraveler.com/New_World_Order/Tavistock_Institute.html"
+      },
+      {
+        "category": "general",
+        "content": "don&#39;t understand reactions in the Sun&#39;s core solar eclipses solar eclipses/and their prediction solar eclipses influence of Moon on life /new theory for the Moon&#39;s formation Moon",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0013",
+  "query_text": "what is acid base reactions in computer networks",
+  "requested_at": "2026-09-03T01:42:38.581862Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 292.484,
+  "pair_id": "v5-p-0160",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does immune response in mechanical engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "Fishes in action. ECO/ Engineering Change Orders - technician-installable hardware changes to solve problems with Devil Fishes which we discovered after shipping the machines to t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.firstpr.com.au",
+          "/rwi/dfish/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Devil Fish mods for the TB-303",
+        "url": "https://www.firstpr.com.au/rwi/dfish/"
+      },
+      {
+        "category": "general",
+        "content": "for applications in engineering &#43; technology and biology &#43; medicine. Structural DNA/RNA nanotechnology currently provides the only fabrication pipeline for truly programmable mole",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lucacardelli.name",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://lucacardelli.name/",
+        "url": "http://lucacardelli.name/"
+      },
+      {
+        "category": "general",
+        "content": "labs, in scientific and engineering research and production facilities, in use and in the storage of neon sign shops, inside commercial flowing gas CO2 lasers, in (bad) Sci-Fi mov",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.repairfaq.org",
+          "/sam/lasercva.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sam&#39;s Laser FAQ - Vacuum Technology for Home-Built Gas Lasers",
+        "url": "http://www.repairfaq.org/sam/lasercva.htm"
+      },
+      {
+        "category": "general",
+        "content": "The alien cantina 1242. Engineering happiness 1241. Countering Gandhi 1240. The stronger model 1239. A few sounds 1238. When Spinoza and Leibniz met 1237. A new stage of ugliness",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "orgyofthewill.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Orgy of the Will: A Philosophy of the Future",
+        "url": "http://orgyofthewill.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ce37dc680c22df3dcfcc30856ae9b0bcffa61526735138e3b5ecb59d9fe6344c",
+  "provider": "SearXNG",
+  "query": "how does immune response in mechanical engineering operate",
+  "query_id": "v5-p-0160-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:18.109476Z"
+}

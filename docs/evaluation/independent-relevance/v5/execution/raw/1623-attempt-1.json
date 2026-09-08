@@ -1,0 +1,219 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 301.97,
+  "pair_id": "v5-p-0951",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes cloud formation in mechanical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "a communicationsu2011engineering approach combining coherent integration, superheterodyne frequency shifting, and iterative phaseu2011demodulation to isolate weak, structured osci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "Genetic Engineering Network http://www.geneticsaction.org.uk/ Gulf War Veterans of the USA http://www.gulfwarvets.com/ Mid Atlantic Anarcho Infoshop http://www.infoshop.org/ Consp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "the capitalists were engineering the situation for their own ends. It is difficult to imagine how a state of unrest and insecurity, to say nothing of a state of war, can ever be t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book60.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Great Boer War, by Arthur Conan Doyle",
+        "url": "https://www.ajhw.co.uk/books/book60.html"
+      },
+      {
+        "category": "general",
+        "content": "and mechanical engineering, mathematics and possibly robotics. After this, get a job working with the technology you hope to harness, build your doomsday machine in your lab, and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "qntm.org",
+          "/destroy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to destroy the Earth @ Things Of Interest",
+        "url": "https://qntm.org/destroy"
+      },
+      {
+        "category": "general",
+        "content": "Lightning Arrester Engineering Section, Westinghouse Electric Corporation). Lightning Protection for Electric Systems . New York, NY: McGraw-Hill Book Company, Inc. Copyright 1954",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.myinsulators.com",
+          "/acw/bookref/overvoltage/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ACW&#39;s Insulator Info - Book Reference Info - Overvoltage and Flashovers",
+        "url": "https://www.myinsulators.com/acw/bookref/overvoltage/"
+      },
+      {
+        "category": "general",
+        "content": "that is collossal over-engineering. And it&#39;s not because he didn&#39;t understand the maths - it&#39;s extremely clear from his writings that he understood fixed-point math perfectly well",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tomforsyth1000.github.io",
+          "/blog.wiki.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "TomF&#39;s Tech Blog - It&#39;s only pretending to be a wiki.",
+        "url": "http://tomforsyth1000.github.io/blog.wiki.html"
+      },
+      {
+        "category": "general",
+        "content": "and the Roman road-engineering can, as symbols, be made uniformly understandable and appreciable. But at once the fact presents itself that as yet there exists no theory-enlighten",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/cache/epub/72344/pg72344-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Decline of the West| Project Gutenberg",
+        "url": "https://www.gutenberg.org/cache/epub/72344/pg72344-images.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3b83a377a2148f8691a550160bd504aa25e96292d578ddfa4cbf515a7bbd8ca0",
+  "provider": "SearXNG",
+  "query": "what causes cloud formation in mechanical engineering",
+  "query_id": "v5-p-0951-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:51.762438Z"
+}

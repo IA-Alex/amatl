@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 364.734,
+  "pair_id": "v5-p-0438",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of supply chain logistics in computer security",
+    "results": [
+      {
+        "category": "general",
+        "content": "Logistics are and always have been the key to success in modern warfare. So there is much about the JMOB that impresses military planners. BWX estimates that a 5-module JMOB would",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/itstimetojointheMOB.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AFPAK Solution #2: Why Can&#39;t The Good Guys Have Secret Bases?",
+        "url": "http://www.combatreform.org/itstimetojointheMOB.htm"
+      },
+      {
+        "category": "general",
+        "content": "Javelin AT gunners. 7. Logistics. Issue: CL IX (spare parts) parts flow throughout the operation was non-existent. Discussion: Throughout the conduct of combat operations, the onl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/mechinfantry.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HEAVY DIVISION: WOE for the 21st CENTURY?",
+        "url": "http://www.combatreform.org/mechinfantry.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fbfd7ac2383fbe8b92ab4a7d80ebc7fc8e82d63606a22e2ffbd7a163fe8728fc",
+  "provider": "SearXNG",
+  "query": "tell me about the function of supply chain logistics in computer security",
+  "query_id": "v5-p-0438-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:07:37.633749Z"
+}

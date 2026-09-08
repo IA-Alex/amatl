@@ -1,0 +1,346 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 955.4499780024344,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is a heat pump",
+    "results": [
+      {
+        "category": "general",
+        "content": "Reactant Storage and Distribution Fuel Cell Power Plants Electrical Power Distribution and Control Overview The EPS consists of three subsystems: power reactant storage and distri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "spaceshuttleguide.com",
+          "/system/electrical.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Space Shuttle Electrical SYSTEMS; See what the Electrical SYSTEMS of the Space Shuttle",
+        "url": "https://spaceshuttleguide.com/system/electrical.htm"
+      },
+      {
+        "category": "general",
+        "content": "playing - you know what I mean. I heard Chubby Checker, he was doing the twist, And the Beatles and the Monkees It goes like this. I put a dime in the drugstore record machine. We",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.louiscandell.com",
+          "/lyrics/s/schoolhouse.rock/words.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The words of ALL the Schoolhouse Rock songs",
+        "url": "http://www.louiscandell.com/lyrics/s/schoolhouse.rock/words.html"
+      },
+      {
+        "category": "general",
+        "content": "What is Happening ? First order of business is this... Below are links to some targeted subjects, whose parts are scattered throughout this report. If one or more of these particu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cascadian.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Hanford Nuclear Report",
+        "url": "https://cascadian.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "points 41 Flashdance...What A Feeling - Irene Cara Casablanca - 1983 - 11.953.000 points 42 I&#39;ll Be Missing You - Puff Daddy &amp; Faith Evans feat. 112 Bad Boy / Arista - 1997 -",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mediatraffic.de",
+          "/alltime-track-chart.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Global Chart - All Time Chart",
+        "url": "http://www.mediatraffic.de/alltime-track-chart.htm"
+      },
+      {
+        "category": "general",
+        "content": "papers, ranked. NEW! What my Enemies will Never Tell You. 17 of the strongest points in my favor. You can use this as a debating tool. Updates NEW PAPER,  added 8/1/26,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "milesmathis.com",
+          "/updates.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "updates",
+        "url": "https://milesmathis.com/updates.html"
+      },
+      {
+        "category": "general",
+        "content": "considers the limits of what medical technology should eventually be able to achieve (based on the currently understood laws of chemistry and physics) and the kinds of damage caus",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "to give what is generally considered to be the first broadcast of entertainment by radio, as part of the ongoing promotion of the new system. One item of interest is that this dem",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.earlyradiohistory.us",
+          "/1907fes.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Experiments and Results in Wireless Telephony (1907)",
+        "url": "http://www.earlyradiohistory.us/1907fes.htm"
+      },
+      {
+        "category": "general",
+        "content": "brutal religious rites. What I want to do here is to dive into the thought, philosophy, and metaphysics of the Aztec world, to see what the foundational principles were behind the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-metaphysics-of-aztec-violence",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Metaphysics of Aztec Violence — Chadnet",
+        "url": "https://wiki.chadnet.org/the-metaphysics-of-aztec-violence"
+      },
+      {
+        "category": "general",
+        "content": "but for Britain. II What follows is a narrative of action, not an account of organisation. It tells of the fall of bombs and of what was done about them by the men and women on th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stephen.shawweb.co.uk",
+          "/civil01.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Front Line 1940-41, UK WW2 document, Part 1",
+        "url": "http://stephen.shawweb.co.uk/civil01.html"
+      },
+      {
+        "category": "general",
+        "content": "government works, and what they are capable of in faking events. NEW PAPER,  added 7/14/26,  The Fake Scream Killers. Idaho, 2006. NEW PAPER,  added 7/10/26,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mileswmathis.com",
+          "/updates.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Updates",
+        "url": "https://mileswmathis.com/updates.html"
+      },
+      {
+        "category": "general",
+        "content": "was killed here, and what had been going on in Washington -- all the officious meetings and the political posturing, all the time and attention devoted to administrative procedure",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cuban-exile.com",
+          "/doc_001-025/doc0019a.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Last Investigation by gaeton Fonzi",
+        "url": "http://cuban-exile.com/doc_001-025/doc0019a.html"
+      },
+      {
+        "category": "general",
+        "content": "how many people know what it means?&#34; Condemned by purists as a cynical marketing ploy, the brand-name &#34;Ecstasy&#34; isn&#39;t wholly misleading [ecstasy: &#34;an overpowering emotion or exalt",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/ecstasy/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utopian Pharmacology. MDMA / Ecstasy and beyond",
+        "url": "https://www.hedweb.com/ecstasy/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-t-002",
+  "query_text": "what is a heat pump",
+  "requested_at": "2026-09-02T22:58:49.016312Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

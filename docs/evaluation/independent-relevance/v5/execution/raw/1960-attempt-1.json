@@ -1,0 +1,354 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 424.786,
+  "pair_id": "v5-p-0474",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of encryption keys in computer security",
+    "results": [
+      {
+        "category": "general",
+        "content": "Free Cultural Works Encryption and Privacy Schneier on Security Window Managers StumpWM File Managers ROX Filer Midnight Commander Latest pages The LLM Freedom Manifesto: Open-Wei",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "plaintext, signing or encryption are turned off. sign - This will enable integrity checking. encrypt - This will enable integrity checks and force encryption for privacy. Default:",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.samba.org",
+          "/samba/docs/current/man-html/smb.conf.5.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "smb.conf",
+        "url": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+      },
+      {
+        "category": "general",
+        "content": "using only short encryption keys. Does anyone see why? Right: first use the PRG to stretch a short encryption key to a long one -- as long as the plaintext message itself. Then pr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scottaaronson.com",
+          "/democritus/lec8.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHYS771 Lecture 8: Crypto",
+        "url": "https://www.scottaaronson.com/democritus/lec8.html"
+      },
+      {
+        "category": "general",
+        "content": "World Alliance Send Encryption Keys Directly To End-User Computer Systems Without Monitor Proxies Which Add A Risky 3rd Wheel To All Transmissions. E-Mails Send New Encryption Key",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteList.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/FWAsiteList.html"
+      },
+      {
+        "category": "general",
+        "content": "authentication and encryption using the Kerberos 4, Kerberos 5, SSL/TLS, and SRP security methods. On selected platforms, other networking methods such as X.25 are also supported.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kermitproject.org",
+          "/ckfaq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C-Kermit Frequently Asked Questions",
+        "url": "https://www.kermitproject.org/ckfaq.html"
+      },
+      {
+        "category": "general",
+        "content": "Waters (Attribute-Based Encryption), Carl Gunter (Attribute-Based Messaging), and Chris Peikert (Lattice-Based Cryptography). In the early 2000s, DARPA funded thirteen projects un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "country. It&#39;s not an encryption system, it&#39;s just one byte of information on the disc that the player checks. Some studios originally announced that only their new releases would",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "demystified.info",
+          "/dvdfaq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DVD FAQ",
+        "url": "https://demystified.info/dvdfaq.html"
+      },
+      {
+        "category": "general",
+        "content": "Public Key Encryption. 2023 ACM SIGSAC Conference on Computer and Communications Security, CCS&#39;23 , ACM (2023), pp 1108–11227. Date: 2022-08-12 [ pdf ] [ bibtex ] [ more ] J",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cryptojedi.org",
+          "/peter/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Schwabe",
+        "url": "https://cryptojedi.org/peter/"
+      },
+      {
+        "category": "general",
+        "content": "it checks whether the encryption stuff is still valid and secure. According to the intertubes , SEC_ERROR_OCSP_FUTURE_RESPONSE” generally indicates that the computer’s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.electricmonk.nl",
+          "/log/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Electricmonk.nl weblog",
+        "url": "https://www.electricmonk.nl/log/"
+      },
+      {
+        "category": "general",
+        "content": "your guarantee that the encryption you put on your data at the client end is the same encryption taken off the data at the server end; it&#39;s your guarantee that it hasn&#39;t been remo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chiark.greenend.org.uk",
+          "/~sgtatham/putty/faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PuTTY FAQ",
+        "url": "https://www.chiark.greenend.org.uk/~sgtatham/putty/faq.html"
+      },
+      {
+        "category": "general",
+        "content": "log-on and file encryption. Who needs flying cars? Lifeview LifeTV - A spiffy looking USB TV tuner for PC and Mac - but is it any good? Mini MP3 player comparison - Creative&#39;s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dansdata.com",
+          "/altindex.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dan&#39;s Data - Full Index",
+        "url": "http://www.dansdata.com/altindex.html"
+      },
+      {
+        "category": "general",
+        "content": "to the plaintext before encryption to make the cryptanalysts job more difficult. So the question of whether or not we can revive a person who has been frozen can be transformed in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/cryptoCryo.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cryonics and Cryptography",
+        "url": "http://www.ralphmerkle.com/cryo/cryptoCryo.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "16a8c5b872afb5d015af147f17ecbb127dbea25d95e338ebbbb13007631c8eca",
+  "provider": "SearXNG",
+  "query": "tell me about the function of encryption keys in computer security",
+  "query_id": "v5-p-0474-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:42.877147Z"
+}

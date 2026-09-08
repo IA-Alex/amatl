@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 308.559,
+  "pair_id": "v5-p-0108",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind ocean tides in transportation engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "57bb56b92ed560051b12de4388fa07b0feb2ec519789f48c752095579a63d67e",
+  "provider": "SearXNG",
+  "query": "describe the principle behind ocean tides in transportation engineering",
+  "query_id": "v5-p-0108-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:58.559551Z"
+}

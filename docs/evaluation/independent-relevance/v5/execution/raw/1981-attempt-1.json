@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 250.405,
+  "pair_id": "v5-p-0297",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is water purification in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "Sanitation: Water purification methods, sanitation practices, and rainwater harvesting techniques. Education: Teaching materials, curriculum development, and non-formal",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cd3wdproject.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CD3WD Project",
+        "url": "https://www.cd3wdproject.org/"
+      },
+      {
+        "category": "general",
+        "content": "bulletin to do with the purification rundown and it started off saying that World War III is just around the corner. From Corfu, we went to Cagliari in Sicily. We needed fuel and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cs.cmu.edu",
+          "/~dst/Library/Shelf/bfm/interviews/urquhart.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Interview with Ken Urquhart",
+        "url": "http://www.cs.cmu.edu/~dst/Library/Shelf/bfm/interviews/urquhart.htm"
+      },
+      {
+        "category": "general",
+        "content": "spiritual and physical purification. Vedic texts, in fact, describe transcending sound as the pre-eminent means for attaining higher, spiritual consciousness. In the West, the fir",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ancient-wisdom.com",
+          "/healingwithsound.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Healing With Sound.",
+        "url": "http://www.ancient-wisdom.com/healingwithsound.htm"
+      },
+      {
+        "category": "general",
+        "content": "systems, water purification systems, and vast supplies of guns and ammunition. So gigantic are some of these facilities, that full sized U.S. Navy guided missile cruisers, destroy",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.heartcom.org",
+          "/200under.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "200 underground cities",
+        "url": "https://www.heartcom.org/200under.htm"
+      },
+      {
+        "category": "general",
+        "content": "TREATMENT. Hubbard&#39;s purification treatments are the mainstay of Narconon, a Scientology-run chain of 33 alcohol and drug rehabilitation centers -- some in prisons under the name",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cs.cmu.edu",
+          "/~dst/Fishman/time-behar.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scientology: The Thriving Cult of Greed and Power",
+        "url": "http://www.cs.cmu.edu/~dst/Fishman/time-behar.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "13688a3742fe691ca32ee7e714ff90eeed294baf274c66c71e6393809b5edabd",
+  "provider": "SearXNG",
+  "query": "what is water purification in electrical engineering",
+  "query_id": "v5-p-0297-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:49.188043Z"
+}

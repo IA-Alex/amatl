@@ -486,7 +486,304 @@ pub struct SearchResult {
     pub status: ResultStatus,
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+/// STEP 2 — COMPLEMENTARITY CONTRACT.
+///
+/// Objective, structural measurement of what the PRIMARY role found, what the
+/// EXPANSION role found, what overlapped, and what was exclusive to each. It is
+/// derived entirely from post-dedupe provenance (`DeduplicatedResult.providers`
+/// / `duplicate_status`) plus the router's [`crate::RoleAssignment`]; provider
+/// names are never hardcoded here.
+///
+/// # These numbers are NOT a relevance signal
+///
+/// A result counted in `unique_expansion` is only VALID + CANONICALIZABLE +
+/// structurally UNIQUE. The Wiby evidence showed that a valid canonical URL on a
+/// unique domain that is exclusive to one provider still need not be useful.
+/// `UNIQUE_EXPANSION != UNIQUE_RELEVANT_EXPANSION`. Relevance lives in the
+/// separate, deliberately unpopulated [`RelevanceMetrics`] layer. Nothing in
+/// this struct may feed adaptive routing in STEP 2.
+///
+/// # PROVENANCE vs COMPLEMENTARITY vs RELEVANCE
+///
+/// * PROVENANCE — which role produced a result (STEP 1, already in the trace).
+/// * COMPLEMENTARITY — this struct: overlap / exclusivity arithmetic.
+/// * RELEVANCE — [`RelevanceMetrics`], not implemented.
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Default)]
+pub struct ComplementarityMetrics {
+    pub schema_version: String,
+
+    /// `|PRIMARY_RESULT_SET|` — post-dedupe results where a PRIMARY-role
+    /// provider appears in `providers`.
+    pub found_primary: u32,
+    /// `|EXPANSION_RESULT_SET|` — post-dedupe results where an EXPANSION-role
+    /// provider appears in `providers`.
+    pub found_expansion: u32,
+
+    /// Results where a PRIMARY-role provider AND an EXPANSION-role provider both
+    /// appear in `providers` — i.e. the shared identity was established by the
+    /// confirmed dedupe / canonicalization mechanism (exact original or
+    /// canonical URL match). This is the only overlap the contract treats as
+    /// certain.
+    pub overlap_confirmed: u32,
+    /// Distinct results (one PRIMARY-only, one EXPANSION-only) linked by
+    /// `possible_duplicate_with` under the current `DuplicateStatus` semantics
+    /// (title-similarity across hosts). NOT added to `overlap_confirmed`: a
+    /// possible duplicate is explicitly not a confirmed one. Kept separate so a
+    /// consumer never conflates the two.
+    pub overlap_possible: u32,
+
+    /// PRIMARY results not in the confirmed overlap with EXPANSION.
+    /// `found_primary == overlap_confirmed + unique_primary`.
+    pub unique_primary: u32,
+    /// EXPANSION results not in the confirmed overlap with PRIMARY.
+    /// `found_expansion == overlap_confirmed + unique_expansion`.
+    pub unique_expansion: u32,
+
+    /// Count of distinct hosts that appear only on PRIMARY-exclusive results.
+    pub primary_unique_domains: u32,
+    /// Count of distinct hosts that appear only on EXPANSION-exclusive results.
+    pub expansion_unique_domains: u32,
+    /// Count of distinct hosts across the whole post-dedupe result set.
+    pub final_unique_domains: u32,
+    /// `hosts(EXPANSION) \ hosts(PRIMARY)` — hosts EXPANSION contributed that no
+    /// PRIMARY result carried. Raw coverage gain, NOT "useful domain gain".
+    pub expansion_new_domains: u32,
+
+    /// `OVERLAP_CONFIRMED / max(1, FOUND_EXPANSION)`. `None` when no EXPANSION
+    /// provider ran this search (no denominator to speak of); `0.0` when
+    /// EXPANSION ran but returned nothing. Never NaN.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expansion_overlap_ratio: Option<f64>,
+    /// `UNIQUE_EXPANSION / max(1, FOUND_EXPANSION)`. `None` / `0.0` semantics as
+    /// above. This is a structural exclusivity ratio, not a noise or utility
+    /// rate.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expansion_unique_ratio: Option<f64>,
+
+    /// The relevance layer. Always `not_implemented` in STEP 2; present so the
+    /// shape is stable and consumers can see, in the payload itself, that no
+    /// relevance judgement has been made.
+    pub relevance: RelevanceMetrics,
+}
+
+/// STEP 2E — RELEVANCE FRONTIER (first deterministic signal).
+///
+/// This layer answers a question the complementarity contract deliberately
+/// does not: is a structurally valid / unique result *probably relevant to the
+/// query*? The first implementation is intentionally small — a deterministic,
+/// local, explainable lexical-overlap heuristic (see [`crate::relevance`]). It
+/// never calls an LLM, an embedding service, or any remote API, and it is
+/// computed *after* dedupe + roles but *independently of the final ranking*, so
+/// there is no RELEVANCE → RANKING → RELEVANCE circuit.
+///
+/// `status` is `NotImplemented` until [`crate::relevance::assess_relevance`]
+/// populates this struct, then `Assessed`.
+///
+/// It must remain impossible to reach `unique_relevant_expansion` by reading
+/// `ComplementarityMetrics::unique_expansion`: they are different fields, in
+/// different structs. `unique_expansion` (the raw structural count) is
+/// preserved untouched; `unique_relevant_expansion` is a strictly smaller-or-
+/// equal subset.
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
+pub struct RelevanceMetrics {
+    pub status: RelevanceAssessmentStatus,
+
+    /// PRIMARY-role results with assessment `Relevant`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub relevant_primary: Option<u32>,
+    /// EXPANSION-role results with assessment `Relevant`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub relevant_expansion: Option<u32>,
+
+    /// PRIMARY-exclusive (no confirmed overlap) results with assessment
+    /// `Relevant`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub unique_relevant_primary: Option<u32>,
+    /// EXPANSION-exclusive (no confirmed overlap) results with assessment
+    /// `Relevant`. Strictly a subset of `ComplementarityMetrics::unique_expansion`;
+    /// never substitute one for the other.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub unique_relevant_expansion: Option<u32>,
+
+    /// PRIMARY / EXPANSION results assessed `PossiblyRelevant`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub possibly_relevant_primary: Option<u32>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub possibly_relevant_expansion: Option<u32>,
+
+    /// PRIMARY / EXPANSION results assessed `NotRelevant`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub not_relevant_primary: Option<u32>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub not_relevant_expansion: Option<u32>,
+
+    /// PRIMARY / EXPANSION results assessed `Unknown` or `InsufficientEvidence`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub unknown_primary: Option<u32>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub unknown_expansion: Option<u32>,
+
+    /// `relevant_expansion / max(1, FOUND_EXPANSION)`. Structural denominator,
+    /// reported for observation only.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expansion_relevant_ratio: Option<f64>,
+
+    /// `unique_relevant_expansion / max(1, UNIQUE_EXPANSION_RAW)` — how much of
+    /// the raw unique-expansion gain survives the relevance filter.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub raw_to_relevant_expansion_ratio: Option<f64>,
+
+    /// EXPANSION-exclusive confirmed noise rate:
+    /// `not_relevant / max(1, relevant + not_relevant)` over EXPANSION-exclusive
+    /// results. `PossiblyRelevant` / `Unknown` / `InsufficientEvidence` are
+    /// deliberately outside the denominator — an inconclusive result is not
+    /// noise. Never `1 - relevant`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expansion_confirmed_noise_rate: Option<f64>,
+
+    /// Legacy field name kept for payload stability. Mirrors
+    /// `expansion_confirmed_noise_rate`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expansion_noise_rate: Option<f64>,
+}
+
+impl Default for RelevanceMetrics {
+    fn default() -> Self {
+        Self {
+            status: RelevanceAssessmentStatus::NotImplemented,
+            relevant_primary: None,
+            relevant_expansion: None,
+            unique_relevant_primary: None,
+            unique_relevant_expansion: None,
+            possibly_relevant_primary: None,
+            possibly_relevant_expansion: None,
+            not_relevant_primary: None,
+            not_relevant_expansion: None,
+            unknown_primary: None,
+            unknown_expansion: None,
+            expansion_relevant_ratio: None,
+            raw_to_relevant_expansion_ratio: None,
+            expansion_confirmed_noise_rate: None,
+            expansion_noise_rate: None,
+        }
+    }
+}
+
+#[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq, Eq, Default)]
+#[serde(rename_all = "snake_case")]
+pub enum RelevanceAssessmentStatus {
+    /// No relevance signal was computed for this payload.
+    #[default]
+    NotImplemented,
+    /// The deterministic relevance heuristic ran and populated the metrics.
+    Assessed,
+    /// The heuristic ran but too few results carried enough text to judge for
+    /// the aggregate to be meaningful. Individual counts are still present.
+    InsufficientEvidence,
+}
+
+/// STEP 2E — per-result deterministic relevance assessment.
+///
+/// Every component that fed the decision is kept explicit and auditable; the
+/// `classification` is a pure function of the other fields plus the
+/// [`crate::relevance::RelevanceThresholds`] in force. No single opaque float.
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
+pub struct ResultRelevanceAssessment {
+    /// Fraction of significant query terms present in the title (`0.0` when no
+    /// title text is available).
+    pub title_term_coverage: f64,
+    /// Fraction of significant query terms present in the snippet (`0.0` when no
+    /// snippet text is available).
+    pub snippet_term_coverage: f64,
+    /// Fraction of significant query terms present in host + path tokens.
+    pub url_term_coverage: f64,
+    /// A quoted phrase from the query occurred literally in title or snippet.
+    pub exact_phrase_match: bool,
+    /// Distinct significant query terms matched anywhere in title/snippet/url.
+    pub matched_query_terms: u32,
+    /// Total significant query terms considered.
+    pub query_terms_total: u32,
+    /// `true` when the result carried enough text (title or snippet) to judge.
+    pub had_sufficient_text: bool,
+    /// Secondary signal only: `Some(true)` when the provider's own rank for this
+    /// result was 1. Never on its own promotes a result to `Relevant`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub provider_rank_is_top: Option<bool>,
+    pub classification: RelevanceClassification,
+
+    // ---- STEP 3B — BOUNDED SEMANTIC RELEVANCE (additive, all optional) ----
+    /// Query terms that matched a result term only after light morphological
+    /// normalization (stemming). Empty / omitted for the pure lexical path.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub stemmed_term_matches: Vec<String>,
+    /// Canonical concept labels evidenced by BOTH the query and the result via
+    /// the versioned alias map.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub alias_matches: Vec<String>,
+    /// Detected query-intent tag (`factual_capital`, `documentation`, …).
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub query_intent: Option<String>,
+    /// Content terms of the intent subject, when an intent was detected.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub subject_terms: Vec<String>,
+    /// The intent subject is adequately present in title or snippet.
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub subject_match: bool,
+    /// For entity intents: the queried entity is textually supported.
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub entity_match: bool,
+    /// Itemised negative relevance evidence.
+    #[serde(default, skip_serializing_if = "NegativeRelevanceEvidence::is_empty")]
+    pub negative_evidence: NegativeRelevanceEvidence,
+}
+
+fn is_false(b: &bool) -> bool {
+    !*b
+}
+
+/// STEP 3B — explicit, itemised negative relevance evidence. Never a single
+/// opaque penalty; each field names one unsafe-to-promote condition.
+#[derive(Clone, Copy, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
+pub struct NegativeRelevanceEvidence {
+    /// Query subject terms absent while a different named subject dominates.
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub subject_mismatch: bool,
+    /// A competing entity of the same kind dominates (another "capital", author).
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub entity_mismatch: bool,
+    /// The only overlap was generic / incidental (URL path, one common word).
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub weak_generic_match: bool,
+    /// Query and result name different products within the same family.
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub alias_conflict: bool,
+}
+
+impl NegativeRelevanceEvidence {
+    pub fn is_empty(&self) -> bool {
+        !self.subject_mismatch
+            && !self.entity_mismatch
+            && !self.weak_generic_match
+            && !self.alias_conflict
+    }
+}
+
+#[derive(Clone, Copy, Debug, Serialize, Deserialize, PartialEq, Eq, Default)]
+#[serde(rename_all = "snake_case")]
+pub enum RelevanceClassification {
+    /// Strong deterministic textual evidence the result matches the query.
+    Relevant,
+    /// Partial, non-trivial textual overlap.
+    PossiblyRelevant,
+    /// Enough text to judge, and essentially no relation to the query.
+    NotRelevant,
+    /// Not enough text (empty/again generic title, no snippet) to judge either
+    /// way. Never treated as noise.
+    #[default]
+    Unknown,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 pub struct SearchResponse {
     pub schema_version: String,
     pub query: String,
@@ -498,6 +795,20 @@ pub struct SearchResponse {
     pub errors: Vec<CompositeError>,
     pub degradations: Vec<Degradation>,
     pub elapsed_ms: u64,
+    /// STEP 2 — objective provider complementarity measurement. `None` in
+    /// legacy routing mode (no PRIMARY/EXPANSION roles to compare). Additive:
+    /// omitted from JSON when absent, existing consumers are unaffected.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub complementarity: Option<ComplementarityMetrics>,
+    /// Total number of results before pagination (server-side count).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub total_results: Option<u64>,
+    /// Current page number (0-based) when pagination is active.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub page: Option<u32>,
+    /// Number of results per page when pagination is active.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub page_size: Option<u32>,
 }
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]

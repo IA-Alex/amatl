@@ -1,0 +1,225 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 393,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 329.074,
+  "pair_id": "candidate-p-1371",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains hydrogen storage within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "inserted its genetic information into the host cell, proteins and enzymes are created to help it mature and develop. The progress of the virus can be mapped by the spread of tiny",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.isegoria.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Isegoria",
+        "url": "http://www.isegoria.net/"
+      },
+      {
+        "category": "general",
+        "content": "Often the necessary information can be obtained from publications which usually represent the work done by graduate students for advanced degrees. At other times we must make our",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/49288/49288-h/49288-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dinosaur Quarry, Dinosaur National Monument, Colorado, Utah, by John M. Good, Theodore E. White and Gilbert F. Stucker",
+        "url": "https://www.gutenberg.org/files/49288/49288-h/49288-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "of design 14  -  Information 17  -  Here is a prominent atheist who did 17  -  Evolution 18  -  Mutations 21  -  Eyes 21  -  Other examples 22  -  Natural selection 24  -  Human E",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.finetuneduniverse.com",
+          "/evolutionisareligion.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Evolution Is A Religion",
+        "url": "http://www.finetuneduniverse.com/evolutionisareligion.html"
+      },
+      {
+        "category": "general",
+        "content": "I take seriously the information in Slavonic-Aryan Vedas that the duration of the year before the flood was 360 days? What about Norman theory of Schlozer, Miller and Bayer? Is no",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "antimatrix.org",
+          "/Convert/Books/Sall/Questions_and_Answers_En.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dr. Sall - Secret Knowledge, and Science: from prehistoric civilizations to our days",
+        "url": "http://antimatrix.org/Convert/Books/Sall/Questions_and_Answers_En.html"
+      },
+      {
+        "category": "general",
+        "content": "on foreign intelligence information, which is a giant loophole that lets cops do whatever they want as long and they claim it’s related to national security (and we all know how t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-sep-dec.html"
+      },
+      {
+        "category": "general",
+        "content": "1977, p.4 This field of Information, the subject of this study, is what Ajit Mookerjee terms &#34;VISUAL METAPHYSICS&#34;. In the most profound sense, the phenomena that we coll",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.luxlapis.co.za",
+          "/yan/main.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "main text",
+        "url": "http://www.luxlapis.co.za/yan/main.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b7afa1c63d736790a72bbdf42d115a85e8e6562b1e320fcb978d106fe3984d33",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains hydrogen storage within information science",
+  "query_id": "candidate-t-1371",
+  "raw_result_count": 6,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.isegoria.net/",
+      "original_url": "http://www.isegoria.net/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "inserted its genetic information into the host cell, proteins and enzymes are created to help it mature and develop. The progress of the virus can be mapped by the spread of tiny",
+      "title": "Isegoria"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.gutenberg.org/files/49288/49288-h/49288-h.htm",
+      "original_url": "https://www.gutenberg.org/files/49288/49288-h/49288-h.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Often the necessary information can be obtained from publications which usually represent the work done by graduate students for advanced degrees. At other times we must make our",
+      "title": "The Dinosaur Quarry, Dinosaur National Monument, Colorado, Utah, by John M. Good, Theodore E. White and Gilbert F. Stucker"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.finetuneduniverse.com/evolutionisareligion.html",
+      "original_url": "http://www.finetuneduniverse.com/evolutionisareligion.html",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "of design 14  -  Information 17  -  Here is a prominent atheist who did 17  -  Evolution 18  -  Mutations 21  -  Eyes 21  -  Other examples 22  -  Natural selection 24  -  Human E",
+      "title": "Evolution Is A Religion"
+    }
+  ],
+  "timestamp": "2026-09-05T17:22:32.166186Z"
+}

@@ -1,0 +1,135 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 364.39843599509913,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of gear trains in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "voltage. The received engineering wisdom is that it is meaningless to measure the unloaded voltage to determine the remaining battery capacity. Most discharge-graphs in battery sp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "jepspectro.com",
+          "/htm/folding-ebike.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SmartMotion e20 Folding Electric Bike",
+        "url": "http://jepspectro.com/htm/folding-ebike.htm"
+      },
+      {
+        "category": "general",
+        "content": "piece of mechanical engineering. Although Paul did not initially realise its full significance, it was the spark that set the ball rolling for the Julius Tote&#39;s engineering recogn",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tote-history-atl.net.au",
+          "/george_julius_genealogy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "George Julius Genealogy",
+        "url": "http://tote-history-atl.net.au/george_julius_genealogy.htm"
+      },
+      {
+        "category": "general",
+        "content": "on their demonstrated engineering ability). Hopefully your investigative efforts will bear positive fruit out into the future. Regards, Benjamin Fulford     This is a ma",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_uranium64.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Did The Dimona Dozen Murder The Fukushima 50? - 3/11 Was Japan&#39;s 9/11",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_uranium64.htm"
+      },
+      {
+        "category": "general",
+        "content": "has solved most of the engineering problems. &#34; It is a proven commercial technology ,&#34; says Wright. The big challenge will be connecting them. And, once assembled there will be th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/itstimetojointheMOB.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AFPAK Solution #2: Why Can&#39;t The Good Guys Have Secret Bases?",
+        "url": "http://www.combatreform.org/itstimetojointheMOB.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0082",
+  "query_text": "tell me about the function of gear trains in electrical engineering",
+  "requested_at": "2026-09-03T01:44:45.937692Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

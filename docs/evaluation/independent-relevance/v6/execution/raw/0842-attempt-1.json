@@ -1,0 +1,144 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 842,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 286.966,
+  "pair_id": "candidate-p-2175",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of thermal energy storage within education",
+    "results": [
+      {
+        "category": "general",
+        "content": "some theoretical explanation. Unfortunately the interpretation of results within the framework of the conventional physical theory cannot explain all the observed phenomena and fi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.rexresearch.com",
+          "/roschin/roschin.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Roschin &amp; Godin: Magneto-Gravity Effects; Verification of the Searl Effect",
+        "url": "http://www.rexresearch.com/roschin/roschin.htm"
+      },
+      {
+        "category": "general",
+        "content": "most straightforward explanation for this phenomenon is that much of the warming is caused by solar insolation, but there may well be several supplementary reasons, such as change",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meteo.lcd.lu",
+          "/globalwarming/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Warming Sceptic",
+        "url": "https://meteo.lcd.lu/globalwarming/"
+      },
+      {
+        "category": "general",
+        "content": "of the dot in the explanation point at the end of this sentence or half the diameter of a human hair! Yet, inside the CRT, there would still be approximately 1,000,000,000,000 gas",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.repairfaq.org",
+          "/sam/lasercva.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sam&#39;s Laser FAQ - Vacuum Technology for Home-Built Gas Lasers",
+        "url": "http://www.repairfaq.org/sam/lasercva.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a64f7efc551a54d9f3c8ed44165e6dc0b75a39ab1699923363a94abddbbf685c",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of thermal energy storage within education",
+  "query_id": "candidate-c-2175",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.rexresearch.com/roschin/roschin.htm",
+      "original_url": "http://www.rexresearch.com/roschin/roschin.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "some theoretical explanation. Unfortunately the interpretation of results within the framework of the conventional physical theory cannot explain all the observed phenomena and fi",
+      "title": "Roschin &amp; Godin: Magneto-Gravity Effects; Verification of the Searl Effect"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://meteo.lcd.lu/globalwarming/",
+      "original_url": "https://meteo.lcd.lu/globalwarming/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "most straightforward explanation for this phenomenon is that much of the warming is caused by solar insolation, but there may well be several supplementary reasons, such as change",
+      "title": "The Global Warming Sceptic"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.repairfaq.org/sam/lasercva.htm",
+      "original_url": "http://www.repairfaq.org/sam/lasercva.htm",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "of the dot in the explanation point at the end of this sentence or half the diameter of a human hair! Yet, inside the CRT, there would still be approximately 1,000,000,000,000 gas",
+      "title": "Sam&#39;s Laser FAQ - Vacuum Technology for Home-Built Gas Lasers"
+    }
+  ],
+  "timestamp": "2026-09-05T17:24:57.276024Z"
+}

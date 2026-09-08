@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 267.738,
+  "pair_id": "v5-p-0028",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does photosynthesis in architecture operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "Plants in terms of photosynthesis and the ecosystem. Animals because of their capacity of motility and affectivity. Humans in view of their conscious thought and, as minimum minim",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/equiaeon/behaviours.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHY : Behaviours : Formal Sketch of a Critical Ethics",
+        "url": "http://www.sofiatopia.org/equiaeon/behaviours.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fd54f192c7999857ffe14798955f868bebc5474272026e5e1691e8bc885c4cd8",
+  "provider": "SearXNG",
+  "query": "how does photosynthesis in architecture operate",
+  "query_id": "v5-p-0028-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:16:22.508492Z"
+}

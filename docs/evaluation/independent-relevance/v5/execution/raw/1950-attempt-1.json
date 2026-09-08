@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 303.609,
+  "pair_id": "v5-p-0584",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind air quality monitoring in ecology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b0467a6a9a5fb137d22135ac283ee736ecfb7fc0020526cf7c05221c550a1e36",
+  "provider": "SearXNG",
+  "query": "describe the principle behind air quality monitoring in ecology",
+  "query_id": "v5-p-0584-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:39.561229Z"
+}

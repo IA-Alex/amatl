@@ -1,0 +1,34 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2700,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 251.834,
+  "pair_id": "candidate-p-1364",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "an introductory account of hydrogen storage within epidemiology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9e7317a6c06cf0c0aa5ef49a7695c3c06f8704b153e3e84025c5a40f3afd61c7",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "an introductory account of hydrogen storage within epidemiology",
+  "query_id": "candidate-c-1364",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:34:46.307733Z"
+}

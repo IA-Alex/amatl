@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 279.03,
+  "pair_id": "v5-p-1000",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does wastewater treatment in communication studies operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "cddd849e895f46a6f1a816c2d715196b21072f9799c95506145b546bb2224a59",
+  "provider": "SearXNG",
+  "query": "how does wastewater treatment in communication studies operate",
+  "query_id": "v5-p-1000-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:26.800960Z"
+}

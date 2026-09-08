@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 340.638,
+  "pair_id": "v5-p-0028",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind photosynthesis in architecture",
+    "results": [
+      {
+        "category": "general",
+        "content": "Plants in terms of photosynthesis and the ecosystem. Animals because of their capacity of motility and affectivity. Humans in view of their conscious thought and, as minimum minim",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/equiaeon/behaviours.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHY : Behaviours : Formal Sketch of a Critical Ethics",
+        "url": "http://www.sofiatopia.org/equiaeon/behaviours.htm"
+      },
+      {
+        "category": "general",
+        "content": "Origins of C4 Photosynthesis&#34; [ html ], doi:10.1371/journal.pgen.1004365, 10(6): e1004365, PLoS Genet , online 5 Jun 2014. Joe Parker et al., &#34;Genome-wide signatures of convergent",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.panspermia.org",
+          "/neodarw.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Neo-Darwinism: The Current Paradigm. by Brig Klyce",
+        "url": "https://www.panspermia.org/neodarw.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "79f8d1e6d986773d995b6f3ea3003dcca623ee18ab7681b3ee721d86c3c5f33d",
+  "provider": "SearXNG",
+  "query": "describe the principle behind photosynthesis in architecture",
+  "query_id": "v5-p-0028-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:16:22.776754Z"
+}

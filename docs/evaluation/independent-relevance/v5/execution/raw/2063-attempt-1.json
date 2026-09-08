@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 263.664,
+  "pair_id": "v5-p-0128",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does database indexing in optics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "access logs. Weblog DataBase A metadata search engine for technical blogs. Very small index and ranking seems poor, but it seems to have different goals from most search engines :",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "seirdy.one",
+          "/posts/2021/03/10/search-engines-with-own-indexes/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A look at search engines with their own indexes - Seirdy",
+        "url": "https://seirdy.one/posts/2021/03/10/search-engines-with-own-indexes/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "19bd1f62c549b7bf79cac12d1cb95d903ef4e147cc70db77f51457a39a9d431a",
+  "provider": "SearXNG",
+  "query": "how does database indexing in optics operate",
+  "query_id": "v5-p-0128-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:16:14.931137Z"
+}

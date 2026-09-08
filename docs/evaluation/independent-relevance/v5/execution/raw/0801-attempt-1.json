@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 249.439,
+  "pair_id": "v5-p-0528",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does neural networks in robotics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "and can creat simple networks that operate like the Spinal cord&#39;s refelxes do. The two motor walker I&#39;m building is based on Tilden&#39;s Microcore, using only 4 units! That&#39;s like a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "richfiles.solarbotics.net",
+          "/AlgosFACTory.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Richfiles: Algo&#39;s FACTory Page",
+        "url": "http://richfiles.solarbotics.net/AlgosFACTory.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "12d40f0ebd546da56fa6f70e9543a885b253b9526da89da2259381e24844843e",
+  "provider": "SearXNG",
+  "query": "how does neural networks in robotics operate",
+  "query_id": "v5-p-0528-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:09:29.487960Z"
+}

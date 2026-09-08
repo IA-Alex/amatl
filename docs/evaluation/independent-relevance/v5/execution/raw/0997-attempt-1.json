@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 300.737,
+  "pair_id": "v5-p-0157",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is immune response in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "answer! The frequent response to the &#34;how to change your life&#34; question runs something along the lines of this: &#34;Be clear about what you want, pursue it with focus and persistence",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zen-tools.net",
+          "/how-to-change-your-life.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How To Change Your Life - The Variables And Dynamics Of Life Change",
+        "url": "https://www.zen-tools.net/how-to-change-your-life.html"
+      },
+      {
+        "category": "general",
+        "content": "My Nose From The Immune Response And The McFoxy Seemed To Clear It. I Am Over The Adjustment Period Of It All And Feel Full On All Things {Besides The 1% Held Back For The Shot} F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "Reactive Active Response And Quick Counter-Terrorism Dispatch Against FWA Enemies. Any Alien Producing A WebSite On Any Domain Name Is Not Supposed To Secure It With A User-Signed",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteList.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/FWAsiteList.html"
+      },
+      {
+        "category": "general",
+        "content": "And Anatomy 3.1. Response To “Plants Are Trying To Kill You” 3.2. Debunking More Claims Made By Anthony Chaffee 3.3. Human Eyes 3.4. The Human Digestive System 3.5. Th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/case-against-carnivore-diet",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Case Against The Carnivore Diet",
+        "url": "https://zerocontradictions.net/misc/case-against-carnivore-diet"
+      },
+      {
+        "category": "general",
+        "content": "&#34;adults&#34; in the response to that question, what about the children? A: &#34;First, do no harm.&#34; 5 I am completely opposed to minors receiving the experimental mRNA or viral-vector vac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "praxibetel.org",
+          "/covid/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zach&#39;s SARS-CoV-2 Viewpoint",
+        "url": "http://praxibetel.org/covid/"
+      },
+      {
+        "category": "general",
+        "content": "Homicide&#39; by Government Response Audio  -  &#34; All this Chaos is Staged and just an Illusion to put us in Panic Mode&#34; - Dr. Reiner Fuellmich    -",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia3/ciencia_coronavirus.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coronavirus and the &#39;Fear Factor&#39;... - El Coronavirus y el &#39;Factor Miedo&#39;...",
+        "url": "https://www.bibliotecapleyades.net/ciencia3/ciencia_coronavirus.htm"
+      },
+      {
+        "category": "general",
+        "content": "an abnormal immune response resulting in joint inflammation but the combination of multiple problem foods may be a key component to this link. Books To open a book in a new tab (e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "paleodiet.com",
+          "/ra/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rheumatoid Arthritis and the Diet Alternative: Links &amp; Books",
+        "url": "https://paleodiet.com/ra/"
+      },
+      {
+        "category": "general",
+        "content": "on discrimination with responses from over 400,000 young people . Oh, they want to register their births (making them slaves of the state), shove them into education AKA the tortu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/oppression.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Will the real oppressed group please stand up?",
+        "url": "http://digdeeper.love/articles/oppression.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "the Covid-19 response, we hope to validate and amplify the call to establish the relevant facts and ensure vital lessons are learned. Click here to see the evidence . The David De",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "stoptheshots.ca",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "STOP the SHOTS",
+        "url": "https://stoptheshots.ca/"
+      },
+      {
+        "category": "general",
+        "content": "toxic shock immune response to the high levels of contaminants.    The difference between bee pollen and Swedish Pollen Extract is like the vast difference between a bic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.heartcom.org",
+          "/SwedishPollenExtract.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Swedish Pollen Extract",
+        "url": "https://www.heartcom.org/SwedishPollenExtract.htm"
+      },
+      {
+        "category": "general",
+        "content": "fight-or-flight response. Wilkinson, together with Martin Daly and Margo Wilson, have pointed to another measurable cost of economic inequality. Crime rates are much higher in reg",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "to better immune system response, suggesting greater disease prevention. (4) Although we look upon healing with sound as a relatively modern realisation, there is a strong traditi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ancient-wisdom.com",
+          "/healingwithsound.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Healing With Sound.",
+        "url": "http://www.ancient-wisdom.com/healingwithsound.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7cb42d1fb67a425d323c4f0afd59dc327e75dd9a4a6211e83e85cfa216e0e866",
+  "provider": "SearXNG",
+  "query": "what is immune response in health science",
+  "query_id": "v5-p-0157-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:30.892821Z"
+}

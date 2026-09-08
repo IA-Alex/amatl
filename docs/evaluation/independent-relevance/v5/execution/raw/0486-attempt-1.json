@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 413.081,
+  "pair_id": "v5-p-0789",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind coastal flooding in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "of destroying any industrial system that can be destroyed by improper fluid flow. Magna BSP , a Dimona based company with no history outside of IDF contracts prior to Fukushima ha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_uranium64.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Did The Dimona Dozen Murder The Fukushima 50? - 3/11 Was Japan&#39;s 9/11",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_uranium64.htm"
+      },
+      {
+        "category": "general",
+        "content": "2016), The fourth industrial revolution: a primer on Artificial Intelligence (AI) , Artificial intelligence positioned to be a game-changer (60 Minutes, 2016), What is deep learni",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "to rev up their mil-industrial complex to new heights. In other words, they will dismiss Gates&#39; sound technotactical warnings that their death spiral approach to war (any war) in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/USNAVYINDANGER/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "U.S. Navy and marines headed to self-made disasters",
+        "url": "http://www.combatreform.org/USNAVYINDANGER/"
+      },
+      {
+        "category": "general",
+        "content": "emerged with the Industrial Revolution, which separated us from nature. But nature is coming back with a vengeance, tied to population growth. It will have incredible security imp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0154c1eb5d4f16b8b3ea5e276f293480731bed3e6b7b49c9fb27257779b72ddb",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind coastal flooding in industrial design",
+  "query_id": "v5-p-0789-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:41.957025Z"
+}

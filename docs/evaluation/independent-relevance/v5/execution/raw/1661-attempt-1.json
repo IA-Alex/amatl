@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 279.992,
+  "pair_id": "v5-p-1066",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does microbial fermentation in public health work",
+    "results": [
+      {
+        "category": "general",
+        "content": "the secrets of fermentation was a little known contemporary medical scientist named Bechamp. It is impossible to fully explain Bechamp&#39;s complex hypotheses and findings covering 5",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/w/kal.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Second Thought About Disease by Drs Kalokerinos &amp; Dettman 1977.",
+        "url": "http://www.whale.to/w/kal.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f69b0d32aba4b89a69ed537b7bcc04c7f2d14b1192cc52e25e2d6e0fca819850",
+  "provider": "SearXNG",
+  "query": "how does microbial fermentation in public health work",
+  "query_id": "v5-p-1066-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:14:02.948836Z"
+}

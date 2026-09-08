@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 1009,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 296.122,
+  "pair_id": "candidate-p-0867",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains ecosystem services within archaeology",
+    "results": [
+      {
+        "category": "general",
+        "content": "Language, Archaeology and Myth by J. P. Mallory Ecological Imperialism: The Biological Expansion of Europe, 900-1900 by Alfred W. Crosby 1491: New Revelations of the Americas Befo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zero Contradictions Philosophy Home Page",
+        "url": "https://zerocontradictions.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ec10e850ccd235a16467040b991136fdd95534c3922ab5cbfc759f8761cb052d",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains ecosystem services within archaeology",
+  "query_id": "candidate-t-0867",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://zerocontradictions.net/",
+      "original_url": "https://zerocontradictions.net/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Language, Archaeology and Myth by J. P. Mallory Ecological Imperialism: The Biological Expansion of Europe, 900-1900 by Alfred W. Crosby 1491: New Revelations of the Americas Befo",
+      "title": "Zero Contradictions Philosophy Home Page"
+    }
+  ],
+  "timestamp": "2026-09-05T17:25:51.319280Z"
+}

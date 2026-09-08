@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 257.488,
+  "pair_id": "v5-p-0068",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does compiler operation in hydrology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ec22b255b29c0d0537f1a1c3ccfd520fcc281bbb30c46043b4782a2adcd92d24",
+  "provider": "SearXNG",
+  "query": "how does compiler operation in hydrology operate",
+  "query_id": "v5-p-0068-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:48.708888Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 308.297,
+  "pair_id": "v5-p-0932",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind bridge resonance in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f6b37a780fad9c4d4caf1d1d5cdea55d6025c9c08ccf687e118305be12ba6999",
+  "provider": "SearXNG",
+  "query": "describe the principle behind bridge resonance in hydrology",
+  "query_id": "v5-p-0932-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:24.048356Z"
+}

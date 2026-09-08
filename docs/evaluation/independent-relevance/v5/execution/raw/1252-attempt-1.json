@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 241.632,
+  "pair_id": "v5-p-1067",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of microbial fermentation in robotics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2a07c8ef0ac14c51450528455e253c945a079da7abedd7fb066d3758bdf8752e",
+  "provider": "SearXNG",
+  "query": "give an overview of microbial fermentation in robotics",
+  "query_id": "v5-p-1067-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:57.104729Z"
+}

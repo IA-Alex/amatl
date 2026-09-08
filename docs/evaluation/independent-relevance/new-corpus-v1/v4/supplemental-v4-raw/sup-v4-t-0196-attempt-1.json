@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 276.7867359943921,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does routing tables in physics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "any other traditional routing schemes that enforce acyclic connection graphs by demanding the existence of &#34;root nodes&#34;, &#34;supernodes&#34;, centrally agreed-upon tables, etc. Pest stat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.loper-os.org",
+          "/",
+          "",
+          "p=4003",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Loper OS » &#34;Pest&#34; v. 0xFB.",
+        "url": "http://www.loper-os.org/?p=4003"
+      },
+      {
+        "category": "general",
+        "content": "seen this many times in routing tables, they will block the private address ranges. They&#39;ll block 10-dot everything, 172.16 through 172.31, and they&#39;ll also block 192.168 because",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.grc.com",
+          "/sn/sn-387.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Security Now! Transcript of Episode #387",
+        "url": "https://www.grc.com/sn/sn-387.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0196",
+  "query_text": "how does routing tables in physics operate",
+  "requested_at": "2026-09-03T01:44:53.848279Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

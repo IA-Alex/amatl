@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 276.552,
+  "pair_id": "v5-p-0447",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of supply chain logistics in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "et al. “Last mile logistics life cycle assessment: a comparative analysis from diesel van to e-cargo bike.” Energies 15.20 (2022): 7817.. https://www.mdpi.com/1996-107",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2023/02/can-we-make-bicycles-sustainable-again",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Can We Make Bicycles Sustainable Again? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2023/02/can-we-make-bicycles-sustainable-again"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7bb274758bced1ba56632158178a35bc00fcb43155059edd15865abecf834a48",
+  "provider": "SearXNG",
+  "query": "give an overview of supply chain logistics in materials science",
+  "query_id": "v5-p-0447-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:10:13.609375Z"
+}

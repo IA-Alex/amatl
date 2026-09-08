@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 265.359,
+  "pair_id": "v5-p-0080",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does ocean tides in ecology operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "in Inuit seal-hunting ecology (I got carried away when I was young...) g) STRONG OPINIONS: Naturally! h) MOST INTERESTING TRIP: Still remember my first trip in the tub with Rubber",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.paddlewise.com",
+          "/whoswho/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PaddleWise - Who&#39;s Who A-B",
+        "url": "http://www.paddlewise.com/whoswho/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "54c2fef227a72d1c877c53c0f4c4bf3bbf3b0e7cebf671b4ffc41c7997209d6c",
+  "provider": "SearXNG",
+  "query": "how does ocean tides in ecology operate",
+  "query_id": "v5-p-0080-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:14:18.074392Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 337.954,
+  "pair_id": "v5-p-0785",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind coastal flooding in communication studies",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "213f921bf72ccaa7d80a2065441c5ddfcfe5830710229a64a44ce62c20b0847b",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind coastal flooding in communication studies",
+  "query_id": "v5-p-0785-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:21.723468Z"
+}

@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 250.265,
+  "pair_id": "v5-p-0333",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is soil erosion in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "fields such as mine engineering, metallurgy, and geology but also across various support roles that are crucial to operations in remote areas. This includes professionals like adm",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.startyourowngoldmine.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Start Your Own Gold Mine in 45 days with less than US $100,000",
+        "url": "https://www.startyourowngoldmine.com/"
+      },
+      {
+        "category": "general",
+        "content": "Economics Agricultural Engineering Agricultural Equipment Agricultural Machine Design Agricultural Machine Safety Agricultural Pesticide &amp; Herbicide Drift Agriculture AGRICULTURE",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "VFTonline.org",
+          "/VFTprayer/heaven/000list.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://VFTonline.org/VFTprayer/heaven/000list.txt",
+        "url": "http://VFTonline.org/VFTprayer/heaven/000list.txt"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d1215b9df6f6b111596837c8a73a57aed6d49ab6127d8f574b93cdf25c1852cb",
+  "provider": "SearXNG",
+  "query": "what is soil erosion in electrical engineering",
+  "query_id": "v5-p-0333-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:12:44.306057Z"
+}

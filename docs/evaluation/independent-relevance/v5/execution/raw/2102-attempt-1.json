@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 351.57,
+  "pair_id": "v5-p-1082",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of satellite orbits in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "found by NASA&#39;s Kepler satellite. They looked at 151 planetary systems - ones where Kepler had detected between three and six planets - and found that the Titius-Bode law fits wel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bc8be3825db2e952d684b3d2251ea4ceb73227e8acd2b803c387123c52c4597c",
+  "provider": "SearXNG",
+  "query": "tell me about the function of satellite orbits in chemistry",
+  "query_id": "v5-p-1082-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:16:28.092263Z"
+}

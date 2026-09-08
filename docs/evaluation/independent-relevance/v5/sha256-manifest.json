@@ -1,0 +1,26 @@
+{
+  "artifacts": {
+    "attainability-attestation.json": "4dd34fa9ad16fe705c258da77274f3c04b16f076cd7834c92da4ccd2a5fa2c58",
+    "contamination-exclusions.json": "f100321b7e4ed039c603a425460474b4a19af157be34b8ff999c0383b7e4b564",
+    "execution-policy.json": "839cc613294c963d92a668f2c23d461d66f64a10a279c592bd52ba2de9ecc452",
+    "frozen-design.json": "fbee232c254acdb6ac4045737a922af6414cba05623636dc2a86b094885ffd12",
+    "frozen-query-universe.json": "da1e4515adc9158457d934c538f6d8f4db9a7650a835f3fed644db4af648c126",
+    "pair-assignments.json": "396a1a2fe4aec1074ab55fe6a72a066d6f84cf908acaff36ac6c83eae3f5286c",
+    "randomization-manifest.json": "59c8c6adcb42ab64769d3946da8738ee854cb3b900536e293963649066fef09b",
+    "searxng-only-attainability-preflight.json": "f7cfc0c83f803c48116e175b8993e586d2ba6b3925f515faa63d4a118658872e",
+    "searxng-only-canary-raw.json": "c16658bd235431fbfeb6fd6051591bb228f2fa94c3e4e3c27592a4fabaf4aa85",
+    "searxng-only-canary-run-report.json": "de7cd30500bcffe1015cb35e78372b461dc771be072209fb7beb60c4ffde1351",
+    "searxng-only-preflight-manifest.json": "60bb6edfa6be286400cde80799de87ab9b88d1ee7b164f6579889f2f15fe6765"
+  },
+  "base_head": "c85aaefb20cf0a505285a6d81836eb49f639eb8a",
+  "experiment_id": "independent-relevance-confirmatory-v5",
+  "hash_policy": "full-file SHA-256 for artifacts; preflight artifact_sha256 is canonical payload SHA-256 excluding that field",
+  "preflight_file_sha256": "f7cfc0c83f803c48116e175b8993e586d2ba6b3925f515faa63d4a118658872e",
+  "preflight_payload_sha256": "6e152b3c3d386282afb63b44b7b3d4320fcbdadf1783d88eaa7832db4645cb0a",
+  "provenance": {
+    "base_head": "c85aaefb20cf0a505285a6d81836eb49f639eb8a",
+    "generator": "tools/freeze_v5_searxng_only.py",
+    "network_requests": 0
+  },
+  "schema": "amatl.relevance.v5-sha256-manifest.v1"
+}

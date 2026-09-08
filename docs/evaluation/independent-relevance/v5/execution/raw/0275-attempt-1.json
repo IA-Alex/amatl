@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 299.176,
+  "pair_id": "v5-p-0013",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is photosynthesis in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Plants in terms of photosynthesis and the ecosystem. Animals because of their capacity of motility and affectivity. Humans in view of their conscious thought and, as minimum minim",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/equiaeon/behaviours.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHY : Behaviours : Formal Sketch of a Critical Ethics",
+        "url": "http://www.sofiatopia.org/equiaeon/behaviours.htm"
+      },
+      {
+        "category": "general",
+        "content": "dense enough to support photosynthesis-using plants. The air held oxygen, but was too thin for human or kzinti life. The native life was as primitive and hardy as lichen. Animal h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wireheading.com",
+          "/wirehead.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Wireheads and Wireheading in Science Fiction : Larry Niven&#39;s The Ringworld Engineers",
+        "url": "https://www.wireheading.com/wirehead.html"
+      },
+      {
+        "category": "general",
+        "content": "the form of light. This photosynthesis results in the plant’s internal production of carbon. It utilizes this carbon to create and reinforce tissue as it grows, so it is a v",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.microbeorganics.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Microbe Organics",
+        "url": "http://www.microbeorganics.com/"
+      },
+      {
+        "category": "general",
+        "content": "Oceans, Abiogenic Photosynthesis, Atmospheric Oxygen It&#39;s been said that: New, paradigm busting discoveries, must pass through three stages: Ridicule. Violent Opposition. Acceptan",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "BrainMind.com",
+          "/publications.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rhawn Joseph&#39;s Scientific Publications, Pictures, Biography",
+        "url": "http://BrainMind.com/publications.html"
+      },
+      {
+        "category": "general",
+        "content": "Origins of C4 Photosynthesis&#34; [ html ], doi:10.1371/journal.pgen.1004365, 10(6): e1004365, PLoS Genet , online 5 Jun 2014. Joe Parker et al., &#34;Genome-wide signatures of convergent",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.panspermia.org",
+          "/neodarw.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Neo-Darwinism: The Current Paradigm. by Brig Klyce",
+        "url": "https://www.panspermia.org/neodarw.htm"
+      },
+      {
+        "category": "general",
+        "content": "• Digestion • Photosynthesis • Breathing • Evolution • Catabolism • Anabolism Organisms Organism • Archaea • Bacteria • Eukaryote • Animals • Arthropods • Insects • Ants • Bees •",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kids.kiddle.co",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kids encyclopedia facts",
+        "url": "https://kids.kiddle.co/"
+      },
+      {
+        "category": "general",
+        "content": "role in the process of photosynthesis in plants and in the sense of smell in animals. These findings suggest that some quantum effects may be relevant for biological systems, incl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biointelligence-explosion.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biointelligence Explosion as conceived by ChatGPT",
+        "url": "https://www.biointelligence-explosion.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "a small amount of photosynthesis by blocking light, but the effect is probably not huge; harm to the animals killed directly and side effects on the marine food chain seem more im",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Applied Welfare Biology and Why Wild-Animal Advocates Should Focus on Not Spreading Nature",
+        "url": "https://reducing-suffering.org/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature/"
+      },
+      {
+        "category": "general",
+        "content": "| Archive bionet.photosynthesis - Research into photosynthesis. Newsgroup | Archive bionet.plants - Newsgroup | Archive bionet.plants.education - Newsgroup | Archive bionet.plants",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ou.edu",
+          "/cas/botany-micro/www-vl/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "World-Wide Web Virtual Library: Botany / Plant Biology (Biosciences)",
+        "url": "https://www.ou.edu/cas/botany-micro/www-vl/"
+      },
+      {
+        "category": "general",
+        "content": "to make a living from photosynthesis. At least in the Northern Hemisphere, where the great preponderance of strategic targets lies, an unbroken and deadly gloom would persist for",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_uranium16.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Nuclear Winter",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_uranium16.htm"
+      },
+      {
+        "category": "general",
+        "content": "in CO2’s role in  photosynthesis , governments seem to have concluded that another 0.5 C will spell doom...climate hysteria in the West leads to policies that clearly benefit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meteo.lcd.lu",
+          "/globalwarming/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Warming Sceptic",
+        "url": "https://meteo.lcd.lu/globalwarming/"
+      },
+      {
+        "category": "general",
+        "content": "Only the invention of photosynthesis -- using the energy of the sun to split down matter in order to get electrons -- allowed life to go on. Life is driven by the force of electro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/a/lanka4.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "INTERVIEW STEFAN LANKA",
+        "url": "http://www.whale.to/a/lanka4.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3eb19397304f9f95f9dbfaa29ed3228511125584e8415aa4a5c6dfe2e7fbbac7",
+  "provider": "SearXNG",
+  "query": "what is photosynthesis in health science",
+  "query_id": "v5-p-0013-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:36.074976Z"
+}

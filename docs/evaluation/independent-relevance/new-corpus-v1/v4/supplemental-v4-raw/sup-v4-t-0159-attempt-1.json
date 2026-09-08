@@ -1,0 +1,26 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 234.43416399823036,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes ceramic coatings in astronomy",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0159",
+  "query_text": "what causes ceramic coatings in astronomy",
+  "requested_at": "2026-09-03T01:42:42.637066Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

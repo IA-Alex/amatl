@@ -1,0 +1,106 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 462.671,
+  "pair_id": "v5-p-0119",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of database indexing in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "projects? Check out the overview of all our current and recent projects ... Search Search Submit search NLnet news archive 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/news/2023/20231123-announcing-projects.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; 55 New Projects Awarded NGI0 Grants",
+        "url": "https://nlnet.nl/news/2023/20231123-announcing-projects.html"
+      },
+      {
+        "category": "general",
+        "content": "on LibreOffice code overview. Encouragingly some of my slides are/were wrong already due to various code improvements. Enjoyed lots of talks, conversations with some fantastic guy",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2013/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2013/"
+      },
+      {
+        "category": "general",
+        "content": "offer a comprehensive overview of theoretical limitations and practical usability of consensus protocols while examining the diverse landscape of how blockchains are manifested in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jhellings.nl",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jelle Hellings",
+        "url": "https://jhellings.nl/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "750be966a4564475c46f2c79eb70935751c2ad5900f4fe5e0120a3d6cf7ebf1c",
+  "provider": "SearXNG",
+  "query": "give an overview of database indexing in food science",
+  "query_id": "v5-p-0119-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:37.654705Z"
+}

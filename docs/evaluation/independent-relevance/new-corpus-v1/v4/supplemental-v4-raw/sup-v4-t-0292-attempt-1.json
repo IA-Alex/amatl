@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 254.79476200416684,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does gear trains in transportation operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "of resources and transportation has produced enough for everyone, without pressure on the market. DO NOT DEFUND THE POLICE With skyrocketing crime, it is clear that NYC must have",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.news1.net",
+          "/jan2021.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Breaking News, news commentary and news chronicle. News1.net - News and Photographic image archive. Global news with an emphasis on New Yo",
+        "url": "http://www.news1.net/jan2021.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0292",
+  "query_text": "how does gear trains in transportation operate",
+  "requested_at": "2026-09-03T01:42:45.953749Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

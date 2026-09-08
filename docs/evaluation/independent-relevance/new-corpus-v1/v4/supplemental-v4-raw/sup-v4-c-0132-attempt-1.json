@@ -1,0 +1,26 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 121.42840900196461,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind cell membranes in materials science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0132",
+  "query_text": "describe the principle behind cell membranes in materials science",
+  "requested_at": "2026-09-03T01:42:07.283597Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

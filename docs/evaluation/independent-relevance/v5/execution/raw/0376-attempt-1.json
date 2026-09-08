@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 359.015,
+  "pair_id": "v5-p-0006",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of photosynthesis in computer security",
+    "results": [
+      {
+        "category": "general",
+        "content": "role in the process of photosynthesis in plants and in the sense of smell in animals. These findings suggest that some quantum effects may be relevant for biological systems, incl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biointelligence-explosion.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biointelligence Explosion as conceived by ChatGPT",
+        "url": "https://www.biointelligence-explosion.com/chatgpt/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "504501c4932a45a242f0e48988d7a2128270e966c785780205a14cf51ba0ed35",
+  "provider": "SearXNG",
+  "query": "tell me about the function of photosynthesis in computer security",
+  "query_id": "v5-p-0006-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:07:07.383484Z"
+}

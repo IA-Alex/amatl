@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 235.075,
+  "pair_id": "v5-p-0643",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of renewable energy storage in forensic science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bb3eb9673ab1e3d0ab071c3041690f2bd50fe554228bbf7a114ae8d35a5d7891",
+  "provider": "SearXNG",
+  "query": "give an overview of renewable energy storage in forensic science",
+  "query_id": "v5-p-0643-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:14:07.924765Z"
+}

@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 255.5797250024625,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes voltage regulators in civil engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "Lightning Arrester Engineering Section, Westinghouse Electric Corporation). Lightning Protection for Electric Systems . New York, NY: McGraw-Hill Book Company, Inc. Copyright 1954",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.myinsulators.com",
+          "/acw/bookref/overvoltage/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ACW&#39;s Insulator Info - Book Reference Info - Overvoltage and Flashovers",
+        "url": "https://www.myinsulators.com/acw/bookref/overvoltage/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0111",
+  "query_text": "what causes voltage regulators in civil engineering",
+  "requested_at": "2026-09-03T01:43:29.976200Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

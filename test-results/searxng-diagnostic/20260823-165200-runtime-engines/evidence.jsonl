@@ -1,0 +1,3 @@
+{"artifact_notice":"Generated test artifact — SearXNG per-engine runtime observation — do not treat as project documentation.","type":"PRECHECK","general_configured":18,"general_registered":17,"disabled":["duckduckgo","mojeek","qwant"]}
+{"type":"EXECUTION","query":"rust async","count":1,"amatl_status":"failure","providers_failed":["searxng","marginalia"],"searxng_error":"SearXNG transport error: provider network request failed","probe_events":0}
+{"type":"REVERSAL","search_init_sha256_before_after":"fe9c6a4cb742fd6ef8afdb7b8b4bd294acc27595294adb6d89b780d536932e26","online_sha256_before_after":"8c36b397bbd405d7509d75e16f8cb97ea41a8df7a6214891cac74c1a33af6471"}

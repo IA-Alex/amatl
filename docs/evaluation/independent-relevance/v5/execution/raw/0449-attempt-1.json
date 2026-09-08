@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 249.728,
+  "pair_id": "v5-p-0847",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes data compression in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d98e617323e72b61940fcc1c3e453c5398e73bb54e6c67f926e7413c1e2bc504",
+  "provider": "SearXNG",
+  "query": "what causes data compression in oceanography",
+  "query_id": "v5-p-0847-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:31.081407Z"
+}

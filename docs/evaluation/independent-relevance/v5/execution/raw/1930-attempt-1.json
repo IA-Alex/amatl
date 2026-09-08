@@ -1,0 +1,219 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 374.763,
+  "pair_id": "v5-p-0650",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of traffic flow in biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "to have any hope of functioning off of this planet. When considering the mass budget, if you think them&#39;s good economics then you&#39;re plain crazy. Fortunately, for every worthwhile",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "robust and well functioning and appears to have purpose. It has a life cycle. But it is important to understand that each individual ant is working with local information and loca",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zen-tools.net",
+          "/complex-systems.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Understanding Complex Systems Thinking - It&#39;s Not Complicated",
+        "url": "https://www.zen-tools.net/complex-systems.html"
+      },
+      {
+        "category": "general",
+        "content": "it doesn&#39;t seem to function well in its new environment. It throws us into a downward spiral of withdrawl which forces us to reflect on our interactions with the world. It feels s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "thecontrarian.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Contrarian",
+        "url": "https://thecontrarian.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "millions of years to function well in the environment, to survive. We are analog devices following biological modes of operation. We are compliant, flexible, tolerant. Yet we peop",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pages.ucsd.edu",
+          "/~dnorman/DNMss/Being_Analog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Being Analog",
+        "url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html"
+      },
+      {
+        "category": "general",
+        "content": "might know all the function names of his language if his job or project depends on it. But the knowledge needs to be reinforced every so often; after a few months or years of not",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/school.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The toxic schooling system",
+        "url": "http://digdeeper.love/articles/school.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "by virtue of the same functional mechanisms (not, of course, the same biological mechanisms) and in virtue of having something that corresponds to the same thoughts or cognitive s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.arn.org",
+          "/docs/dembski/wd_convmtr.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Converting Matter into Mind: Dembski, William A.",
+        "url": "http://www.arn.org/docs/dembski/wd_convmtr.htm"
+      },
+      {
+        "category": "general",
+        "content": "is sufficiently like a function 1 to be experienced by young students as such if the core of being a function is taken not as some abstract definition but as how functions are use",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "papert.org",
+          "/articles/AnExplorationintheSpaceofMathematicsEducations.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "An Exploration in the Space of Mathematics Educations",
+        "url": "http://papert.org/articles/AnExplorationintheSpaceofMathematicsEducations.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "55a4a58119d4bcdbccf4d3a70a437437d81a8c7c1fd2468a76c7d79975b4eb72",
+  "provider": "SearXNG",
+  "query": "tell me about the function of traffic flow in biology",
+  "query_id": "v5-p-0650-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:33.584878Z"
+}

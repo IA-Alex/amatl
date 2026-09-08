@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1734,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 283.349,
+  "pair_id": "candidate-p-0866",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of ecosystem services within anthropology",
+    "results": [
+      {
+        "category": "general",
+        "content": "among other things. Anthropology Axiology Blogroll Books Culture Economics Epistemology Evolution FAQs Genetics Improvement Language Memetics Miscellaneous Politics Programming Te",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zero Contradictions Philosophy Home Page",
+        "url": "https://zerocontradictions.net/"
+      },
+      {
+        "category": "general",
+        "content": "slides ). It&#39;s the Anthropology, Stupid! discusses how we might put context and emotion back into security decisions. The Economics of Online Crime appeared in the Journal of Econ",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fe6d5db9d0ec000037da9116c5db54ca52c4bea70055c7d4296768bd8b1335d9",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of ecosystem services within anthropology",
+  "query_id": "candidate-c-0866",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://zerocontradictions.net/",
+      "original_url": "https://zerocontradictions.net/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "among other things. Anthropology Axiology Blogroll Books Culture Economics Epistemology Evolution FAQs Genetics Improvement Language Memetics Miscellaneous Politics Programming Te",
+      "title": "Zero Contradictions Philosophy Home Page"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.cl.cam.ac.uk/archive/rja14/",
+      "original_url": "https://www.cl.cam.ac.uk/archive/rja14/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "slides ). It&#39;s the Anthropology, Stupid! discusses how we might put context and emotion back into security decisions. The Economics of Online Crime appeared in the Journal of Econ",
+      "title": "Ross Anderson&#39;s Home Page"
+    }
+  ],
+  "timestamp": "2026-09-05T17:29:41.221755Z"
+}

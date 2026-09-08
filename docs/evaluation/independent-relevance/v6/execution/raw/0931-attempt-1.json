@@ -1,0 +1,34 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 931,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 286.936,
+  "pair_id": "candidate-p-1942",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how do models represent quantum sensing within forest management",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f94b00bd15fae16061d8e849263f1d3e95b1ad955db431252cd7a6128e2e8c7e",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how do models represent quantum sensing within forest management",
+  "query_id": "candidate-t-1942",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:25:24.725385Z"
+}

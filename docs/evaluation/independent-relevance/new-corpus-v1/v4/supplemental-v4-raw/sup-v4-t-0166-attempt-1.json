@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 273.96271400357364,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does routing tables in biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "framework, I don&#39;t need routing or HTTP parsing, I can just put a normal program on my server and it will work. Note 2 from 2022-08-20 Published on 2022-08-20 I think the only thi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.alm.website",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Athena&#39;s blog - Athena&#39;s Site",
+        "url": "https://www.alm.website/blog/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0166",
+  "query_text": "how does routing tables in biology work",
+  "requested_at": "2026-09-03T01:43:34.901459Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 338.728,
+  "pair_id": "v5-p-0940",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind cloud formation in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "of Albert Einstein&#39;s principle of &#34;local realism,&#34; which says that the universe obeys laws, not chance, and that there is no communication faster than light. ......This",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "refer to the scientific principle of Occam’s razor, which is to find the solution reached by the fewest steps. If that is what he suggests, then mythology has an abundance of exam",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stenudd.com",
+          "/myth/jungians_on_myth_and_religion/JordanBPeterson.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jordan B. Peterson - Jungians on myth and religion.",
+        "url": "https://www.stenudd.com/myth/jungians_on_myth_and_religion/JordanBPeterson.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b9bff95aa61a3010bbf1ed0f42df4825f926778a6a103e685fa6cf251578aa4a",
+  "provider": "SearXNG",
+  "query": "describe the principle behind cloud formation in climate science",
+  "query_id": "v5-p-0940-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:14:02.023679Z"
+}

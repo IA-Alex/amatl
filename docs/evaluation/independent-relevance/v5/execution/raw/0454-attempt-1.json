@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 341.555,
+  "pair_id": "v5-p-0308",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind water purification in optics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9fe7b752fd8338265ad29ffec5eb2813aa1bfd8f944f0bbb0e93dc8bf40f0242",
+  "provider": "SearXNG",
+  "query": "describe the principle behind water purification in optics",
+  "query_id": "v5-p-0308-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:32.483567Z"
+}

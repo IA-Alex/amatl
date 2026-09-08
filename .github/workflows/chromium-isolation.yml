@@ -6,11 +6,19 @@ on:
       - packaging/amatl-chromium-sandbox
       - docs/security/chromium-isolation.md
       - .github/workflows/chromium-isolation.yml
+      # The isolation contract is only meaningful together with the code that
+      # owns rendering and network egress; a change there must re-run it.
+      - crates/amatl-core/src/render.rs
+      - crates/amatl-core/src/fetch.rs
   pull_request:
     paths:
       - packaging/amatl-chromium-sandbox
       - docs/security/chromium-isolation.md
       - .github/workflows/chromium-isolation.yml
+      # The isolation contract is only meaningful together with the code that
+      # owns rendering and network egress; a change there must re-run it.
+      - crates/amatl-core/src/render.rs
+      - crates/amatl-core/src/fetch.rs
   workflow_dispatch:
 
 permissions:
@@ -39,6 +47,29 @@ jobs:
           sudo install --directory --mode 0755 /opt/amatl-chromium
           sudo unzip -q "$archive" -d /opt/amatl-chromium
           echo 'AMATL_CHROMIUM_BIN=/opt/amatl-chromium/chrome-headless-shell-linux64/chrome-headless-shell' >> "$GITHUB_ENV"
+      - name: Bring up a user systemd instance for systemd-run --user
+        # The sandbox wraps Chromium in `systemd-run --user`, which needs a
+        # per-user manager and session bus. GitHub runners do not start one for
+        # the job user by default, which makes the isolation steps fail
+        # intermittently ("Failed to connect to the bus"). Enable lingering so
+        # the manager comes up and export the runtime dir the rest of the job
+        # (and the sandbox script) rely on.
+        run: |
+          uid="$(id -u)"
+          sudo loginctl enable-linger "$USER"
+          for _ in $(seq 1 30); do
+            if systemctl --user is-system-running >/dev/null 2>&1 \
+              || [ -S "/run/user/$uid/bus" ]; then
+              break
+            fi
+            sleep 1
+          done
+          [ -S "/run/user/$uid/bus" ]
+          {
+            echo "XDG_RUNTIME_DIR=/run/user/$uid"
+            echo "DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$uid/bus"
+          } >> "$GITHUB_ENV"
+          systemd-run --user --wait --collect --pipe --quiet --unit amatl-userbus-probe -- true
       - name: Verify runner Chromium baseline
         run: |
           chromium="$AMATL_CHROMIUM_BIN"
@@ -58,6 +89,19 @@ jobs:
         run: |
           fixture="$(mktemp --suffix=.html)"
           output="$(mktemp --suffix=.html)"
-          printf '%s' '<!doctype html><p id="state">pending</p><script>fetch("http://127.0.0.1:8765/").then(()=>state.textContent="network-leak").catch(()=>state.textContent="blocked")</script>' > "$fixture"
+          # A *synchronous* XHR so the network attempt and its failure are
+          # resolved inside this one script execution, before --dump-dom
+          # snapshots the DOM. An async fet().catch() left the assertion racing
+          # the snapshot ("pending" leaked through intermittently).
+          printf '%s' '<!doctype html><p id="state">pending</p><script>try{var x=new XMLHttpRequest();x.open("GET","http://127.0.0.1:8765/",false);x.send();document.querySelector("#state").textContent="network-leak"}catch(e){document.querySelector("#state").textContent="blocked"}</script>' > "$fixture"
           packaging/amatl-chromium-sandbox "$fixture" "$output" 60
           grep --fixed-strings --quiet '>blocked<' "$output"
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Drive the harness through ChromiumRenderer
+        # The shell steps above prove the harness itself confines Chromium.
+        # This proves the Rust backend actually reaches it, that scripts run,
+        # and that a rendered page still cannot open a loopback connection.
+        env:
+          AMATL_CHROMIUM_INTEGRATION: "1"
+        run: cargo test --locked -p amatl-core --test deep_phase5 -- --test-threads=1

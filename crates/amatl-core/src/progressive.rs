@@ -149,8 +149,37 @@ pub struct ProgressiveRoundTrace {
     pub low_diversity: bool,
     pub expected_marginal_gain_by_provider: BTreeMap<String, f64>,
     pub observed_marginal_gain: Option<f64>,
+    /// Role ("primary" / "expansion") the router assigned to each provider
+    /// considered in this round. Empty in legacy mode. Preserved per round so
+    /// STEP 2 can attribute results to a role without re-deriving the
+    /// assignment. See [`crate::router::ProviderRole`].
+    pub provider_roles: BTreeMap<String, String>,
+    /// Whether the configured PRIMARY provider was eligible this run. `false`
+    /// means expansion providers may have run but the result is not a
+    /// complete PRIMARY search (STEP 1E). `None` in legacy mode.
+    pub primary_available: Option<bool>,
+    /// STEP 2 — objective complementarity of the results *accumulated through
+    /// this round*, so the PRIMARY→EXPANSION progression is observable per
+    /// round (round 1: EXPANSION=0; round 2 onward: overlap / unique appear).
+    /// `None` in legacy mode. Structural only — not a relevance signal.
+    pub complementarity: Option<RoundComplementarity>,
     pub stop_reason: Option<SearchStopReason>,
     pub debug_reasons: Vec<String>,
+}
+
+/// Per-round slice of [`crate::ComplementarityMetrics`], computed on the
+/// results accumulated up to and including that round. Deliberately a small
+/// subset: enough to watch the PRIMARY→EXPANSION progression without carrying
+/// every ratio into the trace. Structural counts only — see the frontier note
+/// on [`observed_marginal_gain`].
+#[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct RoundComplementarity {
+    pub found_primary: u32,
+    pub found_expansion: u32,
+    pub overlap_confirmed: u32,
+    pub unique_primary: u32,
+    pub unique_expansion: u32,
+    pub expansion_new_domains: u32,
 }
 
 pub fn evaluate_coverage(
@@ -211,6 +240,18 @@ pub fn evaluate_coverage(
     }
 }
 
+/// Count of results in `current` whose canonical URL was not already in
+/// `previous`.
+///
+/// FRONTIER CONTRACT — this measures RAW / STRUCTURAL UNIQUE GAIN, never
+/// SEMANTIC RELEVANCE GAIN. A result that is new here is only VALID +
+/// CANONICALIZABLE + structurally UNIQUE; the Wiby evidence showed that none of
+/// those imply RELEVANT. STEP 2's [`crate::ComplementarityMetrics`] measures the
+/// same structural layer, in more detail, and is likewise not a relevance
+/// signal. Adaptive learning must be fed a relevance-filtered signal — designed
+/// in the phase after STEP 2 — never this raw unique count as if it were
+/// utility. Today this stays a purely structural progressive stop/continue
+/// input and nothing in STEP 2 changed that.
 pub fn observed_marginal_gain(previous: &[SearchResult], current: &[SearchResult]) -> f64 {
     let before = previous
         .iter()

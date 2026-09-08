@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 347.656,
+  "pair_id": "v5-p-0569",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind food preservation in communication studies",
+    "results": [
+      {
+        "category": "general",
+        "content": "between propaganda (communication designed to propagate ideas to an audience that is unaware of these ideas or hostile to them) and polemic (communication designed to elicit emoti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2007/03/steven_on_leni.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: Steven on Leni",
+        "url": "http://www.2blowhards.com/archives/2007/03/steven_on_leni.html"
+      },
+      {
+        "category": "general",
+        "content": "a role in intraspecific communication for mate choice in B. anynana. In addition, we found that both signals are equally important in the process of sexual selection by female cho",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "philosophy.nekhbet.com",
+          "/book.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Last Book of Moron",
+        "url": "https://philosophy.nekhbet.com/book.shtml"
+      },
+      {
+        "category": "general",
+        "content": "in Our Heads 6. Mass communications ushers in the polling industry George Gallup and the British Institute of Public Opinion Opinion Research and World War II Office of Strategic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "antimatrix.org",
+          "/Convert/Coleman_The_Tavistock_Institute_of_Human_Relations_2005.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NWO - The Tavistock Institute For Human Relations",
+        "url": "http://antimatrix.org/Convert/Coleman_The_Tavistock_Institute_of_Human_Relations_2005.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "630afadc933ace8234998b04dcc2fe908259663385b286ab5797aa6c7bcad2ea",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind food preservation in communication studies",
+  "query_id": "v5-p-0569-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:13.350590Z"
+}

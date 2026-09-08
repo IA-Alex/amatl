@@ -1,0 +1,29 @@
+{
+  "depth": 3,
+  "experiment_id": "independent-relevance-confirmatory-v5",
+  "failure_decision": "INCONCLUSIVE",
+  "failure_stopping": "FROZEN_UNIVERSE_EXHAUSTED_BEFORE_VALID_TARGET",
+  "no_arm_reassignment": true,
+  "no_depth_increase": true,
+  "no_post_hoc_queries": true,
+  "no_provider_change": true,
+  "no_retry_for": [
+    "valid empty response"
+  ],
+  "provenance": {
+    "base_head": "c85aaefb20cf0a505285a6d81836eb49f639eb8a",
+    "generator": "tools/freeze_v5_searxng_only.py",
+    "network_requests": 0
+  },
+  "provider": "SearXNG",
+  "replacement": "next unused frozen query from same arm/stratum",
+  "retry_max_per_query": 1,
+  "retry_only_for": [
+    "timeout",
+    "transport",
+    "HTTP 429",
+    "HTTP 5xx"
+  ],
+  "schema": "amatl.relevance.v5-execution-policy.v1",
+  "success_stopping": "TREATMENT_VALID_RESULTS >= 474 AND CONTROL_VALID_RESULTS >= 474"
+}

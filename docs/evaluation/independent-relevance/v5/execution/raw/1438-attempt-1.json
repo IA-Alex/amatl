@@ -1,0 +1,327 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 306.956,
+  "pair_id": "v5-p-0287",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of binary search in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "involves sequences of operations, especially on datastructures which contain other information. One especially useful procedure for functional programming which operates on lists",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "files.spritely.institute",
+          "/papers/scheme-primer.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Scheme Primer",
+        "url": "https://files.spritely.institute/papers/scheme-primer.html"
+      },
+      {
+        "category": "general",
+        "content": "the right kind of operations are implicitly chosen at run time. For example, when f() is passed d1, d.read() uses Driver1::read(), whereas when f() is passed d2, d.read() uses Dri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stroustrup.com",
+          "/bs_faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stroustrup: FAQ",
+        "url": "https://www.stroustrup.com/bs_faq.html"
+      },
+      {
+        "category": "general",
+        "content": "&#39;Cancel&#39; button, since operations can be cancelled from the status bar anyway. The result looks like this: We also did a large, and hard-to-notice chunk of work to simplify the pr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2009/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2009/"
+      },
+      {
+        "category": "general",
+        "content": "For Google, the major operations are Crawling, Indexing, and Sorting. It is difficult to measure how long crawling took overall because disks filled up, name servers crashed, or a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "infolab.stanford.edu",
+          "/~backrub/google.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Anatomy of a Search Engine",
+        "url": "http://infolab.stanford.edu/~backrub/google.html"
+      },
+      {
+        "category": "general",
+        "content": "and arithmetic operations with images, marking areas of interest (ROI) on the image and determining the ratios of local activities, correction for visual homogeneity camera field.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Fyzika-NuklMed.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nuclear physics and ionizing radiation physics",
+        "url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm"
+      },
+      {
+        "category": "general",
+        "content": "envelope, and feedback operations, this trick avoids the need for millions of multiplication operations per second. ↲ Prior to the length of the sine table being verified, t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ajxs.me",
+          "/blog/Yamaha_DX7_Technical_Analysis.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Yamaha DX7 Technical Analysis - ajxs.me",
+        "url": "https://ajxs.me/blog/Yamaha_DX7_Technical_Analysis.html"
+      },
+      {
+        "category": "general",
+        "content": "range of low level operations. For example, a single click might be used to choose an option to scan the neighborhood, taking the user on a circular path around the inner peripher",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.pliant.org",
+          "/personal/Tom_Erickson/GopherVR.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "3D Gopher, by McCahill and Erickson",
+        "url": "http://www.pliant.org/personal/Tom_Erickson/GopherVR.html"
+      },
+      {
+        "category": "general",
+        "content": "during copy/paste operations. screen This is not a window in itself, but allows you to emulate having several windows inside a single (say) xterm window. The user can switch betwe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.talisman.org",
+          "/unix/burgess-guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The unix programming environment",
+        "url": "http://www.talisman.org/unix/burgess-guide.html"
+      },
+      {
+        "category": "general",
+        "content": "About Nonatomic Operations Specifying Concurrent Program Modules Specification and Proof of a Fault-Tolerant Real-Time Algorithm The Weak Byzantine Generals Problem PHIL: A Semant",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lamport.azurewebsites.net",
+          "/pubs/pubs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Writings of Leslie Lamport",
+        "url": "https://lamport.azurewebsites.net/pubs/pubs.html"
+      },
+      {
+        "category": "general",
+        "content": "to automate a lot of operations with the phone. For example, adb shell &#39;input tap 100 100&#39; will imitate a tap to a device. In general you can do quite a lot through Android comman",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lockywolf.net",
+          "/2026-02-19_How-to-install-and-start-using-LineageOS-on-your-phone.d/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to install and start using LineageOS on your phone.",
+        "url": "https://lockywolf.net/2026-02-19_How-to-install-and-start-using-LineageOS-on-your-phone.d/"
+      },
+      {
+        "category": "general",
+        "content": "and military HF operations.  Yet another soundcard application. Barrett Communications (Formerly Q-Mac Electronics)   Australian manufacturer of an innovative mobile NVI",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wa8lmf.net",
+          "/links/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WA8LMF Useful Links Page",
+        "url": "http://wa8lmf.net/links/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2d688bb7a274d2b0155f5f3f4017bfe94e12e529868ba8ce664660c15e5144c2",
+  "provider": "SearXNG",
+  "query": "give an overview of binary search in operations research",
+  "query_id": "v5-p-0287-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:54.576937Z"
+}

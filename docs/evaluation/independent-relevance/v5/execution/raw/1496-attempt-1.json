@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 304.665,
+  "pair_id": "v5-p-0800",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind battery chemistry in ecology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "30a66c350852e620fdb05cadb444b5d28b08f0dc617b7c4bf1d9e155c52b1d55",
+  "provider": "SearXNG",
+  "query": "describe the principle behind battery chemistry in ecology",
+  "query_id": "v5-p-0800-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:12.513046Z"
+}

@@ -1,0 +1,214 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 580.003,
+  "pair_id": "v5-p-0846",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does data compression in neuroscience work",
+    "results": [
+      {
+        "category": "general",
+        "content": "information theory, neuroscience, physics, biochemistry and computer science to the philosophy of the mind and the evolving criteria historically used to define death. When someon",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "450, 26 May 2011): Neuroscience: What makes us laugh .",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.idsia.ch",
+          "/~juergen/interest.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WHAT&#39;S INTERESTING? ACTIVE EXPLORATION - CURIOSITY-DRIVEN REINFORCEMENT LEARNING - ARTIFICIAL CURIOSITY - INTRINSIC REWARD - INTRINSIC MOTIVA",
+        "url": "https://people.idsia.ch/~juergen/interest.html"
+      },
+      {
+        "category": "general",
+        "content": "from the Computational Neuroscience Laboratories in Japan (although it was presented as american in the source where i found the link -sorry i lost that source...-). The project i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cdecas.free.fr",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Welcome to Caz&#39; Website",
+        "url": "http://cdecas.free.fr/"
+      },
+      {
+        "category": "general",
+        "content": "achievement in neuroscience, with the Uplift researchers receiving numerous accolades and Acevedo himself briefly becoming an acclaimed celebrity. Acevedo and MMAcevedo were joint",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "qntm.org",
+          "/mmacevedo",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lena @ Things Of Interest",
+        "url": "https://qntm.org/mmacevedo"
+      },
+      {
+        "category": "general",
+        "content": "insights from cognitive neuroscience (reverse engineering salient neural structure of the mammalian brain), to create silicon evolutionary spaces that will develop higher-level in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.accelerationwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acceleration Watch (Understanding Accelerating Change)",
+        "url": "https://www.accelerationwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "a bunch of other common neuroscience techniques like connectomics, lesion studies, tuning curves, you get a bunch of obviously wrong results like “there are distinct transis",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/epistemology/representationalism",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Representationalism",
+        "url": "https://zerocontradictions.net/epistemology/representationalism"
+      },
+      {
+        "category": "general",
+        "content": "cognitive science and neuroscience that asserts  that  the world as we know it contains no primary qualities. Humans experience the world the way they do because of thei",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ljmap.com",
+          "/Values@Hand/Worldview/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Worldview: LJMap&#39;s measuring and mapping different Natural Worldviews and Developmental Worldviews.",
+        "url": "https://www.ljmap.com/Values@Hand/Worldview/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "6b88f06e87bd05610bcbb3a2cb4dc10fb7a1f22beea136dde3e2c2f936f4b0b5",
+  "provider": "SearXNG",
+  "query": "how does data compression in neuroscience work",
+  "query_id": "v5-p-0846-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:12.456870Z"
+}

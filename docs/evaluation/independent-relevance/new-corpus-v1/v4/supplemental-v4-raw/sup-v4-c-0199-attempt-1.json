@@ -1,0 +1,108 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 253.09755999478512,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of database indexes in physics",
+    "results": [
+      {
+        "category": "general",
+        "content": "too, but it&#39;s a good overview. Note 1 from 2022-11-26 Published on 2022-11-26 This post is a quick reminder that captions exist to provide an accurate transcription of content tha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.alm.website",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Athena&#39;s blog - Athena&#39;s Site",
+        "url": "https://www.alm.website/blog/"
+      },
+      {
+        "category": "general",
+        "content": "other experiment. An overview will be made of the information generation, storage and retrieval, independent of the form (machine, paper) and independent of the finality (experime",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/Proposal",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WorldWideWeb: Proposal for a HyperText Project",
+        "url": "https://www.w3.org/Proposal"
+      },
+      {
+        "category": "general",
+        "content": "- BEAMbot overview, links and bestiary w/pics hackaday.com - Maker and hacker content eldritchdata.neocities.org - A neat (as in tidy) website about Linux and stuff sysinfo.io - L",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "basedsites.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "/g/&#39;s Based Sites",
+        "url": "https://basedsites.neocities.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0199",
+  "query_text": "give an overview of database indexes in physics",
+  "requested_at": "2026-09-03T01:43:49.530762Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

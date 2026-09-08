@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 356.582,
+  "pair_id": "v5-p-0678",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does traffic flow in energy systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "Simulator Google Cars Traffic Congestion &amp; Capacity Traffic Congestion &amp; Capacity Note: I have written an updated version of the core plan found in this article from 2010.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.templetons.com",
+          "/brad/robocars/congestion.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Traffic Congestion &amp; Capacity",
+        "url": "https://www.templetons.com/brad/robocars/congestion.html"
+      },
+      {
+        "category": "general",
+        "content": "know Will control the traffic flow Helps the food to move along So the good stays in and the bad gets gone. I&#39;m a machine, you&#39;re a machine Everybody that you know, you know they",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.louiscandell.com",
+          "/lyrics/s/schoolhouse.rock/words.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The words of ALL the Schoolhouse Rock songs",
+        "url": "http://www.louiscandell.com/lyrics/s/schoolhouse.rock/words.html"
+      },
+      {
+        "category": "general",
+        "content": "relatives avoid crime traffic introduction increasingly forty administration replace replaced mum sister existence executive hill kingdom equally phone cultural winter alternative",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "thefts, they break traffic laws, they goof off at work, they hate someone, they say spiteful things or they use some underhanded trick to get ahead of the other guy. The oversocia",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unabomber.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society and Its Future",
+        "url": "https://unabomber.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "increase the number of traffic accidents and death. Even more confusingly, some of them point out how laws against drunk driving like security checkpoints can be abused to infring",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/civilization/case-against-libertarianism",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Case Against Libertarianism And Ancapism",
+        "url": "https://zerocontradictions.net/civilization/case-against-libertarianism"
+      },
+      {
+        "category": "general",
+        "content": "120 members and modest traffic. Looking at the log pointed the finger at Twitterbot, a Web crawler operated by the Californian socialist network called Twitter, which claims it&#39;s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/archives/Monthly/2018/2018-07.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason: July 2018 Archives",
+        "url": "https://www.fourmilab.ch/fourmilog/archives/Monthly/2018/2018-07.html"
+      },
+      {
+        "category": "general",
+        "content": "? FAA to regulate air traffic ? CDC to watch out for epidemics ? &#34;Taxation is theft&#34;: Whistling In The Wind&#39;s &#34;Why Taxation Is Not Theft&#34; Individual income taxes are bad because T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonTaxes.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about Taxes",
+        "url": "https://www.billdietrich.me/ReasonTaxes.html"
+      },
+      {
+        "category": "general",
+        "content": "on the black market and trafficking in illegal drugs. He called his captain a ‘piece of shit’. An Australian mercenary in Bakhmut described Russian forces as sophistic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/multipol.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Decline of the west &amp; rise of a multipolar world",
+        "url": "https://davidpratt.info/multipol.htm"
+      },
+      {
+        "category": "general",
+        "content": "radio to yell at air traffic controllers, later switched off the radio, and told the co-pilot “we need to take a leap of faith” and “we are not going to Vegas.&amp;#",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "Controllers to Air Traffic Control Software (Also winner of ASE 2005 best paper award) Guillaume Langelier, Houari Sahraoui, Pierre Poulin, Visualization-based Analysis of Quality",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sigsoft.org",
+          "/awards/distinguishedPaperAward.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGSOFT - ACM Special Interest Group on Software Engineering",
+        "url": "http://www.sigsoft.org/awards/distinguishedPaperAward.html"
+      },
+      {
+        "category": "general",
+        "content": "blast having occurred, traffic jams, accidents, or vehicles just running out of gas will probably create bottlenecks that completely clog the roads. Once people find themselves ju",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ki4u.com",
+          "/survive/doomsday.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "You Will Survive Doomsday - FREE online book of Nuclear Blast &amp; Radiation, Practical Family Nuke Survival Skills.",
+        "url": "https://www.ki4u.com/survive/doomsday.htm"
+      },
+      {
+        "category": "general",
+        "content": "would create a lot of traffic on the FSB even though the data is likely not used anywhere else and might be short-lived. The write-back policy is more sophisticated. Here the proc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/252125/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Memory part 2: CPU caches [LWN.net]",
+        "url": "https://lwn.net/Articles/252125/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "705437692fb6c8c3759af5c20bff91e3671b99d3d8827124336689de55b4cfdc",
+  "provider": "SearXNG",
+  "query": "how does traffic flow in energy systems work",
+  "query_id": "v5-p-0678-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:02.865055Z"
+}

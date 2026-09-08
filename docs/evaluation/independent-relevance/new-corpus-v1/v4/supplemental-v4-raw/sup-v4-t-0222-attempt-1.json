@@ -1,0 +1,135 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 122.68804800260114,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does cell membranes in climate science work",
+    "results": [
+      {
+        "category": "general",
+        "content": "and the swiss-roll membranes in pig&#39;s noses etc. fun. 2011-10-21: Friday Up early, chewed mail - interested to see the Antelink taxonomy of the LibreOffice code changes vs. OpenOf",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2011/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2011/"
+      },
+      {
+        "category": "general",
+        "content": "with the cell membranes, synapses, and intracellular structures all intact.&#34; Brain Preservation Foundation, 201x, &#34; Overview of 21st Century Medicine’s Cryopreserv",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cryonics",
+        "url": "http://www.ralphmerkle.com/cryo/"
+      },
+      {
+        "category": "general",
+        "content": "eat passes through the membranes in your colon to feed ever cell in your body. Just as a healthy plant grows out of biologically healthy soil, so does the &#39;dirt&#39; in your gut grow",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.heartcom.org",
+          "/DrChristopher.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Optimal Health and Your Immune System",
+        "url": "https://www.heartcom.org/DrChristopher.htm"
+      },
+      {
+        "category": "general",
+        "content": "cells with signalling membranes capable of sentience (e) living organisms with excitable neurodynamics and (f) evolution, where each mutation is a quantum instance, all inherit su",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/cossym/SEC/SEC0.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Symbiotic Existential Cosmology Introduction",
+        "url": "http://www.dhushara.com/cossym/SEC/SEC0.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0222",
+  "query_text": "how does cell membranes in climate science work",
+  "requested_at": "2026-09-03T01:42:07.778189Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

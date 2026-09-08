@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 291.261,
+  "pair_id": "v5-p-0416",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind carbon capture in optics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9b48dd02f7088d3bd217348e2e33ed5dfd3c14a02ff6c867aa76de243f62825d",
+  "provider": "SearXNG",
+  "query": "describe the principle behind carbon capture in optics",
+  "query_id": "v5-p-0416-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:33.125254Z"
+}

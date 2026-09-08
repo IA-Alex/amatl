@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 269.733,
+  "pair_id": "v5-p-0790",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does coastal flooding in marine biology work",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1fb932abf6952956236b7aaf6e51dd3402021198854793961c122cd9035c09bd",
+  "provider": "SearXNG",
+  "query": "how does coastal flooding in marine biology work",
+  "query_id": "v5-p-0790-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:23.122666Z"
+}

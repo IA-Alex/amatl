@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 342.705,
+  "pair_id": "v5-p-0743",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes root systems in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "Redesign of Natural Ecosystems : Pearce suggests that, with the help of advanced technology, we could re-engineer predator-prey relationships, potentially replacing carnivorous sp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.transhumanist.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Transhumanism as conceived by ChatGPT-4",
+        "url": "https://www.transhumanist.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "lands. Yet these two systems, so different in principle, were in effect nearly identical. Both exhibited the spectacle of a subject possessed of unlimited power within his own ter",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.electricscotland.com",
+          "/webclans/kin.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Explanation of Clanship",
+        "url": "http://www.electricscotland.com/webclans/kin.htm"
+      },
+      {
+        "category": "general",
+        "content": "Different Legal Systems Have Different NAPs 2.6. The Problems With Deontological Ethics 3. Biological Realism 3.1. Why Libertarianism Is Incompatible With Human Nature 3.2. Inclin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/civilization/case-against-libertarianism",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Case Against Libertarianism And Ancapism",
+        "url": "https://zerocontradictions.net/civilization/case-against-libertarianism"
+      },
+      {
+        "category": "general",
+        "content": "We are dealing with systems, with growth and development (and therefore with the past), and with human potential (and therefore with the future). The psychological elements we hav",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/sggfr.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Song of the Grandfathers",
+        "url": "http://ipwebdev.com/hermit/sggfr.html"
+      },
+      {
+        "category": "general",
+        "content": "poetical system, or systems, not worth a damn in itself, and from which none but Rogers and Crabbe are free; and that the present and next generations will finally be of this opin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.publicappeal.org",
+          "/library/nietzsche/Nietzsche_human_all_too_human/sect4_from_the_soul_of_artists.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SECTION FOUR From the Soul of Artists and Writers",
+        "url": "http://www.publicappeal.org/library/nietzsche/Nietzsche_human_all_too_human/sect4_from_the_soul_of_artists.htm"
+      },
+      {
+        "category": "general",
+        "content": "systems. Liberals treated this as a quibble, a distinction without a difference. The debate sounded abstract and technical, as if egregious incidents of torture were simply “",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "thornwalker.com",
+          "/recoveries/sobran/pensees.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Pensees, by Joe Sobran",
+        "url": "https://thornwalker.com/recoveries/sobran/pensees.html"
+      },
+      {
+        "category": "general",
+        "content": "heavens, though ancient systems may be dissolved and new systems evolved out of their ruins, the molecules out of which these systems are built’the foundation stones of the materi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "victorianweb.org",
+          "/science/science_texts/belfast.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Address Delivered Before the British Association Assembled at Belfast, With Additions (1874)",
+        "url": "https://victorianweb.org/science/science_texts/belfast.html"
+      },
+      {
+        "category": "general",
+        "content": "quickly such systems of thought and feeling, like impressions of a temple from some random remaining columns and pieces of wall. The immediate result is that we understand our fel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.publicappeal.org",
+          "/library/nietzsche/Nietzsche_human_all_too_human/sect5_signs_of_higher_and_lower_culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SECTION FIVE , Signs of Higher and Lower Culture",
+        "url": "http://www.publicappeal.org/library/nietzsche/Nietzsche_human_all_too_human/sect5_signs_of_higher_and_lower_culture.htm"
+      },
+      {
+        "category": "general",
+        "content": "of Ground Weapons Systems, Office of International Logistics Negotiations serving as Chief Pentagon Arms Negotiator for the Middle East, says &#34;70%&#34; of the military brass",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "investigate911.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Urgent: Scientists Discover Nano-Thermite Explosives in 9/11 WTC Dust Used in Controlled Demolitions. investigate 911 Superthermite Nano-Therm",
+        "url": "http://investigate911.org/"
+      },
+      {
+        "category": "general",
+        "content": "parents; the cruel systems that enable circumcision must be destroyed. It is considered a routine procedure in the USA and probably Australia / Canada too - so even if some parent",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/oppression.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Will the real oppressed group please stand up?",
+        "url": "http://digdeeper.love/articles/oppression.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "Cottage-and-Cow systems, Repression of Population, Vote by ballot. To such height has the dyspepsia of Society reached: as indeed the constant grinding internal pain, or from time",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.hetwebsite.net",
+          "/het/texts/carlyle/carlyle1831characteristics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "T. Carlyle, 1931, &#34;Characteristics&#34;, ER",
+        "url": "http://www.hetwebsite.net/het/texts/carlyle/carlyle1831characteristics.htm"
+      },
+      {
+        "category": "general",
+        "content": "name for a diversity of systems that, although they at the first glance look related, because of similar terminology, their kernels and ideals are completely different from Jung&amp;r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mats-winther.github.io",
+          "/hillmcrit.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Critique of Archetypal Psychology",
+        "url": "https://mats-winther.github.io/hillmcrit.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2a0bb20b58f485ce83db825580c386383be0da81098c38de6e6580fd048317f7",
+  "provider": "SearXNG",
+  "query": "what causes root systems in public health",
+  "query_id": "v5-p-0743-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:17.041097Z"
+}

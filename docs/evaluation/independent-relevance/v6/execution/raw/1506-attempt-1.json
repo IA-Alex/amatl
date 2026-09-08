@@ -1,0 +1,171 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1506,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 339.888,
+  "pair_id": "candidate-p-0223",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of arctic navigation within music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "use with a little more explanation in-game. Instant-death on accidentally switching to sniper mode is kind of a bummer! 2 - Mostly complete though, according to the author, lackin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.roguetemple.com",
+          "/7drl/2013/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Temple of The Roguelike: 7DRL Shrine : 2013 7DRL Challenge Evaluation",
+        "url": "https://www.roguetemple.com/7drl/2013/"
+      },
+      {
+        "category": "general",
+        "content": "Modified Gravity as an explanation for flat galaxy rotation curves (26-Jun-16; 28-Nov-20) Stochastic elctrodynamics Timothy Boyer (15-Oct-18; 02-Jan-21) Any Classical Description",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "web.cs.wpi.edu",
+          "/~jshutt/surfing.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Web Surfing",
+        "url": "http://web.cs.wpi.edu/~jshutt/surfing.html"
+      },
+      {
+        "category": "general",
+        "content": "That, anyway, was the explanation given when the project began during the last act of the Cold War. Now, however, locals are worried that the little-publicized experiment has take",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "could provide an explanation for &#34;Petrie&#39;s Core #7,&#34; a  slightly conical, cyclindrical residual core drilled from a solid block of stone block by ancient Egyptians that requi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "spirasolaris.ca",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Spirasolaris",
+        "url": "https://spirasolaris.ca/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2542d9bdaf302b69ef6484c312ff20774ea65acebe6e0042fa16c3e8196c0b74",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of arctic navigation within music technology",
+  "query_id": "candidate-c-0223",
+  "raw_result_count": 4,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "https://www.roguetemple.com/7drl/2013/",
+      "original_url": "https://www.roguetemple.com/7drl/2013/",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "use with a little more explanation in-game. Instant-death on accidentally switching to sniper mode is kind of a bummer! 2 - Mostly complete though, according to the author, lackin",
+      "title": "Temple of The Roguelike: 7DRL Shrine : 2013 7DRL Challenge Evaluation"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://web.cs.wpi.edu/~jshutt/surfing.html",
+      "original_url": "http://web.cs.wpi.edu/~jshutt/surfing.html",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "Modified Gravity as an explanation for flat galaxy rotation curves (26-Jun-16; 28-Nov-20) Stochastic elctrodynamics Timothy Boyer (15-Oct-18; 02-Jan-21) Any Classical Description",
+      "title": "Web Surfing"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.cyberspaceorbit.com/WEATHER.html",
+      "original_url": "https://www.cyberspaceorbit.com/WEATHER.html",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "That, anyway, was the explanation given when the project began during the last act of the Cold War. Now, however, locals are worried that the little-publicized experiment has take",
+      "title": "HAARP"
+    }
+  ],
+  "timestamp": "2026-09-05T17:28:30.049621Z"
+}

@@ -1,0 +1,246 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 327.262,
+  "pair_id": "v5-p-0710",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does language acquisition in urban planning work",
+    "results": [
+      {
+        "category": "general",
+        "content": "pain, conscience, acquisition, protection, enhancement, mastery, are undoubtedly names for some of the ways people act. There may be instinctive dispositions which work toward suc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/cache/epub/6456/pg6456-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of Public opinion, by Walter Lippmann",
+        "url": "https://www.gutenberg.org/cache/epub/6456/pg6456-images.html"
+      },
+      {
+        "category": "general",
+        "content": "The $2.3 million acquisition had been in the works for 13 years, ever since the Capitol Land Trust and Squaxin Island Tribe started talking about it, said former Capitol Land Trus",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cowlitzcountry.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cowlitz Country News Home Page",
+        "url": "http://www.cowlitzcountry.com/"
+      },
+      {
+        "category": "general",
+        "content": "the village over the acquisition and possession of sexually active females. Teenage males frequently have homosexual affairs because the females of their own age are usually marri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/warrior.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sexual Paradox: The Warrior",
+        "url": "http://www.dhushara.com/paradoxhtm/warrior.htm"
+      },
+      {
+        "category": "general",
+        "content": "with original acquisition by homesteading, and no restrictions on who may own things. (There are no caste restrictions such as &#39;only current workers may own capital&#39; that communis",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ancapfaq.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Anarcho-capitalist FAQ",
+        "url": "http://www.ancapfaq.com/"
+      },
+      {
+        "category": "general",
+        "content": "priorities, and acquisition policy. The memorandum to Carter, which Brzezinski initialed, suggested that the PD was a combination of old and new: &#34;significant and important innova",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nsarchive2.gwu.edu",
+          "//nukevault/ebb390/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jimmy Carter&#39;s Controversial Nuclear Targeting Directive PD-59 Declassified",
+        "url": "https://nsarchive2.gwu.edu//nukevault/ebb390/"
+      },
+      {
+        "category": "general",
+        "content": "to build a fire is the acquisition of land via one’s labor. So, is building a shelter, tools, etc. Even if an individual doesn’t own any natural resources to begin wit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/civilization/georgism-crash-course",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Georgism &amp; Freiland Crash Course",
+        "url": "https://zerocontradictions.net/civilization/georgism-crash-course"
+      },
+      {
+        "category": "general",
+        "content": "about the patterns of acquisition of knowledge and skills, and about the effectiveness of specific forms of teaching and learning.   1.3Products of Proposed Research The pivo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "papert.org",
+          "/articles/AnEvaluativeStudyofModernTechnology.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "An Evaluative Study of Modern Technology in Education",
+        "url": "http://papert.org/articles/AnEvaluativeStudyofModernTechnology.html"
+      },
+      {
+        "category": "general",
+        "content": "rich people or the acquisition of wealth as long as it didn&#39;t interfere with the individual&#39;s following of the religious law or spiritual relationship with God. Jesus healed the s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2007/03/politicized_rel.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: Politicized Religion, Retail Version",
+        "url": "http://www.2blowhards.com/archives/2007/03/politicized_rel.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "dcbc8a76a73eaacad159846265805bc5cc1ce8ea6ae910f918c0c58d0cbd4e6b",
+  "provider": "SearXNG",
+  "query": "how does language acquisition in urban planning work",
+  "query_id": "v5-p-0710-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:55.781544Z"
+}

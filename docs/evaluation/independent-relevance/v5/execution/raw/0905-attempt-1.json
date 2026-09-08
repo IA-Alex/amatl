@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 373.397,
+  "pair_id": "v5-p-0059",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes compiler operation in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "wool was inside. The operation was termed beating,) Allegany then numbered only about nine thousand inhabitants, and the settlements were far apart, so that the paper-maker but se",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sidneyrigdon.com",
+          "/dbroadhu/NY/miscNYS3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Uncle Dale&#39;s Old Mormon Articles: NY, 1847-1869",
+        "url": "http://www.sidneyrigdon.com/dbroadhu/NY/miscNYS3.htm"
+      },
+      {
+        "category": "general",
+        "content": "commands that perform operations on the spacecraft. Uplinked to the spacecraft by mission control, they are not CPU instructions. In a spacecraft without computers, the commands a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.geonius.com",
+          "/writing/other/voyager.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Voyager Spacecraft and Fortran 5",
+        "url": "http://www.geonius.com/writing/other/voyager.html"
+      },
+      {
+        "category": "general",
+        "content": "describe a religion in operation at the isthmus of Darien 600 years before Christ, which it styles the law of Moses, it estimates, contrary to that law and all law, the priesthood",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sidneyrigdon.com",
+          "/dbroadhu/OH/evan1832.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Uncle Dale&#39;s Old Mormon Articles: Rev. Walter Scott&#39;s The Evangelist",
+        "url": "http://www.sidneyrigdon.com/dbroadhu/OH/evan1832.htm"
+      },
+      {
+        "category": "general",
+        "content": "into its real-world operation. A helpful early observation was that in Turbo Pascal’s linking mode, each code segment corresponds to a single unit. With that in mind, I coul",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "blog.asie.pl",
+          "/2020/08/reconstructing-zzt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ZZT Stories: The Reconstruction :: asie&#39;s blog",
+        "url": "https://blog.asie.pl/2020/08/reconstructing-zzt/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0c37fe8ba9d16cdf5374a96de3fc64c83fc8640b0eaf377a0b95030968e179b0",
+  "provider": "SearXNG",
+  "query": "what causes compiler operation in public health",
+  "query_id": "v5-p-0059-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:02.068524Z"
+}

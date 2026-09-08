@@ -1,0 +1,11 @@
+{
+  "accepted_results": 115,
+  "accounting": "RAW_RESULTS = ACCEPTED_RESULTS + ALL_REJECTIONS",
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "raw_results": 1083,
+  "rejection_counts": {
+    "DUPLICATE_CURRENT": 175,
+    "OTHER_HISTORICAL_OVERLAP": 793
+  },
+  "schema": "amatl.relevance.v6-rejection-ledger.v1"
+}

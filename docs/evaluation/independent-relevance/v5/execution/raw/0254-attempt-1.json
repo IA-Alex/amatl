@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 259.141,
+  "pair_id": "v5-p-0543",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of food preservation in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "Field to Freezer and Preservation of Game Meats . Home Drying of Food is 25 detailed pages from the Utah State University Cooperative Extension. The National Food Safety Database",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "paleodiet.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Paleo Diet (Paleolithic, Primal, Caveman, Stone Age, Hunter-Gatherer Diet)",
+        "url": "https://paleodiet.com/"
+      },
+      {
+        "category": "general",
+        "content": "responsibility for the preservation of life and a root confusion between subjective and objective manifestations, in which personality, moral judgment and legislative manufacture,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "dhushara.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dhushara",
+        "url": "http://dhushara.com/"
+      },
+      {
+        "category": "general",
+        "content": "Food storage and preservation Useful databases Community-supported farms Farming with trees Agroforestry Bamboo Resources Farming with animals Introduction Livestock resources Cat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "journeytoforever.org",
+          "/farm_library.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Small Farms Library - Journey to Forever",
+        "url": "http://journeytoforever.org/farm_library.html"
+      },
+      {
+        "category": "general",
+        "content": "that they result in the preservation of an organism&#39;s life.&#34; The footnote may have been added later to answer an objection someone raised. The problem is that once Rand makes that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "spot.colorado.edu",
+          "/~huemer/papers/rand5.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Critique of Objectivist Ethics",
+        "url": "https://spot.colorado.edu/~huemer/papers/rand5.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4efdca3bdd6231d4c107f4b5ed91be2b6931ab45054b2ca47ffa0b3cd1b4a326",
+  "provider": "SearXNG",
+  "query": "give an overview of food preservation in chemistry",
+  "query_id": "v5-p-0543-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:29.345016Z"
+}

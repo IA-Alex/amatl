@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 321.225,
+  "pair_id": "v5-p-0545",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is food preservation in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "&#34;With the preservation and propagation of modern dynastic power has come the preservation and propagation of modern imperialism, no longer established as a formal colo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "globalkleptocracy.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GLOBAL KLEPTOCRACY - GLOBAL ELITE, RULING ELITE, GLOBAL OLIGARCHY, DEEP STATE, GLOBALISM, DYNASTIC ELITE, MONOPOLY CAPITALISM, CORPORATOCRACY,",
+        "url": "https://globalkleptocracy.net/"
+      },
+      {
+        "category": "general",
+        "content": "But in what does this preservation of African American culture consist? It can hardly consist in anything more than eating black-style food, listening to black-style music, wearin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unabomber.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society and Its Future",
+        "url": "https://unabomber.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "canal building and the preservation of essential water sources. It should be noted that after the destruction of the Thern faith by John Carter, there was no longer any worldwide",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.erbzine.com",
+          "/mag14/1416.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ERBzine 1416: Religions of Barsoom by Den Valdron",
+        "url": "https://www.erbzine.com/mag14/1416.html"
+      },
+      {
+        "category": "general",
+        "content": "were: the exceptional preservation of the bones; the number, variety and completeness of the skeletons; the relative abundance of skulls, consisting of 8 or more in a complete sta",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/49288/49288-h/49288-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dinosaur Quarry, Dinosaur National Monument, Colorado, Utah, by John M. Good, Theodore E. White and Gilbert F. Stucker",
+        "url": "https://www.gutenberg.org/files/49288/49288-h/49288-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "in our efforts for his preservation. He must be protected against the ills of youth before he reaches them: for if the value of life increases until the child reaches an age when",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "hksh.site",
+          "/wclassic/rousseau-emile.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rousseau-Emile",
+        "url": "http://hksh.site/wclassic/rousseau-emile.htm"
+      },
+      {
+        "category": "general",
+        "content": "namely, the preservation of female honor. Those who frequent these haunts of vice are forever employed in casting about snares to entrap the young, the unwary, or the friendless w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/41873/41873-h/41873-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The History of Prostitution: Its Extent, Causes, and Effects Throughout the World, by William W. Sanger—A Project Gutenberg eBook",
+        "url": "https://www.gutenberg.org/files/41873/41873-h/41873-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "a strong sense of self-preservation, caused me to join a local mycological society and begin my mushroom studies in earnest. Since then, I have become a proponent of the safe and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bayareamushrooms.org",
+          "/education/further_reflections_amanita_muscaria.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Further Reflections on Amanita muscaria as an Edible Species - Bay Area Mycological Society",
+        "url": "http://www.bayareamushrooms.org/education/further_reflections_amanita_muscaria.html"
+      },
+      {
+        "category": "general",
+        "content": "Field to Freezer and Preservation of Game Meats . Home Drying of Food is 25 detailed pages from the Utah State University Cooperative Extension. The National Food Safety Database",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "paleodiet.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Paleo Diet (Paleolithic, Primal, Caveman, Stone Age, Hunter-Gatherer Diet)",
+        "url": "https://paleodiet.com/"
+      },
+      {
+        "category": "general",
+        "content": "human component in the preservation of the Earth&#39;s environment is energy. Industrial conversion of energy into forms that are useful for human activities is the most important asp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oism.org",
+          "/pproject/s33p36.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Environmental Effects of Increased Atmospheric Carbon Dioxide - Global Warming Petition Project",
+        "url": "https://www.oism.org/pproject/s33p36.htm"
+      },
+      {
+        "category": "general",
+        "content": "Lewarch, historic preservation officer for the Suquamish Tribe, said elders from the Tribes will get together &#34;and determine what is best for the ancestor.&#34; Suquamish: Woman embez",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cowlitzcountry.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cowlitz Country News Home Page",
+        "url": "http://www.cowlitzcountry.com/"
+      },
+      {
+        "category": "general",
+        "content": "its cultivation and preservation The date, description and uses of The orange The lemon The sweet lemon or bergamot The citron The lime The grape-fruit The pomegranate, its antiqu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book33/book33.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Science in the Kitchen., by Mrs. E. E. Kellogg",
+        "url": "https://www.ajhw.co.uk/books/book33/book33.html"
+      },
+      {
+        "category": "general",
+        "content": "of ecosystems and the preservation of biodiversity. Ethical principles: Compassionate biology is guided by an ethic of care and responsibility toward individual animals, while tra",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gene-drives.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reprogramming the biosphere with gene drives as conceived by ChatGPT",
+        "url": "https://www.gene-drives.com/chatgpt/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "18e9b553b7310d5a64c7b19b29ba21398e24e2ceec361e810ce083bd1957f4ff",
+  "provider": "SearXNG",
+  "query": "what is food preservation in climate science",
+  "query_id": "v5-p-0545-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:23.990414Z"
+}

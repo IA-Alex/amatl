@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1442,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 299.277,
+  "pair_id": "candidate-p-0003",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about acoustic ecology within archaeology",
+    "results": [
+      {
+        "category": "general",
+        "content": "Here? Settlement, Geoarchaeology, and Paleoenvironment at the West Berkeley Site (CA-Ala-307) [ SCA Proceedings - PDF]. Eerkens, Jelmer, Shannon Tushingham, Kari Lentz, Jennifer B",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.californiaprehistory.com",
+          "/contcounty.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CaliforniaPrehistory.com -- Articles on Prehistory, By County",
+        "url": "https://www.californiaprehistory.com/contcounty.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "27a1ae588634a6042bea34fc08bc97dc8bc72684a8617a7f4d7c3ca8766d25ba",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about acoustic ecology within archaeology",
+  "query_id": "candidate-c-0003",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "https://www.californiaprehistory.com/contcounty.html",
+      "original_url": "https://www.californiaprehistory.com/contcounty.html",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "Here? Settlement, Geoarchaeology, and Paleoenvironment at the West Berkeley Site (CA-Ala-307) [ SCA Proceedings - PDF]. Eerkens, Jelmer, Shannon Tushingham, Kari Lentz, Jennifer B",
+      "title": "CaliforniaPrehistory.com -- Articles on Prehistory, By County"
+    }
+  ],
+  "timestamp": "2026-09-05T17:28:11.255515Z"
+}

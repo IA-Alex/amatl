@@ -1,0 +1,273 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 299.874,
+  "pair_id": "v5-p-0676",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does traffic flow in architecture operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "this structure, the architecture, didn?t make a whole lot of sense. Q. Did it have MMX too? [Laughter] JAMES WONG: I guess that I didn?t mention that this was a 32-bit machine. Th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ed-thelen.org",
+          "/Sage-Talk.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://ed-thelen.org/Sage-Talk.html",
+        "url": "https://ed-thelen.org/Sage-Talk.html"
+      },
+      {
+        "category": "general",
+        "content": "design, we needed an architecture that wouldn’t overwrite the animators’ crafted keyframes with algorithmic approximations. The tighter the click-feedback loop (click → squish → s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.smashingmagazine.com",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Articles on Smashing Magazine — For Web Designers And Developers",
+        "url": "https://www.smashingmagazine.com/feed/"
+      },
+      {
+        "category": "general",
+        "content": "Sensation (2007). The Architecture of Thought 7 MODES OF THOUGHT 3 STAGES OF COGNITION I pre- nominal ante- rationality 1 Mythical libidinal ego the irrational 2 Pre-rational trib",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/equiaeon/behaviours.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHY : Behaviours : Formal Sketch of a Critical Ethics",
+        "url": "http://www.sofiatopia.org/equiaeon/behaviours.htm"
+      },
+      {
+        "category": "general",
+        "content": "page: Photo Placard Architecture Special Features Historical Notes This Artifact Interesting Web Sites Other information , Other Software , Other Hardware , SAGE track &#34;D.B. Coope",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ed-thelen.org",
+          "/comp-hist/vs-ibm-sage.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "IBM SAGE",
+        "url": "https://ed-thelen.org/comp-hist/vs-ibm-sage.html"
+      },
+      {
+        "category": "general",
+        "content": "is called decentralized architecture by Criptext - which is of course a total joke since their &#34;app&#34; enforces usage of Criptext servers - unlike a regular mail client. Let&#39;s now c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/email.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "E-mail providers - which one to choose?",
+        "url": "http://digdeeper.love/articles/email.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "identifies the disk&#39;s architecture to IRIX, i.e. how many cylinders, tracks, sectors, etc. The disk label also includes a directory table of contents consisting of file names, siz",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "archive.irixnet.org",
+          "/thisoldsgi/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "This Old SGI",
+        "url": "http://archive.irixnet.org/thisoldsgi/"
+      },
+      {
+        "category": "general",
+        "content": "Cerf sketches gateway architecture in March on back of envelope in a San Francisco hotel lobby (:vgc:) Cerf and Kahn present basic Internet ideas at INWG in September at Univ of S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zakon.org",
+          "/robert/internet/timeline/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hobbes&#39; Internet Timeline - the definitive ARPAnet &amp; Internet history",
+        "url": "https://www.zakon.org/robert/internet/timeline/"
+      },
+      {
+        "category": "general",
+        "content": "to form a quad-die architecture for the first time in an M-series system on a chip (SoC). The chip includes an up-to-36-core CPU and up-to-80-core GPU with a massive 1.2TB/s of un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "daringfireball.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Daring Fireball",
+        "url": "https://daringfireball.net/"
+      },
+      {
+        "category": "general",
+        "content": "an accessory; it’s the architecture of email itself . Disclaimer This site is independent and does not receive payments, sponsorships, or donations to recommend, review, or promot",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "realdeepweb.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Real Deep Web | Hidden Wiki Access &amp; Deep Web Tools",
+        "url": "http://realdeepweb.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "49ee8c4e67d4886eeea36ef6fbc95a304569fe76f605b355afe4d4811df0c18c",
+  "provider": "SearXNG",
+  "query": "how does traffic flow in architecture operate",
+  "query_id": "v5-p-0676-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:40.672749Z"
+}

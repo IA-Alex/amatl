@@ -7,9 +7,39 @@ pub struct HttpRequest {
     pub(crate) url: Url,
     pub(crate) headers: Vec<(String, String)>,
     pub(crate) timeout_ms: u64,
+    /// Request body. `None` is a GET; `Some` is a POST with the declared
+    /// content type already present in `headers`.
+    pub(crate) body: Option<Vec<u8>>,
 }
 
 impl HttpRequest {
+    /// Read-only request, the shape every search provider uses.
+    pub fn get(url: Url, headers: Vec<(String, String)>, timeout_ms: u64) -> Self {
+        Self {
+            url,
+            headers,
+            timeout_ms,
+            body: None,
+        }
+    }
+
+    /// JSON POST, used by the governed remote inference backend.
+    pub fn post_json(
+        url: Url,
+        headers: Vec<(String, String)>,
+        timeout_ms: u64,
+        body: Vec<u8>,
+    ) -> Self {
+        let mut headers = headers;
+        headers.push(("content-type".into(), "application/json".into()));
+        Self {
+            url,
+            headers,
+            timeout_ms,
+            body: Some(body),
+        }
+    }
+
     pub fn sanitized_url(&self) -> Url {
         let mut url = self.url.clone();
         let sensitive = ["api_key", "key", "token"];
@@ -63,17 +93,29 @@ impl ReqwestTransport {
 #[async_trait]
 impl HttpTransport for ReqwestTransport {
     async fn execute(&self, request: HttpRequest) -> Result<HttpResponse, String> {
-        let mut builder = self
-            .client
-            .get(request.url)
-            .timeout(Duration::from_millis(request.timeout_ms));
+        // Captured before `request` is consumed below, and with secret query
+        // parameters already stripped: this is the only form of the URL that
+        // may reach a log line, never the raw request URL or the transport
+        // error's own `Display`, which reqwest renders with the request URL
+        // (and any query string, e.g. Mojeek's `api_key`) embedded in it.
+        let sanitized_url = request.sanitized_url();
+        let mut builder = match request.body {
+            Some(body) => self.client.post(request.url).body(body),
+            None => self.client.get(request.url),
+        }
+        .timeout(Duration::from_millis(request.timeout_ms));
         for (name, value) in request.headers {
             builder = builder.header(&name, &value);
         }
-        let mut response = builder
-            .send()
-            .await
-            .map_err(|_| "provider network request failed".to_string())?;
+        let mut response = builder.send().await.map_err(|error| {
+            tracing::warn!(
+                target: "amatl::providers",
+                url = %sanitized_url,
+                kind = classify_transport_error(&error),
+                "provider network request failed"
+            );
+            "provider network request failed".to_string()
+        })?;
         if response.content_length().unwrap_or(0) > self.max_response_bytes as u64 {
             return Err("provider response exceeded byte limit".into());
         }
@@ -89,11 +131,15 @@ impl HttpTransport for ReqwestTransport {
             })
             .collect();
         let mut body = Vec::new();
-        while let Some(chunk) = response
-            .chunk()
-            .await
-            .map_err(|_| "provider response body failed".to_string())?
-        {
+        while let Some(chunk) = response.chunk().await.map_err(|error| {
+            tracing::warn!(
+                target: "amatl::providers",
+                url = %sanitized_url,
+                kind = classify_transport_error(&error),
+                "provider response body read failed"
+            );
+            "provider response body failed".to_string()
+        })? {
             if body.len().saturating_add(chunk.len()) > self.max_response_bytes {
                 return Err("provider response exceeded byte limit".into());
             }
@@ -107,6 +153,35 @@ impl HttpTransport for ReqwestTransport {
     }
 }
 
+/// Coarse transport-error classification for internal observability only.
+///
+/// This never becomes part of `ProviderErrorKind` (the public, serialized
+/// contract every provider maps its errors onto): the execution layer already
+/// imposes and reports its own deadline-based `Timeout` regardless of what the
+/// transport does, and retries treat `Network`/`RateLimit`/`Unavailable`
+/// identically, so a finer-grained public variant would ripple through the
+/// contract (serialization, exhaustive `match`es, telemetry, CLI, fixtures)
+/// without changing any decision the system makes. It exists purely so a
+/// `provider network request failed` log line says which kind of failure it
+/// was, which the previous `map_err(|_| ...)` discarded entirely.
+fn classify_transport_error(error: &reqwest::Error) -> &'static str {
+    if error.is_timeout() {
+        "timeout"
+    } else if error.is_connect() {
+        "connect"
+    } else if error.is_body() {
+        "body"
+    } else if error.is_decode() {
+        "decode"
+    } else if error.is_redirect() {
+        "redirect"
+    } else if error.is_request() {
+        "request"
+    } else {
+        "other"
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -114,14 +189,62 @@ mod tests {
 
     #[test]
     fn sanitizes_secret_query_parameters() {
-        let request = HttpRequest {
-            url: Url::parse("https://example.com/?api_key=secret&q=rust").unwrap(),
-            headers: vec![],
-            timeout_ms: 10,
-        };
+        let request = HttpRequest::get(
+            Url::parse("https://example.com/?api_key=secret&q=rust").unwrap(),
+            vec![],
+            10,
+        );
         let visible = request.sanitized_url().to_string();
         assert!(!visible.contains("secret"));
         assert!(visible.contains("rust"));
+    }
+
+    /// `execute` only ever logs `request.sanitized_url()`, never the request
+    /// URL itself or the transport error's `Display` (which reqwest renders
+    /// with the request URL, secrets included, embedded in it) — and the
+    /// returned error string never carries the query string either way.
+    #[tokio::test]
+    async fn connection_refused_is_classified_as_connect_and_never_leaks_the_query_secret() {
+        let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+        let address = listener.local_addr().unwrap();
+        drop(listener); // nothing listens on `address` anymore: refused.
+
+        let client = reqwest::Client::new();
+        let error = client
+            .get(format!("http://{address}/?api_key=super-secret"))
+            .send()
+            .await
+            .unwrap_err();
+        assert_eq!(classify_transport_error(&error), "connect");
+
+        let transport = ReqwestTransport::new(1024).unwrap();
+        let request = HttpRequest::get(
+            Url::parse(&format!("http://{address}/?api_key=super-secret")).unwrap(),
+            vec![],
+            500,
+        );
+        let returned = transport.execute(request).await.unwrap_err();
+        assert!(!returned.contains("super-secret"));
+    }
+
+    #[tokio::test]
+    async fn an_expired_deadline_is_classified_as_timeout() {
+        let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+        let address = listener.local_addr().unwrap();
+        let _server = tokio::spawn(async move {
+            let (stream, _) = listener.accept().await.unwrap();
+            tokio::time::sleep(Duration::from_secs(5)).await;
+            drop(stream);
+        });
+
+        let client = reqwest::Client::new();
+        let error = client
+            .get(format!("http://{address}/"))
+            .timeout(Duration::from_millis(50))
+            .send()
+            .await
+            .unwrap_err();
+        assert_eq!(classify_transport_error(&error), "timeout");
     }
 
     #[tokio::test]
@@ -141,11 +264,11 @@ mod tests {
         });
         let transport = ReqwestTransport::new(5).unwrap();
         let error = transport
-            .execute(HttpRequest {
-                url: Url::parse(&format!("http://{address}/")).unwrap(),
-                headers: vec![],
-                timeout_ms: 1_000,
-            })
+            .execute(HttpRequest::get(
+                Url::parse(&format!("http://{address}/")).unwrap(),
+                vec![],
+                1_000,
+            ))
             .await
             .unwrap_err();
         assert_eq!(error, "provider response exceeded byte limit");
@@ -191,11 +314,11 @@ mod tests {
         let secret = "never-leak-provider-key";
         let error = ReqwestTransport::new(1024)
             .unwrap()
-            .execute(HttpRequest {
-                url: Url::parse(&format!("https://localhost:{port}/?api_key={secret}")).unwrap(),
-                headers: vec![],
-                timeout_ms: 1_000,
-            })
+            .execute(HttpRequest::get(
+                Url::parse(&format!("https://localhost:{port}/?api_key={secret}")).unwrap(),
+                vec![],
+                1_000,
+            ))
             .await
             .unwrap_err();
         assert_eq!(error, "provider network request failed");

@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 4427,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 327.171,
+  "pair_id": "candidate-p-1122",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how can researchers measure forest acoustics within energy policy",
+    "results": [
+      {
+        "category": "general",
+        "content": "that would allow the researchers to do more than simply create mood swings. They found that they could increase the crime rate, incite violence and cause mass panic among animals.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greatdreams.com",
+          "/war/rule_2002.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RULE 2002",
+        "url": "http://www.greatdreams.com/war/rule_2002.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1d0841b79ef5a00f07e48ac718115d9632ebbb3859f6f12f46d8ea8ac51c1709",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how can researchers measure forest acoustics within energy policy",
+  "query_id": "candidate-t-1122",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.greatdreams.com/war/rule_2002.htm",
+      "original_url": "http://www.greatdreams.com/war/rule_2002.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "that would allow the researchers to do more than simply create mood swings. They found that they could increase the crime rate, incite violence and cause mass panic among animals.",
+      "title": "RULE 2002"
+    }
+  ],
+  "timestamp": "2026-09-05T17:43:54.433528Z"
+}

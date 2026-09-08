@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 213.238,
+  "pair_id": "v5-p-0019",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of photosynthesis in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "46b26cf1691a92e34ebf0f04577e1c958aa1f3f1339a76e1d24f8ae661e7d576",
+  "provider": "SearXNG",
+  "query": "give an overview of photosynthesis in oceanography",
+  "query_id": "v5-p-0019-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:39.211292Z"
+}

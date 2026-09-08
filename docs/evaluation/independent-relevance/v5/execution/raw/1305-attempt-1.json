@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 295.147,
+  "pair_id": "v5-p-0937",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is cloud formation in biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "have recorded the information about the defective filter in the logbook for the next shift, but perhaps the importance of the technician’s note didn’t register in his mind, or per",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.isegoria.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Isegoria",
+        "url": "http://www.isegoria.net/"
+      },
+      {
+        "category": "general",
+        "content": "that very little information about the earth, much less possibility of life on it, is obtained by a picture at this resolution. The next large slide is a TIROS photograph of the e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.project1947.com",
+          "/shg/symposium/sagan.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SHG - UFO Symposium 1968: Sagan Statement",
+        "url": "http://www.project1947.com/shg/symposium/sagan.html"
+      },
+      {
+        "category": "general",
+        "content": "saw black dots in vee-formation against cirrus clouds to the south, and dared not glance toward the east, lest Denebola blind. Then abovehead they glided. Something made me tense.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "paulburgess.org",
+          "/light.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bearing Light",
+        "url": "http://paulburgess.org/light.html"
+      },
+      {
+        "category": "general",
+        "content": "long-term transformation of culture * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * [38-40 in reserve for future edits] * * * * * * * * * * * * * * *",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stat.berkeley.edu",
+          "/~aldous/Real_World/100_list.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Annotated list of contexts where we perceive chance",
+        "url": "https://www.stat.berkeley.edu/~aldous/Real_World/100_list.html"
+      },
+      {
+        "category": "general",
+        "content": "reliable information on this topic is extraordinarily difficult for laity and professionals alike. The layman is more likely to be given heavily slanted propaganda. Unvarnished fa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/gooddrug.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Good Drug Guide: The Responsible Parent&#39;s Guide To Healthy Mood-Boosters For All The Family",
+        "url": "https://www.hedweb.com/gooddrug.htm"
+      },
+      {
+        "category": "general",
+        "content": "of Deception and Disinformation (1984).pdf 2021-07-01 19:59 1.5M   Anatoliy Golitsyn - The Perestroika Deception - Memoranda to the Central Intelligence Agency (1998).pdf 202",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "avalonlibrary.net",
+          "/ebooks/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of /ebooks",
+        "url": "https://avalonlibrary.net/ebooks/"
+      },
+      {
+        "category": "general",
+        "content": "Remains in the Coal-Formation of Nova Scotia”   Page 95     Page 96   AAAS -- Science;    Vol. 1, No. 4 (1883)       Pa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "creationism.org",
+          "/books/HaeckelsForgeries1915/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Haeckel&#39;s Frauds and Forgeries",
+        "url": "https://creationism.org/books/HaeckelsForgeries1915/"
+      },
+      {
+        "category": "general",
+        "content": "Holes Can Trigger Star Formation 3rd Hello, Rock! 2nd Black Holes And Dark Matter 1st March ALMA Sees Hydrogen Super-Halos Around Young Spiral Galaxies 29th Nitrogen Powered 23rd",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "briankoberlein.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Archive | by Brian Koberlein",
+        "url": "https://briankoberlein.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "to Cameron, saw a rock formation looking down over a dale some two miles north of present-day Rockdale. She climbed up the rock formation to get a look at the end of the railroad",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.forttumbleweed.net",
+          "/rockdale.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "History of Rockdale, Milam County, Texas",
+        "url": "http://www.forttumbleweed.net/rockdale.html"
+      },
+      {
+        "category": "general",
+        "content": "based on accurate information and harm reduction practices.&#34; Describe the subjective experiences and emotional changes users often report while under the influence of MDMA. &#34;MDMA",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.mdma.net",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "MDMA (&#34;Ecstasy&#34;) as conceived as conceived by ChatGPT",
+        "url": "https://www.mdma.net/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "dynamically varying conformations — and the dynamics of variation, the balance among subtly or dramatically metamorphosing, plastic forms, is often pivotal for protein function. T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bwo.life",
+          "/org/comm/ar/2014/machines_18.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biology’s Shameful Refusal to Disown the Machine-Organism",
+        "url": "https://bwo.life/org/comm/ar/2014/machines_18.htm"
+      },
+      {
+        "category": "general",
+        "content": "it. Therefore the information on this site may not be current or accurate and should not be relied upon. For more information follow this link ( This Webpage Page in No Frames Mod",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lachlan.bluehaze.com.au",
+          "/nanoshite/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NanoShite: A nano-apostate webpage dedicated to the slimeycanceroushype flim-flam-barnum-and-bailey-charlatan delusional bollocks nanosleaze /",
+        "url": "http://lachlan.bluehaze.com.au/nanoshite/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7d159f6911a893891799733e234c3e5bc4bddfbe5a02d263e0b19cbc9e4005a0",
+  "provider": "SearXNG",
+  "query": "what is cloud formation in biology",
+  "query_id": "v5-p-0937-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:14.039684Z"
+}

@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 270.656,
+  "pair_id": "v5-p-0773",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is coastal flooding in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "Museum of History and Technology , Margaret Brown Klapthor A Review of the Resources and Industries of the State of Washington, 1909 , Ithamar Howell Complete State of the Union A",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hellenicaworld.com",
+          "/USA/USA.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "USA",
+        "url": "https://www.hellenicaworld.com/USA/USA.html"
+      },
+      {
+        "category": "general",
+        "content": "• Heat metrics, technology adoption, a pile of law, digital payments in India, and early movie theaters in Oregon. 2022.07.06 • Banned and challenged books, mass expulsions, Europ",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.data-is-plural.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Data Is Plural — Full Archive",
+        "url": "https://www.data-is-plural.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "to Do On Public Wi-Fi. Technology breeds crime (AARP), Keep Out Those Wi-Fi Hackers. Don&#39;t fall prey to digital intruders (AARP), Get Smart on the Web (Mozilla Foundation, 2016),",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "GDP growth led by technology and service sectors, foreign investment, and improved regulatory framework; high poverty rate and income inequality; initiatives on infrastructure dev",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hellenicaworld.com",
+          "/India/en/India.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "India",
+        "url": "https://www.hellenicaworld.com/India/en/India.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4bbce4c2afdf0dc3b4afcc771fb57fb07ff3539aeec51a46ef296ac6fe87b280",
+  "provider": "SearXNG",
+  "query": "what is coastal flooding in music technology",
+  "query_id": "v5-p-0773-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:12.717801Z"
+}

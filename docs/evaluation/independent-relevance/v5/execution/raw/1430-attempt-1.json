@@ -1,0 +1,273 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 404.778,
+  "pair_id": "v5-p-0701",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind language acquisition in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "His inverted &#34;customer acquisition cost&#34; economic theory is a satire that reveals an uncomfortable truth: he proposes that companies should acquire their own customers by paying t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "development as the acquisition of increasingly sophisticated rules would say that children run into problems if the rules they have built are not yet good enough. 19 But armed wit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "papert.org",
+          "/articles/EpistemologicalPluralism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Epistemological Pluralism and the Revaluation of the Concrete",
+        "url": "http://papert.org/articles/EpistemologicalPluralism.html"
+      },
+      {
+        "category": "general",
+        "content": "entailed by the acquisition of language lead the child to desire the mother. The girl redirects her desire to the mother in what is called the negative Oedipus complex. This can o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.feministezine.com",
+          "/feminist/film/Feminist-Film-Theory.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Feminist Film Theory - The Feminist eZine",
+        "url": "http://www.feministezine.com/feminist/film/Feminist-Film-Theory.html"
+      },
+      {
+        "category": "general",
+        "content": "defending the acquisition. UPDATE November 2020 : now they became totally authoritarian, hating TOR, VPNs and even private browsers : This reminds me of malicious Cloudflare brows",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/search.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Search Engines - which one to choose?",
+        "url": "http://digdeeper.love/articles/search.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "warfare. Customer acquisition 2026-08-22 22:21 Open source, stand with X, against Y. Moral business owner. Good respectable citizen. Ethical business. Then reality hits a bank acc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unstory.eu",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "unstory",
+        "url": "https://unstory.eu/"
+      },
+      {
+        "category": "general",
+        "content": "my gift and thine own acquisition       Worthily purchasd, take my daughter. But       If thou dost break her virgin knot before",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/tempest.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Tempest",
+        "url": "https://friesian.com/tempest.htm"
+      },
+      {
+        "category": "general",
+        "content": "Nvidia’s Hugging Face Acquisition Is a $12.9 Billion Bet on Open-Source AI [22h] Scientists Have Found the Most Convincing Evidence Yet of a Dark Matter Particle [23h] Engadget Th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "brutalist.report",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Brutalist Report",
+        "url": "https://brutalist.report/"
+      },
+      {
+        "category": "general",
+        "content": "must guard against the acquisition of unwarranted influence, whether sought or unsought, by the military-industrial complex. The potential for the disastrous rise of misplaced pow",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "senseantisense.com",
+          "/quotes/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SenseAntisense - Quotes",
+        "url": "https://senseantisense.com/quotes/"
+      },
+      {
+        "category": "general",
+        "content": "forward with a planned acquisition of vacuum-maker iRobot , with the two companies saying in a release there was “no path to regulatory approval for the deal.” The Roomba maker al",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "techrights.org",
+          "/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Techrights — Links 30/01/2024: Many More Layoffs (Microsoft the Most Tech Layoffs This Year)",
+        "url": "http://techrights.org/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c6a562eee217c6b3b561a8802e94c05b6a27577730a803781e1029f3e544e1be",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind language acquisition in music technology",
+  "query_id": "v5-p-0701-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:52.168278Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 324.113,
+  "pair_id": "v5-p-0988",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind wastewater treatment in music technology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6d48943814746c5a8ed979d43de15e5d6d2cca4d720e52bde6b5d6e59d7097eb",
+  "provider": "SearXNG",
+  "query": "describe the principle behind wastewater treatment in music technology",
+  "query_id": "v5-p-0988-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:45.170895Z"
+}

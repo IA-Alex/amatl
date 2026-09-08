@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 295.181,
+  "pair_id": "v5-p-1023",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes probability distributions in mechanical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "on stellar population distributions can be recovered directly from galactic dynamics. Starting from observed rotation curves, we construct synthetic stellar population mixtures co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "creates unequal distributions within all dimensions of life, in particular unequal distributions of pain. With the degree of pain, the degree of injustice increases as well: Certa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.socrethics.com",
+          "/Folder2/Biology.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biological Evolution of Pain",
+        "url": "http://www.socrethics.com/Folder2/Biology.htm"
+      },
+      {
+        "category": "general",
+        "content": "to occur for rotating distributions of matter in Einstein’s general theory of relativity.   Inertial frame dragging, for example, is a consequence of the weak gravitational f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/time_travel/esp_ciencia_timetravel34.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Time Control Technologies and Methods",
+        "url": "https://www.bibliotecapleyades.net/ciencia/time_travel/esp_ciencia_timetravel34.htm"
+      },
+      {
+        "category": "general",
+        "content": "many different gaussian distributions, as parameterized by the mean and standard deviation. Which of the possibilities we actually get depends upon the noise source and sampling m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ciphersbyritter.com",
+          "/RES/NOISE.HTM",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Random Electrical Noise: A Literature Survey",
+        "url": "http://www.ciphersbyritter.com/RES/NOISE.HTM"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "986bbdda796257d3d6495671660bb3897b26215c736f85c305b65cf6afe2ddb0",
+  "provider": "SearXNG",
+  "query": "what causes probability distributions in mechanical engineering",
+  "query_id": "v5-p-1023-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:12.270326Z"
+}

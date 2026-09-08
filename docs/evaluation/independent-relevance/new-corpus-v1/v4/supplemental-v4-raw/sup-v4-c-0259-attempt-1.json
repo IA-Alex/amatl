@@ -1,0 +1,108 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 263.70160399528686,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of database indexes in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "| Admin | Educational Technology: Educational VR (MUD) sub-page Update 10/2006: This page will never return to real life. But EduTech Wiki may in the future deal with some of the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "tecfa.unige.ch",
+          "/edu-comp/WWW-VL/eduVR-page.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The WWW VL: Educational Technology - Educational VR (MUD) sub-page (05-Jan-2000)",
+        "url": "https://tecfa.unige.ch/edu-comp/WWW-VL/eduVR-page.html"
+      },
+      {
+        "category": "general",
+        "content": "- anti-culture technology community timecube.2enp.com - Time Cube was a personal web page, founded in 1997 by the &#34;wisest man on earth&#34;, Gene Ray. RIP nwowatch.neocities.org - Som",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "basedsites.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "/g/&#39;s Based Sites",
+        "url": "https://basedsites.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "a class on Biomedical Technology and Human Perfection. &#34;Sanes also claims that the (Claritin) commercial goes beyond selling the image of the good life and suggests that, &#39;by",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "transparencynow.com",
+          "/references.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "References",
+        "url": "https://transparencynow.com/references.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0259",
+  "query_text": "give an overview of database indexes in music technology",
+  "requested_at": "2026-09-03T01:43:40.286651Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

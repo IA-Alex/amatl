@@ -1,0 +1,192 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 385.434,
+  "pair_id": "v5-p-0702",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of language acquisition in neuroscience",
+    "results": [
+      {
+        "category": "general",
+        "content": "genetics, and neuroscience to the human mind is bitterly resisted in modern intellectual life. But unlike other human divisions such as race and ethnicity, where any biological di",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "no fact of experimental neuroscience that positively contradicts this supposition. Rather, like their physicist counterparts, neuroscientists choose to interpret all observed fact",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "arcaneknowledge.org",
+          "/science/vitapsych3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Vitalism and Psychology",
+        "url": "https://arcaneknowledge.org/science/vitapsych3.htm"
+      },
+      {
+        "category": "general",
+        "content": "and the cognitive neuroscience of awareness, consciousness and language Bruce G Charlton MD bruce.charlton@ncl.ac.uk Reader in Evolutionary Psychiatry Department of Psychology Uni",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/bgcharlton/awconlang.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Evolution and the cognitive neuroscience of awareness, consciousness and language",
+        "url": "https://www.hedweb.com/bgcharlton/awconlang.html"
+      },
+      {
+        "category": "general",
+        "content": "from the Computational Neuroscience Laboratories in Japan (although it was presented as american in the source where i found the link -sorry i lost that source...-). The project i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cdecas.free.fr",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Welcome to Caz&#39; Website",
+        "url": "http://cdecas.free.fr/"
+      },
+      {
+        "category": "general",
+        "content": "The Philosophy and Neuroscience Movement. New York: Cambridge University Press. Radner, D. (1994) “Heterophenomenology: learning about the birds and the bees. J. Phil. 91: 3",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.sydney.edu.au",
+          "/archives/fall2008/entries/consciousness-animal/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Animal Consciousness (Stanford Encyclopedia of Philosophy/Fall 2008 Edition)",
+        "url": "https://plato.sydney.edu.au/archives/fall2008/entries/consciousness-animal/"
+      },
+      {
+        "category": "general",
+        "content": "1970s. Brain science (neuroscience) today —including a computational model of the brain — readily connects with basing predictions on worldviews.  In particular it does this",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "projectworldview.org",
+          "//worldviews.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Worldviews -- Introduction",
+        "url": "https://projectworldview.org//worldviews.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "112dbd5c03f7f405be8c1bffec69db38aceec969dd713d2d0dc669f04ef2e058",
+  "provider": "SearXNG",
+  "query": "tell me about the function of language acquisition in neuroscience",
+  "query_id": "v5-p-0702-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:08.605721Z"
+}

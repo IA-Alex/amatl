@@ -1,0 +1,49 @@
+{
+  "schema_version": "1",
+  "query": "how to create a pivot table in Excel",
+  "status": "partial_success",
+  "results": [
+    {
+      "schema_version": "1",
+      "rank": 1,
+      "title": "BASHing data: overview",
+      "original_url": "http://datafix.com.au/BASHing/",
+      "canonical_url": "http://datafix.com.au/BASHing/",
+      "domain": "datafix.com.au",
+      "snippet": "; Create horizontal lists from a vertical one Horizontal sorting within a field (2019-01-13) There are two different ways to so",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 2,
+      "title": "Stuff Michael Meeks is doing",
+      "original_url": "https://apple-tree.life/~michael/blog/2005/",
+      "canonical_url": "https://apple-tree.life/~michael/blog/2005/",
+      "domain": "apple-tree.life",
+      "snippet": "binutils patch cleanup, created a self-contained test harness for it; backed up the laptop. Posted test harness, numbers and patch to binutils@ - braced myself for being completel",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    }
+  ],
+  "providers_used": [
+    "searxng"
+  ],
+  "providers_failed": [],
+  "providers_partial": [],
+  "errors": [],
+  "degradations": [
+    {
+      "code": "provider_circuit_open",
+      "component": "marginalia",
+      "message": "marginalia is in circuit cooldown after consecutive failures; the source was skipped"
+    }
+  ],
+  "elapsed_ms": 1440
+}

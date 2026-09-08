@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 232.99008199683158,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of lunar phases in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "continue to rewrite the Chemistry textbook. I also continue to update the paper below on Solar Cycles, proving on a daily basis sunspots are being criminally miscounted. PAPER UPD",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "milesmathis.com",
+          "/updates.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "updates",
+        "url": "https://milesmathis.com/updates.html"
+      },
+      {
+        "category": "general",
+        "content": "and Models of Modern Biochemistry in the I-ching&#39; (Taipei: Cheng Chung Book Co, 1978) 3. &#39;New Statistics of Physical Chemistry according to the Teachings of the Chinese Book of Ch",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biroco.com",
+          "/yijing/links.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Yijing Dao - Annotated links to other Yijing sites, and journal articles",
+        "url": "https://www.biroco.com/yijing/links.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0191",
+  "query_text": "give an overview of lunar phases in chemistry",
+  "requested_at": "2026-09-03T01:44:14.854416Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

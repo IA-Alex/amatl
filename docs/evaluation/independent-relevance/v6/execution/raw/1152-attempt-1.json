@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1152,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 261.238,
+  "pair_id": "candidate-p-0905",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a practical briefing on ecosystem services within software reliability",
+    "results": [
+      {
+        "category": "general",
+        "content": "mean it can invest in reliability and performance. But it said it understood that for some players the practical result is a higher cost. good bye By Archfeld • 2026-Sep-3 17:08 •",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alterslash.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alterslash, the unofficial Slashdot digest",
+        "url": "https://alterslash.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e74e9d1b075cdea58ca6ed9d6992c2937b9deba7a0394dd57fa7e5ad5fe21ca3",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a practical briefing on ecosystem services within software reliability",
+  "query_id": "candidate-c-0905",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://alterslash.org/",
+      "original_url": "https://alterslash.org/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "mean it can invest in reliability and performance. But it said it understood that for some players the practical result is a higher cost. good bye By Archfeld • 2026-Sep-3 17:08 •",
+      "title": "Alterslash, the unofficial Slashdot digest"
+    }
+  ],
+  "timestamp": "2026-09-05T17:26:35.189234Z"
+}

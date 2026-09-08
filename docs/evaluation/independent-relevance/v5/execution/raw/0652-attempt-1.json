@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 367.607,
+  "pair_id": "v5-p-0996",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind wastewater treatment in software engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2f4be03bfb7fad8a615b778b7976666441ec63bf11d2d649d892a3ecb209baf3",
+  "provider": "SearXNG",
+  "query": "describe the principle behind wastewater treatment in software engineering",
+  "query_id": "v5-p-0996-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:42.564619Z"
+}

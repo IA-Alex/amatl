@@ -1,0 +1,162 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 386.49704700219445,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of gear trains in operating systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "4, The Hobby LAYOUTS OPERATING TRAINS DISPLAYING TRAINS COLLECTING TRAINS INVENTORYING MEETS GROUPS OTHER SOURCES LAYOUTS How should I build my layout? A person&#39;s layout is very m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.spikesys.com",
+          "/Modelrr/faq4.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Tinplate FAQ Part 4",
+        "url": "http://www.spikesys.com/Modelrr/faq4.html"
+      },
+      {
+        "category": "general",
+        "content": "technical competence or operating skill could come from within ham radio, like with DXCC certificates. Some things have not changed in the last 50yrs. Ham Radio is Expensive in Ti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wm7d.net",
+          "/az_proj/az_html/arrl_restructuring.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Letter to ARRL - Restructing of Ham Radio Licensing",
+        "url": "https://www.wm7d.net/az_proj/az_html/arrl_restructuring.html"
+      },
+      {
+        "category": "general",
+        "content": "based and he started operating a manual totalisator conducted from horse drawn wagons. Two of these developments stand out. First George?s automatic totalisator and second the com",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tote-history-atl.net.au",
+          "/george_julius_genealogy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "George Julius Genealogy",
+        "url": "http://tote-history-atl.net.au/george_julius_genealogy.htm"
+      },
+      {
+        "category": "general",
+        "content": "any electrical systems operating AT ALL to keep itself from blowing up, when power is lost steam from the reactors is automatically diverted from the generator turbines to two tot",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_uranium64.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Did The Dimona Dozen Murder The Fukushima 50? - 3/11 Was Japan&#39;s 9/11",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_uranium64.htm"
+      },
+      {
+        "category": "general",
+        "content": "with humongous Forward Operating Bases (FOBs) complete with slices of consumerist garrison Americana that incites rebellion and guerrilla wars . The QRF would be based nearby AT S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/itstimetojointheMOB.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AFPAK Solution #2: Why Can&#39;t The Good Guys Have Secret Bases?",
+        "url": "http://www.combatreform.org/itstimetojointheMOB.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0022",
+  "query_text": "tell me about the function of gear trains in operating systems",
+  "requested_at": "2026-09-03T01:42:17.226593Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

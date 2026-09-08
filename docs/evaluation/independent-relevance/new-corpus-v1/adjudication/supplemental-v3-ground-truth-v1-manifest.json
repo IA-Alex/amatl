@@ -1,0 +1,35 @@
+{
+  "schema": "amatl.relevance.supplemental-v3-ground-truth-manifest.v1",
+  "version": "v1",
+  "ground_truth_id": "independent-relevance-supplemental-v3-ground-truth-v1",
+  "ground_truth_status": "FROZEN",
+  "row_count": 60,
+  "distribution": {
+    "Relevant": 5,
+    "PossiblyRelevant": 19,
+    "NotRelevant": 34,
+    "Unknown": 2
+  },
+  "designation_counts": {
+    "treatment": 39,
+    "control": 21
+  },
+  "label_source_counts": {
+    "UNANIMOUS_A_B_AGREEMENT": 46,
+    "INDEPENDENT_ADJUDICATION": 14
+  },
+  "label_source_contract": {
+    "agreement": "label_a == label_b -> final_label=label_a",
+    "disagreement": "label_a != label_b -> final_label=adjudicated_label"
+  },
+  "created_at": "2026-09-02T00:00:00Z",
+  "source_commit": "b0efd57af5291c1fb2e030ab938b9377957084e7",
+  "input_hashes": {
+    "prelabel_corpus": "d539bb4aae3eddc7b2c53166d558873bd5fc9fc6c18a8ea6b4c7c75ef89e5727",
+    "labeler_a": "77024ec9dd2bc3bfe0ae755b2703b407a783d5bf7a7d271acdd1d7feb73f48a8",
+    "labeler_b": "53c748a59e33e48c53d22d6dc1abbacb770c511ce99750935340488ee73b5eba",
+    "agreement_report": "ec363efa5baa938c1c3bc4b260144ac3c0088b050108fde01d513ff543d690bf",
+    "completed_adjudication": "b69d4d58cabf52c0aefc687d6015461461b7fd752cbc662e5fe9cf09b6e57696",
+    "ground_truth": "bfbc05e893d93f84a908ffd6faf618b4c5a800f8ce8e40b03fcc1cfc97681952"
+  }
+}

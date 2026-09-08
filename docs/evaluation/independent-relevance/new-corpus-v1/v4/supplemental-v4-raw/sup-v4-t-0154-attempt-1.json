@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 264.04665000154637,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does database indexes in astronomy work",
+    "results": [
+      {
+        "category": "general",
+        "content": "meridian grids, astronomy and more. Middle-earth Star Map -- hosted at Annals of Arda. Mike&#39;s Tolkien Resources -- bibliographical listings, cover art gallery, guide to Tolkiens&#39;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lotrscrapbook.bookloaf.net",
+          "/links/links.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "LOTR Fanclub Links - Links listing for the Fellowship of Middle-earth",
+        "url": "http://lotrscrapbook.bookloaf.net/links/links.html"
+      },
+      {
+        "category": "general",
+        "content": "mailing list. The Astronomy and Physics Department of Saint Mary&#39;s University, in Halifax Nova Scotia, is now running an httpd-1.0 server. Their home page contains links to variou",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "home.mcom.com",
+          "/home/whatsnew/whats_new_0194.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "What&#39;s New! January 1994",
+        "url": "http://home.mcom.com/home/whatsnew/whats_new_0194.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0154",
+  "query_text": "how does database indexes in astronomy work",
+  "requested_at": "2026-09-03T01:44:18.709223Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

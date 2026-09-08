@@ -1,0 +1,324 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 288.3315109938849,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is lunar phases in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "Index to Eclipse and Astronomy Photographs | Home | Recent Images | Photo Index | Upcoming Eclipses | Copyright | Image Licensing | Contact | Search | All photographs, text and we",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mreclipse.com",
+          "/Special/LEprimer.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lunar Eclipses for Beginners",
+        "url": "http://www.mreclipse.com/Special/LEprimer.html"
+      },
+      {
+        "category": "general",
+        "content": "to the present day. What do we know now? What is the Moon really like? Let&#39;s find out! Our Nearest Neighbor in Space The average distance of the Moon from the Earth is about 385,0",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astrocappella.com",
+          "/background/lunar_background.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lunar Love - Background Info",
+        "url": "https://www.astrocappella.com/background/lunar_background.shtml"
+      },
+      {
+        "category": "general",
+        "content": "in magazines like Astronomy or Sky and Telescope . Keep in mind that a focal length of 2500mm (1700mm for DSLRs) produces an image of the Moon that barely fits the narrow dimensio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mreclipse.com",
+          "/LEphoto/LEphoto.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Photograph a Lunar Eclipse",
+        "url": "http://www.mreclipse.com/LEphoto/LEphoto.html"
+      },
+      {
+        "category": "general",
+        "content": ". More bad physics and astronomy sold to you at Youtube. NEW PAPER, added 9/15/25, The Rise of Conspiracy Physics . A response to the WSJ and others. NEW PAPER,  added 9/9/25",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "milesmathis.com",
+          "/updates.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "updates",
+        "url": "https://milesmathis.com/updates.html"
+      },
+      {
+        "category": "general",
+        "content": "from this heritage that astronomy and astrology for which the Chaldeans became renowned developed. The name Sin is the Semitic form of Sumerian Enzu meaning lord of knowledge. The",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/orsin/origsin.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Origin of Sin and the Queen of Heaven: Part 1 The Moon God and Goddess",
+        "url": "http://www.dhushara.com/book/orsin/origsin.htm"
+      },
+      {
+        "category": "general",
+        "content": "Index to Eclipse and Astronomy Photographs MrEcipse&#39;s Picks - recommendations on cameras, tripods, telescopes, and more | Home | Recent Images | Photo Index | Upcoming Eclipses |",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mreclipse.com",
+          "/Special/SEprimer.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Solar Eclipses for Beginners",
+        "url": "http://www.mreclipse.com/Special/SEprimer.html"
+      },
+      {
+        "category": "general",
+        "content": "Paper. A &#34;bad astronomy&#34; forum gives us a few laughs. 5pp. 301. NASA&#39;s Space Caterpillar . The dust stream in Cygnus OB2 is shown to be caused by charge. 4pp. 302a. What",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "milesmathis.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Homepage for Miles Mathis science site",
+        "url": "https://milesmathis.com/"
+      },
+      {
+        "category": "general",
+        "content": "ps://skyandtelescope.org/astronomy-news/how-to-see-the-diamond-ring-effect-during-a-total-solar-eclipse/ This is the photo I took of the diamond ring just as the totality ended: Th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.exopoliticsindia.in",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "EXOPOLITICS INDIA",
+        "url": "https://www.exopoliticsindia.in/"
+      },
+      {
+        "category": "general",
+        "content": "01:16 AM UTC | Solar Astronomy When we think of weather forecasts, we instinctively think of weather on Earth like rain or shine. However, we rarely consider weather forecasts fro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.universetoday.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Universe Today - Space and Astronomy News",
+        "url": "https://www.universetoday.com/"
+      },
+      {
+        "category": "general",
+        "content": "stellar science (astronomy plus astrology) came to Egypt. The Babylonians had a sexagesimal place-value system, which allowed for complex astronomical calculations, in particular",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/maat/hermes2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ANCIENT EGYPT : The rise of Alexandro-Egyptian Hellenism and Hermetism",
+        "url": "http://www.sofiatopia.org/maat/hermes2.htm"
+      },
+      {
+        "category": "general",
+        "content": "was a year zero in astronomy, let me respectfully suggest you&#39;re not informed enough to tell others when to begin their centuries. Steven Dutch, Natural and Applied Sciences, Univ",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/century.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Century and the Millennium, the Blue Moon",
+        "url": "https://friesian.com/century.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0161",
+  "query_text": "what is lunar phases in astronomy",
+  "requested_at": "2026-09-03T01:42:14.017239Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

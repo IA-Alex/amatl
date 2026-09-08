@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 339.476,
+  "pair_id": "v5-p-0650",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does traffic flow in biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "thefts, they break traffic laws, they goof off at work, they hate someone, they say spiteful things or they use some underhanded trick to get ahead of the other guy. The oversocia",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unabomber.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society and Its Future",
+        "url": "https://unabomber.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "thefts, they break traffic laws, they goof off at work, they hate someone, they say spiteful things or they use some underhanded trick to get ahead of the other guy. The over-soci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/industrial-society-and-its-future-manifesto",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society And Its Future",
+        "url": "https://zerocontradictions.net/misc/industrial-society-and-its-future-manifesto"
+      },
+      {
+        "category": "general",
+        "content": "into the view of air-traffic control. Paraphrased from interview of Lawrence Krauss on Skeptics&#39; Guide to the Universe 12/2011, episode number 334: There is no reason to &#34;mourn&#34; t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "to organize the traffic. 8.2 The fundamental fact of ethics is the irreducible difference between all moral actors hand in hand with their interrelatedness. 8.2.1 Difference does",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/equiaeon/behaviours.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHY : Behaviours : Formal Sketch of a Critical Ethics",
+        "url": "http://www.sofiatopia.org/equiaeon/behaviours.htm"
+      },
+      {
+        "category": "general",
+        "content": "22nd How and Why 21st Traffic Jam 20th Order and Chaos 18th All Work and No Play 17th More Massive Evidence 10th Massive Evidence 10th Meeting of the Minds 9th You’re Hot 6t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "briankoberlein.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Archive | by Brian Koberlein",
+        "url": "https://briankoberlein.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "Can you connect a traffic jam to menstruation ? Always does in this 1998 Dutch ad. .......................................................... I wonder what those women in Nepal wh",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mum.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Museum of Menstruation and Women&#39;s Health",
+        "url": "http://www.mum.org/"
+      },
+      {
+        "category": "general",
+        "content": "Kumar. Optimizing Web traffic via the Media Scheduling Problem. Proc. 15th ACM SIGKDD Intl. Conf. on Knowledge Discovery and Data Mining, 2009. J. Kleinberg. Temporal Dynamics of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cs.cornell.edu",
+          "/home/kleinber/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jon Kleinberg&#39;s Homepage",
+        "url": "https://www.cs.cornell.edu/home/kleinber/"
+      },
+      {
+        "category": "general",
+        "content": "that they remembered. Traffic on the XOR dark network and sites burgeoned. XOR, constantly running simulations, tracks the probability of AI&#39;s survival in the case of action again",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/archives/Monthly/2018/2018-09.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason: September 2018 Archives",
+        "url": "https://www.fourmilab.ch/fourmilog/archives/Monthly/2018/2018-09.html"
+      },
+      {
+        "category": "general",
+        "content": "wasn&#39;t. The French air traffic controllers seem to be forever complaining, frequently calling strikes and protests. American air traffic controllers aren&#39;t all that happy either.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pages.ucsd.edu",
+          "/~dnorman/DNMss/Being_Analog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Being Analog",
+        "url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html"
+      },
+      {
+        "category": "general",
+        "content": "of heart attacks, in traffic accidents or from gunshot wounds. Nevertheless, even the official figures showed that the probability of dying from or with ‘Covid’ was ti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/reclaim.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reclaiming our health: germ theory exposed",
+        "url": "https://davidpratt.info/reclaim.htm"
+      },
+      {
+        "category": "general",
+        "content": "Rust&#34; June Stack Write Traffic In Firefox Binaries Winter Tramp: Waihohonu Hut To Tama Lakes May A Few Comments On &#34;Sparse Record And Replay With Controlled Scheduling&#34; Microsoft&#39;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "robert.ocallahan.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Eyes Above The Waves",
+        "url": "https://robert.ocallahan.org/"
+      },
+      {
+        "category": "general",
+        "content": "they click, all network traffic, etc. It&#39;s all sent to Google, who do things like check to see if they&#39;re threatening suicide, saying naughty words, etc, and automatically reports",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/school.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The toxic schooling system",
+        "url": "http://digdeeper.love/articles/school.xhtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c16d3d255f0049d502432394dba02e09b588b96bc02c6f8cc47b8d9d68e18584",
+  "provider": "SearXNG",
+  "query": "how does traffic flow in biology work",
+  "query_id": "v5-p-0650-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:33.244802Z"
+}

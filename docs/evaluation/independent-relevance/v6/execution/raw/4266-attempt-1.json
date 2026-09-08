@@ -1,0 +1,144 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 4266,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 281.855,
+  "pair_id": "candidate-p-1954",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of quantum sensing within optical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "tracking methods in engineering and biology. Radioisotope scintigraphy and nuclear medicine. Radioimmunoassay - radiosaturation analysis. 3.6. Radiotherapy Carcinogenesis - tumori",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Fyzika-NuklMed.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nuclear physics and ionizing radiation physics",
+        "url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm"
+      },
+      {
+        "category": "general",
+        "content": "optical systems engineering TouchUp Enhance the GNOME Shell User Experience on Touch Devices TrailBase Backend-as-a-Service for building networked applications TrenchBoot - DRTM l",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/project/current.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; Current projects",
+        "url": "https://nlnet.nl/project/current.html"
+      },
+      {
+        "category": "general",
+        "content": "crystals: dispersion engineering and applications, filters, nonlinear optics, photonic devices * Metamaterials: nanocomposites, chirality, biomimetics * Sources and detector Nanof",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "delmarphotonics.com",
+          "/index.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Femtosecond laser products from Del Mar Photonics",
+        "url": "http://delmarphotonics.com/index.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7ec0a49c2b0aad3988f534d45d7a7ee8628755883b100c97a1686b022f938e21",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of quantum sensing within optical engineering",
+  "query_id": "candidate-c-1954",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm",
+      "original_url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "tracking methods in engineering and biology. Radioisotope scintigraphy and nuclear medicine. Radioimmunoassay - radiosaturation analysis. 3.6. Radiotherapy Carcinogenesis - tumori",
+      "title": "Nuclear physics and ionizing radiation physics"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://nlnet.nl/project/current.html",
+      "original_url": "https://nlnet.nl/project/current.html",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "optical systems engineering TouchUp Enhance the GNOME Shell User Experience on Touch Devices TrailBase Backend-as-a-Service for building networked applications TrenchBoot - DRTM l",
+      "title": "NLnet; Current projects"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://delmarphotonics.com/index.htm",
+      "original_url": "http://delmarphotonics.com/index.htm",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "crystals: dispersion engineering and applications, filters, nonlinear optics, photonic devices * Metamaterials: nanocomposites, chirality, biomimetics * Sources and detector Nanof",
+      "title": "Femtosecond laser products from Del Mar Photonics"
+    }
+  ],
+  "timestamp": "2026-09-05T17:43:04.844347Z"
+}

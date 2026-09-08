@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 325.606,
+  "pair_id": "v5-p-0541",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind food preservation in astronomy",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6054e46802b0f0868f722a2d00c0a2c6273b211b4cb46bd692e1883486c80f7d",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind food preservation in astronomy",
+  "query_id": "v5-p-0541-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:23.196694Z"
+}

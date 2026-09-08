@@ -1,0 +1,198 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 4456,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 329.514,
+  "pair_id": "candidate-p-0027",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about acoustic ecology within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "ages, besides providing information and resources to the drumming community. Ubaka Hill also publishes a newsletter, Drumsong/Drumming Womyn&#39;s News: Views and Attitudes. (EMMA DOR",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.amazings.com",
+          "/ingles.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Amazing Sounds magazine",
+        "url": "http://www.amazings.com/ingles.html"
+      },
+      {
+        "category": "general",
+        "content": "James Barker 1974  Background to Prehistory of the Yuha Desert Region [BLM - PDF]. Wilke, Philip J., Thomas W. Whitaker and Eugene Hattori 1977  Prehistoric Squash ( Cuc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.californiaprehistory.com",
+          "/contcounty.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CaliforniaPrehistory.com -- Articles on Prehistory, By County",
+        "url": "https://www.californiaprehistory.com/contcounty.html"
+      },
+      {
+        "category": "general",
+        "content": "1977, p.4 This field of Information, the subject of this study, is what Ajit Mookerjee terms &#34;VISUAL METAPHYSICS&#34;. In the most profound sense, the phenomena that we coll",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.luxlapis.co.za",
+          "/yan/main.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "main text",
+        "url": "http://www.luxlapis.co.za/yan/main.htm"
+      },
+      {
+        "category": "general",
+        "content": "Hellman&#39;s NSF grant in information theory. Since the grant terms were flexible, without negotiated work plans or deliverables, they were free to work on an audacious idea that was",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www-users.cse.umn.edu",
+          "/~odlyzko/doc/decline.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://www-users.cse.umn.edu/~odlyzko/doc/decline.txt",
+        "url": "https://www-users.cse.umn.edu/~odlyzko/doc/decline.txt"
+      },
+      {
+        "category": "general",
+        "content": "an essay once new information became available, or simply revisit a topic that he had written about long ago. The essays within each subject area are arranged so that, to the exte",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d4270ffec009a8fb5ba84ed258419962b39eb4a5908aa34906bd1b78d7c02aef",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about acoustic ecology within information science",
+  "query_id": "candidate-c-0027",
+  "raw_result_count": 5,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.amazings.com/ingles.html",
+      "original_url": "http://www.amazings.com/ingles.html",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "ages, besides providing information and resources to the drumming community. Ubaka Hill also publishes a newsletter, Drumsong/Drumming Womyn&#39;s News: Views and Attitudes. (EMMA DOR",
+      "title": "Amazing Sounds magazine"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.californiaprehistory.com/contcounty.html",
+      "original_url": "https://www.californiaprehistory.com/contcounty.html",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "James Barker 1974  Background to Prehistory of the Yuha Desert Region [BLM - PDF]. Wilke, Philip J., Thomas W. Whitaker and Eugene Hattori 1977  Prehistoric Squash ( Cuc",
+      "title": "CaliforniaPrehistory.com -- Articles on Prehistory, By County"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.luxlapis.co.za/yan/main.htm",
+      "original_url": "http://www.luxlapis.co.za/yan/main.htm",
+      "rank": 3,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "1977, p.4 This field of Information, the subject of this study, is what Ajit Mookerjee terms &#34;VISUAL METAPHYSICS&#34;. In the most profound sense, the phenomena that we coll",
+      "title": "main text"
+    }
+  ],
+  "timestamp": "2026-09-05T17:44:03.277317Z"
+}

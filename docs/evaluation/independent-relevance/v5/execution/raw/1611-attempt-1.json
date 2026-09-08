@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 250.192,
+  "pair_id": "v5-p-0476",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does encryption keys in ecology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1761494ce7e87db42417ff86b7f6d8d3944a46e0c0e5ddb0b0a42d069eec8bd1",
+  "provider": "SearXNG",
+  "query": "how does encryption keys in ecology operate",
+  "query_id": "v5-p-0476-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:48.134486Z"
+}

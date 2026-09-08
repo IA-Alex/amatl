@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 235.583,
+  "pair_id": "v5-p-0323",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of water purification in operations research",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "63b65af256c9807ae83ddf956cf37044ecc4cf7199938e978bf155bedbcb9ffc",
+  "provider": "SearXNG",
+  "query": "give an overview of water purification in operations research",
+  "query_id": "v5-p-0323-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:14:01.485955Z"
+}

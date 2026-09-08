@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 4040,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 279.295,
+  "pair_id": "candidate-p-2170",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of thermal energy storage within conservation",
+    "results": [
+      {
+        "category": "general",
+        "content": "of nuclear reactions - conservation laws, effective cross section of reactions, impact parameter of interaction. Nuclear &#34;alchemy&#34;. Interaction of particles with nuclei",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Fyzika-NuklMed.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nuclear physics and ionizing radiation physics",
+        "url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm"
+      },
+      {
+        "category": "general",
+        "content": ".” Resources, Conservation and Recycling 169 (2021): 105516.  ↩︎ Powell, Douglas M., et al. “ The capital intensity of photovoltaics manufacturing:",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2021/10/how-to-build-a-low-tech-solar-panel",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Build a Low-tech Solar Panel? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2021/10/how-to-build-a-low-tech-solar-panel"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d8a9d7b1f90ff159ecaa1b2d02023a642ae9d40fac9f1ebb4c31e7197533da13",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of thermal energy storage within conservation",
+  "query_id": "candidate-c-2170",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm",
+      "original_url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "of nuclear reactions - conservation laws, effective cross section of reactions, impact parameter of interaction. Nuclear &#34;alchemy&#34;. Interaction of particles with nuclei",
+      "title": "Nuclear physics and ionizing radiation physics"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://solar.lowtechmagazine.com/2021/10/how-to-build-a-low-tech-solar-panel",
+      "original_url": "https://solar.lowtechmagazine.com/2021/10/how-to-build-a-low-tech-solar-panel",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": ".” Resources, Conservation and Recycling 169 (2021): 105516.  ↩︎ Powell, Douglas M., et al. “ The capital intensity of photovoltaics manufacturing:",
+      "title": "How to Build a Low-tech Solar Panel? | LOW←TECH MAGAZINE"
+    }
+  ],
+  "timestamp": "2026-09-05T17:41:48.271661Z"
+}

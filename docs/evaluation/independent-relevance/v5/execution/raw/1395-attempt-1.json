@@ -1,0 +1,327 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 305.329,
+  "pair_id": "v5-p-0509",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is neural networks in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "industrial spying networks, the development of nuclear, biological and chemical weapons, even the development of a genetic killer program by Israel to find an organism that will o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "process extends social networks and, in turn, induces an extension of empathy [Rifkin]. Possibly the world community passes thru a learning process which leads to a global consens",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.socrethics.com",
+          "/Folder2/Culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cultural Evolution of Suffering",
+        "url": "http://www.socrethics.com/Folder2/Culture.htm"
+      },
+      {
+        "category": "general",
+        "content": "can also affect neural networks, brainwaves and gene expression (and therefore the proteins our bodies make). The placebo effect is stronger in people with a positive, optimistic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/psycho.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mass psychosis and the power of thought",
+        "url": "https://davidpratt.info/psycho.htm"
+      },
+      {
+        "category": "general",
+        "content": "and informational networks to regulate their dynamics in service to adaptiveness. Each involves new inheritance systems , new communication, computation, and regulatory networks ,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.accelerationwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acceleration Watch (Understanding Accelerating Change)",
+        "url": "https://www.accelerationwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "the use of neural networks, which are modeled after the structure and function of the human brain. AI is used in a wide range of applications, from chatbots and virtual assistants",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biointelligence-explosion.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biointelligence Explosion as conceived by ChatGPT",
+        "url": "https://www.biointelligence-explosion.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "(14-May-06; 19-Jan-21) Networks (and the like) A&amp;E (01-Mar-16; 24-Dec-20) Bravo (23-Aug-00; 08-Nov-20) Cartoon Network (07-Jan-16; 16-Jan-21) CBS (30-Jul-96; 31-Jan-21) C-SPAN",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "web.cs.wpi.edu",
+          "/~jshutt/surfing.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Web Surfing",
+        "url": "http://web.cs.wpi.edu/~jshutt/surfing.html"
+      },
+      {
+        "category": "general",
+        "content": "random or chaotic, and networks of neurons that usually fire together become desynchronized. This may contribute to psilocybin&#39;s potential therapeutic effect. Researchers   g",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.andyross.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE ROSS BLOG",
+        "url": "https://www.andyross.net/"
+      },
+      {
+        "category": "general",
+        "content": "brain&#39;s many folds and networks, performed by reading PET scans, observing blood flows, or deducing connections from stroke and accident victims who&#39;ve suffered serious brain dama",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wireheading.com",
+          "/brainstim/godbrain.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "God and the temporal lobes",
+        "url": "https://www.wireheading.com/brainstim/godbrain.html"
+      },
+      {
+        "category": "general",
+        "content": "of neural networks, how much the clinical triage triggered by the virus is figurative of the long-term algorithmic distribution of life chances. One early warning sign was the way",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "logicmag.io",
+          "/home/deep-learning-and-human-disposability/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Deep Learning and Human Disposability",
+        "url": "https://logicmag.io/home/deep-learning-and-human-disposability/"
+      },
+      {
+        "category": "general",
+        "content": "rival the television networks. Suppose next that the cube divides its time between the left and right side of the box. Back and forth it moves. For a time you are hypnotized. Your",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.arn.org",
+          "/docs/dembski/wd_convmtr.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Converting Matter into Mind: Dembski, William A.",
+        "url": "http://www.arn.org/docs/dembski/wd_convmtr.htm"
+      },
+      {
+        "category": "general",
+        "content": "can be traced to neural networks in the brain with such mirror properties. Intriguing — but probably too simplistic — right brain / left brain conceptions gained popularity in the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "projectworldview.org",
+          "//worldviews.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Worldviews -- Introduction",
+        "url": "https://projectworldview.org//worldviews.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3990f3ea2ceaa06b6ac2bff6cf6ab382bd33b03e076081fbf9c5511cfd9c3368",
+  "provider": "SearXNG",
+  "query": "what is neural networks in climate science",
+  "query_id": "v5-p-0509-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:41.134019Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 254.75,
+  "pair_id": "v5-p-0883",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of vaccination in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7cf17233d7404dae54e95f09ac880a9aea9fb847fbe8ec2eb052d676bab180ee",
+  "provider": "SearXNG",
+  "query": "give an overview of vaccination in oceanography",
+  "query_id": "v5-p-0883-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:32.934317Z"
+}

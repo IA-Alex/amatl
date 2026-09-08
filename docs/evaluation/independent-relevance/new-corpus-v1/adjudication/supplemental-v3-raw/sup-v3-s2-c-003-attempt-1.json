@@ -1,0 +1,216 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 438.7510199994722,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of a diaphragm",
+    "results": [
+      {
+        "category": "general",
+        "content": "apothecary fast dish - diaphragm smoking buy buying friend bunting video ideas classic owl craft C.M.I. hwy 73 spray paint volume control busy bread flying day look iphone sale tr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "chalk-dog.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://chalk-dog.com/",
+        "url": "https://chalk-dog.com/"
+      },
+      {
+        "category": "general",
+        "content": "the peritoneum and the diaphragm, thus filling the whole abdominal cavity and thorax with water? “But,” says he, “of course the peritoneal coat is more imperviou",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.earlychristianwritings.com",
+          "/text/galen.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Galen: On the Natural Faculties",
+        "url": "http://www.earlychristianwritings.com/text/galen.html"
+      },
+      {
+        "category": "general",
+        "content": "in the centre of a diaphragm (which was a stretched flat piece of material) that vibrated when hit by sound waves, causing the needle to move on the tin foil. When Edison spoke in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "shrines.rpgclassics.com",
+          "/snes/terranigma/facts.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Terranigma - Facts",
+        "url": "http://shrines.rpgclassics.com/snes/terranigma/facts.shtml"
+      },
+      {
+        "category": "general",
+        "content": "feet below you! Human diaphragm (mine, again) - Sucking as hard as I could without using any mouth parts (before turning blue): 27 inches of mercury, no better than a cheap vacuum",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.repairfaq.org",
+          "/sam/lasercva.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sam&#39;s Laser FAQ - Vacuum Technology for Home-Built Gas Lasers",
+        "url": "http://www.repairfaq.org/sam/lasercva.htm"
+      },
+      {
+        "category": "general",
+        "content": "- the modern vaginal diaphragm   Although glans -covering devices were used by the aristocracy in Asia before the 15th century , the first demographic record of population wi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/repcult/reproduction-and-culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Religion, Politics, Sexual Reproduction and the Future of Human Society",
+        "url": "http://www.dhushara.com/repcult/reproduction-and-culture.htm"
+      },
+      {
+        "category": "general",
+        "content": "horizontally along your diaphragm, across your right arm, with its fist on your right upper arm. This is the Way of the Side, and places your fist, representing the daily motion o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "opsopaus.com",
+          "/OM/BA/ETP/II.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Summary of Pythagorean Theology II: Goddesses",
+        "url": "http://opsopaus.com/OM/BA/ETP/II.html"
+      },
+      {
+        "category": "general",
+        "content": "by the pressure of the diaphragm in its downward excursion. Leaning forward, as some drivers do and as some chairs encourage one to do, allows gravity to force the viscera forward",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.mm2k.com",
+          "/stomach-vacuum-exercise.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stomach Vacuum Exercise Fix Protruding Gut Syndrome",
+        "url": "https://www.mm2k.com/stomach-vacuum-exercise.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-c-003",
+  "query_text": "tell me about the function of a diaphragm",
+  "requested_at": "2026-09-02T22:59:02.636707Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

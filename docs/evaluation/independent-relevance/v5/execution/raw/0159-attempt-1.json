@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 311.132,
+  "pair_id": "v5-p-0609",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is air quality monitoring in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "to groundwater monitoring reports... &#34; Actually, elsewhere in this report, it is shown that in only 2-1/2 years after plutonium processing began, by mid 1947, at least uranium sho",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cascadian.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Hanford Nuclear Report",
+        "url": "https://cascadian.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "of Chris Greenway, BBC Monitoring, presumably what you refer to, and I wish people would cite issue numbers, back in DXLD 3-100. Please pay attention to the credit lines and do no",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.w4uvh.net",
+          "/dxldtd3h.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DX LISTENING DIGEST AUGUST 2003 ARCHIVE",
+        "url": "http://www.w4uvh.net/dxldtd3h.html"
+      },
+      {
+        "category": "general",
+        "content": "from automatic vehicle monitoring systems, and Government stations authorized in this band. Sources of Interference About 5 years after this chunk of spectrum was carved out, many",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.qsl.net",
+          "/kb9mwr/projects/900mhz/plan.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Exploring 900 MHz - 900 MHz Radio Modifications",
+        "url": "https://www.qsl.net/kb9mwr/projects/900mhz/plan.html"
+      },
+      {
+        "category": "general",
+        "content": "The best systems for monitoring voices and messages through telephone or e-mail existing today are based on Israeli technology. The Israeli company Wondernet has patented the Penf",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.imninalu.net",
+          "/Israel-Arabs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Israel and the Arab World",
+        "url": "https://www.imninalu.net/Israel-Arabs.htm"
+      },
+      {
+        "category": "general",
+        "content": "and alarm logs Remote monitoring from KEYNET TM MODEL OPTIONS Cipher X 850 PS X.25: X.25 protocol sensitive, data rates up to 64 Kbps, 254 simultaneous virtual circuits, KEYNET co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.tscm.com",
+          "/stu.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "STU-III Secure Telephone Units, Crypto Key Generators, Encryption Equipment and Scramblers",
+        "url": "http://www.tscm.com/stu.html"
+      },
+      {
+        "category": "general",
+        "content": "24 hour a say security monitoring. Consumer Reports does a review every so often, check back issues. I believe their conclusions were generally to buy name brands by price. Whethe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.repairfaq.org",
+          "/sam/vcrfaq.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notes on the Troubleshooting and Repair of Video Cassette Recorders",
+        "url": "http://www.repairfaq.org/sam/vcrfaq.htm"
+      },
+      {
+        "category": "general",
+        "content": "Efficient online monitoring of web-service SLAs Nicolas Bettenburg, Sascha Just, Adrian Schroter, Cathrin Weiss, Rahul Premraj, Thomas Zimmermann, What makes a good bug report? Th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sigsoft.org",
+          "/awards/distinguishedPaperAward.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGSOFT - ACM Special Interest Group on Software Engineering",
+        "url": "http://www.sigsoft.org/awards/distinguishedPaperAward.html"
+      },
+      {
+        "category": "general",
+        "content": "projects. Though monitoring has not been continuous in the central and northern portions of the range, populations were recorded in the late 1980s at San Luis Reservoir, Merced Co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "esrp.csustan.edu",
+          "/publications/pubhtml.php",
+          "",
+          "doc=sjvrp&amp;file=chapter02L00.html",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "L. San Joaquin Kit Fox (Vulpes macrotis mutica)",
+        "url": "https://esrp.csustan.edu/publications/pubhtml.php?doc=sjvrp&amp;file=chapter02L00.html"
+      },
+      {
+        "category": "general",
+        "content": "Web, E-mail Monitoring Spreads,&#34; CNet , July 8, 2001 &#34;About 27 percent of employees around the world (100 million) constantly have their email and Internet activities mo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cs.cmu.edu",
+          "/~bam/numbers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Computer Almanac - Numbers About Computers",
+        "url": "http://www.cs.cmu.edu/~bam/numbers/"
+      },
+      {
+        "category": "general",
+        "content": "as in &#39;Radiological Monitoring&#39; where we employed these exact same Civil Defense meters and dosimeters in practical safety exercises as we were trained how to properly utilize the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.radmeters4u.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Civil Defense Radiation Detectors &amp; Detection Meters FAQ &amp; Geiger Counters radiation safety!",
+        "url": "https://www.radmeters4u.com/"
+      },
+      {
+        "category": "general",
+        "content": "Mind you, this monitoring and classification is completely subconscious. The conscious mind is usually unaware of the process. Indeed, the whole point is to reserve the conscious",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pages.ucsd.edu",
+          "/~dnorman/DNMss/Being_Analog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Being Analog",
+        "url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html"
+      },
+      {
+        "category": "general",
+        "content": "conducting and monitoring the prototype test flights. (This way, different flight tests could be requested or delayed during flight depending on what the engineers saw. More testi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ed-thelen.org",
+          "/comp-hist/stories.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stories",
+        "url": "https://www.ed-thelen.org/comp-hist/stories.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "10628eb0fbebc1dd96f1610de0c3d30f7c696d9e7f87665b1d517a34812b0b9c",
+  "provider": "SearXNG",
+  "query": "what is air quality monitoring in industrial design",
+  "query_id": "v5-p-0609-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:58.985751Z"
+}

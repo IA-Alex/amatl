@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 298.821,
+  "pair_id": "v5-p-0521",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is neural networks in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "site and blog about technology, birds, and singing synths. Very interesting is the World Wide Web Theory section; do check it out. LOBOKONI Gloomin makes comics and games in a dec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cidoku.net",
+          "/links/all",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Todos los enlaces @ cidoku.net",
+        "url": "http://cidoku.net/links/all"
+      },
+      {
+        "category": "general",
+        "content": "to study Electronics Technology. Other Interests are video games (I like Zelda, Mario, Blast Corps, GoldenEye 007, Duke Nukem, Various Racing games, MarioKart, Quest 64, various R",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "richfiles.solarbotics.net",
+          "/RichInfo.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Richfiles: Personal Info Page",
+        "url": "http://richfiles.solarbotics.net/RichInfo.html"
+      },
+      {
+        "category": "general",
+        "content": "great. Don&#39;t use the technology for the sake of it Future Social Media - Digital Catapult 2018-04-17 Mark Little: When I went to work at twitter I started to see the antithesis fu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kevinmarks.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kevin Marks",
+        "url": "https://kevinmarks.com/"
+      },
+      {
+        "category": "general",
+        "content": "of Gen IV Nuclear technology. Lots of good current articles. July 26, 2017 via Hacker News Google enters race for nuclear fusion technology After defeating the game of Go using ne",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "reactor-core.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "In a Reactor Core, the Atomic Man finds his family",
+        "url": "http://reactor-core.org/"
+      },
+      {
+        "category": "general",
+        "content": "unreal)? Our electrical technology is impossible without calculus (and its relative differential equations), so there is something very different about this non - sense perceptibl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/tidom.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Idea of Mind",
+        "url": "http://ipwebdev.com/hermit/tidom.html"
+      },
+      {
+        "category": "general",
+        "content": "the use of all forms of technology to improve human beings.   It is far more than just a bunch of harmless and misguided techie nerds, dreaming of sci-fi movies and making ro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/esp_ciencia_life51.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Is The Transhumanist Movement a Threat to Our Survival?",
+        "url": "https://www.bibliotecapleyades.net/ciencia/esp_ciencia_life51.htm"
+      },
+      {
+        "category": "general",
+        "content": "MEDICINE MUSIC BUSINESS TECHNOLOGY PAPER LINKS CREATIVITY - TRUTH - INTERACTION EDUCATION The Tour Bus Help and Overview Thematic Introductions Related Applications Our Concept FA",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.calresco.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Complexity and Artificial Life Research Concept for Self-Organizing Systems",
+        "url": "http://www.calresco.org/"
+      },
+      {
+        "category": "general",
+        "content": "possibilities with AI technology. Cloud: Generative Adversarial Networks (GANs), Style Transfer, Neural Network Art, Deep Learning Art, Image Synthesis, Creative AI, AI Art Tools,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "freeartsoftware.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Best Free AI Software Generating Art.",
+        "url": "http://freeartsoftware.com/"
+      },
+      {
+        "category": "general",
+        "content": "| Music | Animanga | Technology | Games | Resources | Miscellaneous All links People ^ AipiqiA Not much to see here yet, but his illustrations are very pretty. amapy.cc Amapy is a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cidoku.net",
+          "/en/links/all",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "All links @ cidoku.net",
+        "url": "http://cidoku.net/en/links/all"
+      },
+      {
+        "category": "general",
+        "content": "Let us say we have the technology to construct Doppelgängers at will. Is it morally acceptable to build a teleportation device which sends an individual, say, to Mars by tran",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.arn.org",
+          "/docs/dembski/wd_convmtr.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Converting Matter into Mind: Dembski, William A.",
+        "url": "http://www.arn.org/docs/dembski/wd_convmtr.htm"
+      },
+      {
+        "category": "general",
+        "content": "Humanity&#39;s Nanotechnology Capabilities, Humanity&#39;s Nanotech Capabilities The Basis Of The Supreme Nanotechnological Conspiracy, The Basis Of The Supreme Nanotechnology Conspiracy,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.unatle.net",
+          "/NuclearWar.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "UNATLe: United Nations AntiTerrorism Leauge",
+        "url": "http://www.unatle.net/NuclearWar.html"
+      },
+      {
+        "category": "general",
+        "content": "only viable technology at the time was core memory, and enough core to do anything useful at all would cost more than a luxury car. It wasn&#39;t until almost 1980 that the advent of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/documents/comp_mem_nat_life/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Computation, Memory, Nature, and Life",
+        "url": "https://www.fourmilab.ch/documents/comp_mem_nat_life/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f5f634594c04d0d84e09837a8584bd03a4fb92e56455006be0bc190b4c02509c",
+  "provider": "SearXNG",
+  "query": "what is neural networks in music technology",
+  "query_id": "v5-p-0521-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:23.729697Z"
+}

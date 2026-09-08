@@ -1,0 +1,38 @@
+{
+  "schema": "amatl.relevance.supplemental-pilot-design.v1",
+  "status": "READY",
+  "pilot_required": "YES",
+  "pilot_raw_target": 180,
+  "pilot_justification": "The materially changed, rank-stratified strategy has no pre-label yield evidence. 60 observations per stratum gives a 95% zero-event upper bound of about 4.9% per stratum and produces a useful directional estimate before any thousand-row commitment; it is intentionally below the 200-600 default range.",
+  "sampling_seed": "independent-relevance-supplemental-pilot-v1",
+  "labeling_rule": "Independent A/B labeling only; strata never determine labels.",
+  "execution_status": "BLOCKED",
+  "blocker": "supplemental-acquisition-spec.json records authorization NOT_AUTHORIZED_BY_THIS_WORK_PACKAGE",
+  "next_single_action": "Obtain explicit project authorization for the 180-row pre-label pilot capture.",
+  "strata": [
+    {
+      "STRATUM_ID": "S1_PROCEDURAL_SHALLOW",
+      "RATIONALE": "V1 positives concentrate in ranks 1-3; procedural queries retain natural semantic variation.",
+      "QUERY_SELECTION_RULE": "query begins 'how to '",
+      "RESULT_SELECTION_RULE": "rank in 1..3; retain all visible results selected by deterministic rotating query order",
+      "RAW_TARGET": 60,
+      "EXPECTED_PURPOSE": "measure shallow procedural yield"
+    },
+    {
+      "STRATUM_ID": "S2_INFORMATIONAL_SHALLOW",
+      "RATIONALE": "Tests whether shallow concentration generalizes beyond procedural wording.",
+      "QUERY_SELECTION_RULE": "query begins 'what is ', 'what causes ', or 'how does '",
+      "RESULT_SELECTION_RULE": "rank in 1..3; retain all visible results selected by deterministic rotating query order",
+      "RAW_TARGET": 60,
+      "EXPECTED_PURPOSE": "measure shallow informational yield"
+    },
+    {
+      "STRATUM_ID": "S3_MIXED_DEPTH_CONTROL",
+      "RATIONALE": "Preserves boundary and negative examples so position cannot trivially encode class.",
+      "QUERY_SELECTION_RULE": "one half procedural and one half informational using deterministic query-id order",
+      "RESULT_SELECTION_RULE": "rank in 4..8; retain all visible results selected by deterministic rotating query order",
+      "RAW_TARGET": 60,
+      "EXPECTED_PURPOSE": "estimate depth contrast and maintain semantic discrimination"
+    }
+  ]
+}

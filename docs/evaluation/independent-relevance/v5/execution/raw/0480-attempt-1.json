@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 263.706,
+  "pair_id": "v5-p-0979",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of wastewater treatment in ecology",
+    "results": [
+      {
+        "category": "general",
+        "content": "one course book for all wastewater engineers this would be it.&#34; Not just wastewater engineers -- Lem Putt&#39;s fine points should be everybody&#39;s fine points. Full-text online. M",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "journeytoforever.org",
+          "/farm_library.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Small Farms Library - Journey to Forever",
+        "url": "http://journeytoforever.org/farm_library.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a072c7f96e0478c8cb3a6924ebadd5c643ae48293213e773fc7965b74e8091c6",
+  "provider": "SearXNG",
+  "query": "give an overview of wastewater treatment in ecology",
+  "query_id": "v5-p-0979-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:07:40.024034Z"
+}

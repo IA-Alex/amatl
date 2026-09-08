@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 3182,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 264.262,
+  "pair_id": "candidate-p-0207",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of arctic navigation within education",
+    "results": [
+      {
+        "category": "general",
+        "content": "Modified Gravity as an explanation for flat galaxy rotation curves (26-Jun-16; 28-Nov-20) Stochastic elctrodynamics Timothy Boyer (15-Oct-18; 02-Jan-21) Any Classical Description",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "web.cs.wpi.edu",
+          "/~jshutt/surfing.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Web Surfing",
+        "url": "http://web.cs.wpi.edu/~jshutt/surfing.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2a6b02a7b894d2d968d83ed5dcef4b8c4ce757c9825d3a6912723276b8016ab2",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of arctic navigation within education",
+  "query_id": "candidate-c-0207",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://web.cs.wpi.edu/~jshutt/surfing.html",
+      "original_url": "http://web.cs.wpi.edu/~jshutt/surfing.html",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "Modified Gravity as an explanation for flat galaxy rotation curves (26-Jun-16; 28-Nov-20) Stochastic elctrodynamics Timothy Boyer (15-Oct-18; 02-Jan-21) Any Classical Description",
+      "title": "Web Surfing"
+    }
+  ],
+  "timestamp": "2026-09-05T17:37:17.979986Z"
+}

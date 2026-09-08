@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 357.531,
+  "pair_id": "v5-p-0274",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does binary search in physics work",
+    "results": [
+      {
+        "category": "general",
+        "content": "support, Rigid Body Physics component , plus 3D texturing and the Volume Visualization component for the Medical Working Group . Xj3D is an open-source Java viewer and application",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.web3d.org",
+          "/x3d/content/examples/X3dResources.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "X3D Resources",
+        "url": "https://www.web3d.org/x3d/content/examples/X3dResources.html"
+      },
+      {
+        "category": "general",
+        "content": "laws of chemistry and physics) and the kinds of damage caused by current methods of freezing. It then considers whether methods of repairing the kinds of damage caused by current",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "a towering figure in physics and mathematics, he was a formidable number cruncher. After inventing an infinite series approximation to the area under a hyperbola—intimately",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/documents/canon_transits/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quarter Million Year Canon of Solar System Transits",
+        "url": "https://www.fourmilab.ch/documents/canon_transits/"
+      },
+      {
+        "category": "general",
+        "content": "science, including metaphysics and different forms and theories of spirituality. At age 25 he left Norway to go to the USA to go to flight school at Emery School of Aviation in Gr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.philosophicalanthropology.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHICAL ANTHROPOLOGY",
+        "url": "https://www.philosophicalanthropology.net/"
+      },
+      {
+        "category": "general",
+        "content": "(56) Photo (33) Physics (10) Predictions (6) Progress (13) Reactions (3) Reversing (23) SerpentCipher (11) Services (9) ShouldersGiants (60) SoftwareArchaeology (77) SoftwareSucks",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.loper-os.org",
+          "/",
+          "",
+          "p=1913",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Loper OS » &#34;Finite Field Arithmetic.&#34; Chapter 1: Genesis.",
+        "url": "http://www.loper-os.org/?p=1913"
+      },
+      {
+        "category": "general",
+        "content": "Advances in fundamental physics stopped. In 54 years we went from the first motorized flight to the 747, but the following 54 years produced barely the 787, which would not be unr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "E.g., &#34;As used in physics, electronics and electrical engineering the term &#39;hysteresis&#39; is grossly sexist since it originally came from the Greek word for &#39;uterus&#39; or &#39;womb.&#39;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "utminers.utep.edu",
+          "/omwilliamson/ENGL1311/fallacies.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Master List of Logical Fallacies",
+        "url": "https://utminers.utep.edu/omwilliamson/ENGL1311/fallacies.htm"
+      },
+      {
+        "category": "general",
+        "content": "model of particle physics involves half-integer spin fermions which obey the Pauli exclusion principle and form matter and integer spin bosons which mediate force and radiation. R",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "Ten Amazing Things Astrophysics Says About You 18th Heart Of Our Galaxy 16th Astronomy And The Cold War 15th A Slice Of Pi 14th A Bit Farther 11th See And Be Seen 9th A Repeating",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "briankoberlein.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Archive | by Brian Koberlein",
+        "url": "https://briankoberlein.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "experimental sciences (physics, chemistry, natural sciences...), there are more complex invariants, such as symmetry groups, discrete groups, and so on. Invariants are in fact kin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/mathematical_theory_of_classification.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mathematical theory of classification (IEKO)",
+        "url": "https://www.isko.org/cyclo/mathematical_theory_of_classification.htm"
+      },
+      {
+        "category": "general",
+        "content": "on 2022-10-15 Newtonian physics doesn&#39;t allow immovable objects. Note 1 from 2022-09-26 Published on 2022-09-26 In reply to Aaron Parecki Note 1 from 2022-09-17 Published on 2022-",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.alm.website",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Athena&#39;s blog - Athena&#39;s Site",
+        "url": "https://www.alm.website/blog/"
+      },
+      {
+        "category": "general",
+        "content": "cases, especially in physics, when large exponents occur - 10 43 or 10 -13 . But this usually indicates that the proper units have not been chosen, or maybe even that logarithms s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colorforth.github.io",
+          "/POL.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://colorforth.github.io/POL.htm",
+        "url": "https://colorforth.github.io/POL.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5d3edbc0da68dd2a6e90c44576c6ded85023e1469120aeb8a582dfaa607c0e26",
+  "provider": "SearXNG",
+  "query": "how does binary search in physics work",
+  "query_id": "v5-p-0274-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:54.246941Z"
+}

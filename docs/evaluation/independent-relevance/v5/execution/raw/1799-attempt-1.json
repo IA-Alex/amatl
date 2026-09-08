@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 281.875,
+  "pair_id": "v5-p-0944",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does cloud formation in electrical engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "a communicationsu2011engineering approach combining coherent integration, superheterodyne frequency shifting, and iterative phaseu2011demodulation to isolate weak, structured osci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "] Abstract  Power engineering and transport; miscellaneous industries.  UBSTANCE: Single-row power module has stator and rotor with rollers combined by common separator.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.rexresearch.com",
+          "/roschin/roschin.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Roschin &amp; Godin: Magneto-Gravity Effects; Verification of the Searl Effect",
+        "url": "http://www.rexresearch.com/roschin/roschin.htm"
+      },
+      {
+        "category": "general",
+        "content": "London in a mechanical engineering firm which produced the models required by the Patent Office in those days, before issuing a patent. He told me they had many people come to him",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lachlan.bluehaze.com.au",
+          "/nanoshite/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NanoShite: A nano-apostate webpage dedicated to the slimeycanceroushype flim-flam-barnum-and-bailey-charlatan delusional bollocks nanosleaze /",
+        "url": "http://lachlan.bluehaze.com.au/nanoshite/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6532b10f1dcbb903c18f781b6563fa4f601710d5b40447c32ea6d7765b05456a",
+  "provider": "SearXNG",
+  "query": "how does cloud formation in electrical engineering operate",
+  "query_id": "v5-p-0944-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:52.846560Z"
+}

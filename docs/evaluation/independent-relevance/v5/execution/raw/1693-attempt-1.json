@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 301.36,
+  "pair_id": "v5-p-0253",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is binary search in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "below. Gold Prospecting Astronomy and Telescope Building Miscellaneous Projects Gold from e-waste Homebuilt Jet Engine Travel &amp; Vacations Wind Power My House Blogs My home-bui",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mdpub.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Davis Publishing - Mike&#39;s World.",
+        "url": "http://mdpub.com/"
+      },
+      {
+        "category": "general",
+        "content": "by John Walker In astronomy, a planetary transit is when a planet closer to the Sun passes in front of the Sun&#39;s disc as seen from a more distant planet. From the Earth, transits",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/documents/canon_transits/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quarter Million Year Canon of Solar System Transits",
+        "url": "https://www.fourmilab.ch/documents/canon_transits/"
+      },
+      {
+        "category": "general",
+        "content": "of Plants 281 Physical Astronomy 305 Linguistic 322 Animal Magnetism and Magic 326 Sinology 359 Reference to Ethics 372 Conclusion 378 *** END OF THE PROJECT GUTENBERG EBOOK INDEX",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/cache/epub/59024/pg59024-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg Works of Arthur Schopenhauer",
+        "url": "https://www.gutenberg.org/cache/epub/59024/pg59024-images.html"
+      },
+      {
+        "category": "general",
+        "content": "of nonsense and dubious astronomy, a narrative emerges; the star that came to Earth was no bigger than would fit in the palm of your hand. It was found by a seafaring merchant in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-gig-economy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Gig Economy — Chadnet",
+        "url": "https://wiki.chadnet.org/the-gig-economy"
+      },
+      {
+        "category": "general",
+        "content": "The more we learn about astronomy, the less it seems that earth is special. It&#39;s a small part of the universe, and each human is a small part of the earth. We are all spinning thr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "triptico.com",
+          "/links/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Links",
+        "url": "https://triptico.com/links/"
+      },
+      {
+        "category": "general",
+        "content": "modified gravity Nature Astronomy doi:10.1038/s41550-019-0823-y) and could be produced in the medial tachocline layers of the Sun through magnetic fields interacting with photons",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/quant.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quantum Reality and Cosmology",
+        "url": "http://www.dhushara.com/paradoxhtm/quant.htm"
+      },
+      {
+        "category": "general",
+        "content": "and Fainted Stars 11th Astronomy for Life 6th Into the Mix 5th Inflationary Growth 4th A Bit Easier 3rd October Pointless 31st A Band That’s Mid 29th To Peer Beyond the Veil",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "briankoberlein.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Archive | by Brian Koberlein",
+        "url": "https://briankoberlein.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "Treasury of Physics, Astronomy, and Mathematics edited by Timothy Ferris Little, Brown and Company, 1991, ISBN 0-316-28133-6 pbk An excellent and exhaustive (large) book containin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "david.tribble.com",
+          "/text/biblio.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "David Tribble&#39;s Bibliography of Good Books",
+        "url": "http://david.tribble.com/text/biblio.html"
+      },
+      {
+        "category": "general",
+        "content": "01:16 AM UTC | Solar Astronomy When we think of weather forecasts, we instinctively think of weather on Earth like rain or shine. However, we rarely consider weather forecasts fro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.universetoday.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Universe Today - Space and Astronomy News",
+        "url": "https://www.universetoday.com/"
+      },
+      {
+        "category": "general",
+        "content": "Software&#39;s acclaimed astronomy software for the Macintosh. Starry_Night_J_103_68K.hqx Starry_Night_J_103_PPC.hqx Starry_Night.inf Short summary E. Amiga 2. Dictionary Software Ami",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "edrdg.org",
+          "/pub/Nihongo/00INDEX.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Monash Nihongo ftp Archive",
+        "url": "http://edrdg.org/pub/Nihongo/00INDEX.html"
+      },
+      {
+        "category": "general",
+        "content": "plots UI     ASTRONOMY subset of Science-Engineering images : row A1 DRACO   Dome Controller   SBIG ccd   lx200 row A2 Telescope Guider   tkApollo &amp;n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.subdude-site.com",
+          "/WebPages_Local/RefInfo/Computer/TclTk/others_tkGUIs/others_tkGUIs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "tkGUIs of various applications - approx. 1985 to 2008",
+        "url": "http://www.subdude-site.com/WebPages_Local/RefInfo/Computer/TclTk/others_tkGUIs/others_tkGUIs.htm"
+      },
+      {
+        "category": "general",
+        "content": "Astronomy Notes Note that Google search will first show several advertisement sites before it lists the relevant Astronomy Notes pages. Jump to Chapters listing How to navigate in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronomynotes.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Astronomy Notes",
+        "url": "https://www.astronomynotes.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "09ea45b92b9d7fff1b709374beddeecea5467a8d38e58563f76b83a5d0bc09d4",
+  "provider": "SearXNG",
+  "query": "what is binary search in astronomy",
+  "query_id": "v5-p-0253-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:12.184023Z"
+}

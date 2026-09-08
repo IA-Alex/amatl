@@ -1,0 +1,171 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2950,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 325.671,
+  "pair_id": "candidate-p-0928",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "essential context for electric aviation within electrical systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "to see simple little electrical taps pulling out enormous energy from the vacuum. They would much rather see you burning a lot more oil.&#34; -- Colonel Thomas E. Bearden , US Army, P",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.david-sadler.org",
+          "/pages/bigQuestions/discIsOurs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "(SFC) David Sadler For Congress - If the Disc Is Ours",
+        "url": "https://www.david-sadler.org/pages/bigQuestions/discIsOurs.htm"
+      },
+      {
+        "category": "general",
+        "content": "Knowledge of diesel and electrical control circuits was helpful. Power to the equipment was via a large electrical motor generator setup. When a power failure occurred the diesel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ed-thelen.org",
+          "/comp-hist/vs-ibm-sage.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "IBM SAGE",
+        "url": "https://ed-thelen.org/comp-hist/vs-ibm-sage.html"
+      },
+      {
+        "category": "general",
+        "content": "In the beginning, electrical circuits were all analog. But electrical circuits are noisy, meaning there are unwanted voltage variations. The noise gets in the way, mostly because",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pages.ucsd.edu",
+          "/~dnorman/DNMss/Being_Analog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Being Analog",
+        "url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html"
+      },
+      {
+        "category": "general",
+        "content": "3-D model of electrical activity. Pet Goldfish: ph. (Solo) A favorite weapon or other item which may not actually represent the best example of that device. (E.g. &#34;That Sternmeyer",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.shoestring-graphics.com",
+          "/CP2020/slang/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Word on The Streets",
+        "url": "http://www.shoestring-graphics.com/CP2020/slang/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b54b122049247f7337e340de346d3d5fa647bd63b98d7eaf955902205bfa280a",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "essential context for electric aviation within electrical systems",
+  "query_id": "candidate-c-0928",
+  "raw_result_count": 4,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.david-sadler.org/pages/bigQuestions/discIsOurs.htm",
+      "original_url": "https://www.david-sadler.org/pages/bigQuestions/discIsOurs.htm",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "to see simple little electrical taps pulling out enormous energy from the vacuum. They would much rather see you burning a lot more oil.&#34; -- Colonel Thomas E. Bearden , US Army, P",
+      "title": "(SFC) David Sadler For Congress - If the Disc Is Ours"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://ed-thelen.org/comp-hist/vs-ibm-sage.html",
+      "original_url": "https://ed-thelen.org/comp-hist/vs-ibm-sage.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Knowledge of diesel and electrical control circuits was helpful. Power to the equipment was via a large electrical motor generator setup. When a power failure occurred the diesel",
+      "title": "IBM SAGE"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html",
+      "original_url": "https://pages.ucsd.edu/~dnorman/DNMss/Being_Analog.html",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "In the beginning, electrical circuits were all analog. But electrical circuits are noisy, meaning there are unwanted voltage variations. The noise gets in the way, mostly because",
+      "title": "Being Analog"
+    }
+  ],
+  "timestamp": "2026-09-05T17:36:02.488835Z"
+}

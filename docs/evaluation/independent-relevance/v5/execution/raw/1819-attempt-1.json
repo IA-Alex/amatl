@@ -1,0 +1,273 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 304.432,
+  "pair_id": "v5-p-0200",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does heat transfer in optics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "zones, e.g. as transfer functions between peripheral vision and the eyeglass lens itself (e.g. in the frames), or as the transfer functions between different portions of a multifo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wearcam.org",
+          "/presence_connect/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mediated Reality with implementations for everyday life",
+        "url": "http://wearcam.org/presence_connect/"
+      },
+      {
+        "category": "general",
+        "content": "spotted Faster memory transfers Programming Dealing with the ‘New’ hardware Graphics Architecture of the PICA200 Organising the content Adopting open standards Constructing the fr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/nintendo-3ds/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nintendo 3DS Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/nintendo-3ds/"
+      },
+      {
+        "category": "general",
+        "content": "The ASTACon Transfer System involves sending neurotransmitters which once fully received deploy a fresh ASTACON where another may have fissed for punishment or fused for success a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.self-replicatingnanobot.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod &#43; Self-Replicating Nanobot Design",
+        "url": "http://www.self-replicatingnanobot.com/"
+      },
+      {
+        "category": "general",
+        "content": "main page. * Air transfer solar collector on Jim&#39;s house. cooker * Solar cookers. steveharris * SUNSHINE TO DOLLARS By Steven Harris * Reel time temperature measurements of his so",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.redrok.com",
+          "/main.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Red Rock Energy Heliostats",
+        "url": "http://www.redrok.com/main.htm"
+      },
+      {
+        "category": "general",
+        "content": "it has two phosphate-transferring domains. Some biochemists also say that JAK stands for &#34;just another kinase&#34;. Thomas Schneider from the National Cancer Institute in Maryland tol",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/sillymolecules/sillymols4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecules with Silly or Unusual Names - page 4",
+        "url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm"
+      },
+      {
+        "category": "general",
+        "content": "and then electrically transfer them to the silicon wafer. Nothing in this process cannot be made ideal once the gear assembly is constructed with nickel melted into etched silicon",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sonex.org",
+          "/SkyNet.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sky Net",
+        "url": "http://www.sonex.org/SkyNet.html"
+      },
+      {
+        "category": "general",
+        "content": "The ASTACon Transfer System involves sending neurotransmitters which once fully received deploy a fresh ASTACON where another may have fissed for punishment or fused for success a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.self-replicatingnanobot.com",
+          "/Cyberology.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod &#43; Self-Replicating Nanobot Design",
+        "url": "http://www.self-replicatingnanobot.com/Cyberology.html"
+      },
+      {
+        "category": "general",
+        "content": "and then electrically transfer them to the silicon wafer. Nothing in this process cannot be made ideal once the gear assembly is constructed with nickel melted into etched silicon",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bimavs.com",
+          "/CellularDiamondArmor.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BiMAVs; Bipedal Mechanized Assault Vehicles",
+        "url": "http://www.bimavs.com/CellularDiamondArmor.html"
+      },
+      {
+        "category": "general",
+        "content": "and then electrically transfer them to the silicon wafer. Nothing in this process cannot be made ideal once the gear assembly is constructed with nickel melted into etched silicon",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bimavs.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BiMAVs; Bipedal Mechanized Assault Vehicles",
+        "url": "http://www.bimavs.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f1343e19b19603617c03f0440cf105afb10195801882735e0964175f024ccebb",
+  "provider": "SearXNG",
+  "query": "how does heat transfer in optics operate",
+  "query_id": "v5-p-0200-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:58.868223Z"
+}

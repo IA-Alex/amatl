@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 376.84,
+  "pair_id": "v5-p-0614",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of renewable energy storage in biology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f559b819251faef3e04be28942e62e1ed9791b483d35a62e2ba2684c9c0b01e2",
+  "provider": "SearXNG",
+  "query": "tell me about the function of renewable energy storage in biology",
+  "query_id": "v5-p-0614-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:54.992190Z"
+}

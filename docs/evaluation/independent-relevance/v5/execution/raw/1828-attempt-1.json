@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 239.316,
+  "pair_id": "v5-p-0995",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of wastewater treatment in robotics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b4fdef3bddc073c38023eebc3fb350cd98b1cbf57bd91f2a65e58e0e9b62811c",
+  "provider": "SearXNG",
+  "query": "give an overview of wastewater treatment in robotics",
+  "query_id": "v5-p-0995-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:01.446523Z"
+}

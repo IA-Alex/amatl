@@ -1,0 +1,34 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 499,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 284.429,
+  "pair_id": "candidate-p-1633",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "which mechanisms govern marine heatwaves within agricultural engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "64b54e36a008e7716ae0fc5e5e8a002604143012607490ff718a2d8e9c8605d2",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "which mechanisms govern marine heatwaves within agricultural engineering",
+  "query_id": "candidate-t-1633",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:23:03.544307Z"
+}

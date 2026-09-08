@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 347.3665790006635,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does routing tables in data management work",
+    "results": [
+      {
+        "category": "general",
+        "content": "dynamic resource management for the shifter &amp; timer resources within each FlexIO port.  The goal is for libraries using FlexIO, such as TMM-HM01B0-Camera and TriantaduoWS2811",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.pjrc.com",
+          "/2021/07/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SEGA ROM Reader",
+        "url": "https://www.pjrc.com/2021/07/"
+      },
+      {
+        "category": "general",
+        "content": "there was no RAID management support. Apparently most of these bugs are because the Adaptec controllers have numerous buggy firmware issues which require careful workarounds; with",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.openbsd.org",
+          "/lyrics.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OpenBSD: Release Songs",
+        "url": "http://www.openbsd.org/lyrics.html"
+      },
+      {
+        "category": "general",
+        "content": "and Distributed Data Management” (19442), 2019 NII Shonan Meeting on “Programming Languages for Distributed Systems”, 2019 REBLS workshop series at Splash (2024–2024, REM’13) COP’",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "programming-group.com",
+          "/members/salvaneschi",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Prof. Dr. Guido Salvaneschi | Programming Group",
+        "url": "https://programming-group.com/members/salvaneschi"
+      },
+      {
+        "category": "general",
+        "content": "There&#39;s manual memory management ( malloc() ), and then there&#39;s manual memory management ( sbrk() ). Note 2 from 2025-09-04 Published on 2025-09-04 I&#39;ve made many false promises o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.alm.website",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Athena&#39;s blog - Athena&#39;s Site",
+        "url": "https://www.alm.website/blog/"
+      },
+      {
+        "category": "general",
+        "content": "thankfully). Monthly management meeting. 2021-11-15 Monday Planning call, lunch with Isaac, call with an old acquaintance. Out for a run with J. 2021-11-14 Sunday All Saints; reme",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2021/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2021/"
+      },
+      {
+        "category": "general",
+        "content": "- Consulting &amp; Management offers consulting, installaton and adminstrative services for qmail, djbdns and other software including help with general server tasks to customers",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.usenix.org.uk",
+          "/mirrors/qmail/top.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "qmail: Second most popular MTA on the Internet",
+        "url": "http://www.usenix.org.uk/mirrors/qmail/top.html"
+      },
+      {
+        "category": "general",
+        "content": "much time. Your alarm-management software can of course keep, install, delete, and sort (by due times) many alarms, and any given alarm&#39;s routine might also set an alarm for the n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wilsonminesco.com",
+          "/multitask/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "simple multitask",
+        "url": "http://wilsonminesco.com/multitask/"
+      },
+      {
+        "category": "general",
+        "content": "The keyboard management in this version had been updated to use the GPR event types GPR_$Coded_Keys, GPR_$Function_Keys, and GPR_$Physical_Keys which are new in SR10.2 and give GN",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jim.rees.org",
+          "/apollo-archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Apollo Archive",
+        "url": "https://jim.rees.org/apollo-archive/"
+      },
+      {
+        "category": "general",
+        "content": "AAM (Automatic Acoustic Management), APM, drive motor spin-down, sector read/write, change drive configuration and more... In principle you can execute every ATA command, the para",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "rayer.g6.cz",
+          "/programm/programe.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RayeR&#39;s homepage/Programming",
+        "url": "http://rayer.g6.cz/programm/programe.htm"
+      },
+      {
+        "category": "general",
+        "content": "App BOUNCET.EXE DDE Management Library Article Text BROWSE.EXE Microsoft C/C&#43;&#43; Browser Toolkit for Visual C&#43;&#43; BSC32.EXE Microsoft C/C&#43;&#43; Browser Toolkit for Visual C&#43;&#43; BTNBAR.EXE B",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.gaby.de",
+          "/ftp/pub/win3x/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Microsoft Software Library",
+        "url": "http://www.gaby.de/ftp/pub/win3x/archive/"
+      },
+      {
+        "category": "general",
+        "content": "functions, key management, key lifetimes, key distribution, key use controls, key backup/archival, key continuity, certificates and CAs, certificate history, X.500 and X.500 namin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cs.auckland.ac.nz",
+          "/~pgut001/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Gutmann&#39;s Home Page",
+        "url": "https://www.cs.auckland.ac.nz/~pgut001/"
+      },
+      {
+        "category": "general",
+        "content": "APMAdvanced Power Management support is enabled. APPARMOR AppArmor support is enabled. ARMARM architecture is enabled. ARM64ARM64 architecture is enabled. CLKCommon clock infrastr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kernel.org",
+          "/doc/Documentation/admin-guide/kernel-parameters.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://www.kernel.org/doc/Documentation/admin-guide/kernel-parameters.txt",
+        "url": "https://www.kernel.org/doc/Documentation/admin-guide/kernel-parameters.txt"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0046",
+  "query_text": "how does routing tables in data management work",
+  "requested_at": "2026-09-03T01:43:38.878118Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

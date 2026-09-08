@@ -1,0 +1,198 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 845,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 368.171,
+  "pair_id": "candidate-p-1396",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "under what conditions does image compression within astronomy change",
+    "results": [
+      {
+        "category": "general",
+        "content": "t “maims by compression, like a Chinese lady’s foot, every part of human nature which stands out prominently, and tends to make a person markedly different in outline”[34] from the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "theanarchistlibrary.org",
+          "/library/paul-feyerabend-against-method.muse",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse",
+        "url": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse"
+      },
+      {
+        "category": "general",
+        "content": "amount of &#34;lossy&#34; audio compression causes those brief tones and background noises (such as those emanating from your optical receiver) to &#34;confuse&#34; the audio compression, often r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/optical_comms/using_laser_pointers.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Using laser pointers for voice communications",
+        "url": "http://www.modulatedlight.org/optical_comms/using_laser_pointers.html"
+      },
+      {
+        "category": "general",
+        "content": "greater gravitational compression, black holes are formed, which, however, are again essentially &#34; vacuum objects &#34; (as discussed in §4.2, section &#34; Complete gravit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Gravitace5-1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Basic principles and principles of cosmology",
+        "url": "https://www.astronuclphysics.info/Gravitace5-1.htm"
+      },
+      {
+        "category": "general",
+        "content": "active links were in compression. To prevent buckling of the column, the chain was enclosed in a conduit ( fig. 36 ). Excessive friction was prevented by a pair of small rollers a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book246/book246.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Elevator Systems of the Eiffel Tower, 1889, by Robert M. Vogel",
+        "url": "https://www.ajhw.co.uk/books/book246/book246.html"
+      },
+      {
+        "category": "general",
+        "content": "and inspired. COBRA (Compression Breakthrough) Posted by SATHYA at Sunday, April 16, 2023 0 comments Email This BlogThis! Share to X Share to Facebook Share to Pinterest Labels: A",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.alienanthropology.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ALIEN ANTHROPOLOGY",
+        "url": "https://www.alienanthropology.info/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2e4d0c4c14e3c32fc9a0f2899c35c658a829f6fbcc31b56aa7c3c5c4da0cfbd4",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "under what conditions does image compression within astronomy change",
+  "query_id": "candidate-t-1396",
+  "raw_result_count": 5,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse",
+      "original_url": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "t “maims by compression, like a Chinese lady’s foot, every part of human nature which stands out prominently, and tends to make a person markedly different in outline”[34] from the",
+      "title": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.modulatedlight.org/optical_comms/using_laser_pointers.html",
+      "original_url": "http://www.modulatedlight.org/optical_comms/using_laser_pointers.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "amount of &#34;lossy&#34; audio compression causes those brief tones and background noises (such as those emanating from your optical receiver) to &#34;confuse&#34; the audio compression, often r",
+      "title": "Using laser pointers for voice communications"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "https://www.astronuclphysics.info/Gravitace5-1.htm",
+      "original_url": "https://www.astronuclphysics.info/Gravitace5-1.htm",
+      "rank": 3,
+      "rejection_reason": null,
+      "snippet": "greater gravitational compression, black holes are formed, which, however, are again essentially &#34; vacuum objects &#34; (as discussed in §4.2, section &#34; Complete gravit",
+      "title": "Basic principles and principles of cosmology"
+    }
+  ],
+  "timestamp": "2026-09-05T17:24:58.173473Z"
+}

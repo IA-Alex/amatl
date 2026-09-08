@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 356.307,
+  "pair_id": "v5-p-0412",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind carbon capture in mechanical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "435ab033ab2aacf076f86b3e7a220a901c454d26b82621356b2d54a6d6d5e196",
+  "provider": "SearXNG",
+  "query": "describe the principle behind carbon capture in mechanical engineering",
+  "query_id": "v5-p-0412-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:51.508737Z"
+}

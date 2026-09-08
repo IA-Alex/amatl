@@ -1,0 +1,192 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 289.862,
+  "pair_id": "v5-p-0684",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does traffic flow in transportation engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "tracks. Update: The transportation center expanded its parking lot, and the steel for the bridge was moved into storage. The city now wants to demolish the storage building, so th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "russnelson.com",
+          "/unfinished-railroads.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Unfinished Railroads of New York State",
+        "url": "http://russnelson.com/unfinished-railroads.html"
+      },
+      {
+        "category": "general",
+        "content": "producing a renewable transportation fuel without impacting the world&#39;s food supply.  Different from corn- or sugar-based ethanol — which is technologically achiev",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "akdart.com",
+          "/enviro9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Supposedly good ideas that may not be good at all",
+        "url": "http://akdart.com/enviro9.html"
+      },
+      {
+        "category": "general",
+        "content": "bring tools with us. Transportation was via GSA vehicles Grass had to be mowed as well as the normal site maintenance work. To me, GF duty was easy and an excellent job. al dennis",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ed-thelen.org",
+          "/comp-hist/vs-ibm-sage.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "IBM SAGE",
+        "url": "https://ed-thelen.org/comp-hist/vs-ibm-sage.html"
+      },
+      {
+        "category": "general",
+        "content": "should not overlook the transportation and manpower required in obtaining, moving, and uncrating barrier material and associated obstacle creating munitions, such as demolition ch",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.nuui.com",
+          "/Sections/Military/Field_Manuals/FM3-90/ch8.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "FM3-90 Chapter 8 Basics of Defensive Operations",
+        "url": "http://www.nuui.com/Sections/Military/Field_Manuals/FM3-90/ch8.htm"
+      },
+      {
+        "category": "general",
+        "content": "change in the world of transportation, but enough incentive to get some talented and creative teams working hard. Winner: &#34;Stanley&#34; Just 18 months later, the results were astoundi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.templetons.com",
+          "/brad/robocars/robot-cars.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Implications of Robot Cars and Taxis",
+        "url": "https://www.templetons.com/brad/robocars/robot-cars.html"
+      },
+      {
+        "category": "general",
+        "content": "on organic motorized transportation assets and the limited protection available to light infantry units, the commander must specifically plan for their displacement. While all lig",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.nuui.com",
+          "/Sections/Military/Field_Manuals/FM3-90/ch11.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "FM3-90 Chapter 11 The Retrograde",
+        "url": "http://www.nuui.com/Sections/Military/Field_Manuals/FM3-90/ch11.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "962bd677635a11af64925d6e862aceb9a66ef2737ce8f2e4cb2da019a76d3060",
+  "provider": "SearXNG",
+  "query": "how does traffic flow in transportation engineering operate",
+  "query_id": "v5-p-0684-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:05.587362Z"
+}

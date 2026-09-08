@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 345.054,
+  "pair_id": "v5-p-0780",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind coastal flooding in robotics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7c3ee2be68eeea153ad3d218fabaec19dab35254c721c9f7ca8abb81f7fe98dd",
+  "provider": "SearXNG",
+  "query": "describe the principle behind coastal flooding in robotics",
+  "query_id": "v5-p-0780-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:20.599081Z"
+}

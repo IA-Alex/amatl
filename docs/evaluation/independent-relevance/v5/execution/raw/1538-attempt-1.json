@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 384.685,
+  "pair_id": "v5-p-0184",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind heat transfer in civil engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "flight engineer engineering farmer farmers significance rare via least somewhat museum phase terrible metal motion unfortunately severe factory wild strongly laugh laughed bloody",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "flight engineer [engineering] farmer [farmers] significance rare via least somewhat museum phase terrible metal motion unfortunately severe factory wild strongly laugh [laughed] b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq-bnc.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.conlang.info/wordfreq-bnc.txt",
+        "url": "http://www.conlang.info/wordfreq-bnc.txt"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e2ef53a3685c52af5df4e051362505510ee923bc26bc3a37f4b73cf9f9f16c40",
+  "provider": "SearXNG",
+  "query": "describe the principle behind heat transfer in civil engineering",
+  "query_id": "v5-p-0184-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:13:26.426028Z"
+}

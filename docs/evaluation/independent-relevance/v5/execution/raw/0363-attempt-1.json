@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 382.628,
+  "pair_id": "v5-p-0258",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does binary search in computer security work",
+    "results": [
+      {
+        "category": "general",
+        "content": "In all the world of computer programming, there are few languages as simple, clean, comprehensive, powerful, and extensible as Scheme. The introduction to the R5RS edition of Sche",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "files.spritely.institute",
+          "/papers/scheme-primer.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Scheme Primer",
+        "url": "https://files.spritely.institute/papers/scheme-primer.html"
+      },
+      {
+        "category": "general",
+        "content": "appreciation about that computer [the Apple Lisa] in which I said this is a catastrophe. This is the end of language in relation to computers. This is the implementation of the &#34;c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.idallen.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ian! D. Allen - Personal Home Page",
+        "url": "http://www.idallen.com/"
+      },
+      {
+        "category": "general",
+        "content": "by Platinum, Computer Associates (CA) and Microsoft. ( corporate history ) Flux Player and Flux Studio X3D/VRML97 viewer plugin and authoring tool for Internet Explorer (Windows)",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.web3d.org",
+          "/x3d/content/examples/X3dResources.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "X3D Resources",
+        "url": "https://www.web3d.org/x3d/content/examples/X3dResources.html"
+      },
+      {
+        "category": "general",
+        "content": "being that they are computer generated rather than user-chosen. Because of that they typically have much higher entropy (which makes them more annoying to type in, i.e you want to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "0pointer.net",
+          "/blog/authenticated-boot-and-disk-encryption-on-linux.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Authenticated Boot and Disk Encryption on Linux",
+        "url": "http://0pointer.net/blog/authenticated-boot-and-disk-encryption-on-linux.html"
+      },
+      {
+        "category": "general",
+        "content": "demonstrate that the computer press doesn&#39;t understand network security, and reprints boilerplate self-promotion from the anti-virus industry in lieu of news and analysis. Saying",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "linuxmafia.com",
+          "/~rick/faq/",
+          "",
+          "",
+          "willbethere"
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "But That&#39;s Just My Opinion. I Could Be Wrong.",
+        "url": "http://linuxmafia.com/~rick/faq/#willbethere"
+      },
+      {
+        "category": "general",
+        "content": "and a front-end to your computer&#39;s SSH client, and on the server side can also be installed as an SSH service — a more powerful alternative to SFTP. C-Kermit&#39;s TCP/IP connec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kermitproject.org",
+          "/ckfaq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C-Kermit Frequently Asked Questions",
+        "url": "https://www.kermitproject.org/ckfaq.html"
+      },
+      {
+        "category": "general",
+        "content": "I throw my wallet at my computer screen. https://shkspr.mobi/blog/2020/09/a-floppy-disk-mp3-player-using-a-raspberry-pi/ Read more… Published 7 / 9 / 2020 SSB Log Entry 992 When @",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tilde.town",
+          "/~netscape_navigator/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Netscape Blog",
+        "url": "http://tilde.town/~netscape_navigator/"
+      },
+      {
+        "category": "general",
+        "content": "with a virus? 2.10. My computer hangs when I run Cygwin Setup! 2.11. What packages should I download? Where are &#39;make&#39;, &#39;gcc&#39;, &#39;vi&#39;, etc? 2.12. How do I just get everything? 2.13.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cygwin.com",
+          "/faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cygwin FAQ",
+        "url": "https://cygwin.com/faq/"
+      },
+      {
+        "category": "general",
+        "content": "disk or other medium, a computer virus, or computer codes that damage or cannot be read by your equipment. 1.F.2. LIMITED WARRANTY, DISCLAIMER OF DAMAGES - Except for the &#34;Right o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/36769/36769-h/36769-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of And What If the Pretender Should Come? by Daniel Defoe.",
+        "url": "https://www.gutenberg.org/files/36769/36769-h/36769-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "words in our emails and computer assistants will plan out our lives for us. Our descendants, if we continue to breed, will not find the concept of free will to be comprehensible.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-gig-economy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Gig Economy — Chadnet",
+        "url": "https://wiki.chadnet.org/the-gig-economy"
+      },
+      {
+        "category": "general",
+        "content": "Day7 ] This year&#39;s Old Computer Challenge runs from Monday 10th July 2023 and finishes on Sunday 16th July. People are documenting the challenge using... a discussion thread on So",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.k58.uk",
+          "/pages/stuff/old-computer-challenge-v3.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Old Computer Challenge Version 3 July 2023",
+        "url": "http://www.k58.uk/pages/stuff/old-computer-challenge-v3.html"
+      },
+      {
+        "category": "general",
+        "content": "Computer Security and Privacy Safety Data Preservation Online Security Online Privacy Anticipate problems Miscellaneous      Threats     &amp;n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ComputerSecurityPrivacy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Computer Security and Privacy",
+        "url": "https://www.billdietrich.me/ComputerSecurityPrivacy.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ae25f1f14be2c239948dd86b7dd235000965ed7aa979961c3dd961f3801d4284",
+  "provider": "SearXNG",
+  "query": "how does binary search in computer security work",
+  "query_id": "v5-p-0258-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:03.312256Z"
+}

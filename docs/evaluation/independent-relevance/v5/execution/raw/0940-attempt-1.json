@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 341.957,
+  "pair_id": "v5-p-0773",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind coastal flooding in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "to Do On Public Wi-Fi. Technology breeds crime (AARP), Keep Out Those Wi-Fi Hackers. Don&#39;t fall prey to digital intruders (AARP), Get Smart on the Web (Mozilla Foundation, 2016),",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d47811d5e1a64c6555d0070b89b27dc7d5b65ead2cf709f17db183b875846ff6",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind coastal flooding in music technology",
+  "query_id": "v5-p-0773-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:10:12.988898Z"
+}

@@ -1,0 +1,300 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 399.835,
+  "pair_id": "v5-p-0753",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind root systems in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "security cameras and industrial control systems, i.e., certain proprietary embedded-Linux devices crafted, sold, and marketed in a way that misses essentially all of the benefits",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "linuxmafia.com",
+          "/~rick/faq/",
+          "",
+          "",
+          "willbethere"
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "But That&#39;s Just My Opinion. I Could Be Wrong.",
+        "url": "http://linuxmafia.com/~rick/faq/#willbethere"
+      },
+      {
+        "category": "general",
+        "content": "experiences; the industrial culture of unrestrained individualism, which teaches egoism and pays no attention to other people, the future and the environment”. ( 8 ) Any pr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.vatican.va",
+          "/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jesus Christ The Bearer Of The Water Of Life - A Christian reflection on the New Age",
+        "url": "https://www.vatican.va/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html"
+      },
+      {
+        "category": "general",
+        "content": "Britain and the industrial revolution. Societal changes had as much to do with the rise of sport as the technological advances taking place at the time. Sport profited from the in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mike-tanner.co.nz",
+          "/40sport.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mike Tanner Articles about Sport and Recreation",
+        "url": "http://mike-tanner.co.nz/40sport.html"
+      },
+      {
+        "category": "general",
+        "content": "follow-on papers, industrial adoption, an annual workshop, and a growing community. Selected September 2021 CACM Research Highlight Achieving high-performance the functional way:",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "security cameras and industrial control systems, i.e., certain proprietary embedded-Linux devices crafted, sold, and marketed in a way that misses essentially all of the benefits",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "linuxmafia.com",
+          "/~rick/faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "But That&#39;s Just My Opinion. I Could Be Wrong.",
+        "url": "http://linuxmafia.com/~rick/faq/"
+      },
+      {
+        "category": "general",
+        "content": "commonly understood in industrial-grade trust and safety circles, but I think less so on newer networks, which have mostly experienced old-school adversaries—basic scammers and sp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "erinkissane.com",
+          "/meta-in-myanmar-part-iv-only-connect",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Meta in Myanmar, Part IV: Only Connect - Erin Kissane&#39;s small internet website",
+        "url": "https://erinkissane.com/meta-in-myanmar-part-iv-only-connect"
+      },
+      {
+        "category": "general",
+        "content": "tab from the military-industrial complex rises each year. This has been made possible through the creation of perpetual warfare. The more countries the US is at war with at any gi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "serendipity.li",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Serendipity",
+        "url": "https://serendipity.li/"
+      },
+      {
+        "category": "general",
+        "content": "us that art is an industrial product like any other and supports the rule of capital no less, and perhaps more insidiously, than the futures market. Gary Saul Morson, &#34;Why College",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/hermenut.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Foundationalism and Hermeneutics",
+        "url": "https://friesian.com/hermenut.htm"
+      },
+      {
+        "category": "general",
+        "content": "Office Or Commercial/Industrial Place Is Going To Have Somebody There Who Will Speak English Good Enough And Getting Through The Quid Pro Quos With Them Let&#39;s Them Break The Ice F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteListW-GeorgiaRunOffElection2021.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Free World Alliance Site List",
+        "url": "http://www.viacadempire.com/FWAsiteListW-GeorgiaRunOffElection2021.html"
+      },
+      {
+        "category": "general",
+        "content": "reverted to a pre-industrial society (with no medicine, scarce food, none of our modern comforts, etc.): I believe a better goal would be to amplify the positive effects of econom",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "a3nm.net",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "a3nm&#39;s blog",
+        "url": "http://a3nm.net/blog/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2873396ada4657c87b7d2886fd71ce67116f4222b8994367e6e0099540ac5aa9",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind root systems in industrial design",
+  "query_id": "v5-p-0753-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:06.510912Z"
+}

@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 253.214,
+  "pair_id": "v5-p-0823",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes battery chemistry in forensic science",
+    "results": [
+      {
+        "category": "general",
+        "content": "a PhD in inorganic chemistry - 1/2 of them are girls it seems. Back to VCL, some re-factoring to dung some mess out. Out to Louise&#39; for dinner, had a pleasant time but very tired,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2003/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2003/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d662be41196353b130ba76fa2b62fb833966241d500b91abf32279cf4c4a119d",
+  "provider": "SearXNG",
+  "query": "what causes battery chemistry in forensic science",
+  "query_id": "v5-p-0823-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:09:15.532940Z"
+}

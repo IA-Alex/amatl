@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 3580,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 270.927,
+  "pair_id": "candidate-p-2079",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of soil carbon accounting within education",
+    "results": [
+      {
+        "category": "general",
+        "content": "to be a more consistent explanation. (p. 20) He also argues that, while the balloon and satellite data do not show any clear temperature trend in recent decades, their interannual",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/warm.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The global warming scare",
+        "url": "https://davidpratt.info/warm.htm"
+      },
+      {
+        "category": "general",
+        "content": "is only one possible explanation: God wants you to know the Shroud of Turin is the authentic burial Shroud of Jesus Christ in whom you can place your faith, hope, trust, and belie",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.shroud.com",
+          "/late24.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2022 Website News!",
+        "url": "https://www.shroud.com/late24.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6fcfe6798d4db4596eab31ecfbc64ea46487ee8a4e3d7b37bc75882b79a4aea7",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of soil carbon accounting within education",
+  "query_id": "candidate-c-2079",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://davidpratt.info/warm.htm",
+      "original_url": "https://davidpratt.info/warm.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "to be a more consistent explanation. (p. 20) He also argues that, while the balloon and satellite data do not show any clear temperature trend in recent decades, their interannual",
+      "title": "The global warming scare"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.shroud.com/late24.htm",
+      "original_url": "https://www.shroud.com/late24.htm",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "is only one possible explanation: God wants you to know the Shroud of Turin is the authentic burial Shroud of Jesus Christ in whom you can place your faith, hope, trust, and belie",
+      "title": "2022 Website News!"
+    }
+  ],
+  "timestamp": "2026-09-05T17:39:21.576999Z"
+}

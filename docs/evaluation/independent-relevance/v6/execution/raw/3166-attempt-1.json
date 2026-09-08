@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 3166,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 292.305,
+  "pair_id": "candidate-p-0754",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of data provenance within optical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "Society for Optical Engineering, 2008 (No issue # available) (Abstract Only) and its availability online just came to my attention in 2010. Combining Environmental Factors and His",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.shroud.com",
+          "/papers.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scientific Papers and Articles",
+        "url": "https://www.shroud.com/papers.htm"
+      },
+      {
+        "category": "general",
+        "content": "optical systems engineering TouchUp Enhance the GNOME Shell User Experience on Touch Devices TrailBase Backend-as-a-Service for building networked applications TrenchBoot - DRTM l",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/project/current.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; Current projects",
+        "url": "https://nlnet.nl/project/current.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "55429a9c1cdca393856c026c25af51bced79e8a78ccd7a246ec657fa44f9a395",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of data provenance within optical engineering",
+  "query_id": "candidate-c-0754",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.shroud.com/papers.htm",
+      "original_url": "https://www.shroud.com/papers.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Society for Optical Engineering, 2008 (No issue # available) (Abstract Only) and its availability online just came to my attention in 2010. Combining Environmental Factors and His",
+      "title": "Scientific Papers and Articles"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://nlnet.nl/project/current.html",
+      "original_url": "https://nlnet.nl/project/current.html",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "optical systems engineering TouchUp Enhance the GNOME Shell User Experience on Touch Devices TrailBase Backend-as-a-Service for building networked applications TrenchBoot - DRTM l",
+      "title": "NLnet; Current projects"
+    }
+  ],
+  "timestamp": "2026-09-05T17:37:13.265622Z"
+}

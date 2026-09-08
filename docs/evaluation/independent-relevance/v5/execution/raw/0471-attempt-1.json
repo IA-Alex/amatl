@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 300.101,
+  "pair_id": "v5-p-0438",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does supply chain logistics in computer security work",
+    "results": [
+      {
+        "category": "general",
+        "content": "reliability of global logistics. But it could also have other, stranger implications. As ships edge toward automation, the prospect of rich shipping data makes it increasingly pos",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "logicmag.io",
+          "/pivot/ghost-ships/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ghost Ships",
+        "url": "https://logicmag.io/pivot/ghost-ships/"
+      },
+      {
+        "category": "general",
+        "content": "Logistics are and always have been the key to success in modern warfare. So there is much about the JMOB that impresses military planners. BWX estimates that a 5-module JMOB would",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/itstimetojointheMOB.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AFPAK Solution #2: Why Can&#39;t The Good Guys Have Secret Bases?",
+        "url": "http://www.combatreform.org/itstimetojointheMOB.htm"
+      },
+      {
+        "category": "general",
+        "content": "Javelin AT gunners. 7. Logistics. Issue: CL IX (spare parts) parts flow throughout the operation was non-existent. Discussion: Throughout the conduct of combat operations, the onl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/mechinfantry.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HEAVY DIVISION: WOE for the 21st CENTURY?",
+        "url": "http://www.combatreform.org/mechinfantry.htm"
+      },
+      {
+        "category": "general",
+        "content": "2021 EA Dinner Covid Logistics December 11, 2021 Interpreting the Biobot Spike December 08, 2021 Covid Christmas December 04, 2021 Browser Engines December 03, 2021 Built-in Measu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jefftk.com",
+          "/p/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog Posts",
+        "url": "https://www.jefftk.com/p/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ae218193a4205882848f22c280f82c9c3e5b318dc47a7031f39cae0462b96a69",
+  "provider": "SearXNG",
+  "query": "how does supply chain logistics in computer security work",
+  "query_id": "v5-p-0438-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:37.333136Z"
+}

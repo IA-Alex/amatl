@@ -1,0 +1,189 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 291.51123799965717,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does cloud formation in transportation operate",
+    "results": [
+      {
+        "category": "general",
+        "content": ". The Department of Transportation docket detailing the airspace change is also reproduced on Mahood&#39;s website. See &#39; Airspace change to R-4807A and R-4808N &#39; here . 14.  Ref",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "aenigmatis.com",
+          "/nellis-ufo-video/part-one/nellis-1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Nellis UFO Video - Part One: Range Operations, Tracking Cameras and Location S-30",
+        "url": "https://aenigmatis.com/nellis-ufo-video/part-one/nellis-1.htm"
+      },
+      {
+        "category": "general",
+        "content": "The only available transportation in the Rockdale region prior to 1870 was by horseback, horse or oxen drawn drawn wagons, horse-drawn stage coaches, and now and then a horse-draw",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.forttumbleweed.net",
+          "/rockdale.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "History of Rockdale, Milam County, Texas",
+        "url": "http://www.forttumbleweed.net/rockdale.html"
+      },
+      {
+        "category": "general",
+        "content": "to be too heavy for transportation by air.&#34; U.S. government sources have verified that the two atomic bombs dropped on Japan in 1945 were transported to Tinian Airstrip in Au",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "dmc.members.sonic.net",
+          "/sentinel/usa5.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Port Chicago",
+        "url": "http://dmc.members.sonic.net/sentinel/usa5.html"
+      },
+      {
+        "category": "general",
+        "content": "devices. First used in transportation applications in the 1950&#39;s, flywheel powered buses were designed to have the flywheel accelerated at every stop. Composite rotors currently h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.rexresearch.com",
+          "/roschin/roschin.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Roschin &amp; Godin: Magneto-Gravity Effects; Verification of the Searl Effect",
+        "url": "http://www.rexresearch.com/roschin/roschin.htm"
+      },
+      {
+        "category": "general",
+        "content": "manufacturers and transportation companies while making value-added taxes more productive for governments than sales taxes. &#34;Nanotechnology&#39;s increasing relevance creates clear ma",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lachlan.bluehaze.com.au",
+          "/nanoshite/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NanoShite: A nano-apostate webpage dedicated to the slimeycanceroushype flim-flam-barnum-and-bailey-charlatan delusional bollocks nanosleaze /",
+        "url": "http://lachlan.bluehaze.com.au/nanoshite/"
+      },
+      {
+        "category": "general",
+        "content": "have an advanced transportation technology!&#34; RICARD : &#34;Cherulian ambassador Kralec, I presume?&#34; BEING : &#34;The Cherulians! Hah! Meaningless creatures.&#34; RICARD [surprised] : &#34;Then...",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "14142.net",
+          "/bjork/sd/files/sd3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "STAR DRAG : The Next Degeneration",
+        "url": "https://14142.net/bjork/sd/files/sd3.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0300",
+  "query_text": "how does cloud formation in transportation operate",
+  "requested_at": "2026-09-03T01:44:24.645914Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

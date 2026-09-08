@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 347.136,
+  "pair_id": "v5-p-0693",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind language acquisition in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "some generalized data acquisition and control systems. An example of a system using the LOCI-2 as the &#34;CPU&#34; is the Wang Model 2315 &#34;On Line Computing System&#34; , a general-purpose d",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/wangloci.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Wang LOCI-2",
+        "url": "https://www.oldcalculatormuseum.com/wangloci.html"
+      },
+      {
+        "category": "general",
+        "content": "property transfers. Any acquisition of property other than through original appropriation or voluntary or contractual exchange and transfer from a previous to a later owner is unj",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "xenisa.github.io",
+          "/kinsella/lffs/legal-foundations-of-a-free-society.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Legal Foundations of a Free Society",
+        "url": "https://xenisa.github.io/kinsella/lffs/legal-foundations-of-a-free-society.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "20d12cd74ec62533fc3e41186448d6e55d2036472b95c498be660906e70188d9",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind language acquisition in electrical engineering",
+  "query_id": "v5-p-0693-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:13:04.072939Z"
+}

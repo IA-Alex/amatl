@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 359.42735300341155,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is process scheduling in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "but, just from the scheduling, I&#39;m going to do the stuff. They&#39;ll use my face, but they&#39;ll enhance it in a way – both after and before – in a way that I may not be recognizable. B",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "erbzine.com",
+          "/cartermovie.com/news/2009.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2009 News: John Carter of Mars Film Project",
+        "url": "https://erbzine.com/cartermovie.com/news/2009.html"
+      },
+      {
+        "category": "general",
+        "content": "patch review, meeting scheduling etc. let Janice in for Friday club, dinner. Trying to visualise Open Source OpenOffice.org derivatives Caveats The caveats. As to my motivation (p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2011/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2011/"
+      },
+      {
+        "category": "general",
+        "content": "to facilitate the scheduling of other meetings related to copy protection during the week in which the CPTWG meets. Participants in CPTWG come from all around the world, and inclu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cryptome.org",
+          "/wipo-imp99-3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Implementation Issues of the WIPO Copyright Treaty and the WIPO Permformances and Phonograms Treaty: Technical Protection Measures: the Inter",
+        "url": "https://cryptome.org/wipo-imp99-3.htm"
+      },
+      {
+        "category": "general",
+        "content": "after another horrible scheduling conflict. Skype call with great news from Rob &amp; Amelia. 2018-07-01 Sunday. Played at All Saints in the morning; stayed for meal with the chur",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2018/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2018/"
+      },
+      {
+        "category": "general",
+        "content": "Fla. - Caught in a scheduling squeeze, NASA decided to try to launch space shuttle Atlantis on Friday without replacing a troublesome electrical component. -------- story.title =",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.holovaty.com",
+          "/writing/fundamental-change/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A fundamental way newspaper sites need to change | Holovaty.com",
+        "url": "http://www.holovaty.com/writing/fundamental-change/"
+      },
+      {
+        "category": "general",
+        "content": "using message passing. Scheduling and preemption. Simplified register and I/O access. All in all, these functions are critical for coordinating audio, video, and game logic tasks",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/nintendo-64/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nintendo 64 Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/nintendo-64/"
+      },
+      {
+        "category": "general",
+        "content": "of e-mail regarding the scheduling situation of Roughnecks: The Starship Troopers Chronicles. People asking and asking: &#34;Why are they showing the same five or six repeats ove",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.trooperpx.com",
+          "/RSTC/series3.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AICN Story Newsbytes",
+        "url": "http://www.trooperpx.com/RSTC/series3.html"
+      },
+      {
+        "category": "general",
+        "content": "I was planning on also scheduling some light reading. But lately, I keep finding I&#39;m swamped with chores on those days. So I might have to switch some days around. I&#39;ve also been",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lakesnet.nekoweb.org",
+          "/blog-2025.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lakes&#39; Blog",
+        "url": "https://lakesnet.nekoweb.org/blog-2025.html"
+      },
+      {
+        "category": "general",
+        "content": "742 - Monkey Do 741 - Scheduling Conflict 740 - The Great(ish) Escape 739 - A New Friend 738 - Pooling Resources 737 - Comparative Mythology 736 - Do You Like Comics About Gladiat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.giantitp.com",
+          "/comics/oots.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Giant in the Playground Games",
+        "url": "https://www.giantitp.com/comics/oots.html"
+      },
+      {
+        "category": "general",
+        "content": "Free hints: windows , scheduling , sftp , software , scripting , macro , automatic , automated , automate , automation , ... Automate offers scalable, no-code automation software",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cuteapps.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CuteApps.com - Quality Software, Commercial, Free Downloads: Windows Linux Java MP3 Pocket PC Palm PocketPC PalmOs, Freeware, Shareware, Demo,",
+        "url": "http://cuteapps.com/"
+      },
+      {
+        "category": "general",
+        "content": "as I/O, paging, process scheduling etc. were to be performed by higher OS levels controlled and isolated by BOSS. This approach probably would have resulted in a more secure syste",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.iment.com",
+          "/maida/tv/computer/johncocke.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John Cocke: A Retrospective by Friends",
+        "url": "https://www.iment.com/maida/tv/computer/johncocke.htm"
+      },
+      {
+        "category": "general",
+        "content": "before deciding for scheduling reasons to send a telegram of greeting and a high-ranking representative.   The “Shambhala warrior” Chögyam Trungpa In 1975 the Tibetan, Chögya",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.trimondi.de",
+          "/SDLE/Part-2-11.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Shadow of the Dalai Lama – Part II – 11",
+        "url": "http://www.trimondi.de/SDLE/Part-2-11.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0257",
+  "query_text": "what is process scheduling in music technology",
+  "requested_at": "2026-09-03T01:43:51.530367Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

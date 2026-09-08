@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 359.811,
+  "pair_id": "v5-p-0562",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does food preservation in physics work",
+    "results": [
+      {
+        "category": "general",
+        "content": "Government, is the Preservation of their Property . To which in the state of Nature there are many things wanting. [ ibid. , §124] Locke, of course, thinks that the ownership",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/locke.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John Locke (1632-1704)",
+        "url": "https://friesian.com/locke.htm"
+      },
+      {
+        "category": "general",
+        "content": "which &#39;acts by the preservation and accumulation of small inherited modifications, each profitable to the preserved being.&#39; With this idea he interpenetrates and leavens the vast",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "victorianweb.org",
+          "/science/science_texts/belfast.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Address Delivered Before the British Association Assembled at Belfast, With Additions (1874)",
+        "url": "https://victorianweb.org/science/science_texts/belfast.html"
+      },
+      {
+        "category": "general",
+        "content": "Disinfectants, wood preservation, and sewage disposal. Bread-making, corn products, food preservation, canning, cane and beet sugar, meat products, marine products, tomato product",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "library.sciencemadness.org",
+          "/library/index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scientific and technical books of yesteryear",
+        "url": "http://library.sciencemadness.org/library/index.html"
+      },
+      {
+        "category": "general",
+        "content": "direct relevance to the preservation of the physical organisms of the actors. Flocks of birds perform their ritual evolutions in the sky. In Europe rooks and starlings are notable",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alfrednorthwhitehead.wwwhubs.com",
+          "/ritm1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Religion in the Making - Alfred North Whitehead - 1926",
+        "url": "https://alfrednorthwhitehead.wwwhubs.com/ritm1.htm"
+      },
+      {
+        "category": "general",
+        "content": "the orgonite one. Food Preservation We know from Orgonomy (the body of knowledge about orgone energy ) that decomposition is closely tied to the object&#39;s orgone charge, so if orgo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "exo-science.com",
+          "/orgonite.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Protect Yourself From EMF With Orgonite — Exo-Science… Beyond Mainstream Academia",
+        "url": "http://exo-science.com/orgonite.html"
+      },
+      {
+        "category": "general",
+        "content": "the appearance and preservation of the above &#34;male ornaments&#34; in nature - because they do not convey obvious survival advantages on male&#39;s carrying them, but SS does explain them",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "philosophy.nekhbet.com",
+          "/book.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Last Book of Moron",
+        "url": "https://philosophy.nekhbet.com/book.shtml"
+      },
+      {
+        "category": "general",
+        "content": "responsibility for the preservation of life and a root confusion between subjective and objective manifestations, in which personality, moral judgment and legislative manufacture,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "dhushara.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dhushara",
+        "url": "http://dhushara.com/"
+      },
+      {
+        "category": "general",
+        "content": "sense, is that cryopreservation is an encryption algorithm, in a very literal sense.&#34; Cryostasis Revival , by Robert A. Freitas Jr. If you&#39;ve got a friend who&#39;s been thinking",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cryonics",
+        "url": "http://www.ralphmerkle.com/cryo/"
+      },
+      {
+        "category": "general",
+        "content": "nothing for the preservation of the animal. For his constant aim is to follow out logical consequences and to upset obvious fact, in this respect being opposed to Epicurus; for th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.earlychristianwritings.com",
+          "/text/galen.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Galen: On the Natural Faculties",
+        "url": "http://www.earlychristianwritings.com/text/galen.html"
+      },
+      {
+        "category": "general",
+        "content": "could then learn self-preservation and pleasure-maximisation in harmony. At least as a stopgap, exploiting pleasure gradients is a much more civilised way to live. It&#39;s far more h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Hedonistic Imperative : Objections (Chapter 4)",
+        "url": "https://www.hedweb.com/hedethic/hedon4.htm"
+      },
+      {
+        "category": "general",
+        "content": "its cultivation and preservation The date, description and uses of The orange The lemon The sweet lemon or bergamot The citron The lime The grape-fruit The pomegranate, its antiqu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book33/book33.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Science in the Kitchen., by Mrs. E. E. Kellogg",
+        "url": "https://www.ajhw.co.uk/books/book33/book33.html"
+      },
+      {
+        "category": "general",
+        "content": "that they result in the preservation of an organism&#39;s life.&#34; The footnote may have been added later to answer an objection someone raised. The problem is that once Rand makes that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "spot.colorado.edu",
+          "/~huemer/papers/rand5.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Critique of Objectivist Ethics",
+        "url": "https://spot.colorado.edu/~huemer/papers/rand5.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "74acdd34670fab56ef1097bc3c21b6e31b2ac377f0ee664341e0a4dbe8229cd4",
+  "provider": "SearXNG",
+  "query": "how does food preservation in physics work",
+  "query_id": "v5-p-0562-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:57.719126Z"
+}

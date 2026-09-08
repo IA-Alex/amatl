@@ -1,0 +1,1509 @@
+{
+  "schema": "amatl.relevance.supplemental-query-universe.v1",
+  "universe_id": "independent-relevance-supplemental-v1",
+  "version": 1,
+  "freeze_status": "FROZEN",
+  "created_from": [
+    "supplemental-pilot-design.json",
+    "pre-capture authored topic list in tools/freeze_supplemental_query_universe.py"
+  ],
+  "provider_requirement": "SEARXNG_ONLY",
+  "dynamic_expansion": "DISABLED",
+  "deterministic_order": "ascending order; S3 alternates procedural then informational query IDs",
+  "stratum_definitions_reference": "supplemental-pilot-design.json",
+  "normalization_rules": {
+    "query": "Unicode NFC, trim, collapse ASCII whitespace, case preserved",
+    "url": "lowercase scheme/host; remove fragment; preserve query; normalize empty path to slash"
+  },
+  "exclusion_rules": [
+    "DUPLICATE_CURRENT_PILOT",
+    "OVERLAP_V1",
+    "OVERLAP_HISTORICAL",
+    "INVALID_RESULT",
+    "OUTSIDE_ALLOWED_DEPTH",
+    "OUTSIDE_STRATUM_CONTRACT",
+    "OUTSIDE_PROVIDER_CONTRACT"
+  ],
+  "queries": [
+    {
+      "order": 1,
+      "query_id": "sup-s1-001",
+      "query": "how to replace a smoke detector battery",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 2,
+      "query_id": "sup-s1-002",
+      "query": "how to unclog a kitchen sink",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 3,
+      "query_id": "sup-s1-003",
+      "query": "how to reset a Wi-Fi router",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 4,
+      "query_id": "sup-s1-004",
+      "query": "how to patch a small hole in drywall",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 5,
+      "query_id": "sup-s1-005",
+      "query": "how to sharpen kitchen knives",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 6,
+      "query_id": "sup-s1-006",
+      "query": "how to calculate a tip",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 7,
+      "query_id": "sup-s1-007",
+      "query": "how to create a household budget",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 8,
+      "query_id": "sup-s1-008",
+      "query": "how to change a bicycle tire",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 9,
+      "query_id": "sup-s1-009",
+      "query": "how to plant basil seeds",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 10,
+      "query_id": "sup-s1-010",
+      "query": "how to clean a cast iron pan",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 11,
+      "query_id": "sup-s1-011",
+      "query": "how to make a doctor appointment",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 12,
+      "query_id": "sup-s1-012",
+      "query": "how to file a change of address",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 13,
+      "query_id": "sup-s1-013",
+      "query": "how to prepare for a job interview",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 14,
+      "query_id": "sup-s1-014",
+      "query": "how to use a multimeter safely",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 15,
+      "query_id": "sup-s1-015",
+      "query": "how to wash a down jacket",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 16,
+      "query_id": "sup-s1-016",
+      "query": "how to replace a faucet washer",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 17,
+      "query_id": "sup-s1-017",
+      "query": "how to store fresh herbs",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 18,
+      "query_id": "sup-s1-018",
+      "query": "how to set up two factor authentication",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 19,
+      "query_id": "sup-s1-019",
+      "query": "how to remove coffee stains",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 20,
+      "query_id": "sup-s1-020",
+      "query": "how to compost kitchen scraps",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 21,
+      "query_id": "sup-s1-021",
+      "query": "how to test a car battery",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 22,
+      "query_id": "sup-s1-022",
+      "query": "how to sew on a button",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 23,
+      "query_id": "sup-s1-023",
+      "query": "how to create a shared calendar",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 24,
+      "query_id": "sup-s1-024",
+      "query": "how to pack for a camping trip",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 25,
+      "query_id": "sup-s1-025",
+      "query": "how to clean a computer keyboard",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 26,
+      "query_id": "sup-s1-026",
+      "query": "how to start a vegetable garden",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 27,
+      "query_id": "sup-s1-027",
+      "query": "how to read an electricity bill",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 28,
+      "query_id": "sup-s1-028",
+      "query": "how to make cold brew coffee",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 29,
+      "query_id": "sup-s1-029",
+      "query": "how to measure a room for paint",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 30,
+      "query_id": "sup-s1-030",
+      "query": "how to update emergency contacts",
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 31,
+      "query_id": "sup-s2-001",
+      "query": "what is a credit score",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 32,
+      "query_id": "sup-s2-002",
+      "query": "what causes seasonal allergies",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 33,
+      "query_id": "sup-s2-003",
+      "query": "how does solar power work",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 34,
+      "query_id": "sup-s2-004",
+      "query": "what is cloud storage",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 35,
+      "query_id": "sup-s2-005",
+      "query": "what causes food poisoning",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 36,
+      "query_id": "sup-s2-006",
+      "query": "how does a thermostat work",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 37,
+      "query_id": "sup-s2-007",
+      "query": "what is a deductible",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 38,
+      "query_id": "sup-s2-008",
+      "query": "what causes a migraine",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 39,
+      "query_id": "sup-s2-009",
+      "query": "how does a water filter work",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 40,
+      "query_id": "sup-s2-010",
+      "query": "what is a password manager",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 41,
+      "query_id": "sup-s2-011",
+      "query": "what causes rust",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 42,
+      "query_id": "sup-s2-012",
+      "query": "how does a GPS work",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 43,
+      "query_id": "sup-s2-013",
+      "query": "what is renters insurance",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 44,
+      "query_id": "sup-s2-014",
+      "query": "what causes jet lag",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 45,
+      "query_id": "sup-s2-015",
+      "query": "how does a compost bin work",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 46,
+      "query_id": "sup-s2-016",
+      "query": "what is a heat index",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 47,
+      "query_id": "sup-s2-017",
+      "query": "what causes static electricity",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 48,
+      "query_id": "sup-s2-018",
+      "query": "how does a credit card work",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 49,
+      "query_id": "sup-s2-019",
+      "query": "what is a phishing email",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 50,
+      "query_id": "sup-s2-020",
+      "query": "what causes a sore throat",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 51,
+      "query_id": "sup-s2-021",
+      "query": "how does a library card work",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 52,
+      "query_id": "sup-s2-022",
+      "query": "what is a food allergy",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 53,
+      "query_id": "sup-s2-023",
+      "query": "what causes a power outage",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 54,
+      "query_id": "sup-s2-024",
+      "query": "how does an electric car work",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 55,
+      "query_id": "sup-s2-025",
+      "query": "what is a firewall",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 56,
+      "query_id": "sup-s2-026",
+      "query": "what causes mold growth",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 57,
+      "query_id": "sup-s2-027",
+      "query": "how does a savings account work",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 58,
+      "query_id": "sup-s2-028",
+      "query": "what is a VPN",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 59,
+      "query_id": "sup-s2-029",
+      "query": "what causes a flat tire",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 60,
+      "query_id": "sup-s2-030",
+      "query": "how does recycling work",
+      "assigned_stratum": "S2_INFORMATIONAL_SHALLOW",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        1,
+        2,
+        3
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 61,
+      "query_id": "sup-s3-001",
+      "query": "how to check a fire extinguisher",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 62,
+      "query_id": "sup-s3-002",
+      "query": "what is a surge protector",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 63,
+      "query_id": "sup-s3-003",
+      "query": "how to clean a shower head",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 64,
+      "query_id": "sup-s3-004",
+      "query": "what causes condensation",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 65,
+      "query_id": "sup-s3-005",
+      "query": "how to make a backup of a laptop",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 66,
+      "query_id": "sup-s3-006",
+      "query": "how does a septic system work",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 67,
+      "query_id": "sup-s3-007",
+      "query": "how to replace a light switch cover",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 68,
+      "query_id": "sup-s3-008",
+      "query": "what is a carbon monoxide detector",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 69,
+      "query_id": "sup-s3-009",
+      "query": "how to organize tax documents",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 70,
+      "query_id": "sup-s3-010",
+      "query": "what causes a circuit breaker to trip",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 71,
+      "query_id": "sup-s3-011",
+      "query": "how to prepare rice in a rice cooker",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 72,
+      "query_id": "sup-s3-012",
+      "query": "how does a dishwasher work",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 73,
+      "query_id": "sup-s3-013",
+      "query": "how to stop a leaking toilet",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 74,
+      "query_id": "sup-s3-014",
+      "query": "what is a meal plan",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 75,
+      "query_id": "sup-s3-015",
+      "query": "how to choose a bike helmet",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 76,
+      "query_id": "sup-s3-016",
+      "query": "what causes dry skin",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 77,
+      "query_id": "sup-s3-017",
+      "query": "how to clean window screens",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 78,
+      "query_id": "sup-s3-018",
+      "query": "how does a dehumidifier work",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 79,
+      "query_id": "sup-s3-019",
+      "query": "how to label moving boxes",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 80,
+      "query_id": "sup-s3-020",
+      "query": "what is a postal code",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 81,
+      "query_id": "sup-s3-021",
+      "query": "how to calibrate a kitchen scale",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 82,
+      "query_id": "sup-s3-022",
+      "query": "what causes a battery to drain",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 83,
+      "query_id": "sup-s3-023",
+      "query": "how to fix a loose cabinet handle",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 84,
+      "query_id": "sup-s3-024",
+      "query": "how does a water meter work",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 85,
+      "query_id": "sup-s3-025",
+      "query": "how to check tire pressure",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 86,
+      "query_id": "sup-s3-026",
+      "query": "what is a filing cabinet",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 87,
+      "query_id": "sup-s3-027",
+      "query": "how to dry a wet phone",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 88,
+      "query_id": "sup-s3-028",
+      "query": "what causes an eclipse",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 89,
+      "query_id": "sup-s3-029",
+      "query": "how to make an ice pack",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 90,
+      "query_id": "sup-s3-030",
+      "query": "how does a thermostat sensor work",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 91,
+      "query_id": "sup-s3-031",
+      "query": "how to recycle cardboard",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 92,
+      "query_id": "sup-s3-032",
+      "query": "what is a utility bill",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 93,
+      "query_id": "sup-s3-033",
+      "query": "how to clean a reusable water bottle",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 94,
+      "query_id": "sup-s3-034",
+      "query": "what causes a sink to smell",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 95,
+      "query_id": "sup-s3-035",
+      "query": "how to set a digital alarm clock",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 96,
+      "query_id": "sup-s3-036",
+      "query": "how does a smoke alarm work",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 97,
+      "query_id": "sup-s3-037",
+      "query": "how to replace a vacuum bag",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 98,
+      "query_id": "sup-s3-038",
+      "query": "what is a rain barrel",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 99,
+      "query_id": "sup-s3-039",
+      "query": "how to prepare a first aid kit",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "procedural",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    },
+    {
+      "order": 100,
+      "query_id": "sup-s3-040",
+      "query": "what causes wind",
+      "assigned_stratum": "S3_MIXED_DEPTH_CONTROL",
+      "assignment_rationale": "Fixed before capture from the pilot design's query-form and rank-band rule; never inferred from results or labels.",
+      "semantic_form": "informational",
+      "permitted_positions": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "provider_requirement": "SEARXNG_ONLY"
+    }
+  ]
+}

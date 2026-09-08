@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 256.596,
+  "pair_id": "v5-p-0104",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does ocean tides in hydrology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7ebaf6fd4611ef87f2d1e52ff5529e9515b5e2d09bf13144e899ec7a310fc0b5",
+  "provider": "SearXNG",
+  "query": "how does ocean tides in hydrology operate",
+  "query_id": "v5-p-0104-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:10:53.405919Z"
+}

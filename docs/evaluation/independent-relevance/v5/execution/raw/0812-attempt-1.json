@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 239.61,
+  "pair_id": "v5-p-0959",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of cloud formation in robotics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "99897f417af99449d1583526d13926ef2ff060495663282df3bba664b4f768a3",
+  "provider": "SearXNG",
+  "query": "give an overview of cloud formation in robotics",
+  "query_id": "v5-p-0959-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:33.055861Z"
+}

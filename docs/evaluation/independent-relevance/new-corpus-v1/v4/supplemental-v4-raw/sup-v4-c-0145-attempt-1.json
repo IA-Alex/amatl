@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 349.8816479986999,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind river deltas in earth science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Control in Abidjan, explains that in Africa the HIV virus and tuberculosis are now &#34;fast-forwarding each other.&#34; Of the approximately 4,000 newly diagnosed tuberculosis patients i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0145",
+  "query_text": "explain the basic idea behind river deltas in earth science",
+  "requested_at": "2026-09-03T01:43:14.186088Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 585,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 299.494,
+  "pair_id": "candidate-p-1229",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how do models represent glacier mass balance within meteorology",
+    "results": [
+      {
+        "category": "general",
+        "content": "by the Bureau of Meteorology (Nova, 2017). As elsewhere, instead of compensating for urban heat contamination, the automated adjustments to the raw data make the problem worse. In",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/climcat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Climate models and climate catastrophe: a reality check",
+        "url": "https://davidpratt.info/climcat.htm"
+      },
+      {
+        "category": "general",
+        "content": "biology, but also in meteorology and climatology. What official science lacks above all is any understanding of the world of the aether, which interpenetrates and largely generate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/warm.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The global warming scare",
+        "url": "https://davidpratt.info/warm.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ced7ad677620194231da6e813e14823eb29ec535c489fc4e2fc46b458d785fbf",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how do models represent glacier mass balance within meteorology",
+  "query_id": "candidate-t-1229",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://davidpratt.info/climcat.htm",
+      "original_url": "https://davidpratt.info/climcat.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "by the Bureau of Meteorology (Nova, 2017). As elsewhere, instead of compensating for urban heat contamination, the automated adjustments to the raw data make the problem worse. In",
+      "title": "Climate models and climate catastrophe: a reality check"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://davidpratt.info/warm.htm",
+      "original_url": "https://davidpratt.info/warm.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "biology, but also in meteorology and climatology. What official science lacks above all is any understanding of the world of the aether, which interpenetrates and largely generate",
+      "title": "The global warming scare"
+    }
+  ],
+  "timestamp": "2026-09-05T17:23:29.713868Z"
+}

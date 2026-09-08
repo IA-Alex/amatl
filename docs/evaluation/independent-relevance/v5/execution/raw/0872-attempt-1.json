@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 327.785,
+  "pair_id": "v5-p-1016",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind probability distributions in electrical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fcb96b83496f5965f6b0fe07b3888a5b07532b08e69a16cd1a4c2689c90bca44",
+  "provider": "SearXNG",
+  "query": "describe the principle behind probability distributions in electrical engineering",
+  "query_id": "v5-p-1016-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:51.838302Z"
+}

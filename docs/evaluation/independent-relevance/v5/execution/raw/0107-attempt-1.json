@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 255.808,
+  "pair_id": "v5-p-1031",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes probability distributions in robotics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e5c1f53fc4486fb73ff48dc2cfa5ddb4d72cb6480137ecc194d0602fb3cc3775",
+  "provider": "SearXNG",
+  "query": "what causes probability distributions in robotics",
+  "query_id": "v5-p-1031-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:42.591059Z"
+}

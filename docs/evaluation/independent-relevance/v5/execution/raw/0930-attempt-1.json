@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 303.929,
+  "pair_id": "v5-p-0232",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind plate tectonics in mechanical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2730a85c2dbd8b8f58fc38a1a2e790f81c017b017e70af63b9ed668274462669",
+  "provider": "SearXNG",
+  "query": "describe the principle behind plate tectonics in mechanical engineering",
+  "query_id": "v5-p-0232-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:10:10.186955Z"
+}

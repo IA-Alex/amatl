@@ -1,0 +1,300 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 295.052,
+  "pair_id": "v5-p-0085",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is ocean tides in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "priests. It&#39;s like a science fiction nightmare. But it&#39;s real. Men are slaves to women and women serve themselves. Vilar says: &#34;Questions about the meaning of life do not interest",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.theabsolute.net",
+          "/misogyny/zubaty.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bits of Zubaty – A compilation of writings from &#34;What Men Know That Women Don&#39;t&#34;",
+        "url": "http://www.theabsolute.net/misogyny/zubaty.html"
+      },
+      {
+        "category": "general",
+        "content": "is one of the sciences that monitors what is going on under the waves, so that we evaluate the harm, or good, that we are causing. Of course we simply need to know, and we don&#39;t.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.solarnavigator.net",
+          "/oceanography.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OCEANOGRAPHY",
+        "url": "https://www.solarnavigator.net/oceanography.htm"
+      },
+      {
+        "category": "general",
+        "content": "Inquiry is Disease: all Science, if we consider well, as it must have originated in the feeling of something being wrong, so it is and continues to be but Division, Dismemberment,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.hetwebsite.net",
+          "/het/texts/carlyle/carlyle1831characteristics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "T. Carlyle, 1931, &#34;Characteristics&#34;, ER",
+        "url": "http://www.hetwebsite.net/het/texts/carlyle/carlyle1831characteristics.htm"
+      },
+      {
+        "category": "general",
+        "content": "and excel in tongue-science, which should serve to the &#34;praise of men,&#34; and to deceitful riches. Next I was put to school to get learning, in which I (poor wretch) knew not what u",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "samplecontents.library.ph",
+          "/GreatBooksoftheWorld/en-ebooks/books/3296-h/3296-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Confessions of Saint Augustine, by Saint Augustine",
+        "url": "https://samplecontents.library.ph/GreatBooksoftheWorld/en-ebooks/books/3296-h/3296-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "in the fields of neuroscience, development, embryology, evolution, quantum physics, consciousness, genetics, and astrobiology (see list of publications below). In May of 2016, Dr.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "BrainMind.com",
+          "/publications.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rhawn Joseph&#39;s Scientific Publications, Pictures, Biography",
+        "url": "http://BrainMind.com/publications.html"
+      },
+      {
+        "category": "general",
+        "content": "still enjoy doing it) - Science (I&#39;m passionate about factual knowledge and solid reasoning) - Technical Design (My home, boat and car are full of small inventions) SPECIALIST KNO",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.paddlewise.com",
+          "/whoswho/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PaddleWise - Who&#39;s Who A-B",
+        "url": "http://www.paddlewise.com/whoswho/"
+      },
+      {
+        "category": "general",
+        "content": "from the Ministry of Science and Technology. 6 2003: Second Central American war. U.S. invades Columbia, Ecuador, Peru, and Venezuela. The war is a disaster that costs thousands o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.shoestring-graphics.com",
+          "/CP2020/timeline/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Days of Future Past",
+        "url": "http://www.shoestring-graphics.com/CP2020/timeline/"
+      },
+      {
+        "category": "general",
+        "content": "more of an art than a science. Some anthropologists note etchings on cave walls, but the date of the first map is unknown. Civilization was well developed by the time man began ma",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "histclo.com",
+          "/geo/geo.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "geography and history",
+        "url": "https://histclo.com/geo/geo.html"
+      },
+      {
+        "category": "general",
+        "content": "Journal of Criticism, Science, and the Arts. Vol. I.                           Philadelphia, January 6, 1821.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "olivercowdery.com",
+          "/texts/1818symm.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John C. Symmes&#39; Hollow Earth Writings",
+        "url": "http://olivercowdery.com/texts/1818symm.htm"
+      },
+      {
+        "category": "general",
+        "content": "the world for his science fiction, Isaac Asimov was also regarded as one of the great explainers of science. His essays exemplified his skill at making complex subjects understand",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0699180f3379eafd77bd432d2e03719e1866783fb647065d809fdd125472601f",
+  "provider": "SearXNG",
+  "query": "what is ocean tides in health science",
+  "query_id": "v5-p-0085-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:16.175246Z"
+}

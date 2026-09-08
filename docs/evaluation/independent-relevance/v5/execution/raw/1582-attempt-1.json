@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 272.222,
+  "pair_id": "v5-p-0263",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of binary search in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "brief and comprehensive overview of Scheme. A shallow read of the following text is sufficient to begin being productive with Scheme, but the enthusiastic reader will find much de",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "files.spritely.institute",
+          "/papers/scheme-primer.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Scheme Primer",
+        "url": "https://files.spritely.institute/papers/scheme-primer.html"
+      },
+      {
+        "category": "general",
+        "content": "projects? Check out the overview of all our current and recent projects ... Search Search Submit search NLnet news archive 2026 2025 2024 2023 2022 2021 2020 2019 2018 2017 2016 2",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/news/2023/20231123-announcing-projects.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; 55 New Projects Awarded NGI0 Grants",
+        "url": "https://nlnet.nl/news/2023/20231123-announcing-projects.html"
+      },
+      {
+        "category": "general",
+        "content": "is a talk he gave, an overview of the ideas in his book THE QUEST FOR COSMIC JUSTICE . How do “traditional” justice and “cosmic” justice (or, “social",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.infidelnotions.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Infidel Notions",
+        "url": "https://www.infidelnotions.com/"
+      },
+      {
+        "category": "general",
+        "content": "together and giving an overview of the generality of the abstraction. Verifying Quantitative Reliability of Programs That Execute on Unreliable Hardware Authors: Michael Carbin (M",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "I’ll proceed to overview each kind, describing their purpose, location, and exploitation. Crawl Space blank Suspended Timber Floor It turns out that the ground floor of a building",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "smolthots.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Small Thoughts",
+        "url": "https://smolthots.neocities.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "28f1fd11ae67bc1aa923c9083073561fcf44a06d115c2089f83d86db32dd2e97",
+  "provider": "SearXNG",
+  "query": "give an overview of binary search in food science",
+  "query_id": "v5-p-0263-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:39.662302Z"
+}

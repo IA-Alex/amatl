@@ -1,0 +1,297 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 337.0123010026873,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does acid base reactions in biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "at which chemical reactions take place. This general approach should allow the construction of large atomically precise objects by a sequence of precisely controlled chemical reac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "chemical reactions that join amino acids are reversible and do not occur spontaneously in water. However, most scientists no longer argue that the first proteins assembled spontan",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "creationism.org",
+          "/heinze/SciEvidGodLife_en.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scientific Evidence that God Created Life",
+        "url": "https://creationism.org/heinze/SciEvidGodLife_en.htm"
+      },
+      {
+        "category": "general",
+        "content": "less disgust reactions towards exhibitionism, which indicates that much of the disgust reactions in the West are cultural. In Aspie Quiz, neurodiverse courtship behaviors are prim",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "rdos.net",
+          "/eng/asperger.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Neanderthal theory of autism",
+        "url": "http://rdos.net/eng/asperger.htm"
+      },
+      {
+        "category": "general",
+        "content": "activity. Psychotic Reactions     Like the other hallucinogens, however, LSD is dangerous in an entirely different sense. While the psychic and physical dangers of the a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hallucinogens.org",
+          "/hofmann/child5.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Albert Hofmann&#39;s My Problem Child",
+        "url": "https://www.hallucinogens.org/hofmann/child5.htm"
+      },
+      {
+        "category": "general",
+        "content": "single bonds in these reactions results is delocalized π-orbitals (Pullman and Pullman 1962). Such orbitals in heterocyclic (N-C) rings with conjugated resonance configurations",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "lead to severe allergic reactions. Pregnancy and breastfeeding: The safety of amineptine use during pregnancy and breastfeeding has not been well established. It should be used wi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.amineptine.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Amineptine as conceived by ChatGPT",
+        "url": "https://www.amineptine.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "the physico-chemical reactions that lead up to gametic union. We can derive a valid suggestion, however, from this comparison of the gametes. There are two interrelated dynamic as",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.feministezine.com",
+          "/feminist/books/The-Second-Sex-Simone-de-Beauvoir.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Second Sex - The Feminist eZine",
+        "url": "http://www.feministezine.com/feminist/books/The-Second-Sex-Simone-de-Beauvoir.html"
+      },
+      {
+        "category": "general",
+        "content": "in tons of biological reactions as a proton acceptor or donor. (For those of you who don&#39;t get the joke, NAD is English slang for testicle). Lily Zhou told me about 2 buffers call",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/sillymolecules/sillymols4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecules with Silly or Unusual Names - page 4",
+        "url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm"
+      },
+      {
+        "category": "general",
+        "content": "report (MozArchive) bad reactions (MozArchive) to synthetic vitamin C supplements. There is also evidence (archive) (MozArchive) that vitamin C from natural sources is utilized mo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/nutrition.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nutrition tidbits",
+        "url": "http://digdeeper.love/articles/nutrition.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "a bunch of chemical reactions running around in a bag.&#34; 15 I would agree with John Polkinghorne that &#34;you can&#39;t cut [faith] down to the lowest common denominator of gene",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.onenesspentecostal.com",
+          "/godgene.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The God-Gene: Is Religious Faith and Experience a Biological Misunderstanding?",
+        "url": "http://www.onenesspentecostal.com/godgene.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0178",
+  "query_text": "how does acid base reactions in biology work",
+  "requested_at": "2026-09-03T01:42:33.902535Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

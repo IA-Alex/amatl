@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 253.646,
+  "pair_id": "v5-p-1056",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does microbial fermentation in health science operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "77a07c81546e8cb8f9717d54d8f8a32fd905d7b4455b46c5f08728ca3cd5980c",
+  "provider": "SearXNG",
+  "query": "how does microbial fermentation in health science operate",
+  "query_id": "v5-p-1056-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:56.245063Z"
+}

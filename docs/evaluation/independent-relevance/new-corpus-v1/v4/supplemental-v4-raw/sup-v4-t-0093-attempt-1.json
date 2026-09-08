@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 312.94806100049755,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is version control in mechanical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "built to a very high engineering standard with a De Dion rear axle and embodied all the experience of the new team&#39;s members. The intention was to enter the cars in the World Spor",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "8w.forix.com",
+          "/scarab-grandprix-engine.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "8W - What? - Scarab",
+        "url": "https://8w.forix.com/scarab-grandprix-engine.html"
+      },
+      {
+        "category": "general",
+        "content": "(also called molecular engineering, molecular manufacturing, molecular nanotechnology , etc.). There is widespread belief that such a capability will eventually be developed [1, 2",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "Degree in Computer Engineering and am currently pursing a Master&#39;s Degree in Electrical Engineering (Comm. Systems). Separating signal from noise, using statistical methods,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "praxibetel.org",
+          "/covid/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zach&#39;s SARS-CoV-2 Viewpoint",
+        "url": "http://praxibetel.org/covid/"
+      },
+      {
+        "category": "general",
+        "content": "a degree in mechanical engineering and has founded a multimedia production company named Tulip Multimedia with his wife. In his spare time, he likes to attend concerts and movies",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.rigacci.org",
+          "/docs/biblio/online/vrml/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CONTENTS",
+        "url": "https://www.rigacci.org/docs/biblio/online/vrml/"
+      },
+      {
+        "category": "general",
+        "content": "recruit more women into engineering roles, where women still get rejected in recruiter screens for not being technical enough after being asked questions like &#34;was your exper",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "danluu.com",
+          "/wat/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Normalization of deviance",
+        "url": "http://danluu.com/wat/"
+      },
+      {
+        "category": "general",
+        "content": "Genetic Engineering Network http://www.geneticsaction.org.uk/ Gulf War Veterans of the USA http://www.gulfwarvets.com/ Mid Atlantic Anarcho Infoshop http://www.infoshop.org/ Consp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "was a mechanical engineering major, and he dabbled in it, he would make some stuff for me occasionally, and I always thought it was cool. But again, because of that learning curve",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "changelog.com",
+          "/gotime/212",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Go beyond work with Linus Lee, Daniela Petruzalek, &amp; Sebastian Spaink (Go Time #212)",
+        "url": "https://changelog.com/gotime/212"
+      },
+      {
+        "category": "general",
+        "content": "reason a lot of reverse engineering using a logic analyzer had to be done. Note: Almost eight years after this article was written, many interesting engineering documents from App",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "john.ccac.rwth-aachen.de:8000",
+          "/patrick/idefile.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "IDEfile - A ProFile Emulator",
+        "url": "http://john.ccac.rwth-aachen.de:8000/patrick/idefile.htm"
+      },
+      {
+        "category": "general",
+        "content": "favor a social engineering paradigm that is essentially hostile to individual freedom and even to human nature -- if only Stalin or Mao really had made a &#34;new man&#34; under Communism",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/locke.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John Locke (1632-1704)",
+        "url": "https://friesian.com/locke.htm"
+      },
+      {
+        "category": "general",
+        "content": "version of my Robotics engineering notebook. I have been designing, building, programming, and generally investigating small to medium scale robotics since 1984. I also use a note",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "robotics.mcmanis.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chuck&#39;s Robotics Notebook -- Chuck&#39;s Robotics Notebook",
+        "url": "http://robotics.mcmanis.com/"
+      },
+      {
+        "category": "general",
+        "content": "and the Genetic Engineering of a World Without Pain L. S. MANCINI 25 Nottingham Terrace, Buffalo, New York 14276, USA Abstract - Riley-Day Syndrome, a genetic disorder in which th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wireheading.com",
+          "/painless.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Brain stimulation and the genetic engineering of a world without pain",
+        "url": "https://www.wireheading.com/painless.html"
+      },
+      {
+        "category": "general",
+        "content": "Software Engineering, Software Tools, Electronics Engineering, and Integrating Hardware and Software as a Solution Getting things DONE , quickly, on-budget, and on-time Public and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mrp3.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "S.F.T. Inc. - Software Tools, Engineering, and the Home of MRP III",
+        "url": "http://www.mrp3.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0093",
+  "query_text": "what is version control in mechanical engineering",
+  "requested_at": "2026-09-03T01:42:41.418086Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

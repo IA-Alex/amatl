@@ -1,0 +1,243 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 124.26370399771258,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is voltage regulators in operating systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "on automatic voltage regulators, to much longer periods if human intervention is relied upon. [...] A single line-to-ground fault causes a rise in the voltages to ground of the he",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.myinsulators.com",
+          "/acw/bookref/overvoltage/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ACW&#39;s Insulator Info - Book Reference Info - Overvoltage and Flashovers",
+        "url": "https://www.myinsulators.com/acw/bookref/overvoltage/"
+      },
+      {
+        "category": "general",
+        "content": ", UPS systems , voltage regulators , surge arresters . Also offer alternative energy products including solar , wind &amp; hydro power sources, grid-tied inverters . Also books an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.nooutage.com",
+          "//",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NoOutage Home - THE Online Source for Backup and Alternative Power",
+        "url": "https://www.nooutage.com//"
+      },
+      {
+        "category": "general",
+        "content": "LM78XX Series Voltage Regulators Bi-Polar Power Supplies Connecting Series-Parallel Batteries Basic Power Transformers Connecting Transformers in Series-Parallel Voltage Buck-Boos",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bristolwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Student-Hobbyist Electronics Projects Tutorials",
+        "url": "https://www.bristolwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "likely to be seen by regulators as worthy of bandspace? Since the matter has not been aired publically and the ARRL not formulated a policy, the ARRL is ill-prepared to handle the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wm7d.net",
+          "/az_proj/az_html/arrl_restructuring.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Letter to ARRL - Restructing of Ham Radio Licensing",
+        "url": "https://www.wm7d.net/az_proj/az_html/arrl_restructuring.html"
+      },
+      {
+        "category": "general",
+        "content": "&#34;step up&#34; voltage regulators, which would include re-wiring the fuel pump circuit similar to the methods described above. Kenne Bell      Boost-a-Pump TM Jacob",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.stealth316.com",
+          "/2-fuelpumpguide.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stealth 316 - Fuel Pump Upgrade Guide",
+        "url": "http://www.stealth316.com/2-fuelpumpguide.htm"
+      },
+      {
+        "category": "general",
+        "content": "current, low g m triode regulators were placed in parallel with low-value balancing resistors in their cathode returns. The anodes had a nasty habit of glowing a dull red when the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      },
+      {
+        "category": "general",
+        "content": "and some power supply regulators Unknown Whereabouts 2003 VCF Auctioned Apple 1 http://www.vintage.org/special/2003/apple-1/ No NTI logo Sold for $16000 In wood case A significant",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.willegal.net",
+          "/appleii/apple1-originals.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Apple 1 Registry",
+        "url": "http://www.willegal.net/appleii/apple1-originals.htm"
+      },
+      {
+        "category": "general",
+        "content": "special voltage regulators are fitted to the alternator to prevent fluctuations in pressure which might occur, due to switching or to variation in the supply frequency. To ensure",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stephen.shawweb.co.uk",
+          "/radio02.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Early broadcast radio stations",
+        "url": "http://stephen.shawweb.co.uk/radio02.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0021",
+  "query_text": "what is voltage regulators in operating systems",
+  "requested_at": "2026-09-03T01:42:03.442948Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

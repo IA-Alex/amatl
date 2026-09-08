@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2919,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 317.302,
+  "pair_id": "candidate-p-2100",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "under what conditions does soil carbon accounting within rail transportation change",
+    "results": [
+      {
+        "category": "general",
+        "content": "billion Department of Transportation (DOT) - savings: $79.8 Billion Department of Commerce - savings: $9.2 billion Department of Labor (DOL) - savings: $116 billion Department of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "KevinCraig.us",
+          "/program.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Program to Abolish Harmful Bureaucracies -- KEVIN CRAIG - &#34;Liberty Under God&#34; Beginning in Missouri&#39;s 7th Congressional District&lt;",
+        "url": "https://KevinCraig.us/program.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a51ccf3bd7b6f3e16c88cccda0d0a6f81c2782f6302c5fc81485c1e9f0166f2c",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "under what conditions does soil carbon accounting within rail transportation change",
+  "query_id": "candidate-t-2100",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "https://kevincraig.us/program.htm",
+      "original_url": "https://KevinCraig.us/program.htm",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "billion Department of Transportation (DOT) - savings: $79.8 Billion Department of Commerce - savings: $9.2 billion Department of Labor (DOL) - savings: $116 billion Department of",
+      "title": "A Program to Abolish Harmful Bureaucracies -- KEVIN CRAIG - &#34;Liberty Under God&#34; Beginning in Missouri&#39;s 7th Congressional District&lt;"
+    }
+  ],
+  "timestamp": "2026-09-05T17:35:51.946897Z"
+}

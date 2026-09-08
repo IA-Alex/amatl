@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 239.283,
+  "pair_id": "v5-p-0776",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does coastal flooding in optics operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "eb722a4d05b6c73e29ba2bb0e2cbc4c741a5e2c27070413c2527e8be2bbe7d37",
+  "provider": "SearXNG",
+  "query": "how does coastal flooding in optics operate",
+  "query_id": "v5-p-0776-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:58.431383Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 256.681,
+  "pair_id": "v5-p-0040",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does compiler operation in civil engineering operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "26a8fd2a20fe7bf84c1528596d18d05db916c71a023bd8bfa02605b37a4f0dd7",
+  "provider": "SearXNG",
+  "query": "how does compiler operation in civil engineering operate",
+  "query_id": "v5-p-0040-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:12.469782Z"
+}

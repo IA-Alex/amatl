@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 310.953,
+  "pair_id": "v5-p-0332",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind soil erosion in ecology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "94577d2b298cb7df1bc7bb666d70cc8446e666dd03614a0ad1de7b8fa9e60b8d",
+  "provider": "SearXNG",
+  "query": "describe the principle behind soil erosion in ecology",
+  "query_id": "v5-p-0332-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:16.187189Z"
+}

@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 363.332,
+  "pair_id": "v5-p-0198",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of heat transfer in neuroscience",
+    "results": [
+      {
+        "category": "general",
+        "content": "Physics The Biology The Neuroscience Alternative Possibilities Adequate Determinism Moral Responsibility Self-Determination Separability of Free and Will Standard Argument Superde",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Information Philosopher - dedicated to the new information philosophy",
+        "url": "https://www.informationphilosopher.com/"
+      },
+      {
+        "category": "general",
+        "content": "Finger’s Origins of Neuroscience tells of a little-known German professor named Julius R. Ewald “who put platinum ‘button’ electrodes on the cortex of [a] dog in 1896,” then walke",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wireheading.com",
+          "/brainstim/cyborgs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cyborgs, transhumans and neuroelectronics",
+        "url": "https://www.wireheading.com/brainstim/cyborgs.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fcbdefd2ee92a32249b8cc3e93c90776850fe3f490534ff70b9b26b6cf93752d",
+  "provider": "SearXNG",
+  "query": "tell me about the function of heat transfer in neuroscience",
+  "query_id": "v5-p-0198-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:11:19.081129Z"
+}

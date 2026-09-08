@@ -1,0 +1,330 @@
+{
+  "artifact_sha256": "9792e741f22d40801e2c949a29b445bd31f3a51c662a2c9fa5b07425215bb83a",
+  "attempts": [
+    {
+      "allowed_rank_range": [
+        1,
+        2,
+        3
+      ],
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "attempt_number": 1,
+      "completed_at": "2026-09-02T17:47:32.967024Z",
+      "http_status": 200,
+      "provider": "searxng",
+      "provider_response_status": "SUCCESS",
+      "query_id": "sup-v2-s1-001",
+      "query_text": "how to tune a guitar by ear",
+      "request_sequence": 1,
+      "requested_at": "2026-09-02T17:47:32.446727Z",
+      "result_count": 3,
+      "results": [
+        {
+          "original_url": "https://guitarimp.com/",
+          "provider_specific_identifier": null,
+          "rank": 1,
+          "raw_fields": {
+            "category": "general",
+            "engine": "wiby",
+            "engines": [
+              "wiby"
+            ],
+            "parsed_url": [
+              "https",
+              "guitarimp.com",
+              "/",
+              "",
+              "",
+              ""
+            ],
+            "score": 1.0,
+            "template": "default.html"
+          },
+          "snippet": "Guitar Imp About Guitar Imp Six practice tools for guitar, free and running in the browser. Nothing to download, no account to make, no sign-up, no ads — open a page and play. Six",
+          "title": "Guitar Imp — Free Guitar Tuner, Metronome, Fretboard, Scales &amp; Chords"
+        },
+        {
+          "original_url": "http://abelincolntrombone.com/articles.htm",
+          "provider_specific_identifier": null,
+          "rank": 2,
+          "raw_fields": {
+            "category": "general",
+            "engine": "wiby",
+            "engines": [
+              "wiby"
+            ],
+            "parsed_url": [
+              "http",
+              "abelincolntrombone.com",
+              "/articles.htm",
+              "",
+              "",
+              ""
+            ],
+            "score": 0.5,
+            "template": "default.html"
+          },
+          "snippet": "clarinet; Nappy Lamare, guitar; Don Owens, piano; Phil Stephens, bass; and Nick Fatool, drums. Reviews following the event praised Hackett&#39;s combo and especially lauded the tall h",
+          "title": "Abram &#34;Abe&#34; Lincoln — Articles"
+        },
+        {
+          "original_url": "http://www.worldofradio.com/dxld3134.txt",
+          "provider_specific_identifier": null,
+          "rank": 3,
+          "raw_fields": {
+            "category": "general",
+            "engine": "wiby",
+            "engines": [
+              "wiby"
+            ],
+            "parsed_url": [
+              "http",
+              "www.worldofradio.com",
+              "/dxld3134.txt",
+              "",
+              "",
+              ""
+            ],
+            "score": 0.3333333333333333,
+            "template": "default.html"
+          },
+          "snippet": "like the electric guitar, the amplifier, and the transistor radio (for on the beach!) changed life. . . click here - for more. http://www.getintola.nl/index5.html (via Mike Terry,",
+          "title": "http://www.worldofradio.com/dxld3134.txt"
+        }
+      ]
+    },
+    {
+      "allowed_rank_range": [
+        1,
+        2,
+        3
+      ],
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "attempt_number": 1,
+      "completed_at": "2026-09-02T17:47:33.090872Z",
+      "http_status": 200,
+      "provider": "searxng",
+      "provider_response_status": "SUCCESS",
+      "query_id": "sup-v2-s1-002",
+      "query_text": "how to calibrate a digital kitchen scale",
+      "request_sequence": 2,
+      "requested_at": "2026-09-02T17:47:32.967072Z",
+      "result_count": 1,
+      "results": [
+        {
+          "original_url": "http://danluu.com/hn-comments/",
+          "provider_specific_identifier": null,
+          "rank": 1,
+          "raw_fields": {
+            "category": "general",
+            "engine": "wiby",
+            "engines": [
+              "wiby"
+            ],
+            "parsed_url": [
+              "http",
+              "danluu.com",
+              "/hn-comments/",
+              "",
+              "",
+              ""
+            ],
+            "score": 1.0,
+            "template": "default.html"
+          },
+          "snippet": "found that once I can &#39;calibrate&#39; someone&#39;s &#39;yes-ness&#39; I can then work with them, understanding that they only make &#39;wishful&#39; commitments rather than &#39;reasoned&#39; commitments. So wh",
+          "title": "HN: the good parts"
+        }
+      ]
+    },
+    {
+      "allowed_rank_range": [
+        1,
+        2,
+        3
+      ],
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "attempt_number": 1,
+      "completed_at": "2026-09-02T17:47:33.214519Z",
+      "http_status": 200,
+      "provider": "searxng",
+      "provider_response_status": "SUCCESS",
+      "query_id": "sup-v2-s1-003",
+      "query_text": "how to bleed air from a home radiator",
+      "request_sequence": 3,
+      "requested_at": "2026-09-02T17:47:33.090892Z",
+      "result_count": 3,
+      "results": [
+        {
+          "original_url": "http://www.junkyardjet.com/",
+          "provider_specific_identifier": null,
+          "rank": 1,
+          "raw_fields": {
+            "category": "general",
+            "engine": "wiby",
+            "engines": [
+              "wiby"
+            ],
+            "parsed_url": [
+              "http",
+              "www.junkyardjet.com",
+              "/",
+              "",
+              "",
+              ""
+            ],
+            "score": 1.0,
+            "template": "default.html"
+          },
+          "snippet": "the pump. Perhaps a 12V radiator fan motor. I suspect I will need an oil cooler of some sort. I may even pick up an inter cooler and experiment with it if I can find one cheap and",
+          "title": "The Junkyard Turbojet Engine - A Real Working Jet Engine Built From Junkyard Parts"
+        },
+        {
+          "original_url": "http://www.duntemann.com/october2008.htm",
+          "provider_specific_identifier": null,
+          "rank": 2,
+          "raw_fields": {
+            "category": "general",
+            "engine": "wiby",
+            "engines": [
+              "wiby"
+            ],
+            "parsed_url": [
+              "http",
+              "www.duntemann.com",
+              "/october2008.htm",
+              "",
+              "",
+              ""
+            ],
+            "score": 0.5,
+            "template": "default.html"
+          },
+          "snippet": "water. There are little radiator/fan things in the walls and if you want heat, you turn on the fan. If you don&#39;t want heat you get some anyway; there are pipes everywhere full of",
+          "title": "Jeff Duntemann&#39;s ContraPositive Diary"
+        },
+        {
+          "original_url": "http://www.benchtest.com/wcooler6.html",
+          "provider_specific_identifier": null,
+          "rank": 3,
+          "raw_fields": {
+            "category": "general",
+            "engine": "wiby",
+            "engines": [
+              "wiby"
+            ],
+            "parsed_url": [
+              "http",
+              "www.benchtest.com",
+              "/wcooler6.html",
+              "",
+              "",
+              ""
+            ],
+            "score": 0.3333333333333333,
+            "template": "default.html"
+          },
+          "snippet": "of the loop and the radiator placed above it.  As the water in the block heated up, the heated water would rise to the radiator, cool, and travel down the second hose back to",
+          "title": "Benchtest.Com - Water Cooler 6"
+        }
+      ]
+    },
+    {
+      "allowed_rank_range": [
+        1,
+        2,
+        3
+      ],
+      "assigned_stratum": "S1_PROCEDURAL_SHALLOW",
+      "attempt_number": 1,
+      "completed_at": "2026-09-02T17:47:33.342694Z",
+      "http_status": 200,
+      "provider": "searxng",
+      "provider_response_status": "SUCCESS",
+      "query_id": "sup-v2-s1-004",
+      "query_text": "how to program a universal remote control",
+      "request_sequence": 4,
+      "requested_at": "2026-09-02T17:47:33.214550Z",
+      "result_count": 3,
+      "results": [
+        {
+          "original_url": "https://bearwindows.zcm.com.au/vbe9x.htm",
+          "provider_specific_identifier": null,
+          "rank": 1,
+          "raw_fields": {
+            "category": "general",
+            "engine": "wiby",
+            "engines": [
+              "wiby"
+            ],
+            "parsed_url": [
+              "https",
+              "bearwindows.zcm.com.au",
+              "/vbe9x.htm",
+              "",
+              "",
+              ""
+            ],
+            "score": 1.0,
+            "template": "default.html"
+          },
+          "snippet": "(EN-US English) Universal VBE Video Display Driver (for Windows 9x Architecture) This project started on May, 2005. Overview Download drivers Screenshots. VBE 9x Project in work :",
+          "title": "Universal VBE 9x Display Driver Project"
+        },
+        {
+          "original_url": "http://users.glitchwrks.com/~glitch/updates.html",
+          "provider_specific_identifier": null,
+          "rank": 2,
+          "raw_fields": {
+            "category": "general",
+            "engine": "wiby",
+            "engines": [
+              "wiby"
+            ],
+            "parsed_url": [
+              "http",
+              "users.glitchwrks.com",
+              "/~glitch/updates.html",
+              "",
+              "",
+              ""
+            ],
+            "score": 0.5,
+            "template": "default.html"
+          },
+          "snippet": "3P&#43;S is an early S-100 universal I/O board, providing both parallel and serial I/O. It is a versatile board, allowing the builder to select from many onboard options via jumpers.",
+          "title": "Site News and Updates"
+        },
+        {
+          "original_url": "https://www.ismar.net/past_symposiums/",
+          "provider_specific_identifier": null,
+          "rank": 3,
+          "raw_fields": {
+            "category": "general",
+            "engine": "wiby",
+            "engines": [
+              "wiby"
+            ],
+            "parsed_url": [
+              "https",
+              "www.ismar.net",
+              "/past_symposiums/",
+              "",
+              "",
+              ""
+            ],
+            "score": 0.3333333333333333,
+            "template": "default.html"
+          },
+          "snippet": "Internet of Things and Universal 3D Object Tracking Recipients: Jason Rambach, Alain Pagani, and Didier Stricker Best Demo Award 6D Object Pose Estimation with Depth Images: A Sea",
+          "title": "ISMAR - Past Symposiums | ISMAR - The IEEE International Symposium on Mixed and Augmented Reality"
+        }
+      ]
+    }
+  ],
+  "experiment_id": "independent-relevance-supplemental-v2",
+  "provider": "searxng",
+  "query_universe_hash": "7fec12b253873a7f83fe64d02f658dcb77d86118dba72a2a001f3b56f980975d",
+  "query_universe_id": "independent-relevance-supplemental-v2",
+  "schema_version": "amatl.relevance.supplemental-v2-raw-evidence.v1"
+}

@@ -1,0 +1,192 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 271.037,
+  "pair_id": "v5-p-0905",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is bridge resonance in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Theory: Real Waves, Resonance and Completed Events https://www.spaceandmotion.com/2026/physics-quantum-theory-wave-mechanics.html Matter diffracts because matter is wave organisat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/Philosophy-Hinduism-Hindu.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hinduism Hindu Religion: Discussion Metaphysics Philosophy of HinduismBeliefs, Hindu Gods",
+        "url": "https://www.spaceandmotion.com/Philosophy-Hinduism-Hindu.htm"
+      },
+      {
+        "category": "general",
+        "content": "... to suggest a cosmic resonance between sacred and profane, celestial and terrestrial, macrocosm and microcosm.&#34;[57] Mayfly in art Mayflies drawn by Augerius Clutius[a] in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scientificlib.com",
+          "/en/Biology/Animalia/Arthropoda/Insects/Ephemeroptera.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ephemeroptera",
+        "url": "https://www.scientificlib.com/en/Biology/Animalia/Arthropoda/Insects/Ephemeroptera.html"
+      },
+      {
+        "category": "general",
+        "content": "processes or stochastic resonance. This form of resonance involves the cooperative interplay of random and periodic stimuli. Noise can improve the response to small periodic or qu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.john-daly.com",
+          "/solar/solar.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Solar Activity: A Dominant Factor in Climate Dynamics",
+        "url": "http://www.john-daly.com/solar/solar.htm"
+      },
+      {
+        "category": "general",
+        "content": "of a principle he calls resonance. “Through resonance,” he writes, “a particular statement in a particular context acquires a universal significance.” 1 Frye offers as an opening",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "quotes.pouyakary.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quote Anthology",
+        "url": "https://quotes.pouyakary.org/"
+      },
+      {
+        "category": "general",
+        "content": "1 [21h] Final Fantasy Resonance hands-on: A love letter to classic 2D turn-based RPGs [21h] Hohem&#39;s Eyepic gimbal camera has a detachable camera [21h] HTC Vive Eagle smart gla",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "brutalist.report",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Brutalist Report",
+        "url": "https://brutalist.report/"
+      },
+      {
+        "category": "general",
+        "content": "Cat Schumann Resonance, Zero Point Screen Memories: Alien and Faery Abductions Scrolls Scrying Seance Seasonal Affective Disorder Secret Societies, Mystery School Teachings Sedna:",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.crystalinks.com",
+          "/directory.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Crystalinks Search Engine &amp; Alphabetical Directory",
+        "url": "http://www.crystalinks.com/directory.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d5883ad8cdbe7d846cfbc197b05fb53a6363210ee84ddbb734b65c568c23798b",
+  "provider": "SearXNG",
+  "query": "what is bridge resonance in climate science",
+  "query_id": "v5-p-0905-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:50.381099Z"
+}

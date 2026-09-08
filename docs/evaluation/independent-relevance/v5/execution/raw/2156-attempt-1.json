@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 339.101,
+  "pair_id": "v5-p-0688",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind language acquisition in civil engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "property transfers. Any acquisition of property other than through original appropriation or voluntary or contractual exchange and transfer from a previous to a later owner is unj",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "xenisa.github.io",
+          "/kinsella/lffs/legal-foundations-of-a-free-society.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Legal Foundations of a Free Society",
+        "url": "https://xenisa.github.io/kinsella/lffs/legal-foundations-of-a-free-society.html"
+      },
+      {
+        "category": "general",
+        "content": "(NPT). In order of acquisition of nuclear weapons these are: the United States of America , Russia (formerly the Soviet Union ), the United Kingdom , France , and the People&#39;s Rep",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greatdreams.com",
+          "/war/rule_2002.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RULE 2002",
+        "url": "http://www.greatdreams.com/war/rule_2002.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "79d38d20b92b510ea560ab24cdbcaa4c31714c897053190ae6f34157d8449fea",
+  "provider": "SearXNG",
+  "query": "describe the principle behind language acquisition in civil engineering",
+  "query_id": "v5-p-0688-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:16:44.561883Z"
+}

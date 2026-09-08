@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 323.976,
+  "pair_id": "v5-p-0828",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind battery chemistry in transportation engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "82b791884b356312ad6fbe44cf1a18497204bf7e413634f4446c43eab19b6868",
+  "provider": "SearXNG",
+  "query": "describe the principle behind battery chemistry in transportation engineering",
+  "query_id": "v5-p-0828-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:48.309011Z"
+}

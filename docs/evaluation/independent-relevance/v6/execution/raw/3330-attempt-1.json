@@ -1,0 +1,198 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 3330,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 338.567,
+  "pair_id": "candidate-p-1612",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "an introductory account of low power computing within materials engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "Adoption page lists an introductory tutorial and chapter classes as X3D instruction. The VRML 2 Sourcebook also includes a comprehensive set of online examples and slide",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.web3d.org",
+          "/x3d/content/examples/X3dResources.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "X3D Resources",
+        "url": "https://www.web3d.org/x3d/content/examples/X3dResources.html"
+      },
+      {
+        "category": "general",
+        "content": "money by exploiting introductory offers like getting $200 back for spending $500 in 3 months; cards with no annual fees are ideal for this; use cards strategically for everyday ex",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Luke Smith Fanclub &amp; Archive",
+        "url": "https://lukesmith.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "is akin to a kind of introductory statement which we sometimes make before remarking on certain alternatives, as when we say: ‘It either rains or it doesn&#39;t rain; if it rain",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.stanford.edu",
+          "/archIves/win2013/entries/information-semantic/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Semantic Conceptions of Information (Stanford Encyclopedia of Philosophy/Winter 2013 Edition)",
+        "url": "https://plato.stanford.edu/archIves/win2013/entries/information-semantic/"
+      },
+      {
+        "category": "general",
+        "content": "Harvard student in an introductory programming course. Lisa had feared that she would find the course difficult because she is a poet, &#34;good with words, not numbers.&#34; But after ye",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "papert.org",
+          "/articles/EpistemologicalPluralism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Epistemological Pluralism and the Revaluation of the Concrete",
+        "url": "http://papert.org/articles/EpistemologicalPluralism.html"
+      },
+      {
+        "category": "general",
+        "content": "place. The Friden 130&#39;s introductory price was $2,150, making it a significant investment, as a high-end desktop electromechanical calculator (albeit much slower and noisier) coul",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/friden130.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Friden EC-130 Electronic Calculator",
+        "url": "https://www.oldcalculatormuseum.com/friden130.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b1dc640d065df85e2fc264d4be2b12f295a1a2afdaa2ac719f4ae3d71d45b1ac",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "an introductory account of low power computing within materials engineering",
+  "query_id": "candidate-c-1612",
+  "raw_result_count": 5,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.web3d.org/x3d/content/examples/X3dResources.html",
+      "original_url": "https://www.web3d.org/x3d/content/examples/X3dResources.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Adoption page lists an introductory tutorial and chapter classes as X3D instruction. The VRML 2 Sourcebook also includes a comprehensive set of online examples and slide",
+      "title": "X3D Resources"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://lukesmith.neocities.org/",
+      "original_url": "https://lukesmith.neocities.org/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "money by exploiting introductory offers like getting $200 back for spending $500 in 3 months; cards with no annual fees are ideal for this; use cards strategically for everyday ex",
+      "title": "Luke Smith Fanclub &amp; Archive"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://plato.stanford.edu/archIves/win2013/entries/information-semantic/",
+      "original_url": "https://plato.stanford.edu/archIves/win2013/entries/information-semantic/",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "is akin to a kind of introductory statement which we sometimes make before remarking on certain alternatives, as when we say: ‘It either rains or it doesn&#39;t rain; if it rain",
+      "title": "Semantic Conceptions of Information (Stanford Encyclopedia of Philosophy/Winter 2013 Edition)"
+    }
+  ],
+  "timestamp": "2026-09-05T17:38:03.560214Z"
+}

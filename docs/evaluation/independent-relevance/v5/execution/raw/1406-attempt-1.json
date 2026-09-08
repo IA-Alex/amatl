@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 316.51,
+  "pair_id": "v5-p-0333",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind soil erosion in electrical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "751f84330430f2a2a40e14b45bd859811cd4433510869136d3a127095c952eea",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind soil erosion in electrical engineering",
+  "query_id": "v5-p-0333-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:44.556860Z"
+}

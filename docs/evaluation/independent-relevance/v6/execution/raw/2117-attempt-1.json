@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2117,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 306.295,
+  "pair_id": "candidate-p-2091",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains soil carbon accounting within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Fire People has more information for us, but unfortunately, it&#39;s not available. There are animals on Mercury, the Cold Country folk, as I noted, are wearing someone&#39;s furs. &amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.erbzine.com",
+          "/mag17/1743.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ERBzine 1743: Tama, Princess of Mercury - by Den Valdron",
+        "url": "https://www.erbzine.com/mag17/1743.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "578d68d2bbbd02c190eaada2c552c9907e490a300df97a824f0e1d972ebe3a48",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains soil carbon accounting within information science",
+  "query_id": "candidate-t-2091",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.erbzine.com/mag17/1743.html",
+      "original_url": "https://www.erbzine.com/mag17/1743.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Fire People has more information for us, but unfortunately, it&#39;s not available. There are animals on Mercury, the Cold Country folk, as I noted, are wearing someone&#39;s furs. &amp;",
+      "title": "ERBzine 1743: Tama, Princess of Mercury - by Den Valdron"
+    }
+  ],
+  "timestamp": "2026-09-05T17:31:42.941528Z"
+}

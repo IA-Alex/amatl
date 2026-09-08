@@ -1,0 +1,297 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 287.6615720015252,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is acid base reactions in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "ordering a flask to do reactions with this compound: &#34;Can I have a round-bottomed flask?&#34; &#34;How big?&#34; &#34;Big enough to fit an elephatin!&#34; Thanks to J.J. Keating for suggesting these",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/sillymolecules/sillymols3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecules with Silly or Unusual Names - page 3",
+        "url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols3.htm"
+      },
+      {
+        "category": "general",
+        "content": "at which chemical reactions take place. This general approach should allow the construction of large atomically precise objects by a sequence of precisely controlled chemical reac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "chemical reactions that join amino acids are reversible and do not occur spontaneously in water. However, most scientists no longer argue that the first proteins assembled spontan",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "creationism.org",
+          "/heinze/SciEvidGodLife_en.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scientific Evidence that God Created Life",
+        "url": "https://creationism.org/heinze/SciEvidGodLife_en.htm"
+      },
+      {
+        "category": "general",
+        "content": "activity. Psychotic Reactions     Like the other hallucinogens, however, LSD is dangerous in an entirely different sense. While the psychic and physical dangers of the a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hallucinogens.org",
+          "/hofmann/child5.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Albert Hofmann&#39;s My Problem Child",
+        "url": "https://www.hallucinogens.org/hofmann/child5.htm"
+      },
+      {
+        "category": "general",
+        "content": "typical polymerization reactions. In reviewing those individual work components, one thing became clear. The coupling of energy flow to the specific work requirements in the forma",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ldolphin.org",
+          "/mystery/chapt9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Specifying How Work Is To Be Done",
+        "url": "https://www.ldolphin.org/mystery/chapt9.html"
+      },
+      {
+        "category": "general",
+        "content": "&amp; Super-human Reactions on Motorway - TV frequency to blame? No hint of pilot&#39;s mid-air meltdown, says JetBlue Date: Wed, 28 Mar 2012 15:51:15 -0500 Posted on this website Apr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "single bonds in these reactions results is delocalized π-orbitals (Pullman and Pullman 1962). Such orbitals in heterocyclic (N-C) rings with conjugated resonance configurations",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "very interesting chain-reactions. (Oh come on - go listen to it already - that way I can get on the Soundclick charts, and have false delusions that I&#39;m a rock star. And why is it",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.lunarsight.com",
+          "/son-alc.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mike&#39;s Sonic Alchemy Logbook",
+        "url": "http://www.lunarsight.com/son-alc.htm"
+      },
+      {
+        "category": "general",
+        "content": "with ordinary chemical reactions carried out in the lab, but living cells are able to selectively transport certain ions across the cell membrane. Any imbalance in electric charge",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.chem1.com",
+          "/CQ/faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AquaScams FAQ&#39;s",
+        "url": "http://www.chem1.com/CQ/faq.html"
+      },
+      {
+        "category": "general",
+        "content": "through condensation reactions. One may calculate the enthalpy change in the formation of a dipeptide from amino acids to be 5-8 kcal/mole for a variety of amino acids, using data",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ldolphin.org",
+          "/mystery/chapt8.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Thermodynamics and the Origin of Life",
+        "url": "https://www.ldolphin.org/mystery/chapt8.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0193",
+  "query_text": "what is acid base reactions in chemistry",
+  "requested_at": "2026-09-03T01:43:21.995313Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

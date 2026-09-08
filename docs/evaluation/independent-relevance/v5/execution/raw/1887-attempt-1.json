@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 268.018,
+  "pair_id": "v5-p-0494",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does encryption keys in urban planning work",
+    "results": [
+      {
+        "category": "general",
+        "content": "etc. - a myriad of encryption programs, bulk ciphers, variants on PGP, etc. Some of these I&#39;ve listed...others I&#39;ve had to throw my hands over and just ignore. (Keeping track of z",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cdn.nakamotoinstitute.org",
+          "/docs/cyphernomicon.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://cdn.nakamotoinstitute.org/docs/cyphernomicon.txt",
+        "url": "https://cdn.nakamotoinstitute.org/docs/cyphernomicon.txt"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9856302967a2f4aa75463a64a156518fd57ed1b683329e143e820faf87ae00a7",
+  "provider": "SearXNG",
+  "query": "how does encryption keys in urban planning work",
+  "query_id": "v5-p-0494-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:15:20.308844Z"
+}

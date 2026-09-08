@@ -1,0 +1,79 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 845.642,
+  "pair_id": "v5-p-0056",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does compiler operation in optics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "The 3DS-only hardware Operation The backwards-compatible block Pipeline I/O External interfaces and peripherals The ‘New’ enhancements Internal interfaces The supplemental compute",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/nintendo-3ds/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nintendo 3DS Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/nintendo-3ds/"
+      },
+      {
+        "category": "general",
+        "content": "from software for batch operation and even today, in this era of personal computers, the evolution of interactive interfaces continues. In retrospect, several design decisions con",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "larch-www.lcs.mit.edu:8001",
+          "/~corbato/turing91/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "untitled1.html",
+        "url": "http://larch-www.lcs.mit.edu:8001/~corbato/turing91/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "b9f42cf23411e0c983faa70fdfe367960653e0fe73cc492c875fd9efdcaf91ba",
+  "provider": "SearXNG",
+  "query": "how does compiler operation in optics operate",
+  "query_id": "v5-p-0056-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:08:14.845424Z"
+}

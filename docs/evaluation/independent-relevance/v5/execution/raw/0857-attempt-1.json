@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 290.043,
+  "pair_id": "v5-p-0449",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is supply chain logistics in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "James Surowiecki, &#34;Technology and Happiness&#34;, Technology Review, January 2005, pp. 72-6 &#34;In the United States...gross domestic product per capita tripled from 1950",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cs.cmu.edu",
+          "/~bam/numbers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Computer Almanac - Numbers About Computers",
+        "url": "http://www.cs.cmu.edu/~bam/numbers/"
+      },
+      {
+        "category": "general",
+        "content": "• Heat metrics, technology adoption, a pile of law, digital payments in India, and early movie theaters in Oregon. 2022.07.06 • Banned and challenged books, mass expulsions, Europ",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.data-is-plural.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Data Is Plural — Full Archive",
+        "url": "https://www.data-is-plural.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "Devices Assistive Technology - Speech Athletic Field Lighting Athletic Shoes, Miscellaneous ATHLETICS, RECREATION, PHYSICAL ED &amp; LEISURE ATM Security ATMOSPHERIC SCIENCES Atomic A",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "VFTonline.org",
+          "/VFTprayer/heaven/000list.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://VFTonline.org/VFTprayer/heaven/000list.txt",
+        "url": "http://VFTonline.org/VFTprayer/heaven/000list.txt"
+      },
+      {
+        "category": "general",
+        "content": "and His Obsolete Technology June 20, 2016 Handling CD Money June 19, 2016 Effective Marginal Tax Rates June 16, 2016 Reading about guns June 15, 2016 Food Poll Summary June 14, 20",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jefftk.com",
+          "/p/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog Posts",
+        "url": "https://www.jefftk.com/p/"
+      },
+      {
+        "category": "general",
+        "content": "All automated military technology to detect and stop such an attack was not implemented or utilized! 5. - Israeli border town troops were removed and replaced with civil defense b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.eaec.org",
+          "/desk/2023/10-31-2023.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Attack on Israel: False Flag Operations and the Distortion of Truth -- John S. Torell",
+        "url": "https://www.eaec.org/desk/2023/10-31-2023.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "11ab1cbfe50b23465c8ce9e9c757c0a1eac5359bc75b332d9d8291e0e52161c5",
+  "provider": "SearXNG",
+  "query": "what is supply chain logistics in music technology",
+  "query_id": "v5-p-0449-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:47.102523Z"
+}

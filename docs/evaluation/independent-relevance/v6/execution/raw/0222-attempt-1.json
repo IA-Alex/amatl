@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 222,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 263.993,
+  "pair_id": "candidate-p-2116",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "an introductory account of space weather forecasting within astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "helium&#39;. Some introductory matter by Shelagh Ross; John Walter (middle-aged, bearded) provided the official theory, introducing phase diagrams, graphics with &#39;fermions&#39; and &#39;boson",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "big-lies.org",
+          "/modern-physics-a-fraud/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "• Modern Physics a Fraud? - Superfluid helium? Speed of light a limit?, incredibility of quantum theory, Heisenberg&#39;s misunderstanding o",
+        "url": "http://big-lies.org/modern-physics-a-fraud/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2c318ef73a308541f89c51f7ca732b2d5c3035e4150e5d70f64e1a4aa3fb4581",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "an introductory account of space weather forecasting within astronomy",
+  "query_id": "candidate-c-2116",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://big-lies.org/modern-physics-a-fraud/",
+      "original_url": "http://big-lies.org/modern-physics-a-fraud/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "helium&#39;. Some introductory matter by Shelagh Ross; John Walter (middle-aged, bearded) provided the official theory, introducing phase diagrams, graphics with &#39;fermions&#39; and &#39;boson",
+      "title": "• Modern Physics a Fraud? - Superfluid helium? Speed of light a limit?, incredibility of quantum theory, Heisenberg&#39;s misunderstanding o"
+    }
+  ],
+  "timestamp": "2026-09-05T17:21:39.918500Z"
+}

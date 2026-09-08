@@ -1,0 +1,34 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 4020,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 246.348,
+  "pair_id": "candidate-p-1284",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "an introductory account of graphene membranes within rail transportation",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bf331af72c94fe4343078f760c00231d8a1b155631a384911c0b6be45d115e4e",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "an introductory account of graphene membranes within rail transportation",
+  "query_id": "candidate-c-1284",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:41:42.457450Z"
+}

@@ -1,0 +1,67 @@
+{
+  "artifact_notice": "Generated preflight artifact — AMATL SearXNG v2 fixture build readiness — do not treat as project documentation.",
+  "generated_at": "2026-08-23T17:36:30-07:00",
+  "prior_preflight": {
+    "path": "test-results/preflight/searxng-v2/20260823-173228/",
+    "blocker_confirmed": "BLOCKED:SEARXNG_FIXTURE_NOT_RUNNABLE"
+  },
+  "workspace": {
+    "commit": "48d0a9a24b3365e996a3b5e63eb3792fe70ed57a",
+    "package": "amatl-cli",
+    "package_version": "0.1.0-rc.1",
+    "binary_target": "amatl",
+    "binary_source": "crates/amatl-cli/src/main.rs",
+    "minimal_command": "cargo build -p amatl-cli --bin amatl --locked",
+    "features_changed": false,
+    "dependency_update_requested": false,
+    "tests_executed": 0,
+    "benchmarks_executed": 0,
+    "amatl_invocations": 0,
+    "searches_executed": 0,
+    "searxng_requests": 0,
+    "marginalia_requests": 0
+  },
+  "build": {
+    "status": "success",
+    "profile": "dev",
+    "locked": true,
+    "cargo_lock_modified": false
+  },
+  "binary": {
+    "path": "target/debug/amatl",
+    "exists": true,
+    "executable": true,
+    "format": "ELF 64-bit LSB PIE executable",
+    "architecture": "x86-64",
+    "size_bytes": 302019120,
+    "modified_at": "2026-08-23T17:36:07.878741981-07:00"
+  },
+  "fixture": {
+    "path": "test-results/searxng/20260823-145832/amatl-isolated.toml",
+    "toml_parse": "ok",
+    "runner_path": "target/debug/amatl",
+    "runner_exists": true,
+    "runner_executable": true,
+    "selected_providers": ["searxng"],
+    "marginalia_excluded": true,
+    "provider_timeout_ms": 20000,
+    "global_timeout_ms": 45000,
+    "max_retries": 0,
+    "validation": "static_only; fixture was not executed"
+  },
+  "target_growth_bytes": {
+    "target_total": {"before": 0, "after": 2387912048, "delta": 2387912048},
+    "target_debug": {"before": 0, "after": 2387910602, "delta": 2387910602},
+    "target_debug_amatl": {"before": 0, "after": 302019120, "delta": 302019120}
+  },
+  "repository_integrity": {
+    "preexisting_tracked_modifications": ["CODE_OF_CONDUCT.md", "SECURITY.md", "docs/codigo-de-conducta.md"],
+    "new_tracked_modifications_from_build": [],
+    "cargo_lock_modified": false,
+    "source_or_config_modified_by_build": false,
+    "historical_test_results_modified": false,
+    "allowed_generated_artifacts": ["target/"],
+    "status": "PASS"
+  },
+  "decision": "READY_FOR_V2"
+}

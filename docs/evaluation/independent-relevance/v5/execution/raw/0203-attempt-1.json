@@ -1,0 +1,300 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 309.853,
+  "pair_id": "v5-p-0015",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes photosynthesis in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "as a result of plant photosynthesis. The far higher concentrations of CO 2 in the geologic past never led to runaway warming or disaster. Proponents of the CO 2 -driven climate pa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/climcat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Climate models and climate catastrophe: a reality check",
+        "url": "https://davidpratt.info/climcat.htm"
+      },
+      {
+        "category": "general",
+        "content": "the form of light. This photosynthesis results in the plant’s internal production of carbon. It utilizes this carbon to create and reinforce tissue as it grows, so it is a v",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.microbeorganics.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Microbe Organics",
+        "url": "http://www.microbeorganics.com/"
+      },
+      {
+        "category": "general",
+        "content": "capable of early photosynthesis (Redfern 2013). Meteorites of Martian origin have more recently come to the Earth. From magnetic studies, some reached temperatures no higher than",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "process called photosynthesis. Mass, such as water and carbon dioxide, also flows through plants, providing necessary raw materials, but not energy. In collecting and storing usef",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ldolphin.org",
+          "/mystery/chapt7.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Thermodynamics of Living Systems",
+        "url": "https://www.ldolphin.org/mystery/chapt7.html"
+      },
+      {
+        "category": "general",
+        "content": "• Digestion • Photosynthesis • Breathing • Evolution • Catabolism • Anabolism Organisms Organism • Archaea • Bacteria • Eukaryote • Animals • Arthropods • Insects • Ants • Bees •",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kids.kiddle.co",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kids encyclopedia facts",
+        "url": "https://kids.kiddle.co/"
+      },
+      {
+        "category": "general",
+        "content": "whether green leaves do photosynthesis were settled as matters of fact. There is no room for logic chopping or conceptual analysis, since we are talking about matters of hard scie",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "newdualism.org",
+          "/papers/J.Searle/searle.comp.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Is the Brain a Digital Computer?",
+        "url": "http://newdualism.org/papers/J.Searle/searle.comp.html"
+      },
+      {
+        "category": "general",
+        "content": "Energy Harvested by Photosynthesis in a Controlled Environment Photovoltaic for Australia    The Feasibility of a 600 Kilowatt Windpower Installation Danish engineers&amp;nb",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dematerialism.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C:\\users\\waybu\\douments\\aaaaaindex",
+        "url": "https://www.dematerialism.net/"
+      },
+      {
+        "category": "general",
+        "content": "/air, light, and photosynthesis can we duplicate photosynthesis? photosynthesis /chlorophyll and photosynthesis herbicides dogs have become one of humans&#39; best animal friends Essa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "sunlight and hindered photosynthesis, disrupting Earth&#39;s ecology. 500 BP (Bond event 0) - roughly correlates with the Little Ice Age (1400-1850 CE). 1,400 BP (Bond event 1) - roug",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.peaceeducation101.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peace Education 101 - Peace curriculum, peace teaching program, peace education",
+        "url": "http://www.peaceeducation101.com/"
+      },
+      {
+        "category": "general",
+        "content": "development, reducing photosynthesis, and weakening trees over time (Carta et al., 2020; Reed et al., 2020). Although researchers continue to investigate the complete disease proc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1ca7bc0111b020764370d67020c1a7fdc4a66ede5dd24aa3203594ae2e50ef0f",
+  "provider": "SearXNG",
+  "query": "what causes photosynthesis in materials science",
+  "query_id": "v5-p-0015-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:12.785962Z"
+}

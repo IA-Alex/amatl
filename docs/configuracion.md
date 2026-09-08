@@ -23,6 +23,7 @@ bytes y tiempos en milisegundos/segundos según el sufijo.
 | `deep.ranking_v2` | 6 | ranking Deep sujeto a benchmark |
 | `deep.gaps` | 7 | déficits y SubQuery |
 | `server` | 9 | UI/API/MCP y exposición |
+| `answer` | ADR-011, opcional | síntesis de respuesta citada sobre resultados de Search; no forma parte de las fases 0–9 del golden template |
 
 ## Política de datos, egress e inferencia
 
@@ -62,7 +63,7 @@ AMATL.
 
 | Clave | Tipo/default | Validez y efecto |
 |---|---|---|
-| `providers.enabled` | `array<string>` / `[]` | Nombres reconocidos: `brave`, `mojeek`, `duckduckgo_html`; desconocidos se rechazan |
+| `providers.enabled` | `array<string>` / `[]` | Cada nombre debe tener su tabla `[providers.<nombre>]` declarada; los no declarados se rechazan |
 | `providers.<p>.adapter_version` | string opcional | Requerido para aprobación y clave de caché |
 | `.approval_status` | enum / `draft` | `draft`, `approved`, `expired`, `rejected` |
 | `.reviewed_at` | string opcional | Fecha `YYYY-MM-DD`; aprobada sólo durante 90 días inclusive |
@@ -83,9 +84,80 @@ AMATL.
 Defaults específicos: Brave usa `brave-v1`, `BRAVE_API_KEY`, API oficial, URL
 de términos, fecha de términos `2026-02-11` y filtros site/filetype/language/
 region/time_range. Mojeek usa `mojeek-v1`, `MOJEEK_API_KEY`, API oficial y URL de
-soporte. Ambos siguen `draft`; DuckDuckGo queda completamente `draft` y su
-adapter está bloqueado aunque aparezca en `enabled`. Ver
-`docs/gobernanza-providers.md`.
+soporte. **Ambos están `rejected` por defecto**, no `draft`: ambos requieren un
+plan de pago (Brave eliminó su tier gratuito en 2026-02; Mojeek no tiene tier
+gratuito) y la política del operador excluye providers de pago. No es papeleo
+pendiente — reactivarlos exige revertir esa decisión explícitamente, no sólo
+completar `reviewer`/`reviewed_at`. SearXNG (`searxng-v1`, sin credencial) y
+Marginalia (`marginalia-v1`, `MARGINALIA_API_KEY`) sí están `draft` con adapter
+completo y ficha aprobable; sólo falta `reviewer`/`reviewed_at`/
+`approval_status` con identidad real. `duckduckgo_html` se retiró del
+registro: DuckDuckGo no ofrece API de búsqueda web. Antes de elegir fuente,
+consulta la sección «Viabilidad y coste» de `docs/gobernanza-providers.md`.
+
+`[providers]` es un mapa abierto: cada tabla `[providers.<nombre>]` declara una
+fuente y se fusiona sobre los expedientes incorporados, de modo que ajustar uno
+no elimina los demás. El nombre debe ser una clave estable (minúsculas ASCII,
+dígitos y `_`). Declarar una fuente no la implementa: el servicio la construye
+sólo si hay un `ProviderFactory` con ese mismo nombre en el `ProviderRegistry`
+(ver `docs/arquitectura.md`).
+
+## Inferencia
+
+| Clave | Tipo/default | Validez y efecto |
+|---|---|---|
+| `inference.backend` | string / `local_hashing_v1` | `local_hashing_v1` (hash offline) o `local_model_v1` (modelo de vectores); otro valor se rechaza |
+| `inference.embedding_dimensions` | usize / `256` | Entre 32 y 4096 |
+| `inference.max_documents` | usize / `64` | >0; superarlo falla el backend opcional y Deep degrada |
+| `inference.max_input_chars` | usize / `20000` | >0; recorte por documento antes de embeber |
+| `inference.reranker_prior_weight` | f64 / `0.5` | Entre 0 y 1; peso que el reranker conserva de la relevancia previa |
+| `inference.local_model_path` | string / vacío | Obligatorio con `local_model_v1`; ruta a un archivo `token v0 v1 … vN` por línea; ausente o ilegible falla cerrado y Deep degrada a léxico |
+| `inference.local_model_batch` | usize / `32` | Dimensiona la caché de embeddings en disco (capacidad = valor × 64). Pese al nombre no acota el tamaño de lote de ninguna llamada; se renombrará a `local_cache_capacity` antes de 1.0 |
+| `inference.local_cache_path` | string / vacío | Ruta opcional donde se cachean embeddings entre ejecuciones, con espacio de nombres por backend@ancho |
+| `inference.remote_endpoint` | string / vacío | Obligatorio con `remote_explicit`; URL absoluta https, o http sólo en loopback, y sin credenciales embebidas |
+| `inference.remote_model` | string / vacío | Obligatorio con `remote_explicit`; identificador enviado en el cuerpo |
+| `inference.remote_credential_env` | string / vacío | Variable de entorno con el bearer; el valor nunca se escribe en configuración ni en logs |
+| `inference.remote_timeout_ms` | u64 / `5000` | 100..=60000 por solicitud remota |
+| `inference.remote_max_batch` | usize / `32` | 1..=256 entradas por solicitud |
+
+Los pesos `deep.ranking_v2.policy.weight_semantic` y `weight_reranker` mayores
+que cero exigen un modo de inferencia con backend disponible: `disabled` se
+rechaza. `local_only` usa el backend offline; `remote_explicit` exige además
+perfil `standard`, `egress = "governed"`, endpoint y modelo declarados, y envía
+al tercero exactamente la consulta y el texto acotado que Deep ya recuperó.
+Cambiar el backend o `embedding_dimensions` cambia el espacio vectorial: la
+caché documental queda namespaced por `backend@dimensiones`, de modo que las
+entradas del espacio anterior dejan de coincidir en vez de reutilizarse en
+silencio.
+
+## Respuesta con IA (`answer`)
+
+Síntesis opcional, apagada por defecto: toma los resultados que Search ya
+obtuvo y pide a un modelo remoto una respuesta corta citando `[n]` sólo sobre
+esas fuentes. No es un backend de embeddings ni comparte contrato con
+`[inference]` — es una llamada de *chat completions* independiente, con su
+propio endpoint, credencial y límites. Detalle completo, incluidos los tres
+campos de estado (`enabled`/`configured`/`available`) y el interruptor
+administrable, en `docs/resumen-con-ia.md`.
+
+| Clave | Tipo/default | Validez y efecto |
+|---|---|---|
+| `answer.enabled` | bool / `false` | El interruptor del operador. Con `true`, el resto de esta tabla se valida; `POST /answer/enabled` (scope `admin`) es la única vía soportada para cambiarlo en caliente, y valida antes de escribir |
+| `answer.endpoint` | string / vacío | Obligatorio si `enabled = true`; URL absoluta https, o http sólo en loopback, sin credenciales embebidas — misma validación que `inference.remote_endpoint` |
+| `answer.model` | string / vacío | Obligatorio si `enabled = true`; identificador enviado en el cuerpo de la solicitud |
+| `answer.credential_env` | string / vacío | Variable de entorno con el bearer; el valor nunca se escribe en configuración ni en logs |
+| `answer.timeout_ms` | u64 / `20000` | 100..=60000 por llamada |
+| `answer.max_sources` | usize / `8` | 1..=32 resultados de Search entregados al modelo como fuentes citables |
+| `answer.max_source_chars` | usize / `1200` | >0; recorte de snippet por fuente antes de entrar al prompt |
+| `answer.max_answer_tokens` | u32 / `700` | >0; cota superior de la respuesta generada |
+
+`answer.enabled = true` exige `data_policy.inference = "remote_explicit"`
+(perfil `standard`, `egress = "governed"`) — el mismo candado que ya usa el
+backend de embeddings remoto, pero evaluado por separado: activar uno no
+activa el otro. Cada cita `[n]` en la respuesta se valida contra los índices
+reales de fuente después de la llamada; una cita a una fuente que no existe
+se elimina del texto visible, no sólo del conteo, y una respuesta sin
+ninguna cita válida se rechaza (`answer_unavailable`) en vez de mostrarse.
 
 ## Search, ejecución y Budget
 
@@ -153,6 +225,20 @@ Los cinco pesos `weight_*` suman exactamente 1 con tolerancia `1e-12`.
 |---|---:|---|
 | `persistence.enabled` | bool / `false` | habilita intento SQLite, no correctness |
 | `persistence.path` | string / `amatl.sqlite3` | no se valida vacío ni permisos hasta abrir |
+| `persistence.history_enabled` | bool / `true` | sólo aplica si `persistence.enabled`; registra cada búsqueda ejecutada en SQLite local |
+| `persistence.saved_document_max_bytes` | u64 / 1048576 | 1..=16777216; límite del payload aceptado por `POST /saved` |
+| `persistence.audit_retention_days` | u32 / 90 | 1..=365; ventana de la bitácora de seguridad persistida |
+| `circuit_breaker.enabled` | bool / `true` | si false, una fuente en fallo se sigue llamando en cada búsqueda |
+| `circuit_breaker.failure_threshold` | u32 / 3 | 1..=100 fallos consecutivos abren el circuito |
+| `circuit_breaker.open_seconds` | u64 / 60 | 1..=3600; al expirar se permite una sonda (`half_open`) |
+| `server.clients[].id` | string | Identidad estable, minúsculas/dígitos/guion bajo; aparece en la auditoría, nunca es secreto |
+| `server.clients[].token_env` \| `token_sha256` | string | Exactamente uno; el secreto vive en el entorno o sólo como digest hex de 64 caracteres |
+| `server.clients[].expires_at` | fecha ISO / vacío | `YYYY-MM-DD`; a partir del día siguiente la credencial se rechaza |
+| `server.clients[].scopes` | lista / vacía | `search`, `deep`, `read`, `write`, `admin`, `mcp`; una credencial sin scopes se rechaza en validación |
+| `server.clients[].tools` | lista / vacía | Herramientas MCP permitidas; vacía significa sin acceso MCP. Exige el scope `mcp` |
+| `deep.respect_robots` | bool / `true` | Consulta `robots.txt` sólo para enlaces descubiertos por el crawl |
+| `deep.robots_timeout_ms` | u64 / 3000 | 100..=30000 por recuperación de `robots.txt` |
+| `deep.robots_max_bytes` | u64 / 524288 | 1024..=1048576 por recuperación de `robots.txt` |
 | `cache.provider_search.enabled` | bool / `false` | requiere persistence si true |
 | `.ttl_seconds` | u64 / 300 | >0 |
 | `.max_entries` | u64 / 10000 | >0 |
@@ -202,11 +288,13 @@ disponibles.
 
 | Clave | Tipo/default | Rango validado/estado |
 |---|---:|---|
-| `deep.renderer.enabled` | bool / `false` | backend de core aún no activo; el harness Linux aislado se valida por separado |
+| `deep.renderer.enabled` | bool / `false` | Habilitarlo no basta: el renderer sólo queda disponible si `sandbox_path`, `bwrap`, `systemd-run` y un binario Chromium están presentes en Linux. Si falta cualquiera, Deep conserva el documento superficial en vez de lanzar un navegador sin confinar |
 | `.max_browser_calls` | u32 / 2 | >0 |
 | `.timeout_ms` | u64 / 8000 | >0 |
 | `.shutdown_grace_ms` | u64 / 500 | >0 |
-| `.max_memory_mb` | u64 / 512 | >0 |
+| `.max_memory_mb` | u64 / 512 | >0; se propaga al harness como `AMATL_CHROMIUM_MEMORY_MB` |
+| `.sandbox_path` | string / `amatl-chromium-sandbox` | Ruta al harness de aislamiento; se resuelve por `PATH` si es un nombre simple. Chromium nunca se lanza directamente |
+| `.max_dom_bytes` | u64 / 8388608 | Tope del DOM devuelto; se propaga como `AMATL_CHROMIUM_MAX_DOM_BYTES` |
 | `.max_redirects` | u32 / 5 | cualquier u32 |
 
 ### Ranking v2

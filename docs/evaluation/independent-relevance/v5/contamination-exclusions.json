@@ -1,0 +1,3018 @@
+{
+  "candidate_queries_checked": 2172,
+  "candidate_query_collisions": 0,
+  "excluded_lineages": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+  ],
+  "excluded_query_normalized_sha256": "b4de39a29cdb49cbd0dcdf520322c0a25d70d8cb6d1838205b9217df3b211278",
+  "excluded_source_count": 749,
+  "excluded_sources": [
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q001.json",
+      "sha256": "a1592b471217ade61ad7b55519a4d63a62924ae94a8f1da2124451c332a379a5"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q002.json",
+      "sha256": "e5b3d596bd645a8bc07c33190dede92a17bc0bc1975bc0cd0f522ebb638b2fbf"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q003.json",
+      "sha256": "4e6b59596fbae9ad7dac3f178f6347dd18207dd0ebcad370de7c11b2c8ba6afe"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q004.json",
+      "sha256": "2ea52328a3a4acee8b30280a8c4c6a5b45789d0a1194646baba316a154d6681a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q005.json",
+      "sha256": "a761bb55eb20341d52b2f6fef85d5db72e2d15fadc524041a1cd8439c5a39aff"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q006.json",
+      "sha256": "42ca48e39ef12e485335f83de937a661703a75959ef21715deb605ab8d29889b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q007.json",
+      "sha256": "061f9c9049633b688fba304bad31052317ad2b123089ca5e29e8108ae85c2c6e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q008.json",
+      "sha256": "d02ae1a70b41582c3f5498177a41476916783adf1b85bd50c1ebfdeef133a7fd"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q009.json",
+      "sha256": "556a1043408e8d0efc5bfe6def9291c82df41582b7ed281fac03b7d5fa33f2d5"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q010.json",
+      "sha256": "d3d197736938ed864b45ed6abfb96239cc064c7c545c7acb0440df9e54a62d15"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q011.json",
+      "sha256": "ec500deaefd95415b262dc66440bb62a00bc1d37a9721c3bd715fd590bfe1d06"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q012.json",
+      "sha256": "71934e943edd9fcbc75062d23056fe8a776386fad56dac8b5d3718b0f5b8ca7c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q013.json",
+      "sha256": "4a111c732851408c270f4eca0e4e3c746d22544bb5b43cce5ee286e2aa6aff44"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q014.json",
+      "sha256": "1f7740f6442c49d4b7be64109dfcb5f6a0b8ced1537e65ffd9679c2d3691b63e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q015.json",
+      "sha256": "55f8c09f6d4e450c5193f3bd0e613069122ab36d470f72a284884161774d7b5e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q016.json",
+      "sha256": "68473b0b7c5d224cd541dda6146a8ec201743c384a2068d3e793b6e20e80cd36"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q017.json",
+      "sha256": "c6891433b2b365d0898941871e5cd0600ccf235ae055faa52b54e2847771b758"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q018.json",
+      "sha256": "4a2f67daddb844ca93758bf7b1e21a236c506092340ccb487ad33b9420dc4e85"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q019.json",
+      "sha256": "04bf843727d3972c353028fc8c6b54778429de2b9910aaeb3664a5ba77fd40b2"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q020.json",
+      "sha256": "03bc366d5e99e080dfc922c67aa6d2e2043189216b4a3818045211fba3dde2b7"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q021.json",
+      "sha256": "f57631359ec3aeb8f2c1996c568f4b89a85f1b89867b8d506b22eff0e3d3c9f3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q022.json",
+      "sha256": "35dd278ad162e9f8570df260c0ea8365b70b84d56414a30187c15399b97103d6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q023.json",
+      "sha256": "d82552c2380887a4eb04e1a57c927cdb98632c9fed1584f7f47f6ec32ce57daa"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q024.json",
+      "sha256": "99b4143175945c23242d4d1dc3ebfc28c95ac58906ed242b99f41986550584b6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q025.json",
+      "sha256": "7d1ee7d4dacce0e024eb4a72de4bb3785b6b00d685ca9fa38efdc3be1fa54969"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q026.json",
+      "sha256": "0a60d17d3a9631dbb422aafe963e6fdc303d856cf775b9d5e50bd3f67f43b726"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q027.json",
+      "sha256": "cd095ed0d37f08164bf351668228768c233690f06a51476f84181352ab814e69"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q028.json",
+      "sha256": "685ef42eb1e24a28758e77a5219270313491649cb091d076aa2526fcfeb1e981"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q029.json",
+      "sha256": "6b2f3dad56405a43f683a177feef8c33bd1b7ad47235e853b4d718e26aa18a59"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q030.json",
+      "sha256": "f4d7a2ade7e6be50793c9ec592c3824eb8bad57c34ddfbd734347cbc258e3b29"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q031.json",
+      "sha256": "06e7fe7c41c2adc0d378e5b0f9b8ed4ae12b4cd269f617ca55d742f7dd80ff81"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q032.json",
+      "sha256": "e7a72e5db98badb3d4d62e6b57dda9e4db488662e228f0f8d146933db8ac6616"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q033.json",
+      "sha256": "ce3b81ff74c310c8d7c4b37bed3b7588b72fa8eaa13df1a41f2262887e7fcc1b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q034.json",
+      "sha256": "595a005a0a6b69488935b6aa304709cde3ad7db0dfb5b53c5a3092125657e6f9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw/q035.json",
+      "sha256": "e9119ff0ea8b571b848d105ed4e904317c23e7ae41f802020aec163c2e6a6c89"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/acquisition/raw-observations.json",
+      "sha256": "551ab9fd41b0dab20469745bcd9d03220c6600af544635086b5fbe9ad8a23e49"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/adjudication-packet.json",
+      "sha256": "7313dde9d0cca357926851a92aa732662686c70cb40fe0e3d91212245e755e34"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/agreement-report.json",
+      "sha256": "01fb14b6524710ebcf63c32c4ba3087ae25600584c8a21888aeac90de7866776"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/final-ground-truth.json",
+      "sha256": "f857c95f517c0aa872b41942621a30613272eb0563aa25e3033ce2efe835eb08"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-acquisition-spec.json",
+      "sha256": "613f92ba2b4e269c315727b3f6f75f43caa828ededb60fbe33b5ec2c5a87d105"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-agreement-report.json",
+      "sha256": "8eae8152f4ae0e7aa614740b10cf3694ab58cb243a0a481aad33a9d790df4423"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-final-freeze-manifest.json",
+      "sha256": "3331c90701b46f90edfe276e2de0aae129d3b19ec8411772d4cfcab21891eab5"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-final-prelabel-corpus.json",
+      "sha256": "7e2b5b33f8d531ecc6ed25ddd48e2917988803a767ab76df44c99c100679c665"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-ground-truth-v1-attestation.json",
+      "sha256": "c3e48a6e4e3524ac9ccc9e70a43d244f7b7b50335e030d46c598428738097eb0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-ground-truth-v1-manifest.json",
+      "sha256": "00959ff553973c92966cdb49ae8e8598aa2d68b504ce236f5c756abc3c524a94"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-ground-truth-v1.json",
+      "sha256": "0a065ac01478909713645d9926df9151c8f9f6b49fb4f519da52c803e05aeadf"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-ground-truth-validation-report.json",
+      "sha256": "95570eff55c081b07ecb48de5e4540c95a51bb6850db615bade3d552edd8f759"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-labeler-a-labeled.json",
+      "sha256": "3e3431f6ffa1953c5944dba99fe487d531621bdbdf61feff7accb633a7c4bcdf"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-labeler-a-packet.json",
+      "sha256": "846241cb666d56d2fb090f9258d949425b826c245e5e30605a64410b3f458e94"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-labeler-b-labeled.json",
+      "sha256": "6c02e782a7d55be8332c6be5993028f001d5fa46c72c7f0a644014249b4b6a64"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-labeler-b-packet.json",
+      "sha256": "833524848c0cd91757fd2eb27208098d98d38aacec6c2cae8a8df70351ce9be4"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-multirun-provenance-manifest.json",
+      "sha256": "1fc84cce3faf2e7d9a5147f2cc0c27455627d4b6e0f9778a46a3053f77d5a112"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-packet-manifest.json",
+      "sha256": "71fbc3b05fb1a2a85bfd7692a6284ef40e9cdaa7daf4abf743f22697d6a20f51"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-pilot-acquisition-procedure.json",
+      "sha256": "999ceb200c05d98e03515607ba02c654a6be8b6cd8336f16151d62331b5bac0b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-pilot-attempts.json",
+      "sha256": "7fafb3a275f6c2d8b24b88afb64a0f81f8f41f32722885c7fe6a4589c0176635"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-pilot-design.json",
+      "sha256": "22e16c8983162585e4c03c265aaa71f29f07da6d9b2ea21105a42f121a8112da"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-pilot-historical-canonical-urls.json",
+      "sha256": "022a0b4b810a242d99c9aab3754c0f0df1d6471fe0453af8797bfaf3da6596ce"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-pilot-preflight-report.json",
+      "sha256": "f01fb977fbae586ce669a0ed15024426cf92ff6229679e8abfb4a392ba4a2008"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-pilot-raw-evidence.json",
+      "sha256": "4cde11462fe4bed8a1793adbe808a834510a80217d4cc928c22a72fb37ec6ff9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-pilot-run-report.json",
+      "sha256": "cb9c2b974c5db3613cdc1c568d8c79786e8018f3a3d4600603991c0e2834dc79"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-pilot-searxng-capture-config.json",
+      "sha256": "21b9bcb213ea7a84bc23d2562e96f65bb8a75981e57bfbc1939c74d598240262"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-query-universe-v1-manifest.json",
+      "sha256": "025f4c8342f4ac12549041349b03ca665fbdc7cc7be789d60c7374cc2616073a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-query-universe-v1.json",
+      "sha256": "f8fcdc356fa0d00d3a657c2c49d5b3155c9ec4bb7fdeb67692cb7c5f734e1ae1"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-query-universe-v2-manifest.json",
+      "sha256": "2ece8a5997abc9b8931090849a86c11c8c6809be183852f915502aeca3a2a935"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-query-universe-v2.json",
+      "sha256": "7fec12b253873a7f83fe64d02f658dcb77d86118dba72a2a001f3b56f980975d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-s2-forensic-analysis.json",
+      "sha256": "2f616d87c4f4dca9e85f951e4cc69eeb2474cfa8781473fcb5900789586f76bf"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v2-attempts.json",
+      "sha256": "ff39ba17f2616197c971ff923219e32186d7196a3df0a478ebc8fbf0adb96c4d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v2-multirun-provenance-contract.json",
+      "sha256": "4f2115b29868aa6e685f458c278eeda67dcdfaac70b7d78d406386ac434ac082"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v2-preflight-report.json",
+      "sha256": "76c4b608e8548c377330d51bec26ed845f45b5ad3c64154da80dac3603581a28"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v2-raw-evidence.json",
+      "sha256": "79def9bc46265057131e354a97447198552c7aceb4f607f30eb423b4b1f1d6e2"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v2-run-report.json",
+      "sha256": "1e96277ec368c8153f20777d396dbdf07ee80c31603942ce3bd106d83a2e5008"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v2-s1-v1-structural-diagnostic.json",
+      "sha256": "08129c6b2ff5396587f38125b3745b0b0dbc13f00ab05ec1fbc293721037e3fa"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v2-searxng-capture-config.json",
+      "sha256": "b70c7222db18610dfb7bcbe0313fe47a998af77003eed0fe7c2a6a4254093700"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-adjudication-completed.json",
+      "sha256": "b69d4d58cabf52c0aefc687d6015461461b7fd752cbc662e5fe9cf09b6e57696"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-adjudication-packet.json",
+      "sha256": "b1851a7c3b1f87569329ce5fb33540d8e68df3c495aaa06e4743aa0ca1bb8a7f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-agreement-report.json",
+      "sha256": "ec363efa5baa938c1c3bc4b260144ac3c0088b050108fde01d513ff543d690bf"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-attempt-ledger.json",
+      "sha256": "d12ff4a489bf4cffc07d0189d14029e9183fcd240b1a76fdd4439b747d7409c0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-final-prelabel-corpus.json",
+      "sha256": "d539bb4aae3eddc7b2c53166d558873bd5fc9fc6c18a8ea6b4c7c75ef89e5727"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-ground-truth-v1-attestation.json",
+      "sha256": "fabc076d65e90eea78c1a596f3681cf01d0e731c41ed523ebfc393c959dda954"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-ground-truth-v1-manifest.json",
+      "sha256": "24b5760988c97051c17f7b425eabaf4d1a819c7d8d9b426e1c071bdff959b112"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-ground-truth-v1.json",
+      "sha256": "bfbc05e893d93f84a908ffd6faf618b4c5a800f8ce8e40b03fcc1cfc97681952"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-labeler-a-labeled.json",
+      "sha256": "77024ec9dd2bc3bfe0ae755b2703b407a783d5bf7a7d271acdd1d7feb73f48a8"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-labeler-a-packet.json",
+      "sha256": "62ecd22cb76af19bfba93a4371f355ab4230b38c82e95f6a543846ff366f3893"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-labeler-b-labeled.json",
+      "sha256": "53c748a59e33e48c53d22d6dc1abbacb770c511ce99750935340488ee73b5eba"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-labeler-b-packet.json",
+      "sha256": "45b0df3ad90bb8e807dcd5badb02230c52d95dfde84df059fec945708281f618"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-preflight-report.json",
+      "sha256": "3ba64d167a1f44a436c890b8ef6c72cb75189d71b8ca9238b606fdc46f284bb0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-query-universe-attestation.json",
+      "sha256": "68ae3eebb27598902468029d159e848d23da220e5099add50cf5974054c2accf"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-query-universe-manifest.json",
+      "sha256": "c0e10f2214666d173d44983085e25d6cd86d953c3ebfe32a75919975a5ec9140"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-query-universe.json",
+      "sha256": "d4916130aa8067cc83e3b01c94dbd43f9ee1575feec04f1de5cae710564824c1"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-001-attempt-1.json",
+      "sha256": "d6dbb3f59b0824992f9a7020444b1dd3c7e85a04fd0bf4e9983ba76c736c552f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-002-attempt-1.json",
+      "sha256": "0c8189408b79e459c5f6069aef783b7f0712712ea0c66108f7d2ca55022bffe0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-003-attempt-1.json",
+      "sha256": "748bffe2f09c6d2529a342d519c57b93241ecb61763e011e9b18bc97b24eb5f7"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-004-attempt-1.json",
+      "sha256": "88a67a2ec004e2cd84214d90e1797535e2d180e9d0e744b6d8630023ff1a919e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-005-attempt-1.json",
+      "sha256": "b986a5971d7059c377baf9f510bf79b14cf53eaee4b6fd52e3c3aea571f13015"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-006-attempt-1.json",
+      "sha256": "d908fb7c30fb3a7fb1323c5764282e50717731a53f1953c482aec4a41ecf43d8"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-007-attempt-1.json",
+      "sha256": "ac9ab8c310fa33883768a9dfd768681b9ba6e84ba5da16e83d51cc2304f860a6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-008-attempt-1.json",
+      "sha256": "5d43d26476d71bf3543500d0d1e42847ea8fc1b7c800bc37abc2fa0fb68d17d2"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-c-009-attempt-1.json",
+      "sha256": "16b99cf0fb4da751f471851bbd649ff58061a4378d4cffde00d4abd76c295487"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-001-attempt-1.json",
+      "sha256": "9f591016663a4c5f01352c58e951ad980d10ff023b4ed90e116c8372008d10c5"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-002-attempt-1.json",
+      "sha256": "d045775ae899f225ad69119808e0221c4c70e1cc280caad8da434dac0d221e3c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-003-attempt-1.json",
+      "sha256": "3ab10f427cfde083929a0b8b820baffd04832c7e062c7b3d475ecd22b7daa015"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-004-attempt-1.json",
+      "sha256": "6780d9f27d2b4eb1cc7e177cb1e0e3ceb9661987a799391eb2aa24b945bc7220"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-005-attempt-1.json",
+      "sha256": "2364c948bec8932182be3b8f11793c3137da19ba3392d32a84d881f000dc7fa2"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-006-attempt-1.json",
+      "sha256": "8a201abe687f9e4e0601bd0813fe8756f5959134a8f19ba177a02abddb244e2d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-007-attempt-1.json",
+      "sha256": "f3735ba197b8bb386ff22cff9c16189abd14002bd83db0107fef4f02633baa77"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-008-attempt-1.json",
+      "sha256": "69b0bda86be437e57638f5bb9621492a31eaeaf5d0213354769470645d2c2c2f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-009-attempt-1.json",
+      "sha256": "29a1920aac522283870b33825cf5a6b3bbf6a661a8cb58356e115acfde3e0766"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-010-attempt-1.json",
+      "sha256": "0456627422ac54407df3805f6b8a2949d361664dbd7b4dc8a5ccf0b486efe253"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-011-attempt-1.json",
+      "sha256": "48344dd113cecb6567706071abf5984d1ee65bae36dca28c533e28a2fc6b03cd"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-012-attempt-1.json",
+      "sha256": "e047e79df294f07ed38bb95b1cd404a8f54cfcf3e9e8c573607c13103f3687a0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-013-attempt-1.json",
+      "sha256": "c2c9f7114a5a9e5399599606c15eaf7949cb72b3f79b5aa8056fa3f3fac6e0f0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-014-attempt-1.json",
+      "sha256": "a5b440265cd3b05fa1b47c67df6f56d0a5d77db5afd1e5f27f6f33b8e1831351"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-015-attempt-1.json",
+      "sha256": "eb4a0148312133ffcb8076fd0d0507c7c66566d166d10810a371cb179c3642d7"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-016-attempt-1.json",
+      "sha256": "a4ce47d9d5b89baec865badb03b19d7ebd5011f8f604b911245c376deb5c3c00"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-017-attempt-1.json",
+      "sha256": "8ff901dc033bd09911801fc19e3b91c5c5c7d37ce08fd2185c4e12b7110c1ad0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-018-attempt-1.json",
+      "sha256": "992d6c248661b515ed52d9bdaaededea4da17b953fadef0d118f3ce796cb8e8e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-019-attempt-1.json",
+      "sha256": "343cf2c1717eb09a2224474da8ecd6bee2c36ec8de027cc11ba76b05fee3d3ac"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw/sup-v3-s2-t-020-attempt-1.json",
+      "sha256": "0fcccb539bd61993b2630f9f99e364bb3a6bb1fa5e4bf6df64be626e9453b5ee"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-raw-evidence.json",
+      "sha256": "9ffb754e66660a4c220a9aa153db6d108a49592862e47c4cde8b83d56dab85e9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-run-report.json",
+      "sha256": "adb791763060256a9f27e6b3a0c9297c617b399712cc3cd27431d5adabd53b29"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-treatment-control-analysis.json",
+      "sha256": "9c73696cf3cfc0eedf230df61407155219c1f36018904c9b28522d12c0295595"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-vs-v1-analysis.json",
+      "sha256": "e870fdb63328e488b61d1793bf458086242874b1a88700577a49378729ca7fe9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/v1-ground-truth-manifest.json",
+      "sha256": "c7bee347a972da71048a84316a22b9bb2c92bcdd177083d7fb91247d1d97cadc"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/v1-ground-truth.json",
+      "sha256": "966ffafbe8e4a48ed635bcee93773c034039129927fe87aaebdccf316d7af567"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/v1-yield-analysis.json",
+      "sha256": "ca8d93f5f502e15c598fe90a939974cb0e75415ad5666a6af4dc79c2610cee77"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/corpus-identity.json",
+      "sha256": "35f0a7cd2f9b3dcf88dda7b4969b3f2700629fcd88cb4cca139f871e745ea692"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/prelabel/annotation-packet-A-labeled.json",
+      "sha256": "cdb32ee4ec6d9e31eef56eb331a7c21b77320cd38ddbf7b080bea081786c09e7"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/prelabel/annotation-packet-A.json",
+      "sha256": "76bf71f4f1ca9b114005e9ae72465661936903896c56a19cd8c1af5f35e4eb05"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/prelabel/annotation-packet-B-labeled.json",
+      "sha256": "03688971b6f16c1d1a3fc1bd662d6535d21022405b479bc8108ed667e68bd90d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/prelabel/annotation-packet-B.json",
+      "sha256": "a1666f9f1ee4b172706b91b9fd62194d0af35b135ce0ba1046ba3ea2f4aef73e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/prelabel/prelabel-manifest.json",
+      "sha256": "e2c52de723d838bcbb8f80d88b6961d12c863ee14d8caa501ed8c9ade42d27da"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/prelabel/prelabel-snapshot.json",
+      "sha256": "acd93a349e88568d4a14054a2c3a44179cca62f7374361777db20d6ca94cdb06"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/query-set.json",
+      "sha256": "9e516c21bfcef9700454782fae9ac372ad25fd5f4d9289ffd5e491cddb6c0ff7"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-attempt-ledger.json",
+      "sha256": "015ebe3ed49dec313740358f35646ec7e631e484035997d6737cbdce84202097"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-closure-report.json",
+      "sha256": "ae3073be2090269603d761001fefb85979390e2767e0d017cbe120eb7b014142"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-confirmatory-design.json",
+      "sha256": "66e7b5808607a452ab898f882c8dd457830b574bac33d631ec54ef3e476c6817"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-final-prelabel-corpus.json",
+      "sha256": "e234e28a9fcb21fd27ac7b3c5b2791a6392c02de3976c534d9b7969f000a0303"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-labeler-a-packet.json",
+      "sha256": "3399b526975a8c3dc433eba340ec4bd4d6264b69a77324308045729445479ada"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-labeler-b-packet.json",
+      "sha256": "8c553cc2df48ed8e91aa013351324ee4247b58843f87dfcf92e71cae644cb709"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-packet-manifest.json",
+      "sha256": "579a54d825b4f1ab6d9d8ace93539ef154feeac537a2013a44fda35d8274b895"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-preflight-offline-report.json",
+      "sha256": "d4a001c8d1c770febc5bce98adb2370d27d83fa6204e06a2d73a068257961dde"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-prelabel-attestation.json",
+      "sha256": "03b1d1c3cb90ea4c4e2726b86e4258adb9020276deb75ef7d268a74a7e76327b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-prelabel-manifest.json",
+      "sha256": "3eb498cd7c34926c6089dc72394c0bf87469efb31a7b43c9a8b20befb7e8175a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-query-universe-attestation.json",
+      "sha256": "ea2ada51b84b1be6d9cb2aaff963cb040f83d03e2cd44b28c9aa0856c0fc09d3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-query-universe-manifest.json",
+      "sha256": "6ef0c6aa6bd06df68d05ba304f2d892519b4b4cfddcb9f01a10bdfdaa1ddc52f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-query-universe.json",
+      "sha256": "c6729fad0f79d0cdbf94e64884e083ab51c59a8cc935fb30efe33a7f7de19bb7"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0001-attempt-1.json",
+      "sha256": "5ee6de86b9637d8f471ca9fbc330bd40bba48b7f41e688bd6c78432e89d1334d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0002-attempt-1.json",
+      "sha256": "ecb5c4beaaf535e365c240d9459e470977f1c6c40ee77b5d8fa256ecf12162d2"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0003-attempt-1.json",
+      "sha256": "b1308a3c0766f39925605008fbe6a3072cefaea1fa2e2ad90009fb91546f22f1"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0004-attempt-1.json",
+      "sha256": "f735b4866e095403b609d145c175721afc26f1ae4564d3dca4d8f8d63fe67d18"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0005-attempt-1.json",
+      "sha256": "7f5506bf3c2c7097a7589079481206a995111bb23a1c13332ec673d983710166"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0006-attempt-1.json",
+      "sha256": "c95d8bf1e2ef7279849b3dd31bc5104133855dee9eff1601b2ba8b5a6e4399e5"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0007-attempt-1.json",
+      "sha256": "8ce3bf2f78baf2eb1b70cce11b255cac623ff9e03cc2948eb64e942a5106c282"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0008-attempt-1.json",
+      "sha256": "9e1fd717050baa2a776e348f7fcaaa34ee63ed906eecc1fa82bc4aa5deb1e5a7"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0009-attempt-1.json",
+      "sha256": "c8341e2b84625459902badced4b6de93d5dd7972cdde4005116f66a223ff3e5b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0010-attempt-1.json",
+      "sha256": "98609c33b17441d7963d96309e358f8cc5de2976de3923611612f9f73c60fc7a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0011-attempt-1.json",
+      "sha256": "f5003457125f489fde16dfe11d06e28e7810991f301bc1f483848c64fe7c198f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0012-attempt-1.json",
+      "sha256": "dfbddf27400414797313525f59578fa92d894d87d05967cb97cfe1d2668e9957"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0013-attempt-1.json",
+      "sha256": "3a118a1473f3172a96953b2aa843f196b26f2f1ff47960e7fb9d1457b53f1f3f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0014-attempt-1.json",
+      "sha256": "d6146c0a48a2f166bb4b4bdd4fbbd2c4877f8ba89cd71427bf99cbf6b731d748"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0015-attempt-1.json",
+      "sha256": "ac42bcc6ae874eaff98987a0a0c10f0c9409dc7b361541e2cf1465093c4d742c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0016-attempt-1.json",
+      "sha256": "12016aded019adb5735975c863bc6c98422961449fa1e41db8c1eea606e57018"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0017-attempt-1.json",
+      "sha256": "3a12e607c80b8de2e754c45aa8536ed40799bdcc3644ba7e6ef2e82002304da5"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0018-attempt-1.json",
+      "sha256": "b0794c13039a184012e7d03072952304705aba86b543571345be01186d1daa4e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0019-attempt-1.json",
+      "sha256": "25beb1bf2629297d8059f3c3f39a61282d01fd806589e89115d9a7eedc493027"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0020-attempt-1.json",
+      "sha256": "49d1056aab43e1d3c3ffa0193fe6f85efa32b0d5093cdb084701469012c3fd73"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0021-attempt-1.json",
+      "sha256": "ac19e34e5e6ef897740ffa26747b9b3348478597fa8c84b51a613ffdd8889658"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0022-attempt-1.json",
+      "sha256": "afacaa182d963565978484820b323b2a78c96bb6dcf2fe2f39028df42c7b0acf"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0023-attempt-1.json",
+      "sha256": "21bb4494328017155353e8301298ab1b66dff40797e7c9dbf54077d36faf1640"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0024-attempt-1.json",
+      "sha256": "f70a9a9c80d3ca30f626878be65816af40b675382c93c67165796bca5b643950"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0025-attempt-1.json",
+      "sha256": "7baed7c69ffa0019422a01515464dc99679463527a3d52686cc0ac3e581c56fd"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0026-attempt-1.json",
+      "sha256": "e5f0135ea2bb332265306d49cca84b8ee8c8a84ba6957f93c6173a2fe2ce0d57"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0027-attempt-1.json",
+      "sha256": "e234acb7d9b412c8fe926606858d2db5dfc8e9567d18aa2bdaf2893f65a1b5e1"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0028-attempt-1.json",
+      "sha256": "2930d6c779503507105e22cfa3ec2dc21556d83d0490f9928a14edea301ec59a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0029-attempt-1.json",
+      "sha256": "fc6abf1f92908c1a1a9ad9d92598b50eb941db130e2496d2f2c318f1ff0a330c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0030-attempt-1.json",
+      "sha256": "cf974e783be80fdc585351f3ee13dd2f2c5de1b5b5e2982849ebc9aeb7dec82d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0031-attempt-1.json",
+      "sha256": "2e8213618f0ef3d658ee770ed22bdaa522d897e1381a04831f472409a556b0c2"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0032-attempt-1.json",
+      "sha256": "ef62b4474f28ed3183e676f045a1bb624680de0daa62e7332d78fe782faaea3c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0033-attempt-1.json",
+      "sha256": "85552c4d4c34fc152d235014af118821baf246eb2f80882fd211f33bb241dd9d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0034-attempt-1.json",
+      "sha256": "06596130b241cf8ea08c8c9df974b9030adf14f0700adab00193925cff34d738"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0035-attempt-1.json",
+      "sha256": "31980b1f4cfe842ffd66927387e99e380bd89005d6b4ac76e0f0b58d2b54ad34"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0036-attempt-1.json",
+      "sha256": "1a829b90d9f782b3a859217d1cb2f92c4b5689ab494b573c8e46e9ac42ee77be"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0037-attempt-1.json",
+      "sha256": "c02560ff1d45b42372d4cd4cd50e1b543d2a734aafc5bdffd3c170d9012ea30e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0038-attempt-1.json",
+      "sha256": "9511783b52c37e41e897753e1af36d617283a70fcd68df258de98b08932199e6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0039-attempt-1.json",
+      "sha256": "0d485578dd71caec279c4ae4777a537bbde5cd8cc37b930e6e8ad43a42f948f6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0040-attempt-1.json",
+      "sha256": "5357035f2dd2b704ddfa22b37edf414248e8d87fdf845a7fbb55930f7804e007"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0041-attempt-1.json",
+      "sha256": "c732e336ec36a7353182423fbcb46ba44c53f22a699d5a42fee0c8ae6d369603"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0042-attempt-1.json",
+      "sha256": "3fe22715a902ca361e53942f3fbd7b3efc9bca755b76d73f76e6e1eae9b5303d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0043-attempt-1.json",
+      "sha256": "cadbebd6151639ac9215bf4ce5cd8d84101a2ab65c48234b7753eb64695ec113"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0044-attempt-1.json",
+      "sha256": "e9461f5f8b19c3c158f6137f361be1915ce893dbd1907c7009ad4d93d8ee0157"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0045-attempt-1.json",
+      "sha256": "d52ab6482634d39237a58da5533794a144382b2efd08ca3f95586131adb89ec4"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0046-attempt-1.json",
+      "sha256": "ec6c2f55382952c946b8e162bdb248b213e723c19d19ad38e6f734811c08cce9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0047-attempt-1.json",
+      "sha256": "3e32a49a48f63a2625cf9b122c4cc1b137b9e679571fd1640195e2ae61ac8cbc"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0048-attempt-1.json",
+      "sha256": "ee99ead4fa06a3a66a10be64a389d3c0caa915ac68ab6950b7b2eb919b3a2de6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0049-attempt-1.json",
+      "sha256": "715630c6a2dd574659acd1c92a5f001b82dbf9473311f302ce95a69c528630f9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0050-attempt-1.json",
+      "sha256": "8cb8b7c5f3b0cc91b0658cc627e49ca56ebd402b7a705514ce5caf39d7da48b2"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0051-attempt-1.json",
+      "sha256": "5a1fe7f9146ee80d05842fbd0a6b33373a15697133cc33cf1de901d9a9cb090a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0052-attempt-1.json",
+      "sha256": "3f9162d8d42ac95ea26fc217f74b3955058f2fdbc93d9ad55de3dd40154da6a3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0053-attempt-1.json",
+      "sha256": "e826a160a99246d49bf73bc0ad3b951bb496d619f15f3c299461b02023997294"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0054-attempt-1.json",
+      "sha256": "e9e37e389cb9b5dc0b2b53e340998f934c4fe21b519bc8e2b6711519359faa91"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0055-attempt-1.json",
+      "sha256": "778f149163adcf76c31c0604c64519ec5a4573c91d620cedc86f36e937a13a33"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0056-attempt-1.json",
+      "sha256": "26f0b6258cde3443aa65fecce813ad10b20e92490c6d16094369c7af7b70732d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0057-attempt-1.json",
+      "sha256": "66a4c106c2fde0891233caccc447a2afd68030e6aae1f97a75b483ea889c0e5d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0058-attempt-1.json",
+      "sha256": "587b9874845cd334ffa0fc96232d9d3c7e261fa3bc11bda4e3c86f46ec31b0c2"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0059-attempt-1.json",
+      "sha256": "b424a855b7e5b91a9504e4ac648950f3d8d9d364a0a278fb52e82013e8f67a0e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0060-attempt-1.json",
+      "sha256": "074cc13aaf7dcc9954ba0ca8d7864ef5ee360fd1f6e3bc8d42067c9b284a4cdf"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0061-attempt-1.json",
+      "sha256": "cf61495b18906aa9921cbf66c68e147d04459e0a740c025a3253190c0306986e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0062-attempt-1.json",
+      "sha256": "0ccced050ba70e91cfb8fc4d0dd57270dc8fc773f4551b31467d4a4c3fde3230"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0063-attempt-1.json",
+      "sha256": "7ff11fff8039e7b4af4efb87f6731233d5082212b78fe91bb52e92c1aa297581"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0064-attempt-1.json",
+      "sha256": "2f3d4e4939c0f88c7acd8980d0822fc1d8527eae9a83660d377b4206e34ff9bc"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0065-attempt-1.json",
+      "sha256": "94ec9087cb4f103df56f4c687e2b6cf5b4851ed98949fa179500a7a218414737"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0066-attempt-1.json",
+      "sha256": "643654317169fd1aac902f93cff0b469dca1779be01fe3b9c6f79bc266413ec7"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0067-attempt-1.json",
+      "sha256": "38e3e200fc68030dedda046f55cf393e5df9602b44fa8cba8a1bb001d94ab7a7"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0068-attempt-1.json",
+      "sha256": "23ab667dd39489e0c880e0366d66bf970a3161e61fb822995c6891e11d9c1441"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0069-attempt-1.json",
+      "sha256": "00d45e32283c8376361981fdc4554d014c2dec4a140f1a3c2e81b5d45dd86e19"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0070-attempt-1.json",
+      "sha256": "81a7dbe2ee0e1d4277d17901398025f8054e212466f1a6ea6b9a68d9f708bac3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0071-attempt-1.json",
+      "sha256": "e06f98420af2eb6080799f771fc5184438c8f1eb6241cea5d142212b6a8712e3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0072-attempt-1.json",
+      "sha256": "ded65e0fc68c8b899dc525a56482ddc7c93ea402b2b229ae7d5228138068cdf9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0073-attempt-1.json",
+      "sha256": "9e70e2476d0f4c5389cdfc7f6c68d6b77df42cb2229087034339f434832b9b58"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0074-attempt-1.json",
+      "sha256": "d511790477be5ad5870429e779f5d9a44ed32e958138df5e656311f993de9216"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0075-attempt-1.json",
+      "sha256": "0eaaf11f0d2f4c21d3f5dae0a3c7c2db6c609e9db7e385283786bdfd4665dac0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0076-attempt-1.json",
+      "sha256": "ed8319d78e577a1f948de30f48c381bfe24bd48e5829986d78ba5c8c7e1869fc"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0077-attempt-1.json",
+      "sha256": "e44362f9c134888b31162d96c4c4ac32820c240dd9ca93936e5603aa05835445"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0078-attempt-1.json",
+      "sha256": "48fd7f409fe3087af31aa783c3ea7697df394e2586fdfb6c61d5557a78ec1dcc"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0079-attempt-1.json",
+      "sha256": "40481152095cd077407730e7cfbe27496f296755565797bc28177299a739fd0a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0080-attempt-1.json",
+      "sha256": "a4c4060e78a703a5f474086a535e79898fef03ab6e2a80547171b910e6ebf437"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0081-attempt-1.json",
+      "sha256": "28adff261cf5697240132568d1f249f9d27024efdd9d11a041b7ec14eae3a284"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0082-attempt-1.json",
+      "sha256": "76743b24b112140a380cc08fe6da64178874bedca74360d40d37a9a532e5a542"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0083-attempt-1.json",
+      "sha256": "636022205e983ce23073ed189ff4b1cd1ad260936ff6cc01fb7bcd0e0693fa0d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0084-attempt-1.json",
+      "sha256": "82378dc70a5e104240717022bab14530ae5758748717ec5fe4720b3ec78bd16a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0085-attempt-1.json",
+      "sha256": "4988afb57ef46410b7919d44ec2211d8e96dacbb5b3b7c69444692834de0439a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0086-attempt-1.json",
+      "sha256": "f5d61f1878392f39ded40344a6f9465b112c17763190cc127efbcc67f3b4fd97"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0087-attempt-1.json",
+      "sha256": "f5f28ee2bc9ba20f3d939e0c7a599ea1e32ce1c997dc3d52c34744e26bd41e02"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0088-attempt-1.json",
+      "sha256": "bce28eb3fcf80bf01dfacbc6a6456663993aa0957d3d656b44b2aa1a579e15f5"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0089-attempt-1.json",
+      "sha256": "3d203c70f1456aa92b8c397ee4c3c530afd59b50620874c5d51f936b9c560be8"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0090-attempt-1.json",
+      "sha256": "fd0b9e61409290ae8f937a0656eca9e4cdb349e3368c0c1d0029d7696bf17ad4"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0091-attempt-1.json",
+      "sha256": "8123774c35a3e528a6b989749197871528f7e666b49cdf6ffb1e1b839f5b3ca3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0092-attempt-1.json",
+      "sha256": "0deab7fdc5f1197f331adf7b834c883bd6acb7d4c7b359e7517025b6c326dc1c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0093-attempt-1.json",
+      "sha256": "0c38cdff56cf6e54adab8d9d3cc548cd1bdc60e7c9a90d81bde9d21ffc7628b2"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0094-attempt-1.json",
+      "sha256": "b4c45924fa6d3bd49ceaa68657c8c30fd9578b37db9f850921c4d99a502cc2c8"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0095-attempt-1.json",
+      "sha256": "83ca679431c2b2b02afbe7bb766097a689942d01d15846394e6e9dc6b1539f2f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0096-attempt-1.json",
+      "sha256": "d92095555e5d28ed758318957d5d1bc5606eee548ec6f66d1840856ff6067d71"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0097-attempt-1.json",
+      "sha256": "742838881dfaa64b64c43daa449b9225c22ced7201c3d370213490f83d43eac1"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0098-attempt-1.json",
+      "sha256": "fec84f5c48bc74349dd254738eeb5b2861270feb4a3d24ebb3e16135b7124cec"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0099-attempt-1.json",
+      "sha256": "bf0bb4f2b4aed80c7af65aecc36faeae8e61d486749f51d6304c1238946a534a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0100-attempt-1.json",
+      "sha256": "b2f3db2171d44b892506bb8b2e072294a6bfab13f82a000862cbabeaf10d758c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0101-attempt-1.json",
+      "sha256": "5e171be6c5c9eccf725f25f7843420ebb496f55bc9a7e6c4ace7fb80162f6078"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0102-attempt-1.json",
+      "sha256": "9fe3db3fc21d5a7312a3096a2fbc58087e60c026c39542207c2ed8f4a68c197b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0103-attempt-1.json",
+      "sha256": "e85d6b73a087b88b476811f04b501edd904a1359eff60c1f8852126220bbb495"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0104-attempt-1.json",
+      "sha256": "bc4e16b66a12db7a255076150bca9dbbbeaa6b061232c652623f41c3390c6c0d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0105-attempt-1.json",
+      "sha256": "c50fc6918dcbb4ca1d509c2f7d31e0f5c236db8d526c58d186a61dddf676b457"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0106-attempt-1.json",
+      "sha256": "030192f058e69195f6515f8ef50f13dffa1aff0ddf61cc670ed37908af74319a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0107-attempt-1.json",
+      "sha256": "c4aa5b6e6f22f3d0091477b10595e4a3a38fcc81a3f4a6fa21cdf6a3745577b0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0108-attempt-1.json",
+      "sha256": "95bb2007373cb99153e2ec14dbf72e4c6157d5d117bb75542f1a89d46ffbfa79"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0109-attempt-1.json",
+      "sha256": "0f747a1cff858fd5bd59e32d4450e789fa25434724e07913aaa3af397b858fec"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0110-attempt-1.json",
+      "sha256": "fe71ccb1d87bba4921c709ac17a1e7b6c10fe25e5e2d4374c4de9df10d284d39"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0111-attempt-1.json",
+      "sha256": "8b7c8e42b300070aab3eb3eb42c2cee181d676d6e48725aada8807cee4284874"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0112-attempt-1.json",
+      "sha256": "4605c11998bba6b0406eeba594200074152a91313a096f244260d64a845fc6cc"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0113-attempt-1.json",
+      "sha256": "03468f97873a1d963adf103c13e5c79e6676c01135ba6e1f0fb1b190331d103a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0114-attempt-1.json",
+      "sha256": "e4b5e8f5ab1a3f77b98ca69702bac6454c2ce5a8094b4fe21c2941590ed6a10a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0115-attempt-1.json",
+      "sha256": "ba42a5f4ece0666364b2234a99c94e5a6857caad551ff13235940ce2bf08c612"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0116-attempt-1.json",
+      "sha256": "c223cba90c1b499737bd810d34c816487cc591e688b11a2492d28f7c0fdbb3f1"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0117-attempt-1.json",
+      "sha256": "02b2bf0668b0308120da36b4b24b921637b7e225ea6545cf134925d9394dfc6b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0118-attempt-1.json",
+      "sha256": "460ae8d2d7644e114fff5edd50afd5106844448f7a833e4acdfe1f83fc11f0f6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0119-attempt-1.json",
+      "sha256": "776626f019ec0c372d8930098fb89af5baf0c3b045c3977f44ef6ed73140b1b3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0120-attempt-1.json",
+      "sha256": "e4073c79b756ac32bf6f6babca506ea740468e3757987ce7655967b20cf0dff6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0121-attempt-1.json",
+      "sha256": "bd4bbf48efc472dbe15bd24e9fab332c5d5f11588029f4162304124a9221b95e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0122-attempt-1.json",
+      "sha256": "3b051c319129bd07347580a4ca9cec1ae17371c050df4e8babbc9cdb5e82fd90"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0123-attempt-1.json",
+      "sha256": "684863c4adab0c9f2973a41480abc2a016fff9602d55978f24b614b2dcb2ed82"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0124-attempt-1.json",
+      "sha256": "4fd1d8adb2067dcf922a5502185b03379ada7969eac95345f299912fa011b422"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0125-attempt-1.json",
+      "sha256": "f80caa047d9abf60c8e3aca63b647db6109684307f6b48491c71c4ada879981d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0126-attempt-1.json",
+      "sha256": "1c8e9cdde9a86272e8adf89896187eb2e3e75a73994743ff0b25c1dad6862cfc"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0127-attempt-1.json",
+      "sha256": "7937a52022b3e43636da9d4ea8e874b30a5ef92a8b1af06c28609de44ebaf8bb"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0128-attempt-1.json",
+      "sha256": "f9c497a788a5344674cc9e7645a33adc2adb875728ee48a78acf04ba3a74c725"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0129-attempt-1.json",
+      "sha256": "eb35e0e6a663c1b3fea256b9ed50542cc4be95b0822516cb56e19975b9334565"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0130-attempt-1.json",
+      "sha256": "b187030574578095ea7da10354afa5fc4fadf3718415ffb20cb48ea356d9fcd9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0131-attempt-1.json",
+      "sha256": "e85ae20ac51cbcce87f912b674ed0618ccdbe9c6f727d9a7452ac50d87e9686a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0132-attempt-1.json",
+      "sha256": "f4e4e5741ab375ad968ab570f1d85953275a5e548972a2e9b6ec8105637cc3a3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0133-attempt-1.json",
+      "sha256": "6e3a79a873d7e3a2057c7b46aeadccbb0aaeae4aa51dc0b048453fd99d6bf19f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0134-attempt-1.json",
+      "sha256": "030b7d4d105561c3b6302c53175562c70f733940a2ba8b11c943f87150de7152"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0135-attempt-1.json",
+      "sha256": "35d0aa1b13a4463c2e11d19c109f2e75e1c3f29b4f2d2e6993c554b5a3e7485f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0136-attempt-1.json",
+      "sha256": "81be53fac464f7a0339c2f9e0462889511d66a5a7d94f04eb4fb5e77af12a7eb"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0137-attempt-1.json",
+      "sha256": "c569ca1527bf6851c64913d29d7f0dececedc8c5307c389306503e08852fe62e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0138-attempt-1.json",
+      "sha256": "6e98f709f2c36c61ad09d35b9f26b2615e77f3f8d56a2900e624c75872e25be4"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0139-attempt-1.json",
+      "sha256": "3a91c21088dddcd01a0882d2eaf32d3cde74b18a4f0150b8d53a51a2c6c3c90b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0140-attempt-1.json",
+      "sha256": "13143c51b4c228d90b8dfb57291018ba5fa8aa5acc09e533112ceb671379f13c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0141-attempt-1.json",
+      "sha256": "93ff0b499799b1b55431cd685bc8ce4032e3d82bb5aa8e3a1fe51528dd15fc02"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0142-attempt-1.json",
+      "sha256": "46bbc22f29dc26e6cf50a6dee2afdbdc857d373589f58231a87f80d1cd370b36"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0143-attempt-1.json",
+      "sha256": "a54603908adc3943115b7e1112c2117d396695168ffa039ee1bbd5fb222e354c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0144-attempt-1.json",
+      "sha256": "54be85430587891f9e4ff91d94eab3d5445466612b24cf8ea65e7cf8d8e1c457"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0145-attempt-1.json",
+      "sha256": "0aef227dd8d47a8abfcac83b038744cc666ab6581ff4965ec9904f174029583c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0146-attempt-1.json",
+      "sha256": "39ba2196d1619d36932b982e0ef3a72608df39582a0d76d1e0b6ba2f62ec8c07"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0147-attempt-1.json",
+      "sha256": "4022bbfd2ce08ea9cdc92e201feb23883738548a2f27c4f1172dc7b4165095b1"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0148-attempt-1.json",
+      "sha256": "06326512af556511a135d715acdeb52a6a2506747c7f3fd4aa434f5c7549a97e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0149-attempt-1.json",
+      "sha256": "2208162784f5e08618c75bc4543d2b33aef866c996b34396b782f472334abd03"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0150-attempt-1.json",
+      "sha256": "2ccd8edfe94da6d3ecfd39122a7de6f6506623060ea6c08129e2c4f946fd0472"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0151-attempt-1.json",
+      "sha256": "d1fbc43d85160a01f6bbb443a5c736e78ace3489f75041d51bda2dfa2c1a7875"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0152-attempt-1.json",
+      "sha256": "3d43bd8af97edf45872104bf8b887bf5bd7c2df0ea1d22b518c9a96139f3448e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0153-attempt-1.json",
+      "sha256": "e77214ccfb5c67836679668efdca9c8c55dc273bc2fcb679629170b96a4db4a3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0154-attempt-1.json",
+      "sha256": "281d7b62758da7ddc46baf50b00e3955052fbb3205ffc7ecc8ddc1b31d6d9946"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0155-attempt-1.json",
+      "sha256": "e65af8185c42ff4eccf6dacadb3c0bdc95a06bca6f8d4a79acd5c13c3ffe93fb"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0156-attempt-1.json",
+      "sha256": "3a076f6b07040aac32fd3f00345f51b8124c2b0457360d6c1dac383b7f50062d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0157-attempt-1.json",
+      "sha256": "ff0828bf071a3f9150ee74d783e62b3b7ac6c672a3fefeb704661383ae19b5dd"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0158-attempt-1.json",
+      "sha256": "526e785dcef39eed2401ea7f10e62ba67e4901c1f526e60df359d02eb67ad6fc"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0159-attempt-1.json",
+      "sha256": "3921d1e0e98279eda6ffb7a67ccfbbb7ed9588ce3488ad34cac498a52da89abc"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0160-attempt-1.json",
+      "sha256": "299f610b6b86dd9cbf8f20f1f1b973d6f660973662614742dd8a3aadbadc8e48"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0161-attempt-1.json",
+      "sha256": "9c4e4edc1c87ae5b59512e6b0ac75dcf8dd10f6062497e2d7790f257f74e194f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0162-attempt-1.json",
+      "sha256": "dd7e57d6c915ae73969e2b5bd1f1315e91a3ac3f1d3846b326ce523e3318b680"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0163-attempt-1.json",
+      "sha256": "51101af7fe20c57fb6621659807ef69b402aa316d16474bd21dcefedf3e85ff2"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0164-attempt-1.json",
+      "sha256": "431a138e99031ff00a2ed284c8aa9eee6f2555af25a40ab5f8d8acc78c378c81"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0165-attempt-1.json",
+      "sha256": "24cec34da4e83d72df9dbf53d46c7297459661d5d0f7b164c932503ba3ad9b2d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0166-attempt-1.json",
+      "sha256": "681f0721596a5ce0684860152e8bfa592496f176cfaa54ecd217ff327971437b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0167-attempt-1.json",
+      "sha256": "25e10518c75c727cdf8958c0434ec0f6ffbfa371effbe8b470e70d2aabc7b01a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0168-attempt-1.json",
+      "sha256": "7b81ea5b18af1f3b3b960a057d723850f5fc0fba26d9e8005f0a0dedf5a84323"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0169-attempt-1.json",
+      "sha256": "fb03858fffee7d5d818cb225f484a6cff3ab49d85057b4edc4e65be9dfedce4c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0170-attempt-1.json",
+      "sha256": "440f299a65f8a2e2fd7d53697f4880776c1982d6c6e6977c0a686926b54927b6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0171-attempt-1.json",
+      "sha256": "f810dd6d92a75f60166fa91ea4b682ad38aef3d9b1e586006cc82d15b9271cc0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0172-attempt-1.json",
+      "sha256": "2c5043a5c1c25bfb189ee8b373dd7d10ad2c40d5b5986a61908c6680488d3be0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0173-attempt-1.json",
+      "sha256": "e6ee6532cf5463f273eac17129adb3a34ece59a09e0358256e7a9aff1b770180"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0174-attempt-1.json",
+      "sha256": "75cebb567427996ca7a1897595d0b6f85c34176c6928ffa4b25d6db52b8a709d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0175-attempt-1.json",
+      "sha256": "0d0780c4948fa84a6558b38783a57fc802fa7f1b980f85d59cc6659b11a73f28"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0176-attempt-1.json",
+      "sha256": "234088686a32fa28c0b398b88f0fe84037c2358e8d5f61f6d770bd58dff93496"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0177-attempt-1.json",
+      "sha256": "0547530ce9b1fd090bcdc23bd2d18b1890636bb4b109bab1675cd5f312d1b38d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0178-attempt-1.json",
+      "sha256": "d30eefd8f9922dee679334e21879de2e55c7307f668706377c1ac7c08985d09a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0179-attempt-1.json",
+      "sha256": "b4eb881800394af279873c1c94bb608d31d70e97b3da546146bb165187113e35"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0180-attempt-1.json",
+      "sha256": "62e6072194a7fc90580f82cb22abc031a8448f5ed8f302bff3b95179e915b163"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0181-attempt-1.json",
+      "sha256": "4931d10599e676b89e3c061e8287b39cd0fd87041ec603dc0b07b8822a2a2b4b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0182-attempt-1.json",
+      "sha256": "e43b6edce3659b804b07e43b38161a67b23c0fade20ee23912c37d3f758f56c3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0183-attempt-1.json",
+      "sha256": "04f8d7f9710113bbe38174cd2b408e20276a7e985456651ea56767bb2e2e6c19"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0184-attempt-1.json",
+      "sha256": "c521234412a88525891645d0657ef1b6b0bf44c3e966ae7504c59f359550d981"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0185-attempt-1.json",
+      "sha256": "f2fed6bfd41e0fab0eca0e1b94a26fb14745690a906ccb74c7f0e31e0f22a65a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0186-attempt-1.json",
+      "sha256": "af2dd1bd8d4fe064d204e6a88f512c8eb720aea3934f82998ed5de69cd77cc10"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0187-attempt-1.json",
+      "sha256": "aa82faafe75a307348a0bc99a9d09fdeaa8586a83ef2c6dc56ac30be4c04bb38"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0188-attempt-1.json",
+      "sha256": "327adde7a72c7d9b8a65c79904786a1937df110603c4a6fc2fe8441c07f0e833"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0189-attempt-1.json",
+      "sha256": "a02214ca024e012f89935bfb40ca47212a5847bff6c40bbed9164e0e90c2b578"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0190-attempt-1.json",
+      "sha256": "f5b941d379ebbbce960740e5d6d0d9184de335842875b08fbfd4d1295b153410"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0191-attempt-1.json",
+      "sha256": "ec0c1f8b23c0f69b3b9d10b3a8c5b39b655cb210e747a786234594b6989b3bcf"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0192-attempt-1.json",
+      "sha256": "bdf98c19ba9534072ee96539de5f3e3d0e3f2af6981b3365e4c1999c8e585af1"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0193-attempt-1.json",
+      "sha256": "bb0593d1d0d544df544238a8c4a0914217797020a4c7704184fd39767e6bc23c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0194-attempt-1.json",
+      "sha256": "f217f387c7184e4514ef75d7ece48b8e86d7682a034af9cbfc9415ab30a298e2"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0195-attempt-1.json",
+      "sha256": "36de4337e357a0c1c7461497de2daa059748a3bb6344d2ab4ff2fede7df2d334"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0196-attempt-1.json",
+      "sha256": "b042802593d631f4efe94f5a557cffae1e0e4dc0af8fecebb2d0385676ce8469"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0197-attempt-1.json",
+      "sha256": "ca04da9317d5dcab20aa82b8cf3c59f5ba90a2e6462bbf8990df55bd014d1d86"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0198-attempt-1.json",
+      "sha256": "c5daef71b00ceb2a40ac02973ecfea007afc4cbeee9f0ad4ad71705955e8608a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0199-attempt-1.json",
+      "sha256": "9b64d8592a44084fb7d8093a2752614c981099cbb5695d52d9f2f26a3967e3a9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0200-attempt-1.json",
+      "sha256": "3ba3dfa770edce66b86b24668c774e979f050e7bb0a8842ac718e6948d0b21ad"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0201-attempt-1.json",
+      "sha256": "4d4332e60a0575819b37a1da22c744a2bf9e43747129c3a4d8af0a8be009ef67"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0202-attempt-1.json",
+      "sha256": "f5d2df403678ef2721928b512114bd676e6010d7c2b19a6510af03b4b4c08abb"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0203-attempt-1.json",
+      "sha256": "a561bdc7a88f2a02b4621fdd9582ef2851355535c3a14ab959ac892c7d9f0b95"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0204-attempt-1.json",
+      "sha256": "cdf9421491bb01e49c9fee46c21ca49ab9c7e75dcf4537cdac4bd6255fcbf3b9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0205-attempt-1.json",
+      "sha256": "9c8fd659bd356709dc56de80da7da584641162c4366fca84a8a2b2c922c7d617"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0206-attempt-1.json",
+      "sha256": "bf7f73e807938a720934814d5f244988d758fde057bca62f0a84ac453108e67c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0207-attempt-1.json",
+      "sha256": "fc6084b27b3bef7a1dd0a3224ac0bdd4a26c2e890fc560353219023b34ee443f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0208-attempt-1.json",
+      "sha256": "a14ef5d7cc85e2330c2c0b40d09496f74b26e41e8ba2f9ceba95b7e76790b89c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0209-attempt-1.json",
+      "sha256": "82c19e159fa7b641148478c5b250d4c2010a7b0e950d1dd794f5d97f53252346"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0210-attempt-1.json",
+      "sha256": "48488030b2fd4e83aace529dd37317c5e670fd3d0237a1f281cdbb8d51e36c5d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0211-attempt-1.json",
+      "sha256": "db4614c7f8a7ea02e43b63ef26ae10e63e60368928f35534c9d530e2799feda7"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0212-attempt-1.json",
+      "sha256": "d8412c627ab4ad5fa528e1fbb4e1149246d841de9fc123888c7557ba30b88c26"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0213-attempt-1.json",
+      "sha256": "dac17e9a183013718c4d9817e18057a14d9d8d8c4b356d171b644f3637fa9513"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0214-attempt-1.json",
+      "sha256": "0049b35c3c3a90de2e7e247f7a60f20272b49e13b64ef790847ad28da095e636"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0215-attempt-1.json",
+      "sha256": "1c4deb29867330647fcce1c6ab0f1d1229f5eb50385182a9baa8b4739fd949f0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0216-attempt-1.json",
+      "sha256": "c7f02faaacf98394259f9b9964043d0c361dfb81c0aa315e611085147cf4254d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0217-attempt-1.json",
+      "sha256": "346df7f6e3621afb345dae70c932951094440a23ff287be430f9fd63c6f833cf"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0218-attempt-1.json",
+      "sha256": "fda231b36e16a1316f2711289e38f029bc276b56ed306238d7ac38f508412de0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0219-attempt-1.json",
+      "sha256": "2048d2d0b94adc0055dd153ebc9514372fb280930a7a23e357f0920e094eae42"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0220-attempt-1.json",
+      "sha256": "280ff435cfd37e0c9235325be01d0398cc17585d206bfcbee4dbd76500516abb"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0221-attempt-1.json",
+      "sha256": "96c49912eca5db063804f36e2920dfe19f1336cb6ee7597790fafea46852cb2b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0222-attempt-1.json",
+      "sha256": "3868767934d3e6feb53179a7f80fc5a9ff4808634f6281be5ad92af2c9489ca3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0223-attempt-1.json",
+      "sha256": "097e68489b741af295d13f872830cf1e17132fd16aa8f291d071f1f3a029e9c1"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0224-attempt-1.json",
+      "sha256": "2faf9d1bd255b80260f5eb6d0b867b443d13aa042465007412c2a1ee40b86e56"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0225-attempt-1.json",
+      "sha256": "ba0df057aa2791f25a5f660cb91484ca42f8b5819636a7995f15cfac2eb24e4f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0226-attempt-1.json",
+      "sha256": "31e3fccf991586ce739447b4706ed0905fd0b2431680047d306b4ed30095412c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0227-attempt-1.json",
+      "sha256": "ae27d00a3b9a61e13a08647a23da78dfa2f7a259e0502a352c7f8fee38b53bc4"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0228-attempt-1.json",
+      "sha256": "4bdf343be5ca80b8877cd069210874d0ab0a849929aec27e294accf1e0a78203"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0229-attempt-1.json",
+      "sha256": "02c29301bc2e266e645afb94b2cd917e731d2f6c072a103639f40e345cb72cb2"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0230-attempt-1.json",
+      "sha256": "4f8a3167d1ab6697aeb58a49cb45ac67c98f4402fe25b252446c8668d4307f1c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0231-attempt-1.json",
+      "sha256": "6d60a1f82daa9839cb777e3e75774fd157cb39842debf2fe9f41b5c7b700df85"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0232-attempt-1.json",
+      "sha256": "7e40c03cc98ec3876827a06a4e65064f2fad1f827d3e8bfdfb877d2f709f520a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0233-attempt-1.json",
+      "sha256": "452ff09d056f7d731f3b77231b60432be4268ffc5c4bcb1325510564577ce79f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0234-attempt-1.json",
+      "sha256": "31fcd68e79b8f802e5d7dd42f9628d65fa202c68dbdba7672904d80a4ab6835b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0235-attempt-1.json",
+      "sha256": "d1146506e8e1ad938b0f5293b1107256012bfcf88b8f0a00aa971b4386ac4caf"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0236-attempt-1.json",
+      "sha256": "f988f3036f04bde052ee42ddf71c55c892da23c01a08edab9a6a8687a9dd36a6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0237-attempt-1.json",
+      "sha256": "6dd57c26ec4ab4c1459a243ab4c273c69a1e1ad02cdac6b5585103dbd296a2f0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0238-attempt-1.json",
+      "sha256": "62c939e1529165d20e4ebcd14c8457c98e677fba1da0f66b9b231c997a97401c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0239-attempt-1.json",
+      "sha256": "475b62cc205f792fbde5be89200cfb7aa681a38f9f34deb93107a0068010a1e8"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0240-attempt-1.json",
+      "sha256": "ec4b87d25454b5afd1f71fafa86e4c6f8044b377e95311db7e2d009451ba07d3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0241-attempt-1.json",
+      "sha256": "a8c850af53322ea017f63f62991cdedbe354759918326c38b1267ddb4d57686f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0242-attempt-1.json",
+      "sha256": "5f1337b70682a1412c3b73e3fea83aaa46c292f19c150b837996f8a66eb6018f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0243-attempt-1.json",
+      "sha256": "5ce00ee4e619c615eda60b3732f7e923d7f3a7fa12bdf6ea9b4abd0f9e538147"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0244-attempt-1.json",
+      "sha256": "fcdf5f1513dc57e91970e80738ce26f735f3da736912857c94a078c4d4e666ce"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0245-attempt-1.json",
+      "sha256": "e00c7dc61c9d70147924e01cc5675b7e2cc8ab325920830346fd8f39d6601f49"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0246-attempt-1.json",
+      "sha256": "5f4ec0ae0b772eeed46ea9f84246ca1a16b6f1cc4c22b32eeb4b88fc73d72ed4"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0247-attempt-1.json",
+      "sha256": "bf5a076d53cdb26a442592ee8b909b701425a1c56016023b85bc4abdecff8276"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0248-attempt-1.json",
+      "sha256": "08e76f68e0ae6ad5dfdc42e9b96e9310c761e6f8481b1ad394eed04289ba4c10"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0249-attempt-1.json",
+      "sha256": "add60ac228e066285c19a1f2c79dab94382369e32c339ada41a5c5310b7be55d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0250-attempt-1.json",
+      "sha256": "6ed2469fb36d76c610c10f0e2b774ab47f973b8e45ad641a93964e72ff47204b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0251-attempt-1.json",
+      "sha256": "d71ea74dc7f8cdfa0be1c35b5df8f9dd0d32953528802ffeb59d04fea3597634"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0252-attempt-1.json",
+      "sha256": "b085cc274206b9702a0f914e7d43f05968ddccbffbf4718105eb6cd74440e4ba"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0253-attempt-1.json",
+      "sha256": "86bcd9b0e4133a023382681dae2a84facb1c0a3e2aa6da472e8eb56f3d58c486"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0254-attempt-1.json",
+      "sha256": "bf56f643f73f32748123184a3af45432690e20a19aa6d5a52f9563d925104cc5"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0255-attempt-1.json",
+      "sha256": "f6e140f3bf0e3219173fd0155551982febe9ee53107e655622977fb37136abe6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0256-attempt-1.json",
+      "sha256": "04cf064c6cac7c37a13e704440c8a984327984018c6a6fd86fe30c66ed08f91d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0257-attempt-1.json",
+      "sha256": "acc10264b97cd5cacc34e55627dd02561e4ac107027f1ea9e6e128260940b4fa"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0258-attempt-1.json",
+      "sha256": "315e708e0af128aa7857251f9b9adc7abf0e91fcb72ccc5b86dce1ad4b89d215"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0259-attempt-1.json",
+      "sha256": "1ea3d4cb709b0ee616a0c51a9ad36dd1c4fe2c909e01e5140d4cb38775d0fca5"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0260-attempt-1.json",
+      "sha256": "99c21c38888b590849210c8c05008298d06dd644bba51a1c62e439ae4ea5ffae"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0261-attempt-1.json",
+      "sha256": "5cb196fccc5f547c264258922d68471371985662fcc379d8111acfe0abbfbcb4"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0262-attempt-1.json",
+      "sha256": "8d3e5417b7f3906aad9ecd2f64df85b1f79aefc1bcfcbbb26c1b96bb7d7255f7"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0263-attempt-1.json",
+      "sha256": "7727c3f4704083f697e9ddb6f06f781804ea1fb703e6c3ae58e3d92a76a22a03"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0264-attempt-1.json",
+      "sha256": "46b3494ef13c30a742fc9515ffcec472a8c2984f0bb42cebb0433e65a55d4b06"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0265-attempt-1.json",
+      "sha256": "470030bc013202bbeaa8437672cdb9dccf4fd9aaf8b67ca9ffe64a768c662551"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0266-attempt-1.json",
+      "sha256": "030a8307af899f7174ba752538331b869f483ec325c6ccb2feec864de7aa21a3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0267-attempt-1.json",
+      "sha256": "5aca029491fe60866da2d900fec65c8069a0ac216d90da370eaa0664600a073d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0268-attempt-1.json",
+      "sha256": "67cf09ff0f416297b244e244c0b0c15a70c61049f250d28604c45b1b34dce504"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0269-attempt-1.json",
+      "sha256": "23b11bf21991ea724b369f59f849680ade56ff41b235506713dfeb4ec7050075"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0270-attempt-1.json",
+      "sha256": "1864f4b5835a0101f8292189f7a9281b17b7eb589b684566a36b8a3b1150a747"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0271-attempt-1.json",
+      "sha256": "9b8b9e9efc29790d6f466716db8e496ef302343339b7a67e8931acd074795596"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0272-attempt-1.json",
+      "sha256": "48c139deeebc33235b77c22211633034d72b2a489f2434b58e989d0c39a647e4"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0273-attempt-1.json",
+      "sha256": "5ec62eae59e1f96d5e54e3ffea3df65c67717f11c7785fee3a24910f22970a8b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0274-attempt-1.json",
+      "sha256": "254298ca75ef1428f50e4e5b05e6e2146ea1f0abec87903a83880300ad36ddf7"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0275-attempt-1.json",
+      "sha256": "a286157498ccf9c1ef51d7805db7307da8ff5b4c7723822c6ece5ed435b37e2b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0276-attempt-1.json",
+      "sha256": "b4035198ac308e9fc1b1b7f2d4dd1036f2ac14ae6e4672afd25b21abe4d408b0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0277-attempt-1.json",
+      "sha256": "3a90e69b5157223095968e2d1f6aaa8088e47ffde14256ce72a0f5f237fd9680"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0278-attempt-1.json",
+      "sha256": "76533fecd3b354123da4310a1220a27e41f5daa828ecb82ac479d6deebe479a7"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0279-attempt-1.json",
+      "sha256": "ef4e6827229db79dea7c4ce1f700025d396554f431e139266e09cbb26cafbb2d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0280-attempt-1.json",
+      "sha256": "0b66fa67f76df8ecc46b406046b7b6de14ea3144c3ba1ac4e3c8ce76ae072b33"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0281-attempt-1.json",
+      "sha256": "a3c13a84716c90a6d2dab96fd24f7b05e4c729b4a1753720fb1e235c43372e04"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0282-attempt-1.json",
+      "sha256": "2b40a5f95feb1009592bcc8944ac04213cf0dcc53e785f19708860b9326b654f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0283-attempt-1.json",
+      "sha256": "b11845f5544c2dc4b9ea61600a84e98598f8c6e6cc49b39e56f46924d38512ef"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0284-attempt-1.json",
+      "sha256": "0ded59c3a256081a56ca59c46ecac7c47e26ece774822f459469d2f446b08317"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0285-attempt-1.json",
+      "sha256": "371ff629ad6076c4c9ce9f77dabe5ce1b1c2b245c2c0f22ad18597e47b4abd82"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0286-attempt-1.json",
+      "sha256": "09d065136a30e9927c0456840f49f01cfd7576b78ca6cfcae924115ab6c30f03"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0287-attempt-1.json",
+      "sha256": "a0e3411870b855745621fbe1ceaf1024cc13cfa7bbe8b8be53c462f148752046"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0288-attempt-1.json",
+      "sha256": "d1321893786cd611f94b1726b110e748f32aba0451556b5659f06c7fd1cbfb7f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0289-attempt-1.json",
+      "sha256": "bbe2440b28f2f77534ddd5617e13eaa9108289da20e361851b8084e62de2e390"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0290-attempt-1.json",
+      "sha256": "e77904958f8780b43dd78e22680a079bb4926e7727cc62fe1b95e902a54420de"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0291-attempt-1.json",
+      "sha256": "b7b0a9fdaf7164a112fc14874f0fe3aa91998797f44106e171da2e9899d48f5a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0292-attempt-1.json",
+      "sha256": "d6a790ad0c09aaddb1ddec13b4564f5bca40d20f14f916dc2ef57d7e634940bb"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0293-attempt-1.json",
+      "sha256": "9934faf8f71e116a4b9ebb60636e77e4595484ab3c2204676b94d39901c8c1f6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0294-attempt-1.json",
+      "sha256": "692ec181a57bb75766ae25ff1ad405106985ece5bbd45f9b72e74e2a7a896250"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0295-attempt-1.json",
+      "sha256": "ad4667454b9270c51a014b5206b8040980bef64b40c684b826d379cc2f90bb6e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0296-attempt-1.json",
+      "sha256": "9633fbe69f101c283ba47cb2dbf1dc5db59e51d0a6418d1418bd0780a5beb4b4"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0297-attempt-1.json",
+      "sha256": "86189dea71fd8b8d856f1d65966ace4ff6d89b2fe94d6c6b4298bb2b23802307"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0298-attempt-1.json",
+      "sha256": "2797b62571ae45db04d4bcf1a6ce91d753e263d188240e4528609189ea2c8eae"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0299-attempt-1.json",
+      "sha256": "d04a98c5bfbbfa23b877f105d19891343012f6ad13375b60d26c2e40e27e0086"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-c-0300-attempt-1.json",
+      "sha256": "4c69df505be8976e8f20d02e98b0565e28d64c521e8a3cd2bb7af3de20396e87"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0001-attempt-1.json",
+      "sha256": "fcb84ea0e4b76fac2e4f5bcf41f25e673fa2f2071c37dffaf0b2de2eebd834dd"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0002-attempt-1.json",
+      "sha256": "bbf28482c49319918136adbe14007b8d3a9cd58a0ac5724bf3039fba6be573a4"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0003-attempt-1.json",
+      "sha256": "4ecaa7b36ad29a2f2cb36b1a745fdc19831b67d3334d08c5ae0abee286ab2066"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0004-attempt-1.json",
+      "sha256": "bb1cc9e8553bbd379563c435cd9226873628f53705526f151df2f0950000c134"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0005-attempt-1.json",
+      "sha256": "e41c30dae3cc158e2ef655512258ec4994d22a810bd6741f0a663a2a80024f44"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0006-attempt-1.json",
+      "sha256": "67615777654e1fffab032e745b96a144b9031e13b1071e467626f125fbf25050"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0007-attempt-1.json",
+      "sha256": "1652f0f2a59b1b660f25e9818914d9b119c5049c37d22141736e9ca31beb726b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0008-attempt-1.json",
+      "sha256": "b2cdc4bdce48dd1d4442e456c7960693a75b97724811efcc781562d902984ee2"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0009-attempt-1.json",
+      "sha256": "eb7ed7b99cdfb956db13c26e8f2fd517cfb46e5c0759b6bc2856bceac4d2f09c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0010-attempt-1.json",
+      "sha256": "310c342f82826e45d45eb2044480b99c533a59b1e08b41893a5cb1851ea2de20"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0011-attempt-1.json",
+      "sha256": "b5fcbf33020c32778bf22770ffd43e3c67e0781eeaca78582efe5607e8a99e6c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0012-attempt-1.json",
+      "sha256": "4bdc8086c6a79c7a8ce57595b738c8789cea3de9929107a3f8a846b2d8be617c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0013-attempt-1.json",
+      "sha256": "9ce334b6abef64846c95cb939bbe86f316a8e8c48f5120719bb202a762701ef9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0014-attempt-1.json",
+      "sha256": "c85dd1fbfbcadeea47cd4698c3a5197de4e2872a7f595a7b79ef36c89daa9473"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0015-attempt-1.json",
+      "sha256": "103a4a27de8fa3a57db806b5581eedd6818236a880db3e4f1cb3163b46089b64"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0016-attempt-1.json",
+      "sha256": "b544984d9beb87817681170e748d08faaea750031568c103d314b700327dd12e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0017-attempt-1.json",
+      "sha256": "632af8d762904eae7473ea8c5c6ca886652be4ee5cbe1373ee5582ce320b481f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0018-attempt-1.json",
+      "sha256": "836a2f172a623867ac542a7462b92afe43e9cb26d890c2e07fb7c40aa3164045"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0019-attempt-1.json",
+      "sha256": "78fbfa18a72646e98e162937a3f1f94761b5c681d91bb9f809865f1754161944"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0020-attempt-1.json",
+      "sha256": "82e83dd33376ce3395407f905744beda66a25ef6818d20b9c67a0f1e9cac0f7a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0021-attempt-1.json",
+      "sha256": "d562fc60b122473e79b220bb197ab0e5373765c129328f2e2e16fc6156afae09"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0022-attempt-1.json",
+      "sha256": "1ddca9e778669fc9345115426bb713c103a9f9f0ec1daa5d174abfe648563453"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0023-attempt-1.json",
+      "sha256": "093157a547c37a6b297745c12e34dad7cbcc2e2d6f6abe12a086a445f50cf828"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0024-attempt-1.json",
+      "sha256": "51dd75d2f2001eb7d1236277a74e3d1126d03c56f6db4451c02c7bf70a47150c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0025-attempt-1.json",
+      "sha256": "5926daa8c5158f1e5bda0c84fc5101e966e00e8d31081e7c226752b4421fab0b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0026-attempt-1.json",
+      "sha256": "d3c371a43fe9c2a1dc4320d37abcdeae5c3af6cdb36fb53a133e6b6e6251b191"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0027-attempt-1.json",
+      "sha256": "a0bd22360bea88bc100736f85f8db636b999284b803a7b1aaeb71488f88d8693"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0028-attempt-1.json",
+      "sha256": "208bdc5d531673ba53f50c90c9421d56e2be8b64a57a11d48ebba2e65c70a180"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0029-attempt-1.json",
+      "sha256": "c19e60f83fc86a1a382e6354839ba4b008cbc577a5c18d2061e2b65bf0661107"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0030-attempt-1.json",
+      "sha256": "990e7489c181b494dc0c1234009038caf566051f4538a08726a2a8e6b2ec7b1c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0031-attempt-1.json",
+      "sha256": "8dad07d4f3358f2b6ab8ddf4e2f25f0b3e2296e59f2c19372b25444aecbbb44b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0032-attempt-1.json",
+      "sha256": "1e3a83f5d3f3aaf5daa7f0a8f2df666f69febeaf7a899224e772f7022aab0af4"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0033-attempt-1.json",
+      "sha256": "0dbc232d812fa3d125034e7b85cd7da2eeb5459e15b7bf0ea734df82d98933a4"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0034-attempt-1.json",
+      "sha256": "484e4e4a46155b6da0e094439b55f58c300e5d0b78662d48d1f78b85bfc93c83"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0035-attempt-1.json",
+      "sha256": "960c9a36dbfc1c704117630a6d8cfa9008c3009e1d8797d55cc80952466eadb9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0036-attempt-1.json",
+      "sha256": "be306d4cb3df3fe4927326543b7217422ddca6e966547f5ddf1c0b878e11aba1"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0037-attempt-1.json",
+      "sha256": "ed042956c80ab706b1cbdf697a76f2d652738384f8dda00a7bb6990bc22d5b40"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0038-attempt-1.json",
+      "sha256": "58519670a481e1adfaecb530385f35bb6bc87fd7a031925c37d9fbdd8a5fa5f6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0039-attempt-1.json",
+      "sha256": "4e9c98d3af6b554559ee09e443fe1d8d7fbd31bb287b9d406c791f01267dd910"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0040-attempt-1.json",
+      "sha256": "f89e14c04921b60555ed6644df2bb8fbd342486025fbf3180e262efc75460ba0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0041-attempt-1.json",
+      "sha256": "18164e933c2775bff2cb73920c274deca0c20d2021bde8c129c32d15becfab61"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0042-attempt-1.json",
+      "sha256": "903399b58c431812aeed99f79048526a3f38d0ab8cf08b162762b33f17e11959"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0043-attempt-1.json",
+      "sha256": "654286796b29d3930b3ce73055875a753d61fadfc43a67e07796ba52ec47e355"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0044-attempt-1.json",
+      "sha256": "177bb7daa7979b2a7196e4428b90106bb9af303fc2d88874f41ec76d2904d107"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0045-attempt-1.json",
+      "sha256": "7d09ab7edef4f20486ac3105f7f286e58207de0ae106375f4d0119c2b9f77e39"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0046-attempt-1.json",
+      "sha256": "f92ca117fccaad988e519645258398fd4b8d80a2f0cd437c71e453841ee10f22"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0047-attempt-1.json",
+      "sha256": "67ac8ce2e06c56f043745c3d594dd81100accaf30b066e9c739eca9e782dc7ff"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0048-attempt-1.json",
+      "sha256": "027ad50ac2e499f640e2b6fea2aae8ab0ccf990c07f179db1fd7ff7fec6a994a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0049-attempt-1.json",
+      "sha256": "02da6dbe7acf26a8cd3bf4a874e54025d3216d4a5d332bc828d30b0e52890a29"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0050-attempt-1.json",
+      "sha256": "0b4488c9964faacc47ffaddb17651c81f89cd60dbeff422e9aadd0509fa97997"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0051-attempt-1.json",
+      "sha256": "a9916879322748aa8716ac801af28ffee42a28e02df5dbc0f0736282b81132a6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0052-attempt-1.json",
+      "sha256": "53cd729e27239ee8b3acd8d37407143ca160f843f44ec9ea7a8c320852f9d7c0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0053-attempt-1.json",
+      "sha256": "43357acfe2b16af78640d6a532f7475cda82593c78f4833385945cf1791dc61a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0054-attempt-1.json",
+      "sha256": "6b999ce76133fd181c2ed18e71b4e10b8e239deceb6484c66475e58d4d3f5502"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0055-attempt-1.json",
+      "sha256": "32b0a1ce7d08156a12a1d46fc2c72000a38a840268d717edbf11c2188e02db23"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0056-attempt-1.json",
+      "sha256": "9d2372e766d5bd27fb3629641fc1d404c83b9ecaf500b34b3e6a8ff78bf0ff25"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0057-attempt-1.json",
+      "sha256": "499d598bc998f837d21363e579b040139846ade6c07a0ace50bb5380308622b8"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0058-attempt-1.json",
+      "sha256": "614eefbe5be090fb932f12c8f57a74a6dd79742b344b550cd6516298653a73d5"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0059-attempt-1.json",
+      "sha256": "cac2f34f5bce146c68a2596b90c2dc0a8926d98ca95515f48c292765086b610b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0060-attempt-1.json",
+      "sha256": "9ccf461c766c424578a262b65bbf75bc5ec537d0f14e3fe71c04a11eac33400f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0061-attempt-1.json",
+      "sha256": "3d7aa65c5bff4c15458933ea4cafb995096090f39465be8223d982a8211bcbc4"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0062-attempt-1.json",
+      "sha256": "ea83ae5870e61be15ec929aab3074ab272c79b4e41b8775df8fd39a79782df96"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0063-attempt-1.json",
+      "sha256": "aaff26b8fc0ac25af502feabad95d37dc4c14ded1159ad6916cc2b4e31da87ed"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0064-attempt-1.json",
+      "sha256": "78c84f6e86cb78ac1d9fc401ce7be39d41029d31aa96906857c6dc26a47947d8"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0065-attempt-1.json",
+      "sha256": "04766952426063e0e7b4fe5e0f1517beb9f9659e956d6bdfad09cad456077815"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0066-attempt-1.json",
+      "sha256": "93537fc2e640f0d03ace7f4cb1f10d37d44ea3366076e700aa3627cb58345b68"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0067-attempt-1.json",
+      "sha256": "4bb6a53f8584c2645f5730d6e2cfa6175cbacd2200886493c08a5bdf1a9459ef"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0068-attempt-1.json",
+      "sha256": "b9da1057af28cae24e243b760f9acc7e42252b2d61c3032562d027a7a84b1b0f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0069-attempt-1.json",
+      "sha256": "d4edfb9a07284ab10a92c395c7e9034c2a1ae76def33565cee8d426b269fd364"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0070-attempt-1.json",
+      "sha256": "fedf7c13ea01e3dca0d21f2c5c12c607f2ce5eb98b7e35daafac828fc89b6b0b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0071-attempt-1.json",
+      "sha256": "787de7766d8fb1791625692dae025fadbf3e23b973b8d293fb17f75197dc5171"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0072-attempt-1.json",
+      "sha256": "776fa511a7b53c636395e15651e591b4b7a67cefc4e81a4d559513778fde5a3c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0073-attempt-1.json",
+      "sha256": "02110db674e9157871655df0ff052154a65702554af5fd430600c5e021a41d58"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0074-attempt-1.json",
+      "sha256": "2086c46d2c85372063223bc7e76c30c0c711fd13466292f2461cfdecaf0a055e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0075-attempt-1.json",
+      "sha256": "d89cf80c77e5900df8e32336ae17242836d85fc726c22844f4a2b3c3ac53b761"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0076-attempt-1.json",
+      "sha256": "2854d93698f6b0feef2cd1c4942f6200c6c984453370fd6a1124afbd87ec49e6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0077-attempt-1.json",
+      "sha256": "5407bf7339bd68e10023561dcd7969fa05d010794926727e408bbebc347257f0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0078-attempt-1.json",
+      "sha256": "68a61ee6f02a53d60034432b7248798b2b176fe0efcaa7635c80b4c3fe1e0374"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0079-attempt-1.json",
+      "sha256": "c34777c43e917b709f94fab524a3d2a192099979434c56426e2c308a152a69f7"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0080-attempt-1.json",
+      "sha256": "9ba0ed6f4b18eeacebfea9e7a86e17853eb7d113373dee018f56244e3ded75df"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0081-attempt-1.json",
+      "sha256": "04aff8c922ea2d0489c4de08db5446592895c659e2d5b08bd1784903a3d68855"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0082-attempt-1.json",
+      "sha256": "213ecebeb40279bad81ba62271971eea3cc01e8d5215e046e16ba766832255be"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0083-attempt-1.json",
+      "sha256": "b56c06dd8337583972e8121f1a3457ff6493cc09bffa1696e8214d6bed4ae780"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0084-attempt-1.json",
+      "sha256": "85b6bd84c6914a5b25fe22421932ea5d9013787ff68fa425ff8962285935ad8e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0085-attempt-1.json",
+      "sha256": "567c3ebedf9149f3cf40df843a1928b556b3bf43b1d875831cc28b4edf4179b5"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0086-attempt-1.json",
+      "sha256": "5674565765416fde095313e28bacf4b69921185509f9834fc950465f475612a3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0087-attempt-1.json",
+      "sha256": "95ba5376e0d1200f6a40e2b700739fb6a3f46b15f6bf5e6b300e8d443af08553"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0088-attempt-1.json",
+      "sha256": "90b8564f7c1c126d21d384ea0ae4ed494a5684cca2d98ee9019cbb2931a90e55"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0089-attempt-1.json",
+      "sha256": "b7a452026b244429f4895d8102e80b50d0f1419eae2488667161d74918ad3ab9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0090-attempt-1.json",
+      "sha256": "34ebf67a5459c299ec63e2fb8c5a669772091fda517dd3ff8f2844c44f33d00a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0091-attempt-1.json",
+      "sha256": "2ffac73a70f9186f874ac392cd47fa6690d60dff3349d54b614e26eed5ecd382"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0092-attempt-1.json",
+      "sha256": "0a4d41eedc72453f7de54f0f07d6fdd3f4dd860b0ce50a1af52985d51f95bf8c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0093-attempt-1.json",
+      "sha256": "4fb7dc3361ba5992e04ae29d44697c7fd86e90b6b4350ff4cbca52d98b02ebf7"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0094-attempt-1.json",
+      "sha256": "6b36d30307423e97191c80bb419101efaf235a985efe667c8b6e356777cc37f6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0095-attempt-1.json",
+      "sha256": "600325a5a8871b6b3b8961d2354f808a41920e964510a603a0c4c32dc2ba793e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0096-attempt-1.json",
+      "sha256": "138cd5e320bb29cdc4e50c670dc08caaeeb14bf727eb66bcc8a5b3a1e0e3782b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0097-attempt-1.json",
+      "sha256": "414201c90bd89ceaa0556937e79f58af0cb05c1dc0e07325c57f06431b394a2f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0098-attempt-1.json",
+      "sha256": "2aa272dc3fd1558e7e9717433322894cb8e8fee39cb8aa3331ba0249af21c7f4"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0099-attempt-1.json",
+      "sha256": "4ccc7ee15d378ae9ff2a3d6154bf4607324bba9384f470c0d7718c49eff061ab"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0100-attempt-1.json",
+      "sha256": "6b2423c30cb9364041b704e207bc9ea1a56cbed9a8bfba0eddc443203c471a14"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0101-attempt-1.json",
+      "sha256": "87fcad4c0a22e7747be557375d21428a0276de729481549c4611f23c7601c9d2"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0102-attempt-1.json",
+      "sha256": "273ed6854ad9cdd5ffb693ce57131a43cd5718d8cf54e2f5e4ffd57e32d1957d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0103-attempt-1.json",
+      "sha256": "9a4466cc798b1ab366e585ff45c1bcab46e33662ad7447277bbbb4c174a96ec6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0104-attempt-1.json",
+      "sha256": "20b89587550b227e001c8f60a03dca667f3545ac5209b1c9fed5d416101b6a94"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0105-attempt-1.json",
+      "sha256": "3ec56e2882762364f61a863e175a35c2b0c2dc80e4b05a38b908d18d30b95057"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0106-attempt-1.json",
+      "sha256": "e8ef189551f66b64aec7144ef30a47bd1726c796f620745fd1f87140b5cd69d4"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0107-attempt-1.json",
+      "sha256": "fe26d04bec6b95ff382333dbf49ca3786499b3233989b8fda46c94696d453151"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0108-attempt-1.json",
+      "sha256": "7583f4288b48230ea3a29a0edc98de760e49faf7e5174d43656fe7cd3a5822b0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0109-attempt-1.json",
+      "sha256": "57cc44ff559bbc93d6bec2509a2e94b1c11a0655f178a18448b97c1aa0f4cb9b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0110-attempt-1.json",
+      "sha256": "5bac3cc609d819c2b22ffe01cc4fc0cd79bf7a114f8104f056b43bd9d2719bc4"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0111-attempt-1.json",
+      "sha256": "788238a3aaad36dfbdf2d78e3fefdbb49fbb88c307e330fd19cf843e736fec76"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0112-attempt-1.json",
+      "sha256": "0b99fc1ae88a23d5a7f76e85bac13245a34d42cc3c8c3c32d69ee2fdb6e8930c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0113-attempt-1.json",
+      "sha256": "9887f67e1b4785b5b9cd0cc1ba0b38c38fbf209781995d70f96ea4dbab3fd46d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0114-attempt-1.json",
+      "sha256": "5beb1d1c87c1c61841bc8f1149a736ba0343d6e9412300d28eae1795870fd203"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0115-attempt-1.json",
+      "sha256": "2a77b92138abe1b4e26b89863f45e14a645a429240a215799c45ce7c5687ac08"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0116-attempt-1.json",
+      "sha256": "97875c7e2847c59bb51f4436b4568cf65ee0b2b25e06fcf5c611e64a0721261f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0117-attempt-1.json",
+      "sha256": "1d1b00dfcd657860d73e74152d562efcbb219ac3be59257ffd6f1ab5c6d6d5a6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0118-attempt-1.json",
+      "sha256": "3aa26ab75bd3eda4ebbd47eca1cc59c749c855d73b3673575bd07139e334d782"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0119-attempt-1.json",
+      "sha256": "74cea0eccd0dadcadc87f5d38a5c17f1bca9cd0187dc470db09892ddfdd30807"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0120-attempt-1.json",
+      "sha256": "bd18c0a833d1732ed6b2ba2304d2e44736be0220d04fbda37ab8146c55fa958e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0121-attempt-1.json",
+      "sha256": "af56bd767292784f611364a27049530192e09f8067955c1e13dccc1ca18cb5b9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0122-attempt-1.json",
+      "sha256": "d601fed1a81d4acda10f1b6ecc0d2c1c68b12f63aa6df08a43f10d219285c871"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0123-attempt-1.json",
+      "sha256": "28457d2fd4007853beb99f0286226a8f92d16139a459e24790dcad520e8f14ab"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0124-attempt-1.json",
+      "sha256": "a22e845f92f575b5585afb4e21dcca0bc024474d8fe544d8ee2bade66f364184"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0125-attempt-1.json",
+      "sha256": "ffe592614da3e9172d6f75cc98f9839dec8819839760d1e41ba08d377ab38e32"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0126-attempt-1.json",
+      "sha256": "96ffbb74f1dfe4996197ef20371f2819077ea75c37755c2acc9bef0285c965f2"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0127-attempt-1.json",
+      "sha256": "f45433ad029e3f0fcc8c04aedd531c85c7cf97dddb7a29321885fc6233f7a8cc"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0128-attempt-1.json",
+      "sha256": "32caa517ea7f3cda2afd93c7b755d8b5eb35d1c3b7213b1da997022b0598ecee"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0129-attempt-1.json",
+      "sha256": "6c7a6c819551b2a6595a3c5892ef2c66ff853cc2b380138d17833261144abcf1"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0130-attempt-1.json",
+      "sha256": "cbc569972b052162d6d233218f8cb32faab29ff8dfeb57d7e883e3a30eca8b51"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0131-attempt-1.json",
+      "sha256": "87b4685163d04d2817088e8b3cf1421cf5992dc192396d7b9ce03366a52aa339"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0132-attempt-1.json",
+      "sha256": "96acd4b3366882d97ac4b1065b3ee1fff64f6e615b8cd66a5612ecc38a4dc1e9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0133-attempt-1.json",
+      "sha256": "2b7e4a542d44b604c4943a77495e2cba2acc19a03781d7aabaf135e32736fd20"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0134-attempt-1.json",
+      "sha256": "0f9e349f2bac98b9e04634082e5c113fbf3e11066faf1ee3e937ccbdf368f0a9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0135-attempt-1.json",
+      "sha256": "5799cb9471f5f5b3f9c513610e0830b39734d074121f8e755a6440e3525ba293"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0136-attempt-1.json",
+      "sha256": "02bba071fda06be65160868ad6a85a2529d587e5962df041fa3260c2550c730d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0137-attempt-1.json",
+      "sha256": "946480a08b0fef44ac2b5fe1667bdfa47254a869ff85ac5b2a4f77252abcd6cd"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0138-attempt-1.json",
+      "sha256": "fe4bff550b8ffb5634835eba3a04db003740680372868854e9c8df766dfbbfa6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0139-attempt-1.json",
+      "sha256": "e2ce18bfcd3d467b366e62d098e463156e5f613ed2d3d0b6b93fbdb5b3715674"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0140-attempt-1.json",
+      "sha256": "c9a5a347e5a0d133e377a0936c1bd16ba2c53ce462c7616faff4b489c147da24"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0141-attempt-1.json",
+      "sha256": "1020c2e17f5d1ae95758689868ed31e4552faba2028295d5a826bf91dfb075c9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0142-attempt-1.json",
+      "sha256": "91bd1efce6bfd3adf57cbcd32148469f4445ecba345d8012ebca45323c4eea75"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0143-attempt-1.json",
+      "sha256": "b4423d0bb3db3711c10c2aa1788a4f0350946b851b10f7c36b527c930f900580"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0144-attempt-1.json",
+      "sha256": "e6c372ac8e7e27edb128d8f488bef35aa0c6d5ea2caac96f4e507433b54ab9ba"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0145-attempt-1.json",
+      "sha256": "1ce1cc2ffdc837dc08f619860e3f123e9cd87db4e54d735363771490013396f7"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0146-attempt-1.json",
+      "sha256": "47f3d3b287aadff455ab5ea06b20fd314e28773a0b2cdf71d3032463a9009e5e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0147-attempt-1.json",
+      "sha256": "5da296e9e01431d57731df83340b74fbc7457c9ca8672402a14b54025603bc59"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0148-attempt-1.json",
+      "sha256": "83f3199449ad899eeddf72ec5d486a79e7ddb901242b101538e877b356973d5e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0149-attempt-1.json",
+      "sha256": "c8615e6a63c430f54fea615e6cb96b7be09f155769871ed4c53488f7e56826ae"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0150-attempt-1.json",
+      "sha256": "91c2adacd0a6ed86b9cb85a7c5759cc3bac925cc97caf011b2698594a3c285af"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0151-attempt-1.json",
+      "sha256": "017dfe4bbe1c95e20a933e69f5da69da82455e10940a871e1c1c8e64dd3dd707"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0152-attempt-1.json",
+      "sha256": "5d4d752c3f201d2b6ba28ab20b211f1109fd9497a8ab140eda4f6ec2492311a7"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0153-attempt-1.json",
+      "sha256": "24c5c2a0606647c05a80cb8ed46fde77c92f21e91fcf9a2b9369dc179bb2b9c0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0154-attempt-1.json",
+      "sha256": "b64aa0af717b81637203ccdb0df1967f085568ea6ce6b6cf6deeee0fdae9f3ec"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0155-attempt-1.json",
+      "sha256": "62eb474bf3844ff4f5186d7ab1b2a49c3ba16da9c6557d7888d936d527cd2bc9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0156-attempt-1.json",
+      "sha256": "672d9b49389a952997b3af9dad8b9c9bf6a2ce8ddde6a202d0cd7b2d99bc3736"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0157-attempt-1.json",
+      "sha256": "5399155ef50128f9ef50ccfc565e7eefddf5f0399a5eb1a065235ea550495c1e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0158-attempt-1.json",
+      "sha256": "4ab33e302441361e27d49d29f79ee27c2f9eec8da7f177b2ab14f159820f87ea"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0159-attempt-1.json",
+      "sha256": "38629eed021f26258168af7c27afbad21e096e29f8beefec10158791fe24d225"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0160-attempt-1.json",
+      "sha256": "d797749ba7ae43080dd492ffd60b0605f17162be34d5dffc6b33b700f2528773"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0161-attempt-1.json",
+      "sha256": "feea0e40bdb66d3a26ce4a079649cd84bfe288e29849cf37cefd3ad94a548cbb"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0162-attempt-1.json",
+      "sha256": "e3085e0b73f8b1a964423a12705764d2c16e5a114a9d357c58862cf08e359ea3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0163-attempt-1.json",
+      "sha256": "bfdc02c6d4a3a4cc9d2f4f2b5e755ec6512159a355f66607a838c9e99f1beb2b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0164-attempt-1.json",
+      "sha256": "2fbfa71d4a83fc368c223cbda0ac53bfcaabb9df8cd6d4f5340552b20288084e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0165-attempt-1.json",
+      "sha256": "465c8153b6fcc17ebd2b3c0c570bf8c22794333bc8fe7b934f8561d13bde294d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0166-attempt-1.json",
+      "sha256": "2b54c991897a9dc4ad49589dd7b24f6aec9517917fe24effc3450459df77eb2f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0167-attempt-1.json",
+      "sha256": "387ffc5623f44e19fed2848341083b876de7e9c814c62d6fd63dfa05fe2a19a0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0168-attempt-1.json",
+      "sha256": "42d52e9180c8224f6d5a32dfd8298a2fe248bf0890e4e6b0bccc07b1ceeffe82"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0169-attempt-1.json",
+      "sha256": "e7570c7def80cbf29c1bd23119ab36f40c0d30cb16d24abd6f2ab1a847c3eb5e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0170-attempt-1.json",
+      "sha256": "580a17ad5742131eb24f611825db4050db00ea9feef1c2b808618f0c9843ee38"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0171-attempt-1.json",
+      "sha256": "63b0b53adfb945b9bcd5512a066bf1e8284550f94259977f0268181c2f6baf28"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0172-attempt-1.json",
+      "sha256": "7fd3b2472fcceb7d323568a1aa86130f62b1053dd060d8e98bd5b422ad924e62"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0173-attempt-1.json",
+      "sha256": "584a1166ea4cf37de3d20958795e5503892333164d5dc0ee90552d15636b9d64"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0174-attempt-1.json",
+      "sha256": "f46ee3ecc356cd9038081580a67d2601565324a97077cec51f932bc6dadadc8a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0175-attempt-1.json",
+      "sha256": "30436941f5b6d72ac8ab240f4a1a73b1a2d44328d69a5b2bef0c331be6fe81d2"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0176-attempt-1.json",
+      "sha256": "a1aed8ca60e7400f25ab65cdefcc347cecc7c2a7d5e9d860fc3bcdd21d2f08f2"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0177-attempt-1.json",
+      "sha256": "91d2fbc57d51123eecdd2a50827ac2312ea5e229b9f4b9ae5274a63e783fbbdb"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0178-attempt-1.json",
+      "sha256": "480fb1445aeef4a508e5a7a8b59a78eec22d8117489de8638cedc91f47d64db9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0179-attempt-1.json",
+      "sha256": "b2c84afc563909de6019ff915ec515c23a8a7f6d1cc04e5ce66d0eea477d8798"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0180-attempt-1.json",
+      "sha256": "12c2e0224eb6d7a4642d76c880fe5eeb485642b5ae3b939d0f215c70f46a2ab8"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0181-attempt-1.json",
+      "sha256": "ef1522c2429659c1729b55b7bd5a4adbfc9c8482614c3966afb86e7b95036099"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0182-attempt-1.json",
+      "sha256": "bb5984edd426ea6d21c472b2b79b1facaa4f454b9b73087dfe090d5256d51634"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0183-attempt-1.json",
+      "sha256": "a521839648f262711c72e9f7dab0cc3e884e4cfb353395ba004e6de1ff4d66a3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0184-attempt-1.json",
+      "sha256": "2abb7268e7be7d81c7e1a5e9ef19b139df6786c78530a991397e9e7ceb3064f3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0185-attempt-1.json",
+      "sha256": "475cf6d821e46ac96f3d21e93fd4ca8e04396f0cd459eec2117abc731becb23f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0186-attempt-1.json",
+      "sha256": "265e51d6d1a8ad73fdafa84067d5eba71d8befad7ec00e92bc0c9f5829081921"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0187-attempt-1.json",
+      "sha256": "b9eb4f29363b3237c391d934a1709d0924a0ecfa0ce3e5ffc6c0b791a027935b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0188-attempt-1.json",
+      "sha256": "49e153b45dcc22c68a29f28079fd04e62c79a4a98c4b2b0b913bf4c52de91284"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0189-attempt-1.json",
+      "sha256": "e496dea16bd8ac2aad2a19555d02e1b48751079a600eb7f7772365ea89c96a93"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0190-attempt-1.json",
+      "sha256": "794a5e44d31132acf679b504997607fb894dc91cbb1b40f381aed0bab9a393b1"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0191-attempt-1.json",
+      "sha256": "c841d8b4c4bbac6acd9dd579d6274544e22deb9bbb6a80cce30e6032bdd34d37"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0192-attempt-1.json",
+      "sha256": "3fbe73ef3171ca790e0599d474897d997c50fe6a7d70d7331eaa5143c5d8174f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0193-attempt-1.json",
+      "sha256": "48a88818c54a26f520fdba4f869534ca6831479aed72a9d5e8f21d814b4c255d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0194-attempt-1.json",
+      "sha256": "2a40bc01aa77fcd649b6d84759e16073d3df28ce58c8593a6c5dad9a656a311f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0195-attempt-1.json",
+      "sha256": "6f09c110798e6196e69096c25857045ab47a1b596470a54993315a74fffd7f41"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0196-attempt-1.json",
+      "sha256": "85c0fe93c2e8f64ad582844e58bbf7c37996d58a0f1acec8a18de1d389329881"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0197-attempt-1.json",
+      "sha256": "b417191302433cfa190d45d7094b5e5acfe1077ad240f45ff9815f7ad5881f75"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0198-attempt-1.json",
+      "sha256": "8bc8eec72c539404526c7e6941e23a0703508a5010210ca04b3a4f7912afb489"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0199-attempt-1.json",
+      "sha256": "c5873f89a66802117bde855e9fd568fbdd3e2da911cb25e5736df21b8cd1e0e3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0200-attempt-1.json",
+      "sha256": "b2fcb342a7e2d807b2e80ba5d343a208f040cc3bd365d14d697f0b9682b7e08a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0201-attempt-1.json",
+      "sha256": "245736f8d959bd5e9604cde9e8d6280379d39f31cc0030e87567aa2c9bbc0d7b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0202-attempt-1.json",
+      "sha256": "0c8aa609b68192efaa65d5e614cc0f92199094f01a2a9c0986513370f3c08d0e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0203-attempt-1.json",
+      "sha256": "c1fc9b2188e87a5eb22948a0c4b5b06451ae4ad0a71327430a14e3fbe2ca1443"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0204-attempt-1.json",
+      "sha256": "7567909edad47c097a8c7be813d98b5c747c73b96d7129888aeb29daabbf1471"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0205-attempt-1.json",
+      "sha256": "b64259c61deceb1f61863d3c5b11d4512e50f7c99bba616cc6189a0646e40c5d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0206-attempt-1.json",
+      "sha256": "47c35fe33bd423d287d3b08e064fe73e11d7e269082c5ab929da460b675d7dd1"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0207-attempt-1.json",
+      "sha256": "c0d875f264ee5eb3ad5cef02c23500d8de5b401f88992372c5678261314d25fc"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0208-attempt-1.json",
+      "sha256": "681b19de7b5a154d3fe805ec55ef527ff7a2a3ade888bff2d5761d4f37c35149"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0209-attempt-1.json",
+      "sha256": "63a87c298b7b2c935b4372c97f3ecf685761af5c5bca7c157bcdcf471d2782d5"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0210-attempt-1.json",
+      "sha256": "a112e59ab1870a5b4061cf77316ded0c8714ec9b35f38eda55661ef12c315742"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0211-attempt-1.json",
+      "sha256": "49121acb02081498ef55f98c5e38c5db39c33331de5b117378373bdbaf240ad3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0212-attempt-1.json",
+      "sha256": "bc32559e03737ad62b8330ce051f4bc52c77167e18c84f70020ec42e052b7326"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0213-attempt-1.json",
+      "sha256": "26e2b1263f6843152bff6eab1b6d5c30196b58ef8f8a4c0d8006e6a3c04144a3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0214-attempt-1.json",
+      "sha256": "03b73a3cd2c327fc417d5cfa78938cf8c01fa0ac33523ce5cf385eb97408424a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0215-attempt-1.json",
+      "sha256": "fd2af51f456ec8d3394e46caf61b523df868cab6c142b21b6b0c339c15a1f20f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0216-attempt-1.json",
+      "sha256": "86c8a99d436929bcfb2a5878f0a359cf61d8934545234d49a9ccf6cd0469005c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0217-attempt-1.json",
+      "sha256": "7a993a7b53d72e62c1e289fb108aa9fbafa145984fa48f53ecc3ee976c993af5"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0218-attempt-1.json",
+      "sha256": "c849bf5134700038faa8eb67614e5da8d03596e2510fd11dcf24769d27afa7b6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0219-attempt-1.json",
+      "sha256": "adad508753afe68f7b693dd6739d37387a1b0b42d5eafe0ddfa85325867283ae"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0220-attempt-1.json",
+      "sha256": "beaab0c38b14a396d8cdebdc1f39512f07911237ebb848afdbc469382aa296ae"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0221-attempt-1.json",
+      "sha256": "fa7ffde872db758c80e50447183ba6ce2571592dde3e1658270e628c2a160089"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0222-attempt-1.json",
+      "sha256": "92ec0d0adfe8b76fe8b73f536a1d79a6368db51fa57636b304654f9df18d1c41"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0223-attempt-1.json",
+      "sha256": "3132018836d889cf00c58ec7dc060438fe66ef346ac4411674ff42d1a88f4865"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0224-attempt-1.json",
+      "sha256": "01b0a121c8ed0f40bdb3e623a3ecc3e6554b370b7714d1182b8b7786d08563f9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0225-attempt-1.json",
+      "sha256": "4c1b2a2197a8452be60fca64ad2e2812d08a68f73ee0730d7e7bed96683d8afe"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0226-attempt-1.json",
+      "sha256": "99d372ae8481954d44a4217525e1b19163f034cf9a8629be17d5bbbe4454c02a"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0227-attempt-1.json",
+      "sha256": "b332cbb53a6f70d9e33b9a982d1ea81b8ec3803a6aceaaa9d0ce7c3536450328"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0228-attempt-1.json",
+      "sha256": "b7001bf5d368ec89b023bd88e8060f834567b7edfa7b431593ad0c587b6b9778"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0229-attempt-1.json",
+      "sha256": "beaedb43e70006cd428f653eff09e761598cb8f14449a617868b74efda1d28ac"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0230-attempt-1.json",
+      "sha256": "55bf07a6b7163a6d89c200e1546f07a18781699f83cf0ccb5711847a411cfd03"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0231-attempt-1.json",
+      "sha256": "ff0c070f0cb1f89fa03bdab81fe3efbabe08be05096b3e709b073a30fa7fe8e6"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0232-attempt-1.json",
+      "sha256": "038b6674fbaa4f681e84f2c0f99b3a6df58ec7f7c6b815846c06868e17880c17"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0233-attempt-1.json",
+      "sha256": "3dec611041281ed54fee14861bbbd3de7865d8927d24643e5c6e6a11a98c52be"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0234-attempt-1.json",
+      "sha256": "5fa6e534bb0162e6c675a25e313e8243bae14129e2dff7aa04e585d46c98bd62"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0235-attempt-1.json",
+      "sha256": "4d56f5199ea292694eceea201889d0eb844f34f5400d25e7189ce7182de4e730"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0236-attempt-1.json",
+      "sha256": "bd6947db5561754ff5840b60ad511920ce470c23faa96e7633b95418a4130c22"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0237-attempt-1.json",
+      "sha256": "899952a707ee2fb31a3abf037cacb6b41479f314637919835ddf8ff6ffd5a220"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0238-attempt-1.json",
+      "sha256": "b51de05696bfbe5a9b560c5f1047732bfc6835feed7fd0c4f641586160c6c704"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0239-attempt-1.json",
+      "sha256": "4d8fc26a543f45d355f18659b43473dc3a7de79d8bcf1434f4e1afc86519b552"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0240-attempt-1.json",
+      "sha256": "566d6d95d89fab753edd9499e6405c71655ff19439cd19b983990bd5d3189a92"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0241-attempt-1.json",
+      "sha256": "072355f80da9bacdcfa34e33499d659219e2df44cb2596f95b443bb9273bead0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0242-attempt-1.json",
+      "sha256": "e2bb28bca077f542e03c4885317189254add1cfb5148fa472eb263967128bac4"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0243-attempt-1.json",
+      "sha256": "70aad7f1627536ffaa01ad59db2720cb41f4a4128034626441a63456f94a8b65"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0244-attempt-1.json",
+      "sha256": "5820c0e5295763f7f849c469504a8839ea98fe0377e3bf3cda9df76d1f07d590"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0245-attempt-1.json",
+      "sha256": "9ce80818f4d05e9cf92a1f92366d22210cf61e15ca515f37534b2e1078a4c44d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0246-attempt-1.json",
+      "sha256": "600c0588714292ad2bfcba47be90f6803fca0de5ae11b3f2a6de58d28050f479"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0247-attempt-1.json",
+      "sha256": "6ffc21469f6790db8dd202e630519333c23ece1cb7ebcdf47b20686f4db5579e"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0248-attempt-1.json",
+      "sha256": "3028eb889e2269ea329a91879de47fe7bedfaf1bbb3a75a9dc7e396fa8c86a73"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0249-attempt-1.json",
+      "sha256": "275012a2386c1c04ec2d812b7e86e78fcc528bdac74a196f015c388c69835347"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0250-attempt-1.json",
+      "sha256": "d2b6fc16dd1c538e18c0031bf5dbc601c5a2dbde7d64f290606448b66a59d329"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0251-attempt-1.json",
+      "sha256": "94023a652a7ae10721989726165111ea60137d8e65a445760ae0ff6f8c87b68b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0252-attempt-1.json",
+      "sha256": "37a77fadea299e83683304ad17e7d89986b32fbbf18551f81efce3a9e96dec85"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0253-attempt-1.json",
+      "sha256": "3a6a4560f3ebfab5872d88374e6a8de4e0b8a6c354a6832b79b68c34d6c4fd3f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0254-attempt-1.json",
+      "sha256": "9737f5dd274a34f545b288576aa9259158a258028b97506872b574117b6ca811"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0255-attempt-1.json",
+      "sha256": "c232f5c672575d690c99423ffe417e040d234c55ac6b768887a131fe1035b9dd"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0256-attempt-1.json",
+      "sha256": "3a58db304206b43aa61991352fb49a9fa448427e4c95f88ad37e4340d2d77566"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0257-attempt-1.json",
+      "sha256": "6bb15452825d92f9452db8756b4b48b160ea8b6ebe4586d35387129d065b63fa"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0258-attempt-1.json",
+      "sha256": "577227fbab74256cb25663a99a1f42fbc84e5d7a95e24d8d923baad1f0e33107"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0259-attempt-1.json",
+      "sha256": "3ac7704a2b98a5afde94eefdce7f8c7a008d6c664b1143513c0fdb0fcc5add30"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0260-attempt-1.json",
+      "sha256": "aa5b6775cbfb141eeab4f7874c69b5de4976fd6a6d656552809170b7f8a6e9ba"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0261-attempt-1.json",
+      "sha256": "615206d6399158ac50cc65d26f557baf33ef75d587e9b6d8cb1c2d0427ede034"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0262-attempt-1.json",
+      "sha256": "2850a547b6dbb0fde66fe6fa6428b0da9d66b9850d568f9ad027f01727d0401d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0263-attempt-1.json",
+      "sha256": "b5e27e83e92a089822974c119b64b8349517e698ff90b7de3840d4c43edcbc16"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0264-attempt-1.json",
+      "sha256": "9d55db55586e4bbbd7a19deb5ecad7ad92c4aed4955c4448111a79a34ccd0fe2"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0265-attempt-1.json",
+      "sha256": "3c178cea3ac74d2af544c4595ea208d6eacc4ea1f4a3a62a41b330f4fe76e423"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0266-attempt-1.json",
+      "sha256": "1a0f257431b459c31e74410db9111867b3ba149506e3abe602364d9d1c8ff4eb"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0267-attempt-1.json",
+      "sha256": "ec7615a58b88faeebf131d04a0747dbf0e9fb0ddf849fa9434c6e760f2894496"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0268-attempt-1.json",
+      "sha256": "fd97dd10a15da138c7dc762ac8f11a4657a5bc642f8e62091c3a42efbee56746"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0269-attempt-1.json",
+      "sha256": "5a16b1e64e18a04098cbd0481536a0f739583762610f1060272d67de8ea4f111"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0270-attempt-1.json",
+      "sha256": "b244c2a0590e021b12a6e7ad92b3f55acec9d7dc06f9abf10996b50883567894"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0271-attempt-1.json",
+      "sha256": "ef607f18ee2e00083f55d4e2551f34ab6f03a0dacbe231a045edd2d5d85b4573"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0272-attempt-1.json",
+      "sha256": "537c5411987e84f43b2153e4d1f057ddae4f381c5eea6b9956bc397899f28992"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0273-attempt-1.json",
+      "sha256": "ba5e60cc0fdceb0f1dafdec07a61580dc72dd1e0aea83de17e19afc27d00fed1"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0274-attempt-1.json",
+      "sha256": "4d013d984a36d717a38d3a6ce2c05f110e1ad065e73bdf7b2c2c4eabe6c7b469"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0275-attempt-1.json",
+      "sha256": "5deab5b5a7edc1bf06ffdf59848359462e956741df93ec5eaa7383d264575f7f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0276-attempt-1.json",
+      "sha256": "f4841247fd7d68887d8ac56ed78e9d9e99d816d0351be27a3d4fadc23ef79d1f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0277-attempt-1.json",
+      "sha256": "238fcb3b41d3e8dc4e17899d7acea42a335efc201bacbbbd88dbda794e7d3b19"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0278-attempt-1.json",
+      "sha256": "a1d920dd2deb6cd6800e3059246916b066d7ded3e44d8805d90fd5a2f4c3a9da"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0279-attempt-1.json",
+      "sha256": "d68845ffbc0d8d706e71f81542d086a5734bedc512e15d521451cbe07cd4832c"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0280-attempt-1.json",
+      "sha256": "b51237990cee451d2639648bc97bcda5460039f06c6d2c94b078019fc2d6f8fd"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0281-attempt-1.json",
+      "sha256": "44680f6286c955251b3ac3dff0f77b548052084be5bae18269f0d37c724ce5fb"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0282-attempt-1.json",
+      "sha256": "db82b9beb47c9a5178f7304a250c80da5787006511053ea5b75dd8102384be61"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0283-attempt-1.json",
+      "sha256": "a3711760fec63ec8ac00ab150d7d5ef34e18d49a53daf6949e785bb9302bf6a9"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0284-attempt-1.json",
+      "sha256": "f27cbc46d1db625df375ade16f00ba963ec4990fdadc11f4f328f55ddfdd62d7"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0285-attempt-1.json",
+      "sha256": "8ffd1c930162c9facd06122986ea974b4067a931866a1d558371dec40d2b06f5"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0286-attempt-1.json",
+      "sha256": "fc4b82eafe28a24fa87899a80a0184e5540c96ceb5ae8eb355c18067ed9fc3f3"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0287-attempt-1.json",
+      "sha256": "76bd5649bea4277ddcff96945bba32ad72e44ab27829d0aa9b04bab73f88b7dd"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0288-attempt-1.json",
+      "sha256": "4863cb85326ee7bf1a16cceb40030021ba540ceb8dda34f01e55e4f43fbb21ec"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0289-attempt-1.json",
+      "sha256": "44fdfed923f97575e591e4467501d336e47419ed9979be1c67eeec7c9a1c0258"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0290-attempt-1.json",
+      "sha256": "e7db59dd4c812a1d87fc8e31f7b3bc0a845d2d46d7b93d83d57caf55cfe01373"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0291-attempt-1.json",
+      "sha256": "6a6b013f0cd6230278293a7602bd0092fbed1ce23683048de2dd88943e64d1e0"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0292-attempt-1.json",
+      "sha256": "0f2103ecc666eb86e08bcde22a941515c52eae3ff91b8461e7addb4ef81f931b"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0293-attempt-1.json",
+      "sha256": "28376ff070a7a64a560e4cb915f6bc31b7310e91260c3053b69e9ce92023d2a1"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0294-attempt-1.json",
+      "sha256": "5100874fdb29682a0d3d22a656308919dcad22b7f91916cc7bdaa4b40d463a8f"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0295-attempt-1.json",
+      "sha256": "bd4f7f42d384fdfb5bbe7324e931f342103cba8a1fde95acb222500d377a6c30"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0296-attempt-1.json",
+      "sha256": "079b38e089b8cc346300d03c73d9ce3676a3357e8ca402eb1d030f801b776d1d"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0297-attempt-1.json",
+      "sha256": "2edd6b50ecda71f1f3c92756933ffccd456ea5ee482fa9334bbd0b67f90e6142"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0298-attempt-1.json",
+      "sha256": "f7be8be4a612f95ca364d6b0c09646545bbf6e26ca6ec38ce5e8a6e4c96c4bbd"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0299-attempt-1.json",
+      "sha256": "34b30f37992319d18187a2751dcd65928b8a1498f216d0faf6b31a28adcb5842"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw/sup-v4-t-0300-attempt-1.json",
+      "sha256": "d66f21d83e9a34bb97b5a869d1085e9bedbdc252e755d8cf376dcb7f9a7e8e65"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw-evidence.json",
+      "sha256": "4f757656ced6677d95fa7e0f5d0aa5468a20cd33cc6a102efdaa0fed69d044cc"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-run-report.json",
+      "sha256": "67d13e216fe4df9662c55d4df6020d261c474466f03ab174b40b7897f6dec240"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/dataset-inventory.json",
+      "sha256": "eef0681ffe5c4d5adff754faf08d7415dbc17293e9fd481feccc44bd771c8a0b"
+    }
+  ],
+  "experiment_id": "independent-relevance-confirmatory-v5",
+  "policy": "exclude all material from V1, V2, V3 and V4; reject duplicate normalized query text; never relabel",
+  "provenance": {
+    "base_head": "c85aaefb20cf0a505285a6d81836eb49f639eb8a",
+    "generator": "tools/freeze_v5_searxng_only.py",
+    "network_requests": 0
+  },
+  "schema": "amatl.relevance.v5-contamination-exclusions.v1"
+}

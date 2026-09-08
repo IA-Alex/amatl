@@ -1,0 +1,104 @@
+{
+  "artifact_sha256": "6e152b3c3d386282afb63b44b7b3d4320fcbdadf1783d88eaa7832db4645cb0a",
+  "attainability_denominator": "valid results per query; result-slot rate is retained separately and never substituted",
+  "canary_definition": [
+    {
+      "control": "explain the basic idea behind photosynthesis",
+      "pair_id": "canary-p01",
+      "treatment": "what is photosynthesis"
+    },
+    {
+      "control": "give an overview of compiler operation",
+      "pair_id": "canary-p02",
+      "treatment": "how does a compiler operate"
+    },
+    {
+      "control": "describe the principle behind ocean tides",
+      "pair_id": "canary-p03",
+      "treatment": "what causes ocean tides"
+    },
+    {
+      "control": "tell me about the function of database indexing",
+      "pair_id": "canary-p04",
+      "treatment": "how does database indexing work"
+    },
+    {
+      "control": "explain the basic idea behind immune response",
+      "pair_id": "canary-p05",
+      "treatment": "what is immune response"
+    }
+  ],
+  "canary_measurements": {
+    "depth": 3,
+    "duplicate_current": 0,
+    "experiment_id": "independent-relevance-confirmatory-v5",
+    "generated_at": "2026-09-04T13:08:34.684967+00:00",
+    "historical_overlap": 0,
+    "http_failure": 0,
+    "http_success": 10,
+    "network_requests": 10,
+    "parsed_results": 30,
+    "parser_failures": 0,
+    "provider": "SearXNG",
+    "raw_capture": "searxng-only-canary-raw.json",
+    "raw_capture_sha256": "c16658bd235431fbfeb6fd6051591bb228f2fa94c3e4e3c27592a4fabaf4aa85",
+    "raw_result_slots": 30,
+    "raw_results": 30,
+    "schema": "amatl.relevance.v5-searxng-only-canary-run.v1",
+    "timeouts": 0,
+    "valid_results": 30,
+    "valid_yield_per_query": 3.0,
+    "valid_yield_per_result_slot": 1.0
+  },
+  "conservative_method": "one-sided 95% Wilson lower bound on historical valid/result-slot rate, converted to query units using observed historical slots/query; bounded by fresh canary valid/query",
+  "conservative_valid_yield": 0.48072578744411276,
+  "decision": "PASS_SEARXNG_ONLY",
+  "evidence_sources": [
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-run-report.json",
+      "role": "V4 run report",
+      "sha256": "67d13e216fe4df9662c55d4df6020d261c474466f03ab174b40b7897f6dec240"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw-evidence.json",
+      "role": "V4 raw evidence",
+      "sha256": "4f757656ced6677d95fa7e0f5d0aa5468a20cd33cc6a102efdaa0fed69d044cc"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/v5/searxng-only-canary-raw.json",
+      "role": "fresh fixed canary raw capture",
+      "sha256": "c16658bd235431fbfeb6fd6051591bb228f2fa94c3e4e3c27592a4fabaf4aa85"
+    },
+    {
+      "path": "docs/evaluation/independent-relevance/v5/searxng-only-canary-run-report.json",
+      "role": "fresh canary run report",
+      "sha256": "de7cd30500bcffe1015cb35e78372b461dc771be072209fb7beb60c4ffde1351"
+    }
+  ],
+  "expected_valid_per_arm_conservative": 522.0682051643065,
+  "experiment_id": "independent-relevance-confirmatory-v5",
+  "formula": "min(HISTORICAL_VALID_PER_QUERY, CANARY_VALID_PER_QUERY) * WilsonLower95(HISTORICAL_VALID_RESULTS, HISTORICAL_RESULT_SLOTS) / HISTORICAL_VALID_PER_RESULT_SLOT",
+  "generated_at": "2026-09-04T13:08:34.684967+00:00",
+  "historical_measurements": {
+    "query_count": 600,
+    "result_slots": 1000,
+    "source_raw_sha256": "4f757656ced6677d95fa7e0f5d0aa5468a20cd33cc6a102efdaa0fed69d044cc",
+    "source_report_sha256": "67d13e216fe4df9662c55d4df6020d261c474466f03ab174b40b7897f6dec240",
+    "valid_per_query": 0.52,
+    "valid_per_result_slot": 0.312,
+    "valid_results": 312
+  },
+  "marginalia_included": false,
+  "minimum_required_queries_per_arm": 987,
+  "provenance": {
+    "base_head": "0c0ea729ad70c08627a63323076dbcabe6c06c28",
+    "generator": "tools/create_v5_searxng_preflight.py",
+    "network_requests": 10
+  },
+  "provider": "SearXNG",
+  "ready_to_freeze": true,
+  "recommended_queries_per_arm": 1086,
+  "safety_margin": 48.068205164306505,
+  "schema": "amatl.relevance.v5-searxng-only-attainability-preflight.v1",
+  "target_valid_per_arm": 474
+}

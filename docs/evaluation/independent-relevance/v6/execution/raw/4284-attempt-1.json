@@ -1,0 +1,306 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 4284,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 375.867,
+  "pair_id": "candidate-p-1619",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about low power computing within public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "Academic and R&amp;D Background Research Interests at SRI RISKS, Inside Risks, Illustrative Risks Computer-Related Risks, The Book Computer-Related Elections PFIR: People For Internet",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "surface of the cosmic background radiation limits electromagnetic observation to a still smaller radius. There would be a limit on the accuracy of physical measurements due to the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason",
+        "url": "https://www.fourmilab.ch/fourmilog/"
+      },
+      {
+        "category": "general",
+        "content": "of the Bee Girls&#34;, the background is a panel containing switches and controls of SAGE incoming phone and data lines. from Bill Newman ?World&#39;s first computer art? Source Placard -",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ed-thelen.org",
+          "/comp-hist/vs-ibm-sage.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "IBM SAGE",
+        "url": "https://ed-thelen.org/comp-hist/vs-ibm-sage.html"
+      },
+      {
+        "category": "general",
+        "content": "departments, to background material, educational material, news, experts etc.) WORK | apprentices | re-training | job-creation | employers | unions | health and work | self-help |",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gotze.dk",
+          "/phd/it.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Participation in the information age",
+        "url": "https://gotze.dk/phd/it.html"
+      },
+      {
+        "category": "general",
+        "content": "is no longer a fixed background but a process of continuous &#34;runoff&#34; − an evolving sequence of ontological transitions that aligns more closely with the insights of modern q",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.andyross.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE ROSS BLOG",
+        "url": "https://www.andyross.net/"
+      },
+      {
+        "category": "general",
+        "content": "not require a technical background; community service, emergency communication, operating and contests as well as the more technical aspects of electronic design and construction.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wm7d.net",
+          "/az_proj/az_html/arrl_restructuring.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Letter to ARRL - Restructing of Ham Radio Licensing",
+        "url": "https://www.wm7d.net/az_proj/az_html/arrl_restructuring.html"
+      },
+      {
+        "category": "general",
+        "content": "explosion, fire, high background radiation, or other conditions harmful to humans . Voice acting Perhaps you have heard about the recent strike (archive) (MozArchive) of voice act",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/capitalism.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Capitalism will die - but will it take us with it?",
+        "url": "http://digdeeper.love/articles/capitalism.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "from various backgrounds and disciplines such as artistic research, experimental publishing, visual art, business and performance. These practitioners will share their work in whi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conceptlab.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Garnet Hertz - conceptlab.com",
+        "url": "http://www.conceptlab.com/"
+      },
+      {
+        "category": "general",
+        "content": "when I have my background) and having a constant camera pointed at my face (I continuously have issues with pictures being taken of me by people who do I don&#39;t trust to take p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wf.lavatech.top",
+          "/lun-4/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "luna&#39;s up on her bullshit again — LavaTech WriteFreely",
+        "url": "https://wf.lavatech.top/lun-4/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f949069e184de9238c119d3934cf747c8e5329acfa32603e5eacc589d4e0a5fa",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about low power computing within public health",
+  "query_id": "candidate-c-1619",
+  "raw_result_count": 9,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.csl.sri.com/users/neumann/",
+      "original_url": "https://www.csl.sri.com/users/neumann/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Academic and R&amp;D Background Research Interests at SRI RISKS, Inside Risks, Illustrative Risks Computer-Related Risks, The Book Computer-Related Elections PFIR: People For Internet",
+      "title": "Peter Neumann&#39;s Home Page"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.fourmilab.ch/fourmilog/",
+      "original_url": "https://www.fourmilab.ch/fourmilog/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "surface of the cosmic background radiation limits electromagnetic observation to a still smaller radius. There would be a limit on the accuracy of physical measurements due to the",
+      "title": "Fourmilog: None Dare Call It Reason"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://ed-thelen.org/comp-hist/vs-ibm-sage.html",
+      "original_url": "https://ed-thelen.org/comp-hist/vs-ibm-sage.html",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "of the Bee Girls&#34;, the background is a panel containing switches and controls of SAGE incoming phone and data lines. from Bill Newman ?World&#39;s first computer art? Source Placard -",
+      "title": "IBM SAGE"
+    }
+  ],
+  "timestamp": "2026-09-05T17:43:10.537745Z"
+}

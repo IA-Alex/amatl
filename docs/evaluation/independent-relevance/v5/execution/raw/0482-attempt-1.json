@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 366.992,
+  "pair_id": "v5-p-0533",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind neural networks in communication studies",
+    "results": [
+      {
+        "category": "general",
+        "content": "the theory of communication of information, describing digital &#34;bits&#34; of information as 1&#39;s and 0&#39;s (or the Yes and No answers to questions). Shannon said that the amount of infor",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Information Philosopher - dedicated to the new information philosophy",
+        "url": "https://www.informationphilosopher.com/"
+      },
+      {
+        "category": "general",
+        "content": "acquisition module, a communication-pragmatics module, a theory of mind module, and so on!&#34; (Mithen 1996)  However, ancient modules are not the same as differences in in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": ". In Belgium the Communications Service of the Ministry of Home Affairs delivers the ingredients to the media. This can be, for example, a first name. Then the media have to build",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gangstalkingworld.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Gang stalking - Kiwipedia, the free encyclopedia",
+        "url": "https://gangstalkingworld.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "intra and intercellular communication, and in the chaotic excitability of single cells in sensing and responding to their environment. These include ion channel based excitab",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/stc/ct.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Space, Time and Consciousness",
+        "url": "http://www.dhushara.com/stc/ct.htm"
+      },
+      {
+        "category": "general",
+        "content": "as art and non-verbal communication shows. In this synthetic, connotative area, formal logic is unable to penetrate and its analytics is completely off the mark. This shows both s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/equiaeon/henotheism.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHY : On Henotheism : beyond Monotheism and Polytheism",
+        "url": "http://www.sofiatopia.org/equiaeon/henotheism.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a37ae39c68dc8551faf76268302ddee73d9e02bdb16c229c3a87f27ea67bd1fa",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind neural networks in communication studies",
+  "query_id": "v5-p-0533-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:40.590177Z"
+}

@@ -1,0 +1,11 @@
+{
+  "control_valid_results": 225,
+  "decision": "INCONCLUSIVE",
+  "experiment_id": "independent-relevance-confirmatory-v5",
+  "network_requests": 2172,
+  "queries_executed": 2172,
+  "reason": "FROZEN_UNIVERSE_EXHAUSTED_BEFORE_VALID_TARGET",
+  "schema": "amatl.relevance.v5-final-decision.v1",
+  "target_valid_per_arm": 474,
+  "treatment_valid_results": 402
+}

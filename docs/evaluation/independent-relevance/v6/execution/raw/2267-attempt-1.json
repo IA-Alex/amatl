@@ -1,0 +1,171 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2267,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 326.348,
+  "pair_id": "candidate-p-1083",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains fire weather modeling within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "website. (For further information on hexagram arrangements, see my article on Yijing hexagram sequences and archive of Chinese diagrams .) I Ching Cosmos Notes on a few indiv",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biroco.com",
+          "/yijing/links.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Yijing Dao - Annotated links to other Yijing sites, and journal articles",
+        "url": "https://www.biroco.com/yijing/links.htm"
+      },
+      {
+        "category": "general",
+        "content": "We will publish more information when we have it. Internet orders will continue to be filled as fast as we can. We will temporarily not be taking phone orders. Sincerely, Rockford",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "goodnewsaboutgod.com",
+          "/topics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Political Truth, Spiritual Life and Health, Physical Life and Health",
+        "url": "https://goodnewsaboutgod.com/topics.htm"
+      },
+      {
+        "category": "general",
+        "content": "The Brain Does Not Do Information Processing. In this section I turn finally to what I think is, in some ways, the central issue in all of this, the issue of information processin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "newdualism.org",
+          "/papers/J.Searle/searle.comp.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Is the Brain a Digital Computer?",
+        "url": "http://newdualism.org/papers/J.Searle/searle.comp.html"
+      },
+      {
+        "category": "general",
+        "content": "The Brain Does Not Do Information Processing. In this section I turn finally to what I think is, in some ways, the central issue in all of this, the issue of information proc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lafavephilosophy.x10host.com",
+          "/is_brain_a_computer.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Is the Brain a Digital Computer?",
+        "url": "http://lafavephilosophy.x10host.com/is_brain_a_computer.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d5e8275962e0e06dd24b6f9810d72addd42e632e2ab1c471ee7184e96ea45056",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains fire weather modeling within information science",
+  "query_id": "candidate-t-1083",
+  "raw_result_count": 4,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.biroco.com/yijing/links.htm",
+      "original_url": "https://www.biroco.com/yijing/links.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "website. (For further information on hexagram arrangements, see my article on Yijing hexagram sequences and archive of Chinese diagrams .) I Ching Cosmos Notes on a few indiv",
+      "title": "Yijing Dao - Annotated links to other Yijing sites, and journal articles"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://goodnewsaboutgod.com/topics.htm",
+      "original_url": "https://goodnewsaboutgod.com/topics.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "We will publish more information when we have it. Internet orders will continue to be filled as fast as we can. We will temporarily not be taking phone orders. Sincerely, Rockford",
+      "title": "Political Truth, Spiritual Life and Health, Physical Life and Health"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://newdualism.org/papers/J.Searle/searle.comp.html",
+      "original_url": "http://newdualism.org/papers/J.Searle/searle.comp.html",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "The Brain Does Not Do Information Processing. In this section I turn finally to what I think is, in some ways, the central issue in all of this, the issue of information processin",
+      "title": "Is the Brain a Digital Computer?"
+    }
+  ],
+  "timestamp": "2026-09-05T17:32:28.838863Z"
+}

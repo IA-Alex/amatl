@@ -1,0 +1,273 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 285.855,
+  "pair_id": "v5-p-0145",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is immune response in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "to consider examples of astronomy vs. astrology, or of chemistry vs. alchemy, which at one time were single fields that gradually diverged into sciences and pseudosciences. scienc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.chem1.com",
+          "/acad/sci/pseudosci.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "What is pseudoscience?",
+        "url": "http://www.chem1.com/acad/sci/pseudosci.html"
+      },
+      {
+        "category": "general",
+        "content": "Any Moving Objects, Astronomy, And Thermodynamics. Understands CSRNs{Cubical Self-Replicating Nanobots} . Knows Of 12 Magical Powers And Has Learned Their Definitions. Class Struc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "recognition networks in astronomy that seek out supernovas, to credit card fraud-detection algorithms which substantially outperform classical programs. These industries, while st",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.accelerationwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acceleration Watch (Understanding Accelerating Change)",
+        "url": "https://www.accelerationwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "Aristotle&#39;s Sabotage of Astronomy (Winter 2001-2002) The Long and Short of It by Dr. J. Gordon Edwards (Fall 1996) The Russell-Wells &#39;No- Soul&#39; Gang Behind the Moonie Freak Show b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "21sci-tech.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "21st Century Home Page",
+        "url": "http://21sci-tech.com/"
+      },
+      {
+        "category": "general",
+        "content": "Any Moving Objects, Astronomy, And Thermodynamics. Understands CSRNs{Cubical Self-Replicating Nanobots} . Knows Of 12 Magical Powers And Has Learned Their Definitions. Class Struc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.orderofmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Order Of Magi",
+        "url": "http://www.orderofmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "earth-centered astronomy. This sort of change cannot be explained by conditionalization. It is for this reason that many Bayesians prefer to focus on probability ratios of hypothe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.stanford.edu",
+          "/ARCHIVES/WIN2009/entries/epistemology-bayesian/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bayesian Epistemology (Stanford Encyclopedia of Philosophy/Winter 2009 Edition)",
+        "url": "https://plato.stanford.edu/ARCHIVES/WIN2009/entries/epistemology-bayesian/"
+      },
+      {
+        "category": "general",
+        "content": "Mathematics The Earth Astronomy Physics Historical Background, Rome and Romania [1597.5K] Late Antiquity Historical Background, Rome and Romania Philosophy in Late Antiquity Neopl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/history.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "History of Philosophy",
+        "url": "https://friesian.com/history.htm"
+      },
+      {
+        "category": "general",
+        "content": "that, as in Copernican astronomy, motion must ultimately be relative to the distant stars, but he failed to get to grips with the problem that the stars too must be assumed to mov",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "orgyofthewill.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Orgy of the Will: A Philosophy of the Future",
+        "url": "http://orgyofthewill.net/"
+      },
+      {
+        "category": "general",
+        "content": "Any Moving Objects, Astronomy, And Thermodynamics. Understands CSRNs{Cubical Self-Replicating Nanobots} . Knows Of 12 Magical Powers And Has Learned Their Definitions. Class Struc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.orderofmagi.com",
+          "/Magi.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Order Of Magi",
+        "url": "http://www.orderofmagi.com/Magi.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f8370c594aad5a901fb050d905f0c3fa8182d63c0d8ceb0857133d7eca685fd4",
+  "provider": "SearXNG",
+  "query": "what is immune response in astronomy",
+  "query_id": "v5-p-0145-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:45.989492Z"
+}

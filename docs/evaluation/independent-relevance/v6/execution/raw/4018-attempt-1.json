@@ -1,0 +1,34 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 4018,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 317.397,
+  "pair_id": "candidate-p-0958",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "key concepts associated with electric aviation within veterinary science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "44d08167feb9851bdb20fd1e3b2775605ea1d117d3992026dca2aff5ecb0c811",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "key concepts associated with electric aviation within veterinary science",
+  "query_id": "candidate-c-0958",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:41:41.827219Z"
+}

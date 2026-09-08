@@ -1,0 +1,171 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1550,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 323.076,
+  "pair_id": "candidate-p-1594",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of low power computing within conservation",
+    "results": [
+      {
+        "category": "general",
+        "content": "the violation of the conservation of energy and momentum, it can set the value of the cosmological constant. Dark energy thus keeps track of how much energy and momentum has been",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/quant.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quantum Reality and Cosmology",
+        "url": "http://www.dhushara.com/paradoxhtm/quant.htm"
+      },
+      {
+        "category": "general",
+        "content": "savings and resource conservation provided by a cross platform test system utilizing Distributed Ruby. The system performs automated testing of AXFS on User-Mode Linux and ARM bas",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "by Tom Kopec Computer Conservation Society , an initiative between the The British Computer Society and the Science Museum of London Computer History Museum , Mountain View, CA Co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ed-thelen.org",
+          "/comp-hist/merged.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Documents, Links &amp; Videos",
+        "url": "https://www.ed-thelen.org/comp-hist/merged.html"
+      },
+      {
+        "category": "general",
+        "content": "at DigiBarn Computer Conservation Society Other IBM hardware list to 1987 Williams Tube Memory Microcoded 1401 from TTL ?? A developing IBM 1410 FPGA implementation - a switch con",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ibm-1401.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "1401Restoration-CHM",
+        "url": "https://ibm-1401.info/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3db2980c2f2b98435fde60b30494e2e58feb0a11bccd80df9c2a873a6efa5225",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of low power computing within conservation",
+  "query_id": "candidate-c-1594",
+  "raw_result_count": 4,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.dhushara.com/paradoxhtm/quant.htm",
+      "original_url": "http://www.dhushara.com/paradoxhtm/quant.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "the violation of the conservation of energy and momentum, it can set the value of the cosmological constant. Dark energy thus keeps track of how much energy and momentum has been",
+      "title": "Quantum Reality and Cosmology"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html",
+      "original_url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "savings and resource conservation provided by a cross platform test system utilizing Distributed Ruby. The system performs automated testing of AXFS on User-Mode Linux and ARM bas",
+      "title": "CELF Embedded Linux Conference"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "https://www.ed-thelen.org/comp-hist/merged.html",
+      "original_url": "https://www.ed-thelen.org/comp-hist/merged.html",
+      "rank": 3,
+      "rejection_reason": null,
+      "snippet": "by Tom Kopec Computer Conservation Society , an initiative between the The British Computer Society and the Science Museum of London Computer History Museum , Mountain View, CA Co",
+      "title": "Documents, Links &amp; Videos"
+    }
+  ],
+  "timestamp": "2026-09-05T17:28:43.538192Z"
+}

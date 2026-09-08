@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 311.878,
+  "pair_id": "v5-p-0107",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes ocean tides in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "leaves only mopping up operations. Since the insurance and protection companies see no State to defend against, the syndicate of allied protectors collapses into competition and t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.anarchism.net",
+          "/newlibertarianmanifesto.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ANARCHISM.net: The New Libertarian Manifesto, by Samuel Edward Konkin III",
+        "url": "https://www.anarchism.net/newlibertarianmanifesto.htm"
+      },
+      {
+        "category": "general",
+        "content": "year of his office, his operations embraced the states beyond Bodotria, and, as he dreaded a general movement among the remoter tribes, as well as the perils which would beset an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.earlychristianwritings.com",
+          "/text/agricola.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Agricola of Tacitus",
+        "url": "http://www.earlychristianwritings.com/text/agricola.html"
+      },
+      {
+        "category": "general",
+        "content": "the place where the operations, that govern and put to work the celestial forces, are transferred and projected down here ? Even more so, if truth is to be spoken, our land is the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/maat/hermes2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ANCIENT EGYPT : The rise of Alexandro-Egyptian Hellenism and Hermetism",
+        "url": "http://www.sofiatopia.org/maat/hermes2.htm"
+      },
+      {
+        "category": "general",
+        "content": "Additionally, offensive operations are undertaken to secure decisive terrain, to deprive the enemy of resources, to gain information, to deceive and divert the enemy, to hold the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lawofwar.org",
+          "/Hostilities.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hostilities",
+        "url": "http://lawofwar.org/Hostilities.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1da6e59e4828d3a09889f540ade09c63bd58774776bbd52044e6514dcdf3ef51",
+  "provider": "SearXNG",
+  "query": "what causes ocean tides in operations research",
+  "query_id": "v5-p-0107-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:19.311901Z"
+}

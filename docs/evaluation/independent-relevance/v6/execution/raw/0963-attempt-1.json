@@ -1,0 +1,144 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 963,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 314.323,
+  "pair_id": "candidate-p-0947",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains electric aviation within public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "by archaeological evidence dates to around 300 CE, probably by Polynesian settlers from the Marquesas Islands, followed by a second wave of migration from Raiatea and Bora Bora in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hellenicaworld.com",
+          "/USA/Geo/en/Hawaii.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hawaii",
+        "url": "https://www.hellenicaworld.com/USA/Geo/en/Hawaii.html"
+      },
+      {
+        "category": "general",
+        "content": "This was the first evidence that the brain’s functions could be tapped into directly, without having to be expressed in sounds, gestures, or any of the other usual ways. Several y",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wireheading.com",
+          "/brainstim/cyborgs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cyborgs, transhumans and neuroelectronics",
+        "url": "https://www.wireheading.com/brainstim/cyborgs.html"
+      },
+      {
+        "category": "general",
+        "content": "on alert. Recent evidence indicates that the Soviets sent nuclear missile submarines also. Aviation Week and Space Technology magazine claimed that the two Soviet SCUD brigades de",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "icescape.org",
+          "/Happening.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://icescape.org/Happening.html",
+        "url": "https://icescape.org/Happening.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4e80073ee946a21d77828c137f1cb929998897895b6dd19e983bee9a4466521e",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains electric aviation within public health",
+  "query_id": "candidate-t-0947",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.hellenicaworld.com/USA/Geo/en/Hawaii.html",
+      "original_url": "https://www.hellenicaworld.com/USA/Geo/en/Hawaii.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "by archaeological evidence dates to around 300 CE, probably by Polynesian settlers from the Marquesas Islands, followed by a second wave of migration from Raiatea and Bora Bora in",
+      "title": "Hawaii"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.wireheading.com/brainstim/cyborgs.html",
+      "original_url": "https://www.wireheading.com/brainstim/cyborgs.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "This was the first evidence that the brain’s functions could be tapped into directly, without having to be expressed in sounds, gestures, or any of the other usual ways. Several y",
+      "title": "Cyborgs, transhumans and neuroelectronics"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "https://icescape.org/Happening.html",
+      "original_url": "https://icescape.org/Happening.html",
+      "rank": 3,
+      "rejection_reason": null,
+      "snippet": "on alert. Recent evidence indicates that the Soviets sent nuclear missile submarines also. Aviation Week and Space Technology magazine claimed that the two Soviet SCUD brigades de",
+      "title": "https://icescape.org/Happening.html"
+    }
+  ],
+  "timestamp": "2026-09-05T17:25:34.192884Z"
+}

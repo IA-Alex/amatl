@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 235.111,
+  "pair_id": "v5-p-1067",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes microbial fermentation in robotics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6a3b999df41b00168739c913abd1f127f53f779a906eeafd25f5d2b79ba2bd9e",
+  "provider": "SearXNG",
+  "query": "what causes microbial fermentation in robotics",
+  "query_id": "v5-p-1067-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:56.869183Z"
+}

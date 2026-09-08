@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 1597,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 314.032,
+  "pair_id": "candidate-p-1091",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains fire weather modeling within public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "be no more conclusive evidence that we possess the spirit of Satan than the disposition to hurt and destroy those who do not appreciate our work, or who act contrary to our ideas.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "goodnewsaboutgod.com",
+          "/topics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Political Truth, Spiritual Life and Health, Physical Life and Health",
+        "url": "https://goodnewsaboutgod.com/topics.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4fc5350dfe6696edc94564b95df11a6598afb16b3ad51fcd12d6692acf18e00d",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains fire weather modeling within public health",
+  "query_id": "candidate-t-1091",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://goodnewsaboutgod.com/topics.htm",
+      "original_url": "https://goodnewsaboutgod.com/topics.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "be no more conclusive evidence that we possess the spirit of Satan than the disposition to hurt and destroy those who do not appreciate our work, or who act contrary to our ideas.",
+      "title": "Political Truth, Spiritual Life and Health, Physical Life and Health"
+    }
+  ],
+  "timestamp": "2026-09-05T17:28:58.893838Z"
+}

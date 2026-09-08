@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 411.85232599673327,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind version control in civil engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "flight engineer engineering farmer farmers significance rare via least somewhat museum phase terrible metal motion unfortunately severe factory wild strongly laugh laughed bloody",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "by which macro-social engineering might fix things don&#39;t exist.  Education on the needed scale will not get better. Nor farming, or medicine.  Those fresh impulses, in s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/Culmination.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "the Culmination",
+        "url": "http://ipwebdev.com/hermit/Culmination.html"
+      },
+      {
+        "category": "general",
+        "content": "politicians. Weather engineering, freezing time, precursor robot wars, the nature of mind, artificial life, mind conversion, EM disease propagation - all are explained in this tou",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "of creative and careful engineering, not the limits of the human body. The manned land speed record set on the Big Run would stand until October 1983, when Richard Noble&#39;s jet pow",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason",
+        "url": "https://www.fourmilab.ch/fourmilog/"
+      },
+      {
+        "category": "general",
+        "content": "flight engineer [engineering] farmer [farmers] significance rare via least somewhat museum phase terrible metal motion unfortunately severe factory wild strongly laugh [laughed] b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq-bnc.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.conlang.info/wordfreq-bnc.txt",
+        "url": "http://www.conlang.info/wordfreq-bnc.txt"
+      },
+      {
+        "category": "general",
+        "content": "that most of my fellow engineering classmates naturally absorbed. Mises’s dualistic epistemology and criticism of monism-positivism-empiricism, which I studied much later, also he",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "xenisa.github.io",
+          "/kinsella/lffs/legal-foundations-of-a-free-society.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Legal Foundations of a Free Society",
+        "url": "https://xenisa.github.io/kinsella/lffs/legal-foundations-of-a-free-society.html"
+      },
+      {
+        "category": "general",
+        "content": "of such loans is that engineering and construction companies from our own country must build all these projects. In essence, most of the money never leaves the United States; it i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.anarchistfaq.com",
+          "/B.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Anarchist FAQ - II. Why are anarchists against the State?",
+        "url": "http://www.anarchistfaq.com/B.html"
+      },
+      {
+        "category": "general",
+        "content": "Technologies Engineering and Design - Electromagnetic Pulse ( EMP ) and Tempest Protection for Facilities NATO HANDBOOK ON THE MEDICAL ASPECTS OF NBC DEFENSIVE OPERATIONS PART I -",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greatdreams.com",
+          "/war/rule_2002.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RULE 2002",
+        "url": "http://www.greatdreams.com/war/rule_2002.htm"
+      },
+      {
+        "category": "general",
+        "content": "never set foot in an engineering workspace. Never seen a P&amp;ID let alone read one. Never coded. Can’t read a schematic. Confuses mass and weight. Confuses voltage, curren",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/epistemology/difficult-to-change-minds",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Why It&#39;s So Difficult To Change People&#39;s Minds",
+        "url": "https://zerocontradictions.net/epistemology/difficult-to-change-minds"
+      },
+      {
+        "category": "general",
+        "content": "a magazine dealing with engineering matters, feeling it incumbent on me to keep in touch but the touch has become a pressure, the pressure a crushing strain, until the mass of art",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.lewrockwell.com",
+          "/gatto/gatto-uhae-9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cult of Scientific Management by John Taylor Gatto",
+        "url": "https://archive.lewrockwell.com/gatto/gatto-uhae-9.html"
+      },
+      {
+        "category": "general",
+        "content": "Unlike most social engineering projects, this one can be done at home with ordinary kitchen equipment. All you need is some money, a blender, and a spoon. Step 1: go to your local",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2007/04/england_rip_1.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: England R.I.P.?",
+        "url": "http://www.2blowhards.com/archives/2007/04/england_rip_1.html"
+      },
+      {
+        "category": "general",
+        "content": "a course in Security Engineering at Edinburgh to masters students and fourth-year undergrads, and the lecture videos are now all online (as are the lecture videos and notes for my",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0108",
+  "query_text": "describe the principle behind version control in civil engineering",
+  "requested_at": "2026-09-03T01:42:27.200835Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 373.86,
+  "pair_id": "v5-p-0686",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does language acquisition in biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "| brain | &#43;language-acquisition | primate-language A fascinating look at a different mind Within hours of his birth at the Yerkes Primate Research Center in Georgia in 1980, Kanzi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cse.iitk.ac.in",
+          "/users/amit/books/savage-rumbaugh-1998-apes-language-human.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Book Excerptise: Apes, Language, and the Human Mind by Sue Savage-Rumbaugh and Stuart G. Shanker and Talbot J. Taylor",
+        "url": "https://www.cse.iitk.ac.in/users/amit/books/savage-rumbaugh-1998-apes-language-human.html"
+      },
+      {
+        "category": "general",
+        "content": "but language acquisition studies make it clear that this is not so (cf. François Grosjean’s Life with Two Languages , 1984). Language learning takes effort even for childre",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.zompist.com",
+          "/langorg.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Proto-World and the Language Organ",
+        "url": "http://www.zompist.com/langorg.htm"
+      },
+      {
+        "category": "general",
+        "content": "the corporate ladder, acquisition of money and material goods far beyond the point at which they cease to give any additional physical satisfaction, and social activism when it ad",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unabomber.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society and Its Future",
+        "url": "https://unabomber.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "differences Language acquisition is different in autism. Autistics lag behind in using the correct language syntax. Low-level &#34;impairments&#34; are suggested by psychiatry 1",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "rdos.net",
+          "/eng/asperger.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Neanderthal theory of autism",
+        "url": "http://rdos.net/eng/asperger.htm"
+      },
+      {
+        "category": "general",
+        "content": "the corporate ladder, acquisition of money and material goods far beyond the point at which they cease to give any additional physical satisfaction, and social activism when it ad",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/industrial-society-and-its-future-manifesto",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society And Its Future",
+        "url": "https://zerocontradictions.net/misc/industrial-society-and-its-future-manifesto"
+      },
+      {
+        "category": "general",
+        "content": "module, a grammar acquisition module, a communication-pragmatics module, a theory of mind module, and so on!&#34; (Mithen 1996)  However, ancient modules are not the same as",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "and its re-acquisition depends on neurological means. Still, it is not clear how purely mechanistic signal processing could know that it should initiate a re-mapping, unless perha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "arcaneknowledge.org",
+          "/science/vitapsych3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Vitalism and Psychology",
+        "url": "https://arcaneknowledge.org/science/vitapsych3.htm"
+      },
+      {
+        "category": "general",
+        "content": "in this grade to the acquisition of specialized knowledge. Individuality is becoming conscious of itself and specialization is beginning. THUS I BUDGET, SO TO SPEAK, FOR OUR 2400",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "hex.ooo",
+          "/library/wells_informative.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "H.G. Wells: The Informative Content of Education",
+        "url": "https://hex.ooo/library/wells_informative.html"
+      },
+      {
+        "category": "general",
+        "content": ". The howler monkeys&#39; acquisition of trichromatic vision represents evolutionary progress, unquestionably. But the same neo-Darwinian microevolutionary mechanism has not been show",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.panspermia.org",
+          "/neodarw.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Neo-Darwinism: The Current Paradigm. by Brig Klyce",
+        "url": "https://www.panspermia.org/neodarw.htm"
+      },
+      {
+        "category": "general",
+        "content": "authors performed data acquisition and analysis, collected documents, draw the figure, and wrote the papers. Acknowledgements This work is supported by the National Natural Scienc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mailstar.net",
+          "/coronavirus.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Covid-19 was genetically engineered by virologists in a lab",
+        "url": "https://mailstar.net/coronavirus.html"
+      },
+      {
+        "category": "general",
+        "content": "is in this life the acquisition of truth, and in the afterlife to see this Truth in God. For assuming, with Aristotle, that what man seeks is happiness, where shall he best find i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.andrsib.com",
+          "/durant/advr.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Will Durant: The Age Of Faith. CHAPTER XXXVI. The Adventure of Reason",
+        "url": "http://www.andrsib.com/durant/advr.htm"
+      },
+      {
+        "category": "general",
+        "content": "smaller companies about acquisitions for larger companies (Pfizer, Merck, etc.) ask how a recent acquisition of a smaller company (there will be one, don&#39;t worry) affects your rol",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sciencecareergeneral.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Science Career General Paste",
+        "url": "https://sciencecareergeneral.neocities.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c89799f9c60f187dc48322fd8253c6c3c60ce40d7e329ec73c5e3784106b3d89",
+  "provider": "SearXNG",
+  "query": "how does language acquisition in biology work",
+  "query_id": "v5-p-0686-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:27.426077Z"
+}

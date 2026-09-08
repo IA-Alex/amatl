@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 326.166220002051,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does a microwave oven work",
+    "results": [
+      {
+        "category": "general",
+        "content": "a refrigerator work? How does a microwave oven work? How does a radio work? How does an antenna work? How does a TV work? How does a light bulb work? How does a camera work? Why d",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "humanknowledge.net",
+          "/Thoughts.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Human Knowledge: Foundations and Limits",
+        "url": "http://humanknowledge.net/Thoughts.html"
+      },
+      {
+        "category": "general",
+        "content": "light side and near the microwave side. However, if you really heat an object up to several hundred degrees, it the starts to generate near infared radiation. If you continue heat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.qrg.northwestern.edu",
+          "/projects/vss/docs/thermal/3-what-happens-to-heat-once-its-released.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "What happens to heat once it is released into space?",
+        "url": "https://www.qrg.northwestern.edu/projects/vss/docs/thermal/3-what-happens-to-heat-once-its-released.html"
+      },
+      {
+        "category": "general",
+        "content": "computers, televisions, microwave ovens, and other technology, our pursuit of these trinkets reeks of a fundamental selfishness. Do you recall Jesus saying this: Matthew 25:41 The",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "TheChristmasConspiracy.com",
+          "/RUChristian.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Are You a Great Christian?",
+        "url": "http://TheChristmasConspiracy.com/RUChristian.htm"
+      },
+      {
+        "category": "general",
+        "content": "industrial microwave technology&#34; using electricity to pyrolyse wood claims they can produce a ton of char for $65/ton in the UK article: &#39;Biochar&#39; goes industrial wit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ahualoa.net",
+          "/ag/notes_biochar.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hawai&#39;i Biochar Notes",
+        "url": "http://ahualoa.net/ag/notes_biochar.html"
+      },
+      {
+        "category": "general",
+        "content": "To re-kosher a microwave oven, all you need to do is boil a glass of water in it for 10 minutes! As you can see, the rules vary. Usually re-koshered equipment is safe for dairy-al",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "web.mit.edu",
+          "/kevles/www/nomilk.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Eating without Casein --A Page for the Milk Allergic",
+        "url": "https://web.mit.edu/kevles/www/nomilk.html"
+      },
+      {
+        "category": "general",
+        "content": "dinosaurs the size of a microwave oven (or so! :D ). Aiming at providing more power and usability, some pocket computers have grown to adopt a more comfortable keyboard, seizing t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cdecas.free.fr",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Welcome to Caz&#39; Website",
+        "url": "http://cdecas.free.fr/"
+      },
+      {
+        "category": "general",
+        "content": "&#39;Well, maybe I&#39;ll just microwave all my CDs - look, look, there goes my Tom Robinson Band - feel better now?&#39; Been there? Splendid. So, several years ago we&#39;re having this argumen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.thingsmygirlfriendandihavearguedabout.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Things my girlfriend and I have argued about",
+        "url": "http://www.thingsmygirlfriendandihavearguedabout.com/"
+      },
+      {
+        "category": "general",
+        "content": "more energetic than a microwave oven. It must be some powerful equipment; and it must have a great deal of energy it can draw on. So let&#39;s suppose that the dilithium crystals and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/trek.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Fascist Ideology of Star Trek -- and Firefly, the Anti-Trek",
+        "url": "https://friesian.com/trek.htm"
+      },
+      {
+        "category": "general",
+        "content": "oven (building homemade microwave oven) Microwave magnetron in free air - measuring spacial distribution and other experiments Magnetrons - Microwave plasma flame and other danger",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "danyk.cz",
+          "/index_en.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DANYK.CZ - Electrotechnic schematics, howto, DIY",
+        "url": "https://danyk.cz/index_en.html"
+      },
+      {
+        "category": "general",
+        "content": "Also for use in the microwave if small enough and in the freezer. Can be cut to size. Easy to clean, just rinse and some soap when finished. Can roll up for storage. The cheaper o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "equipmentforkitchens.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Kitchen Equipment/Tools/Gadgets Encyclopedia for Paleo/Primal Eaters",
+        "url": "https://equipmentforkitchens.com/"
+      },
+      {
+        "category": "general",
+        "content": "tempura frying, microwave and drying.  By preparing the various species in these basic ways we can learn how to best use them in more complex recipes. Rather than offering up",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mushroom-collecting.com",
+          "/mushroomcooking.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cooking mushrooms using basic cooking processes to evaluate flavor - Mushroom-Collecting.com",
+        "url": "http://mushroom-collecting.com/mushroomcooking.html"
+      },
+      {
+        "category": "general",
+        "content": "range from the ’’ microwave oven &#34; position that &#34;if it doesn’t appreciably heat tissue, it doesn’t harm biological organisms,&#34; to the &#34; total fear &#34; posi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/newenergy/defeatcancer/cancer.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Tom Bearden Website",
+        "url": "https://www.bibliotecapleyades.net/ciencia/newenergy/defeatcancer/cancer.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-t-011",
+  "query_text": "how does a microwave oven work",
+  "requested_at": "2026-09-02T22:58:58.347676Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 320.425,
+  "pair_id": "v5-p-0480",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind encryption keys in geology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "82d26aff148e50e03f53c6384232c2a2468034e679e457a37ed16d820a4928ff",
+  "provider": "SearXNG",
+  "query": "describe the principle behind encryption keys in geology",
+  "query_id": "v5-p-0480-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:45.554988Z"
+}

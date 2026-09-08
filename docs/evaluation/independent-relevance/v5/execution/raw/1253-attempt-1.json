@@ -1,0 +1,192 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 281.987,
+  "pair_id": "v5-p-0321",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is water purification in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "in the sense of purification as punishment, but as a gradual ascent towards the perfect development of one&#39;s potential. Psychology is used to explain mind expansion as “mys",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.vatican.va",
+          "/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jesus Christ The Bearer Of The Water Of Life - A Christian reflection on the New Age",
+        "url": "https://www.vatican.va/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html"
+      },
+      {
+        "category": "general",
+        "content": "facility known as Water Purification Unit 731: The unit, commanded by Lieutenant General Shiro Ishii, experimented with anthrax, dysentery, cholera, and plague on U.S., British, a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.isegoria.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Isegoria",
+        "url": "http://www.isegoria.net/"
+      },
+      {
+        "category": "general",
+        "content": "organization. A water purification system valued at $20,000 produced by the Netafim manufacturer, donated by Shari Arison Glazer and the Shira Hadasha Congregation , in Jerusalem.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.imninalu.net",
+          "/Israel-Arabs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Israel and the Arab World",
+        "url": "https://www.imninalu.net/Israel-Arabs.htm"
+      },
+      {
+        "category": "general",
+        "content": "Ceremonies Cleansing &amp; Purification Ceremonies Sace / Ses Ceremonial Tray Navjote, Sudreh Pooshi. Initiation Sudrah/Sudre and Kusti/Kushti Jashan / Jashne - Thanksgiving Ceremonie",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.heritageinstitute.com",
+          "/zoroastrianism/reference/xenophon/cyropaedia/cyropaedia7.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Xenophon Cyropaedia: Education of Cyrus I Book 7",
+        "url": "http://www.heritageinstitute.com/zoroastrianism/reference/xenophon/cyropaedia/cyropaedia7.htm"
+      },
+      {
+        "category": "general",
+        "content": "and my city water purification departments. It never once occurred to me that if we didn&#39;t pollute our water supply we wouldn&#39;t need the purification department. I trusted my city",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.luminist.org",
+          "/archives/mann_i_was_robot.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.luminist.org/archives/mann_i_was_robot.txt",
+        "url": "http://www.luminist.org/archives/mann_i_was_robot.txt"
+      },
+      {
+        "category": "general",
+        "content": "or not. As the flame of purification was then fed by the more coarsely constructed and baser bodies of animal sacrifices, exacted under the Mosaic law, so also today the baser and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.phoenixmasonry.org",
+          "/ancient_and_modern_initiation.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ancient and Modern Initiation by Max Heindel",
+        "url": "https://www.phoenixmasonry.org/ancient_and_modern_initiation.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "31c0965c3118edb3aa0e88d15b6704218869e2508cc909db8fa2a3c79fb1322d",
+  "provider": "SearXNG",
+  "query": "what is water purification in industrial design",
+  "query_id": "v5-p-0321-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:57.346827Z"
+}

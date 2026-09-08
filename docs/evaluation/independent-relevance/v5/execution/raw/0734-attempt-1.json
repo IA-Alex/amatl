@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 259.974,
+  "pair_id": "v5-p-0695",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of language acquisition in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "The $2.3 million acquisition had been in the works for 13 years, ever since the Capitol Land Trust and Squaxin Island Tribe started talking about it, said former Capitol Land Trus",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cowlitzcountry.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cowlitz Country News Home Page",
+        "url": "http://www.cowlitzcountry.com/"
+      },
+      {
+        "category": "general",
+        "content": "as Anki will speed up acquisition of such chunks. It&#39;s merely an argument that long-term memory plays a crucial role in the acquisition of some types of expertise. Still, it seems",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "augmentingcognition.com",
+          "/ltm.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Augmenting Long-term Memory",
+        "url": "http://augmentingcognition.com/ltm.html"
+      },
+      {
+        "category": "general",
+        "content": "side of the merger, the acquisition, or the partnership while waiting for the check. ** How to Know What Not to Say in a Chance Meeting Technique (Chance Encounters Are for Chitch",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sive.rs",
+          "/book/HowToTalkToAnyone",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Talk to Anyone - by Leil Lowndes | Derek Sivers",
+        "url": "https://sive.rs/book/HowToTalkToAnyone"
+      },
+      {
+        "category": "general",
+        "content": "forward with a planned acquisition of vacuum-maker iRobot , with the two companies saying in a release there was “no path to regulatory approval for the deal.” The Roomba maker al",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "techrights.org",
+          "/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Techrights — Links 30/01/2024: Many More Layoffs (Microsoft the Most Tech Layoffs This Year)",
+        "url": "http://techrights.org/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "23b5774befbc1e1c1521f8f497c205953ff2b0be7dce5ec91dca0e0afbf280ee",
+  "provider": "SearXNG",
+  "query": "give an overview of language acquisition in food science",
+  "query_id": "v5-p-0695-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:09.276221Z"
+}

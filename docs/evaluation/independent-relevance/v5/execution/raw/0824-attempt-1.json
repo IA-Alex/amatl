@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 323.542,
+  "pair_id": "v5-p-0796",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind battery chemistry in civil engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "06a45b22165b6e7223bdd3f8fd6c84c8911700997c454e7fbb2f0a3900d46749",
+  "provider": "SearXNG",
+  "query": "describe the principle behind battery chemistry in civil engineering",
+  "query_id": "v5-p-0796-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:36.984007Z"
+}

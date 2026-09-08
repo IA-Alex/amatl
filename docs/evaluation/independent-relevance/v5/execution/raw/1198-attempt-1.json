@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 322.44,
+  "pair_id": "v5-p-0524",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind neural networks in optics",
+    "results": [
+      {
+        "category": "general",
+        "content": "It is thus possible in principle for a single ion channel, potentially triggered by only one or two neurotransmitter molecules, if suitably situated on the receptor neuron, e.g. a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/stc/ct.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Space, Time and Consciousness",
+        "url": "http://www.dhushara.com/stc/ct.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "717f3dc9f145f03637b06dd323bbde0f4a09663c4a629a115bd10cadcddcca9f",
+  "provider": "SearXNG",
+  "query": "describe the principle behind neural networks in optics",
+  "query_id": "v5-p-0524-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:11:39.683590Z"
+}

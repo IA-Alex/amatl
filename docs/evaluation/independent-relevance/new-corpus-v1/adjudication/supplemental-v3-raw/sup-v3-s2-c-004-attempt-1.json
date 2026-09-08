@@ -1,0 +1,135 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 398.04198400088353,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the operation of a gyroscope",
+    "results": [
+      {
+        "category": "general",
+        "content": "both their corporate operations and global game production during the arcade boom: June 1986. Here’s a Sega employee posing next to an assembled sitdown Sega Enduro Racer at",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "arcadeblogger.com",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Arcade Blogger",
+        "url": "https://arcadeblogger.com/feed/"
+      },
+      {
+        "category": "general",
+        "content": "The 3DS-only hardware Operation The backwards-compatible block Pipeline I/O External interfaces and peripherals The ‘New’ enhancements Internal interfaces The supplemental compute",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/nintendo-3ds/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nintendo 3DS Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/nintendo-3ds/"
+      },
+      {
+        "category": "general",
+        "content": "Logs Appendix A: System Operation A.1. Firmware Modes A.2. GPS A.3. Controlling An Altimeter Over The Radio Link A.4. Ground Testing A.5. Radio Link A.6. APRS A.7. Configurable Pa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "altusmetrum.org",
+          "/AltOS/doc/altusmetrum.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Altus Metrum System: An Owner’s Manual for Altus Metrum Rocketry Electronics",
+        "url": "https://altusmetrum.org/AltOS/doc/altusmetrum.html"
+      },
+      {
+        "category": "general",
+        "content": "was transferring his operations from a liberal arts university to one with a strong accent on electronics.&#34; &#34;Well, you wouldn&#39;t expect a guy dumb enough to make the first mistake",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.copperwood.com",
+          "/carlandjerry.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John T. Frye&#39;s Carl and Jerry, from Popular Electronics",
+        "url": "http://www.copperwood.com/carlandjerry.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-c-004",
+  "query_text": "tell me about the operation of a gyroscope",
+  "requested_at": "2026-09-02T22:59:03.035139Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

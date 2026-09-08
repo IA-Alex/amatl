@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 278.481,
+  "pair_id": "v5-p-0669",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is traffic flow in pharmacology",
+    "results": [
+      {
+        "category": "general",
+        "content": "pathology, pharmacology, and physiology. Interdisciplinary areas such as genetics, immunology, and nutrition are also tested. The Step 1 exam one-day computer exam contains 350 qu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mwsearch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Medical World Search",
+        "url": "http://mwsearch.com/"
+      },
+      {
+        "category": "general",
+        "content": "Pharmacologist Pharmacology &amp; Toxicology, General Pharmacy Security Philatelist Philippines Customs &amp; Practices Phlebotomy, Non-Physician Photo and Film Processing Equipment Photo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "VFTonline.org",
+          "/VFTprayer/heaven/000list.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://VFTonline.org/VFTprayer/heaven/000list.txt",
+        "url": "http://VFTonline.org/VFTprayer/heaven/000list.txt"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "eecdc45e59297f41b3a2f87521cc20a9cb0b12806b9babd8988bc0091b7505dd",
+  "provider": "SearXNG",
+  "query": "what is traffic flow in pharmacology",
+  "query_id": "v5-p-0669-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:08:28.861424Z"
+}

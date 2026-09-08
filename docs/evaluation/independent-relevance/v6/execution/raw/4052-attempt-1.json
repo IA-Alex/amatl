@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 4052,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 329.837,
+  "pair_id": "candidate-p-1430",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "key concepts associated with image compression within risk analysis",
+    "results": [
+      {
+        "category": "general",
+        "content": "Images with JPEG Compression Artifacts Vincent de Rouisers et al. — Redmond Series — July 2001 Format: Scanned PDF Language: English Category: Nonfiction - Digital For",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "suricrasia.online",
+          "/library/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Suricrasia Online&#39;s Online Library",
+        "url": "https://suricrasia.online/library/"
+      },
+      {
+        "category": "general",
+        "content": "a daily basis, due to compression of the soft parts of the spine during the day. The ears and nose continue gradually growing during adulthood. Bones seem permanent, but the calci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "baharna.com",
+          "/philos/life.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Psychozoan: The Definition of Life",
+        "url": "https://baharna.com/philos/life.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9571d3ee747ca3e36eb38f14a630a1efb792eb8ba7c537eda4728fa36cee2faf",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "key concepts associated with image compression within risk analysis",
+  "query_id": "candidate-c-1430",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://suricrasia.online/library/",
+      "original_url": "https://suricrasia.online/library/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Images with JPEG Compression Artifacts Vincent de Rouisers et al. — Redmond Series — July 2001 Format: Scanned PDF Language: English Category: Nonfiction - Digital For",
+      "title": "Suricrasia Online&#39;s Online Library"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://baharna.com/philos/life.htm",
+      "original_url": "https://baharna.com/philos/life.htm",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "a daily basis, due to compression of the soft parts of the spine during the day. The ears and nose continue gradually growing during adulthood. Bones seem permanent, but the calci",
+      "title": "Psychozoan: The Definition of Life"
+    }
+  ],
+  "timestamp": "2026-09-05T17:41:51.903135Z"
+}

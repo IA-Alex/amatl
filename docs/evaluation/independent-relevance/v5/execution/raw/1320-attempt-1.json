@@ -1,0 +1,273 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 294.178,
+  "pair_id": "v5-p-0671",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of traffic flow in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "it can give a good overview of what should happen when. Timing charts are definitely not limited to SMIL animations. Unfortunately, syncbase values are, and they can still help ev",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.smashingmagazine.com",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Articles on Smashing Magazine — For Web Designers And Developers",
+        "url": "https://www.smashingmagazine.com/feed/"
+      },
+      {
+        "category": "general",
+        "content": "will provide a brief overview of how outreach staff and health professionals can help AI/ANs get coverage outside of open enrollment and next steps for assistance following enroll",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cowlitzcountry.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cowlitz Country News Home Page",
+        "url": "http://www.cowlitzcountry.com/"
+      },
+      {
+        "category": "general",
+        "content": "Amendment Under Attack Overview of Bureacracy CAFTA and the New World Order FCC Restricts the Media FDA Bans Vitamins FTAA and the New World Order HHS Serves Nobody HUD Develops N",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "KevinCraig.us",
+          "/about.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "About Kevin Craig",
+        "url": "https://KevinCraig.us/about.htm"
+      },
+      {
+        "category": "general",
+        "content": "&amp; Beverage Discover Overview Switch to Square Coffee shops Quick service Drive-thru Full service Bars &amp; breweries Food trucks Catering Bakeries Pizzeria Capabilities Take",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "squareup.com",
+          "/us/en/legal/general/ua",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "General Terms of Service",
+        "url": "https://squareup.com/us/en/legal/general/ua"
+      },
+      {
+        "category": "general",
+        "content": "Amendment Under Attack Overview of Bureaucracy CAFTA and the New World Order FCC Restricts the Media FDA Bans Vitamins FTAA and the New World Order HHS Serves Nobody HUD Develops",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "KevinCraig.us",
+          "/worldview.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Worldview: Your Philosophy of Life -- KEVIN CRAIG - &#34;Liberty Under God&#34; Beginning in Missouri&#39;s 7th Congressional District",
+        "url": "https://KevinCraig.us/worldview.htm"
+      },
+      {
+        "category": "general",
+        "content": "TEAM again; more Bible Overview goodness on the Law, then onto Revelation, and finally some interesting talk prep pieces. Appalled by the ham-fisted approach to Wikileaks advocate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2010/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2010/"
+      },
+      {
+        "category": "general",
+        "content": "publishing the brief overview. Any additional spotlight that can be directed at the gross human rights abuses that are happening all the time in Zimbabwe is most welcome. We urge",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.worldofradio.com",
+          "/dxld3137.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.worldofradio.com/dxld3137.txt",
+        "url": "http://www.worldofradio.com/dxld3137.txt"
+      },
+      {
+        "category": "general",
+        "content": "1. Overview 1.1 About This Policy This Privacy Policy describes how Donut Team collects, uses, shares, and protects your personal information when you access or use our Services,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "donutteam.com",
+          "/documents/privacy-policy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Privacy Policy | Donut Team",
+        "url": "https://donutteam.com/documents/privacy-policy"
+      },
+      {
+        "category": "general",
+        "content": "PHILOSOPHY: A readable overview of much of modern philosophy can be found in Bryan Magee’s 1997 book, Confessions of a Philosopher . What makes the book so thoroughly enjoya",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.basicincome.com",
+          "/bp/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Basic Philosophy, A Guide for the Intellectually Perplexed, Meta-philosophy, Common Sense Philosophy, also, A Collection of Fundamental Ideas,",
+        "url": "https://www.basicincome.com/bp/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c4a00e2a7cc7419718ca7ab6ed834faaa652e48b0410e62fd8bcae583525fc3a",
+  "provider": "SearXNG",
+  "query": "give an overview of traffic flow in public health",
+  "query_id": "v5-p-0671-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:18.466790Z"
+}

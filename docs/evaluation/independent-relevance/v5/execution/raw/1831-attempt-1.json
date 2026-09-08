@@ -1,0 +1,327 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 311.023,
+  "pair_id": "v5-p-0645",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is renewable energy storage in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "&lt;http://www.taindustrial.net/renewable-energy-market/3m-solar-mirror-film-1100-1/&gt; They sell 3M SMF1100 which appears to be the replacement for the venerable SA-85 acrylic f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.redrok.com",
+          "/main.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Red Rock Energy Heliostats",
+        "url": "http://www.redrok.com/main.htm"
+      },
+      {
+        "category": "general",
+        "content": "is a sad, worldwide industrial nation phenomenon. I am in Tokyo for a few days and have been here many times before. In 2002, I would guess that the average age on the street was",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIDIK.com The original and official DIDIK site. Cutting edge and sometimes controversial thoughts, designs, proposals and projects conceiv",
+        "url": "http://www.didik.com/"
+      },
+      {
+        "category": "general",
+        "content": "tar sands—the largest industrial project on earth. Refineries and gas processing plants pollute their environs. Pipelines routinely spill toxic substances, at over 300 “sign",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "stopfossilfuels.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stop Fossil Fuels: Why We Must, How We Can",
+        "url": "https://stopfossilfuels.org/"
+      },
+      {
+        "category": "general",
+        "content": "Kola Index - (homepage) Industrial Archaeology - Links Institute of Archaeology - London Instruments - marine Insurance - motorcycles   Cars, Vans Insurance - Links   -&amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.solarnavigator.net",
+          "/solarnavigator_index.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SOLAR NAVIGATOR MARINE PORTAL WEBSITE INDEX EDUCATIONAL GEOGRAPHY HISTORY RESOURCE WORLD ATLAS A TO Z INDEX OF PLANET EARTH FREE ENCYCLOPEDIA&lt;",
+        "url": "https://www.solarnavigator.net/solarnavigator_index.htm"
+      },
+      {
+        "category": "general",
+        "content": "early 1800&#39;s with the industrial revolution. High end weaving jobs were lost after the introduction of high speed looms. Another example is the computer revolution from the late 1",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.design1.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Recent designs, projects and thoughts by Frank X. Didik. Predictions for the future, where society is going. Can gravity by modulated? Wha",
+        "url": "http://www.design1.org/"
+      },
+      {
+        "category": "general",
+        "content": "Inc. 1200 W. Benedum Industrial Drive Bridgeport, WV 26330 United States of America Phone: (304) 624-8028 Fax: (304) 624-0170 E-mail Address: fmw@fmwcomposite.com Complaints about",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/heavytankshelicopters.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "U.S. Army Armor and Aviation branches without battlefield functions",
+        "url": "http://www.combatreform.org/heavytankshelicopters.htm"
+      },
+      {
+        "category": "general",
+        "content": "Realities Canadian Deindustrialization Tags ☰ Ai 2 Apl 1 Architecture 6 Array Languages 2 Book Publish 1 Brazil 2 C 2 Christianity 1 Clojure 1 Cloud Computing 7 Coal 1 Commodity S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alexalejandre.com",
+          "/finance/vaclav-smil/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "On Vaclav Smil",
+        "url": "https://alexalejandre.com/finance/vaclav-smil/"
+      },
+      {
+        "category": "general",
+        "content": "ew owners The space industrial base is undergoing major changes with new players and new investment. Bharath Gopalaswamy and Daniel Dant argue that those companies would also benef",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.thespacereview.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Space Review: essays and commentary about the final frontier",
+        "url": "https://www.thespacereview.com/"
+      },
+      {
+        "category": "general",
+        "content": "ways rather than in industrial factories. However, it would make sense to retain some larger mass production factories and sources of materials, such as mines, steel works and rai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "thesimplerway.info",
+          "/THEALTSOCLong.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "TheAltSocLongNew.html",
+        "url": "http://thesimplerway.info/THEALTSOCLong.htm"
+      },
+      {
+        "category": "general",
+        "content": "early 1800&#39;s with the industrial revolution. High end weaving jobs were lost after the introduction of high speed looms. Another example is the computer revolution from the late 1",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/frankdidik_oped_bicycle_etiquette.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Thoughts by Frank X. Didik Bicycle Etiquette. Op-Ed Views. www",
+        "url": "http://www.didik.com/frankdidik_oped_bicycle_etiquette.htm"
+      },
+      {
+        "category": "general",
+        "content": "middle classes in the Industrial Revolution, this pure form of democracy became too unwieldy for governing a large national population. Democracy became a two-headed monster, on t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/repcult/reproduction-and-culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Religion, Politics, Sexual Reproduction and the Future of Human Society",
+        "url": "http://www.dhushara.com/repcult/reproduction-and-culture.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4642daa362cf6b46e49a9800a146b9716ac5a440cc38cca4a7b3d93270e6687a",
+  "provider": "SearXNG",
+  "query": "what is renewable energy storage in industrial design",
+  "query_id": "v5-p-0645-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:02.438348Z"
+}

@@ -1,0 +1,297 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 393.81465800397564,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind version control in photography",
+    "results": [
+      {
+        "category": "general",
+        "content": "If we move over to photography or television, we discover that the colors in art &#34;subtract&#34; light, while when we &#34;add&#34; light, we use red, green, and blue, and putting them all tog",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/locke.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John Locke (1632-1704)",
+        "url": "https://friesian.com/locke.htm"
+      },
+      {
+        "category": "general",
+        "content": "the worlds of art and photography. Alaska 2018 The article set for the 2018 Alaska expedition. Book Reviews A collection of brief reviews of works that impressed me. Computer Aide",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "arachnoid.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "* arachnoid.com",
+        "url": "https://arachnoid.com/"
+      },
+      {
+        "category": "general",
+        "content": "and feature original photography at full resolution. You can find printed compilations here , and eBooks at Amazon Kindle , Apple Books , Kobo and other stores . The proceeds supp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/nintendo-64/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nintendo 64 Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/nintendo-64/"
+      },
+      {
+        "category": "general",
+        "content": "and I do quite a bit of photography too. It is something I have dabbled in for the past few years and lets me try my hand at capturing a little of the beauty around me. You can se",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.spagmag.org",
+          "/archives/backissues/spag39.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ISSUE #39 - January 7, 2005 - SPAG",
+        "url": "http://www.spagmag.org/archives/backissues/spag39.html"
+      },
+      {
+        "category": "general",
+        "content": "by machines and photography, retaliated by rejecting beauty altogether; critics gaslight the public into pretending this is genius, but most people just see lazy nonsense and walk",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Luke Smith Fanclub &amp; Archive",
+        "url": "https://lukesmith.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "and Scope Photography. None of these subjects suggests Marcel had even an introduction to the use of radar targets for measuring the direction and speed of winds aloft, which was",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.astronomyufo.com",
+          "/UFO/Rosmyths.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Popular Roswell myths",
+        "url": "http://www.astronomyufo.com/UFO/Rosmyths.htm"
+      },
+      {
+        "category": "general",
+        "content": "using high resolution photography, the VCR and the Internet as delivery systems for pornography just as it meant dynamite, forgery and smuggling in bringing down the Czar in Russi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fisheaters.com",
+          "/jc-jones3.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rabbi Dresner&#39;s Dilemma: Torah v. Ethnos",
+        "url": "https://www.fisheaters.com/jc-jones3.html"
+      },
+      {
+        "category": "general",
+        "content": "shot cause I’m bad at photography.   The centerpiece of the room is currently an IKEA Kallax that holds my Flat Screen and far too many systems. I’m still working on wiring,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.rfgeneration.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RF Generation. The Classic and Modern Gaming Databases.",
+        "url": "http://www.rfgeneration.com/"
+      },
+      {
+        "category": "general",
+        "content": "enable professional photography , History of FOSS , 40 Years of UNIX , The Unix Time-Sharing System (Dennis Ritchie and Ken Thompson, Bell Laboratories, 1974), The GNU Project , T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "fasteners /invention of photography /development of color photography importance of technology American technology American technology American technology science and technology a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0273",
+  "query_text": "explain the basic idea behind version control in photography",
+  "requested_at": "2026-09-03T01:43:38.530069Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

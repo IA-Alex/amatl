@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 308.707,
+  "pair_id": "v5-p-0346",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does soil erosion in physics work",
+    "results": [
+      {
+        "category": "general",
+        "content": "and soil erosion, and storms deposit large amounts of dust on the ice sheets. This reduces their albedo, allowing them to absorb considerably more insolation and undergo rapid mel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/climcat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Climate models and climate catastrophe: a reality check",
+        "url": "https://davidpratt.info/climcat.htm"
+      },
+      {
+        "category": "general",
+        "content": "marine sedimentary or erosional in origin.[42] Hawaii&#39;s tallest mountain Mauna Kea is 13,796 ft (4,205 m) above mean sea level;[43] it is taller than Mount Everest if measured the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hellenicaworld.com",
+          "/USA/Geo/en/Hawaii.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hawaii",
+        "url": "https://www.hellenicaworld.com/USA/Geo/en/Hawaii.html"
+      },
+      {
+        "category": "general",
+        "content": "formed by either water erosion or volcanic activity. Since the Moon was a tectonically inactive and almost entirely dry celestial body, they initially assumed that someone was ill",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "edmundmuller.neocities.org",
+          "/lunaria",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Edmund Muller - Lunaria",
+        "url": "https://edmundmuller.neocities.org/lunaria"
+      },
+      {
+        "category": "general",
+        "content": "is subject to decay and erosion. Only Jesus Christ can bring about transformation and redemption. Christianity distinguishes between the profane and the spiritual, emphasizing the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mats-winther.github.io",
+          "/nietzscheen.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Anti-Nietzsche : A Critique of Friedrich Nietzsche",
+        "url": "https://mats-winther.github.io/nietzscheen.htm"
+      },
+      {
+        "category": "general",
+        "content": "society and the gradual erosion of liberties and freedom leading to an authoritarian state. Thus when the writer labels an event as fascism he is looking at that event in the cont",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/nazihydrainamerica.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "nazihydrainamerica",
+        "url": "http://www.combatreform.org/nazihydrainamerica.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "39961ab235cdef9e2f439bb887e3548765b588abc36b112f2121e54b9dd65c54",
+  "provider": "SearXNG",
+  "query": "how does soil erosion in physics work",
+  "query_id": "v5-p-0346-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:46.255618Z"
+}

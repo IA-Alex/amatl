@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 260.927,
+  "pair_id": "v5-p-0243",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes plate tectonics in agricultural science",
+    "results": [
+      {
+        "category": "general",
+        "content": "development since the Agricultural Revolution thst created civilization. Environmental Issues Environmental issues have assumed increasing atention around the world in recent year",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "histclo.com",
+          "/cih.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Children in History",
+        "url": "https://histclo.com/cih.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "24489c3e0d7e2e97b433a7b856849a6a82cf2a3968944cace29760bb73c60b2f",
+  "provider": "SearXNG",
+  "query": "what causes plate tectonics in agricultural science",
+  "query_id": "v5-p-0243-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:16:42.694635Z"
+}

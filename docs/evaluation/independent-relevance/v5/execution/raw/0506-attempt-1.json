@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 353.152,
+  "pair_id": "v5-p-0532",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind neural networks in architecture",
+    "results": [
+      {
+        "category": "general",
+        "content": "using similar enough architecture to real neural nets. Eh, I&#39;ll quote fragments below 2 years ago, GPT-1 was interestingly useful pretraining and adorable with its “sentiment neur",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/mediocre_net",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AI Will Make (Has Made) the Internet Mediocre...",
+        "url": "https://lukesmith.neocities.org/vids/mediocre_net"
+      },
+      {
+        "category": "general",
+        "content": "once-and-for-all for a architecture of body-and-soul orgasmic sublimity, then one opts as well for a lifetime&#39;s freedom from second thoughts. 4.11 &#34;I sometimes like being sad; it&#39;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Hedonistic Imperative : Objections (Chapter 4)",
+        "url": "https://www.hedweb.com/hedethic/hedon4.htm"
+      },
+      {
+        "category": "general",
+        "content": "inspired by Chromium’s architecture. Interdependence for independent components can be mutually beneficial. For something to be part of Chromium, it needs to build and test with a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "seirdy.one",
+          "/notes/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notes - Seirdy",
+        "url": "https://seirdy.one/notes/"
+      },
+      {
+        "category": "general",
+        "content": "the way our cognitive architecture is structured and the concepts we use. So our neurobiological concepts—the kind of concepts that people use in neurobiology—are very",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "reducing-suffering.org",
+          "/dissolving-confusion-about-consciousness/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dissolving Confusion about Consciousness",
+        "url": "https://reducing-suffering.org/dissolving-confusion-about-consciousness/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "483eed97586ef79eb203478a02b26403b16b8a7000ab5a0bc64e1b08e7647c82",
+  "provider": "SearXNG",
+  "query": "describe the principle behind neural networks in architecture",
+  "query_id": "v5-p-0532-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:48.377933Z"
+}

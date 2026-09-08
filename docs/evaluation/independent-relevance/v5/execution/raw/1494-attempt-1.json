@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 327.281,
+  "pair_id": "v5-p-0921",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind bridge resonance in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c5d029c1887719d4eda0e4f695f7eb691b7b676bf7354071cf7c7d1739d49345",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind bridge resonance in pharmacology",
+  "query_id": "v5-p-0921-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:11.927440Z"
+}

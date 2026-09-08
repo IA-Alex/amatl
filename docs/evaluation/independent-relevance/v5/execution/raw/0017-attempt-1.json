@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 341.236,
+  "pair_id": "v5-p-0043",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes compiler operation in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "CPU specific no micro-management of CPU register usage calculations can be specified in a form similar to mathematical notation (assignment) NOWUT also handles inline assembly cod",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.hyakushiki.net",
+          "/misc/nowut31.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.hyakushiki.net/misc/nowut31.txt",
+        "url": "http://www.hyakushiki.net/misc/nowut31.txt"
+      },
+      {
+        "category": "general",
+        "content": "to use. Each identity management module is documented in a separate manual page. The standard idmap backends are tdb ( idmap_tdb (8) ), tdb2 ( idmap_tdb2 (8) ), ldap ( idmap_ldap",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.samba.org",
+          "/samba/docs/current/man-html/smb.conf.5.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "smb.conf",
+        "url": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+      },
+      {
+        "category": "general",
+        "content": "dynamic resource management for the shifter &amp; timer resources within each FlexIO port.  The goal is for libraries using FlexIO, such as TMM-HM01B0-Camera and TriantaduoWS2811",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.pjrc.com",
+          "/2021/07/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SEGA ROM Reader",
+        "url": "https://www.pjrc.com/2021/07/"
+      },
+      {
+        "category": "general",
+        "content": "profiles are allowed, management of those profiles may also be required to guarantee backwards compatibility. Typically such management also uses a list of characters that qualifi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.unicode.org",
+          "/reports/tr31/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "UAX #31: Unicode Identifiers and Syntax",
+        "url": "http://www.unicode.org/reports/tr31/"
+      },
+      {
+        "category": "general",
+        "content": "made the case to their management, lawyers, and release manager, that: They don&#39;t need a EULA, trademark law applies anyway It&#39;s free software so people can go in and remove the E",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.toad.com",
+          "/gnu/sysadmin/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "System Administration Bits of Knowledge",
+        "url": "http://www.toad.com/gnu/sysadmin/"
+      },
+      {
+        "category": "general",
+        "content": "the help of the Memory Management Unit (MMU) into physical addresses. This is a non-trivial operation. In the pipeline to execute an instruction the physical address might only be",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/252125/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Memory part 2: CPU caches [LWN.net]",
+        "url": "https://lwn.net/Articles/252125/"
+      },
+      {
+        "category": "general",
+        "content": "The DAMON memory-management facility now supports an auto-tuning mechanism; see this changelog for more information. The new TRANSPARENT_HUGEPAGE_NEVER configuration option causes",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/958030/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "LWN.net Weekly Edition for January 18, 2024 [LWN.net]",
+        "url": "https://lwn.net/Articles/958030/"
+      },
+      {
+        "category": "general",
+        "content": "AAM (Automatic Acoustic Management), APM, drive motor spin-down, sector read/write, change drive configuration and more... In principle you can execute every ATA command, the para",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "rayer.g6.cz",
+          "/programm/programe.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RayeR&#39;s homepage/Programming",
+        "url": "http://rayer.g6.cz/programm/programe.htm"
+      },
+      {
+        "category": "general",
+        "content": "A focused memory management Memory available Bus design Tackling traffic congestion The end of the line Multimedia CPU Graphics Display Introducing the Graphics Engine Architectur",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/playstation-portable/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PlayStation Portable (PSP) Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/playstation-portable/"
+      },
+      {
+        "category": "general",
+        "content": "libraries for state management, routing, and interaction with an API.&#34; Shedrack Akintayo&#39;s &#34;A beginner&#39;s guide to developing with React&#34; Nick Parsons&#39; &#34;Takeaways on Building a Rea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/DevelopApplication.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Develop an Application",
+        "url": "https://www.billdietrich.me/DevelopApplication.html"
+      },
+      {
+        "category": "general",
+        "content": "socket connection management (Tor Lillqvist) Tile cache (Tor Lillqvist) Save As (Tor Lillqvist) lokitclient test app (Tor Lillqvist) chroot build scripts &amp; debugging (Tor Lill",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2015/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2015/"
+      },
+      {
+        "category": "general",
+        "content": "the more levels of management there will be. We can see the problem even if we use simplistic calculations. Thus if we assume a fixed supervision ratio, for example six, the level",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "larch-www.lcs.mit.edu:8001",
+          "/~corbato/turing91/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "untitled1.html",
+        "url": "http://larch-www.lcs.mit.edu:8001/~corbato/turing91/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b219cf2c48468c02b1e08f8c3c417cca318e114a628efeb0885853fcddda0916",
+  "provider": "SearXNG",
+  "query": "what causes compiler operation in data management",
+  "query_id": "v5-p-0043-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:14.061839Z"
+}

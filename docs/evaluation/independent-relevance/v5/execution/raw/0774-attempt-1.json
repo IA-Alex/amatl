@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 324.773,
+  "pair_id": "v5-p-0090",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of ocean tides in neuroscience",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "dd06e0dfed3969d0674f4f9e17c213a9f4110355357e38394314f0948ecdf0a0",
+  "provider": "SearXNG",
+  "query": "tell me about the function of ocean tides in neuroscience",
+  "query_id": "v5-p-0090-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:20.813007Z"
+}

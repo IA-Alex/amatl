@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 283.477,
+  "pair_id": "v5-p-0974",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does wastewater treatment in chemistry work",
+    "results": [
+      {
+        "category": "general",
+        "content": "2-3, coolants/solvents/wastewater/misc liquid processing and extensive storage tanks on decks 36-37), life support, atmospheric processing, structural integrity, gravity generator",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.starfleet-museum.org",
+          "/notes-bluescale.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Starfleet Museum - Bluescale Plans Legend",
+        "url": "https://www.starfleet-museum.org/notes-bluescale.htm"
+      },
+      {
+        "category": "general",
+        "content": "such chemicals i nclude wastewater dischar g e s , industrial releases, and consumer products . R esearch is being conducted t o i dentify the range of potential h ealth effects a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "congressionalresearch.com",
+          "/RL31267/document.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Environmental Exposure to Endocrine Disruptors: What Are the Human Health Risks?",
+        "url": "http://congressionalresearch.com/RL31267/document.php"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bfc0815677c14d05f4020670a17c80fa85bed275dd2d135326bfb0b27f4319a9",
+  "provider": "SearXNG",
+  "query": "how does wastewater treatment in chemistry work",
+  "query_id": "v5-p-0974-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:07:05.847797Z"
+}

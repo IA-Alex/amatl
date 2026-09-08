@@ -1,0 +1,2078 @@
+{
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "freeze_status": "NOT_APPLICABLE_TARGET_NOT_REACHED",
+  "raw_capture_sha256": "d16635397d8653d39082f7a385b2c021912c3ac1fd9c9daac30ee5f02354e115",
+  "rows": [
+    {
+      "arm": "control",
+      "canonical_url": "https://www.exopoliticsindia.in/2025/06/victory-of-surface-command-surfacom-555.html",
+      "execution_sequence": 36,
+      "original_url": "https://www.exopoliticsindia.in/2025/06/victory-of-surface-command-surfacom-555.html",
+      "pair_id": "candidate-p-1427",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1427",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0036-attempt-1.json",
+      "row_id": "v6-0036-01",
+      "snippet": "anes, Michael, Compression Breakthrough, Extra quotes. Saturn entered Aries just now at 11:36 pm EDT on May 24th. We have ended the 29 year Saturn cycle which lasted",
+      "title": "EXOPOLITICS INDIA: Victory of Surface Command (SURFACOM) 555"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://www.david-sadler.org/pages/bigQuestions/discIsOurs.htm",
+      "execution_sequence": 97,
+      "original_url": "https://www.david-sadler.org/pages/bigQuestions/discIsOurs.htm",
+      "pair_id": "candidate-p-0946",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0946",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0097-attempt-1.json",
+      "row_id": "v6-0097-01",
+      "snippet": "of design should cause researchers in biology to hesitate before claiming that a particular biological feature has been produced substantially by another mechanism, such as natura",
+      "title": "(SFC) David Sadler For Congress - If the Disc Is Ours"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://usautoindustryworldwartwo.com/revisions.htm",
+      "execution_sequence": 98,
+      "original_url": "http://usautoindustryworldwartwo.com/revisions.htm",
+      "pair_id": "candidate-p-0946",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0946",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0098-attempt-1.json",
+      "row_id": "v6-0098-02",
+      "snippet": "31 - Service Tool &amp; Engineering Company page added.  (Other Section.) August 25 - Curtiss-Wright Indianapolis, IN Propeller Plant page added.  (Indiana Company Secti",
+      "title": "The US Automobile Industy in World War Two -WWII -Updates and Additions"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://www.bibliotecapleyades.net/ciencia/newenergy/defeatcancer/cancer.htm",
+      "execution_sequence": 121,
+      "original_url": "https://www.bibliotecapleyades.net/ciencia/newenergy/defeatcancer/cancer.htm",
+      "pair_id": "candidate-p-0068",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0068",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0121-attempt-1.json",
+      "row_id": "v6-0121-01",
+      "snippet": "understood. Indeed, in epidemiology the use of vaccines and such is directly based on statistically showing that the results are real, even if the active mechanism is not understo",
+      "title": "The Tom Bearden Website"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.amiga-stuff.com/pd/fish.html",
+      "execution_sequence": 126,
+      "original_url": "https://www.amiga-stuff.com/pd/fish.html",
+      "pair_id": "candidate-p-1419",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1419",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0126-attempt-1.json",
+      "row_id": "v6-0126-03",
+      "snippet": "coding. The amount of compression obtained depends on the size of the input, the number of bits per code, and the distribution of common substrings. Typically, text such as source",
+      "title": "Fish disks 1 - 1120"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://www.conceptlab.com/",
+      "execution_sequence": 140,
+      "original_url": "http://www.conceptlab.com/",
+      "pair_id": "candidate-p-0506",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0506",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0140-attempt-1.json",
+      "row_id": "v6-0140-02",
+      "snippet": "explains: &#34;I am an Industrial design graduate from the University of Tehran, where I mainly focused on product development during my studies. I am currently pursuing a Masters in",
+      "title": "Garnet Hertz - conceptlab.com"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.icj-cij.org/node/203394",
+      "execution_sequence": 162,
+      "original_url": "https://www.icj-cij.org/node/203394",
+      "pair_id": "candidate-p-0575",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0575",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0162-attempt-1.json",
+      "row_id": "v6-0162-01",
+      "snippet": "of a well-founded explanation from the Israeli military (who is in sole possession of the relevant facts), the mission must conclude that there is a possibility that the shelling",
+      "title": "Application instituting proceedings and request for the indication of provisional measures | INTERNATIONAL COURT OF JUSTICE"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://www.antispeciesism.com/chatgpt/",
+      "execution_sequence": 215,
+      "original_url": "https://www.antispeciesism.com/chatgpt/",
+      "pair_id": "candidate-p-0892",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0892",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0215-attempt-1.json",
+      "row_id": "v6-0215-01",
+      "snippet": "do for humans. Genetic engineering: Utilizing advanced biotechnologies to eliminate suffering, predation, and other forms of harm experienced by non-human animals in the wild. Com",
+      "title": "Speciesism and Antispeciesism as conceived as conceived by ChatGPT"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://communism.org/community/BenSeattle/2019/Proyect-FALC-Roche.htm",
+      "execution_sequence": 215,
+      "original_url": "http://communism.org/community/BenSeattle/2019/Proyect-FALC-Roche.htm",
+      "pair_id": "candidate-p-0892",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0892",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0215-attempt-1.json",
+      "row_id": "v6-0215-03",
+      "snippet": "synthetic meat, genetic engineering, renewable energy, and so on. And this is a big part of the reason they have captured attention. This kind of speculation serves to illustrate",
+      "title": "action guided by humility"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://gotze.dk/phd/it.html",
+      "execution_sequence": 229,
+      "original_url": "https://gotze.dk/phd/it.html",
+      "pair_id": "candidate-p-1624",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-1624",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0229-attempt-1.json",
+      "row_id": "v6-0229-01",
+      "snippet": "use state-of-the-art computing equipment and the physical limitations of time and space are overcome&#34; Computerization movements cover a wide spectre of ideas and ideals, but",
+      "title": "Participation in the information age"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://archive.epic.org/crypto/export_controls/amicus_brief.html",
+      "execution_sequence": 230,
+      "original_url": "https://archive.epic.org/crypto/export_controls/amicus_brief.html",
+      "pair_id": "candidate-p-1624",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1624",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0230-attempt-1.json",
+      "row_id": "v6-0230-01",
+      "snippet": "that already hasproven essential to the global communications network. The American Civil Liberties Union Foundation, NationalHeadquarters (&#34;ACLU&#34;), is a nationwide, nonpartisan o",
+      "title": "Cryptography Amicus Brief 10/96"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://lukesmith.neocities.org/vids/notmaterial_consciousness",
+      "execution_sequence": 235,
+      "original_url": "https://lukesmith.neocities.org/vids/notmaterial_consciousness",
+      "pair_id": "candidate-p-1131",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-1131",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0235-attempt-1.json",
+      "row_id": "v6-0235-01",
+      "snippet": "that sends a codified information through air. So without examining the source that codified the information and sent the information towards the antennae, television program is a",
+      "title": "Consciousness Is Not Material."
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://ormuswater.vpinf.com/",
+      "execution_sequence": 237,
+      "original_url": "http://ormuswater.vpinf.com/",
+      "pair_id": "candidate-p-0171",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0171",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0237-attempt-1.json",
+      "row_id": "v6-0237-02",
+      "snippet": "about the quality of information presented herein. NEW, as of June 10, 2007: Click here to see our small portable MEOW and Laminar Crystal pod products (i.e., dunking sceptres and",
+      "title": "Noteson Magnetite Effect Ormus Water (MEOW) Technology"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.gutenberg.org/cache/epub/32728/pg32728-images.html",
+      "execution_sequence": 268,
+      "original_url": "https://www.gutenberg.org/cache/epub/32728/pg32728-images.html",
+      "pair_id": "candidate-p-0527",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0527",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0268-attempt-1.json",
+      "row_id": "v6-0268-01",
+      "snippet": "is is the explanation of the name which is given by Dampier. CHAPTER III. The tropics—Passengers on board—Account of the Darien Canal—Planters&#39; complaints—West Indian history—The S",
+      "title": "The Project Gutenberg eBook of The English in the West Indies, by James Anthony Froude."
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://www.repairfaq.org/sam/monfaq.htm",
+      "execution_sequence": 268,
+      "original_url": "http://www.repairfaq.org/sam/monfaq.htm",
+      "pair_id": "candidate-p-0527",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0527",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0268-attempt-1.json",
+      "row_id": "v6-0268-03",
+      "snippet": "by others. There is no explanation of how the original diagnosis was determined or what may have caused the failure in the first place. Nor is there likely to be any list of other",
+      "title": "Notes on the Troubleshooting and Repair of Computer and Video Monitors"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://chriskoehnke.com/",
+      "execution_sequence": 278,
+      "original_url": "http://chriskoehnke.com/",
+      "pair_id": "candidate-p-1435",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1435",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0278-attempt-1.json",
+      "row_id": "v6-0278-02",
+      "snippet": "content, because of how compression works). I hope with my 📑 table of contents approach it&#39;ll be easy to navigate around a single large page with unnaturally fast speed ⚡. Other T",
+      "title": "Chris Koehnke&#39;s Webpage"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://seirdy.one/posts/2020/11/23/website-best-practices/",
+      "execution_sequence": 278,
+      "original_url": "https://seirdy.one/posts/2020/11/23/website-best-practices/",
+      "pair_id": "candidate-p-1435",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1435",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0278-attempt-1.json",
+      "row_id": "v6-0278-03",
+      "snippet": "wisdom Enforce image compression Dark image variants SVG images Layout Accessible skimming Friendly navigation Single-column layout Sidebar pitfalls Sidebar alternatives Line leng",
+      "title": "Best practices for inclusive textual websites - Seirdy"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://www.donsmaps.com/willendorf.html",
+      "execution_sequence": 299,
+      "original_url": "https://www.donsmaps.com/willendorf.html",
+      "pair_id": "candidate-p-0203",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0203",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0299-attempt-1.json",
+      "row_id": "v6-0299-01",
+      "snippet": "updates to Don&#39;s Maps Navigation Abel Tasman Track in New Zealand Aboriginal Art of the Kimberleys Aboriginal art on the Northern Tablelands of NSW Aborigines of Australia Abri Pa",
+      "title": "The Venus of Willendorf"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://lafavephilosophy.x10host.com/is_brain_a_computer.html",
+      "execution_sequence": 313,
+      "original_url": "http://lafavephilosophy.x10host.com/is_brain_a_computer.html",
+      "pair_id": "candidate-p-1094",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-1094",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0313-attempt-1.json",
+      "row_id": "v6-0313-03",
+      "snippet": "medium to represent binary symbols. The positions of cogs, the presence or absence of water, the level of the voltage and perhaps nerve impulses&#34; (Johnson Lair",
+      "title": "Is the Brain a Digital Computer?"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://readspike.com/",
+      "execution_sequence": 351,
+      "original_url": "https://readspike.com/",
+      "pair_id": "candidate-p-2139",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-2139",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0351-attempt-1.json",
+      "row_id": "v6-0351-01",
+      "snippet": "model for multivariate forecasting Terence Tao explains 6 essential mathematical concepts [video] | Hacker News Movie Scene Map — The Filming Locations Map for Film &amp; TV [138] Art",
+      "title": "Readspike - Simple news aggregator"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://www.midwinter.com/lurk/ftp/b5.tech.htm",
+      "execution_sequence": 381,
+      "original_url": "http://www.midwinter.com/lurk/ftp/b5.tech.htm",
+      "pair_id": "candidate-p-1365",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-1365",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0381-attempt-1.json",
+      "row_id": "v6-0381-03",
+      "snippet": "due to budgetary constraints. Grey sector is infamous for the Babylon 5 Triangle -- an area around Grey 17 that leads an active imagination to believe the place is haunted. Mainte",
+      "title": "http://www.midwinter.com/lurk/ftp/b5.tech.htm"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://blog.greggant.com/posts/2025/03/18/the-definitive-guide-to-ios-emulation.html",
+      "execution_sequence": 456,
+      "original_url": "http://blog.greggant.com/posts/2025/03/18/the-definitive-guide-to-ios-emulation.html#legal-considerations",
+      "pair_id": "candidate-p-0879",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0879",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0456-attempt-1.json",
+      "row_id": "v6-0456-02",
+      "snippet": "/Volumes/PLAYSTATION Explanation of the command: hdiutil makehybrid : The macOS utility for creating disc images -iso : Creates a standard ISO9660 filesystem (required for PS1 gam",
+      "title": "The Definitive Guide to iOS/iPadOS emulation"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://www.worldofradio.com/dxld3136.txt",
+      "execution_sequence": 456,
+      "original_url": "http://www.worldofradio.com/dxld3136.txt",
+      "pair_id": "candidate-p-0879",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0879",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0456-attempt-1.json",
+      "row_id": "v6-0456-03",
+      "snippet": "has given no formal explanation to RFPI for the eviction. RFPI believes the eviction is being done for political reasons, and is a form of censorship. UPaz has told the press that",
+      "title": "http://www.worldofradio.com/dxld3136.txt"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://baharna.com/philos/life.htm",
+      "execution_sequence": 521,
+      "original_url": "https://baharna.com/philos/life.htm",
+      "pair_id": "candidate-p-1402",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-1402",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0521-attempt-1.json",
+      "row_id": "v6-0521-01",
+      "snippet": "speak of the law of conservation of energy: the total amount of energy in a closed system never changes, it just gets transformed in various ways. I’ve digressed here to make",
+      "title": "Psychozoan: The Definition of Life"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://people.idsia.ch/~juergen/blog.html",
+      "execution_sequence": 522,
+      "original_url": "https://people.idsia.ch/~juergen/blog.html",
+      "pair_id": "candidate-p-1402",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1402",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0522-attempt-1.json",
+      "row_id": "v6-0522-03",
+      "snippet": "economies with credit conservation ✯ 1987-: Artificial evolution ✯ 2005-: Evolino ✯ 1987-: Genetic programming . See also 1/3 century anniversary (2020) d",
+      "title": "Juergen Schmidhuber&#39;s AI Blog"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://www.rcdwealth.com/",
+      "execution_sequence": 543,
+      "original_url": "https://www.rcdwealth.com/",
+      "pair_id": "candidate-p-0902",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0902",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0543-attempt-1.json",
+      "row_id": "v6-0543-03",
+      "snippet": "Wealth has agents and representatives as private individuals and companies in Uganda to provide any type of our services. We help Ugandan people obtain residency in Europe, USA or",
+      "title": "RCD Wealth - Empowering Financial Freedom and Building Wealth for a Better Future"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://buriedtruth.com/",
+      "execution_sequence": 544,
+      "original_url": "http://buriedtruth.com/",
+      "pair_id": "candidate-p-0902",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0902",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0544-attempt-1.json",
+      "row_id": "v6-0544-03",
+      "snippet": "and any material associated with them must be discarded (without exception) as being fraudulent. Some years ago it was Richard Doty and others of his ilk; more recently it&#39;s Rober",
+      "title": "BuriedTruth.com"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://lukesmith.neocities.org/vids/nothingburger",
+      "execution_sequence": 575,
+      "original_url": "https://lukesmith.neocities.org/vids/nothingburger",
+      "pair_id": "candidate-p-0939",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0939",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0575-attempt-1.json",
+      "row_id": "v6-0575-03",
+      "snippet": "amount of access to information. &#43;1 @badabing3391 - 2025-06-04 10:59:32 right, the issue is that they do, and there wont be any consequences for the next few months/years &#43;1 @mich",
+      "title": "AI is a Nothingburger. You&#39;re wrong."
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://abuss.narod.ru/Biblio/Tainter1-2.htm",
+      "execution_sequence": 584,
+      "original_url": "https://abuss.narod.ru/Biblio/Tainter1-2.htm",
+      "pair_id": "candidate-p-1506",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1506",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0584-attempt-1.json",
+      "row_id": "v6-0584-01",
+      "snippet": "as: - a lower degree of stratification and social differentiation; - less economic and occupational specialization, of individuals, groups, and territories; - less centralized con",
+      "title": "&#34;The Collapse of Complex Societes&#34;, parts 1-2"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://solar.lowtechmagazine.com/2021/10/how-to-build-a-low-tech-solar-panel",
+      "execution_sequence": 590,
+      "original_url": "https://solar.lowtechmagazine.com/2021/10/how-to-build-a-low-tech-solar-panel",
+      "pair_id": "candidate-p-0256",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0256",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0590-attempt-1.json",
+      "row_id": "v6-0590-02",
+      "snippet": "Seebeck found that an electrical current will flow in a circuit made from two dissimilar metals, with the junctions at different temperatures. This “thermoelectric effect” formed",
+      "title": "How to Build a Low-tech Solar Panel? | LOW←TECH MAGAZINE"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://www.rfreitas.com/Astro/ObservableETC1985.htm",
+      "execution_sequence": 602,
+      "original_url": "http://www.rfreitas.com/Astro/ObservableETC1985.htm",
+      "pair_id": "candidate-p-2187",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-2187",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0602-attempt-1.json",
+      "row_id": "v6-0602-03",
+      "snippet": "probably not much more information would be gained over existing 1415 MHz maps. The only survey spanning the tritium line, by Kardashev and Gindilis in 1972 covering various frequ",
+      "title": "Observable Characteristics of Extraterrestrial Technological Civilizations"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://blog.zorinaq.com/i-contribute-to-the-windows-kernel-we-are-slower-than-other-oper/",
+      "execution_sequence": 626,
+      "original_url": "http://blog.zorinaq.com/i-contribute-to-the-windows-kernel-we-are-slower-than-other-oper/",
+      "pair_id": "candidate-p-0911",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0911",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0626-attempt-1.json",
+      "row_id": "v6-0626-02",
+      "snippet": "(That&#39;s literally the explanation for PowerShell. Many of us wanted to improve cmd.exe, but couldn&#39;t.) More examples: We can&#39;t touch named pipes. Let&#39;s add %INTERNAL_NOTIFICATION_",
+      "title": "&#34;I Contribute to the Windows Kernel. We Are Slower Than Other Operating Systems. Here Is Why.&#34;"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.ldolphin.org/lust.html",
+      "execution_sequence": 628,
+      "original_url": "https://www.ldolphin.org/lust.html",
+      "pair_id": "candidate-p-0591",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0591",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0628-attempt-1.json",
+      "row_id": "v6-0628-01",
+      "snippet": "come up with elegant explanations of why men who grew up in church homes are oversexed and vulnerable to attacks of lust and obsession, and why women who grew up in those same env",
+      "title": "The War Within: An Anatomy Of Lust"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.astronuclphysics.info/Gravitace3-1.htm",
+      "execution_sequence": 660,
+      "original_url": "https://www.astronuclphysics.info/Gravitace3-1.htm",
+      "pair_id": "candidate-p-1408",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1408",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0660-attempt-1.json",
+      "row_id": "v6-0660-01",
+      "snippet": "different expansions, compressions, rotations or bends *), provided that there are no tears or joints of the different parts; &#34;near&#34; points are transformed again into &amp;q",
+      "title": "Geometric-topological properties of spacetime"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://www.n7nz.org/",
+      "execution_sequence": 704,
+      "original_url": "http://www.n7nz.org/",
+      "pair_id": "candidate-p-1467",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1467",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0704-attempt-1.json",
+      "row_id": "v6-0704-01",
+      "snippet": "for vital war-related information. &#34;Are those tits of hers real?&#34; &#34; Oh—mein Gott! You would not believe them. So real.",
+      "title": "I Kissed Joshua Harris&#39; Dating Critique Goodbye"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://www.second-opinions.co.uk/vegetarian.html",
+      "execution_sequence": 713,
+      "original_url": "http://www.second-opinions.co.uk/vegetarian.html",
+      "pair_id": "candidate-p-1026",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-1026",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0713-attempt-1.json",
+      "row_id": "v6-0713-01",
+      "snippet": "used as a food until fermentation techniques had been developed around 700 AD. (50) Did the Chinese know soy was toxic? Like all seeds, soybeans have phytic acid in their hulls, b",
+      "title": "The Naive Vegetarian"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.alienanthropology.info/",
+      "execution_sequence": 752,
+      "original_url": "https://www.alienanthropology.info/",
+      "pair_id": "candidate-p-1394",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1394",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0752-attempt-1.json",
+      "row_id": "v6-0752-01",
+      "snippet": "| skip to sidebar ALIEN ANTHROPOLOGY STUDY OF ANTHROPOLOGICAL IMPLICATIONS OF THE EXTRATERRESTRIAL PRESENCE ON EARTH &#34;And to this day, [those] who...know the self as I am Brahman",
+      "title": "ALIEN ANTHROPOLOGY"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://nadia.xyz/climate-tribes",
+      "execution_sequence": 793,
+      "original_url": "http://nadia.xyz/climate-tribes",
+      "pair_id": "candidate-p-2252",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-2252",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0793-attempt-1.json",
+      "row_id": "v6-0793-01",
+      "snippet": "take a backseat to sustainable living. I think of climate justice as a more defensive position (protecting the planet from bad actors), whereas degrowth is a more offensive positi",
+      "title": "Nadia Asparouhova | Mapping out the tribes of climate"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://gameofrent.com/content/can-land-be-accurately-assessed",
+      "execution_sequence": 813,
+      "original_url": "http://gameofrent.com/content/can-land-be-accurately-assessed",
+      "pair_id": "candidate-p-2246",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-2246",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0813-attempt-1.json",
+      "row_id": "v6-0813-01",
+      "snippet": "assessment cost should represent only about 1% of the funds raised. Is that good? Let&#39;s take this assertion at face value for the moment and compare it to the cost of the IRS.",
+      "title": "Can Land Value Be Accurately Assessed Separately from Buildings? | Game of Rent"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://www.astronuclphysics.info/Gravitace5-1.htm",
+      "execution_sequence": 845,
+      "original_url": "https://www.astronuclphysics.info/Gravitace5-1.htm",
+      "pair_id": "candidate-p-1396",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-1396",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0845-attempt-1.json",
+      "row_id": "v6-0845-03",
+      "snippet": "greater gravitational compression, black holes are formed, which, however, are again essentially &#34; vacuum objects &#34; (as discussed in §4.2, section &#34; Complete gravit",
+      "title": "Basic principles and principles of cosmology"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://www.ajhw.co.uk/books/book246/book246.html",
+      "execution_sequence": 867,
+      "original_url": "https://www.ajhw.co.uk/books/book246/book246.html",
+      "pair_id": "candidate-p-0516",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0516",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0867-attempt-1.json",
+      "row_id": "v6-0867-01",
+      "snippet": "conditions of vertical transportation found in the just emerging skyscraper. The Author : Robert M. Vogel is associate curator of mechanical and civil engineering, United States N",
+      "title": "Elevator Systems of the Eiffel Tower, 1889, by Robert M. Vogel"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://www.modulatedlight.org/optical_comms/Optical_enclosure_first_version.html",
+      "execution_sequence": 881,
+      "original_url": "http://www.modulatedlight.org/optical_comms/Optical_enclosure_first_version.html",
+      "pair_id": "candidate-p-1428",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-1428",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0881-attempt-1.json",
+      "row_id": "v6-0881-01",
+      "snippet": "to be folded back for transportation. The bottom portion of the threaded rod screwed into a small piece of 1/2&#34; aluminum rod into which some 1/4&#34;-20 threads were tapped.  The",
+      "title": "Optical enclosure - first version"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://lwn.net/Articles/958030/bigpage",
+      "execution_sequence": 895,
+      "original_url": "https://lwn.net/Articles/958030/bigpage",
+      "pair_id": "candidate-p-1593",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-1593",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0895-attempt-1.json",
+      "row_id": "v6-0895-02",
+      "snippet": "advantage of these two mechanisms; as these practices spread through the community we&#39;ll see further decreases in latencies even without improvements to Julia itself. The latest r",
+      "title": "LWN.net Weekly Edition for January 18, 2024 [LWN.net]"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://homepages.cwi.nl/~steven/",
+      "execution_sequence": 896,
+      "original_url": "https://homepages.cwi.nl/~steven/",
+      "pair_id": "candidate-p-1593",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1593",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0896-attempt-1.json",
+      "row_id": "v6-0896-01",
+      "snippet": "17 April. The most practical and useful info of the day ; Steven Pemberton is a good speaker . Invited talk: The Future from now... on the internet as part of the Solar Initiative",
+      "title": "Steven Pemberton"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://www.ibiblio.org/eldritch/hlm/defense.htm",
+      "execution_sequence": 911,
+      "original_url": "http://www.ibiblio.org/eldritch/hlm/defense.htm",
+      "pair_id": "candidate-p-1019",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-1019",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0911-attempt-1.json",
+      "row_id": "v6-0911-01",
+      "snippet": "late war, or a sort of fermentation-product, to mix the figure, of a banal heresy launched upon him recently by his wife. This is the penalty that the man of intellectual curiosit",
+      "title": "In Defense of Women, H. L. Mencken, 1922"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://www.gutenberg.org/cache/epub/1270/pg1270-images.html",
+      "execution_sequence": 911,
+      "original_url": "https://www.gutenberg.org/cache/epub/1270/pg1270-images.html",
+      "pair_id": "candidate-p-1019",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-1019",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0911-attempt-1.json",
+      "row_id": "v6-0911-02",
+      "snippet": "late war, or a sort of fermentation-product, to mix the figure, of a banal heresy launched upon him recently by his wife. This is the penalty that the man of intellectual curiosit",
+      "title": "The Project Gutenberg eBook of In Defense of Women, by H. L. Mencken"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://soylentnews.org/",
+      "execution_sequence": 940,
+      "original_url": "https://soylentnews.org/",
+      "pair_id": "candidate-p-1903",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1903",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0940-attempt-1.json",
+      "row_id": "v6-0940-01",
+      "snippet": "incidents. OpenAI&#39;s explanation addresses what happened, but its call for keeping a closer watch on AI activities won&#39;t elicit much enthusiasm. &#34;The incident occurred during cyber",
+      "title": "SoylentNews: SoylentNews is people"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://icescape.org/Happening.html",
+      "execution_sequence": 963,
+      "original_url": "https://icescape.org/Happening.html",
+      "pair_id": "candidate-p-0947",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0947",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0963-attempt-1.json",
+      "row_id": "v6-0963-03",
+      "snippet": "on alert. Recent evidence indicates that the Soviets sent nuclear missile submarines also. Aviation Week and Space Technology magazine claimed that the two Soviet SCUD brigades de",
+      "title": "https://icescape.org/Happening.html"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.jrbooksonline.com/fdr-scandal-page/yaltabet.html",
+      "execution_sequence": 964,
+      "original_url": "https://www.jrbooksonline.com/fdr-scandal-page/yaltabet.html",
+      "pair_id": "candidate-p-0947",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0947",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/0964-attempt-1.json",
+      "row_id": "v6-0964-01",
+      "snippet": "with a subversive background taken off their ships. Rear Admiral Staton, recipient of the Congressional Medal of Honor, headed the administrative board which assisted the Secretar",
+      "title": "The Yalta Betrayal - Best Resource on FDR"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://single-honeypot.sourceforge.net/libros/maxsecurity/ch08/ch08.htm",
+      "execution_sequence": 1029,
+      "original_url": "https://single-honeypot.sourceforge.net/libros/maxsecurity/ch08/ch08.htm",
+      "pair_id": "candidate-p-1410",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-1410",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1029-attempt-1.json",
+      "row_id": "v6-1029-03",
+      "snippet": "is a popular one. Many researchers are now involved in assessing the capability of U.S. government agencies to successfully repel or survive a comprehensive attack from foreign po",
+      "title": "Maximum Security -- Ch 8 -- Internet Warfare"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.spaceandmotion.com/sitemap/theology.htm",
+      "execution_sequence": 1030,
+      "original_url": "https://www.spaceandmotion.com/sitemap/theology.htm",
+      "pair_id": "candidate-p-1410",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1410",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1030-attempt-1.json",
+      "row_id": "v6-1030-01",
+      "snippet": "Inputs and Explanatory Compression https://www.spaceandmotion.com/2026/wsm-simplicity-inputs-vs-mainstream-physics&#43;25.html “One substance, one law” cannot hide complex",
+      "title": "Sitemap: Theology: Atheisism, Agnosticism, Mysticism, Monism, Pantheism, Hinduism, Buddhism, Confucianism, Taoism, Greek Gods, Goddess, Myths,"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://www.smuggled.com/adder1.htm",
+      "execution_sequence": 1133,
+      "original_url": "http://www.smuggled.com/adder1.htm",
+      "pair_id": "candidate-p-2266",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-2266",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1133-attempt-1.json",
+      "row_id": "v6-1133-01",
+      "snippet": "periodically replaced. CONSERVATION. As already mentioned, the biggest cause of decline for Acanthophis in Australia is habitat destruction. Acanthophis don&#39;t appear to be compati",
+      "title": "DEATH ADDERS - DEATH ADDER - DEATH ADDERS"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://user.xmission.com/~research/central/vogel4.htm",
+      "execution_sequence": 1135,
+      "original_url": "http://user.xmission.com/~research/central/vogel4.htm",
+      "pair_id": "candidate-p-0219",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0219",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1135-attempt-1.json",
+      "row_id": "v6-1135-01",
+      "snippet": "a circular asking for information about the aboriginal and colonial history of New York. The circular appeared in various newspapers around the state including the Wayne Sentinel,",
+      "title": "MORMON CENTRAL - JOSEPH SMITH - LDS TEMPLES - BOOK OF MORMON - MORMONISM"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://www.ronneantarcticexplorers.com/antarctica.htm",
+      "execution_sequence": 1136,
+      "original_url": "http://www.ronneantarcticexplorers.com/antarctica.htm",
+      "pair_id": "candidate-p-0219",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0219",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1136-attempt-1.json",
+      "row_id": "v6-1136-01",
+      "snippet": "was much geographical information missing in the Peninsula area. With the southern tip of South America to the right and the Antarctic Peninsula left of it near the center, there",
+      "title": "Antarctica"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://www.smecc.org/sage_a_n_fsq-7.htm",
+      "execution_sequence": 1136,
+      "original_url": "http://www.smecc.org/sage_a_n_fsq-7.htm",
+      "pair_id": "candidate-p-0219",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0219",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1136-attempt-1.json",
+      "row_id": "v6-1136-02",
+      "snippet": "position. Technical information I recall: Each computer had 12 drums. Six were for the display system and six for central computer use. Each drum had fixed position read/write hea",
+      "title": "SAGE A/N FSQ-7"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://unstory.eu/",
+      "execution_sequence": 1142,
+      "original_url": "https://unstory.eu/",
+      "pair_id": "candidate-p-0885",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0885",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1142-attempt-1.json",
+      "row_id": "v6-1142-01",
+      "snippet": "for massive tech ecosystems. They don&#39;t serve users, but corporations. AI features, VPNs, crypto wallets, and countless of other nonsense. Markdown, on the other hand, is a public",
+      "title": "unstory"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://squareup.com/us/en/legal/general/privacy",
+      "execution_sequence": 1158,
+      "original_url": "https://squareup.com/us/en/legal/general/privacy",
+      "pair_id": "candidate-p-0371",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0371",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1158-attempt-1.json",
+      "row_id": "v6-1158-01",
+      "snippet": "your customer (&#34;KYC&#34;), background checking (see further below) and other compliance requirements. Legal obligation. For example, AML and KYC compliance requirements are governed b",
+      "title": "Privacy Notice for Users Who Apply or Sign Up for a Square Account or Other Services"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://nlnet.nl/project/current.html",
+      "execution_sequence": 1160,
+      "original_url": "https://nlnet.nl/project/current.html",
+      "pair_id": "candidate-p-1938",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1938",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1160-attempt-1.json",
+      "row_id": "v6-1160-01",
+      "snippet": "binary linter, malware research tool and SBOM generator Dep-scan memory-safety risk analysis Static analysis to identify memory-safety issues Owi 2 Cross-language symbolic executi",
+      "title": "NLnet; Current projects"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://www.fourmilab.ch/etexts/www/atomic_tests_nevada/",
+      "execution_sequence": 1249,
+      "original_url": "https://www.fourmilab.ch/etexts/www/atomic_tests_nevada/",
+      "pair_id": "candidate-p-2140",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-2140",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1249-attempt-1.json",
+      "row_id": "v6-1249-01",
+      "snippet": "include: Improved forecasting of wind speed and directions; improved methods of predicting blast and fall-out intensity and location; reducing fall-out by means such as yield limi",
+      "title": "Atomic Test Effects in the Nevada Test Site Region"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://web.cs.wpi.edu/~jshutt/surfing.html",
+      "execution_sequence": 1290,
+      "original_url": "http://web.cs.wpi.edu/~jshutt/surfing.html",
+      "pair_id": "candidate-p-0221",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0221",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1290-attempt-1.json",
+      "row_id": "v6-1290-01",
+      "snippet": "14-Dec-20) FSU Meteorology Home Page (Tallahassee) (06-Feb-16; 11-Jan-21) See also: History Transportation Motive Power Review (Railroads) (17-Jul-17; 25-Dec-20) United States Nav",
+      "title": "Web Surfing"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://danluu.com/cocktail-ideas/",
+      "execution_sequence": 1333,
+      "original_url": "http://danluu.com/cocktail-ideas/",
+      "pair_id": "candidate-p-0700",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0700",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1333-attempt-1.json",
+      "row_id": "v6-1333-01",
+      "snippet": "&#34;trad&#34; engineering fields. An example I enjoyed was this Twitter thread where Hillel Wayne discussed how programmers without knowledge of trad engineering often have inc",
+      "title": "Cocktail party ideas"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://smallproof.neocities.org/",
+      "execution_sequence": 1370,
+      "original_url": "https://smallproof.neocities.org/",
+      "pair_id": "candidate-p-1139",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1139",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1370-attempt-1.json",
+      "row_id": "v6-1370-01",
+      "snippet": "for listening, not background noise. The crack is the refusal: A 100% family business. No corporate ownership. No venture capital. No major label involvement. The venue exclusivel",
+      "title": "cracks"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.californiaprehistory.com/contcounty.html",
+      "execution_sequence": 1442,
+      "original_url": "https://www.californiaprehistory.com/contcounty.html",
+      "pair_id": "candidate-p-0003",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0003",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1442-attempt-1.json",
+      "row_id": "v6-1442-01",
+      "snippet": "Here? Settlement, Geoarchaeology, and Paleoenvironment at the West Berkeley Site (CA-Ala-307) [ SCA Proceedings - PDF]. Eerkens, Jelmer, Shannon Tushingham, Kari Lentz, Jennifer B",
+      "title": "CaliforniaPrehistory.com -- Articles on Prehistory, By County"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.roguetemple.com/7drl/2013/",
+      "execution_sequence": 1506,
+      "original_url": "https://www.roguetemple.com/7drl/2013/",
+      "pair_id": "candidate-p-0223",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0223",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1506-attempt-1.json",
+      "row_id": "v6-1506-01",
+      "snippet": "use with a little more explanation in-game. Instant-death on accidentally switching to sniper mode is kind of a bummer! 2 - Mostly complete though, according to the author, lackin",
+      "title": "Temple of The Roguelike: 7DRL Shrine : 2013 7DRL Challenge Evaluation"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://www.dhushara.com/repcult/reproduction-and-culture.htm",
+      "execution_sequence": 1549,
+      "original_url": "http://www.dhushara.com/repcult/reproduction-and-culture.htm",
+      "pair_id": "candidate-p-1594",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-1594",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1549-attempt-1.json",
+      "row_id": "v6-1549-03",
+      "snippet": "conservation of social patterns modulated only by gradual changes at the genetic level through mutation and natural selection over many generations.   Fig 3: Latest high accu",
+      "title": "Religion, Politics, Sexual Reproduction and the Future of Human Society"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.ed-thelen.org/comp-hist/merged.html",
+      "execution_sequence": 1550,
+      "original_url": "https://www.ed-thelen.org/comp-hist/merged.html",
+      "pair_id": "candidate-p-1594",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1594",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1550-attempt-1.json",
+      "row_id": "v6-1550-03",
+      "snippet": "by Tom Kopec Computer Conservation Society , an initiative between the The British Computer Society and the Science Museum of London Computer History Museum , Mountain View, CA Co",
+      "title": "Documents, Links &amp; Videos"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.parareligion.ch/",
+      "execution_sequence": 1572,
+      "original_url": "https://www.parareligion.ch/",
+      "pair_id": "candidate-p-0758",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0758",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1572-attempt-1.json",
+      "row_id": "v6-1572-03",
+      "snippet": "of occultists associated with occult orders and free occultists. Deutsche Version:  Ekstatische Erzeugung von Kultur   [overdubbed version] — Die kommerzielle Pl&amp;u",
+      "title": "The Ordo Templi Orientis Phenomenon — Peter-R. Koenig"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://www.salimbeti.com/micenei/sea.htm",
+      "execution_sequence": 1610,
+      "original_url": "http://www.salimbeti.com/micenei/sea.htm",
+      "pair_id": "candidate-p-0731",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0731",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1610-attempt-1.json",
+      "row_id": "v6-1610-02",
+      "snippet": "their ethnic backgrounds. The land battle and sea battle scenes provide a wealth of information on the military styles of the Sea Peoples. The reliefs depicting the land battle sh",
+      "title": "The Greek Age of Bronze - Sea Peoples"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://www.kennedydna.com/news.html",
+      "execution_sequence": 1616,
+      "original_url": "http://www.kennedydna.com/news.html",
+      "pair_id": "candidate-p-1755",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1755",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1616-attempt-1.json",
+      "row_id": "v6-1616-01",
+      "snippet": "an index this rich in information which would transform one-name studies all over the island. 17.7.14 Exciting news from Nenagh where Rody Kennedy has been appointed the new chief",
+      "title": "Kennedy One-Name Study"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.humprog.org/~stephen/",
+      "execution_sequence": 1694,
+      "original_url": "https://www.humprog.org/~stephen/",
+      "pair_id": "candidate-p-0746",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0746",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/1694-attempt-1.json",
+      "row_id": "v6-1694-02",
+      "snippet": "C Semantics and Pointer Provenance . In Proceedings of the ACM on Programming Languages, volume 3 issue POPL (POPL 2019). publisher&#39;s doi abstract Abstract: The semantics of point",
+      "title": "https://www.humprog.org/~stephen/"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://vas.neocities.org/",
+      "execution_sequence": 2015,
+      "original_url": "https://vas.neocities.org/",
+      "pair_id": "candidate-p-0877",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0877",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2015-attempt-1.json",
+      "row_id": "v6-2015-01",
+      "snippet": "due to budget and time constraints, the animation quality suffers, especially in action scenes, but even gimped it remains a blast to watch. I cannot offer enough praise for the w",
+      "title": "The web site of Vas"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://stallman.org/archives/2023-nov-feb.html",
+      "execution_sequence": 2029,
+      "original_url": "http://stallman.org/archives/2023-nov-feb.html",
+      "pair_id": "candidate-p-0875",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0875",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2029-attempt-1.json",
+      "row_id": "v6-2029-01",
+      "snippet": "does a species, an ecosystem, or a ship … or a corporation, for that matter. Although many countries treat a corporation as a &#34;person&#34; and accord it rights, that policy is",
+      "title": "2023: November - February Political Notes"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.ditext.com/nachie/bidder.html",
+      "execution_sequence": 2030,
+      "original_url": "https://www.ditext.com/nachie/bidder.html",
+      "pair_id": "candidate-p-0875",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0875",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2030-attempt-1.json",
+      "row_id": "v6-2030-01",
+      "snippet": "space for the speakers&#39; backgrounds to be explained; I hope I have succeeded in this task. And lastly, any factual errors or mistranslations are entirely my own fault. 2. A (VERY)",
+      "title": "The Civil War in Venezuela: Socialism to the Highest Bidder"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://www.amazings.com/ingles.html",
+      "execution_sequence": 2052,
+      "original_url": "http://www.amazings.com/ingles.html",
+      "pair_id": "candidate-p-0011",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0011",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2052-attempt-1.json",
+      "row_id": "v6-2052-01",
+      "snippet": "such an eclectic background, so that in her compositions the listener can appreciate the integration of such diverse stylistic elements and media as she feels necessary, often ign",
+      "title": "Amazing Sounds magazine"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.hellenicaworld.com/Canada/en/Canada.html",
+      "execution_sequence": 2100,
+      "original_url": "https://www.hellenicaworld.com/Canada/en/Canada.html",
+      "pair_id": "candidate-p-0210",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0210",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2100-attempt-1.json",
+      "row_id": "v6-2100-02",
+      "snippet": "space exploration, navigation, and space science (2024) note: further details about the key activities, programs, and milestones of the country’s space program, as well as governm",
+      "title": "Canada"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.shroud.com/late24.htm",
+      "execution_sequence": 2118,
+      "original_url": "https://www.shroud.com/late24.htm",
+      "pair_id": "candidate-p-2091",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-2091",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2118-attempt-1.json",
+      "row_id": "v6-2118-02",
+      "snippet": "lead off with updated information about an International Shroud conference to be held in St. Louis, Missouri on July 30 - August 3, 2025. It will be the first major Shroud con",
+      "title": "2022 Website News!"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://davidmhart.com/liberty/Papers/Bastiat/FilmingIdeas/",
+      "execution_sequence": 2138,
+      "original_url": "http://davidmhart.com/liberty/Papers/Bastiat/FilmingIdeas/",
+      "pair_id": "candidate-p-0651",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0651",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2138-attempt-1.json",
+      "row_id": "v6-2138-01",
+      "snippet": "of the past and in forecasting future events. (HA1, p. 50) If one thinks of the filmmaker of “a movie of ideas” as an “historian” or a “teller of stories” then the task is to try",
+      "title": "David M. Hart, &#34;Some Thoughts on an ‘Austrian Theory of Film’: Ideas and Human Action in a Film about Frédéric Bastiat&#34; (2019)"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://www.gutenberg.org/files/4316/4316-h/4316-h.htm",
+      "execution_sequence": 2141,
+      "original_url": "https://www.gutenberg.org/files/4316/4316-h/4316-h.htm",
+      "pair_id": "candidate-p-2004",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-2004",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2141-attempt-1.json",
+      "row_id": "v6-2141-01",
+      "snippet": "by the facilities in transportation, has been finally gained only by a long series of persistent efforts, attended by dangers, privations, reverses, discouragements, and disasters",
+      "title": "The Project Gutenberg eBook of The Romance of the Colorado River, by Frederick S. Dellenbaugh"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://www.combatreform.org/submarineaircraftcarriers.htm",
+      "execution_sequence": 2173,
+      "original_url": "http://www.combatreform.org/submarineaircraftcarriers.htm",
+      "pair_id": "candidate-p-0948",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0948",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2173-attempt-1.json",
+      "row_id": "v6-2173-01",
+      "snippet": "were being laid on PL - transportation it is cargo, the supply of submarines in the ocean - they also required resolution of many problematic questions. The absence in the country",
+      "title": "Never Say Never Again: Aircraft/Amphibious carriers must submerge to avoid SSC destruction"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://searchlores.nickifaulk.com/deepweb_searching.htm",
+      "execution_sequence": 2191,
+      "original_url": "https://searchlores.nickifaulk.com/deepweb_searching.htm",
+      "pair_id": "candidate-p-1334",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-1334",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2191-attempt-1.json",
+      "row_id": "v6-2191-01",
+      "snippet": "all they are thought to represent around 70% of all databases . This said, the real bulk of the &#34;huge deep invisible web&#34; consists mainly of raw data: pictures of galaxies and sta",
+      "title": "deepweb_searching.htm: The lore of searching: how to exploit the shallow deep_web, by fravia&#43;"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://www.catb.org/esr/faqs/smart-questions.html",
+      "execution_sequence": 2366,
+      "original_url": "http://www.catb.org/esr/faqs/smart-questions.html",
+      "pair_id": "candidate-p-1591",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1591",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2366-attempt-1.json",
+      "row_id": "v6-2366-01",
+      "snippet": "me a pointer to a good explanation of X? ” is usually a smarter question than “ Would you explain X, please? ” . If you have some malfunctioning code, it is usually smarter to ask",
+      "title": "How To Ask Questions The Smart Way"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.ed-thelen.org/comp-hist/BRL61-ibm065.html",
+      "execution_sequence": 2372,
+      "original_url": "https://www.ed-thelen.org/comp-hist/BRL61-ibm065.html",
+      "pair_id": "candidate-p-2202",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-2202",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2372-attempt-1.json",
+      "row_id": "v6-2372-03",
+      "snippet": "in all fields of engineering in connection with Research and Development of military items for the Corps of Engineers, plus a small amount (less than 5,%) of data processing in co",
+      "title": "BRL Report 1961"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://ml-ops.org/content/model-governance",
+      "execution_sequence": 2402,
+      "original_url": "https://ml-ops.org/content/model-governance",
+      "pair_id": "candidate-p-0111",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0111",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2402-attempt-1.json",
+      "row_id": "v6-2402-01",
+      "snippet": "following aspects: an explanation of the business context, a high-level explanation of the algorithm, model parameters, selection and definition of features, instructions for repr",
+      "title": "ML Model Governace"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.copetti.org/writings/consoles/wiiu/",
+      "execution_sequence": 2408,
+      "original_url": "https://www.copetti.org/writings/consoles/wiiu/",
+      "pair_id": "candidate-p-1618",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1618",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2408-attempt-1.json",
+      "row_id": "v6-2408-01",
+      "snippet": "tampering and reverse engineering. With the 7th generation, IBM presented a new range of PowerPC CPUs that embedded a hidden mask ROM within the silicon. This enabled the PlayStat",
+      "title": "Wii U Architecture | A Practical Analysis"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://answering-islam.org/Shamoun/documents.htm",
+      "execution_sequence": 2431,
+      "original_url": "https://answering-islam.org/Shamoun/documents.htm",
+      "pair_id": "candidate-p-0723",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0723",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2431-attempt-1.json",
+      "row_id": "v6-2431-02",
+      "snippet": "Press, 1988], p. 15) Archaeology And The NT Independent archaeological research has solidified the authenticity and the historical reliability of the New Testament. Some of the di",
+      "title": "The New Testament Documents and the Historicity of the Resurrection"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://www.suduva.com/virdainas/proto.htm",
+      "execution_sequence": 2431,
+      "original_url": "http://www.suduva.com/virdainas/proto.htm",
+      "pair_id": "candidate-p-0723",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0723",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2431-attempt-1.json",
+      "row_id": "v6-2431-03",
+      "snippet": "The new &#34;molecular DNA archaeology&#34; proves it beyond question. We are all related - literally . The high incidence of Y chromosomes from the haplogroup N1c1 suggest long term rela",
+      "title": "The Baltic in Vedic | Embrace The Chaos |"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://kermitproject.org/kermit.html",
+      "execution_sequence": 2484,
+      "original_url": "https://kermitproject.org/kermit.html",
+      "pair_id": "candidate-p-1429",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1429",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2484-attempt-1.json",
+      "row_id": "v6-2484-01",
+      "snippet": "as well as options for compression and for taking advantage of transparent and/or error-free connections (for example, network connections) when they were available. These changes",
+      "title": "Kermit - What is it?"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://www.ajhw.co.uk/books/book75.html",
+      "execution_sequence": 2489,
+      "original_url": "https://www.ajhw.co.uk/books/book75.html",
+      "pair_id": "candidate-p-0484",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0484",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2489-attempt-1.json",
+      "row_id": "v6-2489-03",
+      "snippet": "the force of economic conditions.  Capitalism has made socialism, and the laws made by the capitalism for the protection of property are responsible for anarchism.  No o",
+      "title": "The Secret Agent, by Joseph Conrad"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://shallowsky.com/blog/tags/shell/",
+      "execution_sequence": 2543,
+      "original_url": "https://shallowsky.com/blog/tags/shell/",
+      "pair_id": "candidate-p-1599",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-1599",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2543-attempt-1.json",
+      "row_id": "v6-2543-01",
+      "snippet": "over tcsh. Some of the tradeoffs: tcsh wins Totally reliable history: commands never disappear. History tab completion: typing !a &lt;TAB&gt; expands to the last command that star",
+      "title": "Shallow Thoughts : tags : shell"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://digdeeper.love/articles/capitalismcancer.xhtml",
+      "execution_sequence": 2628,
+      "original_url": "http://digdeeper.love/articles/capitalismcancer.xhtml",
+      "pair_id": "candidate-p-2195",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-2195",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2628-attempt-1.json",
+      "row_id": "v6-2628-02",
+      "snippet": "a boring gray blob. The background contains various decorations in the original, in the remake they disappeared or became layers of the sky or grass. It is so so funny and obvious",
+      "title": "How money and the profit motive destroy everything"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://www.sgidepot.co.uk/sgi.html",
+      "execution_sequence": 2688,
+      "original_url": "http://www.sgidepot.co.uk/sgi.html",
+      "pair_id": "candidate-p-1439",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1439",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2688-attempt-1.json",
+      "row_id": "v6-2688-02",
+      "snippet": "for O2 (205K PDF) An explanation of the advantages afforded by QED RM5200 and MIPS R12000 CPUs in O2 (495K PDF) Silicon Graphics O2&#43; (covers R7K/350) (308K PDF) [ later version wi",
+      "title": "SGI Technical Advice and Information..."
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://nuclearweaponarchive.org/Usa/Med/Med.html",
+      "execution_sequence": 2702,
+      "original_url": "https://nuclearweaponarchive.org/Usa/Med/Med.html",
+      "pair_id": "candidate-p-1425",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1425",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2702-attempt-1.json",
+      "row_id": "v6-2702-01",
+      "snippet": "first evidence of solid compression from implosion was observed (5%). April, 1945: April 3 - Preparations began at Tinian Island to support the 509th Composite Group, and to assem",
+      "title": "The Manhattan Project"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://kevincraig.us/program.htm",
+      "execution_sequence": 2919,
+      "original_url": "https://KevinCraig.us/program.htm",
+      "pair_id": "candidate-p-2100",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-2100",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2919-attempt-1.json",
+      "row_id": "v6-2919-01",
+      "snippet": "billion Department of Transportation (DOT) - savings: $79.8 Billion Department of Commerce - savings: $9.2 billion Department of Labor (DOL) - savings: $116 billion Department of",
+      "title": "A Program to Abolish Harmful Bureaucracies -- KEVIN CRAIG - &#34;Liberty Under God&#34; Beginning in Missouri&#39;s 7th Congressional District&lt;"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://www.pliant.org/personal/Tom_Erickson/GopherVR.html",
+      "execution_sequence": 2925,
+      "original_url": "http://www.pliant.org/personal/Tom_Erickson/GopherVR.html",
+      "pair_id": "candidate-p-1615",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-1615",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2925-attempt-1.json",
+      "row_id": "v6-2925-01",
+      "snippet": "social phenomenon as a technology. Backward compatibility of any new client is essential for acceptance. It will be impossible to change all of gopherspace overnight, so any new c",
+      "title": "3D Gopher, by McCahill and Erickson"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://bopsecrets.org/CF/primitivism.htm",
+      "execution_sequence": 2996,
+      "original_url": "https://bopsecrets.org/CF/primitivism.htm",
+      "pair_id": "candidate-p-0903",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0903",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/2996-attempt-1.json",
+      "row_id": "v6-2996-02",
+      "snippet": "a simplistic mythical explanation for the origin of all subsequent problems. feel we should return to a hunter-gatherer society, though they are not entirely clear about what they",
+      "title": "The Poverty of Primitivism"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://jmvalin.ca/publications.html",
+      "execution_sequence": 3074,
+      "original_url": "http://jmvalin.ca/publications.html",
+      "pair_id": "candidate-p-1418",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1418",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/3074-attempt-1.json",
+      "row_id": "v6-3074-01",
+      "snippet": "Multi-Channel Opus Compression for Far-Field Automatic Speech Recognition With a Fixed Bitrate Budget , Proceedings of INTERSPEECH , arxiv: 2106.07994 , 2021. J.-M. Valin, S. Tenn",
+      "title": "Jean-Marc Valin — Publications"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://statlit.org/Wainer.htm",
+      "execution_sequence": 3123,
+      "original_url": "http://statlit.org/Wainer.htm",
+      "pair_id": "candidate-p-1622",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-1622",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/3123-attempt-1.json",
+      "row_id": "v6-3123-03",
+      "snippet": "how well-done graphic representations illuminate subtle and significant elements of the information they represent, how poorly conceived graphical devices can misrepresent and dis",
+      "title": "Howard Wainer"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://donutteam.com/documents/privacy-policy",
+      "execution_sequence": 3294,
+      "original_url": "https://donutteam.com/documents/privacy-policy",
+      "pair_id": "candidate-p-0351",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0351",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/3294-attempt-1.json",
+      "row_id": "v6-3294-01",
+      "snippet": "line and a brief explanation of why you believe the denial was incorrect. Response. We will respond to your appeal within sixty (60) days of receiving it. If we deny your appeal,",
+      "title": "Privacy Policy | Donut Team"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.altcancer.net/biodox.htm",
+      "execution_sequence": 3354,
+      "original_url": "https://www.altcancer.net/biodox.htm",
+      "pair_id": "candidate-p-1379",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1379",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/3354-attempt-1.json",
+      "row_id": "v6-3354-02",
+      "snippet": "CoVid-19 -- A little background is needed here. MMS (Miracle Mineral Solution) goes back to the work of Jim Humble, to whom I was introduced in the early 2000&#39;s by a mutual friend",
+      "title": "Biodox"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://etfriends.com/ETVreports.html",
+      "execution_sequence": 3385,
+      "original_url": "http://etfriends.com/ETVreports.html",
+      "pair_id": "candidate-p-0891",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0891",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/3385-attempt-1.json",
+      "row_id": "v6-3385-01",
+      "snippet": "speed. We know that the information came from the Mexican Department of Defense. They say there&#39;s no national security impact. I think if there were bombers flying over their coun",
+      "title": "NEW ETV REPORTS"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.lloflin.com/",
+      "execution_sequence": 3466,
+      "original_url": "https://www.lloflin.com/",
+      "pair_id": "candidate-p-0218",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0218",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/3466-attempt-1.json",
+      "row_id": "v6-3466-03",
+      "snippet": "more, nothing less. Navigation subject lists of this webpage: Deistic View Philosophy Religion &amp; Rational Thought Critique of Modern Culture Philosophy Philosophy Main Index P",
+      "title": "Lloflin.com Reason Based Exploration of Religion &amp; Philosophy"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.jesus-is-savior.com/Evils%20in%20America/Abortion%20is%20Murder/aborted_fetus_vaccines.htm",
+      "execution_sequence": 3610,
+      "original_url": "https://www.jesus-is-savior.com/Evils%20in%20America/Abortion%20is%20Murder/aborted_fetus_vaccines.htm",
+      "pair_id": "candidate-p-1043",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1043",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/3610-attempt-1.json",
+      "row_id": "v6-3610-02",
+      "snippet": "the protein into the fermentation medium.” HEK 293 are cells taken from the kidney of an aborted baby.  About the 293 Cell Line... The protein C is produced in the HEK 293 ab",
+      "title": "Injecting Aborted Fetus Material Into Children"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://planet.kernel.org/",
+      "execution_sequence": 3693,
+      "original_url": "https://planet.kernel.org/",
+      "pair_id": "candidate-p-1626",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-1626",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/3693-attempt-1.json",
+      "row_id": "v6-3693-01",
+      "snippet": "on the Software Engineering Radio Podcast Software Engineering Radio is a podcast for people in IT/development with over 700 episodes across many topics over 20 years. They haven&#39;",
+      "title": "Kernel Planet"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.ajhw.co.uk/books/book33/book33.html",
+      "execution_sequence": 3840,
+      "original_url": "https://www.ajhw.co.uk/books/book33/book33.html",
+      "pair_id": "candidate-p-1023",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1023",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/3840-attempt-1.json",
+      "row_id": "v6-3840-01",
+      "snippet": "Bread made light by fermentation The process of fermentation Fermentative agents Yeast Homemade yeasts How to keep yeast Bitter yeast Tests for yeast Starting the bread Proportion",
+      "title": "Science in the Kitchen., by Mrs. E. E. Kellogg"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://www.alternatievewiskunde.nl/denaerde/IargaChap3.htm",
+      "execution_sequence": 3850,
+      "original_url": "http://www.alternatievewiskunde.nl/denaerde/IargaChap3.htm",
+      "pair_id": "candidate-p-0255",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-0255",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/3850-attempt-1.json",
+      "row_id": "v6-3850-01",
+      "snippet": "my displeasure, but the explanation continued with the following hypothesis: consequently, because money is an unmistakable form of property, it should be abolished. They went eve",
+      "title": "UFO Contact from Planet Iarga"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://theccpa.org/",
+      "execution_sequence": 3883,
+      "original_url": "https://theccpa.org/",
+      "pair_id": "candidate-p-0369",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0369",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/3883-attempt-1.json",
+      "row_id": "v6-3883-01",
+      "snippet": "has adopted specific mechanisms to safeguard Californians’ privacy, including the Online Privacy Protection Act, the Privacy Rights for California Minors in the Digital World Act,",
+      "title": "CCPA"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://www.handprint.com/ASTRO/seeing2.html",
+      "execution_sequence": 3901,
+      "original_url": "http://www.handprint.com/ASTRO/seeing2.html",
+      "pair_id": "candidate-p-0052",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0052",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/3901-attempt-1.json",
+      "row_id": "v6-3901-02",
+      "snippet": "made under familiar conditions. The observational aims of the astronomer and his experience of what was relatively good or bad seeing at his habitual observing site significantly",
+      "title": "astronomical seeing, part 2: seeing measurement methods"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://3lotus.com/en/Islam/Islamic-civilization.htm",
+      "execution_sequence": 3901,
+      "original_url": "https://3lotus.com/en/Islam/Islamic-civilization.htm",
+      "pair_id": "candidate-p-0052",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0052",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/3901-attempt-1.json",
+      "row_id": "v6-3901-03",
+      "snippet": "slaves.  These adverse conditions impoverished Europe and militarized it.  Continual Islamic piracy caused the rise of local warlords to protect the local populations, which weake",
+      "title": "Islamic civilization?"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "https://www.amerika.org/politics/on-women/",
+      "execution_sequence": 3984,
+      "original_url": "https://www.amerika.org/politics/on-women/",
+      "pair_id": "candidate-p-1528",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1528",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/3984-attempt-1.json",
+      "row_id": "v6-3984-01",
+      "snippet": "Now you have this stratification where autism explodes on one hand, and the population at large get rather dull witted. These qualities of course belong together. If the gods allo",
+      "title": "On Women"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://www.meta-religion.com/Psychiatry/Analytical_psychology/a_gallery_of_archetypes.htm",
+      "execution_sequence": 4051,
+      "original_url": "https://www.meta-religion.com/Psychiatry/Analytical_psychology/a_gallery_of_archetypes.htm",
+      "pair_id": "candidate-p-1430",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-1430",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/4051-attempt-1.json",
+      "row_id": "v6-4051-02",
+      "snippet": "the experience of the compression of time. The drama of trying to outrun the odds is the psychic lock on the Gambler within a person&#39;s psyche. The positive aspect of this archetyp",
+      "title": "A Gallery Of Archetypes"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://bwo.life/heart.htm",
+      "execution_sequence": 4091,
+      "original_url": "https://bwo.life/heart.htm",
+      "pair_id": "candidate-p-0755",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0755",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/4091-attempt-1.json",
+      "row_id": "v6-4091-03",
+      "snippet": "memory -- of unknown provenance and content -- may be impotent to point the way, but we must find some means to gaze back into the world from which Harvey emerged, bringing it ali",
+      "title": "Between Discordant Eras"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://olivercowdery.com/texts/1818symm.htm",
+      "execution_sequence": 4195,
+      "original_url": "http://olivercowdery.com/texts/1818symm.htm",
+      "pair_id": "candidate-p-0196",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0196",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/4195-attempt-1.json",
+      "row_id": "v6-4195-01",
+      "snippet": "I propose; but as the conditions with regard to my outfit by the world, are not yet complied with, I have not positively accepted of their services. I still hold my life pledged,",
+      "title": "John C. Symmes&#39; Hollow Earth Writings"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "https://wormstedt.com/RoyMengot/TitanicWreck/BREAKUP/Breakup.html",
+      "execution_sequence": 4439,
+      "original_url": "https://wormstedt.com/RoyMengot/TitanicWreck/BREAKUP/Breakup.html",
+      "pair_id": "candidate-p-1420",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-1420",
+      "rank": 3,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/4439-attempt-1.json",
+      "row_id": "v6-4439-03",
+      "snippet": "and corresponding compression stress in the engine room area. It also showed &#34;hot spots&#34; at the expansion joint. While it was not stated as such in the study, the basic",
+      "title": "Breakup"
+    },
+    {
+      "arm": "treatment",
+      "canonical_url": "http://www.luxlapis.co.za/yan/main.htm",
+      "execution_sequence": 4455,
+      "original_url": "http://www.luxlapis.co.za/yan/main.htm",
+      "pair_id": "candidate-p-0027",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-t-0027",
+      "rank": 1,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/4455-attempt-1.json",
+      "row_id": "v6-4455-01",
+      "snippet": "1977, p.4 This field of Information, the subject of this study, is what Ajit Mookerjee terms &#34;VISUAL METAPHYSICS&#34;. In the most profound sense, the phenomena that we coll",
+      "title": "main text"
+    },
+    {
+      "arm": "control",
+      "canonical_url": "http://www.uiaccess.com/pres.html",
+      "execution_sequence": 4504,
+      "original_url": "http://www.uiaccess.com/pres.html",
+      "pair_id": "candidate-p-1610",
+      "provenance": {
+        "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+        "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+      },
+      "provider": "SearXNG",
+      "query_id": "candidate-c-1610",
+      "rank": 2,
+      "raw_capture_path": "docs/evaluation/independent-relevance/v6/execution/raw/4504-attempt-1.json",
+      "row_id": "v6-4504-02",
+      "snippet": "and Aging&#34; Industrial Engineering graduate course - University of Wisconsin-Madison, Spring 2000 1999 Public Training &amp; Presentations &#34;Designing for Usability, Flexi",
+      "title": "Shawn&#39;s Presentations"
+    }
+  ],
+  "schema": "amatl.relevance.v6-prelabel-manifest.v1"
+}

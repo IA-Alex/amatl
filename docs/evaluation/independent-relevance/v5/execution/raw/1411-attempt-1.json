@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 263.036,
+  "pair_id": "v5-p-0349",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is soil erosion in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "me math, physics, and engineering. I remembered how my mother would read me the Bible every night before bed. My mind then turned to my wife Denice. We had been friends since the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "edmundmuller.neocities.org",
+          "/lunaria",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Edmund Muller - Lunaria",
+        "url": "https://edmundmuller.neocities.org/lunaria"
+      },
+      {
+        "category": "general",
+        "content": "Police State - &#34;Reengineering&#34; The Internet... for Persistent Surveillance    -  The Human Farm and The Cage You Were Born Into      -",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/sociopol_bigbrother.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Big Brother Loves You... - El Gran Hermano Te Ama...",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_bigbrother.htm"
+      },
+      {
+        "category": "general",
+        "content": "Economics Agricultural Engineering Agricultural Equipment Agricultural Machine Design Agricultural Machine Safety Agricultural Pesticide &amp; Herbicide Drift Agriculture AGRICULTURE",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "VFTonline.org",
+          "/VFTprayer/heaven/000list.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://VFTonline.org/VFTprayer/heaven/000list.txt",
+        "url": "http://VFTonline.org/VFTprayer/heaven/000list.txt"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a333e7c68a16a0a1ab2a70152f9cfd4560e6c4bf0b3f1cb94a580cc1c80e232d",
+  "provider": "SearXNG",
+  "query": "what is soil erosion in software engineering",
+  "query_id": "v5-p-0349-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:46.264921Z"
+}

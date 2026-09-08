@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 331.776,
+  "pair_id": "v5-p-0620",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind renewable energy storage in ecology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0162f697a01f2e2c7e12ae209fd625967787c0c53ec2a4d2125295c57d3dad34",
+  "provider": "SearXNG",
+  "query": "describe the principle behind renewable energy storage in ecology",
+  "query_id": "v5-p-0620-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:03.025773Z"
+}

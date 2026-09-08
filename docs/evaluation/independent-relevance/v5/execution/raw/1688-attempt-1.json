@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 235.665,
+  "pair_id": "v5-p-0351",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of soil erosion in agricultural science",
+    "results": [
+      {
+        "category": "general",
+        "content": "The Soil and Health An Agricultural Testament by Sir Albert Howard -- the works of Sir Albert Howard The Waste Products of Agriculture -- Their Utilization as Humus by Albert Howa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "journeytoforever.org",
+          "/farm_library.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Small Farms Library - Journey to Forever",
+        "url": "http://journeytoforever.org/farm_library.html"
+      },
+      {
+        "category": "general",
+        "content": "reverted to largely agricultural use until the National Science Foundation-funded New Philadelphia Archaeology Program began in 2004, hoping to uncover material and structural rem",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "faculty.las.illinois.edu",
+          "/cfennell/NP/updates.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Updates on New Philadelphia Archaeology Project",
+        "url": "http://faculty.las.illinois.edu/cfennell/NP/updates.html"
+      },
+      {
+        "category": "general",
+        "content": "erosion, harm agricultural crops, and weaken levees and other infrastructure. In heavily affected marshes, nutria can contribute to the conversion of vegetated wetlands into open",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fc157265dd28d6211a78e67ca3ef4dd82e2e77a6546a8061a0d57ff303e98d49",
+  "provider": "SearXNG",
+  "query": "give an overview of soil erosion in agricultural science",
+  "query_id": "v5-p-0351-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:10.806217Z"
+}

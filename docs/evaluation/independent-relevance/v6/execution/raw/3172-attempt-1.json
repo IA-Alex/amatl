@@ -1,0 +1,360 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 3172,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 349.835,
+  "pair_id": "candidate-p-0895",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of ecosystem services within music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "at something | a brief explanation of the cathedral | retiring the university by Curtis Yarvin. | The Case Against Education | book review seeing like a state | The toxic schoolin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "op-eds. I find this explanation unsatisfying for two reasons; first, the volume of seemingly meaningless contracts is far too high to handwave behind couriers and trolls, and seco",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-gig-economy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Gig Economy — Chadnet",
+        "url": "https://wiki.chadnet.org/the-gig-economy"
+      },
+      {
+        "category": "general",
+        "content": "execution (a detailed explanation can be found in a previous article ). 24 KB of L1 cache : Partitioned into 16 KB for instructions and 8 KB for data. The package also includes an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/nintendo-64/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nintendo 64 Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/nintendo-64/"
+      },
+      {
+        "category": "general",
+        "content": "has given no formal explanation to RFPI for the eviction. RFPI believes the eviction is being done for political reasons, and is a form of censorship. UPaz has told the press that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.worldofradio.com",
+          "/dxld3136.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.worldofradio.com/dxld3136.txt",
+        "url": "http://www.worldofradio.com/dxld3136.txt"
+      },
+      {
+        "category": "general",
+        "content": "it aims to: provide an explanation of the way that material is published on the web to help inform people writing licenses and legislation provide definitions of terms related to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/2001/tag/doc/publishingAndLinkingOnTheWeb-2011-10-27.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Publishing and Linking on the Web",
+        "url": "https://www.w3.org/2001/tag/doc/publishingAndLinkingOnTheWeb-2011-10-27.html"
+      },
+      {
+        "category": "general",
+        "content": "execution (a detailed explanation can be found in a previous article ). 24 KB of L1 cache : Partitioned into 16 KB for instructions and 8 KB for data. The package also includes an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "classic.copetti.org",
+          "/writings/consoles/nintendo-64/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nintendo 64 Architecture | A Practical Analysis",
+        "url": "https://classic.copetti.org/writings/consoles/nintendo-64/"
+      },
+      {
+        "category": "general",
+        "content": "and fact-checked explanation why, but not before Hy3 exhausts every available option. I wish more LLMs out there had been more like this one. We need more “mad scientist ass",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lynx.luxferre.top",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lynx thoughts",
+        "url": "https://lynx.luxferre.top/"
+      },
+      {
+        "category": "general",
+        "content": "(That&#39;s literally the explanation for PowerShell. Many of us wanted to improve cmd.exe, but couldn&#39;t.) More examples: We can&#39;t touch named pipes. Let&#39;s add %INTERNAL_NOTIFICATION_",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "blog.zorinaq.com",
+          "/i-contribute-to-the-windows-kernel-we-are-slower-than-other-oper/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "&#34;I Contribute to the Windows Kernel. We Are Slower Than Other Operating Systems. Here Is Why.&#34;",
+        "url": "http://blog.zorinaq.com/i-contribute-to-the-windows-kernel-we-are-slower-than-other-oper/"
+      },
+      {
+        "category": "general",
+        "content": "6.61 infinity - an explanation . ↩︎ Audio PPSSPP Project,  SasAudio.cpp . Github. ↩︎ PPSSPP Project,  SimpleAudioDec.cpp . Github. ↩︎ CPU groepaz/hitmen,  Yet anoth",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/playstation-portable/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PlayStation Portable (PSP) Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/playstation-portable/"
+      },
+      {
+        "category": "general",
+        "content": "video for a very clear explanation: What is the Fediverse? First off, &#34;fediverse&#34; is a combination of the words &#34;federation&#34; and &#34;universe&#34;. To sum it up it&#39;s a decentralized soci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "chriskoehnke.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chris Koehnke&#39;s Webpage",
+        "url": "http://chriskoehnke.com/"
+      },
+      {
+        "category": "general",
+        "content": "going to be a technical explanation of how things work. So I&#39;m skipping many pre-election and post-election processes. I&#39;m going from candidate loading until vote counting",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wf.lavatech.top",
+          "/lun-4/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "luna&#39;s up on her bullshit again — LavaTech WriteFreely",
+        "url": "https://wf.lavatech.top/lun-4/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b768ff114589664db9ada07ddb0fc97b2169f3bae8dfb4fa09a46a83b6256842",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of ecosystem services within music technology",
+  "query_id": "candidate-c-0895",
+  "raw_result_count": 11,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://imlauer.github.io/",
+      "original_url": "https://imlauer.github.io/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "at something | a brief explanation of the cathedral | retiring the university by Curtis Yarvin. | The Case Against Education | book review seeing like a state | The toxic schoolin",
+      "title": "esotericwarfare"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://wiki.chadnet.org/the-gig-economy",
+      "original_url": "https://wiki.chadnet.org/the-gig-economy",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "op-eds. I find this explanation unsatisfying for two reasons; first, the volume of seemingly meaningless contracts is far too high to handwave behind couriers and trolls, and seco",
+      "title": "The Gig Economy — Chadnet"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.copetti.org/writings/consoles/nintendo-64/",
+      "original_url": "https://www.copetti.org/writings/consoles/nintendo-64/",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "execution (a detailed explanation can be found in a previous article ). 24 KB of L1 cache : Partitioned into 16 KB for instructions and 8 KB for data. The package also includes an",
+      "title": "Nintendo 64 Architecture | A Practical Analysis"
+    }
+  ],
+  "timestamp": "2026-09-05T17:37:15.026968Z"
+}

@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 270.697,
+  "pair_id": "v5-p-0540",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does neural networks in transportation engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "for inner cellular transportation. If you decide to will these CyberMods into being in your body be sure to choose what you body wants in regard to an ejecting Oxygen-Hydrogen Str",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.self-replicatingnanobot.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod &#43; Self-Replicating Nanobot Design",
+        "url": "http://www.self-replicatingnanobot.com/"
+      },
+      {
+        "category": "general",
+        "content": "for inner cellular transportation. If you decide to will these CyberMods into being in your body be sure to choose what you body wants in regard to an ejecting Oxygen-Hydrogen Str",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.self-replicatingnanobot.com",
+          "/Cyberology.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod &#43; Self-Replicating Nanobot Design",
+        "url": "http://www.self-replicatingnanobot.com/Cyberology.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ffd5d0c2e1737081878d76a772a69bf831ce2adaa46e20f5c14635f13294311b",
+  "provider": "SearXNG",
+  "query": "how does neural networks in transportation engineering operate",
+  "query_id": "v5-p-0540-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:14:07.091356Z"
+}

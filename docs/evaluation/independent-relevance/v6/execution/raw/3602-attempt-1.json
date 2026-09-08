@@ -1,0 +1,67 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 3602,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 1178.153,
+  "pair_id": "candidate-p-0419",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about blue carbon mapping within public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "mass shootings, firearm background checks, food poisoning, and licensed barbers. 2015.12.02 • Historical climate data, mass shootings, faster open-data downloads, college sports f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.data-is-plural.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Data Is Plural — Full Archive",
+        "url": "https://www.data-is-plural.com/archive/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "2ddfd3b802235a70f7dcc7065a50229dc0e1e8f366043d32ab43e48acdc9fdb5",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about blue carbon mapping within public health",
+  "query_id": "candidate-c-0419",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.data-is-plural.com/archive/",
+      "original_url": "https://www.data-is-plural.com/archive/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "mass shootings, firearm background checks, food poisoning, and licensed barbers. 2015.12.02 • Historical climate data, mass shootings, faster open-data downloads, college sports f",
+      "title": "Data Is Plural — Full Archive"
+    }
+  ],
+  "timestamp": "2026-09-05T17:39:31.678511Z"
+}

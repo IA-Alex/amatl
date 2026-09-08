@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 327.71972400223603,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind wave interference in mechanical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "voltage spikes are the interference from the boost converters, which are partially suppressed by C35 . It should be noted that a small value of the tube series resistance may lowe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "slomkowski.eu",
+          "/octoglow-vfd-fallout-inspired-display/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Octoglow VFD - Fallout-inspired post-apocalyptic display | Słomkowski",
+        "url": "https://slomkowski.eu/octoglow-vfd-fallout-inspired-display/"
+      },
+      {
+        "category": "general",
+        "content": "Also notice the interference fringes between the incoming and reflected waves.     An electron approaching a barrier has to be represented as a wave-train.   This w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/time_travel/esp_ciencia_timetravel34.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Time Control Technologies and Methods",
+        "url": "https://www.bibliotecapleyades.net/ciencia/time_travel/esp_ciencia_timetravel34.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0104",
+  "query_text": "describe the principle behind wave interference in mechanical engineering",
+  "requested_at": "2026-09-03T01:44:45.301456Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

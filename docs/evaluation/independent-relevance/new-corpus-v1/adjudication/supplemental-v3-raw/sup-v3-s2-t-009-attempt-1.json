@@ -1,0 +1,346 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 781.4809659976163,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does a compass work",
+    "results": [
+      {
+        "category": "general",
+        "content": "top Key &amp; Compass presents: Mean Streets by Bad Dog Studios Mean Streets is a TADS 2 interactive fiction game and is © 2015 by Bad Dog Studios. It was entered in ParserComp 20",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plover.net",
+          "/~davidw/sol/m/means15.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mean Streets - map and walkthrough | Key &amp; Compass",
+        "url": "https://plover.net/~davidw/sol/m/means15.html"
+      },
+      {
+        "category": "general",
+        "content": "top Key &amp; Compass presents: The hat metapuzzle of IF Comp 2011 by Michael D. Hilborn, Kevin Jackson-Mead, Doug Orleans, and Andrew Plotkin The hat metapuzzle of IF Comp 2011 i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plover.net",
+          "/~davidw/sol/h/hat__11.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The hat metapuzzle of IF Comp 2011 - map and walkthrough | Key &amp; Compass",
+        "url": "https://plover.net/~davidw/sol/h/hat__11.html"
+      },
+      {
+        "category": "general",
+        "content": "top Key &amp; Compass presents: Fantastic Finale IV by Derek Sutcliffe Fantastic Finale IV is a Z-machine interactive fiction game written with Inform 7 and is © 2009 by Derek Sut",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plover.net",
+          "/~davidw/sol/f/fanta09.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fantastic Finale IV - map and walkthrough | Key &amp; Compass",
+        "url": "https://plover.net/~davidw/sol/f/fanta09.html"
+      },
+      {
+        "category": "general",
+        "content": "top Key &amp; Compass presents: The Life (and Deaths) of Doctor M by Michael D. Hilborn The Life (and Deaths) of Doctor M is a Glulx interactive fiction game written with Inform 7",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plover.net",
+          "/~davidw/sol/l/lifed11.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Life (and Deaths) of Doctor M - map and walkthrough | Key &amp; Compass",
+        "url": "https://plover.net/~davidw/sol/l/lifed11.html"
+      },
+      {
+        "category": "general",
+        "content": "the variation of the compass, which is 9 degrees E., this position, and its perpendicular, are most exactly observed in all the edifices I have examined, be their situation what i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "olivercowdery.com",
+          "/texts/1822-pg3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Early 19th Century Accounts of Palenque (after 1829)",
+        "url": "http://olivercowdery.com/texts/1822-pg3.htm"
+      },
+      {
+        "category": "general",
+        "content": "They move the popular compassion. In time, they free the culprits, and thus prepare for new commotions. Grand Orient Freemasonry Unmasked, Mgr. George F Dillon (1950), From: Chapt",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/masons.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Freemasons - The silent destroyers. Deist religious cult based on the Knights Templar - Initiation rituals like those of witchcraft",
+        "url": "http://www.bilderberg.org/masons.htm"
+      },
+      {
+        "category": "general",
+        "content": "the point of the compass to which the war-canoes had paddled away. Then they changed about, for the warriors were supposed to be coming home across the sea. At Masset the Haida wo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.publicappeal.org",
+          "/library/unicorn/Frazer/6.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chapter 3. Sympathetic Magic. § 2. Homoeopathic or Imitative Magic. Frazer, Sir James George. 1922. The Golden Bough",
+        "url": "http://www.publicappeal.org/library/unicorn/Frazer/6.html"
+      },
+      {
+        "category": "general",
+        "content": "voorband is een Compass Barlow pass 38mm vouwband (door een lezer van mijn site gestuurd om te testen/vergelijken) English: Cannondale bicycle, type Vintage, zwart, disc brakes. T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "swhs.home.xs4all.nl",
+          "/fiets/index_en.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WHS&#39; bicycle stuff, component reviews &amp; more",
+        "url": "https://swhs.home.xs4all.nl/fiets/index_en.html"
+      },
+      {
+        "category": "general",
+        "content": "Covey&#39;s Weekly Compass Topcards (14 KB) added 09/05/1998 (Productivity) Version 1.0 by Patrick West A collection of topcards to help you integrate the Covey methods with your dail",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mizj.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "S.U.P.E.R. - The Largest 200LX Software Archive",
+        "url": "http://mizj.com/"
+      },
+      {
+        "category": "general",
+        "content": "perspicuity and compass of thought; though his speculations are deformed by an undue attachment to certain leading ideas, which, harmonizing with his habits of mind, had acquired",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/cache/epub/13435/pg13435-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of On the Choice of Books, by Thomas Carlyle",
+        "url": "https://www.gutenberg.org/cache/epub/13435/pg13435-images.html"
+      },
+      {
+        "category": "general",
+        "content": "to embrace a wider compass for Executive power as compared to the others. Thomas has a lot more Natural Law in his views than Scalia, whose own originalism is rejected emphaticall",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whatswrongwiththeworld.net",
+          "/2011/05/postconstitutional_america.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Post-Constitutional America (What&#39;s Wrong with the World)",
+        "url": "http://www.whatswrongwiththeworld.net/2011/05/postconstitutional_america.html"
+      },
+      {
+        "category": "general",
+        "content": "This design was to compass two ends at once-to obtain trustworthy linguistic material, and to explore the inner secrets of the Hausa mind-by giving a somewhat novel turn to an old",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dankalia.com",
+          "/literature/frc201.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hausa Folklore",
+        "url": "https://www.dankalia.com/literature/frc201.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-t-009",
+  "query_text": "how does a compass work",
+  "requested_at": "2026-09-02T22:58:57.064772Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

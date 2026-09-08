@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 289.129,
+  "pair_id": "v5-p-0432",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does carbon capture in transportation engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "Supply depots Transportation routes Key Benefits for Clients Advantage Impact Equipment Savings Access to $50k&#43; worth of existing machinery Time Savings 6-12 month head start on o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.startyourowngoldmine.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Start Your Own Gold Mine in 45 days with less than US $100,000",
+        "url": "https://www.startyourowngoldmine.com/"
+      },
+      {
+        "category": "general",
+        "content": "for inner cellular transportation. If you decide to will these CyberMods into being in your body be sure to choose what you body wants in regard to an ejecting Oxygen-Hydrogen Str",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.self-replicatingnanobot.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod &#43; Self-Replicating Nanobot Design",
+        "url": "http://www.self-replicatingnanobot.com/"
+      },
+      {
+        "category": "general",
+        "content": "thermal to electrical transportation. The magnitude of the minerals needed are mind-boggling (an EV car needs 2 times more minerals than a Diesel car). (Youtube, 46 min.) An analy",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meteo.lcd.lu",
+          "/globalwarming/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Warming Sceptic",
+        "url": "https://meteo.lcd.lu/globalwarming/"
+      },
+      {
+        "category": "general",
+        "content": "for inner cellular transportation. If you decide to will these CyberMods into being in your body be sure to choose what you body wants in regard to an ejecting Oxygen-Hydrogen Str",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.self-replicatingnanobot.com",
+          "/Cyberology.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod &#43; Self-Replicating Nanobot Design",
+        "url": "http://www.self-replicatingnanobot.com/Cyberology.html"
+      },
+      {
+        "category": "general",
+        "content": "Infrastructure, transportation, construction, energy transmission, climate adaptation, renewable energy Relevant people and orgs: Ezra Klein , Jesse Jenkins , Lyn Stoler , YIMBY ,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "nadia.xyz",
+          "/climate-tribes",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nadia Asparouhova | Mapping out the tribes of climate",
+        "url": "http://nadia.xyz/climate-tribes"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "74b6223b451d073753a1fe732d639fc6329ff8b7d1c7f48cb53c14f778ebfe6e",
+  "provider": "SearXNG",
+  "query": "how does carbon capture in transportation engineering operate",
+  "query_id": "v5-p-0432-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:51.007874Z"
+}

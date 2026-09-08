@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 252.441,
+  "pair_id": "v5-p-0123",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of database indexing in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "to the availability of materials. When compiling a list, an alphabetizer needed to estimate ahead of time the amount of area required to accommodate the number of entries falling",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/alphabetization.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alphabetization (IEKO)",
+        "url": "https://www.isko.org/cyclo/alphabetization.htm"
+      },
+      {
+        "category": "general",
+        "content": "and anthologized materials, and content transiting betwen versions (transclusions). This may be simplified to: connections between things which are *different*, and connections be",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cs.brown.edu",
+          "/memex/ACM_HypertextTestbed/papers/60.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Xanalogical Structure, Needed Now More than Ever",
+        "url": "https://cs.brown.edu/memex/ACM_HypertextTestbed/papers/60.html"
+      },
+      {
+        "category": "general",
+        "content": "to look for in training materials. Computer training: an overview. Computer based training for non-computer subjects. Why do an issue about Japan? Washington verses Tokyo: the tec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.atarimagazines.com",
+          "/creative/index/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of Creative Computing articles",
+        "url": "https://www.atarimagazines.com/creative/index/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8d04b3b7061678dcd82244c88c3d9b70d623f6ebe1331a62e883655e1cf5e490",
+  "provider": "SearXNG",
+  "query": "give an overview of database indexing in materials science",
+  "query_id": "v5-p-0123-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:03.845017Z"
+}

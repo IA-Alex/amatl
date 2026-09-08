@@ -1,0 +1,135 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 268.74625900381943,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is cell membranes in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "presenter view display management, to make it easier to switch displays in the case that we got them wrong. Spent a good while merging the python fax wizard branch, and trying to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2011/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2011/"
+      },
+      {
+        "category": "general",
+        "content": "dihydralazine in the management of severe early-onset preeclampsia: maternal outcome. Bolte AC, van Eyck J, Kanhai HH, Bruinse HW, van Geijn HP, Dekker GA. ï¿½Ketanserin [a select",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "raypeat.com",
+          "/articles/articles/thyroid-insanities.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Thyroid, insomnia, and the insanities: Commonalities in disease",
+        "url": "http://raypeat.com/articles/articles/thyroid-insanities.shtml"
+      },
+      {
+        "category": "general",
+        "content": "old PhD is arguing to management that research in nano machines is ridiculous and a waste of money. He has seen only recently some of Drexler&#39;s designs on the web and also read th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lachlan.bluehaze.com.au",
+          "/nanoshite/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NanoShite: A nano-apostate webpage dedicated to the slimeycanceroushype flim-flam-barnum-and-bailey-charlatan delusional bollocks nanosleaze /",
+        "url": "http://lachlan.bluehaze.com.au/nanoshite/"
+      },
+      {
+        "category": "general",
+        "content": "of integrated pest management.[137][138] Despite the large amount of effort focused at controlling insects, human attempts to kill pests with insecticides can backfire. If used ca",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scientificlib.com",
+          "/en/Biology/Animalia/Arthropoda/Insects/Insecta.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Insecta",
+        "url": "https://www.scientificlib.com/en/Biology/Animalia/Arthropoda/Insects/Insecta.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0057",
+  "query_text": "what is cell membranes in data management",
+  "requested_at": "2026-09-03T01:42:38.310267Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 247.713,
+  "pair_id": "v5-p-0456",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does supply chain logistics in robotics operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "462727023bdd02ab927b2202d2cdd0dc8fd8e7c64d992ce2d43197de6aa873a3",
+  "provider": "SearXNG",
+  "query": "how does supply chain logistics in robotics operate",
+  "query_id": "v5-p-0456-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:21.273683Z"
+}

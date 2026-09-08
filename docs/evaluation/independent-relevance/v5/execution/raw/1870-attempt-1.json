@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 343.098,
+  "pair_id": "v5-p-0214",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of heat transfer in marine biology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6008a6d08b5099b608422b3418bd02446a84be0b0410787c11c61660ce0bbe41",
+  "provider": "SearXNG",
+  "query": "tell me about the function of heat transfer in marine biology",
+  "query_id": "v5-p-0214-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:15.133336Z"
+}

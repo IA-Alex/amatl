@@ -1,0 +1,108 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 281.2883189981221,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does acid base reactions in earth science operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "typical polymerization reactions. In reviewing those individual work components, one thing became clear. The coupling of energy flow to the specific work requirements in the forma",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ldolphin.org",
+          "/mystery/chapt9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Specifying How Work Is To Be Done",
+        "url": "https://www.ldolphin.org/mystery/chapt9.html"
+      },
+      {
+        "category": "general",
+        "content": "the physico-chemical reactions that lead up to gametic union. We can derive a valid suggestion, however, from this comparison of the gametes. There are two interrelated dynamic as",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.feministezine.com",
+          "/feminist/books/The-Second-Sex-Simone-de-Beauvoir.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Second Sex - The Feminist eZine",
+        "url": "http://www.feministezine.com/feminist/books/The-Second-Sex-Simone-de-Beauvoir.html"
+      },
+      {
+        "category": "general",
+        "content": "in tons of biological reactions as a proton acceptor or donor. (For those of you who don&#39;t get the joke, NAD is English slang for testicle). Lily Zhou told me about 2 buffers call",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/sillymolecules/sillymols4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecules with Silly or Unusual Names - page 4",
+        "url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0148",
+  "query_text": "how does acid base reactions in earth science operate",
+  "requested_at": "2026-09-03T01:42:59.568315Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

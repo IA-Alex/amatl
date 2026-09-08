@@ -1,0 +1,349 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 1215.381,
+  "pair_id": "v5-p-0727",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of root systems in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "through redundancy. Management of the instances is fully automated, and under the control of an impartial operator who is independent of the candidates and observers. An instance",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kirill.korins.ky",
+          "/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Electt: Running Auditable and Verifiable Elections in Untrusted Environments - Kirill&#39;s journal",
+        "url": "https://kirill.korins.ky/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/"
+      },
+      {
+        "category": "general",
+        "content": "it appears some session management cockup makes all of Gnome extraordinarily unresponsive, bother. Managed to get SLED10-SP1 booting again, and back to work in a chroot. Lunch, ca",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/archive/activity-to-2007-10.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks did",
+        "url": "https://apple-tree.life/~michael/blog/archive/activity-to-2007-10.html"
+      },
+      {
+        "category": "general",
+        "content": "chefs, servers, and management, need to be knowledgeable about what veganism entails to accurately communicate with and serve their customers. This has led to increased training a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.animal-rights.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Veganism as conceived by ChatGPT",
+        "url": "https://www.animal-rights.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "consideration and management of these factors would be essential should these substances become more widely used.&#34; What would be the ideal characteristics of a perfect empathogeni",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.empathogens.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Empathogens as conceived by ChatGPT",
+        "url": "https://www.empathogens.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "standard for system management software is written in C&#43;&#43; (www.openwbem.com). This uses more new C&#43;&#43; 98 features than almost any source base I&#39;ve seen outside of those done by the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stroustrup.com",
+          "/applications.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C&#43;&#43; Applications",
+        "url": "https://www.stroustrup.com/applications.html"
+      },
+      {
+        "category": "general",
+        "content": ": Network management (DNS, DHCP, VPN, more), printing (CUPS), network services (FTP, SSH, more). Fairly standard facilities : Authentication (PAM, certificates, more), access cont",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/Linux.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Linux",
+        "url": "https://www.billdietrich.me/Linux.html"
+      },
+      {
+        "category": "general",
+        "content": "There&#39;s manual memory management ( malloc() ), and then there&#39;s manual memory management ( sbrk() ). Note 2 from 2025-09-04 Published on 2025-09-04 I&#39;ve made many false promises o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.alm.website",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Athena&#39;s blog - Athena&#39;s Site",
+        "url": "https://www.alm.website/blog/"
+      },
+      {
+        "category": "general",
+        "content": "farms Organics Soil management Sustainable farming General resources Food storage and preservation Useful databases Community-supported farms Farming with trees Agroforestry Bambo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "journeytoforever.org",
+          "/farm_library.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Small Farms Library - Journey to Forever",
+        "url": "http://journeytoforever.org/farm_library.html"
+      },
+      {
+        "category": "general",
+        "content": "charity&#39;s transparency, management, and room for more funding. Make a decision: Based on the expected value calculations and any other relevant factors, choose the charitable oppo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.utilitarianism.com",
+          "/chatgpt/effective-altruism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utilitarianism and effective altruism as conceived by ChatGPT-4",
+        "url": "https://www.utilitarianism.com/chatgpt/effective-altruism.html"
+      },
+      {
+        "category": "general",
+        "content": "Synonym: Z . Local File Management TYPE [ options ] filename Displays the contents of the given file. MORE [ options ] filename Equivalent to TYPE /PAGE (pause after each screenfu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kermitproject.org",
+          "/ckututor.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CK10TUTOR - C-Kermit 10.0 Tutorial",
+        "url": "https://www.kermitproject.org/ckututor.html"
+      },
+      {
+        "category": "general",
+        "content": "Distributed Blackhole Management: A reputation-based system for blackhole list distribution, where trusted Network Identities can sign and publish lists of blackholed identities.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "reticulum.network",
+          "/manual/understanding.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Understanding Reticulum - Reticulum Network Stack 1.5.1 documentation",
+        "url": "http://reticulum.network/manual/understanding.html"
+      },
+      {
+        "category": "general",
+        "content": "base (packages) Power management Delayed hibernation [new in 7.9] User mounting of external drives Allow users to shutdown Stop the bleep Choices of desktop and software Install x",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.k58.uk",
+          "/openbsd.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Running OpenBSD 7.9 on your laptop is really hard (not)",
+        "url": "http://www.k58.uk/openbsd.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "f16ae7f4ceb4a9788a0bbd79add04bd05b6061993a525e54a88a266d8fd80851",
+  "provider": "SearXNG",
+  "query": "give an overview of root systems in data management",
+  "query_id": "v5-p-0727-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:35.172467Z"
+}

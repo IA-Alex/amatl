@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 325.538,
+  "pair_id": "v5-p-0436",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind supply chain logistics in civil engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3255ff65af1d72a4bced28a655b34020ad655bc642938756371ed5c36ef4ef11",
+  "provider": "SearXNG",
+  "query": "describe the principle behind supply chain logistics in civil engineering",
+  "query_id": "v5-p-0436-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:04.511447Z"
+}

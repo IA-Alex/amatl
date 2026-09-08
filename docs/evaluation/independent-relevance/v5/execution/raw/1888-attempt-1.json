@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 393.988,
+  "pair_id": "v5-p-0494",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of encryption keys in urban planning",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "771ec4d6dbd8c59b8ba5d55d4a404b70e9dc4b2bc5cf99b7834ec2a589f701af",
+  "provider": "SearXNG",
+  "query": "tell me about the function of encryption keys in urban planning",
+  "query_id": "v5-p-0494-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:20.577417Z"
+}

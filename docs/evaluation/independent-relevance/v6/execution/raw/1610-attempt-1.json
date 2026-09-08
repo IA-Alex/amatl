@@ -1,0 +1,144 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1610,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 345.798,
+  "pair_id": "candidate-p-0731",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about data provenance within cultural heritage",
+    "results": [
+      {
+        "category": "general",
+        "content": "from clear areas (background), image, and blood-stain locations agree with corresponding data collected independently by the Italian team. In both sets of data, the clusters from",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.shroud.com",
+          "/papers.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scientific Papers and Articles",
+        "url": "https://www.shroud.com/papers.htm"
+      },
+      {
+        "category": "general",
+        "content": "their ethnic backgrounds. The land battle and sea battle scenes provide a wealth of information on the military styles of the Sea Peoples. The reliefs depicting the land battle sh",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.salimbeti.com",
+          "/micenei/sea.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Greek Age of Bronze - Sea Peoples",
+        "url": "http://www.salimbeti.com/micenei/sea.htm"
+      },
+      {
+        "category": "general",
+        "content": "contents: 1. Historical background      1.1 Definition and main characteristics      1.2. Subject knowledge and specialization",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/domain_analysis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Domain analysis (IEKO)",
+        "url": "https://www.isko.org/cyclo/domain_analysis.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "922d4ee33366c139be21aee41e81decca944aa82d73ea0b323cc027305b8929c",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about data provenance within cultural heritage",
+  "query_id": "candidate-c-0731",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.shroud.com/papers.htm",
+      "original_url": "https://www.shroud.com/papers.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "from clear areas (background), image, and blood-stain locations agree with corresponding data collected independently by the Italian team. In both sets of data, the clusters from",
+      "title": "Scientific Papers and Articles"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "http://www.salimbeti.com/micenei/sea.htm",
+      "original_url": "http://www.salimbeti.com/micenei/sea.htm",
+      "rank": 2,
+      "rejection_reason": null,
+      "snippet": "their ethnic backgrounds. The land battle and sea battle scenes provide a wealth of information on the military styles of the Sea Peoples. The reliefs depicting the land battle sh",
+      "title": "The Greek Age of Bronze - Sea Peoples"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.isko.org/cyclo/domain_analysis.htm",
+      "original_url": "https://www.isko.org/cyclo/domain_analysis.htm",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "contents: 1. Historical background      1.1 Definition and main characteristics      1.2. Subject knowledge and specialization",
+      "title": "Domain analysis (IEKO)"
+    }
+  ],
+  "timestamp": "2026-09-05T17:29:02.964990Z"
+}

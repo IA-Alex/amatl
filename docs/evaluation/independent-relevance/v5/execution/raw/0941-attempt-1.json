@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 277.7,
+  "pair_id": "v5-p-0447",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes supply chain logistics in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "world, semiconductor logistics, and “every Star Trek ever.” 2022.11.16 • Big emitters, disease outbreaks, permissively-licensed code, impact craters, and tinned fish. 2022.11.09 •",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.data-is-plural.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Data Is Plural — Full Archive",
+        "url": "https://www.data-is-plural.com/archive/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "06fdb9f9dd39c905a12b8ea979af022dcd8495d146ecf406af1f8a60ebb972eb",
+  "provider": "SearXNG",
+  "query": "what causes supply chain logistics in materials science",
+  "query_id": "v5-p-0447-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:10:13.331258Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 307.627,
+  "pair_id": "v5-p-0804",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind battery chemistry in geology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "47ce2ac4538bcf9aa66565b05be08b58c8e4e01fc48e23d8af839872f85999c5",
+  "provider": "SearXNG",
+  "query": "describe the principle behind battery chemistry in geology",
+  "query_id": "v5-p-0804-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:14.245725Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 258.8,
+  "pair_id": "v5-p-0502",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does encryption keys in marine biology work",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "49193c5ce76f391922d64c97d7e24059105207e5ed07b3b9125c52ce1ad551ed",
+  "provider": "SearXNG",
+  "query": "how does encryption keys in marine biology work",
+  "query_id": "v5-p-0502-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:18.531205Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 253.448,
+  "pair_id": "v5-p-0980",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does wastewater treatment in electrical engineering operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9fe72c0b74d9d1f95cd8f5e0592870e954ae155e6002c1a664b3af00d5e02b92",
+  "provider": "SearXNG",
+  "query": "how does wastewater treatment in electrical engineering operate",
+  "query_id": "v5-p-0980-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:30.380442Z"
+}

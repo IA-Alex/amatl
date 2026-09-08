@@ -1,0 +1,193 @@
+{
+  "schema": "amatl.relevance.supplemental-v3-treatment-control-analysis.v1",
+  "input": {
+    "ground_truth": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-ground-truth-v1.json",
+    "manifest": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-ground-truth-v1-manifest.json",
+    "attestation": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-ground-truth-v1-attestation.json",
+    "hashes": {
+      "ground_truth": "bfbc05e893d93f84a908ffd6faf618b4c5a800f8ce8e40b03fcc1cfc97681952",
+      "manifest": "24b5760988c97051c17f7b425eabaf4d1a819c7d8d9b426e1c071bdff959b112",
+      "attestation": "fabc076d65e90eea78c1a596f3681cf01d0e731c41ed523ebfc393c959dda954"
+    }
+  },
+  "input_integrity": {
+    "status": "PASS",
+    "ground_truth_hash_valid": true,
+    "manifest_hash": "24b5760988c97051c17f7b425eabaf4d1a819c7d8d9b426e1c071bdff959b112",
+    "attestation_hash": "fabc076d65e90eea78c1a596f3681cf01d0e731c41ed523ebfc393c959dda954",
+    "manifest_hash_chain": true,
+    "attestation_integrity": true
+  },
+  "overlap_validation": {
+    "status": "PASS",
+    "counts": {
+      "v1": 0,
+      "previous_supplemental": 0,
+      "historical": 0
+    },
+    "overlaps": {
+      "v1": [],
+      "previous_supplemental": [],
+      "historical": []
+    },
+    "contract": "canonical_url; accepted V3 rows must have zero overlap"
+  },
+  "aggregate_distribution": {
+    "rows": 60,
+    "counts": {
+      "Relevant": 5,
+      "PossiblyRelevant": 19,
+      "NotRelevant": 34,
+      "Unknown": 2
+    },
+    "strict_yield": 0.08333333333333333,
+    "broad_yield": 0.4,
+    "not_relevant_rate": 0.5666666666666667,
+    "unknown_rate": 0.03333333333333333,
+    "strict_ci95_wilson": [
+      0.03612045660173077,
+      0.1806894201833441
+    ],
+    "broad_ci95_wilson": [
+      0.2856949053488255,
+      0.5263394650795924
+    ]
+  },
+  "treatment_distribution": {
+    "rows": 39,
+    "counts": {
+      "Relevant": 4,
+      "PossiblyRelevant": 10,
+      "NotRelevant": 25,
+      "Unknown": 0
+    },
+    "strict_yield": 0.10256410256410256,
+    "broad_yield": 0.358974358974359,
+    "not_relevant_rate": 0.6410256410256411,
+    "unknown_rate": 0.0,
+    "strict_ci95_wilson": [
+      0.04061331344668381,
+      0.23578854462856527
+    ],
+    "broad_ci95_wilson": [
+      0.22742085458992867,
+      0.5158185144045146
+    ]
+  },
+  "control_distribution": {
+    "rows": 21,
+    "counts": {
+      "Relevant": 1,
+      "PossiblyRelevant": 9,
+      "NotRelevant": 9,
+      "Unknown": 2
+    },
+    "strict_yield": 0.047619047619047616,
+    "broad_yield": 0.47619047619047616,
+    "not_relevant_rate": 0.42857142857142855,
+    "unknown_rate": 0.09523809523809523,
+    "strict_ci95_wilson": [
+      0.008455987809826399,
+      0.22669360074122563
+    ],
+    "broad_ci95_wilson": [
+      0.2834400610153417,
+      0.6763046541715557
+    ]
+  },
+  "strict_metrics": {
+    "treatment_yield": 0.10256410256410256,
+    "control_yield": 0.047619047619047616,
+    "absolute_delta_pp": 5.4945054945054945,
+    "relative_lift": 2.1538461538461537,
+    "fisher": {
+      "table": [
+        [
+          4,
+          35
+        ],
+        [
+          1,
+          20
+        ]
+      ],
+      "odds_ratio": 2.2857142857142856,
+      "p_value_two_sided": 0.6485973115137347
+    }
+  },
+  "broad_metrics": {
+    "treatment_yield": 0.358974358974359,
+    "control_yield": 0.47619047619047616,
+    "absolute_delta_pp": -11.721611721611719,
+    "relative_lift": 0.7538461538461539,
+    "not_relevant_delta_pp": 21.24542124542125,
+    "fisher": {
+      "table": [
+        [
+          14,
+          25
+        ],
+        [
+          10,
+          11
+        ]
+      ],
+      "odds_ratio": 0.616,
+      "p_value_two_sided": 0.4176183925855631
+    }
+  },
+  "expectation_comparison": {
+    "expected_strict_yield": 0.1,
+    "expected_relevant_approx": 6,
+    "worst_case_relevant": 0,
+    "observed_strict_yield": 0.08333333333333333,
+    "observed_relevant": 5,
+    "expected_yield_met": false,
+    "expected_relevant_count_met": false
+  },
+  "historical_descriptive_comparisons": {
+    "references": {
+      "v1_strict_yield": 0.024457,
+      "supplemental_aggregate_strict_yield": 0.055556,
+      "s2_discovery_sample_strict_yield": 0.15
+    },
+    "v3_vs_v1_descriptive_lift": 3.4073407749655855,
+    "v3_vs_supplemental_descriptive_lift": 1.499988000095999,
+    "treatment_vs_v1_descriptive_lift": 4.193650184573029,
+    "causal_interpretation": "DESCRIPTIVE_ONLY; datasets are not assumed IID and provider causality is not identifiable"
+  },
+  "signal_validation": {
+    "signals": [
+      "TITLE_QUERY_OVERLAP",
+      "SNIPPET_QUERY_OVERLAP"
+    ],
+    "feature_presence_analysis": "NOT_AVAILABLE_IN_FROZEN_V3_ROWS",
+    "assessment": "validated only through the predeclared treatment/control comparison; no post-hoc features or label-based query construction"
+  },
+  "hypothesis_result": "DIRECTIONALLY_SUPPORTED_BUT_UNDERPOWERED",
+  "decision": "RUN_CONFIRMATORY_V4",
+  "acquisition_strategy_status": "NOT_VALIDATED_PENDING_CONFIRMATORY_V4",
+  "v4_recommendation": {
+    "purpose": "Confirm the observed strict-relevance advantage of S2 treatment over control with adequate power",
+    "primary_endpoint": "STRICT_RELEVANCE_YIELD",
+    "recommended_sample_size": {
+      "treatment": 360,
+      "control": 360,
+      "total": 720,
+      "basis": "approximate 80% power planning from observed 10.26% vs 4.76% rates and 5.5 percentage-point delta; exact-power simulation should precede authorization"
+    },
+    "treatment_control_ratio": "1:1",
+    "rationale": "V3 has only 4 vs 1 Relevant rows; the point estimate favors treatment but Wilson intervals overlap substantially and Fisher two-sided p=0.6486."
+  },
+  "limitations": [
+    "Small and unbalanced V3 arms; uncertainty is substantial.",
+    "Fisher p-values do not establish causality.",
+    "PossiblyRelevant remains separate from Relevant and broad relevance is secondary.",
+    "Historical comparisons are descriptive only.",
+    "No row metadata exposes independent TITLE_QUERY_OVERLAP/SNIPPET_QUERY_OVERLAP feature-presence flags."
+  ],
+  "next_action": "Do not acquire or rank-change now; authorize only a separately designed confirmatory V4 after exact power planning.",
+  "provider_causality_identifiable": false,
+  "network_requests": 0,
+  "frozen_artifacts_changed": false
+}

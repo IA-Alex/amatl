@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 218.016,
+  "pair_id": "v5-p-1051",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of microbial fermentation in ecology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a6f2bfa33d354b1a41f81bc87f80e0bc6b8b195a0343191adb37754419c79f7d",
+  "provider": "SearXNG",
+  "query": "give an overview of microbial fermentation in ecology",
+  "query_id": "v5-p-1051-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:27.988586Z"
+}

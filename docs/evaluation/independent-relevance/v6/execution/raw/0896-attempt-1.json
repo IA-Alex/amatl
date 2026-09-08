@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 896,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 299.503,
+  "pair_id": "candidate-p-1593",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a practical briefing on low power computing within computer graphics",
+    "results": [
+      {
+        "category": "general",
+        "content": "17 April. The most practical and useful info of the day ; Steven Pemberton is a good speaker . Invited talk: The Future from now... on the internet as part of the Solar Initiative",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "homepages.cwi.nl",
+          "/~steven/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Steven Pemberton",
+        "url": "https://homepages.cwi.nl/~steven/"
+      },
+      {
+        "category": "general",
+        "content": "column TRS:80 strings. Practical guide to computer education. book reviews Basic basic - English dictionary for the Apple, Pet, and TRS-80. book reviews Understanding your VIC, vo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.atarimagazines.com",
+          "/creative/index/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of Creative Computing articles",
+        "url": "https://www.atarimagazines.com/creative/index/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9551be427b16816194038f74eb7a8e9e7a1275e9a8e25e085ed0de14e141afa2",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a practical briefing on low power computing within computer graphics",
+  "query_id": "candidate-c-1593",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "https://homepages.cwi.nl/~steven/",
+      "original_url": "https://homepages.cwi.nl/~steven/",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "17 April. The most practical and useful info of the day ; Steven Pemberton is a good speaker . Invited talk: The Future from now... on the internet as part of the Solar Initiative",
+      "title": "Steven Pemberton"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.atarimagazines.com/creative/index/",
+      "original_url": "https://www.atarimagazines.com/creative/index/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "column TRS:80 strings. Practical guide to computer education. book reviews Basic basic - English dictionary for the Apple, Pet, and TRS-80. book reviews Understanding your VIC, vo",
+      "title": "Index of Creative Computing articles"
+    }
+  ],
+  "timestamp": "2026-09-05T17:25:13.936242Z"
+}

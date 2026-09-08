@@ -1,0 +1,125 @@
+name: publish-aur
+
+# Updates the AUR package on every annotated stable tag push.
+#
+# Release candidates are deliberately excluded: publishing to the AUR replaces
+# the package every Arch user installs, so a candidate must be promoted by hand
+# through workflow_dispatch rather than by tagging.
+#
+# Requires:
+#   - AUR_SSH_PRIVATE_KEY: SSH private key registered with the AUR account.
+#   - The AUR package repository must already exist (created once manually
+#     via `git clone ssh://aur@aur.archlinux.org/amatl.git`).
+
+on:
+  push:
+    tags:
+      # Stable tags only: v1.2.3, never v1.2.3-rc.1.
+      - "v[0-9]+.[0-9]+.[0-9]+"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag to publish (e.g. v0.1.0-rc.1). Use for candidates."
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  aur:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: aur
+    # `makepkg` does not exist on ubuntu-latest and refuses to run as root, so
+    # the job runs inside Arch and drops to an unprivileged builder user.
+    container:
+      image: archlinux:base-devel
+    steps:
+      - name: Install container prerequisites
+        run: |
+          set -euo pipefail
+          pacman -Sy --noconfirm --needed git openssh curl pacman-contrib
+          useradd -m builder
+
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Resolve target tag
+        id: target
+        run: |
+          set -euo pipefail
+          tag="${{ inputs.tag || github.ref_name }}"
+          case "$tag" in
+            v*) ;;
+            *) echo "::error::tag must start with 'v': $tag"; exit 1 ;;
+          esac
+          version="${tag#v}"
+          # AUR prerelease convention is 0.1.0rc1, and vercmp must order it
+          # before the matching stable release.
+          pkgver="$(printf '%s' "$version" | sed -E 's/-rc\.?([0-9]+)/rc\1/')"
+          if [ "$pkgver" != "$version" ] && ! vercmp "$pkgver" "${version%%-*}" | grep -q '^-'; then
+            echo "::error::pkgver $pkgver does not sort before ${version%%-*}"
+            exit 1
+          fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "pkgver=$pkgver" >> "$GITHUB_OUTPUT"
+
+      - name: Compute source tarball SHA-256
+        id: checksum
+        run: |
+          set -euo pipefail
+          url="https://github.com/${{ github.repository }}/archive/refs/tags/${{ steps.target.outputs.tag }}.tar.gz"
+          curl -fsSL "$url" -o source.tar.gz
+          sha="$(sha256sum source.tar.gz | cut -d' ' -f1)"
+          echo "sha256=$sha" >> "$GITHUB_OUTPUT"
+
+      - name: Update PKGBUILD and push to AUR
+        env:
+          AUR_SSH_PRIVATE_KEY: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
+          PKGVER: ${{ steps.target.outputs.pkgver }}
+          RELEASE_TAG: ${{ steps.target.outputs.tag }}
+          SOURCE_SHA256: ${{ steps.checksum.outputs.sha256 }}
+        run: |
+          set -euo pipefail
+
+          # Configure SSH for AUR
+          mkdir -p ~/.ssh
+          echo "$AUR_SSH_PRIVATE_KEY" > ~/.ssh/aur_key
+          chmod 600 ~/.ssh/aur_key
+          cat >> ~/.ssh/config <<'SSHCONF'
+          Host aur.archlinux.org
+            IdentityFile ~/.ssh/aur_key
+            User aur
+            StrictHostKeyChecking accept-new
+          SSHCONF
+
+          git clone ssh://aur@aur.archlinux.org/amatl.git aur-repo
+          cd aur-repo
+
+          sed -i "s/^pkgver=.*/pkgver=${PKGVER}/" PKGBUILD
+          sed -i "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
+          # Match any existing value, not just the initial 'SKIP'. Anchoring on
+          # 'SKIP' silently matched nothing from the second release onward and
+          # shipped the previous release's checksum.
+          sed -i "s/^sha256sums=.*/sha256sums=('${SOURCE_SHA256}')/" PKGBUILD
+
+          # Assert the substitutions landed; sed exits 0 when nothing matches.
+          grep -q "^pkgver=${PKGVER}\$" PKGBUILD
+          grep -q "^sha256sums=('${SOURCE_SHA256}')\$" PKGBUILD
+
+          # makepkg refuses to run as root.
+          chown -R builder .
+          su builder -c 'makepkg --printsrcinfo' > .SRCINFO
+          grep -q "pkgver = ${PKGVER}" .SRCINFO
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add PKGBUILD .SRCINFO
+          if git diff --cached --quiet; then
+            echo "PKGBUILD already up to date for ${RELEASE_TAG}; nothing to push"
+            exit 0
+          fi
+          git commit -m "Release ${RELEASE_TAG}"
+          git push origin master

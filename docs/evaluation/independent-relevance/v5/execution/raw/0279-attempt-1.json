@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 262.929,
+  "pair_id": "v5-p-0098",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does ocean tides in urban planning work",
+    "results": [
+      {
+        "category": "general",
+        "content": "His standards of planning have been far higher than those of the average archaeologist and certainly superior to most of the 19 th century antiquarians whose plans of circles were",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "spirasolaris.ca",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Spirasolaris",
+        "url": "https://spirasolaris.ca/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "007ab67a11af6321ab64d152392ed9cc1ae85436cf16a78ca51463b0d29e6102",
+  "provider": "SearXNG",
+  "query": "how does ocean tides in urban planning work",
+  "query_id": "v5-p-0098-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:06:37.362323Z"
+}

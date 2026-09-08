@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2593,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 453.791,
+  "pair_id": "candidate-p-0261",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what are the main constraints on battery recycling within food systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "of food, removing the constraints of season, climate, and proximity in favour of monocultural economies of scale, astronomical food mileage, and permanent global summertime. Nicol",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "100r.co",
+          "/site/cooking.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "100R — cooking",
+        "url": "http://100r.co/site/cooking.html"
+      },
+      {
+        "category": "general",
+        "content": "What are the material constraints of this approach particularly around the supplies of zinc and antimony? Lars R Knudsen A very interesting article. I have two questions: Has no o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2021/10/how-to-build-a-low-tech-solar-panel",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Build a Low-tech Solar Panel? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2021/10/how-to-build-a-low-tech-solar-panel"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "97e307b958ddabe26e7cdd907e510eb00324d3e9ff288f37799569f1bcee4a6f",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what are the main constraints on battery recycling within food systems",
+  "query_id": "candidate-t-0261",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://100r.co/site/cooking.html",
+      "original_url": "http://100r.co/site/cooking.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "of food, removing the constraints of season, climate, and proximity in favour of monocultural economies of scale, astronomical food mileage, and permanent global summertime. Nicol",
+      "title": "100R — cooking"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://solar.lowtechmagazine.com/2021/10/how-to-build-a-low-tech-solar-panel",
+      "original_url": "https://solar.lowtechmagazine.com/2021/10/how-to-build-a-low-tech-solar-panel",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "What are the material constraints of this approach particularly around the supplies of zinc and antimony? Lars R Knudsen A very interesting article. I have two questions: Has no o",
+      "title": "How to Build a Low-tech Solar Panel? | LOW←TECH MAGAZINE"
+    }
+  ],
+  "timestamp": "2026-09-05T17:34:14.715626Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 218.787,
+  "pair_id": "v5-p-1031",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of probability distributions in robotics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "901a819d0eff9b5d4f2885e0a892f798872c6a0d63b756671fecb939ec0bc89d",
+  "provider": "SearXNG",
+  "query": "give an overview of probability distributions in robotics",
+  "query_id": "v5-p-1031-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:42.847207Z"
+}

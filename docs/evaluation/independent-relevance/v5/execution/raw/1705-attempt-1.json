@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 340.172,
+  "pair_id": "v5-p-0166",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does immune response in physics work",
+    "results": [
+      {
+        "category": "general",
+        "content": "My Nose From The Immune Response And The McFoxy Seemed To Clear It. I Am Over The Adjustment Period Of It All And Feel Full On All Things {Besides The 1% Held Back For The Shot} F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "Reactive Active Response And Quick Counter-Terrorism Dispatch Against FWA Enemies. Any Alien Producing A WebSite On Any Domain Name Is Not Supposed To Secure It With A User-Signed",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteList.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/FWAsiteList.html"
+      },
+      {
+        "category": "general",
+        "content": "challenge circuits. In response to the challenge circuits, the quantum computer generates output strings that, after verification, can then be fed into a randomness extractor to p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scottaaronson.com",
+          "/papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Research Papers and Surveys",
+        "url": "https://www.scottaaronson.com/papers/"
+      },
+      {
+        "category": "general",
+        "content": "efficiency”. Pearce’s response is that euphoria and well-being are associated with dominance, assertiveness and enhanced motivation, whereas subordination and inactivity are assoc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/end-suffering.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The End of Suffering",
+        "url": "https://www.hedweb.com/hedethic/end-suffering.html"
+      },
+      {
+        "category": "general",
+        "content": "2.3.1. A global response in a time of crisis 2.3.2. The essential matrix of New Age thinking 2.3.3. Central themes of the New Age 2.3.4. What does New Age say about... 2.3.4.1. ..",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.vatican.va",
+          "/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jesus Christ The Bearer Of The Water Of Life - A Christian reflection on the New Age",
+        "url": "https://www.vatican.va/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html"
+      },
+      {
+        "category": "general",
+        "content": "To Trip As Much The Response Trained Into Them From The Jungle Now Causes You To Get High And See Things In Dreams So If You Trip Only In Your Dreams It&#39;s From Such McSubstances S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "20-99 as 1900 years. In response to a request from Eric Hofnagel, I pulled together a historical list of Y2K-related problems. historical list of Y2K-related problems. . In 2006,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "does offer careful responses to Arnauld&#39;s objection, the questions raised by Arnauld&#39;s triangle case are important contributions to the epistemology of modality in their own right",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.sydney.edu.au",
+          "/archives/sum2008/entries/modality-epistemology/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Epistemology of Modality (Stanford Encyclopedia of Philosophy/Summer 2008 Edition)",
+        "url": "https://plato.sydney.edu.au/archives/sum2008/entries/modality-epistemology/"
+      },
+      {
+        "category": "general",
+        "content": "to our own subjective response and to dismiss its real presence in external objects. Plato, on the other hand, despite his theory of the internal source of our knowledge, also bel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/ross/platonis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Why I am a Platonist",
+        "url": "https://friesian.com/ross/platonis.htm"
+      },
+      {
+        "category": "general",
+        "content": "My Nose From The Immune Response And The McFoxy Seemed To Clear It. I Am Over The Adjustment Period Of It All And Feel Full On All Things {Besides The 1% Held Back For The Shot} F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/FountainOfYouth.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/FountainOfYouth.html"
+      },
+      {
+        "category": "general",
+        "content": "theories developed in response to the mind-body problem. It may be regarded as a modification of both panpsychism and epiphenomenalism. Like epiphenomenalism, it can be seen as pa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "newdualism.org",
+          "/papers/K.Popper/TSAIB/popper3-v4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://newdualism.org/papers/K.Popper/TSAIB/popper3-v4.htm",
+        "url": "http://newdualism.org/papers/K.Popper/TSAIB/popper3-v4.htm"
+      },
+      {
+        "category": "general",
+        "content": "preexisting immune response to coronavirus infections and allows easier entry. However whether or not people have been exposed to a coronavirus infection before, once it&#39;s been ci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mailstar.net",
+          "/coronavirus.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Covid-19 was genetically engineered by virologists in a lab",
+        "url": "https://mailstar.net/coronavirus.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "436fdc1492127a90c44ef0743f4e231ff6127976703d1dc946269eb5acdea1bb",
+  "provider": "SearXNG",
+  "query": "how does immune response in physics work",
+  "query_id": "v5-p-0166-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:16.065477Z"
+}

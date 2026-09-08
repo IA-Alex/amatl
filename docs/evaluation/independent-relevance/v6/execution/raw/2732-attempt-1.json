@@ -1,0 +1,144 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2732,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 298.706,
+  "pair_id": "candidate-p-1431",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of image compression within robotics",
+    "results": [
+      {
+        "category": "general",
+        "content": "works, with an overall explanation about its many parts, with a more detailed approach in the backend scenario. Bruno Cardoso Lopes is a PhD student at University of Campinas, Bra",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "even suggest a simple explanation of consciousness &amp; self-awareness (dating back to 1990-1991 ). In 2025, everyone is suddenly talking about Real AI (or Physical AI) for real robo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.idsia.ch",
+          "/~juergen/blog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Juergen Schmidhuber&#39;s AI Blog",
+        "url": "https://people.idsia.ch/~juergen/blog.html"
+      },
+      {
+        "category": "general",
+        "content": ", There Needs To Be Explanation Of Specialized Functions To The Human Body Like Tendons, Veins, Hair, Nails, Blades, Eyes, Sinuses, Liver, Spleen , Other Organs/Tissues, And Parts",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bimavs.com",
+          "/SINSSsexToyNanoBiology.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SINSS Sex Toys&#39; Jaiden",
+        "url": "http://www.bimavs.com/SINSSsexToyNanoBiology.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "74293a9765c34d11f65264f7fffddb1b54a3a57230a40b94d7a691e6936f1b15",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of image compression within robotics",
+  "query_id": "candidate-c-1431",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html",
+      "original_url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "works, with an overall explanation about its many parts, with a more detailed approach in the backend scenario. Bruno Cardoso Lopes is a PhD student at University of Campinas, Bra",
+      "title": "CELF Embedded Linux Conference"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://people.idsia.ch/~juergen/blog.html",
+      "original_url": "https://people.idsia.ch/~juergen/blog.html",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "even suggest a simple explanation of consciousness &amp; self-awareness (dating back to 1990-1991 ). In 2025, everyone is suddenly talking about Real AI (or Physical AI) for real robo",
+      "title": "Juergen Schmidhuber&#39;s AI Blog"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.bimavs.com/SINSSsexToyNanoBiology.html",
+      "original_url": "http://www.bimavs.com/SINSSsexToyNanoBiology.html",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": ", There Needs To Be Explanation Of Specialized Functions To The Human Body Like Tendons, Veins, Hair, Nails, Blades, Eyes, Sinuses, Liver, Spleen , Other Organs/Tissues, And Parts",
+      "title": "SINSS Sex Toys&#39; Jaiden"
+    }
+  ],
+  "timestamp": "2026-09-05T17:34:55.828409Z"
+}

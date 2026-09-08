@@ -1,0 +1,192 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 382.064,
+  "pair_id": "v5-p-0557",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind food preservation in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "Flashpoint: The webgame preservation project Twitter Website The games and stories in this article are only a small part of the Flash games era. Flash shaped a whole generation of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.flashgamehistory.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How Flash games shaped the video game industry",
+        "url": "https://www.flashgamehistory.com/"
+      },
+      {
+        "category": "general",
+        "content": "a lot of the Flash preservation projects out there were just starting out - like Flashpoint and Ruffle . I decided to take an hour this week and see if anything had improved and…",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kickscondor.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kicks Condor",
+        "url": "https://www.kickscondor.com/"
+      },
+      {
+        "category": "general",
+        "content": "is oft based on ego preservation, self-forgiveness, blame displacement and hate bonding. Rarely is it based on self-awareness, introspection, forgiveness, and acceptance. It is fo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/a-frogs-collection-of-quotes",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Frog&#39;s Collection of Quotes — Chadnet",
+        "url": "https://wiki.chadnet.org/a-frogs-collection-of-quotes"
+      },
+      {
+        "category": "general",
+        "content": "Sunnyside Gardens Preservation Alliance , Bliss Street Sunnyside - Stories from the 1940&#39;s and 1950&#39;s , Hunter College Elementary School and HCES Class of 1947 , T.V. State Of Mai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "Self sabotage or self preservation? How to pick the right motivation? These are questions I need answers to. Maybe a run in the forest will help. Thank you Fred (2022-10-29) I lik",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sive.rs",
+          "/run2",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Daily run, part two | Derek Sivers",
+        "url": "https://sive.rs/run2"
+      },
+      {
+        "category": "general",
+        "content": "For The Eternal Preservation And Expansion Of Infinite Happiness Through Enforcement Of Inalienable Freedoms That All Space Marines Must Fight To Protect Always .   Would Pau",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteListW-GeorgiaRunOffElection2021.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Free World Alliance Site List",
+        "url": "http://www.viacadempire.com/FWAsiteListW-GeorgiaRunOffElection2021.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bfc71ac8b8d6db270d665d2d4615e8c7da0773597f3c508e27022358ddf0ccc5",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind food preservation in music technology",
+  "query_id": "v5-p-0557-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:30.630986Z"
+}

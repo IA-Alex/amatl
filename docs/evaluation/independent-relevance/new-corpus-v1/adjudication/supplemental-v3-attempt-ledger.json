@@ -1,0 +1,607 @@
+{
+  "attempts": [
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.25thandclement.com/~william/projects/tarsum.html",
+      "query_id": "sup-v3-s2-t-001",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://searle.x10host.com/cpm",
+      "query_id": "sup-v3-s2-t-001",
+      "rank": 2,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://www.web3d.org/x3d/content/examples/X3dResources.html",
+      "query_id": "sup-v3-s2-t-001",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://spaceshuttleguide.com/system/electrical.htm",
+      "query_id": "sup-v3-s2-t-002",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.louiscandell.com/lyrics/s/schoolhouse.rock/words.html",
+      "query_id": "sup-v3-s2-t-002",
+      "rank": 2,
+      "reason_code": "OVERLAP_SUPPLEMENTAL"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://cascadian.neocities.org/",
+      "query_id": "sup-v3-s2-t-002",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://www.etalabs.net/compare_libcs.html",
+      "query_id": "sup-v3-s2-t-003",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://apple-tree.life/~michael/blog/2002",
+      "query_id": "sup-v3-s2-t-003",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://sysprog21.github.io/lkmpg",
+      "query_id": "sup-v3-s2-t-003",
+      "rank": 3,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://responsiblegambling.org/for-the-public/problem-gambling-prevention/programs-for-young-adults",
+      "query_id": "sup-v3-s2-t-004",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.cambridgeclarion.org/31.html",
+      "query_id": "sup-v3-s2-t-004",
+      "rank": 2,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.thesocialcontract.com/",
+      "query_id": "sup-v3-s2-t-004",
+      "rank": 3,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.eejitsguides.com/",
+      "query_id": "sup-v3-s2-t-005",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://etaps.org/2024/registration",
+      "query_id": "sup-v3-s2-t-005",
+      "rank": 2,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://www.antinatalism.com/chatgpt",
+      "query_id": "sup-v3-s2-t-005",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://asimovonline.com/asimov_FAQ.html",
+      "query_id": "sup-v3-s2-t-006",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.ralphmerkle.com/cryo/techFeas.html",
+      "query_id": "sup-v3-s2-t-006",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://stason.org/",
+      "query_id": "sup-v3-s2-t-006",
+      "rank": 3,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://shonumi.github.io/articles/art6.html",
+      "query_id": "sup-v3-s2-t-007",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://kirill.korins.ky/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments",
+      "query_id": "sup-v3-s2-t-007",
+      "rank": 2,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://users.glitchwrks.com/~glitch/updates.html",
+      "query_id": "sup-v3-s2-t-007",
+      "rank": 3,
+      "reason_code": "OVERLAP_SUPPLEMENTAL"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://www.fourmilab.ch/documents/canon_transits",
+      "query_id": "sup-v3-s2-t-008",
+      "rank": 1,
+      "reason_code": "OVERLAP_SUPPLEMENTAL"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://greatdreams.com/eclipse.htm",
+      "query_id": "sup-v3-s2-t-008",
+      "rank": 2,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://adishakti.org/",
+      "query_id": "sup-v3-s2-t-008",
+      "rank": 3,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://plover.net/~davidw/sol/m/means15.html",
+      "query_id": "sup-v3-s2-t-009",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://plover.net/~davidw/sol/h/hat__11.html",
+      "query_id": "sup-v3-s2-t-009",
+      "rank": 2,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://plover.net/~davidw/sol/f/fanta09.html",
+      "query_id": "sup-v3-s2-t-009",
+      "rank": 3,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://briankoberlein.com/archive",
+      "query_id": "sup-v3-s2-t-010",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://apple-tree.life/~michael/blog/2021",
+      "query_id": "sup-v3-s2-t-010",
+      "rank": 2,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.varmintal.com/ahunt.htm",
+      "query_id": "sup-v3-s2-t-010",
+      "rank": 3,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://humanknowledge.net/Thoughts.html",
+      "query_id": "sup-v3-s2-t-011",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://www.qrg.northwestern.edu/projects/vss/docs/thermal/3-what-happens-to-heat-once-its-released.html",
+      "query_id": "sup-v3-s2-t-011",
+      "rank": 2,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://thechristmasconspiracy.com/RUChristian.htm",
+      "query_id": "sup-v3-s2-t-011",
+      "rank": 3,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://www.chrismcovell.com/creations.html",
+      "query_id": "sup-v3-s2-t-012",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://www.911timeline.net/",
+      "query_id": "sup-v3-s2-t-012",
+      "rank": 2,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.vurdalak.com/tunguska/tunguska_reconstructn.htm",
+      "query_id": "sup-v3-s2-t-012",
+      "rank": 3,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://www.oodegr.com/english/koinwnia/koinwnika/zombie_genre_modern_west.htm",
+      "query_id": "sup-v3-s2-t-013",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.theabsolute.net/misogyny/zubaty.html",
+      "query_id": "sup-v3-s2-t-013",
+      "rank": 2,
+      "reason_code": "OVERLAP_SUPPLEMENTAL"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.greatdreams.com/poleshift.htm",
+      "query_id": "sup-v3-s2-t-013",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.sidneyrigdon.com/dbroadhu/NY/miscNYSg.htm",
+      "query_id": "sup-v3-s2-t-014",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://w4zt.com/",
+      "query_id": "sup-v3-s2-t-014",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://www.halloweenmonsterlist.info/",
+      "query_id": "sup-v3-s2-t-014",
+      "rank": 3,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://milesmathis.com/rainbow.html",
+      "query_id": "sup-v3-s2-t-015",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://csrainbow.neocities.org/",
+      "query_id": "sup-v3-s2-t-015",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://www.gutenberg.org/files/69284/69284-h/69284-h.htm",
+      "query_id": "sup-v3-s2-t-015",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.ancapfaq.com/library/WhatIsCapitalism.html",
+      "query_id": "sup-v3-s2-t-016",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.rexresearch.com/hooper/horizon.htm",
+      "query_id": "sup-v3-s2-t-016",
+      "rank": 2,
+      "reason_code": "OVERLAP_SUPPLEMENTAL"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://lukesmith.neocities.org/",
+      "query_id": "sup-v3-s2-t-016",
+      "rank": 3,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://www.marxists.org/archive/trotsky/works/1944/1944-fas.htm",
+      "query_id": "sup-v3-s2-t-017",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.publicappeal.org/library/unicorn/Frazer/6.html",
+      "query_id": "sup-v3-s2-t-017",
+      "rank": 2,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://www.gutenberg.org/files/69284/69284-h/69284-h.htm",
+      "query_id": "sup-v3-s2-t-017",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://thelastpsychiatrist.com/2010/04/study_finds_chocolate_causes_d.html",
+      "query_id": "sup-v3-s2-t-018",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://thelastpsychiatrist.com/2009/02/two_causes_of_autism.html",
+      "query_id": "sup-v3-s2-t-018",
+      "rank": 2,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.trimondi.de/SDLE/Part-2-00.htm",
+      "query_id": "sup-v3-s2-t-018",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://www.plbg.com/education-tankless-water-heaters.html",
+      "query_id": "sup-v3-s2-t-019",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://people.idsia.ch/~juergen",
+      "query_id": "sup-v3-s2-t-019",
+      "rank": 2,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://100r.co/site/off_the_grid.html",
+      "query_id": "sup-v3-s2-t-019",
+      "rank": 3,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://thirdworldtraveler.com/New_World_Order/BigOil_Bankers_PersianGulf.html",
+      "query_id": "sup-v3-s2-t-020",
+      "rank": 1,
+      "reason_code": "OVERLAP_SUPPLEMENTAL"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://jacobwsmith.xyz/stories/vaccine_discussion.html",
+      "query_id": "sup-v3-s2-t-020",
+      "rank": 2,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.idallen.com/",
+      "query_id": "sup-v3-s2-t-020",
+      "rank": 3,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.viacadempire.com/FWAsiteList.html",
+      "query_id": "sup-v3-s2-c-001",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://gnu.support/",
+      "query_id": "sup-v3-s2-c-001",
+      "rank": 2,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor",
+      "query_id": "sup-v3-s2-c-001",
+      "rank": 3,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://www.panspermia.org/neodarw.htm",
+      "query_id": "sup-v3-s2-c-002",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.dhushara.com/book/bchtm/biocos.htm",
+      "query_id": "sup-v3-s2-c-002",
+      "rank": 2,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://reducing-suffering.org/applied-welfare-biology-wild-animal-advocates-focus-spreading-nature",
+      "query_id": "sup-v3-s2-c-002",
+      "rank": 3,
+      "reason_code": "OVERLAP_SUPPLEMENTAL"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://chalk-dog.com/",
+      "query_id": "sup-v3-s2-c-003",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.earlychristianwritings.com/text/galen.html",
+      "query_id": "sup-v3-s2-c-003",
+      "rank": 2,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://shrines.rpgclassics.com/snes/terranigma/facts.shtml",
+      "query_id": "sup-v3-s2-c-003",
+      "rank": 3,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://arcadeblogger.com/feed",
+      "query_id": "sup-v3-s2-c-004",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://www.copetti.org/writings/consoles/nintendo-3ds",
+      "query_id": "sup-v3-s2-c-004",
+      "rank": 2,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://altusmetrum.org/AltOS/doc/altusmetrum.html",
+      "query_id": "sup-v3-s2-c-004",
+      "rank": 3,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://sanpedrorivervalley.org/",
+      "query_id": "sup-v3-s2-c-005",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://dhushara.com/",
+      "query_id": "sup-v3-s2-c-006",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.dhushara.com/book/unraveltree/unravel.htm",
+      "query_id": "sup-v3-s2-c-006",
+      "rank": 2,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://brainmind.com/BrainLecture1.html",
+      "query_id": "sup-v3-s2-c-006",
+      "rank": 3,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://historicbridges.org/index.php",
+      "query_id": "sup-v3-s2-c-007",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://cascadian.neocities.org/",
+      "query_id": "sup-v3-s2-c-007",
+      "rank": 2,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.howtospotapsychopath.com/feed",
+      "query_id": "sup-v3-s2-c-007",
+      "rank": 3,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.greatdreams.com/poleshift.htm",
+      "query_id": "sup-v3-s2-c-008",
+      "rank": 1,
+      "reason_code": "OVERLAP_V1"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.pheemcfaddell.com/PageArtistsPage.html",
+      "query_id": "sup-v3-s2-c-008",
+      "rank": 2,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://russnelson.com/unfinished-railroads.html",
+      "query_id": "sup-v3-s2-c-008",
+      "rank": 3,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://www.informationphilosopher.com/",
+      "query_id": "sup-v3-s2-c-009",
+      "rank": 1,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse",
+      "query_id": "sup-v3-s2-c-009",
+      "rank": 2,
+      "reason_code": "ACCEPTED"
+    },
+    {
+      "attempt_number": 1,
+      "canonical_url": "http://www.hetwebsite.net/het/texts/carlyle/carlyle1831characteristics.htm",
+      "query_id": "sup-v3-s2-c-009",
+      "rank": 3,
+      "reason_code": "ACCEPTED"
+    }
+  ],
+  "experiment_id": "independent-relevance-supplemental-v3",
+  "network_requests": 29,
+  "rejection_counts": {
+    "ACCEPTED": 0,
+    "OVERLAP_SUPPLEMENTAL": 7,
+    "OVERLAP_V1": 18
+  },
+  "schema": "amatl.relevance.supplemental-v3-attempt-ledger.v1"
+}

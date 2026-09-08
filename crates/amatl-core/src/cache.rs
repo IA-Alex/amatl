@@ -3,8 +3,76 @@ use crate::providers::{Provider, ProviderAvailability, ProviderContext};
 use crate::storage::{CacheStats, SqliteStorage};
 use crate::telemetry::now_unix;
 use async_trait::async_trait;
+use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
+use std::sync::atomic::{AtomicU64, Ordering};
 use std::sync::Arc;
+
+/// Process-lifetime hit/miss counters shared by the provider-search and
+/// document caches, so an operator can read cache effectiveness without
+/// inspecting SQLite. Counters are monotonic and reset on restart.
+#[derive(Debug, Default)]
+pub struct CacheCounters {
+    provider_search_hits: AtomicU64,
+    provider_search_misses: AtomicU64,
+    document_hits: AtomicU64,
+    document_misses: AtomicU64,
+}
+
+impl CacheCounters {
+    pub fn record_provider_search(&self, hit: bool) {
+        let counter = if hit {
+            &self.provider_search_hits
+        } else {
+            &self.provider_search_misses
+        };
+        counter.fetch_add(1, Ordering::Relaxed);
+    }
+
+    pub fn record_document(&self, hit: bool) {
+        let counter = if hit {
+            &self.document_hits
+        } else {
+            &self.document_misses
+        };
+        counter.fetch_add(1, Ordering::Relaxed);
+    }
+
+    pub fn snapshot(&self) -> CacheEffectiveness {
+        let provider_search_hits = self.provider_search_hits.load(Ordering::Relaxed);
+        let provider_search_misses = self.provider_search_misses.load(Ordering::Relaxed);
+        let document_hits = self.document_hits.load(Ordering::Relaxed);
+        let document_misses = self.document_misses.load(Ordering::Relaxed);
+        CacheEffectiveness {
+            provider_search_hits,
+            provider_search_misses,
+            provider_search_hit_rate: hit_rate(provider_search_hits, provider_search_misses),
+            document_hits,
+            document_misses,
+            document_hit_rate: hit_rate(document_hits, document_misses),
+        }
+    }
+}
+
+/// Snapshot of [`CacheCounters`] with derived hit rates in `[0.0, 1.0]`.
+#[derive(Clone, Copy, Debug, Default, Serialize, Deserialize, PartialEq)]
+pub struct CacheEffectiveness {
+    pub provider_search_hits: u64,
+    pub provider_search_misses: u64,
+    pub provider_search_hit_rate: f64,
+    pub document_hits: u64,
+    pub document_misses: u64,
+    pub document_hit_rate: f64,
+}
+
+fn hit_rate(hits: u64, misses: u64) -> f64 {
+    let total = hits + misses;
+    if total == 0 {
+        0.0
+    } else {
+        hits as f64 / total as f64
+    }
+}
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct ProviderSearchCachePolicy {
@@ -29,11 +97,22 @@ impl Default for ProviderSearchCachePolicy {
 pub struct ProviderSearchCache {
     storage: SqliteStorage,
     policy: ProviderSearchCachePolicy,
+    counters: Option<Arc<CacheCounters>>,
 }
 
 impl ProviderSearchCache {
     pub fn new(storage: SqliteStorage, policy: ProviderSearchCachePolicy) -> Self {
-        Self { storage, policy }
+        Self {
+            storage,
+            policy,
+            counters: None,
+        }
+    }
+
+    /// Report hits and misses of this cache into shared counters.
+    pub fn with_counters(mut self, counters: Arc<CacheCounters>) -> Self {
+        self.counters = Some(counters);
+        self
     }
 
     pub async fn get(
@@ -46,7 +125,8 @@ impl ProviderSearchCache {
             return None;
         }
         let filters = structured_filters(plan);
-        self.storage
+        let result = self
+            .storage
             .cache_get(
                 provider,
                 adapter_version,
@@ -58,7 +138,11 @@ impl ProviderSearchCache {
             .await
             .ok()
             .flatten()
-            .and_then(|payload| serde_json::from_str(&payload).ok())
+            .and_then(|payload| serde_json::from_str(&payload).ok());
+        if let Some(counters) = &self.counters {
+            counters.record_provider_search(result.is_some());
+        }
+        result
     }
 
     pub async fn put(
@@ -190,10 +274,13 @@ mod tests {
             .duration_since(std::time::UNIX_EPOCH)
             .unwrap()
             .as_nanos();
-        SqliteStorage::open(std::env::temp_dir().join(format!(
-            "amatl-cache-{}-{nonce}-{id}.sqlite3",
-            std::process::id()
-        )))
+        SqliteStorage::open(
+            std::env::temp_dir().join(format!(
+                "amatl-cache-{}-{nonce}-{id}.sqlite3",
+                std::process::id()
+            )),
+            crate::config::SqliteLockingMode::Normal,
+        )
         .await
         .unwrap()
     }
@@ -230,7 +317,7 @@ mod tests {
                 metadata: BTreeMap::new(),
             }],
         )
-        .search(&plan(), &ProviderContext { timeout_ms: 100 })
+        .search(&plan(), &ProviderContext::new(100))
         .await
         .unwrap()
     }

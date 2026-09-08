@@ -1,0 +1,189 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 290.5000350001501,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is cloud formation in photography",
+    "results": [
+      {
+        "category": "general",
+        "content": "be detectable by such photography. To detect individual organisms on earth, we have to have a photographic resolution about 10 times better than this, then we occasionally see thi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.project1947.com",
+          "/shg/symposium/sagan.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SHG - UFO Symposium 1968: Sagan Statement",
+        "url": "http://www.project1947.com/shg/symposium/sagan.html"
+      },
+      {
+        "category": "general",
+        "content": "Duke of Edinburgh Photography - services Photon 1- solar boat Photon 2 - solar boat Photosynthesis Physics prize - NK Phillips, Team - catamaran Pilgrim Farthers - Mayflower",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.solarnavigator.net",
+          "/solarnavigator_index.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SOLAR NAVIGATOR MARINE PORTAL WEBSITE INDEX EDUCATIONAL GEOGRAPHY HISTORY RESOURCE WORLD ATLAS A TO Z INDEX OF PLANET EARTH FREE ENCYCLOPEDIA&lt;",
+        "url": "https://www.solarnavigator.net/solarnavigator_index.htm"
+      },
+      {
+        "category": "general",
+        "content": "and Scope Photography. None of these subjects suggests Marcel had even an introduction to the use of radar targets for measuring the direction and speed of winds aloft, which was",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.astronomyufo.com",
+          "/UFO/Rosmyths.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Popular Roswell myths",
+        "url": "http://www.astronomyufo.com/UFO/Rosmyths.htm"
+      },
+      {
+        "category": "general",
+        "content": "and success doing astrophotography that I wanted very much to go back and do some more. Leslie couldn&#39;t take any more time off work, but she gave me her blessing to go back for a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mdpub.com",
+          "/newphotos/index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Vacation Photos",
+        "url": "http://mdpub.com/newphotos/index.html"
+      },
+      {
+        "category": "general",
+        "content": "fasteners /invention of photography /development of color photography importance of technology American technology American technology American technology science and technology a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "photo album of nature photography has imagery of mountains, lakes, streams, waterfalls, large trees, flowers, aurorae, other landscape images and some images of insects and frogs.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronomynotes.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Astronomy Notes",
+        "url": "https://www.astronomynotes.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0285",
+  "query_text": "what is cloud formation in photography",
+  "requested_at": "2026-09-03T01:43:52.208501Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

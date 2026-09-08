@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 311.452,
+  "pair_id": "v5-p-1028",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind probability distributions in pharmacology",
+    "results": [
+      {
+        "category": "general",
+        "content": "under unimodal distributions). So educated and uneducated traders use &#34;infinite&#34; as proxy for &#34;cannot find a bound for the payoff&#34;. We call this open-ended . When there are reason",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "fooledbyrandomness.com",
+          "/notebook.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Opacity",
+        "url": "https://fooledbyrandomness.com/notebook.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "37780c43810f5ba0820dcc221e008a93ca83cf5e77c0821c62715f8763dd9682",
+  "provider": "SearXNG",
+  "query": "describe the principle behind probability distributions in pharmacology",
+  "query_id": "v5-p-1028-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:10:34.543642Z"
+}

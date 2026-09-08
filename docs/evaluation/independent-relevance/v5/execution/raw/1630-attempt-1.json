@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 295.179,
+  "pair_id": "v5-p-0575",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of food preservation in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "of JFPO (Jews for the Preservation of Firearms Ownership) (1992) dictator.txt 8856 The Blueprint for U.S. Dictatorship Places Individual Rights at Risk by Mike Blair dicthere.txt",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "textfiles.com",
+          "/politics/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "T E X T F I L E S",
+        "url": "http://textfiles.com/politics/"
+      },
+      {
+        "category": "general",
+        "content": "Sunnyside Gardens Preservation Alliance , Bliss Street Sunnyside - Stories from the 1940&#39;s and 1950&#39;s , Hunter College Elementary School and HCES Class of 1947 , T.V. State Of Mai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "afford justice and the preservation of their rights. It has taken centuries, but the U.S. constitution is gradually evolving into a true people&#39;s document. Conservatives call them",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.huppi.com",
+          "/kangaroo/ShortFAQ.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Steve Kangas&#39; Short FAQ on Liberalism",
+        "url": "http://www.huppi.com/kangaroo/ShortFAQ.htm"
+      },
+      {
+        "category": "general",
+        "content": "is concern for the preservation of those original racial elements which bestow culture and create the beauty and dignity of a higher mankind. We, as Aryans, can conceive of the st",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/nazihydrainamerica.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "nazihydrainamerica",
+        "url": "http://www.combatreform.org/nazihydrainamerica.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2dee8f7c7cf9f2b9773d03781db32bea6dd9a84f8b55e188d7b1a12402fbc17e",
+  "provider": "SearXNG",
+  "query": "give an overview of food preservation in operations research",
+  "query_id": "v5-p-0575-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:53.822349Z"
+}

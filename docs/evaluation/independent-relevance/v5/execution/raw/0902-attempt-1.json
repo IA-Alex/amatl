@@ -1,0 +1,354 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 473.42,
+  "pair_id": "v5-p-0482",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of encryption keys in information systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "structuring, information loss, and a lack of provenance or security. By relying on unstructured folders and rigid JSON schemas instead of a proper database with foreign keys, audi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "runtime configuration information for the Samba programs. The complete description of the file format and possible parameters held within are here for reference purposes. HOW CONF",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.samba.org",
+          "/samba/docs/current/man-html/smb.conf.5.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "smb.conf",
+        "url": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+      },
+      {
+        "category": "general",
+        "content": "Added. System Information and Benchmark for Linux Systems This application is the successor of and supersedes hardinfo latest-browsers-2-noarch-3slint.txz Edited the script latest",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "slackware.uk",
+          "/slint/x86_64/slint-15.0/ChangeLog.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://slackware.uk/slint/x86_64/slint-15.0/ChangeLog.txt",
+        "url": "http://slackware.uk/slint/x86_64/slint-15.0/ChangeLog.txt"
+      },
+      {
+        "category": "general",
+        "content": "the 1920&#39;s that an information-theoretically secure cryptosystem was devised: the one-time pad. The idea is simple: the plaintext message is represented by a binary string p, whic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scottaaronson.com",
+          "/democritus/lec8.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHYS771 Lecture 8: Crypto",
+        "url": "https://www.scottaaronson.com/democritus/lec8.html"
+      },
+      {
+        "category": "general",
+        "content": "Understand Much Arcane Information. If Not; Google Translate Browser Extension, Is Available For Free To Everybody On Earth Even Where There Is Supposedly Overt Censorship. Google",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteList.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/FWAsiteList.html"
+      },
+      {
+        "category": "general",
+        "content": "C-Kermit software and information is: /ckermit.html Any other source is likely to be either incomplete and out of date, or &#34;forked&#34; from the definitive version without the author&#39;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kermitproject.org",
+          "/ckfaq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C-Kermit Frequently Asked Questions",
+        "url": "https://www.kermitproject.org/ckfaq.html"
+      },
+      {
+        "category": "general",
+        "content": "how it operates. For information on these options, consult the script&#39;s man page: Type man refind-install if you installed rEFInd via an RPM or Debian package; or read it in HTML",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "rodsbooks.com",
+          "/refind/installing.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The rEFInd Boot Manager: Installing and Uninstalling rEFInd",
+        "url": "https://rodsbooks.com/refind/installing.html"
+      },
+      {
+        "category": "general",
+        "content": "- ttf2afm outputs name information. - If \\tracinglostchars is set to 3 or more, missing characters will result in an error, not just a message in the log file, and the missing cha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "tug.org",
+          "/applications/pdftex/NEWS",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://tug.org/applications/pdftex/NEWS",
+        "url": "https://tug.org/applications/pdftex/NEWS"
+      },
+      {
+        "category": "general",
+        "content": "bio. More detailed bio information is available on request. This Web page (http://www.csl.sri.com/~neumann) can also be reached from the primary CSL Web site (http://www.csl.sri.c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "Where can I get more information about DVD? [6.4.1] A few of the top DVD info sites [6.4.2] DVD utilities and region-free information [6.4.3] Information and discussion groups for",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "demystified.info",
+          "/dvdfaq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DVD FAQ",
+        "url": "https://demystified.info/dvdfaq.html"
+      },
+      {
+        "category": "general",
+        "content": "position and font information. 4. THE DIALER The new Dialer icon is a rotary telephone dial. Although we don&#39;t use rotary phones much any more, the telephone dial is a universally",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kermitproject.org",
+          "/k95gui.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Kermit 95 2.0 GUI",
+        "url": "https://www.kermitproject.org/k95gui.html"
+      },
+      {
+        "category": "general",
+        "content": "us with export control information / FIPS certification for PuTTY? A.9.19 As one of our existing software vendors, can you just fill in this questionnaire for us? A.9.20 The sha1s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chiark.greenend.org.uk",
+          "/~sgtatham/putty/faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PuTTY FAQ",
+        "url": "https://www.chiark.greenend.org.uk/~sgtatham/putty/faq.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1db4e6733d565d3c6a92b09ac5bcd94a5ef3b8aa7fb4bf6e47e5c2360b0db7fd",
+  "provider": "SearXNG",
+  "query": "tell me about the function of encryption keys in information systems",
+  "query_id": "v5-p-0482-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:00.738011Z"
+}

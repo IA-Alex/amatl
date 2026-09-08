@@ -1,0 +1,31 @@
+{
+  "schema": "amatl.relevance.supplemental-pilot-acquisition-procedure.v1",
+  "status": "FROZEN_READY_FOR_AUTHORIZED_CAPTURE",
+  "provider_contract": "SEARXNG_ONLY",
+  "provider_fallback": "DISABLED",
+  "marginalia": "UNREACHABLE_FROM_THIS_PATH",
+  "universe_path": "docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-query-universe-v1.json",
+  "universe_sha256": "f8fcdc356fa0d00d3a657c2c49d5b3155c9ec4bb7fdeb67692cb7c5f734e1ae1",
+  "execution_order": [
+    "read frozen universe",
+    "execute only listed query IDs against SearXNG",
+    "retain raw response evidence",
+    "supply result to run_supplemental_pilot.py",
+    "canonicalize",
+    "reject duplicate/overlap/invalid rows with reason code",
+    "count accepted row only in assigned stratum",
+    "stop at 60 per stratum and 180 total"
+  ],
+  "forbidden": [
+    "query expansion",
+    "provider switching",
+    "rank expansion",
+    "quota borrowing",
+    "discarding rejected attempt evidence"
+  ],
+  "terminal_statuses": [
+    "COMPLETE",
+    "EXHAUSTED_FROZEN_UNIVERSE"
+  ],
+  "network_execution": "NOT_PERFORMED_BY_THIS_WORK_PACKAGE"
+}

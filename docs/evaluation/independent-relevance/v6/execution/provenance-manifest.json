@@ -1,0 +1,25 @@
+{
+  "artifacts": {
+    "capture-manifest.json": "bdb7417163da4c3f22b98d8f367c1aec8b09cc4a326ebdd5748cdca61429a2d7",
+    "decision-policy.json": "ea6da8a7ff84187b5392f394afb81d28b2a35b80a630c30382aa6b6af482c3aa",
+    "design.json": "d5f21546a625a55a57aef7afd9e746a4a6cb8f694f38d56369406fa04a916a60",
+    "execution-policy.json": "53d8313d7484d604136d8d66dac3ed138d731dccdedbc58a5fa360c63b623b23",
+    "execution-report.json": "2133a390dcd85287b1cd349c62527c978098e4079bf430e00484b58e4243e7a6",
+    "final-decision.json": "d2b4d7dd145034b407776454ab53a620990e01163e949257d4ff1d131c32758c",
+    "frozen-query-universe.json": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "historical-exclusion-manifest.json": "083362d14d9a0ac029cb89065e185cc996cce702193ab4cce9355b166f69faf5",
+    "pair-assignments.json": "dd419637ffd1c2ead36c1d7f2ab216793834af5356bc89e775b2ab52d5a173d4",
+    "prelabel-manifest.json": "332cb3cb7e0bbde5e95a3cef2886b664f65e4b3ca8aecd970bd950254b577407",
+    "query-universe-manifest.json": "7cabfef93a687751e0eeb5b4f8fca38b8383d487e86dee301077a96c138d7874",
+    "randomization-manifest.json": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f",
+    "raw-capture.json": "d16635397d8653d39082f7a385b2c021912c3ac1fd9c9daac30ee5f02354e115",
+    "rejection-ledger.json": "583c2ae9b610d320392cdb8a64b6f22adc9c739aeea350658bfd33eec2cc3a4d"
+  },
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "integrity": "PASS",
+  "network_requests": 4600,
+  "schema": "amatl.relevance.v6-terminal-provenance-manifest.v1",
+  "source_candidate": "candidate-v2",
+  "source_candidate_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+  "source_commit": "8191f8bccf33f7d86e0c0b13213da6363e6326a8"
+}

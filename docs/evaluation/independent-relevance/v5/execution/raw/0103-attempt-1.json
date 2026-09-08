@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 239.292,
+  "pair_id": "v5-p-0369",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is solar eclipses in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "petroleum reservoir engineering. He was consulting engineer in USA, Russia , Mexico, Algeria, and Romania. As an expert in mining he was elected the life long chairman of the Amer",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.croatianhistory.net",
+          "/etf/russia.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Croatia - Russia",
+        "url": "https://www.croatianhistory.net/etf/russia.html"
+      },
+      {
+        "category": "general",
+        "content": "I studied electrical engineering and telecommunications engineering many, many moons ago ;) Latest Posts Blogposts 5 Albums Aug 26, 2026 A few weeks ago, Noisy Deadlines posted a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "82mhz.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "82MHz",
+        "url": "http://82mhz.net/"
+      },
+      {
+        "category": "general",
+        "content": "on Cryptographic Engineering - and how the RSA pseudo-random number generator was compromised by NSA in 2006 (Matthew Green, 2013), How the FBI will lose its iPhone fight with App",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6fe37b0e2303f7d446b740c89d6cb605c20a81684cd69bd6dc6042f78d1ccbeb",
+  "provider": "SearXNG",
+  "query": "what is solar eclipses in electrical engineering",
+  "query_id": "v5-p-0369-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:41.313558Z"
+}

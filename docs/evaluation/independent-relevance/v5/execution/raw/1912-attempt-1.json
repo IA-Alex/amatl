@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 327.541,
+  "pair_id": "v5-p-0977",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind wastewater treatment in computer security",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "431a71fe84493053155ca437e065e9ac96d0fe28ef91ee21f0a0f750f87d30e1",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind wastewater treatment in computer security",
+  "query_id": "v5-p-0977-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:28.114406Z"
+}

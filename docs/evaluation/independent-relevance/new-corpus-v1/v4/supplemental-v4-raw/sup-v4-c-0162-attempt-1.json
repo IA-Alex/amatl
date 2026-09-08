@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 348.8794980003149,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of cell membranes in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "There&#39;s a problem: The membranes that hold cells together let in water, but keep nutrients out. For a cell to live, its membrane must contain little pumps that are molecular machi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.finetuneduniverse.com",
+          "/evolutionisareligion.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Evolution Is A Religion",
+        "url": "http://www.finetuneduniverse.com/evolutionisareligion.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0162",
+  "query_text": "tell me about the function of cell membranes in astronomy",
+  "requested_at": "2026-09-03T01:44:12.403524Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

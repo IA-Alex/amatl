@@ -1,0 +1,246 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 391.07,
+  "pair_id": "v5-p-0573",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind food preservation in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "self-interest and self-preservation and selfishness. Man never in his sane mind does anything without a reason. . . . Higher selfishness, or the good of the Higher Self, is the mo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "oaks.nvg.org",
+          "/selfishness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Yogananda and Sacred Selfishness – The Gold Scales",
+        "url": "http://oaks.nvg.org/selfishness.html"
+      },
+      {
+        "category": "general",
+        "content": "could then learn self-preservation and pleasure-maximisation in harmony. At least as a stopgap, exploiting pleasure gradients is a much more civilised way to live. It&#39;s far more h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Hedonistic Imperative : Objections (Chapter 4)",
+        "url": "https://www.hedweb.com/hedethic/hedon4.htm"
+      },
+      {
+        "category": "general",
+        "content": "advancement and the preservation of womanhood and they were successful for just as long as they were in control and could arrange matters so that government was carried out by a l",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "antimatrix.org",
+          "/Convert/Coleman_The_Tavistock_Institute_of_Human_Relations_2005.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NWO - The Tavistock Institute For Human Relations",
+        "url": "http://antimatrix.org/Convert/Coleman_The_Tavistock_Institute_of_Human_Relations_2005.html"
+      },
+      {
+        "category": "general",
+        "content": "of families and the preservation of properties. The romantic revolution of the Courts of Love in France was at first extramatrimonial, and the combination of romance and marriage",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.n7nz.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "I Kissed Joshua Harris&#39; Dating Critique Goodbye",
+        "url": "http://www.n7nz.org/"
+      },
+      {
+        "category": "general",
+        "content": "is oft based on ego preservation, self-forgiveness, blame displacement and hate bonding. Rarely is it based on self-awareness, introspection, forgiveness, and acceptance. It is fo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/a-frogs-collection-of-quotes",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Frog&#39;s Collection of Quotes — Chadnet",
+        "url": "https://wiki.chadnet.org/a-frogs-collection-of-quotes"
+      },
+      {
+        "category": "general",
+        "content": "Sunnyside Gardens Preservation Alliance , Bliss Street Sunnyside - Stories from the 1940&#39;s and 1950&#39;s , Hunter College Elementary School and HCES Class of 1947 , T.V. State Of Mai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "Trust for Historic Preservation. It was built for imaginary people living imaginary lives, not for real human beings and real life. Its preservation, however, might seem to belong",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/starwars.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Star Wars: Episode I, Episode II, Episode III, &amp; THX 1138",
+        "url": "https://friesian.com/starwars.htm"
+      },
+      {
+        "category": "general",
+        "content": "For The Eternal Preservation And Expansion Of Infinite Happiness Through Enforcement Of Inalienable Freedoms That All Space Marines Must Fight To Protect Always .   Would Pau",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteListW-GeorgiaRunOffElection2021.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Free World Alliance Site List",
+        "url": "http://www.viacadempire.com/FWAsiteListW-GeorgiaRunOffElection2021.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "61501330c2952f7bb1e44fac0dbc9f37e8a20caae96d3ee619a8c2291ed8e49a",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind food preservation in industrial design",
+  "query_id": "v5-p-0573-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:26.722444Z"
+}

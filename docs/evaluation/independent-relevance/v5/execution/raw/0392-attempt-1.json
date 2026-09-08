@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 223.191,
+  "pair_id": "v5-p-0363",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of solar eclipses in chemistry",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a5aa779a5f559e216bd8a13f13f5f37929a991acfac9e926699ee6a570e5db69",
+  "provider": "SearXNG",
+  "query": "give an overview of solar eclipses in chemistry",
+  "query_id": "v5-p-0363-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:12.464582Z"
+}

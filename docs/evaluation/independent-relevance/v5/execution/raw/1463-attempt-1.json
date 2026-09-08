@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 270.998,
+  "pair_id": "v5-p-1078",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does microbial fermentation in operations research work",
+    "results": [
+      {
+        "category": "general",
+        "content": "235 foods, biomass, and fermentation with special attention to industrial aspects Catalysis in Organic Chemistry Paul Sabatier 1922 429 Paul Sabatier shared the 1912 Nobel Prize i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "library.sciencemadness.org",
+          "/library/index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scientific and technical books of yesteryear",
+        "url": "http://library.sciencemadness.org/library/index.html"
+      },
+      {
+        "category": "general",
+        "content": "235 foods, biomass, and fermentation with special attention to industrial aspects Catalysis in Organic Chemistry Paul Sabatier 1922 429 Paul Sabatier shared the 1912 Nobel Prize i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "sciencemadness.org",
+          "/library/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scientific and technical books of yesteryear",
+        "url": "http://sciencemadness.org/library/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4986f5e0049f6c6cae16b4e2dc79a90f20e6e86da327a3c2f02054232e7fa76b",
+  "provider": "SearXNG",
+  "query": "how does microbial fermentation in operations research work",
+  "query_id": "v5-p-1078-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:13:02.577138Z"
+}

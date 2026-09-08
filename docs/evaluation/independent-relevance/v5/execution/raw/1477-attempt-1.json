@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 266.13,
+  "pair_id": "v5-p-0039",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes compiler operation in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "crasher-bug-riddled operation; not good. Back to bed, up late. Got back to gtk&#43;/OO.o work, Stefan and Philipp appeared on IRC today - wonderful, discussed the alphaart changes wit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2003/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2003/"
+      },
+      {
+        "category": "general",
+        "content": "with the NFKC_Casefold operation. For more information, see Section 5, Normalization and Case and UTR #36: Unicode Security Considerations [ UTR36 ]. While not all Default_Ignorab",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.unicode.org",
+          "/reports/tr31/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "UAX #31: Unicode Identifiers and Syntax",
+        "url": "http://www.unicode.org/reports/tr31/"
+      },
+      {
+        "category": "general",
+        "content": "on your voluntary cooperation. They forgot to tell you that part; but you just found it out for yourself. Sometimes you may discover that you didn&#39;t have the right to live, move a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.toad.com",
+          "/gnu/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John Gilmore&#39;s home page",
+        "url": "http://www.toad.com/gnu/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "129510049b30adc8e795e66122ea17f1234c1da14ce83cd752b16b67fa55653d",
+  "provider": "SearXNG",
+  "query": "what causes compiler operation in chemistry",
+  "query_id": "v5-p-0039-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:06.720183Z"
+}

@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 379.98,
+  "pair_id": "v5-p-0521",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind neural networks in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "unreal)? Our electrical technology is impossible without calculus (and its relative differential equations), so there is something very different about this non - sense perceptibl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/tidom.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Idea of Mind",
+        "url": "http://ipwebdev.com/hermit/tidom.html"
+      },
+      {
+        "category": "general",
+        "content": "to Do On Public Wi-Fi. Technology breeds crime (AARP), Keep Out Those Wi-Fi Hackers. Don&#39;t fall prey to digital intruders (AARP), Get Smart on the Web (Mozilla Foundation, 2016),",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "matter as much as technology for the security of large-scale systems. Systems break when the people who could fix them are not the people who suffer the costs of failure. So it&#39;s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "207073549cbd5e56d40e383351741d70a5d522402ea80545fdd39d8fea17f1a7",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind neural networks in music technology",
+  "query_id": "v5-p-0521-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:24.029165Z"
+}

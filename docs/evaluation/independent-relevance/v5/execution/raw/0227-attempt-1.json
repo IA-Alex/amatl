@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 248.031,
+  "pair_id": "v5-p-0667",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes traffic flow in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d66fc93bc17c74fe89c760a07822b93aeef3456c4292695291027827bb433f5e",
+  "provider": "SearXNG",
+  "query": "what causes traffic flow in oceanography",
+  "query_id": "v5-p-0667-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:20.620677Z"
+}

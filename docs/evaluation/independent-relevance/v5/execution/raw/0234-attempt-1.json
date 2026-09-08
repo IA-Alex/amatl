@@ -1,0 +1,246 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 292.887,
+  "pair_id": "v5-p-0863",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of data compression in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "support rudimentary compression options. 4.2.2 Repository    Figure 2. Repository Data Structure The repository contains the full HTML of every web page. Each page is co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "infolab.stanford.edu",
+          "/~backrub/google.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Anatomy of a Search Engine",
+        "url": "http://infolab.stanford.edu/~backrub/google.html"
+      },
+      {
+        "category": "general",
+        "content": "X-ray, mammary gland compression, digital mastogram, mammographic stereotaxy. Dental X - ray - intraoral X-ray, panoramic X-ray OPG, dental CT. Alternative diagnostic imaging meth",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Fyzika-NuklMed.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nuclear physics and ionizing radiation physics",
+        "url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm"
+      },
+      {
+        "category": "general",
+        "content": "simulation and code compression. In the past he worked and had experience with embedded systems, with drivers for Linux and FreeBSD. He&#39;s also an active contributor to the open so",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "More modern brain compression techniques, many of them developed with direct reference to the MMAcevedo image, have compressed the image to 6.75TiB losslessly. In modern brain emu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "qntm.org",
+          "/mmacevedo",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lena @ Things Of Interest",
+        "url": "https://qntm.org/mmacevedo"
+      },
+      {
+        "category": "general",
+        "content": "tp://www.math.uio.no/faq/compression-faq/part1.html -- http scheme for Hypertext Transfer Protocol services mailto:mduerst@ifi.unizh.ch -- mailto scheme for electronic mail address",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.rfc-editor.org",
+          "/rfc/rfc2396.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "An example HTML document",
+        "url": "https://www.rfc-editor.org/rfc/rfc2396.txt"
+      },
+      {
+        "category": "general",
+        "content": "moderator for the comp.compression.research newsgroup, and the co-moderator of the sci.crypt.research newsgroup. Design and Analysis of Security Systems [PKI designs are based on]",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cs.auckland.ac.nz",
+          "/~pgut001/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Gutmann&#39;s Home Page",
+        "url": "https://www.cs.auckland.ac.nz/~pgut001/"
+      },
+      {
+        "category": "general",
+        "content": "so some kind of compression may be desired! Advanced codecs like MP3 would be great, but these would be too complex for early hardware, fortunately ADPCM comes to the rescue, offe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chibiakumas.com",
+          "/z80/basics.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Getting started with Retro Assembly... Basic concepts",
+        "url": "https://www.chibiakumas.com/z80/basics.php"
+      },
+      {
+        "category": "general",
+        "content": "&amp; Thorsten, back to compression research. Installed openSUSE 11.3 on my reprap controlling netbook, so I could build the latest version of repsnapper - its nice to have the re",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2010/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2010/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c84c201741b7a3a1dfe8ec59082c06a91d8c153294f40f41305a8c5d8d1fcfd3",
+  "provider": "SearXNG",
+  "query": "give an overview of data compression in operations research",
+  "query_id": "v5-p-0863-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:22.913386Z"
+}

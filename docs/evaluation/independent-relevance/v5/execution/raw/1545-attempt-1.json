@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 257.207,
+  "pair_id": "v5-p-0483",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes encryption keys in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "and dissemination of encryption (also known as cryptography, the science and art of secret writing). I originally hosted the mailing list (cypherpunks@toad.com) and provided space",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.toad.com",
+          "/gnu/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John Gilmore&#39;s home page",
+        "url": "http://www.toad.com/gnu/"
+      },
+      {
+        "category": "general",
+        "content": "of an RSA file security encryption program tattooed on his arm (:wired496:) RFC 1882: The 12-Days of Technology Before Christmas Country domains registered: Ethiopia (ET), Cote d&#39;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zakon.org",
+          "/robert/internet/timeline/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hobbes&#39; Internet Timeline - the definitive ARPAnet &amp; Internet history",
+        "url": "https://www.zakon.org/robert/internet/timeline/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8dde693b8f970d4fbd1614dff3db04cc2561115780a409b34d2b5291076b6956",
+  "provider": "SearXNG",
+  "query": "what causes encryption keys in materials science",
+  "query_id": "v5-p-0483-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:13:28.512429Z"
+}

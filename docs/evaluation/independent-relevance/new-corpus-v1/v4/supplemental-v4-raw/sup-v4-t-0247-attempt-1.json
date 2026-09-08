@@ -1,0 +1,135 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 264.29189600457903,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes gear trains in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Harbor. Thoughts on science, business and society today By Frank X. Didik - News1.net editor . What if and what can or might be. The 1956 Firebird was to be self driving. Self Dri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.news1.net",
+          "/jan2021.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Breaking News, news commentary and news chronicle. News1.net - News and Photographic image archive. Global news with an emphasis on New Yo",
+        "url": "http://www.news1.net/jan2021.htm"
+      },
+      {
+        "category": "general",
+        "content": "the day.&#34;, &#34;A clear conscience is usually the sign of a bad memory.&#34;, &#34;A closed mind gathers no intelligence.&#34;, &#34;A closed mouth gathers no foot.&#34;, &#34;A college professor is someone",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ifindkarma.com",
+          "/oneliners/oneliners-2000",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.ifindkarma.com/oneliners/oneliners-2000",
+        "url": "http://www.ifindkarma.com/oneliners/oneliners-2000"
+      },
+      {
+        "category": "general",
+        "content": "completed a Bachelor of Science (Mechanical Engineering) in 1896. Later, in 1919, has was awarded a Bachelor of Engineering from the University of Sydney; engineering was no longe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tote-history-atl.net.au",
+          "/george_julius_genealogy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "George Julius Genealogy",
+        "url": "http://tote-history-atl.net.au/george_julius_genealogy.htm"
+      },
+      {
+        "category": "general",
+        "content": "Center of Our Cells The Science of Mind Reading The Pastry A.I. That Learned to Fight Cancer * Immune Disorder: The breakdown of cellular society in COVID-19 * The Engineers Takin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "jsomers.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "James Somers",
+        "url": "http://jsomers.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0247",
+  "query_text": "what causes gear trains in food science",
+  "requested_at": "2026-09-03T01:43:00.986010Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

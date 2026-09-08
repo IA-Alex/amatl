@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 277.078,
+  "pair_id": "v5-p-0052",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does compiler operation in mechanical engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "almost no overlap in engineering technique, other than that both groups of necessity were generally constrained by the technology available at the time.  For example, both ne",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ibiblio.org",
+          "/apollo/LVDC.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Launch Vehicle Digital Computer",
+        "url": "http://www.ibiblio.org/apollo/LVDC.html"
+      },
+      {
+        "category": "general",
+        "content": "years, and so Microsoft engineering will essentially come back and say that a nice, tightly-written kernel without any pollution in the executive level of execution is the best wa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oreilly.com",
+          "/openbook/opensources/book/intro.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Open Sources: Voices from the Open Source Revolution",
+        "url": "https://www.oreilly.com/openbook/opensources/book/intro.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ce88252270d179f006d95938a8b97de4caa8c91f71bd99ebe572497b44494695",
+  "provider": "SearXNG",
+  "query": "how does compiler operation in mechanical engineering operate",
+  "query_id": "v5-p-0052-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:11:17.698373Z"
+}

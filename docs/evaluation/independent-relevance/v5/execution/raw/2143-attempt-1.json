@@ -1,0 +1,246 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 311.001,
+  "pair_id": "v5-p-0700",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does language acquisition in mechanical engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "some generalized data acquisition and control systems. An example of a system using the LOCI-2 as the &#34;CPU&#34; is the Wang Model 2315 &#34;On Line Computing System&#34; , a general-purpose d",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/wangloci.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Wang LOCI-2",
+        "url": "https://www.oldcalculatormuseum.com/wangloci.html"
+      },
+      {
+        "category": "general",
+        "content": "pocket computers, no acquisition at all in 2009 for my collection... There are still a few items that i&#39;m after, but they&#39;re either rare, or expensive. Some of these items would b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cdecas.free.fr",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Welcome to Caz&#39; Website",
+        "url": "http://cdecas.free.fr/"
+      },
+      {
+        "category": "general",
+        "content": "stand for &#34;Digital Data Acquisition&#34;; the Saturn Flight Manual explains, among other things, that Telemetry system GP1 is a PCM/DDAS link that transmits realtime checkout data bef",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ibiblio.org",
+          "/apollo/LVDC.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Launch Vehicle Digital Computer",
+        "url": "http://www.ibiblio.org/apollo/LVDC.html"
+      },
+      {
+        "category": "general",
+        "content": "for serious content acquisition Mark Gross , Tammy Bilitzky , Rich Dominelli , &amp; Allan Lieberman , Data Conversion Laboratory (DCL) Much original source material today appears",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.balisage.net",
+          "/2018/Program.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Program - Balisage 2018",
+        "url": "https://www.balisage.net/2018/Program.html"
+      },
+      {
+        "category": "general",
+        "content": "Inc. As a result of the acquisition, Tektronix embarked on a project to take the Cintra calculators to the next level, resulting in two calculators that entered the relatively eli",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/tek31.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Tektronix Model 31 Electronic Calculator",
+        "url": "https://www.oldcalculatormuseum.com/tek31.html"
+      },
+      {
+        "category": "general",
+        "content": "eliminate the initial acquisition fee and store services fee. […] Under the updated terms, developers can now offer Apple In-App Purchase alongside alternative payment optio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mjtsai.com",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Tsai - Blog",
+        "url": "https://mjtsai.com/blog/"
+      },
+      {
+        "category": "general",
+        "content": "acquired through the acquisition of a calculating-related product from Benson-Lehner Corporation. Benson-Lehner&#39;s primary business was electronic plotting machines..devices which",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/friden130.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Friden EC-130 Electronic Calculator",
+        "url": "https://www.oldcalculatormuseum.com/friden130.html"
+      },
+      {
+        "category": "general",
+        "content": "on leveling and power acquisition often have very large power differentials between players. If two friendly players want to play together, they may not be able to because either",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.projecthorseshoe.com",
+          "/reports/featured/ph16r4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Project Horseshoe 2016 report section 4",
+        "url": "https://www.projecthorseshoe.com/reports/featured/ph16r4.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "324d17566a7b0eb139697e5bccf39916e079b26190be727329f1ad6a92d16e4f",
+  "provider": "SearXNG",
+  "query": "how does language acquisition in mechanical engineering operate",
+  "query_id": "v5-p-0700-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:40.822231Z"
+}

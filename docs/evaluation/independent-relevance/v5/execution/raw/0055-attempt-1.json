@@ -1,0 +1,300 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 311.164,
+  "pair_id": "v5-p-0917",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is bridge resonance in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "r/StableDiffusion r/technology r/theydidthemath r/tipofmytongue r/todayilearned r/uBlockOrigin r/UplifingNews r/userscripts r/videos r/WayneDyer r/windows r/YouShouldKnow r/youtub",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.eskeleto.com.br",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "🅔🅢🅚🅔🅛🅔🅣🅞",
+        "url": "https://www.eskeleto.com.br/"
+      },
+      {
+        "category": "general",
+        "content": "version of this technology is already being worked on the pale blue dot . if all goes well, you will see computers communicating at the speed of light within this decade. Maybe I&amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wiredplay.space",
+          "/read",
+          "",
+          "server=layer_1",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WiredPlay Reader",
+        "url": "http://wiredplay.space/read?server=layer_1"
+      },
+      {
+        "category": "general",
+        "content": "&#34;Cheapest Available Technology Not Involving Prosecution.&#34; Causing static: ph. Starting trouble. Cement poisoning: ph. What a person dies of after being pushed off of a multi-stor",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.shoestring-graphics.com",
+          "/CP2020/slang/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Word on The Streets",
+        "url": "http://www.shoestring-graphics.com/CP2020/slang/"
+      },
+      {
+        "category": "general",
+        "content": "often) waste land of technology. When I was 16 I faced computers&#39; world, programming games in Assembly language on Commodore 64. It has been on that (slow) machine that I firstly",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fermatsearch.org",
+          "/researchers.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": ":: F E R M A T S E A R C H . O R G :: Researchers",
+        "url": "https://www.fermatsearch.org/researchers.html"
+      },
+      {
+        "category": "general",
+        "content": "II, Editor, Fuzzy Logic Technology and Applications , (IEEE Technical Activities Board, Piscataway, 1994, ISBN 0-7803-1383-6). Jacek Zurada, R.J. Marks II and C.J. Robinson; Edito",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "marksmannet.com",
+          "/RobertMarks/REPRINTS/Marks-Pubs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Robert J. Marks II",
+        "url": "https://marksmannet.com/RobertMarks/REPRINTS/Marks-Pubs.htm"
+      },
+      {
+        "category": "general",
+        "content": "of this identity technology: You cannot relate to celebrities in first-order observation, only in second-order observation, you never see them directly; you see them as being seen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "quotes.pouyakary.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quote Anthology",
+        "url": "https://quotes.pouyakary.org/"
+      },
+      {
+        "category": "general",
+        "content": "Apple&#39;s Face ID technology target of latest lawsuit from German company BASF [15h] Apple TV picks up sci-fi thriller &#39;Waffle House Index&#39; in seven-figure deal [16h] M4",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "brutalist.report",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Brutalist Report",
+        "url": "https://brutalist.report/"
+      },
+      {
+        "category": "general",
+        "content": "on communications technology made listening to their transmissions an absolute pleasure. Even their standard of audio compression served to convey the listener into the acoustic e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      },
+      {
+        "category": "general",
+        "content": "that have survived. Technology is at its best when it is invisible. When it displaces the deleterious, unnatural, alienating, and, most of all, inherently fragile preceding techno",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sive.rs",
+          "/book/Antifragile",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Antifragile - by Nassim Nicholas Taleb | Derek Sivers",
+        "url": "https://sive.rs/book/Antifragile"
+      },
+      {
+        "category": "general",
+        "content": "(Creating Balance) Technology Telekinesis - Psychokinesis Telepathy Teleportation Telescope Temple of Artemis at Ephesus Teotihuacan, Pyramids Terelya, Josyp Terracotta Army Tesla",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.crystalinks.com",
+          "/directory.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Crystalinks Search Engine &amp; Alphabetical Directory",
+        "url": "http://www.crystalinks.com/directory.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "093d7e14ebecabd0ee084e0e9d37c905280f4956d83cdd00177a56e2390a87bf",
+  "provider": "SearXNG",
+  "query": "what is bridge resonance in music technology",
+  "query_id": "v5-p-0917-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:25.381717Z"
+}

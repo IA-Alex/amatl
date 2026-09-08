@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 241.134,
+  "pair_id": "v5-p-0295",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of water purification in data management",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "26bfee125bf8e710fdf398d1d24ad47eb7d1f527caf659f85d4381a619e38212",
+  "provider": "SearXNG",
+  "query": "give an overview of water purification in data management",
+  "query_id": "v5-p-0295-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:43.828679Z"
+}

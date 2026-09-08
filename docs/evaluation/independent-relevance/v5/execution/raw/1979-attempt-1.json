@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 248.151,
+  "pair_id": "v5-p-0343",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes soil erosion in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ed4d73e3971e429f478b98f44625100c0cd56aca34f00e212cc5a2cf1f26a515",
+  "provider": "SearXNG",
+  "query": "what causes soil erosion in oceanography",
+  "query_id": "v5-p-0343-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:48.716474Z"
+}

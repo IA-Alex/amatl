@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 238.556,
+  "pair_id": "v5-p-0891",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of vaccination in agricultural science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Pentagon developing an Agricultural Bioweapon (to produce the coming famines) - Population Extermination! Jewish media elites panic to censor new abortion film telling the truth a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "goodnewsaboutgod.com",
+          "/topics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Political Truth, Spiritual Life and Health, Physical Life and Health",
+        "url": "https://goodnewsaboutgod.com/topics.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3c4eae26531495b12c403cf4f2a27a9ee268619c71014f19446654390ef3231a",
+  "provider": "SearXNG",
+  "query": "give an overview of vaccination in agricultural science",
+  "query_id": "v5-p-0891-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:08:29.812296Z"
+}

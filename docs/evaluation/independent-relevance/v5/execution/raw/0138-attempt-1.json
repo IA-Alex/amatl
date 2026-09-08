@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 331.622,
+  "pair_id": "v5-p-0201",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind heat transfer in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4aaf322107fb03c38fb21aed34c30f1499f96e53d00b15a4b67365d36970e176",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind heat transfer in pharmacology",
+  "query_id": "v5-p-0201-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:51.900452Z"
+}

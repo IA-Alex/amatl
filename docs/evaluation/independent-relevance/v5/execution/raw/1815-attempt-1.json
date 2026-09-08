@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 240.572,
+  "pair_id": "v5-p-0499",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes encryption keys in forensic science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "eaace343b1d586d85ecd17bb312a35669f6dd79f876233b79083a188d17c73d3",
+  "provider": "SearXNG",
+  "query": "what causes encryption keys in forensic science",
+  "query_id": "v5-p-0499-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:14:57.799013Z"
+}

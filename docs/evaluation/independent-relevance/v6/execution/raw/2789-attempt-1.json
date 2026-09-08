@@ -1,0 +1,34 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2789,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 432.825,
+  "pair_id": "candidate-p-1269",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what are the main constraints on graphene membranes within food systems",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e641c2185b3ba5c19144509a68ea67f425dc08b13e00b8d65cad027718eded32",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what are the main constraints on graphene membranes within food systems",
+  "query_id": "candidate-t-1269",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:35:12.531246Z"
+}

@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 253.669,
+  "pair_id": "v5-p-0875",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of vaccination in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "developed Covid vaccination causes micro blood clots, but this has yet to be proven. Something however is causing a decline in rapid thinking and cognitive ability in the populati",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIDIK.com The original and official DIDIK site. Cutting edge and sometimes controversial thoughts, designs, proposals and projects conceiv",
+        "url": "http://www.didik.com/"
+      },
+      {
+        "category": "general",
+        "content": "the new Canadian vaccination requirements for cross-border travel. The convoy started from the west coast of Canada with many Canadians cheering them along the way. It ballooned t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.infidelnotions.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Infidel Notions",
+        "url": "https://www.infidelnotions.com/"
+      },
+      {
+        "category": "general",
+        "content": "Bill Gates pushes Vaccinations in Food Supply to &#39;Fight Climate Change&#39; Español  -  Bill Gates quiere Rociar Millones de Toneladas de Tiza en la Estratosfera para frenar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_globalwarmingpseudo.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Global Warming - An Official Pseudoscience...  -  Calentamiento Global - Una Pseudociencia Oficial...",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_globalwarmingpseudo.htm"
+      },
+      {
+        "category": "general",
+        "content": "epidemic caused by vaccinations Prostate cancer pH balance PMMH for cancer--(pulse moderated microwave hyperthermia) Polio causes Polio vaccine Protein digesting enzymes for cance",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "truthquest2.com",
+          "/germtheory.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE FALSE GERM THEORY OF DISEASE",
+        "url": "http://truthquest2.com/germtheory.htm"
+      },
+      {
+        "category": "general",
+        "content": "The History of Vaccination - video Is the Wall Street &#34;Protest&#34; a Drill?  A Hoax? - video Bolshevik Jews Killed MILLIONS - videos Arizona Sheriff Explains &amp;qu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "goodnewsaboutgod.com",
+          "/topics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Political Truth, Spiritual Life and Health, Physical Life and Health",
+        "url": "https://goodnewsaboutgod.com/topics.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d78e572d3a5a6e66da7c6c0f3f56a3dc73d86947ba560e33d90c0b5c6d1fb91b",
+  "provider": "SearXNG",
+  "query": "give an overview of vaccination in food science",
+  "query_id": "v5-p-0875-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:25.127601Z"
+}

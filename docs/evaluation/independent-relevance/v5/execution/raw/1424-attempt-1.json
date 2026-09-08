@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 298.544,
+  "pair_id": "v5-p-1008",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind probability distributions in astronomy",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "77aa338c4f63149e37142cd2e14abe416d8dc3f8a365f569f1558afef8f3a235",
+  "provider": "SearXNG",
+  "query": "describe the principle behind probability distributions in astronomy",
+  "query_id": "v5-p-1008-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:50.222914Z"
+}

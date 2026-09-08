@@ -1,0 +1,34 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 1875,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 304.509,
+  "pair_id": "candidate-p-0970",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how can researchers measure enzymatic catalysis within conservation",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "34f6fb2f28c893315d2eb0304a39f035e52b96b4d4e5688830ac67a6aef10806",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how can researchers measure enzymatic catalysis within conservation",
+  "query_id": "candidate-t-0970",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:30:28.371232Z"
+}

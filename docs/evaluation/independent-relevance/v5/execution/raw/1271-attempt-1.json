@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 246.832,
+  "pair_id": "v5-p-0787",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes coastal flooding in forensic science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d27ee71a6ca767b08449fb8a1f421c6f0b25d2ac171f6e09733ad0db69d6fbcb",
+  "provider": "SearXNG",
+  "query": "what causes coastal flooding in forensic science",
+  "query_id": "v5-p-0787-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:03.069828Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 248.227,
+  "pair_id": "v5-p-0919",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of bridge resonance in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f4dddac389c25fa2a11208a02ada3bb82be70dec2f50589fbfc39aab1666f648",
+  "provider": "SearXNG",
+  "query": "give an overview of bridge resonance in oceanography",
+  "query_id": "v5-p-0919-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:00.708682Z"
+}

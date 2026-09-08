@@ -1,0 +1,327 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 318.057,
+  "pair_id": "v5-p-0519",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes neural networks in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "was in its infancy and materials science and computing were really still nascent when it came to nuclear science and engineering. Going for a new technology like the Thorium cycle",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "reactor-core.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "In a Reactor Core, the Atomic Man finds his family",
+        "url": "http://reactor-core.org/"
+      },
+      {
+        "category": "general",
+        "content": "of products versus raw materials.  One of the main reasons for the rise of Islamic terrorism, aside from the hatred they have for America&#39;s support of Israel, is because they",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "to get the approval and materials from the marketing team. Then they needed to get approval from the legal team. Then they need to write support documents and instruct support age",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "svedic.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Svedic.org",
+        "url": "https://svedic.org/"
+      },
+      {
+        "category": "general",
+        "content": "Manson(Mansion/Marriage/Materials And Necessities Saving Our Network) 16: Minister of Species: David(Do A Video Introducing Diary) Iche(Introduce Ch oice Everytime) 17: Minister o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.e-democracy.biz",
+          "/E-Democracy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Judicially Arbitrated Imperial E-Democracy",
+        "url": "http://www.e-democracy.biz/E-Democracy.html"
+      },
+      {
+        "category": "general",
+        "content": "weapons grade nuclear materials most notably tritium which has a half-life of 12.32 years. Iran was won in a coup lead by Mir-Hossein Mousavi and the rest of the X-Communist/Arabi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.unatle.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "UNATLe: United Nations AntiTerrorism Leauge",
+        "url": "http://www.unatle.net/"
+      },
+      {
+        "category": "general",
+        "content": "Manson(Mansion/Marriage/Materials And Necessities Saving Our Network) 16: Minister of Species: David(Do A Video Introducing Diary) Iche(Introduce Ch oice Everytime) 17: Minister o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.e-democracy.biz",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Judicially Arbitrated Imperial E-Democracy",
+        "url": "http://www.e-democracy.biz/"
+      },
+      {
+        "category": "general",
+        "content": "All the textual materials on this site are made freely available for use, unmodified, in any non-commercial context (excludes some copyrighted artwork). Any part may be quoted wit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.calresco.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Complexity and Artificial Life Research Concept for Self-Organizing Systems",
+        "url": "http://www.calresco.org/"
+      },
+      {
+        "category": "general",
+        "content": "chemical warfare materials for the United States.” Hunt may not have noticed the interconnectedness of the personalities and business interests in both Germany and America before,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bibliotecapleyades.net",
+          "/sociopolitica/esp_sociopol_mindcon52.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nazi Mind Control",
+        "url": "https://bibliotecapleyades.net/sociopolitica/esp_sociopol_mindcon52.htm"
+      },
+      {
+        "category": "general",
+        "content": "most common starting materials for this synthesis include phenylacetone (also known as P2P, BMK, or benzyl methyl ketone) and formamide, or alternatively, phenylacetone and nitroe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.amphetamines.org",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Amphetamines as conceived by ChatGPT",
+        "url": "https://www.amphetamines.org/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "Intruding Often A) Mine(Materials In Extract) Viacad} Computer in Colony in Water{Alexia(All Loose Ends X-rayed In A) Rae(Real Automated Environment) Viacad(Very Ideally Automatic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.omniscientcomputers.org",
+          "/GrandUnifiedTheory.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AllA’s Grand Unified Theory",
+        "url": "http://www.omniscientcomputers.org/GrandUnifiedTheory.html"
+      },
+      {
+        "category": "general",
+        "content": "weapons grade nuclear materials most notably tritium which has a half-life of 12.32 years. Iran was won in a coup lead by Mir-Hossein Mousavi and the rest of the X-Communist/Arabi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.unatle.net",
+          "/NuclearWar.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "UNATLe: United Nations AntiTerrorism Leauge",
+        "url": "http://www.unatle.net/NuclearWar.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0c213b478781cbbe0ff47c7259536112c61fefe5cddbcbc6ea3b494e4709b6dc",
+  "provider": "SearXNG",
+  "query": "what causes neural networks in materials science",
+  "query_id": "v5-p-0519-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:09.300657Z"
+}

@@ -1,0 +1,300 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 278.254,
+  "pair_id": "v5-p-0155",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of immune response in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Based on this brief overview, here is a summary of how inner resistance to managing personal change develops and why, and how it manifests: From early childhood onwards, we all de",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zen-tools.net",
+          "/how-to-change-your-life.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How To Change Your Life - The Variables And Dynamics Of Life Change",
+        "url": "https://www.zen-tools.net/how-to-change-your-life.html"
+      },
+      {
+        "category": "general",
+        "content": "Introduction Scientific Overview Stress and Stress Tolerance HPA Axis ANS/HRV Circadian Rhythms Immune System Placebo Effect Burnout Chronic Fatigue Syndrome Chronic Pain Psychiat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mind-body-health.net",
+          "/cfs.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mind-Body-Health.net Information on Chronic Fatigue Syndrome (ME/CFS)",
+        "url": "http://www.mind-body-health.net/cfs.shtml"
+      },
+      {
+        "category": "general",
+        "content": "as veganism.&#34; Give an overview of the suffering of nonhuman animals in factory farms. &#34;The conditions in which animals are kept in many factory farms—also known as concentrated an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.animal-rights.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Veganism as conceived by ChatGPT",
+        "url": "https://www.animal-rights.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "mind-brain; an overview of concepts and ideas for use in further research. This is not intended to be my work or for publication… therefore most of the summary consists of paraphr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "horizons-2000.org",
+          "/2.%20Ideas%20and%20Meaning/Topics/NeuroPsychology.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Susan Greenfield&#39;s 1997 The Human Mind: a Guided Tour",
+        "url": "https://horizons-2000.org/2.%20Ideas%20and%20Meaning/Topics/NeuroPsychology.htm"
+      },
+      {
+        "category": "general",
+        "content": "signs Cancer treatment overview &#34;Cancer war&#34; fraud Cantron (Cancell) or Protocel--nearly identical Liquid Electrolyte Formula--Cancer Carroll Food Intolerance Test Chemo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "truthquest2.com",
+          "/germtheory.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE FALSE GERM THEORY OF DISEASE",
+        "url": "http://truthquest2.com/germtheory.htm"
+      },
+      {
+        "category": "general",
+        "content": "to SPREAD? A quick overview of the U.N.&#39;s Agenda 21 and Sustainable Development Bill Gates and Big Pharma Collude to Kill children in 3rd World Countries ObamaCare: &#34;Predicti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "goodnewsaboutgod.com",
+          "/topics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Political Truth, Spiritual Life and Health, Physical Life and Health",
+        "url": "https://goodnewsaboutgod.com/topics.htm"
+      },
+      {
+        "category": "general",
+        "content": "on a Spaceship - An Overview of Python in Heliophysics , J. Geophys. Res: Space. Phys. , 123 (2018) Would Bohr be born if Bohm were born before Born? , Am. J. Phys. 76 2008 143. C",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/sillymolecules/sillymols4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecules with Silly or Unusual Names - page 4",
+        "url": "https://www.chm.bris.ac.uk/sillymolecules/sillymols4.htm"
+      },
+      {
+        "category": "general",
+        "content": "Following is a quick overview and report card on the most high profile of those issues. Stream Side and Shoreline Protection A slew of bills sought to delay, weaken and eviscerate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whatcomwatch.org",
+          "/old_issues/v10i9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Whatcom Watch, September 2001",
+        "url": "http://www.whatcomwatch.org/old_issues/v10i9.html"
+      },
+      {
+        "category": "general",
+        "content": "Huffington Post] Basic overview of this page: (1) Guru Dev&#39;s life and teachings. Guru Dev is another term for Shankaracharya Brahmananda Saraswati. He taught TM to his follower Ma",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "oaks.nvg.org",
+          "/tm-.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Transcendental Meditation, TM – The Gold Scales",
+        "url": "http://oaks.nvg.org/tm-.html"
+      },
+      {
+        "category": "general",
+        "content": "provides a good overview: formadevida.org/baconfdv20 Scott McMann (2022-10-29) Hello Derek - I think for me it’s semantics. My thought is that a belief is a core, fairly unmovable",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sive.rs",
+          "/run2",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Daily run, part two | Derek Sivers",
+        "url": "https://sive.rs/run2"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bef9227e823d413a8654d6784c432b0be0258920a6a9c3d4655aeecc50c60847",
+  "provider": "SearXNG",
+  "query": "give an overview of immune response in food science",
+  "query_id": "v5-p-0155-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:27.716463Z"
+}

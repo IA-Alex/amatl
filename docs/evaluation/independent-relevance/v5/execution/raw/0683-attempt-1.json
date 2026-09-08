@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 269.708,
+  "pair_id": "v5-p-0873",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is vaccination in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "the past, I&#39;ve also had vaccinations against yellow fever, hepatitis A/B, MMR, and some others that I can&#39;t recall. If a &#34;live, attenuated&#34; or an &#34;inactivated&#34; vaccine, such as Si",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "praxibetel.org",
+          "/covid/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zach&#39;s SARS-CoV-2 Viewpoint",
+        "url": "http://praxibetel.org/covid/"
+      },
+      {
+        "category": "general",
+        "content": "injection during &#34;vaccination.&#34; This is yet another crucial reason not to have our children vaccinated . Here is the picture proof of just how small they are. It was tak",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/esp_sociopol_mindcon23.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Total Population Control",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/esp_sociopol_mindcon23.htm"
+      },
+      {
+        "category": "general",
+        "content": "of the Blood by Harvey. Vaccination by Jenner. Use of Anæsthetics the Great Step of Medical Progress of the Century. Materia Medica. Instruments. Schools of Medicine. Dentis",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book389/book389.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Progress of Invention in the Nineteenth Century, by Edward W. Byrn.",
+        "url": "https://www.ajhw.co.uk/books/book389/book389.html"
+      },
+      {
+        "category": "general",
+        "content": "before the discovery of vaccination. English physician Edward Jenner developed the smallpox vaccine in 1796 after finding that the relatively innocuous cowpox virus built immunity",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.blackinventionmyths.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Black Invention Myths",
+        "url": "http://www.blackinventionmyths.com/"
+      },
+      {
+        "category": "general",
+        "content": "distributed via WHO vaccination programs after WWII — were upgraded to more advanced versions with enhanced tracking, mind control frequencies, and prevention of positive ET",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.exopoliticsindia.in",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "EXOPOLITICS INDIA",
+        "url": "https://www.exopoliticsindia.in/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f984eaf2001203dc2f202befcdebdfa4cb5057daaa3eedd78427628d96db09cc",
+  "provider": "SearXNG",
+  "query": "what is vaccination in electrical engineering",
+  "query_id": "v5-p-0873-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:51.987286Z"
+}

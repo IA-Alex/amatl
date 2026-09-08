@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 360.743,
+  "pair_id": "v5-p-1086",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of satellite orbits in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "judicious energy-flow management. Evolution via natural selection usually favours those living systems which administer their limited resources most efficiently. In other words, t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.rfreitas.com",
+          "/Astro/InterstellarProbesJBIS1980.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "INTERSTELLAR PROBES: A NEW APPROACH TO SETI",
+        "url": "http://www.rfreitas.com/Astro/InterstellarProbesJBIS1980.htm"
+      },
+      {
+        "category": "general",
+        "content": "Aviation Data Base Management software for Garmin Units Aviation Data Base for Magellan 315/320 puts FAA data in Consumer GPS -by Brian Wade Cetus GPS software for Palm Computers",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "gpsinformation.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GPS Receiver Information, Software, and Hardware Reviews of Garmin, Lowrance, Magellan and other GPS Receivers",
+        "url": "http://gpsinformation.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0b806c03d1fd7c200c04e28a5e3a205701ad3af4ced45f77e4e45980c6cf2b62",
+  "provider": "SearXNG",
+  "query": "tell me about the function of satellite orbits in data management",
+  "query_id": "v5-p-1086-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:15:52.739764Z"
+}

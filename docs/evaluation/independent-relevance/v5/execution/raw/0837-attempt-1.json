@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 242.578,
+  "pair_id": "v5-p-0139",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes database indexing in forensic science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "82937952fc2199fb21d22917d44b0dbd1514cae08be14b4e290b68404f14bfbf",
+  "provider": "SearXNG",
+  "query": "what causes database indexing in forensic science",
+  "query_id": "v5-p-0139-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:40.948510Z"
+}

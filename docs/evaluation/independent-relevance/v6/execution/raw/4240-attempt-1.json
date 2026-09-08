@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 4240,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 285.191,
+  "pair_id": "candidate-p-2194",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of thermal energy storage within optical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "tracking methods in engineering and biology. Radioisotope scintigraphy and nuclear medicine. Radioimmunoassay - radiosaturation analysis. 3.6. Radiotherapy Carcinogenesis - tumori",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Fyzika-NuklMed.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nuclear physics and ionizing radiation physics",
+        "url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm"
+      },
+      {
+        "category": "general",
+        "content": "in semiconductor engineering, Cove intended to build a better thermoelectric generator (TEG). He exposed his generator to the heat from a wood stove and direct solar energy &amp;ndash",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2021/10/how-to-build-a-low-tech-solar-panel",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Build a Low-tech Solar Panel? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2021/10/how-to-build-a-low-tech-solar-panel"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "df4bb73ceb74537c3c627c5f33762e51109f6e0ae822bd910726377e8a5562ee",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of thermal energy storage within optical engineering",
+  "query_id": "candidate-c-2194",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm",
+      "original_url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "tracking methods in engineering and biology. Radioisotope scintigraphy and nuclear medicine. Radioimmunoassay - radiosaturation analysis. 3.6. Radiotherapy Carcinogenesis - tumori",
+      "title": "Nuclear physics and ionizing radiation physics"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://solar.lowtechmagazine.com/2021/10/how-to-build-a-low-tech-solar-panel",
+      "original_url": "https://solar.lowtechmagazine.com/2021/10/how-to-build-a-low-tech-solar-panel",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "in semiconductor engineering, Cove intended to build a better thermoelectric generator (TEG). He exposed his generator to the heat from a wood stove and direct solar energy &amp;ndash",
+      "title": "How to Build a Low-tech Solar Panel? | LOW←TECH MAGAZINE"
+    }
+  ],
+  "timestamp": "2026-09-05T17:42:56.965113Z"
+}

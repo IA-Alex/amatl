@@ -1,0 +1,300 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 325.896,
+  "pair_id": "v5-p-0490",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does encryption keys in physics work",
+    "results": [
+      {
+        "category": "general",
+        "content": "World Alliance Send Encryption Keys Directly To End-User Computer Systems Without Monitor Proxies Which Add A Risky 3rd Wheel To All Transmissions. E-Mails Send New Encryption Key",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteList.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/FWAsiteList.html"
+      },
+      {
+        "category": "general",
+        "content": "General homomorphic encryption 07 Jun 2009 » Linux sandboxing with LSMSB 04 Jun 2009 » Chrome for Linux 21 May 2009 » W2SP and Seccomp 09 May 2009 » Moved",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.imperialviolet.org",
+          "/posts-index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ImperialViolet - Posts index - ImperialViolet.org",
+        "url": "https://www.imperialviolet.org/posts-index.html"
+      },
+      {
+        "category": "general",
+        "content": "Waters (Attribute-Based Encryption), Carl Gunter (Attribute-Based Messaging), and Chris Peikert (Lattice-Based Cryptography). In the early 2000s, DARPA funded thirteen projects un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "or VeraCrypt for your encryption needs, then, typically, what you do is: you open the relevant application, point to the desired device or container, mount it (with a password), a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dedoimedo.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dedoimedo - A Place to Learn a Lot About a Lot",
+        "url": "https://www.dedoimedo.com/"
+      },
+      {
+        "category": "general",
+        "content": "UDP packets , and the encryption key is known strictly to the sender and the addressee. And so, a Pest packet intercepted en route conveys no useful information to a snoop, apart",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.loper-os.org",
+          "/",
+          "",
+          "p=4003",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Loper OS » &#34;Pest&#34; v. 0xFB.",
+        "url": "http://www.loper-os.org/?p=4003"
+      },
+      {
+        "category": "general",
+        "content": "Public Key Encryption. 2023 ACM SIGSAC Conference on Computer and Communications Security, CCS&#39;23 , ACM (2023), pp 1108–11227. Date: 2022-08-12 [ pdf ] [ bibtex ] [ more ] J",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cryptojedi.org",
+          "/peter/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Schwabe",
+        "url": "https://cryptojedi.org/peter/"
+      },
+      {
+        "category": "general",
+        "content": "using gpg/pgp and other encryption?   [ jake / 2002-12-19 ] 340.   what can i use to debug my mail server when pop3 or imap isnt working?   [ jesse / 2002-12-09 ] 339.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.yak.net",
+          "/fqa/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "yak.net/fqa: Frequenty Questioned Answers",
+        "url": "http://www.yak.net/fqa/"
+      },
+      {
+        "category": "general",
+        "content": "to the plaintext before encryption to make the cryptanalysts job more difficult. So the question of whether or not we can revive a person who has been frozen can be transformed in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/cryptoCryo.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cryonics and Cryptography",
+        "url": "http://www.ralphmerkle.com/cryo/cryptoCryo.html"
+      },
+      {
+        "category": "general",
+        "content": "string. To get the encryption and hashing keys, we mix the words &#39;master secret&#39; with the set of random numbers exchanged previously in the hello and invitation. Just hash is unse",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "orbides.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Orbital Designs",
+        "url": "http://orbides.org/"
+      },
+      {
+        "category": "general",
+        "content": "threw in compression, then encryption into the mix too, and by 2019 I landed on BWTC32Key, and I improved it into 2024 (not counting a 2025 experiment that went badly), without br",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "stgiga.github.io",
+          "/UnifontEX/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "UnifontEX | An extended fork of GNU Unifont with a focus on high compatibility.",
+        "url": "https://stgiga.github.io/UnifontEX/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d9db025a1ba06029094090668dd2ee1ad155276eaa7a4a356e6a1f9188a096e3",
+  "provider": "SearXNG",
+  "query": "how does encryption keys in physics work",
+  "query_id": "v5-p-0490-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:24.769938Z"
+}

@@ -1,0 +1,273 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 426.88,
+  "pair_id": "v5-p-0958",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of cloud formation in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "to “ego-formation” (Edinger, 1985, p.218). His notion of “incarnation” implies that the individual, like an actor, should go through the different stages (",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mats-winther.github.io",
+          "/hillmcrit.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Critique of Archetypal Psychology",
+        "url": "https://mats-winther.github.io/hillmcrit.htm"
+      },
+      {
+        "category": "general",
+        "content": "&#34;divine transformation,&#34; a &#34;state of Samadhi&#34; and many other names in other cultures. It is not connected to the &#43;1, &#43;2 and &#43;3 of the measuring of a drug&#39;s intensity. It is a stat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/ecstasy/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utopian Pharmacology. MDMA / Ecstasy and beyond",
+        "url": "https://www.hedweb.com/ecstasy/"
+      },
+      {
+        "category": "general",
+        "content": "are shifting, and transformation is at hand as new frequencies stimulate an expansion of consciousness. If advances in quantum physics are indicators, the new paradigm is the real",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "large amounts of information which are made by several witnesses, if possible, who as far as I can ascertain, have unimpeachable reputations and are competent. For example, I migh",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.project1947.com",
+          "/shg/symposium/hynek.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SHG - UFO Symposium 1968: Hynek Statement",
+        "url": "http://www.project1947.com/shg/symposium/hynek.html"
+      },
+      {
+        "category": "general",
+        "content": "serves as a body of information, as stylistic pattern, as inspiration, as ethical precepts, and finally as art. It furnishes the ever ready allusions to embellish the oration as w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book473/book473.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Unwritten Literature of the Hopi, by Hattie Greene Lockett.",
+        "url": "https://www.ajhw.co.uk/books/book473/book473.html"
+      },
+      {
+        "category": "general",
+        "content": "bioindustrial, bioinformational. He had just written a book, Maximum Lifespan, which sold alot of copies.He has a book that is new now, The Anti-Aging Arrange. The rootcause of ag",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.worldrtd.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "World Federation of Right to Die Societies: Death With Dignity, Aid in Dying, Hastened Death, Physician Assisted Suicide, Euthanasia, End of L",
+        "url": "https://www.worldrtd.org/"
+      },
+      {
+        "category": "general",
+        "content": "and solid. In the formation or modification of principles, and the practice of conduct, much help can be derived from printed books (issued at sixpence each and upwards). I mentio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fullbooks.com",
+          "/How-to-Live-on-24-Hours-a-Day.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Live on 24 Hours a Day by Arnold Bennett - Full Text Free Book",
+        "url": "http://www.fullbooks.com/How-to-Live-on-24-Hours-a-Day.html"
+      },
+      {
+        "category": "general",
+        "content": "to every request for information with more than could be used, some of it being especially compiled at the cost of considerable effort. R. B. Pearson January 15th, 1942 1. PRIOR H",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/a/b/pearson.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dream &amp; Lie of Louis Pasteur by R. B. Pearson",
+        "url": "http://www.whale.to/a/b/pearson.html"
+      },
+      {
+        "category": "general",
+        "content": "deal to do with the formation and management of the League of Nations and of the system of mandates; it founded the Royal Institute of International Affairs in 1919 and still cont",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mailstar.net",
+          "/quigley.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rhodes secret society behind Anglo-American Empire",
+        "url": "https://mailstar.net/quigley.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "88aa209fa376a76ff080b5590b5e3df40f733adceb63c9a066f2d016a01347e5",
+  "provider": "SearXNG",
+  "query": "tell me about the function of cloud formation in public health",
+  "query_id": "v5-p-0958-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:17.717830Z"
+}

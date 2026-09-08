@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 343.745,
+  "pair_id": "v5-p-0662",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does traffic flow in information systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "eye eyes young younger information help helped run running, ran away question questions basis, base based bank, demand banks, demands book books power powers development developme",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "cameras, no dossiers of information about the lives of average citizens. Hence it was relatively easy to evade control. As for our constitutional rights, consider for example that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unabomber.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society and Its Future",
+        "url": "https://unabomber.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "this FAQs page for more information . Eugenic Population Control (EPC) is necessary in order to preserve modern civilization in a world where the traditional constraints on evolut",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/civilization/case-against-libertarianism",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Case Against Libertarianism And Ancapism",
+        "url": "https://zerocontradictions.net/civilization/case-against-libertarianism"
+      },
+      {
+        "category": "general",
+        "content": "curious, here is the information .) Then, after the blood is drawn, it has to be sent off to the laboratory, which sends back the results days later. If something pops up in the t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/archives/Monthly/2018/2018-07.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason: July 2018 Archives",
+        "url": "https://www.fourmilab.ch/fourmilog/archives/Monthly/2018/2018-07.html"
+      },
+      {
+        "category": "general",
+        "content": "did you get all this information? Turgidson: General Ripper called Strategic Air Command headquarters shortly after he issued the go code. I have a partial transcript of that conv",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.huppi.com",
+          "/t/strangelove_script.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Kubrick Site: The Strangelove Continuity Script",
+        "url": "http://www.huppi.com/t/strangelove_script.html"
+      },
+      {
+        "category": "general",
+        "content": "listserv on the use of information and communication technology for human rights work since 1998 (currently a little over 800 subscribers from 90 or so countries), HREA has been p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gilc.org",
+          "/index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Global Internet Liberty Campaign Home Page",
+        "url": "https://gilc.org/index.html"
+      },
+      {
+        "category": "general",
+        "content": "been reading about the information transfer that accompanies the movement of these vessels, and I knew that the scale of this data is nearly as impressive as the ships’ sheer size",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "logicmag.io",
+          "/pivot/ghost-ships/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ghost Ships",
+        "url": "https://logicmag.io/pivot/ghost-ships/"
+      },
+      {
+        "category": "general",
+        "content": "and often the only information you need to, more or less, effortlessly create configuration files for the various services you need. The OpenBSD project has a very high level of q",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unixdigest.com",
+          "/openbsd-router-guide/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OpenBSD Router Guide",
+        "url": "https://unixdigest.com/openbsd-router-guide/"
+      },
+      {
+        "category": "general",
+        "content": "ELECTRONIC PRIVACY INFORMATION CENTER;AMERICAN CIVIL LIBERTIES UNION FOUNDATION, NATIONAL HEADQUARTERS;INTERNET SOCIETY; and U.S. PUBLIC POLICY COMMITTEE OF THE ASSOCIATIONFOR COM",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.epic.org",
+          "/crypto/export_controls/amicus_brief.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cryptography Amicus Brief 10/96",
+        "url": "https://archive.epic.org/crypto/export_controls/amicus_brief.html"
+      },
+      {
+        "category": "general",
+        "content": "Here, I present some information about the low-level operation of the Universal Asynchronous Receiver/Transmitters (UARTs) on the ESP32-S3 . I want to investigate how to use them",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.iwriteiam.nl",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "I write, therefore I am",
+        "url": "http://www.iwriteiam.nl/"
+      },
+      {
+        "category": "general",
+        "content": "cameras, no dossiers of information about the lives of average citizens. Hence it was relatively easy to evade control. As for our constitutional rights, consider for example that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/industrial-society-and-its-future-manifesto",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Industrial Society And Its Future",
+        "url": "https://zerocontradictions.net/misc/industrial-society-and-its-future-manifesto"
+      },
+      {
+        "category": "general",
+        "content": "s Most Popular  GPS Information Resource &#34; Looking for GPS at a Discount ?       reviews FAQs geography tutorial instructions info PDA other   Links: gener",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "gpsinformation.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GPS Receiver Information, Software, and Hardware Reviews of Garmin, Lowrance, Magellan and other GPS Receivers",
+        "url": "http://gpsinformation.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5a7680daae6f70bd0157e1ac5bdcbc581a1338b8d3f6cfc89c132adb60868afc",
+  "provider": "SearXNG",
+  "query": "how does traffic flow in information systems work",
+  "query_id": "v5-p-0662-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:43.247408Z"
+}

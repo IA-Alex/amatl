@@ -1,0 +1,300 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 321.741,
+  "pair_id": "v5-p-0746",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does root systems in urban planning work",
+    "results": [
+      {
+        "category": "general",
+        "content": "13.15. Terrible Urban Planning 13.16. Cars And Roads Are Bad For Energy Independence 13.17. Unaffordable Housing And Homelessness 13.18. Georgism And Wealth Distribution 13.19. In",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/civilization/case-against-libertarianism",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Case Against Libertarianism And Ancapism",
+        "url": "https://zerocontradictions.net/civilization/case-against-libertarianism"
+      },
+      {
+        "category": "general",
+        "content": "with careful meal planning in a vegan diet. Fruit and Vegetable Intake: Vegan diets usually include a high intake of fruits and vegetables, which are rich in antioxidants and phyt",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.animal-rights.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Veganism as conceived by ChatGPT",
+        "url": "https://www.animal-rights.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "Institute of Vedic City Planning, 2013; WP, sv. &#34;Vastu&#34;] Having basics for survival and avoiding folly. Health likewise depends on having food and water, on shielding from baking",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "oaks.nvg.org",
+          "/yoga-sex.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Yoga Coping, Health and Sex – The Gold Scales",
+        "url": "http://oaks.nvg.org/yoga-sex.html"
+      },
+      {
+        "category": "general",
+        "content": "announcement of Lenovo planning to ship laptops preloaded with Fedora, and today Fedora 32 is released. I&#39;m happy this release was again &#34;on time&#34; (at least if you go by our defin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "techrights.org",
+          "/o/2020/04/29/tde-10th-anniversary/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Links 29/4/2020: TDE 10th Anniversary, Sailfish OS 3.3",
+        "url": "http://techrights.org/o/2020/04/29/tde-10th-anniversary/"
+      },
+      {
+        "category": "general",
+        "content": "as the assessment and planning of production. &#34;It is not the bossing and ruling of men but free association and harmonious working together which accomplish things; that it i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "anarchism.crd.co",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Anarchism: An Overview",
+        "url": "https://anarchism.crd.co/"
+      },
+      {
+        "category": "general",
+        "content": "to pay ) The Tories are planning a massive increase in what graduates with low incomes will have to pay for their university education . 28 February 2022 ( World domination by 203",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2021-nov-feb.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2021: November - February Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2021-nov-feb.html"
+      },
+      {
+        "category": "general",
+        "content": "clumsy central state planning took its place.  Capital goods industries and production were vastly expanded, and consumer goods production almost disappeared.  With the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "anthonyflood.com",
+          "/brownsoviettotalitarianism.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Steve Brown, &#34;Soviet Totalitarianism&#34;",
+        "url": "http://anthonyflood.com/brownsoviettotalitarianism.htm"
+      },
+      {
+        "category": "general",
+        "content": "central economic planning. Prices are set in the open market by supply and demand. Private individuals invest in new enterprises seeking profit. Government in a capitalist system",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "histclo.com",
+          "/eco/eco.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "economics economies",
+        "url": "https://histclo.com/eco/eco.html"
+      },
+      {
+        "category": "general",
+        "content": "through private planning—simply are not as relevant and efficient to the conditions of abundance as are cooperation, the rule of law, and democratic public planning. How is it &amp;qu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sds-1960s.org",
+          "/PortHuronStatement-draft.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Original Draft of Port Huron Statement (SDS, 1962)",
+        "url": "https://www.sds-1960s.org/PortHuronStatement-draft.htm"
+      },
+      {
+        "category": "general",
+        "content": "-- Adam Rifkin&#34;, &#34;Planning is everything. Plans are nothing. -- Eisenhower&#34;, &#34;I believe people who lead charmed lives follow four basic principles: they act upon opportunities, pa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ifindkarma.com",
+          "/oneliners/oneliners-2003",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.ifindkarma.com/oneliners/oneliners-2003",
+        "url": "http://www.ifindkarma.com/oneliners/oneliners-2003"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f2c4f6874911d7bebc6ef7efe315741492634b5a9c082be9297507d862917eac",
+  "provider": "SearXNG",
+  "query": "how does root systems in urban planning work",
+  "query_id": "v5-p-0746-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:10.966018Z"
+}

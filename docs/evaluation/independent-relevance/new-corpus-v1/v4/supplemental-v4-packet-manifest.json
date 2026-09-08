@@ -1,0 +1,14 @@
+{
+  "blinding": "arm-blinded packet rows: designation, strategy_class, hypothesis_feature, query_id, provider_or_source and all acquisition metadata omitted; only the shared non-arm-encoding row_id plus query/result fields needed for labeling retained",
+  "corpus_id": "independent-relevance-supplemental-v4-final-20260902",
+  "created_at": "2026-09-03T01:44:58.483403Z",
+  "label_observation_status": "NOT_STARTED",
+  "network_requests": 0,
+  "packet_hashes": {
+    "A": "3399b526975a8c3dc433eba340ec4bd4d6264b69a77324308045729445479ada",
+    "B": "8c553cc2df48ed8e91aa013351324ee4247b58843f87dfcf92e71cae644cb709"
+  },
+  "packet_rows": 312,
+  "prelabel_corpus_sha256": "e234e28a9fcb21fd27ac7b3c5b2791a6392c02de3976c534d9b7969f000a0303",
+  "schema": "amatl.relevance.supplemental-v4-packet-manifest.v1"
+}

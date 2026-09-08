@@ -1,0 +1,162 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 269.69051000196487,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is load bearing walls in transportation",
+    "results": [
+      {
+        "category": "general",
+        "content": "devices. First used in transportation applications in the 1950&#39;s, flywheel powered buses were designed to have the flywheel accelerated at every stop. Composite rotors currently h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.rexresearch.com",
+          "/roschin/roschin.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Roschin &amp; Godin: Magneto-Gravity Effects; Verification of the Searl Effect",
+        "url": "http://www.rexresearch.com/roschin/roschin.htm"
+      },
+      {
+        "category": "general",
+        "content": "or lumber, access to transportation, or empty land. As time goes on, certain settlements achieve a critical mass, and a positive feedback cycle ensues. The city’s success dra",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.laputan.org",
+          "/mud/mud.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Big Ball of Mud",
+        "url": "https://www.laputan.org/mud/mud.html"
+      },
+      {
+        "category": "general",
+        "content": "land October 16, 2019 Transportation Tracking October 15, 2019 Whistle-based Synthesis October 14, 2019 MA Price Accuracy Law October 13, 2019 Planned Power Outages October 12, 20",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jefftk.com",
+          "/p/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog Posts",
+        "url": "https://www.jefftk.com/p/"
+      },
+      {
+        "category": "general",
+        "content": "as being used in the transportation process. The same would be true regarding highway and truck routes because of the width of bridges and heights of underpasses. Neither Corso or",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "the-wanderling.com",
+          "/roswell_raygun.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Roswell Ray Gun",
+        "url": "https://the-wanderling.com/roswell_raygun.html"
+      },
+      {
+        "category": "general",
+        "content": "help we received with transportation and all for her to reach a meditation spot where she could safely become masterful in Sila, Samadhi, Jhana, Prajna, and a frequenter of lonely",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "the-wanderling.com",
+          "/ghost_p40.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GHOST P-40: Lore, Legends and Her Whereabouts",
+        "url": "https://the-wanderling.com/ghost_p40.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0293",
+  "query_text": "what is load bearing walls in transportation",
+  "requested_at": "2026-09-03T01:44:16.050354Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

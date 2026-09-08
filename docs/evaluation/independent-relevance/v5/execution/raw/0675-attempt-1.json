@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 253.509,
+  "pair_id": "v5-p-0560",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does food preservation in optics operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2702091b6e83db716829449aa4e71c053b5b87174b00c65341d8d655da00cb1f",
+  "provider": "SearXNG",
+  "query": "how does food preservation in optics operate",
+  "query_id": "v5-p-0560-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:49.634590Z"
+}

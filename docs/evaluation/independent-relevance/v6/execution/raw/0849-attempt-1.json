@@ -1,0 +1,144 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 849,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 312.473,
+  "pair_id": "candidate-p-1603",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains low power computing within environmental chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "account for social and environmental costs or the value of sustainable living. While GDP grows, real human wealth—independence and quality of life—shrinks. The focus on GDP masks",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Luke Smith Fanclub &amp; Archive",
+        "url": "https://lukesmith.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "of the Air Force&#39;s Environmental Impact State-ment which evaluated potential environmental effects of con-structing and operating the HAARP facility, a Record of Decision (ROD) si",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "a web app, can have an environmental impact 10K times greater than simple queries (Bloomberg) [9h] Tesla says Cybercab rides are available in limited areas of Austin; the two-seat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "brutalist.report",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Brutalist Report",
+        "url": "https://brutalist.report/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5a82e227d42e37074445b5431deeeff7f226374d467b8c97fe1643ab75e7b691",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains low power computing within environmental chemistry",
+  "query_id": "candidate-t-1603",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://lukesmith.neocities.org/",
+      "original_url": "https://lukesmith.neocities.org/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "account for social and environmental costs or the value of sustainable living. While GDP grows, real human wealth—independence and quality of life—shrinks. The focus on GDP masks",
+      "title": "Luke Smith Fanclub &amp; Archive"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.cyberspaceorbit.com/WEATHER.html",
+      "original_url": "https://www.cyberspaceorbit.com/WEATHER.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "of the Air Force&#39;s Environmental Impact State-ment which evaluated potential environmental effects of con-structing and operating the HAARP facility, a Record of Decision (ROD) si",
+      "title": "HAARP"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://brutalist.report/",
+      "original_url": "https://brutalist.report/",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "a web app, can have an environmental impact 10K times greater than simple queries (Bloomberg) [9h] Tesla says Cybercab rides are available in limited areas of Austin; the two-seat",
+      "title": "The Brutalist Report"
+    }
+  ],
+  "timestamp": "2026-09-05T17:24:59.528107Z"
+}

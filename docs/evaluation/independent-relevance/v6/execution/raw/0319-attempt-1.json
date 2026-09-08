@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 319,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 320.574,
+  "pair_id": "candidate-p-1178",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how can researchers measure geothermal reservoirs within industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "must be far lower. Some researchers have in fact put the value of climate sensitivity at 0.5°C or less (Lindzen &amp; Choi, 2009; friendsofscience.org ; john-daly.com ). Every",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/climcat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Climate models and climate catastrophe: a reality check",
+        "url": "https://davidpratt.info/climcat.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0003e4a17e2951362b492d75f092417a14b52bb9ad96b711e40f67cfb3ad0179",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how can researchers measure geothermal reservoirs within industrial design",
+  "query_id": "candidate-t-1178",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://davidpratt.info/climcat.htm",
+      "original_url": "https://davidpratt.info/climcat.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "must be far lower. Some researchers have in fact put the value of climate sensitivity at 0.5°C or less (Lindzen &amp; Choi, 2009; friendsofscience.org ; john-daly.com ). Every",
+      "title": "Climate models and climate catastrophe: a reality check"
+    }
+  ],
+  "timestamp": "2026-09-05T17:22:10.139208Z"
+}

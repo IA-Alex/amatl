@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 296.988,
+  "pair_id": "v5-p-0429",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is carbon capture in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "could help Electrify Industrial Heat Most energy in industry is used to provide heat. The most efficient way to decarbonize heat is to use heat pumps powered by green electricity.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "industrydecarbonization.com",
+          "/news/hotter-heat-pumps-could-help-electrify-industrial-heat.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hotter Heat Pumps could help Electrify Industrial Heat | Industry Decarbonization Newsletter",
+        "url": "https://industrydecarbonization.com/news/hotter-heat-pumps-could-help-electrify-industrial-heat.html"
+      },
+      {
+        "category": "general",
+        "content": "as well as seven industrial lasers. It is unknown whether the centrifuge unit includes an actual centrifuge. The &#34;deflector grid&#34; unit is made up of a circular piece of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.tomswift.info",
+          "/homepage/tvdetect.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Tom Swift and his Television Detector",
+        "url": "http://www.tomswift.info/homepage/tvdetect.html"
+      },
+      {
+        "category": "general",
+        "content": "device resembling an industrial robot which would be capable of holding and positioning reactive compounds in order to control the precise location at which chemical reactions tak",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "aerosols (smoke, dust, industrial pollutants), and there were concerns that the earth might be descending into a new ice age. James Hansen et al. (1981) wrote: ‘the temperat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/climcat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Climate models and climate catastrophe: a reality check",
+        "url": "https://davidpratt.info/climcat.htm"
+      },
+      {
+        "category": "general",
+        "content": "to reduce reliance on industrial resource consumption. I’m no anarcho-primitivist, but I like the idea of being able to do the “same thing with less”. IndieMark Bookmarked 2022-03",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "seirdy.one",
+          "/bookmarks/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "My bookmarks - Seirdy",
+        "url": "https://seirdy.one/bookmarks/"
+      },
+      {
+        "category": "general",
+        "content": "Britain and the industrial revolution. Societal changes had as much to do with the rise of sport as the technological advances taking place at the time. Sport profited from the in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mike-tanner.co.nz",
+          "/40sport.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mike Tanner Articles about Sport and Recreation",
+        "url": "http://mike-tanner.co.nz/40sport.html"
+      },
+      {
+        "category": "general",
+        "content": "/ UK) &#34;proprietary industrial microwave technology&#34; using electricity to pyrolyse wood claims they can produce a ton of char for $65/ton in the UK article: &#39;Biochar&amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ahualoa.net",
+          "/ag/notes_biochar.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hawai&#39;i Biochar Notes",
+        "url": "http://ahualoa.net/ag/notes_biochar.html"
+      },
+      {
+        "category": "general",
+        "content": "in a kind of genteel-industrial style: old brick buildings and facades with corrogated iron roofs sitting next to polished metal tanks. I was the only person there. Near the water",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "harmonyzone.org",
+          "/A1REVIEWS.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "skull.txt",
+        "url": "https://harmonyzone.org/A1REVIEWS.html"
+      },
+      {
+        "category": "general",
+        "content": "not only predates all industrial scale virtual image workloading but also the KES case, the Whitney case, the Seafront Experiments and even Poulsen&#39;s pivotal and prescient Warning",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "qntm.org",
+          "/mmacevedo",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lena @ Things Of Interest",
+        "url": "https://qntm.org/mmacevedo"
+      },
+      {
+        "category": "general",
+        "content": "Realities Canadian Deindustrialization Tags ☰ Ai 2 Apl 1 Architecture 6 Array Languages 2 Book Publish 1 Brazil 2 C 2 Christianity 1 Clojure 1 Cloud Computing 7 Coal 1 Commodity S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alexalejandre.com",
+          "/finance/vaclav-smil/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "On Vaclav Smil",
+        "url": "https://alexalejandre.com/finance/vaclav-smil/"
+      },
+      {
+        "category": "general",
+        "content": "for the grid, unlike industrial producers who are paid wholesale rates that don’t include transmission. Also, he finds it less efficient overall to install solar panels on houses",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wingolog.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "wingolog",
+        "url": "http://wingolog.org/"
+      },
+      {
+        "category": "general",
+        "content": "only matters in pre-industrial agricultural economies. Everybody needs land, but nobody can make any more of it. You can&#39;t work, eat, sleep, or even poop without access to lan",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "gameofrent.com",
+          "/content/is-land-a-big-deal",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Is Land a Big Deal? | Game of Rent",
+        "url": "http://gameofrent.com/content/is-land-a-big-deal"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d0ff9d1588b9fc4675bc8de86626d0daf19b3d9beb6a2f9dead59577eaf1a486",
+  "provider": "SearXNG",
+  "query": "what is carbon capture in industrial design",
+  "query_id": "v5-p-0429-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:52.860894Z"
+}

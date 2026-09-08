@@ -1,0 +1,219 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 392.061,
+  "pair_id": "v5-p-0265",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind binary search in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "date goes. [ tried to explain all my friends were 1st class to no avail ]. 2002-12-16: Monday Awake early in the morning, fitfull sleep &#39;till late. Breakfast, read some of Life at",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2002/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2002/"
+      },
+      {
+        "category": "general",
+        "content": "chords are awkward to explain, but try it out, it will feel very intuitive with a little practice. Middle-clicking New will create a new window in the column. Again, it too, will",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pspodcasting.net",
+          "/dan/blog/2019/plan9_desktop.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Plan 9 Desktop Guide",
+        "url": "https://pspodcasting.net/dan/blog/2019/plan9_desktop.html"
+      },
+      {
+        "category": "general",
+        "content": "not my first time explaining FOSS from first principles. So, I read through the license and terms and conditions of the ironically named “Freestyle Libre” app, and poi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ebb.org",
+          "/bkuhn/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog - Bradley Kühn ( bkuhn )",
+        "url": "https://ebb.org/bkuhn/blog/"
+      },
+      {
+        "category": "general",
+        "content": "up with a rule that explains why the Palestinians should get Haifa back, and doesn&#39;t explain why the Welsh should get London back. So far this probably sounds a lot like libertari",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2007/04/_trial_version.html",
+          "",
+          "",
+          "004052"
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: The Mencius Vision",
+        "url": "http://www.2blowhards.com/archives/2007/04/_trial_version.html#004052"
+      },
+      {
+        "category": "general",
+        "content": "or manage. Thanks for explaining the issues so well. idi0t Says: January 20th, 2025 at 9:51 am The homelab movement is still relatively small, but thriving community of people tha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.vintagecomputing.com",
+          "/index.php/archives/3292/the-pc-is-dead-its-time-to-make-computing-personal-again",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "VC&amp;G | » The PC is Dead: It’s Time to Bring Back Personal Computing",
+        "url": "http://www.vintagecomputing.com/index.php/archives/3292/the-pc-is-dead-its-time-to-make-computing-personal-again"
+      },
+      {
+        "category": "general",
+        "content": "as one of the great explainers of science. His essays exemplified his skill at making complex subjects understandable, and were written in an unformal style, liberally sprinkled w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "And You Don&#39;t Need To Explain Your Translation Dealings For Efficiency&#39;s Sake You Can Then Look To The Leader Or Higher-Up Directly And Occasionally Make Eye Contact With Them To",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteListW-GeorgiaRunOffElection2021.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Free World Alliance Site List",
+        "url": "http://www.viacadempire.com/FWAsiteListW-GeorgiaRunOffElection2021.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "df85d9f5b5ead17dcce652ebbca38ac7ee05319c748b8dbebfea6a769224898d",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind binary search in health science",
+  "query_id": "v5-p-0265-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:37.650929Z"
+}

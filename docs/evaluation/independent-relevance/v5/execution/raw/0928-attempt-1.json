@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 339.919,
+  "pair_id": "v5-p-0968",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind cloud formation in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "need to replace our old industrial chemistry book with nature’s recipe book. Life uses safe elements. CO2 and Methane are now being used to produce biodegradable plastics an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "This document is an industrial compilation designed and created exclusively for educational use and is distributed under the Softpanorama Content License . Original materials copy",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "softpanorama.org",
+          "/Skeptics/Political_skeptic/Fighting_russophobia/multipolarity.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Russia fight for multipolarity",
+        "url": "https://softpanorama.org/Skeptics/Political_skeptic/Fighting_russophobia/multipolarity.shtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "73afecd858e5442fe59c19fba1816f863159761020e7773636461ed1f3f471cd",
+  "provider": "SearXNG",
+  "query": "describe the principle behind cloud formation in industrial design",
+  "query_id": "v5-p-0968-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:10:09.585725Z"
+}

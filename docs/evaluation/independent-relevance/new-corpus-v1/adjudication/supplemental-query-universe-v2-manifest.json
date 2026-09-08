@@ -1,0 +1,38 @@
+{
+  "schema": "amatl.relevance.supplemental-query-universe-manifest.v2",
+  "universe_id": "independent-relevance-supplemental-v2",
+  "version": 2,
+  "freeze_status": "FROZEN",
+  "query_count": 12,
+  "structural_capacity": 36,
+  "target_stratum": "S1_PROCEDURAL_SHALLOW",
+  "valid_deficit": 8,
+  "universe_sha256": "7fec12b253873a7f83fe64d02f658dcb77d86118dba72a2a001f3b56f980975d",
+  "parent_hashes": {
+    "supplemental-pilot-raw-evidence.json": "4cde11462fe4bed8a1793adbe808a834510a80217d4cc928c22a72fb37ec6ff9",
+    "supplemental-pilot-attempts.json": "7fafb3a275f6c2d8b24b88afb64a0f81f8f41f32722885c7fe6a4589c0176635",
+    "supplemental-pilot-historical-canonical-urls.json": "022a0b4b810a242d99c9aab3754c0f0df1d6471fe0453af8797bfaf3da6596ce",
+    "supplemental-pilot-run-report.json": "cb9c2b974c5db3613cdc1c568d8c79786e8018f3a3d4600603991c0e2834dc79",
+    "supplemental-query-universe-v1.json": "f8fcdc356fa0d00d3a657c2c49d5b3155c9ec4bb7fdeb67692cb7c5f734e1ae1",
+    "supplemental-query-universe-v1-manifest.json": "025f4c8342f4ac12549041349b03ca665fbdc7cc7be789d60c7374cc2616073a",
+    "v1-ground-truth.json": "966ffafbe8e4a48ed635bcee93773c034039129927fe87aaebdccf316d7af567",
+    "v1-ground-truth-manifest.json": "c7bee347a972da71048a84316a22b9bb2c92bcdd177083d7fb91247d1d97cadc"
+  },
+  "provenance": {
+    "run_report": "supplemental-pilot-run-report.json",
+    "run_status": "EXHAUSTED_FROZEN_UNIVERSE",
+    "preserved_valid_rows": 172,
+    "preserved_s1_rows": 52,
+    "preserved_s2_rows": 60,
+    "preserved_s3_rows": 60
+  },
+  "capacity_justification": {
+    "v1_s1_raw_results": 81,
+    "v1_s1_valid_rows": 52,
+    "observed_valid_rate": 0.6419753086419753,
+    "observed_attrition_rate": 0.35802469135802467,
+    "v2_capacity": 36,
+    "margin_vs_deficit": 4.5,
+    "rationale": "36 slots are 4.5x the deficit; at one half of the observed structural valid rate they yield 11.56 rows. This is a capacity margin, not a relevance estimate."
+  }
+}

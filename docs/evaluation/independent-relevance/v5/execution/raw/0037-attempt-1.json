@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 316.595,
+  "pair_id": "v5-p-0317",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is water purification in communication studies",
+    "results": [
+      {
+        "category": "general",
+        "content": "1.1. Why now? 1.2. Communications 1.3. Cultural background 1.4. The New Age and Catholic faith 1.5. A positive challenge 2. New Age spirituality: an overview   2.1. What is n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.vatican.va",
+          "/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jesus Christ The Bearer Of The Water Of Life - A Christian reflection on the New Age",
+        "url": "https://www.vatican.va/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html"
+      },
+      {
+        "category": "general",
+        "content": "an ever open line of communication between India and the Empire of the successors of Alexander; and it is even permissible to speculate, that if we could recover a catalogue of th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hellenicaworld.com",
+          "/Greece/Literature/GeorgeRSMead/en/ApolloniusOfTyana.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Apollonius of Tyana, the Philosopher-Reformer of the first century AD, George Robert Stowe Mead, George Robert Stowe Mead",
+        "url": "https://www.hellenicaworld.com/Greece/Literature/GeorgeRSMead/en/ApolloniusOfTyana.html"
+      },
+      {
+        "category": "general",
+        "content": "Israeli company Silent Communications has created TalkinSilent   , a special system for cell phones that allows conversations without speaking, which may enable also deaf peo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.imninalu.net",
+          "/Israel-Arabs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Israel and the Arab World",
+        "url": "https://www.imninalu.net/Israel-Arabs.htm"
+      },
+      {
+        "category": "general",
+        "content": "special sacrifice and communication with the spiritual world. After him, we reach the Emperor Shun, B.C. 2255-2205, in whose favour Yao abdicated. Additional Deities.--Before, how",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fullbooks.com",
+          "/Religions-of-Ancient-China.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Religions of Ancient China by Herbert A. Giles - Full Text Free Book",
+        "url": "http://www.fullbooks.com/Religions-of-Ancient-China.html"
+      },
+      {
+        "category": "general",
+        "content": "and the speed of modern communications require the unqualified working definition given above; only a generation ago such an absolute description would have seemed utopian rather",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "thirdworldtraveler.com",
+          "/New_World_Order/Report_Iron_Mountain.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "new world order excerpts from the book Report from Iron Mountain On the Possibility and Desirability of Peace",
+        "url": "https://thirdworldtraveler.com/New_World_Order/Report_Iron_Mountain.html"
+      },
+      {
+        "category": "general",
+        "content": "I was the channel of communication between him and the org. Dec 65 this was. I was on it 6-8 weeks. In Feb/Mar 66 he went to Rhodesia. Then I took over LRH Communications Worldwid",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cs.cmu.edu",
+          "/~dst/Library/Shelf/bfm/interviews/urquhart.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Interview with Ken Urquhart",
+        "url": "http://www.cs.cmu.edu/~dst/Library/Shelf/bfm/interviews/urquhart.htm"
+      },
+      {
+        "category": "general",
+        "content": "will almost always be a Communication Course, and indoctrination into Hubbard&#39;s ideas about Suppressive Persons&#34;. 13 TECHNIQUES &#34;Scientology is evil; its techniques evil; its prac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cs.cmu.edu",
+          "/~dst/Fishman/atack-freedom-trap.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Total Freedom Trap by Jon Atack",
+        "url": "http://www.cs.cmu.edu/~dst/Fishman/atack-freedom-trap.html"
+      },
+      {
+        "category": "general",
+        "content": "for direct satellite communication, the Continuity of Government (COG) program in case of nuclear attack or other disasters, and secure communication links with the outside world",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.heartcom.org",
+          "/200under.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "200 underground cities",
+        "url": "https://www.heartcom.org/200under.htm"
+      },
+      {
+        "category": "general",
+        "content": "there is ceaseless communication throughout the web of life. We are constantly exchanging matter and energy with one another and with our environment, and not just on the physical",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/reclaim.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reclaiming our health: germ theory exposed",
+        "url": "https://davidpratt.info/reclaim.htm"
+      },
+      {
+        "category": "general",
+        "content": "the norms of scientific communication: details of the experiment, numeric results, and publication in a forum that affords opportunity for critical appraisal of the work. 1 - How",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.chem1.com",
+          "/CQ/faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AquaScams FAQ&#39;s",
+        "url": "http://www.chem1.com/CQ/faq.html"
+      },
+      {
+        "category": "general",
+        "content": "was the medium of communication; however it was, the news was handed on to the army. As to the generals, their immediate concern was to try and gain some information as to Seuthes",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.heritageinstitute.com",
+          "/zoroastrianism/reference/xenophon/anabasis/anabasis7.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Xenophon Anabasis Book 7",
+        "url": "http://www.heritageinstitute.com/zoroastrianism/reference/xenophon/anabasis/anabasis7.htm"
+      },
+      {
+        "category": "general",
+        "content": "sounding of melodious communication as occurred to the disciples at Pentecost, when our kether template is opened to the vibration so heaven passing over the face of the earth. Se",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greatdreams.com",
+          "/cinnamon.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cinnamon Buns and the BeaST",
+        "url": "http://www.greatdreams.com/cinnamon.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c434ae5efaa937f37ab59155e4a9600eede45bb3fb4702180322da2012212f36",
+  "provider": "SearXNG",
+  "query": "what is water purification in communication studies",
+  "query_id": "v5-p-0317-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:20.162518Z"
+}

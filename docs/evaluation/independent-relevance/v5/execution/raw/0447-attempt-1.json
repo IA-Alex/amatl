@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 229.955,
+  "pair_id": "v5-p-0777",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is coastal flooding in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "630009baebbda19508c88d13bb19febd608f4b9474c0fb82b2463d22a1af8651",
+  "provider": "SearXNG",
+  "query": "what is coastal flooding in pharmacology",
+  "query_id": "v5-p-0777-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:30.521525Z"
+}

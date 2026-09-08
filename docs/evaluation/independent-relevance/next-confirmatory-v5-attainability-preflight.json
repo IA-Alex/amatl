@@ -1,0 +1,25 @@
+{
+  "schema": "amatl.relevance.next-confirmatory-v5-attainability-preflight.v1",
+  "experiment_id": "independent-relevance-confirmatory-v5",
+  "status": "BLOCKED_UNTIL_REAL_PROVIDER_EVIDENCE",
+  "network_requests": 0,
+  "must_run_before": ["query generation", "universe freeze", "any confirmatory capture request"],
+  "inputs": ["V1/V2/V3/V4 exclusion hashes", "provider governance records", "historical per-query valid-row counts", "fixed pilot sample and fixed retry policy"],
+  "checks": {
+    "provider_contracts": "PASS only if SearXNG searxng-v1 and Marginalia marginalia-v1 are approved, configured and endpoint/auth contracts are recorded",
+    "provider_canary": "PASS only if each provider returns usable results; rate limit, missing credential, timeout or empty usable set is FAIL",
+    "per_provider_arm_capacity": "estimate valid rows/query separately for Treatment and Control within each provider",
+    "conservative_rate": "use the lower one-sided 95% Wilson bound per provider-arm cell, then use the minimum cell rate",
+    "sample_attainability": "ceil(474 / minimum_cell_rate) <= 1600 and lower-bound expected valid rows per arm >= 474",
+    "contamination": "pilot exclusions include all V1/V2/V3/V4 and current-pilot duplicates; contamination is counted before acceptance",
+    "balance": "provider and arm exposure are exactly equal; no adaptive routing or replacement across arm/provider cells",
+    "budget": "3200 queries x 2 providers x 2 attempts = 12800 maximum provider calls; preflight must verify quota and time budget",
+    "fail_closed": "any failed check sets ATTAINABILITY_PREFLIGHT=FAIL and prevents universe freeze"
+  },
+  "historical_result": {
+    "searxng": "V4 observed positive capacity; conservative pooled floor from V4 Control is 0.31263962236634996 valid rows/query",
+    "marginalia": "WP-1 observed 0 usable results in 10/10 rate-limited requests; no positive capacity demonstrated"
+  },
+  "decision": "FAIL with current repository evidence; a fresh approved, non-rate-limited provider canary and fixed pilot are prerequisites",
+  "network_requests": 0
+}

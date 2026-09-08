@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 237.86873600329272,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is ceramic coatings in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "Design Agricultural Chemistry Agricultural Economics Agricultural Engineering Agricultural Equipment Agricultural Machine Design Agricultural Machine Safety Agricultural Pesticide",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "VFTonline.org",
+          "/VFTprayer/heaven/000list.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://VFTonline.org/VFTprayer/heaven/000list.txt",
+        "url": "http://VFTonline.org/VFTprayer/heaven/000list.txt"
+      },
+      {
+        "category": "general",
+        "content": "and Cluster Physics and Chemistry (v-FAMC 2011) FOCUS ON MICROSCOPY 2012 - Singapore, April 1- 4, 2012 3rd Bi-Annual Canadian Cytometry and Microscopy Symposium Live cell imaging",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "delmarphotonics.com",
+          "/index.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Femtosecond laser products from Del Mar Photonics",
+        "url": "http://delmarphotonics.com/index.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0189",
+  "query_text": "what is ceramic coatings in chemistry",
+  "requested_at": "2026-09-03T01:44:13.541573Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

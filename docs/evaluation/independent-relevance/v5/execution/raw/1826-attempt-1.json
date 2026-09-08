@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 308.41,
+  "pair_id": "v5-p-0380",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind solar eclipses in optics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1784709c414c9146ded544480f419b15262203943a0e8a58245b9fd19172435f",
+  "provider": "SearXNG",
+  "query": "describe the principle behind solar eclipses in optics",
+  "query_id": "v5-p-0380-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:00.886932Z"
+}

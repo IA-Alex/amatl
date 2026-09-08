@@ -1,0 +1,324 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 302.2903539967956,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is cloud formation in mechanical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "Genetic Engineering Network http://www.geneticsaction.org.uk/ Gulf War Veterans of the USA http://www.gulfwarvets.com/ Mid Atlantic Anarcho Infoshop http://www.infoshop.org/ Consp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "Edward L. Bernays - The Engineering of Consent.pdf 2019-01-11 23:17 59K   Edward Ruppelt - The Report on Unidentified Flying Objects.doc 2017-02-04 22:56 1.2M   Edward S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "avalonlibrary.net",
+          "/ebooks/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of /ebooks",
+        "url": "https://avalonlibrary.net/ebooks/"
+      },
+      {
+        "category": "general",
+        "content": "of Snow Crystals,&#34; Engineering and Science LXIV, 1 (2001) . View pdf &#34;LIGO: Hearing the Gravitational-Wave Universe,&#34; K. G. Libbrecht, Mercury magazine, Vol. 30, #5, Sept/Oct 2001",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.its.caltech.edu",
+          "/%7Eatomic/publist/kglpub.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ken Libbrecht Pub List",
+        "url": "http://www.its.caltech.edu/%7Eatomic/publist/kglpub.htm"
+      },
+      {
+        "category": "general",
+        "content": "the capitalists were engineering the situation for their own ends. It is difficult to imagine how a state of unrest and insecurity, to say nothing of a state of war, can ever be t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book60.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Great Boer War, by Arthur Conan Doyle",
+        "url": "https://www.ajhw.co.uk/books/book60.html"
+      },
+      {
+        "category": "general",
+        "content": "and mechanical engineering, mathematics and possibly robotics. After this, get a job working with the technology you hope to harness, build your doomsday machine in your lab, and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "qntm.org",
+          "/destroy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to destroy the Earth @ Things Of Interest",
+        "url": "https://qntm.org/destroy"
+      },
+      {
+        "category": "general",
+        "content": "] Abstract  Power engineering and transport; miscellaneous industries.  UBSTANCE: Single-row power module has stator and rotor with rollers combined by common separator.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.rexresearch.com",
+          "/roschin/roschin.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Roschin &amp; Godin: Magneto-Gravity Effects; Verification of the Searl Effect",
+        "url": "http://www.rexresearch.com/roschin/roschin.htm"
+      },
+      {
+        "category": "general",
+        "content": "fusion) are entirely of ENGINEERING, not SCIENCE. Comment by Dave Barlow You obviously think that controlled nuclear fusion is an easy process to reproduce or engineer. If I may a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.physicsmyths.org.uk",
+          "/discussions/sun.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Solar Physics Discussion Forum",
+        "url": "https://www.physicsmyths.org.uk/discussions/sun.htm"
+      },
+      {
+        "category": "general",
+        "content": "Lightning Arrester Engineering Section, Westinghouse Electric Corporation). Lightning Protection for Electric Systems . New York, NY: McGraw-Hill Book Company, Inc. Copyright 1954",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.myinsulators.com",
+          "/acw/bookref/overvoltage/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ACW&#39;s Insulator Info - Book Reference Info - Overvoltage and Flashovers",
+        "url": "https://www.myinsulators.com/acw/bookref/overvoltage/"
+      },
+      {
+        "category": "general",
+        "content": "London in a mechanical engineering firm which produced the models required by the Patent Office in those days, before issuing a patent. He told me they had many people come to him",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lachlan.bluehaze.com.au",
+          "/nanoshite/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NanoShite: A nano-apostate webpage dedicated to the slimeycanceroushype flim-flam-barnum-and-bailey-charlatan delusional bollocks nanosleaze /",
+        "url": "http://lachlan.bluehaze.com.au/nanoshite/"
+      },
+      {
+        "category": "general",
+        "content": "that is collossal over-engineering. And it&#39;s not because he didn&#39;t understand the maths - it&#39;s extremely clear from his writings that he understood fixed-point math perfectly well",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tomforsyth1000.github.io",
+          "/blog.wiki.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "TomF&#39;s Tech Blog - It&#39;s only pretending to be a wiki.",
+        "url": "http://tomforsyth1000.github.io/blog.wiki.html"
+      },
+      {
+        "category": "general",
+        "content": "and the Roman road-engineering can, as symbols, be made uniformly understandable and appreciable. But at once the fact presents itself that as yet there exists no theory-enlighten",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/cache/epub/72344/pg72344-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Decline of the West| Project Gutenberg",
+        "url": "https://www.gutenberg.org/cache/epub/72344/pg72344-images.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0105",
+  "query_text": "what is cloud formation in mechanical engineering",
+  "requested_at": "2026-09-03T01:42:21.847150Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

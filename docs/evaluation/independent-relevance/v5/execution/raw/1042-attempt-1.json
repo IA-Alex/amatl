@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 317.724,
+  "pair_id": "v5-p-0289",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind water purification in astronomy",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8ce00687996ef088ffb9a9eb475e5c5fc453a808c5fa5c7b4c4a036948a6cafd",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind water purification in astronomy",
+  "query_id": "v5-p-0289-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:10:44.848308Z"
+}

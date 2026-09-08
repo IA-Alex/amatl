@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 355.381,
+  "pair_id": "v5-p-0605",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind air quality monitoring in communication studies",
+    "results": [
+      {
+        "category": "general",
+        "content": "for secure email communication. Security in a Box – A digital privacy toolkit. Surveillance Self-Defense – A guide to protecting your online activity from surveillance. Wikis &amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "realdeepweb.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Real Deep Web | Hidden Wiki Access &amp; Deep Web Tools",
+        "url": "http://realdeepweb.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a7aa364263f47793c9934e3ec627fa3b0880a677eec706822c0054be9b3a6a56",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind air quality monitoring in communication studies",
+  "query_id": "v5-p-0605-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:07:26.453600Z"
+}

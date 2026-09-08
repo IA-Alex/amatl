@@ -1,0 +1,16 @@
+{
+  "artifact_notice": "Generated benchmark artifact — AMATL SearXNG Baseline v1 — do not treat as project documentation.",
+  "status": "complete",
+  "planned_runs": 30,
+  "completed_runs": 30,
+  "classification_rule": "PARTIAL_SUCCESS when final_results>0 and partial=true; SUCCESS when final_results>0 and partial=false; ZERO_RESULTS when final_results=0 without explicit failure; FAILURE when search_status=failure or explicit provider/transport/parsing/timeout error.",
+  "counts": {"success": 0, "partial_success": 16, "zero_results": 0, "failure": 14},
+  "rates": {"success": 0.0, "partial_success": 0.5333333333, "zero_results": 0.0, "failure": 0.4666666667},
+  "results": {"total": 160, "mean": 5.3333333333, "p50_nearest_rank": 10, "min": 0, "max": 10},
+  "latency_ms": {"mean": 885.3666666667, "p50_nearest_rank": 721, "p95_nearest_rank": 2295, "min": 285, "max": 3003},
+  "percentile_method": "nearest rank: ceil(p*n), with n=30",
+  "errors": {"no_usable_results": 14},
+  "unresponsive_engines": "NOT_OBSERVABLE via normal AMATL interface; no frequency calculated",
+  "not_observable": ["http_status", "searxng_results", "mapped_items", "unresponsive_engines_count", "unresponsive_engines", "upstream_error_type"],
+  "execution_integrity": {"sequential": true, "inter_request_interval_seconds": 3, "retries": 0, "persistence": false, "history": false, "provider_cache": false, "document_cache": false}
+}

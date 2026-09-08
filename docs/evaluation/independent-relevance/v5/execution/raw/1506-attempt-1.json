@@ -1,0 +1,327 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 393.679,
+  "pair_id": "v5-p-0655",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of traffic flow in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "on enterprise talent management and competency tracking in Pegasystems skills. The platform captured a massive footprint of daily telemetry, and the brief arrived open-ended: “We",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.smashingmagazine.com",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Articles on Smashing Magazine — For Web Designers And Developers",
+        "url": "https://www.smashingmagazine.com/feed/"
+      },
+      {
+        "category": "general",
+        "content": "to the Office of Management and Budget and the Air Force Almanac, when measured in real terms (adjusted for inflation), the figure is $790.0 billion, or an average of $15.818 bill",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "for the style of management at Philips Research which was always aimed at creating a working atmosphere that would get the best out of people. For a time the group of Oosterhuis w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dos4ever.com",
+          "/EF50/EF50.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The EF50, the tube that helped to win the War",
+        "url": "https://www.dos4ever.com/EF50/EF50.html"
+      },
+      {
+        "category": "general",
+        "content": "Title: Runtime Power Management on SuperH Mobile Description: The presentation gives an overview of the SuperH Mobile runtime power management implementation in the upstream Linux",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "protection and management of these resources. 8-66.   The destruction of key bridges or the closing of choke points interrupts the defender&#39;s freedom of movement. The force m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.nuui.com",
+          "/Sections/Military/Field_Manuals/FM3-90/ch8.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "FM3-90 Chapter 8 Basics of Defensive Operations",
+        "url": "http://www.nuui.com/Sections/Military/Field_Manuals/FM3-90/ch8.htm"
+      },
+      {
+        "category": "general",
+        "content": "Menu 13.4. Account Management 13.5. Alternative Key and Keyring Strategies 7. Security Considerations 1. Passwords 2. Temporary Files 3. Information Leaks 3.1. mailto: -style Link",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mutt.org",
+          "/doc/manual/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Mutt E-Mail Client",
+        "url": "http://www.mutt.org/doc/manual/"
+      },
+      {
+        "category": "general",
+        "content": "Distributed Blackhole Management: A reputation-based system for blackhole list distribution, where trusted Network Identities can sign and publish lists of blackholed identities.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "reticulum.network",
+          "/manual/understanding.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Understanding Reticulum - Reticulum Network Stack 1.5.1 documentation",
+        "url": "http://reticulum.network/manual/understanding.html"
+      },
+      {
+        "category": "general",
+        "content": "as required for the management, admin-istration and evaluation of the program are being provided cooperatively by the Air Force (Phillips Laboratory) and Navy (Office of Naval Res",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "OPTIONS TELNET OPTION MANAGEMENT TELNET COMMAND SUMMARY DIAGNOSING AND FIXING PROBLEMS CONNECTING TO TELNET SERVERS 1. INTRODUCTION [ Top ] [ Contents ] [ Next ] The Telnet protoc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kermitproject.org",
+          "/telnet.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C-Kermit 9.0 and Kermit 95 2.0 Telnet Protocol",
+        "url": "https://www.kermitproject.org/telnet.html"
+      },
+      {
+        "category": "general",
+        "content": "VPN and browser based management.  ↩︎ Kagi, Orion Browser by Kagi , describes Orion as a privacy focused WebKit browser with zero telemetry.  ↩︎",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kirill.korins.ky",
+          "/articles/the-walled-garden-of-the-surveilled-web/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Walled Garden of the Surveilled Web - Kirill&#39;s journal",
+        "url": "https://kirill.korins.ky/articles/the-walled-garden-of-the-surveilled-web/"
+      },
+      {
+        "category": "general",
+        "content": "2.6.3 Connection Management..........................................12 2.7 OPPORTUNISTIC LOCKS................................................13 2.7.1 Exclusive Oplocks..........",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ubiqx.org",
+          "/cifs/rfc-draft/draft-leach-cifs-v1-spec-02.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Draft-leach-cifs-v1-spec-02",
+        "url": "https://www.ubiqx.org/cifs/rfc-draft/draft-leach-cifs-v1-spec-02.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8ffb66bb1edc7bbab24178c2753f5cc90972cd01e3f815bc03c2109cdb38dfd4",
+  "provider": "SearXNG",
+  "query": "give an overview of traffic flow in data management",
+  "query_id": "v5-p-0655-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:15.468084Z"
+}

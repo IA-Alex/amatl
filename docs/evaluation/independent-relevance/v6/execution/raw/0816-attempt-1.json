@@ -1,0 +1,34 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 816,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 293.312,
+  "pair_id": "candidate-p-0136",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "essential context for algorithmic auditing within science education",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "367a50ce6bbb5c95f7e3d695e2855b1758439d86c32b2154d94c6b2dad2dff0e",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "essential context for algorithmic auditing within science education",
+  "query_id": "candidate-c-0136",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:24:49.452149Z"
+}

@@ -1,0 +1,34 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 4488,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 247.524,
+  "pair_id": "candidate-p-1761",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a practical briefing on nanopore sequencing within operations research",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "379f52c1986a8c1a149cb53c7ff96e0ab9908a403e7237cc97a1402b87bb0b99",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a practical briefing on nanopore sequencing within operations research",
+  "query_id": "candidate-c-1761",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:44:12.712995Z"
+}

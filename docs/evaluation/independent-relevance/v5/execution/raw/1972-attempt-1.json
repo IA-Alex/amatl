@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 342.122,
+  "pair_id": "v5-p-0346",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of soil erosion in physics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b88a25d2fe3474326c74948c87b4f43a0b56a776d472959cb50498eb8ee95a7b",
+  "provider": "SearXNG",
+  "query": "tell me about the function of soil erosion in physics",
+  "query_id": "v5-p-0346-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:46.564905Z"
+}

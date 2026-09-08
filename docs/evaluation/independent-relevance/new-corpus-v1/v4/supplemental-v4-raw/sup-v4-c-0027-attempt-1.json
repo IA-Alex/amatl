@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 266.15847700304585,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of cell membranes in operating systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "and bacterial/eucaryote membranes. One intriguing indication of the state of genetic translation in LUCA is the incorporation of selenocysteine into the genetic code . Selenoenzym",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/unraveltree/unravel.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Unraveling the Tree of Life",
+        "url": "http://www.dhushara.com/book/unraveltree/unravel.htm"
+      },
+      {
+        "category": "general",
+        "content": "channels on nerve cell membranes. These channels are crucial for the propagation of nerve impulses (action potentials) along the nerve fibers. By blocking the sodium channels, loc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.general-anaesthesia.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utopian Surgery as conceived by ChatGPT",
+        "url": "https://www.general-anaesthesia.com/chatgpt/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0027",
+  "query_text": "give an overview of cell membranes in operating systems",
+  "requested_at": "2026-09-03T01:42:55.903572Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

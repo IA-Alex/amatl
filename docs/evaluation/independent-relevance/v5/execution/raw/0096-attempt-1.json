@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 365.694,
+  "pair_id": "v5-p-0926",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of bridge resonance in urban planning",
+    "results": [
+      {
+        "category": "general",
+        "content": "acr. (Med.) Magnetic Resonance Imaging. Mr. Johnson: n. Any anonymous employer or corporate agent. Mr. Who: n. (Also &#34;The Who&#34;) label for an employer or person of higher authority",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.shoestring-graphics.com",
+          "/CP2020/slang/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Word on The Streets",
+        "url": "http://www.shoestring-graphics.com/CP2020/slang/"
+      },
+      {
+        "category": "general",
+        "content": "caused by acoustic resonances of the modulated mercury plasma column within its tubular enclosure. One could certainly hear a faint acoustic radiation from the tube while it was i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/Modulated_Light_DX/LongArticle1Jan79.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "COMMUNICATING BY LIGHT",
+        "url": "http://www.modulatedlight.org/Modulated_Light_DX/LongArticle1Jan79.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9885fdb730ca031fe522adb6eba34d32e756ffd7e3e515897ac255f018d6caa1",
+  "provider": "SearXNG",
+  "query": "tell me about the function of bridge resonance in urban planning",
+  "query_id": "v5-p-0926-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:05:38.991578Z"
+}

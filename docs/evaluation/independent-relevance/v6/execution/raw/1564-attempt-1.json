@@ -1,0 +1,144 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1564,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 355.938,
+  "pair_id": "candidate-p-1936",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "essential context for quantum sensing within electrical systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "circuit? What are the electrical and bonding characteristics of the core particle in relation to the encircling DNA ? Which DNA sequences are engaged in rhythmic “breathing” movem",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bwo.life",
+          "/org/comm/ar/2014/machines_18.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biology’s Shameful Refusal to Disown the Machine-Organism",
+        "url": "https://bwo.life/org/comm/ar/2014/machines_18.htm"
+      },
+      {
+        "category": "general",
+        "content": "cells with graded electrical responses are also integral to the function of small neuronal circuits (Kandel 1979), and as we have already noted, chaotic excitability occurs in bur",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/stc/ct.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Space, Time and Consciousness",
+        "url": "http://www.dhushara.com/stc/ct.htm"
+      },
+      {
+        "category": "general",
+        "content": "real life. Matter whose electrical charge properties are the opposite of &#34;normal matter.&#34; It is not well understood why the universe is made overwhelmingly of matter yet most reac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.midwinter.com",
+          "/~koreth/particles/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Particles of Star Trek",
+        "url": "http://www.midwinter.com/~koreth/particles/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5620a5f828130fdde3d9477f83b44ece44547ea8326072259e259ea73cffa569",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "essential context for quantum sensing within electrical systems",
+  "query_id": "candidate-c-1936",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://bwo.life/org/comm/ar/2014/machines_18.htm",
+      "original_url": "https://bwo.life/org/comm/ar/2014/machines_18.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "circuit? What are the electrical and bonding characteristics of the core particle in relation to the encircling DNA ? Which DNA sequences are engaged in rhythmic “breathing” movem",
+      "title": "Biology’s Shameful Refusal to Disown the Machine-Organism"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.dhushara.com/stc/ct.htm",
+      "original_url": "http://www.dhushara.com/stc/ct.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "cells with graded electrical responses are also integral to the function of small neuronal circuits (Kandel 1979), and as we have already noted, chaotic excitability occurs in bur",
+      "title": "Space, Time and Consciousness"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.midwinter.com/~koreth/particles/",
+      "original_url": "http://www.midwinter.com/~koreth/particles/",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "real life. Matter whose electrical charge properties are the opposite of &#34;normal matter.&#34; It is not well understood why the universe is made overwhelmingly of matter yet most reac",
+      "title": "The Particles of Star Trek"
+    }
+  ],
+  "timestamp": "2026-09-05T17:28:49.002305Z"
+}

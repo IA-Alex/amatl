@@ -1,0 +1,13 @@
+# The `agreement` binary statically links BOTH the ONNX Runtime (via
+# fastembed/ort) and the Candle stack into one executable. Their combined
+# static footprint exceeds the default (small) code model's ±2 GiB relocation
+# range, so rust-lld fails with "relocation R_X86_64_PC32 out of range".
+#
+# The large code model fixes it with a negligible cost for this isolated
+# experiment crate. This is itself a data point: a production build would ship
+# exactly ONE backend, never both, and would not need this.
+#
+# This config is scoped to `experiments/embedding-relevance/` only. The amatl
+# workspace (one directory up) never sees it.
+[build]
+rustflags = ["-C", "code-model=large"]

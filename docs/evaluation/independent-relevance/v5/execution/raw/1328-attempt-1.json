@@ -1,0 +1,246 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 408.122,
+  "pair_id": "v5-p-0066",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of compiler operation in energy systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "importance of system operations, education, and awareness as part of a balanced approach toward attaining survivability. I taught a course ENPM 808s as an Adjunct Professor at the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "2E/πh logical operations per second (a logical operation is, for example, performing the AND operation on two bits of input - think of it as single bit operations, roughly). Si",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/286233/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Kernel Hacker&#39;s Bookshelf: Ultimate Physical Limits of Computation [LWN.net]",
+        "url": "https://lwn.net/Articles/286233/"
+      },
+      {
+        "category": "general",
+        "content": "on your voluntary cooperation. They forgot to tell you that part; but you just found it out for yourself. Sometimes you may discover that you didn&#39;t have the right to live, move a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.toad.com",
+          "/gnu/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John Gilmore&#39;s home page",
+        "url": "http://www.toad.com/gnu/"
+      },
+      {
+        "category": "general",
+        "content": "successful Monrobot XI operations regarding payroll processing. Of course there were 90 stocks and bonds installations, 35 installations for fuel oil delivery companies and many o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ed-thelen.org",
+          "/comp-hist/stories.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stories",
+        "url": "https://www.ed-thelen.org/comp-hist/stories.html"
+      },
+      {
+        "category": "general",
+        "content": "that implement bignum operations: addition, multiplication, and so on. I did so using mini-gmp , a stripped-down implementation of the workhorse GNU multi-precision library. At so",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wingolog.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "wingolog",
+        "url": "http://wingolog.org/"
+      },
+      {
+        "category": "general",
+        "content": "Dimensions Column Operations Concatenating Inserting and Removing Searching Arrays Permutations Combinations Slicing Arrays Flattening Subsets Shuffling Clearing Transpose Additio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "frinklang.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Frink",
+        "url": "http://frinklang.org/"
+      },
+      {
+        "category": "general",
+        "content": "to place one or more operations (a set of I/O requests, for example) in motion and then wait for all of those operations to complete. To do so, that thread will initialize its clo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/958030/bigpage",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "LWN.net Weekly Edition for January 18, 2024 [LWN.net]",
+        "url": "https://lwn.net/Articles/958030/bigpage"
+      },
+      {
+        "category": "general",
+        "content": "History Museum TWO OPERATIONAL IBM 1401 MAINFRAMES 1st IBM 1401 from Hamm, Germany (built 1964) 2nd IBM 1401 from Darien, Connecticut (built 1961) Card Equipment: 026 and 029 Keyp",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ibm-1401.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "1401Restoration-CHM",
+        "url": "https://ibm-1401.info/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b8c3d70891a7130cb72ef82b84dafea551971b385d6bdf60a4b2fd186825190a",
+  "provider": "SearXNG",
+  "query": "tell me about the function of compiler operation in energy systems",
+  "query_id": "v5-p-0066-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:20.770459Z"
+}

@@ -1,0 +1,108 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 285.2042989979964,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does database indexes in digital security operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "LLM Wiki with Critical Database Limitations Memex is a sophisticated LLM Wiki implementation that stands out for its thoughtful mitigations of common pitfalls, such as git-backed",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "crawling, indexing, database construction, and result generation.  ↩︎ Baidu Help Center, About Baiduspider , describes Baiduspider as the crawler that creates Ba",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kirill.korins.ky",
+          "/articles/the-walled-garden-of-the-surveilled-web/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Walled Garden of the Surveilled Web - Kirill&#39;s journal",
+        "url": "https://kirill.korins.ky/articles/the-walled-garden-of-the-surveilled-web/"
+      },
+      {
+        "category": "general",
+        "content": "🎯 A Curated Database Instead of a Crawler: Relevance Over Noise The biggest problem with Tor search engines is simple: 💀 Crawling Tor produces garbage Mirrors, duplicates, dead se",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "realdeepweb.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Real Deep Web | Hidden Wiki Access &amp; Deep Web Tools",
+        "url": "http://realdeepweb.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0064",
+  "query_text": "how does database indexes in digital security operate",
+  "requested_at": "2026-09-03T01:43:09.740153Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

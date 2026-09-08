@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 355.199,
+  "pair_id": "v5-p-0566",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does food preservation in urban planning work",
+    "results": [
+      {
+        "category": "general",
+        "content": "also with the preservation of animal species risking extinction, such as the scimitar-horned oryx, that has been saved through Israeli endeavour. Israel Desalination Engineering i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.imninalu.net",
+          "/Israel-Arabs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Israel and the Arab World",
+        "url": "https://www.imninalu.net/Israel-Arabs.htm"
+      },
+      {
+        "category": "general",
+        "content": "Field to Freezer and Preservation of Game Meats . Home Drying of Food is 25 detailed pages from the Utah State University Cooperative Extension. The National Food Safety Database",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "paleodiet.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Paleo Diet (Paleolithic, Primal, Caveman, Stone Age, Hunter-Gatherer Diet)",
+        "url": "https://paleodiet.com/"
+      },
+      {
+        "category": "general",
+        "content": "New York City Landmarks Preservation Commission to designate Brooklyn Heights as the city&#39;s first &#34;Historic District.&#34; (Greenwich Village was second.) This designation saved the p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/001671.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: Gentrification: Good or Evil?",
+        "url": "http://www.2blowhards.com/archives/001671.html"
+      },
+      {
+        "category": "general",
+        "content": "Lewarch, historic preservation officer for the Suquamish Tribe, said elders from the Tribes will get together &#34;and determine what is best for the ancestor.&#34; Suquamish: Woman embez",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cowlitzcountry.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cowlitz Country News Home Page",
+        "url": "http://www.cowlitzcountry.com/"
+      },
+      {
+        "category": "general",
+        "content": "sense, is that cryopreservation is an encryption algorithm, in a very literal sense.&#34; Cryostasis Revival , by Robert A. Freitas Jr. If you&#39;ve got a friend who&#39;s been thinking",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cryonics",
+        "url": "http://www.ralphmerkle.com/cryo/"
+      },
+      {
+        "category": "general",
+        "content": "public good; it is the preservation of jobs, whatever members are like at their jobs. The premise seems to be that people have a right to their jobs, even if they have killed peop",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/police.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Police State",
+        "url": "https://friesian.com/police.htm"
+      },
+      {
+        "category": "general",
+        "content": "could then learn self-preservation and pleasure-maximisation in harmony. At least as a stopgap, exploiting pleasure gradients is a much more civilised way to live. It&#39;s far more h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Hedonistic Imperative : Objections (Chapter 4)",
+        "url": "https://www.hedweb.com/hedethic/hedon4.htm"
+      },
+      {
+        "category": "general",
+        "content": "tendency for self-preservation. We see this in the logic of a suicide bomber and the sting of a bumble bee. As WMDs continue to proliferate in the hands of more and more nations,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "icescape.org",
+          "/Happening.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://icescape.org/Happening.html",
+        "url": "https://icescape.org/Happening.html"
+      },
+      {
+        "category": "general",
+        "content": "Council on Historic Preservation American Battle Monuments Commission Appalachian Regional Commission Architectural and Transportation Barriers Compliance Board (Access Board) Arc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "KevinCraig.us",
+          "/program.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Program to Abolish Harmful Bureaucracies -- KEVIN CRAIG - &#34;Liberty Under God&#34; Beginning in Missouri&#39;s 7th Congressional District&lt;",
+        "url": "https://KevinCraig.us/program.htm"
+      },
+      {
+        "category": "general",
+        "content": "to champion its preservation, showcasing a prominent conservationist inclination.  In contemporary society, as urban spaces expand, biophilic principles are being incorporate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.hilmar-alquiros.de",
+          "/Love!.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Love! - Exploring the Depths and Diversity of Love",
+        "url": "http://www.hilmar-alquiros.de/Love!.htm"
+      },
+      {
+        "category": "general",
+        "content": "thoughts on digital preservation, music, movies, the personal web, and assorted esoterica that doesn&#39;t fit in elsewhere. Interview Supporter Sabine Hossenfelder: Backreaction I te",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "blogroll.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ye Olde Blogroll - Because blogs are the soul of the web",
+        "url": "https://blogroll.org/"
+      },
+      {
+        "category": "general",
+        "content": "For The Eternal Preservation And Expansion Of Infinite Happiness Through Enforcement Of Inalienable Freedoms That All Space Marines Must Fight To Protect Always .   Would Pau",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteListW-GeorgiaRunOffElection2021.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Free World Alliance Site List",
+        "url": "http://www.viacadempire.com/FWAsiteListW-GeorgiaRunOffElection2021.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "50d1a6b019dd8eb949d2162305b432234d0f257b06f721917bbfd9a3554ba044",
+  "provider": "SearXNG",
+  "query": "how does food preservation in urban planning work",
+  "query_id": "v5-p-0566-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:17.868180Z"
+}

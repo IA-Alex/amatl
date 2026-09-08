@@ -1,0 +1,300 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 278.812,
+  "pair_id": "v5-p-0001",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is photosynthesis in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "PAPER, added 7/21/23, Photosynthesis Proves again my Charge Field and Nuclear Channeling Theory. NEW PAPER, added 6/30/23, Light is not a Field Wave. A return to this important di",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "milesmathis.com",
+          "/updates.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "updates",
+        "url": "https://milesmathis.com/updates.html"
+      },
+      {
+        "category": "general",
+        "content": "Oceans, Abiogenic Photosynthesis, Atmospheric Oxygen It&#39;s been said that: New, paradigm busting discoveries, must pass through three stages: Ridicule. Violent Opposition. Acceptan",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "BrainMind.com",
+          "/publications.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rhawn Joseph&#39;s Scientific Publications, Pictures, Biography",
+        "url": "http://BrainMind.com/publications.html"
+      },
+      {
+        "category": "general",
+        "content": "field. 13pp. 311b. Photosynthesis Proves again my Charge Field and Nuclear Channeling Theory. 18pp. SECTION 9: THE NUCLEUS 312. The Electromagnetic Field (and the Strong Force). H",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "milesmathis.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Homepage for Miles Mathis science site",
+        "url": "https://milesmathis.com/"
+      },
+      {
+        "category": "general",
+        "content": "• Digestion • Photosynthesis • Breathing • Evolution • Catabolism • Anabolism Organisms Organism • Archaea • Bacteria • Eukaryote • Animals • Arthropods • Insects • Ants • Bees •",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kids.kiddle.co",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kids encyclopedia facts",
+        "url": "https://kids.kiddle.co/"
+      },
+      {
+        "category": "general",
+        "content": "to make a living from photosynthesis. At least in the Northern Hemisphere, where the great preponderance of strategic targets lies, an unbroken and deadly gloom would persist for",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_uranium16.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Nuclear Winter",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_uranium16.htm"
+      },
+      {
+        "category": "general",
+        "content": "the natural world as is photosynthesis or digestion.&#39; Searle does not want to be classified as a materialist or a dualist. Searle&#39;s approach reflects the pervasive influence of ph",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "philosophos.sdf.org",
+          "/feature_articles/philosophy_article_102.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Article from PHILOSOPHY PATHWAYS Issue 97",
+        "url": "http://philosophos.sdf.org/feature_articles/philosophy_article_102.html"
+      },
+      {
+        "category": "general",
+        "content": "in CO2’s role in  photosynthesis , governments seem to have concluded that another 0.5 C will spell doom...climate hysteria in the West leads to policies that clearly benefit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meteo.lcd.lu",
+          "/globalwarming/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Warming Sceptic",
+        "url": "https://meteo.lcd.lu/globalwarming/"
+      },
+      {
+        "category": "general",
+        "content": "/air, light, and photosynthesis can we duplicate photosynthesis? photosynthesis /chlorophyll and photosynthesis herbicides dogs have become one of humans&#39; best animal friends Essa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "Mifflin 1968 95 Photosynthesis Basic Books 1969 96 The Shaping of England Houghton Mifflin 1969 97 Twentieth Century Discovery Doubleday 1969 98 Nightfall and Other Stories Double",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/asimov_titles.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A List of Isaac Asimov&#39;s Books",
+        "url": "http://www.asimovonline.com/oldsite/asimov_titles.html"
+      },
+      {
+        "category": "general",
+        "content": "read there the entry on photosynthesis,   we will find all manner of observations and categories of the processes by which the Sun acts on our World to create the food we eat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/electricityandthespiritinnature.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Electricity and the Spirit in Nature",
+        "url": "http://ipwebdev.com/hermit/electricityandthespiritinnature.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "17e99307994f56d4f69c2a3d6e2399d633a44af28552dbaa0288ba4f7a5b48e6",
+  "provider": "SearXNG",
+  "query": "what is photosynthesis in astronomy",
+  "query_id": "v5-p-0001-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:06.237498Z"
+}

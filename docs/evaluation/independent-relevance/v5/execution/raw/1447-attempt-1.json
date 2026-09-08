@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 272.877,
+  "pair_id": "v5-p-1036",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does probability distributions in communication studies operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "to sample hard distributions has remained a key path to demonstrating quantum advantage. Yet a severe drawback remains: verification seems to require exponential classical computa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scottaaronson.com",
+          "/papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Research Papers and Surveys",
+        "url": "https://www.scottaaronson.com/papers/"
+      },
+      {
+        "category": "general",
+        "content": "to occur for rotating distributions of matter in Einstein’s general theory of relativity.   Inertial frame dragging, for example, is a consequence of the weak gravitational f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/time_travel/esp_ciencia_timetravel34.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Time Control Technologies and Methods",
+        "url": "https://www.bibliotecapleyades.net/ciencia/time_travel/esp_ciencia_timetravel34.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6fc7e5edbc2b1662f429ed957820ae1b18d0f8ebd5d9a997eb8df5718e77fc56",
+  "provider": "SearXNG",
+  "query": "how does probability distributions in communication studies operate",
+  "query_id": "v5-p-1036-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:12:57.495152Z"
+}

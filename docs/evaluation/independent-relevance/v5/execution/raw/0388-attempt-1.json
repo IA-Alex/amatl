@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 227.975,
+  "pair_id": "v5-p-0175",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of immune response in forensic science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "464c285f28d7504d495f30d7e5519349578dbd657cc0adc7585f3ddf6c531b52",
+  "provider": "SearXNG",
+  "query": "give an overview of immune response in forensic science",
+  "query_id": "v5-p-0175-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:11.292152Z"
+}

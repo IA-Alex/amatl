@@ -1,0 +1,108 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 338.7381349966745,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind load bearing walls in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "and when the genuine principles, customs, &amp;c. of the Indians are known, it will be easier afterwards for persons of solid learning, and free from secular cares, to trace their ori",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "olivercowdery.com",
+          "/texts/1775Adr1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "James Adair&#39;s 1775 &#34;History of the American Indians&#34;",
+        "url": "http://olivercowdery.com/texts/1775Adr1.htm"
+      },
+      {
+        "category": "general",
+        "content": "Exploration of old Wiki principles - - Wikipedia has always sucked - - Wikipedia forks - Citizendium - - Justapedia - Introduction In his famous novel Nineteen Eighty-Four , Georg",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/wikipedia.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Wikipedia is the Ministry of Truth",
+        "url": "http://digdeeper.love/articles/wikipedia.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "briefly, the leading principle of this new system of valuing would be: &#34;All that proceeds from power is good, all that springs from weakness is bad.&#34; This type must not be regarde",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "samplecontents.library.ph",
+          "/GreatBooksoftheWorld/en-ebooks/books/1998-h/1998-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Thus Spake Zarathustra, by Friedrich Nietzsche",
+        "url": "https://samplecontents.library.ph/GreatBooksoftheWorld/en-ebooks/books/1998-h/1998-h.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0248",
+  "query_text": "describe the principle behind load bearing walls in food science",
+  "requested_at": "2026-09-03T01:44:19.846873Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

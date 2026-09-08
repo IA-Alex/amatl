@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 373.748,
+  "pair_id": "v5-p-0222",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of plate tectonics in computer security",
+    "results": [
+      {
+        "category": "general",
+        "content": "oceanic crust [plate tectonics]. Even clouds exert a regulatory effect. ...&#34; From Crushnaut on reddit: Getting oxygen and CO2 into a Martian atmosphere, in the grand scheme of thi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "Huntington&#39;s plate tectonics are too simple. Two months of recent travel throughout Turkey revealed to me that although the Turks are developing a deep distrust, bordering on hatr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "90ef23b1fd9b2f2328cae5c51a15f216867d7ceb83699f48d4bfa52511e570bc",
+  "provider": "SearXNG",
+  "query": "tell me about the function of plate tectonics in computer security",
+  "query_id": "v5-p-0222-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:14:04.989356Z"
+}

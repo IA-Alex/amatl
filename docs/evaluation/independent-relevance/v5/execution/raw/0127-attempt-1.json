@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 268.207,
+  "pair_id": "v5-p-1072",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does microbial fermentation in communication studies operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1a0bc4cdc2b2baf3a5d93ac31e78cbb3a2def37260bbd34f6c01d1a747e7a742",
+  "provider": "SearXNG",
+  "query": "how does microbial fermentation in communication studies operate",
+  "query_id": "v5-p-1072-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:48.402287Z"
+}

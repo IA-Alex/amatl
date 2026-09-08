@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 348.1317379992106,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind process scheduling in physics",
+    "results": [
+      {
+        "category": "general",
+        "content": "especially if scheduling or memory are provided via these authorities.) 3. Naive transparent persistence of the sort you describe here will conflict with maintenance and upgrade c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.loper-os.org",
+          "/",
+          "",
+          "p=284",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Loper OS » Seven Laws of Sane Personal Computing",
+        "url": "http://www.loper-os.org/?p=284"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0197",
+  "query_text": "explain the basic idea behind process scheduling in physics",
+  "requested_at": "2026-09-03T01:42:23.901515Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

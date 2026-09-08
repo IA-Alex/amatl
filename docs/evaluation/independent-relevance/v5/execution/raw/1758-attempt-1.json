@@ -1,0 +1,106 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 573.22,
+  "pair_id": "v5-p-0152",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind immune response in ecology",
+    "results": [
+      {
+        "category": "general",
+        "content": "has been named &#34;the principle of convergence&#34; or &#34;convergent evolution.&#34; But naming the problem doesn&#39;t mean it has been explained. The renowned Harvard biologist Stephen Jay Goul",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.panspermia.org",
+          "/neodarw.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Neo-Darwinism: The Current Paradigm. by Brig Klyce",
+        "url": "https://www.panspermia.org/neodarw.htm"
+      },
+      {
+        "category": "general",
+        "content": "application. The Second Principle of Iatrogenics: it is not linear. I do not believe that we should take risks with near-healthy people and treat them at all; I also believe that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "fooledbyrandomness.com",
+          "/notebook.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Opacity",
+        "url": "https://fooledbyrandomness.com/notebook.htm"
+      },
+      {
+        "category": "general",
+        "content": "refer to the scientific principle of Occam’s razor, which is to find the solution reached by the fewest steps. If that is what he suggests, then mythology has an abundance of exam",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stenudd.com",
+          "/myth/jungians_on_myth_and_religion/JordanBPeterson.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jordan B. Peterson - Jungians on myth and religion.",
+        "url": "https://www.stenudd.com/myth/jungians_on_myth_and_religion/JordanBPeterson.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "0aed2213e82edc7021ada177058849843a85c4767ab01eab82ee1779affe43b0",
+  "provider": "SearXNG",
+  "query": "describe the principle behind immune response in ecology",
+  "query_id": "v5-p-0152-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:34.239698Z"
+}

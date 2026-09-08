@@ -1,0 +1,300 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 318.424,
+  "pair_id": "v5-p-0555",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes food preservation in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "were: the exceptional preservation of the bones; the number, variety and completeness of the skeletons; the relative abundance of skulls, consisting of 8 or more in a complete sta",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/49288/49288-h/49288-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dinosaur Quarry, Dinosaur National Monument, Colorado, Utah, by John M. Good, Theodore E. White and Gilbert F. Stucker",
+        "url": "https://www.gutenberg.org/files/49288/49288-h/49288-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "which &#39;acts by the preservation and accumulation of small inherited modifications, each profitable to the preserved being.&#39; With this idea he interpenetrates and leavens the vast",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "victorianweb.org",
+          "/science/science_texts/belfast.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Address Delivered Before the British Association Assembled at Belfast, With Additions (1874)",
+        "url": "https://victorianweb.org/science/science_texts/belfast.html"
+      },
+      {
+        "category": "general",
+        "content": "at stake here were the preservation of a drug-free society, then some sort of totalitarian (or, more euphemistically, paternalistic) argument could be cobbled together for violati",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/gooddrug.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Good Drug Guide: The Responsible Parent&#39;s Guide To Healthy Mood-Boosters For All The Family",
+        "url": "https://www.hedweb.com/gooddrug.htm"
+      },
+      {
+        "category": "general",
+        "content": "refers either to the preservation of life and the means of life, or to wealth, or to some other of the good things which it is hard to get either always or at that particular plac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "oaks.nvg.org",
+          "/aristotle-rhetoric.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Aristotle Works: Rhetoric – The Gold Scales",
+        "url": "http://oaks.nvg.org/aristotle-rhetoric.html"
+      },
+      {
+        "category": "general",
+        "content": "Names in the Holy Land--Preservation and History. // Elitzur, Yoel // HebrewUnivJerusalme-Eisenbrauns:2004. [HI:APOESO] Apocryphal and Esoteric Sources in the Development of Chris",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.christian-thinktank.com",
+          "/bookabs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Book Abbreviations",
+        "url": "https://www.christian-thinktank.com/bookabs.html"
+      },
+      {
+        "category": "general",
+        "content": "this act of his for the preservation of our laws, which some senseless assertors of the rights of men were then on the point of entirely erasing, as relics of feudality and barbar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gutenberg.org",
+          "/cache/epub/15700/pg15700-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of Burke&#39;s Writings and Speeches, Volume the Fourth, by Edmund Burke.",
+        "url": "https://gutenberg.org/cache/epub/15700/pg15700-images.html"
+      },
+      {
+        "category": "general",
+        "content": "its cultivation and preservation The date, description and uses of The orange The lemon The sweet lemon or bergamot The citron The lime The grape-fruit The pomegranate, its antiqu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book33/book33.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Science in the Kitchen., by Mrs. E. E. Kellogg",
+        "url": "https://www.ajhw.co.uk/books/book33/book33.html"
+      },
+      {
+        "category": "general",
+        "content": "of the State, for the preservation or the extension of its power, it is all transformed into duty and virtue. And this virtue, this duty, are obligatory for each patriotic citizen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.anarchistfaq.com",
+          "/B.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Anarchist FAQ - II. Why are anarchists against the State?",
+        "url": "http://www.anarchistfaq.com/B.html"
+      },
+      {
+        "category": "general",
+        "content": "the instinct of self-preservation, the instinct inherent in hostile systems impelled them forward, while the ends to be reached, or the consequences of success, were always too ap",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/cache/epub/61063/pg61063-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of Negroes and Negro “Slavery”, by J. H. Van Evrie, M.D.",
+        "url": "https://www.gutenberg.org/cache/epub/61063/pg61063-images.html"
+      },
+      {
+        "category": "general",
+        "content": "across the globe. Preservation of Knowledge : Digital technology allows us to store vast amounts of information and knowledge, which can be passed on to future generations. This c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.utilitarianism.com",
+          "/chatgpt/longtermism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utilitarianism and longtermism as conceived by ChatGPT-4",
+        "url": "https://www.utilitarianism.com/chatgpt/longtermism.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0327c37fd5bcdd1e276f8264d14f121a8eea06e480b819a6939781c724bac719",
+  "provider": "SearXNG",
+  "query": "what causes food preservation in materials science",
+  "query_id": "v5-p-0555-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:27.167143Z"
+}

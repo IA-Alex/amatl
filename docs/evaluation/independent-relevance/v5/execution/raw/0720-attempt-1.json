@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 331.244,
+  "pair_id": "v5-p-1041",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind probability distributions in marine biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "on floral and faunal distributions, do not coincide with the partly computer-generated plate boundaries postulated by plate tectonics. The authors comment: &#39;What is puzzling is th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/tierra_hueca/inner_earth/sunken.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sunken Continents versus Continental Drift",
+        "url": "https://www.bibliotecapleyades.net/tierra_hueca/inner_earth/sunken.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5f7b875e80bdd9a590b5a731b4b6b325e4502a59b4109868575a6d9fda8a2548",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind probability distributions in marine biology",
+  "query_id": "v5-p-1041-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:09:04.862896Z"
+}

@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 388.98,
+  "pair_id": "v5-p-0913",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind bridge resonance in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Theory: Real Waves, Resonance and Completed Events https://www.spaceandmotion.com/2026/physics-quantum-theory-wave-mechanics.html Matter diffracts because matter is wave organisat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WSM: One Substance (Space) &amp; One Law explains causal connection, Metaphysics: deduces Quantum Physics, Einstein Relativity, Cosmology&lt;/tit",
+        "url": "https://www.spaceandmotion.com/"
+      },
+      {
+        "category": "general",
+        "content": "Theory: Real Waves, Resonance and Completed Events https://www.spaceandmotion.com/2026/physics-quantum-theory-wave-mechanics.html Matter diffracts because matter is wave organisat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/Philosophy-Hinduism-Hindu.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hinduism Hindu Religion: Discussion Metaphysics Philosophy of HinduismBeliefs, Hindu Gods",
+        "url": "https://www.spaceandmotion.com/Philosophy-Hinduism-Hindu.htm"
+      },
+      {
+        "category": "general",
+        "content": "struck a deep cultural resonance. Many more examples of this nature are to be found in the hypnotically evoked case studies described in John Mack’s Abduction: Human Encounters Wi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.rudyrucker.com",
+          "/saucerwisdom/html/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Saucer Wisdom",
+        "url": "https://www.rudyrucker.com/saucerwisdom/html/"
+      },
+      {
+        "category": "general",
+        "content": "of a principle he calls resonance. “Through resonance,” he writes, “a particular statement in a particular context acquires a universal significance.” 1 Frye offers as an opening",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "quotes.pouyakary.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quote Anthology",
+        "url": "https://quotes.pouyakary.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "936bb934e5eb9234fb5e5f1bf95777ac076ad42f6122a2187d99c60b8c54b94d",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind bridge resonance in health science",
+  "query_id": "v5-p-0913-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:14.538866Z"
+}

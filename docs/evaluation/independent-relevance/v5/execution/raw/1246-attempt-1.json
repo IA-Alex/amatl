@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 311.778,
+  "pair_id": "v5-p-0444",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind supply chain logistics in geology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1a0943d3fcccd47f6b389913f31bcac2047cc8bf9942fc26c78bb45271da86ba",
+  "provider": "SearXNG",
+  "query": "describe the principle behind supply chain logistics in geology",
+  "query_id": "v5-p-0444-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:55.253485Z"
+}

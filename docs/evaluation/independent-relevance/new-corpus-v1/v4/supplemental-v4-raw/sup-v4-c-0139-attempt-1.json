@@ -1,0 +1,162 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 255.7612849996076,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of database indexes in earth science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Wiki(fr)    Overview People Teaching Projects Resources Intranet Tecfa-Quick Uni Gen?ve EduTech Tecfa Servers Gen.Pointers ToolBox Aibo | CSS | Design | DOM | Emacs | Em",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "tecfa.unige.ch",
+          "/edu-comp/WWW-VL/eduVR-page.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The WWW VL: Educational Technology - Educational VR (MUD) sub-page (05-Jan-2000)",
+        "url": "https://tecfa.unige.ch/edu-comp/WWW-VL/eduVR-page.html"
+      },
+      {
+        "category": "general",
+        "content": "Neck   Overview   Publications   Video Summary PHOTO-MORPH      FBI-COVER-UP     PARTY    SOURCES/METHODS",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unabombers.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Unabomber False flag Environmental Terrorism promoted depopulation.",
+        "url": "https://unabombers.com/"
+      },
+      {
+        "category": "general",
+        "content": "Chronology -- excellent overview with commentary, images, polls, etc. for the Silmarillion. Silmarillion Encyclopedia -- a very useful reference for readers of the Sil. Highly rec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lotrscrapbook.bookloaf.net",
+          "/links/links.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "LOTR Fanclub Links - Links listing for the Fellowship of Middle-earth",
+        "url": "http://lotrscrapbook.bookloaf.net/links/links.html"
+      },
+      {
+        "category": "general",
+        "content": "- BEAMbot overview, links and bestiary w/pics hackaday.com - Maker and hacker content eldritchdata.neocities.org - A neat (as in tidy) website about Linux and stuff sysinfo.io - L",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "basedsites.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "/g/&#39;s Based Sites",
+        "url": "https://basedsites.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "-- also provides a good overview of what you may find of interest on Transparency. First let me give you some quick facts about myself. My name is Ken Sanes and I live in the Metr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "transparencynow.com",
+          "/references.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "References",
+        "url": "https://transparencynow.com/references.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0139",
+  "query_text": "give an overview of database indexes in earth science",
+  "requested_at": "2026-09-03T01:44:48.970403Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

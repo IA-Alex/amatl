@@ -1,0 +1,241 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 1340.882,
+  "pair_id": "v5-p-0498",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of encryption keys in energy systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "Waters (Attribute-Based Encryption), Carl Gunter (Attribute-Based Messaging), and Chris Peikert (Lattice-Based Cryptography). In the early 2000s, DARPA funded thirteen projects un",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "* recipes for strong encryption * pornography and obscenity * recipes for making chemical, biological, and atomic weapons * recipes for making counterfeit money * personal informa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jetcafe.org",
+          "/~dave/usenet/freedom.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "An Alternative Primer on Free Speech",
+        "url": "https://www.jetcafe.org/~dave/usenet/freedom.html"
+      },
+      {
+        "category": "general",
+        "content": "it checks whether the encryption stuff is still valid and secure. According to the intertubes , SEC_ERROR_OCSP_FUTURE_RESPONSE” generally indicates that the computer’s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.electricmonk.nl",
+          "/log/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Electricmonk.nl weblog",
+        "url": "https://www.electricmonk.nl/log/"
+      },
+      {
+        "category": "general",
+        "content": "that need the extra encryption. 8/6/2025 Politics(?) Is It Even Possible To Avoid Consumerism I&#39;d like to think I avoid consumerism slightly more than the average person. I pirate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lakesnet.nekoweb.org",
+          "/blog-2025.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lakes&#39; Blog",
+        "url": "https://lakesnet.nekoweb.org/blog-2025.html"
+      },
+      {
+        "category": "general",
+        "content": "log-on and file encryption. Who needs flying cars? Lifeview LifeTV - A spiffy looking USB TV tuner for PC and Mac - but is it any good? Mini MP3 player comparison - Creative&#39;s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dansdata.com",
+          "/altindex.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dan&#39;s Data - Full Index",
+        "url": "http://www.dansdata.com/altindex.html"
+      },
+      {
+        "category": "general",
+        "content": "and dissemination of encryption (also known as cryptography, the science and art of secret writing). I originally hosted the mailing list (cypherpunks@toad.com) and provided space",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.toad.com",
+          "/gnu/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John Gilmore&#39;s home page",
+        "url": "http://www.toad.com/gnu/"
+      },
+      {
+        "category": "general",
+        "content": "to the plaintext before encryption to make the cryptanalysts job more difficult. So the question of whether or not we can revive a person who has been frozen can be transformed in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/cryptoCryo.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cryonics and Cryptography",
+        "url": "http://www.ralphmerkle.com/cryo/cryptoCryo.html"
+      },
+      {
+        "category": "general",
+        "content": "you don&#39;t really need encryption for a server you are running and accessing within your house. There is a lot of potential issues for this to not &#34;just work&#34; for you due to networ",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "chriskoehnke.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chris Koehnke&#39;s Webpage",
+        "url": "http://chriskoehnke.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "c9ff688cdb251f1019ece741b3d13f0fed7b33fbe9987baacd748741a4db4222",
+  "provider": "SearXNG",
+  "query": "tell me about the function of encryption keys in energy systems",
+  "query_id": "v5-p-0498-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:19.309522Z"
+}

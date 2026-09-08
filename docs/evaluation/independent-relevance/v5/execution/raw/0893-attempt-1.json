@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 303.441,
+  "pair_id": "v5-p-0165",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is immune response in pharmacology",
+    "results": [
+      {
+        "category": "general",
+        "content": "DD. Department of Pharmacology, University of New Mexico School of Medicine, Albuquerque 87131. A number of neurochemical and behavioral similarities exist between the genetically",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "raypeat.com",
+          "/articles/articles/hypothyroidism.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Preventing and treating cancer with progesterone.",
+        "url": "http://raypeat.com/articles/articles/hypothyroidism.shtml"
+      },
+      {
+        "category": "general",
+        "content": "with only present-day pharmacology to rely on. No less importantly, how is it possible to combine staying continuously &#34; better than well &#34; with retaining one&#39;s sense of social an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/gooddrug.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Good Drug Guide: The Responsible Parent&#39;s Guide To Healthy Mood-Boosters For All The Family",
+        "url": "https://www.hedweb.com/gooddrug.htm"
+      },
+      {
+        "category": "general",
+        "content": "FAQ MDMA: Utopian Pharmacology Depression and Antidepressants 2008: New antidepressant targets Antidepressants and new brain cells A neurotrophic model for stress-related mood dis",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biopsychiatry.com",
+          "/antidepressants/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Antidepressants 2006",
+        "url": "https://www.biopsychiatry.com/antidepressants/"
+      },
+      {
+        "category": "general",
+        "content": "5 Sexual pharmacology Viagra: clinical efficacy Semen as an antidepressant? Viagra leaves fake aphrodisiacs flagging PT-141 (bremelanotide): the first aphrodisiac HOME HedWeb Futu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biopsychiatry.com",
+          "/aphrodisiacs/viagra.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Viagra Revolution",
+        "url": "https://www.biopsychiatry.com/aphrodisiacs/viagra.html"
+      },
+      {
+        "category": "general",
+        "content": "﻿ UTOPIAN PHARMACOLOGY Mental Health in the Third Millennium MDMA and Beyond MDMA/Ecstasy A brief history of MDMA The MDMA Experience MDMA : neurotoxicity MDMA : neuroprotection Ec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/ecstasy/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utopian Pharmacology. MDMA / Ecstasy and beyond",
+        "url": "https://www.hedweb.com/ecstasy/"
+      },
+      {
+        "category": "general",
+        "content": "Sciences, and Pharmacology, Creighton University Health Sciences Center, Omaha, NE 68178, USA 2University of Nebraska Medical Center, Omaha, NE 68198, USA grape seed proanthocyani",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "soopergrape.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SooperGrape",
+        "url": "http://soopergrape.com/"
+      },
+      {
+        "category": "general",
+        "content": "BRITISH JOURNAL OF PHARMACOLOGY; Negre-Salvayre,A; 153(1):6-20 (2008) ]. 4−HNE inactivates glucose−6−phosphate dehydrogenase, an enzyme required for the formatio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "benbest.com",
+          "/lifeext/aging.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "MECHANISMS OF AGING",
+        "url": "https://benbest.com/lifeext/aging.html"
+      },
+      {
+        "category": "general",
+        "content": "the role of psychopharmacology (biopsychiatry.com) in the wider abolitionist project of ending suffering. What are the pros and cons of using drugs to eradicate mental and physica",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biopsychiatry.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mood-brighteners and antidepressants as conceived by ChatGPT",
+        "url": "https://www.biopsychiatry.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "Analysis of the Pharmacology of AZT and its Use in AIDS by Australian physicist Eleni Papadopulos-Eleopulos and her medical colleagues, published in June 1999 as a special supplem",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.tig.org.za",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Treatment Information Group",
+        "url": "http://www.tig.org.za/"
+      },
+      {
+        "category": "general",
+        "content": "IF Department of Pharmacology, School of Medicine, University of Basque Country, Leioa, Bizkaia, Spain. J Pharmacol Exp Ther 2000 May 1; 293(2):646-653 ABSTRACT T The pharmacokine",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.opioids.wiki",
+          "/tramadol/pharmkin.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Tramadol ( Ultram ) : pharmacokinetics and pharmacodynamics",
+        "url": "https://www.opioids.wiki/tramadol/pharmkin.html"
+      },
+      {
+        "category": "general",
+        "content": "FAQ MDMA: Utopian Pharmacology Depression and Antidepressants Are SSRI antidepressants little better than placebos?",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biopsychiatry.com",
+          "/antidepressants/placebo-effect.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Placebos and antidepressants",
+        "url": "https://www.biopsychiatry.com/antidepressants/placebo-effect.html"
+      },
+      {
+        "category": "general",
+        "content": "who wish to try psychopharmacology, should be able to do so - as effectively, safely and conveniently as possible [ 8 ]. As long as there is a realistic hope of significant subjec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/bgcharlton/fulfil.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Pharmacology and Personal Fulfillment",
+        "url": "https://www.hedweb.com/bgcharlton/fulfil.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "96309f2691aee64d45c3026568c08c6b62a50be6da2acf4242c60b46eb697bfb",
+  "provider": "SearXNG",
+  "query": "what is immune response in pharmacology",
+  "query_id": "v5-p-0165-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:58.121852Z"
+}

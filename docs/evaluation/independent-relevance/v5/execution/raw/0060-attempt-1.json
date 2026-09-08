@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 317.132,
+  "pair_id": "v5-p-1000",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind wastewater treatment in communication studies",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "01bbc610cfa5a25746c40762036ac39c175111e6fe94cf24242a292992c3b3c2",
+  "provider": "SearXNG",
+  "query": "describe the principle behind wastewater treatment in communication studies",
+  "query_id": "v5-p-1000-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:27.080275Z"
+}

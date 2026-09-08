@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 315.436,
+  "pair_id": "v5-p-0453",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind supply chain logistics in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2434b19e1b7e46dd5d1dbf8c2e672503b103f089893f0c71edcf0b12db26e472",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind supply chain logistics in pharmacology",
+  "query_id": "v5-p-0453-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:28.545607Z"
+}

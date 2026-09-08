@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 228.295,
+  "pair_id": "v5-p-0495",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of encryption keys in agricultural science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3d5c6ad70963158c6db2cc1f06bab4eaa3f08f572c7da5c80a379408cf84edcc",
+  "provider": "SearXNG",
+  "query": "give an overview of encryption keys in agricultural science",
+  "query_id": "v5-p-0495-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:51.758603Z"
+}

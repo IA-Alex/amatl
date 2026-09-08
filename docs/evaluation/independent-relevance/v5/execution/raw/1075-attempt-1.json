@@ -1,0 +1,327 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 321.825,
+  "pair_id": "v5-p-0058",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does compiler operation in physics work",
+    "results": [
+      {
+        "category": "general",
+        "content": "a bit 08:41.38 shifting operation because that&#39;s what&#39;s 08:42.82 faster on this processor. And then I call 08:44.87 malloc , and I get back what I want. Great. 08:46.91 Now, I wan",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jackrusher.com",
+          "/strange-loop-2022/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stop Writing Dead Programs, Strange Loop 2022",
+        "url": "https://jackrusher.com/strange-loop-2022/"
+      },
+      {
+        "category": "general",
+        "content": "1983 triple-bypass operation. (The revelation that AIDS was the cause of his death was not made until It&#39;s Been a Good Life was published in 2002). His body was cremated and his a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "asimovonline.com",
+          "/asimov_FAQ.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Isaac Asimov FAQ",
+        "url": "http://asimovonline.com/asimov_FAQ.html"
+      },
+      {
+        "category": "general",
+        "content": "needed for the current operation into memory. Other overlays are loaded from disk as they are needed, replacing the previous overlay, allowing the program to have complex function",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mrwint.github.io",
+          "/winter/writeup/writeup.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Uncovering the mechanics of The Games: Winter Challenge | winter",
+        "url": "https://mrwint.github.io/winter/writeup/writeup.html"
+      },
+      {
+        "category": "general",
+        "content": "2: Logical and Bitwise Operations. “Finite Field Arithmetic.” Chapter 3: Shifts. “Finite Field Arithmetic.” Chapter 4: Interlude: FFACalc. “Finite Field Arithmetic.” Chapter 5: &#34;E",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.loper-os.org",
+          "/",
+          "",
+          "p=1913",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Loper OS » &#34;Finite Field Arithmetic.&#34; Chapter 1: Genesis.",
+        "url": "http://www.loper-os.org/?p=1913"
+      },
+      {
+        "category": "general",
+        "content": "fill in one memory operation depended on how many bits per pixel you used. If you had 4 bits per pixel you could fill a maximum of 4 pixels per memory operation. Four bits per pix",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.jmargolin.com",
+          "/schem/schems.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hard Drivin&#39;/Race Drivin&#39; Schematics",
+        "url": "http://www.jmargolin.com/schem/schems.htm"
+      },
+      {
+        "category": "general",
+        "content": "2E/πh logical operations per second (a logical operation is, for example, performing the AND operation on two bits of input - think of it as single bit operations, roughly). Si",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/286233/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Kernel Hacker&#39;s Bookshelf: Ultimate Physical Limits of Computation [LWN.net]",
+        "url": "https://lwn.net/Articles/286233/"
+      },
+      {
+        "category": "general",
+        "content": "credit, they are a tiny operation attempting to take on quite a massive responsibility. IRC Reviews IRC Client List - An impressive although still not entirely comprehensive list",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "koshka.love",
+          "/links.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dock",
+        "url": "http://koshka.love/links.html"
+      },
+      {
+        "category": "general",
+        "content": "Deleting entries Operations Definition entries Conditions Loops Code entries Programs with memory Organization of disk Getting blocks Releasing blocks Reading and writing Text on",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colorforth.github.io",
+          "/POL.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://colorforth.github.io/POL.htm",
+        "url": "https://colorforth.github.io/POL.htm"
+      },
+      {
+        "category": "general",
+        "content": "disrupting a device&#39;s operations. The Ksplice software constructs rebootless kernel updates automatically based on traditional source code patches (e.g., patches taken directly fr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "for Electric Guitar Operation LADSPA Extensions Contact Download Install Recent Changes References the C* Audio Plugin Suite Version 0.9.26  ·  October 2018 CAPS",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "quitte.de",
+          "/dsp/caps.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CAPS - 0.9.26",
+        "url": "http://quitte.de/dsp/caps.html"
+      },
+      {
+        "category": "general",
+        "content": "successful Monrobot XI operations regarding payroll processing. Of course there were 90 stocks and bonds installations, 35 installations for fuel oil delivery companies and many o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ed-thelen.org",
+          "/comp-hist/stories.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stories",
+        "url": "https://www.ed-thelen.org/comp-hist/stories.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "862ecef8c8b1d4f018e80719d76f8e8a2caaee3619a04565d8dae4d6a32b7776",
+  "provider": "SearXNG",
+  "query": "how does compiler operation in physics work",
+  "query_id": "v5-p-0058-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:55.104120Z"
+}

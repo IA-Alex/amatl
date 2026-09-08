@@ -1,0 +1,354 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 431.999,
+  "pair_id": "v5-p-0662",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of traffic flow in information systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "eye eyes young younger information help helped run running, ran away question questions basis, base based bank, demand banks, demands book books power powers development developme",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "did you get all this information? Turgidson: General Ripper called Strategic Air Command headquarters shortly after he issued the go code. I have a partial transcript of that conv",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.huppi.com",
+          "/t/strangelove_script.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Kubrick Site: The Strangelove Continuity Script",
+        "url": "http://www.huppi.com/t/strangelove_script.html"
+      },
+      {
+        "category": "general",
+        "content": "planes in flight. The information is flashed electronically to the Direction Center, where the computer instantaneously makes the necessary calculations and displays its findings",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ed-thelen.org",
+          "/Sage-Talk.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://ed-thelen.org/Sage-Talk.html",
+        "url": "https://ed-thelen.org/Sage-Talk.html"
+      },
+      {
+        "category": "general",
+        "content": "jaws. And why not? The information-dense ecosystem of our internet could be a kind of primordial soup. The heat and light from our activities there could be a catalyst for virtual",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-gig-economy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Gig Economy — Chadnet",
+        "url": "https://wiki.chadnet.org/the-gig-economy"
+      },
+      {
+        "category": "general",
+        "content": "and thus the genetic information itself. Since the basic structure of DNA-alkaline pairs and of language (as explained earlier) are of the same structure, no DNA decoding is neces",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "for Improved Information Retrieval in Software Engineering Maria Christakis, Peter Müller, and Valentin Wüstholz: Guiding Dynamic Symbolic Execution toward Unverified Pr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sigsoft.org",
+          "/awards/distinguishedPaperAward.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGSOFT - ACM Special Interest Group on Software Engineering",
+        "url": "http://www.sigsoft.org/awards/distinguishedPaperAward.html"
+      },
+      {
+        "category": "general",
+        "content": "and date posted. This information alone, used correctly, can filter most unwanted trash for you if you select only those authors and subjects you are interested in. -Threading Som",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jetcafe.org",
+          "/~dave/usenet/freedom.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "An Alternative Primer on Free Speech",
+        "url": "https://www.jetcafe.org/~dave/usenet/freedom.html"
+      },
+      {
+        "category": "general",
+        "content": "[eyes] young [younger] information help [helped] run [running, ran] away question [questions] basis, base [based] bank, demand [banks, demands] book [books] power [powers] develop",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq-bnc.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.conlang.info/wordfreq-bnc.txt",
+        "url": "http://www.conlang.info/wordfreq-bnc.txt"
+      },
+      {
+        "category": "general",
+        "content": "a breadth of real-time information unavailable to the neural cartographers of a century ago. The latest research on brain-machine interfaces relies upon these new imaging technolo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wireheading.com",
+          "/brainstim/cyborgs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cyborgs, transhumans and neuroelectronics",
+        "url": "https://www.wireheading.com/brainstim/cyborgs.html"
+      },
+      {
+        "category": "general",
+        "content": "DIS INFORMATION NATION   THE MAINSTREAM CORPORATE MEDIA LEAD US AWAY FROM THE TRUTH.     &#34;WE&#39;LL KNOW OUR DISINFORMATION PROGRAM IS COMPLETE WHEN EVERYTHING THE",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "disinformationnation.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DISINFORMATION NATION - MAINSTREAM MEDIA, CORPORATE MEDIA, ESTABLISHMENT MEDIA, PROPAGANDA, DISINFORMATION, MEDIA MONOPOLY, GLOBAL ELITE, GLOB",
+        "url": "https://disinformationnation.net/"
+      },
+      {
+        "category": "general",
+        "content": "may be inaccurate. Your information, comments, corrections, etc. are eagerly requested. Send e-mail to Ed Thelen. Please include the URL under discussion. Thank you *** IBM SAGE M",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ed-thelen.org",
+          "/comp-hist/vs-ibm-sage.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "IBM SAGE",
+        "url": "https://ed-thelen.org/comp-hist/vs-ibm-sage.html"
+      },
+      {
+        "category": "general",
+        "content": "s Most Popular  GPS Information Resource &#34; Looking for GPS at a Discount ?       reviews FAQs geography tutorial instructions info PDA other   Links: gener",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "gpsinformation.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GPS Receiver Information, Software, and Hardware Reviews of Garmin, Lowrance, Magellan and other GPS Receivers",
+        "url": "http://gpsinformation.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "47dcc76c3a9865d43cf7ab486ef8cfaf67cfbf135ee9509bfa7418ad83d76519",
+  "provider": "SearXNG",
+  "query": "tell me about the function of traffic flow in information systems",
+  "query_id": "v5-p-0662-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:43.591720Z"
+}

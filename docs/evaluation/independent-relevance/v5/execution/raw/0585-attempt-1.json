@@ -1,0 +1,24 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 591.816,
+  "pair_id": "v5-p-0644",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does renewable energy storage in hydrology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "4873388fa6332b5a43bdf01b1ebdb265ec8e700e9276fd07e52baf892cd676ab",
+  "provider": "SearXNG",
+  "query": "how does renewable energy storage in hydrology operate",
+  "query_id": "v5-p-0644-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:16.263230Z"
+}

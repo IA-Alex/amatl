@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 218.786,
+  "pair_id": "v5-p-0235",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of plate tectonics in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "832a95b62665c1ab64148ceaca39d360673eaa5c714f7d7ebd5154ca39b5afea",
+  "provider": "SearXNG",
+  "query": "give an overview of plate tectonics in oceanography",
+  "query_id": "v5-p-0235-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:55.190036Z"
+}

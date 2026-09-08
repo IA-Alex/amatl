@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 253.373,
+  "pair_id": "v5-p-0367",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of solar eclipses in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "instead be a sign of management flaws. Monday, March 23, 2026 Zarya: the Super-Soyuz that only lived twice In the 1980s, the Soviet Union proposed a spacecraft that could be a suc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.thespacereview.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Space Review: essays and commentary about the final frontier",
+        "url": "https://www.thespacereview.com/"
+      },
+      {
+        "category": "general",
+        "content": "US Office of Personnel Management Harms 4M Federal Employees and Exposes Agency&#39;s Systemic Security Woes (2015), Security: Linux, OS X, Unix and Malware (Viruses) , Vulnerability",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "57282f0d0ec56986ca56aeb284c62a15d438e79dee68eccaf4c58efb58236d89",
+  "provider": "SearXNG",
+  "query": "give an overview of solar eclipses in data management",
+  "query_id": "v5-p-0367-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:16:33.013347Z"
+}

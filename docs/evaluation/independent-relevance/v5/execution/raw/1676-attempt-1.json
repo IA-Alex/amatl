@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 314.228,
+  "pair_id": "v5-p-0540",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind neural networks in transportation engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8dcd1c6e2e469077fb550f523f9acc363a10be76b98513613085d535cb12806f",
+  "provider": "SearXNG",
+  "query": "describe the principle behind neural networks in transportation engineering",
+  "query_id": "v5-p-0540-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:14:07.362499Z"
+}

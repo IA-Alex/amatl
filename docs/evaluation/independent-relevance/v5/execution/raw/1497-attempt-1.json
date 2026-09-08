@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 237.976,
+  "pair_id": "v5-p-0489",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is encryption keys in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7ebbbccda50ade16062111deaed7252e57aacdf5ece09296ec95ca81fa92224f",
+  "provider": "SearXNG",
+  "query": "what is encryption keys in pharmacology",
+  "query_id": "v5-p-0489-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:12.818294Z"
+}

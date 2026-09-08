@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 268.61,
+  "pair_id": "v5-p-0024",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does photosynthesis in robotics operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0e33cd649066e13836bca75158d34ffeadad9bde90c44c45b6aa17c1b5e4bbcc",
+  "provider": "SearXNG",
+  "query": "how does photosynthesis in robotics operate",
+  "query_id": "v5-p-0024-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:32.144562Z"
+}

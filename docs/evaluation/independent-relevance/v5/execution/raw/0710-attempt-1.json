@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 497.888,
+  "pair_id": "v5-p-0458",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of supply chain logistics in urban planning",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "00184f38ebddec63b7195f904e98d463288e82340a5705aeee8bde9a5b61800b",
+  "provider": "SearXNG",
+  "query": "tell me about the function of supply chain logistics in urban planning",
+  "query_id": "v5-p-0458-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:00.323885Z"
+}

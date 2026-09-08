@@ -1,0 +1,279 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 3694,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 358.083,
+  "pair_id": "candidate-p-1626",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about low power computing within structural engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "do complex science or engineering then you need a human on the ground&#34; well yeah, right now you do. But 20 years from now? Then I&#39;d put even money on those people being wrong. It&#39;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "of creative and careful engineering, not the limits of the human body. The manned land speed record set on the Big Run would stand until October 1983, when Richard Noble&#39;s jet pow",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason",
+        "url": "https://www.fourmilab.ch/fourmilog/"
+      },
+      {
+        "category": "general",
+        "content": "on the Software Engineering Radio Podcast Software Engineering Radio is a podcast for people in IT/development with over 700 episodes across many topics over 20 years. They haven&#39;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "planet.kernel.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kernel Planet",
+        "url": "https://planet.kernel.org/"
+      },
+      {
+        "category": "general",
+        "content": "access to science and engineering has historically been blocked by prejudice and discrimination. Here we address sources of exclusion determined not by rules that keep women out,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "papert.org",
+          "/articles/EpistemologicalPluralism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Epistemological Pluralism and the Revaluation of the Concrete",
+        "url": "http://papert.org/articles/EpistemologicalPluralism.html"
+      },
+      {
+        "category": "general",
+        "content": "among the software engineering cognoscenti. However, what we mean here is not only that you should adopt an object-oriented approach, but that the basic objects from which you bui",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fudco.com",
+          "/chip/lessons.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Lessons of Lucasfilm&#39;s Habitat",
+        "url": "http://www.fudco.com/chip/lessons.html"
+      },
+      {
+        "category": "general",
+        "content": "in many branches of engineering. Structural, hydraulic, electrical power and radio engineering have each of them their special problems which call for solution, and in each subjec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stephen.shawweb.co.uk",
+          "/radio02.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Early broadcast radio stations",
+        "url": "http://stephen.shawweb.co.uk/radio02.html"
+      },
+      {
+        "category": "general",
+        "content": "fell apart under real engineering conditions. I fell directly into the worst habits of an AI assistant: The “Whack-A-Mole” Loop: I repeatedly treated symptoms rather than looking",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "disguised.work",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Debian Disguised Work",
+        "url": "http://disguised.work/"
+      },
+      {
+        "category": "general",
+        "content": "The second time it&#39;s engineering. Third time it&#39;s just being a technician. —Clifford Stoll It is interesting that the industry has invented new ways to lose money when the o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "senseantisense.com",
+          "/quotes/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SenseAntisense - Quotes",
+        "url": "https://senseantisense.com/quotes/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a145bd718fd9448fddf3020182fdefa81b8dac38453ac0ba21064e844f438bb0",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about low power computing within structural engineering",
+  "query_id": "candidate-c-1626",
+  "raw_result_count": 8,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html",
+      "original_url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "do complex science or engineering then you need a human on the ground&#34; well yeah, right now you do. But 20 years from now? Then I&#39;d put even money on those people being wrong. It&#39;",
+      "title": "Reasoning about the Manned Space Program"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.fourmilab.ch/fourmilog/",
+      "original_url": "https://www.fourmilab.ch/fourmilog/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "of creative and careful engineering, not the limits of the human body. The manned land speed record set on the Big Run would stand until October 1983, when Richard Noble&#39;s jet pow",
+      "title": "Fourmilog: None Dare Call It Reason"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://planet.kernel.org/",
+      "original_url": "https://planet.kernel.org/",
+      "rank": 3,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "on the Software Engineering Radio Podcast Software Engineering Radio is a podcast for people in IT/development with over 700 episodes across many topics over 20 years. They haven&#39;",
+      "title": "Kernel Planet"
+    }
+  ],
+  "timestamp": "2026-09-05T17:40:01.074419Z"
+}

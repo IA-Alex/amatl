@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 273.474839006667,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of acid base reactions in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "(also called molecular engineering, molecular manufacturing, molecular nanotechnology , etc.). There is widespread belief that such a capability will eventually be developed [1, 2",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "and Germ-Line Engineering : Utopia or Nemesis? Introduction: The Comprehensive Tree Linked in figure 1 is a high-resolution image of the evolutionary tree of life, from viruses th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/unraveltree/unravel.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Unraveling the Tree of Life",
+        "url": "http://www.dhushara.com/book/unraveltree/unravel.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0043",
+  "query_text": "give an overview of acid base reactions in software engineering",
+  "requested_at": "2026-09-03T01:43:32.908164Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

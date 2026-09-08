@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 326.32769199699396,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind routing tables in operating systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "ASLR, and W^X principles are now in common use by mainline operating systems... because things like Firefox and PostgreSQL don&#39;t break anymore. OpenBSD built that route. In the sa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.openbsd.org",
+          "/lyrics.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OpenBSD: Release Songs",
+        "url": "http://www.openbsd.org/lyrics.html"
+      },
+      {
+        "category": "general",
+        "content": "has become the guiding principle of the company. I&#39;m glad they&#39;re doing it, because early adopters bring all sorts of goodies (such as the imminent rise of touchscreens on laptops",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "galexander.org",
+          "/laptops/mac/impressions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "My impressions",
+        "url": "http://galexander.org/laptops/mac/impressions.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0016",
+  "query_text": "describe the principle behind routing tables in operating systems",
+  "requested_at": "2026-09-03T01:42:58.506284Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

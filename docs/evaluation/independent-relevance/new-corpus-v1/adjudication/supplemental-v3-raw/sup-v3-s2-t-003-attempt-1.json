@@ -1,0 +1,319 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 638.8637909985846,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is a mutex",
+    "results": [
+      {
+        "category": "general",
+        "content": "0.126 45.761 0.142 Mutex lock/unlock 0.042 0.055 0.785 0.046 UTF-8 decode buffered 0.073 0.140 0.257 0.351 UTF-8 decode byte-by-byte 0.153 0.395 0.236 0.563 Stdio putc/getc 0.270",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.etalabs.net",
+          "/compare_libcs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Comparison of C/POSIX standard library implementations for Linux",
+        "url": "https://www.etalabs.net/compare_libcs.html"
+      },
+      {
+        "category": "general",
+        "content": "scoping, to provide mutex scoping - via a local mutex, most interesting. Caolan&#39;s a great help. Poked at xmon, discovered that many of my previous problems were caused by using DI",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2002/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2002/"
+      },
+      {
+        "category": "general",
+        "content": "Synchronization    13.1 Mutex    13.2 Spinlocks    13.3 Read and write locks    13.4 Atomic operations    13.5 Read-Copy-Update (RCU)   14 Replacing Print Macros    14.1 Replaceme",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sysprog21.github.io",
+          "/lkmpg/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Linux Kernel Module Programming Guide",
+        "url": "https://sysprog21.github.io/lkmpg/"
+      },
+      {
+        "category": "general",
+        "content": "concurrency than mutex locks but have greater overhead. One lock for each object may be required, or one lock for all (or a set of) objects may be more appropriate. Generally, the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "raf.org",
+          "/papers/mt-disciplined.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "MT-Disciplined - decoupling thread safety",
+        "url": "https://raf.org/papers/mt-disciplined.html"
+      },
+      {
+        "category": "general",
+        "content": "Switch SDK 3.0, added mutex protection around audio calls. Changes from 2.6g/1.200g to 2.6h/1.200h (4-5-2017) Fixed a couple rare deadlock problems with the Unity PS4 plugin. Upda",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.radgametools.com",
+          "/bnkhist.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bink Development History",
+        "url": "https://www.radgametools.com/bnkhist.htm"
+      },
+      {
+        "category": "general",
+        "content": "05:43 1.3K   Mutex.html 2024-09-17 05:43 1.2K   NDBM-interface.html 2024-09-17 05:43 8.8K   Names-and-namespaces.html 2024-09-17 05:43 1.3K   Naming-convention",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "practical-scheme.net",
+          "/gauche/man/gauche-refe-draft/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of /gauche/man/gauche-refe-draft",
+        "url": "http://practical-scheme.net/gauche/man/gauche-refe-draft/"
+      },
+      {
+        "category": "general",
+        "content": "Object Scan, Memory Mutex Scan, Registry &amp; File Trace Scan, &amp; CRC32 System Files Test (see this screenshot for exact configuration). Results: File Unpacked ASPack Packed (",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.spywarewarrior.com",
+          "/uiuc/trojans/tr-tests.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Resources: Informal Trojan Detection Test # 1",
+        "url": "http://www.spywarewarrior.com/uiuc/trojans/tr-tests.htm"
+      },
+      {
+        "category": "general",
+        "content": "char *name; struct mutex buf_mutex; /* serialize access to &#39;buf&#39; */ char *buf; size_t bufsize; size_t (*read)(u64 *id, enum pstore_type_id *type, struct timespec *time); u64 (*wri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/434821/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Persistent storage for a kernel&#39;s &#34;dying breath&#34; [LWN.net]",
+        "url": "https://lwn.net/Articles/434821/"
+      },
+      {
+        "category": "general",
+        "content": "I made such a &#34;TestRTMutex&#34; to code on the rt-mutex. It worked really well. I could do at least some SMP coding without having actual SMP hardware. Unfortunately, it isn&#39;t maintai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/209257/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Injecting faults into the kernel [LWN.net]",
+        "url": "https://lwn.net/Articles/209257/"
+      },
+      {
+        "category": "general",
+        "content": "condition in robust mutex unlocking Bug 14749 - Dangerous race condition with vfork in posix_spawn Bug 14830 - Race conditions with signals and thread priority scheduling Bug 1536",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ewontfix.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "EWONTFIX",
+        "url": "https://ewontfix.com/"
+      },
+      {
+        "category": "general",
+        "content": "all clean and use std::mutex and std::condition_variable instead - except - that works beautifully on all platforms except windows. Dug into it - and found this horror: punch line",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2016/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2016/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-t-003",
+  "query_text": "what is a mutex",
+  "requested_at": "2026-09-02T22:58:49.655693Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

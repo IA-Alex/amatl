@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 260.523,
+  "pair_id": "v5-p-0872",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does vaccination in ecology operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "Lockdown until Vaccination (May 2024) Here are extracts from the beginning of this article which reveals what has been obscure since March 2020: Four years later, many people",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "serendipity.li",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Serendipity",
+        "url": "https://serendipity.li/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1d877f1fb5cf65d58c2e32eb3dad16be6c7a18011b3c4dcdbe957acc780a448e",
+  "provider": "SearXNG",
+  "query": "how does vaccination in ecology operate",
+  "query_id": "v5-p-0872-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:15:56.941595Z"
+}

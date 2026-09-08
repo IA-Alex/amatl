@@ -1,0 +1,346 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 968.4570789977442,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is a public key",
+    "results": [
+      {
+        "category": "general",
+        "content": "to Main Content For the Public About Gambling What Is Gambling? Gambling Facts Gambling Dictionary Gambling FAQs Gambling Myths The Science Behind Gambling Safer Play What Is Safe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "responsiblegambling.org",
+          "/for-the-public/problem-gambling-prevention/programs-for-young-adults/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Programs for Young Adults | Problem Gambling Prevention | For the Public | Responsible Gambling Council",
+        "url": "https://responsiblegambling.org/for-the-public/problem-gambling-prevention/programs-for-young-adults/"
+      },
+      {
+        "category": "general",
+        "content": "project part 2: towards public key authentication without central authority using names made of pseudowords by Stephen Hewitt | Published 3 August 2021 Background This is the seco",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cambridgeclarion.org",
+          "/31.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lepron project part 2: towards public key authentication without central authority using names made of pseudowords",
+        "url": "http://www.cambridgeclarion.org/31.html"
+      },
+      {
+        "category": "general",
+        "content": "issue sidetracks the public from focusing on human population growth , by Brenda Walker Immigration Restriction: A Positive Agenda , by John Vinson Financing Our Own Dispossession",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.thesocialcontract.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Social Contract Press - a quarterly journal on population environment public issues international migration immigration language and assim",
+        "url": "http://www.thesocialcontract.com/"
+      },
+      {
+        "category": "general",
+        "content": "W3C home Mailing lists Public public-apa@w3.org May 2019 AW: Agenda: APA WEEKLY Teleconference; Wednesday 1 May at 1600Z This message : Message body Respond More options Related m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lists.w3.org",
+          "/Archives/Public/public-apa/2019May/0001.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AW: Agenda: APA WEEKLY Teleconference; Wednesday 1 May at 1600Z from Gottfried Zimmermann \\(Lists\\) on 2019-05-01 (public-apa@w3.org from May",
+        "url": "https://lists.w3.org/Archives/Public/public-apa/2019May/0001.html"
+      },
+      {
+        "category": "general",
+        "content": "time.txryan.com Public NTP and Roughtime server. Precise synchronization with NTP and cryptographically signed time with Roughtime. Synchronization Stratum Two Protocols NTP · Rou",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "time.txryan.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Public NTP and Roughtime Server | time.txryan.com",
+        "url": "https://time.txryan.com/"
+      },
+      {
+        "category": "general",
+        "content": "W3C home Mailing lists Public public-apa@w3.org May 2019 Re: Agenda: APA WEEKLY Teleconference; Wednesday 8 May at 1600Z This message : Message body Respond More options Related m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lists.w3.org",
+          "/Archives/Public/public-apa/2019May/0013.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Re: Agenda: APA WEEKLY Teleconference; Wednesday 8 May at 1600Z from Joshue O Connor on 2019-05-08 (public-apa@w3.org from May 2019)",
+        "url": "https://lists.w3.org/Archives/Public/public-apa/2019May/0013.html"
+      },
+      {
+        "category": "general",
+        "content": "design Authenticating a public key from just a name - a feasibility study with GPL code by Stephen Hewitt | Published 15 March 2024 | Last updated 18 March 2024 This article prese",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cambridgeclarion.org",
+          "/89.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Authenticating a public key from just a name - a feasibility study with GPL code",
+        "url": "http://www.cambridgeclarion.org/89.html"
+      },
+      {
+        "category": "general",
+        "content": "this page, I collect my public/media appearances of any kind. I do have a separate press information page with my bio in German and English, summary of my academic work and photog",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "karl-voit.at",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "public voit - Homepage of Karl Voit",
+        "url": "https://karl-voit.at/"
+      },
+      {
+        "category": "general",
+        "content": "to Main Content For the Public About Gambling What Is Gambling? Gambling Facts Gambling Dictionary Gambling FAQs Gambling Myths The Science Behind Gambling Safer Play What Is Safe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "responsiblegambling.org",
+          "/for-the-public/problem-gambling-prevention/plan-before-you-play/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Plan Before You Play | Problem Gambling Prevention | For the Public | Responsible Gambling Council",
+        "url": "https://responsiblegambling.org/for-the-public/problem-gambling-prevention/plan-before-you-play/"
+      },
+      {
+        "category": "general",
+        "content": "W3C home Mailing lists Public public-socialweb@w3.org July 2015 Re: A webmention endpoint implementation This message : Message body Respond More options Related messages : Next m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lists.w3.org",
+          "/Archives/Public/public-socialweb/2015Jul/0093.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Re: A webmention endpoint implementation from Melvin Carvalho on 2015-07-30 (public-socialweb@w3.org from July 2015)",
+        "url": "https://lists.w3.org/Archives/Public/public-socialweb/2015Jul/0093.html"
+      },
+      {
+        "category": "general",
+        "content": "PUBLIC COMPANY ACCOUNTING REFORM AND INVESTOR PROTECTION ACT OF 2002 __________ R E P O R T OF THE COMMITTEE ON BANKING, HOUSING, AND URBAN AFFAIRS UNITED STATES SENATE to accompa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.govinfo.gov",
+          "/content/pkg/CRPT-107srpt205/html/CRPT-107srpt205.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Senate Report 107-205 - PUBLIC COMPANY ACCOUNTING REFORM AND INVESTOR PROTECTION ACT OF 2002",
+        "url": "https://www.govinfo.gov/content/pkg/CRPT-107srpt205/html/CRPT-107srpt205.htm"
+      },
+      {
+        "category": "general",
+        "content": "will not be deceived by public school evolution &#34;science&#34;. I hope you are teaching your children and grandchildren what the Bible says about Creation so they to can corr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.finetuneduniverse.com",
+          "/battleforminds.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Battle For Minds Of Children In Public Schools",
+        "url": "http://www.finetuneduniverse.com/battleforminds.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-t-004",
+  "query_text": "what is a public key",
+  "requested_at": "2026-09-02T22:58:50.624783Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

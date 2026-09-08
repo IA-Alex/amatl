@@ -1,0 +1,73 @@
+[package]
+name = "amatl-embedding-relevance-experiment"
+version = "0.0.0"
+edition = "2021"
+publish = false
+license = "MIT OR Apache-2.0"
+description = "STEP 4A: local embedding relevance feasibility experiment (NOT production code)"
+
+# This crate is intentionally OUTSIDE the amatl workspace (see root Cargo.toml
+# `exclude`). It carries heavy ML dependencies and a model download at
+# development time only. Nothing here is wired into amatl-core relevance.
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+
+[dependencies.fastembed]
+version = "6"
+default-features = false
+# `ort-download-binaries` fetches a prebuilt ONNX Runtime at build time (dev
+# machine only). `hf-hub` pulls the model once into the HF cache.
+features = ["ort-download-binaries", "hf-hub"]
+
+# STEP 4B — Candle (pure-Rust) backend. No C++ runtime; the CPU backend is
+# plain Rust + a small amount of `gemm`/`memchr` etc. (also pure Rust).
+# `candle-transformers` gives BERT; `tokenizers` (onig-free build) the
+# WordPiece tokenizer; `hf-hub` a one-time dev-machine model download.
+[dependencies.candle-core]
+version = "0.9"
+default-features = false
+
+[dependencies.candle-nn]
+version = "0.9"
+default-features = false
+
+[dependencies.candle-transformers]
+version = "0.9"
+default-features = false
+
+# Pure-Rust build: the default `onig` feature pulls a C oniguruma
+# (`onig_sys`), which breaks the musl cross-build. `unstable_wasm` selects the
+# pure-Rust `fancy-regex` backend and no C code. bge-small's WordPiece
+# tokenizer does not need PCRE features.
+[dependencies.tokenizers]
+version = "0.20"
+default-features = false
+features = ["unstable_wasm"]
+
+[dev-dependencies]
+
+[[bin]]
+name = "bench"
+path = "src/bin/bench.rs"
+
+[[bin]]
+name = "diagnostic"
+path = "src/bin/diagnostic.rs"
+
+[[bin]]
+name = "candle_bench"
+path = "src/bin/candle_bench.rs"
+
+[[bin]]
+name = "agreement"
+path = "src/bin/agreement.rs"
+
+[[bin]]
+name = "candle_diagnostic"
+path = "src/bin/candle_diagnostic.rs"
+
+[profile.release]
+debug = false

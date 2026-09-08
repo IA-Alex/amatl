@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 367.5,
+  "pair_id": "v5-p-0769",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind coastal flooding in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "heavy rains fall, and flooding begins. (6) Many people plants and animals perish. (7) Some survive to build and repopulate the world.&#34; (p. 154) Cataclysm! makes the most compellin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meditopia.org",
+          "/chap5.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Meditopia -- Chapter 5",
+        "url": "https://meditopia.org/chap5.htm"
+      },
+      {
+        "category": "general",
+        "content": "the arrangement kept flooding my mask. We did a 2-minute stop at 10 meters and a 3-minute stop at 5 meters and then ascended. I went back on my own tank to pull myself back to the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "philip.greenspun.com",
+          "/health/decompression-illness",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Decompression Illness (The Bends)",
+        "url": "http://philip.greenspun.com/health/decompression-illness"
+      },
+      {
+        "category": "general",
+        "content": "Service (River Flooding) , New England Radar Loop , Northeast Radar Loop , NWS Northeast Snow Info , Northeast Lightning Loop , Northeast Foliage Report , Eastern Mass. Storm Watc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "which has led to more flooding and more mosquitoes. Virtually everyone in the West African interior has some form of malaria. Sierra Leone is a microcosm of what is occurring, alb",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0e59537a3cf606440087a5f46153ccf4d8015fa2f668f12a8c914794821862b2",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind coastal flooding in health science",
+  "query_id": "v5-p-0769-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:45.842210Z"
+}

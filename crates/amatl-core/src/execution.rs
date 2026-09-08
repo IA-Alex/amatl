@@ -1,8 +1,10 @@
 use crate::budget::{Budget, BudgetSnapshot};
 use crate::canonical::canonicalize;
 use crate::classify::classify;
+use crate::complementarity::compute_complementarity_metrics;
 use crate::dedupe::deduplicate;
 use crate::diversity::{diversify, DiversityMetrics, DiversityPolicyV1};
+use crate::model::DeduplicatedResult;
 use crate::model::{
     Classification, CompositeError, ProviderError, ProviderErrorKind, ProviderExecutionStatus,
     ProviderResult, Query, SearchPlan, SearchResponse, SearchStatus, SCHEMA_VERSION,
@@ -11,13 +13,14 @@ use crate::normalize::normalize;
 use crate::planning::build_search_plan;
 use crate::progressive::{
     evaluate_coverage, observed_marginal_gain, CoverageMetrics, ProgressiveRoundTrace,
-    SearchPolicyV1, SearchStopReason,
+    RoundComplementarity, SearchPolicyV1, SearchStopReason,
 };
 use crate::providers::ProviderAvailability;
 use crate::providers::{Provider, ProviderContext};
 use crate::ranking::{rank, RankingPolicyV1};
 use crate::router::{
-    AdaptiveRouter, AdaptiveRoutingRecommendation, ProviderDescriptor, RoutingRecommendation,
+    AdaptiveRouter, AdaptiveRoutingRecommendation, ProviderDescriptor, RoleAssignment,
+    RoutingRecommendation,
 };
 use crate::telemetry::{now_unix, InMemoryTelemetry, ProviderTelemetryInput, TelemetryObservation};
 use std::collections::{BTreeMap, BTreeSet};
@@ -26,6 +29,7 @@ use std::sync::Arc;
 use std::time::{Duration, Instant, SystemTime, UNIX_EPOCH};
 use tokio::sync::Semaphore;
 use tokio::task::JoinSet;
+use tracing::Instrument;
 
 static JITTER_COUNTER: AtomicU64 = AtomicU64::new(0);
 
@@ -51,9 +55,11 @@ pub struct SearchOrchestrator {
     ranking_policy: RankingPolicyV1,
     diversity_policy: DiversityPolicyV1,
     search_policy: SearchPolicyV1,
+    role_assignment: RoleAssignment,
     telemetry: InMemoryTelemetry,
     routing_trace: Vec<ProgressiveRoundTrace>,
     last_plan: Option<SearchPlan>,
+    request_id: Option<String>,
 }
 
 impl SearchOrchestrator {
@@ -68,9 +74,11 @@ impl SearchOrchestrator {
             ranking_policy: RankingPolicyV1::default(),
             diversity_policy: DiversityPolicyV1::default(),
             search_policy: SearchPolicyV1::default(),
+            role_assignment: RoleAssignment::legacy(),
             telemetry: InMemoryTelemetry::new(),
             routing_trace: vec![],
             last_plan: None,
+            request_id: None,
         }
     }
 
@@ -88,8 +96,20 @@ impl SearchOrchestrator {
         self
     }
 
+    /// Set the primary/expansion role assignment (STEP 1). The default is
+    /// [`RoleAssignment::legacy`], which keeps the pre-role routing behavior.
+    pub fn with_role_assignment(mut self, roles: RoleAssignment) -> Self {
+        self.role_assignment = roles;
+        self
+    }
+
     pub fn with_telemetry(mut self, telemetry: InMemoryTelemetry) -> Self {
         self.telemetry = telemetry;
+        self
+    }
+
+    pub fn with_request_id(mut self, request_id: Option<String>) -> Self {
+        self.request_id = request_id;
         self
     }
 
@@ -153,12 +173,13 @@ impl SearchOrchestrator {
                 available: matches!(provider.availability(), ProviderAvailability::Available),
             })
             .collect::<Vec<_>>();
-        AdaptiveRouter.recommend(
+        AdaptiveRouter.recommend_with_roles(
             query,
             classification,
             &descriptors,
             &self.telemetry,
             &self.search_policy,
+            &self.role_assignment,
             now_unix(),
         )
     }
@@ -184,6 +205,22 @@ impl SearchOrchestrator {
             .collect::<Vec<_>>();
         let classification = classify(&query);
         let adaptive = self.adaptive_recommendation(&query, &classification, &providers);
+        // STEP 1E: the role model is active but the configured PRIMARY
+        // provider is not eligible this run. Expansion providers may still
+        // run so the search is not dead, but the outcome is not a complete
+        // PRIMARY search — record it as a degradation so callers (and STEP 2)
+        // can tell the two apart. The routing trace carries the same fact in
+        // `primary_available`.
+        if self.role_assignment.active && adaptive.primary_provider.is_none() {
+            availability_degradations.push(crate::Degradation {
+                code: "primary_provider_unavailable".into(),
+                component: "routing".into(),
+                message: format!(
+                    "configured primary provider '{}' was not eligible; search ran on expansion providers only",
+                    self.role_assignment.primary_provider
+                ),
+            });
+        }
         let mut next_selected = adaptive.first_round_providers.clone();
         let mut attempted = BTreeSet::new();
         let mut accumulated = empty_parallel_output(self.budget.snapshot());
@@ -291,13 +328,28 @@ impl SearchOrchestrator {
             };
 
             let stop_reason = stop_or_next.as_ref().err().cloned();
+            // STEP 2: complementarity of everything accumulated through this
+            // round, from the confirmed dedupe provenance. `None` in legacy
+            // mode. Structural only.
+            let round_complementarity =
+                compute_complementarity_metrics(&current_pipeline.deduped, &self.role_assignment)
+                    .map(|m| RoundComplementarity {
+                        found_primary: m.found_primary,
+                        found_expansion: m.found_expansion,
+                        overlap_confirmed: m.overlap_confirmed,
+                        unique_primary: m.unique_primary,
+                        unique_expansion: m.unique_expansion,
+                        expansion_new_domains: m.expansion_new_domains,
+                    });
             let trace = round_trace(
                 round,
                 considered,
                 selected,
                 &coverage,
                 &adaptive,
+                self.role_assignment.active,
                 observed_gain,
+                round_complementarity,
                 stop_reason.clone(),
                 debug_reasons,
             );
@@ -332,6 +384,25 @@ impl SearchOrchestrator {
             }
         };
 
+        // STEP 2: final complementarity for the response, from the confirmed
+        // dedupe provenance of the last accumulated pipeline. `None` in legacy
+        // mode. Never feeds routing.
+        let complementarity =
+            compute_complementarity_metrics(&current_pipeline.deduped, &self.role_assignment).map(
+                |mut metrics| {
+                    // STEP 2E: deterministic relevance signal. Additive, local, never
+                    // feeds routing. Round traces stay structural-only; the relevance
+                    // layer appears once, on the final response.
+                    crate::relevance::enrich_relevance_metrics(
+                        &query,
+                        &current_pipeline.deduped,
+                        &self.role_assignment,
+                        &crate::relevance::RelevanceThresholds::default(),
+                        &mut metrics,
+                    );
+                    metrics
+                },
+            );
         let results = current_pipeline.results;
         let mut degradations = current_pipeline.degradations;
         degradations.append(&mut availability_degradations);
@@ -362,11 +433,11 @@ impl SearchOrchestrator {
             .iter()
             .map(composite_error)
             .collect::<Vec<_>>();
-        let no_usable_results = results.is_empty()
-            && (attempted.is_empty()
-                || accumulated.providers_failed.len() == attempted.len()
-                || !accumulated.providers_partial.is_empty()
-                || !degradations.is_empty());
+        // Search success is evidence of at least one consumable AMATL result,
+        // not merely a transport-level provider response. A successful empty
+        // provider alongside a failed peer used to leak through as `success`
+        // with an empty result set because neither condition below was true.
+        let no_usable_results = results.is_empty();
         if results.is_empty() && attempted.is_empty() {
             errors.push(CompositeError {
                 code: "no_available_provider".into(),
@@ -404,6 +475,10 @@ impl SearchOrchestrator {
             errors,
             degradations,
             elapsed_ms: started.elapsed().as_millis() as u64,
+            total_results: None,
+            page: None,
+            page_size: None,
+            complementarity,
         }
     }
 
@@ -443,89 +518,118 @@ impl SearchOrchestrator {
             let provider_semaphore = provider_semaphores[provider_name].clone();
             let max_retries = self.max_retries;
             let retry_jitter_ms = self.retry_jitter_ms;
-            tasks.spawn(async move {
-                let provider_started = Instant::now();
-                let hard_deadline = tokio::time::Instant::now()
-                    + Duration::from_millis(plan.global_budget.deadline_ms);
-                let permits = tokio::time::timeout_at(hard_deadline, async {
-                    let global = global_semaphore.acquire_owned().await.map_err(|_| ())?;
-                    let provider = provider_semaphore.acquire_owned().await.map_err(|_| ())?;
-                    Ok::<_, ()>((global, provider))
-                })
-                .await;
-                let _permits = match permits {
-                    Ok(Ok(permits)) => permits,
-                    _ => {
-                        return (
-                            name.clone(),
-                            Err(ProviderError {
+            let request_id = self.request_id.clone();
+            let provider_span = tracing::info_span!(
+                target: "amatl::providers",
+                "provider_call",
+                request_id = request_id.as_deref().unwrap_or("-"),
+                provider = %name,
+                timeout_ms
+            );
+            tasks.spawn(
+                async move {
+                    let provider_started = Instant::now();
+                    let hard_deadline = tokio::time::Instant::now()
+                        + Duration::from_millis(plan.global_budget.deadline_ms);
+                    let permits = tokio::time::timeout_at(hard_deadline, async {
+                        let global = global_semaphore.acquire_owned().await.map_err(|_| ())?;
+                        let provider = provider_semaphore.acquire_owned().await.map_err(|_| ())?;
+                        Ok::<_, ()>((global, provider))
+                    })
+                    .await;
+                    let _permits = match permits {
+                        Ok(Ok(permits)) => permits,
+                        _ => {
+                            return (
+                                name.clone(),
+                                Err(ProviderError {
+                                    schema_version: SCHEMA_VERSION.into(),
+                                    provider: name,
+                                    kind: ProviderErrorKind::Timeout,
+                                    message: "provider concurrency deadline exceeded".into(),
+                                    retry_after_ms: None,
+                                }),
+                                provider_started.elapsed().as_millis() as u64,
+                                category,
+                                estimated_cost,
+                            )
+                        }
+                    };
+                    let mut attempt = 0_u32;
+                    loop {
+                        let remaining =
+                            hard_deadline.saturating_duration_since(tokio::time::Instant::now());
+                        let attempt_timeout = Duration::from_millis(timeout_ms).min(remaining);
+                        let result = if attempt_timeout.is_zero() {
+                            Err(())
+                        } else {
+                            tokio::time::timeout(
+                                attempt_timeout,
+                                provider.search(
+                                    &plan,
+                                    &ProviderContext {
+                                        timeout_ms,
+                                        request_id: request_id.clone(),
+                                    },
+                                ),
+                            )
+                            .await
+                            .map_err(|_| ())
+                        };
+                        tracing::debug!(
+                            target: "amatl::providers",
+                            attempt,
+                            outcome = match &result {
+                                Ok(Ok(_)) => "ok",
+                                Ok(Err(_)) => "provider_error",
+                                Err(()) => "timeout",
+                            },
+                            latency_ms = provider_started.elapsed().as_millis() as u64,
+                            "provider call finished"
+                        );
+                        let provider_result = match result {
+                            Ok(result) => result,
+                            Err(()) => Err(ProviderError {
                                 schema_version: SCHEMA_VERSION.into(),
-                                provider: name,
+                                provider: name.clone(),
                                 kind: ProviderErrorKind::Timeout,
-                                message: "provider concurrency deadline exceeded".into(),
+                                message: "provider deadline exceeded".into(),
                                 retry_after_ms: None,
                             }),
-                            provider_started.elapsed().as_millis() as u64,
-                            category,
-                            estimated_cost,
-                        )
+                        };
+                        let retry_delay_ms = provider_result.as_ref().err().and_then(|error| {
+                            is_recoverable(&error.kind)
+                                .then_some(error.retry_after_ms.unwrap_or(50))
+                        });
+                        if attempt >= max_retries || retry_delay_ms.is_none() {
+                            break (
+                                name,
+                                provider_result,
+                                provider_started.elapsed().as_millis() as u64,
+                                category,
+                                estimated_cost,
+                            );
+                        }
+                        attempt += 1;
+                        let exponential = retry_delay_ms
+                            .unwrap_or(50)
+                            .saturating_mul(1_u64 << attempt.saturating_sub(1));
+                        let jitter_ms = retry_jitter(&name, attempt, retry_jitter_ms);
+                        let backoff = Duration::from_millis(exponential.saturating_add(jitter_ms));
+                        if tokio::time::Instant::now() + backoff >= hard_deadline {
+                            break (
+                                name,
+                                provider_result,
+                                provider_started.elapsed().as_millis() as u64,
+                                category,
+                                estimated_cost,
+                            );
+                        }
+                        tokio::time::sleep(backoff).await;
                     }
-                };
-                let mut attempt = 0_u32;
-                loop {
-                    let remaining =
-                        hard_deadline.saturating_duration_since(tokio::time::Instant::now());
-                    let attempt_timeout = Duration::from_millis(timeout_ms).min(remaining);
-                    let result = if attempt_timeout.is_zero() {
-                        Err(())
-                    } else {
-                        tokio::time::timeout(
-                            attempt_timeout,
-                            provider.search(&plan, &ProviderContext { timeout_ms }),
-                        )
-                        .await
-                        .map_err(|_| ())
-                    };
-                    let provider_result = match result {
-                        Ok(result) => result,
-                        Err(()) => Err(ProviderError {
-                            schema_version: SCHEMA_VERSION.into(),
-                            provider: name.clone(),
-                            kind: ProviderErrorKind::Timeout,
-                            message: "provider deadline exceeded".into(),
-                            retry_after_ms: None,
-                        }),
-                    };
-                    let retry_delay_ms = provider_result.as_ref().err().and_then(|error| {
-                        is_recoverable(&error.kind).then_some(error.retry_after_ms.unwrap_or(50))
-                    });
-                    if attempt >= max_retries || retry_delay_ms.is_none() {
-                        break (
-                            name,
-                            provider_result,
-                            provider_started.elapsed().as_millis() as u64,
-                            category,
-                            estimated_cost,
-                        );
-                    }
-                    attempt += 1;
-                    let exponential = retry_delay_ms
-                        .unwrap_or(50)
-                        .saturating_mul(1_u64 << attempt.saturating_sub(1));
-                    let jitter_ms = retry_jitter(&name, attempt, retry_jitter_ms);
-                    let backoff = Duration::from_millis(exponential.saturating_add(jitter_ms));
-                    if tokio::time::Instant::now() + backoff >= hard_deadline {
-                        break (
-                            name,
-                            provider_result,
-                            provider_started.elapsed().as_millis() as u64,
-                            category,
-                            estimated_cost,
-                        );
-                    }
-                    tokio::time::sleep(backoff).await;
                 }
-            });
+                .instrument(provider_span),
+            );
         }
         let mut output = ParallelSearchOutput {
             provider_results: vec![],
@@ -558,6 +662,7 @@ impl SearchOrchestrator {
                                 error: result.errors.first().map(|error| &error.kind),
                                 partial: result.status == ProviderExecutionStatus::Partial,
                                 estimated_cost,
+                                request_id: self.request_id.clone(),
                             },
                         ));
                     output.providers_used.push(name.clone());
@@ -580,6 +685,7 @@ impl SearchOrchestrator {
                                 error: Some(&error.kind),
                                 partial: false,
                                 estimated_cost,
+                                request_id: self.request_id.clone(),
                             },
                         ));
                     output.providers_failed.push(name);
@@ -625,6 +731,10 @@ struct PipelineOutput {
     results: Vec<crate::SearchResult>,
     degradations: Vec<crate::Degradation>,
     diversity: DiversityMetrics,
+    /// Post-dedupe result set (pre-ranking, pre-diversity). Carried out of the
+    /// pipeline so STEP 2 complementarity can be computed from the confirmed
+    /// dedupe provenance without re-canonicalizing. Not exposed publicly.
+    deduped: Vec<DeduplicatedResult>,
 }
 
 fn run_pipeline(
@@ -651,7 +761,7 @@ fn run_pipeline(
         query,
         ranking_reference_time,
         active_provider_count,
-        deduped,
+        deduped.clone(),
         ranking_policy,
     );
     let diversified = diversify(ranked, diversity_policy);
@@ -659,6 +769,7 @@ fn run_pipeline(
         results: diversified.results,
         degradations,
         diversity: diversified.metrics,
+        deduped,
     }
 }
 
@@ -840,7 +951,9 @@ fn round_trace(
     providers_selected: Vec<String>,
     coverage: &CoverageMetrics,
     adaptive: &AdaptiveRoutingRecommendation,
+    role_model_active: bool,
     observed_marginal_gain: Option<f64>,
+    complementarity: Option<RoundComplementarity>,
     stop_reason: Option<SearchStopReason>,
     debug_reasons: Vec<String>,
 ) -> ProgressiveRoundTrace {
@@ -859,6 +972,12 @@ fn round_trace(
                 .map(|gain| (provider.clone(), *gain))
         })
         .collect();
+    let provider_roles = adaptive
+        .provider_roles
+        .iter()
+        .map(|(name, role)| (name.clone(), role.as_str().to_string()))
+        .collect::<BTreeMap<_, _>>();
+    let primary_available = role_model_active.then(|| adaptive.primary_provider.is_some());
     ProgressiveRoundTrace {
         round,
         providers_considered,
@@ -873,6 +992,9 @@ fn round_trace(
         low_diversity: coverage.low_diversity,
         expected_marginal_gain_by_provider,
         observed_marginal_gain,
+        provider_roles,
+        primary_available,
+        complementarity,
         stop_reason,
         debug_reasons,
     }
@@ -955,6 +1077,45 @@ mod tests {
             thumbnail: None,
             metadata: Default::default(),
         }
+    }
+
+    /// Provider that records the request id it was called with.
+    struct RecordingProvider {
+        seen: Arc<std::sync::Mutex<Vec<Option<String>>>>,
+    }
+
+    #[async_trait::async_trait]
+    impl Provider for RecordingProvider {
+        fn name(&self) -> &str {
+            "recorder"
+        }
+
+        fn capabilities(&self) -> crate::ProviderCapabilities {
+            MockProvider::success("recorder", vec![]).capabilities()
+        }
+
+        async fn search(
+            &self,
+            plan: &SearchPlan,
+            context: &ProviderContext,
+        ) -> Result<ProviderResult, ProviderError> {
+            self.seen.lock().unwrap().push(context.request_id.clone());
+            MockProvider::success("recorder", vec![item("https://example.com/recorded")])
+                .search(plan, context)
+                .await
+        }
+    }
+
+    #[tokio::test]
+    async fn request_id_reaches_every_outbound_provider_call() {
+        let seen = Arc::new(std::sync::Mutex::new(vec![]));
+        let providers: Vec<Arc<dyn Provider>> =
+            vec![Arc::new(RecordingProvider { seen: seen.clone() })];
+        SearchOrchestrator::new(Budget::new(1, 8_000), 100)
+            .with_request_id(Some("req-42".into()))
+            .search(parse_query("rust async".into()).unwrap(), providers)
+            .await;
+        assert_eq!(seen.lock().unwrap().as_slice(), [Some("req-42".to_owned())]);
     }
 
     #[tokio::test]

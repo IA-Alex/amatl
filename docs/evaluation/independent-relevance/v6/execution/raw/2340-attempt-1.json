@@ -1,0 +1,387 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2340,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 406.637,
+  "pair_id": "candidate-p-1611",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about low power computing within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "willing to store their information in the cloud. For no obvious reason, I sort of forgot about this software, until quite recently. Having tested Pages in macOS and the Murena Wor",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dedoimedo.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dedoimedo - A Place to Learn a Lot About a Lot",
+        "url": "https://www.dedoimedo.com/"
+      },
+      {
+        "category": "general",
+        "content": "surfed the web for information about India, E-mailed various people. Listened to a Gordon sermon on Science, creation and the Trinity from his conference notes. The Trinity: 17 te",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2003/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2003/"
+      },
+      {
+        "category": "general",
+        "content": "position. Technical information I recall: Each computer had 12 drums. Six were for the display system and six for central computer use. Each drum had fixed position read/write hea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.smecc.org",
+          "/sage_a_n_fsq-7.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SAGE A/N FSQ-7",
+        "url": "http://www.smecc.org/sage_a_n_fsq-7.htm"
+      },
+      {
+        "category": "general",
+        "content": "3D image from wavefront information on a 2D photographic plate (Cowen 2015 ). The holographic principle can be used to generate dualities between higher dimensional string theorie",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/quant.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quantum Reality and Cosmology",
+        "url": "http://www.dhushara.com/paradoxhtm/quant.htm"
+      },
+      {
+        "category": "general",
+        "content": "bio. More detailed bio information is available on request. This Web page (http://www.csl.sri.com/~neumann) can also be reached from the primary CSL Web site (http://www.csl.sri.c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.csl.sri.com",
+          "/users/neumann/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Neumann&#39;s Home Page",
+        "url": "https://www.csl.sri.com/users/neumann/"
+      },
+      {
+        "category": "general",
+        "content": "author, and other information for a book from its ISBN. This replaces the 4.0 version of the API which has been retired and no longer works. The mechanism used to locate Kindle ed",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason",
+        "url": "https://www.fourmilab.ch/fourmilog/"
+      },
+      {
+        "category": "general",
+        "content": "need is the necessary information and the right way to process it in order to come to a conclusion that agrees with reality. Example: Most people thought that AI could never creat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/chinese_room",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Computation isn&#39;t Consciousness: The Chinese Room Experiment",
+        "url": "https://lukesmith.neocities.org/vids/chinese_room"
+      },
+      {
+        "category": "general",
+        "content": ".  More information about Ksplice,  including a technical paper describing how it works, is available from http://www.ksplice.com . Jeff Arnold started development on th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "Participation in the information age ( * ) Chapter 3 &#34;The &#34;Information Revolution&#34; is inevitable. The likelihood that this will strengthen local communities is not.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gotze.dk",
+          "/phd/it.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Participation in the information age",
+        "url": "https://gotze.dk/phd/it.html"
+      },
+      {
+        "category": "general",
+        "content": "existing incentives and information; we can&#39;t compare with unchosen alternatives, so claims of inherent wisdom in market selection are unfalsifiable. A Critique of Sraffa&#39;s Commod",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Luke Smith Fanclub &amp; Archive",
+        "url": "https://lukesmith.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "this Archive Editorial Information • About the SEP • Special Characters © Metaphysics Research Lab , CSLI , Stanford University This is a file in the archives of th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.stanford.edu",
+          "/archIves/win2013/entries/information-semantic/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Semantic Conceptions of Information (Stanford Encyclopedia of Philosophy/Winter 2013 Edition)",
+        "url": "https://plato.stanford.edu/archIves/win2013/entries/information-semantic/"
+      },
+      {
+        "category": "general",
+        "content": "which shares contact information). Could you log on and update your address book, please? Then we can keep in touch and easily track changes to each other&#39;s addresses. A: No, I ha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/People/Berners-Lee/FAQ.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Frequently asked questions by the Press - Tim BL",
+        "url": "https://www.w3.org/People/Berners-Lee/FAQ.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "90c67802bd2f795d58b4c80f58bb6eecfd2f0e50761f478ecfe93905efdca8e0",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about low power computing within information science",
+  "query_id": "candidate-c-1611",
+  "raw_result_count": 12,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.dedoimedo.com/",
+      "original_url": "https://www.dedoimedo.com/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "willing to store their information in the cloud. For no obvious reason, I sort of forgot about this software, until quite recently. Having tested Pages in macOS and the Murena Wor",
+      "title": "Dedoimedo - A Place to Learn a Lot About a Lot"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://apple-tree.life/~michael/blog/2003/",
+      "original_url": "https://apple-tree.life/~michael/blog/2003/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "surfed the web for information about India, E-mailed various people. Listened to a Gordon sermon on Science, creation and the Trinity from his conference notes. The Trinity: 17 te",
+      "title": "Stuff Michael Meeks is doing"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.smecc.org/sage_a_n_fsq-7.htm",
+      "original_url": "http://www.smecc.org/sage_a_n_fsq-7.htm",
+      "rank": 3,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "position. Technical information I recall: Each computer had 12 drums. Six were for the display system and six for central computer use. Each drum had fixed position read/write hea",
+      "title": "SAGE A/N FSQ-7"
+    }
+  ],
+  "timestamp": "2026-09-05T17:32:51.123664Z"
+}

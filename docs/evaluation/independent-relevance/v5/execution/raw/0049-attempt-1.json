@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 242.946,
+  "pair_id": "v5-p-0991",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes wastewater treatment in optics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9636b9ec83a901a799fbb13acc3efe050348d941c5d9acfb484790e3ddc055b3",
+  "provider": "SearXNG",
+  "query": "what causes wastewater treatment in optics",
+  "query_id": "v5-p-0991-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:23.709020Z"
+}

@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 231.251,
+  "pair_id": "v5-p-0763",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of coastal flooding in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "US Office of Personnel Management Harms 4M Federal Employees and Exposes Agency&#39;s Systemic Security Woes (2015), Security: Linux, OS X, Unix and Malware (Viruses) , Vulnerability",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "59b65316904d0a06d0b589994b1b328d421b982b1e01dcb4afb9c5aec43df298",
+  "provider": "SearXNG",
+  "query": "give an overview of coastal flooding in data management",
+  "query_id": "v5-p-0763-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:05:47.708954Z"
+}

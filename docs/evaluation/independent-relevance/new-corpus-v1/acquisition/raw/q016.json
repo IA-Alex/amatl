@@ -1,0 +1,191 @@
+{
+  "schema_version": "1",
+  "query": "what is two factor authentication",
+  "status": "partial_success",
+  "results": [
+    {
+      "schema_version": "1",
+      "rank": 1,
+      "title": "Password authentication for web and mobile apps (book)",
+      "original_url": "https://dchest.com/authbook/",
+      "canonical_url": "https://dchest.com/authbook/",
+      "domain": "dchest.com",
+      "snippet": "Pixelfed Password authentication for web and mobile apps Authenticating users with passwords is a fundamental part of web and mobile security. It is also the part that's easy to g",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 2,
+      "title": "An Analysis of the RADIUS Authentication Protocol",
+      "original_url": "https://www.untruth.org/~josh/security/radius/radius-auth.html",
+      "canonical_url": "https://www.untruth.org/~josh/security/radius/radius-auth.html",
+      "domain": "www.untruth.org",
+      "snippet": "An Analysis of the RADIUS Authentication Protocol by Joshua Hill Copyright \u00a9 2001, Joshua Hill You may distribute unaltered copies of this document without restriction A curr",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 3,
+      "title": "Michael Horowitz - Personal Web Site",
+      "original_url": "https://michaelhorowitz.com/",
+      "canonical_url": "https://michaelhorowitz.com/",
+      "domain": "michaelhorowitz.com",
+      "snippet": "not offering two factor authentication (so use Chromebook Guest Mode) August 12, 2014 Consumer Reports drops the ball on airport Wi-Fi August 7, 2014 The security fla",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 4,
+      "title": "eatabrick.org",
+      "original_url": "https://eatabrick.org/",
+      "canonical_url": "https://eatabrick.org/",
+      "domain": "eatabrick.org",
+      "snippet": "keys have two factor authentication. My goal now is to put something on here before another year passes. blosxom and git 2012-06-04 When I moved all of my servers away from apache",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 5,
+      "title": "nilsnh.no",
+      "original_url": "https://nilsnh.no/",
+      "canonical_url": "https://nilsnh.no/",
+      "domain": "nilsnh.no",
+      "snippet": "How to setup two factor authentication (2FA)? Jun 19, 2024. 3min. Nils Norman Hauk\u00e5s . \ud83c\udff7 Discourse Boknotat: Teknodiversitet av Yuk Hui Feb 07, 2024. 6min. Nils Norman Hauk",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 6,
+      "title": "Password Safe - History",
+      "original_url": "https://pwsafe.org/history.shtml",
+      "canonical_url": "https://pwsafe.org/history.shtml",
+      "domain": "pwsafe.org",
+      "snippet": "Version Two Factor Authentication Latest News Recommendations Non-English Versions Discussion Forum Frequently Asked Questions Documentation Related Projects History Contact Popul",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "relegated_by_diversity"
+    },
+    {
+      "schema_version": "1",
+      "rank": 7,
+      "title": "Stuff Michael Meeks is doing",
+      "original_url": "https://apple-tree.life/~michael/blog/2018/",
+      "canonical_url": "https://apple-tree.life/~michael/blog/2018/",
+      "domain": "apple-tree.life",
+      "snippet": "by the mysql setup and authentication aggravation vs. wordpress and other DB integrated apps - it all seems un-necessarily unpleasant. 2018-04-29 Sunday. Played bass & violin",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "relegated_by_diversity"
+    },
+    {
+      "schema_version": "1",
+      "rank": 8,
+      "title": "The Phone in Your Hand",
+      "original_url": "http://everythingmachine.io/phone/",
+      "canonical_url": "http://everythingmachine.io/phone/",
+      "domain": "everythingmachine.io",
+      "snippet": "fingerprint and payment authentication data. It keeps them locked up, but gives out single use codes, answering yes or no to questions like \u2018is this their fingerprint?\u2019 10 / 14 He",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "relegated_by_diversity"
+    },
+    {
+      "schema_version": "1",
+      "rank": 9,
+      "title": "Implementation Issues of the WIPO Copyright Treaty and the WIPO Permformances and Phonograms Treaty: Technical Protection Measures: the Inter",
+      "original_url": "https://cryptome.org/wipo-imp99-3.htm",
+      "canonical_url": "https://cryptome.org/wipo-imp99-3.htm",
+      "domain": "cryptome.org",
+      "snippet": "on a combination of authentication \u2013 device to device communication on a bi-directional digital interface to establish that each device is an acceptable \"partner\" in the DTCP",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "relegated_by_diversity"
+    },
+    {
+      "schema_version": "1",
+      "rank": 10,
+      "title": "Tofu Authenticator for iOS",
+      "original_url": "https://www.tofuauth.com/",
+      "canonical_url": "https://www.tofuauth.com/",
+      "domain": "www.tofuauth.com",
+      "snippet": "open-source two-factor authentication app designed specifically for iOS. Features Scanning Scan the QR code your issuer provides to automatically add your account. Search Search y",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "relegated_by_diversity"
+    },
+    {
+      "schema_version": "1",
+      "rank": 11,
+      "title": "Start an online store wiki - EasyWebshop",
+      "original_url": "https://easywebshop.com/create-online-store/product-variations-parameters-and-colors/blog",
+      "canonical_url": "https://easywebshop.com/create-online-store/product-variations-parameters-and-colors/blog",
+      "domain": "easywebshop.com",
+      "snippet": "authentication Labels META tags - Website verification Live chat Slideshow Visitor analys",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "relegated_by_diversity"
+    },
+    {
+      "schema_version": "1",
+      "rank": 12,
+      "title": "Having a bank account without having a phone number",
+      "original_url": "https://www.devever.net/~hl/phonebank",
+      "canonical_url": "https://www.devever.net/~hl/phonebank",
+      "domain": "www.devever.net",
+      "snippet": "for \u201cstrong customer authentication\u201d. UK banks seem to have largely decided to implement this by making the invalid and entirely baseless presumption that anyone with a bank accou",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "relegated_by_diversity"
+    }
+  ],
+  "providers_used": [
+    "searxng"
+  ],
+  "providers_failed": [],
+  "providers_partial": [
+    "searxng"
+  ],
+  "errors": [],
+  "degradations": [
+    {
+      "code": "provider_circuit_open",
+      "component": "marginalia",
+      "message": "marginalia is in circuit cooldown after consecutive failures; the source was skipped"
+    }
+  ],
+  "elapsed_ms": 343
+}

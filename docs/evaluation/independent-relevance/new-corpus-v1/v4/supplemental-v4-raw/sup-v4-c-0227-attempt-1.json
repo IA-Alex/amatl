@@ -1,0 +1,26 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 236.42188100347994,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of process scheduling in agriculture",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0227",
+  "query_text": "give an overview of process scheduling in agriculture",
+  "requested_at": "2026-09-03T01:43:46.900339Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

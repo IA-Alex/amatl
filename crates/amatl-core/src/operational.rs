@@ -3,8 +3,8 @@ use crate::{
     DeepOrchestrator, DeepRequest, DocumentCache, ExtractError, ExtractionResult, Extractor,
     FetchError, FetchRequest, FetchResult, Fetcher, FinalUrl, MockBehavior, MockProvider, Provider,
     ProviderExecutionStatus, ProviderItem, ProviderResult, ProviderSearchCache,
-    ProviderSearchCachePolicy, Rank, SearchOrchestrator, SearchPlan, SearchStatus, SqliteStorage,
-    StorageError, SCHEMA_VERSION,
+    ProviderSearchCachePolicy, Rank, RendererPool, SearchOrchestrator, SearchPlan, SearchStatus,
+    SqliteStorage, StorageError, SCHEMA_VERSION,
 };
 use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
@@ -184,11 +184,13 @@ async fn benchmark_deep(
                     .collect(),
             };
             let started = Instant::now();
+            let renderer_pool =
+                RendererPool::new(Arc::new(ChromiumRenderer::detect(&Default::default())), 1);
             let response = DeepOrchestrator::new(
                 DeepBudget::new(1, 1_048_576, 1, 1, 1, 1_000),
                 Arc::new(StaticFetcher),
                 Arc::new(StaticExtractor),
-                Arc::new(ChromiumRenderer::detect(&Default::default())),
+                renderer_pool,
                 None::<DocumentCache>,
                 1_000,
                 1_048_576,
@@ -216,7 +218,7 @@ async fn benchmark_sqlite(
     concurrency: usize,
 ) -> Result<SqliteOperationalReport, OperationalBenchmarkError> {
     let path = benchmark_database_path();
-    let storage = SqliteStorage::open(&path).await?;
+    let storage = SqliteStorage::open(&path, crate::config::SqliteLockingMode::Normal).await?;
     let cache = ProviderSearchCache::new(
         storage,
         ProviderSearchCachePolicy {

@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 265.507,
+  "pair_id": "v5-p-0376",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does solar eclipses in mechanical engineering operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f48c9fb6cfac11cbae39b84151cb4bd3355083bf3b9f96473aa07c0fa9d9701a",
+  "provider": "SearXNG",
+  "query": "how does solar eclipses in mechanical engineering operate",
+  "query_id": "v5-p-0376-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:14.709644Z"
+}

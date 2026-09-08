@@ -1,0 +1,198 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 4095,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 354.338,
+  "pair_id": "candidate-p-1348",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "under what conditions does hydrogen storage within astronomy change",
+    "results": [
+      {
+        "category": "general",
+        "content": "determined by physical conditions in the immediate locality of the object and not &#34;influenced&#34; instantly by widely separated objects ( they aren&#39;t ). Einstein wanted physical &#34;rea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.informationphilosopher.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Information Philosopher - dedicated to the new information philosophy",
+        "url": "https://www.informationphilosopher.com/"
+      },
+      {
+        "category": "general",
+        "content": "living in primitive conditions, and he will immediately recognize that they were produced by intelligent beings to work together. The pumps are made of several specific protein pa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.finetuneduniverse.com",
+          "/evolutionisareligion.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Evolution Is A Religion",
+        "url": "http://www.finetuneduniverse.com/evolutionisareligion.html"
+      },
+      {
+        "category": "general",
+        "content": "under very precise conditions is pro. Happer &amp; Everett give a sober diagnose of our putative CO2 driven climate problems. J.B.Peterson interview of Prof. Lindzen Very interest",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meteo.lcd.lu",
+          "/globalwarming/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Warming Sceptic",
+        "url": "https://meteo.lcd.lu/globalwarming/"
+      },
+      {
+        "category": "general",
+        "content": "has ever been made conditions necessary for a planet to support life reasons why other intelligent life in the universe has not reached Earth the search for extraterrestrial life",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      },
+      {
+        "category": "general",
+        "content": "excuse that the initial conditions during the Big Bang were - by chance or by God&#39;s cause? - just that the universe now has the structure we observe. Questions of the origin of th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/AntropPrincip.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Anthropic Principle and Cosmic God",
+        "url": "https://www.astronuclphysics.info/AntropPrincip.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5d9e5e124e904fc101e024479e9956500ff7ab5d8f282b4ee4669faf2d568fd9",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "under what conditions does hydrogen storage within astronomy change",
+  "query_id": "candidate-t-1348",
+  "raw_result_count": 5,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.informationphilosopher.com/",
+      "original_url": "https://www.informationphilosopher.com/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "determined by physical conditions in the immediate locality of the object and not &#34;influenced&#34; instantly by widely separated objects ( they aren&#39;t ). Einstein wanted physical &#34;rea",
+      "title": "The Information Philosopher - dedicated to the new information philosophy"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.finetuneduniverse.com/evolutionisareligion.html",
+      "original_url": "http://www.finetuneduniverse.com/evolutionisareligion.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "living in primitive conditions, and he will immediately recognize that they were produced by intelligent beings to work together. The pumps are made of several specific protein pa",
+      "title": "Evolution Is A Religion"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://meteo.lcd.lu/globalwarming/",
+      "original_url": "https://meteo.lcd.lu/globalwarming/",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "under very precise conditions is pro. Happer &amp; Everett give a sober diagnose of our putative CO2 driven climate problems. J.B.Peterson interview of Prof. Lindzen Very interest",
+      "title": "The Global Warming Sceptic"
+    }
+  ],
+  "timestamp": "2026-09-05T17:42:05.193941Z"
+}

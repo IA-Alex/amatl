@@ -1,0 +1,327 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 348.075,
+  "pair_id": "v5-p-0736",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does root systems in mechanical engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "Designing a design tool Engineering inference from history Engineering inference from the environment Information and the world of tomorrow Magic Ink Information Software and the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "worrydream.com",
+          "/MagicInk/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Magic Ink: Information Software and the Graphical Interface",
+        "url": "https://worrydream.com/MagicInk/"
+      },
+      {
+        "category": "general",
+        "content": "physics, and engineering calculations, and the fact that the LOCI calculators could generate logarithms and anti-logarithms in mere milliseconds was profound. Dr. Wang had invente",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/wangloci.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Wang LOCI-2",
+        "url": "https://www.oldcalculatormuseum.com/wangloci.html"
+      },
+      {
+        "category": "general",
+        "content": "almost no overlap in engineering technique, other than that both groups of necessity were generally constrained by the technology available at the time.  For example, both ne",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ibiblio.org",
+          "/apollo/LVDC.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Launch Vehicle Digital Computer",
+        "url": "http://www.ibiblio.org/apollo/LVDC.html"
+      },
+      {
+        "category": "general",
+        "content": "as a somewhat naive engineering mistake.  Among them was Alan Kay : In Alan Kay&#39;s metaphor, the problem with bootstrapping in Douglas Engelbart&#39;s Augmentation Research Center was",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.loper-os.org",
+          "/",
+          "",
+          "p=861",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Loper OS » Engelbart&#39;s Violin",
+        "url": "http://www.loper-os.org/?p=861"
+      },
+      {
+        "category": "general",
+        "content": "Modern Chumpatronic Engineering. says: March 3, 2014 at 5:37 pm [...] Modern Chumpatronic Engineering. A reader recently asked me to comment on the demise of MtGox and its implica",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.loper-os.org",
+          "/",
+          "",
+          "p=939",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Loper OS » Bitcoin, or How to Hammer in Nails with a Microscope.",
+        "url": "http://www.loper-os.org/?p=939"
+      },
+      {
+        "category": "general",
+        "content": "calculators helped save engineering time in the development of the new calculators, as well as being a sure thing in terms of knowing that all the bugs in the logic had already be",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/tek31.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Tektronix Model 31 Electronic Calculator",
+        "url": "https://www.oldcalculatormuseum.com/tek31.html"
+      },
+      {
+        "category": "general",
+        "content": "former hardware engineering chief John Ternus officially became CEO of the company today, with the change now reflected on Apple’s leadership page . […] Tim Cook is no",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mjtsai.com",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Tsai - Blog",
+        "url": "https://mjtsai.com/blog/"
+      },
+      {
+        "category": "general",
+        "content": "way of the electronic engineering talent needed to design a practical electronic calculator. Most of the electronics engineers were working in military, space, aviation, computer,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/friden130.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Friden EC-130 Electronic Calculator",
+        "url": "https://www.oldcalculatormuseum.com/friden130.html"
+      },
+      {
+        "category": "general",
+        "content": "realized by clever engineering taking advantage of such quantum effects.   However, if certain quantum inequalities conjectured by Ford and Roman hold, then the energy requir",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/time_travel/esp_ciencia_timetravel34.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Time Control Technologies and Methods",
+        "url": "https://www.bibliotecapleyades.net/ciencia/time_travel/esp_ciencia_timetravel34.htm"
+      },
+      {
+        "category": "general",
+        "content": "malware on two engineering workstations critical to the operation of the control environment. Investigators did not find malware on 11 other workstations examined. ICS-CERT recomm",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.grc.com",
+          "/sn/sn-387.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Security Now! Transcript of Episode #387",
+        "url": "https://www.grc.com/sn/sn-387.htm"
+      },
+      {
+        "category": "general",
+        "content": "from a resistor. The engineering fact is that a resistor of resistance R acts like a noise generator.&#34; V 2 = 4 k T R B I 2 = 4 k T G B = 4 k T B / R R = resistance, ohms G = 1/R =",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ciphersbyritter.com",
+          "/RES/NOISE.HTM",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Random Electrical Noise: A Literature Survey",
+        "url": "http://www.ciphersbyritter.com/RES/NOISE.HTM"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "35b223decb8fcc5eabeee1b02a82aaea112f82f8b4d71842eec87ffc56fa17a7",
+  "provider": "SearXNG",
+  "query": "how does root systems in mechanical engineering operate",
+  "query_id": "v5-p-0736-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:43.563765Z"
+}

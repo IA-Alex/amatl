@@ -1,0 +1,10 @@
+{
+  "artifact_notice": "Generated local mock executor validation artifact \u2014 AMATL and providers were not executed.",
+  "results": {
+    "duplicate_execution": "PASS",
+    "execution_limit_31": "PASS",
+    "foreign_position": "PASS",
+    "output_already_exists": "PASS",
+    "unvalidated_plan": "PASS"
+  }
+}

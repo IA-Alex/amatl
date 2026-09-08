@@ -1,0 +1,327 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 313.92,
+  "pair_id": "v5-p-0723",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of root systems in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "Fecund Universe Quantum Chemistry as Non-Linear Complexity The Non-recurrent Table and the Elementary Bifurcation Tree Structural Dynamics of Core Polymerization Pathways Cosmolog",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "of membrane electrochemistry, and the  eukaryote endosymbiosis , in which respiratory electron transport became sequestered in the mitochondria, freeing the cell membrane for",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "dhushara.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dhushara",
+        "url": "http://dhushara.com/"
+      },
+      {
+        "category": "general",
+        "content": "Programming Safe Chemistry on Laboratories-on-a-chip Authors: Jason Ott (UC Riverside), Tyson Loveless (UC Riverside), Chris Curtis (UC Riverside), Mohsen Lesani (UC Riverside), P",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "School of Biology, Chemistry and Ecology, State University of New York College of Environmental Science and Forestry, Syracuse, New York, 1983. The use of houseflies in treating s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "journeytoforever.org",
+          "/farm_library.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Small Farms Library - Journey to Forever",
+        "url": "http://journeytoforever.org/farm_library.html"
+      },
+      {
+        "category": "general",
+        "content": "- sci Fandom Wiki Chemistry Textbook Recommendations - sci Fandom Wiki Biology Textbook Recommendations - sci Fandom Wiki Economics Books The Natural Economic Order by Silvio Gese",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zero Contradictions Philosophy Home Page",
+        "url": "https://zerocontradictions.net/"
+      },
+      {
+        "category": "general",
+        "content": "e.g. mathematics and chemistry, and therefore does not contain application-specific semantics. Formats that contain application-specific semantics tend to be higher on the ladder",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiumlie.no",
+          "/2006/phd/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PhD Thesis: Cascading Style Sheets",
+        "url": "https://wiumlie.no/2006/phd/"
+      },
+      {
+        "category": "general",
+        "content": "by primordial geochemistry. The late heavy bombardment (LHB) of Earth by comets and asteroids approximately 4-3.8 billion years ago probably resulted in Earth being periodically h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/unraveltree/unravel.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Unraveling the Tree of Life",
+        "url": "http://www.dhushara.com/book/unraveltree/unravel.htm"
+      },
+      {
+        "category": "general",
+        "content": "If we think of Physics, Chemistry, Biology, etc. as traditional sciences, then Cybernetics is a classification which cuts across them all. ...Cybernetics is formally defined as th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "asc-cybernetics.org",
+          "/foundations/definitions.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ASC: Foundations: Defining &#39;Cybernetics&#39;",
+        "url": "https://asc-cybernetics.org/foundations/definitions.htm"
+      },
+      {
+        "category": "general",
+        "content": "Models - Physics, Chemistry &amp; Biology Speed and Velocity Leverage The Red Queen Effect Incentives Mental Models - Systems Margin Of Safety Mental Models - Numeracy Compounding Par",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zen-tools.net",
+          "/how-to-think.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How To Think - Thinking Skills, Focusing On HOW Not WHAT To Think",
+        "url": "https://www.zen-tools.net/how-to-think.html"
+      },
+      {
+        "category": "general",
+        "content": "an in depth view of the chemistry and physics of dairy . Mailing Lists/Forums/Archives Go to Top There is a NO-MILK mailing list. To subscribe go to Join or Leave the NO-MILK List",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nomilk.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The No Milk Page: Books &amp; Links",
+        "url": "https://nomilk.com/"
+      },
+      {
+        "category": "general",
+        "content": "domains such as chemistry,electronics, or general business. Hence, XML is really a metalanguage (a language for describing languages). Because authors and providers can design the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.objs.com",
+          "/OSA/wom.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Towards a Web Object Model",
+        "url": "http://www.objs.com/OSA/wom.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2a86efad1496d14cde6daf9e9776d3d56e4397361fd41ed426eebff39998fac9",
+  "provider": "SearXNG",
+  "query": "give an overview of root systems in chemistry",
+  "query_id": "v5-p-0723-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:24.509756Z"
+}

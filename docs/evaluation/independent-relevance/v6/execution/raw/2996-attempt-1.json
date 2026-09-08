@@ -1,0 +1,144 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2996,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 295.826,
+  "pair_id": "candidate-p-0903",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of ecosystem services within robotics",
+    "results": [
+      {
+        "category": "general",
+        "content": "works, with an overall explanation about its many parts, with a more detailed approach in the backend scenario. Bruno Cardoso Lopes is a PhD student at University of Campinas, Bra",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "a simplistic mythical explanation for the origin of all subsequent problems. feel we should return to a hunter-gatherer society, though they are not entirely clear about what they",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bopsecrets.org",
+          "/CF/primitivism.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Poverty of Primitivism",
+        "url": "https://bopsecrets.org/CF/primitivism.htm"
+      },
+      {
+        "category": "general",
+        "content": "long-range order. One explanation, advocated by Nobel prizewinner Gerard &#39;t Hooft, is the cellular automaton interpretation of quantum mechanics; see his keynote talk at EMQM 2015",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6c47ac83c48715701cb5ac361812d3edc3f7dddd5fbc98f8670210cdbd4963c2",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of ecosystem services within robotics",
+  "query_id": "candidate-c-0903",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html",
+      "original_url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "works, with an overall explanation about its many parts, with a more detailed approach in the backend scenario. Bruno Cardoso Lopes is a PhD student at University of Campinas, Bra",
+      "title": "CELF Embedded Linux Conference"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "https://bopsecrets.org/CF/primitivism.htm",
+      "original_url": "https://bopsecrets.org/CF/primitivism.htm",
+      "rank": 2,
+      "rejection_reason": null,
+      "snippet": "a simplistic mythical explanation for the origin of all subsequent problems. feel we should return to a hunter-gatherer society, though they are not entirely clear about what they",
+      "title": "The Poverty of Primitivism"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.cl.cam.ac.uk/archive/rja14/",
+      "original_url": "https://www.cl.cam.ac.uk/archive/rja14/",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "long-range order. One explanation, advocated by Nobel prizewinner Gerard &#39;t Hooft, is the cellular automaton interpretation of quantum mechanics; see his keynote talk at EMQM 2015",
+      "title": "Ross Anderson&#39;s Home Page"
+    }
+  ],
+  "timestamp": "2026-09-05T17:36:15.793204Z"
+}

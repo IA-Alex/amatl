@@ -1,0 +1,34 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1390,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 262.223,
+  "pair_id": "candidate-p-1948",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "an introductory account of quantum sensing within materials engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "86bb0303453372dfe9c9ba06cdd284a6fd5f4d4e4d7fe5cec2767314b299cf20",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "an introductory account of quantum sensing within materials engineering",
+  "query_id": "candidate-c-1948",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:27:55.266627Z"
+}

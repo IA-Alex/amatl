@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 335.8091999980388,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind database indexes in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "algebra) in its two principle forms: that of truth-values and the Boolean connectives and , or , and not , and that of set membership and the set operations of intersection , unio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/boolean.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Boolean logic (IEKO)",
+        "url": "https://www.isko.org/cyclo/boolean.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0124",
+  "query_text": "describe the principle behind database indexes in materials science",
+  "requested_at": "2026-09-03T01:44:29.505665Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

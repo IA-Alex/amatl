@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 389.94305199594237,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of river deltas in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "207: The Investigative Function. Topics discussed there include the use of informants and techniques of surveillance. Caz later steals Kojak&#39;s Stetson Tyrol hat which he leaves at",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kojak.tv",
+          "/kojak-1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kojak - Season 1 Episode Guide &amp; Reviews",
+        "url": "https://www.kojak.tv/kojak-1.htm"
+      },
+      {
+        "category": "general",
+        "content": "a manner necessary for functional sovereignty. The Koranko ethnic group in northeastern Sierra Leone does all its trading in Guinea. Sierra Leonian diamonds are more likely to be",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0250",
+  "query_text": "tell me about the function of river deltas in food science",
+  "requested_at": "2026-09-03T01:43:56.236262Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

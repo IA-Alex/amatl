@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 334.477,
+  "pair_id": "v5-p-0057",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind compiler operation in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7bd77d1c6155536104834f22126575cb9902218ce2143680cb06e521f849d9e9",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind compiler operation in pharmacology",
+  "query_id": "v5-p-0057-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:11.443287Z"
+}

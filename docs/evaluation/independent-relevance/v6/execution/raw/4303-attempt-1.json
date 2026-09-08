@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 4303,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 298.893,
+  "pair_id": "candidate-p-0195",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains arctic navigation within archaeology",
+    "results": [
+      {
+        "category": "general",
+        "content": "&#34;Myth and Mammoth in Archaeology,&#34; American Antiquity 10 (October 1945): 84-87. 75. Royal American Magazine, or Universal Repository of Instruction and Amusement (Boston), Septemb",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "user.xmission.com",
+          "/~research/central/vogel4.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "MORMON CENTRAL - JOSEPH SMITH - LDS TEMPLES - BOOK OF MORMON - MORMONISM",
+        "url": "http://user.xmission.com/~research/central/vogel4.htm"
+      },
+      {
+        "category": "general",
+        "content": "Russian and Australian Archaeology / Archeology Sites Palaeolithic Fibres and Textiles Palaeolithic Venus figures - their purpose Paleolithic of the USSR Parabita Venus - two venu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.donsmaps.com",
+          "/willendorf.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Venus of Willendorf",
+        "url": "https://www.donsmaps.com/willendorf.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "871242d676c68436fe7d859b7ee96c91715f57601a57f3b2048a99ebb75d9ab6",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains arctic navigation within archaeology",
+  "query_id": "candidate-t-0195",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://user.xmission.com/~research/central/vogel4.htm",
+      "original_url": "http://user.xmission.com/~research/central/vogel4.htm",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "&#34;Myth and Mammoth in Archaeology,&#34; American Antiquity 10 (October 1945): 84-87. 75. Royal American Magazine, or Universal Repository of Instruction and Amusement (Boston), Septemb",
+      "title": "MORMON CENTRAL - JOSEPH SMITH - LDS TEMPLES - BOOK OF MORMON - MORMONISM"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.donsmaps.com/willendorf.html",
+      "original_url": "https://www.donsmaps.com/willendorf.html",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "Russian and Australian Archaeology / Archeology Sites Palaeolithic Fibres and Textiles Palaeolithic Venus figures - their purpose Paleolithic of the USSR Parabita Venus - two venu",
+      "title": "The Venus of Willendorf"
+    }
+  ],
+  "timestamp": "2026-09-05T17:43:16.248264Z"
+}

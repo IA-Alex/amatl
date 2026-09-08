@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 3360,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 322.465,
+  "pair_id": "candidate-p-1595",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about low power computing within cultural heritage",
+    "results": [
+      {
+        "category": "general",
+        "content": "is no longer a fixed background but a process of continuous &#34;runoff&#34; − an evolving sequence of ontological transitions that aligns more closely with the insights of modern q",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.andyross.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE ROSS BLOG",
+        "url": "https://www.andyross.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "74da1378d3834b57fc1e1ae9eac5c2b40c3a4992b2ac8a19b1c587e65f2880c9",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about low power computing within cultural heritage",
+  "query_id": "candidate-c-1595",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.andyross.net/",
+      "original_url": "https://www.andyross.net/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "is no longer a fixed background but a process of continuous &#34;runoff&#34; − an evolving sequence of ontological transitions that aligns more closely with the insights of modern q",
+      "title": "THE ROSS BLOG"
+    }
+  ],
+  "timestamp": "2026-09-05T17:38:13.326834Z"
+}

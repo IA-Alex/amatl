@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 297.532,
+  "pair_id": "v5-p-0890",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does vaccination in urban planning work",
+    "results": [
+      {
+        "category": "general",
+        "content": "To eliminate mask and vaccination requirements for everyone else would force that fraction into permanent isolation, along with any family members who join them in isolation. 23 F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2021-nov-feb.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2021: November - February Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2021-nov-feb.html"
+      },
+      {
+        "category": "general",
+        "content": "It is also about care, vaccination, and nutrition of girls, and ultimately survival.&#34; The report is the first to examine the number of avoidable deaths among girls under five",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/girlchild.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sexual Paradox: The Girl Child",
+        "url": "http://www.dhushara.com/paradoxhtm/girlchild.htm"
+      },
+      {
+        "category": "general",
+        "content": "introduced small pox vaccination, reducing the death rate. This ancient scourge had killed 10 to 20 percent of those infected — which was nearly everyone, for it is an extremely v",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.johntanton.org",
+          "/articles/art_end_migration_epoch_tanton.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "End of the Migration Epoch? by Dr. John H. Tanton - an ethical immigration paradigm",
+        "url": "https://www.johntanton.org/articles/art_end_migration_epoch_tanton.html"
+      },
+      {
+        "category": "general",
+        "content": "Welfare States Vaccination and Herd Immunity Overpopulation The free rider problem partially explains why content creators and service providers that rely on donations are less li",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/civilization/political-philosophy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Political Philosophy",
+        "url": "https://zerocontradictions.net/civilization/political-philosophy"
+      },
+      {
+        "category": "general",
+        "content": "Industrial Revolution Vaccination Shipping Container Printing Press Transistors Computers Smartphones Databases Modern Kitchen Appliances Water Heater Air Conditioner Steam Engine",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/civilization/technology",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Technology and Civilization",
+        "url": "https://zerocontradictions.net/civilization/technology"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0dad7149a62ff23ca9ad125353657c82dd7c3122a12e87709f8f4254fbb72c1a",
+  "provider": "SearXNG",
+  "query": "how does vaccination in urban planning work",
+  "query_id": "v5-p-0890-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:08.756756Z"
+}

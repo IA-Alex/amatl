@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 219.096,
+  "pair_id": "v5-p-0415",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of carbon capture in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a24ff4e8e3a356444c757bf41d84aab61f69b9e637f0877d232830034b382d1f",
+  "provider": "SearXNG",
+  "query": "give an overview of carbon capture in oceanography",
+  "query_id": "v5-p-0415-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:31.045948Z"
+}

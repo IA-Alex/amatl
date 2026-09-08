@@ -1,0 +1,198 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 4503,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 376.44,
+  "pair_id": "candidate-p-1610",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how can researchers measure low power computing within industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "must be far lower. Some researchers have in fact put the value of climate sensitivity at 0.5°C or less (Lindzen &amp; Choi, 2009; friendsofscience.org ; john-daly.com ). Every",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/climcat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Climate models and climate catastrophe: a reality check",
+        "url": "https://davidpratt.info/climcat.htm"
+      },
+      {
+        "category": "general",
+        "content": "you, like &#39;scientific&#39; researchers who do it for the sake of &#39;science&#39; and society, and even less if they are politicians. Finding your passion is a scam, nobody finds their passi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "analysts, students, researchers—or critics of singularity-exhibiting processes in all their forms. Those who study accelerating change understand that there are better and wo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.accelerationwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acceleration Watch (Understanding Accelerating Change)",
+        "url": "https://www.accelerationwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "the campaigns the researchers would depend on the local economy for subsistence and other necessities. Both on and off-site diagnostic instruments are providing data on the natura",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "was quenched, the researchers measured up to 0.34 ppm 40Ar within synthetic olivine. They noted, &#39;The solubility of Ar in the minerals is surprisingly high&#39;.33 Their conclusion is",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "tasc-creationscience.org",
+          "/other/plaisted/www.cs.unc.edu/_plaisted/ce/dating.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Radiometric Dating Game",
+        "url": "https://tasc-creationscience.org/other/plaisted/www.cs.unc.edu/_plaisted/ce/dating.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fbe48b70adc860e436e8a5d971047b42cbcd2fec4312cb0c4a55148284023541",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how can researchers measure low power computing within industrial design",
+  "query_id": "candidate-t-1610",
+  "raw_result_count": 5,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://davidpratt.info/climcat.htm",
+      "original_url": "https://davidpratt.info/climcat.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "must be far lower. Some researchers have in fact put the value of climate sensitivity at 0.5°C or less (Lindzen &amp; Choi, 2009; friendsofscience.org ; john-daly.com ). Every",
+      "title": "Climate models and climate catastrophe: a reality check"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://imlauer.github.io/",
+      "original_url": "https://imlauer.github.io/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "you, like &#39;scientific&#39; researchers who do it for the sake of &#39;science&#39; and society, and even less if they are politicians. Finding your passion is a scam, nobody finds their passi",
+      "title": "esotericwarfare"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.accelerationwatch.com/",
+      "original_url": "https://www.accelerationwatch.com/",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "analysts, students, researchers—or critics of singularity-exhibiting processes in all their forms. Those who study accelerating change understand that there are better and wo",
+      "title": "Acceleration Watch (Understanding Accelerating Change)"
+    }
+  ],
+  "timestamp": "2026-09-05T17:44:17.330684Z"
+}

@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 279.626,
+  "pair_id": "v5-p-0964",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does cloud formation in communication studies operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "in a time of superb communication techniques and democratic education? Why has its language game departed from the soul’s play? We no longer believe that psychology speaks f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mats-winther.github.io",
+          "/hillmcrit.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Critique of Archetypal Psychology",
+        "url": "https://mats-winther.github.io/hillmcrit.htm"
+      },
+      {
+        "category": "general",
+        "content": "Flow in Large Communication Nets &#34; (May 31) First paper on packet-switching (PS) theory 1962 J.C.R. Licklider &amp; W. Clark, MIT: &#34; On-Line Man Computer Communication &#34; (August) Gala",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zakon.org",
+          "/robert/internet/timeline/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hobbes&#39; Internet Timeline - the definitive ARPAnet &amp; Internet history",
+        "url": "https://www.zakon.org/robert/internet/timeline/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c177c0721beff2cd8151aa5741d0ed02ee03e57f83b627ae863db5c354c82cf7",
+  "provider": "SearXNG",
+  "query": "how does cloud formation in communication studies operate",
+  "query_id": "v5-p-0964-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:10:12.092072Z"
+}

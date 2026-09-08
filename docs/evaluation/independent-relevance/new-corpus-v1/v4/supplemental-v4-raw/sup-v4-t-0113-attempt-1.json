@@ -1,0 +1,135 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 266.0063009971054,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is load bearing walls in civil engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "an Arabian authority on engineering, wrote a technical work that fortunately is still available and gives surprisingly good details of the construction and maintenance of the anci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cais-soas.com",
+          "/CAIS/Science/aqueducts_iran.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Aqueducts of Iran | CAIS©",
+        "url": "http://www.cais-soas.com/CAIS/Science/aqueducts_iran.htm"
+      },
+      {
+        "category": "general",
+        "content": "CHAPTER XXVII . Civil Engineering. Great Bridges , Pneumatic Caissons , Tunnels. The Beach Tunnel Shield. Suez Canal. Dredges. The Lidgerwood Cable Ways. Canal Locks. Artesian Wel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book389/book389.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Progress of Invention in the Nineteenth Century, by Edward W. Byrn.",
+        "url": "https://www.ajhw.co.uk/books/book389/book389.html"
+      },
+      {
+        "category": "general",
+        "content": "civil and environmental engineering, spoke as follows to a panel of Boston area civil and structural engineers: &#34;I believe that the intense heat softened or melted the structural",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "911review.com",
+          "/articles/jm/mslp_1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Muslims Suspend Laws of Physics, Part I",
+        "url": "http://911review.com/articles/jm/mslp_1.htm"
+      },
+      {
+        "category": "general",
+        "content": "Investigation Hiding Engineering History Selling Progressive Collapse NIST&#39;s Amazing Column Failure Theory A Mountain of Distracting Details Mixing Observation and Speculation Cin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "911research.wtc7.net",
+          "/essays/nist/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NIST Conceals the Controlled Demolition of the Twin Towers",
+        "url": "https://911research.wtc7.net/essays/nist/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0113",
+  "query_text": "what is load bearing walls in civil engineering",
+  "requested_at": "2026-09-03T01:42:36.533922Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

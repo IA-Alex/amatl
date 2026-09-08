@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 221.917,
+  "pair_id": "v5-p-0991",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of wastewater treatment in optics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f2fee6db38aced6df50c909f61d785e588aa60da59cd197f5bca414893862379",
+  "provider": "SearXNG",
+  "query": "give an overview of wastewater treatment in optics",
+  "query_id": "v5-p-0991-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:23.952321Z"
+}

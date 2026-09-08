@@ -1,6 +1,9 @@
 # AMATL threat model
 
-Status: baseline `51c6d34`, verified against the current tree on 2026-08-13.
+Status: baseline `51c6d34`, verified against the current tree on 2026-08-13;
+re-reviewed 2026-08-16 after the optional remote-inference/answer capability
+below was added, per the "adding … an inference backend" review trigger this
+document itself mandates.
 Method: STRIDE per trust boundary. This model describes implemented
 controls; a missing control is residual risk, not an implied capability.
 
@@ -27,7 +30,7 @@ flowchart LR
   C -->|optional state| DB[(SQLite)]
   C -->|HTML over stdin| T[Trafilatura process]
   C -. core bridge disabled .-> R[Isolated Chromium harness / future CDP]
-  C -. optional and currently absent .-> L[Local or remote inference backend]
+  C -. optional, gated by data_policy.inference .-> L[Local or remote inference backend]
 ```
 
 Each arrow crosses a trust boundary. CLI input is untrusted. The browser and
@@ -36,10 +39,16 @@ are hostile. SQLite is local but corruptible. Trafilatura is an external
 process. Chromium has a separately verified no-network Linux harness, but the
 core bridge is not active.
 
-There is currently no inference backend or LLM dependency. The data policy
-models `disabled`, `local_only`, and `remote_explicit` so a future optional
-backend must obtain explicit permission. `isolated` can allow local inference
-but never remote inference.
+The data policy models `disabled`, `local_only`, and `remote_explicit` so an
+optional inference backend must obtain explicit permission. `isolated` can
+allow local inference but never remote inference. Two remote backends exist
+today, both opt-in and both requiring `remote_explicit`: `[inference]`'s
+embedding backend (used by Ranking v2's semantic scorer/reranker, but only if
+their weights are raised above the default `0.0`) and `[answer]`'s chat
+completion backend, which powers the grounded-answer synthesis capability
+(`amatl-core/src/answer.rs`, `POST /answer`, MCP tool `answer`) — see the new
+row below. Neither is required for Search or Deep to function, and neither is
+reachable under `isolated`.
 
 ## STRIDE analysis by boundary
 
@@ -47,7 +56,7 @@ but never remote inference.
 |---|---|---|---|---|---|
 | User → CLI/UI | S/T | Forged or malformed query alters intended filters | Query grammar and contradictions are parsed centrally; API/MCP reject empty or >2048-byte queries | `query.rs:16-216`; `amatl-server/src/lib.rs:397-399`; `query.rs:222-250` | Unicode confusables and semantic abuse remain possible; client-side validation is not a control |
 | User → CLI/UI | R/I | Query or token leaks through URL/history, UI state, or logs | UI uses POST JSON; token control has no form name, stays in page memory, clears on exit and is sent only as bearer; structured routing logs omit body/query/token | `amatl-ui/assets/index.html`; `amatl-ui/assets/app.js`; `amatl-server/src/tests.rs` | Shell history/process environment, browser memory/extensions and upstream body logging are operator-controlled |
-| UI → API/MCP | S/E | Caller impersonates an authorized local client | Protected routes require a bearer token of at least 32 bytes; constant-time comparison; `no_auth` is loopback-only | `amatl-server/src/lib.rs:93-108,348-427`; `config.rs:616-650`; `amatl-server/src/tests.rs:49-76`; `config.rs:743-754` | Shared bearer has no per-user identity, scopes, expiry, or revocation list |
+| UI → API/MCP | S/E | Caller impersonates an authorized local client | Protected routes require a bearer token of at least 32 bytes, matched as a SHA-256 digest in constant time against named credentials with per-route scopes and optional expiry; rotation and revocation apply on `POST /reload` or `SIGHUP`; `no_auth` is loopback-only | `amatl-server/src/lib.rs:93-108,348-427`; `config.rs:616-650`; `amatl-server/src/tests.rs:49-76`; `config.rs:743-754` | A deployment that keeps the single default token still has one shared identity; revocation is by configuration edit plus reload, not by a distributed revocation list |
 | UI → API/MCP | T/I | Host, Origin, CORS, framing, or content-type abuse | Exact Host/Origin lists, restrictive CORS, CSP, `nosniff`, no inline/eval, frame denial | `amatl-server/src/lib.rs:336-451,506-515`; `amatl-ui/src/lib.rs:7-53`; `amatl-server/src/tests.rs:31-151`; `amatl-ui/src/lib.rs:79-106` | Reverse-proxy trust and request-smuggling behavior are not integration-tested |
 | UI → API/MCP | D | Oversized, slow, concurrent, or automated requests exhaust service | 64 KiB body, 16 KiB headers, 30 s request/idle timeouts, 64 connections, 60 requests/minute keyed by socket IP before authentication | `config.rs`; `amatl-server/src/lib.rs`; `amatl-server/src/tests.rs` | In-memory rate windows are per process and not proxy-aware; many source IPs can distribute load |
 | Core → outbound network | I/E | A provider, Deep, MCP fetch, canary, or future inference path leaks exercise data | Central `data_policy`; isolated profile requires denied egress and loopback, rejects remote inference/providers/renderer, installs denied fetcher/transport, and emits value-free `egress_denied` | `config.rs`; `service.rs`; `amatl-server/src/mcp.rs`; config/service/MCP tests | Application policy is not an OS firewall; external extractors and a cloud MCP client are outside its process boundary |
@@ -63,8 +72,11 @@ but never remote inference.
 | Core → Trafilatura | T/E | Hostile HTML exploits or controls extractor process | Exact executable and fixed arguments; HTML only through stdin; stdout byte cap, timeout, kill-on-drop, stderr discarded; failure is typed and optional | `extract.rs:43-150`; `extract.rs:173-185`; `tests/deep_phase5.rs:271-285` | No OS sandbox, seccomp, uid separation, network denial, or pinned executable hash; external process compromise remains possible |
 | Core → Chromium | E/D | Remote JavaScript escapes browser, accesses host network or consumes resources | Core remains fail-closed; separate harness uses bubblewrap user/mount/PID/IPC/UTS/network namespaces, read-only runtime, private profile and systemd memory/task/runtime limits | `render.rs`; `packaging/amatl-chromium-sandbox`; `.github/workflows/chromium-isolation.yml`; `docs/security/chromium-isolation.md` | Isolation is verified but not wired into core; a CDP bridge and review are still required before activation |
 | Core → SQLite | T/I/D | Corruption, contention, or cache poisoning changes correctness | SQLite is optional; failures degrade; WAL, NORMAL sync, 5 s busy/acquire timeout, pool 4, header/quick-check quarantine, versioned keys and TTL/LRU quotas | `service.rs:101-112`; `storage.rs:58-118`; `cache.rs:39-99`; `document_cache.rs:24-85`; `storage.rs:581-670` | Database is not encrypted or authenticated; local users with file access can read or modify it |
-| MCP → Deep/Internet | E/D | MCP becomes a general network proxy | MCP route requires bearer token/rate limit; exactly four tools; MCP search/Deep budgets are stricter; fetch routes through the service policy and, when governed, uses the same SafeFetcher with 3 s/256 KiB/two redirects | `service.rs`; `amatl-server/src/mcp.rs`; `amatl-server/src/tests.rs` | Under `standard`, authorized clients can use fetch as a bounded public-network proxy; `isolated` denies it, but cannot prove the MCP client itself is local |
-| All → logs/errors | I/R | Secrets or attacker-controlled text leaks or forges logs | HTTP errors expose fixed codes; provider transport errors are generic; non-TTY logs are structured JSON | `amatl-server/src/lib.rs:517-535`; `providers/http.rs:64-101`; `amatl-cli/src/main.rs:19-98` | There is no automated end-to-end secret-redaction test or durable audit log; debug data governance is operator responsibility |
+| Core → inference (answer) | I/E | A user- or admin-triggered call sends retrieved source snippets to a remote model provider | Opt-in at two layers: `data_policy.inference = "remote_explicit"` gates the whole backend, and `answer.enabled` (an admin-scope, validate-before-write toggle over `POST /answer/enabled`) gates the surface separately; snippets are capped (`max_sources`, `max_source_chars`); credential comes from `credential_env`, never from TOML/logs/URLs | `answer.rs`; `config.rs` (`set_answer_enabled`); `amatl-server/src/lib.rs` (`answer_toggle`); `docs/resumen-con-ia.md` | The provider (DeepInfra or an operator-chosen equivalent) is a third party that receives query text and source snippets by design once enabled — this is disclosed, not mitigated; no per-request user consent prompt exists beyond the admin-level toggle |
+| Core → inference (answer) | T/R | A hostile source (or the model itself) injects instructions, or the model cites a source that was never retrieved, presenting fabricated text as grounded fact | The system prompt instructs citation-only, no filler, Spanish output; `extract_citations` validates every `[n]` against real source indices after the call; `strip_invalid_citations` removes fabricated markers from the visible text (not merely from the count) with UTF-8-safe boundaries; a response citing zero valid sources fails closed as `AnswerError::Ungrounded` instead of being shown | `answer.rs` (`strip_invalid_citations`, `extract_citations`, `synthesize`); `answer.rs` tests (`cites_only_indices_that_exist_and_deduplicates`, `stripping_a_fabricated_citation_does_not_corrupt_multibyte_text`) | Prompt injection embedded in a hostile source's snippet can still influence the model's *prose* even when citations stay valid — grounding constrains what can be cited, not what can be said about it; there is no separate instruction/content channel at the model-call boundary |
+| Core → inference (answer) | D | Repeated or automated calls to a metered third-party endpoint incur operator cost | `[budget].max_provider_calls`, per-call `timeout_ms`, `max_answer_tokens`, and the same bearer/rate-limit surface as the rest of the API/MCP apply; the call is single-turn and stateless — no server-side conversation state exists to let cost grow with call count beyond the existing per-request limits | `answer.rs`; `config.rs`; `amatl-server/src/lib.rs` (rate limiting) | No per-operator spend cap exists at the AMATL layer; cost containment currently relies entirely on the provider account's own billing limits |
+| MCP → Deep/Internet | E/D | MCP becomes a general network proxy | MCP route requires bearer token/rate limit and a per-credential tool allowlist checked from the authenticated identity, so `fetch` can be denied to a client without disabling egress; five tools, none of them reading the filesystem; MCP search/Deep budgets are stricter; fetch routes through the service policy and, when governed, uses the same SafeFetcher with the limits `ExecutionLimits::for_surface` derives for MCP (3 s/256 KiB/two redirects by default) instead of hardcoded ones | `service.rs`; `amatl-server/src/mcp.rs`; `amatl-server/src/tests.rs` | Under `standard`, authorized clients can use fetch as a bounded public-network proxy; `isolated` denies it, but cannot prove the MCP client itself is local |
+| All → logs/errors | I/R | Secrets or attacker-controlled text leaks or forges logs | HTTP errors expose fixed codes; provider transport errors are generic; non-TTY logs are structured JSON | `amatl-server/src/lib.rs:517-535`; `providers/http.rs:64-101`; `amatl-cli/src/main.rs:19-98` | Security rejections are also persisted to `security_events` when SQLite is enabled and readable through `/security-events` (admin scope); under saturation events are dropped and counted. There is still no automated end-to-end secret-redaction test, and without persistence logs remain the only trail |
 
 ## Accepted risks and review triggers
 
@@ -80,6 +92,13 @@ but never remote inference.
 - `isolated` is an application fail-closed control, not proof of host-wide
   containment; confidential deployments also require a local client/inference
   runtime and an OS/network sandbox.
+- The `answer` capability sends query text and retrieved source snippets to a
+  third-party model provider once an operator opts in at both gates
+  (`data_policy.inference = "remote_explicit"` and `answer.enabled`); this is
+  the intended, disclosed behavior of an explicitly optional feature, not a
+  leak. Citation grounding constrains what the model can claim came from a
+  source; it does not constrain the model's free prose, so prompt injection
+  from a hostile source remains a residual risk.
 
 Review this model before enabling Chromium, adding a provider or outbound
 protocol or inference backend, changing authentication, trusting proxy headers,

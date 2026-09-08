@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 277.844,
+  "pair_id": "v5-p-0732",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does root systems in geology operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "knowledge of Western systems and procedure was obtained, the vindictive as opposed to the reformatory idea of punishments continued to obtain in China down to quite recent years,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/15250/15250-h/15250-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Myths &amp; Legends of China",
+        "url": "https://www.gutenberg.org/files/15250/15250-h/15250-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "term for those writing systems. However, the &#34;Reformed Egyptian&#34; used by the Nephites is described as a language system unique to them (Mormon 9:32-34), having evolved with their",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jefflindsay.com",
+          "/BMEvidences.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Book of Mormon Evidences, Part One: Not Proof, But Indications of Plausibility",
+        "url": "https://www.jefflindsay.com/BMEvidences.shtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2d36bd88e44cd021579398ba2ea230615d97c509ce5894a92afef6a9aa45341b",
+  "provider": "SearXNG",
+  "query": "how does root systems in geology operate",
+  "query_id": "v5-p-0732-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:15:41.940941Z"
+}

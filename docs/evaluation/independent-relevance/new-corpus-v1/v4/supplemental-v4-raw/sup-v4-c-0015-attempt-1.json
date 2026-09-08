@@ -1,0 +1,26 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 230.26617400319083,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of cloud formation in computer networks",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0015",
+  "query_text": "give an overview of cloud formation in computer networks",
+  "requested_at": "2026-09-03T01:42:35.590043Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

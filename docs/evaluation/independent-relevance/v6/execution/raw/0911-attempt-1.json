@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 911,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 312.122,
+  "pair_id": "candidate-p-1019",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains fermentation control within cultural heritage",
+    "results": [
+      {
+        "category": "general",
+        "content": "late war, or a sort of fermentation-product, to mix the figure, of a banal heresy launched upon him recently by his wife. This is the penalty that the man of intellectual curiosit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ibiblio.org",
+          "/eldritch/hlm/defense.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "In Defense of Women, H. L. Mencken, 1922",
+        "url": "http://www.ibiblio.org/eldritch/hlm/defense.htm"
+      },
+      {
+        "category": "general",
+        "content": "late war, or a sort of fermentation-product, to mix the figure, of a banal heresy launched upon him recently by his wife. This is the penalty that the man of intellectual curiosit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/cache/epub/1270/pg1270-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of In Defense of Women, by H. L. Mencken",
+        "url": "https://www.gutenberg.org/cache/epub/1270/pg1270-images.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e4a4fada4c52733bd3c827eada405ad5a7d912d97b54e4ed1cfc5adca5777cb7",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains fermentation control within cultural heritage",
+  "query_id": "candidate-t-1019",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "http://www.ibiblio.org/eldritch/hlm/defense.htm",
+      "original_url": "http://www.ibiblio.org/eldritch/hlm/defense.htm",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "late war, or a sort of fermentation-product, to mix the figure, of a banal heresy launched upon him recently by his wife. This is the penalty that the man of intellectual curiosit",
+      "title": "In Defense of Women, H. L. Mencken, 1922"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "https://www.gutenberg.org/cache/epub/1270/pg1270-images.html",
+      "original_url": "https://www.gutenberg.org/cache/epub/1270/pg1270-images.html",
+      "rank": 2,
+      "rejection_reason": null,
+      "snippet": "late war, or a sort of fermentation-product, to mix the figure, of a banal heresy launched upon him recently by his wife. This is the penalty that the man of intellectual curiosit",
+      "title": "The Project Gutenberg eBook of In Defense of Women, by H. L. Mencken"
+    }
+  ],
+  "timestamp": "2026-09-05T17:25:18.436568Z"
+}

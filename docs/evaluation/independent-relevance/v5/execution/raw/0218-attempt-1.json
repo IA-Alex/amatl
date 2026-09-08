@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 308.618,
+  "pair_id": "v5-p-0156",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind immune response in geology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b2913aab36d070737e2cf97b2fe8bafa6d775b9cd20ab171ef15ae06d6c4d76e",
+  "provider": "SearXNG",
+  "query": "describe the principle behind immune response in geology",
+  "query_id": "v5-p-0156-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:17.800516Z"
+}

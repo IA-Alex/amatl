@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 259.326,
+  "pair_id": "v5-p-0105",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is ocean tides in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "then collapses. Other industrialized nations scramble for bigger markets and cheaper labor. EEC countries are not as hard hit as the rest of the west, due to internal trade. SEA c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.shoestring-graphics.com",
+          "/CP2020/timeline/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Days of Future Past",
+        "url": "http://www.shoestring-graphics.com/CP2020/timeline/"
+      },
+      {
+        "category": "general",
+        "content": "progress from primitive industrial society, without division of labor, up to manufacturing civilization. But we have in addition to this a recurrence of the process of evolution i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "monadnock.net",
+          "/turner/frontier.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Significance of the Frontier in American History, by Frederick Jackson Turner",
+        "url": "https://monadnock.net/turner/frontier.html"
+      },
+      {
+        "category": "general",
+        "content": "said to have owned an industrial diving service, was led to the site by a Long Beach diver named Bill Stach. Bell, as cited by the articles suggested because of the sub&#39;s less tha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "the-wanderling.com",
+          "/midget_submarines.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "JAPANESE MIDGET SUBMARINES: A-BOMBS, MIDGET SUBS, AND THE CALIFORNIA CHANNEL ISLANDS",
+        "url": "https://the-wanderling.com/midget_submarines.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "98388dff1a8fe97b5a7e57f319a84e53fa76884f649913d951d4297a94b77483",
+  "provider": "SearXNG",
+  "query": "what is ocean tides in industrial design",
+  "query_id": "v5-p-0105-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:56.001782Z"
+}

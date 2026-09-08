@@ -1,0 +1,108 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 381.05851999716833,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind wave interference in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "means of persuasion and interference, stunt the emergence of young democracies in the name of democracy.&#34; John le Carre&#39;   &#34;The greatest purveyor of violence on ear",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "barbariansinsuits.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BARBARIANS IN SUITS - GLOBAL ELITE, RULING ELITE, DYNASTIC ELITE, GLOBAL OLIGARCHY, GLOBALISM, FINANCIAL OLIGARCHY, PLUTOCRACY, KLEPTOCRACY, P",
+        "url": "https://barbariansinsuits.net/"
+      },
+      {
+        "category": "general",
+        "content": "go forward without his interference. This, said Squealer, was something called tactics. He repeated a number of times, &#34;Tactics, comrades, tactics!&#34; skipping round and whisking hi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "gutenberg.net.au",
+          "/ebooks01/0100011h.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Animal Farm",
+        "url": "http://gutenberg.net.au/ebooks01/0100011h.html"
+      },
+      {
+        "category": "general",
+        "content": "has interposed to the interference of the Federal Government in that same work of internal improvement, by so reorganizing the legislature that Virginia, too, may be hitched to th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "monadnock.net",
+          "/turner/frontier.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Significance of the Frontier in American History, by Frederick Jackson Turner",
+        "url": "https://monadnock.net/turner/frontier.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0224",
+  "query_text": "describe the principle behind wave interference in climate science",
+  "requested_at": "2026-09-03T01:43:45.517883Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

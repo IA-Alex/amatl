@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 354.978,
+  "pair_id": "v5-p-0594",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of air quality monitoring in neuroscience",
+    "results": [
+      {
+        "category": "general",
+        "content": "Finger’s Origins of Neuroscience tells of a little-known German professor named Julius R. Ewald “who put platinum ‘button’ electrodes on the cortex of [a] dog in 1896,” then walke",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wireheading.com",
+          "/brainstim/cyborgs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cyborgs, transhumans and neuroelectronics",
+        "url": "https://www.wireheading.com/brainstim/cyborgs.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b1cc5316aa1788e60a4fb2ffa7d1551763f0d8afff9f115276e2161740a0d2a5",
+  "provider": "SearXNG",
+  "query": "tell me about the function of air quality monitoring in neuroscience",
+  "query_id": "v5-p-0594-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:10:26.248714Z"
+}

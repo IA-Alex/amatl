@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 313.504,
+  "pair_id": "v5-p-0149",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is immune response in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "It was probably in response to the influx of millions of new converts that the Iss Cult underwent its evolutions to its final form. Initially, as a messianic cult prophesying para",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.erbzine.com",
+          "/mag14/1416.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ERBzine 1416: Religions of Barsoom by Den Valdron",
+        "url": "https://www.erbzine.com/mag14/1416.html"
+      },
+      {
+        "category": "general",
+        "content": "Homicide&#39; by Government Response Audio  -  &#34; All this Chaos is Staged and just an Illusion to put us in Panic Mode&#34; - Dr. Reiner Fuellmich    -",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia3/ciencia_coronavirus.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coronavirus and the &#39;Fear Factor&#39;... - El Coronavirus y el &#39;Factor Miedo&#39;...",
+        "url": "https://www.bibliotecapleyades.net/ciencia3/ciencia_coronavirus.htm"
+      },
+      {
+        "category": "general",
+        "content": "that will be groping in response. In the meantime, the way of the world is much more easily understood without the kaleidoscopic thrills of Conspiracy Theory. And while conspirati",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.acts17-11.com",
+          "/conspire.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Christians and Conspiracy Theories: A Call to Repentance",
+        "url": "http://www.acts17-11.com/conspire.html"
+      },
+      {
+        "category": "general",
+        "content": "2.3.1. A global response in a time of crisis 2.3.2. The essential matrix of New Age thinking 2.3.3. Central themes of the New Age 2.3.4. What does New Age say about... 2.3.4.1. ..",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.vatican.va",
+          "/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jesus Christ The Bearer Of The Water Of Life - A Christian reflection on the New Age",
+        "url": "https://www.vatican.va/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html"
+      },
+      {
+        "category": "general",
+        "content": "survival. Physiological Response: Both scenarios trigger a &#34;fight or flight&#34; response, which is a physiological reaction to perceived danger. This involves an increase in heart ra",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.animal-rights.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Veganism as conceived by ChatGPT",
+        "url": "https://www.animal-rights.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "provoke so little response in the intellectual community -- for example, no one has said that there is something strange in the offer of a major chair in the humanities to a histo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ditext.com",
+          "/chomsky/ri.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Responsibility of Intellectuals, by Noam Chomsky",
+        "url": "https://www.ditext.com/chomsky/ri.html"
+      },
+      {
+        "category": "general",
+        "content": "fight-or-flight response. Wilkinson, together with Martin Daly and Margo Wilson, have pointed to another measurable cost of economic inequality. Crime rates are much higher in reg",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "may have a less robust response to infections, and due to the potential for co-morbidities, pneumonia can be especially dangerous and is a common cause of death. Alzheimer&#39;s Disea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.supercentenarian.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Supercentenarians, Aging and Superlongevity as conceived by ChatGPT",
+        "url": "https://www.supercentenarian.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "exaggerated emergency response or sensational media reports. Victims often object strongly to their ailments being labelled psychosomatic, and sometimes accuse the authorities of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/psycho.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mass psychosis and the power of thought",
+        "url": "https://davidpratt.info/psycho.htm"
+      },
+      {
+        "category": "general",
+        "content": "length than before. His response was, Much better. Thanks Succinct. But, again, much more courteous than I&#39;ve come to expect from people who get upset about my writings.] ]] http:",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.howtospotapsychopath.com",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Spot a Psychopath",
+        "url": "http://www.howtospotapsychopath.com/feed/"
+      },
+      {
+        "category": "general",
+        "content": "meaning is only in the response of the interpreter, not in the mind of the speaker, even if the speaker is to be sued or charged with a crime for the interpreter having the respon",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/language.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Against the Theory of &#34;Sexist Language&#34;",
+        "url": "https://friesian.com/language.htm"
+      },
+      {
+        "category": "general",
+        "content": "immune system response, in comparison with the natural infection. Thus a person who has had Covid-19 had superior resistance to getting the virus again. Merck stated that they wou",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.news1.net",
+          "/jan2021.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Breaking News, news commentary and news chronicle. News1.net - News and Photographic image archive. Global news with an emphasis on New Yo",
+        "url": "http://www.news1.net/jan2021.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e279813ba26dd6c7dbef3da349037b13fa90efb4b5da7c9f16e3eef8a29e1a7b",
+  "provider": "SearXNG",
+  "query": "what is immune response in climate science",
+  "query_id": "v5-p-0149-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:57.075934Z"
+}

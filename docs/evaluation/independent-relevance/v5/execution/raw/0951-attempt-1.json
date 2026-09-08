@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 263.81,
+  "pair_id": "v5-p-0895",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes vaccination in forensic science",
+    "results": [
+      {
+        "category": "general",
+        "content": "to things like vaccination, or social distancing during COVID, on the basis that COVID is a harmful disease, as determined by scientific research, and that things like the COVID v",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "purplepriest.codeberg.page",
+          "/articles/refdd.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://purplepriest.codeberg.page/articles/refdd.html",
+        "url": "https://purplepriest.codeberg.page/articles/refdd.html"
+      },
+      {
+        "category": "general",
+        "content": "It is also about care, vaccination, and nutrition of girls, and ultimately survival.&#34; The report is the first to examine the number of avoidable deaths among girls under five",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/girlchild.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sexual Paradox: The Girl Child",
+        "url": "http://www.dhushara.com/paradoxhtm/girlchild.htm"
+      },
+      {
+        "category": "general",
+        "content": "the GOYIM!&#34; Death by Vaccination! Lorraine Day, M.D. February 24, 2020 Their Ultimate Plan: 1) Crash the Economy world-wide, 2) Begin “Culling the Herd” with Deadly Vaccinations,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "goodnewsaboutgod.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Good News About God - Telling the Truth and Exposing Lies",
+        "url": "https://goodnewsaboutgod.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "409442de66cc4df4180d9406afa969ee4d9af97a0473f75d7be5e43eeb87bc4d",
+  "provider": "SearXNG",
+  "query": "what causes vaccination in forensic science",
+  "query_id": "v5-p-0895-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:16.511737Z"
+}

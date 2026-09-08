@@ -1,0 +1,327 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 375.627,
+  "pair_id": "v5-p-0431",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes carbon capture in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "how to perform order of operations, Probability, And Stat{istics}, and trig{onometry} remembers basic geometry, Hunt Tracking Times For Spotted Units, Circular Orbits For Navigati",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "by faceless adhoc operations, the implied linear progress in quality / technology / narrative of sequel naming conventions scrambled into a meaningless blob of signifiers, videoga",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "harmonyzone.org",
+          "/A1REVIEWS.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "skull.txt",
+        "url": "https://harmonyzone.org/A1REVIEWS.html"
+      },
+      {
+        "category": "general",
+        "content": "drone operations. Although it initially performs to a very high standard, work quality drops within 200-300 subjective hours (at a 0.33 work ratio) and outright revolt begins with",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "qntm.org",
+          "/mmacevedo",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lena @ Things Of Interest",
+        "url": "https://qntm.org/mmacevedo"
+      },
+      {
+        "category": "general",
+        "content": "up some sort of base of operations. It should be at a safe distance from Earth. Lurking at least one AU out of range of whatever terrible destructive force you are about to unleas",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "qntm.org",
+          "/destroy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to destroy the Earth @ Things Of Interest",
+        "url": "https://qntm.org/destroy"
+      },
+      {
+        "category": "general",
+        "content": "merican special operations personnel, five United States Army National Guard and Army Reserve crewmen, seven Afghan commandos, and one Afghan interpreter—as well as a U.S. military",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/sociopol_obama163.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Obama&#39;s &#39;Dead Pool&#39; - Deaths Connected to The Obama White House",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_obama163.htm"
+      },
+      {
+        "category": "general",
+        "content": "pricing, UNICEF’s operations, community-moderated tweets, UK museums, and cattle brands. 2022.10.12 • Work-related injury counts, US hydrography, rebel leaders, file formats, and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.data-is-plural.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Data Is Plural — Full Archive",
+        "url": "https://www.data-is-plural.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "oversee its day-to-day operations. Mr. Macintosh : Phil Schiller was right there with Steve Jobs and Tim Cook at the start of Apple’s comeback in 1997-1998. He is officially",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mjtsai.com",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Tsai - Blog",
+        "url": "https://mjtsai.com/blog/"
+      },
+      {
+        "category": "general",
+        "content": "how to perform order of operations, Probability, And Stat{istics}, and trig{onometry} remembers basic geometry, Hunt Tracking Times For Spotted Units, Circular Orbits For Navigati",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/GreenMagi.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/GreenMagi.html"
+      },
+      {
+        "category": "general",
+        "content": "manage the day-to-day operations and short-term financial health of a company while pursuing long-term sustainability and growth. Public Sentiment and Stakeholder Expectations : P",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.utilitarianism.com",
+          "/chatgpt/longtermism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utilitarianism and longtermism as conceived by ChatGPT-4",
+        "url": "https://www.utilitarianism.com/chatgpt/longtermism.html"
+      },
+      {
+        "category": "general",
+        "content": "Nations News Page Peace Operations Training Institute Courses - Dec. 17, 2017 This website offers courses online or with a textbook. Some are free and available in multiple langua",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.peaceeducation101.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peace Education 101 - Peace curriculum, peace teaching program, peace education",
+        "url": "http://www.peaceeducation101.com/"
+      },
+      {
+        "category": "general",
+        "content": "collapse of many nutria operations. Animals escaped from inadequate enclosures or during storms and floods, while others were deliberately released when farms closed. These releas",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3db9fd9136aed0aaac35eb908191e1359dd3a20be2107dc953304cd6c19968cf",
+  "provider": "SearXNG",
+  "query": "what causes carbon capture in operations research",
+  "query_id": "v5-p-0431-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:47.192923Z"
+}

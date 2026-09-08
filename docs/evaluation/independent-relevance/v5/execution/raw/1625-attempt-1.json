@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 259.926,
+  "pair_id": "v5-p-1040",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does probability distributions in industrial design operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7245ed7115249214b10f0702de4378d58f871ce42eac730a12374f7324f7482d",
+  "provider": "SearXNG",
+  "query": "how does probability distributions in industrial design operate",
+  "query_id": "v5-p-1040-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:52.288974Z"
+}

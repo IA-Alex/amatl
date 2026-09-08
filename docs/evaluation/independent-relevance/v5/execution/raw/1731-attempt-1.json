@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 307.004,
+  "pair_id": "v5-p-0293",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is water purification in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "in the sense of purification as punishment, but as a gradual ascent towards the perfect development of one&#39;s potential. Psychology is used to explain mind expansion as “mys",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.vatican.va",
+          "/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jesus Christ The Bearer Of The Water Of Life - A Christian reflection on the New Age",
+        "url": "https://www.vatican.va/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html"
+      },
+      {
+        "category": "general",
+        "content": "of mental and physical purification prolonged through all conditions of existence. Then, when body and soul are fitted for the change, there comes what ordinary mortals call death",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "terebess.hu",
+          "/english/giles2.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Herbert A. Giles: The Civilization of China",
+        "url": "https://terebess.hu/english/giles2.html"
+      },
+      {
+        "category": "general",
+        "content": "were consecrated to the purification and removal of relics, to prayers and processions, and to all the solemn offices of religion, which served at least to heal the imagination, a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ourcivilisation.com",
+          "/smartboard/shop/gibbone/rome/volume2/chap52.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chapter 52 of The Decline And Fall Of The Roman Empire",
+        "url": "http://www.ourcivilisation.com/smartboard/shop/gibbone/rome/volume2/chap52.htm"
+      },
+      {
+        "category": "general",
+        "content": "services, such as water purification, pollination, and climate regulation. Encouraging ethical stewardship: De-wilding challenges the notion of &#34;letting nature take its course&#34; an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gene-drives.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reprogramming the biosphere with gene drives as conceived by ChatGPT",
+        "url": "https://www.gene-drives.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "record of ‘SARS-COV-2’ purification, by anyone, anywhere, ever , September 2024; Sam Bailey, The truth about virus isolation , April 2021; Andrew Kaufman, The rooster in the river",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/reclaim.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reclaiming our health: germ theory exposed",
+        "url": "https://davidpratt.info/reclaim.htm"
+      },
+      {
+        "category": "general",
+        "content": "man,’ that is, the purification of the spiritual being and at the same time knowledge of the Whole.” Referring to The Gospel of Truth, with its explanation of “the call from above",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.brusselsjournal.com",
+          "/node/4461",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Gnosticism from a Non-Voegelinian Perspective, Part III (Gnosticism in Modern Scholarship) | The Brussels Journal",
+        "url": "https://www.brusselsjournal.com/node/4461"
+      },
+      {
+        "category": "general",
+        "content": "of the Holy Ghost; the purification of the bath was a previous ceremony; but in no step of his life did Rienzi excite such scandal and censure as by the profane use of the porphyr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ccel.org",
+          "/g/gibbon/decline/volume2/chap70.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chapter 70 of The Decline And Fall Of The Roman Empire",
+        "url": "https://ccel.org/g/gibbon/decline/volume2/chap70.htm"
+      },
+      {
+        "category": "general",
+        "content": "a small impact on water purification but an even larger impact on the convergence of small particulate matter into matter of a more complex form that goes on to benefit consumers",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scientificlib.com",
+          "/en/Biology/Animalia/Arthropoda/Insects/Ephemeroptera.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ephemeroptera",
+        "url": "https://www.scientificlib.com/en/Biology/Animalia/Arthropoda/Insects/Ephemeroptera.html"
+      },
+      {
+        "category": "general",
+        "content": "of Life to the Day of Purification ”.  On the Easter Weekend of 1985, I travel back and forth from Sacramento to the Hopi Mesas, to seek out and visit with Grandfather David",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/clarkefivesong.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "clarkefivesong",
+        "url": "http://ipwebdev.com/hermit/clarkefivesong.html"
+      },
+      {
+        "category": "general",
+        "content": "the 40 days of her purification are over, the clothes she wore and her bed are burnt, as well as the tent or caravan where she lodged during those 40 days. This law is unknown to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.imninalu.net",
+          "/Roma.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Myths and Facts about Roma",
+        "url": "https://www.imninalu.net/Roma.htm"
+      },
+      {
+        "category": "general",
+        "content": "Day of Judgment. The purification of evil is performed by fire. Misfortunes are accompanied by fires” (H. I. Roerich, 1980, vol. I, 46).   Those who fight for Shambhala are t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.trimondi.de",
+          "/SDLE/Part-2-11.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Shadow of the Dalai Lama – Part II – 11",
+        "url": "http://www.trimondi.de/SDLE/Part-2-11.htm"
+      },
+      {
+        "category": "general",
+        "content": "in order to purification; that they have also as strong a faith in the power of their ark as ever the Israelites had in theirs, ascribing the success of one party to their stricte",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "olivercowdery.com",
+          "/texts/noah1837.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mordecai M. Noah&#39;s 1837 &amp; 1845 pamphlets",
+        "url": "http://olivercowdery.com/texts/noah1837.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f967a1fe51a2e776b33cf6fdd60063fad4585f6d14f9f769a6832658be953b59",
+  "provider": "SearXNG",
+  "query": "what is water purification in climate science",
+  "query_id": "v5-p-0293-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:24.578074Z"
+}

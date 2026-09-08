@@ -1,0 +1,171 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 1507,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 344.611,
+  "pair_id": "candidate-p-0747",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains data provenance within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "to see if some new information or perspective will introduce contradictions and problematize the whole, just as Popper thought that we must always be thinking of new ways to serio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/ross/platonis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Why I am a Platonist",
+        "url": "https://friesian.com/ross/platonis.htm"
+      },
+      {
+        "category": "general",
+        "content": "and thus the genetic information itself. Since the basic structure of DNA-alkaline pairs and of language (as explained earlier) are of the same structure, no DNA decoding is neces",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "during the crime. This information always strengthens and verifies the statement of witness and also narrow down the number of suspects. Currently there are many techniques availa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.shroud.com",
+          "/papers.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scientific Papers and Articles",
+        "url": "https://www.shroud.com/papers.htm"
+      },
+      {
+        "category": "general",
+        "content": "politically expedient information, nor particularly welcome. It still isn&#39;t welcomed to this day, like the Turim Basin ( VRC ) Tocharians in China. Seven males tested from the Xin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.suduva.com",
+          "/virdainas/proto.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Baltic in Vedic | Embrace The Chaos |",
+        "url": "http://www.suduva.com/virdainas/proto.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f2882bdbfdae0bf5e4b7bd1338d7bb44a22913497507e4964e8c5607163f7967",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains data provenance within information science",
+  "query_id": "candidate-t-0747",
+  "raw_result_count": 4,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://friesian.com/ross/platonis.htm",
+      "original_url": "https://friesian.com/ross/platonis.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "to see if some new information or perspective will introduce contradictions and problematize the whole, just as Popper thought that we must always be thinking of new ways to serio",
+      "title": "Why I am a Platonist"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://colinandrews.net/Consciousness.html",
+      "original_url": "https://colinandrews.net/Consciousness.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "and thus the genetic information itself. Since the basic structure of DNA-alkaline pairs and of language (as explained earlier) are of the same structure, no DNA decoding is neces",
+      "title": "The Study of Human Consciousness - Is ET already part of our lives?"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.shroud.com/papers.htm",
+      "original_url": "https://www.shroud.com/papers.htm",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "during the crime. This information always strengthens and verifies the statement of witness and also narrow down the number of suspects. Currently there are many techniques availa",
+      "title": "Scientific Papers and Articles"
+    }
+  ],
+  "timestamp": "2026-09-05T17:28:30.391912Z"
+}

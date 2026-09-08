@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 242.651,
+  "pair_id": "v5-p-0967",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes cloud formation in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "83ec426a3ebb078d8cec51da44b22183826bf8bd15d78ea038a80d7013df2579",
+  "provider": "SearXNG",
+  "query": "what causes cloud formation in hydrology",
+  "query_id": "v5-p-0967-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:04.743751Z"
+}

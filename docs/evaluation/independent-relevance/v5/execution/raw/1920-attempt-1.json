@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 311.853,
+  "pair_id": "v5-p-0980",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind wastewater treatment in electrical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8a103fb56ef4ee47d46da497835ed5690491045904626b86da973c3e6361a6dd",
+  "provider": "SearXNG",
+  "query": "describe the principle behind wastewater treatment in electrical engineering",
+  "query_id": "v5-p-0980-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:30.634346Z"
+}

@@ -1,0 +1,243 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 316.42809200275224,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does gear trains in operating systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "Design [PCC-CS501] - Operating Systems [PCC-CS502] - Obj. Oriented Programming [PCC-CS503] - Intro. to Industrial Management (Humanities III) [HSMC-501] - Theory of Computation [P",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "hdmtp.github.io",
+          "/blog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "hdmtp&#39;s archive (blog)",
+        "url": "https://hdmtp.github.io/blog.html"
+      },
+      {
+        "category": "general",
+        "content": "4, The Hobby LAYOUTS OPERATING TRAINS DISPLAYING TRAINS COLLECTING TRAINS INVENTORYING MEETS GROUPS OTHER SOURCES LAYOUTS How should I build my layout? A person&#39;s layout is very m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.spikesys.com",
+          "/Modelrr/faq4.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Tinplate FAQ Part 4",
+        "url": "http://www.spikesys.com/Modelrr/faq4.html"
+      },
+      {
+        "category": "general",
+        "content": "technical competence or operating skill could come from within ham radio, like with DXCC certificates. Some things have not changed in the last 50yrs. Ham Radio is Expensive in Ti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wm7d.net",
+          "/az_proj/az_html/arrl_restructuring.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Letter to ARRL - Restructing of Ham Radio Licensing",
+        "url": "https://www.wm7d.net/az_proj/az_html/arrl_restructuring.html"
+      },
+      {
+        "category": "general",
+        "content": "based and he started operating a manual totalisator conducted from horse drawn wagons. Two of these developments stand out. First George?s automatic totalisator and second the com",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tote-history-atl.net.au",
+          "/george_julius_genealogy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "George Julius Genealogy",
+        "url": "http://tote-history-atl.net.au/george_julius_genealogy.htm"
+      },
+      {
+        "category": "general",
+        "content": "any electrical systems operating AT ALL to keep itself from blowing up, when power is lost steam from the reactors is automatically diverted from the generator turbines to two tot",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_uranium64.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Did The Dimona Dozen Murder The Fukushima 50? - 3/11 Was Japan&#39;s 9/11",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_uranium64.htm"
+      },
+      {
+        "category": "general",
+        "content": "languages and operating systems are unwelcome. ?If Windows 3.1 was good enough for the Apostle Paul, it?s good enough for me!? Charismatic computer: It comes with user-definable f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cke1st.com",
+          "/m_stuff2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mike&#39;s Home-Made Humor Page",
+        "url": "http://www.cke1st.com/m_stuff2.htm"
+      },
+      {
+        "category": "general",
+        "content": "Webconverger May 23 Web operating systems May 19 TV is unsurprisingly bad May 15 Nokia E65 from 3 May 15 NHS IT cockups May 14 Customized Web kiosk May 9 East London Wifi? Apr 30",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "natalian.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kai Hendry&#39;s blog",
+        "url": "https://natalian.org/"
+      },
+      {
+        "category": "general",
+        "content": "with humongous Forward Operating Bases (FOBs) complete with slices of consumerist garrison Americana that incites rebellion and guerrilla wars . The QRF would be based nearby AT S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/itstimetojointheMOB.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AFPAK Solution #2: Why Can&#39;t The Good Guys Have Secret Bases?",
+        "url": "http://www.combatreform.org/itstimetojointheMOB.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0022",
+  "query_text": "how does gear trains in operating systems work",
+  "requested_at": "2026-09-03T01:43:03.729954Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

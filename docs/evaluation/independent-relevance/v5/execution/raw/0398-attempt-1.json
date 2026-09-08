@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 325.721,
+  "pair_id": "v5-p-0292",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind water purification in civil engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a4ff633dbfb05498d321516f157246bb530e62c309e52d3684ac7f8893dbf5aa",
+  "provider": "SearXNG",
+  "query": "describe the principle behind water purification in civil engineering",
+  "query_id": "v5-p-0292-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:14.154446Z"
+}

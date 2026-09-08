@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 309.698,
+  "pair_id": "v5-p-0888",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind vaccination in robotics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6554e05f3fdd941062e6514fc0c79d147a441d617e45e2883f2a425ca6666121",
+  "provider": "SearXNG",
+  "query": "describe the principle behind vaccination in robotics",
+  "query_id": "v5-p-0888-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:22.834670Z"
+}

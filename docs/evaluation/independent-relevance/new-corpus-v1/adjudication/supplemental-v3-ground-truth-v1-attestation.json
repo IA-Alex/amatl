@@ -1,0 +1,9 @@
+{
+  "schema": "amatl.relevance.supplemental-v3-ground-truth-attestation.v1",
+  "version": "v1",
+  "manifest_file": "supplemental-v3-ground-truth-v1-manifest.json",
+  "manifest_sha256": "24b5760988c97051c17f7b425eabaf4d1a819c7d8d9b426e1c071bdff959b112",
+  "ground_truth_file": "supplemental-v3-ground-truth-v1.json",
+  "ground_truth_sha256": "bfbc05e893d93f84a908ffd6faf618b4c5a800f8ce8e40b03fcc1cfc97681952",
+  "integrity_status": "PASS"
+}

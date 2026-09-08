@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 358.12,
+  "pair_id": "v5-p-0086",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of ocean tides in information systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "course’ with information that she gives out. For those interested in Planetary effects and movement, we would Highly recommend her ‘chats’ for she is at the same time, a gre",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "antimatrix.org",
+          "/Convert/Books/Chan/Blossom_Goodchild_En.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blossom Goodchild - Contacts with Federation of Light",
+        "url": "http://antimatrix.org/Convert/Books/Chan/Blossom_Goodchild_En.html"
+      },
+      {
+        "category": "general",
+        "content": "gossip and snippets of information about how to do things that nobody is actually going to do. We&#39;ve been bestowed the Fix-It-Philosophy, that if the President just does this or d",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.theabsolute.net",
+          "/misogyny/zubaty.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bits of Zubaty – A compilation of writings from &#34;What Men Know That Women Don&#39;t&#34;",
+        "url": "http://www.theabsolute.net/misogyny/zubaty.html"
+      },
+      {
+        "category": "general",
+        "content": "Sailboat Cruising the information resource for cruising sailors... Menu Home Site Guide Getting Afloat Build Your Own Boat Cruising Sailboats for Sale Buying a Used Sailboat Chart",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sailboat-cruising.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Sailboat Cruisers&#39; Favourite Information Resource",
+        "url": "https://www.sailboat-cruising.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e518810cf6d4988bce983f6d7c26a10b63d1fa766787598e6202a3d53b5005c9",
+  "provider": "SearXNG",
+  "query": "tell me about the function of ocean tides in information systems",
+  "query_id": "v5-p-0086-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:24.061237Z"
+}

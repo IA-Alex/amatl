@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 253.645,
+  "pair_id": "v5-p-0471",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes encryption keys in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "and dissemination of encryption (also known as cryptography, the science and art of secret writing). I originally hosted the mailing list (cypherpunks@toad.com) and provided space",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.toad.com",
+          "/gnu/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John Gilmore&#39;s home page",
+        "url": "http://www.toad.com/gnu/"
+      },
+      {
+        "category": "general",
+        "content": "and Linux Combined) encryption ie every data location and every bus location is encrypted unique to each processor subcomponent and CDA cell. The interunit communications encrypti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sonex.org",
+          "/SkyNet.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sky Net",
+        "url": "http://www.sonex.org/SkyNet.html"
+      },
+      {
+        "category": "general",
+        "content": "and Linux Combined) encryption ie every data location and every bus location is encrypted unique to each processor subcomponent and CDA cell. The interunit communications encrypti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bimavs.com",
+          "/CellularDiamondArmor.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BiMAVs; Bipedal Mechanized Assault Vehicles",
+        "url": "http://www.bimavs.com/CellularDiamondArmor.html"
+      },
+      {
+        "category": "general",
+        "content": "and Linux Combined) encryption ie every data location and every bus location is encrypted unique to each processor subcomponent and CDA cell. The interunit communications encrypti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bimavs.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BiMAVs; Bipedal Mechanized Assault Vehicles",
+        "url": "http://www.bimavs.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b79667577831b0fc02622522815a1030527b44ace7eb49328c574b7b18f239da",
+  "provider": "SearXNG",
+  "query": "what causes encryption keys in chemistry",
+  "query_id": "v5-p-0471-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:09.867213Z"
+}

@@ -1,0 +1,219 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 373.09,
+  "pair_id": "v5-p-0736",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind root systems in mechanical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "Modern Chumpatronic Engineering. says: March 3, 2014 at 5:37 pm [...] Modern Chumpatronic Engineering. A reader recently asked me to comment on the demise of MtGox and its implica",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.loper-os.org",
+          "/",
+          "",
+          "p=939",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Loper OS » Bitcoin, or How to Hammer in Nails with a Microscope.",
+        "url": "http://www.loper-os.org/?p=939"
+      },
+      {
+        "category": "general",
+        "content": "railroads and engineering, architecture, music, and movies, and the aesthetic appreciation of the marvels of the built environment. Dr. Cora Angier Sowa Athena - the Roman Minerva",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "minervaclassics.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Minerva Systems",
+        "url": "http://minervaclassics.com/"
+      },
+      {
+        "category": "general",
+        "content": "way of the electronic engineering talent needed to design a practical electronic calculator. Most of the electronics engineers were working in military, space, aviation, computer,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/friden130.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Friden EC-130 Electronic Calculator",
+        "url": "https://www.oldcalculatormuseum.com/friden130.html"
+      },
+      {
+        "category": "general",
+        "content": "realized by clever engineering taking advantage of such quantum effects.   However, if certain quantum inequalities conjectured by Ford and Roman hold, then the energy requir",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/time_travel/esp_ciencia_timetravel34.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Time Control Technologies and Methods",
+        "url": "https://www.bibliotecapleyades.net/ciencia/time_travel/esp_ciencia_timetravel34.htm"
+      },
+      {
+        "category": "general",
+        "content": "again, was an empirical engineering problem. Uranium hexafluoride, for use in gas separation, is corrosive and the problems were considerable. Even then, the theory of gases was w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "big-lies.org",
+          "/modern-physics-a-fraud/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "• Modern Physics a Fraud? - Superfluid helium? Speed of light a limit?, incredibility of quantum theory, Heisenberg&#39;s misunderstanding o",
+        "url": "http://big-lies.org/modern-physics-a-fraud/"
+      },
+      {
+        "category": "general",
+        "content": "before global paradise-engineering unfolds, chemical mood-uplifters will be essential too. 1.1 The Biological Program. Grand meta-narratives currently aren&#39;t very fashionable. His",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/hedethic/hedon1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "1. The Hedonistic Imperative",
+        "url": "https://www.hedweb.com/hedethic/hedon1.htm"
+      },
+      {
+        "category": "general",
+        "content": "years, and so Microsoft engineering will essentially come back and say that a nice, tightly-written kernel without any pollution in the executive level of execution is the best wa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oreilly.com",
+          "/openbook/opensources/book/intro.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Open Sources: Voices from the Open Source Revolution",
+        "url": "https://www.oreilly.com/openbook/opensources/book/intro.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "200d560079283f68f1dd0bf5d7da18db4a436e23a751cb698002fa70a3213374",
+  "provider": "SearXNG",
+  "query": "describe the principle behind root systems in mechanical engineering",
+  "query_id": "v5-p-0736-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:43.912485Z"
+}

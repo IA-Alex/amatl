@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 347.795,
+  "pair_id": "v5-p-0038",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of compiler operation in biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "an Exercise in Cooperation A General Construction for Expressing Repetition A New Approach to Proving the Correctness of Multiprocess Programs How to Present a Paper How to Make a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lamport.azurewebsites.net",
+          "/pubs/pubs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Writings of Leslie Lamport",
+        "url": "https://lamport.azurewebsites.net/pubs/pubs.html"
+      },
+      {
+        "category": "general",
+        "content": "The Santa Cruz Operation (SCO) has gone from a leading Unix vendor to an afterthought in the span of a couple of years. SCO, the company, will probably find a way to survive, but",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oreilly.com",
+          "/openbook/opensources/book/intro.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Open Sources: Voices from the Open Source Revolution",
+        "url": "https://www.oreilly.com/openbook/opensources/book/intro.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "69536e7c8693ec2f2201040a07846dff7bc10bf1a860ffaf895452a1bf724dba",
+  "provider": "SearXNG",
+  "query": "tell me about the function of compiler operation in biology",
+  "query_id": "v5-p-0038-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:10:28.152013Z"
+}

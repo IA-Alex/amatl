@@ -1,0 +1,333 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2544,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 355.295,
+  "pair_id": "candidate-p-1599",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of low power computing within education",
+    "results": [
+      {
+        "category": "general",
+        "content": "at something | a brief explanation of the cathedral | retiring the university by Curtis Yarvin. | The Case Against Education | book review seeing like a state | The toxic schoolin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "asteroid itself. Good explanation of the complexities of capturing an asteroid: Phil Plait&#39;s &#34;NASA May Be Towing An Asteroid to a Planet Near You&#34; . Chris Gayomali&#39;s &#34;Is the aster",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "/Volumes/PLAYSTATION Explanation of the command: hdiutil makehybrid : The macOS utility for creating disc images -iso : Creates a standard ISO9660 filesystem (required for PS1 gam",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "blog.greggant.com",
+          "/posts/2025/03/18/the-definitive-guide-to-ios-emulation.html",
+          "",
+          "",
+          "legal-considerations"
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Definitive Guide to iOS/iPadOS emulation",
+        "url": "http://blog.greggant.com/posts/2025/03/18/the-definitive-guide-to-ios-emulation.html#legal-considerations"
+      },
+      {
+        "category": "general",
+        "content": "one of the most clear explanations for this. &#43;214 @Jurimeimain - 2025-05-21 10:47:38 Very fitting since Luke looks increasingly more Chinese with each upload &#43;158 @Trooperos90 - 2",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/chinese_room",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Computation isn&#39;t Consciousness: The Chinese Room Experiment",
+        "url": "https://lukesmith.neocities.org/vids/chinese_room"
+      },
+      {
+        "category": "general",
+        "content": "\\)/\\1[no results]\\r\\2/ Explanation: : starts a command % do the following command on every line of this file s/ start a global substitute command \\( start a &#34;capture group&#34; -- you",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "shallowsky.com",
+          "/blog/tags/shell/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Shallow Thoughts : tags : shell",
+        "url": "https://shallowsky.com/blog/tags/shell/"
+      },
+      {
+        "category": "general",
+        "content": "Why? We actually get no explanation, while he rejects the assertion of the Declaration itself, that &#34;governments are instituted among men to secure these rights,&#34; i.e. natural rig",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/heinlein.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Robert Heinlein, The Libertarian in the Lifeboat",
+        "url": "https://friesian.com/heinlein.htm"
+      },
+      {
+        "category": "general",
+        "content": "works, with an overall explanation about its many parts, with a more detailed approach in the backend scenario. Bruno Cardoso Lopes is a PhD student at University of Campinas, Bra",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "far more parsimonious explanation, our universe seems much more likely to have been self - organized via fully natural evolutionary and developmental processes, to have such speci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.accelerationwatch.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Acceleration Watch (Understanding Accelerating Change)",
+        "url": "https://www.accelerationwatch.com/"
+      },
+      {
+        "category": "general",
+        "content": "(That&#39;s literally the explanation for PowerShell. Many of us wanted to improve cmd.exe, but couldn&#39;t.) More examples: We can&#39;t touch named pipes. Let&#39;s add %INTERNAL_NOTIFICATION_",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "blog.zorinaq.com",
+          "/i-contribute-to-the-windows-kernel-we-are-slower-than-other-oper/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "&#34;I Contribute to the Windows Kernel. We Are Slower Than Other Operating Systems. Here Is Why.&#34;",
+        "url": "http://blog.zorinaq.com/i-contribute-to-the-windows-kernel-we-are-slower-than-other-oper/"
+      },
+      {
+        "category": "general",
+        "content": "the torpedoes - our explanation was that they were photon bombs and that they weren&#39;t affected by gravity. Subsequent versions on newer computers have got enough compute time so t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wheels.org",
+          "/spacewar/stone/rolling_stone.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SPACEWAR - by Stewart Brand - Fanatic Life and Symbolic Death Among the Computer Bums.",
+        "url": "https://www.wheels.org/spacewar/stone/rolling_stone.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "556f64149b216d0e969107c35617a19233c5735923b886a7ef4e213fe46abb91",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of low power computing within education",
+  "query_id": "candidate-c-1599",
+  "raw_result_count": 10,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://imlauer.github.io/",
+      "original_url": "https://imlauer.github.io/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "at something | a brief explanation of the cathedral | retiring the university by Curtis Yarvin. | The Case Against Education | book review seeing like a state | The toxic schoolin",
+      "title": "esotericwarfare"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html",
+      "original_url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "asteroid itself. Good explanation of the complexities of capturing an asteroid: Phil Plait&#39;s &#34;NASA May Be Towing An Asteroid to a Planet Near You&#34; . Chris Gayomali&#39;s &#34;Is the aster",
+      "title": "Reasoning about the Manned Space Program"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://blog.greggant.com/posts/2025/03/18/the-definitive-guide-to-ios-emulation.html",
+      "original_url": "http://blog.greggant.com/posts/2025/03/18/the-definitive-guide-to-ios-emulation.html#legal-considerations",
+      "rank": 3,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "/Volumes/PLAYSTATION Explanation of the command: hdiutil makehybrid : The macOS utility for creating disc images -iso : Creates a standard ISO9660 filesystem (required for PS1 gam",
+      "title": "The Definitive Guide to iOS/iPadOS emulation"
+    }
+  ],
+  "timestamp": "2026-09-05T17:33:59.067426Z"
+}

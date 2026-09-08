@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 254.317,
+  "pair_id": "v5-p-1043",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes probability distributions in transportation engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "The higher velocity in transportation tends to increase the cruelty of accidents. The more cruel the accident, the bigger the headlines. -       Economic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.socrethics.com",
+          "/Folder2/Culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cultural Evolution of Suffering",
+        "url": "http://www.socrethics.com/Folder2/Culture.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1b6e913fbef1770a00eaedc593c9e685678c408a086f019183c1f14a072d7117",
+  "provider": "SearXNG",
+  "query": "what causes probability distributions in transportation engineering",
+  "query_id": "v5-p-1043-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:13:57.539281Z"
+}

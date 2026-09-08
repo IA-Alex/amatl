@@ -1,0 +1,198 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1136,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 331.88,
+  "pair_id": "candidate-p-0219",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about arctic navigation within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "was much geographical information missing in the Peninsula area. With the southern tip of South America to the right and the Antarctic Peninsula left of it near the center, there",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ronneantarcticexplorers.com",
+          "/antarctica.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Antarctica",
+        "url": "http://www.ronneantarcticexplorers.com/antarctica.htm"
+      },
+      {
+        "category": "general",
+        "content": "position. Technical information I recall: Each computer had 12 drums. Six were for the display system and six for central computer use. Each drum had fixed position read/write hea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.smecc.org",
+          "/sage_a_n_fsq-7.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SAGE A/N FSQ-7",
+        "url": "http://www.smecc.org/sage_a_n_fsq-7.htm"
+      },
+      {
+        "category": "general",
+        "content": "grid.   Additional Information (keep an open mind)   An updated version of this fact sheet will be issued as often as program changes warrant to keep interested parties",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "Varo&#39;s (Ulysses Paxton) information is tainted, given that he is working with Men and White Apes who have had partial brain transplants.   The human influenced by a whit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.erbzine.com",
+          "/mag15/1509.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ERBzine 1509: White Apes and Green Men",
+        "url": "https://www.erbzine.com/mag15/1509.html"
+      },
+      {
+        "category": "general",
+        "content": "to comprehend, further information has been published in various Journals, especially The Journal of Cuneiform Studies ( JCS ) with additional contributions by Otto Neugebauer, Ab",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "spirasolaris.ca",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Spirasolaris",
+        "url": "https://spirasolaris.ca/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "569e2e691755abdb6a3a631eeb110067e8eabe677dc197b7ac4e66f9e127bcaf",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about arctic navigation within information science",
+  "query_id": "candidate-c-0219",
+  "raw_result_count": 5,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "http://www.ronneantarcticexplorers.com/antarctica.htm",
+      "original_url": "http://www.ronneantarcticexplorers.com/antarctica.htm",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "was much geographical information missing in the Peninsula area. With the southern tip of South America to the right and the Antarctic Peninsula left of it near the center, there",
+      "title": "Antarctica"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "http://www.smecc.org/sage_a_n_fsq-7.htm",
+      "original_url": "http://www.smecc.org/sage_a_n_fsq-7.htm",
+      "rank": 2,
+      "rejection_reason": null,
+      "snippet": "position. Technical information I recall: Each computer had 12 drums. Six were for the display system and six for central computer use. Each drum had fixed position read/write hea",
+      "title": "SAGE A/N FSQ-7"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.cyberspaceorbit.com/WEATHER.html",
+      "original_url": "https://www.cyberspaceorbit.com/WEATHER.html",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "grid.   Additional Information (keep an open mind)   An updated version of this fact sheet will be issued as often as program changes warrant to keep interested parties",
+      "title": "HAARP"
+    }
+  ],
+  "timestamp": "2026-09-05T17:26:29.867099Z"
+}

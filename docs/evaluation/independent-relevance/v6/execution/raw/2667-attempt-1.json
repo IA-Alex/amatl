@@ -1,0 +1,144 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2667,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 480.388,
+  "pair_id": "candidate-p-1629",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what are the main constraints on low power computing within urban planning",
+    "results": [
+      {
+        "category": "general",
+        "content": "imposition of social constraints on reproduction is justified for the same reasons why social constraints on other behaviors are justified. Also, licenses are already required to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/faqs/overpopulation",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Overpopulation FAQs",
+        "url": "https://zerocontradictions.net/faqs/overpopulation"
+      },
+      {
+        "category": "general",
+        "content": "and bandwidth constraints rather than by accessibility and land values, largely asynchronous in its operation, and inhabited by disembodied and fragmented subjects who exist as co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gotze.dk",
+          "/phd/it.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Participation in the information age",
+        "url": "https://gotze.dk/phd/it.html"
+      },
+      {
+        "category": "general",
+        "content": "architectural constraints. Premature architecture can be more dangerous than none at all, as unproved architectural hypotheses turn into straightjackets that discourage evolution",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.laputan.org",
+          "/mud/mud.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Big Ball of Mud",
+        "url": "https://www.laputan.org/mud/mud.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "53c7a353d45ba10d869f768501b4f591c8b8600113eae081f50c70dbae7971e4",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what are the main constraints on low power computing within urban planning",
+  "query_id": "candidate-t-1629",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://zerocontradictions.net/faqs/overpopulation",
+      "original_url": "https://zerocontradictions.net/faqs/overpopulation",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "imposition of social constraints on reproduction is justified for the same reasons why social constraints on other behaviors are justified. Also, licenses are already required to",
+      "title": "Overpopulation FAQs"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://gotze.dk/phd/it.html",
+      "original_url": "https://gotze.dk/phd/it.html",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "and bandwidth constraints rather than by accessibility and land values, largely asynchronous in its operation, and inhabited by disembodied and fragmented subjects who exist as co",
+      "title": "Participation in the information age"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.laputan.org/mud/mud.html",
+      "original_url": "https://www.laputan.org/mud/mud.html",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "architectural constraints. Premature architecture can be more dangerous than none at all, as unproved architectural hypotheses turn into straightjackets that discourage evolution",
+      "title": "Big Ball of Mud"
+    }
+  ],
+  "timestamp": "2026-09-05T17:34:36.478889Z"
+}

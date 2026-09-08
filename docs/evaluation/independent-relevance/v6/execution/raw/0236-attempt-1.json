@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 236,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 345.867,
+  "pair_id": "candidate-p-1131",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about forest acoustics within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "that sends a codified information through air. So without examining the source that codified the information and sent the information towards the antennae, television program is a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/notmaterial_consciousness",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Consciousness Is Not Material.",
+        "url": "https://lukesmith.neocities.org/vids/notmaterial_consciousness"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4ff2527874ee3634a78b14c1a4e1466a4fd043c8a127baa7c04f4202b5d0671f",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about forest acoustics within information science",
+  "query_id": "candidate-c-1131",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://lukesmith.neocities.org/vids/notmaterial_consciousness",
+      "original_url": "https://lukesmith.neocities.org/vids/notmaterial_consciousness",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "that sends a codified information through air. So without examining the source that codified the information and sent the information towards the antennae, television program is a",
+      "title": "Consciousness Is Not Material."
+    }
+  ],
+  "timestamp": "2026-09-05T17:21:44.124584Z"
+}

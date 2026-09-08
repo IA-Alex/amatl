@@ -1,0 +1,162 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 295.982745999936,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes wave interference in civil engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "do as he likes without interference — without interference, because without society. But civility represents the kind of freedom we can enjoy “sociably”: I speak of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "thornwalker.com",
+          "/recoveries/sobran/pensees.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Pensees, by Joe Sobran",
+        "url": "https://thornwalker.com/recoveries/sobran/pensees.html"
+      },
+      {
+        "category": "general",
+        "content": "without external interference; to insist on equal opportunities for self-development; to insist on a ?square deal,? unhampered by the intervention of self-asserted superiors. &amp;nbs",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.anarchism.net",
+          "/anarchismvssocialism.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ANARCHISM.net: Anarchism versus Socialism, by W.C. Owen",
+        "url": "https://www.anarchism.net/anarchismvssocialism.htm"
+      },
+      {
+        "category": "general",
+        "content": "fading caused by interference between signals which have traveled from the transmitter to the receiver by two (or more) different ionospheric paths. Since the sun&#39;s radia-tion cre",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "cloning, biochemical interference with natural processes like sleep and sexual congress, augmentation of bodies with electronic devices, and technological alteration of all foodst",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jacobsm.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mark Jacobs&#39; Evolution Philosophy Conspiracy Theories WAVs OGGs MP3s FLPs MIDIs Music CDs",
+        "url": "https://jacobsm.com/"
+      },
+      {
+        "category": "general",
+        "content": "of arresters to prevent interference with the service. The purpose of lightning protection on electric systems is to ensure, as far as possible, the maintenance of an uninterrupte",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.myinsulators.com",
+          "/acw/bookref/overvoltage/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ACW&#39;s Insulator Info - Book Reference Info - Overvoltage and Flashovers",
+        "url": "https://www.myinsulators.com/acw/bookref/overvoltage/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0119",
+  "query_text": "what causes wave interference in civil engineering",
+  "requested_at": "2026-09-03T01:42:13.342330Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

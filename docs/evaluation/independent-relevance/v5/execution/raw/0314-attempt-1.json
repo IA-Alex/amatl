@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 226.735,
+  "pair_id": "v5-p-0819",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of battery chemistry in agricultural science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8ce9d08bdb57390f3f6a508b425b311b6c0f52b0d97efc7483ee335d5366c9e8",
+  "provider": "SearXNG",
+  "query": "give an overview of battery chemistry in agricultural science",
+  "query_id": "v5-p-0819-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:48.079154Z"
+}

@@ -1,0 +1,87 @@
+{
+  "artifact_notice": "Generated preflight artifact — AMATL SearXNG Baseline v2 readiness — do not treat as project documentation.",
+  "generated_at": "2026-08-23T17:32:28-07:00",
+  "scope": {
+    "mode": "read_only_precheck",
+    "benchmark_queries_executed": 0,
+    "searxng_searches_executed": 0,
+    "marginalia_requests_executed": 0,
+    "minimal_local_availability_checks": 1
+  },
+  "amatl": {
+    "provider": "searxng",
+    "config_file_value": {
+      "enabled": true,
+      "endpoint": null,
+      "credential_env": "SEARXNG_INSTANCE_URL",
+      "provider_timeout_ms": 20000,
+      "global_timeout_ms": 45000,
+      "retries": 1
+    },
+    "effective_runtime_value": {
+      "endpoint_source": "SEARXNG_INSTANCE_URL",
+      "endpoint": "http://127.0.0.1:8888",
+      "protocol": "http",
+      "host": "127.0.0.1",
+      "port": 8888
+    }
+  },
+  "service": {
+    "deployment": "Docker container searxng/searxng:latest",
+    "container_id_short": "93ec81d72bf1",
+    "state": "running",
+    "container_pid": 235350,
+    "network_mode": "host",
+    "published_ports": "host network; Docker port mapping is empty",
+    "healthcheck": "none",
+    "listener": "127.0.0.1:8888",
+    "endpoint_listener_classification": "ENDPOINT_MATCH"
+  },
+  "minimal_reachability": {
+    "request_count": 1,
+    "method": "GET",
+    "endpoint_generalized": "http://127.0.0.1:8888/",
+    "search_request": false,
+    "http_status": 200,
+    "elapsed_ms": 21.614,
+    "classification": "REACHABLE"
+  },
+  "searxng_effective_configuration": {
+    "running_instance_to_config_evidence": "Running container mounts Docker volume searxng-data at /etc/searxng; SEARXNG_SETTINGS_PATH is unset; its installed venv loader resolved 345 engines from the active configuration/default merge.",
+    "effective_config": "/etc/searxng/settings.yml overlay plus installed defaults",
+    "engines": {
+      "DuckDuckGo": "disabled",
+      "Mojeek": "disabled",
+      "Qwant": "disabled"
+    },
+    "configuration_drift": "NO_DRIFT_OBSERVED",
+    "drift_evidence": "Current settings.yml versus the documented same-volume backup differs only in the three authorized disabled false-to-true changes."
+  },
+  "fixture": {
+    "path": "test-results/searxng/20260823-145832/amatl-isolated.toml",
+    "exists": true,
+    "toml_parse": "ok",
+    "selected_providers": ["searxng"],
+    "marginalia_present": false,
+    "requires_code_change": false,
+    "documented_runner": "target/debug/amatl",
+    "runner_present": false,
+    "classification": "NOT_RUNNABLE_WITHOUT_OUT_OF_SCOPE_BUILD"
+  },
+  "baseline_v1": {
+    "dataset_path": "test-results/benchmarks/searxng-v1/20260823-153023/dataset.json",
+    "dataset_parse": "ok",
+    "queries_present": ["Q01", "Q02", "Q03", "Q04", "Q05", "Q06", "Q07", "Q08", "Q09", "Q10"],
+    "repetitions": 3,
+    "historical_interval_seconds": 3,
+    "taxonomy": "recoverable from Baseline v1 README",
+    "classification": "AVAILABLE_EXACTLY"
+  },
+  "prior_transport_failure": {
+    "artifact": "test-results/searxng-diagnostic/20260823-165200-runtime-engines/",
+    "current_evidence": "Endpoint/listener match and a current non-search root HTTP 200 prove current local availability only.",
+    "classification": "UNKNOWN",
+    "reason": "The historical artifact records only AMATL's generic transport failure and zero SearXNG probe events; it contains no causal transport detail. The current healthy state cannot establish or exclude a past transient failure."
+  },
+  "decision": "BLOCKED:SEARXNG_FIXTURE_NOT_RUNNABLE"
+}

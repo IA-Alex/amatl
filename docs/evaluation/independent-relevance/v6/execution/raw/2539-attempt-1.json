@@ -1,0 +1,34 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2539,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 312.094,
+  "pair_id": "candidate-p-0836",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "under what conditions does drone photogrammetry within epidemiology change",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "48572e144fcec3a02b5576f30feb4a3513ac049243cb110fa1b23522b719a8d6",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "under what conditions does drone photogrammetry within epidemiology change",
+  "query_id": "candidate-t-0836",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:33:57.581964Z"
+}

@@ -1,0 +1,354 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 488.74,
+  "pair_id": "v5-p-0949",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind cloud formation in information systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "even those with limited information. Artistic Interpretation: Show participants pieces of abstract art and ask them to interpret potential perspectives or emotions it might repres",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.empathogens.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Empathogens as conceived by ChatGPT",
+        "url": "https://www.empathogens.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "3D image from wavefront information on a 2D photographic plate (Cowen 2015 ). The holographic principle can be used to generate dualities between higher dimensional string theorie",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/quant.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quantum Reality and Cosmology",
+        "url": "http://www.dhushara.com/paradoxhtm/quant.htm"
+      },
+      {
+        "category": "general",
+        "content": "and thus the genetic information itself. Since the basic structure of DNA-alkaline pairs and of language (as explained earlier) are of the same structure, no DNA decoding is neces",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "cryptic pieces of information describing your current status. If either status line becomes longer than the width of the screen, you might not see all of it. Here are explanations",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.nethack.org",
+          "/v330/Guidebook.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NetHack 3.3.0: A Guide to the Mazes of Menace",
+        "url": "http://www.nethack.org/v330/Guidebook.html"
+      },
+      {
+        "category": "general",
+        "content": "as a «large source of information». In the XXI century still results indispensable to mark where finishes fantasy and starts reality, but even after telling, for many individuals",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "asynchronousexchange.com",
+          "/documents/the-saint-petersburg-hive",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://asynchronousexchange.com/documents/the-saint-petersburg-hive",
+        "url": "http://asynchronousexchange.com/documents/the-saint-petersburg-hive"
+      },
+      {
+        "category": "general",
+        "content": "getting the necessary information from Michael Mann, who put many obstacles in their path. He refused to release his computer code, saying that ‘giving them the algorithm wo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/warm.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The global warming scare",
+        "url": "https://davidpratt.info/warm.htm"
+      },
+      {
+        "category": "general",
+        "content": "indirect or encoded information (traditions), while immediate awareness remains the true touchstone of spirituality. The outstanding conflict in the theologies of humanity is betw",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/equiaeon/henotheism.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHY : On Henotheism : beyond Monotheism and Polytheism",
+        "url": "http://www.sofiatopia.org/equiaeon/henotheism.htm"
+      },
+      {
+        "category": "general",
+        "content": "10th: Three Formats for Information Presentation August 9th: A Furious Rant Against WordPress August 2nd: Too Many Tasks August 1st: Elizabeth Gattermann May 29th: Forty years of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.erasmatazz.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Home | Interactive Storytelling Tools for Writers | Chris Crawford",
+        "url": "https://www.erasmatazz.com/"
+      },
+      {
+        "category": "general",
+        "content": "(Spartan). Use the information in the attached resume [ attach your resume to the prompt ]. Ensure that the summary sparks curiosity and aligns with professional standards suitabl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "freegptprompts.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Free GPT Prompts | A Curated Directory of 300&#43; AI Prompts For Free",
+        "url": "https://freegptprompts.org/"
+      },
+      {
+        "category": "general",
+        "content": "designate strictly informational notes; scholiast commentaries are consigned to endnotes     Index: Introduction Dubious and Slanderous Accounts His Genuine Character Ep",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "epicurism.github.io",
+          "/epicurism.info/etexts/Lives.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Epicurus.info : E-Texts : The Life of Epicurus",
+        "url": "http://epicurism.github.io/epicurism.info/etexts/Lives.html"
+      },
+      {
+        "category": "general",
+        "content": "getting shit about the information overload caused by using sophisticated new Wiki technology. One doesn&#39;t like that he can&#39;t read it on his Lunix box, another moans that there&#39;s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tomforsyth1000.github.io",
+          "/blog.wiki.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "TomF&#39;s Tech Blog - It&#39;s only pretending to be a wiki.",
+        "url": "http://tomforsyth1000.github.io/blog.wiki.html"
+      },
+      {
+        "category": "general",
+        "content": "his claim that no information can escape from a black hole, an idea which is purely theoretical and lacks any truth other than in the minds of physicists. Cutting to the chase, my",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.physicsmyths.org.uk",
+          "/discussions/cosmology3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cosmology Discussion Forum - Page 3",
+        "url": "https://www.physicsmyths.org.uk/discussions/cosmology3.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "216d427bc27ee10734fce1a7f2a04436f92745b39a67e3afb2c8fbfa77d4ddb4",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind cloud formation in information systems",
+  "query_id": "v5-p-0949-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:58.810997Z"
+}

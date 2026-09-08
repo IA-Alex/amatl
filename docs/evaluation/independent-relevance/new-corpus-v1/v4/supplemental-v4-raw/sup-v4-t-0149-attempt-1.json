@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 346.0312059978605,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is wave interference in earth science",
+    "results": [
+      {
+        "category": "general",
+        "content": "flower of life, due to interference this week from Intel. See new introduction. NEW PAPER, added 4/20/24, The Rule of Four. Mainstream science is stumped again. NEW PAPER, added 4",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "milesmathis.com",
+          "/updates.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "updates",
+        "url": "https://milesmathis.com/updates.html"
+      },
+      {
+        "category": "general",
+        "content": "Cyber-Nanny Shit, Pig Interference, Corporate Spying, And Non-Fwa Agency Monitoring Unless Your Systems Are Detected Going Through A Non-Ghosted{Never Turned On Like You Need To D",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteList.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/FWAsiteList.html"
+      },
+      {
+        "category": "general",
+        "content": "Nor is political interference rejected. It may be needed to overcome the chauvinism of science that resists alternatives to the status quo. 5 :: No theory ever agrees with all the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "theanarchistlibrary.org",
+          "/library/paul-feyerabend-against-method.muse",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse",
+        "url": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse"
+      },
+      {
+        "category": "general",
+        "content": "effects of atmospheric interference. Another factor in observing a satellite is that it has to be above the observer&#39;s local horizon. The Shuttle&#39;s orbit is normally confined to b",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.qsl.net",
+          "/kd4cga/satintro.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://www.qsl.net/kd4cga/satintro.htm",
+        "url": "https://www.qsl.net/kd4cga/satintro.htm"
+      },
+      {
+        "category": "general",
+        "content": "to measurement, exhibit interference and entanglement, and evade spatiotemporal localization, they cannot be treated as classical objects. Yet they are not mere fictions either: t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mats-winther.github.io",
+          "/pneumaticquantum.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Pneumatic Hylomorphism and Quantum Philosophy: Retrieving the Logoi in the Copenhagen Model",
+        "url": "https://mats-winther.github.io/pneumaticquantum.htm"
+      },
+      {
+        "category": "general",
+        "content": "more agents running interference on me. NEW PAPER, added 2/14/23, Hunter S. Thompson. Spook baby. Also the Hell&#39;s Angels. NEW PAPER, added 2/13/23, The Milgram Experiment was also",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mileswmathis.com",
+          "/updates.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Updates",
+        "url": "https://mileswmathis.com/updates.html"
+      },
+      {
+        "category": "general",
+        "content": "the Quantum Two-slit Interference and Complementarity The Cat Paradox and the Role of Conciousness The Two-timing Nature of Special Relativity Reality and Virtuality: Quantum fiel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/quant.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quantum Reality and Cosmology",
+        "url": "http://www.dhushara.com/paradoxhtm/quant.htm"
+      },
+      {
+        "category": "general",
+        "content": "by means of destructive interference). Michael Ivsin (2) In the dual-slit electron interference experiment I hear that the interference effect goes away if the electron is illumin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.physicsmyths.org.uk",
+          "/discussions/quantum1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quantum Physics Discussion Forum",
+        "url": "https://www.physicsmyths.org.uk/discussions/quantum1.htm"
+      },
+      {
+        "category": "general",
+        "content": "and electromagnetic interference). The goal of the project is to develop a dutifully maintained engine for interactive and automatic routing that can be used both as a standalone",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/news/2023/20231123-announcing-projects.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; 55 New Projects Awarded NGI0 Grants",
+        "url": "https://nlnet.nl/news/2023/20231123-announcing-projects.html"
+      },
+      {
+        "category": "general",
+        "content": "of Thomas Young&#39;s interference experiment appears to interact with itself on the other side, as through it passed through both slots, but then it doesn&#39;t if we determine, by whate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/rovelli.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Seven Brief Lessons on Physics, by Carlo Rovelli, 2016",
+        "url": "https://friesian.com/rovelli.htm"
+      },
+      {
+        "category": "general",
+        "content": "by that outer world any interference in what did not concern it. America was our field,—a field amply large for our development. It was therefore declared that, while we had",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/16542/16542-h/16542-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of &#34;Imperialism&#34; and &#34;The Tracks of Our Forefathers&#34;, by Charles Francis Adams.",
+        "url": "https://www.gutenberg.org/files/16542/16542-h/16542-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "without external interference; to insist on equal opportunities for self-development; to insist on a ?square deal,? unhampered by the intervention of self-asserted superiors. &amp;nbs",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.anarchism.net",
+          "/anarchismvssocialism.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ANARCHISM.net: Anarchism versus Socialism, by W.C. Owen",
+        "url": "https://www.anarchism.net/anarchismvssocialism.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0149",
+  "query_text": "what is wave interference in earth science",
+  "requested_at": "2026-09-03T01:42:19.155963Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

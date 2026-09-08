@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 257.645,
+  "pair_id": "v5-p-1071",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes microbial fermentation in architecture",
+    "results": [
+      {
+        "category": "general",
+        "content": "have been made through fermentation. Analysis of the phylogenetic trees constructed from the 355 protein families places Clostridia and methanogens as the earliest-diverging organ",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/unraveltree/unravel.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Unraveling the Tree of Life",
+        "url": "http://www.dhushara.com/book/unraveltree/unravel.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "131ef52af04e7031b119294e5df19c481af6b4b18aa7248848b016711baf6b32",
+  "provider": "SearXNG",
+  "query": "what causes microbial fermentation in architecture",
+  "query_id": "v5-p-1071-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:11:18.303357Z"
+}

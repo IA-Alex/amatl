@@ -1,0 +1,327 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 426.631,
+  "pair_id": "v5-p-0570",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of food preservation in energy systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "&#34;With the preservation and propagation of modern dynastic power has come the preservation and propagation of modern imperialism, no longer established as a formal colo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "globalkleptocracy.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GLOBAL KLEPTOCRACY - GLOBAL ELITE, RULING ELITE, GLOBAL OLIGARCHY, DEEP STATE, GLOBALISM, DYNASTIC ELITE, MONOPOLY CAPITALISM, CORPORATOCRACY,",
+        "url": "https://globalkleptocracy.net/"
+      },
+      {
+        "category": "general",
+        "content": "fighting is always the preservation of the majority principle. Perhaps the leading cause of war in the foreseeable future will be the struggle of peoples who constitute a minority",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.lewrockwell.com",
+          "/ostrowski/ostrowski72.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Myth of Democratic Peace: Why Democracy Cannot Deliver Peace in the 21st Century by James Ostrowski",
+        "url": "https://archive.lewrockwell.com/ostrowski/ostrowski72.html"
+      },
+      {
+        "category": "general",
+        "content": "this act of his for the preservation of our laws, which some senseless assertors of the rights of men were then on the point of entirely erasing, as relics of feudality and barbar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gutenberg.org",
+          "/cache/epub/15700/pg15700-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of Burke&#39;s Writings and Speeches, Volume the Fourth, by Edmund Burke.",
+        "url": "https://gutenberg.org/cache/epub/15700/pg15700-images.html"
+      },
+      {
+        "category": "general",
+        "content": "cell division and the preservation of function in ways that are for the moment a mystery to doctors and to science. Only a complete understanding of these hidden substances will r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bookreadfree.com",
+          "/188298/4660591",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bronze Age Mindset Page 2 Read online free by Bronze Age Pervert",
+        "url": "https://bookreadfree.com/188298/4660591"
+      },
+      {
+        "category": "general",
+        "content": "campaign for game preservation provides a pretty much perfect example of the folly of this strategy. By the way, I have nothing whatsoever against him or his endeavors; in fact I",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/enemylaw.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Enemy Who Surpasses The Law",
+        "url": "http://digdeeper.love/articles/enemylaw.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "that they result in the preservation of an organism&#39;s life.&#34; The footnote may have been added later to answer an objection someone raised. The problem is that once Rand makes that",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "spot.colorado.edu",
+          "/~huemer/papers/rand5.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Critique of Objectivist Ethics",
+        "url": "https://spot.colorado.edu/~huemer/papers/rand5.htm"
+      },
+      {
+        "category": "general",
+        "content": "of the State, for the preservation or the extension of its power, it is all transformed into duty and virtue. And this virtue, this duty, are obligatory for each patriotic citizen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.anarchistfaq.com",
+          "/B.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Anarchist FAQ - II. Why are anarchists against the State?",
+        "url": "http://www.anarchistfaq.com/B.html"
+      },
+      {
+        "category": "general",
+        "content": "to the assembly and preservation of the history of the totalisator, not to mention the huge effort put into making that history accessible through your website. And Paul Coghlan w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tote-history-atl.net.au",
+          "/george_julius_genealogy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "George Julius Genealogy",
+        "url": "http://tote-history-atl.net.au/george_julius_genealogy.htm"
+      },
+      {
+        "category": "general",
+        "content": "indeed. –  On the Preservation of Species Laws and morals should be congruent. Behavior that the community finds immoral, can be legal only in an incomplete legal system; whe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dematerialism.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C:\\users\\waybu\\douments\\aaaaaindex",
+        "url": "https://www.dematerialism.net/"
+      },
+      {
+        "category": "general",
+        "content": "topic than cultural preservation? How can we - enlightened 2BHs readers that we are - square these two? Posted by: Brandon M on April 18, 2007 1:35 AM Just do what Japan does, cut",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2007/04/england_rip_1.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: England R.I.P.?",
+        "url": "http://www.2blowhards.com/archives/2007/04/england_rip_1.html"
+      },
+      {
+        "category": "general",
+        "content": "of journalistic self-preservation. It happened that I was not at the gates of the lodge last evening when the news of the Queen’s death was announced by Mr. Fraser, nor was there",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.luminist.org",
+          "/archives/corelli_queen.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Luminist Archives: The Passing of the Great Queen by Marie Corelli",
+        "url": "http://www.luminist.org/archives/corelli_queen.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "14d7981ad484374a3356db25894fcb5efa19d75fda5750875a270386b796408a",
+  "provider": "SearXNG",
+  "query": "tell me about the function of food preservation in energy systems",
+  "query_id": "v5-p-0570-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:01.394024Z"
+}

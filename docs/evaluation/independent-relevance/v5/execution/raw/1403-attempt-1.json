@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 252.077,
+  "pair_id": "v5-p-0752",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does root systems in hydrology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8e77e79df8abc5bae80e391340875088dc1a35ae6ee7c04fd5d183fc69090b26",
+  "provider": "SearXNG",
+  "query": "how does root systems in hydrology operate",
+  "query_id": "v5-p-0752-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:43.714122Z"
+}

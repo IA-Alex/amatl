@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 309.126,
+  "pair_id": "v5-p-0972",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind wastewater treatment in astronomy",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "e5b79dab3a5195c722bc324bc73e4e965b3e5115e4ecaa9c93e934932b6db1e8",
+  "provider": "SearXNG",
+  "query": "describe the principle behind wastewater treatment in astronomy",
+  "query_id": "v5-p-0972-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:56.112023Z"
+}

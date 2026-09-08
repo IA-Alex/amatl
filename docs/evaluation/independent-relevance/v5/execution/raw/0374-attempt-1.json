@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 321.447,
+  "pair_id": "v5-p-0120",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind database indexing in geology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "694dee516a98ca7cbaf94b4201243bfd49ade6ffa79c33b690c67837fe63484e",
+  "provider": "SearXNG",
+  "query": "describe the principle behind database indexing in geology",
+  "query_id": "v5-p-0120-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:06.737361Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 219.136,
+  "pair_id": "v5-p-0675",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of traffic flow in agricultural science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bda2587a04661748195352a3d102c67349a88251b857b5cdee6e2a9953ed526a",
+  "provider": "SearXNG",
+  "query": "give an overview of traffic flow in agricultural science",
+  "query_id": "v5-p-0675-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:49.838037Z"
+}

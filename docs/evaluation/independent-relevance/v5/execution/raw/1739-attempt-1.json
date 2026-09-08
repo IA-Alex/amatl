@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 246.328,
+  "pair_id": "v5-p-0144",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does database indexing in transportation engineering operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f13fee7db8b3321c65c35a43b75a600d604a5a4b8d2d1ba19928543d18dd1436",
+  "provider": "SearXNG",
+  "query": "how does database indexing in transportation engineering operate",
+  "query_id": "v5-p-0144-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:14:27.360387Z"
+}

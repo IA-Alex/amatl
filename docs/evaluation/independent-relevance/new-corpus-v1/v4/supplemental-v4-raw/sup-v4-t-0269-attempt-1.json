@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 320.96373900276376,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is wave interference in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "more agents running interference on me. NEW PAPER, added 2/14/23, Hunter S. Thompson. Spook baby. Also the Hell&#39;s Angels. NEW PAPER, added 2/13/23, The Milgram Experiment was also",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mileswmathis.com",
+          "/updates.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Updates",
+        "url": "https://mileswmathis.com/updates.html"
+      },
+      {
+        "category": "general",
+        "content": "in French. Heavy local interference. Fair. [Black]   189   ICELAND    Rikisútvarpid , Gufuskálar  2258 - Teletalk in Icelandic th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bamlog.com",
+          "/cmmc2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2012 CMMC DXpedition",
+        "url": "http://www.bamlog.com/cmmc2.htm"
+      },
+      {
+        "category": "general",
+        "content": "wavelength. Due to interference with commercial traffic this wavelength was later reduced to 26 meters, and again later to the final wavelength of 10 to 13 meters. To achieve a re",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dos4ever.com",
+          "/EF50/EF50.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The EF50, the tube that helped to win the War",
+        "url": "https://www.dos4ever.com/EF50/EF50.html"
+      },
+      {
+        "category": "general",
+        "content": "to 100kHz or more) interference into audio systems, and these Boss adaptors have an elaborate double toroid filter in the output cable in an effort to reduce this. Also pictured i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.firstpr.com.au",
+          "/rwi/dfish/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Devil Fish mods for the TB-303",
+        "url": "https://www.firstpr.com.au/rwi/dfish/"
+      },
+      {
+        "category": "general",
+        "content": "Darkly&#34; is about interference between different modes of representation: between lived experience and representation on the scanners, between different modes of self-representatio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.geocities.ws",
+          "/mystery_zone/bog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "mystery_zone new document title",
+        "url": "http://www.geocities.ws/mystery_zone/bog.html"
+      },
+      {
+        "category": "general",
+        "content": "identification with and interference in the Boer War (1899-1902), this program was doubled in 1900, with a clearly hostile intent toward Britain. The naval race thus started was t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/dreadnot.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dreadnought, Pre-Dreadnoughts, States &amp; Rivers, the Treaty Cruisers",
+        "url": "https://friesian.com/dreadnot.htm"
+      },
+      {
+        "category": "general",
+        "content": "without government interference, and the other following Tony Stark&#39;s surprising decision to support government oversight and accountability.  Trailer here .     &amp;n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.concatenation.org",
+          "/stuff/best-science-fiction-of-the-year.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Best Science Fiction of the Year",
+        "url": "http://www.concatenation.org/stuff/best-science-fiction-of-the-year.html"
+      },
+      {
+        "category": "general",
+        "content": "fading caused by interference between signals which have traveled from the transmitter to the receiver by two (or more) different ionospheric paths. Since the sun&#39;s radia-tion cre",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "regarding potential interference to licensed services from this device. Don`t hold your breath waiting to hear this as DX (Paul Smith, W4KNX, Sarasota, FL, ibid.) The way I read i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.worldofradio.com",
+          "/dxld3135.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.worldofradio.com/dxld3135.txt",
+        "url": "http://www.worldofradio.com/dxld3135.txt"
+      },
+      {
+        "category": "general",
+        "content": "applications. Safety Interference Suppression Capacitors (X2 / Y2) Safety capacitors are required for AC mains EMI suppression and compliance with international safety standards.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jbcapacitors.hk",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "jbcapacitors blog",
+        "url": "https://www.jbcapacitors.hk/"
+      },
+      {
+        "category": "general",
+        "content": "antilepton interference Artificially generated by aliens. Prevents communications. DS9: Emissary - Gul Jassad&#39;s fleet flooded subspace with antilepton interference. antimatter Art",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.midwinter.com",
+          "/~koreth/particles/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Particles of Star Trek",
+        "url": "http://www.midwinter.com/~koreth/particles/"
+      },
+      {
+        "category": "general",
+        "content": "Cyber Noodle Soup , Interference on the Brain Screen , Cyberpunk Timeline, PKD Otaku and Simulacrum Meltdown. These zines were all edited by Patrick Clark. Line Noiz was an e-Zine",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cyb-sec.neocities.org",
+          "/pages/alt-cyberpunk-faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "alt.cyberpunk FAQ – /cyb/&#43;/sec/ wiki",
+        "url": "https://cyb-sec.neocities.org/pages/alt-cyberpunk-faq/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0269",
+  "query_text": "what is wave interference in music technology",
+  "requested_at": "2026-09-03T01:43:08.483453Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

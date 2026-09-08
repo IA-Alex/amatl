@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 294.807,
+  "pair_id": "v5-p-0270",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does binary search in neuroscience work",
+    "results": [
+      {
+        "category": "general",
+        "content": "information theory, neuroscience, physics, biochemistry and computer science to the philosophy of the mind and the evolving criteria historically used to define death. When someon",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "a bunch of other common neuroscience techniques like connectomics, lesion studies, tuning curves, you get a bunch of obviously wrong results like “there are distinct transis",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/epistemology/representationalism",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Representationalism",
+        "url": "https://zerocontradictions.net/epistemology/representationalism"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "80c94d17cc1c7395f63a6f0b109f6f33733cfd972e9f0398f5da9c2689ea2585",
+  "provider": "SearXNG",
+  "query": "how does binary search in neuroscience work",
+  "query_id": "v5-p-0270-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:15:37.560880Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 307.994,
+  "pair_id": "v5-p-0872",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind vaccination in ecology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b945205937575d26696fc7141cd5929a2fad1b3bd1a488445c1f5ba554050d95",
+  "provider": "SearXNG",
+  "query": "describe the principle behind vaccination in ecology",
+  "query_id": "v5-p-0872-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:57.202645Z"
+}

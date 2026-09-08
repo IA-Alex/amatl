@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 302.67907999950694,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is routing tables in digital security",
+    "results": [
+      {
+        "category": "general",
+        "content": "been configured with security conscious settings, such as only allowing code to execute from flash and ITCM memory regions and disallowing any access from a NULL pointer.  But if",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.pjrc.com",
+          "/2021/07/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SEGA ROM Reader",
+        "url": "https://www.pjrc.com/2021/07/"
+      },
+      {
+        "category": "general",
+        "content": "and throughput, security, privacy/confidentiality, plausible deniability, robustness and crypto-agility, side-channel resistance, interoperability, governance and compliance to re",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/assure/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; NGI Assure",
+        "url": "https://nlnet.nl/assure/"
+      },
+      {
+        "category": "general",
+        "content": "paper, Results of the Security in ActiveX Workshop , looks well worth a read. The security issues relating to ActiveX cannot be ignored. ActiveX controls are an integral part of s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "davidchess.com",
+          "/words/log.20001229.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Log -- David Chess",
+        "url": "http://davidchess.com/words/log.20001229.html"
+      },
+      {
+        "category": "general",
+        "content": "such resources, but security has lagged behind: thousands of MCP servers execute with unrestricted access to host systems, creating a broad attack surface. In this paper, we intro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "programming-group.com",
+          "/members/salvaneschi",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Prof. Dr. Guido Salvaneschi | Programming Group",
+        "url": "https://programming-group.com/members/salvaneschi"
+      },
+      {
+        "category": "general",
+        "content": "in this box. For security, the password characters will be replaced by dots. Remember me: This check box has no effect. Note 1 from 2026-06-09 Published on 2026-06-09 One of my li",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.alm.website",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Athena&#39;s blog - Athena&#39;s Site",
+        "url": "https://www.alm.website/blog/"
+      },
+      {
+        "category": "general",
+        "content": "good. Put up new security camera, and cut down broken doors to fit the garage. Dinner &amp; puzzled until late, picked up H. from Melvyn&#39;s. 2021-12-28 Tuesday Breakfast, and out f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2021/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2021/"
+      },
+      {
+        "category": "general",
+        "content": "disaster as far as security is concerned: it is almost trivial to become root. To set sensible permissions look in [these scripts]. - psz@maths.usyd.edu.au (Paul Szabo) [ orig",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jim.rees.org",
+          "/apollo-archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Apollo Archive",
+        "url": "https://jim.rees.org/apollo-archive/"
+      },
+      {
+        "category": "general",
+        "content": "work for billions. Security - People be the gatekeepers to their devices. Society - How secushare is not a threat to society. Storage - How to keep devices in sync. Threats - What",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "secushare.org",
+          "/comparison",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Capability Comparison",
+        "url": "https://secushare.org/comparison"
+      },
+      {
+        "category": "general",
+        "content": "The present need for security products far exceeds the number of individuals capable of designing secure systems. Consequently, industry has resorted to employing folks and purcha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cs.auckland.ac.nz",
+          "/~pgut001/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Peter Gutmann&#39;s Home Page",
+        "url": "https://www.cs.auckland.ac.nz/~pgut001/"
+      },
+      {
+        "category": "general",
+        "content": "the week&#39;s major security events and discuss questions and comments from listeners of previous episodes. They tie up loose ends, explore a wide range of topics that are too small",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.grc.com",
+          "/sn/sn-387.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Security Now! Transcript of Episode #387",
+        "url": "https://www.grc.com/sn/sn-387.htm"
+      },
+      {
+        "category": "general",
+        "content": "stop being useful. Security teams, mail servers, and abuse desks all depend on IP reputation data. If anyone with a credit card can launder a dirty IP range, the entire system is",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "acid.vegas",
+          "/blog/the-shady-world-of-ip-leasing/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "acidvegas x blog - the shady world of ip leasing",
+        "url": "https://acid.vegas/blog/the-shady-world-of-ip-leasing/"
+      },
+      {
+        "category": "general",
+        "content": "Archives Search Kernel Security Events calendar Unread comments LWN FAQ Write for us User: Password: | | Log in / Subscribe / Register GuestArticles index This is an index of all",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Archives/GuestIndex/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GuestArticles index [LWN.net]",
+        "url": "https://lwn.net/Archives/GuestIndex/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0061",
+  "query_text": "what is routing tables in digital security",
+  "requested_at": "2026-09-03T01:43:18.594752Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

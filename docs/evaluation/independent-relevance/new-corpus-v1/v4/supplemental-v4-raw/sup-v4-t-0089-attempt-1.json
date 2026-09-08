@@ -1,0 +1,324 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 124.17708100110758,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is wave interference in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "tired of Aristide&#39;s interference in the drug business. In 2000, after Aristide again won the Haitian elections, the US deemed the count fraudulent and cut off all aid, effectively",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "thirdworldtraveler.com",
+          "/New_World_Order/BigOil_Bankers_PersianGulf.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Big Oil &amp; Their Bankers In The Persian Gulf Four Horsemen, Eight Families &amp; Their Global Intelligence, Narcotics &amp; Terror Network",
+        "url": "https://thirdworldtraveler.com/New_World_Order/BigOil_Bankers_PersianGulf.html"
+      },
+      {
+        "category": "general",
+        "content": "The spectre of interference has been conjured by Hertzwave or radio telegraphy in which attunement is absolutely impossible, simply because the effect diminishes rapidly with dist",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tfcbooks.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nikola Tesla Information Resource | Books and Online Files",
+        "url": "http://tfcbooks.com/"
+      },
+      {
+        "category": "general",
+        "content": "wavelength. Due to interference with commercial traffic this wavelength was later reduced to 26 meters, and again later to the final wavelength of 10 to 13 meters. To achieve a re",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dos4ever.com",
+          "/EF50/EF50.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The EF50, the tube that helped to win the War",
+        "url": "https://www.dos4ever.com/EF50/EF50.html"
+      },
+      {
+        "category": "general",
+        "content": "voltage spikes are the interference from the boost converters, which are partially suppressed by C35 . It should be noted that a small value of the tube series resistance may lowe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "slomkowski.eu",
+          "/octoglow-vfd-fallout-inspired-display/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Octoglow VFD - Fallout-inspired post-apocalyptic display | Słomkowski",
+        "url": "https://slomkowski.eu/octoglow-vfd-fallout-inspired-display/"
+      },
+      {
+        "category": "general",
+        "content": "[Whittaker 1904], their interference reproduces potential gradients [normal &#34;force field&#34; EM], which do couple to electrons and translate them. In fact, potential gradie",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/newenergy/defeatcancer/cancer.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Tom Bearden Website",
+        "url": "https://www.bibliotecapleyades.net/ciencia/newenergy/defeatcancer/cancer.htm"
+      },
+      {
+        "category": "general",
+        "content": "built. About the patent interference case Refrigerated Truck Frederick Jones (with Joseph Numero) in 1938? No! Did Jones change America&#39;s eating habits by making possible the long",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.blackinventionmyths.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Black Invention Myths",
+        "url": "http://www.blackinventionmyths.com/"
+      },
+      {
+        "category": "general",
+        "content": "flourish without undo interference while inhibiting the opportunities for mischief. Or do we? Somewhere in the back of my mind I still have this picture of five smart guys from So",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zyvex.com",
+          "/nanotech/nano4/jeremiahPaper.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NANOTECHNOLOGY AND GLOBAL SECURITY",
+        "url": "https://www.zyvex.com/nanotech/nano4/jeremiahPaper.html"
+      },
+      {
+        "category": "general",
+        "content": "abductions, occult interference in relationships. Conscious Works Alberto Manni&#39;s seven online webinar lectures providing tools to start an internal journey of Self-knowledge. Ari",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "montalk.net",
+          "/links",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "links | Transcending the Matrix Control System",
+        "url": "https://montalk.net/links"
+      },
+      {
+        "category": "general",
+        "content": "fading caused by interference between signals which have traveled from the transmitter to the receiver by two (or more) different ionospheric paths. Since the sun&#39;s radia-tion cre",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "applications. Safety Interference Suppression Capacitors (X2 / Y2) Safety capacitors are required for AC mains EMI suppression and compliance with international safety standards.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jbcapacitors.hk",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "jbcapacitors blog",
+        "url": "https://www.jbcapacitors.hk/"
+      },
+      {
+        "category": "general",
+        "content": "antilepton interference Artificially generated by aliens. Prevents communications. DS9: Emissary - Gul Jassad&#39;s fleet flooded subspace with antilepton interference. antimatter Art",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.midwinter.com",
+          "/~koreth/particles/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Particles of Star Trek",
+        "url": "http://www.midwinter.com/~koreth/particles/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0089",
+  "query_text": "what is wave interference in electrical engineering",
+  "requested_at": "2026-09-03T01:42:01.230115Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

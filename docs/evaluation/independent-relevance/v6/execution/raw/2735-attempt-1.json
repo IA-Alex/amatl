@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2735,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 285.786,
+  "pair_id": "candidate-p-0083",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains adaptive optics within public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "There is no scientific evidence to prove that people can be categorized as visual, audible, or hands-on learners. If anything, all of those mediums of teaching should be used when",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zero Contradictions Philosophy Home Page",
+        "url": "https://zerocontradictions.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "80156f01f61bfd0b538f4197e35ac0a8c861c424d6168fb644c37e4738d666c0",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains adaptive optics within public health",
+  "query_id": "candidate-t-0083",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://zerocontradictions.net/",
+      "original_url": "https://zerocontradictions.net/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "There is no scientific evidence to prove that people can be categorized as visual, audible, or hands-on learners. If anything, all of those mediums of teaching should be used when",
+      "title": "Zero Contradictions Philosophy Home Page"
+    }
+  ],
+  "timestamp": "2026-09-05T17:34:56.685278Z"
+}

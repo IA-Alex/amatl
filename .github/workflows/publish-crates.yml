@@ -1,0 +1,121 @@
+name: publish-crates
+
+# Publishes workspace crates to crates.io in dependency order when an annotated
+# stable tag is pushed. Requires a crates.io API token stored as the repository
+# secret CARGO_REGISTRY_TOKEN.
+#
+# Release candidates are excluded from the automatic trigger on purpose: a
+# crates.io publish is irreversible (versions can only be yanked, never
+# removed), so candidates must be promoted deliberately via workflow_dispatch.
+
+on:
+  push:
+    tags:
+      # Stable tags only: v1.2.3, never v1.2.3-rc.1.
+      - "v[0-9]+.[0-9]+.[0-9]+"
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type 'publish' to confirm an irreversible crates.io upload"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Confirm manual publishes
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          set -euo pipefail
+          [ "${{ inputs.confirm }}" = "publish" ] || {
+            echo "::error::confirmation input must be exactly 'publish'"
+            exit 1
+          }
+
+      - name: Check packaged contents
+        run: |
+          set -euo pipefail
+          # Surfaces accidentally packaged files (the planning documents at the
+          # repository root are ~115 KB combined) before anything is uploaded.
+          for crate in amatl-core amatl-ui amatl-server amatl-cli; do
+            echo "── $crate ──"
+            cargo package -p "$crate" --list --locked
+          done
+
+      - name: Dry-run publish for all crates
+        run: |
+          set -euo pipefail
+          # Note: for the dependent crates this resolves the workspace members
+          # by `path`, so it validates metadata but NOT that the dependency
+          # version exists on the index. The publish job below waits explicitly.
+          cargo publish -p amatl-core --dry-run --locked
+          cargo publish -p amatl-ui --dry-run --locked
+          cargo publish -p amatl-server --dry-run --locked
+          cargo publish -p amatl-cli --dry-run --locked
+
+  publish:
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment: crates-io
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Resolve version
+        id: version
+        run: |
+          set -euo pipefail
+          version="$(cargo metadata --no-deps --format-version 1 \
+            | jq -r '.packages[] | select(.name == "amatl-core") | .version')"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Publish leaf crates
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+        run: |
+          set -euo pipefail
+          cargo publish -p amatl-core --locked
+          cargo publish -p amatl-ui --locked
+
+      - name: Wait for the crates.io index to carry the leaf crates
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          set -euo pipefail
+          # Poll the sparse index instead of sleeping a fixed interval: the
+          # dependent crates cannot resolve until these versions are indexed,
+          # and index latency is not bounded by any published SLA.
+          wait_for() {
+            local crate="$1" url="$2" deadline=$((SECONDS + 900))
+            until curl -fsSL "$url" | jq -e --arg v "$VERSION" \
+              'select(.vers == $v)' > /dev/null 2>&1; do
+              if [ "$SECONDS" -ge "$deadline" ]; then
+                echo "::error::$crate $VERSION did not appear on the index within 15 minutes"
+                exit 1
+              fi
+              echo "waiting for $crate $VERSION on the index…"
+              sleep 10
+            done
+            echo "$crate $VERSION is indexed"
+          }
+          wait_for amatl-core https://index.crates.io/am/at/amatl-core
+          wait_for amatl-ui https://index.crates.io/am/at/amatl-ui
+
+      - name: Publish dependent crates
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+        run: |
+          set -euo pipefail
+          cargo publish -p amatl-server --locked
+          cargo publish -p amatl-cli --locked

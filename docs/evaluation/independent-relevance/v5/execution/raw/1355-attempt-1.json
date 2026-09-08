@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 261.001,
+  "pair_id": "v5-p-0386",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does solar eclipses in urban planning work",
+    "results": [
+      {
+        "category": "general",
+        "content": "is the most rare of all eclipses -- no one living today has witnessed it -- and has occurred only six times since the invention of the telescope. Satellites and observatories alik",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "sherylfranklin.com",
+          "/space.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sheryl&#39;s Space &amp; Science Links Site",
+        "url": "http://sherylfranklin.com/space.html"
+      },
+      {
+        "category": "general",
+        "content": "Be No More Total Solar Eclipses , Space Image of the Day , NASA&#39;s Year in Review 2016 , ScienceHeathen , Public Library of Science (PLOS), CRISPR . Health: Single-payer would dras",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9d7702a91c600cdfa67f211a8934691c06c44759a77dfd9f5eeca38079b5aff5",
+  "provider": "SearXNG",
+  "query": "how does solar eclipses in urban planning work",
+  "query_id": "v5-p-0386-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:12:28.802081Z"
+}

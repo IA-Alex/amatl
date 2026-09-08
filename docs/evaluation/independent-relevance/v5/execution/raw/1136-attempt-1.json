@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 323.635,
+  "pair_id": "v5-p-0552",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind food preservation in geology",
+    "results": [
+      {
+        "category": "general",
+        "content": "demanding for its moral preservation the immediate and universal action of those institutions which discipline the mind and arm the conscience and the heart. And so various are th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "monadnock.net",
+          "/turner/frontier.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Significance of the Frontier in American History, by Frederick Jackson Turner",
+        "url": "https://monadnock.net/turner/frontier.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a149a4b008c54a0ffc9a51010f1b7ed92b3bae71a3471d1a2b5eb10f9ded5963",
+  "provider": "SearXNG",
+  "query": "describe the principle behind food preservation in geology",
+  "query_id": "v5-p-0552-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:11:14.685039Z"
+}

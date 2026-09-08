@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2030,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 312.815,
+  "pair_id": "candidate-p-0875",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about ecosystem services within cultural heritage",
+    "results": [
+      {
+        "category": "general",
+        "content": "space for the speakers&#39; backgrounds to be explained; I hope I have succeeded in this task. And lastly, any factual errors or mistranslations are entirely my own fault. 2. A (VERY)",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ditext.com",
+          "/nachie/bidder.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Civil War in Venezuela: Socialism to the Highest Bidder",
+        "url": "https://www.ditext.com/nachie/bidder.html"
+      },
+      {
+        "category": "general",
+        "content": "for listening, not background noise. The crack is the refusal: A 100% family business. No corporate ownership. No venture capital. No major label involvement. The venue exclusivel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "smallproof.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "cracks",
+        "url": "https://smallproof.neocities.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6e3eed982829fb7fcfe08818dd7a94bed515cd3c8922aa00a0405cca4c4cdb9e",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about ecosystem services within cultural heritage",
+  "query_id": "candidate-c-0875",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "https://www.ditext.com/nachie/bidder.html",
+      "original_url": "https://www.ditext.com/nachie/bidder.html",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "space for the speakers&#39; backgrounds to be explained; I hope I have succeeded in this task. And lastly, any factual errors or mistranslations are entirely my own fault. 2. A (VERY)",
+      "title": "The Civil War in Venezuela: Socialism to the Highest Bidder"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://smallproof.neocities.org/",
+      "original_url": "https://smallproof.neocities.org/",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "for listening, not background noise. The crack is the refusal: A 100% family business. No corporate ownership. No venture capital. No major label involvement. The venue exclusivel",
+      "title": "cracks"
+    }
+  ],
+  "timestamp": "2026-09-05T17:31:16.393438Z"
+}

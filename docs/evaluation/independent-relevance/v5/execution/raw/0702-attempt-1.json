@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 224.255,
+  "pair_id": "v5-p-0987",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of wastewater treatment in mechanical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0853344b8a30538bbaea539392d5e2af4b68a3b5b317675ad7f592f88121d92f",
+  "provider": "SearXNG",
+  "query": "give an overview of wastewater treatment in mechanical engineering",
+  "query_id": "v5-p-0987-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:57.951744Z"
+}

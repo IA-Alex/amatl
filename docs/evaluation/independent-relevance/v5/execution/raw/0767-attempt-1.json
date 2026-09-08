@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 276.251,
+  "pair_id": "v5-p-0348",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does soil erosion in robotics operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bdc59f0c0aecd6efc7a30ba4ac88273fe9ffd4fc4b105c8fcb9edbfb9b9a8ee7",
+  "provider": "SearXNG",
+  "query": "how does soil erosion in robotics operate",
+  "query_id": "v5-p-0348-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:18.806071Z"
+}

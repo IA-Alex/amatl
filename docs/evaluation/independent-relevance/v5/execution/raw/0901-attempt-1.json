@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 364.699,
+  "pair_id": "v5-p-0482",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does encryption keys in information systems work",
+    "results": [
+      {
+        "category": "general",
+        "content": "local network server information, credentials, passwords, and so on. Now, for my simple laptop use-case these things don&#39;t matter, there&#39;s no need to extend/parameterize things, l",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "0pointer.net",
+          "/blog/authenticated-boot-and-disk-encryption-on-linux.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Authenticated Boot and Disk Encryption on Linux",
+        "url": "http://0pointer.net/blog/authenticated-boot-and-disk-encryption-on-linux.html"
+      },
+      {
+        "category": "general",
+        "content": "a message based on information from only the public part of the ballot sheet and using the voter ID. The message is signed by the teller and contains: ballot sheet ID positions of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "kirill.korins.ky",
+          "/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Electt: Running Auditable and Verifiable Elections in Untrusted Environments - Kirill&#39;s journal",
+        "url": "https://kirill.korins.ky/articles/electt-running-auditable-and-verifiable-elections-in-untrusted-environments/"
+      },
+      {
+        "category": "general",
+        "content": "runtime configuration information for the Samba programs. The complete description of the file format and possible parameters held within are here for reference purposes. HOW CONF",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.samba.org",
+          "/samba/docs/current/man-html/smb.conf.5.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "smb.conf",
+        "url": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+      },
+      {
+        "category": "general",
+        "content": "the LWN FAQ for more information, and please consider subscribing to gain full access and support our activities. [ $ ] The &#34;rnull&#34; Rust block driver [Kernel] Posted Aug",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Welcome to LWN.net [LWN.net]",
+        "url": "https://lwn.net/"
+      },
+      {
+        "category": "general",
+        "content": "page. For security information, see the security bulletins and advisories 6. Enjoy! Now, even after browser updates, Chromium uses PepperFlash. ^^ NPAPI plugin NPAPI is a deprecat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "chromium.woolyss.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Download latest stable Chromium binaries (64-bit and 32-bit)",
+        "url": "https://chromium.woolyss.com/"
+      },
+      {
+        "category": "general",
+        "content": "Added. System Information and Benchmark for Linux Systems This application is the successor of and supersedes hardinfo latest-browsers-2-noarch-3slint.txz Edited the script latest",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "slackware.uk",
+          "/slint/x86_64/slint-15.0/ChangeLog.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://slackware.uk/slint/x86_64/slint-15.0/ChangeLog.txt",
+        "url": "http://slackware.uk/slint/x86_64/slint-15.0/ChangeLog.txt"
+      },
+      {
+        "category": "general",
+        "content": "bunch of links to more information about mkosi and related tooling: Github repository Building RHEL and RHEL UBI images with mkosi My presentation on systemd-repart at ASG 2023 mk",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "0pointer.net",
+          "/blog/category/projects.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Category: projects",
+        "url": "http://0pointer.net/blog/category/projects.html"
+      },
+      {
+        "category": "general",
+        "content": "the 1920&#39;s that an information-theoretically secure cryptosystem was devised: the one-time pad. The idea is simple: the plaintext message is represented by a binary string p, whic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.scottaaronson.com",
+          "/democritus/lec8.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHYS771 Lecture 8: Crypto",
+        "url": "https://www.scottaaronson.com/democritus/lec8.html"
+      },
+      {
+        "category": "general",
+        "content": "2004 » Google misinformation 22 Aug 2004 » Switched servers. This is... 22 Aug 2004 » New photos up... 22 Aug 2004 » A little while back all t... 13 Aug 20",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.imperialviolet.org",
+          "/posts-index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ImperialViolet - Posts index - ImperialViolet.org",
+        "url": "https://www.imperialviolet.org/posts-index.html"
+      },
+      {
+        "category": "general",
+        "content": "structuring, information loss, and a lack of provenance or security. By relying on unstructured folders and rigid JSON schemas instead of a proper database with foreign keys, audi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "be installed. For more information about Winsock 2 on Windows 95, see these Microsoft Knowledge Base articles: How to Identify Winsock 2.0 Run-Time Components for Windows 95 Avail",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "web.mit.edu",
+          "/kerberos/kfw-2.6/kfw-2.6/relnotes.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Release Notes for Kerberos for Windows 2.6",
+        "url": "https://web.mit.edu/kerberos/kfw-2.6/kfw-2.6/relnotes.html"
+      },
+      {
+        "category": "general",
+        "content": "how it operates. For information on these options, consult the script&#39;s man page: Type man refind-install if you installed rEFInd via an RPM or Debian package; or read it in HTML",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "rodsbooks.com",
+          "/refind/installing.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The rEFInd Boot Manager: Installing and Uninstalling rEFInd",
+        "url": "https://rodsbooks.com/refind/installing.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "456ddcd80293e58b55648f4dc8ca1ed638d88f1657257e4a4664a3c07f3628f8",
+  "provider": "SearXNG",
+  "query": "how does encryption keys in information systems work",
+  "query_id": "v5-p-0482-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:00.372697Z"
+}

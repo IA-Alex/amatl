@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 274.716,
+  "pair_id": "v5-p-1052",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does microbial fermentation in electrical engineering operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6a4fc31406c3e519572866dcf4a98934b6a6a4629f2c03bb09bd0cebc65f4b8c",
+  "provider": "SearXNG",
+  "query": "how does microbial fermentation in electrical engineering operate",
+  "query_id": "v5-p-1052-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:48.731501Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 219.731,
+  "pair_id": "v5-p-1023",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of probability distributions in mechanical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d4c579fc30a9ea0e1e717a25c7a975a32b3b254bfbe30df55e3e8e819f975cd9",
+  "provider": "SearXNG",
+  "query": "give an overview of probability distributions in mechanical engineering",
+  "query_id": "v5-p-1023-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:12.565888Z"
+}

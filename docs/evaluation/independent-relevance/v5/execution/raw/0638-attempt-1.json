@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 321.243,
+  "pair_id": "v5-p-0928",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind bridge resonance in architecture",
+    "results": [
+      {
+        "category": "general",
+        "content": "science, that of architecture. Dyce. XXV After all I have seen of Art, with nothing am I more impressed than with the necessity, in all great work, for suppressing the workman and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book181/book181.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Mind of the Artist, by Mrs. Laurence Binyon",
+        "url": "https://www.ajhw.co.uk/books/book181/book181.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "169b0c17f404063cc94fc818a9a77d0f3f5b600defe428f3daaa2c2b6ea36757",
+  "provider": "SearXNG",
+  "query": "describe the principle behind bridge resonance in architecture",
+  "query_id": "v5-p-0928-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:08:38.152614Z"
+}

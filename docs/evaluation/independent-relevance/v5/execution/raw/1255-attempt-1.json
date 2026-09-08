@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 274.847,
+  "pair_id": "v5-p-0088",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does ocean tides in mechanical engineering operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b7e258b049e80a8171e3b3ee0069ac1f1f28f2cb54a007241b43f6c4b2b9cfe5",
+  "provider": "SearXNG",
+  "query": "how does ocean tides in mechanical engineering operate",
+  "query_id": "v5-p-0088-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:57.980764Z"
+}

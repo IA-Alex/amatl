@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 359.302,
+  "pair_id": "v5-p-0829",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind data compression in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "t “maims by compression, like a Chinese lady’s foot, every part of human nature which stands out prominently, and tends to make a person markedly different in outline”[34] from the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "theanarchistlibrary.org",
+          "/library/paul-feyerabend-against-method.muse",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse",
+        "url": "https://theanarchistlibrary.org/library/paul-feyerabend-against-method.muse"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d875a41875c7718ffd62e7c30966909e48e22169072c0e26be9e50da1b120c65",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind data compression in astronomy",
+  "query_id": "v5-p-0829-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:09:33.606213Z"
+}

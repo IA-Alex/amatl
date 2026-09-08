@@ -1,0 +1,289 @@
+{
+  "schema": "amatl.relevance.supplemental-query-universe.v3",
+  "universe_id": "independent-relevance-supplemental-v3",
+  "version": 3,
+  "freeze_status": "FROZEN",
+  "parent_universe": null,
+  "target_stratum": "S2_INFORMATIONAL_SHALLOW",
+  "provider_requirement": "SEARXNG_ONLY",
+  "dynamic_expansion": "DISABLED",
+  "deterministic_ordering": "order ascending; no insertion or expansion after freeze",
+  "result_depth": 3,
+  "valid_row_target": 60,
+  "stop_rule": "stop after 60 new valid rows; do not pursue relevance deficit in this experiment",
+  "dedup_contract": "deduplicate accepted rows against V1, Supplemental V1/V2, historical canonical URLs, and accepted V3 rows",
+  "overlap_contract": "zero accepted overlap with prior frozen corpora; report all rejected overlaps",
+  "labeling_boundary": "label only after capture and offline dedup; no labels or label-derived scores enter query construction",
+  "queries": [
+    {
+      "query_id": "sup-v3-s2-t-001",
+      "query_text": "what is a checksum",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "expected_depth": 3,
+      "designation": "treatment",
+      "order": 1
+    },
+    {
+      "query_id": "sup-v3-s2-t-002",
+      "query_text": "what is a heat pump",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "expected_depth": 3,
+      "designation": "treatment",
+      "order": 2
+    },
+    {
+      "query_id": "sup-v3-s2-t-003",
+      "query_text": "what is a mutex",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "expected_depth": 3,
+      "designation": "treatment",
+      "order": 3
+    },
+    {
+      "query_id": "sup-v3-s2-t-004",
+      "query_text": "what is a public key",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "expected_depth": 3,
+      "designation": "treatment",
+      "order": 4
+    },
+    {
+      "query_id": "sup-v3-s2-t-005",
+      "query_text": "what is a carbon footprint",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "expected_depth": 3,
+      "designation": "treatment",
+      "order": 5
+    },
+    {
+      "query_id": "sup-v3-s2-t-006",
+      "query_text": "what is a biopsy",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "expected_depth": 3,
+      "designation": "treatment",
+      "order": 6
+    },
+    {
+      "query_id": "sup-v3-s2-t-007",
+      "query_text": "how does a barcode work",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "expected_depth": 3,
+      "designation": "treatment",
+      "order": 7
+    },
+    {
+      "query_id": "sup-v3-s2-t-008",
+      "query_text": "how does a solar eclipse work",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "expected_depth": 3,
+      "designation": "treatment",
+      "order": 8
+    },
+    {
+      "query_id": "sup-v3-s2-t-009",
+      "query_text": "how does a compass work",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "expected_depth": 3,
+      "designation": "treatment",
+      "order": 9
+    },
+    {
+      "query_id": "sup-v3-s2-t-010",
+      "query_text": "how does a catalytic converter work",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "expected_depth": 3,
+      "designation": "treatment",
+      "order": 10
+    },
+    {
+      "query_id": "sup-v3-s2-t-011",
+      "query_text": "how does a microwave oven work",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "expected_depth": 3,
+      "designation": "treatment",
+      "order": 11
+    },
+    {
+      "query_id": "sup-v3-s2-t-012",
+      "query_text": "how does a seismograph work",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "expected_depth": 3,
+      "designation": "treatment",
+      "order": 12
+    },
+    {
+      "query_id": "sup-v3-s2-t-013",
+      "query_text": "what causes ocean tides",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "expected_depth": 3,
+      "designation": "treatment",
+      "order": 13
+    },
+    {
+      "query_id": "sup-v3-s2-t-014",
+      "query_text": "what causes rust on iron",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "expected_depth": 3,
+      "designation": "treatment",
+      "order": 14
+    },
+    {
+      "query_id": "sup-v3-s2-t-015",
+      "query_text": "what causes a rainbow",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "expected_depth": 3,
+      "designation": "treatment",
+      "order": 15
+    },
+    {
+      "query_id": "sup-v3-s2-t-016",
+      "query_text": "what causes static cling",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "expected_depth": 3,
+      "designation": "treatment",
+      "order": 16
+    },
+    {
+      "query_id": "sup-v3-s2-t-017",
+      "query_text": "what causes bread to rise",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "expected_depth": 3,
+      "designation": "treatment",
+      "order": 17
+    },
+    {
+      "query_id": "sup-v3-s2-t-018",
+      "query_text": "what causes an echo",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "expected_depth": 3,
+      "designation": "treatment",
+      "order": 18
+    },
+    {
+      "query_id": "sup-v3-s2-t-019",
+      "query_text": "how does a heat exchanger work",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "expected_depth": 3,
+      "designation": "treatment",
+      "order": 19
+    },
+    {
+      "query_id": "sup-v3-s2-t-020",
+      "query_text": "how does a vaccine work",
+      "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT",
+      "hypothesis_feature": "compact what/how/causal form; result title-query overlap measured post-retrieval",
+      "expected_depth": 3,
+      "designation": "treatment",
+      "order": 20
+    },
+    {
+      "query_id": "sup-v3-s2-c-001",
+      "query_text": "explain the basic idea behind encryption",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "expected_depth": 3,
+      "designation": "control",
+      "order": 21
+    },
+    {
+      "query_id": "sup-v3-s2-c-002",
+      "query_text": "explain the basic idea behind photosynthesis",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "expected_depth": 3,
+      "designation": "control",
+      "order": 22
+    },
+    {
+      "query_id": "sup-v3-s2-c-003",
+      "query_text": "tell me about the function of a diaphragm",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "expected_depth": 3,
+      "designation": "control",
+      "order": 23
+    },
+    {
+      "query_id": "sup-v3-s2-c-004",
+      "query_text": "tell me about the operation of a gyroscope",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "expected_depth": 3,
+      "designation": "control",
+      "order": 24
+    },
+    {
+      "query_id": "sup-v3-s2-c-005",
+      "query_text": "give an overview of groundwater movement",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "expected_depth": 3,
+      "designation": "control",
+      "order": 25
+    },
+    {
+      "query_id": "sup-v3-s2-c-006",
+      "query_text": "give an overview of cellular respiration",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "expected_depth": 3,
+      "designation": "control",
+      "order": 26
+    },
+    {
+      "query_id": "sup-v3-s2-c-007",
+      "query_text": "why might a metal bridge expand",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "expected_depth": 3,
+      "designation": "control",
+      "order": 27
+    },
+    {
+      "query_id": "sup-v3-s2-c-008",
+      "query_text": "why might a lake freeze from the top",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "expected_depth": 3,
+      "designation": "control",
+      "order": 28
+    },
+    {
+      "query_id": "sup-v3-s2-c-009",
+      "query_text": "describe the principle behind induction",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "expected_depth": 3,
+      "designation": "control",
+      "order": 29
+    },
+    {
+      "query_id": "sup-v3-s2-c-010",
+      "query_text": "describe the principle behind acoustic resonance",
+      "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL",
+      "hypothesis_feature": "non-compact informational paraphrase control",
+      "expected_depth": 3,
+      "designation": "control",
+      "order": 30
+    }
+  ]
+}

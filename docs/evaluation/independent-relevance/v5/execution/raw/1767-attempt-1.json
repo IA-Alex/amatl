@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 264.193,
+  "pair_id": "v5-p-0344",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does soil erosion in optics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "water pollution, soil erosion, malaria epidemics, the release of carbon dioxide into the atmosphere, and the eviction of indigenous Indian tribes - but most serious, in the long r",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bactra.org",
+          "/Ferris/Library_of_the_Amazon/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Library of the Amazon",
+        "url": "https://bactra.org/Ferris/Library_of_the_Amazon/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "dccf9ebbc618224a93520f15233d4b80f220bc5223559c40b38a5fd0484aed4d",
+  "provider": "SearXNG",
+  "query": "how does soil erosion in optics operate",
+  "query_id": "v5-p-0344-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:14:42.845062Z"
+}

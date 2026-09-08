@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 253.116,
+  "pair_id": "v5-p-1079",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes microbial fermentation in transportation engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "84c67226319cc10ee0e2cc6768c6d5e9b0795344abf2c736b34f6829208151bb",
+  "provider": "SearXNG",
+  "query": "what causes microbial fermentation in transportation engineering",
+  "query_id": "v5-p-1079-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:43.089840Z"
+}

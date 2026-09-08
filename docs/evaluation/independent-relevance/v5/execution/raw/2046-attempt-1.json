@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 222.575,
+  "pair_id": "v5-p-0791",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of coastal flooding in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "companies say they run operations on open source (2015), Linux Laptops On The International Space Station (2015), Linux and IBM , Who&#39;s writing Linux today? Capitalists (2015), No",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4bb525b9180636286c935e8037b1add83d757474c137273c4a12d5da154c436c",
+  "provider": "SearXNG",
+  "query": "give an overview of coastal flooding in operations research",
+  "query_id": "v5-p-0791-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:16:09.717178Z"
+}

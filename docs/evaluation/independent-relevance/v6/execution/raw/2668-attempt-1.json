@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2668,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 295.689,
+  "pair_id": "candidate-p-1629",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a plain language guide to low power computing within urban planning",
+    "results": [
+      {
+        "category": "general",
+        "content": "use state-of-the-art computing equipment and the physical limitations of time and space are overcome&#34; Computerization movements cover a wide spectre of ideas and ideals, but",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gotze.dk",
+          "/phd/it.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Participation in the information age",
+        "url": "https://gotze.dk/phd/it.html"
+      },
+      {
+        "category": "general",
+        "content": "stimulated many in the computing community. The word ‘cyberspace’ is commonly used in the mainstream world with reference to the emergent world-wide computer networks,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cyb-sec.neocities.org",
+          "/pages/alt-cyberpunk-faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "alt.cyberpunk FAQ – /cyb/&#43;/sec/ wiki",
+        "url": "https://cyb-sec.neocities.org/pages/alt-cyberpunk-faq/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ab1ab3de294348697ea92ccd0d98bbd2d87f8e2a8ff8cdad50ad5008034bb3c8",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a plain language guide to low power computing within urban planning",
+  "query_id": "candidate-c-1629",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://gotze.dk/phd/it.html",
+      "original_url": "https://gotze.dk/phd/it.html",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "use state-of-the-art computing equipment and the physical limitations of time and space are overcome&#34; Computerization movements cover a wide spectre of ideas and ideals, but",
+      "title": "Participation in the information age"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://cyb-sec.neocities.org/pages/alt-cyberpunk-faq/",
+      "original_url": "https://cyb-sec.neocities.org/pages/alt-cyberpunk-faq/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "stimulated many in the computing community. The word ‘cyberspace’ is commonly used in the mainstream world with reference to the emergent world-wide computer networks,",
+      "title": "alt.cyberpunk FAQ – /cyb/&#43;/sec/ wiki"
+    }
+  ],
+  "timestamp": "2026-09-05T17:34:36.962172Z"
+}

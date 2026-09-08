@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 265.997,
+  "pair_id": "v5-p-0936",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does bridge resonance in transportation engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "ph. (Net) The long haul transportation of bulk digital data. Some companies exist explicitly to provide high bandwith trans/intercontinental channels for high-volume data &#34;freight",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.shoestring-graphics.com",
+          "/CP2020/slang/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Word on The Streets",
+        "url": "http://www.shoestring-graphics.com/CP2020/slang/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9e0cb4bc3cd6d7e343355cb451ab8f1265348aa5e6a79252a01c1cbbb70861b4",
+  "provider": "SearXNG",
+  "query": "how does bridge resonance in transportation engineering operate",
+  "query_id": "v5-p-0936-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:14:47.707341Z"
+}

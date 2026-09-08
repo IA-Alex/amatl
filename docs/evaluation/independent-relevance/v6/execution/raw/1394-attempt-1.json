@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1394,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 298.373,
+  "pair_id": "candidate-p-0239",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of arctic navigation within water management",
+    "results": [
+      {
+        "category": "general",
+        "content": "That, anyway, was the explanation given when the project began during the last act of the Cold War. Now, however, locals are worried that the little-publicized experiment has take",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9f1ea9312fac070fcb0e76a33a6fb36bb4d724297ca7f97d5727928d6e1b3193",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of arctic navigation within water management",
+  "query_id": "candidate-c-0239",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.cyberspaceorbit.com/WEATHER.html",
+      "original_url": "https://www.cyberspaceorbit.com/WEATHER.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "That, anyway, was the explanation given when the project began during the last act of the Cold War. Now, however, locals are worried that the little-publicized experiment has take",
+      "title": "HAARP"
+    }
+  ],
+  "timestamp": "2026-09-05T17:27:56.411277Z"
+}

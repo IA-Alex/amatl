@@ -1,0 +1,26 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 249.60673700115876,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of voltage regulators in transportation",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0291",
+  "query_text": "give an overview of voltage regulators in transportation",
+  "requested_at": "2026-09-03T01:43:45.768033Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 348.429,
+  "pair_id": "v5-p-0358",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of soil erosion in marine biology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "30d336e031557fd59ee8f7594f0aa266bb70cbd655af07873013bc6471153e3d",
+  "provider": "SearXNG",
+  "query": "tell me about the function of soil erosion in marine biology",
+  "query_id": "v5-p-0358-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:10:15.412338Z"
+}

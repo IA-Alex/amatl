@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 249.402,
+  "pair_id": "v5-p-0705",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is language acquisition in pharmacology",
+    "results": [
+      {
+        "category": "general",
+        "content": "1838 , 682[115]), but pharmacology, as connecting organic chemistry and medicine, gets overlooked (cf. Simon 2005 ). Again, Comte had been missing out on British research into the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/comte",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Comte&#39;s classification of the sciences (IEKO)",
+        "url": "https://www.isko.org/cyclo/comte"
+      },
+      {
+        "category": "general",
+        "content": "Pharmacologist Pharmacology &amp; Toxicology, General Pharmacy Security Philatelist Philippines Customs &amp; Practices Phlebotomy, Non-Physician Photo and Film Processing Equipment Photo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "VFTonline.org",
+          "/VFTprayer/heaven/000list.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://VFTonline.org/VFTprayer/heaven/000list.txt",
+        "url": "http://VFTonline.org/VFTprayer/heaven/000list.txt"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b2737a4f391d068824fd506708c58e1dea44099835751dc72edeab684be051c5",
+  "provider": "SearXNG",
+  "query": "what is language acquisition in pharmacology",
+  "query_id": "v5-p-0705-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:13:46.923244Z"
+}

@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 290.829,
+  "pair_id": "v5-p-0148",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does immune response in civil engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "the result of genetic engineering if anyone did that, but it is no proof that the virus was engineered because it could have randomly incorporated that sequence as RNA while adapt",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2021-nov-feb.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2021: November - February Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2021-nov-feb.html"
+      },
+      {
+        "category": "general",
+        "content": "The alien cantina 1242. Engineering happiness 1241. Countering Gandhi 1240. The stronger model 1239. A few sounds 1238. When Spinoza and Leibniz met 1237. A new stage of ugliness",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "orgyofthewill.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Orgy of the Will: A Philosophy of the Future",
+        "url": "http://orgyofthewill.net/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "dba25709056526b732b7ab6990e108b8c64fda9c81c7545bc9c5de700d900683",
+  "provider": "SearXNG",
+  "query": "how does immune response in civil engineering operate",
+  "query_id": "v5-p-0148-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:13:13.388989Z"
+}

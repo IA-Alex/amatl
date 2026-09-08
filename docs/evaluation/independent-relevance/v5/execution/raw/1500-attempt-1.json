@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 316.047,
+  "pair_id": "v5-p-0148",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind immune response in civil engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "112993d40171a802f696cf383d4a2066c5c84725a0024fe929b6ec34e729f036",
+  "provider": "SearXNG",
+  "query": "describe the principle behind immune response in civil engineering",
+  "query_id": "v5-p-0148-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:13.680284Z"
+}

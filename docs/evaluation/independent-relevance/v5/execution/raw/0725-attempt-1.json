@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 262.832,
+  "pair_id": "v5-p-0342",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does soil erosion in neuroscience work",
+    "results": [
+      {
+        "category": "general",
+        "content": "This Is Your Brain on Neuroscience - Brain Activity Map - BAM    -  TIA Lives On      -  Tipping The Balance of Power - How to Really Change The",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/sociopol_bigbrother.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Big Brother Loves You... - El Gran Hermano Te Ama...",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_bigbrother.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3081d7217848e520aeaf9d27f58f78fe71698089d74ae770fc3b52ac77ece399",
+  "provider": "SearXNG",
+  "query": "how does soil erosion in neuroscience work",
+  "query_id": "v5-p-0342-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:09:06.463625Z"
+}

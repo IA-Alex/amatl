@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 342.285,
+  "pair_id": "v5-p-0257",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is binary search in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "http://fm.vix.com/terra/climate/iberian-drought-2005.html Technical workers are problem solvers; so, don&#39;t become a problem. If management policies or rules are perceived by techn",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.idallen.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ian! D. Allen - Personal Home Page",
+        "url": "http://www.idallen.com/"
+      },
+      {
+        "category": "general",
+        "content": "from a more temperate climate. 2011-12-10: Saturday Set off to Sue &amp; Clives earlyish; finished Watership Down in the car; fondly remembered last year&#39;s horror snowbound journe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2011/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2011/"
+      },
+      {
+        "category": "general",
+        "content": "Rucevska, Fighting Climate Change At Quro &amp; Building The Baltic Tech Ecosystem At Techchill: Women In Tech Latvia Episode 357 • 28:28 • Apr 5, 2019 Sirla of Spray Printer, Pai",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "castro.fm",
+          "/podcast/fe906303-b128-429f-b23a-f8c53dd76e62",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Women in Tech Podcast, hosted by Espree Devora",
+        "url": "https://castro.fm/podcast/fe906303-b128-429f-b23a-f8c53dd76e62"
+      },
+      {
+        "category": "general",
+        "content": "air carbon capture on climate change Bookmarked 2022-03-07 16:09 Tags: environment , science I think the optimism in this article is a little misplaced, but it’s still a fascinati",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "seirdy.one",
+          "/bookmarks/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "My bookmarks - Seirdy",
+        "url": "https://seirdy.one/bookmarks/"
+      },
+      {
+        "category": "general",
+        "content": "mocks the concern about climate change &#34;I don&#39;t think global warming is going to come and take the bread out of my mouth&#34;. The media is more disgusting than any pornography I&#39;ve e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "collapse due to climate change are real dangers during the coming century, but I know God wouldn&#39;t ever let that happen to us!&#34; The opposite of the Appeal to Heaven is the Jo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "utminers.utep.edu",
+          "/omwilliamson/ENGL1311/fallacies.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Master List of Logical Fallacies",
+        "url": "https://utminers.utep.edu/omwilliamson/ENGL1311/fallacies.htm"
+      },
+      {
+        "category": "general",
+        "content": "Galaxy 26th Nibiru, Climate Change, and Other Pseudoscience 19th How Saving Energy Can Hurt Astronomy 17th The Puzzle Of Fluffy Galaxies 3rd August Did You Look At The Sun? So Did",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "briankoberlein.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Archive | by Brian Koberlein",
+        "url": "https://briankoberlein.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "clear sense of what the climate for LGBTQIA&#43; folks was like in the 1990s, and why I felt was terrified to be outed — even as the 1990s became the 2000s. I also admit that my",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ebb.org",
+          "/bkuhn/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog - Bradley Kühn ( bkuhn )",
+        "url": "https://ebb.org/bkuhn/blog/"
+      },
+      {
+        "category": "general",
+        "content": "on AI to Support Climate Mitigation &amp; Adaptation . Ronald L. Rivest. Talk given at zoom panel held by CSAIL on &#34;AI to Support Climate Mitigation &amp; Adaptation&#34;, hosted by Daniela R",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.csail.mit.edu",
+          "/rivest/pubs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ronald L. Rivest: Publications and Talks",
+        "url": "https://people.csail.mit.edu/rivest/pubs.html"
+      },
+      {
+        "category": "general",
+        "content": "due to the warming climate. Continue reading New Simulations Show How Galactic Centers Grow Together By Matthew Williams - August 26, 2026 01:28 AM UTC | Cosmology Using a state-o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.universetoday.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Universe Today - Space and Astronomy News",
+        "url": "https://www.universetoday.com/"
+      },
+      {
+        "category": "general",
+        "content": "of the modern political climate?) Homosexuality is especially repugnant because it is being proudly promoted by militant activists.  Even in Sodom and Gomorrah, they didn&#39;t h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "akdart.com",
+          "/culture9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Same-Sex Marriage and Homosexuality in General",
+        "url": "http://akdart.com/culture9.html"
+      },
+      {
+        "category": "general",
+        "content": "Mapping out the tribes of climate | Nadia Asparouhova Nadia Asparouhova projects newsletter twitter &lt;-- home Mapping out the tribes of climate November 30, 2022 Climate is a gr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "nadia.xyz",
+          "/climate-tribes",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nadia Asparouhova | Mapping out the tribes of climate",
+        "url": "http://nadia.xyz/climate-tribes"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4a1f39b702d3ff80261ce145bf44c4ff668f23f97f036c8a81e1c1a62ba67cc2",
+  "provider": "SearXNG",
+  "query": "what is binary search in climate science",
+  "query_id": "v5-p-0257-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:15.266872Z"
+}

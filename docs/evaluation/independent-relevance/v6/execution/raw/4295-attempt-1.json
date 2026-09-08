@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 4295,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 342.464,
+  "pair_id": "candidate-p-2164",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "under what conditions does thermal energy storage within astronomy change",
+    "results": [
+      {
+        "category": "general",
+        "content": "under very precise conditions is pro. Happer &amp; Everett give a sober diagnose of our putative CO2 driven climate problems. J.B.Peterson interview of Prof. Lindzen Very interest",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meteo.lcd.lu",
+          "/globalwarming/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Warming Sceptic",
+        "url": "https://meteo.lcd.lu/globalwarming/"
+      },
+      {
+        "category": "general",
+        "content": "excuse that the initial conditions during the Big Bang were - by chance or by God&#39;s cause? - just that the universe now has the structure we observe. Questions of the origin of th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/AntropPrincip.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Anthropic Principle and Cosmic God",
+        "url": "https://www.astronuclphysics.info/AntropPrincip.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "26f0690199dbfe6966b7d74068c150ebef37f392de980d5c46bafe3ecd9829a5",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "under what conditions does thermal energy storage within astronomy change",
+  "query_id": "candidate-t-2164",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://meteo.lcd.lu/globalwarming/",
+      "original_url": "https://meteo.lcd.lu/globalwarming/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "under very precise conditions is pro. Happer &amp; Everett give a sober diagnose of our putative CO2 driven climate problems. J.B.Peterson interview of Prof. Lindzen Very interest",
+      "title": "The Global Warming Sceptic"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.astronuclphysics.info/AntropPrincip.htm",
+      "original_url": "https://www.astronuclphysics.info/AntropPrincip.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "excuse that the initial conditions during the Big Bang were - by chance or by God&#39;s cause? - just that the universe now has the structure we observe. Questions of the origin of th",
+      "title": "Anthropic Principle and Cosmic God"
+    }
+  ],
+  "timestamp": "2026-09-05T17:43:13.880028Z"
+}

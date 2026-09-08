@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 306.285,
+  "pair_id": "v5-p-0880",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind vaccination in mechanical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "545f9d0a94be1a671d4e84e48c11bbec9ddb81db44e507e1a29bbf94c5231753",
+  "provider": "SearXNG",
+  "query": "describe the principle behind vaccination in mechanical engineering",
+  "query_id": "v5-p-0880-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:59.542051Z"
+}

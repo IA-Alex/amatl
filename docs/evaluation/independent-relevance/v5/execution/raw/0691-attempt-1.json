@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 321.294,
+  "pair_id": "v5-p-0893",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is vaccination in communication studies",
+    "results": [
+      {
+        "category": "general",
+        "content": "Circumcisio n (male) Communication Cord Clamping C orporal punishment / spanking Cot death, crib-death, SIDS Court Abuse of Children Crying It Out Day care (under 5) Desensitise D",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/vaccines.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE VACCINATION RACKET",
+        "url": "http://www.whale.to/vaccines.html"
+      },
+      {
+        "category": "general",
+        "content": "instantaneous universal communication. Thus it might be possible to communicate with space craft instantly, rather than waiting for minutes for transmissions to reach the craft or",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIDIK.com The original and official DIDIK site. Cutting edge and sometimes controversial thoughts, designs, proposals and projects conceiv",
+        "url": "http://www.didik.com/"
+      },
+      {
+        "category": "general",
+        "content": "the Science of Science Communication.&#34; It is also true that people who believe in false conspiracy theories, usually scientifically-related, often do not reject all scientific kno",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "purplepriest.codeberg.page",
+          "/articles/refdd.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://purplepriest.codeberg.page/articles/refdd.html",
+        "url": "https://purplepriest.codeberg.page/articles/refdd.html"
+      },
+      {
+        "category": "general",
+        "content": "instantaneous universal communication. Thus it might be possible to communicate with space craft instantly, rather than waiting for minutes for transmissions to reach the craft or",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.news1.net",
+          "/jan2021.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Breaking News, news commentary and news chronicle. News1.net - News and Photographic image archive. Global news with an emphasis on New Yo",
+        "url": "http://www.news1.net/jan2021.htm"
+      },
+      {
+        "category": "general",
+        "content": "1994, HLI received a communication from its Mexican affiliate, the Comite&#39; Pro Vida de Mexico, regarding that country&#39;s anti-tetanus campaign. Suspicious of the campaign protocols",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jesus-is-savior.com",
+          "/Evils%20in%20Government/AIDS%20and%20Population%20Elimination/gates.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Bill and Melinda Gates Foundation: The Grand Illusion",
+        "url": "https://www.jesus-is-savior.com/Evils%20in%20Government/AIDS%20and%20Population%20Elimination/gates.htm"
+      },
+      {
+        "category": "general",
+        "content": "there is ceaseless communication throughout the web of life. We are constantly exchanging matter and energy with one another and with our environment, and not just on the physical",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/reclaim.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reclaiming our health: germ theory exposed",
+        "url": "https://davidpratt.info/reclaim.htm"
+      },
+      {
+        "category": "general",
+        "content": "less is more ? Regular communication between the school and the family is the best way to monitor how your child is coping at school and at home (academically, socially, physicall",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/school.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The toxic schooling system",
+        "url": "http://digdeeper.love/articles/school.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "dark forces for quantum communication cleared All Black Stones and all Chimera spiders on the surface of the planet removed Majority of primary anomaly on the astral plane cleared",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.exopoliticsindia.in",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "EXOPOLITICS INDIA",
+        "url": "https://www.exopoliticsindia.in/"
+      },
+      {
+        "category": "general",
+        "content": "and better communications. It closes with a new paradigm for under-standing migration phenomena, and with a new set of ethical principles to guide immigration policy in the twenty",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.johntanton.org",
+          "/articles/art_end_migration_epoch_tanton.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "End of the Migration Epoch? by Dr. John H. Tanton - an ethical immigration paradigm",
+        "url": "https://www.johntanton.org/articles/art_end_migration_epoch_tanton.html"
+      },
+      {
+        "category": "general",
+        "content": "29 August 2022 ( Communication with refugees in Rwanda ) Rwanda does not allow journalists to meet refugees: all communication with them is forbidden . All inquiries about their c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2022-may-aug.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2022: May - August Political Notes",
+        "url": "http://stallman.org/archives/2022-may-aug.html"
+      },
+      {
+        "category": "general",
+        "content": "1864 he presented a communication to the Academy of Science on The Origin of Vinous Fermentation, an exhaustive account of the experiments described above. This paper was a comple",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/a/b/pearson.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dream &amp; Lie of Louis Pasteur by R. B. Pearson",
+        "url": "http://www.whale.to/a/b/pearson.html"
+      },
+      {
+        "category": "general",
+        "content": "06, 2025 Maximizing Communication, not Traffic January 05, 2025 Orange and Strawberry Truffles January 04, 2025 Playing with Otamatones January 02, 2025 Approaches to Group Singin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jefftk.com",
+          "/p/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog Posts",
+        "url": "https://www.jefftk.com/p/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "31f75e4e860f75edc6f71ae4a21f0ed0e127586c4d6746cc6ead93a0b90a3ade",
+  "provider": "SearXNG",
+  "query": "what is vaccination in communication studies",
+  "query_id": "v5-p-0893-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:54.373188Z"
+}

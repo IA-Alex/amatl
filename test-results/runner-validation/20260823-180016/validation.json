@@ -1,0 +1,18 @@
+{
+  "artifact_notice": "Generated offline benchmark-runner validation artifact — no provider execution performed.",
+  "status": "FAIL",
+  "abort": "ABORT:VALIDATION_FAILED",
+  "dataset_queries": 10,
+  "repetitions": 3,
+  "expected_positions": 30,
+  "generated_positions": "NOT_ASSERTED_AFTER_ABORT",
+  "unique_positions": "NOT_ASSERTED_AFTER_ABORT",
+  "duplicate_positions": "NOT_ASSERTED_AFTER_ABORT",
+  "missing_positions": "NOT_ASSERTED_AFTER_ABORT",
+  "commands_generated": 0,
+  "amatl_executions": 0,
+  "provider_executions": 0,
+  "network_requests": 0,
+  "retries": 0,
+  "plan_deterministic": "NOT_ASSERTED_AFTER_ABORT"
+}

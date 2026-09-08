@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 311.08,
+  "pair_id": "v5-p-1040",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind probability distributions in industrial design",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a9f1a0badbce2e45b132fb0a7764c271d5db079e62711e797a90187f4fc06c1d",
+  "provider": "SearXNG",
+  "query": "describe the principle behind probability distributions in industrial design",
+  "query_id": "v5-p-1040-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:52.549343Z"
+}

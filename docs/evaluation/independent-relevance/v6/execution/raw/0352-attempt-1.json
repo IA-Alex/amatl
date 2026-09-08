@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 352,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 318.927,
+  "pair_id": "candidate-p-2139",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about space weather forecasting within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "from errors in forecasting tomorrow&#39;s temperature to deviations from the &#34;spread&#34; in Football. (55) Probability as methodology within mathematical statistics I am deliberately try",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stat.berkeley.edu",
+          "/~aldous/Real_World/100_list.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Annotated list of contexts where we perceive chance",
+        "url": "https://www.stat.berkeley.edu/~aldous/Real_World/100_list.html"
+      },
+      {
+        "category": "general",
+        "content": "Small Business / Forecasting Imagine that you are a sales operations expert. I run a small business, and I am having a lot of difficulty forecasting my sales. Create a list of the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "freegptprompts.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Free GPT Prompts | A Curated Directory of 300&#43; AI Prompts For Free",
+        "url": "https://freegptprompts.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "42ec6505400be43e86059219c32bee98d613ad409caf97c0050cf6672f630827",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about space weather forecasting within information science",
+  "query_id": "candidate-c-2139",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.stat.berkeley.edu/~aldous/Real_World/100_list.html",
+      "original_url": "https://www.stat.berkeley.edu/~aldous/Real_World/100_list.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "from errors in forecasting tomorrow&#39;s temperature to deviations from the &#34;spread&#34; in Football. (55) Probability as methodology within mathematical statistics I am deliberately try",
+      "title": "Annotated list of contexts where we perceive chance"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://freegptprompts.org/",
+      "original_url": "https://freegptprompts.org/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Small Business / Forecasting Imagine that you are a sales operations expert. I run a small business, and I am having a lot of difficulty forecasting my sales. Create a list of the",
+      "title": "Free GPT Prompts | A Curated Directory of 300&#43; AI Prompts For Free"
+    }
+  ],
+  "timestamp": "2026-09-05T17:22:20.234118Z"
+}

@@ -1,0 +1,327 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 301.996,
+  "pair_id": "v5-p-0513",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is neural networks in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "and professionals in engineering or mathematical sciences. AMP allows the user to edit and simplify numerous expressions or equations in a mathematical derivation quickly and accu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mizj.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "S.U.P.E.R. - The Largest 200LX Software Archive",
+        "url": "http://mizj.com/"
+      },
+      {
+        "category": "general",
+        "content": "ever held. A miracle of engineering made mundane. Pass it on The next chapter will explore how it swallowed specialised devices to become the everything machine. Leave your email",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "everythingmachine.io",
+          "/phone/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Phone in Your Hand",
+        "url": "http://everythingmachine.io/phone/"
+      },
+      {
+        "category": "general",
+        "content": "of Electrical Engineering, Yale University, pp. 71-76 [ pdf ] 2012 Dabney, W., and Barto, A.G. (2012) Adaptive step-size for online temporal difference learning Twenty-Sixth Confe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.cs.umass.edu",
+          "/~barto/pubs-Barto.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A. G. Barto&#39;s Publications",
+        "url": "https://people.cs.umass.edu/~barto/pubs-Barto.html"
+      },
+      {
+        "category": "general",
+        "content": "the Laboratory for Neuroengineering at Georgia Tech, calls his creation a Hybrot, short for hybrid robot. &#34;It&#39;s very much a symbiosis,&#34; he said, &#34;a digital computer and a living n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.wireheading.com",
+          "/roborats/hybrots.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hybrots, roborats and ratbots",
+        "url": "https://www.wireheading.com/roborats/hybrots.html"
+      },
+      {
+        "category": "general",
+        "content": "Thesis in Electrical Engineering and Computer Science (March 1989). [1991 - Film - Terminator 2: Judgment Day, T-800,T-1000 ] 1994 - Omnivore - HM Designed by Jonathan Connell and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.davidbuckley.net",
+          "/DB/HistoryMakers.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "History Making Mobile Robots",
+        "url": "http://www.davidbuckley.net/DB/HistoryMakers.htm"
+      },
+      {
+        "category": "general",
+        "content": "into deliberate social engineering. Race and genetics were always a top concern to ranking Nazis. We find the same concern exhibited by America’s ruling families. By the time of h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bibliotecapleyades.net",
+          "/sociopolitica/esp_sociopol_mindcon52.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nazi Mind Control",
+        "url": "https://bibliotecapleyades.net/sociopolitica/esp_sociopol_mindcon52.htm"
+      },
+      {
+        "category": "general",
+        "content": "to Joint Force Genetic Engineering Getting High off of Anything but psycadelics like Syrian Rue-MAOI(MUST SEE Food Restrictions ! Don&#39;t take SSRI AntiDepressants that day! Take ot",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.self-replicatingnanobot.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod &#43; Self-Replicating Nanobot Design",
+        "url": "http://www.self-replicatingnanobot.com/"
+      },
+      {
+        "category": "general",
+        "content": "reprinted from Optical Engineering, vol. 27, #4, pp.289-294 (1988). 4. M.A. El-Sharkawi, R.J. Marks II and S. Weerasooriya, &#34; Neural networks and their application to power e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "marksmannet.com",
+          "/RobertMarks/REPRINTS/Marks-Pubs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Robert J. Marks II",
+        "url": "https://marksmannet.com/RobertMarks/REPRINTS/Marks-Pubs.htm"
+      },
+      {
+        "category": "general",
+        "content": "on Cryptographic Engineering - and how the RSA pseudo-random number generator was compromised by NSA in 2006 (Matthew Green, 2013), How the FBI will lose its iPhone fight with App",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "to Joint Force Genetic Engineering Getting High off of Anything but psycadelics like Syrian Rue-MAOI(MUST SEE Food Restrictions ! Don&#39;t take SSRI AntiDepressants that day! Take ot",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.self-replicatingnanobot.com",
+          "/Cyberology.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod &#43; Self-Replicating Nanobot Design",
+        "url": "http://www.self-replicatingnanobot.com/Cyberology.html"
+      },
+      {
+        "category": "general",
+        "content": "ChatGPT on Paradise Engineering ChatGPT on The Hedonistic Imperative ChatGPT on The Reproductive Revolution ChatGPT on The Biointelligence Explosion",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.binding-problem.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Phenomenal binding, the binding problem and the combination problem as conceived by ChatGPT",
+        "url": "https://www.binding-problem.com/chatgpt/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b723995356473962e265ce9141cd186b7d3bbf9c7ccaca156dc53035581be1d2",
+  "provider": "SearXNG",
+  "query": "what is neural networks in electrical engineering",
+  "query_id": "v5-p-0513-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:31.427908Z"
+}

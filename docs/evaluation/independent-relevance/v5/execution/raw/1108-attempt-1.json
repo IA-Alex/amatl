@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 358.949,
+  "pair_id": "v5-p-0684",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind traffic flow in transportation engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "fuel. Need energy for transportation, living, manufacturing. Platform to grow food. Soil, nitrogen, other elements ? Raw materials for manufacturing. Reasonable temperatures. We c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "antenna) and of transportation (as a hub of rail transportation) it had the mana or spiritual power of the crossroads, the traditional meeting place watched over by the gods of tr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "minervaclassics.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Minerva Systems",
+        "url": "http://minervaclassics.com/"
+      },
+      {
+        "category": "general",
+        "content": "cure wounds Elevator Transportation from one floor of a tall building to another Flashlight Provides light in dark places Fountain Scenic highlight; provides communication to syst",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fudco.com",
+          "/chip/lessons.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Lessons of Lucasfilm&#39;s Habitat",
+        "url": "http://www.fudco.com/chip/lessons.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ae68885207fda08e16f7375c9ae96ee5d2b6c281749218d79b0e5984e07edf6e",
+  "provider": "SearXNG",
+  "query": "describe the principle behind traffic flow in transportation engineering",
+  "query_id": "v5-p-0684-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:05.877841Z"
+}

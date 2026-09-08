@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 377.546,
+  "pair_id": "v5-p-0226",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of plate tectonics in environmental science",
+    "results": [
+      {
+        "category": "general",
+        "content": "hunger), responsible environmental practices, peace. Blasting men into space is way down the list. We need to stop the Chinese from getting a monopoly on space . Hmmm, just like t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "worldwide demographic, environmental, and societal stress, in which criminal anarchy emerges as the real &#34;strategic&#34; danger. Disease, overpopulation, unprovoked crime, scarcity of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f3e7ed9660633ceab88a2f8306e9b25fdfc1129a867090de5c01977d38bc9cb4",
+  "provider": "SearXNG",
+  "query": "tell me about the function of plate tectonics in environmental science",
+  "query_id": "v5-p-0226-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:10:24.971424Z"
+}

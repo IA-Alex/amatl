@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 310.356,
+  "pair_id": "v5-p-0228",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind plate tectonics in geology",
+    "results": [
+      {
+        "category": "general",
+        "content": "an acausal connecting principle or &#39;synchronicity&#39; as proposed by Swiss psychiatrist and founder of analytical psychology, Dr Carl Gustav Jung. Jung refined his concept with the h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "astrology.co.uk",
+          "/tests/basisofastrology.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Why it is unacceptable to dismiss astrology as rubbish.",
+        "url": "https://astrology.co.uk/tests/basisofastrology.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f7ec33f838b62588e0f9e6774489b438fe7e48aa557fa3b9678729ab36b12998",
+  "provider": "SearXNG",
+  "query": "describe the principle behind plate tectonics in geology",
+  "query_id": "v5-p-0228-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:13:27.061668Z"
+}

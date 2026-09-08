@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 258.143,
+  "pair_id": "v5-p-0996",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does wastewater treatment in software engineering operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4d62500ecf6256fc3d07b7cf47cc19dfc542f86930d5860b280bbd5901bc5a11",
+  "provider": "SearXNG",
+  "query": "how does wastewater treatment in software engineering operate",
+  "query_id": "v5-p-0996-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:42.306077Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 266.909,
+  "pair_id": "v5-p-0928",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does bridge resonance in architecture operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d14266dc5521c2d443ec2707f45f0431c0331df8b6bc2ccbfb09de3aab7dcd70",
+  "provider": "SearXNG",
+  "query": "how does bridge resonance in architecture operate",
+  "query_id": "v5-p-0928-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:37.885309Z"
+}

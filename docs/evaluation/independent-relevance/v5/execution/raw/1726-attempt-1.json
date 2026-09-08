@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 368.62,
+  "pair_id": "v5-p-0729",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind root systems in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "physics, and engineering calculations, and the fact that the LOCI calculators could generate logarithms and anti-logarithms in mere milliseconds was profound. Dr. Wang had invente",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oldcalculatormuseum.com",
+          "/wangloci.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Wang LOCI-2",
+        "url": "https://www.oldcalculatormuseum.com/wangloci.html"
+      },
+      {
+        "category": "general",
+        "content": "computers, IC reverse engineering, and whatever Energizing a vacuum-tube flip-flop module from a 1948 IBM system In 1948, IBM introduced the 604 Electronic Calculating Punch. This",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.righto.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ken Shirriff&#39;s blog",
+        "url": "http://www.righto.com/"
+      },
+      {
+        "category": "general",
+        "content": "also used for social engineering, political efforts to advatage one group at the expense of another. Since the Progressive Era in America, many tax rates have been progressive, me",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "histclo.com",
+          "/eco/eco.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "economics economies",
+        "url": "https://histclo.com/eco/eco.html"
+      },
+      {
+        "category": "general",
+        "content": "railroads and engineering, architecture, music, and movies, and the aesthetic appreciation of the marvels of the built environment. Dr. Cora Angier Sowa Athena - the Roman Minerva",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "minervaclassics.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Minerva Systems",
+        "url": "http://minervaclassics.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a67a7d449b8b492f8eb553c83f871fc7cc358e723c3c4e65a10b025e632e2e4d",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind root systems in electrical engineering",
+  "query_id": "v5-p-0729-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:22.828170Z"
+}

@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 256.114,
+  "pair_id": "v5-p-0313",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is water purification in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "organization. A water purification system valued at $20,000 produced by the Netafim manufacturer, donated by Shari Arison Glazer and the Shira Hadasha Congregation , in Jerusalem.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.imninalu.net",
+          "/Israel-Arabs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Israel and the Arab World",
+        "url": "https://www.imninalu.net/Israel-Arabs.htm"
+      },
+      {
+        "category": "general",
+        "content": "TREATMENT. Hubbard&#39;s purification treatments are the mainstay of Narconon, a Scientology-run chain of 33 alcohol and drug rehabilitation centers -- some in prisons under the name",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cs.cmu.edu",
+          "/~dst/Fishman/time-behar.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scientology: The Thriving Cult of Greed and Power",
+        "url": "http://www.cs.cmu.edu/~dst/Fishman/time-behar.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "4e21298ab963be09a5fc6c4ab5f12f644fd0713d12b480d864548d87a0bcd764",
+  "provider": "SearXNG",
+  "query": "what is water purification in software engineering",
+  "query_id": "v5-p-0313-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:08:03.624510Z"
+}

@@ -1,0 +1,108 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 294.4216649993905,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does access tokens in physics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "Advances in fundamental physics stopped. In 54 years we went from the first motorized flight to the 747, but the following 54 years produced barely the 787, which would not be unr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "of computer science and physics, and had additionally undertaken a PhD. I met him several times over the years, and picked up his set of calculators and cables in 2010, in order t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ticalc.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Welcome - ticalc.org",
+        "url": "https://www.ticalc.org/"
+      },
+      {
+        "category": "general",
+        "content": "I guess we&#39;ll make our physics out of argument passing and lexical scope. - But we mostly don&#39;t live in a god-like state, so those of us on the ground are stuck *listening* to peo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lists.w3.org",
+          "/Archives/Public/public-credentials/2020Dec/0028.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Hygiene for a computing pandemic: separation of VCs and ocaps/zcaps from Christopher Lemmer Webber on 2020-12-05 (public-credentials@w3.org fr",
+        "url": "https://lists.w3.org/Archives/Public/public-credentials/2020Dec/0028.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0200",
+  "query_text": "how does access tokens in physics operate",
+  "requested_at": "2026-09-03T01:44:53.150022Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

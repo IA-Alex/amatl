@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2111,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 468.674,
+  "pair_id": "candidate-p-0533",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what are the main constraints on coastal mapping within behavioral science",
+    "results": [
+      {
+        "category": "general",
+        "content": "freedom, work without constraints, unpredictability in my day, lounging whenever I feel like it, minimal contact with businessmen &amp; other half-men, etc. I spent 7 years in tot",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "fooledbyrandomness.com",
+          "/notebook.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Opacity",
+        "url": "https://fooledbyrandomness.com/notebook.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7cee2e9e7df31c57092723ec3128c7e3f71b2286045a86479be33da73c3d400d",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what are the main constraints on coastal mapping within behavioral science",
+  "query_id": "candidate-t-0533",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://fooledbyrandomness.com/notebook.htm",
+      "original_url": "https://fooledbyrandomness.com/notebook.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "freedom, work without constraints, unpredictability in my day, lounging whenever I feel like it, minimal contact with businessmen &amp; other half-men, etc. I spent 7 years in tot",
+      "title": "Opacity"
+    }
+  ],
+  "timestamp": "2026-09-05T17:31:40.777389Z"
+}

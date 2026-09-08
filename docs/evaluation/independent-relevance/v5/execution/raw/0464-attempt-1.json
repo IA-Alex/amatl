@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 239.343,
+  "pair_id": "v5-p-0435",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of supply chain logistics in chemistry",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "96de2c5751c5822f011b70e9cd6128c94723f251757bb9f74efa4830e1b1c6dc",
+  "provider": "SearXNG",
+  "query": "give an overview of supply chain logistics in chemistry",
+  "query_id": "v5-p-0435-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:35.318512Z"
+}

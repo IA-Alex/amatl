@@ -1,0 +1,324 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 288.2217749938718,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is process scheduling in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "for example business or engineering news, in which organized data is very valuable. From my point of view, the news media are going in a different direction altogether - back to t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.holovaty.com",
+          "/writing/fundamental-change/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A fundamental way newspaper sites need to change | Holovaty.com",
+        "url": "http://www.holovaty.com/writing/fundamental-change/"
+      },
+      {
+        "category": "general",
+        "content": "of Electrical Engineering, Yale University, pp. 71-76 [ pdf ] 2012 Dabney, W., and Barto, A.G. (2012) Adaptive step-size for online temporal difference learning Twenty-Sixth Confe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.cs.umass.edu",
+          "/~barto/pubs-Barto.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A. G. Barto&#39;s Publications",
+        "url": "https://people.cs.umass.edu/~barto/pubs-Barto.html"
+      },
+      {
+        "category": "general",
+        "content": "with marketing &amp; engineering. Paid an unexpected bill for electrical extras, and resolved to do a lot of the electrical work. 2020-09-21 Monday Mail chew; planning call; admin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2020/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2020/"
+      },
+      {
+        "category": "general",
+        "content": "Issues Software Engineering Products and Reviews Philosophy of Engineering Miscellaneous History of Electronics and Embedded Software Random Thoughts Fun Stuff Real-Time Issues Hu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ganssle.com",
+          "/articles-subj.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Over 1000 articles about Embedded Systems",
+        "url": "https://www.ganssle.com/articles-subj.htm"
+      },
+      {
+        "category": "general",
+        "content": "a wide range of engineering principles along the way. Rather than just providing the robot kit and a challenge to solve, this curriculum follows an educational road map that inten",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "users.ece.utexas.edu",
+          "/~valvano/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jonathan W. Valvano",
+        "url": "https://users.ece.utexas.edu/~valvano/"
+      },
+      {
+        "category": "general",
+        "content": "snapshot of the engineering endeavour - uncluttered by marketing guesses &amp; bullet-points. Did some ooo-build cruft cleaning, worked on various things. Lunch. Reviewed Shilpa&#39;s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2004/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2004/"
+      },
+      {
+        "category": "general",
+        "content": "Vectoring SOFTWARE ENGINEERING Transparency Reentrancy Succinctness Spurious Interrupts Edge- vs. Level-Sensitive Interrupts High Speed Interrupt Response ADVANCED SOFTWARE INTERR",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "6502.org",
+          "/tutorials/65c816interrupts.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "INVESTIGATING 65C816 INTERRUPTS — ©1994–2015 by BCS Technology Limited",
+        "url": "https://6502.org/tutorials/65c816interrupts.html"
+      },
+      {
+        "category": "general",
+        "content": "Award IEEE Ernst Weber Engineering Leadership Recognition , 2000 Biography Computer History Museum Biography The History of the Future of the City lecture Pervasive Information Sy",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.iment.com",
+          "/maida/tv/computer/johncocke.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John Cocke: A Retrospective by Friends",
+        "url": "https://www.iment.com/maida/tv/computer/johncocke.htm"
+      },
+      {
+        "category": "general",
+        "content": "Economics Agricultural Engineering Agricultural Equipment Agricultural Machine Design Agricultural Machine Safety Agricultural Pesticide &amp; Herbicide Drift Agriculture AGRICULTURE",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "VFTonline.org",
+          "/VFTprayer/heaven/000list.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://VFTonline.org/VFTprayer/heaven/000list.txt",
+        "url": "http://VFTonline.org/VFTprayer/heaven/000list.txt"
+      },
+      {
+        "category": "general",
+        "content": "I think genetic engineering could be abused and interfere with optimal selection. I support protecting humanity from existential risks. I doubt AGI will be a threat to humanity. T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/civilization/technology",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Technology and Civilization",
+        "url": "https://zerocontradictions.net/civilization/technology"
+      },
+      {
+        "category": "general",
+        "content": "refers to Electrical Engineering course &#34;No. 641&#34;, actually written &#34;6.41&#34; (at MIT, &#34;Course 6&#34; is Electrical Engineering, and all courses in that department start with a six follo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ljkrakauer.com",
+          "/LJK/60s/nerdpride.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nerd pride",
+        "url": "http://ljkrakauer.com/LJK/60s/nerdpride.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0077",
+  "query_text": "what is process scheduling in electrical engineering",
+  "requested_at": "2026-09-03T01:44:39.038683Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

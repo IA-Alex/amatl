@@ -1,0 +1,300 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 454.849,
+  "pair_id": "v5-p-0686",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of language acquisition in biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "| brain | &#43;language-acquisition | primate-language A fascinating look at a different mind Within hours of his birth at the Yerkes Primate Research Center in Georgia in 1980, Kanzi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cse.iitk.ac.in",
+          "/users/amit/books/savage-rumbaugh-1998-apes-language-human.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Book Excerptise: Apes, Language, and the Human Mind by Sue Savage-Rumbaugh and Stuart G. Shanker and Talbot J. Taylor",
+        "url": "https://www.cse.iitk.ac.in/users/amit/books/savage-rumbaugh-1998-apes-language-human.html"
+      },
+      {
+        "category": "general",
+        "content": "module, a grammar acquisition module, a communication-pragmatics module, a theory of mind module, and so on!&#34; (Mithen 1996)  However, ancient modules are not the same as",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "and its re-acquisition depends on neurological means. Still, it is not clear how purely mechanistic signal processing could know that it should initiate a re-mapping, unless perha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "arcaneknowledge.org",
+          "/science/vitapsych3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Vitalism and Psychology",
+        "url": "https://arcaneknowledge.org/science/vitapsych3.htm"
+      },
+      {
+        "category": "general",
+        "content": "smaller companies about acquisitions for larger companies (Pfizer, Merck, etc.) ask how a recent acquisition of a smaller company (there will be one, don&#39;t worry) affects your rol",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sciencecareergeneral.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Science Career General Paste",
+        "url": "https://sciencecareergeneral.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "with several on the acquisition of a degree of linguistic competence by chimpanzees and bonobos (e.g., Gardner et al. 1989; Savage-Rumbaugh 1996) would seem to undermine Descartes",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.sydney.edu.au",
+          "/archives/fall2008/entries/consciousness-animal/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Animal Consciousness (Stanford Encyclopedia of Philosophy/Fall 2008 Edition)",
+        "url": "https://plato.sydney.edu.au/archives/fall2008/entries/consciousness-animal/"
+      },
+      {
+        "category": "general",
+        "content": "humanity. The study and acquisition of that &#34;specialized skill and knowledge&#34; is properly his professional business. But what is he to do with it? How is he to adjudicate between",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gadfly.igc.org",
+          "/papers/ceep.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Can Environmentalist Escape Philosophy?",
+        "url": "https://gadfly.igc.org/papers/ceep.htm"
+      },
+      {
+        "category": "general",
+        "content": "development as the acquisition of increasingly sophisticated rules would say that children run into problems if the rules they have built are not yet good enough. 19 But armed wit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "papert.org",
+          "/articles/EpistemologicalPluralism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Epistemological Pluralism and the Revaluation of the Concrete",
+        "url": "http://papert.org/articles/EpistemologicalPluralism.html"
+      },
+      {
+        "category": "general",
+        "content": "believe in the Rules of Acquisition. Aliens who spend a lot of time with humans (example: Nog) sometimes acquire the human capacity to break stereotype. (Editor&#39;s note: cultural c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.stardestroyer.net",
+          "/Empire/Essays/Philosophy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Star Wars vs Star Trek Essays: The Philosophy of Star Trek",
+        "url": "http://www.stardestroyer.net/Empire/Essays/Philosophy.html"
+      },
+      {
+        "category": "general",
+        "content": "is a relatively recent acquisition, and tends to get bypassed by more primitive instincts. Thus for example, we tend to eat more and exercise less than is good for our health. Pre",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "baharna.com",
+          "/philos/life.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Psychozoan: The Definition of Life",
+        "url": "https://baharna.com/philos/life.htm"
+      },
+      {
+        "category": "general",
+        "content": "rich people or the acquisition of wealth as long as it didn&#39;t interfere with the individual&#39;s following of the religious law or spiritual relationship with God. Jesus healed the s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2007/03/politicized_rel.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: Politicized Religion, Retail Version",
+        "url": "http://www.2blowhards.com/archives/2007/03/politicized_rel.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "34be35db87d5987e3cac318ab1ada9897123498645a105ad17a867d3f671ed17",
+  "provider": "SearXNG",
+  "query": "tell me about the function of language acquisition in biology",
+  "query_id": "v5-p-0686-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:27.800500Z"
+}

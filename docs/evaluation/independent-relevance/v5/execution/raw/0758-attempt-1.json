@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 225.7,
+  "pair_id": "v5-p-1011",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of probability distributions in civil engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ed5b6ef8c354cf2611e9f2801d538ca0827acb575509ee4f9793efbc7e6dfb5d",
+  "provider": "SearXNG",
+  "query": "give an overview of probability distributions in civil engineering",
+  "query_id": "v5-p-1011-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:16.266575Z"
+}

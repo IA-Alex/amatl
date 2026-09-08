@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 274.261,
+  "pair_id": "v5-p-0385",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is solar eclipses in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "that needs a home. Engineering, electronic toys, err, tools, etc. Oh all right, geek stuff! Check out the last page of the Saturn collision page for my physics analysis. The Equat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wermenh.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Werme Family Home Page",
+        "url": "http://wermenh.com/"
+      },
+      {
+        "category": "general",
+        "content": "to hire for military engineering projects; but that is the account (from Herodotus) that we have of Thales, who is supposed to have actually diverted a river around behind the Lyd",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/greek.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Myth, Philosophy, Why the Greeks?, Parmenides, Greek History",
+        "url": "https://friesian.com/greek.htm"
+      },
+      {
+        "category": "general",
+        "content": "that needs a home. Engineering, electronic toys, err, tools, etc. Oh all right, geek stuff! Check out the last page of the Saturn collision page for my physics analysis. The Equat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wermenh.com",
+          "/index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Werme Family Home Page",
+        "url": "http://wermenh.com/index.html"
+      },
+      {
+        "category": "general",
+        "content": "on Cryptographic Engineering - and how the RSA pseudo-random number generator was compromised by NSA in 2006 (Matthew Green, 2013), How the FBI will lose its iPhone fight with App",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "Science Search   Engineering &amp; Technology   Exploring &amp; Experiments   History of Science   Life &amp; Medical Science   Nature   Physical Sci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.academic-genealogy.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Family Genealogy and History Internet Education Directory™ - Wiki",
+        "url": "http://www.academic-genealogy.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5ee30501ed655f0fa1afc1bd87903077d53798e855dfc117b967bdfe5b664b9d",
+  "provider": "SearXNG",
+  "query": "what is solar eclipses in software engineering",
+  "query_id": "v5-p-0385-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:44.891663Z"
+}

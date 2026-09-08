@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 3850,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 267.918,
+  "pair_id": "candidate-p-0255",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of battery recycling within education",
+    "results": [
+      {
+        "category": "general",
+        "content": "my displeasure, but the explanation continued with the following hypothesis: consequently, because money is an unmistakable form of property, it should be abolished. They went eve",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.alternatievewiskunde.nl",
+          "/denaerde/IargaChap3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "UFO Contact from Planet Iarga",
+        "url": "http://www.alternatievewiskunde.nl/denaerde/IargaChap3.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8b87f4eec12d622b5f47478882234ecfa9cedf44f70107345126cbc9a4bd2770",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of battery recycling within education",
+  "query_id": "candidate-c-0255",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "http://www.alternatievewiskunde.nl/denaerde/IargaChap3.htm",
+      "original_url": "http://www.alternatievewiskunde.nl/denaerde/IargaChap3.htm",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "my displeasure, but the explanation continued with the following hypothesis: consequently, because money is an unmistakable form of property, it should be abolished. They went eve",
+      "title": "UFO Contact from Planet Iarga"
+    }
+  ],
+  "timestamp": "2026-09-05T17:40:49.385112Z"
+}

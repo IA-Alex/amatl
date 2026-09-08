@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 269.066,
+  "pair_id": "v5-p-0630",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does renewable energy storage in neuroscience work",
+    "results": [
+      {
+        "category": "general",
+        "content": "End of the Trail (AMC), Neuroscience Says Listening to This Song (&#34;Weightless&#34;) Reduces Anxiety by Up to 65 Percen t, The Health Benefits of Knitting ; Concentrate on your food ;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6d441fe2e76e7c5421a2603634dcdad14166561adc3a1d1cdc5a9552fa42cdef",
+  "provider": "SearXNG",
+  "query": "how does renewable energy storage in neuroscience work",
+  "query_id": "v5-p-0630-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:08:32.049453Z"
+}

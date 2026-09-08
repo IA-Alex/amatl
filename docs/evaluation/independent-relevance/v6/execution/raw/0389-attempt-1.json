@@ -1,0 +1,34 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 389,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 275.756,
+  "pair_id": "candidate-p-1944",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how is quantum sensing within health informatics evaluated in practice",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "89bbf5f5959480fdbbab180dfef6384b90c3bbf9788d3cf89ec2dfe7d9e58ca4",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how is quantum sensing within health informatics evaluated in practice",
+  "query_id": "candidate-t-1944",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:22:31.002431Z"
+}

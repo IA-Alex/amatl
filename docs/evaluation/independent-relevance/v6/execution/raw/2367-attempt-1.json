@@ -1,0 +1,144 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2367,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 310.532,
+  "pair_id": "candidate-p-1598",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how do models represent low power computing within ecological economics",
+    "results": [
+      {
+        "category": "general",
+        "content": "colonizing every ecological niche. We doubled our staff. Armstrong built new and ever-more-complex computer brains. Among his successes were a brain that could crowdsource the com",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-gig-economy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Gig Economy — Chadnet",
+        "url": "https://wiki.chadnet.org/the-gig-economy"
+      },
+      {
+        "category": "general",
+        "content": "in the midst of ecological crisis and electronic waste. The authors approach the topic under the umbrella of media archaeology and aim to extend this historiographically oriented",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conceptlab.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Garnet Hertz - conceptlab.com",
+        "url": "http://www.conceptlab.com/"
+      },
+      {
+        "category": "general",
+        "content": "our own vision of ecological rationality —rationality that is defined by its fit with reality. We start by considering two conceptual revolutions. The first is the demise of the d",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "home.dbio.uevora.pt",
+          "/~eje/simple%20heuristics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "‹Truth is ever to be found in simplicity, and not in the multiplicityand confusion of things. As the world, which to the naked eye exhibits th",
+        "url": "http://home.dbio.uevora.pt/~eje/simple%20heuristics.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8afb19b934077fb68e1e324af83f5f1fbb1845982ecd4b2939f48f58eb4ce460",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how do models represent low power computing within ecological economics",
+  "query_id": "candidate-t-1598",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://wiki.chadnet.org/the-gig-economy",
+      "original_url": "https://wiki.chadnet.org/the-gig-economy",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "colonizing every ecological niche. We doubled our staff. Armstrong built new and ever-more-complex computer brains. Among his successes were a brain that could crowdsource the com",
+      "title": "The Gig Economy — Chadnet"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.conceptlab.com/",
+      "original_url": "http://www.conceptlab.com/",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "in the midst of ecological crisis and electronic waste. The authors approach the topic under the umbrella of media archaeology and aim to extend this historiographically oriented",
+      "title": "Garnet Hertz - conceptlab.com"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://home.dbio.uevora.pt/~eje/simple%20heuristics.htm",
+      "original_url": "http://home.dbio.uevora.pt/~eje/simple%20heuristics.htm",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "our own vision of ecological rationality —rationality that is defined by its fit with reality. We start by considering two conceptual revolutions. The first is the demise of the d",
+      "title": "‹Truth is ever to be found in simplicity, and not in the multiplicityand confusion of things. As the world, which to the naked eye exhibits th"
+    }
+  ],
+  "timestamp": "2026-09-05T17:32:59.299890Z"
+}

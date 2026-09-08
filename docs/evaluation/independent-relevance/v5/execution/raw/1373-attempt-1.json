@@ -1,0 +1,327 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 283.621,
+  "pair_id": "v5-p-0537",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is neural networks in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "have numerous immediate industrial and medical applications. Apple &amp; Google and many others adopted our techniques. Are you an industrial company that wants to solve interesting p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.idsia.ch",
+          "/~juergen/vision.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Deep Learning: Computer Vision with Fast / Deep / Recurrent Neural Nets Etc Yields Best Results on Many Benchmarks, and Wins Many Contests (Ju",
+        "url": "https://people.idsia.ch/~juergen/vision.html"
+      },
+      {
+        "category": "general",
+        "content": "and the future of industrial society. deChile.net Un sitio sobre Chile y el idioma español. Aves de Chile Un catálogo de las aves de Chile. Mapas David Rumsey Map Collection A col",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cidoku.net",
+          "/links/all",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Todos los enlaces @ cidoku.net",
+        "url": "http://cidoku.net/links/all"
+      },
+      {
+        "category": "general",
+        "content": "my network to build industrial and financial projects, eventually managing 70&#43; ICs. Nowadays, I focus on tooling for commodity companies and value investing. A professional dream&amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alexalejandre.com",
+          "/about/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "About",
+        "url": "https://alexalejandre.com/about/"
+      },
+      {
+        "category": "general",
+        "content": "Model-based Testing for Industrial Applications Jan Peleska (Verified Systems International) 14:30 Invited talk: What Programmers Want from Proof with SPARK Yannick Moy (AdaCore)",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "etaps.org",
+          "/2024/programme/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Programme",
+        "url": "https://etaps.org/2024/programme/"
+      },
+      {
+        "category": "general",
+        "content": "and the rest of the industrialized world preferred to allow 50 to 100 thousand Chinese be slaughtered at Tiananmen Square and elsewhere, rather than lose lucrative trade deals wit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "Software Projects: An Industrial Case Study International Conference on Software and Systems Process (ICSSP 2019) May 25 - 26, 2019, Montreal, Canada Paolo Tell, Jil Klünder,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sigsoft.org",
+          "/awards/distinguishedPaperAward.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGSOFT - ACM Special Interest Group on Software Engineering",
+        "url": "http://www.sigsoft.org/awards/distinguishedPaperAward.html"
+      },
+      {
+        "category": "general",
+        "content": "follow-on papers, industrial adoption, an annual workshop, and a growing community. Selected September 2021 CACM Research Highlight Achieving high-performance the functional way:",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "EvoTorch internally for industrial control and optimization, with some experiments using population sizes in the hundreds of thousands. ★ In 2022, we are celebrating the fol",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.idsia.ch",
+          "/~juergen/blog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Juergen Schmidhuber&#39;s AI Blog",
+        "url": "https://people.idsia.ch/~juergen/blog.html"
+      },
+      {
+        "category": "general",
+        "content": "and the future of industrial society. deChile.net A site about Chile and the Spanish language. Aves de Chile A catalogue of the birds of Chile. Maps David Rumsey Map Collection A",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cidoku.net",
+          "/en/links/all",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "All links @ cidoku.net",
+        "url": "http://cidoku.net/en/links/all"
+      },
+      {
+        "category": "general",
+        "content": "to the Swiss Army Knife Industrial Designer Figures Out How to Make Ikea&#39;s Iconic Blue Bag Fold Compactly Real Object or AI? An Unusual Rolling Stool for the Chinese Market Studio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "readspike.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Readspike - Simple news aggregator",
+        "url": "https://readspike.com/"
+      },
+      {
+        "category": "general",
+        "content": "the world&#39;s worst industrial disaster from four decades ago teach us? (2023-12-17) Memories of a Disaster Remembering 1984 and Bhopal (2023-12-10) In Memoriam My dad built somethi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "robotsinplainenglish.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Robots In Plain English",
+        "url": "https://robotsinplainenglish.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "080cbd277eb9837d1e9b863384053a152fc6b534360b4a109a09eb896ba972c5",
+  "provider": "SearXNG",
+  "query": "what is neural networks in industrial design",
+  "query_id": "v5-p-0537-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:34.143936Z"
+}

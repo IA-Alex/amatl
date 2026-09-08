@@ -1,0 +1,327 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 368.579,
+  "pair_id": "v5-p-0699",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes language acquisition in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "investing Encouraging acquisition creates asset bubbles &#34;Building equity&#34; for &#34;inflating prices&#34; Two meanings of equity Mortgage lenders big winners Not equitable &#34;Income&#34; for &#34;ea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.savingcommunities.org",
+          "/econ/orwellian.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Orwellian Economics: Dan Sullivan: Saving Communities",
+        "url": "http://www.savingcommunities.org/econ/orwellian.html"
+      },
+      {
+        "category": "general",
+        "content": "differences Language acquisition is different in autism. Autistics lag behind in using the correct language syntax. Low-level &#34;impairments&#34; are suggested by psychiatry 1",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "rdos.net",
+          "/eng/asperger.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Neanderthal theory of autism",
+        "url": "http://rdos.net/eng/asperger.htm"
+      },
+      {
+        "category": "general",
+        "content": "pain, conscience, acquisition, protection, enhancement, mastery, are undoubtedly names for some of the ways people act. There may be instinctive dispositions which work toward suc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/cache/epub/6456/pg6456-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of Public opinion, by Walter Lippmann",
+        "url": "https://www.gutenberg.org/cache/epub/6456/pg6456-images.html"
+      },
+      {
+        "category": "general",
+        "content": "module, a grammar acquisition module, a communication-pragmatics module, a theory of mind module, and so on!&#34; (Mithen 1996)  However, ancient modules are not the same as",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "self-ownership, initial acquisition by use, acquisition by trade, etc. Other kinds of property are assumed to be incompatible with interpersonal liberty: e.g., slavery by seizure,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.la-articles.org.uk",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Libertarian Alliance",
+        "url": "http://www.la-articles.org.uk/"
+      },
+      {
+        "category": "general",
+        "content": "authors performed data acquisition and analysis, collected documents, draw the figure, and wrote the papers. Acknowledgements This work is supported by the National Natural Scienc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mailstar.net",
+          "/coronavirus.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Covid-19 was genetically engineered by virologists in a lab",
+        "url": "https://mailstar.net/coronavirus.html"
+      },
+      {
+        "category": "general",
+        "content": "is in this life the acquisition of truth, and in the afterlife to see this Truth in God. For assuming, with Aristotle, that what man seeks is happiness, where shall he best find i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.andrsib.com",
+          "/durant/advr.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Will Durant: The Age Of Faith. CHAPTER XXXVI. The Adventure of Reason",
+        "url": "http://www.andrsib.com/durant/advr.htm"
+      },
+      {
+        "category": "general",
+        "content": "exercise than in the acquisition of power. The pencil of an impartial historian has delineated the portrait of a monster: ( 49 ) his diminutive and deformed person, the closeness",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ourcivilisation.com",
+          "/smartboard/shop/gibbone/rome/volume2/chap46.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chapter 46: The Decline And Fall Of The Roman Empire",
+        "url": "http://www.ourcivilisation.com/smartboard/shop/gibbone/rome/volume2/chap46.htm"
+      },
+      {
+        "category": "general",
+        "content": "human being&#39;s power of acquisition. The study of science, they truly say, is indispensable: our present education neglects it: there is truth in this too, though it is not all tru",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "monadnock.net",
+          "/mill/inaugural.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Inaugural Address, by John Stuart Mill",
+        "url": "https://monadnock.net/mill/inaugural.html"
+      },
+      {
+        "category": "general",
+        "content": "could aspire to the acquisition of territory on the main land. They gradually increased, however, in numbers, and strengthened themselves yet more by various improvements in their",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.globalgreyebooks.com",
+          "/online-ebooks/william-h-prescott_history-of-the-conquest-of-mexico_complete-text.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The History of the Conquest of Mexico by William Hickling Prescott - Read Online for free at Global Grey ebooks",
+        "url": "https://www.globalgreyebooks.com/online-ebooks/william-h-prescott_history-of-the-conquest-of-mexico_complete-text.html"
+      },
+      {
+        "category": "general",
+        "content": "to wit, the acquisition of goods needful to himself. Yet he draws nearer to that object. By the devious way of a mediate exchange, he gains the prospect of accomplishing his purpo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "monadnock.net",
+          "/menger/money.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "On the Origin of Money, by Carl Menger",
+        "url": "https://monadnock.net/menger/money.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8feb67ab5b8ceeae644c3347331ad91999262056cf45f16af1e3702ee0fe2466",
+  "provider": "SearXNG",
+  "query": "what causes language acquisition in materials science",
+  "query_id": "v5-p-0699-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:42.051339Z"
+}

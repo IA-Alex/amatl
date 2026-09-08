@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 364.983,
+  "pair_id": "v5-p-0212",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind heat transfer in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "96ed7daa13ffb4dbab0480e47948377ada4a2d0f26371696b264f7cfd3e87e72",
+  "provider": "SearXNG",
+  "query": "describe the principle behind heat transfer in hydrology",
+  "query_id": "v5-p-0212-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:10:04.389296Z"
+}

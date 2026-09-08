@@ -1,0 +1,144 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 4091,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 327.943,
+  "pair_id": "candidate-p-0755",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains data provenance within public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "and on the quality and provenance of the vacuum domain. There are some spiritual teachers (the young Englishman Ananda, for example) with whom nothing is seen at first, but when o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "in crypto with no provenance to the source of funds but still that&#39;s not how they got the guy. The way these sites make their DNM to be responsive without javascript was to hide C",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "learnaifromscratch.github.io",
+          "/theabsolutestateofsoftware.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A 2026 Security Curriculum",
+        "url": "https://learnaifromscratch.github.io/theabsolutestateofsoftware.html"
+      },
+      {
+        "category": "general",
+        "content": "memory -- of unknown provenance and content -- may be impotent to point the way, but we must find some means to gaze back into the world from which Harvey emerged, bringing it ali",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bwo.life",
+          "/heart.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Between Discordant Eras",
+        "url": "https://bwo.life/heart.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0f8ebbb6149b3b4e7774ed8fb109aeb4e3aa73f269bfd28f8cd2530dcad5239c",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains data provenance within public health",
+  "query_id": "candidate-t-0755",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://colinandrews.net/Consciousness.html",
+      "original_url": "https://colinandrews.net/Consciousness.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "and on the quality and provenance of the vacuum domain. There are some spiritual teachers (the young Englishman Ananda, for example) with whom nothing is seen at first, but when o",
+      "title": "The Study of Human Consciousness - Is ET already part of our lives?"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://learnaifromscratch.github.io/theabsolutestateofsoftware.html",
+      "original_url": "https://learnaifromscratch.github.io/theabsolutestateofsoftware.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "in crypto with no provenance to the source of funds but still that&#39;s not how they got the guy. The way these sites make their DNM to be responsive without javascript was to hide C",
+      "title": "A 2026 Security Curriculum"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "https://bwo.life/heart.htm",
+      "original_url": "https://bwo.life/heart.htm",
+      "rank": 3,
+      "rejection_reason": null,
+      "snippet": "memory -- of unknown provenance and content -- may be impotent to point the way, but we must find some means to gaze back into the world from which Harvey emerged, bringing it ali",
+      "title": "Between Discordant Eras"
+    }
+  ],
+  "timestamp": "2026-09-05T17:42:03.968573Z"
+}

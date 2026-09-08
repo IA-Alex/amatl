@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 289.396,
+  "pair_id": "v5-p-0892",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does vaccination in architecture operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "Designer Statement Architecture Virtual New York City and Tokyo Current Book Projects Expanded GPS Hurricane Irene Report from, NYC Effects of Hurricane Irene on New York City Aug",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.didik.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DIDIK.com The original and official DIDIK site. Cutting edge and sometimes controversial thoughts, designs, proposals and projects conceiv",
+        "url": "http://www.didik.com/"
+      },
+      {
+        "category": "general",
+        "content": "culture 1933. Brain architecture 1932. Wikicide 1931. Cognitive density 1930. It&#39;s called projection 1929. What women want 1928. Dying with your species 1927. The great escape 192",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "orgyofthewill.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Orgy of the Will: A Philosophy of the Future",
+        "url": "http://orgyofthewill.net/"
+      },
+      {
+        "category": "general",
+        "content": "the Global Neoliberal Architecture is Collapsing    -  Elite Underground   Espa?ol  -  El Jaque Mate - Informaciones Para Materializar Un Mundo Nuevo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/sociopol_globalelite.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Elite - The Transnational Capitalist Class / La Elite Global - La Clase Capitalista Transnacional",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_globalelite.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "dd874a824226f8a76c79834a8e43ab5912ab16bb79961622ebd86491fc37c241",
+  "provider": "SearXNG",
+  "query": "how does vaccination in architecture operate",
+  "query_id": "v5-p-0892-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:29.903458Z"
+}

@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 355.77,
+  "pair_id": "v5-p-0020",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind photosynthesis in optics",
+    "results": [
+      {
+        "category": "general",
+        "content": "the earliest forms of photosynthesis. To make serotonin from tryptophan, oxygen is needed. Thus, serotonin is made specifically in unicellular systems capable of photosynthesis an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/stc/ct.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Space, Time and Consciousness",
+        "url": "http://www.dhushara.com/stc/ct.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "40804d8ad5be82a01dc08c6a04d8d0811302a5f92718224d5f709313b426c020",
+  "provider": "SearXNG",
+  "query": "describe the principle behind photosynthesis in optics",
+  "query_id": "v5-p-0020-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:08:02.508862Z"
+}

@@ -4,6 +4,13 @@ version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
 license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+documentation.workspace = true
+readme = "../../README.md"
+description = "Shared UI templates and assets for the Amatl search engine"
+keywords = ["search", "metasearch", "ui"]
+categories = ["web-programming"]
 
 [lib]
 path = "src/lib.rs"

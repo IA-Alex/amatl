@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 271.096,
+  "pair_id": "v5-p-1080",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does satellite orbits in astronomy operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "(LEO). As the number of satellites continues to increase, so does the likelihood of collisions capable of generating large quantities of debris, potentially triggering a self-sust",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "War, US reconnaissance satellites monitored a Soviet airfield in the far north of the country. Harry Stranger and Dwayne Day examine the mystery of that airfield that even the bes",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.thespacereview.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Space Review: essays and commentary about the final frontier",
+        "url": "https://www.thespacereview.com/"
+      },
+      {
+        "category": "general",
+        "content": "Earth which is based on satellite measurements. See for example J. H. Piddington Cosmic Electrodynamics (1969) and others. It is absolutely astounding that, in the 40 years since",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "saturniancosmology.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Saturnian Cosmology: Chapter 1: Introduction",
+        "url": "https://saturniancosmology.org/"
+      },
+      {
+        "category": "general",
+        "content": "from tidal stations or satellites are used (the former being much lower). The &#34;natural&#34; cycles can explain practically the history of sea-level change, without resorting",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meteo.lcd.lu",
+          "/globalwarming/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Warming Sceptic",
+        "url": "https://meteo.lcd.lu/globalwarming/"
+      },
+      {
+        "category": "general",
+        "content": "&#39;CETI from an Earth Satellite Orbit,&#34; JBIS , 11 , 109-110 1978 Ian Ridpath, &#34;A Signalling Strategy for Interstellar Communication,&#34; JBIS , 31 , 108-109 1978). David J. Bihary, &#34;Th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.rfreitas.com",
+          "/Astro/InterstellarProbesJBIS1980.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "INTERSTELLAR PROBES: A NEW APPROACH TO SETI",
+        "url": "http://www.rfreitas.com/Astro/InterstellarProbesJBIS1980.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7196e23547b78dc3de1fc0f482d524f7e24a82a496fbe98fbd5dfe484387c316",
+  "provider": "SearXNG",
+  "query": "how does satellite orbits in astronomy operate",
+  "query_id": "v5-p-1080-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:08:35.333635Z"
+}

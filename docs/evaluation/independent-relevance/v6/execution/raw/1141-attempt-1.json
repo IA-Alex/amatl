@@ -1,0 +1,198 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 1141,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 489.004,
+  "pair_id": "candidate-p-0885",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what are the main constraints on ecosystem services within food systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "and planning. In the constraints of expensive cell phone data, uploading large files can be made possible by offloading heavy-lifting onto remote servers; having your server build",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "100r.co",
+          "/site/off_the_grid.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "100R — off the grid",
+        "url": "http://100r.co/site/off_the_grid.html"
+      },
+      {
+        "category": "general",
+        "content": "order to meet platform constraints. This will include a review of JIT and VM options used with Linux platforms and how they can benefit/exploit architectural features and be used",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.embeddedlinuxconference.com",
+          "/elc_2009/sessions.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "CELF Embedded Linux Conference",
+        "url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html"
+      },
+      {
+        "category": "general",
+        "content": "to move beyond the constraints imposed by natural selection and evolutionary pressures, using technology to guide humanity&#39;s development. Similarly, the Antispeciesist Revolution",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.antispeciesism.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Speciesism and Antispeciesism as conceived as conceived by ChatGPT",
+        "url": "https://www.antispeciesism.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "lifestyle &amp; time constraints. Criminal Justice, Public Safety, Info Security, Homeland Security and more. New York State Correctional Jobs There are many great job opportuniti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.adirondacks.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "&#34;*Adirondacks Premier FREE Resource Travel Guide to attractions, vacation,tourism, lodging, Real Estate, hiking, restaurants in the Adirondac",
+        "url": "http://www.adirondacks.com/"
+      },
+      {
+        "category": "general",
+        "content": "because we have less constraints than in Europe, timing-wise.” On the same call, an executive said Nestle was instituting “higher pricing in the U.S. market than comparatively in",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "techrights.org",
+          "/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Techrights — Links 30/01/2024: Many More Layoffs (Microsoft the Most Tech Layoffs This Year)",
+        "url": "http://techrights.org/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3d448fc25d625cbeec8b3d6849a610be3bcd0465b4fc42fbe4c88e49baa4ef94",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what are the main constraints on ecosystem services within food systems",
+  "query_id": "candidate-t-0885",
+  "raw_result_count": 5,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://100r.co/site/off_the_grid.html",
+      "original_url": "http://100r.co/site/off_the_grid.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "and planning. In the constraints of expensive cell phone data, uploading large files can be made possible by offloading heavy-lifting onto remote servers; having your server build",
+      "title": "100R — off the grid"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html",
+      "original_url": "https://www.embeddedlinuxconference.com/elc_2009/sessions.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "order to meet platform constraints. This will include a review of JIT and VM options used with Linux platforms and how they can benefit/exploit architectural features and be used",
+      "title": "CELF Embedded Linux Conference"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.antispeciesism.com/chatgpt/",
+      "original_url": "https://www.antispeciesism.com/chatgpt/",
+      "rank": 3,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "to move beyond the constraints imposed by natural selection and evolutionary pressures, using technology to guide humanity&#39;s development. Similarly, the Antispeciesist Revolution",
+      "title": "Speciesism and Antispeciesism as conceived as conceived by ChatGPT"
+    }
+  ],
+  "timestamp": "2026-09-05T17:26:31.377886Z"
+}

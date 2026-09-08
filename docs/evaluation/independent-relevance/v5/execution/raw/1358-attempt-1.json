@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 212.308,
+  "pair_id": "v5-p-1055",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of microbial fermentation in geology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "919b231e61680fcd5cd0181f6a2b4458827480fdafcb008dffca0b5518a778b4",
+  "provider": "SearXNG",
+  "query": "give an overview of microbial fermentation in geology",
+  "query_id": "v5-p-1055-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:29.627355Z"
+}

@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 323.975,
+  "pair_id": "v5-p-0276",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind binary search in robotics",
+    "results": [
+      {
+        "category": "general",
+        "content": "guided by established principles of operating system security. Scheme 48&#39;s security kernel is small, consisting of the call-by-value lambda-calculus with a few simple extensions t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mumble.net",
+          "/~jar/pubs/secureos/secureos.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Emergent Technologies Inc. -- Security Kernel&lt;/TITLE",
+        "url": "http://mumble.net/~jar/pubs/secureos/secureos.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "85b6c33d313e98e6d57c1ebfe60b12420764ba56debd7b9a55de86355a80c863",
+  "provider": "SearXNG",
+  "query": "describe the principle behind binary search in robotics",
+  "query_id": "v5-p-0276-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:10:54.247970Z"
+}

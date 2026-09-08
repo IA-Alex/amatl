@@ -1,0 +1,171 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2924,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 322.012,
+  "pair_id": "candidate-p-1605",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a plain language guide to low power computing within food systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "Mathematics and Computing, which is located at the Northwest Missouri State University. Colleges and universities See also: List of colleges and universities in Missouri Jesse Hal",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hellenicaworld.com",
+          "/USA/Geo/en/Missouri.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Missouri",
+        "url": "https://www.hellenicaworld.com/USA/Geo/en/Missouri.html"
+      },
+      {
+        "category": "general",
+        "content": "use state-of-the-art computing equipment and the physical limitations of time and space are overcome&#34; Computerization movements cover a wide spectre of ideas and ideals, but",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gotze.dk",
+          "/phd/it.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Participation in the information age",
+        "url": "https://gotze.dk/phd/it.html"
+      },
+      {
+        "category": "general",
+        "content": "guy who fights for your computing freedom. Just remembered he had an attempted cancellation, I read the email exchange that prompted it, I think anyone who thinks he was in the wr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "chriskoehnke.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chris Koehnke&#39;s Webpage",
+        "url": "http://chriskoehnke.com/"
+      },
+      {
+        "category": "general",
+        "content": "stimulated many in the computing community. The word ‘cyberspace’ is commonly used in the mainstream world with reference to the emergent world-wide computer networks,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cyb-sec.neocities.org",
+          "/pages/alt-cyberpunk-faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "alt.cyberpunk FAQ – /cyb/&#43;/sec/ wiki",
+        "url": "https://cyb-sec.neocities.org/pages/alt-cyberpunk-faq/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1448ca6b52a350a2dae9b75a09f178180d7b934e4a8398558c3b1347cc8c4e69",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a plain language guide to low power computing within food systems",
+  "query_id": "candidate-c-1605",
+  "raw_result_count": 4,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.hellenicaworld.com/USA/Geo/en/Missouri.html",
+      "original_url": "https://www.hellenicaworld.com/USA/Geo/en/Missouri.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Mathematics and Computing, which is located at the Northwest Missouri State University. Colleges and universities See also: List of colleges and universities in Missouri Jesse Hal",
+      "title": "Missouri"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://gotze.dk/phd/it.html",
+      "original_url": "https://gotze.dk/phd/it.html",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "use state-of-the-art computing equipment and the physical limitations of time and space are overcome&#34; Computerization movements cover a wide spectre of ideas and ideals, but",
+      "title": "Participation in the information age"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://chriskoehnke.com/",
+      "original_url": "http://chriskoehnke.com/",
+      "rank": 3,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "guy who fights for your computing freedom. Just remembered he had an attempted cancellation, I read the email exchange that prompted it, I think anyone who thinks he was in the wr",
+      "title": "Chris Koehnke&#39;s Webpage"
+    }
+  ],
+  "timestamp": "2026-09-05T17:35:53.558851Z"
+}

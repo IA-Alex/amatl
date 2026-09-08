@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 264.922,
+  "pair_id": "v5-p-0131",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes database indexing in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "tp://www.antenna.nl/wise-database/uranium/dhap99.html George Bush - The Unauthorised Biography http://www.padrak.com/alt/BUSHBOOK_INDEX.html Bohemian Club and other research http:/",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "are stored in a SQLite database , debugging is very confusing. It’s also easy for your own state to get out-of-sync with the Tip state: there is not a single source of truth",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mjtsai.com",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Tsai - Blog",
+        "url": "https://mjtsai.com/blog/"
+      },
+      {
+        "category": "general",
+        "content": "access logs. Weblog DataBase A metadata search engine for technical blogs. Very small index and ranking seems poor, but it seems to have different goals from most search engines :",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "seirdy.one",
+          "/posts/2021/03/10/search-engines-with-own-indexes/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A look at search engines with their own indexes - Seirdy",
+        "url": "https://seirdy.one/posts/2021/03/10/search-engines-with-own-indexes/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "670a654d174d8007432bffa641c120e0c039cab779c0da6e33aa31e3c869f93b",
+  "provider": "SearXNG",
+  "query": "what causes database indexing in public health",
+  "query_id": "v5-p-0131-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:15:19.764936Z"
+}

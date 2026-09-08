@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 349.932,
+  "pair_id": "v5-p-0477",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind encryption keys in electrical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "15ed6683e0b1787770182149bc121491b65aab00c07654ab8944aa15acb2d94d",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind encryption keys in electrical engineering",
+  "query_id": "v5-p-0477-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:05.342806Z"
+}

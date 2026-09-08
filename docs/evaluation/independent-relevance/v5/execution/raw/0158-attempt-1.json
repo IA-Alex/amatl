@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 313.988,
+  "pair_id": "v5-p-0776",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind coastal flooding in optics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fc381f657dd5f4e80dde642cc89d176db50c386b3b40db9667e906507c8238f3",
+  "provider": "SearXNG",
+  "query": "describe the principle behind coastal flooding in optics",
+  "query_id": "v5-p-0776-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:05:58.671384Z"
+}

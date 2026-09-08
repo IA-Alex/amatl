@@ -1,0 +1,63 @@
+{
+  "canonicalization_policy": "lowercase scheme/host; remove tracking parameters and fragments; preserve non-tracking query; empty path becomes /; malformed URLs are invalid",
+  "duplicate_current_policy": "reject a canonical URL already accepted in the current experiment, across arms",
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "freeze_status": "FROZEN",
+  "historical_exclusion_set": [
+    "V1",
+    "V2",
+    "V3",
+    "V4",
+    "V5",
+    "historical evaluation corpus"
+  ],
+  "historical_overlap_policy": "reject canonical URL present in any listed V1-V5 or historical corpus",
+  "historical_source_count": 8,
+  "historical_sources": [
+    {
+      "lineage": "V1-V5 query universe",
+      "path": "/home/panda/amatl/docs/evaluation/independent-relevance/new-corpus-v1/query-set.json",
+      "sha256": "9e516c21bfcef9700454782fae9ac372ad25fd5f4d9289ffd5e491cddb6c0ff7"
+    },
+    {
+      "lineage": "V1-V5 query universe",
+      "path": "/home/panda/amatl/docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-query-universe-v1.json",
+      "sha256": "f8fcdc356fa0d00d3a657c2c49d5b3155c9ec4bb7fdeb67692cb7c5f734e1ae1"
+    },
+    {
+      "lineage": "V1-V5 query universe",
+      "path": "/home/panda/amatl/docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-query-universe-v2.json",
+      "sha256": "7fec12b253873a7f83fe64d02f658dcb77d86118dba72a2a001f3b56f980975d"
+    },
+    {
+      "lineage": "V1-V5 query universe",
+      "path": "/home/panda/amatl/docs/evaluation/independent-relevance/new-corpus-v1/adjudication/supplemental-v3-query-universe.json",
+      "sha256": "d4916130aa8067cc83e3b01c94dbd43f9ee1575feec04f1de5cae710564824c1"
+    },
+    {
+      "lineage": "V1-V5 query universe",
+      "path": "/home/panda/amatl/docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-query-universe.json",
+      "sha256": "c6729fad0f79d0cdbf94e64884e083ab51c59a8cc935fb30efe33a7f7de19bb7"
+    },
+    {
+      "lineage": "V1-V5 query universe",
+      "path": "/home/panda/amatl/docs/evaluation/independent-relevance/v5/frozen-query-universe.json",
+      "sha256": "da1e4515adc9158457d934c538f6d8f4db9a7650a835f3fed644db4af648c126"
+    },
+    {
+      "lineage": "historical result corpus",
+      "path": "docs/evaluation/independent-relevance/new-corpus-v1/v4/supplemental-v4-raw-evidence.json",
+      "sha256": "4f757656ced6677d95fa7e0f5d0aa5468a20cd33cc6a102efdaa0fed69d044cc"
+    },
+    {
+      "lineage": "historical result corpus",
+      "path": "docs/evaluation/independent-relevance/v5/execution/raw-capture.json",
+      "sha256": "2a9b4287514f3c9741e07b8001b629d69ad67d00e400ae93652e4616d9a576fc"
+    }
+  ],
+  "integrity_basis": "full-file SHA-256 values recorded from accepted candidate-v2 provenance; no historical artifact modified",
+  "invalid_result_policy": "reject missing/invalid URL, title, snippet, rank, or provider payload",
+  "network_requests": 0,
+  "policy": "Before acceptance, canonicalize with the frozen AMATL canonicalizer; reject any canonical URL in this set, then reject duplicate-current URLs. Historical overlap is rejected before labeling.",
+  "schema": "amatl.relevance.v6-historical-exclusion-manifest.v1"
+}

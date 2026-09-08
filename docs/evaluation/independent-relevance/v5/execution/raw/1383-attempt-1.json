@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 318.994,
+  "pair_id": "v5-p-0265",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is binary search in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "or mathematical sciences. AMP allows the user to edit and simplify numerous expressions or equations in a mathematical derivation quickly and accurately. AMP functions in an inter",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mizj.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "S.U.P.E.R. - The Largest 200LX Software Archive",
+        "url": "http://mizj.com/"
+      },
+      {
+        "category": "general",
+        "content": "and practice the science and playground that is Contact Improvisation . Strengthen your body, open your mind and awaken your instincts. Explore sensory and physical experiments of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.idallen.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ian! D. Allen - Personal Home Page",
+        "url": "http://www.idallen.com/"
+      },
+      {
+        "category": "general",
+        "content": "remarkable progress of science during the past few centuries it is difficult to dismiss cryonics out of hand. The structure of DNA was unknown prior to 1953; the chemical (rather",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "Karina Montes of BioscienceLA: Finding Your Path: Women In Tech California Episode 679 • 43:19 • Aug 16, 2023 Espree Devora: Prioritizing Health as an Entrepreneur: Women In Tech",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "castro.fm",
+          "/podcast/fe906303-b128-429f-b23a-f8c53dd76e62",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Women in Tech Podcast, hosted by Espree Devora",
+        "url": "https://castro.fm/podcast/fe906303-b128-429f-b23a-f8c53dd76e62"
+      },
+      {
+        "category": "general",
+        "content": "AS LONG AS THE GOOD CONSCIENCE IS FOR THE HERD, THE BAD CONSCIENCE ONLY SAITH: EGO. VERILY, THE CRAFTY EGO, THE LOVELESS ONE, THAT SEEKETH ITS ADVANTAGE IN THE ADVANTAGE OF MANY &amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.philosophicalanthropology.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHICAL ANTHROPOLOGY",
+        "url": "https://www.philosophicalanthropology.net/"
+      },
+      {
+        "category": "general",
+        "content": "9982 Omnibus of Mr. Science Answers mtm.hum 8929 The Mary Tyler Moore Show Listing mundane.v2 22407 The Mundanity Test (Version 2.0) (December 1, 1990) murph.jok 9568 Murphy&#39;s Law",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "textfiles.com",
+          "/humor/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "T E X T F I L E S",
+        "url": "http://textfiles.com/humor/"
+      },
+      {
+        "category": "general",
+        "content": "AS LONG AS THE GOOD CONSCIENCE IS FOR THE HERD, THE BAD CONSCIENCE ONLY SAITH: EGO. VERILY, THE CRAFTY EGO, THE LOVELESS ONE, THAT SEEKETH ITS ADVANTAGE IN THE ADVANTAGE OF MANY &amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.philosophicalanthropology.net",
+          "/2025/09/weaponization-of-new-age.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHICAL ANTHROPOLOGY: Weaponization of the New Age",
+        "url": "https://www.philosophicalanthropology.net/2025/09/weaponization-of-new-age.html"
+      },
+      {
+        "category": "general",
+        "content": "science (6) Color blindness » An interesting article by Rob Pike on moderate deuteranopia : The most common variety of color blindness is called red-green color blindness, or deut",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "triptico.com",
+          "/links/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Links",
+        "url": "https://triptico.com/links/"
+      },
+      {
+        "category": "general",
+        "content": "rather fascinating pop-science text. Very pleased to see Volker&#39;s Windows build machines churning out green builds (strangely mine are broken somehow). Chewed mail, not a great de",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2002/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2002/"
+      },
+      {
+        "category": "general",
+        "content": "programming, computer science and computing history, will be written in this language. I don&#39;t mean to be unsympathetic here, I am not a native English speaker myself, so I know t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "pspodcasting.net",
+          "/dan/blog/2019/plan9_desktop.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Plan 9 Desktop Guide",
+        "url": "https://pspodcasting.net/dan/blog/2019/plan9_desktop.html"
+      },
+      {
+        "category": "general",
+        "content": "33 packages in Schedule Science &amp; Education Ham Test Prepare for and pass all three US Amateur Radio license exams Point Forecast NWS point forecasts with maps, tides, and wea",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "f-droid.org",
+          "/en/packages/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "F-Droid - Free and Open Source Android App Repository",
+        "url": "https://f-droid.org/en/packages/"
+      },
+      {
+        "category": "general",
+        "content": "of Cognitive Neuroscience UCLA Semel Institute for Neuroscience &amp; Human Behavior School of Medicine University of California at Los Angeles Professional Address: UCLA Sem",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.joaquinfuster.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Joaquin Fuster",
+        "url": "http://www.joaquinfuster.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f87f8ba473b328fa89608c3bd746acc9622e5530a8693143aa9b0dca16071401",
+  "provider": "SearXNG",
+  "query": "what is binary search in health science",
+  "query_id": "v5-p-0265-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:37.331306Z"
+}

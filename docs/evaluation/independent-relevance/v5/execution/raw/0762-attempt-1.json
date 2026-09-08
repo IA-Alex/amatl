@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 342.886,
+  "pair_id": "v5-p-0316",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind water purification in architecture",
+    "results": [
+      {
+        "category": "general",
+        "content": "the spiritual man, the purification of mind, will and thought, and the ennobling of all the faculties of the human soul. Bilderberg Group: a powerful global elite,Group together w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/masons.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Freemasons - The silent destroyers. Deist religious cult based on the Knights Templar - Initiation rituals like those of witchcraft",
+        "url": "http://www.bilderberg.org/masons.htm"
+      },
+      {
+        "category": "general",
+        "content": "up his body during the purification the very same procedure reduces the whole universe to rubble and ash.   Chakravala or the iron wheel Just as the androgynous body of the A",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.trimondi.de",
+          "/SDLE/Part-1-09.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Shadow of the Dalai Lama – Part I – 9",
+        "url": "http://www.trimondi.de/SDLE/Part-1-09.htm"
+      },
+      {
+        "category": "general",
+        "content": "to vaporization; purification). As both Father and Son long to reunite, he decides to return (condensation). Upon arrival, the Son willingly lets the Father devour him, which is h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mats-winther.github.io",
+          "/peterson.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Critique of Jordan B. Peterson&#39;s Neo-Hegelian philosophy",
+        "url": "https://mats-winther.github.io/peterson.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9fb7232894b5ac12a3b3c65342cfed77103b10d6be9c8566ccd3f4252de32c59",
+  "provider": "SearXNG",
+  "query": "describe the principle behind water purification in architecture",
+  "query_id": "v5-p-0316-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:17.381005Z"
+}

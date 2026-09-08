@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 281.285,
+  "pair_id": "v5-p-0612",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does air quality monitoring in transportation engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "Supply depots Transportation routes Key Benefits for Clients Advantage Impact Equipment Savings Access to $50k&#43; worth of existing machinery Time Savings 6-12 month head start on o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.startyourowngoldmine.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Start Your Own Gold Mine in 45 days with less than US $100,000",
+        "url": "https://www.startyourowngoldmine.com/"
+      },
+      {
+        "category": "general",
+        "content": "electricity, green transportation, and healthy, efficient buildings into everyday use. webring * The Renewable Energy Webring. mrea * Midwest Renewable Energy Association Their Mi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.redrok.com",
+          "/main.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Red Rock Energy Heliostats",
+        "url": "http://www.redrok.com/main.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "aaaa82ac8f87d72af032aea4b0aff994b3ea777e8cb10a2468c515930c696303",
+  "provider": "SearXNG",
+  "query": "how does air quality monitoring in transportation engineering operate",
+  "query_id": "v5-p-0612-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:16:44.901478Z"
+}

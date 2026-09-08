@@ -1,0 +1,108 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 1619,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 327.805,
+  "pair_id": "candidate-p-1378",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how can researchers measure hydrogen storage within optical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "of independent researchers at other sites, as well as read the books that were released by small publishing houses. In the report, I built a chain of facts, but the ability to mak",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "antimatrix.org",
+          "/Convert/Books/Sall/Questions_and_Answers_En.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dr. Sall - Secret Knowledge, and Science: from prehistoric civilizations to our days",
+        "url": "http://antimatrix.org/Convert/Books/Sall/Questions_and_Answers_En.html"
+      },
+      {
+        "category": "general",
+        "content": "experiments by careful researchers, the results are inconsistent, contradictory, and usually difficult or sometimes impossible to replicate. Attempted replications often give cont",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/newenergy/defeatcancer/cancer.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Tom Bearden Website",
+        "url": "https://www.bibliotecapleyades.net/ciencia/newenergy/defeatcancer/cancer.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8c3109eb873920efb76cc88ba04e1f493df77c3c49ddd766e8cc89905f030276",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how can researchers measure hydrogen storage within optical engineering",
+  "query_id": "candidate-t-1378",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://antimatrix.org/Convert/Books/Sall/Questions_and_Answers_En.html",
+      "original_url": "http://antimatrix.org/Convert/Books/Sall/Questions_and_Answers_En.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "of independent researchers at other sites, as well as read the books that were released by small publishing houses. In the report, I built a chain of facts, but the ability to mak",
+      "title": "Dr. Sall - Secret Knowledge, and Science: from prehistoric civilizations to our days"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.bibliotecapleyades.net/ciencia/newenergy/defeatcancer/cancer.htm",
+      "original_url": "https://www.bibliotecapleyades.net/ciencia/newenergy/defeatcancer/cancer.htm",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "experiments by careful researchers, the results are inconsistent, contradictory, and usually difficult or sometimes impossible to replicate. Attempted replications often give cont",
+      "title": "The Tom Bearden Website"
+    }
+  ],
+  "timestamp": "2026-09-05T17:29:05.630085Z"
+}

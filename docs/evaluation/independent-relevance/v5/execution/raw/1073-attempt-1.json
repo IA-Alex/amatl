@@ -1,0 +1,246 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 286.725,
+  "pair_id": "v5-p-0339",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes soil erosion in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "It is one of the raw materials for photosynthesis, the process whereby plants and other organisms use energy from sunlight to convert carbon dioxide and water into carbohydrates t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/climcat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Climate models and climate catastrophe: a reality check",
+        "url": "https://davidpratt.info/climcat.htm"
+      },
+      {
+        "category": "general",
+        "content": "us review briefly the materials and work necessary to arrive at a reasonably accurate picture of the body form and external appearance of these strange reptiles. The first require",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/49288/49288-h/49288-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dinosaur Quarry, Dinosaur National Monument, Colorado, Utah, by John M. Good, Theodore E. White and Gilbert F. Stucker",
+        "url": "https://www.gutenberg.org/files/49288/49288-h/49288-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "many objects and materials found on planes -- and for any number of reasons, none of which have anything to do with the confiscation of pointy objects at the concourse checkpoint,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonTerrorism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about Terrorism",
+        "url": "https://www.billdietrich.me/ReasonTerrorism.html"
+      },
+      {
+        "category": "general",
+        "content": "the fluid or semifluid materials to move predominantly eastward. *Earth scientists hold widely divergent views on the changes in size that the earth has undergone since its format",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/tierra_hueca/inner_earth/sunken.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sunken Continents versus Continental Drift",
+        "url": "https://www.bibliotecapleyades.net/tierra_hueca/inner_earth/sunken.htm"
+      },
+      {
+        "category": "general",
+        "content": "versatile synthetic materials. Plastics, a curiosity at the beginning of the century, became ubiquitous by the mid decades, seemingly as essential to our way of life as the very a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.nytimes.com",
+          "/www.nytimes.com/books/first/r/rifkin-biotech.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biotech Century",
+        "url": "https://archive.nytimes.com/www.nytimes.com/books/first/r/rifkin-biotech.html"
+      },
+      {
+        "category": "general",
+        "content": "and shrinking raw materials. Democracy is problematic; scarcity is more certain. Indeed, the Saddam Husseins of the future will have more, not fewer, opportunities. In addition to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      },
+      {
+        "category": "general",
+        "content": "the ownership of raw materials [mines, oil wells] remains in the hands of private individuals, but where the government intervenes to determine how many competitors will be allowe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/nazihydrainamerica.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "nazihydrainamerica",
+        "url": "http://www.combatreform.org/nazihydrainamerica.htm"
+      },
+      {
+        "category": "general",
+        "content": "and land management materials such as hay, forage, straw, mulch, gravel, and compost. NAISMA’s mission is to support, promote, and empower invasive species prevention and manageme",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "610e2864d41123d360f2d5734b06034c58c47b00d8ad76035303fa0dba1d30b7",
+  "provider": "SearXNG",
+  "query": "what causes soil erosion in materials science",
+  "query_id": "v5-p-0339-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:54.572373Z"
+}

@@ -1,0 +1,225 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 576,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 343.487,
+  "pair_id": "candidate-p-0939",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about electric aviation within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "is a bar against all information, which is proof against all argument, and which cannot fail to keep man in everlasting ignorance. That principle is condemnation before investigat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.david-sadler.org",
+          "/pages/bigQuestions/discIsOurs.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "(SFC) David Sadler For Congress - If the Disc Is Ours",
+        "url": "https://www.david-sadler.org/pages/bigQuestions/discIsOurs.htm"
+      },
+      {
+        "category": "general",
+        "content": "and spreadsheets from Information is Beautiful. 2023.10.11 • US income distributions, education reform, Kia/Hyundai thefts, Michigan air permit violations, and dog genomes. 2023.0",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.data-is-plural.com",
+          "/archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Data Is Plural — Full Archive",
+        "url": "https://www.data-is-plural.com/archive/"
+      },
+      {
+        "category": "general",
+        "content": "amount of access to information. &#43;1 @badabing3391 - 2025-06-04 10:59:32 right, the issue is that they do, and there wont be any consequences for the next few months/years &#43;1 @mich",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/nothingburger",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AI is a Nothingburger. You&#39;re wrong.",
+        "url": "https://lukesmith.neocities.org/vids/nothingburger"
+      },
+      {
+        "category": "general",
+        "content": "to get to the rich information ore. Bitty Box: ph. A primitive, underpowered, or generally useless computer or other electronic device. Black, Big Black: ph. (HR) Space. The final",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.shoestring-graphics.com",
+          "/CP2020/slang/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Word on The Streets",
+        "url": "http://www.shoestring-graphics.com/CP2020/slang/"
+      },
+      {
+        "category": "general",
+        "content": "grid.   Additional Information (keep an open mind)   An updated version of this fact sheet will be issued as often as program changes warrant to keep interested parties",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "He would go on to lead information technology for eight parks in the Upper Columbia Basin Network and serve as the administrative officer at the Nez Perce National Historical Park",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "faculty.las.illinois.edu",
+          "/cfennell/NP/updates.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Updates on New Philadelphia Archaeology Project",
+        "url": "http://faculty.las.illinois.edu/cfennell/NP/updates.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "37ab5a90d308d479672ba9ef631866281c80ce430a80b3f0f0497807dd5bca4f",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about electric aviation within information science",
+  "query_id": "candidate-c-0939",
+  "raw_result_count": 6,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.david-sadler.org/pages/bigQuestions/discIsOurs.htm",
+      "original_url": "https://www.david-sadler.org/pages/bigQuestions/discIsOurs.htm",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "is a bar against all information, which is proof against all argument, and which cannot fail to keep man in everlasting ignorance. That principle is condemnation before investigat",
+      "title": "(SFC) David Sadler For Congress - If the Disc Is Ours"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.data-is-plural.com/archive/",
+      "original_url": "https://www.data-is-plural.com/archive/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "and spreadsheets from Information is Beautiful. 2023.10.11 • US income distributions, education reform, Kia/Hyundai thefts, Michigan air permit violations, and dog genomes. 2023.0",
+      "title": "Data Is Plural — Full Archive"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://lukesmith.neocities.org/vids/nothingburger",
+      "original_url": "https://lukesmith.neocities.org/vids/nothingburger",
+      "rank": 3,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "amount of access to information. &#43;1 @badabing3391 - 2025-06-04 10:59:32 right, the issue is that they do, and there wont be any consequences for the next few months/years &#43;1 @mich",
+      "title": "AI is a Nothingburger. You&#39;re wrong."
+    }
+  ],
+  "timestamp": "2026-09-05T17:23:27.106546Z"
+}

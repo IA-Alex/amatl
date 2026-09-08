@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 309.247,
+  "pair_id": "v5-p-0632",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind renewable energy storage in optics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "35a06b6483833871ed0ba5b7a92348a971f7d9d820bb702a24e45ac7b0b63112",
+  "provider": "SearXNG",
+  "query": "describe the principle behind renewable energy storage in optics",
+  "query_id": "v5-p-0632-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:11:02.703098Z"
+}

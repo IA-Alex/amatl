@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 314.113,
+  "pair_id": "v5-p-0093",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind ocean tides in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bb0945131190f95d90d79c8e7abd8049b474c38b30f56ff3018517d8ab7c23da",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind ocean tides in pharmacology",
+  "query_id": "v5-p-0093-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:10.651458Z"
+}

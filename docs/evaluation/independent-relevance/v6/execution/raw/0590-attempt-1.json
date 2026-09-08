@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 590,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 313.378,
+  "pair_id": "candidate-p-0256",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "essential context for battery recycling within electrical systems",
+    "results": [
+      {
+        "category": "general",
+        "content": "3-D model of electrical activity. Pet Goldfish: ph. (Solo) A favorite weapon or other item which may not actually represent the best example of that device. (E.g. &#34;That Sternmeyer",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.shoestring-graphics.com",
+          "/CP2020/slang/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Word on The Streets",
+        "url": "http://www.shoestring-graphics.com/CP2020/slang/"
+      },
+      {
+        "category": "general",
+        "content": "Seebeck found that an electrical current will flow in a circuit made from two dissimilar metals, with the junctions at different temperatures. This “thermoelectric effect” formed",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "solar.lowtechmagazine.com",
+          "/2021/10/how-to-build-a-low-tech-solar-panel",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Build a Low-tech Solar Panel? | LOW←TECH MAGAZINE",
+        "url": "https://solar.lowtechmagazine.com/2021/10/how-to-build-a-low-tech-solar-panel"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c400d4b555ac644efea9be99c87db81309f4c023bf20f45beac01da08997ba09",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "essential context for battery recycling within electrical systems",
+  "query_id": "candidate-c-0256",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.shoestring-graphics.com/CP2020/slang/",
+      "original_url": "http://www.shoestring-graphics.com/CP2020/slang/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "3-D model of electrical activity. Pet Goldfish: ph. (Solo) A favorite weapon or other item which may not actually represent the best example of that device. (E.g. &#34;That Sternmeyer",
+      "title": "The Word on The Streets"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "https://solar.lowtechmagazine.com/2021/10/how-to-build-a-low-tech-solar-panel",
+      "original_url": "https://solar.lowtechmagazine.com/2021/10/how-to-build-a-low-tech-solar-panel",
+      "rank": 2,
+      "rejection_reason": null,
+      "snippet": "Seebeck found that an electrical current will flow in a circuit made from two dissimilar metals, with the junctions at different temperatures. This “thermoelectric effect” formed",
+      "title": "How to Build a Low-tech Solar Panel? | LOW←TECH MAGAZINE"
+    }
+  ],
+  "timestamp": "2026-09-05T17:23:31.203095Z"
+}

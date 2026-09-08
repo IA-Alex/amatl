@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 4590,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 310.281,
+  "pair_id": "candidate-p-1363",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about hydrogen storage within environmental chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "control system. An environmental negative feedback mechanism is stated for long-term, cumulative causative mutation, yielding Sheldrake’s morphogenetic field , which is a species",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/newenergy/defeatcancer/cancer.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Tom Bearden Website",
+        "url": "https://www.bibliotecapleyades.net/ciencia/newenergy/defeatcancer/cancer.htm"
+      },
+      {
+        "category": "general",
+        "content": "agencies, and environmentalists. In my opinion, there is no real climate crisis . There is, however, a very real problem with providing a decent standard of living to the world’s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meteo.lcd.lu",
+          "/globalwarming/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Warming Sceptic",
+        "url": "https://meteo.lcd.lu/globalwarming/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3b28db7a1ebec720b6a6d2858eaefba154cf9c5020c96bb9d55f0f32940a2ec9",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about hydrogen storage within environmental chemistry",
+  "query_id": "candidate-c-1363",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.bibliotecapleyades.net/ciencia/newenergy/defeatcancer/cancer.htm",
+      "original_url": "https://www.bibliotecapleyades.net/ciencia/newenergy/defeatcancer/cancer.htm",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "control system. An environmental negative feedback mechanism is stated for long-term, cumulative causative mutation, yielding Sheldrake’s morphogenetic field , which is a species",
+      "title": "The Tom Bearden Website"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://meteo.lcd.lu/globalwarming/",
+      "original_url": "https://meteo.lcd.lu/globalwarming/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "agencies, and environmentalists. In my opinion, there is no real climate crisis . There is, however, a very real problem with providing a decent standard of living to the world’s",
+      "title": "The Global Warming Sceptic"
+    }
+  ],
+  "timestamp": "2026-09-05T17:44:42.877950Z"
+}

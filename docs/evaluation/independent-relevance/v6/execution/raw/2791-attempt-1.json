@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2791,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 480.463,
+  "pair_id": "candidate-p-1885",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what are the main constraints on plant root hydraulics within disaster management",
+    "results": [
+      {
+        "category": "general",
+        "content": "hardware&#39;s real-world constraints for models that may have been trained more in the virtual world. That includes encoded information about the hardware&#39;s physical characteristics",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "soylentnews.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SoylentNews: SoylentNews is people",
+        "url": "https://soylentnews.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "28f2a6f628eb37509022047f67c31fb1859ced8c6a9f0644e1bfe27f79c14619",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what are the main constraints on plant root hydraulics within disaster management",
+  "query_id": "candidate-t-1885",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://soylentnews.org/",
+      "original_url": "https://soylentnews.org/",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "hardware&#39;s real-world constraints for models that may have been trained more in the virtual world. That includes encoded information about the hardware&#39;s physical characteristics",
+      "title": "SoylentNews: SoylentNews is people"
+    }
+  ],
+  "timestamp": "2026-09-05T17:35:13.238418Z"
+}

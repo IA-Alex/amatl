@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 345.343,
+  "pair_id": "v5-p-0849",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind data compression in pharmacology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ddd07433627efabb458b448b7ff12246f66e79b78bfe4717251430b9d4a7dba2",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind data compression in pharmacology",
+  "query_id": "v5-p-0849-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:23.383911Z"
+}

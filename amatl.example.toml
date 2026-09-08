@@ -1,5 +1,9 @@
 # Configuración local segura. Copiar como amatl.toml; no versionar secretos.
 
+# Versión del esquema de configuración. Debe coincidir con la del binario;
+# un desajuste se rechaza al arrancar para evitar campos ignorados en silencio.
+schema_version = "1"
+
 # Para ejercicios confidenciales: profile = "isolated", egress = "deny" e
 # inference = "local_only" (o "disabled"). La configuración contradictoria falla.
 [data_policy]
@@ -7,8 +11,88 @@ profile = "standard"
 egress = "governed"
 inference = "disabled"
 
+# Mapa abierto: cada [providers.<nombre>] declara una fuente y se fusiona sobre
+# los expedientes incorporados (brave, mojeek, searxng, marginalia). Un nombre
+# en "enabled" debe estar declarado aquí y registrado en el ProviderRegistry.
 [providers]
 enabled = []
+# Ejemplo: activar SearXNG autohospedado (gratis, sin cuota).
+# La URL de la instancia se lee de SEARXNG_INSTANCE_URL (por defecto
+# http://127.0.0.1:8888). No requiere credencial. El resto de la ficha
+# (método, contrato, cuota, coste, datos y riesgo) ya viene del expediente
+# incorporado en config.rs; aquí sólo se aprueba con identidad y fecha reales.
+# enabled = ["searxng"]
+# [providers.searxng]
+# approval_status = "approved"
+# reviewed_at = "2026-08-14"
+# reviewer = "identidad verificable"
+#
+# Ejemplo: activar Marginalia. Requiere una key genuina, vigente y emitida al
+# operador por Marginalia en MARGINALIA_API_KEY; un placeholder, una key
+# compartida o una key pública de ejemplo no autoriza uso productivo.
+# El adapter está implementado y probado — consulta api2.marginalia-search.com
+# con el header API-Key. Sólo falta aprobar la ficha con identidad y fecha
+# reales (ver docs/gobernanza-providers.md, sección «Fichas de aprobación»).
+# enabled = ["marginalia"]
+# [providers.marginalia]
+# approval_status = "approved"
+# adapter_version = "marginalia-v1"
+# reviewed_at = "YYYY-MM-DD"
+# reviewer = "identidad verificable"
+# terms_url = "https://www.marginalia.nu/"
+# terms_version_or_date = "..."
+# allowed_access_method = "official_api"
+# plan_or_contract = "..."
+# rate_limit = "..."
+# cost_model = "0"
+# credential_env = "MARGINALIA_API_KEY"
+# storage_rights = false
+# data_handling_notes = "Uso no comercial (CC-BY-NC-SA). Índice pequeño orientado a web independiente."
+# operational_risk = "Dependencia de la API externa (api2.marginalia-search.com); cuota y posible bloqueo por automatización."
+
+# Backend de inferencia. El modo vive en [data_policy]; esta sección lo dimensiona.
+# Los pesos semánticos de deep.ranking_v2 exigen inference = "local_only".
+[inference]
+backend = "local_hashing_v1"
+embedding_dimensions = 256
+max_documents = 64
+max_input_chars = 20000
+reranker_prior_weight = 0.5
+# Model-backed offline backend: point backend = "local_model_v1" at a plain-text
+# word-vector file (one `token v0 v1 … vN` per line). Without a path it fails
+# closed and Deep degrades to lexical ranking.
+# local_model_path = "/var/lib/amatl/vectors.txt"
+# local_model_batch = 32
+# Optional persistent embedding cache, namespaced by backend@width.
+# local_cache_path = "/var/lib/amatl/embeddings-cache.json"
+# Governed remote backend, used only with data_policy.inference = "remote_explicit".
+# The endpoint must be https (or http on loopback for a self-hosted server) and
+# must not embed credentials; the key is read from the environment, never here.
+# remote_endpoint = "https://embeddings.example.com/v1/embeddings"
+# remote_model = "text-embedding-3-small"
+# remote_credential_env = "AMATL_INFERENCE_KEY"
+# remote_timeout_ms = 5000
+# remote_max_batch = 32
+
+# Answer synthesis: an optional, explicit layer on top of Search. `search`/
+# `deep` are unaffected either way — this only adds a distinct capability a
+# caller invokes on purpose (HTTP /answer, MCP tool `answer`) that turns
+# AMATL's own ranked results into a short, cited answer. The model only ever
+# sees the sources AMATL retrieved; it is instructed to cite every claim and
+# say plainly when the sources don't answer the question, never to fill the
+# gap from its own knowledge. Requires data_policy.inference =
+# "remote_explicit" (same gate as the remote embeddings backend above),
+# because this is another remote model call that leaves the machine.
+# [answer]
+# enabled = true
+# Example: DeepInfra's OpenAI-compatible chat completions endpoint.
+# endpoint = "https://api.deepinfra.com/v1/openai/chat/completions"
+# model = "deepseek-ai/DeepSeek-V3"
+# credential_env = "DEEPINFRA_API_KEY"
+# timeout_ms = 20000
+# max_sources = 8
+# max_source_chars = 1200
+# max_answer_tokens = 700
 
 [timeouts]
 provider_ms = 3000
@@ -26,6 +110,57 @@ retry_jitter_ms = 25
 [persistence]
 enabled = false
 path = "amatl.sqlite3"
+# Record every executed search in the local history table (requires enabled).
+history_enabled = true
+# Upper bound for one saved document payload, in bytes (1 MiB, max 16 MiB).
+saved_document_max_bytes = 1048576
+# Days a persisted security rejection is kept (1..=365).
+audit_retention_days = 90
+# Days search history entries are kept (0 = unlimited).
+history_retention_days = 90
+# Days provider search cache entries are kept (0 = unlimited).
+cache_retention_days = 7
+# Days document cache entries are kept (0 = unlimited).
+document_cache_retention_days = 30
+# Seconds between scheduled purge cycles (0 = disabled).
+purge_interval_seconds = 3600
+# Create automatic periodic backups (requires enabled).
+auto_backup_enabled = false
+# Seconds between automatic backups (86400 = daily).
+auto_backup_interval_seconds = 86400
+# Maximum number of automatic backups to retain.
+auto_backup_max_count = 7
+# Directory for automatic backups (default: same directory as the database).
+# backup_directory = "/var/lib/amatl/backups"
+# SQLite locking mode: "normal" (default) or "exclusive".
+locking_mode = "normal"
+
+# Credenciales con nombre. El secreto nunca vive aquí: declara la variable de
+# entorno que lo contiene o el digest SHA-256 del token. Cada cliente lleva sus
+# scopes HTTP y su lista explícita de herramientas MCP; sin `tools` no puede
+# usar MCP. `POST /reload` o SIGHUP aplican altas, bajas y rotaciones sin
+# reiniciar. Sin ningún `[[server.clients]]`, el token global de
+# `server.token_env` sigue funcionando como cliente `default` con todo.
+# [[server.clients]]
+# id = "reader"
+# token_env = "AMATL_TOKEN_READER"
+# scopes = ["search", "read", "mcp"]
+# tools = ["search", "status"]
+# expires_at = "2026-12-31"
+#
+# [[server.clients]]
+# id = "operator"
+# token_sha256 = "0000000000000000000000000000000000000000000000000000000000000000"
+# scopes = ["search", "deep", "read", "write", "admin", "mcp"]
+# tools = ["search", "deep_search", "fetch", "providers", "status"]
+
+# Persistent provider circuit breaker: consecutive failures stop calling a
+# source until its cooldown expires. State survives restarts when persistence
+# is enabled.
+[circuit_breaker]
+enabled = true
+failure_threshold = 3
+open_seconds = 60
 
 [cache.provider_search]
 enabled = false
@@ -51,6 +186,11 @@ max_bytes = 20971520
 max_redirects = 5
 max_crawl_urls = 10
 max_depth = 1
+# Ask the origin's robots.txt before following a link AMATL discovered itself.
+# URLs that came from Search are requested by the user and are never gated.
+respect_robots = true
+robots_timeout_ms = 3000
+robots_max_bytes = 524288
 timeout_ms = 20000
 
 [deep.extractor]
@@ -66,6 +206,12 @@ timeout_ms = 8000
 shutdown_grace_ms = 500
 max_memory_mb = 512
 max_redirects = 5
+# Chromium is never launched directly: this harness is what enforces the
+# network, memory, task and filesystem confinement. Enabling the renderer
+# without it leaves the renderer unavailable rather than falling back to an
+# unconfined browser.
+sandbox_path = "amatl-chromium-sandbox"
+max_dom_bytes = 8388608
 
 [deep.ranking_v2]
 enabled = true

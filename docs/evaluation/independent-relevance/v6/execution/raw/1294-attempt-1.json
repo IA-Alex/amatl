@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1294,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 285.336,
+  "pair_id": "candidate-p-2117",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a plain language guide to space weather forecasting within behavioral science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Small Business / Forecasting Imagine that you are a sales operations expert. I run a small business, and I am having a lot of difficulty forecasting my sales. Create a list of the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "freegptprompts.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Free GPT Prompts | A Curated Directory of 300&#43; AI Prompts For Free",
+        "url": "https://freegptprompts.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d2273f22258d65fc55b1718768ffbcf9173bc85966e1803b0af8a692f5717170",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a plain language guide to space weather forecasting within behavioral science",
+  "query_id": "candidate-c-2117",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://freegptprompts.org/",
+      "original_url": "https://freegptprompts.org/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Small Business / Forecasting Imagine that you are a sales operations expert. I run a small business, and I am having a lot of difficulty forecasting my sales. Create a list of the",
+      "title": "Free GPT Prompts | A Curated Directory of 300&#43; AI Prompts For Free"
+    }
+  ],
+  "timestamp": "2026-09-05T17:27:26.853552Z"
+}

@@ -1,0 +1,216 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 312.7813549945131,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does gear trains in music technology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "top hat. -- Top 5&#34;, &#34;&#39;Technology&#39; is &#39;things invented after I was born&#39;. -- Alan Kay&#34;, &#34;&#39;Twas in a restaurant they met, Romeo and Juliet; Julie could not pay the debt, So Rome-oed",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ifindkarma.com",
+          "/oneliners/oneliners-2000",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.ifindkarma.com/oneliners/oneliners-2000",
+        "url": "http://www.ifindkarma.com/oneliners/oneliners-2000"
+      },
+      {
+        "category": "general",
+        "content": "thinking about science, technology, engineering, mathematics, logic and history. Don&#39;t get the idea this is something for youth only, I am 65 and find it absolutely enthralling an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tote-history-atl.net.au",
+          "/george_julius_genealogy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "George Julius Genealogy",
+        "url": "http://tote-history-atl.net.au/george_julius_genealogy.htm"
+      },
+      {
+        "category": "general",
+        "content": "ultimate toy?! Sunrich Technology eDVR digital camera - Small, light, cheap... and quirky. Swann Wireless Guardian and SpyCam - A one-box wireless surveillance system, and a video",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dansdata.com",
+          "/altindex.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Dan&#39;s Data - Full Index",
+        "url": "http://www.dansdata.com/altindex.html"
+      },
+      {
+        "category": "general",
+        "content": "2018 Dec 10 Property technology Sep 22 Multiple managed access points in Malaysia Jun 22 Failed to Follow Community Standards on Facebook May 22 CLI tool wishlist May 14 The Probl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "natalian.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Kai Hendry&#39;s blog",
+        "url": "https://natalian.org/"
+      },
+      {
+        "category": "general",
+        "content": "and a multinational technology of terror, developed in specialized centers whose purpose is to perfect methods of exploitation, oppression and dependence of individuals and entire",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ditext.com",
+          "/chomsky/dec-1991.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "International Terrorism: Image and Reality, by Noam Chomsky",
+        "url": "https://www.ditext.com/chomsky/dec-1991.html"
+      },
+      {
+        "category": "general",
+        "content": "The MIT Technology Review Is AI Riding a One-Trick Pony? * Toolkits for the Mind * Nautilus What Searchable Speech Will Do To You Backchannel: Should Surgeons Keep Score? * It tur",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "jsomers.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "James Somers",
+        "url": "http://jsomers.net/"
+      },
+      {
+        "category": "general",
+        "content": "am interested in USB technology. If I can gain enough knowledge, I would like to initiate a USB link project. This is a long term plan however. Don&#39;t expect the Mac/USB link very",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "richfiles.solarbotics.net",
+          "/RichNews1.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Richfiles - Old News Page (#1)",
+        "url": "http://richfiles.solarbotics.net/RichNews1.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0262",
+  "query_text": "how does gear trains in music technology work",
+  "requested_at": "2026-09-03T01:44:35.156712Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

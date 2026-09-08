@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 360.783,
+  "pair_id": "v5-p-0257",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind binary search in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "actually simple if you explain them in straightforward ways, one of the groups of the people in the world it&#39;s people who benefit of keeping things complex and bad like turbotax.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "not my first time explaining FOSS from first principles. So, I read through the license and terms and conditions of the ironically named “Freestyle Libre” app, and poi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ebb.org",
+          "/bkuhn/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog - Bradley Kühn ( bkuhn )",
+        "url": "https://ebb.org/bkuhn/blog/"
+      },
+      {
+        "category": "general",
+        "content": "or manage. Thanks for explaining the issues so well. idi0t Says: January 20th, 2025 at 9:51 am The homelab movement is still relatively small, but thriving community of people tha",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.vintagecomputing.com",
+          "/index.php/archives/3292/the-pc-is-dead-its-time-to-make-computing-personal-again",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "VC&amp;G | » The PC is Dead: It’s Time to Bring Back Personal Computing",
+        "url": "http://www.vintagecomputing.com/index.php/archives/3292/the-pc-is-dead-its-time-to-make-computing-personal-again"
+      },
+      {
+        "category": "general",
+        "content": "why they happened, and explain how your next code snippet structurally prevents them before you output the script. “ 4. Turn On the Error Flags Immediately As you noted, the bigge",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "disguised.work",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Debian Disguised Work",
+        "url": "http://disguised.work/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "43f4267cb7c37dd4162f0b53c1b8cc39b50427b4605862bb4c99d61709671529",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind binary search in climate science",
+  "query_id": "v5-p-0257-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:15.609737Z"
+}

@@ -1,0 +1,49 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 613.2319450043724,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is ceramic coatings in digital security",
+    "results": [
+      {
+        "category": "general",
+        "content": "Coastal Engineering Coatings &amp; Paints Cocaine Detection by Hair Analysis Cockpit Configuration Cocoa Processing Coefficient of Friction Coin-Operated Amusements Coin-Operated Mach",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "VFTonline.org",
+          "/VFTprayer/heaven/000list.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://VFTonline.org/VFTprayer/heaven/000list.txt",
+        "url": "http://VFTonline.org/VFTprayer/heaven/000list.txt"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0069",
+  "query_text": "what is ceramic coatings in digital security",
+  "requested_at": "2026-09-03T01:44:00.821687Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

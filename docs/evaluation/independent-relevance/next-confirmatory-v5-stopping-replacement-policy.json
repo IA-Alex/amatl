@@ -1,0 +1,20 @@
+{
+  "schema": "amatl.relevance.next-confirmatory-v5-stopping-replacement-policy.v1",
+  "experiment_id": "independent-relevance-confirmatory-v5",
+  "status": "SPECIFIED_NOT_EXECUTED",
+  "depth": 3,
+  "retry_policy": "maximum one retry for timeout, transport failure or provider 5xx/429 honoring Retry-After; same query/provider only; no retry for empty success, parser failure, invalid result or contamination",
+  "failure_policy": "record the failed attempt and mark that query/provider cell unavailable after the bounded retry; never substitute another provider for that cell",
+  "replacement_policy": "only the next unused query from the already frozen same-arm, same-provider stratum may replace a failed query; no topic, arm or provider substitution; replacements consume budget",
+  "contamination_policy": "canonicalize scheme/host/path/query, remove fragments, reject any URL in V1/V2/V3/V4/historical sets or current accepted set; reject duplicate URL across providers within the experiment",
+  "balance_policy": "maintain 1:1 Treatment/Control by matched pair and equal provider exposure; if a replacement would break a cell, do not apply it",
+  "provider_failure_policy": "pause immediately on provider unavailable, missing credential, rate limit beyond retry, or canary failure; do not reroute; resume only after operator revalidation under the same frozen contract, otherwise declare capture infeasible",
+  "stopping_rule": "stop successfully only when both arms have >=474 valid rows and all provider strata/integrity gates pass; stop inconclusive on exhaustion of the frozen universe, budget, or provider availability without target; never stop on relevance, p-value, lift or interim arm behavior",
+  "budget": {
+    "queries_per_arm": 1600,
+    "providers_per_query": 2,
+    "max_attempts_per_provider": 2,
+    "maximum_provider_calls": 12800
+  },
+  "network_requests": 0
+}

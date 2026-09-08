@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 256.2,
+  "pair_id": "v5-p-0036",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does photosynthesis in transportation engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "in CO2’s role in  photosynthesis , governments seem to have concluded that another 0.5 C will spell doom...climate hysteria in the West leads to policies that clearly benefit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meteo.lcd.lu",
+          "/globalwarming/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Warming Sceptic",
+        "url": "https://meteo.lcd.lu/globalwarming/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0947ccd088673b35847c375f19ea6d91dab46f9ff2e37f26d6a6d08c0d6063e8",
+  "provider": "SearXNG",
+  "query": "how does photosynthesis in transportation engineering operate",
+  "query_id": "v5-p-0036-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:10:57.160112Z"
+}

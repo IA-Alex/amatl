@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 337.61704299831763,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does version control in biology operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "difference in the child version version and .35 in the adult version. Trying to optimize the RMET in an iterative process by using the same images but optimal emotions that discri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "rdos.net",
+          "/eng/asperger.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Neanderthal theory of autism",
+        "url": "http://rdos.net/eng/asperger.htm"
+      },
+      {
+        "category": "general",
+        "content": "determinism (the modern version of predestination) faces a major logical problem : if all things are determined, then how can this determination be described without in some way,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/equiaeon/behaviours.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHY : Behaviours : Formal Sketch of a Critical Ethics",
+        "url": "http://www.sofiatopia.org/equiaeon/behaviours.htm"
+      },
+      {
+        "category": "general",
+        "content": "had read the paperback version.  I had not.  He pointed me to a particular page and told me to go get the paperback.  Garrow, a Pulitzer Prize-winning civil rights",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "akdart.com",
+          "/obama95.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "President Obama Panders to Homosexuals",
+        "url": "http://akdart.com/obama95.html"
+      },
+      {
+        "category": "general",
+        "content": "H. LaRouche, Jr. [Print version of this article] Part 1 of 2 [ See Part 2 ] NASA/JSC Artist’s concept of a manned rover departing a Mars landing craft. April 20, 2019—It will be e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "larouchepub.com",
+          "/lar/2019/4616-the_science_and_technology_nee.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Science and Technology Needed To Colonize Mars",
+        "url": "https://larouchepub.com/lar/2019/4616-the_science_and_technology_nee.html"
+      },
+      {
+        "category": "general",
+        "content": "time a most accurate version by one of Comte’s earliest followers, and also it is turned in an easy and simpler style, with the references and allusions explained, marginal headin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/cache/epub/53799/pg53799-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of A General View of Positivism, by Auguste Comte.",
+        "url": "https://www.gutenberg.org/cache/epub/53799/pg53799-images.html"
+      },
+      {
+        "category": "general",
+        "content": "the Christian version of God and summoning instead an order where the ancient gods came forth to slaughter the unworthy, its thundering precision metal served mostly to cast aside",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.o9a.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "o 9 a",
+        "url": "http://www.o9a.org/"
+      },
+      {
+        "category": "general",
+        "content": "on Gopher through a version called Gopher&#43;. [Riddle] This new version of the Gopher protocol, which allowed for additional file types and attributes, including multiple views of t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ils.unc.edu",
+          "/callee/gopherpaper.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Where Have all the Gophers Gone? Why the Web beat Gopher in the Battle for Protocol Mind Share",
+        "url": "https://ils.unc.edu/callee/gopherpaper.htm"
+      },
+      {
+        "category": "general",
+        "content": "Covington’s original version of the sci.lang FAQ calls it &#34;well supported and widely believed&#34;). But as Geoffrey Sampson points out at length in his Educating Eve: The ‘",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.zompist.com",
+          "/langorg.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Proto-World and the Language Organ",
+        "url": "http://www.zompist.com/langorg.htm"
+      },
+      {
+        "category": "general",
+        "content": "but still just a larger version of the 50 step evolution of the same formula. Novelty has peaked. [Click to enlarge, or see p. 26 of New Science .] The last example we&#39;ll use from",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meditopia.org",
+          "/chap5.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Meditopia -- Chapter 5",
+        "url": "https://meditopia.org/chap5.htm"
+      },
+      {
+        "category": "general",
+        "content": "Saba River for the conversion of the Lipan Apaches with the new name of Mission Santa Cruz de San Saba&#34;. Disease and unfriendly Indians caused the Spanish to abandon the Rockdale",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.forttumbleweed.net",
+          "/rockdale.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "History of Rockdale, Milam County, Texas",
+        "url": "http://www.forttumbleweed.net/rockdale.html"
+      },
+      {
+        "category": "general",
+        "content": "available in the print version.] Return to home",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "thescorp.multics.org",
+          "/24democracy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Democracy we Presume?",
+        "url": "http://thescorp.multics.org/24democracy.html"
+      },
+      {
+        "category": "general",
+        "content": "in English (King James Version), Latin (Vulgate), and Greek (Septuagint &amp; New Testament); installation is simple via git, and the program allows easy passage search and interactiv",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Luke Smith Fanclub &amp; Archive",
+        "url": "https://lukesmith.neocities.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0168",
+  "query_text": "how does version control in biology operate",
+  "requested_at": "2026-09-03T01:44:28.941165Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

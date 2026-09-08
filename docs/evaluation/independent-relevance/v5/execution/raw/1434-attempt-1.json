@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 223.443,
+  "pair_id": "v5-p-0487",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of encryption keys in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "04227a967e90b27ac297648b64f5fdc7f9398ba89e364abef52aa1b85d92b5c1",
+  "provider": "SearXNG",
+  "query": "give an overview of encryption keys in oceanography",
+  "query_id": "v5-p-0487-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:53.429143Z"
+}

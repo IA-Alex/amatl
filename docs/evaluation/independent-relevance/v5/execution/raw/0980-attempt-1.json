@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 311.961,
+  "pair_id": "v5-p-0204",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind heat transfer in robotics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8055ed69ad9a3b7753f74812b87ee9b585215d303c47dba431dc4e39e7bb0752",
+  "provider": "SearXNG",
+  "query": "describe the principle behind heat transfer in robotics",
+  "query_id": "v5-p-0204-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:10:25.639007Z"
+}

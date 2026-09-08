@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 328.26723799371393,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does gear trains in earth science work",
+    "results": [
+      {
+        "category": "general",
+        "content": "A timid science-fiction author, Dr. Ivan Asimoff was the creator of space adventurer Commander Courage . He ran into and befriended the fourth Doctor and the Freefall Warriors whi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.marvunapp.com",
+          "/Appendix8/maruthea.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Maruthea (space station or planet or both within space-time vortex)",
+        "url": "http://www.marvunapp.com/Appendix8/maruthea.htm"
+      },
+      {
+        "category": "general",
+        "content": "Harbor. Thoughts on science, business and society today By Frank X. Didik - News1.net editor . What if and what can or might be. The 1956 Firebird was to be self driving. Self Dri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.news1.net",
+          "/jan2021.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Breaking News, news commentary and news chronicle. News1.net - News and Photographic image archive. Global news with an emphasis on New Yo",
+        "url": "http://www.news1.net/jan2021.htm"
+      },
+      {
+        "category": "general",
+        "content": "to specialize in science, invention, and the organization and direction of the productive activity of others, thereby further and progressively increasing the knowledge used in pr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "AstonishingProvidence.com",
+          "/invisiblehand.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Capitalism and the Division of Labor: Astonishing Providence",
+        "url": "http://AstonishingProvidence.com/invisiblehand.htm"
+      },
+      {
+        "category": "general",
+        "content": "the day.&#34;, &#34;A clear conscience is usually the sign of a bad memory.&#34;, &#34;A closed mind gathers no intelligence.&#34;, &#34;A closed mouth gathers no foot.&#34;, &#34;A college professor is someone",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ifindkarma.com",
+          "/oneliners/oneliners-2000",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.ifindkarma.com/oneliners/oneliners-2000",
+        "url": "http://www.ifindkarma.com/oneliners/oneliners-2000"
+      },
+      {
+        "category": "general",
+        "content": "to specialize in science, invention, and the organization and direction of the productive activity of others, thereby further and progressively increasing the knowledge used in pr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.AstonishingProvidence.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Capitalism: Astonishing Providence",
+        "url": "http://www.AstonishingProvidence.com/"
+      },
+      {
+        "category": "general",
+        "content": "PHOTOS-VIDEOS QUOTES SCIENCE-ENGINEERING SHOPPING (general) SPORTS STOCKS-investment TRAVEL UNIVERSITIES WORLD-IMPROVEMENT YOUTUBE-VIDS ... or simply scroll down this page to go t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "subdude-site.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Home page of Blaze the Maintainer (Son of a Series of Dudes, thus a SubDude)",
+        "url": "http://subdude-site.com/"
+      },
+      {
+        "category": "general",
+        "content": "www.threemileisland.org/science/what_went_wrong/index.html www.defense-update.com/products/m/magna.htm www.telegraph.co.uk/technology/news/8326274/Israeli-security-chief-celebrate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_uranium64.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Did The Dimona Dozen Murder The Fukushima 50? - 3/11 Was Japan&#39;s 9/11",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_uranium64.htm"
+      },
+      {
+        "category": "general",
+        "content": "follows: A regimen of science, not rule of thumb. An emphasis on harmony, not the discord of competition. An insistence on cooperation, not individualism. A fixation on maximum ou",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.lewrockwell.com",
+          "/gatto/gatto-uhae-9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Cult of Scientific Management by John Taylor Gatto",
+        "url": "https://archive.lewrockwell.com/gatto/gatto-uhae-9.html"
+      },
+      {
+        "category": "general",
+        "content": "to specialize in science, invention, and the organization and direction of the productive activity of others, thereby further and progressively increasing the knowledge used in pr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "VFTonline.org",
+          "/VFTprayer/heaven/division.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Division of Labor - Functioning Members of the Body of Christ",
+        "url": "http://VFTonline.org/VFTprayer/heaven/division.htm"
+      },
+      {
+        "category": "general",
+        "content": "(for &#34;science fiction&#34;) to &#34;SciFi.&#34; I&#39;ve never understood this (it happens a lot) unless it&#39;s to keep west coasties from thinking I&#39;m talking about San Francis",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.duntemann.com",
+          "/may2002.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jeff Duntemann&#39;s ContraPositive Diary",
+        "url": "http://www.duntemann.com/may2002.htm"
+      },
+      {
+        "category": "general",
+        "content": "and how the Torch of Science has now been brandished and borne about, with more or less effect, for five thousand years and upwards; how, in these times especially, not only the T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/cache/epub/1051/pg1051-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sartor Resartus | Project Gutenberg",
+        "url": "https://www.gutenberg.org/cache/epub/1051/pg1051-images.html"
+      },
+      {
+        "category": "general",
+        "content": "what part of military science was involved, the answer can only be that it was an &#34;operation.&#34; And a hell of an operation it was, one of the most dramatic and memorable in militar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/rank.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Military Rank, Operations, &amp; Feudal Hierarchy",
+        "url": "https://friesian.com/rank.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0142",
+  "query_text": "how does gear trains in earth science work",
+  "requested_at": "2026-09-03T01:44:23.558267Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

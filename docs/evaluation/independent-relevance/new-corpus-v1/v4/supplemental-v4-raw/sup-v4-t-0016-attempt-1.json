@@ -1,0 +1,216 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 125.82033999933628,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does routing tables in operating systems operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "source projects were operating with a walled garden approach. Chuck Cranor and I worked on the anoncvs feature, and Bob Beck soon became involved in moving the anoncvs mirror off",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.openbsd.org",
+          "/lyrics.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OpenBSD: Release Songs",
+        "url": "http://www.openbsd.org/lyrics.html"
+      },
+      {
+        "category": "general",
+        "content": "is no single entity operating the network. Politically favorable concerning control and censorship, but data may be located in various locations, possibly less safe than when cent",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "secushare.org",
+          "/comparison",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Capability Comparison",
+        "url": "https://secushare.org/comparison"
+      },
+      {
+        "category": "general",
+        "content": "of RF interference when operating, which has been known to reduce the range of certain keyless entry systems. This can be worked around pretty easily (read on). Please note that t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "riocar.org",
+          "/FAQ/8.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "rio car dot org",
+        "url": "https://riocar.org/FAQ/8.html"
+      },
+      {
+        "category": "general",
+        "content": "years ago such that the operating systems are far more careful about just immediately running the autoexec file on a drive when you plug it in as they originally were set up to do",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.grc.com",
+          "/sn/sn-387.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Security Now! Transcript of Episode #387",
+        "url": "https://www.grc.com/sn/sn-387.htm"
+      },
+      {
+        "category": "general",
+        "content": "There are many others operating in this space, and new ones pop up regularly. The market is large and growing. Why This Matters This isn&#39;t about streaming providers losing a few s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "acid.vegas",
+          "/blog/the-shady-world-of-ip-leasing/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "acidvegas x blog - the shady world of ip leasing",
+        "url": "https://acid.vegas/blog/the-shady-world-of-ip-leasing/"
+      },
+      {
+        "category": "general",
+        "content": "Choose your operating system : Windows macOS Linux Android (via the official Tor Browser for Android) Download the installer and verify : At minimum, check the file name and appro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "realdeepweb.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Real Deep Web | Hidden Wiki Access &amp; Deep Web Tools",
+        "url": "http://realdeepweb.net/"
+      },
+      {
+        "category": "general",
+        "content": "OS/Forth OS/4th The Complete Operating System. &#34;Microsoft - Breakfast of Champions&#34; Presented by: Christopher Passauer You hold the tools and future in your hands ... so",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.forth.org",
+          "/svfig/osf.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OS/Forth",
+        "url": "https://www.forth.org/svfig/osf.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0016",
+  "query_text": "how does routing tables in operating systems operate",
+  "requested_at": "2026-09-03T01:42:05.673175Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

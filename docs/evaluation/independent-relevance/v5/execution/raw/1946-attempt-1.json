@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 223.68,
+  "pair_id": "v5-p-0127",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of database indexing in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a2497df05e36edfdee3e5f16ab7c7028426771a1c72f9146d991080f52fc9874",
+  "provider": "SearXNG",
+  "query": "give an overview of database indexing in oceanography",
+  "query_id": "v5-p-0127-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:38.454931Z"
+}

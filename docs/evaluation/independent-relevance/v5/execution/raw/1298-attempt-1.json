@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 235.346,
+  "pair_id": "v5-p-0479",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of encryption keys in food science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d857f94c24696ad48e145556df5383f6f60a6701f31bf551d622e7764c1344d8",
+  "provider": "SearXNG",
+  "query": "give an overview of encryption keys in food science",
+  "query_id": "v5-p-0479-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:11.765132Z"
+}

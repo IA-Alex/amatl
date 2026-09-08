@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2719,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 296.298,
+  "pair_id": "candidate-p-1382",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how do models represent hydrogen storage within risk analysis",
+    "results": [
+      {
+        "category": "general",
+        "content": "This page does not represent an official position of the Lycée Classique de Diekirch or the Ministry of Education on climate change and global warming. The official position of th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meteo.lcd.lu",
+          "/globalwarming/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Warming Sceptic",
+        "url": "https://meteo.lcd.lu/globalwarming/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "fb26d45e5cc1a9733dd55320d941b0d8745bfa1808e72f7fca37e3e7179871d2",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how do models represent hydrogen storage within risk analysis",
+  "query_id": "candidate-t-1382",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://meteo.lcd.lu/globalwarming/",
+      "original_url": "https://meteo.lcd.lu/globalwarming/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "This page does not represent an official position of the Lycée Classique de Diekirch or the Ministry of Education on climate change and global warming. The official position of th",
+      "title": "The Global Warming Sceptic"
+    }
+  ],
+  "timestamp": "2026-09-05T17:34:52.117422Z"
+}

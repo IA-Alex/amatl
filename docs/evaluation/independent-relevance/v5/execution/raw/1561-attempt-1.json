@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 257.759,
+  "pair_id": "v5-p-0427",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes carbon capture in forensic science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Labour must be forensic in exposing this .* 23 December 2019 ( War crimes investigations ) *ICC to investigate alleged Israeli and Palestinian war crimes .* 23 December 2019 ( Vit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-sep-dec.html"
+      },
+      {
+        "category": "general",
+        "content": "in the history of forensic science. HTML JSMol Simon Cotton Uppingham School Rutland, UK Dec 2004 Maleimide-Polyethylene Glycol (MPEG4) Modified human hemoglobin that can be used",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chm.bris.ac.uk",
+          "/motm/motm.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecule of the Month home page",
+        "url": "https://www.chm.bris.ac.uk/motm/motm.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "27225ed4b5397e39c314ab4a001b96a501aa157b37b4a73b31f29d0143e400bf",
+  "provider": "SearXNG",
+  "query": "what causes carbon capture in forensic science",
+  "query_id": "v5-p-0427-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:13:33.251824Z"
+}

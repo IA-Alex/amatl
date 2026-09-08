@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 342.97,
+  "pair_id": "v5-p-0544",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind food preservation in civil engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "of the State, for the preservation or the extension of its power, it is all transformed into duty and virtue. And this virtue, this duty, are obligatory for each patriotic citizen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.anarchistfaq.com",
+          "/B.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Anarchist FAQ - II. Why are anarchists against the State?",
+        "url": "http://www.anarchistfaq.com/B.html"
+      },
+      {
+        "category": "general",
+        "content": "advancement and the preservation of womanhood and they were successful for just as long as they were in control and could arrange matters so that government was carried out by a l",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "antimatrix.org",
+          "/Convert/Coleman_The_Tavistock_Institute_of_Human_Relations_2005.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NWO - The Tavistock Institute For Human Relations",
+        "url": "http://antimatrix.org/Convert/Coleman_The_Tavistock_Institute_of_Human_Relations_2005.html"
+      },
+      {
+        "category": "general",
+        "content": "topic than cultural preservation? How can we - enlightened 2BHs readers that we are - square these two? Posted by: Brandon M on April 18, 2007 1:35 AM Just do what Japan does, cut",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2007/04/england_rip_1.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: England R.I.P.?",
+        "url": "http://www.2blowhards.com/archives/2007/04/england_rip_1.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bbf4999d0103d18c3dbe46af03b3218ed4b4f29e40e3acca11508fac95a0138b",
+  "provider": "SearXNG",
+  "query": "describe the principle behind food preservation in civil engineering",
+  "query_id": "v5-p-0544-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:40.138018Z"
+}

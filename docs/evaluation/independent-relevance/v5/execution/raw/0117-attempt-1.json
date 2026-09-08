@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 309.523,
+  "pair_id": "v5-p-0887",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes vaccination in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "Vaccination and Homeopathy David Pratt May 2008, last updated Nov 2025 Contents   1. Introduction   2. Ingredients and side-effects   3. The decline",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/vaccin.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Vaccination and homeopathy",
+        "url": "https://davidpratt.info/vaccin.htm"
+      },
+      {
+        "category": "general",
+        "content": "THE ZIONIST 1 VACCINATION RACKET 1 (Home) Human Abuse   Home   Allopathic Rackets ?If this is preventive medicine, I?ll take my chances with disease.? ~  Mendelsohn",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/vaccines.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "THE VACCINATION RACKET",
+        "url": "http://www.whale.to/vaccines.html"
+      },
+      {
+        "category": "general",
+        "content": "in Los Angeles when a vaccination ordinance was submitted to a popular referendum is typical of what would happen anywhere under the same circumstances. The ordinance was 54 rejec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/73150/73150-h/73150-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notes on Democracy | Project Gutenberg",
+        "url": "https://www.gutenberg.org/files/73150/73150-h/73150-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "be used to track COVID vaccination status. The coronavirus vaccine is in the beginning stages of deployment. Safety and necessity of the vaccine itself aside, government officials",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wolfish.neocities.org",
+          "/posts/articles/global_digital_id_dawn_of_the_endgame/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Global Digital ID: Dawn of the Endgame",
+        "url": "https://wolfish.neocities.org/posts/articles/global_digital_id_dawn_of_the_endgame/"
+      },
+      {
+        "category": "general",
+        "content": "and started cancelling vaccination orders for those who were seriously sick. She was met with irrational resistance by the hospital administration. She decided to research the med",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/humphries.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Disease, vaccines &amp; forgotten history",
+        "url": "https://davidpratt.info/humphries.htm"
+      },
+      {
+        "category": "general",
+        "content": "young men post-mRNA vaccination, with risks potentially extending to younger cohorts.   IMA plans to continue the Smart Moms Ask campaign, rallying MAHA moms nationwide for f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "stoptheshots.ca",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "STOP the SHOTS",
+        "url": "https://stoptheshots.ca/"
+      },
+      {
+        "category": "general",
+        "content": "bringing in forced vaccination), August 2020 VACCINES BIO-CHEM WARFARE Drug company raised Naloxene (opiod treatment) price by 600% (to capitalize on Big Pharma-caused (Johnson &amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.orwelltoday.com",
+          "/drugpeace.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Drug War and Peace",
+        "url": "http://www.orwelltoday.com/drugpeace.shtml"
+      },
+      {
+        "category": "general",
+        "content": "of insect pests. Vaccination or Immunity Boosting : For disease-carrying pests, another approach might involve using gene-editing techniques to make pests immune to certain diseas",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.abolitionist.com",
+          "/chatgpt/hitechjain.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "High-tech Jainism as conceived by ChatGPT-4",
+        "url": "https://www.abolitionist.com/chatgpt/hitechjain.html"
+      },
+      {
+        "category": "general",
+        "content": "I should look into that vaccination thing?   Side note for coders, if you don&#39;t see the underscores you type (invisible underscore problem), use Ctrl&#43;mouse scroll wheel.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "cyberwolfman.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cyberwolfman&#39;s Web Asylum! - Welcome Page",
+        "url": "http://cyberwolfman.com/"
+      },
+      {
+        "category": "general",
+        "content": "and potentially endless vaccinations, if they believe that such measures will protect them. Nationwide lockdowns had never been used before to deal with pandemics, and a long seri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/psycho.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mass psychosis and the power of thought",
+        "url": "https://davidpratt.info/psycho.htm"
+      },
+      {
+        "category": "general",
+        "content": "Bill Gates pushes Vaccinations in Food Supply to &#39;Fight Climate Change&#39; Español  -  Bill Gates quiere Rociar Millones de Toneladas de Tiza en la Estratosfera para frenar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia/ciencia_globalwarmingpseudo.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Global Warming - An Official Pseudoscience...  -  Calentamiento Global - Una Pseudociencia Oficial...",
+        "url": "https://www.bibliotecapleyades.net/ciencia/ciencia_globalwarmingpseudo.htm"
+      },
+      {
+        "category": "general",
+        "content": "Uyghurs Uzbekistan Vaccination Vaccines Valerie Jarrett Vdare Venezuela Veterans Victoria Nuland Video Games Video Type Vietnam Vietnam War Violence Virtual world Vladimir Putin V",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.unz.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Unz Review • An Alternative Media Selection - The Unz Review",
+        "url": "https://www.unz.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "638b65f1a0e76f934ac0a7af86f0525e03c4d2692fd838e594c02821c4fef00d",
+  "provider": "SearXNG",
+  "query": "what causes vaccination in public health",
+  "query_id": "v5-p-0887-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:45.495554Z"
+}

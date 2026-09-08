@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 267.51,
+  "pair_id": "v5-p-0464",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does supply chain logistics in hydrology operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f8b78cbfa8b6411e5f6cd48095dfd943e19a0b7777dc96b92d281a827a047f17",
+  "provider": "SearXNG",
+  "query": "how does supply chain logistics in hydrology operate",
+  "query_id": "v5-p-0464-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:42.420263Z"
+}

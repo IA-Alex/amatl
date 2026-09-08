@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 319.6691759985697,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes an echo",
+    "results": [
+      {
+        "category": "general",
+        "content": "Study Finds Chocolate Causes Depression. In Other News, These Kinds Of Studies Cause Insanity all three of us are crying inside From the Abstract : Results  Those screening p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "thelastpsychiatrist.com",
+          "/2010/04/study_finds_chocolate_causes_d.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Last Psychiatrist: Study Finds Chocolate Causes Depression. In Other News, These Kinds Of Studies Cause Insanity",
+        "url": "https://thelastpsychiatrist.com/2010/04/study_finds_chocolate_causes_d.html"
+      },
+      {
+        "category": "general",
+        "content": "February 3, 2009 Two Causes Of Autism Ah, finally, a post about science only, that doesn&#39;t offend anyone. Whoops, sorry, that&#39;s my other blog.  In this blog, I write about ho",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "thelastpsychiatrist.com",
+          "/2009/02/two_causes_of_autism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Last Psychiatrist: Two Causes Of Autism",
+        "url": "https://thelastpsychiatrist.com/2009/02/two_causes_of_autism.html"
+      },
+      {
+        "category": "general",
+        "content": "wish to establish the causes of the “battle of cultures” and the current global incidence of fundamentalism, then it would be well advised to critically examine the “holy texts”,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.trimondi.de",
+          "/SDLE/Part-2-00.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Shadow of the Dalai Lama – Part II – 2",
+        "url": "http://www.trimondi.de/SDLE/Part-2-00.htm"
+      },
+      {
+        "category": "general",
+        "content": "bit set on them, which causes new files and directories created within it to inherit the group ownership from the containing directory. This parameter was deprecated in Samba 3.0.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.samba.org",
+          "/samba/docs/current/man-html/smb.conf.5.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "smb.conf",
+        "url": "https://www.samba.org/samba/docs/current/man-html/smb.conf.5.html"
+      },
+      {
+        "category": "general",
+        "content": "day of any of 10 other causes . The body will be raised in power though: look to Jesus, he appears through locked doors; he appears so suddenly he startles them A ghost does not h",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2003/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2003/"
+      },
+      {
+        "category": "general",
+        "content": "Alas, how many causes that can plead well for themselves in the Courts of Westminster; and yet in the general Court of the Universe, and free Soul of Man, have no word to utter! H",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/cache/epub/13534/pg13534-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Project Gutenberg eBook of Past and Present, by Thomas Carlyle",
+        "url": "https://www.gutenberg.org/cache/epub/13534/pg13534-images.html"
+      },
+      {
+        "category": "general",
+        "content": "Depending on what causes the earth to flip over and how fast it flips is what is going to determine how disastrous this even is going to be.   3-22-05  - I fell asleep a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greatdreams.com",
+          "/poleshift.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Pole Shift - When, Where, and How",
+        "url": "http://www.greatdreams.com/poleshift.htm"
+      },
+      {
+        "category": "general",
+        "content": "The following causes a parse error: &lt;? if (true) { echo &#34;true&#34; } ?&gt; The last statement inside &lt;?= ?&gt; or &lt;? ?&gt; tags does not need to be semicolon terminated, howe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "hyperpolyglot.org",
+          "/scripting",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scripting Languages I: Node.js, Python, PHP, Ruby - Hyperpolyglot",
+        "url": "https://hyperpolyglot.org/scripting"
+      },
+      {
+        "category": "general",
+        "content": "and an inhalation causes it to disappear. This process has been going on from all eternity, and our present universe is but one of an infinite series, which had no beginning and w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theosociety.org",
+          "/pasadena/sd/sd1-0-pr.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "vol 1, Proem - The Secret Doctrine",
+        "url": "https://www.theosociety.org/pasadena/sd/sd1-0-pr.htm"
+      },
+      {
+        "category": "general",
+        "content": "strengthens it, and causes it to blossom anew. We cannot permit ourselves to be tired. Danger is knocking at the door.&#34; Tom has it exactly right. The Hour reads like today&#39;s news,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.brusselsjournal.com",
+          "/node/4945",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Oswald Spengler On Democracy, Equality, And “Historylessness” | The Brussels Journal",
+        "url": "https://www.brusselsjournal.com/node/4945"
+      },
+      {
+        "category": "general",
+        "content": "B) 10.80 Hz causes riotous behavior C) 6.6 Hz causes depression Puharich made ELF waves change RNA and DNA , breaking hydrogen bonds to make a person have a higher vibratory rate.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/esp_sociopol_mindcon23.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Total Population Control",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/esp_sociopol_mindcon23.htm"
+      },
+      {
+        "category": "general",
+        "content": "poetry. But some of its causes of superiority are simple, are apparent, are almost elementary to state. To begin with, poetry is the shorthand of literature. Verse tends to concen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.lyriktheorie.uni-wuppertal.de",
+          "/lyriktheorie/texte/1893_moore1.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "1893 Charles Leonard Moore: The Future of Poetry",
+        "url": "https://www.lyriktheorie.uni-wuppertal.de/lyriktheorie/texte/1893_moore1.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-t-018",
+  "query_text": "what causes an echo",
+  "requested_at": "2026-09-02T22:59:00.567470Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

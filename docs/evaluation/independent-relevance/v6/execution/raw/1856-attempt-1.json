@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1856,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 299.748,
+  "pair_id": "candidate-p-1962",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of quantum sensing within structural engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "(also called molecular engineering, molecular manufacturing, molecular nanotechnology , etc.). There is widespread belief that such a capability will eventually be developed [1, 2",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "tracking methods in engineering and biology. Radioisotope scintigraphy and nuclear medicine. Radioimmunoassay - radiosaturation analysis. 3.6. Radiotherapy Carcinogenesis - tumori",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astronuclphysics.info",
+          "/Fyzika-NuklMed.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Nuclear physics and ionizing radiation physics",
+        "url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b6be342cc0f9a9bdf70544086a2680a5e134db2365ac9ebb05e2cc07148904d4",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of quantum sensing within structural engineering",
+  "query_id": "candidate-c-1962",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.ralphmerkle.com/cryo/techFeas.html",
+      "original_url": "http://www.ralphmerkle.com/cryo/techFeas.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "(also called molecular engineering, molecular manufacturing, molecular nanotechnology , etc.). There is widespread belief that such a capability will eventually be developed [1, 2",
+      "title": "The Molecular Repair of the Brain"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm",
+      "original_url": "https://www.astronuclphysics.info/Fyzika-NuklMed.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "tracking methods in engineering and biology. Radioisotope scintigraphy and nuclear medicine. Radioimmunoassay - radiosaturation analysis. 3.6. Radiotherapy Carcinogenesis - tumori",
+      "title": "Nuclear physics and ionizing radiation physics"
+    }
+  ],
+  "timestamp": "2026-09-05T17:30:22.968161Z"
+}

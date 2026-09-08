@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 267.404,
+  "pair_id": "v5-p-0813",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is battery chemistry in pharmacology",
+    "results": [
+      {
+        "category": "general",
+        "content": "MDMA: Utopian Pharmacology When Is It Best To Take Crack Cocaine?",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sensualism.com",
+          "/love/elixir.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Elixir of Love ?",
+        "url": "https://www.sensualism.com/love/elixir.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "108bc5aea2fb31fd15fa47a950a828619e6cd065a481c58f3234adf95db78bab",
+  "provider": "SearXNG",
+  "query": "what is battery chemistry in pharmacology",
+  "query_id": "v5-p-0813-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:11:47.652876Z"
+}

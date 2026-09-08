@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 309.086,
+  "pair_id": "v5-p-0077",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is ocean tides in climate science",
+    "results": [
+      {
+        "category": "general",
+        "content": "In our feminized legal climate the male initiators would be thrown in jail if they attempted to perform this ritual service without the permission of the mothers. All the things t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.theabsolute.net",
+          "/misogyny/zubaty.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bits of Zubaty – A compilation of writings from &#34;What Men Know That Women Don&#39;t&#34;",
+        "url": "http://www.theabsolute.net/misogyny/zubaty.html"
+      },
+      {
+        "category": "general",
+        "content": "to understanding global climate changes , potential global warming and related biosphere concerns. The atmosphere and ocean are linked because of evaporation and precipitation as",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.solarnavigator.net",
+          "/oceanography.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OCEANOGRAPHY",
+        "url": "https://www.solarnavigator.net/oceanography.htm"
+      },
+      {
+        "category": "general",
+        "content": "atmosphere could have a climate that allows the existence of liquid water on its surface. These three planets and Mercury are collectively known as the terrestrial (rocky) planets",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astrocappella.com",
+          "/background/habzone_background.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Habitable Zone - Background Info",
+        "url": "https://www.astrocappella.com/background/habzone_background.shtml"
+      },
+      {
+        "category": "general",
+        "content": "Biological Cosmology of Climate Change Journal of Cosmology, 8, 2000-2020. Joseph, R. (2011). Quantum Physics and the Multiplicity of Mind: Split-Brains, Fragmented Minds, Dissoci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "BrainMind.com",
+          "/publications.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rhawn Joseph&#39;s Scientific Publications, Pictures, Biography",
+        "url": "http://BrainMind.com/publications.html"
+      },
+      {
+        "category": "general",
+        "content": "into a more congenial climate -- not further North but more into the interior of the earth, through the opening, than Capt. Hall or any other explorers have reached. I read with g",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.olivercowdery.com",
+          "/smithhome/1880s-1890s/1886Culm.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Smith History Vault: 1886 Culmer book",
+        "url": "http://www.olivercowdery.com/smithhome/1880s-1890s/1886Culm.htm"
+      },
+      {
+        "category": "general",
+        "content": "the world and the climate. Thus geography was a powerful force shaping culture, including clothing. This Malay boy was photographed in the 1920s. The Malay Peninsula was ideal for",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "histclo.com",
+          "/geo/geo.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "geography and history",
+        "url": "https://histclo.com/geo/geo.html"
+      },
+      {
+        "category": "general",
+        "content": "to be felt in our climate as far south as 40 deg. north. I consider the Gulf stream as acting by its current to carry the ice away to the eastward, and by its warmth to melt it. T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "olivercowdery.com",
+          "/texts/1818symm.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "John C. Symmes&#39; Hollow Earth Writings",
+        "url": "http://olivercowdery.com/texts/1818symm.htm"
+      },
+      {
+        "category": "general",
+        "content": "solitude, in a climate compelling mental activity, incline a people al- ways to the contemplation of infinite subjects, questions in regard to the divine essence, purpose, and att",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "sidneyrigdon.com",
+          "/Rigdfict.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sidney Rigdon in Fictional Writings",
+        "url": "http://sidneyrigdon.com/Rigdfict.htm"
+      },
+      {
+        "category": "general",
+        "content": "equally adapted to all climates, as well as to every condition of mankind; and to the initiation of blood, was substituted a more harmless initiation of water. The promise of divi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ourcivilisation.com",
+          "/smartboard/shop/gibbone/rome/volume1/chap15.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chapter 15 of &#39;The Decline &amp; Fall Of The Roman Empire&#39;",
+        "url": "http://www.ourcivilisation.com/smartboard/shop/gibbone/rome/volume1/chap15.htm"
+      },
+      {
+        "category": "general",
+        "content": "intellectual climate (Mouseion and Serapeion), should not be underestimated, and makes Stricker&#39;s proposals unlikely. The native Egyptians were proud of their Hermopolitan &amp; M",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/maat/hermes2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ANCIENT EGYPT : The rise of Alexandro-Egyptian Hellenism and Hermetism",
+        "url": "http://www.sofiatopia.org/maat/hermes2.htm"
+      },
+      {
+        "category": "general",
+        "content": "synonymous with the climate. We all know, too, how the controversy has been kept up between the partisans of a &#34;science of history&#34; and those who deny the existence of anything li",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bactra.org",
+          "/James/great_men.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Great Men and their Environment",
+        "url": "https://bactra.org/James/great_men.html"
+      },
+      {
+        "category": "general",
+        "content": "modified by a warm climate and servile labor, and living in baronial fashion on great plantations; New England stood for a special English movement—Puritanism. The Middle re",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "monadnock.net",
+          "/turner/frontier.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Significance of the Frontier in American History, by Frederick Jackson Turner",
+        "url": "https://monadnock.net/turner/frontier.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0ea1f54171947fdee151c96017a10e846310482b380874c152f1bec5283f3d99",
+  "provider": "SearXNG",
+  "query": "what is ocean tides in climate science",
+  "query_id": "v5-p-0077-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:15.009161Z"
+}

@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 359.475,
+  "pair_id": "v5-p-0508",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind neural networks in civil engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "A Foundation for Engineering Artificial Consciousness Front. Robot. AI 4:60.        doi: 10.3389/frobt.2017.00060. Griffiths R et al. (2006)  Psilocybin can occasion mystical",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/cossym/SEC/SEC0.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Symbiotic Existential Cosmology Introduction",
+        "url": "http://www.dhushara.com/cossym/SEC/SEC0.htm"
+      },
+      {
+        "category": "general",
+        "content": "a course in Security Engineering at Edinburgh to masters students and fourth-year undergrads, and the lecture videos are now all online (as are the lecture videos and notes for my",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "af74d72d52db34628fb716ebd85d3d7aa848b1b175b7837d11dae8bb7a8d22c0",
+  "provider": "SearXNG",
+  "query": "describe the principle behind neural networks in civil engineering",
+  "query_id": "v5-p-0508-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:15:40.127554Z"
+}

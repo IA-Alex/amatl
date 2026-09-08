@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 307.395,
+  "pair_id": "v5-p-0656",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does traffic flow in ecology operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "to organize the traffic. 8.2 The fundamental fact of ethics is the irreducible difference between all moral actors hand in hand with their interrelatedness. 8.2.1 Difference does",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sofiatopia.org",
+          "/equiaeon/behaviours.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PHILOSOPHY : Behaviours : Formal Sketch of a Critical Ethics",
+        "url": "http://www.sofiatopia.org/equiaeon/behaviours.htm"
+      },
+      {
+        "category": "general",
+        "content": "drive some additional traffic to these interviews. Thanks to all for dropping by. Best, Michael posted by Michael at January 30, 2009 Comments Thanks for a very interesting conver",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/2009/01/a_week_with_gre_2.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: A Week with Gregory Cochran: Day Five",
+        "url": "http://www.2blowhards.com/archives/2009/01/a_week_with_gre_2.html"
+      },
+      {
+        "category": "general",
+        "content": "rationally sound, they traffic in hyperbole and smears designed to pummel Thunberg into an inconsequential afterthought. The teenage revolutionary non-authoritarian green activist",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.anarchy.no",
+          "/green.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Green Global Spring Revolution (GGS) and GAIA - The Green Anarchist International Association - Eco-Anarchist International - Green Grass",
+        "url": "http://www.anarchy.no/green.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d602460b4ffeabcf1a085626db0e5bce77e1fbe5c0f978842ce98c30cc1b585d",
+  "provider": "SearXNG",
+  "query": "how does traffic flow in ecology operate",
+  "query_id": "v5-p-0656-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:38.878007Z"
+}

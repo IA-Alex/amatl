@@ -1,0 +1,147 @@
+{
+  "schema_version": "1",
+  "query": "how to renew a driver's license",
+  "status": "partial_success",
+  "results": [
+    {
+      "schema_version": "1",
+      "rank": 1,
+      "title": "Moving from USA to Spain",
+      "original_url": "https://www.billdietrich.me/MovingToSpain.html",
+      "canonical_url": "https://www.billdietrich.me/MovingToSpain.html",
+      "domain": "www.billdietrich.me",
+      "snippet": "of current address (driver's license or State ID). Miami consulate web site says this, and A Texan in Spain's \"How to Apply for a Student Visa for Spain at the Houston Consulate\"",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 2,
+      "title": "Peter Gutmann's Home Page",
+      "original_url": "https://www.cs.auckland.ac.nz/~pgut001/",
+      "canonical_url": "https://www.cs.auckland.ac.nz/~pgut001/",
+      "domain": "www.cs.auckland.ac.nz",
+      "snippet": "to understanding how users interact with security systems, and whatever else happens to catch my interest. This is my new home page. My old home page is a lot more fun, but doesn'",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 3,
+      "title": "ASAP Checklist. HP/HPE Alumni",
+      "original_url": "https://www.hpalumni.org/asap",
+      "canonical_url": "https://www.hpalumni.org/asap",
+      "domain": "www.hpalumni.org",
+      "snippet": "hotel loyalty account, driver's license, etc. Postal address. Ensure that the company \u2013 and the outsourced payroll service, such as ADP \u2013 have your current home postal address. Ev",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 4,
+      "title": "California Home Study Driver Ed Course | DMV Handbook",
+      "original_url": "http://www.cal-driver-ed.com/dmv-handbook/16.htm",
+      "canonical_url": "http://www.cal-driver-ed.com/dmv-handbook/16.htm",
+      "domain": "www.cal-driver-ed.com",
+      "snippet": "?right-of-way? laws and how to use traffic lanes. Know where and when you can park. TRAFFIC CONTROL AT INTERSECTIONS Traffic lights, signs, and \" right-of-way \" rules te",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 5,
+      "title": "Living in Spain",
+      "original_url": "https://www.billdietrich.me/LivingInSpain.html",
+      "canonical_url": "https://www.billdietrich.me/LivingInSpain.html",
+      "domain": "www.billdietrich.me",
+      "snippet": "Driver's License , Spanish Will ) While Living In Spain section ( Renew Residency , Long-Term Residency , Citizenship , &nbs",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 6,
+      "title": "W4ZT - Tony King's page",
+      "original_url": "https://w4zt.com/",
+      "canonical_url": "https://w4zt.com/",
+      "domain": "w4zt.com",
+      "snippet": "Saturday. Then they showed the WRONG 3 delivered! They FINALLY did get them all delivered 4 days late. FEDEX SUCKS! If you must ship using FedEx, expect the worst of all customer",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "relegated_by_diversity"
+    },
+    {
+      "schema_version": "1",
+      "rank": 7,
+      "title": "WOR/COM 2006 SUMMARY ARCHIVE",
+      "original_url": "http://www.w4uvh.net/wor2006.html",
+      "canonical_url": "http://www.w4uvh.net/wor2006.html",
+      "domain": "www.w4uvh.net",
+      "snippet": "the material in each show comes from DX Listening Digests published in the previous week. The issue numbers are shown if you wish to research particular items heard. A few items m",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "relegated_by_diversity"
+    },
+    {
+      "schema_version": "1",
+      "rank": 8,
+      "title": "The Agricola of Tacitus",
+      "original_url": "http://www.earlychristianwritings.com/text/agricola.html",
+      "canonical_url": "http://www.earlychristianwritings.com/text/agricola.html",
+      "domain": "www.earlychristianwritings.com",
+      "snippet": "write their own lives showed the confidence of integrity rather than presumption. Of Rutilius and Scaurus no one doubted the honesty or questioned the motives. So true is it that",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "relegated_by_diversity"
+    },
+    {
+      "schema_version": "1",
+      "rank": 9,
+      "title": "2017: September - December Political Notes - Richard Stallman",
+      "original_url": "http://stallman.org/archives/2017-sep-dec.html",
+      "canonical_url": "http://stallman.org/archives/2017-sep-dec.html",
+      "domain": "stallman.org",
+      "snippet": "vs smoking ) Studies show that vaping is far less dangerous than smoking tobacco, provided one stops smoking entirely. 31 December 2017 ( NBA on Palestine ) Israel bullied the Nat",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "relegated_by_diversity"
+    }
+  ],
+  "providers_used": [
+    "searxng"
+  ],
+  "providers_failed": [],
+  "providers_partial": [],
+  "errors": [],
+  "degradations": [
+    {
+      "code": "provider_circuit_open",
+      "component": "marginalia",
+      "message": "marginalia is in circuit cooldown after consecutive failures; the source was skipped"
+    }
+  ],
+  "elapsed_ms": 1039
+}

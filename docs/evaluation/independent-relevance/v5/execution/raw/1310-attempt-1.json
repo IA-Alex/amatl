@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 340.293,
+  "pair_id": "v5-p-0604",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind air quality monitoring in architecture",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0d4d1a9d580d2a4996f2283bae18b896681758b160633dc49e48211dd381dd15",
+  "provider": "SearXNG",
+  "query": "describe the principle behind air quality monitoring in architecture",
+  "query_id": "v5-p-0604-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:15.620524Z"
+}

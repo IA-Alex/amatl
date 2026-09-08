@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 338.876,
+  "pair_id": "v5-p-0952",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind cloud formation in music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "Palmer Science and technology reporter, BBC News The team has published its work so other scientists can determine if the approach contains any mistakes. If it does not, one of th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "The Playful World: How Technology is Transforming our Imagination Ballantine Books , Now Available! From the Introduction: &#34;When a child enters the world, it knows nearly not",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "hyperreal.org",
+          "/~mpesce/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mark Pesce * Outside the Light-Cone",
+        "url": "http://hyperreal.org/~mpesce/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "eb9c327d7acdda1e6900cf38eb5aa0eb21be34eb9e81ddabbe8ecd5724bc6fb1",
+  "provider": "SearXNG",
+  "query": "describe the principle behind cloud formation in music technology",
+  "query_id": "v5-p-0952-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:14:10.185192Z"
+}

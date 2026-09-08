@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 284.473,
+  "pair_id": "v5-p-0816",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does battery chemistry in robotics operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "Black Crystal   Chemistry   Complaint   Concepts   Costs   Cover   Efficiency   Emissivity   Fridge   Future   Greenhouse   Heliostat &amp;",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.redrok.com",
+          "/main.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Red Rock Energy Heliostats",
+        "url": "http://www.redrok.com/main.htm"
+      },
+      {
+        "category": "general",
+        "content": "introducing organic chemistry; evaluation Problem solving programs for older students. computer programs; evaluation The education game. computer program evaluation Six business m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.atarimagazines.com",
+          "/creative/index/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of Creative Computing articles",
+        "url": "https://www.atarimagazines.com/creative/index/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "beef30cc86b9f26cedcd28a9374083bde6b63b91deabc6b6fc2efbfac7d22af2",
+  "provider": "SearXNG",
+  "query": "how does battery chemistry in robotics operate",
+  "query_id": "v5-p-0816-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:16:45.996418Z"
+}

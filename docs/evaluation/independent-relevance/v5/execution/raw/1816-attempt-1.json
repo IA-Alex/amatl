@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 230.792,
+  "pair_id": "v5-p-0499",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of encryption keys in forensic science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Authentication, encryption. Creating or reverse-engineering malware. Social engineering. Physical penetration. Wi-Fi, and the physical layer of Ethernet. Cloud services. What I&#39;ll",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/PenetrationTestingAndBugBountyHunting.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Penetration Testing and Bug-Bounty Hunting",
+        "url": "https://www.billdietrich.me/PenetrationTestingAndBugBountyHunting.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b63610d41f04f9e8a5461ea4ebf9aa4a75dc02dc6ef31587f7818f458540e374",
+  "provider": "SearXNG",
+  "query": "give an overview of encryption keys in forensic science",
+  "query_id": "v5-p-0499-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:14:58.040021Z"
+}

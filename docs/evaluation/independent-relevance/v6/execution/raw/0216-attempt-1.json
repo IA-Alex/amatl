@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 216,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 264.095,
+  "pair_id": "candidate-p-0892",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "an introductory account of ecosystem services within materials engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "I was taking one of the introductory computer science courses at my university, and one of the really fun projects we got to do at the end of the semester was build a really simpl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "changelog.com",
+          "/podcast/455",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Building software for yourself with Linus Lee (Changelog Interviews #455)",
+        "url": "https://changelog.com/podcast/455"
+      },
+      {
+        "category": "general",
+        "content": "&#34;PAL sets introductory fares to New York&#34;. Philippine Airlines. Retrieved March 25, 2015. Richard Florida (March 3, 2015). &#34;Sorry, London: New York Is the World&#39;s M",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hellenicaworld.com",
+          "/USA/Geo/en/NewYork.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "New York",
+        "url": "https://www.hellenicaworld.com/USA/Geo/en/NewYork.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "af8fb4d917fe1564febe842c8d69a11e88643b00517bf67c76af547cf5c79dae",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "an introductory account of ecosystem services within materials engineering",
+  "query_id": "candidate-c-0892",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://changelog.com/podcast/455",
+      "original_url": "https://changelog.com/podcast/455",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "I was taking one of the introductory computer science courses at my university, and one of the really fun projects we got to do at the end of the semester was build a really simpl",
+      "title": "Building software for yourself with Linus Lee (Changelog Interviews #455)"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.hellenicaworld.com/USA/Geo/en/NewYork.html",
+      "original_url": "https://www.hellenicaworld.com/USA/Geo/en/NewYork.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "&#34;PAL sets introductory fares to New York&#34;. Philippine Airlines. Retrieved March 25, 2015. Richard Florida (March 3, 2015). &#34;Sorry, London: New York Is the World&#39;s M",
+      "title": "New York"
+    }
+  ],
+  "timestamp": "2026-09-05T17:21:38.159813Z"
+}

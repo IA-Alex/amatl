@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 305.256,
+  "pair_id": "v5-p-0472",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind encryption keys in civil engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "a course in Security Engineering at Edinburgh to masters students and fourth-year undergrads, and the lecture videos are now all online (as are the lecture videos and notes for my",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "354937c894196e2b04613fd374db6df0da854dfe6f2049112488e4d2ea51708c",
+  "provider": "SearXNG",
+  "query": "describe the principle behind encryption keys in civil engineering",
+  "query_id": "v5-p-0472-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:12:26.189518Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 245.968,
+  "pair_id": "v5-p-0307",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes water purification in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9fefa2cdbae41f39b147ead8fff9cf3adcfba162657157be60bae669479e933c",
+  "provider": "SearXNG",
+  "query": "what causes water purification in oceanography",
+  "query_id": "v5-p-0307-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:16:08.271992Z"
+}

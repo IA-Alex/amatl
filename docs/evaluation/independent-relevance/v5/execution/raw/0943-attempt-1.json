@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 276.476,
+  "pair_id": "v5-p-0576",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does food preservation in transportation engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "producing a renewable transportation fuel without impacting the world&#39;s food supply.  Different from corn- or sugar-based ethanol — which is technologically achiev",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "akdart.com",
+          "/enviro9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Supposedly good ideas that may not be good at all",
+        "url": "http://akdart.com/enviro9.html"
+      },
+      {
+        "category": "general",
+        "content": "on organic motorized transportation assets and the limited protection available to light infantry units, the commander must specifically plan for their displacement. While all lig",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.nuui.com",
+          "/Sections/Military/Field_Manuals/FM3-90/ch11.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "FM3-90 Chapter 11 The Retrograde",
+        "url": "http://www.nuui.com/Sections/Military/Field_Manuals/FM3-90/ch11.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "74fa8703d4ff7b9dfeb3d7c11d92bf2a13a182ad2633a342d911e8c8ebbcc39c",
+  "provider": "SearXNG",
+  "query": "how does food preservation in transportation engineering operate",
+  "query_id": "v5-p-0576-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:10:13.886379Z"
+}

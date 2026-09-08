@@ -25,6 +25,29 @@ Las filas normalizadas de telemetría no tienen actualmente una columna
 Esto debe evaluarse antes de una migración incompatible y no debe confundirse
 con el contrato JSON `"1"`.
 
+## Purga automática
+
+Con la persistencia habilitada, una tarea de fondo aplica la retención sin
+intervención del operador. El periodo lo fija
+`persistence.purge_interval_seconds` (`0` desactiva la purga; el mínimo válido
+distinto de cero es 60 s).
+
+| Parámetro | Clase purgada | Default | `0` significa |
+|---|---|---:|---|
+| `persistence.history_retention_days` | historial de búsquedas | 0 | sin límite |
+| `persistence.cache_retention_days` | caché de provider | 0 | sin límite |
+| `persistence.document_cache_retention_days` | caché documental | 0 | sin límite |
+| `persistence.audit_retention_days` | eventos de seguridad | 90 | no admitido (mínimo 1) |
+| `telemetry.retention_days` | telemetría persistida | 30 | no admitido |
+
+`0` significa **sin límite**, nunca «purgar todo»: una clase con retención 0 no
+se poda. La retención de telemetría se lee de la configuración; anteriormente la
+tarea de fondo usaba un valor fijo de 30 días y ignoraba el TOML.
+
+La purga es independiente de los backups automáticos: cada uno tiene su propio
+intervalo, de modo que desactivar la purga no desactiva las copias. Ver
+[operacion.md](../operacion.md) para el detalle de backups y `db health`.
+
 ## Condiciones para escribir
 
 La caché de provider sólo lee/escribe cuando está habilitada **y** la ficha del

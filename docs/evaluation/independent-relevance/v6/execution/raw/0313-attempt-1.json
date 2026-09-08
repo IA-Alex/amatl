@@ -1,0 +1,144 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 313,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 292.665,
+  "pair_id": "candidate-p-1094",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how do models represent fire weather modeling within risk analysis",
+    "results": [
+      {
+        "category": "general",
+        "content": "a different medium to represent binary symbols. The positions of cogs, the presence or absence of water, the level of the voltage and perhaps nerve impulses&#34; (Johnson Laird, 1988,",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "newdualism.org",
+          "/papers/J.Searle/searle.comp.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Is the Brain a Digital Computer?",
+        "url": "http://newdualism.org/papers/J.Searle/searle.comp.html"
+      },
+      {
+        "category": "general",
+        "content": "frugal heuristics to represent bounded rationality in its purest form. How would a fast and frugal Darwin settle his marriage quandary? One way that he could make his decision bet",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "home.dbio.uevora.pt",
+          "/~eje/simple%20heuristics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "‹Truth is ever to be found in simplicity, and not in the multiplicityand confusion of things. As the world, which to the naked eye exhibits th",
+        "url": "http://home.dbio.uevora.pt/~eje/simple%20heuristics.htm"
+      },
+      {
+        "category": "general",
+        "content": "medium to represent binary symbols. The positions of cogs, the presence or absence of water, the level of the voltage and perhaps nerve impulses&#34; (Johnson Lair",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lafavephilosophy.x10host.com",
+          "/is_brain_a_computer.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Is the Brain a Digital Computer?",
+        "url": "http://lafavephilosophy.x10host.com/is_brain_a_computer.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "14c6f65665e8bb5d0ec5c433545cabb17ab54a2c381e43a324da86d47ab6c0f7",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how do models represent fire weather modeling within risk analysis",
+  "query_id": "candidate-t-1094",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://newdualism.org/papers/J.Searle/searle.comp.html",
+      "original_url": "http://newdualism.org/papers/J.Searle/searle.comp.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "a different medium to represent binary symbols. The positions of cogs, the presence or absence of water, the level of the voltage and perhaps nerve impulses&#34; (Johnson Laird, 1988,",
+      "title": "Is the Brain a Digital Computer?"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://home.dbio.uevora.pt/~eje/simple%20heuristics.htm",
+      "original_url": "http://home.dbio.uevora.pt/~eje/simple%20heuristics.htm",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "frugal heuristics to represent bounded rationality in its purest form. How would a fast and frugal Darwin settle his marriage quandary? One way that he could make his decision bet",
+      "title": "‹Truth is ever to be found in simplicity, and not in the multiplicityand confusion of things. As the world, which to the naked eye exhibits th"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "http://lafavephilosophy.x10host.com/is_brain_a_computer.html",
+      "original_url": "http://lafavephilosophy.x10host.com/is_brain_a_computer.html",
+      "rank": 3,
+      "rejection_reason": null,
+      "snippet": "medium to represent binary symbols. The positions of cogs, the presence or absence of water, the level of the voltage and perhaps nerve impulses&#34; (Johnson Lair",
+      "title": "Is the Brain a Digital Computer?"
+    }
+  ],
+  "timestamp": "2026-09-05T17:22:08.310288Z"
+}

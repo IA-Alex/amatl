@@ -1,0 +1,327 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 294.634,
+  "pair_id": "v5-p-0541",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is food preservation in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "which &#39;acts by the preservation and accumulation of small inherited modifications, each profitable to the preserved being.&#39; With this idea he interpenetrates and leavens the vast",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "victorianweb.org",
+          "/science/science_texts/belfast.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Address Delivered Before the British Association Assembled at Belfast, With Additions (1874)",
+        "url": "https://victorianweb.org/science/science_texts/belfast.html"
+      },
+      {
+        "category": "general",
+        "content": "Names in the Holy Land--Preservation and History. // Elitzur, Yoel // HebrewUnivJerusalme-Eisenbrauns:2004. [HI:APOESO] Apocryphal and Esoteric Sources in the Development of Chris",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.christian-thinktank.com",
+          "/bookabs.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Book Abbreviations",
+        "url": "https://www.christian-thinktank.com/bookabs.html"
+      },
+      {
+        "category": "general",
+        "content": "for the exceptional preservation of the soft parts of its fossils. At 508 million years old (middle Cambrian), it is one of the earliest fossil beds containing soft-part imprints.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.donsmaps.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Don&#39;s Maps - Palaeolithic / Paleolithic European, Russian, Ukrainian and Australian Archaeology / Archeology",
+        "url": "https://www.donsmaps.com/"
+      },
+      {
+        "category": "general",
+        "content": "better for him in the preservation of his life. [1. Gen. xxix. 26.] Formerly the women mourned for six months; now the mourning (i.e., the public wailing) is reduced to one month.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dankalia.com",
+          "/literature/frc196.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fetichism in West Africa",
+        "url": "https://www.dankalia.com/literature/frc196.htm"
+      },
+      {
+        "category": "general",
+        "content": "the Task Force on the Preservation of the Artifact, 1999). The Council on Library and Information Resources issued The Evidence in Hand: The Report of the Task Force on the Artifa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sas.upenn.edu",
+          "/~traister/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Daniel Traister&#39;s Home Page",
+        "url": "https://www.sas.upenn.edu/~traister/"
+      },
+      {
+        "category": "general",
+        "content": "whole world; and their preservation might well be called miraculous.” (HISTORY OF ANCIENT SANSKRIT LITERATURE) The Satapatha Brahmana belongs to the Sukla Yajur-Veda. The Kri",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dlshq.org",
+          "/download2/hinduismbk.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "All About Hinduism",
+        "url": "https://www.dlshq.org/download2/hinduismbk.htm"
+      },
+      {
+        "category": "general",
+        "content": "for compassion and preservation of life met a crying need, and but for it the state of things in this respect would be worse than it is. Religion, apart from ancestor-worship, doe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/15250/15250-h/15250-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Myths &amp; Legends of China",
+        "url": "https://www.gutenberg.org/files/15250/15250-h/15250-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "Chef Marco Lee Ancient preservation techniques find new audiences in modern kitchens. Read More Design Minimalism Gives Way to &#34;Warm Brutalism&#34; in Interiors By Yara Hassan Designe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archetypethoughts.pages.dev",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Archetype Thoughts",
+        "url": "https://archetypethoughts.pages.dev/"
+      },
+      {
+        "category": "general",
+        "content": "the great law of self-preservation. But when the principal nations of Europe, Asia, and Africa, were united under the laws of one sovereign, the source of foreign supplies flowed",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ourcivilisation.com",
+          "/smartboard/shop/gibbone/rome/volume1/chap2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chapter 2, Gibbon&#39;s &#39;Decline &amp; Fall&#39;",
+        "url": "http://www.ourcivilisation.com/smartboard/shop/gibbone/rome/volume1/chap2.htm"
+      },
+      {
+        "category": "general",
+        "content": "across the globe. Preservation of Knowledge : Digital technology allows us to store vast amounts of information and knowledge, which can be passed on to future generations. This c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.utilitarianism.com",
+          "/chatgpt/longtermism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utilitarianism and longtermism as conceived by ChatGPT-4",
+        "url": "https://www.utilitarianism.com/chatgpt/longtermism.html"
+      },
+      {
+        "category": "general",
+        "content": "of. . . .   Preservation &amp; Historic Buildings : Houses   Social Studies &amp; Humanities   Timelines, Date Conversions &amp; Period Resources   United Stat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.academic-genealogy.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Family Genealogy and History Internet Education Directory™ - Wiki",
+        "url": "http://www.academic-genealogy.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3532a2a9cf5f38ff1a6b4199f47afc6fa3d6e799f6e23afafc43d0a879d150e6",
+  "provider": "SearXNG",
+  "query": "what is food preservation in astronomy",
+  "query_id": "v5-p-0541-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:22.901441Z"
+}

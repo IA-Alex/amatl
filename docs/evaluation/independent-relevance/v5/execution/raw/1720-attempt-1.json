@@ -1,0 +1,165 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 263.829,
+  "pair_id": "v5-p-0719",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of language acquisition in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "controversy around the acquisition of MySQL by Oracle: as an aside, I believe there are strong technical and business reasons why MySQL should present no obstacle to an Oracle acq",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2009/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2009/"
+      },
+      {
+        "category": "general",
+        "content": "that knowledge acquisition should conform to the education of the human race, and his English (immediately pre-Darwinian) evolutionism subtly supplanting Comte’s less formul",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/comte",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Comte&#39;s classification of the sciences (IEKO)",
+        "url": "https://www.isko.org/cyclo/comte"
+      },
+      {
+        "category": "general",
+        "content": "eliminate the initial acquisition fee and store services fee. […] Under the updated terms, developers can now offer Apple In-App Purchase alongside alternative payment optio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mjtsai.com",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Tsai - Blog",
+        "url": "https://mjtsai.com/blog/"
+      },
+      {
+        "category": "general",
+        "content": "development as the acquisition of increasingly sophisticated rules would say that children run into problems if the rules they have built are not yet good enough. 19 But armed wit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "papert.org",
+          "/articles/EpistemologicalPluralism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Epistemological Pluralism and the Revaluation of the Concrete",
+        "url": "http://papert.org/articles/EpistemologicalPluralism.html"
+      },
+      {
+        "category": "general",
+        "content": "in regard to the acquisition of human language (Joseph, 1993; Luria, 1980). In this manner sound elements composed of consonants, vowels, and phonemes and morphemes can be more re",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "BrainMind.com",
+          "/WernickesArea.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BrainMind.com",
+        "url": "http://BrainMind.com/WernickesArea.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0c1f62ecf4c83ed8abcd70ca105e3595dda6888b46f8de2bbd672fb2abbd935a",
+  "provider": "SearXNG",
+  "query": "give an overview of language acquisition in operations research",
+  "query_id": "v5-p-0719-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:20.901810Z"
+}

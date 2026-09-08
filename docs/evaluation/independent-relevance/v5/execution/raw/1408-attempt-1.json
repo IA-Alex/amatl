@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 407.344,
+  "pair_id": "v5-p-0130",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of database indexing in physics",
+    "results": [
+      {
+        "category": "general",
+        "content": "ynamically typed functional programming language called Ink that he used to write his full text personal search engine called Monocle . Linus is focused on writing software that so",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "changelog.com",
+          "/podcast/455",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Building software for yourself with Linus Lee (Changelog Interviews #455)",
+        "url": "https://changelog.com/podcast/455"
+      },
+      {
+        "category": "general",
+        "content": "Machine intelligence: a function of human ingenuity. Upper and lower case for your Model-I. TRS-80 computer Printer control codes from within Apple Writer. computer program Underl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.atarimagazines.com",
+          "/creative/index/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of Creative Computing articles",
+        "url": "https://www.atarimagazines.com/creative/index/"
+      },
+      {
+        "category": "general",
+        "content": "also file management functions from directory listings to local file manipulation, plus the user interface itself to allow entry and display of large numbers. All this had to be d",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.kermitproject.org",
+          "/ckermit90.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C-Kermit 9.0 Update Notes",
+        "url": "https://www.kermitproject.org/ckermit90.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "12636c465cc0c9118d66d30e5b17058dba53790b0741f47fadd2b9ac646e000f",
+  "provider": "SearXNG",
+  "query": "tell me about the function of database indexing in physics",
+  "query_id": "v5-p-0130-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:45.268034Z"
+}

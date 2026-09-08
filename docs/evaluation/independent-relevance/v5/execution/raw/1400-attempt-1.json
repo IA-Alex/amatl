@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 314.285,
+  "pair_id": "v5-p-0464",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind supply chain logistics in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "37e559bb9d598eeae29a5fff8fadfcdceafaae7c2082b8bf31a9077fd0a45bad",
+  "provider": "SearXNG",
+  "query": "describe the principle behind supply chain logistics in hydrology",
+  "query_id": "v5-p-0464-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:42.688191Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 298.346,
+  "pair_id": "v5-p-0364",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind solar eclipses in civil engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d80425fc6db5f63e19a166a13df9ce1dc5f6bc559c4ffd3c253ef91382c801d0",
+  "provider": "SearXNG",
+  "query": "describe the principle behind solar eclipses in civil engineering",
+  "query_id": "v5-p-0364-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:14:29.474308Z"
+}

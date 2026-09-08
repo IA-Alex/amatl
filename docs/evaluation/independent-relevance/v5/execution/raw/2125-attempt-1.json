@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 372.523,
+  "pair_id": "v5-p-0275",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes binary search in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "the quintessential causes and coalitions of liberalism; and those have evolved over time. The New Deal core : the use of government to mitigate the excesses of capitalism: regulat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.zompist.com",
+          "/predic.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The last century-- what went wrong",
+        "url": "http://www.zompist.com/predic.htm"
+      },
+      {
+        "category": "general",
+        "content": "But the extent and causes of health disparities are not fully understood, and research on how to close these gaps is lacking,&#34; Eliseo Pérez-Stable M.D., director of the Nat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "akdart.com",
+          "/obama95.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "President Obama Panders to Homosexuals",
+        "url": "http://akdart.com/obama95.html"
+      },
+      {
+        "category": "general",
+        "content": "full fact pattern of causes — a ball flying through the air is simpler than the child kicking it, the grass field, the open sky, and the other players of the game — th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.o9a.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "o 9 a",
+        "url": "http://www.o9a.org/"
+      },
+      {
+        "category": "general",
+        "content": "of Free Software causes, but has also led to other issues. We fully admit that some BSD licensed software has been taken and used by many commercial entities, but contributions co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.openbsd.org",
+          "/lyrics.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OpenBSD: Release Songs",
+        "url": "http://www.openbsd.org/lyrics.html"
+      },
+      {
+        "category": "general",
+        "content": "to find exit button causes game crash from memory overload degenerating into triplesized corner of application frame incrementing at 2fps every second while a shuddering echoing s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "harmonyzone.org",
+          "/A1REVIEWS.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "skull.txt",
+        "url": "https://harmonyzone.org/A1REVIEWS.html"
+      },
+      {
+        "category": "general",
+        "content": "the scroll) no longer causes the character to forget information that the player could have remembered, or written down. This saves the player the tedium of having to draw all the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "nethack4.org",
+          "/latest/nethack4/doc/changelog.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://nethack4.org/latest/nethack4/doc/changelog.txt",
+        "url": "http://nethack4.org/latest/nethack4/doc/changelog.txt"
+      },
+      {
+        "category": "general",
+        "content": "bullying commonly causes PTSD. I think we should all be so lucky to have a mental health provider, as I do, that is extensively qualified to treat the whole person and not just a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ebb.org",
+          "/bkuhn/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog - Bradley Kühn ( bkuhn )",
+        "url": "https://ebb.org/bkuhn/blog/"
+      },
+      {
+        "category": "general",
+        "content": "The HUP method causes amavisd to stumble over its feet. The HUP method of restarting amavisd is deprecated since 2.0. Please use amavisd reload , which works equally well for chro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "amavis.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "amavisd-new",
+        "url": "https://amavis.org/"
+      },
+      {
+        "category": "general",
+        "content": "at path. This function causes what would normally happen outside a dynamic handler to happen. The asset can be sourced from either the zip or local filesystem if -D is used. This",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "redbean.dev",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "redbean",
+        "url": "http://redbean.dev/"
+      },
+      {
+        "category": "general",
+        "content": "or shill political causes to virtue signal. Moxie seemed to bring real life security experience to the crypto wizard but is it all stolen valor is he another fraud in the security",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "learnaifromscratch.github.io",
+          "/theabsolutestateofsoftware.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A 2026 Security Curriculum",
+        "url": "https://learnaifromscratch.github.io/theabsolutestateofsoftware.html"
+      },
+      {
+        "category": "general",
+        "content": "health problems this causes. Fun had by all though, lots to see. Back for a fine dinner, got the babes cleaned &amp; changed, and into bed nicely. Relaxed downstairs, read the Ind",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2007/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2007/"
+      },
+      {
+        "category": "general",
+        "content": "of hominid evolution causes of bipedal evolution cooperation throughout the animal world the hominid difference the question of the earliest tool usage diet favored H. habilis ove",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a2d6216e51c4247a1ff70c760dd53ebb85917a8a34f11d8325786bbafcbec476",
+  "provider": "SearXNG",
+  "query": "what causes binary search in public health",
+  "query_id": "v5-p-0275-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:35.120244Z"
+}

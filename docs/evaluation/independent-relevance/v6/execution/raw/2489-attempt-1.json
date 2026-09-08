@@ -1,0 +1,198 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2489,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 357.361,
+  "pair_id": "candidate-p-0484",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "under what conditions does bridge vibration within astronomy change",
+    "results": [
+      {
+        "category": "general",
+        "content": "with identical initial conditions frequently produced different long-term outcomes, highlighting the importance of stochastic collision dynamics in determining orbital stability.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "can, under certain conditions, be affected by an apochromatic azimuthal anomaly which significantly disrupts the singular eccentricity of the leptonic phase (named after Sir Lepto",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "joanocean.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Whales &amp; Dolphins : a Multidimensional Experience.",
+        "url": "http://joanocean.com/"
+      },
+      {
+        "category": "general",
+        "content": "the force of economic conditions.  Capitalism has made socialism, and the laws made by the capitalism for the protection of property are responsible for anarchism.  No o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book75.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Secret Agent, by Joseph Conrad",
+        "url": "https://www.ajhw.co.uk/books/book75.html"
+      },
+      {
+        "category": "general",
+        "content": "death was staged under conditions that we are not physically aware of ? Please tell us your thoughts on these things. I wish we all had a really secure encrypted mail system but I",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greatdreams.com",
+          "/dianpro.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DREAMS, VISIONS, PROPHECY AND COINCIDENCES ABOUT PRINCESS DIANA",
+        "url": "http://www.greatdreams.com/dianpro.htm"
+      },
+      {
+        "category": "general",
+        "content": "capable of meeting the conditions of vertical transportation found in the just emerging skyscraper. The Author : Robert M. Vogel is associate curator of mechanical and civil engin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book246/book246.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Elevator Systems of the Eiffel Tower, 1889, by Robert M. Vogel",
+        "url": "https://www.ajhw.co.uk/books/book246/book246.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "371fb7d75559fc2b58d4dda2e83334895cfb42f9bdee976341bf63c2d8a426bc",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "under what conditions does bridge vibration within astronomy change",
+  "query_id": "candidate-t-0484",
+  "raw_result_count": 5,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://vixra.org/astro/",
+      "original_url": "https://vixra.org/astro/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "with identical initial conditions frequently produced different long-term outcomes, highlighting the importance of stochastic collision dynamics in determining orbital stability.",
+      "title": "viXra.org e-Print archive, Astrophysics"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://joanocean.com/",
+      "original_url": "http://joanocean.com/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "can, under certain conditions, be affected by an apochromatic azimuthal anomaly which significantly disrupts the singular eccentricity of the leptonic phase (named after Sir Lepto",
+      "title": "Whales &amp; Dolphins : a Multidimensional Experience."
+    },
+    {
+      "accepted": true,
+      "canonical_url": "https://www.ajhw.co.uk/books/book75.html",
+      "original_url": "https://www.ajhw.co.uk/books/book75.html",
+      "rank": 3,
+      "rejection_reason": null,
+      "snippet": "the force of economic conditions.  Capitalism has made socialism, and the laws made by the capitalism for the protection of property are responsible for anarchism.  No o",
+      "title": "The Secret Agent, by Joseph Conrad"
+    }
+  ],
+  "timestamp": "2026-09-05T17:33:42.959520Z"
+}

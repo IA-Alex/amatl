@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 247.642,
+  "pair_id": "v5-p-0799",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of battery chemistry in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "as required for the management, admin-istration and evaluation of the program are being provided cooperatively by the Air Force (Phillips Laboratory) and Navy (Office of Naval Res",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "evaluation Six business management games. computer program evaluation A new entry in the education market. microcomputer evaluation Let the games begin. video game evaluation Secr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.atarimagazines.com",
+          "/creative/index/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Index of Creative Computing articles",
+        "url": "https://www.atarimagazines.com/creative/index/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "75a77c606aa1bafddf93877e6ef2272b6b26238314048f62a3fb9512c4cc47fa",
+  "provider": "SearXNG",
+  "query": "give an overview of battery chemistry in data management",
+  "query_id": "v5-p-0799-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:16:03.444268Z"
+}

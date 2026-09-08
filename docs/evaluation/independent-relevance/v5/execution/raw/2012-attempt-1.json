@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 328.42,
+  "pair_id": "v5-p-0672",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind traffic flow in robotics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f03566986561b38d65c1cb90e44231c9483ef376f721e4199cf09d3b8fcbfd8c",
+  "provider": "SearXNG",
+  "query": "describe the principle behind traffic flow in robotics",
+  "query_id": "v5-p-0672-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:58.887147Z"
+}

@@ -1,0 +1,273 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 401.184,
+  "pair_id": "v5-p-0550",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of food preservation in environmental science",
+    "results": [
+      {
+        "category": "general",
+        "content": "disease, poverty, and environmental degradation, and could lead to a more compassionate and just society. The biointelligence explosion is distinct from the development of artific",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.biointelligence-explosion.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Biointelligence Explosion as conceived by ChatGPT",
+        "url": "https://www.biointelligence-explosion.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "Let&#39;s call it crony environmentalism.&#34; Lew Rockwell   &#34;Al Gore stands to benefit to the tune of billions of dollars if the carbon tax proposals he is pushing come t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "globalkleptocracy.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GLOBAL KLEPTOCRACY - GLOBAL ELITE, RULING ELITE, GLOBAL OLIGARCHY, DEEP STATE, GLOBALISM, DYNASTIC ELITE, MONOPOLY CAPITALISM, CORPORATOCRACY,",
+        "url": "https://globalkleptocracy.net/"
+      },
+      {
+        "category": "general",
+        "content": "Under Ontario’s Environmental Bill of Rights , and through the province’s Environmental Commissioner , citizens may request reviews of how issues related to the enviro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "lakesuperiorcaribou.ca",
+          "/archive/website%2018022203.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Lake Superior Caribou News and Information",
+        "url": "http://lakesuperiorcaribou.ca/archive/website%2018022203.html"
+      },
+      {
+        "category": "general",
+        "content": "of the family or environmental apocalypse , there is always some excuse for Big Brother coming to save the day. But of course, the dangers are often grossly exaggerated, and the n",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.anarchistfaq.com",
+          "/B.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Anarchist FAQ - II. Why are anarchists against the State?",
+        "url": "http://www.anarchistfaq.com/B.html"
+      },
+      {
+        "category": "general",
+        "content": "numbers in excess of environmental resources. Nature, however, restricts not the &#34;power of procreation&#34; but the &#34;conservation of the procreated by exposing them to hard trials and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "biokemia.fi",
+          "/Stein2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biological Science and the Roots of Nazism",
+        "url": "http://biokemia.fi/Stein2.htm"
+      },
+      {
+        "category": "general",
+        "content": "perfect storm of social environmental causes that surround a person forcing them to act, then the opposite claim is made about other violence when its politically convenient.&#34; &#34;Mo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/a-frogs-collection-of-quotes",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Frog&#39;s Collection of Quotes — Chadnet",
+        "url": "https://wiki.chadnet.org/a-frogs-collection-of-quotes"
+      },
+      {
+        "category": "general",
+        "content": "to resource and environmental limits, we need to establish crisis socialism. However, to eliminate debt, we need to repudiate the US dollar; and, to eliminate inequality, we need",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.dematerialism.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "C:\\users\\waybu\\douments\\aaaaaindex",
+        "url": "https://www.dematerialism.net/"
+      },
+      {
+        "category": "general",
+        "content": "shaped and modified by environmental influences, and the DNA does not record these. For example, as we learn and experience the world, our brain structure changes through the grow",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "baharna.com",
+          "/philos/life.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Psychozoan: The Definition of Life",
+        "url": "https://baharna.com/philos/life.htm"
+      },
+      {
+        "category": "general",
+        "content": "through changing environmental \\(E_d\\). It must jointly reproduce achromatic redshift, supernova time dilation, distance laws, Tolman brightness, BAO, CMB observations, image shar",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/Philosophy-Politics-Globalisation.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Famous Philosophers on Politics, Political Science, Globalisation, Oligarchy,Democracy",
+        "url": "https://www.spaceandmotion.com/Philosophy-Politics-Globalisation.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c6da12ef72296535d0ed1233a790eaed19a0dd6626bb85559599496ebb303c46",
+  "provider": "SearXNG",
+  "query": "tell me about the function of food preservation in environmental science",
+  "query_id": "v5-p-0550-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:26.196556Z"
+}

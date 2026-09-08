@@ -1,0 +1,171 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 773,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 339.263,
+  "pair_id": "candidate-p-0882",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how can researchers measure ecosystem services within energy policy",
+    "results": [
+      {
+        "category": "general",
+        "content": "you, like &#39;scientific&#39; researchers who do it for the sake of &#39;science&#39; and society, and even less if they are politicians. Finding your passion is a scam, nobody finds their passi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "imlauer.github.io",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "esotericwarfare",
+        "url": "https://imlauer.github.io/"
+      },
+      {
+        "category": "general",
+        "content": "and shows what the researchers actually reported. In effect, right-wing conspiritorialists play a million parallel games of Telephone, and each time one yields words that seem to",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2021-nov-feb.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2021: November - February Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2021-nov-feb.html"
+      },
+      {
+        "category": "general",
+        "content": "and Family Studies, researchers surveyed 248 U.S. parents of middle schoolers about their media monitoring behaviors, the family context, and perceptions of their children&#39;s probl",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "techrights.org",
+          "/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Techrights — Links 30/01/2024: Many More Layoffs (Microsoft the Most Tech Layoffs This Year)",
+        "url": "http://techrights.org/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml"
+      },
+      {
+        "category": "general",
+        "content": "registries: yet cancer researchers work with anonymised data in other countries – see papers here and here .) There was a storm of protest in the press: see the Observer , t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1af05c08552d359dac9f6d2b7ba292073d3287eb9b02962b791fce9c2978c5da",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how can researchers measure ecosystem services within energy policy",
+  "query_id": "candidate-t-0882",
+  "raw_result_count": 4,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://imlauer.github.io/",
+      "original_url": "https://imlauer.github.io/",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "you, like &#39;scientific&#39; researchers who do it for the sake of &#39;science&#39; and society, and even less if they are politicians. Finding your passion is a scam, nobody finds their passi",
+      "title": "esotericwarfare"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://stallman.org/archives/2021-nov-feb.html",
+      "original_url": "http://stallman.org/archives/2021-nov-feb.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "and shows what the researchers actually reported. In effect, right-wing conspiritorialists play a million parallel games of Telephone, and each time one yields words that seem to",
+      "title": "2021: November - February Political Notes - Richard Stallman"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://techrights.org/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml",
+      "original_url": "http://techrights.org/n/2024/01/30/Links_30_01_2024_Many_More_Layoffs_Microsoft_the_Most_Tech_Layo.shtml",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "and Family Studies, researchers surveyed 248 U.S. parents of middle schoolers about their media monitoring behaviors, the family context, and perceptions of their children&#39;s probl",
+      "title": "Techrights — Links 30/01/2024: Many More Layoffs (Microsoft the Most Tech Layoffs This Year)"
+    }
+  ],
+  "timestamp": "2026-09-05T17:24:37.083141Z"
+}

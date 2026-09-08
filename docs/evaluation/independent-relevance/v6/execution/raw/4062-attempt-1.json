@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 4062,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 265.97,
+  "pair_id": "candidate-p-0194",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of arctic navigation within anthropology",
+    "results": [
+      {
+        "category": "general",
+        "content": "the archeology to the anthropology and look at current hunter-gatherers, it’s a little bit of a distorted study because nowadays almost all hunter-gatherers have been pushed out o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.donsmaps.com",
+          "/venusfigurespurpose.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Palaeolithic Venus figures - their purpose",
+        "url": "https://www.donsmaps.com/venusfigurespurpose.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "bc36b836e701fb8569b86ce1ee1283d1486a5751822506e7c0c4ea205a81c3b8",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of arctic navigation within anthropology",
+  "query_id": "candidate-c-0194",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.donsmaps.com/venusfigurespurpose.html",
+      "original_url": "https://www.donsmaps.com/venusfigurespurpose.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "the archeology to the anthropology and look at current hunter-gatherers, it’s a little bit of a distorted study because nowadays almost all hunter-gatherers have been pushed out o",
+      "title": "Palaeolithic Venus figures - their purpose"
+    }
+  ],
+  "timestamp": "2026-09-05T17:41:55.185422Z"
+}

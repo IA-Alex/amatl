@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1236,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 293.679,
+  "pair_id": "candidate-p-0498",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of bridge vibration within energy policy",
+    "results": [
+      {
+        "category": "general",
+        "content": "Chopping Machine , Vibration Eye Mask , Hologram Display Projector , Glo Flo , Energy Light , or Collaborative Music Making . 2016 [National Portfolio Day - 4 December 2016] Revie",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conceptlab.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Garnet Hertz - conceptlab.com",
+        "url": "http://www.conceptlab.com/"
+      },
+      {
+        "category": "general",
+        "content": "energy, frequency, and vibration.&#34; ( Tesla ) WSM Human-AI Collaboration (August, 2026) One Vibrating Space: From Ancient Philosophy to Mathematical Physics, Life, Mind and Ci",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.spaceandmotion.com",
+          "/sitemap/theology.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Sitemap: Theology: Atheisism, Agnosticism, Mysticism, Monism, Pantheism, Hinduism, Buddhism, Confucianism, Taoism, Greek Gods, Goddess, Myths,",
+        "url": "https://www.spaceandmotion.com/sitemap/theology.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "86f3e335367ac4ccc090cb8a6de91dbe626a25d61b21d646459338eb00a77282",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of bridge vibration within energy policy",
+  "query_id": "candidate-c-0498",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.conceptlab.com/",
+      "original_url": "http://www.conceptlab.com/",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "Chopping Machine , Vibration Eye Mask , Hologram Display Projector , Glo Flo , Energy Light , or Collaborative Music Making . 2016 [National Portfolio Day - 4 December 2016] Revie",
+      "title": "Garnet Hertz - conceptlab.com"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.spaceandmotion.com/sitemap/theology.htm",
+      "original_url": "https://www.spaceandmotion.com/sitemap/theology.htm",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "energy, frequency, and vibration.&#34; ( Tesla ) WSM Human-AI Collaboration (August, 2026) One Vibrating Space: From Ancient Philosophy to Mathematical Physics, Life, Mind and Ci",
+      "title": "Sitemap: Theology: Atheisism, Agnosticism, Mysticism, Monism, Pantheism, Hinduism, Buddhism, Confucianism, Taoism, Greek Gods, Goddess, Myths,"
+    }
+  ],
+  "timestamp": "2026-09-05T17:27:08.980166Z"
+}

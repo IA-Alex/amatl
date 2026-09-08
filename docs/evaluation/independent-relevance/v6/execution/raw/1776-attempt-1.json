@@ -1,0 +1,144 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 1776,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 329.122,
+  "pair_id": "candidate-p-1947",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about quantum sensing within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "the separate article on Information-Theoretic Death for a more recent treatment of this fundamental concept. This article was published in two parts in Cryonics magazine, Vol. 15",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      },
+      {
+        "category": "general",
+        "content": "and thus the genetic information itself. Since the basic structure of DNA-alkaline pairs and of language (as explained earlier) are of the same structure, no DNA decoding is neces",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "(HCPV) - request for information Solar Glass reflectors &amp; optics for solar power generation &amp; solar heating Ultrafast studies of charge carrier dynamics in nanomaterials a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "delmarphotonics.com",
+          "/index.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Femtosecond laser products from Del Mar Photonics",
+        "url": "http://delmarphotonics.com/index.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "454bfbd1af88a792eedd8c02ea2acf489a3995599cfc8705e921fbe4037bbf0d",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about quantum sensing within information science",
+  "query_id": "candidate-c-1947",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.ralphmerkle.com/cryo/techFeas.html",
+      "original_url": "http://www.ralphmerkle.com/cryo/techFeas.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "the separate article on Information-Theoretic Death for a more recent treatment of this fundamental concept. This article was published in two parts in Cryonics magazine, Vol. 15",
+      "title": "The Molecular Repair of the Brain"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://colinandrews.net/Consciousness.html",
+      "original_url": "https://colinandrews.net/Consciousness.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "and thus the genetic information itself. Since the basic structure of DNA-alkaline pairs and of language (as explained earlier) are of the same structure, no DNA decoding is neces",
+      "title": "The Study of Human Consciousness - Is ET already part of our lives?"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://delmarphotonics.com/index.htm",
+      "original_url": "http://delmarphotonics.com/index.htm",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "(HCPV) - request for information Solar Glass reflectors &amp; optics for solar power generation &amp; solar heating Ultrafast studies of charge carrier dynamics in nanomaterials a",
+      "title": "Femtosecond laser products from Del Mar Photonics"
+    }
+  ],
+  "timestamp": "2026-09-05T17:29:53.775386Z"
+}

@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 264.098,
+  "pair_id": "v5-p-0079",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes ocean tides in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "either from bad management or the poverty of the veins, they were discontinued. We are told of a rich mine of native copper on the Ouabache, below the upper Wiaw.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "docsouth.unc.edu",
+          "/southlit/jefferson/jefferson.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Thomas Jefferson, 1743-1826. Notes on the State of Virginia",
+        "url": "https://docsouth.unc.edu/southlit/jefferson/jefferson.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7663fb5dfd40312ca0ce906cd5e44ec9d17c63da2fe599653f0be419a40d513e",
+  "provider": "SearXNG",
+  "query": "what causes ocean tides in data management",
+  "query_id": "v5-p-0079-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:07:00.844236Z"
+}

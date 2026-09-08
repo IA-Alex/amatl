@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 256.836,
+  "pair_id": "v5-p-0097",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is ocean tides in software engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "an impressive feat of engineering that its growth is making parts of the US government nervous: Michael Wessel, a commissioner of the United States–China Economic and Security Rev",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "logicmag.io",
+          "/pivot/ghost-ships/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ghost Ships",
+        "url": "https://logicmag.io/pivot/ghost-ships/"
+      },
+      {
+        "category": "general",
+        "content": "work for Facilities Engineering and teach AutoCad on a part time basis. Love to travel and do anything water related..... a) NAME: Biddle, Susan McLaury b) CONTACT: McLauryBOASaol",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.paddlewise.com",
+          "/whoswho/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PaddleWise - Who&#39;s Who A-B",
+        "url": "http://www.paddlewise.com/whoswho/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "78ccd740694f20d6ff361f0ece49dd937b66910a24abeeda8994ce6cd856b657",
+  "provider": "SearXNG",
+  "query": "what is ocean tides in software engineering",
+  "query_id": "v5-p-0097-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:09:19.383231Z"
+}

@@ -1,0 +1,165 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 307.708,
+  "pair_id": "v5-p-0226",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does plate tectonics in environmental science work",
+    "results": [
+      {
+        "category": "general",
+        "content": "hunger), responsible environmental practices, peace. Blasting men into space is way down the list. We need to stop the Chinese from getting a monopoly on space . Hmmm, just like t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "probably related to environmental and dietary factors. There is also a social class factor. Childhood would be a very different experience for working-class and middle-class child",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "histclo.com",
+          "/cih.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Children in History",
+        "url": "https://histclo.com/cih.html"
+      },
+      {
+        "category": "general",
+        "content": "a combination of environmental and genetic factors, emerged as a species with an unparalleled capacity to create and use tools to both utilize resources as well as to modify the e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "histclo.com",
+          "/chron/chronh.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "children and historical chronology",
+        "url": "https://histclo.com/chron/chronh.html"
+      },
+      {
+        "category": "general",
+        "content": "SC-102 Introduction to Environmental Science Notes Env SC/physics-141 Astronomy   Notes Env SC-142 Exploration of the Universe   Notes Env SC-342 Environmental Geology N",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "stevedutch.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Steve Dutch Home Page",
+        "url": "https://stevedutch.net/"
+      },
+      {
+        "category": "general",
+        "content": "worldwide demographic, environmental, and societal stress, in which criminal anarchy emerges as the real &#34;strategic&#34; danger. Disease, overpopulation, unprovoked crime, scarcity of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.theatlantic.com",
+          "/past/politics/foreign/anarchy.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coming Anarchy - 94.02",
+        "url": "https://www.theatlantic.com/past/politics/foreign/anarchy.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "97499d0bd017eb2cc3967445e2e01caa2dd1f6a549df88203dc776bb36fee39d",
+  "provider": "SearXNG",
+  "query": "how does plate tectonics in environmental science work",
+  "query_id": "v5-p-0226-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:24.663180Z"
+}

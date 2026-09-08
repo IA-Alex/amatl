@@ -1,0 +1,35 @@
+{
+  "schema_version": "1",
+  "query": "beginner guide to planting tomatoes",
+  "status": "partial_success",
+  "results": [
+    {
+      "schema_version": "1",
+      "rank": 1,
+      "title": "tuxgraphics blog",
+      "original_url": "http://tuxgraphics.org/npa/",
+      "canonical_url": "http://tuxgraphics.org/npa/",
+      "domain": "tuxgraphics.org",
+      "snippet": "2018-03: Raspberry PI, beginner GPIO tutorial, a traffic light A Raspberry PI GPIO 101. 2018-03: Sewing: an interesting stitch pattern A very interesting hand sewing stitch patter",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    }
+  ],
+  "providers_used": [
+    "searxng"
+  ],
+  "providers_failed": [],
+  "providers_partial": [],
+  "errors": [],
+  "degradations": [
+    {
+      "code": "provider_circuit_open",
+      "component": "marginalia",
+      "message": "marginalia is in circuit cooldown after consecutive failures; the source was skipped"
+    }
+  ],
+  "elapsed_ms": 1170
+}

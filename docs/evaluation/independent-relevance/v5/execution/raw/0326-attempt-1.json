@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 232.891,
+  "pair_id": "v5-p-0607",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of air quality monitoring in forensic science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "640ce58df342875fc6760302ed94f8a6555b8db022aff18970e6e4eeb5ba871c",
+  "provider": "SearXNG",
+  "query": "give an overview of air quality monitoring in forensic science",
+  "query_id": "v5-p-0607-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:51.661907Z"
+}

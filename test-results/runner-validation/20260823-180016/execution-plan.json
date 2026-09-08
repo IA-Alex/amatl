@@ -1,0 +1,13 @@
+{
+  "artifact_notice": "Generated offline benchmark-runner validation artifact — no provider execution performed.",
+  "status": "NOT_PUBLISHED_BY_ABORTED_VALIDATION",
+  "expected_plan_only": true,
+  "benchmark_id": "searxng-v2",
+  "provider": "searxng",
+  "repetitions": 3,
+  "positions": [
+    "Q01-R1", "Q02-R1", "Q03-R1", "Q04-R1", "Q05-R1", "Q06-R1", "Q07-R1", "Q08-R1", "Q09-R1", "Q10-R1",
+    "Q01-R2", "Q02-R2", "Q03-R2", "Q04-R2", "Q05-R2", "Q06-R2", "Q07-R2", "Q08-R2", "Q09-R2", "Q10-R2",
+    "Q01-R3", "Q02-R3", "Q03-R3", "Q04-R3", "Q05-R3", "Q06-R3", "Q07-R3", "Q08-R3", "Q09-R3", "Q10-R3"
+  ]
+}

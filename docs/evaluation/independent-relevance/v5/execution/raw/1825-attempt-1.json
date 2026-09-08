@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 260.71,
+  "pair_id": "v5-p-0380",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does solar eclipses in optics operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b587e217bfe53717bc3eb6d8aab932300bbf803417afac404c75665d6e8a8e57",
+  "provider": "SearXNG",
+  "query": "how does solar eclipses in optics operate",
+  "query_id": "v5-p-0380-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:00.625757Z"
+}

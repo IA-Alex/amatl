@@ -1,0 +1,252 @@
+{
+  "argv": [
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "rust async",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "Rust standard library documentation",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "tokio tutorial rust",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "Linux kernel GitHub",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "capital of Canada",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "quasicrystal phason",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "how does distributed consensus work",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "Kubernetes project",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "eventual consistency distributed systems",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "history of public libraries",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "rust async",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "Rust standard library documentation",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "tokio tutorial rust",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "Linux kernel GitHub",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "capital of Canada",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "quasicrystal phason",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "how does distributed consensus work",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "Kubernetes project",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "eventual consistency distributed systems",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "history of public libraries",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "rust async",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "Rust standard library documentation",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "tokio tutorial rust",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "Linux kernel GitHub",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "capital of Canada",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "quasicrystal phason",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "how does distributed consensus work",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "Kubernetes project",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "eventual consistency distributed systems",
+      "--json"
+    ],
+    [
+      "target/debug/amatl",
+      "--config-file",
+      "test-results/searxng/20260823-145832/amatl-isolated.toml",
+      "search",
+      "history of public libraries",
+      "--json"
+    ]
+  ],
+  "argv_generated": 30,
+  "internal_max_invocations": null,
+  "positions_received": 30,
+  "q01_r1_restrictions": 0,
+  "queries_mapped": 10,
+  "result": "AMATL_EXECUTOR_STRUCTURAL_30_30_PASS",
+  "subprocess_executed": 0,
+  "unique_identities": 30
+}

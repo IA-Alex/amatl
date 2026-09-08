@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 253.733,
+  "pair_id": "v5-p-0009",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is photosynthesis in electrical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "Copy (HTML) 10 .2   Photosynthesis ..... Local Copy (HTML) 10.3   Animal Metabolism and Respiration ..... Local Copy (HTML) 10.4   Alien Blood ..... Local Copy (HTML) 10.5   Therm",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.xenology.info",
+          "/Xeno.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Xenology Table of Contents",
+        "url": "http://www.xenology.info/Xeno.htm"
+      },
+      {
+        "category": "general",
+        "content": "in CO2’s role in  photosynthesis , governments seem to have concluded that another 0.5 C will spell doom...climate hysteria in the West leads to policies that clearly benefit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meteo.lcd.lu",
+          "/globalwarming/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Global Warming Sceptic",
+        "url": "https://meteo.lcd.lu/globalwarming/"
+      },
+      {
+        "category": "general",
+        "content": "Congress on Photosynthesis SPIE_OP2010 - fs - fsNT - mPh - ultrafast - AFM / STM / NSOM / Raman infrared - VUVX2010 Marina Mariano Juste from the ICFO - Institut de Cièncie",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "delmarphotonics.com",
+          "/index.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Femtosecond laser products from Del Mar Photonics",
+        "url": "http://delmarphotonics.com/index.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2ead2b376a2e52b1d4c0bbb687624bfd3f05da1761f519705247ff41b49d50eb",
+  "provider": "SearXNG",
+  "query": "what is photosynthesis in electrical engineering",
+  "query_id": "v5-p-0009-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:37.506641Z"
+}

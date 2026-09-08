@@ -1,0 +1,108 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 249.6874510034104,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of wave interference in transportation",
+    "results": [
+      {
+        "category": "general",
+        "content": "through the Ministry of Transportation and Communications, Coalition Provisional Authority, which has been issuing amateur licenses. Applicants must have a valid Amateur Radio lic",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.worldofradio.com",
+          "/dxld3137.txt",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "http://www.worldofradio.com/dxld3137.txt",
+        "url": "http://www.worldofradio.com/dxld3137.txt"
+      },
+      {
+        "category": "general",
+        "content": "land October 16, 2019 Transportation Tracking October 15, 2019 Whistle-based Synthesis October 14, 2019 MA Price Accuracy Law October 13, 2019 Planned Power Outages October 12, 20",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.jefftk.com",
+          "/p/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog Posts",
+        "url": "https://www.jefftk.com/p/"
+      },
+      {
+        "category": "general",
+        "content": "area of “commerce and transportation, including restaurants and taverns,” but only 17.11% (3,248,145) of the population as a whole. In the area of “industry and craft work, includ",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "research.calvin.edu",
+          "/german-propaganda-archive/arier.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Why the Aryan Law?",
+        "url": "https://research.calvin.edu/german-propaganda-archive/arier.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0299",
+  "query_text": "give an overview of wave interference in transportation",
+  "requested_at": "2026-09-03T01:43:52.719371Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

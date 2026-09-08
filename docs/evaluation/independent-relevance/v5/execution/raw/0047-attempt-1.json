@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 252.658,
+  "pair_id": "v5-p-0224",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does plate tectonics in ecology operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "there was ever plate tectonics, and little sign of volcanism (although that is hotly debated and there are those who argue for recent active volcanism).  This is largely a de",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.erbzine.com",
+          "/mag17/1743.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ERBzine 1743: Tama, Princess of Mercury - by Den Valdron",
+        "url": "https://www.erbzine.com/mag17/1743.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c7f601a5748afeba0ef3054b027ab5e16065bdf6218aca2a4a41c43a7cff541a",
+  "provider": "SearXNG",
+  "query": "how does plate tectonics in ecology operate",
+  "query_id": "v5-p-0224-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:05:23.144656Z"
+}

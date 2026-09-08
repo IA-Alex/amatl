@@ -1,0 +1,26 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 347.9781610003556,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of river deltas in computer networks",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0010",
+  "query_text": "tell me about the function of river deltas in computer networks",
+  "requested_at": "2026-09-03T01:44:11.087170Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

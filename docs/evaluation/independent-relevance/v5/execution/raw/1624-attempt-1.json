@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 223.547,
+  "pair_id": "v5-p-0951",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of cloud formation in mechanical engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0ad12d53fe36ee6c2c79bdb1f316dd8d3e277181ba07c68c6ad6cd6492744074",
+  "provider": "SearXNG",
+  "query": "give an overview of cloud formation in mechanical engineering",
+  "query_id": "v5-p-0951-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:13:52.065000Z"
+}

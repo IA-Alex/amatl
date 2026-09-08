@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 357.788,
+  "pair_id": "v5-p-0373",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind solar eclipses in health science",
+    "results": [
+      {
+        "category": "general",
+        "content": "(comets, meteorites, eclipses, etc.) no longer had to be attributed to the hands of God. &#34;Miracles&#34; and &#34;divine interventions&#34; in human affairs have lost credi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "astronuclphysics.info",
+          "/Veda-vira.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Science and Religion: Consistency or Contradiction?",
+        "url": "https://astronuclphysics.info/Veda-vira.htm"
+      },
+      {
+        "category": "general",
+        "content": "Be No More Total Solar Eclipses , Space Image of the Day , NASA&#39;s Year in Review 2016 , ScienceHeathen , Public Library of Science (PLOS), CRISPR . Health: Single-payer would dras",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      },
+      {
+        "category": "general",
+        "content": "in the Sun&#39;s core solar eclipses solar eclipses/and their prediction solar eclipses influence of Moon on life /new theory for the Moon&#39;s formation Moon rocks found on Antarctica /",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "05035654346bd3bf78e02bd94385d148b75943ce3e551fa1e4fe6717f9ec809a",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind solar eclipses in health science",
+  "query_id": "v5-p-0373-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:42.445379Z"
+}

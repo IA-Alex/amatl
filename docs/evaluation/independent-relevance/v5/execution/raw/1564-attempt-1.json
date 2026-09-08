@@ -1,0 +1,354 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 307.826,
+  "pair_id": "v5-p-0755",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of root systems in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "of pseudo-physical operations—writing, drawing, cutting, moving, rotating, stretching, cropping, layering—within a virtual space. The primary design challenge, just as",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "worrydream.com",
+          "/MagicInk/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Magic Ink: Information Software and the Graphical Interface",
+        "url": "https://worrydream.com/MagicInk/"
+      },
+      {
+        "category": "general",
+        "content": "animal feeding operations (CAFOs)—have been a cause of significant concern from both an animal welfare and an ethical perspective. Here is an overview of the types of suffering th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.animal-rights.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Veganism as conceived by ChatGPT",
+        "url": "https://www.animal-rights.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "and fishing operations can be a powerful tool. Movies like &#34;Earthlings&#34; and &#34;Cowspiracy&#34; have impacted many viewers&#39; perspectives on animal agriculture. School Curriculum: Introdu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.empathogens.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Empathogens as conceived by ChatGPT",
+        "url": "https://www.empathogens.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "any half-finished operations. The problems with journaling include the double write problem (each operation must be written to disk twice, once to the log, once to the final locat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lwn.net",
+          "/Articles/190223/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The 2006 Linux Filesystems Workshop (Part II) [LWN.net]",
+        "url": "https://lwn.net/Articles/190223/"
+      },
+      {
+        "category": "general",
+        "content": "range of low level operations. For example, a single click might be used to choose an option to scan the neighborhood, taking the user on a circular path around the inner peripher",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.pliant.org",
+          "/personal/Tom_Erickson/GopherVR.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "3D Gopher, by McCahill and Erickson",
+        "url": "http://www.pliant.org/personal/Tom_Erickson/GopherVR.html"
+      },
+      {
+        "category": "general",
+        "content": "the provided atomic operations were implementable on PowerPC, and at what cost. This allows those questions to be precisely answered, and finally allows a compiler writer to confi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "during copy/paste operations. screen This is not a window in itself, but allows you to emulate having several windows inside a single (say) xterm window. The user can switch betwe",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.talisman.org",
+          "/unix/burgess-guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The unix programming environment",
+        "url": "http://www.talisman.org/unix/burgess-guide.html"
+      },
+      {
+        "category": "general",
+        "content": "12/2018: Learn IT Operations/Engineering. Pen testing is about using operations/dev tools in creative ways, about abusing trust relationships. Most people I know that are good/gre",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/PenetrationTestingAndBugBountyHunting.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Penetration Testing and Bug-Bounty Hunting",
+        "url": "https://www.billdietrich.me/PenetrationTestingAndBugBountyHunting.html"
+      },
+      {
+        "category": "general",
+        "content": "double-buffered bitmap operations (with the backbuffer in system memory to keep it fast) becomes impractical. Basically you can&#39;t use an optimized memcpy -type of operation becaus",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "blarg.ca",
+          "/rss/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Gered&#39;s Ramblings",
+        "url": "http://blarg.ca/rss/"
+      },
+      {
+        "category": "general",
+        "content": "oversee its day-to-day operations. Mr. Macintosh : Phil Schiller was right there with Steve Jobs and Tim Cook at the start of Apple’s comeback in 1997-1998. He is officially",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mjtsai.com",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Michael Tsai - Blog",
+        "url": "https://mjtsai.com/blog/"
+      },
+      {
+        "category": "general",
+        "content": "binding ; all editing operations result in instant visual changes to the final presentation. This approach often results in documents whose authors emphasize the final presentatio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiumlie.no",
+          "/2006/phd/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "PhD Thesis: Cascading Style Sheets",
+        "url": "https://wiumlie.no/2006/phd/"
+      },
+      {
+        "category": "general",
+        "content": "to automate a lot of operations with the phone. For example, adb shell &#39;input tap 100 100&#39; will imitate a tap to a device. In general you can do quite a lot through Android comman",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lockywolf.net",
+          "/2026-02-19_How-to-install-and-start-using-LineageOS-on-your-phone.d/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to install and start using LineageOS on your phone.",
+        "url": "https://lockywolf.net/2026-02-19_How-to-install-and-start-using-LineageOS-on-your-phone.d/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2f2ccfdb812d506a12cf62ebaab3f7754419510fd4c027ecc063a4e8e49891b9",
+  "provider": "SearXNG",
+  "query": "give an overview of root systems in operations research",
+  "query_id": "v5-p-0755-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:34.073490Z"
+}

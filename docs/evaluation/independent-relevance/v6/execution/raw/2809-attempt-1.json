@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2809,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 296.95,
+  "pair_id": "candidate-p-1587",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains low power computing within archaeology",
+    "results": [
+      {
+        "category": "general",
+        "content": "ability innate? Archaeology How did humans first grow crops? How did humans first domesticate animals? When did humans first control and create fire? When did humans invent the wh",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "humanknowledge.net",
+          "/Thoughts.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Human Knowledge: Foundations and Limits",
+        "url": "http://humanknowledge.net/Thoughts.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "c6391669f1a04eb7320e324a1c7716ed31fc568efb1e5dd4c5260d9da7cf653e",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains low power computing within archaeology",
+  "query_id": "candidate-t-1587",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://humanknowledge.net/Thoughts.html",
+      "original_url": "http://humanknowledge.net/Thoughts.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "ability innate? Archaeology How did humans first grow crops? How did humans first domesticate animals? When did humans first control and create fire? When did humans invent the wh",
+      "title": "Human Knowledge: Foundations and Limits"
+    }
+  ],
+  "timestamp": "2026-09-05T17:35:18.652996Z"
+}

@@ -1,0 +1,144 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 278,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 327.866,
+  "pair_id": "candidate-p-1435",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "background material about image compression within supply networks",
+    "results": [
+      {
+        "category": "general",
+        "content": "more sophisticated data compression techniques will still be a hot research area (though what we are compressing may at that point be high-resolution volumetric time-series or som",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fudco.com",
+          "/chip/lessons.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Lessons of Lucasfilm&#39;s Habitat",
+        "url": "http://www.fudco.com/chip/lessons.html"
+      },
+      {
+        "category": "general",
+        "content": "content, because of how compression works). I hope with my 📑 table of contents approach it&#39;ll be easy to navigate around a single large page with unnaturally fast speed ⚡. Other T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "chriskoehnke.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chris Koehnke&#39;s Webpage",
+        "url": "http://chriskoehnke.com/"
+      },
+      {
+        "category": "general",
+        "content": "wisdom Enforce image compression Dark image variants SVG images Layout Accessible skimming Friendly navigation Single-column layout Sidebar pitfalls Sidebar alternatives Line leng",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "seirdy.one",
+          "/posts/2020/11/23/website-best-practices/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Best practices for inclusive textual websites - Seirdy",
+        "url": "https://seirdy.one/posts/2020/11/23/website-best-practices/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ba4ec309dd82a119ac21fad789de6d05e5229f0b6f12efc9dc230adae00d91c2",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "background material about image compression within supply networks",
+  "query_id": "candidate-c-1435",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.fudco.com/chip/lessons.html",
+      "original_url": "http://www.fudco.com/chip/lessons.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "more sophisticated data compression techniques will still be a hot research area (though what we are compressing may at that point be high-resolution volumetric time-series or som",
+      "title": "The Lessons of Lucasfilm&#39;s Habitat"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "http://chriskoehnke.com/",
+      "original_url": "http://chriskoehnke.com/",
+      "rank": 2,
+      "rejection_reason": null,
+      "snippet": "content, because of how compression works). I hope with my 📑 table of contents approach it&#39;ll be easy to navigate around a single large page with unnaturally fast speed ⚡. Other T",
+      "title": "Chris Koehnke&#39;s Webpage"
+    },
+    {
+      "accepted": true,
+      "canonical_url": "https://seirdy.one/posts/2020/11/23/website-best-practices/",
+      "original_url": "https://seirdy.one/posts/2020/11/23/website-best-practices/",
+      "rank": 3,
+      "rejection_reason": null,
+      "snippet": "wisdom Enforce image compression Dark image variants SVG images Layout Accessible skimming Friendly navigation Single-column layout Sidebar pitfalls Sidebar alternatives Line leng",
+      "title": "Best practices for inclusive textual websites - Seirdy"
+    }
+  ],
+  "timestamp": "2026-09-05T17:21:57.047231Z"
+}

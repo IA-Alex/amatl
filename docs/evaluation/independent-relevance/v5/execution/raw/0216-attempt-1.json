@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 344.575,
+  "pair_id": "v5-p-0469",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind encryption keys in astronomy",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "908b8ed1ac71f75aa0849c51a9e7f7aa91aa5777ee02caa1778d2a78eed5ef8b",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind encryption keys in astronomy",
+  "query_id": "v5-p-0469-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:17.132059Z"
+}

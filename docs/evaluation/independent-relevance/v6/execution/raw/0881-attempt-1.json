@@ -1,0 +1,144 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 881,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 363.488,
+  "pair_id": "candidate-p-1428",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "under what conditions does image compression within rail transportation change",
+    "results": [
+      {
+        "category": "general",
+        "content": "to be folded back for transportation. The bottom portion of the threaded rod screwed into a small piece of 1/2&#34; aluminum rod into which some 1/4&#34;-20 threads were tapped.  The",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.modulatedlight.org",
+          "/optical_comms/Optical_enclosure_first_version.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Optical enclosure - first version",
+        "url": "http://www.modulatedlight.org/optical_comms/Optical_enclosure_first_version.html"
+      },
+      {
+        "category": "general",
+        "content": "that covers helicopter/transportation fees. MEDICAL RESOURCES We find that medical apps for mobiles, and FM army field manuals , are helpful when dealing with minor burns, cuts an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "100r.co",
+          "/site/off_the_grid.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "100R — off the grid",
+        "url": "http://100r.co/site/off_the_grid.html"
+      },
+      {
+        "category": "general",
+        "content": "conditions of vertical transportation found in the just emerging skyscraper. The Author : Robert M. Vogel is associate curator of mechanical and civil engineering, United States N",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book246/book246.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Elevator Systems of the Eiffel Tower, 1889, by Robert M. Vogel",
+        "url": "https://www.ajhw.co.uk/books/book246/book246.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "74d87de9b9fcf0f4e5cbda80970c73968b20048d275633ead383179f11f008b3",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "under what conditions does image compression within rail transportation change",
+  "query_id": "candidate-t-1428",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "http://www.modulatedlight.org/optical_comms/Optical_enclosure_first_version.html",
+      "original_url": "http://www.modulatedlight.org/optical_comms/Optical_enclosure_first_version.html",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "to be folded back for transportation. The bottom portion of the threaded rod screwed into a small piece of 1/2&#34; aluminum rod into which some 1/4&#34;-20 threads were tapped.  The",
+      "title": "Optical enclosure - first version"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://100r.co/site/off_the_grid.html",
+      "original_url": "http://100r.co/site/off_the_grid.html",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "that covers helicopter/transportation fees. MEDICAL RESOURCES We find that medical apps for mobiles, and FM army field manuals , are helpful when dealing with minor burns, cuts an",
+      "title": "100R — off the grid"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.ajhw.co.uk/books/book246/book246.html",
+      "original_url": "https://www.ajhw.co.uk/books/book246/book246.html",
+      "rank": 3,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "conditions of vertical transportation found in the just emerging skyscraper. The Author : Robert M. Vogel is associate curator of mechanical and civil engineering, United States N",
+      "title": "Elevator Systems of the Eiffel Tower, 1889, by Robert M. Vogel"
+    }
+  ],
+  "timestamp": "2026-09-05T17:25:09.469842Z"
+}

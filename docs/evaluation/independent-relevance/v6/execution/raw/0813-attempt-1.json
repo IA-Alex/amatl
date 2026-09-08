@@ -1,0 +1,72 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 813,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 288.159,
+  "pair_id": "candidate-p-2246",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how do models represent urban heat mapping within risk analysis",
+    "results": [
+      {
+        "category": "general",
+        "content": "assessment cost should represent only about 1% of the funds raised. Is that good? Let&#39;s take this assertion at face value for the moment and compare it to the cost of the IRS.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "gameofrent.com",
+          "/content/can-land-be-accurately-assessed",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Can Land Value Be Accurately Assessed Separately from Buildings? | Game of Rent",
+        "url": "http://gameofrent.com/content/can-land-be-accurately-assessed"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "32f46c3ba42899c6588902f11128e41dceacb682b3fb8121a2143399250429d7",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how do models represent urban heat mapping within risk analysis",
+  "query_id": "candidate-t-2246",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": true,
+      "canonical_url": "http://gameofrent.com/content/can-land-be-accurately-assessed",
+      "original_url": "http://gameofrent.com/content/can-land-be-accurately-assessed",
+      "rank": 1,
+      "rejection_reason": null,
+      "snippet": "assessment cost should represent only about 1% of the funds raised. Is that good? Let&#39;s take this assertion at face value for the moment and compare it to the cost of the IRS.",
+      "title": "Can Land Value Be Accurately Assessed Separately from Buildings? | Game of Rent"
+    }
+  ],
+  "timestamp": "2026-09-05T17:24:48.546702Z"
+}

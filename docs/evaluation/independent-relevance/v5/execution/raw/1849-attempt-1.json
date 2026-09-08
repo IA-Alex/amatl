@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 265.769,
+  "pair_id": "v5-p-1044",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does microbial fermentation in astronomy operate",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "28695b0ab6be0a681961b4026ce3bb8db11db169d6e11f43a78694645b62122a",
+  "provider": "SearXNG",
+  "query": "how does microbial fermentation in astronomy operate",
+  "query_id": "v5-p-1044-treatment",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:08.125629Z"
+}

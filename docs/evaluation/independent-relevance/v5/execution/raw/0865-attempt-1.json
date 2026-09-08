@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 368.837,
+  "pair_id": "v5-p-0114",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does database indexing in computer security work",
+    "results": [
+      {
+        "category": "general",
+        "content": "Vulnerabilities Database (NVD) is the U.S. government repository of standards based vulnerability management data. NVD includes databases of security checklists, security related",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.web3d.org",
+          "/x3d/content/examples/X3dResources.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "X3D Resources",
+        "url": "https://www.web3d.org/x3d/content/examples/X3dResources.html"
+      },
+      {
+        "category": "general",
+        "content": "LLM Wiki with Critical Database Limitations Memex is a sophisticated LLM Wiki implementation that stands out for its thoughtful mitigations of common pitfalls, such as git-backed",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gnu.support",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "GNU.Support website about GNU Operating Systems",
+        "url": "https://gnu.support/"
+      },
+      {
+        "category": "general",
+        "content": "of data stored in databases. I remember visiting Stanford with Dr. Rick Steinheiser from the Intelligence Community and Mr. Brin would rush in on roller blades, give his presentat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/sociopolitica/sociopol_internetgoogle47.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Google, CIA and the NSA - Inside the Secret Network behind Mass Surveillance, Endless War and Skynet",
+        "url": "https://www.bibliotecapleyades.net/sociopolitica/sociopol_internetgoogle47.htm"
+      },
+      {
+        "category": "general",
+        "content": "tp://www.antenna.nl/wise-database/uranium/dhap99.html George Bush - The Unauthorised Biography http://www.padrak.com/alt/BUSHBOOK_INDEX.html Bohemian Club and other research http:/",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "and online searchable databases. This was a significant resource for worldwide genealogy and family history research. Melvyl® is a registered trademark of The Regents of the Unive",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.academic-genealogy.com",
+          "/melvyluniversityofcaliforniagenealogyfamilyhistory.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Melvyl® System - University of California: Worldwide Genealogy and Family History Research",
+        "url": "http://www.academic-genealogy.com/melvyluniversityofcaliforniagenealogyfamilyhistory.htm"
+      },
+      {
+        "category": "general",
+        "content": "On-line tech-tips databases A site to rival this one - but WITH a tech-tips database and nice graphics VCR Placement, Preventive Maintenance, and Rental Tapes General VCR placemen",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.repairfaq.org",
+          "/sam/vcrfaq.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notes on the Troubleshooting and Repair of Video Cassette Recorders",
+        "url": "http://www.repairfaq.org/sam/vcrfaq.htm"
+      },
+      {
+        "category": "general",
+        "content": "the world? Does it have database hooks, or file system hooks, or…? Linus Lee Yeah. Built into the interpreter was a couple of different ways the language can talk to the outside w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "changelog.com",
+          "/podcast/455",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Building software for yourself with Linus Lee (Changelog Interviews #455)",
+        "url": "https://changelog.com/podcast/455"
+      },
+      {
+        "category": "general",
+        "content": "software producers, database vendors, national governments, research institutions, international agencies, various user groups, and interested individuals. The Unicode Standard is",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/2001/WD-charmod-20010928/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Character Model for the World Wide Web 1.0",
+        "url": "https://www.w3.org/TR/2001/WD-charmod-20010928/"
+      },
+      {
+        "category": "general",
+        "content": "mail in a PostgreSQL database. Mail2DB is suitable for putting in a .qmail/.forward file and will archive e-mail to a SQL database. Currently, there is only the storage component.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.usenix.org.uk",
+          "/mirrors/qmail/top.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "qmail: Second most popular MTA on the Internet",
+        "url": "http://www.usenix.org.uk/mirrors/qmail/top.html"
+      },
+      {
+        "category": "general",
+        "content": "complete access to the databases. In essence it is a redo of Facebook, even if well-intended, open-sourced and presumably non-commercial. There are dozens of projects of this kind",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "secushare.org",
+          "/comparison",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Capability Comparison",
+        "url": "https://secushare.org/comparison"
+      },
+      {
+        "category": "general",
+        "content": "processes, automatic database query, electronic mail, etc., but no one knew where to begin. We weren&#39;t sure whether there was really room to think hard about these problems; surel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.rfc-editor.org",
+          "/rfc/rfc8700.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RFC 8700: Fifty Years of RFCs",
+        "url": "https://www.rfc-editor.org/rfc/rfc8700.html"
+      },
+      {
+        "category": "general",
+        "content": "store it in a MySQL database: # options to store history messages in a persistent database (currently only MySQL). # in order to enable any of this functionality, you must configu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "landchad.net",
+          "/irc/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "IRC | LandChad.net",
+        "url": "https://landchad.net/irc/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "71cc3e549e1371039daa1b68a4180c8b9de6257bb0283d20c68be174f0989c95",
+  "provider": "SearXNG",
+  "query": "how does database indexing in computer security work",
+  "query_id": "v5-p-0114-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:49.673880Z"
+}

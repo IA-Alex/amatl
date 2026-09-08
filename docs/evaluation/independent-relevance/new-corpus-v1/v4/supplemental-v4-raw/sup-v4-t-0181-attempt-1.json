@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 123.27795800229069,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is routing tables in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": ", SysAdmin, U/Toronto Chemistry cal_check.tar.gz This program is intended to mitigate a change to the SR10.4.1 boot process. The OS compares the current time to the last_valid_tim",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "jim.rees.org",
+          "/apollo-archive/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Apollo Archive",
+        "url": "https://jim.rees.org/apollo-archive/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0181",
+  "query_text": "what is routing tables in chemistry",
+  "requested_at": "2026-09-03T01:42:06.412923Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

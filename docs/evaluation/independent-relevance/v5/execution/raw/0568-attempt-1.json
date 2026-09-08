@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 225.171,
+  "pair_id": "v5-p-0391",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of solar eclipses in forensic science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "461057e001d405f5ead0841958916899c998658de8df02ab06a3e6a45545d601",
+  "provider": "SearXNG",
+  "query": "give an overview of solar eclipses in forensic science",
+  "query_id": "v5-p-0391-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:07.807198Z"
+}

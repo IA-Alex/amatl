@@ -1,0 +1,192 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 363.011,
+  "pair_id": "v5-p-0794",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of battery chemistry in biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "Web Home — Biology — Chemistry Geology — Mathematics — Physics — Psychology — Science Texts on this site ] The address before the annual meeting of the British Association for the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "victorianweb.org",
+          "/science/science_texts/belfast.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Address Delivered Before the British Association Assembled at Belfast, With Additions (1874)",
+        "url": "https://victorianweb.org/science/science_texts/belfast.html"
+      },
+      {
+        "category": "general",
+        "content": "Biology Biopharma Chemistry Chemical Engineering Chemical Synthesis Computer Science Ecology Geology Mathematics Materials Science and Engineering Nuclear Engineering Pharma and L",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sciencecareergeneral.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Science Career General Paste",
+        "url": "https://sciencecareergeneral.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "&gt; - Deyan&#39;s Chemistry list &lt; https://gist.github.com/dginev/ff7e6e090b79a0389fc2eff2b9961331 &gt; - Deyan&#39;s Biology List, &lt; https://gist.github.com/dginev/d6367f53cb7b1fb",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/Math/planet/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Planet MathML - W3C",
+        "url": "https://www.w3.org/Math/planet/"
+      },
+      {
+        "category": "general",
+        "content": "left it to physics, chemistry and biology to determine what happened next through a gradual process of change - which I call &#34;evolution&#34;. Your own grasp of these things has become",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bitbarn.co.uk",
+          "/twog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "TWOG: the word of god",
+        "url": "https://www.bitbarn.co.uk/twog/"
+      },
+      {
+        "category": "general",
+        "content": "led to straightforward chemistry to produce modifications, such as biotin groups, fluorescent labels, and linking functions. The recent advent of parallel synthesis is likely to i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zyvex.com",
+          "/nanotech/mbb/mbb.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Molecular Building blocks",
+        "url": "https://www.zyvex.com/nanotech/mbb/mbb.html"
+      },
+      {
+        "category": "general",
+        "content": "biology jokes, and chemistry jokes. |   Home   |   Books   |   Reports   |   Reviews   |   Contact Us   |   Virtual Astronom",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.jupiterscientific.org",
+          "/sciinfo/jokes/physicsjokes.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Physics Jokes",
+        "url": "http://www.jupiterscientific.org/sciinfo/jokes/physicsjokes.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3364e896205c5623d060f2c06e73f8902e866ff97bc72d447ed6bb1f6b5a6225",
+  "provider": "SearXNG",
+  "query": "tell me about the function of battery chemistry in biology",
+  "query_id": "v5-p-0794-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:23.623396Z"
+}

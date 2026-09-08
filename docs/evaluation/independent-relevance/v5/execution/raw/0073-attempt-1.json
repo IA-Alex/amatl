@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 317.116,
+  "pair_id": "v5-p-0177",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is immune response in industrial design",
+    "results": [
+      {
+        "category": "general",
+        "content": "caustic chemicals (industrial lye). These “near misses” put a large exclamation point on the call for a permanent full-time tug. The final state budget provides $1.7 mil",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whatcomwatch.org",
+          "/old_issues/v10i9.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Whatcom Watch, September 2001",
+        "url": "http://www.whatcomwatch.org/old_issues/v10i9.html"
+      },
+      {
+        "category": "general",
+        "content": "UNITED STATES MILITARY INDUSTRIAL COMPLEX   DISCUSSIONS: WHOM EVER KEEPS THE PROBLEM GETS TO DEFINE IT   by Dr. Andrea Pritchard © 1995 REMNANTS OF A LOST CIVILIZATION -",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.robertschoch.net",
+          "/Circular%20Times%20Table%20of%20Contents.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alternative Energy Medicine International Educational Institute Circular Times",
+        "url": "http://www.robertschoch.net/Circular%20Times%20Table%20of%20Contents.htm"
+      },
+      {
+        "category": "general",
+        "content": "experiences; the industrial culture of unrestrained individualism, which teaches egoism and pays no attention to other people, the future and the environment”. ( 8 ) Any pr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.vatican.va",
+          "/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jesus Christ The Bearer Of The Water Of Life - A Christian reflection on the New Age",
+        "url": "https://www.vatican.va/roman_curia/pontifical_councils/interelg/documents/rc_pc_interelg_doc_20030203_new-age_en.html"
+      },
+      {
+        "category": "general",
+        "content": "hope to) manage the &#34;industrial society&#34; will be able to cope with the classical problems without a radical transformation of society. It is conceivably true that the bourgeoisie",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ditext.com",
+          "/chomsky/ri.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Responsibility of Intellectuals, by Noam Chomsky",
+        "url": "https://www.ditext.com/chomsky/ri.html"
+      },
+      {
+        "category": "general",
+        "content": "and the rest of the industrialized world preferred to allow 50 to 100 thousand Chinese be slaughtered at Tiananmen Square and elsewhere, rather than lose lucrative trade deals wit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.euvolution.com",
+          "/neoeugenics/human_modern_denial.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A review of the book The Blank Slate: The Modern Denial of Human Nature by Steven Pinker",
+        "url": "https://www.euvolution.com/neoeugenics/human_modern_denial.htm"
+      },
+      {
+        "category": "general",
+        "content": "treetrunks of modern industrial cities is another example of evolution in our time. Again, the genes for darker coloring in the moth were already available in the gene pool [but s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.panspermia.org",
+          "/neodarw.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Neo-Darwinism: The Current Paradigm. by Brig Klyce",
+        "url": "https://www.panspermia.org/neodarw.htm"
+      },
+      {
+        "category": "general",
+        "content": "The warehouses and industrial zones are all abandoned apart from crates, metal shelves, and vicious dudes. I keep thinking of the infinite labyrinth-slums in the Dirty Harry NES g",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.geocities.ws",
+          "/mystery_zone/bog.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "mystery_zone new document title",
+        "url": "http://www.geocities.ws/mystery_zone/bog.html"
+      },
+      {
+        "category": "general",
+        "content": "of pepper spray from industrial-type sprayers (not the little cans), who would then fall back, or throw flagpole sticks and water bottles at the police. Several police plexi shiel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.news1.net",
+          "/jan2021.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Breaking News, news commentary and news chronicle. News1.net - News and Photographic image archive. Global news with an emphasis on New Yo",
+        "url": "http://www.news1.net/jan2021.htm"
+      },
+      {
+        "category": "general",
+        "content": "it. Their third is The Industrial Revolution - which again, is just things that still require human operation, so not relevant here. Let&#39;s just go straight to the interesting part",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/capitalism.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Capitalism will die - but will it take us with it?",
+        "url": "http://digdeeper.love/articles/capitalism.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "UNITED STATES MILITARY INDUSTRIAL COMPLEX   DISCUSSIONS: WHOM EVER KEEPS THE PROBLEM GETS TO DEFINE IT   by Dr. Andrea Pritchard © 1995 REMNANTS OF A LOST CIVILIZATION -",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "circulartimes.net",
+          "/Circular%20Times%20Table%20of%20Contents.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alternative Energy Medicine International Educational Institute Circular Times",
+        "url": "http://circulartimes.net/Circular%20Times%20Table%20of%20Contents.htm"
+      },
+      {
+        "category": "general",
+        "content": "bioagricultural, bioindustrial, bioinformational. He had just written a book, Maximum Lifespan, which sold alot of copies.He has a book that is new now, The Anti-Aging Arrange. Th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.worldrtd.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "World Federation of Right to Die Societies: Death With Dignity, Aid in Dying, Hastened Death, Physician Assisted Suicide, Euthanasia, End of L",
+        "url": "https://www.worldrtd.org/"
+      },
+      {
+        "category": "general",
+        "content": "21:17) The University-Industrial Complex (21 Apr 2025 21:17) Planned Economies (21 Apr 2025 21:17) I. A. Richards, 1893--1979 (21 Apr 2025 21:17) Yi-Fu Tuan (1930--2022) (21 Apr 2",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "bactra.org",
+          "/notebooks/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notebooks",
+        "url": "https://bactra.org/notebooks/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "72793b89bfe400d30c5b85126ea075e06c455cdc21a98fc2b06c0786548c4648",
+  "provider": "SearXNG",
+  "query": "what is immune response in industrial design",
+  "query_id": "v5-p-0177-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:31.509311Z"
+}

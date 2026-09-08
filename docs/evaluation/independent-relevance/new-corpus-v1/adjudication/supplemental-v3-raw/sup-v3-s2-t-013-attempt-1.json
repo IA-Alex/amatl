@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 320.66475700048613,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes ocean tides",
+    "results": [
+      {
+        "category": "general",
+        "content": "and the hypocrisy it causes even within our own psyche. The zombies are a group, but they do not act collectively. They are an unruly mob of mass-consuming individuals. Clearly, f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.oodegr.com",
+          "/english/koinwnia/koinwnika/zombie_genre_modern_west.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "What Does the Zombie Genre Say about the Modern West?",
+        "url": "https://www.oodegr.com/english/koinwnia/koinwnika/zombie_genre_modern_west.htm"
+      },
+      {
+        "category": "general",
+        "content": "deep resentment this causes in men is almost beyond calculation. Recently a guy in Iowa was told that the U.S. economy created 280,000 jobs in the last quarter. He said, &#34;I know.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.theabsolute.net",
+          "/misogyny/zubaty.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Bits of Zubaty – A compilation of writings from &#34;What Men Know That Women Don&#39;t&#34;",
+        "url": "http://www.theabsolute.net/misogyny/zubaty.html"
+      },
+      {
+        "category": "general",
+        "content": "Depending on what causes the earth to flip over and how fast it flips is what is going to determine how disastrous this even is going to be.   3-22-05  - I fell asleep a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greatdreams.com",
+          "/poleshift.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Pole Shift - When, Where, and How",
+        "url": "http://www.greatdreams.com/poleshift.htm"
+      },
+      {
+        "category": "general",
+        "content": "the fixed stars, which causes the date of the vernal equinox—the start of spring in the northern hemisphere and fall in the southern, to shift through the year with a period",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/documents/canon_transits/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quarter Million Year Canon of Solar System Transits",
+        "url": "https://www.fourmilab.ch/documents/canon_transits/"
+      },
+      {
+        "category": "general",
+        "content": "but with different causes - in this case, real ones. Fortunately, the potential for damage has been drastically decreased by the sapping of the State?s resources and corrosion of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.anarchism.net",
+          "/newlibertarianmanifesto.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ANARCHISM.net: The New Libertarian Manifesto, by Samuel Edward Konkin III",
+        "url": "https://www.anarchism.net/newlibertarianmanifesto.htm"
+      },
+      {
+        "category": "general",
+        "content": "The corpus correctum causes meditation of the asleep side of the brain though audioizations and visualizations that cause relative discomfort if not remembered or analyzed. Werewo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.londonhistoricalsociety.com",
+          "/JewlluminatiHistory.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jewlluminati History",
+        "url": "http://www.londonhistoricalsociety.com/JewlluminatiHistory.html"
+      },
+      {
+        "category": "general",
+        "content": "combination of natural causes which may be supposed to have produced them. History renders probable some instances of a partial deluge in the country lying round the Mediterranean",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "docsouth.unc.edu",
+          "/southlit/jefferson/jefferson.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Thomas Jefferson, 1743-1826. Notes on the State of Virginia",
+        "url": "https://docsouth.unc.edu/southlit/jefferson/jefferson.html"
+      },
+      {
+        "category": "general",
+        "content": "misfortune. From many causes, the arena of free Activity has long been narrowing, that of sceptical Inquiry becoming more and more universal, more and more perplexing. The Thought",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.hetwebsite.net",
+          "/het/texts/carlyle/carlyle1831characteristics.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "T. Carlyle, 1931, &#34;Characteristics&#34;, ER",
+        "url": "http://www.hetwebsite.net/het/texts/carlyle/carlyle1831characteristics.htm"
+      },
+      {
+        "category": "general",
+        "content": "planet). Its large Moon causes moderate tides, moving nutrient-laden soil from the continents into the oceans, helping to feed any life forms that might exist there. There are ver",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.astrocappella.com",
+          "/background/habzone_background.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Habitable Zone - Background Info",
+        "url": "https://www.astrocappella.com/background/habzone_background.shtml"
+      },
+      {
+        "category": "general",
+        "content": "the secret and remote causes of the fall of the Roman empire. The extensive territory to the north of the great wall was possessed after the flight of the Huns by the victorious S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ccel.org",
+          "/g/gibbon/decline/volume1/chap30.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Chapter 30 of The Decline And Fall Of The Roman Empire",
+        "url": "https://ccel.org/g/gibbon/decline/volume1/chap30.htm"
+      },
+      {
+        "category": "general",
+        "content": "to root out the causes of war. Beginning first with himself and his dependants, he kept his household under restraint, a thing as hard to many as ruling a province. He transacted",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.earlychristianwritings.com",
+          "/text/agricola.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Agricola of Tacitus",
+        "url": "http://www.earlychristianwritings.com/text/agricola.html"
+      },
+      {
+        "category": "general",
+        "content": "in those regions, some causes of their failure that have not yet been explained. It seeming impossible from past experience, for man to overcome by his ingenuity or his bravery th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.olivercowdery.com",
+          "/smithhome/1880s-1890s/1886Culm.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Smith History Vault: 1886 Culmer book",
+        "url": "http://www.olivercowdery.com/smithhome/1880s-1890s/1886Culm.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v3-s2-t-013",
+  "query_text": "what causes ocean tides",
+  "requested_at": "2026-09-02T22:58:58.948334Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

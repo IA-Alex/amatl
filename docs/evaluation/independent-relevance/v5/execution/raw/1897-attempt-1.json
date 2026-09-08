@@ -1,0 +1,57 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 256.923,
+  "pair_id": "v5-p-0935",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes bridge resonance in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "wide area. The original operations shook the earth up to ten miles away from the target area. Arty: n. (Mil.) Artillery. Attoparsec: n. (Net) About 3.1 centimeters. AV: acr. Prono",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.shoestring-graphics.com",
+          "/CP2020/slang/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Word on The Streets",
+        "url": "http://www.shoestring-graphics.com/CP2020/slang/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "023774f0931cf22db1c0b775d1fd75c35974bbd75e3d80f645e010150337b050",
+  "provider": "SearXNG",
+  "query": "what causes bridge resonance in operations research",
+  "query_id": "v5-p-0935-treatment",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:15:23.414254Z"
+}

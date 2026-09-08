@@ -74,6 +74,28 @@ async fn all_provider_failures_are_global_failure() {
 }
 
 #[tokio::test]
+async fn empty_successful_provider_does_not_mask_a_peer_failure() {
+    let providers: Vec<Arc<dyn Provider>> = vec![
+        Arc::new(MockProvider::success("empty", vec![])),
+        Arc::new(MockProvider::new(
+            "rate_limited",
+            MockBehavior::Failure(ProviderErrorKind::RateLimit),
+        )),
+    ];
+    let response = SearchOrchestrator::new(Budget::new(2, 8_000), 100)
+        .search(parse_query("rust".into()).unwrap(), providers)
+        .await;
+    assert_eq!(response.status, SearchStatus::Failure);
+    assert!(response.results.is_empty());
+    assert_eq!(response.providers_used, ["empty"]);
+    assert_eq!(response.providers_failed, ["rate_limited"]);
+    assert!(response
+        .errors
+        .iter()
+        .any(|error| error.code == "provider_rate_limit"));
+}
+
+#[tokio::test]
 async fn exhausted_budget_does_not_execute_unreserved_provider() {
     let providers: Vec<Arc<dyn Provider>> = vec![
         Arc::new(MockProvider::success(

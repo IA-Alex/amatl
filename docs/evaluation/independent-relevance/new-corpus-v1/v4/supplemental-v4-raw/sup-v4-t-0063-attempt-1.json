@@ -1,0 +1,351 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 333.7583020038437,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes version control in digital security",
+    "results": [
+      {
+        "category": "general",
+        "content": "for Norton Intenet Security ). To find out what the software can do, simply try out the menu choices, the toolbar and the right mouse key. Or read this third-party manual , a bigg",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "home.snafu.de",
+          "/tilman/xenulink.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Find broken links on your site with Xenu&#39;s Link Sleuth (TM)",
+        "url": "http://home.snafu.de/tilman/xenulink.html"
+      },
+      {
+        "category": "general",
+        "content": "dependency you use has security issues: if you don’t check them all to see if their issues are ones you can live with, then you’re probably going to pay for it later. Sometimes, t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.baldurbjarnason.com",
+          "/2021/100-things-every-web-developer-should-know/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "136 facts every web dev should know before they burn out and turn to landscape painting or nude modelling",
+        "url": "https://www.baldurbjarnason.com/2021/100-things-every-web-developer-should-know/"
+      },
+      {
+        "category": "general",
+        "content": "was an obsession with security, with doors opened by badge readers; logging of employee movement; information restricted to narrow silos prohibiting collaboration between, say, en",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/archives/Monthly/2018/2018-07.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason: July 2018 Archives",
+        "url": "https://www.fourmilab.ch/fourmilog/archives/Monthly/2018/2018-07.html"
+      },
+      {
+        "category": "general",
+        "content": "cannot be trusted for security reasons. Does anyone know of any timestamping techniques that do not require centralized infrastructure or consensus (two things that seem to be...",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "tilde.town",
+          "/~netscape_navigator/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Netscape Blog",
+        "url": "http://tilde.town/~netscape_navigator/"
+      },
+      {
+        "category": "general",
+        "content": "introduced a social security plan, adopted from his friend Alfried Krupp, which FDR adopted to the N.A.S.C. in 1935, and which most of you pay into today. Thank you. ----- Origina",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "voluntarysociety.org",
+          "/conditioning/conspiracy/warofseparation.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Voluntary Society - Conditioning - Conspiracy - False Flags - War of Separation",
+        "url": "http://voluntarysociety.org/conditioning/conspiracy/warofseparation.html"
+      },
+      {
+        "category": "general",
+        "content": "HTTP Strict Transport Security (HSTS), which forces the browser to keep using HTTPS once the browser has seen it before (this counters many downgrade attacks). The Cygwin Setup pr",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "cygwin.com",
+          "/faq/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cygwin FAQ",
+        "url": "https://cygwin.com/faq/"
+      },
+      {
+        "category": "general",
+        "content": "FLOSS doesn&#39;t imply security Posted 2022-02-02 by Seirdy on their Website and Gemini capsule . Last updated 2022-03-18 . Changelog 4343 words; a somewhat long 21 minute read Backg",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "seirdy.one",
+          "/posts/2022/02/02/floss-security/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The right thing for the wrong reasons: FLOSS doesn&#39;t imply security",
+        "url": "https://seirdy.one/posts/2022/02/02/floss-security/"
+      },
+      {
+        "category": "general",
+        "content": "been configured with security conscious settings, such as only allowing code to execute from flash and ITCM memory regions and disallowing any access from a NULL pointer.  But if",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.pjrc.com",
+          "/2021/07/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SEGA ROM Reader",
+        "url": "https://www.pjrc.com/2021/07/"
+      },
+      {
+        "category": "general",
+        "content": "spectrum of information security protection protecting information transmission in a variety of mediums for the U.S. Government, local law enforcement agencies, banks, universitie",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.tscm.com",
+          "/stu.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "STU-III Secure Telephone Units, Crypto Key Generators, Encryption Equipment and Scramblers",
+        "url": "http://www.tscm.com/stu.html"
+      },
+      {
+        "category": "general",
+        "content": "privacy. Individuals’ security and privacy on the internet are fundamental and must not be treated as optional. In our Webby-winning podcast, IRL, Veronica Belmont gets real about",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/mozilla.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mozilla - Devil Incarnate",
+        "url": "http://digdeeper.love/articles/mozilla.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "LABORATORY March 1996 A Security Kernel Based on the Lambda Calculus Jonathan A. Rees This publication can be retrieved by anonymous ftp to publications.ai.mit.edu. Abstract Coope",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mumble.net",
+          "/~jar/pubs/secureos/secureos.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Emergent Technologies Inc. -- Security Kernel&lt;/TITLE",
+        "url": "http://mumble.net/~jar/pubs/secureos/secureos.html"
+      },
+      {
+        "category": "general",
+        "content": "Maximum Security: A Hacker&#39;s Guide to Protecting Your Internet Site and Network 8 Internet Warfare The Internet is an amazing resource. As you sit before your monitor, long after",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "single-honeypot.sourceforge.net",
+          "/libros/maxsecurity/ch08/ch08.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Maximum Security -- Ch 8 -- Internet Warfare",
+        "url": "https://single-honeypot.sourceforge.net/libros/maxsecurity/ch08/ch08.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0063",
+  "query_text": "what causes version control in digital security",
+  "requested_at": "2026-09-03T01:43:55.567707Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

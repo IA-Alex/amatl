@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 310.557,
+  "pair_id": "v5-p-0516",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind neural networks in geology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d7d643b1c98e1e9e157729a65564b364361d9fa18c0097afefeabc6163fe7177",
+  "provider": "SearXNG",
+  "query": "describe the principle behind neural networks in geology",
+  "query_id": "v5-p-0516-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:26.615533Z"
+}

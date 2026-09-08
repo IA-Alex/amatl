@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 277.667,
+  "pair_id": "v5-p-0360",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does soil erosion in transportation engineering operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "Supply depots Transportation routes Key Benefits for Clients Advantage Impact Equipment Savings Access to $50k&#43; worth of existing machinery Time Savings 6-12 month head start on o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.startyourowngoldmine.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Start Your Own Gold Mine in 45 days with less than US $100,000",
+        "url": "https://www.startyourowngoldmine.com/"
+      },
+      {
+        "category": "general",
+        "content": "problem is the Transportation Security Administration&#39;s relentless fixation with the in-flight takeover scheme last perpetrated on Sept 11 2001; that is, the fallacy that physical",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonTerrorism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about Terrorism",
+        "url": "https://www.billdietrich.me/ReasonTerrorism.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "a83541d81b7ed66f72b27c3a1a154571c845c8de99a089b0ccf7e09e090d2989",
+  "provider": "SearXNG",
+  "query": "how does soil erosion in transportation engineering operate",
+  "query_id": "v5-p-0360-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:16:33.897877Z"
+}

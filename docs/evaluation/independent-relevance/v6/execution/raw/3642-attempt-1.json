@@ -1,0 +1,108 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 3642,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 272.11,
+  "pair_id": "candidate-p-0202",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of arctic navigation within conservation",
+    "results": [
+      {
+        "category": "general",
+        "content": "From Parametricity to Conservation Laws, via Noether&#39;s Theorem (Robert Atkey, 2014) (03-Sep-17; 08-Jan-21) Theorems for free! (Philip Wadler, 1989) (15-Jun-19; 09-Dec-20) Incomple",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "web.cs.wpi.edu",
+          "/~jshutt/surfing.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Web Surfing",
+        "url": "http://web.cs.wpi.edu/~jshutt/surfing.html"
+      },
+      {
+        "category": "general",
+        "content": "Compounds, Marine Life Conservation Climate varies from temperate in south to subarctic and arctic in north Land use agricultural land: 6.8% (2018 est.) arable land: 4.7% (2018 es",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hellenicaworld.com",
+          "/Canada/en/Canada.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Canada",
+        "url": "https://www.hellenicaworld.com/Canada/en/Canada.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "757e7cc7784c6100d0f3a2a900358fb4163710513ece1467c01ea3046f5bf431",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of arctic navigation within conservation",
+  "query_id": "candidate-c-0202",
+  "raw_result_count": 2,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://web.cs.wpi.edu/~jshutt/surfing.html",
+      "original_url": "http://web.cs.wpi.edu/~jshutt/surfing.html",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "From Parametricity to Conservation Laws, via Noether&#39;s Theorem (Robert Atkey, 2014) (03-Sep-17; 08-Jan-21) Theorems for free! (Philip Wadler, 1989) (15-Jun-19; 09-Dec-20) Incomple",
+      "title": "Web Surfing"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.hellenicaworld.com/Canada/en/Canada.html",
+      "original_url": "https://www.hellenicaworld.com/Canada/en/Canada.html",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "Compounds, Marine Life Conservation Climate varies from temperate in south to subarctic and arctic in north Land use agricultural land: 6.8% (2018 est.) arable land: 4.7% (2018 es",
+      "title": "Canada"
+    }
+  ],
+  "timestamp": "2026-09-05T17:39:45.437413Z"
+}

@@ -1,0 +1,144 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2788,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 292.506,
+  "pair_id": "candidate-p-0898",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a research overview of ecosystem services within optical engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "tampering and reverse engineering. With the 7th generation, IBM presented a new range of PowerPC CPUs that embedded a hidden mask ROM within the silicon. This enabled the PlayStat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.copetti.org",
+          "/writings/consoles/wiiu/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Wii U Architecture | A Practical Analysis",
+        "url": "https://www.copetti.org/writings/consoles/wiiu/"
+      },
+      {
+        "category": "general",
+        "content": "optical systems engineering TouchUp Enhance the GNOME Shell User Experience on Touch Devices TrailBase Backend-as-a-Service for building networked applications TrenchBoot - DRTM l",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/project/current.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; Current projects",
+        "url": "https://nlnet.nl/project/current.html"
+      },
+      {
+        "category": "general",
+        "content": "a course in Security Engineering at Edinburgh to masters students and fourth-year undergrads, and the lecture videos are now all online (as are the lecture videos and notes for my",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cl.cam.ac.uk",
+          "/archive/rja14/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ross Anderson&#39;s Home Page",
+        "url": "https://www.cl.cam.ac.uk/archive/rja14/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "832aae3a42216c544a7c7c152fc3ecd3de880552d7f3d6ee0c52cfd231355301",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a research overview of ecosystem services within optical engineering",
+  "query_id": "candidate-c-0898",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://www.copetti.org/writings/consoles/wiiu/",
+      "original_url": "https://www.copetti.org/writings/consoles/wiiu/",
+      "rank": 1,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "tampering and reverse engineering. With the 7th generation, IBM presented a new range of PowerPC CPUs that embedded a hidden mask ROM within the silicon. This enabled the PlayStat",
+      "title": "Wii U Architecture | A Practical Analysis"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://nlnet.nl/project/current.html",
+      "original_url": "https://nlnet.nl/project/current.html",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "optical systems engineering TouchUp Enhance the GNOME Shell User Experience on Touch Devices TrailBase Backend-as-a-Service for building networked applications TrenchBoot - DRTM l",
+      "title": "NLnet; Current projects"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.cl.cam.ac.uk/archive/rja14/",
+      "original_url": "https://www.cl.cam.ac.uk/archive/rja14/",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "a course in Security Engineering at Edinburgh to masters students and fourth-year undergrads, and the lecture videos are now all online (as are the lecture videos and notes for my",
+      "title": "Ross Anderson&#39;s Home Page"
+    }
+  ],
+  "timestamp": "2026-09-05T17:35:12.236290Z"
+}

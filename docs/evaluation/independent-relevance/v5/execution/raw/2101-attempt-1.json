@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 312.241,
+  "pair_id": "v5-p-1082",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does satellite orbits in chemistry work",
+    "results": [
+      {
+        "category": "general",
+        "content": "(LEO). As the number of satellites continues to increase, so does the likelihood of collisions capable of generating large quantities of debris, potentially triggering a self-sust",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "vixra.org",
+          "/astro/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "viXra.org e-Print archive, Astrophysics",
+        "url": "https://vixra.org/astro/"
+      },
+      {
+        "category": "general",
+        "content": "found by NASA&#39;s Kepler satellite. They looked at 151 planetary systems - ones where Kepler had detected between three and six planets - and found that the Titius-Bode law fits wel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/bchtm/biocos.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Biocosmology",
+        "url": "http://www.dhushara.com/book/bchtm/biocos.htm"
+      },
+      {
+        "category": "general",
+        "content": "of communication satellites or ground stations. The primary conundrum that has eluded researchers is being able to forecast incoming space weather so we can better prepare for its",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.universetoday.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Universe Today - Space and Astronomy News",
+        "url": "https://www.universetoday.com/"
+      },
+      {
+        "category": "general",
+        "content": "we see now. When the satellite COBE was sent up to analyze the Cosmic Background Radiation, it discovered instead of the smooth featureless glow predicted by the cosmologists a hi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "whatreallyhappened.com",
+          "/WRHARTICLES/bang.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "&#34;THE &#34;BIG BANG&#34; IS JUST RELIGION DISGUISED AS SCIENCE&#34;)",
+        "url": "https://whatreallyhappened.com/WRHARTICLES/bang.php"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7bc83a9571f0dd0a3eff884eb2622307f9b0fe92acf9c015744bfbe15739d5bc",
+  "provider": "SearXNG",
+  "query": "how does satellite orbits in chemistry work",
+  "query_id": "v5-p-1082-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:27.779344Z"
+}

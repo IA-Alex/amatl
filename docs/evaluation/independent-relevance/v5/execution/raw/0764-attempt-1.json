@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 363.806,
+  "pair_id": "v5-p-0314",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of water purification in urban planning",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2b4ef4ae8e640cf69b84df674662989cddee19b5bb3d7271984f939a5890c0be",
+  "provider": "SearXNG",
+  "query": "tell me about the function of water purification in urban planning",
+  "query_id": "v5-p-0314-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:09:17.988750Z"
+}

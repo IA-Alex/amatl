@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 275.995,
+  "pair_id": "v5-p-0078",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does ocean tides in computer security work",
+    "results": [
+      {
+        "category": "general",
+        "content": "and all his services, computers, suppliers and customers. This mode of operation is already around and growing in the freer segments of Western economies.     Thus",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.anarchism.net",
+          "/newlibertarianmanifesto.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ANARCHISM.net: The New Libertarian Manifesto, by Samuel Edward Konkin III",
+        "url": "https://www.anarchism.net/newlibertarianmanifesto.htm"
+      },
+      {
+        "category": "general",
+        "content": "ships from an onshore computer. But detailed as this shipboard information is, it’s generally not available to anyone outside the ship operators. Things get even trickier if you w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "logicmag.io",
+          "/pivot/ghost-ships/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ghost Ships",
+        "url": "https://logicmag.io/pivot/ghost-ships/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2903f8b82e8c2d8ee41e306507a56586ae3cef015f341aaa1f0b497ec6c46066",
+  "provider": "SearXNG",
+  "query": "how does ocean tides in computer security work",
+  "query_id": "v5-p-0078-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:15:22.139344Z"
+}

@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 359.5893289966625,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind load bearing walls in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "and when the genuine principles, customs, &amp;c. of the Indians are known, it will be easier afterwards for persons of solid learning, and free from secular cares, to trace their ori",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "olivercowdery.com",
+          "/texts/1775Adr1.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "James Adair&#39;s 1775 &#34;History of the American Indians&#34;",
+        "url": "http://olivercowdery.com/texts/1775Adr1.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0128",
+  "query_text": "describe the principle behind load bearing walls in materials science",
+  "requested_at": "2026-09-03T01:44:33.310985Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

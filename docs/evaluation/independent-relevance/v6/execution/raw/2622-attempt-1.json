@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2622,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 276.772,
+  "pair_id": "candidate-p-1927",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of quantum sensing within clinical research",
+    "results": [
+      {
+        "category": "general",
+        "content": "agent entitled to full explanation and full decision-making authority with regard to his medical care. John Stuart Mill expressed it as: `Over himself, his own body and mind, the",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/techFeas.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Molecular Repair of the Brain",
+        "url": "http://www.ralphmerkle.com/cryo/techFeas.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "cf14470a25029463c0f23618923be925e6070897037d3abdc08efa21cb41fecf",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of quantum sensing within clinical research",
+  "query_id": "candidate-c-1927",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://www.ralphmerkle.com/cryo/techFeas.html",
+      "original_url": "http://www.ralphmerkle.com/cryo/techFeas.html",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "agent entitled to full explanation and full decision-making authority with regard to his medical care. John Stuart Mill expressed it as: `Over himself, his own body and mind, the",
+      "title": "The Molecular Repair of the Brain"
+    }
+  ],
+  "timestamp": "2026-09-05T17:34:23.290256Z"
+}

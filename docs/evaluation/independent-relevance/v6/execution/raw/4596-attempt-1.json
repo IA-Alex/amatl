@@ -1,0 +1,72 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 4596,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 284.751,
+  "pair_id": "candidate-p-0511",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a general explanation of bridge vibration within music technology",
+    "results": [
+      {
+        "category": "general",
+        "content": "without any obvious explanation other than the gesture that causes frequencies vibrating together without needing words, logic, or understanding. At least, that&#39;s how I feel t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "wiredplay.space",
+          "/read",
+          "",
+          "server=layer_1",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "WiredPlay Reader",
+        "url": "http://wiredplay.space/read?server=layer_1"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9942d87c3f1450b80f61151fd6aaa63b08dcb151715ddf981cff152925820f9a",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a general explanation of bridge vibration within music technology",
+  "query_id": "candidate-c-0511",
+  "raw_result_count": 1,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "http://wiredplay.space/read?server=layer_1",
+      "original_url": "http://wiredplay.space/read?server=layer_1",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "without any obvious explanation other than the gesture that causes frequencies vibrating together without needing words, logic, or understanding. At least, that&#39;s how I feel t",
+      "title": "WiredPlay Reader"
+    }
+  ],
+  "timestamp": "2026-09-05T17:44:44.599198Z"
+}

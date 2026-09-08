@@ -66,7 +66,7 @@ personas designadas en eventos en línea o no.
 
 Instancias de comportamiento abusivo, acosador o inaceptable de otro modo podrán
 reportarse en privado al propietario mediante
-[`alexishernande87@hotmail.com`](mailto:alexishernande87@hotmail.com?subject=AMATL%20Code%20of%20Conduct%20report),
+[`amatl_mexa@outlook.com`](mailto:amatl_mexa@outlook.com?subject=AMATL%20Code%20of%20Conduct%20report),
 con asunto `AMATL Code of Conduct report`. `@IA-Alex` evaluará e investigará las
 quejas de manera puntual y justa.
 

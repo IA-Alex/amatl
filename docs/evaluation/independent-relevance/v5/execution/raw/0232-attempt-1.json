@@ -1,0 +1,354 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 321.567,
+  "pair_id": "v5-p-0259",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of binary search in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "that allows memory management to be safe and implicit without a garbage collector . I consider garbage collection a last choice and an imperfect way of handling for resource manag",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.stroustrup.com",
+          "/bs_faq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stroustrup: FAQ",
+        "url": "https://www.stroustrup.com/bs_faq.html"
+      },
+      {
+        "category": "general",
+        "content": "timid, or inexperienced management to test the &#39;Open Source&#39; water. This in turn may lead them (eventually) into a full embrace of Free Software. It is also possible that assignme",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2009/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2009/"
+      },
+      {
+        "category": "general",
+        "content": "it appears some session management cockup makes all of Gnome extraordinarily unresponsive, bother. Managed to get SLED10-SP1 booting again, and back to work in a chroot. Lunch, ca",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/archive/activity-to-2007-10.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks did",
+        "url": "https://apple-tree.life/~michael/blog/archive/activity-to-2007-10.html"
+      },
+      {
+        "category": "general",
+        "content": "Conference On Management Of Data, 1994. [Kleinberg 98] Jon Kleinberg, Authoritative Sources in a Hyperlinked Environment , Proc. ACM-SIAM Symposium on Discrete Algorithms, 1998. [",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "infolab.stanford.edu",
+          "/~backrub/google.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Anatomy of a Search Engine",
+        "url": "http://infolab.stanford.edu/~backrub/google.html"
+      },
+      {
+        "category": "general",
+        "content": "gateway, enhancing file management for attachments, transforming mailing list threads into interactive, forum-style discussions with modern elements such as tags and mentions, and",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "nlnet.nl",
+          "/news/2023/20231123-announcing-projects.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NLnet; 55 New Projects Awarded NGI0 Grants",
+        "url": "https://nlnet.nl/news/2023/20231123-announcing-projects.html"
+      },
+      {
+        "category": "general",
+        "content": ": Network management (DNS, DHCP, VPN, more), printing (CUPS), network services (FTP, SSH, more). Fairly standard facilities : Authentication (PAM, certificates, more), access cont",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/Linux.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Linux",
+        "url": "https://www.billdietrich.me/Linux.html"
+      },
+      {
+        "category": "general",
+        "content": "intelligence, and data management, including Conceptual Graphs, logic-based knowledge representation, frames, and relational databases. Some possible sources of background informa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/TR/2003/WD-rdf-primer-20030123/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RDF Primer",
+        "url": "https://www.w3.org/TR/2003/WD-rdf-primer-20030123/"
+      },
+      {
+        "category": "general",
+        "content": "6.4.1 No Management     6.4.2 Extra Space at the End     6.4.3 Buffer Gap       6.4.3.1 Multiple Gaps and Why They Don&#39;t Work &amp;nbs",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.finseth.com",
+          "/craft/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Craft of Text Editing",
+        "url": "https://www.finseth.com/craft/"
+      },
+      {
+        "category": "general",
+        "content": "There&#39;s manual memory management ( malloc() ), and then there&#39;s manual memory management ( sbrk() ). Note 2 from 2025-09-04 Published on 2025-09-04 I&#39;ve made many false promises o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.alm.website",
+          "/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Athena&#39;s blog - Athena&#39;s Site",
+        "url": "https://www.alm.website/blog/"
+      },
+      {
+        "category": "general",
+        "content": "records and information management ARMA International publishes a set of guidelines ( ARMA and ANSI 2005 ). These guidelines advise a unit-by-unit approach for alphabetical filing",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.isko.org",
+          "/cyclo/alphabetization.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alphabetization (IEKO)",
+        "url": "https://www.isko.org/cyclo/alphabetization.htm"
+      },
+      {
+        "category": "general",
+        "content": "XDMS XML Data Management Server for Sun Solaris and Microsoft Windows [free trial]. Renmin University of China&#39;s OrientX , a native XML database system in C/C&#43;&#43; developed under Re",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/XML/Query/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "W3C XML Query (XQuery)",
+        "url": "https://www.w3.org/XML/Query/"
+      },
+      {
+        "category": "general",
+        "content": "blog entry), vs. legacy management of existing built Windows-based software (help existing msapps run on Linux). The FOSS dotnet &#34;clones&#34; market will develop automatically as one",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "techrights.org",
+          "/o/2008/11/25/jose-on-mono/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Jose Explains Why Not Mono",
+        "url": "http://techrights.org/o/2008/11/25/jose-on-mono/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "6f9bc4655eb47ea4eb4fa1be0091d7da6dafc3bb8757e2ef377a581d22044d12",
+  "provider": "SearXNG",
+  "query": "give an overview of binary search in data management",
+  "query_id": "v5-p-0259-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:06:22.228110Z"
+}

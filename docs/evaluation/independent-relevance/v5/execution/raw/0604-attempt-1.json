@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 229.257,
+  "pair_id": "v5-p-0771",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of coastal flooding in materials science",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "98221bc99cded08628dfb3b5ba565d031dd63f975d8b3232c861702765b4a99b",
+  "provider": "SearXNG",
+  "query": "give an overview of coastal flooding in materials science",
+  "query_id": "v5-p-0771-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:27.427743Z"
+}

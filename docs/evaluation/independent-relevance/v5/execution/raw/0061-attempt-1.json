@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 318.288,
+  "pair_id": "v5-p-0155",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes immune response in food science",
+    "results": [
+      {
+        "category": "general",
+        "content": "My Nose From The Immune Response And The McFoxy Seemed To Clear It. I Am Over The Adjustment Period Of It All And Feel Full On All Things {Besides The 1% Held Back For The Shot} F",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fountainofyouth.info",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fountain of Youth Biomod",
+        "url": "http://www.fountainofyouth.info/"
+      },
+      {
+        "category": "general",
+        "content": "Reactive Active Response And Quick Counter-Terrorism Dispatch Against FWA Enemies. Any Alien Producing A WebSite On Any Domain Name Is Not Supposed To Secure It With A User-Signed",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteList.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Official Foreign Government WebSite",
+        "url": "http://www.viacadempire.com/FWAsiteList.html"
+      },
+      {
+        "category": "general",
+        "content": "And Anatomy 3.1. Response To “Plants Are Trying To Kill You” 3.2. Debunking More Claims Made By Anthony Chaffee 3.3. Human Eyes 3.4. The Human Digestive System 3.5. Th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/misc/case-against-carnivore-diet",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Case Against The Carnivore Diet",
+        "url": "https://zerocontradictions.net/misc/case-against-carnivore-diet"
+      },
+      {
+        "category": "general",
+        "content": "&#34;adults&#34; in the response to that question, what about the children? A: &#34;First, do no harm.&#34; 5 I am completely opposed to minors receiving the experimental mRNA or viral-vector vac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "praxibetel.org",
+          "/covid/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Zach&#39;s SARS-CoV-2 Viewpoint",
+        "url": "http://praxibetel.org/covid/"
+      },
+      {
+        "category": "general",
+        "content": "Homicide&#39; by Government Response Audio  -  &#34; All this Chaos is Staged and just an Illusion to put us in Panic Mode&#34; - Dr. Reiner Fuellmich    -",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.bibliotecapleyades.net",
+          "/ciencia3/ciencia_coronavirus.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Coronavirus and the &#39;Fear Factor&#39;... - El Coronavirus y el &#39;Factor Miedo&#39;...",
+        "url": "https://www.bibliotecapleyades.net/ciencia3/ciencia_coronavirus.htm"
+      },
+      {
+        "category": "general",
+        "content": "an abnormal immune response resulting in joint inflammation but the combination of multiple problem foods may be a key component to this link. Books To open a book in a new tab (e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "paleodiet.com",
+          "/ra/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rheumatoid Arthritis and the Diet Alternative: Links &amp; Books",
+        "url": "https://paleodiet.com/ra/"
+      },
+      {
+        "category": "general",
+        "content": "Abnormal immune response. Constant sore throat. Swollen lymph nodes. Autonomic dysfunction, including difficulty regulating heart rate, blood pressure and blood volume, and orthos",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.mind-body-health.net",
+          "/cfs.shtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Mind-Body-Health.net Information on Chronic Fatigue Syndrome (ME/CFS)",
+        "url": "http://www.mind-body-health.net/cfs.shtml"
+      },
+      {
+        "category": "general",
+        "content": "on discrimination with responses from over 400,000 young people . Oh, they want to register their births (making them slaves of the state), shove them into education AKA the tortu",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "digdeeper.love",
+          "/articles/oppression.xhtml",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Will the real oppressed group please stand up?",
+        "url": "http://digdeeper.love/articles/oppression.xhtml"
+      },
+      {
+        "category": "general",
+        "content": "the Covid-19 response, we hope to validate and amplify the call to establish the relevant facts and ensure vital lessons are learned. Click here to see the evidence . The David De",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "stoptheshots.ca",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "STOP the SHOTS",
+        "url": "https://stoptheshots.ca/"
+      },
+      {
+        "category": "general",
+        "content": "survival. Physiological Response: Both scenarios trigger a &#34;fight or flight&#34; response, which is a physiological reaction to perceived danger. This involves an increase in heart ra",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.animal-rights.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Veganism as conceived by ChatGPT",
+        "url": "https://www.animal-rights.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "of his hypocrisy.) His response was, “Just because we used to do something doesn’t make it right.” I almost fell out of my chair laughing at that nonsense. Krist",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.amnation.com",
+          "/vfr/archives/009364.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The transparent intellectual fraud that is Darwinism",
+        "url": "http://www.amnation.com/vfr/archives/009364.html"
+      },
+      {
+        "category": "general",
+        "content": "provoke immune response, activate oncogens, cause atherogenesis and enhance ageing process. However, in healthy conditions nature has endowed human body with enormous antioxidant",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "soopergrape.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SooperGrape",
+        "url": "http://soopergrape.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "2398379e41bbaa9e90399e4d3e4eeee58a5f375d2ff1865fb5300d9fe0a08a47",
+  "provider": "SearXNG",
+  "query": "what causes immune response in food science",
+  "query_id": "v5-p-0155-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:27.397735Z"
+}

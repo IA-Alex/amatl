@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 256.964,
+  "pair_id": "v5-p-0423",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of carbon capture in agricultural science",
+    "results": [
+      {
+        "category": "general",
+        "content": "erosion, harm agricultural crops, and weaken levees and other infrastructure. In heavily affected marshes, nutria can contribute to the conversion of vegetated wetlands into open",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "naisma.org",
+          "/feed/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "NAISMA",
+        "url": "https://naisma.org/feed/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "3607a680850072fd62afd6d5b1c886ce29e26f47020140e0c9dd012afae74e60",
+  "provider": "SearXNG",
+  "query": "give an overview of carbon capture in agricultural science",
+  "query_id": "v5-p-0423-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:10:21.085070Z"
+}

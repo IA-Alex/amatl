@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 317.218,
+  "pair_id": "v5-p-0300",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind water purification in geology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "cddb0f322853f71f9e8549932c955fadd343b26c78651d19cd282a37524cd1aa",
+  "provider": "SearXNG",
+  "query": "describe the principle behind water purification in geology",
+  "query_id": "v5-p-0300-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:52.141171Z"
+}

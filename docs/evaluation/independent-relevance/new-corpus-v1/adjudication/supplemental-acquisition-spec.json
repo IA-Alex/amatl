@@ -1,0 +1,17 @@
+{
+  "schema": "amatl.relevance.supplemental-acquisition-spec.v1",
+  "status": "PRELIMINARY_PENDING_ADJUDICATION",
+  "basis": "Relevant quota is impossible even if every Relevant disagreement is adjudicated Relevant.",
+  "TARGET_CLASS": "Relevant",
+  "MAXIMUM_CURRENT_FINAL_LABELS": 9,
+  "CLASS_DEFICIT": 91,
+  "MINIMUM_NEW_FINAL_LABELS_REQUIRED": 91,
+  "observed_first_campaign_yield": {
+    "relevant_labels": 7,
+    "total_rows": 368
+  },
+  "RAW_ACQUISITION_TARGET_BEFORE_MARGIN": 4784,
+  "acquisition_margin": 0.25,
+  "RAW_ACQUISITION_TARGET": 5980,
+  "authorization": "NOT_AUTHORIZED_BY_THIS_WORK_PACKAGE"
+}

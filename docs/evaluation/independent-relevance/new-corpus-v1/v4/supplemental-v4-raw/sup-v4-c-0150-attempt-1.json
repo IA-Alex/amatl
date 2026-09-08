@@ -1,0 +1,324 @@
+{
+  "attempt_number": 1,
+  "designation": "control",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 459.65976799925556,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of cloud formation in earth science",
+    "results": [
+      {
+        "category": "general",
+        "content": "the impetus for the formation and function of the State ; that idolatry is the worship of (1) the State , or the worship of (2) sex, which may be tied to the State (through sancti",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "VFTonline.org",
+          "/xmaspiracy/5/Romans13/stars.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stars and Idolatry",
+        "url": "http://VFTonline.org/xmaspiracy/5/Romans13/stars.htm"
+      },
+      {
+        "category": "general",
+        "content": "to “ego-formation” (Edinger, 1985, p.218). His notion of “incarnation” implies that the individual, like an actor, should go through the different stages (",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "mats-winther.github.io",
+          "/hillmcrit.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Critique of Archetypal Psychology",
+        "url": "https://mats-winther.github.io/hillmcrit.htm"
+      },
+      {
+        "category": "general",
+        "content": "under the Lorenz transformations of special relativity, or equivalently (right) in terms of imaginary time in ordinary Euclidean 4-D space. These two are generalized in higher spa",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/quant.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quantum Reality and Cosmology",
+        "url": "http://www.dhushara.com/paradoxhtm/quant.htm"
+      },
+      {
+        "category": "general",
+        "content": "&#34;divine transformation,&#34; a &#34;state of Samadhi&#34; and many other names in other cultures. It is not connected to the &#43;1, &#43;2 and &#43;3 of the measuring of a drug&#39;s intensity. It is a stat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.hedweb.com",
+          "/ecstasy/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Utopian Pharmacology. MDMA / Ecstasy and beyond",
+        "url": "https://www.hedweb.com/ecstasy/"
+      },
+      {
+        "category": "general",
+        "content": "are shifting, and transformation is at hand as new frequencies stimulate an expansion of consciousness. If advances in quantum physics are indicators, the new paradigm is the real",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "colinandrews.net",
+          "/Consciousness.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Study of Human Consciousness - Is ET already part of our lives?",
+        "url": "https://colinandrews.net/Consciousness.html"
+      },
+      {
+        "category": "general",
+        "content": "large amounts of information which are made by several witnesses, if possible, who as far as I can ascertain, have unimpeachable reputations and are competent. For example, I migh",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.project1947.com",
+          "/shg/symposium/hynek.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SHG - UFO Symposium 1968: Hynek Statement",
+        "url": "http://www.project1947.com/shg/symposium/hynek.html"
+      },
+      {
+        "category": "general",
+        "content": "serves as a body of information, as stylistic pattern, as inspiration, as ethical precepts, and finally as art. It furnishes the ever ready allusions to embellish the oration as w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book473/book473.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Unwritten Literature of the Hopi, by Hattie Greene Lockett.",
+        "url": "https://www.ajhw.co.uk/books/book473/book473.html"
+      },
+      {
+        "category": "general",
+        "content": "wise yes the pure information can overlap a lot. People do it unknowingly all the time. A logo is basically a sigil even if some normie advertising major makes it just to look coo",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/a-frogs-collection-of-quotes",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Frog&#39;s Collection of Quotes — Chadnet",
+        "url": "https://wiki.chadnet.org/a-frogs-collection-of-quotes"
+      },
+      {
+        "category": "general",
+        "content": "and solid. In the formation or modification of principles, and the practice of conduct, much help can be derived from printed books (issued at sixpence each and upwards). I mentio",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.fullbooks.com",
+          "/How-to-Live-on-24-Hours-a-Day.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "How to Live on 24 Hours a Day by Arnold Bennett - Full Text Free Book",
+        "url": "http://www.fullbooks.com/How-to-Live-on-24-Hours-a-Day.html"
+      },
+      {
+        "category": "general",
+        "content": "A peculiarity in his formation is that the hind legs bend in the same manner as the fore legs, so that, unlike other quadrupeds, it can kneel and rest on its four knees, whereas i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book337/book337.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fictitious and Symbolic Creatures in Art, by John Vinycom",
+        "url": "https://www.ajhw.co.uk/books/book337/book337.html"
+      },
+      {
+        "category": "general",
+        "content": "on a time scale of transformation vastly faster than evolutionary change. Cultures and civilizations rise and fall even more rapidly due to conflict between populations as new res",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/repcult/reproduction-and-culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Religion, Politics, Sexual Reproduction and the Future of Human Society",
+        "url": "http://www.dhushara.com/repcult/reproduction-and-culture.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-c-0150",
+  "query_text": "tell me about the function of cloud formation in earth science",
+  "requested_at": "2026-09-03T01:44:54.635575Z",
+  "strategy_class": "INFORMATIONAL_REPHRASE_CONTROL"
+}

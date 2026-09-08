@@ -1,0 +1,246 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 317.495,
+  "pair_id": "v5-p-0071",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes compiler operation in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "commands that perform operations on the spacecraft. Uplinked to the spacecraft by mission control, they are not CPU instructions. In a spacecraft without computers, the commands a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.geonius.com",
+          "/writing/other/voyager.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Voyager Spacecraft and Fortran 5",
+        "url": "http://www.geonius.com/writing/other/voyager.html"
+      },
+      {
+        "category": "general",
+        "content": "Princes, On the Occult Operations of Nature, On the Unity of the Intellect, etc.; a four-volume Summa de veritate catholicae fidei contra Gentiles (1258-60), a twenty-one-volume S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.andrsib.com",
+          "/durant/advr.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Will Durant: The Age Of Faith. CHAPTER XXXVI. The Adventure of Reason",
+        "url": "http://www.andrsib.com/durant/advr.htm"
+      },
+      {
+        "category": "general",
+        "content": "input-output limited operations. In addition, the supervisor must coordinate all usage of the central, shared high-speed input-output units serving all users as well as the clocks",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "larch-www.lcs.mit.edu:8001",
+          "/~corbato/sjcc62/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "An Experimental Time-Sharing System",
+        "url": "http://larch-www.lcs.mit.edu:8001/~corbato/sjcc62/"
+      },
+      {
+        "category": "general",
+        "content": "be achieved with ~2 64 operations, which is tractable. However the ability of a would-be adversary to do this does not affect the security of anyone else&#39;s name, provided it was c",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.cambridgeclarion.org",
+          "/89.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Authenticating a public key from just a name - a feasibility study with GPL code",
+        "url": "http://www.cambridgeclarion.org/89.html"
+      },
+      {
+        "category": "general",
+        "content": "which allow memory operations to be combined with calculations, as it is likely to make our programs longer. However RISC systems are designed to gain efficiency from this simplif",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.chibiakumas.com",
+          "/z80/basics.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Getting started with Retro Assembly... Basic concepts",
+        "url": "https://www.chibiakumas.com/z80/basics.php"
+      },
+      {
+        "category": "general",
+        "content": "doing a truck-load of operations drawing clip-masks of different shapes into a non-existent, non-attached stencil-buffer might trigger some (any) sort of helpful warning (we check",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "apple-tree.life",
+          "/~michael/blog/2015/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Stuff Michael Meeks is doing",
+        "url": "https://apple-tree.life/~michael/blog/2015/"
+      },
+      {
+        "category": "general",
+        "content": "one in which dangerous operations (such as sending mail) are prohibited. In the second approach, the second agent rejects the program unless it bears a recognized certificate of s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "mumble.net",
+          "/~jar/pubs/secureos/secureos.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Emergent Technologies Inc. -- Security Kernel&lt;/TITLE",
+        "url": "http://mumble.net/~jar/pubs/secureos/secureos.html"
+      },
+      {
+        "category": "general",
+        "content": "responsible for disk operations, and the other one mainly responsible for keyboard and mouse I/O. A side job of the latter is to support sound. This is done by first pre-programmi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "forgottencomputer.com",
+          "/retro/sound/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Understanding Computer Sound",
+        "url": "https://forgottencomputer.com/retro/sound/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "983ba90ae7ec55208ef3fdba3ba63f43ed79d638b59dffbf71e7b34fc17ff914",
+  "provider": "SearXNG",
+  "query": "what causes compiler operation in operations research",
+  "query_id": "v5-p-0071-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:56.421206Z"
+}

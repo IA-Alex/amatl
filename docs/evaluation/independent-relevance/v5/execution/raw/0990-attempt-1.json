@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 342.239,
+  "pair_id": "v5-p-0454",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of supply chain logistics in physics",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "30df9b47cb3dcf12f529e1cd522be757f29e2909f6c58b212ec4473d98698ae8",
+  "provider": "SearXNG",
+  "query": "tell me about the function of supply chain logistics in physics",
+  "query_id": "v5-p-0454-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:10:28.789641Z"
+}

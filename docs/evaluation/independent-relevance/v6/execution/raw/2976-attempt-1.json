@@ -1,0 +1,34 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "execution_sequence": 2976,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 242.189,
+  "pair_id": "candidate-p-2257",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "a practical briefing on wildlife telemetry within agricultural engineering",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "aeab7bf4cc52077997da0ddcb79ec69867dda8e159bc1a77e41eea1d3941f2c3",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "a practical briefing on wildlife telemetry within agricultural engineering",
+  "query_id": "candidate-c-2257",
+  "raw_result_count": 0,
+  "results": [],
+  "timestamp": "2026-09-05T17:36:10.085846Z"
+}

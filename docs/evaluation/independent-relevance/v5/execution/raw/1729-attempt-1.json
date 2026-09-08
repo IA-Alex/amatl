@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 342.758,
+  "pair_id": "v5-p-0654",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does traffic flow in computer security work",
+    "results": [
+      {
+        "category": "general",
+        "content": "hospital hospitals computer computers property properties financial single bill bills director directors scheme schemes thank thanks application applications chance chances privat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.conlang.info",
+          "/wordfreq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Theiling Online: Word Frequency List for English",
+        "url": "http://www.conlang.info/wordfreq.html"
+      },
+      {
+        "category": "general",
+        "content": "can easily be parsed by computer programs which wish to process their content. You can cite a chapter within a book of the Bible with a URL like: http://www.fourmilab.ch/etexts/ww",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.fourmilab.ch",
+          "/fourmilog/archives/Monthly/2018/2018-07.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Fourmilog: None Dare Call It Reason: July 2018 Archives",
+        "url": "https://www.fourmilab.ch/fourmilog/archives/Monthly/2018/2018-07.html"
+      },
+      {
+        "category": "general",
+        "content": "AFB, night, int, computer room. A phone buzzes. Petty officer: General Ripper, sir. Mandrake: to phone on his desk Group Captain Mandrake speaking... Ripper sits at his desk, ciga",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.huppi.com",
+          "/t/strangelove_script.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Kubrick Site: The Strangelove Continuity Script",
+        "url": "http://www.huppi.com/t/strangelove_script.html"
+      },
+      {
+        "category": "general",
+        "content": "efforts to protect computer users&#39; civil liberties; among other things, the group organized the Finnish Big Brother Awards to spotlight some of the country&#39;s greatest threats to i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gilc.org",
+          "/index.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Global Internet Liberty Campaign Home Page",
+        "url": "https://gilc.org/index.html"
+      },
+      {
+        "category": "general",
+        "content": "ships from an onshore computer. But detailed as this shipboard information is, it’s generally not available to anyone outside the ship operators. Things get even trickier if you w",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "logicmag.io",
+          "/pivot/ghost-ships/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Ghost Ships",
+        "url": "https://logicmag.io/pivot/ghost-ships/"
+      },
+      {
+        "category": "general",
+        "content": "but it can protect your computers and devices on the inside of the network, and it can help you monitor and control the traffic that comes and goes to and from your local network.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "unixdigest.com",
+          "/openbsd-router-guide/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "OpenBSD Router Guide",
+        "url": "https://unixdigest.com/openbsd-router-guide/"
+      },
+      {
+        "category": "general",
+        "content": "mathematicians and computerscientists concerning cryptography and to fulfill his interest in thedissemination of information about cryptography, Appellant Karn, asoftware engineer",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "archive.epic.org",
+          "/crypto/export_controls/amicus_brief.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cryptography Amicus Brief 10/96",
+        "url": "https://archive.epic.org/crypto/export_controls/amicus_brief.html"
+      },
+      {
+        "category": "general",
+        "content": "? Copyright 1998 by The Computer Museum History Center and is for private individual use only. It may not be published, in any form, in whole or in part, without prior written per",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ed-thelen.org",
+          "/Sage-Talk.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "https://ed-thelen.org/Sage-Talk.html",
+        "url": "https://ed-thelen.org/Sage-Talk.html"
+      },
+      {
+        "category": "general",
+        "content": "II: RADAR, jet engines, computers, atomic energy, etc. By the same logic, maybe we should have another world war to get some more spinoffs ? In fact, military weapon development i",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/ReasonMannedSpaceProgram.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Reasoning about the Manned Space Program",
+        "url": "https://www.billdietrich.me/ReasonMannedSpaceProgram.html"
+      },
+      {
+        "category": "general",
+        "content": "words in our emails and computer assistants will plan out our lives for us. Our descendants, if we continue to breed, will not find the concept of free will to be comprehensible.",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-gig-economy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Gig Economy — Chadnet",
+        "url": "https://wiki.chadnet.org/the-gig-economy"
+      },
+      {
+        "category": "general",
+        "content": "at FOLDOC . server A computer or a computer program that responds to requests from — or serves — other computers or computer programs. Whether the word “server”",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ii.com",
+          "/internet/robots/procmail/qs/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ii.com · Procmail Quick Start: An introduction to email filtering with a focus on procmail by Nancy McGough",
+        "url": "http://www.ii.com/internet/robots/procmail/qs/"
+      },
+      {
+        "category": "general",
+        "content": "Engineering of the Computer Society of India (CSI). Rules Number of ACM SIGSOFT Distinguished Papers In cases where the number of accepted papers is less than or equal to ten, one",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.sigsoft.org",
+          "/awards/distinguishedPaperAward.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGSOFT - ACM Special Interest Group on Software Engineering",
+        "url": "http://www.sigsoft.org/awards/distinguishedPaperAward.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ab2f0e1fba9037c80e78dc8a94e0a7968bf99f885abf2c110d60883de276bcd3",
+  "provider": "SearXNG",
+  "query": "how does traffic flow in computer security work",
+  "query_id": "v5-p-0654-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:14:23.809307Z"
+}

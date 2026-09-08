@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 349.439,
+  "pair_id": "v5-p-0034",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of photosynthesis in marine biology",
+    "results": [
+      {
+        "category": "general",
+        "content": "Only the invention of photosynthesis -- using the energy of the sun to split down matter in order to get electrons -- allowed life to go on. Life is driven by the force of electro",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/a/lanka4.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "INTERVIEW STEFAN LANKA",
+        "url": "http://www.whale.to/a/lanka4.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "da2140813587497f660ecb4a525c7a06d3cc794326fa858da8862ead0eb234e3",
+  "provider": "SearXNG",
+  "query": "tell me about the function of photosynthesis in marine biology",
+  "query_id": "v5-p-0034-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:10:35.131592Z"
+}

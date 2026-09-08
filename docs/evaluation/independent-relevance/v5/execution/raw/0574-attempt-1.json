@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 375.565,
+  "pair_id": "v5-p-0242",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of plate tectonics in urban planning",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "7d34835f9d8b99104e692928108d5058943a243c9f311c1820cb197dbc98a1c7",
+  "provider": "SearXNG",
+  "query": "tell me about the function of plate tectonics in urban planning",
+  "query_id": "v5-p-0242-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:08:10.726301Z"
+}

@@ -1,0 +1,111 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 282.228,
+  "pair_id": "v5-p-0968",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does cloud formation in industrial design operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "into the air by the new industrial processes developed to make wool. It is often called wool sorters’ disease. As soon as an anthrax spore enters the body it germinates and begins",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.isegoria.net",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Isegoria",
+        "url": "http://www.isegoria.net/"
+      },
+      {
+        "category": "general",
+        "content": "as should allow all the industrial pursuits of commerce and of agriculture, throughout the mass of the community, to go regularly on. Thus absolute monarchs, however ambitious, an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book71/book71e/book71e.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Xerxes, Makers Of History, by Jacob Abbott.",
+        "url": "https://www.ajhw.co.uk/books/book71/book71e/book71e.html"
+      },
+      {
+        "category": "general",
+        "content": "destruction, and techno-industrial retardation is especially easy to conceal, and thus reliably popular. Democracy is essentially tragic because it provides the populace with a we",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/a-frogs-collection-of-quotes",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Frog&#39;s Collection of Quotes — Chadnet",
+        "url": "https://wiki.chadnet.org/a-frogs-collection-of-quotes"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "209436c06ff140f5a1de4596348bac0c5ddb6564280ada59acb99b61e200a21f",
+  "provider": "SearXNG",
+  "query": "how does cloud formation in industrial design operate",
+  "query_id": "v5-p-0968-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:09.302959Z"
+}

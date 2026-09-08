@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 261.079,
+  "pair_id": "v5-p-0639",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes renewable energy storage in agricultural science",
+    "results": [
+      {
+        "category": "general",
+        "content": "(1854-1925) on Agricultural Services, Economic Conditions of the Roman Empire in the 4th Century, The Foundations of Society (Origins of Feudalism), Feudalism and Villainage in En",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/goodlink.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Excellent links, informative links to cool and crazy people",
+        "url": "http://www.bilderberg.org/goodlink.htm"
+      },
+      {
+        "category": "general",
+        "content": "of voters in some agricultural states would favor candidates that will offer support for agricultural practices that protect the environment and the soil . 24 December 2019 ( Crac",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-sep-dec.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "de2cfbf7b6e7e0fb880278c6194f4929ee8e7145bc788e6a104cc20e1181f392",
+  "provider": "SearXNG",
+  "query": "what causes renewable energy storage in agricultural science",
+  "query_id": "v5-p-0639-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:09:57.616948Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 307.351,
+  "pair_id": "v5-p-0032",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind photosynthesis in hydrology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "eb5c17d6e12e9d228325cec3e92c2d1d8e06fbbe05930810b22876790e075340",
+  "provider": "SearXNG",
+  "query": "describe the principle behind photosynthesis in hydrology",
+  "query_id": "v5-p-0032-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:06.059133Z"
+}

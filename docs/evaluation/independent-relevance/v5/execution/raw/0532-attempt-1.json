@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 251.42,
+  "pair_id": "v5-p-0779",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of coastal flooding in public health",
+    "results": [
+      {
+        "category": "general",
+        "content": "class is a general overview of sail repairs and simple covers. We have a discussion and slide show in the morning and in the afternoon we do hands on work with people using our se",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/GettingStarted.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Getting Started",
+        "url": "https://www.billdietrich.me/GettingStarted.html"
+      },
+      {
+        "category": "general",
+        "content": ", Linux Commands - Overview and Examples , Bash Scripting for Ubuntu Beginners , The Art of Command Line , 100 ways to master the command line , Mastering the Linux Shell , Evolut",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.millermicro.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Miller Microcomputer Services - Index Page",
+        "url": "http://www.millermicro.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "edcc360eec7c9b2ccfcfbb2be6268970e325738a9e9304f7758cf488c4eeca52",
+  "provider": "SearXNG",
+  "query": "give an overview of coastal flooding in public health",
+  "query_id": "v5-p-0779-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:07:56.456665Z"
+}

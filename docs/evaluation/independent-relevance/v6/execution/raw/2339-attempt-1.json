@@ -1,0 +1,387 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2339,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 395.824,
+  "pair_id": "candidate-p-1611",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what evidence explains low power computing within information science",
+    "results": [
+      {
+        "category": "general",
+        "content": "the IPCC presented the information in a way that made it difficult to understand and buried the graph in the supplementary material for chapter 10, where it would receive little a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "davidpratt.info",
+          "/climcat.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Climate models and climate catastrophe: a reality check",
+        "url": "https://davidpratt.info/climcat.htm"
+      },
+      {
+        "category": "general",
+        "content": "Generalized Algorithmic Information COURSES Machine Learning 1 Machine Learning 2 Our Pybrain Machine Learning Library features source code of many new learning algorithms that ca",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "people.idsia.ch",
+          "/~juergen/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Juergen Schmidhuber&#39;s home page -Universal Artificial Intelligence - AI - Deep Learning - Recurrent Neural Networks -Computer Vision - Object",
+        "url": "https://people.idsia.ch/~juergen/"
+      },
+      {
+        "category": "general",
+        "content": "3D image from wavefront information on a 2D photographic plate (Cowen 2015 ). The holographic principle can be used to generate dualities between higher dimensional string theorie",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/paradoxhtm/quant.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Quantum Reality and Cosmology",
+        "url": "http://www.dhushara.com/paradoxhtm/quant.htm"
+      },
+      {
+        "category": "general",
+        "content": "need is the necessary information and the right way to process it in order to come to a conclusion that agrees with reality. Example: Most people thought that AI could never creat",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/chinese_room",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Computation isn&#39;t Consciousness: The Chinese Room Experiment",
+        "url": "https://lukesmith.neocities.org/vids/chinese_room"
+      },
+      {
+        "category": "general",
+        "content": "to show both the link information and the dereferenced file. Since there&#39;s no ls flag to do it, I&#39;ll have to do it by looping over the arguments of my shell function. In a shell t",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "shallowsky.com",
+          "/blog/tags/shell/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Shallow Thoughts : tags : shell",
+        "url": "https://shallowsky.com/blog/tags/shell/"
+      },
+      {
+        "category": "general",
+        "content": "by up to 78%. Liquid information flow control Authors: Nadia Polikarpova (University of California, San Diego), Deian Stefan (UC San Diego), Jean Yang (Carnegie Mellon University)",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.sigplan.org",
+          "/Highlights/Papers/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "SIGPLAN Research Highlights Papers",
+        "url": "https://www.sigplan.org/Highlights/Papers/"
+      },
+      {
+        "category": "general",
+        "content": "to guide us when the information we have is ambiguous or incomplete. Using a visually diverse sampling of graphical display, from heartrending autobiographical displays of genocid",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "statlit.org",
+          "/Wainer.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Howard Wainer",
+        "url": "http://statlit.org/Wainer.htm"
+      },
+      {
+        "category": "general",
+        "content": "platform for more information about OSAID.) I have worked and/or volunteered for nonprofits like OSI for years. I know it&#39;s difficult to get important work done — funding is",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ebb.org",
+          "/bkuhn/blog/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Blog - Bradley Kühn ( bkuhn )",
+        "url": "https://ebb.org/bkuhn/blog/"
+      },
+      {
+        "category": "general",
+        "content": "amount of access to information. &#43;1 @badabing3391 - 2025-06-04 10:59:32 right, the issue is that they do, and there wont be any consequences for the next few months/years &#43;1 @mich",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "lukesmith.neocities.org",
+          "/vids/nothingburger",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "AI is a Nothingburger. You&#39;re wrong.",
+        "url": "https://lukesmith.neocities.org/vids/nothingburger"
+      },
+      {
+        "category": "general",
+        "content": "this Archive Editorial Information • About the SEP • Special Characters © Metaphysics Research Lab , CSLI , Stanford University This is a file in the archives of th",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.stanford.edu",
+          "/archIves/win2013/entries/information-semantic/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Semantic Conceptions of Information (Stanford Encyclopedia of Philosophy/Winter 2013 Edition)",
+        "url": "https://plato.stanford.edu/archIves/win2013/entries/information-semantic/"
+      },
+      {
+        "category": "general",
+        "content": "grid.   Additional Information (keep an open mind)   An updated version of this fact sheet will be issued as often as program changes warrant to keep interested parties",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "sought last year (The Information) [17h] Humain launches humain-m3, an Arabic-language model developed with MiniMax, amid controversy among US allies over sovereign AI built with",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "brutalist.report",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Brutalist Report",
+        "url": "https://brutalist.report/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "8cb8460bc0733d898f00cd91151a4264365e5d5c84acd89af7721894b09704e7",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "what evidence explains low power computing within information science",
+  "query_id": "candidate-t-1611",
+  "raw_result_count": 12,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://davidpratt.info/climcat.htm",
+      "original_url": "https://davidpratt.info/climcat.htm",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "the IPCC presented the information in a way that made it difficult to understand and buried the graph in the supplementary material for chapter 10, where it would receive little a",
+      "title": "Climate models and climate catastrophe: a reality check"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://people.idsia.ch/~juergen/",
+      "original_url": "https://people.idsia.ch/~juergen/",
+      "rank": 2,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "Generalized Algorithmic Information COURSES Machine Learning 1 Machine Learning 2 Our Pybrain Machine Learning Library features source code of many new learning algorithms that ca",
+      "title": "Juergen Schmidhuber&#39;s home page -Universal Artificial Intelligence - AI - Deep Learning - Recurrent Neural Networks -Computer Vision - Object"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://www.dhushara.com/paradoxhtm/quant.htm",
+      "original_url": "http://www.dhushara.com/paradoxhtm/quant.htm",
+      "rank": 3,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "3D image from wavefront information on a 2D photographic plate (Cowen 2015 ). The holographic principle can be used to generate dualities between higher dimensional string theorie",
+      "title": "Quantum Reality and Cosmology"
+    }
+  ],
+  "timestamp": "2026-09-05T17:32:50.725448Z"
+}

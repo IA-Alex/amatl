@@ -1,0 +1,138 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 349.856,
+  "pair_id": "v5-p-0724",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind root systems in civil engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "by which macro-social engineering might fix things don&#39;t exist.  Education on the needed scale will not get better. Nor farming, or medicine.  Those fresh impulses, in s",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "ipwebdev.com",
+          "/hermit/Culmination.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "the Culmination",
+        "url": "http://ipwebdev.com/hermit/Culmination.html"
+      },
+      {
+        "category": "general",
+        "content": "railroads and engineering, architecture, music, and movies, and the aesthetic appreciation of the marvels of the built environment. Dr. Cora Angier Sowa Athena - the Roman Minerva",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "minervaclassics.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Minerva Systems",
+        "url": "http://minervaclassics.com/"
+      },
+      {
+        "category": "general",
+        "content": "never set foot in an engineering workspace. Never seen a P&amp;ID let alone read one. Never coded. Can’t read a schematic. Confuses mass and weight. Confuses voltage, curren",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "zerocontradictions.net",
+          "/epistemology/difficult-to-change-minds",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Why It&#39;s So Difficult To Change People&#39;s Minds",
+        "url": "https://zerocontradictions.net/epistemology/difficult-to-change-minds"
+      },
+      {
+        "category": "general",
+        "content": "A Foundation for Engineering Artificial Consciousness Front. Robot. AI 4:60.        doi: 10.3389/frobt.2017.00060. Griffiths R et al. (2006)  Psilocybin can occasion mystical",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/cossym/SEC/SEC0.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Symbiotic Existential Cosmology Introduction",
+        "url": "http://www.dhushara.com/cossym/SEC/SEC0.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "285cbdea5aaa9f8a572325b1b2c7e2f0f8915f08a1d80aade5de2249079bf706",
+  "provider": "SearXNG",
+  "query": "describe the principle behind root systems in civil engineering",
+  "query_id": "v5-p-0724-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:09:38.223437Z"
+}

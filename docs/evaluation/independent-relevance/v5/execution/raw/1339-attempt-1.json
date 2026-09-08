@@ -1,0 +1,138 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 290.898,
+  "pair_id": "v5-p-0430",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does carbon capture in marine biology work",
+    "results": [
+      {
+        "category": "general",
+        "content": "we can scan and video capture images for you. We are also looking for amateur or professional researchers who want to join the staff here at The Shadowlands, send us an email for",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "theshadowlands.net",
+          "/serpent.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Shadowlands Sea Serpent page",
+        "url": "http://theshadowlands.net/serpent.htm"
+      },
+      {
+        "category": "general",
+        "content": "USG Rank. For Any Ns Capture Always If There Is Even A Hint Of Disloyalty OR A Single Lacking In Magical Ranking OR Any Subsequent Failures In Real Ranking. Only Higher Ranking Of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "to end the fighting to capture that city. 700 more supporters of PISSI have now escaped from prison as a consequence of Turkey&#39;s attack, as the Kurds had to move their forces to o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-jul-oct.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: July - October Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-jul-oct.html"
+      },
+      {
+        "category": "general",
+        "content": "USG Rank. For Any Ns Capture Always If There Is Even A Hint Of Disloyalty OR A Single Lacking In Magical Ranking OR Any Subsequent Failures In Real Ranking. Only Higher Ranking Of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.greenmagi.com",
+          "/GreenMagi.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Rank System",
+        "url": "http://www.greenmagi.com/GreenMagi.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "1e04ee42e33ae22a0f405a09d83f18cf7607acd343e698f984c3723483487374",
+  "provider": "SearXNG",
+  "query": "how does carbon capture in marine biology work",
+  "query_id": "v5-p-0430-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:12:24.107647Z"
+}

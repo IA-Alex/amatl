@@ -1,0 +1,84 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 297.416,
+  "pair_id": "v5-p-0971",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes cloud formation in transportation engineering",
+    "results": [
+      {
+        "category": "general",
+        "content": "chemical extraction and transportation. Some of the environmental impacts of MDMA production include: Chemical waste and pollution: The production of MDMA often involves the use o",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.mdma.net",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "MDMA (&#34;Ecstasy&#34;) as conceived as conceived by ChatGPT",
+        "url": "https://www.mdma.net/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "/technology of land transportation VTOL personal vehicles future transportation must address energy, pollution, etc. personal flying vehicles on Earth and in space future turnpike",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.asimovonline.com",
+          "/oldsite/essay_guide.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "A Guide to Isaac Asimov&#39;s Essays",
+        "url": "http://www.asimovonline.com/oldsite/essay_guide.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "39d4499bb344167918ba03590bdb54edb5f900a94057c36bb09a862326a4b569",
+  "provider": "SearXNG",
+  "query": "what causes cloud formation in transportation engineering",
+  "query_id": "v5-p-0971-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:13:27.372489Z"
+}

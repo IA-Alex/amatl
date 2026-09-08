@@ -1,0 +1,133 @@
+{
+  "schema_version": "1",
+  "query": "how to clean mold from a bathroom",
+  "status": "partial_success",
+  "results": [
+    {
+      "schema_version": "1",
+      "rank": 1,
+      "title": "tuxgraphics blog",
+      "original_url": "http://tuxgraphics.org/npa/",
+      "canonical_url": "http://tuxgraphics.org/npa/",
+      "domain": "tuxgraphics.org",
+      "snippet": "open and clean a Nutone bathroom fan This is a short guide on how to remove the cover from a Nutone bathroom ceiling fan. 2018-01: Health risks due to electromagnentc fields (EM F",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 2,
+      "title": "Sex & Young Women -- Overrated - henrymakow.com",
+      "original_url": "http://henrymakow.com/overratedromantic_love_sex_and.html",
+      "canonical_url": "http://henrymakow.com/overratedromantic_love_sex_and.html",
+      "domain": "henrymakow.com",
+      "snippet": "having to go to the bathroom. So marriage is for sexual satisfaction and spiritual purposes. This was a good article. Following the darkster programming will mess up your life. Li",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 3,
+      "title": "PoopNames.com - The Poop List",
+      "original_url": "https://poopnames.com/",
+      "canonical_url": "https://poopnames.com/",
+      "domain": "poopnames.com",
+      "snippet": "fog that could close a bathroom for days. The Chili Dump - Hot when it goes in, and rocket fuel when it leaves. The chili dump stays with you all day, making your tush feel like a",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 4,
+      "title": "Ecstasy in the USA",
+      "original_url": "https://www.mdma.net/misc/ecstasy.html",
+      "canonical_url": "https://www.mdma.net/misc/ecstasy.html",
+      "domain": "www.mdma.net",
+      "snippet": "to obvious trips to the bathroom, accusations of being stuck in the Greed Decade, and often addiction, ecstasy is inconspicuous and physically nonaddictive. Usually taken as a pil",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 5,
+      "title": "Saucer Wisdom",
+      "original_url": "https://www.rudyrucker.com/saucerwisdom/html/",
+      "canonical_url": "https://www.rudyrucker.com/saucerwisdom/html/",
+      "domain": "www.rudyrucker.com",
+      "snippet": "led to a kitchen, a bathroom, and Frank\u2019s small \u201clab\u201d\u2014really just a home office. There was a desk littered with papers, tools, connector cables and dirty dishes. Singularly",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 6,
+      "title": "Storm The Castle -Creativity and lots of projects you can make!",
+      "original_url": "https://stormthecastle.com/",
+      "canonical_url": "https://stormthecastle.com/",
+      "domain": "stormthecastle.com",
+      "snippet": "Paper towel and Bathroom Tissue tubes! They are everywhere and there are lots of creative projects you can make with them. I have ideas for you right here and it includes a",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "relegated_by_diversity"
+    },
+    {
+      "schema_version": "1",
+      "rank": 7,
+      "title": "Quotes and Lyrics",
+      "original_url": "http://www.gregdonner.org/quotesandlyrics.html",
+      "canonical_url": "http://www.gregdonner.org/quotesandlyrics.html",
+      "domain": "www.gregdonner.org",
+      "snippet": "on which side of the bathroom door you're on. \u2014 Unknown I don't have a jealous bone in my body, but some of my flab is furious. \u2014 Bob Hope [Speaking to his wife Lily M",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "relegated_by_diversity"
+    },
+    {
+      "schema_version": "1",
+      "rank": 8,
+      "title": "100R \u2014 north pacific logbook",
+      "original_url": "http://100r.co/site/north_pacific_logbook.html",
+      "canonical_url": "http://100r.co/site/north_pacific_logbook.html",
+      "domain": "100r.co",
+      "snippet": "carefully. Going to the bathroom is an interesting experience when bashing, since ours is at the bow. It's hard to focus on our business when we struggle to keep our butts down an",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "relegated_by_diversity"
+    }
+  ],
+  "providers_used": [
+    "searxng"
+  ],
+  "providers_failed": [],
+  "providers_partial": [],
+  "errors": [],
+  "degradations": [
+    {
+      "code": "provider_circuit_open",
+      "component": "marginalia",
+      "message": "marginalia is in circuit cooldown after consecutive failures; the source was skipped"
+    }
+  ],
+  "elapsed_ms": 1014
+}

@@ -1,0 +1,144 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "execution_sequence": 2637,
+  "experiment_id": "independent-relevance-confirmatory-v6",
+  "http_status": 200,
+  "latency_ms": 306.577,
+  "pair_id": "candidate-p-0878",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how do models represent ecosystem services within ecological economics",
+    "results": [
+      {
+        "category": "general",
+        "content": "colonizing every ecological niche. We doubled our staff. Armstrong built new and ever-more-complex computer brains. Among his successes were a brain that could crowdsource the com",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "wiki.chadnet.org",
+          "/the-gig-economy",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Gig Economy — Chadnet",
+        "url": "https://wiki.chadnet.org/the-gig-economy"
+      },
+      {
+        "category": "general",
+        "content": "CBD oil production. The ecological hemp production on pesticide free land in Croatia as owned by our partner produces tonnes and tonnes each year. Price per kilogram starting alre",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.rcdwealth.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "RCD Wealth - Empowering Financial Freedom and Building Wealth for a Better Future",
+        "url": "https://www.rcdwealth.com/"
+      },
+      {
+        "category": "general",
+        "content": "face: climate change, ecological destruction, electronic surveillance (including loss of privacy and eroded freedoms), the growing wealth gap, poverty, pervasive disinformation an",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "buriedtruth.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "BuriedTruth.com",
+        "url": "http://buriedtruth.com/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "f96b6dbf99abceb591212ddc6943c8489e3ea0d4c5dc31018b5c9ebfbfcd04d0",
+  "provenance": {
+    "frozen_query_universe_sha256": "8bcc8a4a0ba518930db02da1c5161f4bd48dd243695ea52718494cc55edda64e",
+    "randomization_manifest_sha256": "89df599cf8bdf9adfea7443cf0b6a1749affd3e5a2474b9ef755b9e23b8c747f"
+  },
+  "provider": "SearXNG",
+  "query": "how do models represent ecosystem services within ecological economics",
+  "query_id": "candidate-t-0878",
+  "raw_result_count": 3,
+  "results": [
+    {
+      "accepted": false,
+      "canonical_url": "https://wiki.chadnet.org/the-gig-economy",
+      "original_url": "https://wiki.chadnet.org/the-gig-economy",
+      "rank": 1,
+      "rejection_reason": "OTHER_HISTORICAL_OVERLAP",
+      "snippet": "colonizing every ecological niche. We doubled our staff. Armstrong built new and ever-more-complex computer brains. Among his successes were a brain that could crowdsource the com",
+      "title": "The Gig Economy — Chadnet"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "https://www.rcdwealth.com/",
+      "original_url": "https://www.rcdwealth.com/",
+      "rank": 2,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "CBD oil production. The ecological hemp production on pesticide free land in Croatia as owned by our partner produces tonnes and tonnes each year. Price per kilogram starting alre",
+      "title": "RCD Wealth - Empowering Financial Freedom and Building Wealth for a Better Future"
+    },
+    {
+      "accepted": false,
+      "canonical_url": "http://buriedtruth.com/",
+      "original_url": "http://buriedtruth.com/",
+      "rank": 3,
+      "rejection_reason": "DUPLICATE_CURRENT",
+      "snippet": "face: climate change, ecological destruction, electronic surveillance (including loss of privacy and eroded freedoms), the growing wealth gap, poverty, pervasive disinformation an",
+      "title": "BuriedTruth.com"
+    }
+  ],
+  "timestamp": "2026-09-05T17:34:27.785467Z"
+}

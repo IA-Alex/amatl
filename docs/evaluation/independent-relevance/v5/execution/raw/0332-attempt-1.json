@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 353.053,
+  "pair_id": "v5-p-0044",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind compiler operation in ecology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "9a93f285641f90af36059a51942432c01bc637a567bf219c20173dedf5bfdd4f",
+  "provider": "SearXNG",
+  "query": "describe the principle behind compiler operation in ecology",
+  "query_id": "v5-p-0044-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:53.491215Z"
+}

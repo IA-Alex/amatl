@@ -1,0 +1,57 @@
+# Generated test artifact — SearXNG characterization — do not treat as project documentation.
+# Isolated, process-local test configuration. It disables persistence and both caches so
+# the provider-canary command cannot write AMATL's existing SQLite state or cache.
+schema_version = "1"
+
+[data_policy]
+profile = "standard"
+egress = "governed"
+inference = "disabled"
+
+[providers]
+enabled = ["searxng"]
+
+[providers.searxng]
+adapter_version = "searxng-v1"
+approval_status = "approved"
+reviewed_at = "2026-08-15"
+reviewer = "QA characterization fixture"
+terms_url = "https://docs.searxng.org/"
+terms_version_or_date = "self-certified"
+allowed_access_method = "self_hosted"
+plan_or_contract = "self-hosted"
+rate_limit = "not exercised; sequential low-volume characterization"
+cost_model = "0"
+credential_env = "SEARXNG_INSTANCE_URL"
+storage_rights = false
+data_handling_notes = "Test fixture; no persistence and no provider cache."
+operational_risk = "Upstream engines may be unavailable or rate-limited."
+
+[timeouts]
+provider_ms = 20000
+global_ms = 45000
+
+[budget]
+max_provider_calls = 1
+
+[execution]
+global_concurrency = 1
+per_provider_concurrency = 1
+max_retries = 0
+retry_jitter_ms = 0
+
+[persistence]
+enabled = false
+history_enabled = false
+
+[cache.provider_search]
+enabled = false
+
+[cache.document]
+enabled = false
+
+[telemetry]
+persistence_enabled = false
+
+[answer]
+enabled = false

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 316.153,
+  "pair_id": "v5-p-0840",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "describe the principle behind data compression in geology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "b508b1f43914e9fba0ab347978f818f3924d506afb6348c33a08ae746b253473",
+  "provider": "SearXNG",
+  "query": "describe the principle behind data compression in geology",
+  "query_id": "v5-p-0840-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:12:37.014612Z"
+}

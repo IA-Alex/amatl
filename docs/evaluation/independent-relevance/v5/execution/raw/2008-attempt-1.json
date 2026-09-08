@@ -1,0 +1,84 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 256.453,
+  "pair_id": "v5-p-0375",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of solar eclipses in materials science",
+    "results": [
+      {
+        "category": "general",
+        "content": "to durable writing materials [which were often controlled in antiquity by ruling elites, see HI:LPAW]; (3) will decide to expend personal funds on durable (i.e., expensive) writin",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.christian-thinktank.com",
+          "/5felled.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "What about &#34;The Fivefold Challenge&#34;",
+        "url": "https://www.christian-thinktank.com/5felled.html"
+      },
+      {
+        "category": "general",
+        "content": "date of various materials. My friend Lew Feragson was head of the Mass Spectroscopy research effort here in St. Louis when we both worked in the research department of Monsanto Co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.rcyoung.org",
+          "/papers.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "My Papers on Chronology",
+        "url": "https://www.rcyoung.org/papers.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d948b9617fa93a9233618e552826ad9cb269fdc707ef8bf8af7957fada456424",
+  "provider": "SearXNG",
+  "query": "give an overview of solar eclipses in materials science",
+  "query_id": "v5-p-0375-control",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:15:57.802958Z"
+}

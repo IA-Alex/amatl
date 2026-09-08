@@ -172,7 +172,7 @@ impl LocalIngestor {
         }
         let bytes = read_bounded(&canonical, self.max_input_bytes).await?;
         let document_type = detect_document_type(&canonical, &bytes)?;
-        let extracted = self.extract(&document_type, &bytes).await?;
+        let (extracted, extraction_tag) = self.extract(&document_type, &bytes).await?;
         if extracted.len() as u64 > self.max_output_bytes {
             return Err(LocalIngestError::OutputLimit);
         }
@@ -214,7 +214,11 @@ impl LocalIngestor {
             final_url: FinalUrl(source_uri),
             content_hash: source_hash,
             fetch_method: FetchMethod::Local,
-            extractor_used: Some(document_type.extractor_version().into()),
+            extractor_used: Some(
+                extraction_tag
+                    .unwrap_or_else(|| document_type.extractor_version())
+                    .into(),
+            ),
             content_type: Some(document_type.media_type().into()),
             size: bytes.len() as u64,
             retrieved_at,
@@ -242,20 +246,53 @@ impl LocalIngestor {
         &self,
         document_type: &LocalDocumentType,
         bytes: &[u8],
-    ) -> Result<String, LocalIngestError> {
+    ) -> Result<(String, Option<&'static str>), LocalIngestError> {
         match document_type {
             LocalDocumentType::Pdf => self.extract_pdf(bytes).await,
-            LocalDocumentType::Html => extract_html(bytes),
-            LocalDocumentType::Json => extract_json(bytes),
-            LocalDocumentType::JsonLines => extract_json_lines(bytes),
+            LocalDocumentType::Html => extract_html(bytes).map(|content| (content, None)),
+            LocalDocumentType::Json => extract_json(bytes).map(|content| (content, None)),
+            LocalDocumentType::JsonLines => {
+                extract_json_lines(bytes).map(|content| (content, None))
+            }
             LocalDocumentType::PlainText
             | LocalDocumentType::Markdown
             | LocalDocumentType::Csv
-            | LocalDocumentType::SourceCode => utf8_text(bytes),
+            | LocalDocumentType::SourceCode => utf8_text(bytes).map(|content| (content, None)),
         }
     }
 
-    async fn extract_pdf(&self, bytes: &[u8]) -> Result<String, LocalIngestError> {
+    async fn extract_pdf(
+        &self,
+        bytes: &[u8],
+    ) -> Result<(String, Option<&'static str>), LocalIngestError> {
+        // Prefer the governed external extractor when processes are allowed.
+        if self.allow_external_processes {
+            match self.extract_pdf_external(bytes).await {
+                Ok(content) => return Ok((content, Some("local-pdftotext-v1"))),
+                Err(LocalIngestError::PdfExtractorUnavailable)
+                | Err(LocalIngestError::PdfExtractorTimeout)
+                | Err(LocalIngestError::PdfExtractorFailed) => {
+                    // Fall through to the pure-Rust fallback below.
+                }
+                Err(other) => return Err(other),
+            }
+        }
+        // Pure-Rust fallback: never spawns a process, so it is safe under an
+        // isolated policy. It only decodes uncompressed content streams.
+        match extract_pdf_rust(bytes) {
+            Ok(content) => Ok((content, Some("local-pdf-rust-v1"))),
+            Err(LocalIngestError::EmptyDocument) => {
+                if self.allow_external_processes {
+                    Err(LocalIngestError::PdfExtractorFailed)
+                } else {
+                    Err(LocalIngestError::ExternalExtractorDenied)
+                }
+            }
+            Err(other) => Err(other),
+        }
+    }
+
+    async fn extract_pdf_external(&self, bytes: &[u8]) -> Result<String, LocalIngestError> {
         if !self.allow_external_processes {
             return Err(LocalIngestError::ExternalExtractorDenied);
         }
@@ -329,6 +366,244 @@ impl LocalIngestor {
             return Err(LocalIngestError::EmptyDocument);
         }
         Ok(content)
+    }
+}
+
+/// Minimal pure-Rust PDF text extraction used as a fallback when the external
+/// `pdftotext` binary is unavailable or denied by policy. It scans uncompressed
+/// content streams for the text-showing operators `Tj`, `TJ`, `'` and `"`,
+/// decoding literal and hex string operands. Compressed (FlateDecode) streams
+/// are not decoded, so such documents degrade to
+/// [`LocalIngestError::EmptyDocument`].
+fn extract_pdf_rust(bytes: &[u8]) -> Result<String, LocalIngestError> {
+    let input = String::from_utf8_lossy(bytes);
+    let hay = input.as_bytes();
+    let mut parts = Vec::new();
+    let mut search_from = 0;
+    while let Some(start) = find_stream_keyword(hay, search_from) {
+        let Some(end) = find_sub(hay, start + 6, b"endstream") else {
+            break;
+        };
+        let mut body = &input[start + 6..end];
+        // Skip the newline that typically follows the `stream` keyword.
+        body = body
+            .strip_prefix("\r\n")
+            .or_else(|| body.strip_prefix('\n'))
+            .unwrap_or(body);
+        collect_pdf_text(body, &mut parts);
+        search_from = end + 9;
+    }
+    let content = parts.join("\n");
+    if content.trim().is_empty() {
+        return Err(LocalIngestError::EmptyDocument);
+    }
+    Ok(content)
+}
+
+/// Locate the next `stream` keyword (not the `stream` inside `endstream`),
+/// i.e. a `stream` token delimited by whitespace or the buffer edges.
+fn find_stream_keyword(hay: &[u8], from: usize) -> Option<usize> {
+    const NEEDLE: &[u8] = b"stream";
+    let mut i = from;
+    while i + NEEDLE.len() <= hay.len() {
+        if &hay[i..i + NEEDLE.len()] == NEEDLE {
+            let prev_ok = i == 0 || hay[i - 1].is_ascii_whitespace();
+            let next_ok = hay
+                .get(i + NEEDLE.len())
+                .is_none_or(|byte| byte.is_ascii_whitespace());
+            if prev_ok && next_ok {
+                return Some(i);
+            }
+        }
+        i += 1;
+    }
+    None
+}
+
+/// Locate the first occurrence of `needle` at or after `from`.
+fn find_sub(hay: &[u8], from: usize, needle: &[u8]) -> Option<usize> {
+    let tail = hay.get(from..)?;
+    tail.windows(needle.len())
+        .position(|window| window == needle)
+        .map(|offset| from + offset)
+}
+
+/// Scan a PDF content stream body for text-showing operators and collect the
+/// decoded strings, one per shown line.
+fn collect_pdf_text(body: &str, parts: &mut Vec<String>) {
+    let bytes = body.as_bytes();
+    let mut i = 0;
+    let mut line = String::new();
+    let flush = |line: &mut String, parts: &mut Vec<String>| {
+        if !line.trim().is_empty() {
+            parts.push(line.trim().to_owned());
+            line.clear();
+        }
+    };
+    while i < bytes.len() {
+        match bytes[i] {
+            b'(' => {
+                if let Some((text, next)) = parse_literal_string(bytes, i) {
+                    line.push_str(&text);
+                    i = next;
+                    continue;
+                }
+            }
+            b'<' => {
+                if let Some((text, next)) = parse_hex_string(bytes, i) {
+                    line.push_str(&text);
+                    i = next;
+                    continue;
+                }
+            }
+            b'[' => {
+                if let Some((text, next)) = parse_text_array(bytes, i) {
+                    line.push_str(&text);
+                    i = next;
+                    continue;
+                }
+            }
+            b'T' if matches!(bytes.get(i + 1), Some(b'j') | Some(b'J')) => {
+                flush(&mut line, parts);
+                i += 2;
+                continue;
+            }
+            b'\'' | b'"' => {
+                flush(&mut line, parts);
+            }
+            _ => {}
+        }
+        i += 1;
+    }
+    flush(&mut line, parts);
+}
+
+/// Parse a PDF literal string `( ... )`, honouring backslash escapes and
+/// nested parentheses. Returns the decoded text and the index just past the
+/// closing parenthesis.
+fn parse_literal_string(bytes: &[u8], start: usize) -> Option<(String, usize)> {
+    debug_assert_eq!(bytes.get(start), Some(&b'('));
+    let mut i = start + 1;
+    let mut out = String::new();
+    let mut depth = 1usize;
+    while i < bytes.len() {
+        match bytes[i] {
+            b'\\' => {
+                let Some(&next) = bytes.get(i + 1) else {
+                    break;
+                };
+                match next {
+                    b'n' => out.push('\n'),
+                    b'r' => out.push('\r'),
+                    b't' => out.push('\t'),
+                    b'b' => out.push('\u{8}'),
+                    b'f' => out.push('\u{c}'),
+                    b'(' => out.push('('),
+                    b')' => out.push(')'),
+                    b'\\' => out.push('\\'),
+                    b'0'..=b'7' => {
+                        let mut value = 0u32;
+                        let mut count = 0;
+                        while count < 3 {
+                            let Some(&digit) = bytes.get(i + 1 + count) else {
+                                break;
+                            };
+                            if !(b'0'..=b'7').contains(&digit) {
+                                break;
+                            }
+                            value = value * 8 + u32::from(digit - b'0');
+                            count += 1;
+                        }
+                        if let Some(ch) = char::from_u32(value) {
+                            out.push(ch);
+                        }
+                        i += count;
+                    }
+                    _ => out.push(next as char),
+                }
+                i += 2;
+            }
+            b'(' => {
+                depth += 1;
+                out.push('(');
+                i += 1;
+            }
+            b')' => {
+                depth -= 1;
+                if depth == 0 {
+                    return Some((out, i + 1));
+                }
+                out.push(')');
+                i += 1;
+            }
+            byte => {
+                out.push(byte as char);
+                i += 1;
+            }
+        }
+    }
+    None
+}
+
+/// Parse a PDF hex string `< ... >`, decoding pairs of hex digits into bytes.
+fn parse_hex_string(bytes: &[u8], start: usize) -> Option<(String, usize)> {
+    debug_assert_eq!(bytes.get(start), Some(&b'<'));
+    let mut i = start + 1;
+    let mut out = String::new();
+    let mut high: Option<u8> = None;
+    while i < bytes.len() {
+        let byte = bytes[i];
+        if byte == b'>' {
+            if let Some(h) = high {
+                out.push((h << 4) as char);
+            }
+            return Some((out, i + 1));
+        }
+        if let Some(value) = hex_value(byte) {
+            match high {
+                None => high = Some(value),
+                Some(h) => {
+                    out.push(((h << 4) | value) as char);
+                    high = None;
+                }
+            }
+        }
+        i += 1;
+    }
+    None
+}
+
+/// Parse a PDF text array `[ ... ]` (the operand of `TJ`), concatenating the
+/// string elements it contains.
+fn parse_text_array(bytes: &[u8], start: usize) -> Option<(String, usize)> {
+    debug_assert_eq!(bytes.get(start), Some(&b'['));
+    let mut i = start + 1;
+    let mut out = String::new();
+    while i < bytes.len() {
+        match bytes[i] {
+            b']' => return Some((out, i + 1)),
+            b'(' => {
+                let (text, next) = parse_literal_string(bytes, i)?;
+                out.push_str(&text);
+                i = next;
+            }
+            b'<' => {
+                let (text, next) = parse_hex_string(bytes, i)?;
+                out.push_str(&text);
+                i = next;
+            }
+            _ => i += 1,
+        }
+    }
+    None
+}
+
+fn hex_value(byte: u8) -> Option<u8> {
+    match byte {
+        b'0'..=b'9' => Some(byte - b'0'),
+        b'a'..=b'f' => Some(byte - b'a' + 10),
+        b'A'..=b'F' => Some(byte - b'A' + 10),
+        _ => None,
     }
 }
 
@@ -677,5 +952,146 @@ mod tests {
             response.document.extractor_used.as_deref(),
             Some("local-pdftotext-v1")
         );
+    }
+
+    #[tokio::test]
+    async fn pdf_fallback_extracts_uncompressed_stream_under_isolated_policy() {
+        let pdf = temp_file(
+            "pdf",
+            b"%PDF-1.4\n1 0 obj\n<< /Type /Catalog >>\nendobj\n2 0 obj\n<< /Type /Page /Contents 3 0 R >>\nendobj\n3 0 obj\n<< /Length 44 >>\nstream\nBT /F1 12 Tf 72 720 Td (Hello PDF) Tj ET\nendstream\nendobj\ntrailer\n<< /Root 1 0 R >>\n%%EOF\n",
+        );
+        let policy = DataPolicyConfig {
+            profile: SecurityProfile::Isolated,
+            egress: EgressPolicy::Deny,
+            ..DataPolicyConfig::default()
+        };
+        let response = LocalIngestor::new(&policy)
+            .ingest(&pdf, None)
+            .await
+            .unwrap();
+        std::fs::remove_file(pdf).unwrap();
+
+        assert_eq!(response.document_type, LocalDocumentType::Pdf);
+        assert_eq!(response.document.content.as_deref(), Some("Hello PDF"));
+        assert_eq!(
+            response.document.extractor_used.as_deref(),
+            Some("local-pdf-rust-v1")
+        );
+    }
+
+    #[tokio::test]
+    async fn pdf_fallback_used_when_external_extractor_is_missing() {
+        let pdf = temp_file(
+            "pdf",
+            b"%PDF-1.4\nstream\nBT (Fallback text) Tj ET\nendstream\n%%EOF\n",
+        );
+        // Processes are allowed but the executable does not exist, so the
+        // external extractor reports unavailable and the fallback takes over.
+        let ingestor = LocalIngestor::with_test_limits(
+            1024,
+            1024,
+            2_000,
+            "definitely-missing-pdftotext".into(),
+            true,
+        );
+        let response = ingestor.ingest(&pdf, None).await.unwrap();
+        std::fs::remove_file(pdf).unwrap();
+
+        assert_eq!(response.document.content.as_deref(), Some("Fallback text"));
+        assert_eq!(
+            response.document.extractor_used.as_deref(),
+            Some("local-pdf-rust-v1")
+        );
+    }
+
+    #[test]
+    fn pdf_rust_extractor_decodes_literal_hex_and_array_operators() {
+        let content = extract_pdf_rust(
+            b"stream\nBT (Alpha) Tj 0 -14 Td <48656C6C6F> Tj 0 -14 Td [(A)(B)(C)] TJ ET\nendstream\n",
+        )
+        .unwrap();
+        assert_eq!(content, "Alpha\nHello\nABC");
+    }
+
+    #[test]
+    fn pdf_rust_extractor_handles_escapes_and_nested_parens() {
+        let content = extract_pdf_rust(
+            b"stream\nBT (a\\(b\\)c) Tj 0 -14 Td (line\\nbreak) Tj ET\nendstream\n",
+        )
+        .unwrap();
+        assert_eq!(content, "a(b)c\nline\nbreak");
+    }
+
+    #[test]
+    fn pdf_rust_extractor_rejects_empty_or_compressed_streams() {
+        assert_eq!(
+            extract_pdf_rust(b"%PDF-1.4\nstream\nBT ET\nendstream\n%%EOF\n"),
+            Err(LocalIngestError::EmptyDocument)
+        );
+        // A FlateDecode stream is not decoded by the fallback.
+        assert_eq!(
+            extract_pdf_rust(b"%PDF-1.4\nstream\n\x78\x9c\xcbH\xcd\xc9\xc9\x07\x00\x06\x2c\x02\x15\nendstream\n%%EOF\n"),
+            Err(LocalIngestError::EmptyDocument)
+        );
+    }
+
+    #[tokio::test]
+    async fn malformed_corpus_is_rejected_gracefully() {
+        let empty = temp_file("txt", b"");
+        let error = in_process_ingestor()
+            .ingest(&empty, None)
+            .await
+            .unwrap_err();
+        std::fs::remove_file(empty).unwrap();
+        assert_eq!(error, LocalIngestError::EmptyDocument);
+
+        let invalid_utf8 = temp_file("txt", b"\xff\xfe\x00binary");
+        let error = in_process_ingestor()
+            .ingest(&invalid_utf8, None)
+            .await
+            .unwrap_err();
+        std::fs::remove_file(invalid_utf8).unwrap();
+        assert_eq!(error, LocalIngestError::InvalidTextEncoding);
+
+        let bad_json = temp_file("json", b"{not valid json");
+        let error = in_process_ingestor()
+            .ingest(&bad_json, None)
+            .await
+            .unwrap_err();
+        std::fs::remove_file(bad_json).unwrap();
+        assert_eq!(error, LocalIngestError::InvalidDocument);
+
+        let bad_jsonl = temp_file("jsonl", b"{\"a\":1}\nnot-json\n");
+        let error = in_process_ingestor()
+            .ingest(&bad_jsonl, None)
+            .await
+            .unwrap_err();
+        std::fs::remove_file(bad_jsonl).unwrap();
+        assert_eq!(error, LocalIngestError::InvalidDocument);
+    }
+
+    proptest::proptest! {
+        #[test]
+        fn html_parser_never_panics_on_arbitrary_bytes(
+            bytes in proptest::collection::vec(proptest::num::u8::ANY, 0..4096)
+        ) {
+            let _ = extract_html(&bytes);
+            let _ = html_title(&bytes);
+            let _ = looks_like_html(&bytes);
+        }
+
+        #[test]
+        fn pdf_fallback_never_panics_on_arbitrary_bytes(
+            bytes in proptest::collection::vec(proptest::num::u8::ANY, 0..4096)
+        ) {
+            let _ = extract_pdf_rust(&bytes);
+        }
+
+        #[test]
+        fn text_parser_never_panics_on_arbitrary_bytes(
+            bytes in proptest::collection::vec(proptest::num::u8::ANY, 0..4096)
+        ) {
+            let _ = utf8_text(&bytes);
+        }
     }
 }

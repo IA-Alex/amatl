@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 369.094,
+  "pair_id": "v5-p-0566",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of food preservation in urban planning",
+    "results": [
+      {
+        "category": "general",
+        "content": "New York City Landmarks Preservation Commission to designate Brooklyn Heights as the city&#39;s first &#34;Historic District.&#34; (Greenwich Village was second.) This designation saved the p",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.2blowhards.com",
+          "/archives/001671.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2blowhards.com: Gentrification: Good or Evil?",
+        "url": "http://www.2blowhards.com/archives/001671.html"
+      },
+      {
+        "category": "general",
+        "content": "sense, is that cryopreservation is an encryption algorithm, in a very literal sense.&#34; Cryostasis Revival , by Robert A. Freitas Jr. If you&#39;ve got a friend who&#39;s been thinking",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.ralphmerkle.com",
+          "/cryo/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Cryonics",
+        "url": "http://www.ralphmerkle.com/cryo/"
+      },
+      {
+        "category": "general",
+        "content": "For The Eternal Preservation And Expansion Of Infinite Happiness Through Enforcement Of Inalienable Freedoms That All Space Marines Must Fight To Protect Always .   Would Pau",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.viacadempire.com",
+          "/FWAsiteListW-GeorgiaRunOffElection2021.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Free World Alliance Site List",
+        "url": "http://www.viacadempire.com/FWAsiteListW-GeorgiaRunOffElection2021.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "0b84d254cd1c60f413891949f486e66dd3d9fc573d69b21753c7f059edfe85ec",
+  "provider": "SearXNG",
+  "query": "tell me about the function of food preservation in urban planning",
+  "query_id": "v5-p-0566-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:07:18.223892Z"
+}

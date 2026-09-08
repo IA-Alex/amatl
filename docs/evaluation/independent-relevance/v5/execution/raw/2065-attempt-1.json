@@ -1,0 +1,192 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 272.637,
+  "pair_id": "v5-p-0865",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is vaccination in astronomy",
+    "results": [
+      {
+        "category": "general",
+        "content": "in Los Angeles when a vaccination ordinance was submitted to a popular referendum is typical of what would happen anywhere under the same circumstances. The ordinance was 54 rejec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/files/73150/73150-h/73150-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notes on Democracy | Project Gutenberg",
+        "url": "https://www.gutenberg.org/files/73150/73150-h/73150-h.htm"
+      },
+      {
+        "category": "general",
+        "content": "HHS Replaces Childhood Vaccination Schedule With List Of Recommended Animal Bites - 2026-08-28 08:00 Sophie Cunningham Claims Any Woman Who Averages More Than 8 Points Per Game Sh",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "ultrasciencelabs.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ultrascience labs",
+        "url": "https://ultrasciencelabs.com/"
+      },
+      {
+        "category": "general",
+        "content": "distributed via WHO vaccination programs after WWII — were upgraded to more advanced versions with enhanced tracking, mind control frequencies, and prevention of positive ET",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.exopoliticsindia.in",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "EXOPOLITICS INDIA",
+        "url": "https://www.exopoliticsindia.in/"
+      },
+      {
+        "category": "general",
+        "content": "in Los Angeles when a vaccination ordinance was submitted to a popular referendum is typical of what would happen anywhere under the same circumstances. The ordinance was 54 rejec",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/cache/epub/73150/pg73150-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Notes on Democracy | Project Gutenberg",
+        "url": "https://www.gutenberg.org/cache/epub/73150/pg73150-images.html"
+      },
+      {
+        "category": "general",
+        "content": "of the smallpox vaccination, or the development of steam power . . . How the cure for scurvy was found and lost and finally found again at an important juncture in the history of",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "meditopia.org",
+          "/chap4-3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Meditopia -- Chapter 4, Section 3",
+        "url": "https://meditopia.org/chap4-3.htm"
+      },
+      {
+        "category": "general",
+        "content": "19:15 by mountain_jim Vaccination » Online Users: 221 11 members and 210 guests Ewan FireRat Flash NX.P onawah samsdice Squareinthecircle T Smith Tintin Most users ever onli",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "projectavalon.net",
+          "/forum4/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Project Avalon Community Forum",
+        "url": "http://projectavalon.net/forum4/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ae01b4733851e98fceba6165a7ec7a906f2f6972ba94ab15d771a798c11c1461",
+  "provider": "SearXNG",
+  "query": "what is vaccination in astronomy",
+  "query_id": "v5-p-0865-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:16:15.554350Z"
+}

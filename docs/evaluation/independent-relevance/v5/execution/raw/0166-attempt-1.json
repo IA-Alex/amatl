@@ -1,0 +1,57 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 225.3,
+  "pair_id": "v5-p-0219",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of plate tectonics in chemistry",
+    "results": [
+      {
+        "category": "general",
+        "content": "magnetosphere and plate tectonics, the chemistry of the lithosphere, atmosphere, and oceans, the role of &#34;evolutionary pumps&#34; such as massive glaciation and rare bolide",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/book/unraveltree/unravel.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Unraveling the Tree of Life",
+        "url": "http://www.dhushara.com/book/unraveltree/unravel.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "92bb95bd1dae1156848d24df6e04980b352bfea011414eb84d9acb0cba302ee2",
+  "provider": "SearXNG",
+  "query": "give an overview of plate tectonics in chemistry",
+  "query_id": "v5-p-0219-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:06:01.283142Z"
+}

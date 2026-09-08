@@ -1,0 +1,111 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 344.39,
+  "pair_id": "v5-p-0741",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "explain the basic idea behind root systems in pharmacology",
+    "results": [
+      {
+        "category": "general",
+        "content": "nanotechnology, and pharmacology, he believes it&#39;s possible to redesign our genetic source code to replace the capacity to suffer with gradients of bliss. Universal Benevolence :",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.transhumanist.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Transhumanism as conceived by ChatGPT-4",
+        "url": "https://www.transhumanist.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "of neuroscience and pharmacology grows, these questions will only become more pressing and complex.&#34; Could such drugs be misused for manipulation or coercion? &#34;Yes, drugs that art",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.empathogens.com",
+          "/chatgpt/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Empathogens as conceived by ChatGPT",
+        "url": "https://www.empathogens.com/chatgpt/"
+      },
+      {
+        "category": "general",
+        "content": "a fellow in botany and pharmacology at Oxford, but who never obtained a degree, even in medicine, which he nevertheless practiced. It remains to the judgment of history whether co",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "friesian.com",
+          "/hist-2.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Beginning of Modern Science &amp; Modern Philosophy",
+        "url": "https://friesian.com/hist-2.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "d3f5870ca686305ab77812e96cdc5d37a38fb4765ebe1816336661ce30cfdb52",
+  "provider": "SearXNG",
+  "query": "explain the basic idea behind root systems in pharmacology",
+  "query_id": "v5-p-0741-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:11:14.010913Z"
+}

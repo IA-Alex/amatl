@@ -1,0 +1,81 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 277.80607900058385,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does load bearing walls in food science operate",
+    "results": [
+      {
+        "category": "general",
+        "content": "Spinning Spindle Bearing. Gessner Cloth Press. 1879—Dr. Siemens’ Electric Railway at Berlin. Mississippi Jetties completed by Capt. Eads. Samarium discovered by Boisba",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ajhw.co.uk",
+          "/books/book389/book389.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Progress of Invention in the Nineteenth Century, by Edward W. Byrn.",
+        "url": "https://www.ajhw.co.uk/books/book389/book389.html"
+      },
+      {
+        "category": "general",
+        "content": "all past solemnities in bearing, word, tone, look, morality, and pursuit, as their truest involuntary parody—and WITH which, nevertheless, perhaps THE GREAT SERIOUSNESS only",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "samplecontents.library.ph",
+          "/GreatBooksoftheWorld/en-ebooks/books/1998-h/1998-h.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Thus Spake Zarathustra, by Friedrich Nietzsche",
+        "url": "https://samplecontents.library.ph/GreatBooksoftheWorld/en-ebooks/books/1998-h/1998-h.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0248",
+  "query_text": "how does load bearing walls in food science operate",
+  "requested_at": "2026-09-03T01:43:35.773619Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

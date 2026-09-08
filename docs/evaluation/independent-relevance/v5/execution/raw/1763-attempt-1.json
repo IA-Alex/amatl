@@ -1,0 +1,79 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 1399.216,
+  "pair_id": "v5-p-1038",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "how does probability distributions in forensic science work",
+    "results": [
+      {
+        "category": "general",
+        "content": "in public banquets, distributions of flesh, gladiatorial shows, and the preparation of games and wild-beast fights, pour out money on the kinds of things of which they will leave",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "spiritualpilgrim.net",
+          "/08_Classics-Library/hellenist-roman/cicero/de-officiis/de-officiis-02.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "De Officiis - Book 2 - Cicero",
+        "url": "http://spiritualpilgrim.net/08_Classics-Library/hellenist-roman/cicero/de-officiis/de-officiis-02.htm"
+      },
+      {
+        "category": "general",
+        "content": "by the linen fibrils distributions by G. Fazio, V. De Leo, F. Curciarello and G. Mandaglio This article was published in The Journal of The Textile Institute, June 2014. Compariso",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.shroud.com",
+          "/papers.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Scientific Papers and Articles",
+        "url": "https://www.shroud.com/papers.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "b9cd06a3a4273e79e29ff63fd80cafe12586eaa74b3a248820cd0b2a10a1e4d3",
+  "provider": "SearXNG",
+  "query": "how does probability distributions in forensic science work",
+  "query_id": "v5-p-1038-treatment",
+  "raw_result_count": 2,
+  "timestamp": "2026-09-04T15:14:38.117937Z"
+}

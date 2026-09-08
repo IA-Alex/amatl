@@ -1,0 +1,54 @@
+{
+  "attempt_number": 1,
+  "designation": "treatment",
+  "endpoint": "http://127.0.0.1:8888",
+  "http_status": 200,
+  "latency_ms": 239.4009380004718,
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what is database indexes in transportation",
+    "results": [
+      {
+        "category": "general",
+        "content": "of real-time nippon transportation. town.neocities.org - just a little walk through a town at night, really neat use of JSS. simone.computer/#/webdesktops - collection of desktop",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "basedsites.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "/g/&#39;s Based Sites",
+        "url": "https://basedsites.neocities.org/"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "provider": "searxng",
+  "query_id": "sup-v4-t-0289",
+  "query_text": "what is database indexes in transportation",
+  "requested_at": "2026-09-03T01:43:16.910770Z",
+  "strategy_class": "S2_COMPACT_INFORMATIONAL_TREATMENT"
+}

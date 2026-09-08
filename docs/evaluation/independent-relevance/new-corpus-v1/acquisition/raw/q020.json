@@ -1,0 +1,149 @@
+{
+  "schema_version": "1",
+  "query": "how to fix a slow draining sink",
+  "status": "partial_success",
+  "results": [
+    {
+      "schema_version": "1",
+      "rank": 1,
+      "title": "Swear not by the wiki, the fickle wiki, the inconstant wiki",
+      "original_url": "https://www.crummy.com/",
+      "canonical_url": "https://www.crummy.com/",
+      "domain": "www.crummy.com",
+      "snippet": "marriages to break up, draining their compatibility energy to keep their own relationship afloat. I think this is a really strong possibility, given that at the end of the movie t",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 2,
+      "title": "Tankless Water Heaters 101 - Tankless101 at Plbg.com",
+      "original_url": "https://www.plbg.com/education-tankless-water-heaters.html",
+      "canonical_url": "https://www.plbg.com/education-tankless-water-heaters.html",
+      "domain": "www.plbg.com",
+      "snippet": "a faucet dripping or draining the unit until the power comes back on. A \"back-up\" power supply or generator is also an option. Performance of Tankless Water Heaters Another reason",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 3,
+      "title": "Apollo 11 and Other Screw-Ups",
+      "original_url": "https://www.doneyles.com/LM/Tales.html",
+      "canonical_url": "https://www.doneyles.com/LM/Tales.html",
+      "domain": "www.doneyles.com",
+      "snippet": "mysterious was draining time from the computer, we were barely breathing. Half a minute elapsed between the alarm and the \"go\" from Houston. During that time mission control appro",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 4,
+      "title": "100R \u2014 north pacific logbook",
+      "original_url": "http://100r.co/site/north_pacific_logbook.html",
+      "canonical_url": "http://100r.co/site/north_pacific_logbook.html",
+      "domain": "100r.co",
+      "snippet": "and the oil has been draining out of it since that time. It is hard to clean these cushions, getting oil out will be no easy task and neither of us are willing to spend time on th",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 5,
+      "title": "Chapter 12 of The Decline And Fall Of The Roman Empire",
+      "original_url": "http://www.ourcivilisation.com/smartboard/shop/gibbone/rome/volume1/chap12.htm",
+      "canonical_url": "http://www.ourcivilisation.com/smartboard/shop/gibbone/rome/volume1/chap12.htm",
+      "domain": "www.ourcivilisation.com",
+      "snippet": "unwholesome labour of draining the marshes of Sirmium, the soldiers, impatient of fatigue, on a sudden threw down their tools, grasped their arms, and broke out into a furious mut",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "visible"
+    },
+    {
+      "schema_version": "1",
+      "rank": 6,
+      "title": "THE CRACK IN THE WORLD",
+      "original_url": "http://www.greatdreams.com/crack_in_the_world.htm",
+      "canonical_url": "http://www.greatdreams.com/crack_in_the_world.htm",
+      "domain": "www.greatdreams.com",
+      "snippet": "earthquakes. The draining lake is an oddity even by Icelandic standards, and has lured hordes of curious onlookers to it barren shores. \"If you put your ear to the ground, yo",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "relegated_by_diversity"
+    },
+    {
+      "schema_version": "1",
+      "rank": 7,
+      "title": "Stuff Michael Meeks is doing",
+      "original_url": "https://apple-tree.life/~michael/blog/2013/",
+      "canonical_url": "https://apple-tree.life/~michael/blog/2013/",
+      "domain": "apple-tree.life",
+      "snippet": "Norbert made wrt. draining the GraphicObject swamp. Last-minute 4.1.2 regression caught by Markus, encouraging to see the number of people testing pre-release builds there; pushed",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "relegated_by_diversity"
+    },
+    {
+      "schema_version": "1",
+      "rank": 8,
+      "title": "Jeff Varasano's NY Pizza Recipe",
+      "original_url": "http://www.varasanos.com/PizzaRecipe.htm",
+      "canonical_url": "http://www.varasanos.com/PizzaRecipe.htm",
+      "domain": "www.varasanos.com",
+      "snippet": "be avoided by simply draining for a long long time. I think Marco says he drains for 8 hours. Put the cheese on in cubes rather than slices Start with cold cheese Put a tiny drop",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "relegated_by_diversity"
+    },
+    {
+      "schema_version": "1",
+      "rank": 9,
+      "title": "Gered's Ramblings",
+      "original_url": "http://blarg.ca/rss/",
+      "canonical_url": "http://blarg.ca/rss/",
+      "domain": "blarg.ca",
+      "snippet": "of the most mentally draining and difficult parts of the job and simultaneously is an incredibly important part of the job. No developers that I know love reviewing code. Everyone",
+      "providers": [
+        "searxng"
+      ],
+      "published_at": null,
+      "status": "relegated_by_diversity"
+    }
+  ],
+  "providers_used": [
+    "searxng"
+  ],
+  "providers_failed": [],
+  "providers_partial": [
+    "searxng"
+  ],
+  "errors": [],
+  "degradations": [
+    {
+      "code": "provider_circuit_open",
+      "component": "marginalia",
+      "message": "marginalia is in circuit cooldown after consecutive failures; the source was skipped"
+    }
+  ],
+  "elapsed_ms": 331
+}

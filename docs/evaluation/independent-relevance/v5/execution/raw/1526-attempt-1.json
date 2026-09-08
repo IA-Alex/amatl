@@ -1,0 +1,273 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 403.184,
+  "pair_id": "v5-p-0694",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of language acquisition in environmental science",
+    "results": [
+      {
+        "category": "general",
+        "content": "Environmental Ethics and Public Policy Ernest Partridge, Ph.D www.igc.org/gadfly HOME PAGE               &amp;nbs",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gadfly.igc.org",
+          "/papers/wcaf.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Why Care About the Future?",
+        "url": "https://gadfly.igc.org/papers/wcaf.htm"
+      },
+      {
+        "category": "general",
+        "content": "professor in civil and environmental engineering, who has specialized in natural hazards modeling at the University of Michigan, to look elsewhere. His work focuses on how climate",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "alterslash.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Alterslash, the unofficial Slashdot digest",
+        "url": "https://alterslash.org/"
+      },
+      {
+        "category": "general",
+        "content": "I can work in corporate environmental and I feel like this will craft the perfect story. He also added the following advice: get your GIT and PG as soon as possible bachelors is e",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "sciencecareergeneral.neocities.org",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Science Career General Paste",
+        "url": "https://sciencecareergeneral.neocities.org/"
+      },
+      {
+        "category": "general",
+        "content": "sense of detection) of environmental or bodily events. Opponents of attributing the phenomenal consciousness to animals are not committed to denying the more general kind of consc",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.sydney.edu.au",
+          "/archives/fall2008/entries/consciousness-animal/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Animal Consciousness (Stanford Encyclopedia of Philosophy/Fall 2008 Edition)",
+        "url": "https://plato.sydney.edu.au/archives/fall2008/entries/consciousness-animal/"
+      },
+      {
+        "category": "general",
+        "content": "Environmental Ethics and Public Policy Ernest Partridge, Ph.D www.igc.org/gadfly HOME PAGE               &amp;nbs",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "gadfly.igc.org",
+          "/papers/ceep.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Can Environmentalist Escape Philosophy?",
+        "url": "https://gadfly.igc.org/papers/ceep.htm"
+      },
+      {
+        "category": "general",
+        "content": "styles: relational and environmental. Relational children treat the computer as much like a person as they can get away with, while environmental children treat it like a thing. T",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "papert.org",
+          "/articles/EpistemologicalPluralism.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Epistemological Pluralism and the Revaluation of the Concrete",
+        "url": "http://papert.org/articles/EpistemologicalPluralism.html"
+      },
+      {
+        "category": "general",
+        "content": "» Apocalypse Never: Why Environmental Alarmism Hurts Us All Michael Shellenberger isn&#39;t a culture-war tourist on environmental issues — he spent decades as an actual activist, hel",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.thepeoplesvoice.org",
+          "/TPV3/index.php",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Peoples Voice",
+        "url": "https://www.thepeoplesvoice.org/TPV3/index.php"
+      },
+      {
+        "category": "general",
+        "content": "technology assessment, environmental or quality of life issues, etc. Finding common ground, identifying bridge values , etc. is an essential part of working to resolve intractable",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "projectworldview.org",
+          "//worldviews.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Worldviews -- Introduction",
+        "url": "https://projectworldview.org//worldviews.htm"
+      },
+      {
+        "category": "general",
+        "content": "shaped and modified by environmental influences, and the DNA does not record these. For example, as we learn and experience the world, our brain structure changes through the grow",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "baharna.com",
+          "/philos/life.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Psychozoan: The Definition of Life",
+        "url": "https://baharna.com/philos/life.htm"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5e2a3b5626397a2c3580449328dbb35e6bde4319d99eaa2aec9fe2bfcb38e3ad",
+  "provider": "SearXNG",
+  "query": "tell me about the function of language acquisition in environmental science",
+  "query_id": "v5-p-0694-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:13:22.340417Z"
+}

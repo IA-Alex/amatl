@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 228.055,
+  "pair_id": "v5-p-0055",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of compiler operation in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "de35f1ce0e1b3dddd65e7a96b50d6b88d7758e127ca5d91c177e467b7a811a0e",
+  "provider": "SearXNG",
+  "query": "give an overview of compiler operation in oceanography",
+  "query_id": "v5-p-0055-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:07:34.192223Z"
+}

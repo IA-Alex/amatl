@@ -1,0 +1,52 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 899.73,
+  "pair_id": "v5-p-0459",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of supply chain logistics in agricultural science",
+    "results": [
+      {
+        "category": "general",
+        "content": "remove all agricultural subsidies and tariffs. See my Consumption and Energy page. Politics: have high taxes on paid political speech. See Campaign Finance section of this page. E",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.billdietrich.me",
+          "/USPolicy.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "US Policy Choices",
+        "url": "https://www.billdietrich.me/USPolicy.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "5d062fcc821213fd28f59678ba45f73e637ba645a8e84ef1631daa6653f3dbba",
+  "provider": "SearXNG",
+  "query": "give an overview of supply chain logistics in agricultural science",
+  "query_id": "v5-p-0459-control",
+  "raw_result_count": 1,
+  "timestamp": "2026-09-04T15:11:31.773576Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 355.177,
+  "pair_id": "v5-p-0934",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of bridge resonance in marine biology",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "5442f93d60f21824335c0b522058d07149919c7ef0ea0c219b59c9e1c5c3d407",
+  "provider": "SearXNG",
+  "query": "tell me about the function of bridge resonance in marine biology",
+  "query_id": "v5-p-0934-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:06:50.332911Z"
+}

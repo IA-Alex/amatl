@@ -1,0 +1,354 @@
+{
+  "arm": "treatment",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 319.719,
+  "pair_id": "v5-p-0187",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "what causes heat transfer in data management",
+    "results": [
+      {
+        "category": "general",
+        "content": "the Americans, whose management of Kabul seems befuddled. For one thing, to protect their embassy in Kabul, the Americans have declared the whole city center off-limits to Afghani",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.combatreform.org",
+          "/killerbees3.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Off-the-Shelf Killer Bees: making do with what you got?",
+        "url": "http://www.combatreform.org/killerbees3.htm"
+      },
+      {
+        "category": "general",
+        "content": "sent to the systems management computer, where its lower limit is checked; and if the respective hydrogen and oxygen manifold pressures are below 150 psia and 200 psia, respective",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "spaceshuttleguide.com",
+          "/system/electrical.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Space Shuttle Electrical SYSTEMS; See what the Electrical SYSTEMS of the Space Shuttle",
+        "url": "https://spaceshuttleguide.com/system/electrical.htm"
+      },
+      {
+        "category": "general",
+        "content": "serial copy generation management system (SCMS) designed to prevent initial copies or generational copies (copies of copies). The CGMS information is embedded in the outgoing vide",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "demystified.info",
+          "/dvdfaq.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "DVD FAQ",
+        "url": "https://demystified.info/dvdfaq.html"
+      },
+      {
+        "category": "general",
+        "content": "Halting) Goldman( Gold Management Atrocities Network) Viacad = Spirit of Binah. London, England. From Chinese Parents. Help Developed and Code of E-Trade. SubCommander 48: Sarah(S",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.orderofmagi.com",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Order Of Magi",
+        "url": "http://www.orderofmagi.com/"
+      },
+      {
+        "category": "general",
+        "content": "passengers&#39; safety, and management retaliated against him . One flaw is that 25% of the oxygen masks don&#39;t provide oxygen work when activated. Another flaw can cause fires, years",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2019-sep-dec.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2019: September - December Political Notes - Richard Stallman",
+        "url": "http://stallman.org/archives/2019-sep-dec.html"
+      },
+      {
+        "category": "general",
+        "content": "Information (Systems) Management, in Database Design and in Decision Theory have adopted a General Definition of Information (GDI) in terms of data &#43; meaning (see Floridi [2005] f",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "plato.stanford.edu",
+          "/archIves/win2013/entries/information-semantic/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Semantic Conceptions of Information (Stanford Encyclopedia of Philosophy/Winter 2013 Edition)",
+        "url": "https://plato.stanford.edu/archIves/win2013/entries/information-semantic/"
+      },
+      {
+        "category": "general",
+        "content": "of communicating to management any relevant problems or concerns, the contents of the DSE Regulations, and the role of users in completing workstation risk assessments. HEALTH, CO",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.explainingcomputers.com",
+          "/dse.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "ExplainingComputers.com: Computing Health and Safety",
+        "url": "https://www.explainingcomputers.com/dse.html"
+      },
+      {
+        "category": "general",
+        "content": "as required for the management, admin-istration and evaluation of the program are being provided cooperatively by the Air Force (Phillips Laboratory) and Navy (Office of Naval Res",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.cyberspaceorbit.com",
+          "/WEATHER.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          8
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.125,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "HAARP",
+        "url": "https://www.cyberspaceorbit.com/WEATHER.html"
+      },
+      {
+        "category": "general",
+        "content": "custom element state management. This interface includes methods to add() , delete() , or detect if the element has() a given state, and more. Importantly, these states added to a",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.w3.org",
+          "/Math/planet/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          9
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1111111111111111,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Planet MathML - W3C",
+        "url": "https://www.w3.org/Math/planet/"
+      },
+      {
+        "category": "general",
+        "content": "to us as advice; line management then make the decision as to action.&#34; The documents do not name any of the individuals subjected to vetting, but it is possible that some of the B",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.bilderberg.org",
+          "/sis.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          10
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.1,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Secret State: MI5 (Home Office/MoD), The Security Service and MI6 (Foreign Office/MoD), GCHQ signals intelligence, The Secret Intelligenc",
+        "url": "http://www.bilderberg.org/sis.htm"
+      },
+      {
+        "category": "general",
+        "content": "planned “cat management” law change in the city of Fremantle, Western Australia, would see cats banned from all public areas such as roads, verges and bushla",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "serendipity.li",
+          "/",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          11
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.09090909090909091,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Serendipity",
+        "url": "https://serendipity.li/"
+      },
+      {
+        "category": "general",
+        "content": "to live on, and that management is demanding that they work ever harder and faster, discarding safety precautions. For more reasons to refuse to buy from Amazon, see amazon.html .",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "stallman.org",
+          "/archives/2022-may-aug.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          12
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.08333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "2022: May - August Political Notes",
+        "url": "http://stallman.org/archives/2022-may-aug.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "824152423cff5b18429061e4c7cc3bbd97edafbc6e4a8d25951ecfebc7f2ebe1",
+  "provider": "SearXNG",
+  "query": "what causes heat transfer in data management",
+  "query_id": "v5-p-0187-treatment",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:10:35.481492Z"
+}

@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 227.479,
+  "pair_id": "v5-p-0703",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "give an overview of language acquisition in oceanography",
+    "results": [],
+    "suggestions": [],
+    "unresponsive_engines": [
+      [
+        "wikipedia",
+        "Suspended: too many requests"
+      ]
+    ]
+  },
+  "payload_sha256": "ba29487772a5a9dc1c950ba2c926469bbfdca6459f05c1fc463af6c327dc334c",
+  "provider": "SearXNG",
+  "query": "give an overview of language acquisition in oceanography",
+  "query_id": "v5-p-0703-control",
+  "raw_result_count": 0,
+  "timestamp": "2026-09-04T15:15:53.988254Z"
+}

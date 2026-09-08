@@ -1,0 +1,214 @@
+{
+  "arm": "control",
+  "attempt": 1,
+  "depth": 3,
+  "endpoint": "http://127.0.0.1:8888/search",
+  "http_status": 200,
+  "latency_ms": 1081.857,
+  "pair_id": "v5-p-0970",
+  "payload": {
+    "answers": [],
+    "corrections": [],
+    "infoboxes": [],
+    "query": "tell me about the function of cloud formation in operations research",
+    "results": [
+      {
+        "category": "general",
+        "content": "survival and recovery operations. Office of Civil Defense guidance and the USDA Radiological Monitoring Handbook provide details for the necessary coordinated effort at the county",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ki4u.com",
+          "/transpacific.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          1
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 1.0,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Trans-Pacific Radioactive Fallout here from Japan, North Korea, Iran, Mid-East, etc.",
+        "url": "https://www.ki4u.com/transpacific.htm"
+      },
+      {
+        "category": "general",
+        "content": "all the other operations requires an extensive use of manpower.   24-36 MPs to man a dozen checkpoints at the &#34;cordon&#34;. This is based on the requirements to man che",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.astronomyufo.com",
+          "/UFO/Rosmyths.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          2
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.5,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Popular Roswell myths",
+        "url": "http://www.astronomyufo.com/UFO/Rosmyths.htm"
+      },
+      {
+        "category": "general",
+        "content": "survival and recovery operations. Office of Civil Defense guidance and the USDA Radiological Monitoring Handbook provide details for the necessary coordinated effort at the county",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.ki4u.com",
+          "/illwind.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          3
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.3333333333333333,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Japan Radioactive Fallout Contamination Map &amp; Radiation Protection FAQ! Iran, North Korea, too",
+        "url": "https://www.ki4u.com/illwind.htm"
+      },
+      {
+        "category": "general",
+        "content": "began his antiseptic operations, they were generally successful, but a few days later his patients succumbed to carbolic acid or mercuric poisoning, so that it became a gruesome m",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.whale.to",
+          "/a/b/pearson.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          4
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.25,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Dream &amp; Lie of Louis Pasteur by R. B. Pearson",
+        "url": "http://www.whale.to/a/b/pearson.html"
+      },
+      {
+        "category": "general",
+        "content": "their broadly-conceived operations of astronomy and their exact measurements of big time-intervals, none of this ever became intimately a part of him. What his philosophers occasi",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.gutenberg.org",
+          "/cache/epub/72344/pg72344-images.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          5
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.2,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "The Decline of the West| Project Gutenberg",
+        "url": "https://www.gutenberg.org/cache/epub/72344/pg72344-images.html"
+      },
+      {
+        "category": "general",
+        "content": "handling the day-to-day operations, governed by a CEO with a hierarchical line-management structure, accountable to the board as overall policy-maker. The end result is that capit",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "http",
+          "www.dhushara.com",
+          "/repcult/reproduction-and-culture.htm",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          6
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.16666666666666666,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Religion, Politics, Sexual Reproduction and the Future of Human Society",
+        "url": "http://www.dhushara.com/repcult/reproduction-and-culture.htm"
+      },
+      {
+        "category": "general",
+        "content": "irreversible operations force an increase in the volume of phase space occupied by the system. However, if the allowed computational degrees of freedom in the system are not allow",
+        "engine": "wiby",
+        "engines": [
+          "wiby"
+        ],
+        "img_src": "",
+        "parsed_url": [
+          "https",
+          "www.zyvex.com",
+          "/nanotech/mechano.html",
+          "",
+          "",
+          ""
+        ],
+        "positions": [
+          7
+        ],
+        "priority": "",
+        "publishedDate": null,
+        "score": 0.14285714285714285,
+        "template": "default.html",
+        "thumbnail": "",
+        "title": "Two Types Of Mechanical Reversible Logic",
+        "url": "https://www.zyvex.com/nanotech/mechano.html"
+      }
+    ],
+    "suggestions": [],
+    "unresponsive_engines": []
+  },
+  "payload_sha256": "1ac35010521a0dfbd38667c803f8c587f0a668b1368d86bfebe288a06cdc39d4",
+  "provider": "SearXNG",
+  "query": "tell me about the function of cloud formation in operations research",
+  "query_id": "v5-p-0970-control",
+  "raw_result_count": 3,
+  "timestamp": "2026-09-04T15:05:03.258548Z"
+}
