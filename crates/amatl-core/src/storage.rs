@@ -213,13 +213,23 @@ fn acquire_file_lock(db_path: &Path) -> Result<std::fs::File, StorageError> {
         value.push(".lock");
         PathBuf::from(value)
     };
-    let file = std::fs::OpenOptions::new()
+    let mut file = std::fs::OpenOptions::new()
         .create(true)
         .truncate(true)
         .write(true)
         .open(&lock_path)
         .map_err(|e| StorageError::Filesystem {
             message: format!("cannot create lock file: {e}"),
+        })?;
+    // A zero-length file is a degenerate case for Windows' LockFileEx
+    // (which fs2 uses under the hood there): locking a zero-byte range is
+    // documented as a no-op on some implementations, so the advisory lock
+    // silently never takes effect. Seed one byte so the locked range is
+    // never empty -- content is irrelevant, this file is never read.
+    use std::io::Write as _;
+    file.write_all(b"\0")
+        .map_err(|e| StorageError::Filesystem {
+            message: format!("cannot seed lock file: {e}"),
         })?;
     // Try non-blocking exclusive lock.
     file.try_lock_exclusive().map_err(|e| {
