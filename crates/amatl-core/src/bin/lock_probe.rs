@@ -7,11 +7,12 @@
 //! the same process never contends there -- only a separate process does.
 //!
 //! Protocol:
-//!   argv[1] = database path
-//!   exit 0  = acquired the lock (after printing "LOCKED" and blocking on
-//!             stdin until the parent closes it)
-//!   exit 42 = StorageError::LockContention (someone else holds it)
-//!   exit 1  = any other error (message on stderr)
+//!
+//! - the database path is passed as the first CLI argument
+//! - exit `0`: acquired the lock (after printing `LOCKED` and blocking on
+//!   stdin until the parent closes it)
+//! - exit `42`: `StorageError::LockContention` (someone else holds it)
+//! - exit `1`: any other error (message on stderr)
 
 use std::io::{Read, Write};
 
