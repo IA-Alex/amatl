@@ -820,3 +820,67 @@ CONTRACT_GATES=PASS
 
 Límites 3, 4, 5, 6, 7 del baseline permanecen como
 `KNOWN_NON_BLOCKING_LIMITATION` sin cambios.
+
+## Cierre CI de la PR #1: tres checks en rojo resueltos (2026-09-08)
+
+La PR #1 (`fix/audit-repository-hygiene` → `main`, 78 commits) estaba
+`UNSTABLE`: `contract-gate` PASS pero `browser-e2e`, `cross-platform
+(windows-latest)` e `isolated-render` en rojo. Ninguno era regresión de código
+de esta sesión; los tres eran defectos preexistentes de portabilidad/entorno.
+No se tocó núcleo, providers, routing, ranking, relevancia, límites ni
+Evidence. No amplía alcance — no requiere ADR.
+
+1. **`browser-e2e` — violación real de accesibilidad (WCAG 2 AA).** axe-core
+   reportó `color-contrast` 4.37:1 en `.result-title` (`--accent` `#2f6fe0`
+   sobre `--background` `#f5f7fa`) en el tema claro; el umbral es 4.5:1. El
+   comentario del bloque de tema claro en `styles.css` ya afirmaba que todos
+   los tokens despejaban 4.5:1, así que era el token el que estaba mal, no la
+   regla. `--accent` del tema claro se profundiza a `#2b66d6` (4.92:1,
+   mismo matiz) en los dos bloques de tema claro. El tema oscuro no se toca
+   (`#4f8cff` sobre `#111315` ya despeja ~6.6:1). Verificado local con
+   `AMATL_BROWSER_E2E=1 cargo test -p amatl-server --test browser_e2e`: 5/5.
+
+2. **`cross-platform (windows-latest)` — tres fallos de `amatl-cli` test
+   `cli.rs`.**
+   - `deep_command_is_exposed_without_running_network_on_help` afirmaba
+     `contains("Usage: amatl deep")`; en Windows clap imprime
+     `Usage: amatl.exe deep`. Ahora afirma `contains("deep [OPTIONS]
+     <QUERY>")`, independiente del nombre del binario.
+   - `history_and_saved_commands_manage_local_domain_state` y
+     `db_maintenance_reports_health_and_rolls_the_schema_back` fallaban en
+     `search --mock` porque `persistent_config()` interpolaba
+     `database.display()` sin escapar en una cadena básica TOML; una ruta
+     Windows (`C:\Users\...`) rompe el parseo (`\U`, `\a`). Ahora escapa `\`
+     antes de interpolar, igual que el `{:?}` que ya usa otro helper del
+     archivo. Verificado local: 18/18.
+
+3. **`isolated-render` — flake de entorno en `systemd-run --user`.** El script
+   `packaging/amatl-chromium-sandbox` envuelve Chromium en `systemd-run
+   --user`, que necesita manager y bus de sesión por-usuario. Los runners de
+   GitHub no lo levantan para el usuario del job, de ahí los "Failed to
+   connect to the bus" y los verdes/rojos alternos el mismo día. El workflow
+   `chromium-isolation.yml` gana un paso previo: `loginctl enable-linger`,
+   espera a `/run/user/$uid/bus`, exporta `XDG_RUNTIME_DIR` /
+   `DBUS_SESSION_BUS_ADDRESS` al resto del job y prueba
+   `systemd-run --user -- true`. El contrato de aislamiento (namespaces,
+   read-only, límites) no cambia. Render local con el script: exit 0,
+   `>rendered<`.
+
+Compuertas locales: `cargo fmt --check` PASS, `cargo clippy --workspace
+--all-targets -- -D warnings` PASS, `cargo test --workspace --locked` PASS.
+
+```
+BROWSER_E2E_A11Y_FIXED=YES
+LIGHT_ACCENT_CONTRAST_AA=YES (4.92:1)
+DARK_THEME_UNCHANGED=YES
+WINDOWS_CLI_TESTS_FIXED=YES (18/18)
+CHROMIUM_ISOLATION_USERBUS_BOOTSTRAP=YES
+ISOLATION_CONTRACT_UNCHANGED=YES
+CORE_PROVIDERS_ROUTING_RANKING_RELEVANCE_EVIDENCE_UNCHANGED=YES
+CODE_GATES=PASS
+```
+
+Pendiente tras esto: re-ejecutar la CI de la PR #1 y confirmar los tres checks
+en verde; decisión del propietario sobre si la PR de 78 commits se mergea
+entera (re-titulando/re-describiendo) o se parte. Los `KNOWN_NON_BLOCKING`
+y los ítems de «Pendientes que requieren decisión externa» siguen sin cambios.
