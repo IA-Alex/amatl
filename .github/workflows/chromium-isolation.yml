@@ -89,7 +89,11 @@ jobs:
         run: |
           fixture="$(mktemp --suffix=.html)"
           output="$(mktemp --suffix=.html)"
-          printf '%s' '<!doctype html><p id="state">pending</p><script>fetch("http://127.0.0.1:8765/").then(()=>state.textContent="network-leak").catch(()=>state.textContent="blocked")</script>' > "$fixture"
+          # A *synchronous* XHR so the network attempt and its failure are
+          # resolved inside this one script execution, before --dump-dom
+          # snapshots the DOM. An async fet().catch() left the assertion racing
+          # the snapshot ("pending" leaked through intermittently).
+          printf '%s' '<!doctype html><p id="state">pending</p><script>try{var x=new XMLHttpRequest();x.open("GET","http://127.0.0.1:8765/",false);x.send();document.querySelector("#state").textContent="network-leak"}catch(e){document.querySelector("#state").textContent="blocked"}</script>' > "$fixture"
           packaging/amatl-chromium-sandbox "$fixture" "$output" 60
           grep --fixed-strings --quiet '>blocked<' "$output"
       - uses: dtolnay/rust-toolchain@stable
