@@ -701,6 +701,43 @@ Próxima fase: revisar las integraciones grandes restantes sin cambiar los
 límites, providers, routing, ranking, relevancia ni comportamiento Evidence
 congelados en este baseline.
 
+## Fix de routing — salud de telemetría ya no excluye de forma dura (2026-09-07)
+
+Hallazgo sobre el mecanismo de combinación de providers (`router.rs`,
+`AdaptiveRouter::recommend_with_roles`): el gate por salud de telemetría
+(`ProviderHealth::Unavailable`, `success_rate < 0.2` sobre una ventana de
+hasta `TELEMETRY_MAX_RETENTION_DAYS`) excluía al provider por completo de
+`eligible` -- a diferencia de `circuit.rs`, que gobierna la misma pregunta
+("¿lo llamamos ahora?") con recuperación explícita (`half_open`, cooldown de
+`open_seconds`). Un provider excluido por telemetría nunca vuelve a ser
+llamado, así que nunca puede generar una observación de éxito nueva que
+levante su `success_rate`: se autobloquea durante toda la ventana de
+retención, sin sondeo de recuperación. Ningún test cubría esa rama por
+nombre; no está documentada en `fase_a_contratos.md` ni en `docs/api/`.
+
+Con Marginalia en `rate_limit`/`429` persistente (ver baseline arriba), este
+mecanismo podía dejarlo fuera de toda ronda de forma indefinida aunque
+SearXNG y Marginalia estuvieran ambos `enabled` y `approved` -- no por
+límite de presupuesto ni por decisión explícita del operador, sino por un
+candado de scoring sin salida.
+
+**Cambio (`crates/amatl-core/src/router.rs`):** la salud `Unavailable` deja
+de excluir; pasa a penalizar el score (`health_penalty = 1.5`, contra `0.5`
+de `Degraded`), de modo que un peer sano gana la primera ronda pero el
+provider degradado sigue siendo elegible y puede ser re-sondeado por
+`exploration_boost` cuando `exploration_due`. `excluded_providers` conserva
+sus dos motivos reales (`provider_unavailable`, `required_capability_missing`);
+`provider_health_unavailable` deja de emitirse. No se tocó `circuit.rs`,
+`ranking.rs`, `dedupe.rs`, `complementarity.rs` ni ningún provider.
+
+No es cambio de contrato público (`debug_reasons`/`excluded_providers` son
+internos a `AdaptiveRoutingRecommendation`, no aparecen en `SearchResponse`
+ni en `docs/api/openapi.yaml`) -- no requiere ADR.
+
+Test de regresión: `r07_unavailable_health_is_penalized_not_excluded`
+(`router.rs`), verifica que un provider con `success_rate = 0` sigue en
+`ordered_providers` y ya no aparece en `excluded_providers`.
+
 ## Cierre de "próxima fase": Deep targets seleccionados y tope de fetch por request (2026-09-07)
 
 Este append cierra la fase declarada al final del baseline del 2026-08-31

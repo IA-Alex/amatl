@@ -182,10 +182,16 @@ impl AdaptiveRouter {
                 classification.primary_category.clone(),
                 now,
             );
-            if snapshot.sample > 0 && snapshot.health == ProviderHealth::Unavailable {
-                excluded.insert(provider.name.clone(), "provider_health_unavailable".into());
-                continue;
-            }
+            // Telemetry health is a decaying quality signal, not a real-time
+            // stop -- that job belongs to the circuit breaker (`circuit.rs`),
+            // which has an explicit half-open recovery probe. A router-level
+            // hard exclusion here has none: an excluded provider is never
+            // called again, so it can never earn a fresh success observation
+            // to raise `success_rate` back up, and self-locks for the length
+            // of the telemetry retention window (up to
+            // `TELEMETRY_MAX_RETENTION_DAYS`). `Unavailable` health is instead
+            // priced into `health_penalty` below, which still lets
+            // `exploration_boost` occasionally re-probe it.
             eligible.push((index, provider, snapshot));
         }
 
@@ -214,10 +220,10 @@ impl AdaptiveRouter {
                     ProviderValueState::Learning => 0.25,
                     ProviderValueState::Mature => 0.75,
                 };
-                let health_penalty = if snapshot.health == ProviderHealth::Degraded {
-                    0.5
-                } else {
-                    0.0
+                let health_penalty = match snapshot.health {
+                    ProviderHealth::Degraded => 0.5,
+                    ProviderHealth::Unavailable => 1.5,
+                    ProviderHealth::Healthy => 0.0,
                 };
                 let exploration_boost = if exploration_due { 2.0 } else { 0.0 };
                 let cost_penalty = provider.capabilities.estimated_cost.unwrap_or(0) as f64 * 0.05;
@@ -547,6 +553,57 @@ mod tests {
         );
         assert_eq!(result.ordered_providers, ["up"]);
         assert_eq!(result.excluded_providers["down"], "provider_unavailable");
+    }
+
+    async fn record_failures(telemetry: &InMemoryTelemetry, provider: &str, count: u32) {
+        for _ in 0..count {
+            telemetry
+                .record(TelemetryObservation {
+                    observed_at: crate::telemetry::now_unix(),
+                    provider: provider.into(),
+                    category: Category::General,
+                    outcome: TelemetryOutcome::Error,
+                    latency_ms: 10,
+                    total_results: 0,
+                    unique_results: 0,
+                    duplicate_ratio: 0.0,
+                    top_k_contribution: 0.0,
+                    diversity: 0.0,
+                    cost_units: 0,
+                    request_id: None,
+                })
+                .await;
+        }
+    }
+
+    /// A provider whose rolling telemetry health is `Unavailable` (e.g. a
+    /// source that has been returning 429s) must stay eligible: the router no
+    /// longer hard-excludes on telemetry health, because unlike the circuit
+    /// breaker that gate has no recovery probe and would self-lock the
+    /// provider out for the whole retention window. It must still be heavily
+    /// penalized so a healthy peer is preferred whenever one exists.
+    #[tokio::test]
+    async fn r07_unavailable_health_is_penalized_not_excluded() {
+        let telemetry = InMemoryTelemetry::new();
+        record_failures(&telemetry, "flaky", 100).await;
+        record(&telemetry, "healthy", 10).await;
+        let query = parse_query("rust".into()).unwrap();
+        let now = crate::telemetry::now_unix();
+        let snapshot = telemetry.snapshot_for_routing("flaky", Category::General, now);
+        assert_eq!(snapshot.health, ProviderHealth::Unavailable);
+        let result = AdaptiveRouter.recommend(
+            &query,
+            &classify(&query),
+            &[descriptor("flaky"), descriptor("healthy")],
+            &telemetry,
+            &SearchPolicyV1::default(),
+            now,
+        );
+        assert!(
+            !result.excluded_providers.contains_key("flaky"),
+            "telemetry health must not hard-exclude a provider"
+        );
+        assert_eq!(result.ordered_providers, ["healthy", "flaky"]);
     }
 
     #[tokio::test]
