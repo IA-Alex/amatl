@@ -1,0 +1,19 @@
+# Normalize all text files to LF in the repository. Without this, a Windows
+# checkout with core.autocrlf=true rewrites line endings, and tests that
+# `include_str!` a fixture and match against "\n" fail on that platform only
+# (e.g. tests::openapi_covers_every_router_operation against docs/api/openapi.yaml).
+* text=auto eol=lf
+
+# Explicit belt-and-suspenders for the fixtures that tests parse byte-for-byte.
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.md text eol=lf
+*.rs text eol=lf
+
+# Binary: never touch these.
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff2 binary

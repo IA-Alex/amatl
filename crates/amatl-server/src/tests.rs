@@ -4289,7 +4289,10 @@ fn openapi_covers_every_router_operation() {
     // from being omitted altogether.
     use crate::routes::all_routes;
 
-    let openapi = include_str!("../../../docs/api/openapi.yaml");
+    // Strip CR so the "\n"-anchored matches below hold on a Windows checkout
+    // that rewrote the fixture's line endings (see .gitattributes).
+    let openapi = include_str!("../../../docs/api/openapi.yaml").replace('\r', "");
+    let openapi = openapi.as_str();
     let routes = all_routes();
 
     for route in routes {
