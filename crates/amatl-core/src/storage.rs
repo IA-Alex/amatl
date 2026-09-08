@@ -247,7 +247,19 @@ fn acquire_file_lock(db_path: &Path) -> Result<std::fs::File, StorageError> {
     }
     // Try non-blocking exclusive lock.
     file.try_lock_exclusive().map_err(|e| {
-        if e.kind() == std::io::ErrorKind::WouldBlock {
+        // `WouldBlock` is what a contended try_lock reports on Unix.
+        // `fs2::lock_contended_error()` is fs2's own canonical "this is what a
+        // contended try_lock looks like on THIS platform" value -- built via
+        // `io::Error::from_raw_os_error`, so its `raw_os_error()` is always
+        // `Some(_)` (EWOULDBLOCK on Unix, ERROR_LOCK_VIOLATION / os error 33 on
+        // Windows). On Windows that error's `ErrorKind` is not `WouldBlock`, so
+        // it used to fall through to a generic `Filesystem` error here (see
+        // lock_probe.rs, which had to work around the same gap by string-
+        // matching the already-formatted message).
+        let is_contended = e.kind() == std::io::ErrorKind::WouldBlock
+            || (e.raw_os_error().is_some()
+                && e.raw_os_error() == fs2::lock_contended_error().raw_os_error());
+        if is_contended {
             StorageError::LockContention
         } else {
             StorageError::Filesystem {
