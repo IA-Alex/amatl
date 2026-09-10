@@ -1,5 +1,9 @@
 /target/
 /amatl.toml
+# Operator-defined ranking rules (Optics engine). Personal config, same
+# treatment as amatl.toml — can encode which sites/topics the operator
+# boosts or buries.
+*.optic
 /amatl.sqlite3*
 # Covers every backup AMATL's own storage module produces next to the live
 # DB — auto (`.backup-`), migration (`.migration-`) and pre-restore
