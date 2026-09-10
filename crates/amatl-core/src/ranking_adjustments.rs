@@ -13,7 +13,7 @@
 //! own function here and are folded into [`apply_adjustments`] in sequence;
 //! `execution.rs` calls this one entry point and never needs to change again.
 
-use crate::model::{CanonicalUrl, RankedResult, RankingScore};
+use crate::model::{CanonicalUrl, RankedResult, RankingScore, TieBreakReason};
 use std::collections::HashSet;
 use std::sync::LazyLock;
 
@@ -42,6 +42,15 @@ const TRACKER_PENALTY_MULTIPLIER: f64 = 0.05;
 /// into `apply_adjustments` in sequence -- this function is the single
 /// entry point execution.rs calls, so adding a new adjustment never
 /// means touching execution.rs again.
+///
+/// After the penalties are applied the `Vec` is re-sorted with the *exact*
+/// same criterion `ranking::rank()` uses as its own final step (score desc,
+/// then `title_match` desc, then `stable_order` asc), and each result's
+/// `explanation.tie_break` is recomputed against its new neighbour -- for the
+/// same reason: `rank()` set `tie_break` from a comparison it made *before*
+/// this adjustment, which can be stale once a penalty changes the order.
+/// Both steps mirror the tail of `rank()` verbatim; if that criterion ever
+/// changes, this function must change with it.
 pub fn apply_adjustments(mut ranked: Vec<RankedResult>) -> Vec<RankedResult> {
     for result in &mut ranked {
         if is_tracker_domain(&result.result.canonical_url) {
@@ -49,6 +58,25 @@ pub fn apply_adjustments(mut ranked: Vec<RankedResult>) -> Vec<RankedResult> {
             result.score =
                 RankingScore::new(adjusted).expect("clamped value is always within 0.0..=1.0");
         }
+    }
+    ranked.sort_by(|left, right| {
+        right
+            .score
+            .get()
+            .total_cmp(&left.score.get())
+            .then_with(|| right.title_match.get().total_cmp(&left.title_match.get()))
+            .then_with(|| left.stable_order.cmp(&right.stable_order))
+    });
+    for index in 1..ranked.len() {
+        ranked[index].explanation.tie_break = if ranked[index - 1].score == ranked[index].score {
+            if ranked[index - 1].title_match == ranked[index].title_match {
+                TieBreakReason::StableOrder
+            } else {
+                TieBreakReason::TitleMatch
+            }
+        } else {
+            TieBreakReason::CombinedScore
+        };
     }
     ranked
 }
@@ -132,6 +160,57 @@ mod tests {
         let before = base.score.get();
         let adjusted = apply_adjustments(vec![base]);
         assert_eq!(adjusted[0].score.get(), before);
+    }
+
+    #[test]
+    fn tracker_domain_drops_below_a_non_tracker_result_after_adjustment() {
+        let tracker_host = *TRACKER_DOMAINS.iter().next().expect("list is non-empty");
+
+        // Two results that `rank()` scored identically (same synthetic input),
+        // so score and title_match tie and `stable_order` alone decides the
+        // order. Give the tracker result the lower `stable_order` so that
+        // *before* the adjustment it sits first -- exactly the position the
+        // penalty has to be able to take away from it.
+        let mut tracker_first =
+            with_host(ranked_with_host("tracker-holder.example.org"), tracker_host);
+        tracker_first.stable_order = 0;
+        let mut clean_second = ranked_with_host("clean.example.org");
+        clean_second.stable_order = 1;
+
+        // Pre-adjustment these two tie on score and title_match, so if `rank()`
+        // had seen them as a pair it would have stamped the second one's
+        // tie_break as StableOrder. Seed exactly that stale value and prove the
+        // re-sort overwrites it once the penalty breaks the tie.
+        tracker_first.explanation.tie_break = TieBreakReason::StableOrder;
+        clean_second.explanation.tie_break = TieBreakReason::StableOrder;
+
+        assert!(
+            tracker_first.score.get() >= clean_second.score.get(),
+            "test precondition: the tracker result must rank first pre-adjustment"
+        );
+
+        let adjusted = apply_adjustments(vec![tracker_first, clean_second]);
+
+        assert!(
+            adjusted[0].result.canonical_url.0.host_str() != Some(tracker_host),
+            "the tracker-domain result must not remain first after the penalty \
+             reorders the list"
+        );
+        assert_eq!(
+            adjusted[0].result.canonical_url.0.host_str(),
+            Some("clean.example.org")
+        );
+        assert_eq!(
+            adjusted[1].result.canonical_url.0.host_str(),
+            Some(tracker_host)
+        );
+        // The penalty opened a real score gap between the two, so the demoted
+        // tracker's tie_break must be recomputed to CombinedScore -- not left
+        // at the stale StableOrder value seeded above.
+        assert_eq!(
+            adjusted[1].explanation.tie_break,
+            TieBreakReason::CombinedScore
+        );
     }
 
     #[test]
