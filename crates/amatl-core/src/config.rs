@@ -24,6 +24,9 @@ pub struct Config {
     pub budget: BudgetConfig,
     pub execution: ExecutionConfig,
     pub ranking_policy: RankingPolicyV1,
+    /// Post-rank adjustments outside the protected `RankingPolicyV1` formula
+    /// (`[ranking.optics]` today).
+    pub ranking: RankingConfig,
     pub diversity_policy: DiversityPolicyV1,
     pub search_policy: SearchPolicyV1,
     /// Primary / expansion provider roles (STEP 1). When
@@ -846,6 +849,54 @@ pub struct RankingV2Config {
     pub policy: RankingV2Policy,
 }
 
+/// `[ranking]` — post-rank adjustments that live outside the protected
+/// `RankingPolicyV1` weighted-sum formula (`crate::ranking_adjustments`).
+///
+/// Today this holds only the Optics sub-section; the tracker/ad-domain
+/// penalty is always on and has no knobs.
+#[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
+#[serde(default)]
+pub struct RankingConfig {
+    pub optics: OpticsConfig,
+}
+
+/// `[ranking.optics]` — operator-declared Boost/Downrank/Discard rules loaded
+/// from a static `.optic` file (see `crate::optics`). Rules are loaded once,
+/// from a file, exactly like every other AMATL setting — never per request, so
+/// the search API is not a way to inject ranking rules.
+#[derive(Clone, Debug, Default, Serialize, Deserialize, PartialEq, Eq)]
+#[serde(default)]
+pub struct OpticsConfig {
+    /// When `false` (the default) the `.optic` file, if any, is ignored.
+    pub enabled: bool,
+    /// Path to the `.optic` file, resolved relative to the process working
+    /// directory. A missing or unparsable file logs a warning and disables
+    /// optics for that load — it never fails a search.
+    pub path: Option<String>,
+}
+
+/// Narrow admin-scoped patch for `[ranking.optics]`. Mirrors
+/// [`Config::set_ranking_optics_fields`] exactly.
+#[derive(Clone, Debug, Default, Deserialize)]
+#[serde(default)]
+pub struct OpticsConfigPatch {
+    pub enabled: Option<bool>,
+    pub path: Option<String>,
+}
+
+impl OpticsConfigPatch {
+    /// Apply every field this patch sets to `config`. Mirrors
+    /// [`Config::set_ranking_optics_fields`].
+    pub fn apply(&self, config: &mut OpticsConfig) {
+        if let Some(value) = self.enabled {
+            config.enabled = value;
+        }
+        if let Some(value) = &self.path {
+            config.path = Some(value.clone());
+        }
+    }
+}
+
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
 #[serde(default)]
 pub struct GapConfig {
@@ -1652,6 +1703,7 @@ impl Default for Config {
             budget: BudgetConfig::default(),
             execution: ExecutionConfig::default(),
             ranking_policy: RankingPolicyV1::default(),
+            ranking: RankingConfig::default(),
             diversity_policy: DiversityPolicyV1::default(),
             search_policy: SearchPolicyV1::default(),
             expansion: ExpansionConfig::default(),
@@ -2228,6 +2280,29 @@ impl Config {
                 "timeout_ms",
                 toml_edit::value(signed_integer(value, "deep.timeout_ms")?),
             );
+        }
+        std::fs::write(path, document.to_string())?;
+        Ok(())
+    }
+
+    /// Write every field `patch` sets to `[ranking.optics]`, and nothing
+    /// else. Same guarantees as [`Config::set_deep_fields`]: uses `toml_edit`
+    /// so operator comments survive, and the caller is expected to have
+    /// validated a candidate configuration first.
+    pub fn set_ranking_optics_fields(
+        path: &Path,
+        patch: &OpticsConfigPatch,
+    ) -> Result<(), ConfigError> {
+        let text = std::fs::read_to_string(path)?;
+        let mut document = text
+            .parse::<toml_edit::DocumentMut>()
+            .map_err(|error| ConfigError::Policy(format!("invalid TOML: {error}")))?;
+        let table = Self::table_at(&mut document, &["ranking", "optics"])?;
+        if let Some(value) = patch.enabled {
+            table.insert("enabled", toml_edit::value(value));
+        }
+        if let Some(value) = &patch.path {
+            table.insert("path", toml_edit::value(value.as_str()));
         }
         std::fs::write(path, document.to_string())?;
         Ok(())
@@ -5105,6 +5180,39 @@ mod tests {
         assert_eq!(reloaded.deep.renderer.max_dom_bytes, 4_194_304);
 
         let _ = std::fs::remove_file(&path);
+    }
+
+    #[test]
+    fn mirror_round_trips_every_ranking_optics_patch_field() {
+        let path = unique_tmp_path("ranking-optics");
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+
+        let patch = OpticsConfigPatch {
+            enabled: Some(true),
+            path: Some("amatl.optic".into()),
+        };
+        Config::set_ranking_optics_fields(&path, &patch).unwrap();
+
+        let written = std::fs::read_to_string(&path).unwrap();
+        assert!(written.contains("[ranking.optics]") || written.contains("[ranking]"));
+
+        let reloaded = Config::from_toml(&written).unwrap();
+        assert!(reloaded.ranking.optics.enabled);
+        assert_eq!(reloaded.ranking.optics.path.as_deref(), Some("amatl.optic"));
+
+        // The in-memory patch mirrors the file writer exactly.
+        let mut in_memory = OpticsConfig::default();
+        patch.apply(&mut in_memory);
+        assert_eq!(in_memory, reloaded.ranking.optics);
+
+        let _ = std::fs::remove_file(&path);
+    }
+
+    #[test]
+    fn ranking_optics_defaults_to_disabled_and_no_path() {
+        let config = Config::default();
+        assert!(!config.ranking.optics.enabled);
+        assert!(config.ranking.optics.path.is_none());
     }
 
     #[test]

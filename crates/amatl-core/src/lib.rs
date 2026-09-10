@@ -31,6 +31,7 @@ pub mod ingest;
 pub mod model;
 pub mod normalize;
 pub mod operational;
+pub mod optics;
 pub mod planning;
 pub mod progressive;
 pub mod providers;
@@ -65,9 +66,9 @@ pub use config::{
     AnswerConfig, AnswerConfigPatch, ApprovalStatus, Config, ConfigError, DataPolicyConfig,
     DataPolicyConfigPatch, DeepConfigPatch, EgressPolicy, ExecutionConfig, ExpansionConfig,
     ExpansionMode, ExtractorConfigPatch, InferenceConfig, InferenceConfigPatch, InferenceMode,
-    PersistenceConfigPatch, ProviderConfig, ProviderRuntimeConfig, ReloadKind, RendererConfig,
-    RendererConfigPatch, Scope, SecurityProfile, ServerClient, ServerConfig, ServerConfigPatch,
-    TelemetryConfigPatch, TlsConfig, MCP_TOOLS,
+    OpticsConfig, OpticsConfigPatch, PersistenceConfigPatch, ProviderConfig, ProviderRuntimeConfig,
+    RankingConfig, ReloadKind, RendererConfig, RendererConfigPatch, Scope, SecurityProfile,
+    ServerClient, ServerConfig, ServerConfigPatch, TelemetryConfigPatch, TlsConfig, MCP_TOOLS,
 };
 pub use deep::{DeepCandidate, DeepOrchestrator, DeepRequest};
 pub use diversity::{DiversityDecision, DiversityMetrics, DiversityOutput, DiversityPolicyV1};
@@ -115,6 +116,10 @@ pub use model::{
 pub use operational::{
     run_operational_benchmark, LatencyPercentiles, OperationalBenchmarkError,
     OperationalBenchmarkReport, SearchOperationalReport, SqliteOperationalReport,
+};
+pub use optics::{
+    parse_optics, Action as OpticsAction, MatchField as OpticsMatchField, OpticsDocument,
+    OpticsOutcome, OpticsParseError, Rule as OpticsRule,
 };
 pub use progressive::{
     CoverageMetrics, ProgressiveRoundTrace, RoundComplementarity, SearchPolicyError,

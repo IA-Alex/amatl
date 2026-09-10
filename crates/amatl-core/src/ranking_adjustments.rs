@@ -8,12 +8,14 @@
 //! once, after `rank()`, and scales scores multiplicatively so the protected
 //! formula and its "weights sum to 1.0" invariant are never touched.
 //!
-//! Today the only adjustment is a tracker/ad-domain penalty. Future pieces
-//! (a curated-independent-web bonus, user-defined Optics rules) each get their
-//! own function here and are folded into [`apply_adjustments`] in sequence;
-//! `execution.rs` calls this one entry point and never needs to change again.
+//! Two adjustments live here today: an always-on tracker/ad-domain penalty and
+//! the operator-declared Optics rules ([`crate::optics`]), passed in as an
+//! optional parsed document. A future curated-independent-web bonus gets folded
+//! into [`apply_adjustments`] the same way; `execution.rs` calls this one entry
+//! point and only its argument list changes when a new source is added.
 
 use crate::model::{CanonicalUrl, RankedResult, RankingScore, TieBreakReason};
+use crate::optics::OpticsDocument;
 use std::collections::HashSet;
 use std::sync::LazyLock;
 
@@ -37,11 +39,13 @@ const TRACKER_PENALTY_MULTIPLIER: f64 = 0.05;
 
 /// Applies post-rank adjustments that live outside the protected
 /// RankingPolicyV1 formula. Called once, after `ranking::rank()`, before
-/// the results are returned to the caller. Future adjustments (curated-
-/// list bonus, Optics rules) get their own function here and get folded
-/// into `apply_adjustments` in sequence -- this function is the single
-/// entry point execution.rs calls, so adding a new adjustment never
-/// means touching execution.rs again.
+/// the results are returned to the caller.
+///
+/// `optics` is the parsed [`OpticsDocument`] when `[ranking.optics]` is
+/// enabled and its file parsed, `None` otherwise -- with `None` this behaves
+/// exactly as it did before Optics existed (tracker penalty + re-sort only).
+/// When present, `DiscardNonMatching` removes non-matching results here,
+/// before the sort, and Boost/Downrank scale scores like the tracker penalty.
 ///
 /// After the penalties are applied the `Vec` is re-sorted with the *exact*
 /// same criterion `ranking::rank()` uses as its own final step (score desc,
@@ -51,7 +55,10 @@ const TRACKER_PENALTY_MULTIPLIER: f64 = 0.05;
 /// this adjustment, which can be stale once a penalty changes the order.
 /// Both steps mirror the tail of `rank()` verbatim; if that criterion ever
 /// changes, this function must change with it.
-pub fn apply_adjustments(mut ranked: Vec<RankedResult>) -> Vec<RankedResult> {
+pub fn apply_adjustments(
+    mut ranked: Vec<RankedResult>,
+    optics: Option<&OpticsDocument>,
+) -> Vec<RankedResult> {
     for result in &mut ranked {
         if is_tracker_domain(&result.result.canonical_url) {
             let adjusted = (result.score.get() * TRACKER_PENALTY_MULTIPLIER).clamp(0.0, 1.0);
@@ -59,6 +66,26 @@ pub fn apply_adjustments(mut ranked: Vec<RankedResult>) -> Vec<RankedResult> {
                 RankingScore::new(adjusted).expect("clamped value is always within 0.0..=1.0");
         }
     }
+
+    // Operator-declared Optics rules (crate::optics). Order relative to the
+    // tracker penalty does not matter: both only scale scores, and the
+    // re-sort below runs once, last. `DiscardNonMatching` is the one part
+    // that removes entries rather than scaling them -- done here, before the
+    // sort, so the dropped results never reach the caller at all.
+    if let Some(document) = optics {
+        if document.discard_non_matching {
+            ranked.retain(|result| document.multiplier_for(result).matched);
+        }
+        for result in &mut ranked {
+            let outcome = document.multiplier_for(result);
+            if outcome.matched && outcome.multiplier != 1.0 {
+                let adjusted = (result.score.get() * outcome.multiplier).clamp(0.0, 1.0);
+                result.score =
+                    RankingScore::new(adjusted).expect("clamped value is always within 0.0..=1.0");
+            }
+        }
+    }
+
     ranked.sort_by(|left, right| {
         right
             .score
@@ -149,7 +176,7 @@ mod tests {
         let tracker_host = *TRACKER_DOMAINS.iter().next().expect("list is non-empty");
         let base = ranked_with_host("nontracker.example.org");
         let before = base.score.get();
-        let adjusted = apply_adjustments(vec![with_host(base, tracker_host)]);
+        let adjusted = apply_adjustments(vec![with_host(base, tracker_host)], None);
         let after = adjusted[0].score.get();
         assert_eq!(after, (before * TRACKER_PENALTY_MULTIPLIER).clamp(0.0, 1.0));
     }
@@ -158,7 +185,7 @@ mod tests {
     fn non_tracker_domain_score_is_unchanged() {
         let base = ranked_with_host("nontracker.example.org");
         let before = base.score.get();
-        let adjusted = apply_adjustments(vec![base]);
+        let adjusted = apply_adjustments(vec![base], None);
         assert_eq!(adjusted[0].score.get(), before);
     }
 
@@ -189,7 +216,7 @@ mod tests {
             "test precondition: the tracker result must rank first pre-adjustment"
         );
 
-        let adjusted = apply_adjustments(vec![tracker_first, clean_second]);
+        let adjusted = apply_adjustments(vec![tracker_first, clean_second], None);
 
         assert!(
             adjusted[0].result.canonical_url.0.host_str() != Some(tracker_host),
@@ -219,5 +246,119 @@ mod tests {
             !TRACKER_DOMAINS.is_empty(),
             "include_str! should have loaded the bundled tracker-domains.txt"
         );
+    }
+
+    // ── Optics adjustments ───────────────────────────────────────────────
+
+    use crate::optics::parse_optics;
+
+    /// Two results `rank()` scored identically; `stable_order` decides. Give
+    /// `first_host` the lower order so it leads pre-adjustment -- the position
+    /// an optics rule must be able to change.
+    fn two_tied(first_host: &str, second_host: &str) -> (RankedResult, RankedResult) {
+        let mut first = with_host(ranked_with_host("holder-a.example.org"), first_host);
+        first.stable_order = 0;
+        let mut second = with_host(ranked_with_host("holder-b.example.org"), second_host);
+        second.stable_order = 1;
+        (first, second)
+    }
+
+    #[test]
+    fn optics_boost_lifts_a_result_above_another_after_the_resort() {
+        let (leader, challenger) = two_tied("plain.example.org", "docs.rs");
+        assert!(leader.score.get() >= challenger.score.get());
+
+        let optics =
+            parse_optics(r#"Rule { Matches { Site("|docs.rs|") }, Action(Boost(5)) };"#).unwrap();
+        let adjusted = apply_adjustments(vec![leader, challenger], Some(&optics));
+
+        assert_eq!(
+            adjusted[0].result.canonical_url.0.host_str(),
+            Some("docs.rs"),
+            "the boosted result must overtake the previously-leading one"
+        );
+    }
+
+    #[test]
+    fn optics_downrank_pushes_a_result_below_another_after_the_resort() {
+        let (leader, challenger) = two_tied("spam.example.org", "clean.example.org");
+
+        let optics = parse_optics(
+            r#"Rule { Matches { Site("|spam.example.org|") }, Action(Downrank(5)) };"#,
+        )
+        .unwrap();
+        let adjusted = apply_adjustments(vec![leader, challenger], Some(&optics));
+
+        assert_eq!(
+            adjusted[0].result.canonical_url.0.host_str(),
+            Some("clean.example.org")
+        );
+        assert_eq!(
+            adjusted[1].result.canonical_url.0.host_str(),
+            Some("spam.example.org")
+        );
+    }
+
+    #[test]
+    fn discard_non_matching_removes_a_result_from_the_output_vec() {
+        let keep = with_host(ranked_with_host("holder-a.example.org"), "docs.rs");
+        let drop = with_host(
+            ranked_with_host("holder-b.example.org"),
+            "random.example.org",
+        );
+
+        let optics = parse_optics(
+            r#"
+            Rule { Matches { Site("|docs.rs|") }, Action(Boost(1)) };
+            DiscardNonMatching;
+        "#,
+        )
+        .unwrap();
+        let adjusted = apply_adjustments(vec![keep, drop], Some(&optics));
+
+        assert_eq!(adjusted.len(), 1, "the non-matching result must be gone");
+        assert_eq!(
+            adjusted[0].result.canonical_url.0.host_str(),
+            Some("docs.rs")
+        );
+        assert!(
+            adjusted
+                .iter()
+                .all(|r| r.result.canonical_url.0.host_str() != Some("random.example.org")),
+            "a discarded result must not appear anywhere in the output, not merely rank last"
+        );
+    }
+
+    #[test]
+    fn none_optics_is_identical_to_pre_optics_behaviour() {
+        // The exact tracker-sinkhole scenario from the test above, run with
+        // `None` optics: behaviour must not have regressed.
+        let tracker_host = *TRACKER_DOMAINS.iter().next().expect("list is non-empty");
+        let mut tracker_first =
+            with_host(ranked_with_host("tracker-holder.example.org"), tracker_host);
+        tracker_first.stable_order = 0;
+        let mut clean_second = ranked_with_host("clean.example.org");
+        clean_second.stable_order = 1;
+
+        let adjusted = apply_adjustments(vec![tracker_first, clean_second], None);
+
+        assert_eq!(
+            adjusted[0].result.canonical_url.0.host_str(),
+            Some("clean.example.org")
+        );
+        assert_eq!(
+            adjusted[1].result.canonical_url.0.host_str(),
+            Some(tracker_host)
+        );
+    }
+
+    #[test]
+    fn empty_optics_document_changes_nothing() {
+        let base = ranked_with_host("example.org");
+        let before = base.score.get();
+        let optics = parse_optics("// nothing here\n").unwrap();
+        let adjusted = apply_adjustments(vec![base], Some(&optics));
+        assert_eq!(adjusted[0].score.get(), before);
+        assert_eq!(adjusted.len(), 1);
     }
 }

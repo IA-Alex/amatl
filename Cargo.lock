@@ -45,6 +45,7 @@ dependencies = [
  "fs2",
  "http 1.5.0",
  "memmap2",
+ "nom",
  "proptest",
  "rcgen",
  "reqwest",

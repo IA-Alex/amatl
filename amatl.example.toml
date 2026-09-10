@@ -224,6 +224,29 @@ max_cost = 2
 max_provider_calls_per_subquery = 2
 timeout_ms = 5000
 
+# Optics: operator-declared Boost / Downrank / Discard rules, applied after
+# ranking alongside the always-on tracker penalty. Rules are read once from a
+# static .optic file (never per request). Its own small DSL, own parser --
+# grammar shape inspired by Stract's sample-optics, no Stract code vendored.
+# A missing or unparsable file logs a warning and disables optics; it never
+# fails a search.
+#
+# [ranking.optics]
+# enabled = true
+# path = "amatl.optic"
+#
+# Example amatl.optic:
+#   Rule {
+#       Matches { Site("|developer.mozilla.org|") },
+#       Matches { Domain("|docs.rs|") },
+#       Action(Boost(3))
+#   };
+#   Rule {
+#       Matches { Title("Top * of 2022") },
+#       Action(Downrank(3))
+#   };
+#   DiscardNonMatching;
+
 [server]
 bind = "127.0.0.1"
 port = 8080

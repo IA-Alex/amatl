@@ -54,6 +54,10 @@ pub struct SearchOrchestrator {
     retry_jitter_ms: u64,
     ranking_policy: RankingPolicyV1,
     diversity_policy: DiversityPolicyV1,
+    /// Parsed operator Optics document, when `[ranking.optics]` is enabled and
+    /// its file parsed. Loaded once by the service and shared; never re-read
+    /// or re-parsed per search.
+    optics: Option<std::sync::Arc<crate::optics::OpticsDocument>>,
     search_policy: SearchPolicyV1,
     role_assignment: RoleAssignment,
     telemetry: InMemoryTelemetry,
@@ -73,6 +77,7 @@ impl SearchOrchestrator {
             retry_jitter_ms: 25,
             ranking_policy: RankingPolicyV1::default(),
             diversity_policy: DiversityPolicyV1::default(),
+            optics: None,
             search_policy: SearchPolicyV1::default(),
             role_assignment: RoleAssignment::legacy(),
             telemetry: InMemoryTelemetry::new(),
@@ -141,6 +146,16 @@ impl SearchOrchestrator {
             self.ranking_policy = ranking_policy;
             self.diversity_policy = diversity_policy;
         }
+        self
+    }
+
+    /// Set the parsed operator Optics document. `None` (the default) leaves
+    /// post-rank behaviour exactly as it was before Optics existed.
+    pub fn with_optics(
+        mut self,
+        optics: Option<std::sync::Arc<crate::optics::OpticsDocument>>,
+    ) -> Self {
+        self.optics = optics;
         self
     }
 
@@ -281,6 +296,7 @@ impl SearchOrchestrator {
                     &accumulated.provider_results,
                     &self.ranking_policy,
                     &self.diversity_policy,
+                    self.optics.as_deref(),
                 );
             }
 
@@ -743,6 +759,7 @@ fn run_pipeline(
     provider_results: &[ProviderResult],
     ranking_policy: &RankingPolicyV1,
     diversity_policy: &DiversityPolicyV1,
+    optics: Option<&crate::optics::OpticsDocument>,
 ) -> PipelineOutput {
     let (normalized, mut degradations) = normalize(provider_results);
     degradations.extend(
@@ -764,7 +781,7 @@ fn run_pipeline(
         deduped.clone(),
         ranking_policy,
     );
-    let ranked = crate::ranking_adjustments::apply_adjustments(ranked);
+    let ranked = crate::ranking_adjustments::apply_adjustments(ranked, optics);
     let diversified = diversify(ranked, diversity_policy);
     PipelineOutput {
         results: diversified.results,

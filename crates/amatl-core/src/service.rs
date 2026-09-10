@@ -401,6 +401,12 @@ pub struct AmatlService {
     circuit: ProviderCircuit,
     /// Durable security audit trail; inert without persistence.
     audit: SecurityAudit,
+    /// Parsed operator Optics document (`[ranking.optics]`). Loaded and parsed
+    /// exactly once here -- on first build and again on every `reloaded()`,
+    /// which rebuilds the whole service -- never per search. `None` when
+    /// Optics is disabled, unconfigured, or its file was missing/unparsable
+    /// (a warning is logged in the last case; a search never fails for it).
+    optics: Option<Arc<crate::optics::OpticsDocument>>,
     /// Stops the background maintenance task when the service is dropped.
     ///
     /// Must be a `DropGuard`, not a bare `CancellationToken`: a token does not
@@ -536,6 +542,7 @@ impl AmatlService {
         let renderer = Arc::new(ChromiumRenderer::detect(&config.deep.renderer));
         let renderer_pool =
             RendererPool::new(renderer, config.deep.renderer.max_browser_calls as usize);
+        let optics = load_optics(&config.ranking.optics);
         Self {
             config: Arc::new(config),
             registry: Arc::new(registry),
@@ -546,6 +553,7 @@ impl AmatlService {
             fetcher,
             inference,
             answer_backend,
+            optics,
             mock,
             renderer_pool,
             cache_counters: Arc::new(CacheCounters::default()),
@@ -677,6 +685,7 @@ impl AmatlService {
             self.config.ranking_policy.clone(),
             self.config.diversity_policy.clone(),
         )
+        .with_optics(self.optics.clone())
         .with_search_policy(self.config.search_policy.clone())
         .with_role_assignment(role_assignment_from_config(&self.config))
         .with_telemetry(self.telemetry.clone())
@@ -1628,6 +1637,58 @@ fn role_assignment_from_config(config: &Config) -> RoleAssignment {
         )
     } else {
         RoleAssignment::legacy()
+    }
+}
+
+/// Loads and parses the operator Optics file named by `[ranking.optics]`.
+///
+/// Returns `None` -- Optics simply inert -- when it is disabled, has no path,
+/// the file cannot be read, or the file does not parse. The last two log a
+/// warning: a misconfigured `.optic` must never fail a search, only be
+/// ignored.
+fn load_optics(config: &crate::config::OpticsConfig) -> Option<Arc<crate::optics::OpticsDocument>> {
+    if !config.enabled {
+        return None;
+    }
+    let Some(path) = config.path.as_deref() else {
+        tracing::warn!(
+            target: "amatl::optics",
+            "[ranking.optics] is enabled but no path is set; optics disabled"
+        );
+        return None;
+    };
+    let text = match std::fs::read_to_string(path) {
+        Ok(text) => text,
+        Err(error) => {
+            tracing::warn!(
+                target: "amatl::optics",
+                path = %path,
+                error = %error,
+                "optics file could not be read; optics disabled"
+            );
+            return None;
+        }
+    };
+    match crate::optics::parse_optics(&text) {
+        Ok(document) => {
+            tracing::info!(
+                target: "amatl::optics",
+                path = %path,
+                rules = document.rules.len(),
+                discard_non_matching = document.discard_non_matching,
+                "loaded operator optics"
+            );
+            Some(Arc::new(document))
+        }
+        Err(error) => {
+            tracing::warn!(
+                target: "amatl::optics",
+                path = %path,
+                error = %error,
+                "optics file did not parse; optics disabled"
+            );
+            None
+        }
     }
 }
 
