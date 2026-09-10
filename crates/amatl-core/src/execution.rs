@@ -764,6 +764,7 @@ fn run_pipeline(
         deduped.clone(),
         ranking_policy,
     );
+    let ranked = crate::ranking_adjustments::apply_adjustments(ranked);
     let diversified = diversify(ranked, diversity_policy);
     PipelineOutput {
         results: diversified.results,

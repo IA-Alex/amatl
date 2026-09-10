@@ -36,6 +36,7 @@ pub mod progressive;
 pub mod providers;
 pub mod query;
 pub mod ranking;
+pub mod ranking_adjustments;
 pub mod ranking_v2;
 pub mod relevance;
 pub mod relevance_semantics;
