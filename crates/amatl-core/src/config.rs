@@ -4836,4 +4836,328 @@ mod tests {
         assert_eq!(ReloadKind::of("server", "allowed_hosts"), ReloadKind::Hot);
         assert_eq!(ReloadKind::of("server.tls", "cert_path"), ReloadKind::Cold);
     }
+
+    /// Distinct temp path per (tag, PID, call); the nanosecond suffix keeps
+    /// two parallel tests sharing a `tag` in one PID from colliding.
+    fn unique_tmp_path(tag: &str) -> std::path::PathBuf {
+        std::env::temp_dir().join(format!(
+            "amatl-mirror-{tag}-{}-{}.toml",
+            std::process::id(),
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .unwrap()
+                .as_nanos()
+        ))
+    }
+
+    // Mirror tests: for each patchable config section, build a patch with
+    // *every* field set to a value that differs from that field's real
+    // Default, apply it via `set_<section>_fields`, reload with `from_toml`,
+    // and assert each field round-tripped. A field the patch struct still
+    // declares but `set_<section>_fields` silently drops is caught here; the
+    // compiler already catches the inverse (a field the writer sets but the
+    // patch does not declare).
+
+    #[test]
+    fn mirror_round_trips_every_data_policy_patch_field() {
+        let path = unique_tmp_path("data-policy");
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+
+        let patch = DataPolicyConfigPatch {
+            profile: Some(SecurityProfile::Isolated),
+            egress: Some(EgressPolicy::Deny),
+            inference: Some(InferenceMode::LocalOnly),
+        };
+        Config::set_data_policy_fields(&path, &patch).unwrap();
+
+        let reloaded = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
+        assert_eq!(reloaded.data_policy.profile, SecurityProfile::Isolated);
+        assert_eq!(reloaded.data_policy.egress, EgressPolicy::Deny);
+        assert_eq!(reloaded.data_policy.inference, InferenceMode::LocalOnly);
+
+        let _ = std::fs::remove_file(&path);
+    }
+
+    #[test]
+    fn mirror_round_trips_every_inference_patch_field() {
+        let path = unique_tmp_path("inference");
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+
+        let patch = InferenceConfigPatch {
+            backend: Some("local_model_v1".into()),
+            embedding_dimensions: Some(128),
+            max_documents: Some(32),
+            max_input_chars: Some(5_000),
+            reranker_prior_weight: Some(0.25),
+            local_model_path: Some("/models/vectors.txt".into()),
+            local_cache_capacity: Some(16),
+            local_cache_path: Some("/cache.json".into()),
+            remote_endpoint: Some("https://e.test/v1".into()),
+            remote_model: Some("m".into()),
+            remote_credential_env: Some("ENV".into()),
+            remote_timeout_ms: Some(3_000),
+            remote_max_batch: Some(8),
+        };
+        Config::set_inference_fields(&path, &patch).unwrap();
+
+        let reloaded = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
+        assert_eq!(reloaded.inference.backend, "local_model_v1");
+        assert_eq!(reloaded.inference.embedding_dimensions, 128);
+        assert_eq!(reloaded.inference.max_documents, 32);
+        assert_eq!(reloaded.inference.max_input_chars, 5_000);
+        assert_eq!(reloaded.inference.reranker_prior_weight, 0.25);
+        assert_eq!(
+            reloaded.inference.local_model_path.as_deref(),
+            Some("/models/vectors.txt")
+        );
+        assert_eq!(reloaded.inference.local_cache_capacity, 16);
+        assert_eq!(
+            reloaded.inference.local_cache_path.as_deref(),
+            Some("/cache.json")
+        );
+        assert_eq!(
+            reloaded.inference.remote_endpoint.as_deref(),
+            Some("https://e.test/v1")
+        );
+        assert_eq!(reloaded.inference.remote_model.as_deref(), Some("m"));
+        assert_eq!(
+            reloaded.inference.remote_credential_env.as_deref(),
+            Some("ENV")
+        );
+        assert_eq!(reloaded.inference.remote_timeout_ms, 3_000);
+        assert_eq!(reloaded.inference.remote_max_batch, 8);
+
+        let _ = std::fs::remove_file(&path);
+    }
+
+    #[test]
+    fn mirror_round_trips_every_answer_patch_field() {
+        let path = unique_tmp_path("answer");
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+
+        let patch = AnswerConfigPatch {
+            endpoint: Some("https://answer.test/v1".into()),
+            model: Some("answer-model".into()),
+            credential_env: Some("ANSWER_ENV".into()),
+            timeout_ms: Some(15_000),
+            max_sources: Some(4),
+            max_source_chars: Some(800),
+            max_answer_tokens: Some(500),
+        };
+        Config::set_answer_fields(&path, &patch).unwrap();
+
+        let reloaded = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
+        assert_eq!(
+            reloaded.answer.endpoint.as_deref(),
+            Some("https://answer.test/v1")
+        );
+        assert_eq!(reloaded.answer.model.as_deref(), Some("answer-model"));
+        assert_eq!(
+            reloaded.answer.credential_env.as_deref(),
+            Some("ANSWER_ENV")
+        );
+        assert_eq!(reloaded.answer.timeout_ms, 15_000);
+        assert_eq!(reloaded.answer.max_sources, 4);
+        assert_eq!(reloaded.answer.max_source_chars, 800);
+        assert_eq!(reloaded.answer.max_answer_tokens, 500);
+
+        let _ = std::fs::remove_file(&path);
+    }
+
+    #[test]
+    fn mirror_round_trips_every_persistence_patch_field() {
+        let path = unique_tmp_path("persistence");
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+
+        let patch = PersistenceConfigPatch {
+            history_enabled: Some(false),
+            saved_document_max_bytes: Some(2_097_152),
+            audit_retention_days: Some(30),
+            history_retention_days: Some(14),
+            cache_retention_days: Some(14),
+            document_cache_retention_days: Some(14),
+            purge_interval_seconds: Some(1_800),
+            auto_backup_enabled: Some(true),
+            auto_backup_interval_seconds: Some(7_200),
+            auto_backup_max_count: Some(5),
+            backup_directory: Some("/backups".into()),
+        };
+        Config::set_persistence_fields(&path, &patch).unwrap();
+
+        let reloaded = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
+        assert!(!reloaded.persistence.history_enabled);
+        assert_eq!(reloaded.persistence.saved_document_max_bytes, 2_097_152);
+        assert_eq!(reloaded.persistence.audit_retention_days, 30);
+        assert_eq!(reloaded.persistence.history_retention_days, 14);
+        assert_eq!(reloaded.persistence.cache_retention_days, 14);
+        assert_eq!(reloaded.persistence.document_cache_retention_days, 14);
+        assert_eq!(reloaded.persistence.purge_interval_seconds, 1_800);
+        assert!(reloaded.persistence.auto_backup_enabled);
+        assert_eq!(reloaded.persistence.auto_backup_interval_seconds, 7_200);
+        assert_eq!(reloaded.persistence.auto_backup_max_count, 5);
+        assert_eq!(
+            reloaded.persistence.backup_directory.as_deref(),
+            Some("/backups")
+        );
+
+        let _ = std::fs::remove_file(&path);
+    }
+
+    #[test]
+    fn mirror_round_trips_every_telemetry_patch_field() {
+        let path = unique_tmp_path("telemetry");
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+
+        let patch = TelemetryConfigPatch {
+            persistence_enabled: Some(true),
+            retention_days: Some(90),
+        };
+        Config::set_telemetry_fields(&path, &patch).unwrap();
+
+        let reloaded = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
+        assert!(reloaded.telemetry.persistence_enabled);
+        assert_eq!(reloaded.telemetry.retention_days, 90);
+
+        let _ = std::fs::remove_file(&path);
+    }
+
+    #[test]
+    fn mirror_round_trips_every_deep_patch_field() {
+        let path = unique_tmp_path("deep");
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+
+        let patch = DeepConfigPatch {
+            top_k: Some(3),
+            max_fetches: Some(5),
+            max_bytes: Some(10_485_760),
+            max_redirects: Some(3),
+            max_crawl_urls: Some(5),
+            max_depth: Some(2),
+            respect_robots: Some(false),
+            robots_timeout_ms: Some(2_000),
+            robots_max_bytes: Some(262_144),
+            timeout_ms: Some(10_000),
+        };
+        Config::set_deep_fields(&path, &patch).unwrap();
+
+        let reloaded = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
+        assert_eq!(reloaded.deep.top_k, 3);
+        assert_eq!(reloaded.deep.max_fetches, 5);
+        assert_eq!(reloaded.deep.max_bytes, 10_485_760);
+        assert_eq!(reloaded.deep.max_redirects, 3);
+        assert_eq!(reloaded.deep.max_crawl_urls, 5);
+        assert_eq!(reloaded.deep.max_depth, 2);
+        assert!(!reloaded.deep.respect_robots);
+        assert_eq!(reloaded.deep.robots_timeout_ms, 2_000);
+        assert_eq!(reloaded.deep.robots_max_bytes, 262_144);
+        assert_eq!(reloaded.deep.timeout_ms, 10_000);
+
+        let _ = std::fs::remove_file(&path);
+    }
+
+    #[test]
+    fn mirror_round_trips_every_deep_extractor_patch_field() {
+        let path = unique_tmp_path("deep-extractor");
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+
+        let patch = ExtractorConfigPatch {
+            executable: Some("custom-trafilatura".into()),
+            version: Some("v2".into()),
+            timeout_ms: Some(4_000),
+            max_output_bytes: Some(2_097_152),
+        };
+        Config::set_deep_extractor_fields(&path, &patch).unwrap();
+
+        let reloaded = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
+        assert_eq!(reloaded.deep.extractor.executable, "custom-trafilatura");
+        assert_eq!(reloaded.deep.extractor.version, "v2");
+        assert_eq!(reloaded.deep.extractor.timeout_ms, 4_000);
+        assert_eq!(reloaded.deep.extractor.max_output_bytes, 2_097_152);
+
+        let _ = std::fs::remove_file(&path);
+    }
+
+    #[test]
+    fn mirror_round_trips_every_deep_renderer_patch_field() {
+        let path = unique_tmp_path("deep-renderer");
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+
+        let patch = RendererConfigPatch {
+            enabled: Some(true),
+            max_browser_calls: Some(1),
+            timeout_ms: Some(4_000),
+            shutdown_grace_ms: Some(300),
+            max_memory_mb: Some(256),
+            max_redirects: Some(3),
+            sandbox_path: Some("custom-sandbox".into()),
+            max_dom_bytes: Some(4_194_304),
+        };
+        Config::set_deep_renderer_fields(&path, &patch).unwrap();
+
+        let reloaded = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
+        assert!(reloaded.deep.renderer.enabled);
+        assert_eq!(reloaded.deep.renderer.max_browser_calls, 1);
+        assert_eq!(reloaded.deep.renderer.timeout_ms, 4_000);
+        assert_eq!(reloaded.deep.renderer.shutdown_grace_ms, 300);
+        assert_eq!(reloaded.deep.renderer.max_memory_mb, 256);
+        assert_eq!(reloaded.deep.renderer.max_redirects, 3);
+        assert_eq!(reloaded.deep.renderer.sandbox_path, "custom-sandbox");
+        assert_eq!(reloaded.deep.renderer.max_dom_bytes, 4_194_304);
+
+        let _ = std::fs::remove_file(&path);
+    }
+
+    #[test]
+    fn mirror_round_trips_every_server_patch_field() {
+        let path = unique_tmp_path("server");
+        std::fs::write(&path, "schema_version = \"1\"\n").unwrap();
+
+        let patch = ServerConfigPatch {
+            bind: Some("0.0.0.0".into()),
+            port: Some(9_090),
+            token_env: Some("CUSTOM_TOKEN".into()),
+            no_auth: Some(true),
+            allowed_hosts: Some(vec!["example.com".into()]),
+            allowed_origins: Some(vec!["https://example.com".into()]),
+            max_body_bytes: Some(32_768),
+            max_header_bytes: Some(8_192),
+            request_timeout_ms: Some(15_000),
+            idle_timeout_ms: Some(15_000),
+            rate_limit_per_minute: Some(30),
+            max_connections: Some(32),
+            tls_cert_path: Some("/tls/cert.pem".into()),
+            tls_key_path: Some("/tls/key.pem".into()),
+        };
+        Config::set_server_fields(&path, &patch).unwrap();
+
+        let reloaded = Config::from_toml(&std::fs::read_to_string(&path).unwrap()).unwrap();
+        assert_eq!(reloaded.server.bind, "0.0.0.0");
+        assert_eq!(reloaded.server.port, 9_090);
+        assert_eq!(reloaded.server.token_env, "CUSTOM_TOKEN");
+        assert!(reloaded.server.no_auth);
+        assert_eq!(
+            reloaded.server.allowed_hosts,
+            vec!["example.com".to_string()]
+        );
+        assert_eq!(
+            reloaded.server.allowed_origins,
+            vec!["https://example.com".to_string()]
+        );
+        assert_eq!(reloaded.server.max_body_bytes, 32_768);
+        assert_eq!(reloaded.server.max_header_bytes, 8_192);
+        assert_eq!(reloaded.server.request_timeout_ms, 15_000);
+        assert_eq!(reloaded.server.idle_timeout_ms, 15_000);
+        assert_eq!(reloaded.server.rate_limit_per_minute, 30);
+        assert_eq!(reloaded.server.max_connections, 32);
+        assert_eq!(
+            reloaded.server.tls.cert_path.as_deref(),
+            Some("/tls/cert.pem")
+        );
+        assert_eq!(
+            reloaded.server.tls.key_path.as_deref(),
+            Some("/tls/key.pem")
+        );
+
+        let _ = std::fs::remove_file(&path);
+    }
 }
