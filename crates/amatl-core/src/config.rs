@@ -173,15 +173,16 @@ pub struct InferenceConfig {
     /// When unset, `local_model_v1` fails closed and Deep degrades to the
     /// hashing backend.
     pub local_model_path: Option<String>,
-    /// Sizing hint for the on-disk embedding cache of `local_model_v1`.
+    /// Capacity of the on-disk embedding cache of `local_model_v1`, in units of
+    /// 64 entries (the stored value is multiplied by 64 in `inference.rs`, and
+    /// backs [`crate::inference::EmbeddingCache`]).
     ///
-    /// Despite the name this does **not** cap how many documents are embedded
-    /// per call: nothing in the pipeline batches on it. Its only effect is the
-    /// capacity of [`crate::inference::EmbeddingCache`] (this value times 64
-    /// entries). The name is kept for rc.1 to avoid breaking existing
-    /// configuration files; it should be renamed to `local_cache_capacity`
-    /// before 1.0.
-    pub local_model_batch: usize,
+    /// This does **not** cap how many documents are embedded per call — nothing
+    /// in the pipeline batches on it. It was called `local_model_batch` through
+    /// rc.1; that spelling is still accepted as a serde alias.
+    // TODO(1.0): drop the `local_model_batch` alias.
+    #[serde(alias = "local_model_batch")]
+    pub local_cache_capacity: usize,
     /// Optional path where computed embeddings are cached between executions.
     /// The cache is namespaced by the vector-space identity so artifacts are
     /// never reused across backends or widths. When unset, no cache is used.
@@ -210,7 +211,7 @@ impl Default for InferenceConfig {
             max_input_chars: 20_000,
             reranker_prior_weight: 0.5,
             local_model_path: None,
-            local_model_batch: 32,
+            local_cache_capacity: 32,
             local_cache_path: None,
             remote_endpoint: None,
             remote_model: None,
@@ -239,7 +240,9 @@ pub struct InferenceConfigPatch {
     pub max_input_chars: Option<usize>,
     pub reranker_prior_weight: Option<f64>,
     pub local_model_path: Option<String>,
-    pub local_model_batch: Option<usize>,
+    // TODO(1.0): drop the `local_model_batch` alias.
+    #[serde(alias = "local_model_batch")]
+    pub local_cache_capacity: Option<usize>,
     pub local_cache_path: Option<String>,
     pub remote_endpoint: Option<String>,
     pub remote_model: Option<String>,
@@ -276,8 +279,8 @@ impl InferenceConfigPatch {
         if let Some(value) = &self.local_model_path {
             config.local_model_path = clearable(value);
         }
-        if let Some(value) = self.local_model_batch {
-            config.local_model_batch = value;
+        if let Some(value) = self.local_cache_capacity {
+            config.local_cache_capacity = value;
         }
         if let Some(value) = &self.local_cache_path {
             config.local_cache_path = clearable(value);
@@ -1969,10 +1972,10 @@ impl Config {
             table.insert("reranker_prior_weight", toml_edit::value(value));
         }
         set_clearable_string(table, "local_model_path", patch.local_model_path.as_deref());
-        if let Some(value) = patch.local_model_batch {
+        if let Some(value) = patch.local_cache_capacity {
             table.insert(
-                "local_model_batch",
-                toml_edit::value(signed_integer(value, "inference.local_model_batch")?),
+                "local_cache_capacity",
+                toml_edit::value(signed_integer(value, "inference.local_cache_capacity")?),
             );
         }
         set_clearable_string(table, "local_cache_path", patch.local_cache_path.as_deref());
@@ -2566,6 +2569,14 @@ impl Config {
         Ok(())
     }
 
+    /// Thin orchestrator: validates the two things that belong to no single
+    /// section (schema version, provider-name shape), delegates every section's
+    /// own rules to its `validate_<section>` method, and then runs the handful
+    /// of checks that genuinely span two or more sections and therefore cannot
+    /// live inside any one of them.
+    ///
+    /// The delegation order preserves the historical order in which a bad
+    /// config failed, so error messages a caller may have pinned do not move.
     pub fn validate(&self) -> Result<(), ConfigError> {
         if self.schema_version != crate::SCHEMA_VERSION {
             return Err(ConfigError::Policy(format!(
@@ -2596,6 +2607,92 @@ impl Config {
         }
         self.validate_inference()?;
         self.validate_answer()?;
+        self.validate_execution()?;
+        self.validate_persistence()?;
+        self.validate_ranking_policies()?;
+        self.validate_expansion()?;
+        self.validate_cache()?;
+        self.validate_telemetry()?;
+
+        // ── Cross-section checks ────────────────────────────────────────────
+        // These stay here because each one reads fields from two or more
+        // sections at once; moving one into a `validate_<section>` would make
+        // that method reach across into a sibling section's state, which is
+        // exactly the coupling the per-section split is meant to remove.
+
+        // persistence ⇄ cache ⇄ telemetry: the SQLite-backed features cannot
+        // run without SQLite persistence itself being on.
+        if (self.cache.provider_search.enabled || self.telemetry.persistence_enabled)
+            && !self.persistence.enabled
+        {
+            return Err(ConfigError::Policy(
+                "SQLite persistence must be enabled for persistent cache or telemetry".into(),
+            ));
+        }
+        if self.cache.document.enabled && !self.persistence.enabled {
+            return Err(ConfigError::Policy(
+                "SQLite persistence must be enabled for document cache".into(),
+            ));
+        }
+
+        self.validate_deep()?;
+
+        // `server.bind` is parsed once here and handed to `validate_server`,
+        // because the isolated-profile check below also needs it and parsing
+        // it twice would duplicate the "must be an IP address" error site.
+        let bind = self
+            .server
+            .bind
+            .parse::<std::net::IpAddr>()
+            .map_err(|_| ConfigError::Policy("server bind must be an IP address".into()))?;
+
+        // data_policy ⇄ server ⇄ deep ⇄ inference: the isolated profile
+        // constrains egress, remote inference, the server bind and the
+        // renderer all at once.
+        if self.data_policy.profile == SecurityProfile::Isolated {
+            if self.data_policy.egress != EgressPolicy::Deny {
+                return Err(ConfigError::Policy(
+                    "isolated profile requires denied network egress".into(),
+                ));
+            }
+            if self.data_policy.inference == InferenceMode::RemoteExplicit {
+                return Err(ConfigError::Policy(
+                    "isolated profile forbids remote inference".into(),
+                ));
+            }
+            if !bind.is_loopback() {
+                return Err(ConfigError::Policy(
+                    "isolated profile requires a loopback server bind".into(),
+                ));
+            }
+            if self.deep.renderer.enabled {
+                return Err(ConfigError::Policy(
+                    "isolated profile forbids the unsandboxed renderer".into(),
+                ));
+            }
+        }
+
+        // data_policy ⇄ providers, data_policy ⇄ inference: denied egress
+        // forbids both enabled providers and remote inference.
+        if self.data_policy.egress == EgressPolicy::Deny && !self.providers.enabled.is_empty() {
+            return Err(ConfigError::Policy(
+                "providers cannot be enabled while network egress is denied".into(),
+            ));
+        }
+        if self.data_policy.egress == EgressPolicy::Deny
+            && self.data_policy.inference == InferenceMode::RemoteExplicit
+        {
+            return Err(ConfigError::Policy(
+                "remote inference requires governed network egress".into(),
+            ));
+        }
+
+        self.validate_server(bind)?;
+        Ok(())
+    }
+
+    /// Parallel-execution limits and the circuit-breaker sub-policy.
+    fn validate_execution(&self) -> Result<(), ConfigError> {
         if self.execution.global_concurrency == 0
             || self.execution.per_provider_concurrency == 0
             || self.execution.per_provider_concurrency > self.execution.global_concurrency
@@ -2609,6 +2706,11 @@ impl Config {
         self.circuit_breaker
             .validate()
             .map_err(|error| ConfigError::Policy(error.into()))?;
+        Ok(())
+    }
+
+    /// Retention windows and backup limits for the SQLite persistence layer.
+    fn validate_persistence(&self) -> Result<(), ConfigError> {
         if !(1..=crate::audit::AUDIT_MAX_RETENTION_DAYS)
             .contains(&self.persistence.audit_retention_days)
         {
@@ -2681,16 +2783,6 @@ impl Config {
                 }
             }
         }
-        // Robots retrieval limits are bounded unconditionally (see the note on
-        // `persistence` above): the values are written to the file even while
-        // `respect_robots` is off, and must never wrap negative on write.
-        if !(100..=30_000).contains(&self.deep.robots_timeout_ms)
-            || !(1_024..=1_048_576).contains(&self.deep.robots_max_bytes)
-        {
-            return Err(ConfigError::Policy(
-                "invalid robots.txt retrieval limit".into(),
-            ));
-        }
         if self.persistence.saved_document_max_bytes == 0
             || self.persistence.saved_document_max_bytes > 16 * 1024 * 1024
         {
@@ -2698,6 +2790,13 @@ impl Config {
                 "persistence.saved_document_max_bytes must be between 1 and 16777216".into(),
             ));
         }
+        Ok(())
+    }
+
+    /// The three result-shaping sub-policies and the requirement that the
+    /// visible-per-domain / -provider / -result-type caps agree between the
+    /// search policy and the diversity policy.
+    fn validate_ranking_policies(&self) -> Result<(), ConfigError> {
         self.ranking_policy
             .validate()
             .map_err(|error| ConfigError::Policy(error.to_string()))?;
@@ -2718,7 +2817,11 @@ impl Config {
                 "search policy and diversity policy limits must agree".into(),
             ));
         }
-        self.validate_expansion()?;
+        Ok(())
+    }
+
+    /// Provider-search and document cache limits.
+    fn validate_cache(&self) -> Result<(), ConfigError> {
         if self.cache.provider_search.ttl_seconds == 0
             || self.cache.provider_search.max_entries == 0
             || self.cache.provider_search.max_bytes == 0
@@ -2728,6 +2831,11 @@ impl Config {
         {
             return Err(ConfigError::Policy("cache limits must be positive".into()));
         }
+        Ok(())
+    }
+
+    /// Telemetry retention window.
+    fn validate_telemetry(&self) -> Result<(), ConfigError> {
         if self.telemetry.retention_days < crate::telemetry::TELEMETRY_MIN_RETENTION_DAYS
             || self.telemetry.retention_days > crate::telemetry::TELEMETRY_MAX_RETENTION_DAYS
         {
@@ -2737,21 +2845,25 @@ impl Config {
                 crate::telemetry::TELEMETRY_MAX_RETENTION_DAYS
             )));
         }
-        if (self.cache.provider_search.enabled || self.telemetry.persistence_enabled)
-            && !self.persistence.enabled
+        Ok(())
+    }
+
+    /// Deep pipeline safety limits: robots retrieval, crawl/fetch ceilings,
+    /// the extractor and renderer bounds, and the ranking-v2 / gap
+    /// sub-policies.
+    fn validate_deep(&self) -> Result<(), ConfigError> {
+        // Robots retrieval limits are bounded unconditionally (see the note on
+        // `persistence`): the values are written to the file even while
+        // `respect_robots` is off, and must never wrap negative on write.
+        if !(100..=30_000).contains(&self.deep.robots_timeout_ms)
+            || !(1_024..=1_048_576).contains(&self.deep.robots_max_bytes)
         {
             return Err(ConfigError::Policy(
-                "SQLite persistence must be enabled for persistent cache or telemetry".into(),
-            ));
-        }
-        if self.cache.document.enabled && !self.persistence.enabled {
-            return Err(ConfigError::Policy(
-                "SQLite persistence must be enabled for document cache".into(),
+                "invalid robots.txt retrieval limit".into(),
             ));
         }
         // Deep safety limits, bounded in both directions (see the note on
-        // `persistence` above). `max_redirects`/`max_dom_bytes` had no check
-        // at all before; everything here is written to the file as an i64 and
+        // `persistence`). Everything here is written to the file as an i64 and
         // must stay far below `i64::MAX`.
         if !(1..=1_000).contains(&self.deep.top_k)
             || !(1..=1_000).contains(&self.deep.max_fetches)
@@ -2790,45 +2902,13 @@ impl Config {
                 "invalid Gap Analyzer safety limit".into(),
             ));
         }
-        let bind = self
-            .server
-            .bind
-            .parse::<std::net::IpAddr>()
-            .map_err(|_| ConfigError::Policy("server bind must be an IP address".into()))?;
-        if self.data_policy.profile == SecurityProfile::Isolated {
-            if self.data_policy.egress != EgressPolicy::Deny {
-                return Err(ConfigError::Policy(
-                    "isolated profile requires denied network egress".into(),
-                ));
-            }
-            if self.data_policy.inference == InferenceMode::RemoteExplicit {
-                return Err(ConfigError::Policy(
-                    "isolated profile forbids remote inference".into(),
-                ));
-            }
-            if !bind.is_loopback() {
-                return Err(ConfigError::Policy(
-                    "isolated profile requires a loopback server bind".into(),
-                ));
-            }
-            if self.deep.renderer.enabled {
-                return Err(ConfigError::Policy(
-                    "isolated profile forbids the unsandboxed renderer".into(),
-                ));
-            }
-        }
-        if self.data_policy.egress == EgressPolicy::Deny && !self.providers.enabled.is_empty() {
-            return Err(ConfigError::Policy(
-                "providers cannot be enabled while network egress is denied".into(),
-            ));
-        }
-        if self.data_policy.egress == EgressPolicy::Deny
-            && self.data_policy.inference == InferenceMode::RemoteExplicit
-        {
-            return Err(ConfigError::Policy(
-                "remote inference requires governed network egress".into(),
-            ));
-        }
+        Ok(())
+    }
+
+    /// HTTP server safety limits, TLS pairing, the named-client set (via
+    /// [`Self::validate_clients`]) and the host/origin allowlists. `bind` is
+    /// the already-parsed `server.bind`, passed in by [`Self::validate`].
+    fn validate_server(&self, bind: std::net::IpAddr) -> Result<(), ConfigError> {
         let tls_complete =
             self.server.tls.cert_path.is_some() && self.server.tls.key_path.is_some();
         let tls_partial = self.server.tls.cert_path.is_some() != self.server.tls.key_path.is_some();
@@ -3028,7 +3108,7 @@ impl Config {
             .contains(&self.inference.embedding_dimensions)
             || !(1..=1_000_000).contains(&self.inference.max_documents)
             || !(1..=100_000_000).contains(&self.inference.max_input_chars)
-            || !(1..=1_000_000).contains(&self.inference.local_model_batch)
+            || !(1..=1_000_000).contains(&self.inference.local_cache_capacity)
             || !(1..=crate::inference::MAXIMUM_REMOTE_BATCH)
                 .contains(&self.inference.remote_max_batch)
             || !(100..=60_000).contains(&self.inference.remote_timeout_ms)
@@ -3717,7 +3797,7 @@ mod tests {
         assert!(inference_chars.validate().is_err());
 
         let mut inference_batch = Config::default();
-        inference_batch.inference.local_model_batch = usize::MAX;
+        inference_batch.inference.local_cache_capacity = usize::MAX;
         assert!(inference_batch.validate().is_err());
 
         let mut remote_timeout = Config::default();
@@ -3910,6 +3990,16 @@ mod tests {
         let config = Config::from_toml("").unwrap();
         assert_eq!(config.schema_version, crate::SCHEMA_VERSION);
         assert!(config.validate().is_ok());
+    }
+
+    /// Configs written against rc.1 spell the field `local_model_batch`; the
+    /// `#[serde(alias)]` keeps them loading with the same effect after the
+    /// rename to `local_cache_capacity`.
+    // TODO(1.0): drop with the alias.
+    #[test]
+    fn pre_rc_local_model_batch_key_is_still_accepted_as_an_alias() {
+        let config = Config::from_toml("[inference]\nlocal_model_batch = 7\n").unwrap();
+        assert_eq!(config.inference.local_cache_capacity, 7);
     }
 
     /// The one config mutation a running server ever makes to its own file
