@@ -135,10 +135,10 @@ impl Provider for MarginaliaProvider {
                 code: "provider_not_approved".into(),
                 message: "Marginalia governance record is incomplete or expired".into(),
             }
-        } else if self.api_key.is_none() {
+        } else if self.api_key.as_deref().is_none_or(str::is_empty) {
             ProviderAvailability::Unavailable {
-                code: "credential_missing".into(),
-                message: "MARGINALIA_API_KEY is not set".into(),
+                code: "provider_credential_missing".into(),
+                message: "Marginalia credential is unavailable".into(),
             }
         } else {
             ProviderAvailability::Available
@@ -359,9 +359,25 @@ mod tests {
         );
         match provider.availability() {
             ProviderAvailability::Unavailable { code, .. } => {
-                assert_eq!(code, "credential_missing");
+                assert_eq!(code, "provider_credential_missing");
             }
-            other => panic!("expected credential_missing, got {other:?}"),
+            other => panic!("expected provider_credential_missing, got {other:?}"),
+        }
+    }
+
+    #[test]
+    fn empty_credential_is_treated_as_missing() {
+        let provider = MarginaliaProvider::new(
+            Some(String::new()),
+            true,
+            true,
+            Arc::new(super::super::http::ReqwestTransport::new(1024).unwrap()),
+        );
+        match provider.availability() {
+            ProviderAvailability::Unavailable { code, .. } => {
+                assert_eq!(code, "provider_credential_missing");
+            }
+            other => panic!("expected provider_credential_missing, got {other:?}"),
         }
     }
 

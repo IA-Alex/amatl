@@ -134,10 +134,16 @@ impl Provider for SearXngProvider {
         context: &ProviderContext,
     ) -> Result<ProviderResult, ProviderError> {
         let (request, filters) = self.request(plan, context.timeout_ms)?;
-        let response = self.transport.execute(request).await.map_err(|e| {
+        let response = self.transport.execute(request).await.map_err(|_| {
+            // Parity with brave/mojeek/marginalia: a transport failure is
+            // `Network`, not `Unavailable`, and the message is fixed. The
+            // transport layer (`http.rs`) already logs the classified cause
+            // against a sanitized URL; reqwest's own `Display` can embed the
+            // request URL (query string included), so it must not reach the
+            // serialized `ProviderError` message.
             error(
-                ProviderErrorKind::Unavailable,
-                &format!("SearXNG transport error: {e}"),
+                ProviderErrorKind::Network,
+                "SearXNG network request failed",
                 None,
             )
         })?;

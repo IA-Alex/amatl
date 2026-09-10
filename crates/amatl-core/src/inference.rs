@@ -898,7 +898,7 @@ impl InferenceRuntime {
                     EmbeddingCache::load(
                         std::path::PathBuf::from(path),
                         namespace,
-                        config.local_model_batch.max(1) * 64,
+                        config.local_cache_capacity.max(1) * 64,
                     ),
                 )) as Arc<dyn EmbeddingBackend>
             }

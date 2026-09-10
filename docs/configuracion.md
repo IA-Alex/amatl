@@ -112,7 +112,7 @@ sólo si hay un `ProviderFactory` con ese mismo nombre en el `ProviderRegistry`
 | `inference.max_input_chars` | usize / `20000` | >0; recorte por documento antes de embeber |
 | `inference.reranker_prior_weight` | f64 / `0.5` | Entre 0 y 1; peso que el reranker conserva de la relevancia previa |
 | `inference.local_model_path` | string / vacío | Obligatorio con `local_model_v1`; ruta a un archivo `token v0 v1 … vN` por línea; ausente o ilegible falla cerrado y Deep degrada a léxico |
-| `inference.local_model_batch` | usize / `32` | Dimensiona la caché de embeddings en disco (capacidad = valor × 64). Pese al nombre no acota el tamaño de lote de ninguna llamada; se renombrará a `local_cache_capacity` antes de 1.0 |
+| `inference.local_cache_capacity` | usize / `32` | Dimensiona la caché de embeddings en disco (capacidad = valor × 64). No acota el tamaño de lote de ninguna llamada. El nombre previo `local_model_batch` (hasta rc.1) sigue aceptándose como alias hasta 1.0 |
 | `inference.local_cache_path` | string / vacío | Ruta opcional donde se cachean embeddings entre ejecuciones, con espacio de nombres por backend@ancho |
 | `inference.remote_endpoint` | string / vacío | Obligatorio con `remote_explicit`; URL absoluta https, o http sólo en loopback, y sin credenciales embebidas |
 | `inference.remote_model` | string / vacío | Obligatorio con `remote_explicit`; identificador enviado en el cuerpo |
