@@ -146,33 +146,18 @@ al redirigir; controla detalle con `RUST_LOG`.
 
 ## Documentación
 
-- Normas rectoras: [plan_amatl.md](plan_amatl.md) y
-  [fase_a_contratos.md](fase_a_contratos.md).
-- Producto: [arquitectura](docs/arquitectura.md),
-  [glosario](docs/glosario.md), [configuración](docs/configuracion.md),
-  [Evidence v2](docs/evidence-v2.md), [ingestión local](docs/ingestion-local.md),
-  [operación](docs/operacion.md),
-  [gobernanza de providers](docs/gobernanza-providers.md),
-  [resumen con IA](docs/resumen-con-ia.md) e
-  [identidad visual](docs/identidad-visual.md).
+- **Portal** (índice categorizado y política de idioma): [docs/README.md](docs/README.md).
+- Normas rectoras: [plan_amatl.md](plan_amatl.md), [fase_a_contratos.md](fase_a_contratos.md),
+  [decisiones_amatl.md](decisiones_amatl.md) (ADRs) y
+  [CONTINUIDAD.md](CONTINUIDAD.md).
+- Seguridad (raw entry que GitHub muestra en inglés):
+  [política](SECURITY.md); guías de seguridad en el [portal](docs/README.md).
 - Contratos: [OpenAPI](docs/api/openapi.yaml) y [MCP](docs/api/mcp.md).
-- Ingeniería: [desarrollo](DEVELOPMENT.md), [contribución](CONTRIBUTING.md),
-  [contribución en español](docs/contribuir.md),
-  [testing](docs/testing.md), [benchmarks](docs/benchmarks.md),
-  [release y paquetes Linux](docs/release.md),
-  [ADRs](decisiones_amatl.md) y [changelog](CHANGELOG.md).
-- Seguridad: [política](SECURITY.md), [guía en español](docs/seguridad.md),
-  [modelo de amenazas](docs/security/threat-model.md),
-  [ASVS](docs/security/asvs-checklist.md),
-  [SSRF](docs/security/ssrf-controls.md),
-  [HTTP](docs/security/http-hardening.md),
-  [secretos](docs/security/secrets.md),
-  [cadena de suministro](docs/security/supply-chain.md) y
-  [retención](docs/security/data-retention.md).
-- Comunidad: [código de conducta](CODE_OF_CONDUCT.md) y
+- Comunidad: [código de conducta](CODE_OF_CONDUCT.md) (EN) y
   [espejo en español](docs/codigo-de-conducta.md).
-- Continuidad histórica: [CONTINUIDAD.md](CONTINUIDAD.md); no sustituye código,
-  pruebas ni contratos.
+
+Para arquitectura, producto, configuración, operación, ingeniería, testing,
+evaluación y experimentos, ver el **portal [docs/README.md](docs/README.md)**.
 
 ## Licencia y contribuciones
 
