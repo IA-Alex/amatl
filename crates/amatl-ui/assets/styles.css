@@ -5,7 +5,11 @@
   --border: #2a2f35;
   --text: #e7e9ec;
   --secondary: #9da5ae;
-  --muted: #6f7780;
+  /* Slightly lighter than the old #6f7780 so it clears WCAG 2 AA's 4.5:1 for
+     the small helper/meta text that uses it (0.68-0.78rem) both on
+     --background (5.69:1) and on --surface cards (5.28:1), while staying well
+     below --secondary (#9da5ae, 6.93:1) so the muted hierarchy is preserved. */
+  --muted: #878f99;
   --accent: #4f8cff;
   /* Same hue as --accent, darkened so white-on-accent (buttons) clears WCAG
      2 AA's 4.5:1 for normal text; --accent itself already clears it as text
@@ -40,7 +44,11 @@
   --border: #d8dee5;
   --text: #14181c;
   --secondary: #4b5560;
-  --muted: #737d87;
+  /* Darkened from the old #737d87 so muted helper/meta text clears WCAG 2 AA's
+     4.5:1 on --background (#f5f7fa, 5.28:1) and on white surfaces (5.67:1),
+     while staying lighter than --secondary (#4b5560) to keep the low-emphasis
+     reading that "muted" is meant to carry. */
+  --muted: #5e6873;
   --accent: #2b66d6;
   --accent-strong: #2757b8;
   --cyan: #157a8a;
@@ -58,7 +66,10 @@
     --border: #d8dee5;
     --text: #14181c;
     --secondary: #4b5560;
-    --muted: #737d87;
+    /* Darkened from the old #737d87 (see the --[data-theme="light"] block
+       above): keeps small muted helper/meta text at >= 4.5:1 on light
+       backgrounds while staying lighter than --secondary. */
+    --muted: #5e6873;
     --accent: #2b66d6;
     --accent-strong: #2757b8;
     --cyan: #157a8a;
@@ -187,7 +198,7 @@ button[data-active="true"] { box-shadow: 0 0 0 0.125rem var(--cyan); }
 
 /* Looks muted like :disabled (same grayscale/opacity), but stays a real,
    clickable, focusable button — a genuinely disabled element can't be
-   hovered on touch and gives no reason why. Clicking it explains what's
+   hovered on touch and gives no reason why. Clicking it explains what is
    missing instead of firing a request that would just fail. */
 .secondary-action.is-unavailable { filter: grayscale(0.6); opacity: 0.55; }
 .secondary-action.is-unavailable:hover { filter: grayscale(0.4) brightness(1.05); }
@@ -231,6 +242,21 @@ button[data-active="true"] { box-shadow: 0 0 0 0.125rem var(--cyan); }
 .deep-options { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.7rem; color: var(--secondary); font-size: 0.78rem; }
 .deep-options label { font-size: 0.75rem; }
 .deep-options input { width: 11rem; }
+/* Operator credential management (option A): its own secondary row, mirroring
+   the rhythm (spacing/font/gap) of .deep-options/.model-options so it reads as
+   one more configuration row without competing with the search axis. */
+.credential-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.7rem;
+  font-size: 0.78rem;
+  color: var(--secondary);
+}
+.credential-actions .field-help { margin: 0; font-size: 0.75rem; }
+.danger-action { border-color: var(--error); color: var(--error); }
+.danger-action:hover { filter: brightness(1.08); }
 .filters summary { width: fit-content; cursor: pointer; font-size: 0.85rem; }
 .filter-grid {
   display: grid;
@@ -398,6 +424,27 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 .answer-toggle-row input:disabled,
 .provider-toggle input:disabled { opacity: 0.55; }
 .answer-toggle-row input:disabled { cursor: not-allowed; }
+/* Search-with-model (strategist) toggle — a search-level control, styled like
+   the answer toggle so the two checkbox switches stay visually consistent. */
+.model-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 0.7rem;
+  align-items: flex-start;
+}
+.model-toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text);
+  cursor: pointer;
+  width: fit-content;
+}
+.model-toggle-row input { accent-color: var(--accent-strong); width: 1rem; height: 1rem; margin: 0; }
+.model-toggle-row input:disabled { opacity: 0.55; cursor: not-allowed; }
+.model-options .field-help { margin: 0; }
 .provenance a { color: var(--accent); }
 
 .loading { display: flex; gap: 0.35rem; margin: 2rem 0; }
@@ -413,6 +460,16 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
 .pagination span { color: var(--secondary); font-size: 0.8rem; }
 
 .sr-only { position: absolute; width: 0.0625rem; height: 0.0625rem; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+/* Tablet: from 704px (where the two-column layout currently kicks in) up to
+   864px, the fixed `auto` action column would otherwise squeeze the query
+   input to ~280px while the search buttons hold ~440px — giving the primary
+   field less room than the buttons that act on it. Stacking the field above
+   the actions restores full width to the input; buttons stay on one row (a
+   2x2 grid only appears at the dedicated mobile width below). */
+@media (max-width: 54rem) {
+  .search-row { grid-template-columns: minmax(0, 1fr); }
+}
 
 @media (max-width: 44rem) {
   .masthead, .shell { width: min(100% - 1.25rem, 72rem); }
@@ -768,6 +825,12 @@ h2 { margin: 0; font-size: clamp(1.25rem, 4vw, 1.375rem); }
   margin-bottom: 0.9rem;
 }
 #client-token-close { width: 100%; }
+#marginalia-dialog input { width: 100%; margin-bottom: 0.9rem; font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 0.8rem; }
+#marginalia-dialog .field-help { margin: 0 0 0.9rem; color: var(--secondary); font-size: 0.8rem; }
+#marginalia-key-error { color: var(--error); }
+#marginalia-save, #marginalia-cancel { width: 100%; }
+#marginalia-save { margin-bottom: 0.5rem; }
+#marginalia-cancel { margin-bottom: 0.3rem; }
 
 @media (max-width: 44rem) {
   .side-panels { grid-template-columns: minmax(0, 1fr); }

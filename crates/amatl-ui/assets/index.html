@@ -10,6 +10,8 @@
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="stylesheet" href="/styles.css">
     <script src="/i18n.js" defer></script>
+    <script src="/client.js" defer></script>
+    <script src="/store.js" defer></script>
     <script src="/app.js" defer></script>
   </head>
   <body>
@@ -41,7 +43,7 @@
 
     <main class="shell">
       <section class="search-panel" aria-labelledby="search-heading">
-        <h1 id="search-heading">¿Qué necesitas encontrar?</h1>
+        <h1 id="search-heading">Busquemos</h1>
         <form id="search-form" action="/search" method="post" role="search">
           <div class="search-row">
             <label class="sr-only" for="query">Consulta</label>
@@ -52,9 +54,21 @@
               <button id="answer-button" class="secondary-action is-unavailable" type="submit" data-mode="answer" aria-disabled="true">Resumen con IA</button>
             </div>
           </div>
+          <div class="model-options">
+            <label class="model-toggle-row">
+              <input type="checkbox" id="strategist-enabled-toggle" disabled>
+              <span id="strategist-toggle-label">Búsqueda con modelo</span>
+            </label>
+            <p id="strategist-toggle-status" class="field-help" hidden></p>
+          </div>
           <div class="deep-options">
             <label for="deep-max-fetches">Máximo de recuperaciones para Deep (opcional)</label>
             <input id="deep-max-fetches" type="number" min="1" max="1000" step="1" inputmode="numeric" placeholder="Límite del servidor">
+          </div>
+          <div class="credential-actions">
+            <button id="marginalia-key-button" class="secondary-action" type="button">🔑 Insertar key Marginalia</button>
+            <button id="marginalia-clear-button" class="secondary-action danger-action" type="button" disabled>🗑️ Liquidar key</button>
+            <p id="marginalia-status" class="field-help" hidden></p>
           </div>
           <p id="answer-hint" class="field-help" hidden></p>
           <details class="filters">
@@ -270,6 +284,16 @@
       <label class="sr-only" for="client-token-value">Token</label>
       <input id="client-token-value" type="text" readonly>
       <button type="button" id="client-token-close">Cerrar</button>
+    </dialog>
+
+    <dialog id="marginalia-dialog" class="token-dialog" aria-labelledby="marginalia-dialog-heading">
+      <h2 id="marginalia-dialog-heading">Key de Marginalia</h2>
+      <p id="marginalia-dialog-help" class="field-help">Pega la API key privada de Marginalia. Solo se guarda en memoria del proceso: no se escribe en disco ni en logs, y desaparece al cerrar AMATL.</p>
+      <label class="sr-only" for="marginalia-key">API key de Marginalia</label>
+      <input id="marginalia-key" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" minlength="8" placeholder="marginalia-…">
+      <p id="marginalia-key-error" class="field-help" hidden></p>
+      <button type="button" id="marginalia-save">Guardar y verificar</button>
+      <button type="button" id="marginalia-cancel" class="secondary-action">Cancelar</button>
     </dialog>
   </body>
 </html>

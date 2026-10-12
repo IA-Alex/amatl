@@ -27,21 +27,26 @@ pub fn asset(path: &str) -> Option<UiAsset> {
             cache_control: "public, max-age=3600",
             body: include_bytes!("../assets/styles.css"),
         }),
+        "/client.js" => Some(UiAsset {
+            content_type: "text/javascript; charset=utf-8",
+            cache_control: "public, max-age=3600",
+            body: include_bytes!("../assets/client.js"),
+        }),
+        "/store.js" => Some(UiAsset {
+            content_type: "text/javascript; charset=utf-8",
+            cache_control: "public, max-age=3600",
+            body: include_bytes!("../assets/store.js"),
+        }),
         "/app.js" => Some(UiAsset {
             content_type: "text/javascript; charset=utf-8",
             cache_control: "public, max-age=3600",
             body: include_bytes!("../assets/app.js"),
         }),
-        // Message catalog, kept out of app.js so translations are one file.
         "/i18n.js" => Some(UiAsset {
             content_type: "text/javascript; charset=utf-8",
             cache_control: "public, max-age=3600",
             body: include_bytes!("../assets/i18n.js"),
         }),
-        // Brand mark. Fixed brown, not a `--accent`-family token: this is
-        // the one deliberately single-theme element on the page (see
-        // docs/identidad-visual.md) — the rest of the UI's color system is
-        // untouched by it.
         "/brand-icon.png" => Some(UiAsset {
             content_type: "image/png",
             cache_control: "public, max-age=3600",
@@ -166,7 +171,7 @@ mod tests {
             "#2a2f35",
             "#e7e9ec",
             "#9da5ae",
-            "#6f7780",
+            "#878f99",
             "#4f8cff",
             "#48b8c7",
             "#4fae72",
@@ -183,6 +188,7 @@ mod tests {
     fn search_and_deep_use_post_contracts_and_safe_dom_apis() {
         let html = text("/index.html");
         let javascript = text("/app.js");
+        let client = text("/client.js");
         assert!(html.contains("action=\"/search\" method=\"post\""));
         assert!(!html.contains("method=\"get\""));
         assert!(!html.contains("name=\"token\""));
@@ -202,20 +208,30 @@ mod tests {
         assert!(javascript.contains(
             "mode === \"deep\" ? \"/deep\" : mode === \"answer\" ? \"/answer\" : \"/search\""
         ));
-        assert!(javascript.contains("fetch(endpoint"));
-        assert!(javascript.contains("method: \"POST\""));
-        assert!(javascript.contains("\"Content-Type\": \"application/json\""));
-        assert!(javascript.contains("body: JSON.stringify(body)"));
-        assert!(javascript.contains("body.page = state.page"));
+        // Transport is centralized in client.js: requests go through the shared
+        // client, which owns fetch + POST + JSON + authorization injection.
+        assert!(javascript.contains("globalThis.api.post(endpoint"));
+        assert!(client.contains("fetch(path"));
+        assert!(client.contains("method: \"POST\""));
+        assert!(client.contains("\"Content-Type\": \"application/json\""));
+        assert!(client.contains("body: JSON.stringify(payload)"));
+        assert!(javascript.contains("body.page = store.get().page"));
         assert!(javascript.contains("headers.Authorization"));
         assert!(!javascript.contains("searchParams"));
-        assert!(!javascript.contains("method: \"GET\""));
+        // Search/deep/answer routing is POST-only; GET exists for the local
+        // read panels (status/history/saved) and is never used for retrieval.
+        assert!(!javascript.contains("globalThis.api.get(endpoint"));
         // Pagination is server-side only: no local windowing of the result set.
         assert!(!javascript.contains("serverPagination"));
         assert!(!javascript.contains("state.items.slice"));
+        assert!(!client.contains("state.items.slice"));
         assert!(javascript.contains("body.page_size = PAGE_SIZE"));
         assert!(html.contains("id=\"deep-max-fetches\""));
         assert!(html.contains("deep-target-checkbox"));
+        // The split runtime dependencies load in order: store before app.
+        let store_index = html.find("src=\"/store.js\"").expect("store.js is loaded");
+        let app_index = html.find("src=\"/app.js\"").expect("app.js is loaded");
+        assert!(store_index < app_index, "store.js must load before app.js");
         assert!(javascript.contains("body.targets = selectedTargets"));
         assert!(javascript.contains("body.max_fetches = Number(deepMaxFetchesInput.value)"));
         assert!(javascript.contains("payload.total_results"));
@@ -258,6 +274,7 @@ mod tests {
     fn local_domain_panels_use_the_bounded_service_endpoints() {
         let html = text("/index.html");
         let javascript = text("/app.js");
+        let client = text("/client.js");
         for id in [
             "id=\"service-indicators\"",
             "id=\"history-list\"",
@@ -268,15 +285,33 @@ mod tests {
         ] {
             assert!(html.contains(id), "missing panel element: {id}");
         }
-        assert!(javascript.contains("fetch(\"/status\""));
+        // Local-domain reads go through the shared client; DELETE is defined
+        // centrally and never issues a GET for these surfaces.
+        assert!(javascript.contains("globalThis.api.get(\"/status\""));
         assert!(javascript.contains("`/history?limit=${LIST_LIMIT}`"));
         assert!(javascript.contains("`/saved?limit=${LIST_LIMIT}`"));
-        assert!(javascript.contains("method: \"DELETE\""));
+        assert!(!javascript.contains("`/saved?limit=\" +"));
+        assert!(client.contains("method: \"DELETE\""));
         // Saved payloads stay bounded and never carry extracted content.
         assert!(javascript.contains("MAX_SAVED_PAYLOAD_BYTES"));
         assert!(!javascript.contains("documentValue.content,"));
-        // Every request to a protected surface carries the in-memory token.
-        assert!(javascript.contains("headers: authHeaders()"));
+        // Every request to a protected surface carries the in-memory token
+        // injected by the shared client from the app-level auth helper.
+        assert!(javascript.contains("globalThis.authHeaders ="));
+        assert!(client.contains("globalThis.authHeaders()"));
+    }
+
+    #[test]
+    fn marginalia_credential_ui_reflects_the_credential_source() {
+        let javascript = text("/app.js");
+        let catalog = text("/i18n.js");
+        // The UI keys the "liquidate" affordance off the provenance the server
+        // reports, so it never offers to erase a key it does not own (an
+        // environment variable) and always explains where the key comes from.
+        assert!(javascript.contains("credential_source"));
+        assert!(javascript.contains("marginaliaCredentialSource"));
+        assert!(javascript.contains("source !== \"ephemeral\""));
+        assert!(catalog.contains("marginaliaStatusEnvironment"));
     }
 
     #[test]
