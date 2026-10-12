@@ -16,6 +16,7 @@ mod persistence;
 mod providers;
 mod ranking;
 mod server;
+mod strategist;
 mod telemetry;
 
 pub use data_policy::*;
@@ -26,6 +27,7 @@ pub use persistence::*;
 pub use providers::*;
 pub use ranking::*;
 pub use server::*;
+pub use strategist::*;
 pub use telemetry::*;
 
 #[derive(Clone, Debug, Serialize, Deserialize, PartialEq)]
@@ -39,6 +41,7 @@ pub struct Config {
     pub data_policy: DataPolicyConfig,
     pub inference: InferenceConfig,
     pub answer: AnswerConfig,
+    pub strategist: StrategistConfig,
     pub providers: ProviderConfig,
     pub timeouts: TimeoutConfig,
     pub budget: BudgetConfig,
@@ -202,6 +205,7 @@ impl Default for Config {
             circuit_breaker: crate::circuit::CircuitPolicy::default(),
             cache: CacheConfig::default(),
             telemetry: TelemetryConfig::default(),
+            strategist: StrategistConfig::default(),
             deep: DeepConfig::default(),
             server: ServerConfig::default(),
         }
@@ -414,6 +418,7 @@ impl Config {
         }
         self.validate_inference()?;
         self.validate_answer()?;
+        self.validate_strategist()?;
         self.validate_execution()?;
         self.validate_persistence()?;
         self.validate_ranking_policies()?;
@@ -1199,6 +1204,73 @@ mod tests {
 
         let reparsed = Config::from_toml(&written).unwrap();
         assert!(reparsed.answer.enabled);
+    }
+
+    #[test]
+    fn set_strategist_enabled_flips_only_that_key_and_keeps_comments() {
+        let path = std::env::temp_dir().join(format!(
+            "amatl-config-strategist-toggle-test-{}.toml",
+            std::process::id()
+        ));
+        std::fs::write(
+            &path,
+            "schema_version = \"1\"\n\n\
+             # A comment an operator wrote about something unrelated.\n\
+             [server]\n\
+             port = 8080\n\n\
+             [strategist]\n\
+             enabled = false\n\
+             model = \"deepseek-ai/DeepSeek-V3\"\n",
+        )
+        .unwrap();
+
+        Config::set_strategist_enabled(&path, true).unwrap();
+        let written = std::fs::read_to_string(&path).unwrap();
+        std::fs::remove_file(&path).ok();
+
+        assert!(written.contains("enabled = true"));
+        assert!(written.contains("# A comment an operator wrote about something unrelated."));
+        assert!(written.contains("model = \"deepseek-ai/DeepSeek-V3\""));
+        assert!(written.contains("port = 8080"));
+        let reparsed = Config::from_toml(&written).unwrap();
+        assert!(reparsed.strategist.enabled);
+        assert_eq!(reparsed.server.port, 8080);
+    }
+
+    #[test]
+    fn strategist_enabled_requires_endpoint_model_credential_and_egress() {
+        // A default (disabled) strategist validates fine even incomplete.
+        let mut config = Config::default();
+        config.strategist.enabled = true;
+        config.strategist.endpoint = None;
+        // No endpoint -> must fail closed, not silently accept a no-op enable.
+        assert!(config.validate().is_err(), "missing endpoint must fail");
+
+        // With endpoint + model but no credential -> must fail.
+        let mut config = Config::default();
+        config.strategist.enabled = true;
+        config.strategist.endpoint =
+            Some("https://api.deepinfra.com/v1/openai/chat/completions".into());
+        config.strategist.model = Some("deepseek-ai/DeepSeek-V3".into());
+        assert!(
+            config.validate().is_err(),
+            "enabled without credential must fail"
+        );
+
+        // Fully configured with network egress -> validates, and does NOT need
+        // remote_explicit (the strategist is a chat call independent of the
+        // ranking-embeddings mode, so `inference` can stay disabled).
+        let mut config = Config::default();
+        config.strategist.enabled = true;
+        config.strategist.endpoint =
+            Some("https://api.deepinfra.com/v1/openai/chat/completions".into());
+        config.strategist.model = Some("deepseek-ai/DeepSeek-V3".into());
+        config.strategist.credential_env = Some("AMATL_TEST_KEY".into());
+        assert_eq!(
+            config.data_policy.inference,
+            crate::config::InferenceMode::Disabled
+        );
+        assert!(config.validate().is_ok(), "{:?}", config.validate().err());
     }
 
     #[test]

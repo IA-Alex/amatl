@@ -201,6 +201,49 @@ paths:
         '429': { $ref: '#/components/responses/RateLimited' }
         '500': { $ref: '#/components/responses/ServiceUnavailable' }
         '504': { $ref: '#/components/responses/RequestTimeout' }
+  /strategist/enabled:
+    post:
+      operationId: strategistToggle
+      summary: Flip strategist.enabled to include the LLM in search, applied live
+      description: >-
+        Admin-scoped, same trust tier as `/answer/enabled` and `/reload`
+        (which this reuses for the actual apply step). Controls whether the
+        LLM participates in a search: with it on, the strategist proposes a
+        refined query that AMATL runs to complement the first result set;
+        with it off (the default), search and deep remain fully
+        deterministic and the LLM does not participate at all. Builds a
+        candidate configuration with the flag flipped and validates it
+        *before* writing anything: turning it on when
+        `strategist.endpoint`/`strategist.model` are still incomplete fails
+        closed with `configuration_invalid` and neither the file nor the
+        running service change. On success, writes only `strategist.enabled`
+        to the configuration file with comments and every other key
+        preserved, then reloads the service without a restart.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [enabled]
+              properties:
+                enabled: { type: boolean }
+      responses:
+        '200':
+          description: The flag was written and the service reloaded with it applied
+          headers:
+            X-Request-ID: { $ref: '#/components/headers/RequestId' }
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReloadReport'
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '429': { $ref: '#/components/responses/RateLimited' }
+        '500': { $ref: '#/components/responses/ServiceUnavailable' }
+        '504': { $ref: '#/components/responses/RequestTimeout' }
   /providers:
     get:
       operationId: providers
@@ -478,6 +521,17 @@ paths:
       summary: Enable or disable a declared provider and reload it
       requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
       responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+  /providers/{name}/credential:
+    parameters: [{ $ref: '#/components/parameters/ProviderName' }]
+    post:
+      operationId: providerCredentialPut
+      summary: Insert or replace a provider credential in memory only, after a live canary validates it
+      requestBody: { $ref: '#/components/requestBodies/AdminPatch' }
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' }, '400': { $ref: '#/components/responses/BadRequest' } }
+    delete:
+      operationId: providerCredentialDelete
+      summary: Liquidate a provider's in-memory credential (idempotent)
+      responses: { '200': { $ref: '#/components/responses/AdminSuccess' } }
   /inference:
     patch:
       operationId: inferenceUpdate

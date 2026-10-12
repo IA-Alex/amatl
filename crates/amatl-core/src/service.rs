@@ -17,7 +17,7 @@ use crate::{
 use async_trait::async_trait;
 use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, BTreeSet};
-use std::sync::Arc;
+use std::sync::{Arc, RwLock};
 use thiserror::Error;
 
 #[derive(Clone, Debug, PartialEq, Eq)]
@@ -274,6 +274,11 @@ pub struct ServiceStatus {
     /// credential, only what a settings screen needs to explain *why* the
     /// feature is or isn't available right now.
     pub answer: AnswerStatus,
+    /// Read-only view of the search-strategist configuration: whether the LLM
+    /// is allowed to participate in search (refining the query between
+    /// rounds). Never the credential — only what a settings screen needs to
+    /// explain why the "search with model" toggle is or isn't usable.
+    pub strategist: StrategistStatus,
     /// Read-only view of `data_policy` — the profile, egress and inference
     /// gate every other capability in this status checks against. Exposed
     /// so a settings screen can explain *why* a source, remote embedding or
@@ -308,6 +313,35 @@ pub struct AnswerStatus {
     /// Shown whenever set on disk, independent of `enabled` — see the field
     /// doc on `enabled` for why.
     pub model: Option<String>,
+    pub endpoint: Option<String>,
+}
+
+/// Read-only status of the search strategist — the optional LLM that, when
+/// enabled, participates in a search by proposing a refined query that AMATL
+/// then runs to complement the first result set (see `service.rs`:
+/// `search_inner` and the `[strategist]` config section).
+///
+/// Mirrors [`AnswerStatus`]: it reports the operator's on/off intent, whether
+/// there is a real model/endpoint configured, and whether a call would
+/// actually work right now (enabled + configured + credential present). It
+/// never exposes the credential.
+#[derive(Clone, Debug, Serialize, Deserialize, PartialEq, Eq)]
+pub struct StrategistStatus {
+    /// `strategist.enabled` in configuration — exactly what the web toggle
+    /// flips. Independent of `configured`: an operator can turn it off
+    /// without erasing `endpoint`/`model`, and the settings screen needs to
+    /// keep showing those for the toggle to mean anything when it's off.
+    pub enabled: bool,
+    /// Whether `endpoint` and `model` are both present, regardless of
+    /// `enabled` — "is there a real configuration on disk to toggle".
+    pub configured: bool,
+    /// Whether calling the strategist would work right now: `enabled` AND
+    /// `configured` AND the credential environment variable was present.
+    pub available: bool,
+    /// Model identifier, shown whenever set on disk, independent of
+    /// `enabled`.
+    pub model: Option<String>,
+    /// Endpoint, shown whenever set on disk, independent of `enabled`.
     pub endpoint: Option<String>,
 }
 
@@ -401,12 +435,21 @@ pub struct AmatlService {
     circuit: ProviderCircuit,
     /// Durable security audit trail; inert without persistence.
     audit: SecurityAudit,
+    strategist: Arc<dyn crate::strategist::SearchStrategist + Send + Sync>,
     /// Parsed operator Optics document (`[ranking.optics]`). Loaded and parsed
     /// exactly once here -- on first build and again on every `reloaded()`,
     /// which rebuilds the whole service -- never per search. `None` when
     /// Optics is disabled, unconfigured, or its file was missing/unparsable
     /// (a warning is logged in the last case; a search never fails for it).
     optics: Option<Arc<crate::optics::OpticsDocument>>,
+    /// Operator-supplied provider credentials kept only in RAM (never on disk,
+    /// never in `amatl.toml`, never in logs). Keyed by provider name and
+    /// consulted before the `credential_env` environment variable, so an admin
+    /// can insert/liquidate a source's key at runtime (e.g. Marginalia) without
+    /// touching the environment or restarting. Killed with the process.
+    /// `Arc<RwLock>` so changes take effect for subsequent requests without a
+    /// service rebuild, and survive `reloaded()` by being shared in.
+    ephemeral_credentials: Arc<RwLock<BTreeMap<String, String>>>,
     /// Stops the background maintenance task when the service is dropped.
     ///
     /// Must be a `DropGuard`, not a bare `CancellationToken`: a token does not
@@ -484,6 +527,7 @@ impl AmatlService {
             config.telemetry.retention_days,
         )
         .await;
+
         let transport: Option<Arc<dyn crate::HttpTransport>> =
             if config.data_policy.allows_network_egress() {
                 ReqwestTransport::new(2 * 1024 * 1024)
@@ -544,7 +588,7 @@ impl AmatlService {
             RendererPool::new(renderer, config.deep.renderer.max_browser_calls as usize);
         let optics = load_optics(&config.ranking.optics);
         Self {
-            config: Arc::new(config),
+            config: Arc::new(config.clone()),
             registry: Arc::new(registry),
             storage,
             storage_degradation,
@@ -559,6 +603,23 @@ impl AmatlService {
             cache_counters: Arc::new(CacheCounters::default()),
             circuit: ProviderCircuit::restored(config_circuit_policy, storage_for_circuit).await,
             audit: SecurityAudit::new(storage_for_audit, audit_retention_days),
+            ephemeral_credentials: Arc::new(RwLock::new(BTreeMap::new())),
+            strategist: if config.strategist.enabled {
+                match crate::strategist::llm::LlmStrategist::new(config.strategist.clone()) {
+                    Ok(strategist) => Arc::new(strategist)
+                        as Arc<dyn crate::strategist::SearchStrategist + Send + Sync>,
+                    Err(error) => {
+                        tracing::warn!(
+                            target: "amatl::strategist",
+                            error = %error,
+                            "strategist backend is unavailable; falling back to no-op"
+                        );
+                        Arc::new(crate::strategist::NoOpStrategist)
+                    }
+                }
+            } else {
+                Arc::new(crate::strategist::NoOpStrategist)
+            },
             _maintenance_cancel: maintenance_cancel,
         }
     }
@@ -577,7 +638,13 @@ impl AmatlService {
     /// rebuilt, so a bad reload leaves the running service untouched.
     pub async fn reloaded(self, config: Config) -> Result<Self, ServiceError> {
         config.validate().map_err(|_| ServiceError::Configuration)?;
-        Ok(Self::with_registry(config, self.mock, (*self.registry).clone()).await)
+        let ephemeral = self.ephemeral_credentials.clone();
+        let mut replacement =
+            Self::with_registry(config, self.mock, (*self.registry).clone()).await;
+        // Keep operator-injected in-memory credentials across a reload so a
+        // provider key survives config rotation without a restart.
+        replacement.ephemeral_credentials = ephemeral;
+        Ok(replacement)
     }
 
     /// [`Self::reloaded`], runnable from a generic async position.
@@ -604,7 +671,10 @@ impl AmatlService {
         registry: ProviderRegistry,
     ) -> Result<Self, ServiceError> {
         config.validate().map_err(|_| ServiceError::Configuration)?;
-        Ok(Self::with_registry(config, self.mock, registry).await)
+        let ephemeral = self.ephemeral_credentials.clone();
+        let mut replacement = Self::with_registry(config, self.mock, registry).await;
+        replacement.ephemeral_credentials = ephemeral;
+        Ok(replacement)
     }
 
     /// Identifier of the active inference backend, when one is available.
@@ -671,26 +741,63 @@ impl AmatlService {
         let selection = self.select_providers()?;
         let refusals = selection.degradations;
         let providers = selection.providers;
-        let mut orchestrator = SearchOrchestrator::new(
-            Budget::new(limits.max_provider_calls, limits.search_timeout_ms),
-            limits.provider_timeout_ms,
-        )
-        .with_execution_limits(
-            self.config.execution.global_concurrency,
-            self.config.execution.per_provider_concurrency,
-            self.config.execution.max_retries,
-            self.config.execution.retry_jitter_ms,
-        )
-        .with_result_policies(
-            self.config.ranking_policy.clone(),
-            self.config.diversity_policy.clone(),
-        )
-        .with_optics(self.optics.clone())
-        .with_search_policy(self.config.search_policy.clone())
-        .with_role_assignment(role_assignment_from_config(&self.config))
-        .with_telemetry(self.telemetry.clone())
-        .with_request_id(surface.request_id.clone());
-        let mut response = orchestrator.search(query.clone(), providers).await;
+        // Fresh orchestrator per search: a search mutates its internal budget,
+        // so the refined (second) search must run on its own orchestrator with
+        // its own budget rather than reusing the first, already-exhausted one.
+        let build_orchestrator = || {
+            SearchOrchestrator::new(
+                Budget::new(limits.max_provider_calls, limits.search_timeout_ms),
+                limits.provider_timeout_ms,
+            )
+            .with_execution_limits(
+                self.config.execution.global_concurrency,
+                self.config.execution.per_provider_concurrency,
+                self.config.execution.max_retries,
+                self.config.execution.retry_jitter_ms,
+            )
+            .with_result_policies(
+                self.config.ranking_policy.clone(),
+                self.config.diversity_policy.clone(),
+            )
+            .with_optics(self.optics.clone())
+            .with_search_policy(self.config.search_policy.clone())
+            .with_role_assignment(role_assignment_from_config(&self.config))
+            .with_telemetry(self.telemetry.clone())
+            .with_request_id(surface.request_id.clone())
+        };
+        let mut orchestrator = build_orchestrator();
+        let mut response = orchestrator.search(query.clone(), providers.clone()).await;
+
+        if self.config.strategist.enabled {
+            if let Ok(Ok(Some(new_query))) = tokio::time::timeout(
+                std::time::Duration::from_millis(self.config.strategist.timeout_ms),
+                self.strategist
+                    .generate_strategy(&query.raw_query, &response),
+            )
+            .await
+            {
+                if let Ok(refined_query) = crate::parse_query(new_query) {
+                    // The refined query is a different, narrower query. If it
+                    // normalizes to the same query the user already sent, the
+                    // follow-up would add nothing: skip the redundant search.
+                    if refined_query.normalized_query != query.normalized_query {
+                        let mut refined_orchestrator = build_orchestrator();
+                        let refined_response =
+                            refined_orchestrator.search(refined_query, providers).await;
+                        // Keep the circuit breaker accurate for the providers the
+                        // refined search actually used, beyond the results merge.
+                        self.record_circuit_outcomes(&refined_response).await;
+                        // Complement, never re-order: keep the original set as
+                        // ranked and append only results the original search did
+                        // not already return, deduplicating by canonical URL
+                        // (both against the original set and within the refined
+                        // set itself).
+                        Self::append_complementary(&mut response.results, refined_response.results);
+                    }
+                }
+            }
+        }
+
         self.record_circuit_outcomes(&response).await;
         if !refusals.is_empty() {
             response.degradations.extend(refusals);
@@ -730,6 +837,24 @@ impl AmatlService {
             plan,
             response,
         })
+    }
+
+    /// Append results from a refined (second) search to the primary result set,
+    /// keeping the primary set as-ranked and adding only hits the primary
+    /// search did not already return — deduplicating by canonical URL both
+    /// against the primary set and within the refined set itself.
+    ///
+    /// `refined` is consumed. The primary set is mutated in place.
+    fn append_complementary(primary: &mut Vec<SearchResult>, refined: Vec<SearchResult>) {
+        let mut seen: BTreeSet<CanonicalUrl> = primary
+            .iter()
+            .map(|result| result.canonical_url.clone())
+            .collect();
+        primary.extend(
+            refined
+                .into_iter()
+                .filter(|result| seen.insert(result.canonical_url.clone())),
+        );
     }
 
     /// Run a search and synthesize a grounded, cited answer from its results.
@@ -1341,6 +1466,22 @@ impl AmatlService {
                 model: self.config.answer.model.clone(),
                 endpoint: self.config.answer.endpoint.clone(),
             },
+            strategist: StrategistStatus {
+                enabled: self.config.strategist.enabled,
+                configured: self.config.strategist.endpoint.is_some()
+                    && self.config.strategist.model.is_some(),
+                available: self.config.strategist.enabled
+                    && self.config.strategist.endpoint.is_some()
+                    && self.config.strategist.model.is_some()
+                    && self
+                        .config
+                        .strategist
+                        .credential_env
+                        .as_ref()
+                        .is_some_and(|name| std::env::var_os(name).is_some_and(|v| !v.is_empty())),
+                model: self.config.strategist.model.clone(),
+                endpoint: self.config.strategist.endpoint.clone(),
+            },
             data_policy: DataPolicyStatus {
                 profile: self.config.data_policy.profile,
                 egress: self.config.data_policy.egress,
@@ -1417,7 +1558,7 @@ impl AmatlService {
                     runtime,
                     enabled: self.config.providers.enabled.contains(name),
                     approved: runtime.approved(),
-                    credential: credential(runtime),
+                    credential: self.resolved_credential(name, runtime),
                     transport: transport.clone(),
                 }))
             })
@@ -1453,6 +1594,108 @@ impl AmatlService {
                 }
             })
             .collect())
+    }
+
+    /// Resolve a provider's credential: an operator-supplied ephemeral
+    /// (RAM-only) value takes precedence; otherwise fall back to the
+    /// `credential_env` environment variable. Never logs the secret.
+    fn resolved_credential(&self, name: &str, runtime: &ProviderRuntimeConfig) -> Option<String> {
+        if let Ok(guard) = self.ephemeral_credentials.read() {
+            if let Some(value) = guard.get(name) {
+                if !value.is_empty() {
+                    return Some(value.clone());
+                }
+            }
+        }
+        credential(runtime)
+    }
+
+    /// Whether an operator has injected an in-memory credential for `name`.
+    /// Read-only; never exposes the secret, only its presence.
+    pub fn ephemeral_credential_present(&self, name: &str) -> bool {
+        self.ephemeral_credentials
+            .read()
+            .ok()
+            .and_then(|guard| guard.get(name).cloned())
+            .is_some_and(|value| !value.is_empty())
+    }
+
+    /// Set an operator-supplied provider credential in memory only.
+    ///
+    /// Nothing is written to disk, to `amatl.toml`, the environment, or logs:
+    /// the value lives in RAM and dies with the process. A generous upper bound
+    /// rejects a runaway value; an empty value is rejected too.
+    pub fn set_provider_credential(&self, name: &str, value: &str) -> Result<(), ServiceError> {
+        if self.registry.get(name).is_none() {
+            return Err(ServiceError::ProviderNotRegistered(name.into()));
+        }
+        if value.is_empty() || value.len() > 512 {
+            return Err(ServiceError::InvalidInput);
+        }
+        self.ephemeral_credentials
+            .write()
+            .map_err(|_| ServiceError::ProviderNotRegistered(name.into()))?
+            .insert(name.to_string(), value.to_string());
+        Ok(())
+    }
+
+    /// Remove an operator-supplied provider credential from memory. Idempotent.
+    pub fn clear_provider_credential(&self, name: &str) {
+        if let Ok(mut guard) = self.ephemeral_credentials.write() {
+            guard.remove(name);
+        }
+    }
+
+    /// Live, bounded probe of a candidate provider credential.
+    ///
+    /// Builds an isolated service with only `name` enabled and the candidate
+    /// key injected in-memory, then runs one search. Returns `true` only when
+    /// the source actually produced at least one usable result, so an operator
+    /// never accepts (or "burns") a bogus, expired, or mis-scoped key. Fails
+    /// closed (`false`) when egress is denied. The key is never logged.
+    pub async fn probe_provider_credential(
+        &self,
+        name: &str,
+        value: &str,
+        query: &str,
+    ) -> Result<bool, ServiceError> {
+        if !self.config.data_policy.allows_network_egress() {
+            return Ok(false);
+        }
+        let mut isolated_config = (*self.config).clone();
+        isolated_config.providers.enabled = vec![name.to_string()];
+        let registry = (*self.registry).clone();
+        let name = name.to_string();
+        let value = value.to_string();
+        let query = query.to_string();
+        // Opening SQLite runs migrations through sqlx, whose executor bound is
+        // not provably `Send`; build the isolated service on a blocking thread
+        // (same reason `reloaded_detached` does) so this method's future stays
+        // `Send` and callable from an HTTP handler.
+        let handle = tokio::runtime::Handle::current();
+        let service = tokio::task::spawn_blocking(move || {
+            handle.block_on(AmatlService::with_registry(
+                isolated_config,
+                false,
+                registry,
+            ))
+        })
+        .await
+        .map_err(|_| ServiceError::Configuration)?;
+        service
+            .set_provider_credential(&name, &value)
+            .map_err(|_| ServiceError::ProviderNotRegistered(name.clone()))?;
+        let execution = service.search(query.clone(), ServiceSurface::cli()).await?;
+        let used = execution
+            .response
+            .providers_used
+            .iter()
+            .any(|used| used == &name);
+        Ok(
+            !matches!(execution.response.status, crate::SearchStatus::Failure)
+                && used
+                && !execution.response.results.is_empty(),
+        )
     }
 
     /// Providers admitted into one search round, with the reasons for any
@@ -1520,7 +1763,7 @@ impl AmatlService {
                 runtime,
                 enabled: true,
                 approved: true,
-                credential: credential(runtime),
+                credential: self.resolved_credential(name, runtime),
                 transport: transport.clone(),
             });
             selection.providers.push(self.with_cache(provider, runtime));
@@ -1812,6 +2055,49 @@ mod tests {
         assert_eq!(
             validate_deep_fetch_cap(Some(0), 10),
             Err(ServiceError::InvalidInput)
+        );
+    }
+
+    #[test]
+    fn append_complementary_dedupes_and_preserves_primary_order() {
+        use crate::{CanonicalUrl, OriginalUrl, Rank, ResultStatus, SearchResult};
+        use url::Url;
+        let result = |index: u32, host: &str, path: &str| SearchResult {
+            schema_version: SCHEMA_VERSION.into(),
+            rank: Rank::new(index).unwrap(),
+            title: None,
+            original_url: OriginalUrl(Url::parse(&format!("http://{host}/{path}")).unwrap()),
+            canonical_url: CanonicalUrl(Url::parse(&format!("http://{host}/{path}")).unwrap()),
+            domain: host.to_owned(),
+            snippet: None,
+            providers: vec!["mock".into()],
+            published_at: None,
+            status: ResultStatus::Visible,
+        };
+        // Primary set, already ranked.
+        let mut primary = vec![result(1, "a.example", "one"), result(2, "b.example", "two")];
+        // Refined set: one duplicate of the primary, one duplicate within the
+        // refined set itself, and one genuinely new result.
+        let refined = vec![
+            result(1, "a.example", "one"),
+            result(9, "c.example", "new-a"),
+            result(9, "c.example", "new-a"),
+            result(9, "d.example", "new-b"),
+        ];
+        AmatlService::append_complementary(&mut primary, refined);
+        let urls = primary
+            .iter()
+            .map(|item| item.canonical_url.0.as_str().to_owned())
+            .collect::<Vec<_>>();
+        assert_eq!(
+            urls,
+            [
+                "http://a.example/one",
+                "http://b.example/two",
+                "http://c.example/new-a",
+                "http://d.example/new-b",
+            ],
+            "primary order is preserved, duplicates are dropped, new hits are appended"
         );
     }
 

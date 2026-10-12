@@ -61,12 +61,8 @@ mod tests {
             provider_budget_requests: [("a".into(), 1), ("b".into(), 1)].into(),
             debug_reasons: vec![],
         };
-        let plan = build_search_plan(
-            query,
-            classification,
-            recommendation,
-            &mut Budget::new(1, 3_000),
-        );
+        let mut budget = Budget::new(1, 3_000);
+        let plan = build_search_plan(query, classification, recommendation, &mut budget);
         assert_eq!(plan.selected_providers, ["a"]);
         assert_eq!(plan.provider_budgets.len(), 1);
     }

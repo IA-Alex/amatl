@@ -430,11 +430,16 @@ fn required_scope(method: &Method, path: &str) -> Option<Scope> {
         // The answer toggle is admin too, same tier as /reload: it rewrites
         // the running configuration file, even though the field it touches
         // is narrow (see `Config::set_answer_enabled`).
-        "/security-events" | "/reload" | "/answer/enabled" => Some(Scope::Admin),
+        "/security-events" | "/reload" | "/answer/enabled" | "/strategist/enabled" => {
+            Some(Scope::Admin)
+        }
         // Same tier and the same reasoning as `/answer/enabled`: it rewrites
         // the running configuration file, narrowly (see
         // `Config::set_provider_enabled`).
         _ if path.starts_with("/providers/") && path.ends_with("/enabled") => Some(Scope::Admin),
+        // Operator-injected provider credentials (e.g. Marginalia) are inserted
+        // and liquidated here: same admin tier as the governance writes below.
+        _ if path.starts_with("/providers/") && path.ends_with("/credential") => Some(Scope::Admin),
         // `GET /providers/{name}` reads the full governance ficha (still no
         // secret in it); `PATCH /providers/{name}` edits it, admin scoped
         // like every other config write.
@@ -1036,6 +1041,54 @@ async fn answer_toggle(
 }
 
 #[derive(Debug, Deserialize)]
+struct StrategistToggleParams {
+    enabled: bool,
+}
+
+/// Flip `strategist.enabled` and nothing else — admin scoped, same trust tier
+/// as `/answer/enabled` and `/reload`, whose pattern this copies exactly.
+///
+/// Toggling the strategist on wires the LLM into search (a refined second
+/// query complementing the first result set). This is the web button
+/// "search with model": with it off, the LLM does not participate in search
+/// at all and `search`/`deep` stay fully deterministic.
+///
+/// Validates a would-be config with the flag flipped *before* writing: if
+/// turning it on would leave the strategist without a usable `endpoint` /
+/// `model` (an operator never finished configuring it), it fails closed
+/// (`configuration_invalid`) without ever touching the file or the
+/// credential. The credential itself is checked lazily at call time, not
+/// here — presence of the environment variable is surfaced read-only in
+/// `/status` (`strategist.available`).
+async fn strategist_toggle(
+    State(state): State<AppState>,
+    params: Result<Json<StrategistToggleParams>, JsonRejection>,
+) -> Response {
+    let Json(params) = match params {
+        Ok(params) => params,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let _config_guard = state.config_write_lock.lock().await;
+    let Some(path) = state.config_path.clone() else {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    };
+    let mut candidate = state.service().config().clone();
+    candidate.strategist.enabled = params.enabled;
+    if candidate.validate().is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    if amatl_core::Config::set_strategist_enabled(&path, params.enabled).is_err() {
+        return api_error(ErrorCode::ConfigurationInvalid);
+    }
+    match state.clone().reload().await {
+        Ok(report) => Json(report).into_response(),
+        Err(error) => service_error(error),
+    }
+}
+
+#[derive(Debug, Deserialize)]
 struct ProviderToggleParams {
     enabled: bool,
 }
@@ -1084,6 +1137,98 @@ async fn provider_toggle(
         Ok(report) => Json(report).into_response(),
         Err(error) => service_error(error),
     }
+}
+
+/// Body of `POST /providers/{name}/credential`: the operator-supplied key.
+#[derive(Debug, Deserialize)]
+struct ProviderCredentialParams {
+    key: String,
+}
+
+/// Response shape for a provider-credential write. Never echoes the secret:
+/// only presence and the resulting availability.
+#[derive(Debug, Serialize)]
+struct ProviderCredentialReport {
+    schema_version: String,
+    name: String,
+    set: bool,
+    /// Whether the source is usable right now with the current credential.
+    available: bool,
+}
+
+/// Insert (or replace) an operator-supplied provider credential in memory
+/// only — admin scoped, same trust tier as `/reload`.
+///
+/// The key is never written to disk, to `amatl.toml`, to the environment, or
+/// to logs: it lives in the running process's RAM and dies with it. It is
+/// validated live (a bounded canary against the provider) *before* it is
+/// accepted, so a bogus, expired, or mis-scoped key is rejected without being
+/// committed — important for a scarce credential such as the single Marginalia
+/// key. On success a `POST /reload` is not required: the in-memory value is
+/// picked up by the next search.
+async fn provider_credential_put(
+    State(state): State<AppState>,
+    Path(name): Path<String>,
+    params: Result<Json<ProviderCredentialParams>, JsonRejection>,
+) -> Response {
+    let Json(params) = match params {
+        Ok(params) => params,
+        Err(rejection) => {
+            return api_error_with_status(rejection.status(), ErrorCode::InvalidRequest)
+        }
+    };
+    let service = state.service();
+    // Live validation before accepting: a failed probe changes nothing.
+    let valid = match validate_provider_credential(&service, &name, &params.key).await {
+        Ok(valid) => valid,
+        Err(error) => return service_error(error),
+    };
+    if !valid {
+        return api_error(ErrorCode::InvalidRequest);
+    }
+    if service.set_provider_credential(&name, &params.key).is_err() {
+        return api_error(ErrorCode::InvalidRequest);
+    }
+    let available = service.ephemeral_credential_present(&name);
+    Json(ProviderCredentialReport {
+        schema_version: SCHEMA_VERSION.into(),
+        name,
+        set: true,
+        available,
+    })
+    .into_response()
+}
+
+/// Live-validate a candidate provider key against its source before it is
+/// accepted, so a bogus, expired, or mis-scoped key is never committed.
+/// Runs one bounded canary through the core.
+async fn validate_provider_credential(
+    service: &amatl_core::AmatlService,
+    name: &str,
+    key: &str,
+) -> Result<bool, ServiceError> {
+    service
+        .probe_provider_credential(name, key, "web search test")
+        .await
+}
+
+/// Liquidate (remove) an operator-supplied provider credential from memory —
+/// admin scoped, idempotent: removing an absent credential still succeeds.
+/// The key is dropped from RAM immediately; the next search sees the source
+/// without it (failing closed on `credential_missing` if it is required).
+async fn provider_credential_delete(
+    State(state): State<AppState>,
+    Path(name): Path<String>,
+) -> Response {
+    let service = state.service();
+    service.clear_provider_credential(&name);
+    Json(ProviderCredentialReport {
+        schema_version: SCHEMA_VERSION.into(),
+        name,
+        set: false,
+        available: false,
+    })
+    .into_response()
 }
 
 /// Read the full governance ficha for one declared provider — read scoped,

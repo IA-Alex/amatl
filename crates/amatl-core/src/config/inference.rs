@@ -325,6 +325,18 @@ impl Config {
     pub fn set_answer_enabled(path: &Path, enabled: bool) -> Result<(), ConfigError> {
         Self::set_scalar_field(path, "answer", "enabled", enabled)
     }
+    /// Flip `[strategist].enabled` on disk and nothing else.
+    ///
+    /// The web UI's admin-scoped toggle for **whether the LLM participates in
+    /// search** (refinement of the query between rounds) reuses the exact same
+    /// narrow write primitive as `set_answer_enabled`: only the scalar
+    /// `enabled` field under the `strategist` section is touched, comments
+    /// survive, and the caller must validate a candidate config before writing
+    /// (so turning it on without a usable `endpoint`/`model`/credential fails
+    /// closed and never leaves a half-configured file behind).
+    pub fn set_strategist_enabled(path: &Path, enabled: bool) -> Result<(), ConfigError> {
+        Self::set_scalar_field(path, "strategist", "enabled", enabled)
+    }
     /// Write every field `patch` sets to `[inference]`, and nothing else.
     ///
     /// Same guarantees as `Config::set_scalar_field` (comments survive,

@@ -38,6 +38,7 @@ experimental-local-embeddings = [
 ]
 
 [dependencies]
+anyhow.workspace = true
 async-trait.workspace = true
 http.workspace = true
 nom.workspace = true

@@ -263,6 +263,40 @@ Es la única vía soportada para operar el interruptor en caliente; editar
 con IA` en la UI web llama a esta misma ruta. Detalle completo del feature en
 `docs/resumen-con-ia.md`.
 
+### Activar o desactivar la búsqueda con modelo (strategist)
+
+`POST /strategist/enabled` (scope `admin`, cuerpo `{"enabled": bool}`) opera
+el mismo patrón exacto que `/answer/enabled`: valida un candidato con el flag
+ya volteado *antes* de escribir, escribe sólo `strategist.enabled` en el
+archivo con `toml_edit` (preserva comentarios) y aplica el cambio con el mismo
+`reload()` atómico sin reiniciar.
+
+Este toggle controla si **el LLM participa en la búsqueda**. Con él apagado
+(el default) `search`/`deep` corren 100% determinísticos — el modelo no
+interviene en absoluto. Con él encendido, el strategist analiza los resultados
+de la primera búsqueda y propone una query refinada que AMATL ejecuta contra
+los providers reales y fusiona por URL canónica (complementa, nunca reordena y
+nunca inventa resultados). El botón `Búsqueda con modelo` en la UI web llama a
+esta misma ruta.
+
+Encenderlo exige una config real y **falla cerrado** si no la hay: `Config`
+rechaza `strategist.enabled = true` sin `endpoint`, `model` y `credential_env`
+válidos, y sin egress de red (perfil standard + `egress = "governed"`). El
+strategist es una capacidad LLM independiente de los embeddings de ranking que
+gobierna `[data_policy].inference`, así que **no requiere** cambiar
+`inference` a `remote_explicit`. La credencial se lee de la variable nombrada
+en `credential_env` en el momento de la llamada; su presencia se reporta en
+`/status` (`strategist.available`) sin exponer el valor.
+
+```toml
+[strategist]
+enabled = false
+endpoint = "https://api.deepinfra.com/v1/openai/chat/completions"
+model = "deepseek-ai/DeepSeek-V3"
+credential_env = "DEEPINFRA_API_KEY"
+timeout_ms = 800
+```
+
 ### Métricas
 
 `GET /metrics` es público, como `/health`, y expone formato de exposición

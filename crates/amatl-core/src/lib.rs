@@ -47,6 +47,7 @@ pub mod router;
 pub mod security;
 pub mod service;
 pub mod storage;
+pub mod strategist;
 pub mod telemetry;
 mod text;
 

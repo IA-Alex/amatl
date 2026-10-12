@@ -2344,6 +2344,74 @@ async fn answer_toggle_refuses_to_enable_an_incomplete_config_without_writing() 
 }
 
 #[tokio::test]
+async fn strategist_toggle_flips_the_flag_and_applies_without_restart() {
+    let base = "schema_version = \"1\"\n\n\
+                [strategist]\nenabled = false\n\
+                endpoint = \"https://api.deepinfra.com/v1/openai/chat/completions\"\n\
+                model = \"deepseek-ai/DeepSeek-V3\"\n\
+                credential_env = \"AMATL_TEST_STRATEGIST_KEY\"\n";
+    let (app, path) = reloadable_app(base).await;
+
+    let response = app
+        .clone()
+        .oneshot(
+            authorized("/strategist/enabled")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"enabled": true}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+
+    // Persisted: a fresh read of the file shows the flag flipped, and the
+    // toggle never wrote near the credential or model.
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(on_disk.contains("enabled = true"));
+    assert!(on_disk.contains("credential_env = \"AMATL_TEST_STRATEGIST_KEY\""));
+    assert!(on_disk.contains("model = \"deepseek-ai/DeepSeek-V3\""));
+
+    let status = json_body(
+        app.oneshot(authorized("/status").body(Body::empty()).unwrap())
+            .await
+            .unwrap(),
+    )
+    .await;
+    assert_eq!(status["strategist"]["enabled"], true);
+    assert_eq!(status["strategist"]["configured"], true);
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
+async fn strategist_toggle_refuses_to_enable_an_incomplete_config_without_writing() {
+    // No endpoint/model: enabling this would fail Config::validate.
+    let base = "schema_version = \"1\"\n\n\
+                [strategist]\nenabled = false\n";
+    let (app, path) = reloadable_app(base).await;
+
+    let response = app
+        .oneshot(
+            authorized("/strategist/enabled")
+                .method(Method::POST)
+                .header(CONTENT_TYPE, "application/json")
+                .body(Body::from(json!({"enabled": true}).to_string()))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+    assert_eq!(
+        json_body(response).await["error"]["code"],
+        "configuration_invalid"
+    );
+    // Fails closed before ever writing: the file on disk is untouched.
+    let on_disk = std::fs::read_to_string(&path).unwrap();
+    assert!(on_disk.contains("enabled = false"));
+    let _ = std::fs::remove_file(path);
+}
+
+#[tokio::test]
 async fn mcp_status_tool_reports_the_limits_actually_in_force() {
     let app = app().await;
     let call = mcp_request(
